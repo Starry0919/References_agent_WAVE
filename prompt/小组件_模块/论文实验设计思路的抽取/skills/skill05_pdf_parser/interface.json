@@ -1,0 +1,34 @@
+{
+  "skill_id": "skill05_pdf_parser",
+  "version": "0.2.0",
+  "implementation": "python_mineru_3.4.4",
+  "input": {
+    "type": "object",
+    "required": ["paper_artifact"],
+    "properties": {
+      "paper_artifact": {"type": "object"},
+      "parse_policy": {
+        "type": "object",
+        "properties": {
+          "mode": {"enum": ["pipeline", "hybrid"]},
+          "timeout_seconds": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["document", "document_artifact", "derived_artifacts"],
+    "properties": {
+      "document": {"$ref": "../../framework/unified-schema.json#/$defs/document"},
+      "document_artifact": {"type": "object"},
+      "derived_artifacts": {"type": "array", "items": {"$ref": "../../framework/unified-schema.json#/$defs/artifactRef"}}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-PAR-001", "EDX-PAR-002", "EDX-PAR-003", "EDX-PDF-003", "EDX-PDF-004", "EDX-SYS-001"],
+  "local_error_codes": ["PARSE001", "PARSE002", "PARSE003", "PARSE004", "PARSE005"],
+  "retry_policy": {"max_attempts": 3, "fallback_order": ["requested_mineru_mode", "pipeline", "pymupdf"]},
+  "provenance_requirements": ["source_artifact_id", "source_sha256", "parser", "parser_version", "mode", "command", "page_map"],
+  "human_review": {"supported": true, "triggers": ["partial_result", "low_parse_coverage", "missing_figures_tables", "checksum_mismatch"]}
+}

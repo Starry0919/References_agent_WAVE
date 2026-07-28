@@ -1,0 +1,815 @@
+Article                                                                                                                                 https://doi.org/10.1038/s41586-019-1192-5
+
+
+
+
+Total synthesis of Escherichia coli with a
+recoded genome
+Julius Fredens1,4, Kaihang Wang1,2,4, Daniel de la Torre1,4, Louise F. H. Funke1,4, Wesley E. Robertson1,4, Yonka Christova1,
+Tiongsun Chia1, Wolfgang H. Schmied1, Daniel L. Dunkelmann1, Václav Beránek1, Chayasith Uttamapinant1,3,
+Andres Gonzalez Llamazares1, Thomas S. Elliott1 & Jason W. Chin1*
+
+
+
+
+    Nature uses 64 codons to encode the synthesis of proteins from the genome, and chooses 1 sense codon—out of up
+    to 6 synonyms—to encode each amino acid. Synonymous codon choice has diverse and important roles, and many
+    synonymous substitutions are detrimental. Here we demonstrate that the number of codons used to encode the canonical
+    amino acids can be reduced, through the genome-wide substitution of target codons by defined synonyms. We create a
+    variant of Escherichia coli with a four-megabase synthetic genome through a high-fidelity convergent total synthesis.
+    Our synthetic genome implements a defined recoding and refactoring scheme—with simple corrections at just seven
+    positions—to replace every known occurrence of two sense codons and a stop codon in the genome. Thus, we recode
+    18,214 codons to create an organism with a 61-codon genome; this organism uses 59 codons to encode the 20 amino acids,
+    and enables the deletion of a previously essential transfer RNA.
+
+
+
+Nature uses 64 triplet codons to encode the synthesis of proteins that                             region17. However, it remained unclear whether these schemes could
+are composed of the canonical 20 amino acids; 18 of these amino                                    be applied for genome-wide recoding.
+acids are encoded by more than 1 synonymous codon1. Synonymous                                        DNA synthesis and assembly methods enabled the creation of a
+codon choice can influence mRNA folding2, gene expression3–6,                                      Mycoplasma mycoides with a 1.08-Mb synthetic genome22,23, and the
+co-translational folding and protein levels2,7,8, and has emerging                                 creation of 9 strains of Saccharomyces cerevisiae in which 1 or 2 of the
+roles9,10. In addition, synonymous codons may have different roles at                              16 chromosomes is replaced by synthetic DNA24–31 (up to 0.99 Mb,
+different positions in the genome11.                                                               8% of the yeast genome). Replicon excision for enhanced genome
+   Reducing the number of sense codons used to encode the canon-                                   engineering through programmed recombination (REXER)—an
+ical amino acids—through genome-wide replacement of a target                                       approach for replacing more than 100 kb of the E. coli genome with
+codon with synonymous codons (which we term synonymous codon                                       synthetic DNA in a single step—has recently been reported17, and it has
+compression)—would address whether all synonymous codons are nec-                                  been demonstrated that REXER can be iterated via genome stepwise
+essary, and may also provide a foundation for the in vivo biosynthesis                             interchange synthesis (GENESIS)17. Here we implement a convergent
+of genetically encoded non-canonical biopolymers12.                                                total synthesis to replace the 4-Mb E. coli MDS42 (ref. 32) genome with a
+   Up to 321 amber stop codons have been removed from the                                          synthetic genome. The synthetic genome is refactored33 and recoded for
+E. coli genome, using site-directed mutagenesis approaches that com-                               the genome-wide removal of two sense codons and a stop codon, which
+monly introduce large numbers of off-target mutations13–15. Sense                                  creates a synthetic E. coli that uses 61 codons for protein synthesis.
+codons are commonly more abundant than stop codons by sev-
+eral orders of magnitude, and—in principle—high-fidelity genome                                    Design of a recoded genome
+synthesis would be the preferred route for tackling their removal.                                 We designed a genome in which the serine codons TCG and TCA, and
+Efforts to alter synonymous codons in individual genes16, genomic                                  the stop codon TAG, in open reading frames (ORFs) of MDS42 E. coli
+regions and essential operons9,16–21 have provided insight into syn-                               (Supplementary Data 1) are systematically replaced by their synonyms
+onymous codon choice, and a subset of these studies have attempted                                 AGC, AGT and TAA, respectively (Fig. 1a, Supplementary Data 2, 3).
+to alter synonymous codons in ways that are consistent with synony-                                It has previously been shown that this defined recoding scheme is
+mous codon compression17–19,21. However, these previous studies have                               allowed in a 20-kb region of the genome17.
+mutated only a small fraction of targeted sense codons in the genome                                  Many target codons are found in areas of overlap between ORFs.
+of a single strain.                                                                                We classified these overlaps as 3′, 3′ (between ORFs in opposite ori-
+   There are an extremely large number of theoretical genomes that                                 entations) or 5′, 3′ (between ORFs in the same orientation). When the
+are formally compatible with synonymous codon compression (np, in                                  recoding of a 3′, 3′ overlap could be achieved without changing the
+which n is the number of synonyms for a target codon (n = 2–6) and                                 encoded protein sequences, the structure of the overlap was maintained
+P is the number of target-codon positions (P = 103 to 105)), and it is                             and the sequences were directly recoded. Otherwise, we duplicated the
+not possible to experimentally test the viability of np genomes. Defined                           overlap and individually recoded each ORF (Fig. 1b, Supplementary
+synonymous codons have previously been used17 to replace the target                                Data 4). For 5′, 3′ overlaps, we separated the ORFs by duplicating both
+codons in a 20-kb region of the E. coli genome that is rich in both essen-                         the overlap between the ORFs and the 20-bp sequence upstream of the
+tial genes and target codons; these studies identified simple defined                              overlap, which enabled independent recoding of each ORF (Fig. 1c,
+‘recoding schemes’ that permit synonymous codon compression in this                                Supplementary Data 4). Using the defined rules for synonymous
+1
+ Medical Research Council Laboratory of Molecular Biology, Cambridge, UK. 2Present address: Division of Biology and Biological Engineering, California Institute of Technology, Pasadena, CA, USA.
+3
+ Present address: School of Biomolecular Science and Engineering, Vidyasirimedhi Institute of Science and Technology (VISTEC), Rayong, Thailand. 4These authors contributed equally:
+Julius Fredens, Kaihang Wang, Daniel de la Torre, Louise F. H. Funke, Wesley E. Robertson. *e-mail: chin@mrc-lmb.cam.ac.uk
+
+
+5 1 4 | N A T U RE | V O L 5 6 9 | 2 3 M A Y 2 0 1 9
+                                                                                                                                                                                                Article RESEARCH
+
+a                                              b Wild-type                             Overlap                        a                                                b
+                                                                                                                          G          H                                              Section A          Fragment
+    Serine       Serine        Serine              sequence
+                                                                    ORF1
+    Codon         Codon        Codon                    Refactoring                                                   F
+                                                                                                       ORF2                              A
+     TCG           TCG                                                                                                    oriC
+                                                                                                                                             1                                           2              3
+     TCA           TCA                             Refactored
+                                                   sequence              ORF1                                  ORF2
+     TCT           TCT          TCT                                                                                   E                  B
+     TCC           TCC          TCC                      Recoding
+                                                                                  Duplicated overlap
+                                                                                                                          D          C
+    AGT             AGT         AGT                Recoded
+    AGC             AGC         AGC                sequence                                                               Synthetic              Partially synthetic           Partially synthetic               E. coli
+                                                                                                                          genome                   1/8 genomes                     genomes                      genome
+    STOP         STOP          STOP
+     codon
+    Codon         Codon        Codon           d
+     TGA           TGA          TGA
+                                                                                  37a/b 1
+                                                                                                                      c                                                                      Stretch
+     TAA           TAA          TAA                                          35                                                                                                   HR1                       –2+2 HR2 –1
+                                                                       33                          3
+     TAG           TAG                                                       G            H                               HR1 ≈100 kb synthetic DNA –2+2 HR2 –1
+ Wild-type    Synonymous      Recoded                                                                      5                                                               4
+                                                               31
+ genome          codon        genome                                                                                                                                                                            YAC ori
+              compression                                          F                                   A
+                                                                                                               7           BAC ori                   URA3 YAC ori                  BAC ori               URA3
+                                                          29
+c                         Overlap                                        Synthetic genome design
+                                                                                                               9      Fig. 2 | Retrosynthesis of the synthetic genome. a, Disconnecting the
+                   Upstream                                                   3,978,937 bp
+ Wild-type
+ sequence      ORF1
+                                                         27                                                           genome into eight sections. The synthetic genome was disconnected into
+                                                               E                                       B 11
+       Refactoring                      ORF2                                                                          sections A to H, with each section corresponding to approximately 0.5 Mb
+                                                              25
+                                                                                                       13             (step 1). The position of the replication origin oriC (orange square) is
+Refactored
+sequence
+             ORF1
+                                              ORF2
+                                                                    23       D                C
+                                                                                                  15
+                                                                                                                      indicated. Sections were assembled into a completely recoded genome
+      Recoding
+                                Synthetic insert
+                                                                            21
+                                                                                  19     17                           (in the forward sense, opposite to the direction of the retrosynthesis
+ Recoded                                                                                                              arrow) by directed conjugation (Fig. 3, Extended Data Fig. 7).
+ sequence
+                                                                                                                      b, Disconnecting genome sections into 100-kb fragments. Sections are
+Fig. 1 | Design of the synthetic genome, implementing a defined                                                       further disconnected into 4 or 5 fragments of around 100 kb in length
+recoding scheme for synonymous codon compression. a, The defined                                                      each. Section A is depicted, and other sections were treated similarly.
+recoding scheme for synonymous codon compression. Synonymous serine                                                   Nearly all sections were constructed entirely through consecutive REXER
+codons and three stop codons used in the genome of wild-type E. coli                                                  steps, by GENESIS (Extended Data Fig. 1). Each step replaced around
+are shown (grey boxes). Systematically implementing a defined recoding                                                100 kb of wild-type genomic sequence with 100 kb of synthetic fragment
+scheme for synonymous codon compression (red arrows) recodes target                                                   (steps 2 and 3). c, Disconnecting each 100-kb synthetic fragment into
+codons to defined synonyms, and replaces the amber stop codon TAG                                                     10-kb synthetic stretches. Each 100-kb synthetic fragment is further
+with the ochre stop codon TAA. This creates an organism with a recoded                                                disconnected into 9 to 14 short synthetic stretches of around 10 kb in
+genome that uses a reduced number of serine and termination codons                                                    length (step 4). The BACs that carry 100-kb synthetic fragments (pink)
+(pink boxes). b, Refactoring of 3′, 3′ overlaps enables their independent                                             were assembled by homologous recombination in yeast. Each BAC
+recoding. The overlap between two ORFs (ORF1 and ORF2) is duplicated,                                                 contains Cas9 cleavage sites (black triangles) that enable excision of the
+which enables independent recoding (red box) of these ORFs. c,                                                        synthetic DNA in vivo, homology regions 1 and 2 (HR1 and HR2) for
+Refactoring 5′, 3′ overlaps. The overlap plus 20 bp upstream is duplicated                                            targeting recombination, and the appropriate double-selection cassette.
+to generate a synthetic insert. When the overlap is longer than 1 bp at the                                           The −2 (sucrose sensitivity, encoded by sacB),+2 (chloramphenicol
+end of the upstream ORF, an in-frame TAA (black box) is introduced in                                                 resistance, encoded by cat) double selection cassette is indicated. However
+the beginning of the synthetic insert; this in-frame stop codon ensures                                               different double selection cassettes are used for selection in different
+the termination of translation from the original ribosome-binding site.                                               steps of REXER. A negative-selection marker (rpsL; indicated as −1) is
+Thus, all full-length translation of the downstream ORF is initiated from                                             used to enable loss of the backbone after REXER. BAC and yeast artificial
+the reconstructed ribosome-binding site in the synthetic insert. This                                                 chromosome (YAC) origins and a URA3 marker, all for maintenance in
+refactoring enables the independent recoding (red box) of ORFs. d, Map                                                E. coli and S. cerevisiae, are indicated.
+of the synthetic genome design with all TCG, TCA and TAG codons
+removed. Outer ring shows positions (18,218 red bars) of all TCG to AGC,
+TCA to AGT and TAG to TAA recodings. Grey ring shows positions of
+                                                                                                                      two 50-kb fragments (labelled 37a and 37b), which were straightfor-
+designed silent mutations in overlaps (12 green bars), refactoring of 3′,                                             ward to assemble (Supplementary Data 10).
+3′ overlaps (schematic shown in b, 21 blue bars) and refactoring of 5′, 3′                                               We initiated genome replacement in seven distinct strains using
+overlapping regions (schematic shown in c, 58 black bars). Pink ring shows                                            REXER (Extended Data Fig. 1a). The start point for REXER in each
+37 fragments of approximately 100 kb in size each. Fragment 37 is shown as                                            strain corresponds to the beginning of sections A, C, D, E, F, G or H
+37a and 37b to reflect the final assembly. The sections A to H are indicated.                                         (Figs. 1d, 2a); section B was subsequently built on section A. In each
+                                                                                                                      strain, the positive and negative selection markers that are intro-
+codon compression and refactoring, we designed a genome in which                                                      duced in the first REXER provide a template for the next round of
+all 18,218 target codons are recoded to their target synonyms (Fig. 1d,                                               REXER, which enables GENESIS17 (Fig. 2b, Extended Data Fig. 1b).
+Supplementary Data 3).                                                                                                We found that REXER could be initiated by the electroporation of
+                                                                                                                      linear double-stranded spacers generated by PCR (Supplementary
+Synthesis of recoded sections                                                                                         Data 11–13) rather than plasmid-encoded spacers17, which accel-
+We performed a retrosynthesis—analogous to that commonly used                                                         erated GENESIS. For sections A, C, D, E, F and G, we proceeded
+for designing synthetic routes in chemistry34—on the designed                                                         with GENESIS in a clockwise direction for 4 or 5 steps of REXER
+genome (Fig. 2). We disconnected the genome into eight sections,                                                      and replaced approximately 0.5 Mb of genomic DNA with synthetic
+each of approximately 0.5 Mb in length, which were labelled A to H                                                    DNA. We sequenced the genomes of cells after each step of REXER
+(Figs. 1d, 2a, Supplementary Data 2); we then disconnected each sec-                                                  and identified clones that were fully recoded over the targeted genomic
+tion into 4 or 5 fragments (Fig. 2b). This yielded 37 fragments (Fig. 1d,                                             region (Supplementary Data 11). Section A was completed first, and
+Supplementary Data 2) that were between 91 kb and 136 kb in length.                                                   we therefore proceeded with GENESIS through section B in a strain
+We placed the boundaries between fragments or sections in intergenic                                                  that contained recoded section A.
+regions that are between non-essential genes. The fragments were fur-                                                    We carried out numerous single-step REXERs with individual frag-
+ther disconnected into 9–14 stretches that were approximately 10 kb                                                   ments (Supplementary Data 11), in parallel with GENESIS, to accel-
+in length (Fig. 2c, Supplementary Data 5).                                                                            erate the identification of genomic regions that may be challenging
+   We assembled bacterial artificial chromosomes (BACs) for REXER                                                     to recode. For 35 steps, including all of sections A, C, D, E, F and G,
+(Fig. 2c, Supplementary Data 6–9) that contained each fragment, using                                                 we completely recoded the targeted genomic sequence by GENESIS.
+homologous recombination in S. cerevisiae17,35. For 36 of the frag-                                                   However, we observed incomplete replacement of the corresponding
+ments, BAC assembly proceeded smoothly (Supplementary Data 10).                                                       genomic region by synthetic DNA for fragment 9 (in section B), and for
+Fragment 37 was challenging to assemble and we therefore split it into                                                fragments 37a and 1 (in section H) (Supplementary Data 11).
+
+                                                                                                                                                               2 3 M A Y 2 0 1 9 | V O L 5 6 9 | N A T U RE | 5 1 5
+ RESEARCH Article
+
+              Partially synthetic genomes                                   corresponding genomic region (Extended Data Fig. 3, Supplementary
+                                                                            Data 11). REXER using a new BAC that contained fragment 37a with
+                    AB (r)   +   C (d)                      A–C (r)
+                                                                            a TCA-to-AGC substitution at the problematic codon in yaaY led
+                                                                            to a complete recoding of the corresponding region of the genome
+                     D (r)   +   E (d)         DE (d)                       (Extended Data Fig. 4, Supplementary Data 14).
+                                                                               Having pinpointed and fixed all the initially problematic sequences,
+                                                F (d)       A–E (r)
+                                                                            we completed the assembly of a strain in which sections A and B
+                                                                            are fully recoded (Extended Data Fig. 6), and the assembly of a
+                                                                            strain in which section H is entirely recoded (Extended Data Fig. 6,
+                                                G (d)       A–F (r)
+                                                                            Supplementary Data 11). This completed the assembly of all the
+                                                                            sections in seven distinct strains.
+
+                                                                            Assembly of a recoded genome
+                                               H (d)        A–G (r)
+                                                                            We developed a conjugation-based strategy42–44 to assemble the
+                                                                            recoded sections into a single genome (Fig. 3). Our strategy assembles
+                                                                            the recoded genome in a clockwise manner, by conjugating recoded
+                                         Synthetic genome    A–H            ‘donor’ sections that contain the origin of transfer (oriT), into adjacent
+                                              (Syn61)
+                                                                            recoded ‘recipient’ sections that have been extended to provide homol-
+Fig. 3 | Assembly of recoded genome sections to create Syn61.               ogy to the donor (Extended Data Fig. 7, Supplementary Data 15, 16).
+Synthetic genomic sections (pink) from multiple individual partially        Following conjugation between the donor and the recipient cells, we
+recoded genomes were assembled into a single fully recoded genome in        selected for recipient cells; we then selected for those recipients that had
+the indicated sequence of conjugations. The donor (d) and recipient (r)
+                                                                            gained the positive marker at the end of the recoded sequence from the
+strains contain unique recoded genomic sections, denoted in pink. The
+recoded genomic content from the donor was conjugated in a clockwise        donor and lost the negative marker at the end of the extension in the
+manner to replace the corresponding wild-type genomic section (grey) in     recipient (Extended Data Fig. 7).
+the recipient. Conjugation proceeded until the final fully recoded A to H      The resulting cells, which contain the recoded sections of both the
+strain (that is, Syn61) was assembled. Extended Data Figure 7 shows the     donor and the recipient, can then be used as a recipient for the next
+process in more detail, including all homology regions.                     recoded donor, and iteration of the process enables the recoded genome
+                                                                            to be assembled through the addition of recoded sections to an increas-
+Identifying and repairing design flaws                                      ingly recoded recipient (Fig. 3, Extended Data Fig. 7). Donor cells con-
+Sequencing several clones following REXER enabled us to score the fre-      tained a version of the F′ plasmid that facilitates transfer of the donor
+quency with which each target codon is recoded, and thereby to com-         genome to the recipient cells, but which is not competent to trans-
+pile a recoding landscape for the genomic region17. From the recoding       fer itself to recipient cells (Supplementary Data 17). As a result, this
+landscape with fragment 1, we identified the fourth codon (TCA, Ser4)       F′ plasmid does not have to be lost from the recipient cells after every
+in map, which is an essential gene that encodes methionine amino            conjugation; this accelerated our workflow.
+peptidase, as recalcitrant to recoding by our defined scheme (Extended         Conjugative assembly (Fig. 3, Extended Data Fig. 7) enabled the syn-
+Data Fig. 2). We also identified a second region—which encompasses          thesis of a synthetic E. coli that we named ‘Syn61’, in which all 1.8 × 104
+a 14-bp overlap of the essential genes ftsI and murE, and several ser-      target codons in the genome are recoded (Supplementary Data 18). The
+ine codons in ftsI and murE—that was not replaced by our recoded            synthesis introduced only 8 non-programmed mutations, and none of
+and refactored sequence. As this region has previously been recoded         these non-programmed mutations affects recoding (Supplementary
+with the same recoding scheme, duplicating the overlap plus 182 bp          Data 19); 4 of these mutations arose during the preparation of the
+rather than the 20 bp used in our synthetic genome design17 (Fig. 1c),      100-kb BACs, and 4 arose during the recoding process.
+the defect in the synthetic DNA for this region is in its refactoring.
+REXER using a new fragment-1 BAC—which contained both the                   Properties of Syn61
+extended refactoring (Extended Data Fig. 2) and a TCA-to-TCT muta-          Syn61 doubled only 1.6× slower than MDS42 in lysogeny broth (LB)
+tion at Ser4 in map (Extended Data Fig. 2, Supplementary Data 14)—          plus glucose at 37 °C, and this ratio increased at 25 °C and decreased
+enabled complete recoding of the targeted 100-kb region of the genome       at 42 °C (Extended Data Fig. 8a). Syn61 contains 65% more AGT and
+(Extended Data Fig. 2).                                                     AGC codons than are present in MDS42; however, providing addi-
+   From the post-REXER recoding landscape of fragment 9 and addi-           tional copies of serV—the transfer RNA (tRNA) that decodes these
+tional experiments, we identified five target codons within yceQ as         codons (Fig. 4a)—did not increase growth (Extended Data Fig. 8a).
+being problematic to recode (Extended Data Fig. 3). Similarly, we           This suggests serV is not limiting. Imaging Syn61 cells suggests that
+identified a single codon at the 3′ end of yaaY in fragment 37a, which      they are slightly longer than MDS42 (Extended Data Fig. 8b, c). We
+was never recoded (Extended Data Fig. 4). yceQ and yaaY both encode         observed minimal differences in the proteomes quantified in both
+‘predicted proteins’, multiple insertions in yceQ are viable36 and there    Syn61 and MDS42 (Extended Data Fig. 8d, Supplementary Data 20).
+are no reports in the Universal Protein Resource (UniProt) of mRNA          Co-translational incorporation of a non-canonical amino acid, using
+production and/or protein synthesis from these predicted genes37.           an orthogonal aminoacyl-tRNA synthetase/tRNACGA pair45–47 targeted
+Notably, the codons that are recalcitrant to recoding within yceQ and       to TCG codons, was extremely toxic in MDS42 but non-toxic in Syn61;
+yaaY all lie within the 5′ untranslated regions of adjacent essential       this validates the removal of TCG codons in Syn61 (Fig. 4b). This
+genes, and altering these sequences probably has negative effects on        approach also provided additional insights (Extended Data Fig. 9a–c).
+the regulation of these essential genes. Indeed, the target codons in       serT encodes the tRNASerUGA, which is the only tRNA predicted to
+yceQ map to RNA secondary structures and promoter elements within           decode TCA codons in E. coli and is therefore essential48. Because
+the 5′ untranslated region of rne (which encodes the essential RNase,       Syn61 does not contain TCA codons, serT is dispensable in this strain
+RNase E)38–41 (Extended Data Fig. 5), and these sequences are essential     (Fig. 4c, Extended Data Fig. 9d, Supplementary Data 21), as expected.
+for controlling RNase E homeostasis41.                                      serU and prfA could also be deleted in Syn61 (Extended Data Fig. 9e, f,
+   We fixed fragment 9 by introducing a stop codon into the 5′ sequence     Supplementary Data 21). These data provide functional confirmation
+of yceQ, thus minimizing translation but retaining native sequences         that we have removed the target codons from the genome, show that
+for regulating rne transcription (Extended Data Fig. 3, Supplementary       the cognate tRNAs and release factor can be removed in Syn61, and
+Data 14). REXER using this new BAC led to a complete recoding of the        demonstrate the unique properties of Syn61 that arise from recoding.
+
+5 1 6 | N A T U RE | V O L 5 6 9 | 2 3 M A Y 2 0 1 9
+                                                                                                                                                                                                         Article RESEARCH
+
+a                                                                                                                                             Our final synthetic genome was recoded using defined refactoring and
+Serine
+ Codon                                   tRNA anticodon
+                                                                             Serine
+                                                                             Codon        tRNA anticodon
+                                                                                                                  Serine
+                                                                                                                   Codon    tRNA anticodon
+                                                                                                                                              recoding schemes, and a recoding rule that was previously determined
+ TCG                                         CGA serU                                     CGA serU                                            on just 83 (0.43%) of the target codons in the genome17. There are a
+ TCA                                         UGA serT                                     UGA serT          tRNA
+                                                                                                           deletion TCT
+                                                                                                                                              vast number of theoretical recoding schemes and previous work has
+ TCT                                                                         TCT
+ TCC                                         GGA serW,serX Synonymous        TCC          GGA serW,serX            TCC       GGA serW,serX    established that not all recoding schemes are viable16–20; it is therefore
+ AGT
+                                                                 codon
+                                                              compresssion   AGT                                   AGT                        notable that it is possible to identify a single defined recoding scheme
+ AGC                                         GCU serV                        AGC          GCU serV                 AGC       GCU serV         that—with a small number of simple corrections—allows genome-wide
+STOP                                                                         STOP                                 STOP                        synonymous codon compression.
+ Codon
+  codon
+ TGA
+                                             Release factor
+                                             RF2 prfB
+                                                                             Codon
+                                                                              codon
+                                                                             TGA
+                                                                                          Release factor
+                                                                                          RF2 prfB
+                                                                                                            RF1 Codon
+                                                                                                                    codon
+                                                                                                           deletion TGA
+                                                                                                                             Release factor
+                                                                                                                             RF2 prfB            The strategies that we have developed for disconnecting a designed
+ TAA                                                                         TAA                                    TAA                       genome into sections, fragments and stretches, and realizing the design
+ TAG                                         RF1 prfA                                     RF1 prfA                                            through the convergent, seamless and robust integration of REXER,
+           Wild-type genome                                                     Recoded genome                        Recoded genome
+                                                                                                                                              GENESIS and directed conjugation, provides a blueprint for future
+b                                                                                                 c                                           genome syntheses. In future work, we will further characterize the
+    Percentage of maximum growth
+
+
+
+
+                                                   PylRS/tRNACGA
+                                                                                MDS42
+                                                                                Syn61                 Clone: 1    2    –                      consequences of synonymous codon compression in Syn61 and inves-
+                                   100                                                                                                        tigate additional recoding schemes. In addition, we will investigate the
+                                                                                                3.0 kb                      ΔserT::
+                                                                                                                                              extent to which our approach enables sense-codon reassignment for
+                                    50                                                          2.0 kb                      PheS*-HygR        non-canonical biopolymer synthesis12.
+                                                                                                1.5 kb
+                                                                                                1.0 kb
+                                                                                                                                              Reporting summary
+                                     0
+                                         0             2             4                6                                     Wild-type serT    Further information on research design is available in the Nature Research
+                                                      [CYPK] (mM)                                                                             Reporting Summary linked to this paper.
+Fig. 4 | Functional consequences of synonymous codon compression in
+Syn61. a, Synonymous codon compression and deletion of prfA, serU and                                                                         Data availability
+serT. The grey boxes show the serine codons and stop codons, together                                                                         The sequences and genome design details used in this study are available in
+with the tRNAs and release factors that decode them in wild-type E. coli                                                                      the Supplementary Data. Supplementary Data 1 provides the GenBank file of the
+(wild-type genome). tRNA anticodons and release factors are connected                                                                         E. coli MDS42 genome (NCBI accession number AP012306.1); Supplementary
+to the codons that they are predicted to read by black lines. The tRNA                                                                        Data 2 provides the GenBank file of the designed synthetic E. coli genome with
+and release factor genes are shown in the black boxes. Synonymous codon                                                                       codon replacements and refactorings; Supplementary Data 3 provides the table of
+compression leads to a recoded genome (pink boxes), in which tRNAs                                                                            target codons; Supplementary Data 4 provides the table of overlaps and refactor-
+with CGA anticodons should have no cognate codons and serT should be                                                                          ing; Supplementary Data 5 provides the table of 10-kb stretches; Supplementary
+dispensable. All factors that read the target codons should be dispensable                                                                    Data 6 provides the GenBank file of the BAC sacB-cat-rpsL; Supplementary Data 7
+in Syn61. b, Co-translational incorporation of the non-canonical amino                                                                        provides the GenBank file of BAC-rpsL-kanR-sacB; Supplementary Data 8 pro-
+acid Nε-(((2-methylcycloprop-2-en-1-yl) methoxy) carbonyl)-l-lysine                                                                           vides the GenBank file of the BAC rpsL-kanR-pheS∗-HygR; Supplementary Data 9
+(CYPK), using the orthogonal Methanosarcina mazei pyrrolysyl-tRNA                                                                             provides the table of BAC construction; Supplementary Data 10 provides the table
+synthetase (PylRS)/tRNAPylCGA pair, was toxic in MDS42, but not in                                                                            of BAC assembly; Supplementary Data 11 provides the table of REXER exper-
+Syn61. When provided with CYPK, this pair will incorporate the non-                                                                           iments; Supplementary Data 12 provides the GenBank file of spacer plasmids
+canonical amino acid in response to TCG codons in a dose-dependent                                                                            without trans-activating CRISPR RNA (tracrRNA) and annotation for linear
+manner. In MDS42 (grey), this incorporation leads to mis-synthesis of                                                                         spacers; Supplementary Data 13 provides the GenBank file of spacer plasmids
+the proteome, and toxicity. In Syn61 (pink) (which does not contain TCG                                                                       with tracrRNA and annotation for linear spacers; Supplementary Data 14 provides
+codons), this is non-toxic. The lines follow the mean of three biological                                                                     the table of oligonucleotides used for recoding fixing experiments; Supplementary
+replicates (each shown as a dot) at each CYPK concentration (0 mM,                                                                            Data 15 provides the GenBank file of the gentamycin-resistance oriT cassette;
+0.5 mM, 1 mM, 2.5 mM and 5 mM). Percentage of maximum growth                                                                                  Supplementary Data 16 provides the oligonucleotide primers used for conjugation;
+was determined by the final optical density at 600 nm (OD600) with                                                                            Supplementary Data 17 provides the GenBank file of the pJF146 F′ plasmid that
+the indicated concentration of CYPK divided by the final OD600 in the                                                                         does not self-transfer; Supplementary Data 18 provides the GenBank file of the fully
+absence of CYPK. Final OD600 values were determined after 600 min. c,                                                                         recoded genome of Syn61, verified by next-generation sequencing; Supplementary
+Synonymous codon compression enables deletion of serT in Syn61. PCR                                                                           Data 19 provides the table of design optimizations and non-programmed
+flanking the serT locus before (−) and after (clones 1 and 2) replacement                                                                     mutations; Supplementary Data 20 provides a list of the proteins identified
+with a PheS∗-HygR double selection cassette; HygR denotes hygromycin                                                                          by tandem mass spectrometry; and Supplementary Data 21 provides a list of the
+resistance (aph(4)-Ia), PheS∗ denotes a mutant of PheS that encodes a                                                                         primers used for deletion experiments. All other datasets generated and/or ana-
+Thr251Ala, Ala294Gly mutant of phenylalanyl-tRNA synthetase. The                                                                              lysed in this study are available from the corresponding author upon reasonable
+experiment was performed once. See Extended Data Fig. 9. Full gels are                                                                        request. All materials (Supplementary Data 9, 12, 13, 17, 18) from this study are
+in Supplementary Fig. 1.                                                                                                                      available from the corresponding author upon reasonable request.
+
+                                                                                                                                              Code availability
+Discussion                                                                                                                                    Code used for genome design is available at https://github.com/TiongSun/genome_
+We have created E. coli in which the entire 4-Mb genome is replaced                                                                           recoding; for sequencing at https://github.com/TiongSun/iSeq; and for generating
+with synthetic DNA; to our knowledge, the scale of genomic replace-                                                                           recoding landscapes at https://github.com/TiongSun/recoding_landscape.
+ment in Syn61 is approximately 4× larger than previously reported
+                                                                                                                                              Received: 18 December 2018; Accepted: 9 April 2019;
+for genome or chromosome replacement in any organism (Extended
+                                                                                                                                              Published online 15 May 2019.
+Data Fig. 10a).
+   We have demonstrated the genome-wide removal of all 1.8 × 104
+                                                                                                                                              1.   Crick, F. H., Barnett, L., Brenner, S. & Watts-Tobin, R. J. General nature of the
+target codons, and thereby removed orders-of-magnitude more codons                                                                                 genetic code for proteins. Nature 192, 1227–1232 (1961).
+than previous efforts (Extended Data Fig. 10b). Our synthetic genome                                                                          2.   Kudla, G., Murray, A. W., Tollervey, D. & Plotkin, J. B. Coding-sequence determinants
+contains only 2 × 10−4 non-programmed mutations per target codon                                                                                   of gene expression in Escherichia coli. Science 324, 255–258 (2009).
+                                                                                                                                              3.   Cho, B. K. et al. The transcription unit architecture of the Escherichia coli
+(Extended Data Fig. 10c), which is orders-of-magnitude lower than the                                                                              genome. Nat. Biotechnol. 27, 1043–1049 (2009).
+non-programmed mutation frequency in previous recoding efforts14                                                                              4.   Li, G. W., Oh, E. & Weissman, J. S. The anti-Shine–Dalgarno sequence drives
+(Extended Data Fig. 10c).                                                                                                                          translational pausing and codon choice in bacteria. Nature 484, 538–541
+   The creation of an organism that uses a reduced number of sense                                                                                 (2012).
+                                                                                                                                              5.   Sørensen, M. A. & Pedersen, S. Absolute in vivo translation rates of individual
+codons (59) to encode the 20 canonical amino acids demonstrates that                                                                               codons in Escherichia coli: the two glutamic acid codons GAA and GAG are
+life can operate with a reduced number of synonymous sense codons.                                                                                 translated with a threefold difference in rate. J. Mol. Biol. 222, 265–280 (1991).
+
+                                                                                                                                                                             2 3 M A Y 2 0 1 9 | V O L 5 6 9 | N A T U RE | 5 1 7
+ RESEARCH Article
+
+6.  Curran, J. F. & Yarus, M. Rates of aminoacyl-tRNA selection at 29 sense codons         37. Pundir, S., Martin, M. J. & O’Donovan, C. UniProt Protein Knowledgebase.
+    in vivo. J. Mol. Biol. 209, 65–77 (1989).                                                  Methods Mol. Biol. 1558, 41–55 (2017).
+7. Kimchi-Sarfaty, C. et al. A “silent” polymorphism in the MDR1 gene changes              38. Claverie-Martin, F., Diaz-Torres, M. R., Yancey, S. D. & Kushner, S. R. Analysis of
+    substrate specificity. Science 315, 525–528 (2007).                                        the altered mRNA stability (ams) gene from Escherichia coli. Nucleotide
+8. Zhang, G., Hubalewska, M. & Ignatova, Z. Transient ribosomal attenuation                    sequence, transcriptional analysis, and homology of its product to MRP3, a
+    coordinates protein synthesis and co-translational folding. Nat. Struct. Mol. Biol.        mitochondrial ribosomal protein from Neurospora crassa. J. Biol. Chem. 266,
+    16, 274–280 (2009).                                                                        2843–2851 (1991).
+9. Mittal, P., Brindle, J., Stephen, J., Plotkin, J. B. & Kudla, G. Codon usage            39. Jain, C. & Belasco, J. G. RNase E autoregulates its synthesis by controlling the
+    influences fitness through RNA toxicity. Proc. Natl Acad. Sci. USA 115,                    degradation rate of its own mRNA in Escherichia coli: unusual sensitivity of the
+    8639–8644 (2018).                                                                          rne transcript to RNase E activity. Genes Dev. 9, 84–96 (1995).
+10. Cambray, G., Guimaraes, J. C. & Arkin, A. P. Evaluation of 244,000 synthetic           40. Diwa, A., Bricker, A. L., Jain, C. & Belasco, J. G. An evolutionarily conserved RNA
+    sequences reveals design principles to optimize translation in Escherichia coli.           stem-loop functions as a sensor that directs feedback regulation of RNase E
+    Nat. Biotechnol. 36, 1005–1015 (2018).                                                     gene expression. Genes Dev. 14, 1249–1260 (2000).
+11. Quax, T. E., Claassens, N. J., Söll, D. & van der Oost, J. Codon bias as a means to    41. Schuck, A., Diwa, A. & Belasco, J. G. RNase E autoregulates its synthesis in
+    fine-tune gene expression. Mol. Cell 59, 149–161 (2015).                                   Escherichia coli by binding directly to a stem-loop in the rne 5′ untranslated
+12. Chin, J. W. Expanding and reprogramming the genetic code. Nature 550, 53–60                region. Mol. Microbiol. 72, 470–478 (2009).
+    (2017).                                                                                42. Isaacs, F. J. et al. Precise manipulation of chromosomes in vivo enables
+13. Mukai, T. et al. Codon reassignment in the Escherichia coli genetic code. Nucleic          genome-wide codon replacement. Science 333, 348–353 (2011).
+    Acids Res. 38, 8188–8195 (2010).                                                       43. Ma, N. J., Moonan, D. W. & Isaacs, F. J. Precise manipulation of bacterial
+14. Lajoie, M. J. et al. Genomically recoded organisms expand biological functions.            chromosomes by conjugative assembly genome engineering. Nat. Protocols 9,
+    Science 342, 357–360 (2013).                                                               2285–2300 (2014).
+15. Mukai, T. et al. Highly reproductive Escherichia coli cells with no specific           44. Lederberg, J. & Tatum, E. L. Gene recombination in Escherichia coli. Nature 158,
+    assignment to the UAG codon. Sci. Rep. 5, 9699 (2015).                                     558 (1946).
+16. Napolitano, M. G. et al. Emergent rules for codon choice elucidated by editing         45. Elliott, T. S., Bianco, A., Townsley, F. M., Fried, S. D. & Chin, J. W. Tagging and
+    rare arginine codons in Escherichia coli. Proc. Natl Acad. Sci. USA 113,                   enriching proteins enables cell-specific proteomics. Cell Chem. Biol. 23,
+    E5588–E5597 (2016).                                                                        805–815 (2016).
+17. Wang, K. et al. Defining synonymous codon compression schemes by genome                46. Elliott, T. S. et al. Proteome labeling and protein identification in specific tissues
+    recoding. Nature 539, 59–64 (2016).                                                        and at specific developmental stages in an animal. Nat. Biotechnol. 32,
+18. Lau, Y. H. et al. Large-scale recoding of a bacterial genome by iterative                  465–472 (2014).
+    recombineering of synthetic DNA. Nucleic Acids Res. 45, 6971–6980                      47. Krogager, T. P. et al. Labeling and identifying cell-specific proteomes in the
+    (2017).                                                                                    mouse brain. Nat. Biotechnol. 36, 156–159 (2018).
+19. Ostrov, N. et al. Design, synthesis, and testing toward a 57-codon genome.             48. Neidhardt, F. C. Escherichia coli and Salmonella typhimurium: Cellular and
+    Science 353, 819–822 (2016).                                                               Molecular Biology (American Society for Microbiology, Washington, 1987)
+20. Mukai, T. et al. Reassignment of a rare sense codon to a non-canonical amino
+    acid in Escherichia coli. Nucleic Acids Res. 43, 8111–8122 (2015).                     Acknowledgements This work was supported by the Medical Research Council
+21. Hutchison, C. A. III et al. Design and synthesis of a minimal bacterial genome.        (MRC), UK (MC_U105181009 and MC_UP_A024_1008), the Medical Research
+    Science 351, aad6253 (2016).                                                           Foundation (MRF-109-0003-RG-CHIN/C0741) and an ERC Advanced Grant
+22. Gibson, D. G. et al. Complete chemical synthesis, assembly, and cloning of a           SGCR, all to J.W.C., and by the Lundbeck Foundation (R232-2016-3474) to J.F.
+    Mycoplasma genitalium genome. Science 319, 1215–1220 (2008).                           J.W.C. thanks H. Pelham for supporting this project. We thank M. Skehel and
+23. Gibson, D. G. et al. Creation of a bacterial cell controlled by a chemically           the MRC-LMB mass spectrometry service for label-free-quantification-based
+    synthesized genome. Science 329, 52–56 (2010).                                         proteomics; N. Barry for microscopy; A. Crisp for helping with Python scripts;
+24. Shen, Y. et al. Deep functional analysis of synII, a 770-kilobase synthetic yeast      and C. J. K. Wan, S. H. Kim, L. Dunsmore, N. Huguenin-Dezot and S. D. Fried for
+    chromosome. Science 355, eaaf4791 (2017).                                              their support in experimental work.
+25. Annaluru, N. et al. Total synthesis of a functional designer eukaryotic
+    chromosome. Science 344, 55–58 (2014).                                                 Reviewer information Nature thanks Abhishek Chatterjee, Tom Ellis and the other
+26. Xie, Z. X. et al. “Perfect” designer chromosome V and behavior of a ring               anonymous reviewer(s) for their contribution to the peer review of this work.
+    derivative. Science 355, eaaf4704 (2017).
+27. Mitchell, L. A. et al. Synthesis, debugging, and effects of synthetic chromosome       Author contributions K.W. and T.C. designed the target genome sequence. T.C.
+    consolidation: synVI and beyond. Science 355, eaaf4831 (2017).                         generated scripts for data analysis. All authors, except T.S.E., contributed to
+28. Dymond, J. S. et al. Synthetic chromosome arms function in yeast and generate          assembly of sections. J.F., L.F.H.F., K.W. and A.G.L. led the fixing of deleterious
+    phenotypic diversity by design. Nature 477, 471–476 (2011).                            synthetic sequences. J.F., D.d.l.T., L.F.H.F., W.E.R. and Y.C. led the assembly of
+29. Wu, Y. et al. Bug mapping and fitness testing of chemically synthesized                sections into Syn61 and characterized the strain with the assistance of T.S.E.
+    chromosome X. Science 355, eaaf4706 (2017).                                            J.W.C. supervised the project and wrote the paper with the other authors.
+30. Zhang, W. et al. Engineering the ribosomal DNA in a megabase synthetic
+    chromosome. Science 355, eaaf3981 (2017).                                              Competing interests The authors declare no competing interests.
+31. Richardson, S. M. et al. Design of a synthetic yeast genome. Science 355,
+    1040–1044 (2017).                                                                      Additional information
+32. Pósfai, G. et al. Emergent properties of reduced-genome Escherichia coli.              Extended data is available for this paper at https://doi.org/10.1038/s41586-
+    Science 312, 1044–1046 (2006).                                                         019-1192-5.
+33. Chan, L. Y., Kosuri, S. & Endy, D. Refactoring bacteriophage T7. Mol. Syst. Biol. 1,   Supplementary information is available for this paper at https://doi.org/
+    2005.0018 (2005).                                                                      10.1038/s41586-019-1192-5.
+34. Corey, E. J. & Cheng, X.-M. The Logic of Chemical Synthesis (John Wiley,               Reprints and permissions information is available at http://www.nature.com/
+    Chichester, 1989).                                                                     reprints.
+35. Kouprina, N., Noskov, V. N., Koriabine, M., Leem, S. H. & Larionov, V. Exploring       Correspondence and requests for materials should be addressed to J.W.C.
+    transformation-associated recombination cloning for selective isolation of             Publisher’s note: Springer Nature remains neutral with regard to jurisdictional
+    genomic regions. Methods Mol. Biol. 255, 69–89 (2004).                                 claims in published maps and institutional affiliations.
+36. Goodall, E. C. A. et al. The essential genome of Escherichia coli K-12. MBio 9,
+    e02096-17 (2018).                                                                      © The Author(s), under exclusive licence to Springer Nature Limited 2019
+
+
+
+
+5 1 8 | N A T U RE | V O L 5 6 9 | 2 3 M A Y 2 0 1 9
+                                                                                                                            Article RESEARCH
+
+
+
+
+Extended Data Fig. 1 | Using 100-kb fragments of synthetic DNA to         the corresponding wild-type DNA. In the example shown in the figure, +1
+replace the corresponding regions in the genome through REXER,            is kanR, −1 is rpsL, +2 is cat and −2 is sacB. b, Iterative cycles of REXER,
+and using GENESIS for the stepwise replacement of genomic DNA by          with alternating choices of positive- and negative-selection cassettes,
+synthetic DNA to generate recoded sections. a, REXER uses CRISPR–         enables GENESIS17. This enables large sections of the synthetic genome
+Cas9- and lambda-red-mediated recombination to replace genomic DNA        to be assembled through the iterative addition of fragments, which
+with synthetic DNA provided from an episome (BAC). This enables large     replace the corresponding genomic sequences, in a clockwise manner.
+regions of the genome (>100 kb) to be replaced by synthetic DNA17. The    The first REXER of a 100-kb synthetic fragment of DNA leaves a −1, +1
+black triangles denote the location of CRISPR protospacers, which are     double-selection cassette on the genome, which acts as a landing site for
+cleaved by Cas9 to liberate the synthetic DNA (pink) cassette from the    the downstream integration of a second fragment of synthetic DNA that
+BAC flanked by homology regions. Homology regions 1 and 2 program the     contains a −2, +2 double-selection cassette. In the example shown, +1 is
+location of recombination into the E. coli genome. The double-selection   kanR, −1 is rpsL, +2 is cat and −2 is sacB, but the same logic can be used
+cassette (−1, +1) ensures the integration of the synthetic DNA, and the   with different permutations of positive and negative selection markers on
+double-selection cassette(−2, +2) on the genome ensures the removal of    the genome and the BAC.
+RESEARCH Article
+
+
+
+
+Extended Data Fig. 2 | Recoding ftsI-murE and map in fragment 1.                alternative codons at Ser4 in map. A double-selection cassette, pheS∗-
+a, Recoding landscape of fragment 1. We sequenced six clones after              HygR, on a constitutive EM7 promoter was introduced upstream of map,
+REXER. Each dot represents the frequency of recoding within the                 followed by a ribosome-binding site. We replaced the cassette using linear
+sequenced clones (y axis) for a target codon at the indicated position in the   double-stranded DNA that introduces alternative codons (purple bar)
+genome (x axis). Black dots indicate positions at which we did not observe      at position four, via lambda-red recombination and negative selection
+recoding. Four codons and a refactoring of ftsI-murE, and one codon in          for loss of pheS∗. DNA with AGC and AGT did not integrate (0/16
+map, were rejected. b, Refactoring the 14-bp overlap of ftsI and murE.          clones); we recovered one clone for AGC but sequencing revealed that it
+The codons and overlaps are colour-coded by their post-REXER                    contained a mutant AAC (Asn) codon. TCT (6/8), TCC (6/16), ACA (6/8)
+replacement frequency in the clones sequenced. Using our initial                and TTA (4/8) were allowed. d, Recoding landscape (purple) over the
+refactoring scheme (refactoring 1) (in which the overlap plus 20 bp of          genomic region shown in a, following REXER with a BAC that contained
+upstream sequence was duplicated), we did not observe replacement of            refactoring scheme 2 for the ftsI-murE overlap and TCT at position 4 in
+the overlap by synthetic DNA (in the six clones sequenced after REXER).         map. In total, 2/7 post-REXER clones were completely refactored
+Refactoring scheme 2 (refactoring 2) (which duplicates the overlap plus         and recoded, and each target codon was replaced in at least 5/7 clones.
+182 bp of upstream sequence) resulted in complete recoding of this              The data from a are shown in red for comparison.
+region in 12 of the 16 post-REXER clones that we sequenced. c, Testing
+                                                                                                                                 Article RESEARCH
+
+
+
+
+Extended Data Fig. 3 | Recoding rne and yceQ in fragment 9.                      recoded. This is consistent with epistasis between the targeted positions.
+a, Recoding landscape of fragment 9. Our designed synthetic sequence             In the map below the recoding landscape, sequences annotated as essential
+of fragment 9 was integrated into the genome by REXER, and 19 clones             are shown in dark grey and target codons are shown in red. The sequence
+were completely sequenced by next-generation sequencing. The recoding            position (x axis) is with reference to a. c, Altered design of the region
+landscape graph shows the frequency at which each target codon was               surrounding rne in fragment 9. Top, original design of yceQ recoding and
+recoded across the 19 clones. Although most codon replacements were              rne (which encodes RNase E) regulatory sequences. Target codons are
+accepted, recoding of a 26-kb region was consistently rejected; codon            shown in red. P1rne, P2rne and P3rne are the promoters (blue arrows)
+positions with a recoding frequency of zero in all the sequenced clones          for the essential gene rne; these are found in and around the hypothetical
+are indicated by black dots. To pinpoint the problematic sequence, 10-kb         gene yceQ. The −10 sequence of the major promoter P1rne is mutated
+stretches of the genome (labelled G2 to G7) were deleted in the presence         by our initial design. The sequences that contains hairpin 1 (hp1) and
+of the episomal copy of synthetic fragment 9. The synthetic sequence was         hairpin 2 (hp2), which bind to RNase E to mediate transcript degradation,
+sufficient to support deletion of all stretches except G4 (dark grey box),       are shown as blue bars; these sequences encompass the remaining target
+which suggests that an underlying problem is within this stretch. None           codons and are also mutated by our initial design. Bottom, the second
+of the nineteen clones was completely recoded. b, Recoding landscape             codon in yceQ was replaced with a stop codon (purple) and the remaining
+of stretch G4. After REXER across the 10-kb G4 stretch, and sequencing           target codons retained their original sequence. The sequence position
+of 10 clones, the recoding landscape shown was generated. This revealed          (x axis) is with reference to a. d, The modified fragment 9 (from c) was
+a clear recoding minimum at yceQ—a ‘gene’ that encodes a predicted               integrated on the genome, which resulted in complete recoding in
+protein for which there is little evidence of transcription, protein synthesis   4/5 clones that we sequenced. The axes of the graph are the same as
+or homologues37. All target codons in yceQ were recoded at least once in         in a. The recoding landscape for the modified fragment 9, derived from
+individual clones, but never simultaneously; thus, the minimum of the            sequencing five clones, is shown in purple. The data from a are reproduced
+recoding landscape does not reach zero, and 0/10 clones were completely          for comparison.
+RESEARCH Article
+
+
+
+
+Extended Data Fig. 4 | See next page for caption.
+                                                                                                                                Article RESEARCH
+
+Extended Data Fig. 4 | Recoding yaaY in fragment 37a. a, Recoding            sequencing of 33 clones across this sequence revealed only 1 codon that
+landscape of fragment 37a. Our designed synthetic sequence of fragment       was never recoded—the codon for Ser70 in the hypothetical gene yaaY
+37a was integrated into the genome by REXER, and six clones were             (sequencing results are shown as colour-coded on the gene map of rspT
+completely sequenced by next-generation sequencing. Although most            and yaaY). We therefore investigated alternative codon replacements in
+codon replacements were accepted, recoding of a 6.5-kb region was            yaaY. c, Alternative codon replacement in the hypothetical gene yaaY.
+consistently rejected. Target-codon positions that were never recoded in     At position Ser70 in this gene, replacement of TCA with AGT was not
+the six clones sequenced are indicated by black dots. b, Identification of   successful. To investigate alternative codon replacement schemes, a
+the problematic target codon. Within the identified 6.5-kb problematic       double-selection marker (pheS∗-HygR) on a constitutive EM7 promoter,
+region, we first focused on codons in essential genes (dark grey arrows)     followed by a ribosome-binding site, was introduced into yaaY, 12 bp
+rather than non-essential genes (light grey arrows). Sanger sequencing       upstream of the codon for Ser70. The negative-selection marker was then
+(black bar) of 24 clones showed that 2 clones were recoded in all 6 target   used to select for clones that had replaced the cassette using linear double-
+codons within a sub-section of the essential genes. Further Sanger           stranded DNA that introduces alternative codons (purple bar) at position
+sequencing of the remaining target codons in essential genes in these        70, via lambda-red recombination. Although linear double-stranded DNA
+two clones revealed that 1 clone was recoded at all 17 target codons. This   with AGT did not integrate (0/16 clones), integration of double-stranded
+clone was completely sequenced by next-generation sequencing and used        DNA with TCC (2/16), TCG (2/16), TCT (6/16) and AGC (9/16) proved
+to generate a recoding landscape, in which each target codon is either       viable. d, Recoding landscape following REXER with a BAC that contains
+recoded (red) or not recoded (black). In combination with the recoding       a corrected version of fragment 37a, bearing AGC at position Ser70 in
+landscape in a, this enabled us to identify a problematic region 1.8-kb      the hypothetical gene yaaY (purple). When integrated by REXER, we
+upstream of ribF. Here we focused on the four target codons in the genes     identified 1/7 completely recoded clones. AGC at position Ser70 in yaaY
+rpsT and yaaY as the nearest codons to the essential ribF gene. Sanger       was introduced in 4/7 clones.
+ RESEARCH Article
+
+
+
+
+Extended Data Fig. 5 | Substitutions in the hypothetical gene yceQ            potentially disrupt the key regulatory hairpins (hp2 and hp3) in the long
+overlap with regulatory elements in rne. a, In our original design,           5′ untranslated region of the rne transcript. hp2 and hp3 mediate a
+a programmed substitution of a TCA (blue) to AGT (red) in the                 regulatory feedback loop, in which RNase E is recruited to the mRNA to
+hypothetical gene yceQ leads to mutation of the −10 region of the P1rne       promote degradation of its own transcript. A schematic of the wild-type
+promoter (boxed). The transcriptional start site (tss) of this promoter for   secondary structure of the rne 5′ untranslated region is shown40. The
+rne transcription is indicated by an arrow; this is the major promoter for    target codons for synonymous replacement are highlighted in blue.
+rne transcription. b, Target-codon substitutions overlap with and may
+                                                                                                                                 Article RESEARCH
+
+
+
+
+Extended Data Fig. 6 | Completing sections A, B and H. a, GENESIS             conjugation, to assemble a strain in which fragments 4–13 (section A
+was initiated with fragment 4 and proceeded smoothly until fragment           plus section B) are fully recoded. Conjugation of the donor and recipient
+9, in which we were unable to recode yceQ. Identifying and fixing the         strains resulted in a strain in which sections A and B are fully recoded. rK,
+problems with our initial design of fragment 9 was carried out as described   rpsL-kanR double-selection cassette. b, Individual REXER of fragments
+in Extended Data Fig. 3, by introducing a stop codon (yellow line) at the     37a and 1 led to incomplete recoding. We carried out troubleshooting
+start of the predicted yceQ ORF. Following a swap of the sacB-cat (sC)        of both fragments independently (Extended Data Figs. 2, 4). The
+double-selection cassette at the end of fragment 9 for a pheS∗-HygR (pH)      repairs are indicated with yellow and purple lines in fragment 37a and
+double selection cassette, this strain was ready to act as the recipient      fragment 1, respectively. Each strain then served as a starting point for
+for conjugation to assemble a strain in which fragments 4–13 (section         two independent sets of GENESIS; one generated 37a–37b (on the left)
+A plus section B) are fully recoded. In parallel, we continued to recode      and ended in an rpsL-kanR double-selection cassette, and one generated
+the strain that contains the recoded fragment 4 to incomplete fragment        1–3 (on the right) and ended in a sacB-cat double-selection cassette. We
+9 by GENESIS; this generated a second strain for assembly in which            integrated an oriT (white triangle) 3 kb upstream of the start of fragment
+fragments 4–8 and 10–13 were completely recoded, and fragment 9 was           1, and this strain served as a donor for the directed conjugation of 1–3 into
+partially recoded. We then integrated oriT (white triangle) 3 kb upstream     37a–37b. The correct product was selected for by the gain of cat and the
+of the start of fragment 10 in the second strain to generate a donor for      loss of rpsL. This resulted in the completion of section H in a single strain.
+RESEARCH Article
+
+
+
+
+Extended Data Fig. 7 | See next page for caption.
+                                                                                                                           Article RESEARCH
+
+Extended Data Fig. 7 | Assembly of an organism with a fully synthetic       conferring tetracycline resistance). The homologous regions in the donor
+genome through conjugation of recoded genome sections. a, Schematic         and recipient are both shown in dark pink. b, Synthetic genomic sections
+assembly of partially synthetic donor and recipient genomes into a          (pink) from multiple individual partially recoded genomes were assembled
+more-synthetic genome, through conjugation. In the recipient cell, the      into a single fully recoded genome using conjugative assembly. The donor
+recoded genome section (pink) is extended with recoded DNA (dark            (d) and recipient (r) strains contain unique recoded genomic sections
+pink)—commonly, 3–4 kb—by a lambda-red-mediated recombination               labelled in pink; recoded overlapping homology regions (3 kb to 400 kb
+and positive and negative selection; this step takes advantage of the       in size) were used to seamlessly recombine the strains, and are shown
+genomic markers at the end of the recoded sequence that are introduced      in dark pink. Small homology regions ranging from 3 to 5 kb in size are
+by GENESIS, and provides a homology region with the end of the recoded      denoted with an asterisk. Conjugations for which we used greater than
+fragment in the donor strain. The donor strain is prepared by integration   5-kb homology (HR) are indicated. For assembly, the recoded genomic
+of an oriT at the end of the recoded DNA. The indicated positive and        content from the donor was conjugated in a clockwise manner to replace
+negative selection ensures the survival of recipient strains, and selects   the corresponding wild-type genomic section (grey) in the recipient. The
+for recipients that have successfully integrated the synthetic DNA from     origin of strain AB and strain H is described in detail in Extended Data
+the donor. An F′ plasmid that contains a mutation in the oriT sequence      Fig. 6; all other individual synthetic genomes were generated by GENESIS
+that makes it non-transferrable was used to facilitate conjugation of the   (Extended Data Fig. 1). Conjugation followed by recombination proceeded
+donor genome to the recipient. +2, cat; −2, sacB; +3, HygR; −3, pheS∗;      until the final fully recoded A–H strain was assembled and sequence-
++4, aacC1 (a gene conferring gentamycin resistance); +5, tetA (a gene       verified by next-generation sequencing.
+RESEARCH Article
+
+
+
+
+Extended Data Fig. 8 | Characterization of an organism with a fully          of E. coli strain MDS42 and Syn61. Samples were imaged on an upright
+synthetic genome. a, Doubling times for Syn61 and MDS42. Our fully           Zeiss Axiophot phase-contrast microscope using a 63× 1.25 NA Plan
+synthetic recoded E. coli Syn61 has a doubling time that is 1.6× longer      Neofluar phase objective (see Supplementary Methods). The experiment
+than that of MDS4232, when grown in standard medium conditions               was performed twice with similar results. c, Histogram of cell lengths
+(90.1 min versus 57.6 min in lysogeny broth (LB) + 2% glucose). The          quantified from microscopy images of strains MDS42 and Syn61. The
+ratio of growth rates between Syn61 and MDS42 in LB (decreased carbon        mean cell length (±s.d.) for MDS42 was 1.97 ± 0.57 μm and for Syn61
+catabolite repression) at 37 °C is 1.7, in M9 minimal medium is 1.7, in      was 2.3 ± 0.74 μm. Images of n = 500 cells were taken during exponential
+richer medium (2XTY) is 1.4, in LB at 25 °C is 2.5 and in LB at 42 °C        growth phase for both strains. Cell-length measurements were made using
+is 1.3. The doubling times in different medium conditions are: LB at         Nikon NIS Elements software (see Supplementary Methods). A 1-μm
+37 °C, 58.3 min and 100.6 min; LB + 2% glucose, 57.6 min and 90.1 min;       lower size limit was imposed to remove background particulates and dust
+M9 minimal medium, 130.5 min and 221.1 min; 2XTY, 68.2 min and               from quantification; this also precludes quantification of extracellular
+92.6 min; LB at 25 °C, 86.3 min and 218.4 min; LB at 42 °C, 77.4 min         vesicles. d, Label-free quantification of the MDS42 and Syn61 proteomes.
+and 99.7 min, for MDS42 and Syn61, respectively. Syn61 containing a          Each strain was grown in three biological replicates. Each biological
+plasmid without (−) or with (+) serV exhibited a growth-rate ratio of 0.99   replicate was analysed by tandem mass spectrometry in technical
+(138.3 min versus 136.2 min). Doubling times represent the average of ten    duplicate. Technical duplicates of biological replicates were merged. A total
+independently grown biological replicates of each strain, and are shown      of 1,084 proteins was quantified across the samples. No protein quantified
+as mean ± s.d. (see Supplementary Methods). The data for individual          in both MDS42 and Syn61 differed in abundance—as judged by label-free
+experiments are represented by dots. b, Representative microscopy images     quantification values—by more than 1.16-fold.
+                                                    Article RESEARCH
+
+
+
+
+Extended Data Fig. 9 | See next page for caption.
+RESEARCH Article
+
+Extended Data Fig. 9 | Consequences of synonymous codon                        yields new junctions 1 and 2, indicated by green and blue bars. For
+compression in Syn61. a, Synonymous codon compression and deletion             each recombination, both junctions were sequence-verified by Sanger
+of prfA, serU and serT in E. coli. The grey boxes shows the E. coli serine     sequencing. Above the Sanger chromatograms, the arrows indicate the
+codons and stop codons, together with the tRNAs and release factors that       precise location of the junction, the blue bar indicates the sequence that
+decode them in wild-type E. coli (WT genome). tRNA anticodons and              corresponds to the selection cassette and the green bar corresponds to
+release factors are connected to the codons that they are predicted to read    the genomic sequence that flanks the selection cassette. The primers
+by black lines. The tRNA and release factor genes are shown in the black       used to generate selection cassettes with suitable homologies to serU,
+boxes. Synonymous codon compression (syn. codon. comp.) leads to               serT and prfA for recombination are provided in Supplementary Data 21.
+Syn61 cells with a recoded genome (pink boxes), in which TCG and               The experiment was performed once. e, prfA (dark grey) is deleted by
+TCA codons are removed. The abundance of each codon is listed in               the insertion of an rpsL-kanR double-selection cassette (in black) via
+its box. b, As in Fig. 4b, but with the M. mazei PylRS/tRNAPylUGA pair         lambda-red-mediated homologous recombination. The agarose gels are
+(anticodon UGA). There are fewer cognate codons to this anticodon in           annotated as described in Fig. 4c, and the rest of the data are annotated as
+Syn61 than in MDS42; CYPK addition might therefore be expected to be           described in d. The experiment was performed once. f, serU (dark grey) is
+less toxic in Syn61, as observed. c, As in Fig. 4b, but with the M. mazei      deleted by insertion of a PheS∗-HygR double-selection cassette (in black)
+PylRS/tRNAPylGCU pair (anticodon GCU). There are a greater number of           via lambda-red-mediated recombination. The agarose gels are annotated
+cognate codons to this anticodon in Syn61 than in MDS42; CYPK addition         as described in Fig. 4c, and the rest of the data are annotated as described
+might therefore be expected to be more toxic in Syn61, as observed.            in d. The experiment was performed once. The full gels are available in
+d, serT (dark grey) is deleted by insertion of a PheS∗-HygR double-selection   Supplementary Fig. 1.
+cassette (black) via lambda-red-mediated recombination. Recombination
+                                                                             Article RESEARCH
+
+
+
+
+Extended Data Fig. 10 | The scale of genome synthesis, and scale and
+fidelity of recoding. a, Genome and chromosome synthesis. The size (in
+Mb) of synthetic genomes that have been produced for M. genitalium and
+M. mycoides22,23, and several S. cerevisiae chromosomes24–31 (light grey).
+The size of the synthetic E. coli genome presented here is shown in dark
+grey. b, Genome recoding efforts. Attempts to recode target codons TTA
+and TTG in Salmonella enterica serovar Typhimurium LT218; AGC, AGT,
+TTG, TTA, AGA, AGG and TAG in E. coli19; AGA and AGG in E. coli16,
+as well as recoding of all TAG in E. coli14 (light grey), compared to the
+removal of all TCA, TCG and TAG in E. coli presented here (dark grey).
+The total number of codons recoded in a single strain is shown on the
+graph, and the maximum percentage of target codons recoded in a single
+strain in each effort is indicated. c, Number of reported non-programmed
+mutations and indels as a function of the number of target codons recoded
+for the experiments shown in b.
+                                                                                                                                                                                                nature research | reporting summary
+                                                                                                      Corresponding author(s): Jason W Chin
+                                                                                                      Last updated by author(s): Apr 25, 2019
+
+
+Reporting Summary
+Nature Research wishes to improve the reproducibility of the work that we publish. This form provides structure for consistency and transparency
+in reporting. For further information on Nature Research policies, see Authors & Referees and the Editorial Policy Checklist.
+
+
+
+
+Statistics
+For all statistical analyses, confirm that the following items are present in the figure legend, table legend, main text, or Methods section.
+n/a Confirmed
+           The exact sample size (n) for each experimental group/condition, given as a discrete number and unit of measurement
+           A statement on whether measurements were taken from distinct samples or whether the same sample was measured repeatedly
+           The statistical test(s) used AND whether they are one- or two-sided
+           Only common tests should be described solely by name; describe more complex techniques in the Methods section.
+
+           A description of all covariates tested
+           A description of any assumptions or corrections, such as tests of normality and adjustment for multiple comparisons
+           A full description of the statistical parameters including central tendency (e.g. means) or other basic estimates (e.g. regression coefficient)
+           AND variation (e.g. standard deviation) or associated estimates of uncertainty (e.g. confidence intervals)
+
+           For null hypothesis testing, the test statistic (e.g. F, t, r) with confidence intervals, effect sizes, degrees of freedom and P value noted
+           Give P values as exact values whenever suitable.
+
+           For Bayesian analysis, information on the choice of priors and Markov chain Monte Carlo settings
+           For hierarchical and complex designs, identification of the appropriate level for tests and full reporting of outcomes
+           Estimates of effect sizes (e.g. Cohen's d, Pearson's r), indicating how they were calculated
+                                                 Our web collection on statistics for biologists contains articles on many of the points above.
+
+
+Software and code
+Policy information about availability of computer code
+  Data collection              none
+
+  Data analysis                Code used in creating the designed sequence and in analysis is described in the methods, where links to the Github repository are
+                               provided (http://github.com/TiongSun/genome_recoding)(http://github.com/TiongSun/recoding_landscape). These links will be made
+                               available upon publication. This code was made available to reviewers and editors during review.
+                               Publicly available software bowtie2 2.3.2, samtools 1.3.1, iSeq (http://github.com/TiongSun/iSeq), Integrative Genomics Viewer 2.4, ueye
+                               cockpit software 4.91.1, Nikon NIS elements 4.50.00, MaxQuant 1.5.5.1, Perseus 1.5.5.3, and Fiji were used for data analysis.
+For manuscripts utilizing custom algorithms or software that are central to the research but not yet described in published literature, software must be made available to editors/reviewers.
+We strongly encourage code deposition in a community repository (e.g. GitHub). See the Nature Research guidelines for submitting code & software for further information.
+
+
+Data
+Policy information about availability of data
+ All manuscripts must include a data availability statement. This statement should provide the following information, where applicable:
+     - Accession codes, unique identifiers, or web links for publicly available datasets
+                                                                                                                                                                                                October 2018
+
+
+
+
+     - A list of figures that have associated raw data
+     - A description of any restrictions on data availability
+
+The sequences and genome design details used in this study are available in
+the Supplementary Data. Supplementary Data 1 provides the GenBank file of the
+E. coli MDS42 genome (NCBI accession number AP012306.1); Supplementary
+Data 2 provides the GenBank file of designed synthetic E. coli genome with
+codon replacements and refactorings; Supplementary Data 3 provides the table of
+target codons; Supplementary Data 4 provides the table of overlaps and refactoring;
+
+
+
+                                                                                                                                                                                                      1
+Supplementary Data 5 provides the table of 10-kb stretches; Supplementary
+Data 6 provides the GenBank file of the BAC sacB-cat-rpsL; Supplementary
+
+
+
+
+                                                                                                                                                                            nature research | reporting summary
+Data 7 provides the GenBank file of BAC-rpsL-kanR-sacB; Supplementary Data 8
+provides the GenBank file of the BAC rpsL-kanR-pheS?-HygR; Supplementary
+Data 9 provides the table of BAC construction; Supplementary Data 10 provides
+the table of BAC assembly; Supplementary Data 11 provides the table of REXER
+experiments; Supplementary Data 12 provides the GenBank file of spacer plasmids
+without trans-activating CRISPR RNA (tracrRNA) and annotation for linear
+spacers; Supplementary Data 13 provides the GenBank file of spacer plasmids with
+tracrRNA and annotation for linear spacers; Supplementary Data 14 provides the
+table of oligonucleotides used for recoding fixing experiments; Supplementary
+Data 15 provides the GenBank file of the gentamycin-resistance oriT cassette;
+Supplementary Data 16 provides the oligonucleotide primers used for conjugation;
+Supplementary Data 17 provides the GenBank file of the pJF146 Fʹ plasmid
+that does not self-transfer; Supplementary Data 18 provides the GenBank
+file of the fully recoded genome of Syn61, verified by next-generation sequencing;
+Supplementary Data 19 provides the table of design optimizations and nonprogrammed
+mutations; Supplementary Data 20 provides a list of the proteins
+identified by tandem mass spectrometry; and Supplementary Data 21 provides a
+list of the primers used for deletion experiments. All other datasets generated and/
+or analysed in this study are available from the corresponding author on reasonable
+request. All materials (Supplementary Data 9, 12, 13, 17, 18) from this study are
+available from the corresponding author upon reasonable request.
+
+
+
+
+Field-specific reporting
+Please select the one below that is the best fit for your research. If you are not sure, read the appropriate sections before making your selection.
+    Life sciences                        Behavioural & social sciences                  Ecological, evolutionary & environmental sciences
+For a reference copy of the document with all sections, see nature.com/documents/nr-reporting-summary-flat.pdf
+
+
+
+
+Life sciences study design
+All studies must disclose on these points even when the disclosure is negative.
+  Sample size              No sample-size calculation was performed. Because the variation in the assays used is small and we are interested in large effects, the sample
+                           sizes used, as indicated in the manuscript, were deemed appropriate.
+
+  Data exclusions          There are no data exclusions
+
+  Replication              The exact number of replicates is stated in the relevant legend. All attempts at replication were successful.
+
+  Randomization            No randomization. This is not relevant because the samples form defined groups.
+
+  Blinding                 No blinding. Blinding is not relevant to the study. The groups were defined and studied by the investigator using standard protocols.
+
+
+
+
+Reporting for specific materials, systems and methods
+We require information from authors about some types of materials, experimental systems and methods used in many studies. Here, indicate whether each material,
+system or method listed is relevant to your study. If you are not sure if a list item applies to your research, read the appropriate section before selecting a response.
+
+Materials & experimental systems                                  Methods
+n/a Involved in the study                                         n/a Involved in the study
+           Antibodies                                                        ChIP-seq
+           Eukaryotic cell lines                                             Flow cytometry
+           Palaeontology                                                     MRI-based neuroimaging
+                                                                                                                                                                            October 2018
+
+
+
+
+           Animals and other organisms
+           Human research participants
+           Clinical data
+
+
+
+
+                                                                                                                                                                                  2
+

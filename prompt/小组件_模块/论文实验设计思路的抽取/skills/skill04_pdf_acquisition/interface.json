@@ -1,0 +1,38 @@
+{
+  "skill_id": "skill04_pdf_acquisition",
+  "version": "0.3.0",
+  "implementation": "python_legal_oa_multisource",
+  "input": {
+    "type": "object",
+    "properties": {
+      "accepted_candidates": {"type": "array", "items": {"$ref": "../../framework/unified-schema.json#/$defs/literatureCandidate"}},
+      "manual_uploads": {"type": "array", "items": {"type": "object"}},
+      "source_urls": {"type": "object"},
+      "download_policy": {
+        "type": "object",
+        "properties": {
+          "max_candidates": {"type": "integer", "minimum": 1},
+          "paper_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "anyOf": [{"required": ["accepted_candidates"]}, {"required": ["manual_uploads"]}]
+  },
+  "output": {
+    "type": "object",
+    "required": ["artifacts", "paper_artifacts", "failed_items", "deferred_items", "manual_download_items"],
+    "properties": {
+      "artifacts": {"type": "array", "items": {"$ref": "../../framework/unified-schema.json#/$defs/artifactRef"}},
+      "paper_artifacts": {"type": "array", "items": {"type": "object"}},
+      "failed_items": {"type": "array", "items": {"type": "object"}},
+      "deferred_items": {"type": "array", "items": {"type": "object"}},
+      "manual_download_items": {"type": "array", "items": {"type": "object"}}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-PDF-001", "EDX-PDF-002", "EDX-PDF-003", "EDX-PDF-004", "EDX-VAL-001", "EDX-SYS-002"],
+  "local_error_codes": ["PDF001", "PDF002", "PDF003", "PDF004", "PDF005", "PDF006"],
+  "retry_policy": {"max_attempts": 3},
+  "provenance_requirements": ["paper_id", "source_type", "source_url", "download_time", "sha256", "artifact_version"],
+  "human_review": {"supported": true, "triggers": ["download_failed", "manual_upload_corrupted", "identity_missing"]}
+}

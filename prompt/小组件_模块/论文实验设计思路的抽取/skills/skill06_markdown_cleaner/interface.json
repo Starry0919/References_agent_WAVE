@@ -1,0 +1,29 @@
+{
+  "skill_id": "skill06_markdown_cleaner",
+  "version": "0.2.0",
+  "implementation": "python_rules",
+  "input": {
+    "type": "object",
+    "required": ["document_artifact"],
+    "properties": {
+      "document_artifact": {"type": "object"},
+      "cleaning_policy": {"type": "object"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["clean_markdown_artifact", "clean_json_artifact", "clean_document_artifact", "cleaning_report"],
+    "properties": {
+      "clean_markdown_artifact": {"$ref": "../../framework/unified-schema.json#/$defs/artifactRef"},
+      "clean_json_artifact": {"$ref": "../../framework/unified-schema.json#/$defs/artifactRef"},
+      "clean_document_artifact": {"type": "object"},
+      "cleaning_report": {"type": "object"}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-CLN-001", "EDX-VAL-001", "EDX-VAL-002", "EDX-SYS-001"],
+  "local_error_codes": ["CLEAN001", "CLEAN002", "CLEAN003", "CLEAN004", "CLEAN005"],
+  "retry_policy": {"max_attempts": 3},
+  "provenance_requirements": ["source_artifact_id", "source_sha256", "rule_set_version", "change_map", "output_sha256"],
+  "human_review": {"supported": true, "triggers": ["structure_loss", "table_repair_uncertain", "protected_token_change"]}
+}

@@ -1,0 +1,3206 @@
+{
+  "input": {
+    "task_id": "example-en-001",
+    "user_request": "Extract engineering principles about feedback inhibition and metabolic burden from this chapter.",
+    "input_sources": [
+      {
+        "source_ref_type": "text",
+        "raw_text": "# Chapter 7: Regulation of Metabolic Flux\n\n## 7.3 Feedback Inhibition\n\nFeedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.\n\n**Definition:** Allosteric feedback inhibition refers to binding of the end product at a regulatory site distinct from the active site.\n\nIn many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises. This mechanism prevents wasteful overproduction of the amino acid under normal growth conditions.\n\nFigure 7.4: Schematic of end-product feedback inhibition on the first committed step of a linear biosynthetic pathway, showing the product binding the regulatory site of enzyme E1.\n\n## 7.5 Metabolic Burden\n\nMetabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.\n\nHigh-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.\n",
+        "bibliographic": {
+          "title": "Principles of Metabolic Engineering (Synthetic Fixture Edition)",
+          "authors_or_editors": [
+            "A. Tester"
+          ],
+          "publisher": "Fixture Press",
+          "publication_year": 2020,
+          "isbn": [
+            "000-0-00-000000-0"
+          ],
+          "edition": "1st",
+          "chapter": "7",
+          "source_type": "textbook"
+        }
+      }
+    ],
+    "target_domain": [
+      "metabolic engineering"
+    ],
+    "target_engineering_goal": [
+      "increase pathway flux"
+    ],
+    "requested_output_level": [
+      "level3_engineering_distillation",
+      "level5_knowledge_hub_adapter"
+    ],
+    "requires_frontend_adapter": true,
+    "mode": {
+      "automatic": true,
+      "human_review": true
+    }
+  },
+  "output": {
+    "task_id": "example-en-001",
+    "status": "WAITING_REVIEW",
+    "summary": {
+      "message": "Distillation complete; see governance before using engineering_principles for automatic design.",
+      "objects_total": 19,
+      "engineering_principles": 3,
+      "overall_status": "REVIEW_REQUIRED",
+      "governance": {
+        "concept_explanation": "allowed",
+        "mechanism_reasoning": "allowed",
+        "engineering_principle_retrieval": "review",
+        "decision_support": "review",
+        "automatic_DBTL_design": "blocked",
+        "exact_SOP_generation": "blocked"
+      },
+      "top_risk_flags": [
+        "EVIDENCE_NOT_FOUND: 3 objects lack direct evidence support",
+        "OVERGENERALIZATION_RISK: 3 engineering principles are model_inference, not source-stated recommendations"
+      ]
+    },
+    "task_contract": {
+      "user_request": "Extract engineering principles about feedback inhibition and metabolic burden from this chapter.",
+      "input_sources": [
+        {
+          "source_ref_type": "text",
+          "raw_text": "# Chapter 7: Regulation of Metabolic Flux\n\n## 7.3 Feedback Inhibition\n\nFeedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.\n\n**Definition:** Allosteric feedback inhibition refers to binding of the end product at a regulatory site distinct from the active site.\n\nIn many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises. This mechanism prevents wasteful overproduction of the amino acid under normal growth conditions.\n\nFigure 7.4: Schematic of end-product feedback inhibition on the first committed step of a linear biosynthetic pathway, showing the product binding the regulatory site of enzyme E1.\n\n## 7.5 Metabolic Burden\n\nMetabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.\n\nHigh-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.\n",
+          "bibliographic": {
+            "title": "Principles of Metabolic Engineering (Synthetic Fixture Edition)",
+            "authors_or_editors": [
+              "A. Tester"
+            ],
+            "publisher": "Fixture Press",
+            "publication_year": 2020,
+            "isbn": [
+              "000-0-00-000000-0"
+            ],
+            "edition": "1st",
+            "chapter": "7",
+            "source_type": "textbook"
+          },
+          "source_id": "src_1"
+        }
+      ],
+      "target_domain": [
+        "metabolic engineering"
+      ],
+      "target_organism": [],
+      "target_strain": [],
+      "target_engineering_goal": [
+        "increase pathway flux"
+      ],
+      "requested_output_level": [
+        "level3_engineering_distillation",
+        "level5_knowledge_hub_adapter"
+      ],
+      "source_languages": [],
+      "output_languages": [
+        "zh",
+        "en"
+      ],
+      "quality_requirement": "",
+      "requires_cross_source_fusion": false,
+      "requires_paper_case_linking": false,
+      "requires_frontend_adapter": true,
+      "engineering_knowledge_requested": true,
+      "requires_human_review": true,
+      "notes": [
+        "target_organism not specified by the user; this does not block Level1-4, only target-system adaptation and automatic engineering suggestions."
+      ]
+    },
+    "validated_sources": [
+      {
+        "source_id": "src_1",
+        "source_type": "textbook",
+        "title": "Principles of Metabolic Engineering (Synthetic Fixture Edition)",
+        "title_zh": "",
+        "title_en": "Principles of Metabolic Engineering (Synthetic Fixture Edition)",
+        "authors_or_editors": [
+          "A. Tester"
+        ],
+        "edition": "1st",
+        "publisher": "Fixture Press",
+        "publication_year": 2020,
+        "isbn": [
+          "000-0-00-000000-0"
+        ],
+        "doi": "",
+        "chapter": "7",
+        "page_range": "",
+        "source_language": "en",
+        "access_type": "text",
+        "identity_verified": true,
+        "verification_evidence": [
+          "isbn",
+          "authors_publisher_year"
+        ],
+        "authority_level": "high",
+        "scope": "",
+        "limitations": [],
+        "unresolved_edition": false
+      }
+    ],
+    "source_structure": {
+      "by_source": [
+        {
+          "source_id": "src_1",
+          "blocks": [
+            {
+              "block_id": "src_1:b1",
+              "block_type": "chapter",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "Chapter 7: Regulation of Metabolic Flux",
+              "figure_or_table_label": "",
+              "reading_order": 1,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b2",
+              "block_type": "section",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "7.3 Feedback Inhibition",
+              "figure_or_table_label": "",
+              "reading_order": 2,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.3 Feedback Inhibition"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b3",
+              "block_type": "paragraph",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+              "figure_or_table_label": "",
+              "reading_order": 3,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.3 Feedback Inhibition"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b4",
+              "block_type": "box",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "**Definition:** Allosteric feedback inhibition refers to binding of the end product at a regulatory site distinct from the active site.",
+              "figure_or_table_label": "",
+              "reading_order": 4,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.3 Feedback Inhibition"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b5",
+              "block_type": "paragraph",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises. This mechanism prevents wasteful overproduction of the amino acid under normal growth conditions.",
+              "figure_or_table_label": "",
+              "reading_order": 5,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.3 Feedback Inhibition"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b6",
+              "block_type": "figure",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "Figure 7.4: Schematic of end-product feedback inhibition on the first committed step of a linear biosynthetic pathway, showing the product binding the regulatory site of enzyme E1.",
+              "figure_or_table_label": "Figure 7.4",
+              "reading_order": 6,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.3 Feedback Inhibition"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b7",
+              "block_type": "section",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "7.5 Metabolic Burden",
+              "figure_or_table_label": "",
+              "reading_order": 7,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.5 Metabolic Burden"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b8",
+              "block_type": "paragraph",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+              "figure_or_table_label": "",
+              "reading_order": 8,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.5 Metabolic Burden"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b9",
+              "block_type": "paragraph",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+              "figure_or_table_label": "",
+              "reading_order": 9,
+              "language": "en",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+                "section_path": [
+                  "Chapter 7: Regulation of Metabolic Flux",
+                  "7.5 Metabolic Burden"
+                ],
+                "page": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "extraction_scope": [
+      {
+        "section_id": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+        "relevance_to_biological_knowledge": 0.75,
+        "relevance_to_engineering_design": 0.0,
+        "relevance_to_target_system": 0.75,
+        "contains_concepts": true,
+        "contains_mechanisms": true,
+        "contains_decision_rules": false,
+        "contains_design_patterns": false,
+        "contains_validation_strategy": false,
+        "contains_failure_modes": false,
+        "recommended_action": "extract_full",
+        "reason": "keyword density indicates concept/mechanism or engineering-relevant content.",
+        "source_id": "src_1",
+        "block_ids": [
+          "src_1:b3",
+          "src_1:b4",
+          "src_1:b5",
+          "src_1:b6"
+        ]
+      },
+      {
+        "section_id": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+        "relevance_to_biological_knowledge": 0.5,
+        "relevance_to_engineering_design": 0.25,
+        "relevance_to_target_system": 0.5,
+        "contains_concepts": true,
+        "contains_mechanisms": true,
+        "contains_decision_rules": false,
+        "contains_design_patterns": false,
+        "contains_validation_strategy": false,
+        "contains_failure_modes": true,
+        "recommended_action": "extract_full",
+        "reason": "keyword density indicates concept/mechanism or engineering-relevant content.",
+        "source_id": "src_1",
+        "block_ids": [
+          "src_1:b8",
+          "src_1:b9"
+        ]
+      }
+    ],
+    "biological_concepts": [
+      {
+        "knowledge_id": "src_1:concept:1",
+        "knowledge_type": "concept",
+        "name_zh": "",
+        "name_en": "Metabolic burden",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "",
+        "definition_en": "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+        "entities": [],
+        "relationships": [],
+        "causal_direction": "",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b8",
+            "text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.55,
+        "pedagogical_simplification": false,
+        "_kind": "concept",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b8:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:concept:1",
+            "evidence_role": "definition",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      },
+      {
+        "knowledge_id": "src_1:concept:2",
+        "knowledge_type": "concept",
+        "name_zh": "",
+        "name_en": "Feedback inhibition",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "",
+        "definition_en": "the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+        "entities": [],
+        "relationships": [],
+        "causal_direction": "",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b3",
+            "text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.55,
+        "pedagogical_simplification": false,
+        "_kind": "concept",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b3:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:concept:2",
+            "evidence_role": "definition",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      }
+    ],
+    "biological_mechanisms": [
+      {
+        "knowledge_id": "src_1:mechanism:1",
+        "knowledge_type": "mechanism",
+        "name_zh": "",
+        "name_en": "",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "",
+        "definition_en": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+        "entities": [],
+        "relationships": [
+          {
+            "predicate": "causes",
+            "raw_sentence": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+          }
+        ],
+        "causal_direction": "unspecified",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b9",
+            "text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.5,
+        "pedagogical_simplification": false,
+        "_kind": "mechanism",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b9:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:mechanism:1",
+            "evidence_role": "mechanism",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      },
+      {
+        "knowledge_id": "src_1:mechanism:2",
+        "knowledge_type": "mechanism",
+        "name_zh": "",
+        "name_en": "",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "",
+        "definition_en": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises.",
+        "entities": [],
+        "relationships": [
+          {
+            "predicate": "inhibits",
+            "raw_sentence": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises."
+          }
+        ],
+        "causal_direction": "negative",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b5",
+            "text": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises.",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.5,
+        "pedagogical_simplification": false,
+        "_kind": "mechanism",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b5:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises. This mechanism prevents wasteful overproduction of the amino acid under normal growth conditions.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:mechanism:2",
+            "evidence_role": "mechanism",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      }
+    ],
+    "engineering_principles": [
+      {
+        "principle_id": "src_1:principle:1",
+        "name_zh": "代谢负担缓解",
+        "name_en": "Metabolic Burden Reduction",
+        "principle_statement_zh": "",
+        "principle_statement_en": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally (induction after growth phase); balance pathway enzyme stoichiometry instead of maximizing every step, BECAUSE High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity., ONLY IF burden has been attributed to a specific expression construct or pathway rather than an unrelated stress, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY growth rate/doubling time under induced vs uninduced conditions; plasmid/copy-number stability over passages; pathway yield at each expression level tested, ALTERNATIVES toxicity mitigation; chassis engineering for higher expression tolerance.",
+        "biological_basis": [
+          "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+        ],
+        "engineering_objective": [
+          "reduce the fitness cost imposed by heterologous expression or pathway flux on host growth"
+        ],
+        "trigger_conditions": [
+          "heterologous expression or pathway activity measurably slows host growth or reduces yield"
+        ],
+        "required_preconditions": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "recommended_actions": [
+          "lower expression level (weaker promoter/RBS, lower copy number)",
+          "stage expression temporally (induction after growth phase)",
+          "balance pathway enzyme stoichiometry instead of maximizing every step"
+        ],
+        "expected_effects": [
+          "improved growth rate/yield trade-off"
+        ],
+        "possible_side_effects": [
+          "lower absolute pathway flux if expression is reduced too far"
+        ],
+        "failure_conditions": [
+          "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+        ],
+        "contraindications": [
+          "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+        ],
+        "do_not_generalize_to": [
+          "do not extend beyond the organism/strain scope actually evidenced by the source",
+          "source did not specify an organism; do NOT assume this applies to E. coli K-12 or any other specific chassis"
+        ],
+        "alternatives": [
+          "toxicity mitigation",
+          "chassis engineering for higher expression tolerance"
+        ],
+        "validation_requirements": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "dbtl_stage": [
+          "design",
+          "test"
+        ],
+        "organism_scope": [],
+        "strain_scope": [],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b9:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:1",
+            "evidence_role": "recommendation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "derivation_type": "model_inference",
+        "confidence": 0.35,
+        "requires_human_review": true,
+        "pedagogical_simplification": false,
+        "_kind": "engineering_principle",
+        "evidence_supported": true,
+        "knowledge_status": "candidate"
+      },
+      {
+        "principle_id": "src_1:principle:2",
+        "name_zh": "代谢负担缓解",
+        "name_en": "Metabolic Burden Reduction",
+        "principle_statement_zh": "",
+        "principle_statement_en": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally (induction after growth phase); balance pathway enzyme stoichiometry instead of maximizing every step, BECAUSE the fitness cost imposed on a host cell by heterologous protein expression or pathway flux., ONLY IF burden has been attributed to a specific expression construct or pathway rather than an unrelated stress, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY growth rate/doubling time under induced vs uninduced conditions; plasmid/copy-number stability over passages; pathway yield at each expression level tested, ALTERNATIVES toxicity mitigation; chassis engineering for higher expression tolerance.",
+        "biological_basis": [
+          "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+        ],
+        "engineering_objective": [
+          "reduce the fitness cost imposed by heterologous expression or pathway flux on host growth"
+        ],
+        "trigger_conditions": [
+          "heterologous expression or pathway activity measurably slows host growth or reduces yield"
+        ],
+        "required_preconditions": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "recommended_actions": [
+          "lower expression level (weaker promoter/RBS, lower copy number)",
+          "stage expression temporally (induction after growth phase)",
+          "balance pathway enzyme stoichiometry instead of maximizing every step"
+        ],
+        "expected_effects": [
+          "improved growth rate/yield trade-off"
+        ],
+        "possible_side_effects": [
+          "lower absolute pathway flux if expression is reduced too far"
+        ],
+        "failure_conditions": [
+          "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+        ],
+        "contraindications": [
+          "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+        ],
+        "do_not_generalize_to": [
+          "do not extend beyond the organism/strain scope actually evidenced by the source",
+          "source did not specify an organism; do NOT assume this applies to E. coli K-12 or any other specific chassis"
+        ],
+        "alternatives": [
+          "toxicity mitigation",
+          "chassis engineering for higher expression tolerance"
+        ],
+        "validation_requirements": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "dbtl_stage": [
+          "design",
+          "test"
+        ],
+        "organism_scope": [],
+        "strain_scope": [],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b8:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:2",
+            "evidence_role": "recommendation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "derivation_type": "model_inference",
+        "confidence": 0.35,
+        "requires_human_review": true,
+        "pedagogical_simplification": false,
+        "_kind": "engineering_principle",
+        "evidence_supported": true,
+        "knowledge_status": "candidate"
+      },
+      {
+        "principle_id": "src_1:principle:3",
+        "name_zh": "反馈抗性酶工程",
+        "name_en": "Feedback-Resistant Enzyme Engineering",
+        "principle_statement_zh": "",
+        "principle_statement_en": "IF the pathway's flux-controlling enzyme is subject to feedback/end-product inhibition by a pathway metabolite, THEN CONSIDER mutate the regulatory/allosteric site of the enzyme; replace the enzyme with a feedback-insensitive homolog; introduce a heterologous feedback-resistant enzyme, BECAUSE the reduction of an enzyme's activity by the accumulation of a downstream pathway product., ONLY IF the inhibited step has been confirmed to be flux-controlling under the relevant condition; the feedback mechanism (competitive/allosteric) is known well enough to target a site, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY in vitro enzyme activity assay in presence/absence of the inhibitor; intracellular metabolite concentration before/after; production titer or flux measurement, ALTERNATIVES dynamic pathway regulation instead of permanent desensitization; moderate enzyme dosage tuning rather than full feedback removal.",
+        "biological_basis": [
+          "the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+        ],
+        "engineering_objective": [
+          "relieve pathway flux limitation caused by end-product/allosteric feedback inhibition"
+        ],
+        "trigger_conditions": [
+          "the pathway's flux-controlling enzyme is subject to feedback/end-product inhibition by a pathway metabolite"
+        ],
+        "required_preconditions": [
+          "the inhibited step has been confirmed to be flux-controlling under the relevant condition",
+          "the feedback mechanism (competitive/allosteric) is known well enough to target a site"
+        ],
+        "recommended_actions": [
+          "mutate the regulatory/allosteric site of the enzyme",
+          "replace the enzyme with a feedback-insensitive homolog",
+          "introduce a heterologous feedback-resistant enzyme"
+        ],
+        "expected_effects": [
+          "increased flux through the previously limited step"
+        ],
+        "possible_side_effects": [
+          "loss of native regulation can cause metabolite over-accumulation or growth burden downstream"
+        ],
+        "failure_conditions": [
+          "downstream steps or cofactor/precursor supply become newly limiting after desensitization"
+        ],
+        "contraindications": [
+          "the enzyme is not actually flux-controlling",
+          "the pathway metabolite also serves an essential regulatory role elsewhere"
+        ],
+        "do_not_generalize_to": [
+          "do not extend beyond the organism/strain scope actually evidenced by the source",
+          "source did not specify an organism; do NOT assume this applies to E. coli K-12 or any other specific chassis"
+        ],
+        "alternatives": [
+          "dynamic pathway regulation instead of permanent desensitization",
+          "moderate enzyme dosage tuning rather than full feedback removal"
+        ],
+        "validation_requirements": [
+          "in vitro enzyme activity assay in presence/absence of the inhibitor",
+          "intracellular metabolite concentration before/after",
+          "production titer or flux measurement"
+        ],
+        "dbtl_stage": [
+          "design",
+          "test"
+        ],
+        "organism_scope": [],
+        "strain_scope": [],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b3:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:3",
+            "evidence_role": "recommendation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "derivation_type": "model_inference",
+        "confidence": 0.35,
+        "requires_human_review": true,
+        "pedagogical_simplification": false,
+        "_kind": "engineering_principle",
+        "evidence_supported": true,
+        "knowledge_status": "candidate"
+      }
+    ],
+    "decision_rules": [
+      {
+        "decision_rule_id": "src_1:principle:1:decision:1",
+        "decision_topic": "Metabolic Burden Reduction",
+        "question_zh": "是否满足：burden has been attributed to a specific expression construct or pathway rather than an unrelated stress？",
+        "question_en": "Is the precondition satisfied: burden has been attributed to a specific expression construct or pathway rather than an unrelated stress?",
+        "inputs": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "decision_conditions": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "branches": [
+          {
+            "condition": "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress holds",
+            "recommended_option": "lower expression level (weaker promoter/RBS, lower copy number)",
+            "reasoning": "reduce the fitness cost imposed by heterologous expression or pathway flux on host growth"
+          },
+          {
+            "condition": "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress does NOT hold, or a contraindication applies (burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead)",
+            "recommended_option": "toxicity mitigation",
+            "reasoning": "fallback consistent with the principle's own listed alternatives"
+          }
+        ],
+        "recommended_option": [
+          "lower expression level (weaker promoter/RBS, lower copy number)"
+        ],
+        "rejected_options": [
+          "toxicity mitigation"
+        ],
+        "reasoning_basis": [
+          "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+        ],
+        "required_measurements": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "uncertainty": [
+          "do not extend beyond the organism/strain scope actually evidenced by the source",
+          "source did not specify an organism; do NOT assume this applies to E. coli K-12 or any other specific chassis"
+        ],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b9:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:1:decision:1",
+            "evidence_role": "recommendation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "derivation_type": "model_inference",
+        "confidence": 0.35,
+        "human_review_status": "pending",
+        "_kind": "decision_rule",
+        "evidence_supported": true,
+        "knowledge_status": "candidate"
+      },
+      {
+        "decision_rule_id": "src_1:principle:2:decision:2",
+        "decision_topic": "Metabolic Burden Reduction",
+        "question_zh": "是否满足：burden has been attributed to a specific expression construct or pathway rather than an unrelated stress？",
+        "question_en": "Is the precondition satisfied: burden has been attributed to a specific expression construct or pathway rather than an unrelated stress?",
+        "inputs": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "decision_conditions": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "branches": [
+          {
+            "condition": "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress holds",
+            "recommended_option": "lower expression level (weaker promoter/RBS, lower copy number)",
+            "reasoning": "reduce the fitness cost imposed by heterologous expression or pathway flux on host growth"
+          },
+          {
+            "condition": "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress does NOT hold, or a contraindication applies (burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead)",
+            "recommended_option": "toxicity mitigation",
+            "reasoning": "fallback consistent with the principle's own listed alternatives"
+          }
+        ],
+        "recommended_option": [
+          "lower expression level (weaker promoter/RBS, lower copy number)"
+        ],
+        "rejected_options": [
+          "toxicity mitigation"
+        ],
+        "reasoning_basis": [
+          "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+        ],
+        "required_measurements": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "uncertainty": [
+          "do not extend beyond the organism/strain scope actually evidenced by the source",
+          "source did not specify an organism; do NOT assume this applies to E. coli K-12 or any other specific chassis"
+        ],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b8:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:2:decision:2",
+            "evidence_role": "recommendation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "derivation_type": "model_inference",
+        "confidence": 0.35,
+        "human_review_status": "pending",
+        "_kind": "decision_rule",
+        "evidence_supported": true,
+        "knowledge_status": "candidate"
+      },
+      {
+        "decision_rule_id": "src_1:principle:3:decision:3",
+        "decision_topic": "Feedback-Resistant Enzyme Engineering",
+        "question_zh": "是否满足：the inhibited step has been confirmed to be flux-controlling under the relevant condition？",
+        "question_en": "Is the precondition satisfied: the inhibited step has been confirmed to be flux-controlling under the relevant condition?",
+        "inputs": [
+          "the inhibited step has been confirmed to be flux-controlling under the relevant condition",
+          "the feedback mechanism (competitive/allosteric) is known well enough to target a site"
+        ],
+        "decision_conditions": [
+          "the inhibited step has been confirmed to be flux-controlling under the relevant condition"
+        ],
+        "branches": [
+          {
+            "condition": "the inhibited step has been confirmed to be flux-controlling under the relevant condition holds",
+            "recommended_option": "mutate the regulatory/allosteric site of the enzyme",
+            "reasoning": "relieve pathway flux limitation caused by end-product/allosteric feedback inhibition"
+          },
+          {
+            "condition": "the inhibited step has been confirmed to be flux-controlling under the relevant condition does NOT hold, or a contraindication applies (the enzyme is not actually flux-controlling; the pathway metabolite also serves an essential regulatory role elsewhere)",
+            "recommended_option": "dynamic pathway regulation instead of permanent desensitization",
+            "reasoning": "fallback consistent with the principle's own listed alternatives"
+          }
+        ],
+        "recommended_option": [
+          "mutate the regulatory/allosteric site of the enzyme"
+        ],
+        "rejected_options": [
+          "dynamic pathway regulation instead of permanent desensitization"
+        ],
+        "reasoning_basis": [
+          "the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+        ],
+        "required_measurements": [
+          "in vitro enzyme activity assay in presence/absence of the inhibitor",
+          "intracellular metabolite concentration before/after",
+          "production titer or flux measurement"
+        ],
+        "uncertainty": [
+          "do not extend beyond the organism/strain scope actually evidenced by the source",
+          "source did not specify an organism; do NOT assume this applies to E. coli K-12 or any other specific chassis"
+        ],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b3:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:3:decision:3",
+            "evidence_role": "recommendation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "derivation_type": "model_inference",
+        "confidence": 0.35,
+        "human_review_status": "pending",
+        "_kind": "decision_rule",
+        "evidence_supported": true,
+        "knowledge_status": "candidate"
+      }
+    ],
+    "decision_trees": [
+      {
+        "tree_id": "src_1:principle:1:decision:1",
+        "root_question": "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress?",
+        "branches": [
+          {
+            "condition": "yes",
+            "leaf": "lower expression level (weaker promoter/RBS, lower copy number)"
+          },
+          {
+            "condition": "no_or_contraindicated",
+            "leaf": "toxicity mitigation"
+          }
+        ],
+        "derivation_type": "model_inference"
+      },
+      {
+        "tree_id": "src_1:principle:2:decision:2",
+        "root_question": "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress?",
+        "branches": [
+          {
+            "condition": "yes",
+            "leaf": "lower expression level (weaker promoter/RBS, lower copy number)"
+          },
+          {
+            "condition": "no_or_contraindicated",
+            "leaf": "toxicity mitigation"
+          }
+        ],
+        "derivation_type": "model_inference"
+      },
+      {
+        "tree_id": "src_1:principle:3:decision:3",
+        "root_question": "the inhibited step has been confirmed to be flux-controlling under the relevant condition?",
+        "branches": [
+          {
+            "condition": "yes",
+            "leaf": "mutate the regulatory/allosteric site of the enzyme"
+          },
+          {
+            "condition": "no_or_contraindicated",
+            "leaf": "dynamic pathway regulation instead of permanent desensitization"
+          }
+        ],
+        "derivation_type": "model_inference"
+      }
+    ],
+    "design_patterns": [
+      {
+        "pattern_id": "src_1:principle:1:pattern",
+        "name_zh": "代谢负担缓解",
+        "name_en": "Metabolic Burden Reduction",
+        "problem_context": [
+          "heterologous expression or pathway activity measurably slows host growth or reduces yield"
+        ],
+        "design_intent": "reduce the fitness cost imposed by heterologous expression or pathway flux on host growth",
+        "canonical_structure": [
+          "lower expression level (weaker promoter/RBS, lower copy number)",
+          "stage expression temporally (induction after growth phase)",
+          "balance pathway enzyme stoichiometry instead of maximizing every step"
+        ],
+        "biological_rationale": [
+          "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+        ],
+        "applicable_conditions": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "non_applicable_conditions": [
+          "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+        ],
+        "common_variants": [
+          "toxicity mitigation",
+          "chassis engineering for higher expression tolerance"
+        ],
+        "known_tradeoffs": [
+          "lower absolute pathway flux if expression is reduced too far"
+        ],
+        "validation_strategy_ids": [
+          "src_1:principle:1:validation"
+        ],
+        "failure_pattern_ids": [
+          "src_1:principle:1:failure"
+        ],
+        "supporting_principles": [
+          "src_1:principle:1"
+        ],
+        "supporting_sources": [
+          "src_1:mechanism:1"
+        ],
+        "supporting_paper_cases": [],
+        "maturity": "candidate",
+        "confidence": 0.3,
+        "_kind": "design_pattern",
+        "evidence": [],
+        "evidence_supported": false,
+        "knowledge_status": "candidate"
+      },
+      {
+        "pattern_id": "src_1:principle:2:pattern",
+        "name_zh": "代谢负担缓解",
+        "name_en": "Metabolic Burden Reduction",
+        "problem_context": [
+          "heterologous expression or pathway activity measurably slows host growth or reduces yield"
+        ],
+        "design_intent": "reduce the fitness cost imposed by heterologous expression or pathway flux on host growth",
+        "canonical_structure": [
+          "lower expression level (weaker promoter/RBS, lower copy number)",
+          "stage expression temporally (induction after growth phase)",
+          "balance pathway enzyme stoichiometry instead of maximizing every step"
+        ],
+        "biological_rationale": [
+          "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+        ],
+        "applicable_conditions": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "non_applicable_conditions": [
+          "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+        ],
+        "common_variants": [
+          "toxicity mitigation",
+          "chassis engineering for higher expression tolerance"
+        ],
+        "known_tradeoffs": [
+          "lower absolute pathway flux if expression is reduced too far"
+        ],
+        "validation_strategy_ids": [
+          "src_1:principle:2:validation"
+        ],
+        "failure_pattern_ids": [
+          "src_1:principle:2:failure"
+        ],
+        "supporting_principles": [
+          "src_1:principle:2"
+        ],
+        "supporting_sources": [
+          "src_1:concept:1"
+        ],
+        "supporting_paper_cases": [],
+        "maturity": "candidate",
+        "confidence": 0.3,
+        "_kind": "design_pattern",
+        "evidence": [],
+        "evidence_supported": false,
+        "knowledge_status": "candidate"
+      },
+      {
+        "pattern_id": "src_1:principle:3:pattern",
+        "name_zh": "反馈抗性酶工程",
+        "name_en": "Feedback-Resistant Enzyme Engineering",
+        "problem_context": [
+          "the pathway's flux-controlling enzyme is subject to feedback/end-product inhibition by a pathway metabolite"
+        ],
+        "design_intent": "relieve pathway flux limitation caused by end-product/allosteric feedback inhibition",
+        "canonical_structure": [
+          "mutate the regulatory/allosteric site of the enzyme",
+          "replace the enzyme with a feedback-insensitive homolog",
+          "introduce a heterologous feedback-resistant enzyme"
+        ],
+        "biological_rationale": [
+          "the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+        ],
+        "applicable_conditions": [
+          "the inhibited step has been confirmed to be flux-controlling under the relevant condition",
+          "the feedback mechanism (competitive/allosteric) is known well enough to target a site"
+        ],
+        "non_applicable_conditions": [
+          "the enzyme is not actually flux-controlling",
+          "the pathway metabolite also serves an essential regulatory role elsewhere"
+        ],
+        "common_variants": [
+          "dynamic pathway regulation instead of permanent desensitization",
+          "moderate enzyme dosage tuning rather than full feedback removal"
+        ],
+        "known_tradeoffs": [
+          "loss of native regulation can cause metabolite over-accumulation or growth burden downstream"
+        ],
+        "validation_strategy_ids": [
+          "src_1:principle:3:validation"
+        ],
+        "failure_pattern_ids": [
+          "src_1:principle:3:failure"
+        ],
+        "supporting_principles": [
+          "src_1:principle:3"
+        ],
+        "supporting_sources": [
+          "src_1:concept:2"
+        ],
+        "supporting_paper_cases": [],
+        "maturity": "candidate",
+        "confidence": 0.3,
+        "_kind": "design_pattern",
+        "evidence": [],
+        "evidence_supported": false,
+        "knowledge_status": "candidate"
+      }
+    ],
+    "validation_strategies": [
+      {
+        "validation_strategy_id": "src_1:principle:1:validation",
+        "target_claim": "Metabolic Burden Reduction",
+        "minimum_validation": [
+          "growth rate/doubling time under induced vs uninduced conditions"
+        ],
+        "recommended_validation": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "orthogonal_validation": [],
+        "negative_controls": [
+          "unmodified parent strain/construct"
+        ],
+        "positive_controls": [],
+        "time_scale": [],
+        "readouts": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "acceptance_criteria": [],
+        "failure_interpretation": [
+          "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+        ],
+        "limitations": [
+          "derived from a textbook engineering principle, not from a specific validated protocol"
+        ],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b9:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:1:validation",
+            "evidence_role": "example",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "_kind": "validation_strategy",
+        "evidence_supported": true,
+        "knowledge_status": "validated",
+        "confidence": 0.4
+      },
+      {
+        "validation_strategy_id": "src_1:principle:2:validation",
+        "target_claim": "Metabolic Burden Reduction",
+        "minimum_validation": [
+          "growth rate/doubling time under induced vs uninduced conditions"
+        ],
+        "recommended_validation": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "orthogonal_validation": [],
+        "negative_controls": [
+          "unmodified parent strain/construct"
+        ],
+        "positive_controls": [],
+        "time_scale": [],
+        "readouts": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "acceptance_criteria": [],
+        "failure_interpretation": [
+          "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+        ],
+        "limitations": [
+          "derived from a textbook engineering principle, not from a specific validated protocol"
+        ],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b8:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:2:validation",
+            "evidence_role": "example",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "_kind": "validation_strategy",
+        "evidence_supported": true,
+        "knowledge_status": "validated",
+        "confidence": 0.4
+      },
+      {
+        "validation_strategy_id": "src_1:principle:3:validation",
+        "target_claim": "Feedback-Resistant Enzyme Engineering",
+        "minimum_validation": [
+          "in vitro enzyme activity assay in presence/absence of the inhibitor"
+        ],
+        "recommended_validation": [
+          "in vitro enzyme activity assay in presence/absence of the inhibitor",
+          "intracellular metabolite concentration before/after",
+          "production titer or flux measurement"
+        ],
+        "orthogonal_validation": [],
+        "negative_controls": [
+          "unmodified parent strain/construct"
+        ],
+        "positive_controls": [],
+        "time_scale": [],
+        "readouts": [
+          "in vitro enzyme activity assay in presence/absence of the inhibitor",
+          "intracellular metabolite concentration before/after",
+          "production titer or flux measurement"
+        ],
+        "acceptance_criteria": [],
+        "failure_interpretation": [
+          "downstream steps or cofactor/precursor supply become newly limiting after desensitization"
+        ],
+        "limitations": [
+          "derived from a textbook engineering principle, not from a specific validated protocol"
+        ],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b3:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:3:validation",
+            "evidence_role": "example",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "_kind": "validation_strategy",
+        "evidence_supported": true,
+        "knowledge_status": "validated",
+        "confidence": 0.4
+      }
+    ],
+    "failure_patterns": [
+      {
+        "failure_pattern_id": "src_1:principle:1:failure",
+        "name_zh": "",
+        "name_en": "Failure modes of Metabolic Burden Reduction",
+        "trigger_conditions": [
+          "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+        ],
+        "observed_symptoms": [
+          "lower absolute pathway flux if expression is reduced too far"
+        ],
+        "possible_causes": [
+          "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+        ],
+        "diagnostic_measurements": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "mitigation_options": [
+          "toxicity mitigation",
+          "chassis engineering for higher expression tolerance"
+        ],
+        "prevention_options": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "scope": [],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b9:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:1:failure",
+            "evidence_role": "limitation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "confidence": 0.35,
+        "_kind": "failure_pattern",
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      },
+      {
+        "failure_pattern_id": "src_1:principle:2:failure",
+        "name_zh": "",
+        "name_en": "Failure modes of Metabolic Burden Reduction",
+        "trigger_conditions": [
+          "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+        ],
+        "observed_symptoms": [
+          "lower absolute pathway flux if expression is reduced too far"
+        ],
+        "possible_causes": [
+          "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+        ],
+        "diagnostic_measurements": [
+          "growth rate/doubling time under induced vs uninduced conditions",
+          "plasmid/copy-number stability over passages",
+          "pathway yield at each expression level tested"
+        ],
+        "mitigation_options": [
+          "toxicity mitigation",
+          "chassis engineering for higher expression tolerance"
+        ],
+        "prevention_options": [
+          "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+        ],
+        "scope": [],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b8:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.5 Metabolic Burden",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.5 Metabolic Burden"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:2:failure",
+            "evidence_role": "limitation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "confidence": 0.35,
+        "_kind": "failure_pattern",
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      },
+      {
+        "failure_pattern_id": "src_1:principle:3:failure",
+        "name_zh": "",
+        "name_en": "Failure modes of Feedback-Resistant Enzyme Engineering",
+        "trigger_conditions": [
+          "downstream steps or cofactor/precursor supply become newly limiting after desensitization"
+        ],
+        "observed_symptoms": [
+          "loss of native regulation can cause metabolite over-accumulation or growth burden downstream"
+        ],
+        "possible_causes": [
+          "the enzyme is not actually flux-controlling",
+          "the pathway metabolite also serves an essential regulatory role elsewhere"
+        ],
+        "diagnostic_measurements": [
+          "in vitro enzyme activity assay in presence/absence of the inhibitor",
+          "intracellular metabolite concentration before/after",
+          "production titer or flux measurement"
+        ],
+        "mitigation_options": [
+          "dynamic pathway regulation instead of permanent desensitization",
+          "moderate enzyme dosage tuning rather than full feedback removal"
+        ],
+        "prevention_options": [
+          "the inhibited step has been confirmed to be flux-controlling under the relevant condition",
+          "the feedback mechanism (competitive/allosteric) is known well enough to target a site"
+        ],
+        "scope": [],
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b3:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "en",
+            "original_text": "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "translated_text": "",
+            "chapter": "Chapter 7: Regulation of Metabolic Flux",
+            "section": "Chapter 7: Regulation of Metabolic Flux/7.3 Feedback Inhibition",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "Chapter 7: Regulation of Metabolic Flux",
+              "section_path": [
+                "Chapter 7: Regulation of Metabolic Flux",
+                "7.3 Feedback Inhibition"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:principle:3:failure",
+            "evidence_role": "limitation",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "confidence": 0.35,
+        "_kind": "failure_pattern",
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      }
+    ],
+    "constraints_and_tradeoffs": [
+      {
+        "constraint_id": "src_1:constraint:1",
+        "description": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises.",
+        "constraint_type": "unclassified_causal_relationship",
+        "evidence": [
+          {
+            "knowledge_id": "src_1:mechanism:2"
+          }
+        ],
+        "derivation_type": "explicit_in_source",
+        "confidence": 0.5
+      }
+    ],
+    "canonical_knowledge_objects": [
+      {
+        "canonical_knowledge_id": "canonical:engineering_principle:1",
+        "canonical_name_zh": "代谢负担缓解",
+        "canonical_name_en": "Metabolic Burden Reduction",
+        "merged_from": [
+          "src_1:principle:1",
+          "src_1:principle:2"
+        ],
+        "merge_relation": "related_but_distinct",
+        "shared_core": [],
+        "source_specific_variants": [
+          {
+            "knowledge_id": "src_1:principle:1",
+            "source_id": "src_1",
+            "definition": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally (induction after growth phase); balance pathway enzyme stoichiometry instead of maximizing every step, BECAUSE High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity., ONLY IF burden has been attributed to a specific expression construct or pathway rather than an unrelated stress, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY growth rate/doubling time under induced vs uninduced conditions; plasmid/copy-number stability over passages; pathway yield at each expression level tested, ALTERNATIVES toxicity mitigation; chassis engineering for higher expression tolerance.",
+            "organism_scope": []
+          },
+          {
+            "knowledge_id": "src_1:principle:2",
+            "source_id": "src_1",
+            "definition": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally (induction after growth phase); balance pathway enzyme stoichiometry instead of maximizing every step, BECAUSE the fitness cost imposed on a host cell by heterologous protein expression or pathway flux., ONLY IF burden has been attributed to a specific expression construct or pathway rather than an unrelated stress, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY growth rate/doubling time under induced vs uninduced conditions; plasmid/copy-number stability over passages; pathway yield at each expression level tested, ALTERNATIVES toxicity mitigation; chassis engineering for higher expression tolerance.",
+            "organism_scope": []
+          }
+        ],
+        "organism_specific_variants": [],
+        "condition_specific_variants": [],
+        "conflicts": [],
+        "unresolved_questions": [],
+        "provenance": [
+          {
+            "knowledge_id": "src_1:principle:1",
+            "source_id": "src_1"
+          },
+          {
+            "knowledge_id": "src_1:principle:2",
+            "source_id": "src_1"
+          }
+        ],
+        "fusion_confidence": 0.35,
+        "review_status": "auto_merged"
+      },
+      {
+        "canonical_knowledge_id": "canonical:decision_rule:2",
+        "canonical_name_zh": "",
+        "canonical_name_en": "metabolic burden reduction",
+        "merged_from": [
+          "src_1:principle:1:decision:1",
+          "src_1:principle:2:decision:2"
+        ],
+        "merge_relation": "same_concept",
+        "shared_core": [],
+        "source_specific_variants": [
+          {
+            "knowledge_id": "src_1:principle:1:decision:1",
+            "source_id": "src_1",
+            "definition": "",
+            "organism_scope": []
+          },
+          {
+            "knowledge_id": "src_1:principle:2:decision:2",
+            "source_id": "src_1",
+            "definition": "",
+            "organism_scope": []
+          }
+        ],
+        "organism_specific_variants": [],
+        "condition_specific_variants": [],
+        "conflicts": [],
+        "unresolved_questions": [],
+        "provenance": [
+          {
+            "knowledge_id": "src_1:principle:1:decision:1",
+            "source_id": "src_1"
+          },
+          {
+            "knowledge_id": "src_1:principle:2:decision:2",
+            "source_id": "src_1"
+          }
+        ],
+        "fusion_confidence": 0.35,
+        "review_status": "auto_merged"
+      },
+      {
+        "canonical_knowledge_id": "canonical:design_pattern:3",
+        "canonical_name_zh": "代谢负担缓解",
+        "canonical_name_en": "Metabolic Burden Reduction",
+        "merged_from": [
+          "src_1:principle:1:pattern",
+          "src_1:principle:2:pattern"
+        ],
+        "merge_relation": "same_concept",
+        "shared_core": [],
+        "source_specific_variants": [
+          {
+            "knowledge_id": "src_1:principle:1:pattern",
+            "source_id": "src_1",
+            "definition": "",
+            "organism_scope": []
+          },
+          {
+            "knowledge_id": "src_1:principle:2:pattern",
+            "source_id": "src_1",
+            "definition": "",
+            "organism_scope": []
+          }
+        ],
+        "organism_specific_variants": [],
+        "condition_specific_variants": [],
+        "conflicts": [],
+        "unresolved_questions": [],
+        "provenance": [
+          {
+            "knowledge_id": "src_1:principle:1:pattern",
+            "source_id": "src_1"
+          },
+          {
+            "knowledge_id": "src_1:principle:2:pattern",
+            "source_id": "src_1"
+          }
+        ],
+        "fusion_confidence": 0.3,
+        "review_status": "auto_merged"
+      },
+      {
+        "canonical_knowledge_id": "canonical:failure_pattern:4",
+        "canonical_name_zh": "",
+        "canonical_name_en": "Failure modes of Metabolic Burden Reduction",
+        "merged_from": [
+          "src_1:principle:1:failure",
+          "src_1:principle:2:failure"
+        ],
+        "merge_relation": "same_concept",
+        "shared_core": [],
+        "source_specific_variants": [
+          {
+            "knowledge_id": "src_1:principle:1:failure",
+            "source_id": "src_1",
+            "definition": "",
+            "organism_scope": []
+          },
+          {
+            "knowledge_id": "src_1:principle:2:failure",
+            "source_id": "src_1",
+            "definition": "",
+            "organism_scope": []
+          }
+        ],
+        "organism_specific_variants": [],
+        "condition_specific_variants": [],
+        "conflicts": [],
+        "unresolved_questions": [],
+        "provenance": [
+          {
+            "knowledge_id": "src_1:principle:1:failure",
+            "source_id": "src_1"
+          },
+          {
+            "knowledge_id": "src_1:principle:2:failure",
+            "source_id": "src_1"
+          }
+        ],
+        "fusion_confidence": 0.35,
+        "review_status": "auto_merged"
+      }
+    ],
+    "cross_source_fusions": [
+      {
+        "canonical_knowledge_id": "canonical:engineering_principle:1",
+        "merged_from": [
+          "src_1:principle:1",
+          "src_1:principle:2"
+        ],
+        "merge_relation": "related_but_distinct"
+      },
+      {
+        "canonical_knowledge_id": "canonical:decision_rule:2",
+        "merged_from": [
+          "src_1:principle:1:decision:1",
+          "src_1:principle:2:decision:2"
+        ],
+        "merge_relation": "same_concept"
+      },
+      {
+        "canonical_knowledge_id": "canonical:design_pattern:3",
+        "merged_from": [
+          "src_1:principle:1:pattern",
+          "src_1:principle:2:pattern"
+        ],
+        "merge_relation": "same_concept"
+      },
+      {
+        "canonical_knowledge_id": "canonical:failure_pattern:4",
+        "merged_from": [
+          "src_1:principle:1:failure",
+          "src_1:principle:2:failure"
+        ],
+        "merge_relation": "same_concept"
+      }
+    ],
+    "source_conflicts": [],
+    "paper_case_links": [],
+    "knowledge_graph": {
+      "nodes": [
+        {
+          "id": "src_1:concept:1",
+          "node_type": "concept",
+          "label": "Metabolic burden"
+        },
+        {
+          "id": "src_1",
+          "node_type": "Source",
+          "label": "src_1"
+        },
+        {
+          "id": "src_1:concept:2",
+          "node_type": "concept",
+          "label": "Feedback inhibition"
+        },
+        {
+          "id": "src_1:mechanism:1",
+          "node_type": "mechanism",
+          "label": "src_1:mechanism:1"
+        },
+        {
+          "id": "src_1:mechanism:2",
+          "node_type": "mechanism",
+          "label": "src_1:mechanism:2"
+        },
+        {
+          "id": "src_1:principle:1",
+          "node_type": "engineering_principle",
+          "label": "Metabolic Burden Reduction"
+        },
+        {
+          "id": "src_1:principle:2",
+          "node_type": "engineering_principle",
+          "label": "Metabolic Burden Reduction"
+        },
+        {
+          "id": "src_1:principle:3",
+          "node_type": "engineering_principle",
+          "label": "Feedback-Resistant Enzyme Engineering"
+        },
+        {
+          "id": "src_1:principle:1:decision:1",
+          "node_type": "decision_rule",
+          "label": "src_1:principle:1:decision:1"
+        },
+        {
+          "id": "src_1:principle:2:decision:2",
+          "node_type": "decision_rule",
+          "label": "src_1:principle:2:decision:2"
+        },
+        {
+          "id": "src_1:principle:3:decision:3",
+          "node_type": "decision_rule",
+          "label": "src_1:principle:3:decision:3"
+        },
+        {
+          "id": "src_1:principle:1:pattern",
+          "node_type": "design_pattern",
+          "label": "Metabolic Burden Reduction"
+        },
+        {
+          "id": "src_1:principle:2:pattern",
+          "node_type": "design_pattern",
+          "label": "Metabolic Burden Reduction"
+        },
+        {
+          "id": "src_1:principle:3:pattern",
+          "node_type": "design_pattern",
+          "label": "Feedback-Resistant Enzyme Engineering"
+        },
+        {
+          "id": "src_1:principle:1:validation",
+          "node_type": "validation_strategy",
+          "label": "src_1:principle:1:validation"
+        },
+        {
+          "id": "src_1:principle:2:validation",
+          "node_type": "validation_strategy",
+          "label": "src_1:principle:2:validation"
+        },
+        {
+          "id": "src_1:principle:3:validation",
+          "node_type": "validation_strategy",
+          "label": "src_1:principle:3:validation"
+        },
+        {
+          "id": "src_1:principle:1:failure",
+          "node_type": "failure_pattern",
+          "label": "Failure modes of Metabolic Burden Reduction"
+        },
+        {
+          "id": "src_1:principle:2:failure",
+          "node_type": "failure_pattern",
+          "label": "Failure modes of Metabolic Burden Reduction"
+        },
+        {
+          "id": "src_1:principle:3:failure",
+          "node_type": "failure_pattern",
+          "label": "Failure modes of Feedback-Resistant Enzyme Engineering"
+        }
+      ],
+      "edges": [
+        {
+          "from": "src_1:concept:1",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:concept:2",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:mechanism:1",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:mechanism:2",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:1",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:2",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:3",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:1:decision:1",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:2:decision:2",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:3:decision:3",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:1:validation",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:2:validation",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:3:validation",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:1:failure",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:2:failure",
+          "to": "src_1",
+          "relation": "derived_from"
+        },
+        {
+          "from": "src_1:principle:3:failure",
+          "to": "src_1",
+          "relation": "derived_from"
+        }
+      ]
+    },
+    "quality_report": {
+      "source_quality": {
+        "total_sources": 1,
+        "identity_verified": 1,
+        "unresolved_editions": 0
+      },
+      "parsing_quality": {
+        "sources_with_structure": 1,
+        "total_blocks": 9
+      },
+      "evidence_quality": {
+        "total_objects": 19,
+        "objects_with_direct_evidence": 16,
+        "coverage_ratio": 0.842,
+        "unresolved_object_ids": [
+          "src_1:principle:1:pattern",
+          "src_1:principle:2:pattern",
+          "src_1:principle:3:pattern"
+        ]
+      },
+      "knowledge_completeness": {
+        "sections_extract_full": 2,
+        "sections_extract_partial": 0,
+        "sections_metadata_only": 0
+      },
+      "engineering_utility": {
+        "principles_total": 3,
+        "principles_model_inference": 3,
+        "principles_missing_precondition": 0,
+        "principles_pedagogical_simplification_only": 0
+      },
+      "cross_source_consistency": {
+        "canonical_objects": 4,
+        "conflicts": 0
+      },
+      "translation_quality": {
+        "status": "not_applicable_in_phase1",
+        "note": "bilingual normalization is a future-phase capability; see README Phase roadmap."
+      },
+      "risk_flags": [
+        "EVIDENCE_NOT_FOUND: 3 objects lack direct evidence support",
+        "OVERGENERALIZATION_RISK: 3 engineering principles are model_inference, not source-stated recommendations"
+      ],
+      "review_items": [
+        {
+          "item": "unsupported_object",
+          "object_id": "src_1:principle:1:pattern"
+        },
+        {
+          "item": "unsupported_object",
+          "object_id": "src_1:principle:2:pattern"
+        },
+        {
+          "item": "unsupported_object",
+          "object_id": "src_1:principle:3:pattern"
+        },
+        {
+          "item": "model_inferred_principle",
+          "object_id": "src_1:principle:1"
+        },
+        {
+          "item": "model_inferred_principle",
+          "object_id": "src_1:principle:2"
+        },
+        {
+          "item": "model_inferred_principle",
+          "object_id": "src_1:principle:3"
+        },
+        {
+          "item": "organism_scope_unknown_do_not_default_k12",
+          "object_id": "src_1:principle:1"
+        },
+        {
+          "item": "organism_scope_unknown_do_not_default_k12",
+          "object_id": "src_1:principle:2"
+        },
+        {
+          "item": "organism_scope_unknown_do_not_default_k12",
+          "object_id": "src_1:principle:3"
+        }
+      ],
+      "overall_status": "REVIEW_REQUIRED"
+    },
+    "governance": {
+      "concept_explanation": "allowed",
+      "mechanism_reasoning": "allowed",
+      "engineering_principle_retrieval": "review",
+      "decision_support": "review",
+      "automatic_DBTL_design": "blocked",
+      "exact_SOP_generation": "blocked"
+    },
+    "frontend_view": {
+      "concepts_and_mechanisms": [
+        {
+          "id": "src_1:concept:1",
+          "name": "Metabolic burden",
+          "one_line_definition": "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+          "knowledge_type": "concept",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.55,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+            ]
+          }
+        },
+        {
+          "id": "src_1:concept:2",
+          "name": "Feedback inhibition",
+          "one_line_definition": "the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+          "knowledge_type": "concept",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.55,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+            ]
+          }
+        },
+        {
+          "id": "src_1:mechanism:1",
+          "name": "src_1:mechanism:1",
+          "one_line_definition": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+          "knowledge_type": "mechanism",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.5,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+            ]
+          }
+        },
+        {
+          "id": "src_1:mechanism:2",
+          "name": "src_1:mechanism:2",
+          "one_line_definition": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises.",
+          "knowledge_type": "mechanism",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.5,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises.",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "In many amino acid biosynthesis pathways, the end-product inhibits the first committed enzyme of the pathway when its concentration rises. This mechanism prevents wasteful overproduction of the amino acid under normal growth conditions."
+            ]
+          }
+        }
+      ],
+      "engineering_principles": [
+        {
+          "id": "src_1:principle:1",
+          "name": "Metabolic Burden Reduction",
+          "one_line_definition": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally",
+          "knowledge_type": "engineering_principle",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [
+            "design",
+            "test"
+          ],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally (induction after growth phase); balance pathway enzyme stoichiometry instead of maximizing every step, BECAUSE High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity., ONLY IF burden has been attributed to a specific expression construct or pathway rather than an unrelated stress, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY growth rate/doubling time under induced vs uninduced conditions; plasmid/copy-number stability over passages; pathway yield at each expression level tested, ALTERNATIVES toxicity mitigation; chassis engineering for higher expression tolerance.",
+            "为什么_why": "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity.",
+            "适用条件_when_applicable": [
+              "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+            ],
+            "不适用条件_when_not_applicable": [
+              "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+            ],
+            "推荐怎么做_recommended_actions": [
+              "lower expression level (weaker promoter/RBS, lower copy number)",
+              "stage expression temporally (induction after growth phase)",
+              "balance pathway enzyme stoichiometry instead of maximizing every step"
+            ],
+            "需要先测什么_required_measurements": [
+              "growth rate/doubling time under induced vs uninduced conditions",
+              "plasmid/copy-number stability over passages",
+              "pathway yield at each expression level tested"
+            ],
+            "如何验证_how_to_validate": [
+              "growth rate/doubling time under induced vs uninduced conditions",
+              "plasmid/copy-number stability over passages",
+              "pathway yield at each expression level tested"
+            ],
+            "可能怎么失败_failure_modes": [
+              "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+            ],
+            "替代方案_alternatives": [
+              "toxicity mitigation",
+              "chassis engineering for higher expression tolerance"
+            ],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:2",
+          "name": "Metabolic Burden Reduction",
+          "one_line_definition": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally",
+          "knowledge_type": "engineering_principle",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [
+            "design",
+            "test"
+          ],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "IF heterologous expression or pathway activity measurably slows host growth or reduces yield, THEN CONSIDER lower expression level (weaker promoter/RBS, lower copy number); stage expression temporally (induction after growth phase); balance pathway enzyme stoichiometry instead of maximizing every step, BECAUSE the fitness cost imposed on a host cell by heterologous protein expression or pathway flux., ONLY IF burden has been attributed to a specific expression construct or pathway rather than an unrelated stress, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY growth rate/doubling time under induced vs uninduced conditions; plasmid/copy-number stability over passages; pathway yield at each expression level tested, ALTERNATIVES toxicity mitigation; chassis engineering for higher expression tolerance.",
+            "为什么_why": "the fitness cost imposed on a host cell by heterologous protein expression or pathway flux.",
+            "适用条件_when_applicable": [
+              "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+            ],
+            "不适用条件_when_not_applicable": [
+              "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+            ],
+            "推荐怎么做_recommended_actions": [
+              "lower expression level (weaker promoter/RBS, lower copy number)",
+              "stage expression temporally (induction after growth phase)",
+              "balance pathway enzyme stoichiometry instead of maximizing every step"
+            ],
+            "需要先测什么_required_measurements": [
+              "growth rate/doubling time under induced vs uninduced conditions",
+              "plasmid/copy-number stability over passages",
+              "pathway yield at each expression level tested"
+            ],
+            "如何验证_how_to_validate": [
+              "growth rate/doubling time under induced vs uninduced conditions",
+              "plasmid/copy-number stability over passages",
+              "pathway yield at each expression level tested"
+            ],
+            "可能怎么失败_failure_modes": [
+              "burden persists after expression tuning, indicating a different bottleneck (e.g., toxic intermediate)"
+            ],
+            "替代方案_alternatives": [
+              "toxicity mitigation",
+              "chassis engineering for higher expression tolerance"
+            ],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:3",
+          "name": "Feedback-Resistant Enzyme Engineering",
+          "one_line_definition": "IF the pathway's flux-controlling enzyme is subject to feedback/end-product inhibition by a pathway metabolite, THEN CONSIDER mutate the regulatory/allosteric site of the enzyme; replace the enzyme wi",
+          "knowledge_type": "engineering_principle",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [
+            "design",
+            "test"
+          ],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "IF the pathway's flux-controlling enzyme is subject to feedback/end-product inhibition by a pathway metabolite, THEN CONSIDER mutate the regulatory/allosteric site of the enzyme; replace the enzyme with a feedback-insensitive homolog; introduce a heterologous feedback-resistant enzyme, BECAUSE the reduction of an enzyme's activity by the accumulation of a downstream pathway product., ONLY IF the inhibited step has been confirmed to be flux-controlling under the relevant condition; the feedback mechanism (competitive/allosteric) is known well enough to target a site, DO NOT GENERALIZE TO other organisms/strains without independent evidence, VALIDATE BY in vitro enzyme activity assay in presence/absence of the inhibitor; intracellular metabolite concentration before/after; production titer or flux measurement, ALTERNATIVES dynamic pathway regulation instead of permanent desensitization; moderate enzyme dosage tuning rather than full feedback removal.",
+            "为什么_why": "the reduction of an enzyme's activity by the accumulation of a downstream pathway product.",
+            "适用条件_when_applicable": [
+              "the inhibited step has been confirmed to be flux-controlling under the relevant condition",
+              "the feedback mechanism (competitive/allosteric) is known well enough to target a site"
+            ],
+            "不适用条件_when_not_applicable": [
+              "the enzyme is not actually flux-controlling",
+              "the pathway metabolite also serves an essential regulatory role elsewhere"
+            ],
+            "推荐怎么做_recommended_actions": [
+              "mutate the regulatory/allosteric site of the enzyme",
+              "replace the enzyme with a feedback-insensitive homolog",
+              "introduce a heterologous feedback-resistant enzyme"
+            ],
+            "需要先测什么_required_measurements": [
+              "in vitro enzyme activity assay in presence/absence of the inhibitor",
+              "intracellular metabolite concentration before/after",
+              "production titer or flux measurement"
+            ],
+            "如何验证_how_to_validate": [
+              "in vitro enzyme activity assay in presence/absence of the inhibitor",
+              "intracellular metabolite concentration before/after",
+              "production titer or flux measurement"
+            ],
+            "可能怎么失败_failure_modes": [
+              "downstream steps or cofactor/precursor supply become newly limiting after desensitization"
+            ],
+            "替代方案_alternatives": [
+              "dynamic pathway regulation instead of permanent desensitization",
+              "moderate enzyme dosage tuning rather than full feedback removal"
+            ],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+            ]
+          }
+        }
+      ],
+      "design_patterns": [
+        {
+          "id": "src_1:principle:1:pattern",
+          "name": "Metabolic Burden Reduction",
+          "one_line_definition": "",
+          "knowledge_type": "design_pattern",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.3,
+          "evidence_count": 0,
+          "source_count": 0,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [
+              "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+            ],
+            "不适用条件_when_not_applicable": [
+              "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+            ],
+            "推荐怎么做_recommended_actions": [
+              "lower expression level (weaker promoter/RBS, lower copy number)",
+              "stage expression temporally (induction after growth phase)",
+              "balance pathway enzyme stoichiometry instead of maximizing every step"
+            ],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [],
+            "证据原文_evidence_excerpts": []
+          }
+        },
+        {
+          "id": "src_1:principle:2:pattern",
+          "name": "Metabolic Burden Reduction",
+          "one_line_definition": "",
+          "knowledge_type": "design_pattern",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.3,
+          "evidence_count": 0,
+          "source_count": 0,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [
+              "burden has been attributed to a specific expression construct or pathway rather than an unrelated stress"
+            ],
+            "不适用条件_when_not_applicable": [
+              "burden is caused by product/intermediate toxicity rather than expression load; see toxicity mitigation instead"
+            ],
+            "推荐怎么做_recommended_actions": [
+              "lower expression level (weaker promoter/RBS, lower copy number)",
+              "stage expression temporally (induction after growth phase)",
+              "balance pathway enzyme stoichiometry instead of maximizing every step"
+            ],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [],
+            "证据原文_evidence_excerpts": []
+          }
+        },
+        {
+          "id": "src_1:principle:3:pattern",
+          "name": "Feedback-Resistant Enzyme Engineering",
+          "one_line_definition": "",
+          "knowledge_type": "design_pattern",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.3,
+          "evidence_count": 0,
+          "source_count": 0,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [
+              "the inhibited step has been confirmed to be flux-controlling under the relevant condition",
+              "the feedback mechanism (competitive/allosteric) is known well enough to target a site"
+            ],
+            "不适用条件_when_not_applicable": [
+              "the enzyme is not actually flux-controlling",
+              "the pathway metabolite also serves an essential regulatory role elsewhere"
+            ],
+            "推荐怎么做_recommended_actions": [
+              "mutate the regulatory/allosteric site of the enzyme",
+              "replace the enzyme with a feedback-insensitive homolog",
+              "introduce a heterologous feedback-resistant enzyme"
+            ],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [],
+            "证据原文_evidence_excerpts": []
+          }
+        }
+      ],
+      "decision_rules": [
+        {
+          "id": "src_1:principle:1:decision:1",
+          "name": "Metabolic Burden Reduction",
+          "one_line_definition": "",
+          "knowledge_type": "decision_rule",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:2:decision:2",
+          "name": "Metabolic Burden Reduction",
+          "one_line_definition": "",
+          "knowledge_type": "decision_rule",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:3:decision:3",
+          "name": "Feedback-Resistant Enzyme Engineering",
+          "one_line_definition": "",
+          "knowledge_type": "decision_rule",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+            ]
+          }
+        }
+      ],
+      "validation_strategies": [
+        {
+          "id": "src_1:principle:1:validation",
+          "name": "src_1:principle:1:validation",
+          "one_line_definition": "Metabolic Burden Reduction",
+          "knowledge_type": "validation_strategy",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.4,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "Metabolic Burden Reduction",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [
+              "growth rate/doubling time under induced vs uninduced conditions"
+            ],
+            "如何验证_how_to_validate": [
+              "growth rate/doubling time under induced vs uninduced conditions",
+              "plasmid/copy-number stability over passages",
+              "pathway yield at each expression level tested"
+            ],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:2:validation",
+          "name": "src_1:principle:2:validation",
+          "one_line_definition": "Metabolic Burden Reduction",
+          "knowledge_type": "validation_strategy",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.4,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "Metabolic Burden Reduction",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [
+              "growth rate/doubling time under induced vs uninduced conditions"
+            ],
+            "如何验证_how_to_validate": [
+              "growth rate/doubling time under induced vs uninduced conditions",
+              "plasmid/copy-number stability over passages",
+              "pathway yield at each expression level tested"
+            ],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:3:validation",
+          "name": "src_1:principle:3:validation",
+          "one_line_definition": "Feedback-Resistant Enzyme Engineering",
+          "knowledge_type": "validation_strategy",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.4,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "Feedback-Resistant Enzyme Engineering",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [
+              "in vitro enzyme activity assay in presence/absence of the inhibitor"
+            ],
+            "如何验证_how_to_validate": [
+              "in vitro enzyme activity assay in presence/absence of the inhibitor",
+              "intracellular metabolite concentration before/after",
+              "production titer or flux measurement"
+            ],
+            "可能怎么失败_failure_modes": [],
+            "替代方案_alternatives": [],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+            ]
+          }
+        }
+      ],
+      "failure_patterns": [
+        {
+          "id": "src_1:principle:1:failure",
+          "name": "Failure modes of Metabolic Burden Reduction",
+          "one_line_definition": "",
+          "knowledge_type": "failure_pattern",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [
+              "lower absolute pathway flux if expression is reduced too far"
+            ],
+            "替代方案_alternatives": [
+              "toxicity mitigation",
+              "chassis engineering for higher expression tolerance"
+            ],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "High-level expression of a heterologous pathway causes metabolic burden, which reduces host growth rate and can lower overall productivity."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:2:failure",
+          "name": "Failure modes of Metabolic Burden Reduction",
+          "one_line_definition": "",
+          "knowledge_type": "failure_pattern",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [
+              "lower absolute pathway flux if expression is reduced too far"
+            ],
+            "替代方案_alternatives": [
+              "toxicity mitigation",
+              "chassis engineering for higher expression tolerance"
+            ],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Metabolic burden is defined as the fitness cost imposed on a host cell by heterologous protein expression or pathway flux."
+            ]
+          }
+        },
+        {
+          "id": "src_1:principle:3:failure",
+          "name": "Failure modes of Feedback-Resistant Enzyme Engineering",
+          "one_line_definition": "",
+          "knowledge_type": "failure_pattern",
+          "applicable_system": [
+            "unknown"
+          ],
+          "dbtl_stage": [],
+          "confidence": 0.35,
+          "evidence_count": 1,
+          "source_count": 1,
+          "has_conflict": false,
+          "human_reviewed": false,
+          "detail": {
+            "是什么_what": "",
+            "为什么_why": "",
+            "适用条件_when_applicable": [],
+            "不适用条件_when_not_applicable": [],
+            "推荐怎么做_recommended_actions": [],
+            "需要先测什么_required_measurements": [],
+            "如何验证_how_to_validate": [],
+            "可能怎么失败_failure_modes": [
+              "loss of native regulation can cause metabolite over-accumulation or growth burden downstream"
+            ],
+            "替代方案_alternatives": [
+              "dynamic pathway regulation instead of permanent desensitization",
+              "moderate enzyme dosage tuning rather than full feedback removal"
+            ],
+            "教材来源_sources": [
+              "src_1"
+            ],
+            "证据原文_evidence_excerpts": [
+              "Feedback inhibition is defined as the reduction of an enzyme's activity by the accumulation of a downstream pathway product."
+            ]
+          }
+        }
+      ],
+      "experimental_cases": [],
+      "sources_and_evidence": {
+        "total_evidence_bindings": 16,
+        "coverage": {
+          "total_objects": 19,
+          "objects_with_direct_evidence": 16,
+          "coverage_ratio": 0.842,
+          "unresolved_object_ids": [
+            "src_1:principle:1:pattern",
+            "src_1:principle:2:pattern",
+            "src_1:principle:3:pattern"
+          ]
+        }
+      },
+      "conflicts_and_human_review": {
+        "conflicts": [],
+        "review_items": [
+          {
+            "item": "unsupported_object",
+            "object_id": "src_1:principle:1:pattern"
+          },
+          {
+            "item": "unsupported_object",
+            "object_id": "src_1:principle:2:pattern"
+          },
+          {
+            "item": "unsupported_object",
+            "object_id": "src_1:principle:3:pattern"
+          },
+          {
+            "item": "model_inferred_principle",
+            "object_id": "src_1:principle:1"
+          },
+          {
+            "item": "model_inferred_principle",
+            "object_id": "src_1:principle:2"
+          },
+          {
+            "item": "model_inferred_principle",
+            "object_id": "src_1:principle:3"
+          },
+          {
+            "item": "organism_scope_unknown_do_not_default_k12",
+            "object_id": "src_1:principle:1"
+          },
+          {
+            "item": "organism_scope_unknown_do_not_default_k12",
+            "object_id": "src_1:principle:2"
+          },
+          {
+            "item": "organism_scope_unknown_do_not_default_k12",
+            "object_id": "src_1:principle:3"
+          }
+        ]
+      }
+    },
+    "step_states": {
+      "step13_paper_case_linking": "SKIPPED",
+      "step01_task_contract": "SUCCESS",
+      "step02_source_validation": "SUCCESS",
+      "step03_pdf_parsing": "SUCCESS",
+      "step04_markdown_cleaning": "SUCCESS",
+      "step05_document_parsing": "SUCCESS",
+      "step06_scope_selection": "SUCCESS",
+      "step07_basic_knowledge_extraction": "WARNING",
+      "step08_principle_distillation": "REVIEW_REQUIRED",
+      "step09_decision_rule_generation": "REVIEW_REQUIRED",
+      "step10_pattern_validation_failure": "SUCCESS",
+      "step11_evidence_binding": "SUCCESS",
+      "step12_knowledge_fusion": "SUCCESS",
+      "step14_quality_governance": "REVIEW_REQUIRED",
+      "step15_frontend_adapter": "SUCCESS"
+    },
+    "errors": [
+      {
+        "error_id": "err_f6f47247f70c0735",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b4: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_a1efa9df2789d69e",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b8: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_7abbdecc450fcc9c",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b9: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_68b499b8580a231f",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b3: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_e2319847169f961f",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b5: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_925957a042946bef",
+        "error_code": "OVERGENERALIZATION_RISK",
+        "message": "src_1:principle:1: engineering action inferred by the model from a mechanism description, not stated as a recommendation in the source.",
+        "source_id": "src_1",
+        "step": "step08_principle_distillation",
+        "affected_objects": [
+          "src_1:principle:1"
+        ],
+        "severity": "high",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_6a490fe4a4c6cdb0",
+        "error_code": "OVERGENERALIZATION_RISK",
+        "message": "src_1:principle:2: engineering action inferred by the model from a mechanism description, not stated as a recommendation in the source.",
+        "source_id": "src_1",
+        "step": "step08_principle_distillation",
+        "affected_objects": [
+          "src_1:principle:2"
+        ],
+        "severity": "high",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_2eef32a6f13c2dc9",
+        "error_code": "OVERGENERALIZATION_RISK",
+        "message": "src_1:principle:3: engineering action inferred by the model from a mechanism description, not stated as a recommendation in the source.",
+        "source_id": "src_1",
+        "step": "step08_principle_distillation",
+        "affected_objects": [
+          "src_1:principle:3"
+        ],
+        "severity": "high",
+        "recoverable": false,
+        "recommended_action": ""
+      }
+    ],
+    "start_time": "2026-07-28T02:07:51.954707+00:00",
+    "end_time": "2026-07-28T02:07:52.098794+00:00"
+  }
+}

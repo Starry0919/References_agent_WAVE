@@ -1,0 +1,29 @@
+{
+  "skill_id": "skill11_engineering_proposal",
+  "version": "0.2.0",
+  "implementation": "implemented",
+  "input": {
+    "type": "object",
+    "required": ["k12_design_space", "experimental_designs", "evidence", "quality_reports"],
+    "properties": {
+      "k12_design_space": {"type": "object"},
+      "experimental_designs": {"type": "array", "items": {"type": "object"}},
+      "evidence": {"type": "array", "items": {"type": "object"}},
+      "quality_reports": {"type": "array", "items": {"type": "object"}}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["engineering_plans", "ai_combination_proposals", "ai_engineering_proposal", "approval_status"],
+    "properties": {
+      "engineering_plans": {"type": "array"},
+      "ai_combination_proposals": {"type": "array"},
+      "ai_engineering_proposal": {"$ref": "../../framework/unified-schema.json#/$defs/engineeringProposal"},
+      "approval_status": {"type": "object"}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "terminal_failure"],
+  "error_codes": ["PLAN001", "PLAN002", "PLAN003", "PLAN004"],
+  "provenance_requirements": ["skill_id", "skill_version", "input_hash", "output_hash", "planning_policy_version"],
+  "human_review": {"supported": true, "triggers": ["ai_level_2", "ai_level_3", "high_risk", "incomplete_plan"]}
+}

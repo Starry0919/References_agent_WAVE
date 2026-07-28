@@ -1,0 +1,58 @@
+{
+  "paper_identity": {
+    "paper_id": "paper:b9ea21673e7a2cc481d0",
+    "title": "Metabolic control analysis of L-tryptophan producing Escherichia coli applying targeted perturbation with shikimate",
+    "doi": "10.1007/s00449-021-02630-7",
+    "authors": [
+      "Kristin Schoppel",
+      "Natalia Trachtmann",
+      "Fabian Mittermeier",
+      "Georg A. Sprenger",
+      "Dirk Weuster-Botz"
+    ],
+    "journal": "Bioprocess and Biosystems Engineering",
+    "year": 2021
+  },
+  "source_information": {
+    "source_type": "europe_pmc_oa",
+    "source_url": "https://europepmc.org/articles/PMC8536597?pdf=render",
+    "download_time": "2026-07-28T01:45:54.479919+00:00"
+  },
+  "download_attempts": [
+    {
+      "attempt": 1,
+      "source_type": "openalex_oa",
+      "source_url": "https://link.springer.com/content/pdf/10.1007/s00449-021-02630-7.pdf",
+      "status": "invalid",
+      "validation_errors": [
+        "invalid_magic_header",
+        "missing_eof_marker",
+        "invalid_mime_type"
+      ],
+      "advisor": "deterministic",
+      "metadata_url": "https://api.openalex.org/works/doi:10.1007%2Fs00449-021-02630-7",
+      "license": "cc-by"
+    },
+    {
+      "attempt": 2,
+      "source_type": "europe_pmc_oa",
+      "source_url": "https://europepmc.org/articles/PMC8536597?pdf=render",
+      "status": "verified",
+      "validation_errors": [],
+      "advisor": "deterministic",
+      "metadata_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1007%2Fs00449-021-02630-7&format=json"
+    }
+  ],
+  "processing_status": "verified",
+  "file_information": {
+    "file_name": "original.pdf",
+    "path": "D:\\Users\\Starry\\Desktop\\agent\\agent\\agent-harness\\agent-harness\\harness\\paper_extraction\\vendor\\paper_artifacts\\papers\\paper_b9ea21673e7a2cc481d0\\original.pdf",
+    "size_bytes": 1809223,
+    "mime_type": "application/pdf"
+  },
+  "integrity": {
+    "checksum_algorithm": "sha256",
+    "checksum_value": "7e250d0e1a550109c0516084a62f062aa9b82c58a5a5320a78c2865391d5afb9"
+  },
+  "artifact_version": "1"
+}

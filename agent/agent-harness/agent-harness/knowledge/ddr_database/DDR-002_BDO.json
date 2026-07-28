@@ -1,0 +1,92 @@
+{
+  "ddr_id": "DDR-002",
+  "metadata": {
+    "title": "Metabolic engineering of Escherichia coli for direct production of 1,4-butanediol",
+    "category": ["de novo pathway construction", "heterologous pathway engineering", "diol production"],
+    "organism": "Escherichia coli",
+    "host": "E. coli",
+    "target_product": "1,4-butanediol",
+    "product_class": "diol (bio-based chemical)",
+    "engineering_level": "de novo heterologous pathway construction",
+    "reference": {
+      "title": "Metabolic engineering of Escherichia coli for direct production of 1,4-butanediol",
+      "authors": "Yim H. et al.",
+      "journal": "Nature Chemical Biology",
+      "year": "2011",
+      "doi": "10.1038/nchembio.580"
+    }
+  },
+  "engineering_problem": {
+    "problem_statement": "E. coli cannot naturally produce 1,4-butanediol (1,4-BDO); no native biosynthetic pathway to this product exists in the host.",
+    "problem_type": ["missing native pathway", "de novo pathway construction"],
+    "trigger_conditions": [
+      "target product has no native biosynthetic pathway in the host organism",
+      "engineering objective requires introducing a heterologous or fully synthetic pathway"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "the host has no endogenous enzymatic route from central metabolism to 1,4-butanediol",
+      "introducing enzyme activity alone, without host-level support, may not be sufficient for efficient production"
+    ],
+    "bottlenecks": [
+      "absence of a native 1,4-BDO biosynthetic pathway",
+      "precursor and cofactor availability for a newly introduced heterologous pathway",
+      "metabolic burden of expressing a multi-step heterologous pathway"
+    ],
+    "mechanistic_explanation": "Because no native pathway to 1,4-BDO exists, production requires constructing a complete heterologous (or synthetic) enzymatic route and integrating it with host metabolism; simply inserting the pathway genes is insufficient if the host cannot supply adequate precursor and cofactor flux to support it."
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "Combining de novo pathway construction with host-background optimization for precursor and cofactor supply enables functional 1,4-BDO production in a host that lacks the native pathway.",
+    "expected_effect": "acquisition of a functional biosynthetic route to 1,4-BDO, with host optimization improving achievable flux beyond pathway insertion alone"
+  },
+  "engineering_actions": [
+    {
+      "modification_type": "pathway insertion",
+      "target": "heterologous 1,4-BDO biosynthetic pathway",
+      "gene_or_pathway": "multi-gene heterologous pathway; specific gene identities are not specified in the problem summary available to this V1 knowledge base and require review of the primary text",
+      "source": "Yim H. et al., 2011, Nature Chemical Biology, DOI:10.1038/nchembio.580",
+      "rationale": "since the host lacks a native pathway to the product, constructing and inserting a synthetic/heterologous pathway is the primary engineering action rather than modifying an existing pathway.",
+      "expected_effect": "establishes baseline biosynthetic capability for 1,4-BDO in the host",
+      "risk": "heterologous enzymes may have suboptimal kinetics or expression in E. coli; a multi-step pathway adds metabolic burden that can reduce growth",
+      "validation": [
+        "confirm 1,4-BDO production analytically (e.g. HPLC or GC-MS)",
+        "assess strain growth and viability with the pathway expressed"
+      ]
+    },
+    {
+      "modification_type": "host optimization (precursor/cofactor engineering)",
+      "target": "precursor and cofactor supply for the heterologous pathway",
+      "gene_or_pathway": "host central metabolism and cofactor-regeneration systems; specific gene identities are not specified in the problem summary available to this V1 knowledge base",
+      "source": "Yim H. et al., 2011, Nature Chemical Biology, DOI:10.1038/nchembio.580",
+      "rationale": "pathway insertion alone is often insufficient without addressing precursor and cofactor (e.g. redox cofactor) requirements from host metabolism.",
+      "expected_effect": "improved precursor/cofactor balance supporting higher heterologous pathway throughput",
+      "risk": "cofactor-supply engineering can perturb central metabolism and unrelated host pathways",
+      "validation": [
+        "measure relevant cofactor pool ratios before and after host optimization",
+        "compare 1,4-BDO titer with and without host-background optimization"
+      ]
+    }
+  ],
+  "decision_rules": [
+    {
+      "condition": "host organism lacks a native biosynthetic pathway for the target product",
+      "recommended_strategy": "construct a synthetic/heterologous pathway rather than attempting to redirect a nonexistent native route",
+      "reason": "there is no endogenous pathway to modify or redirect flux through"
+    },
+    {
+      "condition": "a heterologous pathway has been introduced",
+      "recommended_strategy": "combine pathway insertion with host-background optimization",
+      "reason": "pathway insertion alone is frequently insufficient without addressing precursor/cofactor supply in the host"
+    },
+    {
+      "condition": "designing a de novo biosynthetic pathway",
+      "recommended_strategy": "explicitly evaluate precursor and cofactor requirements during pathway and strain design",
+      "reason": "mismatched precursor or cofactor availability limits achievable flux regardless of enzyme selection"
+    }
+  ],
+  "generalizable_rules": [
+    "when a host lacks a native pathway to a target product, prioritize pathway construction over pathway modification",
+    "de novo pathway engineering should be paired with host-level optimization of precursor and cofactor supply, not treated as a standalone gene-insertion task"
+  ]
+}

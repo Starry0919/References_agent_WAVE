@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["task_id", "user_request", "target_system", "literature_source", "requirements", "mode"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "user_request": {"type": "string"},
+    "target_system": {
+      "type": "object",
+      "required": ["organism", "strain"],
+      "properties": {"organism": {"type": "string"}, "strain": {"type": "string"}}
+    },
+    "literature_source": {
+      "type": "object",
+      "required": ["type", "files", "doi"],
+      "properties": {
+        "type": {"enum": ["auto_search", "upload"]},
+        "files": {"type": "array", "items": {"type": "string"}},
+        "doi": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "requirements": {"type": "object"},
+    "mode": {
+      "type": "object",
+      "required": ["automatic", "human_review"],
+      "properties": {"automatic": {"type": "boolean"}, "human_review": {"type": "boolean"}}
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "step_id": "step02_source_validation",
+  "version": "0.1.0",
+  "implementation": "python_deterministic",
+  "input": {"type": "object", "required": ["source_ref"]},
+  "output": {"type": "object", "required": ["source_id", "source_type", "identity_verified"]},
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["SOURCE_IDENTITY_ERROR", "UNRESOLVED_EDITION", "ACCESS_BLOCKED"],
+  "provenance_requirements": ["step_version", "source_ids"],
+  "human_review": {"supported": true, "triggers": ["identity_not_verified", "unresolved_edition"]}
+}

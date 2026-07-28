@@ -1,0 +1,57 @@
+{
+  "paper_identity": {
+    "paper_id": "paper:aff8625965f51aabf5ed",
+    "title": "Integrated laboratory evolution and rational engineering of GalP/Glk-dependent Escherichia coli for higher yield and productivity of L-tryptophan biosynthesis",
+    "doi": "10.1016/j.mec.2021.e00167",
+    "authors": [
+      "Chen Minliang",
+      "Ma Chengwei",
+      "Chen Lin",
+      "An-Ping Zeng"
+    ],
+    "journal": "Metabolic Engineering Communications",
+    "year": 2021
+  },
+  "source_information": {
+    "source_type": "europe_pmc_oa",
+    "source_url": "https://europepmc.org/articles/PMC7907822?pdf=render",
+    "download_time": "2026-07-27T13:56:30.928823+00:00"
+  },
+  "download_attempts": [
+    {
+      "attempt": 1,
+      "source_type": "openalex_oa",
+      "source_url": "http://hdl.handle.net/11420/9303",
+      "status": "invalid",
+      "validation_errors": [
+        "invalid_magic_header",
+        "missing_eof_marker",
+        "invalid_mime_type"
+      ],
+      "advisor": "deterministic",
+      "metadata_url": "https://api.openalex.org/works/doi:10.1016%2Fj.mec.2021.e00167",
+      "license": "cc-by-nc-nd"
+    },
+    {
+      "attempt": 2,
+      "source_type": "europe_pmc_oa",
+      "source_url": "https://europepmc.org/articles/PMC7907822?pdf=render",
+      "status": "verified",
+      "validation_errors": [],
+      "advisor": "deterministic",
+      "metadata_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1016%2Fj.mec.2021.e00167&format=json"
+    }
+  ],
+  "processing_status": "verified",
+  "file_information": {
+    "file_name": "original.pdf",
+    "path": "D:\\Users\\Starry\\Desktop\\agent\\agent\\agent-harness\\agent-harness\\harness\\paper_extraction\\vendor\\paper_artifacts\\papers\\paper_aff8625965f51aabf5ed\\original.pdf",
+    "size_bytes": 2239590,
+    "mime_type": "application/pdf"
+  },
+  "integrity": {
+    "checksum_algorithm": "sha256",
+    "checksum_value": "55d95bd5050d4c51c6bc544f14cb1152e9356a2d3cdb25a31356134809f31af5"
+  },
+  "artifact_version": "1"
+}

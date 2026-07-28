@@ -1,0 +1,29 @@
+{
+  "skill_id": "skill07_experiment_extraction",
+  "version": "0.2.0",
+  "implementation": "python_rule_extraction",
+  "input": {
+    "type": "object",
+    "required": ["clean_document_artifact"],
+    "properties": {
+      "clean_document_artifact": {"type": "object"},
+      "policy": {"type": "object"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["fields", "experimental_design_object", "field_metadata", "extensions", "conflicts"],
+    "properties": {
+      "fields": {"$ref": "../../framework/unified-schema.json#/$defs/experimentFields"},
+      "experimental_design_object": {"type": "object"},
+      "field_metadata": {"type": "object"},
+      "extensions": {"type": "object"},
+      "conflicts": {"type": "array", "items": {"type": "object"}}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-EXT-001", "EDX-EXT-002", "EDX-VAL-001", "EDX-VAL-002", "EDX-SYS-001"],
+  "local_error_codes": ["EXP001", "EXP002", "EXP003", "EXP004"],
+  "provenance_requirements": ["source_artifact_id", "source_sha256", "extractor", "extractor_version", "candidate_locations"],
+  "human_review": {"supported": true, "triggers": ["field_conflict", "critical_unknown", "suspected_hallucination"]}
+}

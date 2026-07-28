@@ -1,0 +1,11 @@
+{
+  "step_id": "step12_quality_governance",
+  "version": "0.1.0",
+  "implementation": "python_deterministic",
+  "input": {"type": "object", "required": ["validated_sources"]},
+  "output": {"type": "object", "required": ["quality_report", "governance"]},
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["HUMAN_REVIEW_REQUIRED"],
+  "provenance_requirements": ["step_version", "source_ids"],
+  "human_review": {"supported": true, "triggers": ["overall_status!=PASS"]}
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Biological Knowledge Distillation - Input",
+  "type": "object",
+  "required": ["task_id", "user_request", "input_sources", "requested_output_level", "mode"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "user_request": {"type": "string"},
+    "input_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source_ref_type"],
+        "properties": {
+          "source_ref_type": {"type": "string", "enum": ["file", "text", "bibliographic", "intermediate_artifact"]},
+          "path": {"type": "string"},
+          "raw_text": {"type": "string"},
+          "bibliographic": {
+            "type": "object",
+            "properties": {
+              "title": {"type": "string"},
+              "authors_or_editors": {"type": "array", "items": {"type": "string"}},
+              "edition": {"type": "string"},
+              "publisher": {"type": "string"},
+              "publication_year": {"type": ["integer", "null"]},
+              "isbn": {"type": "array", "items": {"type": "string"}},
+              "doi": {"type": "string"},
+              "chapter": {"type": "string"},
+              "page_range": {"type": "string"}
+            }
+          },
+          "intermediate_artifact_id": {"type": "string"}
+        }
+      }
+    },
+    "target_domain": {"type": "array", "items": {"type": "string"}},
+    "target_organism": {"type": "array", "items": {"type": "string"}},
+    "target_strain": {"type": "array", "items": {"type": "string"}},
+    "target_engineering_goal": {"type": "array", "items": {"type": "string"}},
+    "requested_output_level": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "enum": ["level1_source_parsing", "level2_basic_knowledge", "level3_engineering_distillation", "level4_cross_source_fusion", "level5_knowledge_hub_adapter"]}
+    },
+    "source_languages": {"type": "array", "items": {"type": "string"}},
+    "output_languages": {"type": "array", "items": {"type": "string"}, "default": ["zh", "en"]},
+    "quality_requirement": {"type": "string"},
+    "requires_cross_source_fusion": {"type": "boolean", "default": false},
+    "requires_paper_case_linking": {"type": "boolean", "default": false},
+    "requires_frontend_adapter": {"type": "boolean", "default": false},
+    "paper_case_artifacts": {
+      "type": "array",
+      "items": {"type": "object"},
+      "description": "Optional Experimental Case objects (or references) produced by 论文实验设计抽取, to be linked in step11."
+    },
+    "mode": {
+      "type": "object",
+      "required": ["automatic", "human_review"],
+      "properties": {"automatic": {"type": "boolean"}, "human_review": {"type": "boolean"}}
+    }
+  }
+}

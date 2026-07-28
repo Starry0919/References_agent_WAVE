@@ -1,0 +1,27 @@
+{
+  "skill_id": "skill03_citation_validation",
+  "version": "0.2.0",
+  "implementation": "python",
+  "input": {
+    "type": "object",
+    "required": ["candidates"],
+    "properties": {
+      "candidates": {"type": "array", "items": {"$ref": "../../framework/unified-schema.json#/$defs/literatureCandidate"}}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["validated_candidates", "accepted_candidates", "validation_results"],
+    "properties": {
+      "validated_candidates": {"type": "array", "items": {"$ref": "../../framework/unified-schema.json#/$defs/literatureCandidate"}},
+      "accepted_candidates": {"type": "array", "items": {"$ref": "../../framework/unified-schema.json#/$defs/literatureCandidate"}},
+      "validation_results": {"type": "array", "items": {"type": "object"}}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-CIT-001", "EDX-CIT-002", "EDX-CIT-003", "EDX-VAL-001", "EDX-SYS-001"],
+  "local_error_codes": ["DOI001", "DOI002", "DOI003", "DOI004", "DOI005"],
+  "retry_policy": {"max_attempts": 3},
+  "provenance_requirements": ["database_source", "retrieved_at", "attempt", "query_used", "metadata_hash", "skill_version"],
+  "human_review": {"supported": true, "triggers": ["metadata_conflict", "partial_metadata", "all_databases_unavailable"]}
+}

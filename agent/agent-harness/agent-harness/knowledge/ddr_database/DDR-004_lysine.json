@@ -1,0 +1,96 @@
+{
+  "ddr_id": "DDR-004",
+  "metadata": {
+    "title": "General engineering-knowledge synthesis: feedback deregulation and competing-branch attenuation for L-lysine overproduction in Escherichia coli",
+    "category": ["amino acid production", "aspartate-family pathway engineering", "feedback deregulation", "competing pathway attenuation"],
+    "organism": "Escherichia coli",
+    "host": "E. coli",
+    "target_product": "lysine",
+    "product_class": "aspartate-family amino acid",
+    "engineering_level": "pathway feedback deregulation / competing-branch attenuation",
+    "reference": {
+      "title": "",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": ""
+    },
+    "reference_note": "This DDR is a synthesized summary of well-established, textbook-level E. coli aspartate-pathway engineering principles (feedback-resistant lysC, competing-branch attenuation), not a single verified experimental result from one cited paper - deliberately left without an author/journal/DOI rather than attributing it to a fabricated citation. See knowledge/engineering_actions/action_database.json for the same disclosure pattern used elsewhere in this knowledge base."
+  },
+  "engineering_problem": {
+    "problem_statement": "L-lysine titer is limited by feedback inhibition of aspartate-pathway enzymes by lysine and by flux diversion into the competing threonine/methionine branch, not solely by the capacity of the lysine-specific (DAP) branch enzymes.",
+    "problem_type": ["feedback inhibition", "competing pathway", "precursor branch-point competition"],
+    "trigger_conditions": [
+      "target product depends on the aspartate-derived amino acid family pathway",
+      "aspartokinase and/or dihydrodipicolinate synthase activity is feedback-inhibited by pathway end products",
+      "a substantial fraction of aspartate-semialdehyde flux is consumed by the competing threonine/methionine branch"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "wild-type aspartokinase III (lysC) activity is allosterically inhibited by lysine, capping flux into the aspartate pathway once intracellular lysine rises",
+      "dihydrodipicolinate synthase (dapA), the first committed step of the lysine-specific (DAP) branch, is itself subject to feedback inhibition by lysine in many organisms",
+      "aspartate-semialdehyde is a shared branch-point precursor consumed by both the DAP (lysine) branch and the homoserine (threonine/methionine) branch via homoserine dehydrogenase (hom)"
+    ],
+    "bottlenecks": [
+      "feedback inhibition of aspartokinase (lysC) by lysine limits total flux into the aspartate pathway",
+      "competing consumption of aspartate-semialdehyde by the threonine/methionine branch (hom, thrB) diverts flux away from lysine",
+      "feedback inhibition of dihydrodipicolinate synthase (dapA) limits flux specifically within the lysine-specific DAP branch"
+    ],
+    "mechanistic_explanation": "E. coli's aspartate pathway is a branch-point network feeding lysine, threonine, methionine, and isoleucine biosynthesis from a shared precursor pool (aspartate, then aspartyl-phosphate, then aspartate-semialdehyde). Both the entry enzyme (aspartokinase, of which lysC/AKIII is the isozyme most specific to the lysine branch) and the first lysine-branch-committed enzyme (dihydrodipicolinate synthase, dapA) are subject to allosteric feedback inhibition by lysine, so simply increasing terminal pathway enzyme expression runs into an upstream flux ceiling rather than a capacity ceiling. Independently, the shared aspartate-semialdehyde precursor is also drawn off by the competing homoserine/threonine/methionine branch (hom, thrB), so even after feedback deregulation, uncontrolled competing-branch flux can still limit lysine yield - this is a mechanistically distinct bottleneck class from feedback inhibition, not a restatement of it."
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "Relieving feedback inhibition of the aspartate-pathway entry point (a feedback-resistant lysC allele) together with attenuating - not eliminating - the competing threonine/methionine branch (hom/thrB) redirects aspartate-semialdehyde flux toward the lysine-specific DAP branch more effectively than terminal-enzyme overexpression alone.",
+    "expected_effect": "increased flux through the DAP branch and higher L-lysine titer, provided growth-essential threonine/methionine supply is not eliminated outright"
+  },
+  "engineering_actions": [
+    {
+      "modification_type": "mutation",
+      "target": "aspartokinase III feedback regulation",
+      "gene_or_pathway": "lysC (feedback-resistant allele targeting the lysine-binding regulatory domain); the specific substitution is not verified against a primary source in this knowledge base",
+      "source": "general, well-established metabolic-engineering pattern (feedback-resistant aspartokinase for aspartate-pathway deregulation); not a specific verified experimental result from a single cited paper in this knowledge base",
+      "rationale": "replacing wild-type lysC with a feedback-resistant (lysC-fbr) allele removes lysine-mediated allosteric inhibition of the pathway's entry step, raising the flux ceiling into the whole aspartate pathway",
+      "expected_effect": "increased flux into the aspartate pathway independent of intracellular lysine concentration",
+      "risk": "uncontrolled aspartate-pathway flux can draw down amino acid precursor pools needed elsewhere and increase metabolic burden; accumulation of pathway intermediates can itself become growth-inhibitory",
+      "validation": [
+        "measure aspartokinase activity in vitro with and without added lysine to confirm feedback resistance",
+        "compare intracellular aspartate-semialdehyde pool size before and after the mutation"
+      ]
+    },
+    {
+      "modification_type": "knockdown or attenuation",
+      "target": "competing threonine/methionine branch",
+      "gene_or_pathway": "hom / thrB (homoserine dehydrogenase / homoserine kinase); attenuation rather than full knockout, since threonine and methionine remain required for growth unless supplemented",
+      "source": "general, well-established metabolic-engineering pattern (competing-branch attenuation to redirect a shared precursor pool); not a specific verified experimental result from a single cited paper in this knowledge base",
+      "rationale": "hom and thrB consume the same aspartate-semialdehyde precursor pool the lysine (DAP) branch depends on; reducing (not eliminating) flux through this branch leaves more precursor available for lysine biosynthesis",
+      "expected_effect": "more aspartate-semialdehyde flux available to the DAP/lysine branch",
+      "risk": "over-attenuation can create a threonine/methionine auxotrophy or growth defect, since both are essential amino acids the cell cannot omit entirely; this is not a safe unconditional knockout and needs dose-controlled attenuation or media supplementation",
+      "validation": [
+        "confirm the strain is not auxotrophic for threonine/methionine under the intended cultivation medium, or supplement accordingly",
+        "compare growth rate and biomass yield to the unmodified control strain"
+      ]
+    }
+  ],
+  "decision_rules": [
+    {
+      "condition": "terminal DAP-branch enzymes are functional but lysine titer plateaus",
+      "recommended_strategy": "check aspartokinase and dapA feedback status before assuming a terminal-enzyme capacity limit",
+      "reason": "titer may be capped by feedback inhibition upstream of the terminal branch, not by terminal enzyme capacity"
+    },
+    {
+      "condition": "target product depends on the aspartate-family pathway (lysine, threonine, methionine, isoleucine)",
+      "recommended_strategy": "evaluate the competing branches sharing the same precursor pool before attributing a bottleneck to a single branch",
+      "reason": "aspartate-semialdehyde is a shared branch point; competing consumption elsewhere can mask or compound a feedback-inhibition bottleneck"
+    },
+    {
+      "condition": "a proposed intervention would eliminate flux to a branch producing an essential amino acid",
+      "recommended_strategy": "attenuate rather than fully knock out, or verify the target gene is not essential/conditionally essential under the intended growth medium before proceeding",
+      "reason": "unconditional knockout of a branch supplying an essential nutrient can be lethal or require permanent media supplementation"
+    }
+  ],
+  "generalizable_rules": [
+    "diagnose feedback inhibition at the pathway entry point before assuming a terminal-branch capacity limit",
+    "when a product pathway shares a precursor with other essential-biosynthesis branches, evaluate competing consumption explicitly rather than treating the target branch in isolation",
+    "prefer attenuation over full knockout when a competing branch also supplies an essential nutrient"
+  ]
+}

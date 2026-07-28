@@ -1,0 +1,94 @@
+{
+  "ddr_id": "DDR-001",
+  "metadata": {
+    "title": "Flux redistribution of central carbon metabolism for efficient production of L-tryptophan in Escherichia coli",
+    "category": ["aromatic amino acid production", "precursor engineering", "central carbon flux redistribution"],
+    "organism": "Escherichia coli",
+    "host": "E. coli",
+    "target_product": "L-tryptophan",
+    "product_class": "aromatic amino acid",
+    "engineering_level": "central metabolism / precursor-supply engineering",
+    "reference": {
+      "title": "Flux redistribution of central carbon metabolism for efficient production of L-tryptophan in Escherichia coli",
+      "authors": "Xiong B. et al.",
+      "journal": "Biotechnology and Bioengineering",
+      "year": "2021",
+      "doi": "10.1002/bit.27665"
+    }
+  },
+  "engineering_problem": {
+    "problem_statement": "L-tryptophan production is limited by precursor supply and carbon flux imbalance rather than by terminal pathway enzyme capacity alone.",
+    "problem_type": ["precursor limitation", "carbon flux imbalance"],
+    "trigger_conditions": [
+      "target product depends on aromatic amino acid (shikimate) pathway precursors",
+      "terminal biosynthetic enzymes are already expressed but titer remains limited",
+      "carbon flux distribution between competing central-metabolism pathways is imbalanced"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "increasing terminal pathway enzyme expression alone does not proportionally raise L-tryptophan titer",
+      "aromatic amino acid biosynthesis draws on precursors (e.g. PEP, E4P) shared with central carbon metabolism",
+      "anthranilate synthase (TrpE) and trp operon expression are subject to feedback inhibition/attenuation by intracellular tryptophan - a regulatory mechanism independent of precursor supply (general, well-established E. coli trp-pathway regulatory biology, not a specific finding of the cited flux-redistribution paper)"
+    ],
+    "bottlenecks": [
+      "precursor (PEP/E4P) supply limitation",
+      "imbalanced carbon flux distribution across central metabolism",
+      "feedback inhibition of anthranilate synthase (TrpE) and attenuation of the trp operon by intracellular tryptophan, independent of precursor supply"
+    ],
+    "mechanistic_explanation": "The shikimate pathway that feeds aromatic amino acid biosynthesis draws its precursors from central carbon metabolism; when flux through central metabolism is not rebalanced toward those precursors, overexpressing terminal biosynthetic enzymes runs into a supply ceiling rather than a capacity ceiling. This precursor-supply constraint is mechanistically distinct from the trp operon's own feedback regulation (TrpE inhibition and attenuation by tryptophan): even with unlimited PEP/E4P supply, native feedback regulation independently caps flux through the terminal pathway - the two bottleneck classes require different interventions (central-metabolism flux redistribution vs. feedback-resistant TrpE / regulatory deregulation) and should not be conflated."
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "Redistributing flux within central carbon metabolism to increase precursor (PEP/E4P) supply, analyzed before committing to terminal-enzyme overexpression, relieves the supply-side bottleneck limiting L-tryptophan titer.",
+    "expected_effect": "improved precursor availability that enables higher pathway flux once combined with adequate terminal-enzyme expression"
+  },
+  "engineering_actions": [
+    {
+      "modification_type": "flux redistribution",
+      "target": "central carbon metabolism precursor supply (PEP, E4P)",
+      "gene_or_pathway": "central carbon metabolism (glycolysis / pentose phosphate pathway); specific gene targets are not specified in the problem summary available to this V1 knowledge base and require review of the primary text",
+      "source": "Xiong B. et al., 2021, Biotechnology and Bioengineering, DOI:10.1002/bit.27665",
+      "rationale": "the core finding is that precursor limitation must be diagnosed and central carbon flux rebalanced before overexpressing terminal pathway enzymes, otherwise enzyme overexpression is capped by precursor supply.",
+      "expected_effect": "increased PEP/E4P availability supporting higher shikimate-pathway flux",
+      "risk": "redirecting central carbon flux toward aromatic amino acid precursors may reduce flux available to biomass formation or other essential pathways, potentially affecting growth",
+      "validation": [
+        "measure intracellular PEP/E4P pool sizes before and after the intervention",
+        "compare L-tryptophan titer/yield with and without central carbon flux redistribution"
+      ]
+    },
+    {
+      "modification_type": "overexpression",
+      "target": "terminal aromatic amino acid biosynthetic enzymes",
+      "gene_or_pathway": "terminal shikimate/tryptophan pathway enzymes; specific gene identities are not specified in the problem summary available to this V1 knowledge base",
+      "source": "Xiong B. et al., 2021, Biotechnology and Bioengineering, DOI:10.1002/bit.27665",
+      "rationale": "terminal enzyme overexpression remains a necessary step, but per the core rule it should follow precursor-supply analysis rather than be attempted first.",
+      "expected_effect": "additional flux increase once precursor limitation has been relieved",
+      "risk": "overexpressing terminal enzymes before addressing precursor supply adds metabolic burden without proportional titer gain",
+      "validation": [
+        "compare titer improvement from terminal-enzyme overexpression alone versus combined with precursor/flux engineering"
+      ]
+    }
+  ],
+  "decision_rules": [
+    {
+      "condition": "terminal pathway enzymes are already expressed but product titer plateaus",
+      "recommended_strategy": "analyze precursor limitation before further overexpressing terminal enzymes",
+      "reason": "titer may be capped by precursor supply, not by terminal enzyme capacity"
+    },
+    {
+      "condition": "target product depends on PEP/E4P-derived precursors (e.g. aromatic amino acid pathway)",
+      "recommended_strategy": "consider PEP/E4P supply explicitly when designing the engineering strategy",
+      "reason": "these precursors are shared with central carbon metabolism and can become limiting"
+    },
+    {
+      "condition": "precursor supply has been identified as limiting",
+      "recommended_strategy": "optimize central carbon metabolism to rebalance flux toward the limiting precursor(s)",
+      "reason": "rebalancing upstream flux addresses the root cause rather than only the downstream symptom"
+    }
+  ],
+  "generalizable_rules": [
+    "diagnose precursor limitation before overexpressing terminal pathway enzymes",
+    "when a product pathway shares precursors with central carbon metabolism (e.g. PEP, E4P), explicitly evaluate that supply",
+    "optimizing central carbon metabolism is often necessary, not optional, for efficient production of precursor-limited products"
+  ]
+}

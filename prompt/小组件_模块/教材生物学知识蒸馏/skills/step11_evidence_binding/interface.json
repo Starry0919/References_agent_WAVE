@@ -1,0 +1,11 @@
+{
+  "step_id": "step11_evidence_binding",
+  "version": "0.1.0",
+  "implementation": "python_deterministic",
+  "input": {"type": "object", "required": ["source_structures"]},
+  "output": {"type": "object", "required": ["all_objects", "evidence_coverage"]},
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EVIDENCE_NOT_FOUND", "SOURCE_ATTRIBUTION_ERROR", "SEMANTIC_MISMATCH"],
+  "provenance_requirements": ["step_version", "source_ids"],
+  "human_review": {"supported": true, "triggers": ["evidence_not_found", "low_coverage"]}
+}

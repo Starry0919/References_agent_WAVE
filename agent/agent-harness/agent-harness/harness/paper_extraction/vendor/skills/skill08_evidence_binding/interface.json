@@ -1,0 +1,30 @@
+{
+  "skill_id": "skill08_evidence_binding",
+  "version": "0.2.0",
+  "implementation": "python_provenance_binding",
+  "input": {
+    "type": "object",
+    "required": ["skill07_output", "clean_document_artifact"],
+    "properties": {
+      "skill07_output": {"type": "object"},
+      "clean_document_artifact": {"type": "object"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["literature_experiment", "evidence_linked_design", "evidence_map", "coverage", "conflicts"],
+    "properties": {
+      "literature_experiment": {"$ref": "../../framework/unified-schema.json#/$defs/literatureExperiment"},
+      "evidence_linked_design": {"type": "object"},
+      "evidence_map": {"type": "object"},
+      "coverage": {"type": "object"},
+      "conflicts": {"type": "array", "items": {"type": "object"}}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-EVD-001", "EDX-EVD-002", "EDX-EVD-003", "EDX-VAL-002", "EDX-SYS-002"],
+  "local_error_codes": ["EVID001", "EVID002", "EVID003", "EVID004", "EVID005"],
+  "retry_policy": {"max_attempts": 3},
+  "provenance_requirements": ["paper_id", "artifact_id", "artifact_sha256", "locator", "quote_sha256", "extraction"],
+  "human_review": {"supported": true, "triggers": ["conflicting_evidence", "invalid_locator", "reported_without_evidence", "quote_insufficient"]}
+}

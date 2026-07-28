@@ -1,0 +1,17 @@
+{
+  "step_id": "step04_markdown_cleaning",
+  "version": "0.1.0",
+  "implementation": "python_deterministic",
+  "input": {
+    "type": "object",
+    "required": ["source_id", "raw_markdown", "used_pdf_parser"]
+  },
+  "output": {
+    "type": "object",
+    "required": ["source_id", "clean_markdown", "noise_removed", "modification_log"]
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["STRUCTURE_LOSS"],
+  "provenance_requirements": ["step_version", "source_ids"],
+  "human_review": {"supported": true, "triggers": ["no_headings_after_cleaning"]}
+}

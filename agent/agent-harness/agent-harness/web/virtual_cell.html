@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Virtual Cell — Predictive Simulation</title>
+<style>
+:root {
+  --bg: #f4f5f7; --panel: #ffffff; --card: #ffffff; --text: #1b1e23; --muted: #69707b;
+  --border: #e3e6ea; --accent: #3b82f6; --accent-soft: #e9f0fe;
+  --ok: #16a34a; --warn: #d97706; --err: #dc2626; --code-bg: #eef0f3;
+  --tag-model: #2563eb; --tag-exp: #16a34a; --tag-lit: #7c3aed; --tag-agent: #6b7280;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115; --panel: #16191f; --card: #1c2028; --text: #e7e9ec; --muted: #99a1ac;
+    --border: #2a2f38; --accent: #5b9dff; --accent-soft: #1c2b47;
+    --ok: #34c265; --warn: #e9a23b; --err: #f0605a; --code-bg: #12151b;
+    --tag-model: #5b9dff; --tag-exp: #34c265; --tag-lit: #a684ff; --tag-agent: #9aa2ad;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px; color: var(--text); background: var(--bg); }
+header { padding: 16px 24px; border-bottom: 1px solid var(--border); background: var(--panel); }
+header h1 { font-size: 18px; margin: 0 0 4px; }
+header p { margin: 0; color: var(--muted); font-size: 12.5px; }
+nav { display: flex; gap: 4px; padding: 8px 24px; background: var(--panel); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+nav button { font: inherit; padding: 7px 14px; border-radius: 8px; border: 1px solid transparent; background: transparent; color: var(--muted); cursor: pointer; }
+nav button.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+main { padding: 20px 24px; max-width: 1200px; margin: 0 auto; }
+.tab { display: none; }
+.tab.active { display: block; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+.card h2 { font-size: 15px; margin: 0 0 12px; }
+.card h3 { font-size: 13px; margin: 14px 0 8px; color: var(--muted); }
+label { display: block; font-size: 12px; color: var(--muted); margin: 8px 0 3px; }
+input, textarea, select { width: 100%; font: inherit; padding: 7px 9px; border-radius: 7px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+textarea { font-family: var(--mono); font-size: 12px; min-height: 60px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+.row > div { flex: 1; min-width: 200px; }
+button.primary { margin-top: 12px; padding: 9px 16px; border-radius: 8px; border: none; background: var(--accent); color: white; font-weight: 600; cursor: pointer; }
+button.primary:disabled { opacity: 0.5; cursor: default; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.3px; }
+.pre { font-family: var(--mono); font-size: 12px; background: var(--code-bg); padding: 10px; border-radius: 7px; white-space: pre-wrap; overflow-x: auto; }
+.tag { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 1px 7px; border-radius: 999px; color: white; margin-right: 4px; }
+.tag.model { background: var(--tag-model); }
+.tag.exp { background: var(--tag-exp); }
+.tag.lit { background: var(--tag-lit); }
+.tag.agent { background: var(--tag-agent); }
+.badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); }
+.badge.ok { color: var(--ok); border-color: var(--ok); }
+.badge.warn { color: var(--warn); border-color: var(--warn); }
+.badge.err { color: var(--err); border-color: var(--err); }
+.badge.unk { color: var(--muted); }
+.status-line { margin: 4px 0; font-size: 12.5px; }
+.empty { color: var(--muted); font-style: italic; font-size: 12.5px; }
+.finding { padding: 8px 10px; border-radius: 7px; margin-bottom: 6px; border-left: 3px solid var(--muted); background: var(--code-bg); font-size: 12.5px; }
+.finding.blocking { border-color: var(--err); }
+.finding.major { border-color: var(--warn); }
+.finding.warning { border-color: var(--warn); }
+.finding.info { border-color: var(--accent); }
+.timeline-item { display: flex; gap: 10px; padding: 6px 0; font-size: 12.5px; border-bottom: 1px dashed var(--border); }
+.timeline-item .from { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Virtual Cell — Predictive Simulation &amp; Counterfactual Review</h1>
+  <p>Problem 6: DesignVersion → Baseline Cell State → Compiled Intervention → Real Model Run (gem_fba/cobrapy) → Counterfactual Comparison → Prediction Review → Validation → Residual → Governed Update</p>
+</header>
+<nav id="tabs">
+  <button data-tab="run" class="active">Run / Simulation Workspace</button>
+  <button data-tab="registry">Model Registry</button>
+  <button data-tab="cellstate">Cell State</button>
+  <button data-tab="compare">Counterfactual Compare</button>
+  <button data-tab="boundary">Prediction Boundary</button>
+  <button data-tab="validation">Validation &amp; Residual</button>
+  <button data-tab="gate">Human Gate</button>
+  <button data-tab="reliability">Model Reliability</button>
+</nav>
+<main>
+
+<section class="tab active" id="tab-run">
+  <div class="card">
+    <h2>Run a prediction (baseline vs. intervention)</h2>
+    <div class="row">
+      <div><label>project_id (existing)</label><input id="in-project" placeholder="PROJ-..."></div>
+      <div><label>design_version_id (approved)</label><input id="in-design" placeholder="DV-..."></div>
+      <div><label>actor_id</label><input id="in-actor" value="agent"></div>
+    </div>
+    <div class="row">
+      <div><label>chassis (JSON)</label><textarea id="in-chassis">{"organism":"Escherichia coli","strain":"K-12 MG1655"}</textarea></div>
+      <div><label>environment (JSON)</label><textarea id="in-env">{"medium":"M9_minimal","carbon_source":"glucose"}</textarea></div>
+    </div>
+    <button class="primary" id="btn-run">Run baseline + intervention</button>
+    <div id="run-error" class="status-line" style="color:var(--err)"></div>
+  </div>
+  <div class="card" id="workspace-card" style="display:none">
+    <h2>Simulation Workspace</h2>
+    <div id="ws-status"></div>
+    <h3>State transitions</h3>
+    <div id="ws-transitions"></div>
+    <h3>Runs</h3>
+    <div id="ws-runs"></div>
+  </div>
+</section>
+
+<section class="tab" id="tab-registry">
+  <div class="card">
+    <h2>Model Registry</h2>
+    <p class="empty">What each real adapter claims to support — capability metadata, not performance history (see Model Reliability tab for that).</p>
+    <div id="registry-list"></div>
+  </div>
+</section>
+
+<section class="tab" id="tab-cellstate">
+  <div class="card">
+    <h2>Baseline Cell State</h2>
+    <div id="cellstate-view" class="empty">Run a simulation first.</div>
+  </div>
+</section>
+
+<section class="tab" id="tab-compare">
+  <div class="card">
+    <h2>Counterfactual Compare</h2>
+    <div id="compare-view" class="empty">Run a simulation first.</div>
+  </div>
+</section>
+
+<section class="tab" id="tab-boundary">
+  <div class="card">
+    <h2>Prediction Boundary</h2>
+    <div id="boundary-view" class="empty">Run a simulation first.</div>
+  </div>
+</section>
+
+<section class="tab" id="tab-validation">
+  <div class="card">
+    <h2>Validation Plan</h2>
+    <div id="validation-list" class="empty">Run a simulation first.</div>
+  </div>
+  <div class="card">
+    <h2>Record residual from an observation</h2>
+    <div class="row">
+      <div><label>validation_item_id</label><input id="res-item"></div>
+      <div><label>observation_id</label><input id="res-obs"></div>
+      <div><label>actor_id</label><input id="res-actor" value="agent"></div>
+    </div>
+    <button class="primary" id="btn-residual">Compute residual</button>
+    <div id="residual-out" class="pre" style="display:none"></div>
+  </div>
+</section>
+
+<section class="tab" id="tab-gate">
+  <div class="card">
+    <h2>Model Update Proposal (Level 1–5)</h2>
+    <div class="row">
+      <div><label>project_id</label><input id="mup-project"></div>
+      <div><label>residual_ids (comma-separated)</label><input id="mup-residuals"></div>
+      <div><label>update_level</label>
+        <select id="mup-level">
+          <option value="project_belief">1 · project_belief (auto)</option>
+          <option value="input_state">2 · input_state</option>
+          <option value="parameter_calibration">3 · parameter_calibration (Human Gate)</option>
+          <option value="model_structure">4 · model_structure (Human Gate)</option>
+          <option value="model_retraining">5 · model_retraining (Human Gate)</option>
+        </select>
+      </div>
+    </div>
+    <label>rationale</label><input id="mup-rationale">
+    <button class="primary" id="btn-propose">Propose update</button>
+    <div id="mup-out" class="pre" style="display:none"></div>
+  </div>
+  <div class="card">
+    <h2>Human Gate decision</h2>
+    <div class="row">
+      <div><label>proposal_id</label><input id="dec-proposal"></div>
+      <div><label>approver_id</label><input id="dec-approver"></div>
+      <div><label>decision</label><select id="dec-decision"><option value="approved">approved</option><option value="rejected">rejected</option></select></div>
+    </div>
+    <label>rationale</label><input id="dec-rationale">
+    <button class="primary" id="btn-decide">Submit decision</button>
+    <div id="dec-out" class="pre" style="display:none"></div>
+  </div>
+</section>
+
+<section class="tab" id="tab-reliability">
+  <div class="card">
+    <h2>Model Reliability — gem_fba</h2>
+    <p class="empty">Per-endpoint benchmark evidence and calibration profiles — never a single aggregate confidence score.</p>
+    <h3>Benchmark records</h3>
+    <div id="benchmark-list" class="empty">none yet</div>
+    <h3>Calibration profiles</h3>
+    <div id="calibration-list" class="empty">none yet</div>
+    <button class="primary" id="btn-refresh-reliability" style="margin-top:10px">Refresh</button>
+  </div>
+</section>
+
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let lastResult = null;
+
+function tag(sourceType) {
+  const map = {model_output: ['model','MODEL'], experimental_observation: ['exp','EXPERIMENT'], literature_reported: ['lit','LITERATURE'], derived_from_model: ['model','DERIVED'], derived_from_observation: ['exp','DERIVED'], assumption: ['agent','ASSUMPTION'], unknown: ['agent','UNKNOWN']};
+  const [cls, label] = map[sourceType] || ['agent', sourceType || 'UNKNOWN'];
+  return `<span class="tag ${cls}">${label}</span>`;
+}
+function badge(status) {
+  const cls = {available: 'ok', compatible: 'ok', optimal: 'ok', decision_ready: 'ok',
+    unavailable: 'err', out_of_domain: 'err', unsupported: 'err', error: 'err', infeasible: 'err', rejected: 'err',
+    compatible_with_assumptions: 'warn', limited_acceptance: 'warn', approximate: 'warn'}[status] || 'unk';
+  return `<span class="badge ${cls}">${status ?? 'not_computed'}</span>`;
+}
+
+document.querySelectorAll('#tabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    $('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  const body = await r.json();
+  if (!r.ok) throw new Error(body.detail || JSON.stringify(body));
+  return body;
+}
+
+async function loadRegistry() {
+  const data = await api('/api/virtual-cell/models');
+  $('registry-list').innerHTML = data.models.map(m => `
+    <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+      <b>${m.model_name}</b> ${badge(m.availability_status)}
+      <div class="empty">organism=${m.organism} · type=${m.model_type} · version=${m.model_version}</div>
+      ${m.availability_status === 'unavailable' ? `<div style="color:var(--err);font-size:12px">${m.unavailability_reason}</div>` : ''}
+      <div style="font-size:12px;margin-top:4px">supported perturbations: ${(m.supported_perturbations||[]).join('; ') || 'none'}</div>
+      <div style="font-size:12px;margin-top:4px">known failure modes: ${(m.known_failure_modes||[]).join(' | ')}</div>
+    </div>`).join('');
+}
+
+function renderTransitions(transitions) {
+  $('ws-transitions').innerHTML = transitions.map(t => `<div class="timeline-item"><span class="from">${t.from_state ?? '∅'} →</span> <b>${t.to_state}</b> <span class="empty">${t.reason}</span></div>`).join('') || '<div class="empty">none</div>';
+}
+
+$('btn-run').addEventListener('click', async () => {
+  $('run-error').textContent = '';
+  let chassis, environment;
+  try { chassis = JSON.parse($('in-chassis').value); environment = JSON.parse($('in-env').value); }
+  catch (e) { $('run-error').textContent = 'chassis/environment must be valid JSON'; return; }
+  try {
+    const body = await api('/api/virtual-cell/simulations', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({project_id: $('in-project').value, design_version_id: $('in-design').value, chassis, environment, actor_id: $('in-actor').value}),
+    });
+    lastResult = body;
+    $('workspace-card').style.display = '';
+    $('ws-status').innerHTML = `Case <b>${body.case.simulation_case_id}</b> — status ${badge(body.case.status)}` + (body.case.stop_reason ? ` <span class="empty">(${body.case.stop_reason})</span>` : '');
+    const transitions = await api(`/api/virtual-cell/simulation-cases/${body.case.simulation_case_id}/transitions`);
+    renderTransitions(transitions.transitions);
+    $('ws-runs').innerHTML = ['baseline_run', 'candidate_run'].map(k => {
+      const r = body[k];
+      if (!r) return `<div class="empty">${k}: not run</div>`;
+      return `<div style="margin-bottom:6px"><b>${r.scenario_label}</b> ${badge(r.status)} <span class="empty">${r.model_id} ${r.model_version}</span>${r.failure_reason ? ` <span style="color:var(--err)">${r.failure_reason}</span>` : ''}</div>`;
+    }).join('');
+    renderCellState(body);
+    renderCompare(body);
+    renderBoundary(body);
+    renderValidation(body);
+  } catch (e) { $('run-error').textContent = e.message; }
+});
+
+async function renderCellState(body) {
+  const stateId = body.case.baseline_cell_state_id;
+  if (!stateId) { $('cellstate-view').innerHTML = '<div class="empty">no baseline cell state (blocked upstream)</div>'; return; }
+  try {
+    const s = await api(`/api/virtual-cell/cell-states/${stateId}`);
+    const rows = Object.entries(s.field_provenance || {}).map(([field, status]) =>
+      `<tr><td>${field}</td><td><span class="badge ${status === 'observed' ? 'ok' : status === 'unknown' ? 'err' : 'warn'}">${status}</span></td></tr>`).join('');
+    $('cellstate-view').innerHTML = `
+      <div class="status-line">chassis: ${JSON.stringify(s.chassis)}</div>
+      <div class="status-line">environment: ${JSON.stringify(s.environment)}</div>
+      <div class="status-line">quality_status: ${badge(s.quality_status)}</div>
+      <h3>Field provenance (observed / model_inferred / literature_derived / assumed / unknown)</h3>
+      <table><tr><th>field</th><th>status</th></tr>${rows}</table>
+      <h3>Missing modalities</h3>
+      <div class="empty">${(s.missing_modalities || []).join(', ') || 'none'}</div>`;
+  } catch (e) { $('cellstate-view').innerHTML = `<div class="empty">error: ${e.message}</div>`; }
+}
+
+function renderCompare(body) {
+  const c = body.comparison;
+  if (!c) { $('compare-view').innerHTML = `<div class="empty">no comparison — case status ${body.case.status}</div>`; return; }
+  let html = `<div class="status-line">comparability: ${badge(c.comparability_status)}</div>`;
+  if (c.comparability_violations && c.comparability_violations.length) html += `<div class="finding blocking">${c.comparability_violations.join('; ')}</div>`;
+  html += '<table><tr><th>endpoint</th><th>unit</th><th>baseline</th><th>candidate</th><th>delta</th><th>rel. change</th><th>note</th></tr>';
+  for (const e of c.endpoints || []) {
+    html += `<tr><td>${e.name}</td><td>${e.unit ?? '—'}</td><td>${e.not_modeled ? '—' : e.baseline_value?.toFixed(4)}</td><td>${e.not_modeled ? '—' : e.candidate_value?.toFixed(4)}</td>` +
+      `<td>${e.delta !== null && e.delta !== undefined ? e.delta.toFixed(5) : '—'}</td><td>${e.relative_change !== null && e.relative_change !== undefined ? (e.relative_change*100).toFixed(2)+'%' : '—'}</td>` +
+      `<td>${e.not_modeled ? '<span class="badge unk">not_modeled</span>' : (e.rejected_reason || '')}</td></tr>`;
+  }
+  html += '</table>';
+  $('compare-view').innerHTML = html;
+}
+
+function renderBoundary(body) {
+  const comp = body.compatibility;
+  let html = '';
+  if (comp) {
+    html += `<h3>Compatibility</h3><div class="status-line">decision: ${badge(comp.decision)}</div>`;
+    if (comp.blocking_reasons?.length) html += comp.blocking_reasons.map(r => `<div class="finding blocking">${r}</div>`).join('');
+    if (comp.non_blocking_assumptions?.length) html += comp.non_blocking_assumptions.map(r => `<div class="finding warning">assumption: ${r}</div>`).join('');
+  }
+  if (body.compiled?.length) {
+    html += '<h3>Compiled interventions</h3>';
+    html += body.compiled.map(c => `<div style="margin-bottom:8px">
+      <b>${c.resolved_gene_id ?? '(unresolved)'}</b> ${badge(c.status)} <span class="badge ${c.mapping_status === 'direct' ? 'ok' : c.mapping_status === 'approximate' ? 'warn' : 'err'}">mapping: ${c.mapping_status}</span>
+      <div class="empty">affected reactions: ${(c.affected_reactions||[]).join(', ') || 'none'}</div>
+      ${c.mapping_assumptions?.length ? `<div style="font-size:12px">assumptions: ${c.mapping_assumptions.join('; ')}</div>` : ''}
+      ${c.rejection_reason ? `<div style="color:var(--err);font-size:12px">${c.rejection_reason}</div>` : ''}
+    </div>`).join('');
+  }
+  if (body.review) {
+    const r = body.review;
+    html += `<h3>Prediction Review</h3><div class="status-line">decision: ${badge(r.decision)}</div>`;
+    html += (r.findings || []).map(f => `<div class="finding ${f.severity}">[${f.severity}] ${f.category}: ${f.message}</div>`).join('') || '<div class="empty">no findings</div>';
+    html += `<div class="empty" style="margin-top:6px">model-derived: ${(r.model_derived_endpoints||[]).join(', ') || 'none'} · not modeled: ${(r.not_modeled_endpoints||[]).join(', ') || 'none'}</div>`;
+  }
+  $('boundary-view').innerHTML = html || '<div class="empty">run a simulation first</div>';
+}
+
+function renderValidation(body) {
+  const items = body.validation_items || [];
+  if (!items.length) { $('validation-list').innerHTML = '<div class="empty">no validation plan yet</div>'; return; }
+  $('validation-list').innerHTML = items.map(v => `<div style="margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+    <b>${v.endpoint}</b> · assay: ${v.assay} · expected direction: <b>${v.expected_direction}</b> · <span class="badge unk">${v.status}</span>
+    <div style="font-size:12px;margin-top:3px">falsification: ${v.falsification_condition}</div>
+    <div class="empty">validation_item_id: ${v.validation_item_id}</div>
+  </div>`).join('');
+}
+
+$('btn-residual').addEventListener('click', async () => {
+  try {
+    const body = await api('/api/virtual-cell/residuals', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        simulation_case_id: lastResult?.case?.simulation_case_id || '', validation_item_id: $('res-item').value,
+        observation_id: $('res-obs').value, actor_id: $('res-actor').value,
+      }),
+    });
+    $('residual-out').style.display = ''; $('residual-out').textContent = JSON.stringify(body, null, 2);
+  } catch (e) { $('residual-out').style.display = ''; $('residual-out').textContent = 'ERROR: ' + e.message; }
+});
+
+$('btn-propose').addEventListener('click', async () => {
+  try {
+    const body = await api('/api/virtual-cell/model-update-proposals', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        project_id: $('mup-project').value, residual_ids: $('mup-residuals').value.split(',').map(s => s.trim()).filter(Boolean),
+        update_level: $('mup-level').value, rationale: $('mup-rationale').value, actor_id: 'agent',
+      }),
+    });
+    $('mup-out').style.display = ''; $('mup-out').textContent = JSON.stringify(body, null, 2);
+  } catch (e) { $('mup-out').style.display = ''; $('mup-out').textContent = 'ERROR: ' + e.message; }
+});
+
+$('btn-decide').addEventListener('click', async () => {
+  try {
+    const body = await api(`/api/virtual-cell/model-update-proposals/${$('dec-proposal').value}/decision`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({decision: $('dec-decision').value, approver_id: $('dec-approver').value, rationale: $('dec-rationale').value}),
+    });
+    $('dec-out').style.display = ''; $('dec-out').textContent = JSON.stringify(body, null, 2);
+  } catch (e) { $('dec-out').style.display = ''; $('dec-out').textContent = 'ERROR: ' + e.message; }
+});
+
+async function refreshReliability() {
+  try {
+    const b = await api('/api/virtual-cell/models/MREG-gem_fba/benchmarks');
+    $('benchmark-list').innerHTML = b.benchmarks.length ? b.benchmarks.map(r => `<div style="margin-bottom:6px">
+      <b>${r.endpoint}</b> · split=${r.split_type} · n=${r.sample_count} · perturbation_class=${r.perturbation_class} · <span class="badge unk">${r.status}</span>
+      <div class="empty">mae=${r.metrics.mae?.toFixed(4) ?? '—'} rmse=${r.metrics.rmse?.toFixed(4) ?? '—'} bias=${r.metrics.bias?.toFixed(4) ?? '—'}</div>
+    </div>`).join('') : '<div class="empty">none yet</div>';
+    const c = await api('/api/virtual-cell/models/MREG-gem_fba/calibration-profiles');
+    $('calibration-list').innerHTML = c.profiles.length ? c.profiles.map(p => `<div style="margin-bottom:6px">
+      <b>${p.endpoint}</b> · n=${p.sample_count}/${p.minimum_sample_requirement} · <span class="badge ${p.reliability_status === 'calibrated' ? 'ok' : p.reliability_status.includes('insufficient') ? 'err' : 'warn'}">${p.reliability_status}</span>
+    </div>`).join('') : '<div class="empty">none yet</div>';
+  } catch (e) { /* endpoints require a model_id path; ignore if none created yet */ }
+}
+$('btn-refresh-reliability').addEventListener('click', refreshReliability);
+
+loadRegistry();
+refreshReliability();
+</script>
+</body>
+</html>

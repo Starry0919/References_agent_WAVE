@@ -1,0 +1,34 @@
+{
+  "skill_id": "skill12_qc_human_review",
+  "version": "0.2.0",
+  "implementation": "implemented",
+  "input": {
+    "type": "object",
+    "required": ["skill_name", "artifact_id", "artifact_type", "artifact_content", "provenance"],
+    "properties": {
+      "skill_name": {"type": "string"},
+      "artifact_id": {"type": "string"},
+      "artifact_type": {"type": "string"},
+      "artifact_content": {"type": "object"},
+      "provenance": {"type": "object"},
+      "quality_report": {"type": "object"},
+      "previous_validation": {"type": "array"},
+      "review_action": {"type": "object"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["qc_report", "review_task", "audit_event", "governance", "continuation"],
+    "properties": {
+      "qc_report": {"type": "object"},
+      "review_task": {"type": ["object", "null"]},
+      "audit_event": {"type": "object"},
+      "governance": {"$ref": "../../framework/unified-schema.json#/$defs/governance"},
+      "continuation": {"type": "object"}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "terminal_failure"],
+  "error_codes": ["GOV001", "GOV002", "GOV003", "GOV004", "GOV005"],
+  "provenance_requirements": ["skill_id", "skill_version", "input_hash", "output_hash", "ruleset_version"],
+  "human_review": {"supported": true, "actions": ["approve", "reject", "modify", "comment"]}
+}

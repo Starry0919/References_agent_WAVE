@@ -1,0 +1,11 @@
+{
+  "step_id": "step11_paper_case_linking",
+  "version": "0.1.0",
+  "implementation": "python_rule_extraction",
+  "input": {"type": "object", "required": ["knowledge_objects", "paper_case_artifacts"]},
+  "output": {"type": "object", "required": ["paper_case_links"]},
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["PAPER_LINK_MISMATCH"],
+  "provenance_requirements": ["step_version", "source_ids"],
+  "human_review": {"supported": true, "triggers": ["link_always_requires_confirmation"]}
+}

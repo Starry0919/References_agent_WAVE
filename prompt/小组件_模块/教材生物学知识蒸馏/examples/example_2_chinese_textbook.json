@@ -1,0 +1,757 @@
+{
+  "input": {
+    "task_id": "example-zh-002",
+    "user_request": "从这段教材中抽取反馈抑制和竞争支路相关的生物学概念与机制。",
+    "input_sources": [
+      {
+        "source_ref_type": "text",
+        "raw_text": "# 第七章 代谢通量的调控\n\n## 7.3 反馈抑制\n\n反馈抑制是指下游途径产物积累导致某个酶活性降低的现象。\n\n在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。\n\n## 7.6 竞争支路\n\n竞争支路是指与目标产物合成途径共享前体或辅因子的旁路代谢途径。\n\n该竞争支路消耗关键前体,导致目标产物合成受限。\n",
+        "bibliographic": {
+          "title": "代谢工程原理 (合成测试版)",
+          "authors_or_editors": [
+            "测试甲"
+          ],
+          "publisher": "测试出版社",
+          "publication_year": 2021,
+          "isbn": [
+            "111-1-11-111111-1"
+          ],
+          "edition": "第1版",
+          "chapter": "7",
+          "source_type": "textbook"
+        }
+      }
+    ],
+    "target_domain": [
+      "metabolic engineering"
+    ],
+    "requested_output_level": [
+      "level2_basic_knowledge"
+    ],
+    "mode": {
+      "automatic": true,
+      "human_review": true
+    }
+  },
+  "output": {
+    "task_id": "example-zh-002",
+    "status": "COMPLETED",
+    "summary": {
+      "message": "See quality_report and governance for a non-frontend summary."
+    },
+    "task_contract": {
+      "user_request": "从这段教材中抽取反馈抑制和竞争支路相关的生物学概念与机制。",
+      "input_sources": [
+        {
+          "source_ref_type": "text",
+          "raw_text": "# 第七章 代谢通量的调控\n\n## 7.3 反馈抑制\n\n反馈抑制是指下游途径产物积累导致某个酶活性降低的现象。\n\n在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。\n\n## 7.6 竞争支路\n\n竞争支路是指与目标产物合成途径共享前体或辅因子的旁路代谢途径。\n\n该竞争支路消耗关键前体,导致目标产物合成受限。\n",
+          "bibliographic": {
+            "title": "代谢工程原理 (合成测试版)",
+            "authors_or_editors": [
+              "测试甲"
+            ],
+            "publisher": "测试出版社",
+            "publication_year": 2021,
+            "isbn": [
+              "111-1-11-111111-1"
+            ],
+            "edition": "第1版",
+            "chapter": "7",
+            "source_type": "textbook"
+          },
+          "source_id": "src_1"
+        }
+      ],
+      "target_domain": [
+        "metabolic engineering"
+      ],
+      "target_organism": [],
+      "target_strain": [],
+      "target_engineering_goal": [],
+      "requested_output_level": [
+        "level2_basic_knowledge"
+      ],
+      "source_languages": [],
+      "output_languages": [
+        "zh",
+        "en"
+      ],
+      "quality_requirement": "",
+      "requires_cross_source_fusion": false,
+      "requires_paper_case_linking": false,
+      "requires_frontend_adapter": false,
+      "engineering_knowledge_requested": false,
+      "requires_human_review": false,
+      "notes": [
+        "target_organism not specified by the user; this does not block Level1-4, only target-system adaptation and automatic engineering suggestions.",
+        "no engineering goal given; Step08-10 will still run if requested_output_level asks for engineering distillation, using domain-general trigger conditions."
+      ]
+    },
+    "validated_sources": [
+      {
+        "source_id": "src_1",
+        "source_type": "textbook",
+        "title": "代谢工程原理 (合成测试版)",
+        "title_zh": "代谢工程原理 (合成测试版)",
+        "title_en": "",
+        "authors_or_editors": [
+          "测试甲"
+        ],
+        "edition": "第1版",
+        "publisher": "测试出版社",
+        "publication_year": 2021,
+        "isbn": [
+          "111-1-11-111111-1"
+        ],
+        "doi": "",
+        "chapter": "7",
+        "page_range": "",
+        "source_language": "zh",
+        "access_type": "text",
+        "identity_verified": true,
+        "verification_evidence": [
+          "isbn",
+          "authors_publisher_year"
+        ],
+        "authority_level": "high",
+        "scope": "",
+        "limitations": [],
+        "unresolved_edition": false
+      }
+    ],
+    "source_structure": {
+      "by_source": [
+        {
+          "source_id": "src_1",
+          "blocks": [
+            {
+              "block_id": "src_1:b1",
+              "block_type": "chapter",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "第七章 代谢通量的调控",
+              "figure_or_table_label": "",
+              "reading_order": 1,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b2",
+              "block_type": "section",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "7.3 反馈抑制",
+              "figure_or_table_label": "",
+              "reading_order": 2,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控",
+                  "7.3 反馈抑制"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b3",
+              "block_type": "paragraph",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "反馈抑制是指下游途径产物积累导致某个酶活性降低的现象。",
+              "figure_or_table_label": "",
+              "reading_order": 3,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控",
+                  "7.3 反馈抑制"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b4",
+              "block_type": "paragraph",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。",
+              "figure_or_table_label": "",
+              "reading_order": 4,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控",
+                  "7.3 反馈抑制"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b5",
+              "block_type": "section",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "7.6 竞争支路",
+              "figure_or_table_label": "",
+              "reading_order": 5,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控",
+                  "7.6 竞争支路"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b6",
+              "block_type": "paragraph",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "竞争支路是指与目标产物合成途径共享前体或辅因子的旁路代谢途径。",
+              "figure_or_table_label": "",
+              "reading_order": 6,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控",
+                  "7.6 竞争支路"
+                ],
+                "page": null
+              }
+            },
+            {
+              "block_id": "src_1:b7",
+              "block_type": "paragraph",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page_start": null,
+              "page_end": null,
+              "text": "该竞争支路消耗关键前体,导致目标产物合成受限。",
+              "figure_or_table_label": "",
+              "reading_order": 7,
+              "language": "zh",
+              "source_anchor": {
+                "source_id": "src_1",
+                "chapter_id": "第七章 代谢通量的调控",
+                "section_path": [
+                  "第七章 代谢通量的调控",
+                  "7.6 竞争支路"
+                ],
+                "page": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "extraction_scope": [
+      {
+        "section_id": "第七章 代谢通量的调控/7.3 反馈抑制",
+        "relevance_to_biological_knowledge": 0.75,
+        "relevance_to_engineering_design": 0.0,
+        "relevance_to_target_system": 0.75,
+        "contains_concepts": true,
+        "contains_mechanisms": true,
+        "contains_decision_rules": false,
+        "contains_design_patterns": false,
+        "contains_validation_strategy": false,
+        "contains_failure_modes": false,
+        "recommended_action": "extract_full",
+        "reason": "keyword density indicates concept/mechanism or engineering-relevant content.",
+        "source_id": "src_1",
+        "block_ids": [
+          "src_1:b3",
+          "src_1:b4"
+        ]
+      },
+      {
+        "section_id": "第七章 代谢通量的调控/7.6 竞争支路",
+        "relevance_to_biological_knowledge": 0.5,
+        "relevance_to_engineering_design": 0.0,
+        "relevance_to_target_system": 0.5,
+        "contains_concepts": true,
+        "contains_mechanisms": true,
+        "contains_decision_rules": false,
+        "contains_design_patterns": false,
+        "contains_validation_strategy": false,
+        "contains_failure_modes": false,
+        "recommended_action": "extract_full",
+        "reason": "keyword density indicates concept/mechanism or engineering-relevant content.",
+        "source_id": "src_1",
+        "block_ids": [
+          "src_1:b6",
+          "src_1:b7"
+        ]
+      }
+    ],
+    "biological_concepts": [
+      {
+        "knowledge_id": "src_1:concept:1",
+        "knowledge_type": "concept",
+        "name_zh": "反馈抑制",
+        "name_en": "",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "下游途径产物积累导致某个酶活性降低的现象。",
+        "definition_en": "",
+        "entities": [],
+        "relationships": [],
+        "causal_direction": "",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b3",
+            "text": "反馈抑制是指下游途径产物积累导致某个酶活性降低的现象。",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.55,
+        "pedagogical_simplification": false,
+        "_kind": "concept",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b3:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "zh",
+            "original_text": "反馈抑制是指下游途径产物积累导致某个酶活性降低的现象。",
+            "translated_text": "",
+            "chapter": "第七章 代谢通量的调控",
+            "section": "第七章 代谢通量的调控/7.3 反馈抑制",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:concept:1",
+            "evidence_role": "definition",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      },
+      {
+        "knowledge_id": "src_1:concept:2",
+        "knowledge_type": "concept",
+        "name_zh": "竞争支路",
+        "name_en": "",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "与目标产物合成途径共享前体或辅因子的旁路代谢途径。",
+        "definition_en": "",
+        "entities": [],
+        "relationships": [],
+        "causal_direction": "",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b6",
+            "text": "竞争支路是指与目标产物合成途径共享前体或辅因子的旁路代谢途径。",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.55,
+        "pedagogical_simplification": false,
+        "_kind": "concept",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b6:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "zh",
+            "original_text": "竞争支路是指与目标产物合成途径共享前体或辅因子的旁路代谢途径。",
+            "translated_text": "",
+            "chapter": "第七章 代谢通量的调控",
+            "section": "第七章 代谢通量的调控/7.6 竞争支路",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:concept:2",
+            "evidence_role": "definition",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      }
+    ],
+    "biological_mechanisms": [
+      {
+        "knowledge_id": "src_1:mechanism:1",
+        "knowledge_type": "mechanism",
+        "name_zh": "",
+        "name_en": "",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。",
+        "definition_en": "",
+        "entities": [],
+        "relationships": [
+          {
+            "predicate": "抑制",
+            "raw_sentence": "在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。"
+          }
+        ],
+        "causal_direction": "negative",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b4",
+            "text": "在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.5,
+        "pedagogical_simplification": false,
+        "_kind": "mechanism",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b4:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "zh",
+            "original_text": "在许多氨基酸合成途径中,当终产物浓度升高时,终产物抑制该途径第一个关键酶。这种机制可以防止在正常生长条件下过度合成氨基酸。",
+            "translated_text": "",
+            "chapter": "第七章 代谢通量的调控",
+            "section": "第七章 代谢通量的调控/7.3 反馈抑制",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.3 反馈抑制"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:mechanism:1",
+            "evidence_role": "mechanism",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      },
+      {
+        "knowledge_id": "src_1:mechanism:2",
+        "knowledge_type": "mechanism",
+        "name_zh": "",
+        "name_en": "",
+        "aliases_zh": [],
+        "aliases_en": [],
+        "definition_zh": "该竞争支路消耗关键前体,导致目标产物合成受限。",
+        "definition_en": "",
+        "entities": [],
+        "relationships": [
+          {
+            "predicate": "导致",
+            "raw_sentence": "该竞争支路消耗关键前体,导致目标产物合成受限。"
+          }
+        ],
+        "causal_direction": "unspecified",
+        "conditions": [],
+        "exceptions": [],
+        "biological_scale": "unknown",
+        "organism_scope": [],
+        "strain_scope": [],
+        "environment_scope": [],
+        "source_statements": [
+          {
+            "block_id": "src_1:b7",
+            "text": "该竞争支路消耗关键前体,导致目标产物合成受限。",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page": null
+            }
+          }
+        ],
+        "status": "normalized",
+        "confidence": 0.5,
+        "pedagogical_simplification": false,
+        "_kind": "mechanism",
+        "evidence": [
+          {
+            "evidence_id": "ev:src_1:src_1:b7:1",
+            "source_id": "src_1",
+            "source_type": "unknown",
+            "source_language": "zh",
+            "original_text": "该竞争支路消耗关键前体,导致目标产物合成受限。",
+            "translated_text": "",
+            "chapter": "第七章 代谢通量的调控",
+            "section": "第七章 代谢通量的调控/7.6 竞争支路",
+            "page": "",
+            "figure": "",
+            "table": "",
+            "equation": "",
+            "source_anchor": {
+              "source_id": "src_1",
+              "chapter_id": "第七章 代谢通量的调控",
+              "section_path": [
+                "第七章 代谢通量的调控",
+                "7.6 竞争支路"
+              ],
+              "page": null
+            },
+            "supports_field": "src_1:mechanism:2",
+            "evidence_role": "mechanism",
+            "subject_attribution": "src_1",
+            "support_level": "direct",
+            "confidence": 0.85
+          }
+        ],
+        "evidence_supported": true,
+        "knowledge_status": "validated"
+      }
+    ],
+    "engineering_principles": [],
+    "decision_rules": [],
+    "decision_trees": [],
+    "design_patterns": [],
+    "validation_strategies": [],
+    "failure_patterns": [],
+    "constraints_and_tradeoffs": [],
+    "canonical_knowledge_objects": [],
+    "cross_source_fusions": [],
+    "source_conflicts": [],
+    "paper_case_links": [],
+    "knowledge_graph": {},
+    "quality_report": {
+      "source_quality": {
+        "total_sources": 1,
+        "identity_verified": 1,
+        "unresolved_editions": 0
+      },
+      "parsing_quality": {
+        "sources_with_structure": 1,
+        "total_blocks": 7
+      },
+      "evidence_quality": {
+        "total_objects": 4,
+        "objects_with_direct_evidence": 4,
+        "coverage_ratio": 1.0,
+        "unresolved_object_ids": []
+      },
+      "knowledge_completeness": {
+        "sections_extract_full": 2,
+        "sections_extract_partial": 0,
+        "sections_metadata_only": 0
+      },
+      "engineering_utility": {
+        "principles_total": 0,
+        "principles_model_inference": 0,
+        "principles_missing_precondition": 0,
+        "principles_pedagogical_simplification_only": 0
+      },
+      "cross_source_consistency": {
+        "canonical_objects": 0,
+        "conflicts": 0
+      },
+      "translation_quality": {
+        "status": "not_applicable_in_phase1",
+        "note": "bilingual normalization is a future-phase capability; see README Phase roadmap."
+      },
+      "risk_flags": [],
+      "review_items": [],
+      "overall_status": "PASS"
+    },
+    "governance": {
+      "concept_explanation": "allowed",
+      "mechanism_reasoning": "allowed",
+      "engineering_principle_retrieval": "allowed",
+      "decision_support": "allowed",
+      "automatic_DBTL_design": "review",
+      "exact_SOP_generation": "blocked"
+    },
+    "frontend_view": {},
+    "step_states": {
+      "step08_principle_distillation": "SKIPPED",
+      "step09_decision_rule_generation": "SKIPPED",
+      "step10_pattern_validation_failure": "SKIPPED",
+      "step12_knowledge_fusion": "SKIPPED",
+      "step13_paper_case_linking": "SKIPPED",
+      "step15_frontend_adapter": "SKIPPED",
+      "step01_task_contract": "SUCCESS",
+      "step02_source_validation": "SUCCESS",
+      "step03_pdf_parsing": "SUCCESS",
+      "step04_markdown_cleaning": "SUCCESS",
+      "step05_document_parsing": "SUCCESS",
+      "step06_scope_selection": "SUCCESS",
+      "step07_basic_knowledge_extraction": "WARNING",
+      "step11_evidence_binding": "SUCCESS",
+      "step14_quality_governance": "SUCCESS"
+    },
+    "errors": [
+      {
+        "error_id": "err_68b499b8580a231f",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b3: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_f6f47247f70c0735",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b4: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_c51d518f7b5d2570",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b7: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      },
+      {
+        "error_id": "err_830c3f424912418e",
+        "error_code": "ORGANISM_SCOPE_UNCERTAIN",
+        "message": "src_1:b6: no organism could be identified; scope left empty rather than defaulted.",
+        "source_id": "src_1",
+        "step": "step07_basic_knowledge_extraction",
+        "affected_objects": [],
+        "severity": "medium",
+        "recoverable": false,
+        "recommended_action": ""
+      }
+    ],
+    "start_time": "2026-07-28T02:07:52.123340+00:00",
+    "end_time": "2026-07-28T02:07:52.143360+00:00"
+  }
+}

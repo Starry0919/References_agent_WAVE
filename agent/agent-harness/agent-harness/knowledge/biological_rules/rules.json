@@ -1,0 +1,44 @@
+[
+  {
+    "rule_id": "RULE-001",
+    "statement": "diagnose precursor limitation before overexpressing terminal pathway enzymes",
+    "applicable_conditions": ["precursor limitation"],
+    "source_ddr": "DDR-001"
+  },
+  {
+    "rule_id": "RULE-002",
+    "statement": "when a product pathway shares precursors with central carbon metabolism (e.g. PEP, E4P), explicitly evaluate that supply",
+    "applicable_conditions": ["precursor limitation", "aromatic amino acid production"],
+    "source_ddr": "DDR-001"
+  },
+  {
+    "rule_id": "RULE-003",
+    "statement": "optimizing central carbon metabolism is often necessary, not optional, for efficient production of precursor-limited products",
+    "applicable_conditions": ["precursor limitation"],
+    "source_ddr": "DDR-001"
+  },
+  {
+    "rule_id": "RULE-004",
+    "statement": "when a host lacks a native pathway to a target product, prioritize pathway construction over pathway modification",
+    "applicable_conditions": ["missing native pathway"],
+    "source_ddr": "DDR-002"
+  },
+  {
+    "rule_id": "RULE-005",
+    "statement": "de novo pathway engineering should be paired with host-level optimization of precursor and cofactor supply, not treated as a standalone gene-insertion task",
+    "applicable_conditions": ["missing native pathway", "de novo pathway construction"],
+    "source_ddr": "DDR-002"
+  },
+  {
+    "rule_id": "RULE-006",
+    "statement": "when a product depends on a precursor pool shared with central metabolism, diagnose precursor balance before increasing terminal pathway enzyme expression",
+    "applicable_conditions": ["precursor imbalance"],
+    "source_ddr": "DDR-003"
+  },
+  {
+    "rule_id": "RULE-007",
+    "statement": "rewiring central carbon metabolism, not only terminal pathway enzymes, is sometimes necessary to relieve precursor-driven bottlenecks",
+    "applicable_conditions": ["precursor imbalance", "isoprenoid production"],
+    "source_ddr": "DDR-003"
+  }
+]

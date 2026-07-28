@@ -1,0 +1,67 @@
+[
+  {
+    "action_id": "ACT-001",
+    "action_type": "transport engineering",
+    "target_gene": "ptsG",
+    "modification": "knockout",
+    "replacement": "glf expression (plus a glucokinase, e.g. glk, for phosphorylation)",
+    "biological_effect": "reduce PEP consumption during glucose uptake",
+    "mechanism": "the PTS glucose transport system (encoded partly by ptsG) consumes one PEP per glucose molecule imported; replacing PTS-mediated uptake with a non-PTS glucose facilitator (glf) paired with a glucokinase spares PEP for other PEP-dependent biosynthetic reactions",
+    "expected_effect": "increased PEP availability for PEP-dependent biosynthetic reactions (e.g. DAHP synthase, the first committed step of the shikimate pathway)",
+    "risk": "non-PTS glucose uptake can reduce glucose uptake rate and growth rate compared to native PTS transport",
+    "applicable_conditions": ["precursor limitation", "aromatic amino acid production"],
+    "evidence": "general, well-established central-carbon-metabolism engineering pattern (PTS replacement for PEP conservation); not a specific verified experimental result from any single paper in this V1.1 knowledge base - see knowledge/papers/ for what is actually cited"
+  },
+  {
+    "action_id": "ACT-002",
+    "action_type": "knockout",
+    "target_gene": "pykF",
+    "modification": "knockout or attenuation",
+    "replacement": null,
+    "biological_effect": "reduce competitive PEP consumption via glycolysis",
+    "mechanism": "pyruvate kinase (PykF, the major isozyme) converts PEP to pyruvate as part of central glycolytic flux; reducing its activity decreases competing consumption of PEP, preserving more of the pool for PEP-dependent biosynthetic reactions",
+    "expected_effect": "increased intracellular PEP pool available for biosynthesis",
+    "risk": "pykF knockout can impair growth by limiting pyruvate and acetyl-CoA supply to central energy metabolism, particularly under some carbon sources",
+    "applicable_conditions": ["precursor limitation", "aromatic amino acid production"],
+    "evidence": "general, well-established central-carbon-metabolism engineering pattern (pyruvate kinase attenuation for PEP conservation); not a specific verified experimental result from any single paper in this V1.1 knowledge base - see knowledge/papers/ for what is actually cited"
+  },
+  {
+    "action_id": "ACT-003",
+    "action_type": "heterologous pathway introduction",
+    "target_gene": "xfpk (phosphoketolase, heterologous - e.g. from Bifidobacterium)",
+    "modification": "gene insertion / heterologous expression",
+    "replacement": null,
+    "biological_effect": "provides an alternative, lower-carbon-loss route that can supply E4P and/or acetyl-phosphate, improving precursor availability for the aromatic amino acid pathway",
+    "mechanism": "phosphoketolase converts fructose-6-phosphate to erythrose-4-phosphate and acetyl-phosphate (or xylulose-5-phosphate to glyceraldehyde-3-phosphate and acetyl-phosphate), bypassing carbon-losing decarboxylation steps of native central metabolism and directly supplementing the E4P pool used by DAHP synthase",
+    "expected_effect": "improved E4P/precursor supply for the shikimate pathway",
+    "risk": "heterologous enzyme expression adds metabolic burden; rebalancing flux through this route can have unintended effects on acetyl-CoA and acetate metabolism",
+    "applicable_conditions": ["precursor limitation", "aromatic amino acid production"],
+    "evidence": "general, well-established metabolic engineering pattern (phosphoketolase pathway introduction for E4P/acetyl-CoA supply); not a specific verified experimental result from any single paper in this V1.1 knowledge base - see knowledge/papers/ for what is actually cited"
+  },
+  {
+    "action_id": "ACT-004",
+    "action_type": "promoter engineering",
+    "target_gene": "pntAB (membrane-bound transhydrogenase)",
+    "modification": "promoter engineering / overexpression",
+    "replacement": null,
+    "biological_effect": "shift NADH/NADPH cofactor balance to support a heterologous pathway's redox cofactor requirements",
+    "mechanism": "PntAB interconverts NADH and NADPH across the membrane; tuning its expression can rebalance cofactor pools when a heterologous pathway's redox cofactor demand does not match the host's native balance",
+    "expected_effect": "improved cofactor availability for a heterologous biosynthetic pathway",
+    "risk": "cofactor rebalancing can perturb unrelated NAD(P)H-dependent pathways and cellular redox state",
+    "applicable_conditions": ["missing native pathway", "de novo pathway construction"],
+    "evidence": "general, well-established cofactor-engineering pattern for heterologous pathway support; not a specific verified experimental result from any single paper in this V1.1 knowledge base - see knowledge/papers/ for what is actually cited"
+  },
+  {
+    "action_id": "ACT-005",
+    "action_type": "overexpression",
+    "target_gene": "edd/eda (Entner-Doudoroff pathway)",
+    "modification": "overexpression / pathway activation",
+    "replacement": null,
+    "biological_effect": "rebalances central-metabolism precursor ratios by routing flux through the Entner-Doudoroff pathway alongside native glycolysis",
+    "mechanism": "the Entner-Doudoroff pathway (6-phosphogluconate dehydratase/edd, KDPG aldolase/eda) produces pyruvate and glyceraldehyde-3-phosphate with a different stoichiometry than EMP glycolysis; combining it with the native route changes the ratio of precursors feeding the MEP pathway",
+    "expected_effect": "improved balance of MEP-pathway precursors",
+    "risk": "rewiring flux through an alternative route can affect growth and other pathways sharing the same precursor pools",
+    "applicable_conditions": ["precursor imbalance", "isoprenoid production"],
+    "evidence": "general, well-established central-metabolism engineering pattern (Entner-Doudoroff pathway activation for precursor rebalancing), consistent with DDR-003's stated engineering pattern; not a specific verified experimental result from any single paper in this V1.1 knowledge base - see knowledge/papers/ for what is actually cited"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "_disclaimer": "Curated, illustrative subset for gate-testing and demonstration purposes only. This is NOT a complete or verified E. coli K-12 essentiality dataset (e.g. it is not the Keio collection or PEC database) and NOT a complete gene identity registry. Absence of a gene from `essential_genes` does not certify it is safe to knock out; absence from `known_genes` should be treated as 'not verifiable in this knowledge base', not 'confirmed nonexistent'. Shared by harness/workflow/gates.py (IdentityGate, BiologicalRuleGate) and workflows/synbio_v01/modules/evaluator.py so both consult one source instead of duplicating a hardcoded list.",
+  "essential_genes": [
+    "murA",
+    "dnaA",
+    "ftsZ",
+    "rpoB",
+    "gyrA",
+    "dnaE",
+    "accA",
+    "secY",
+    "rpsA"
+  ],
+  "known_genes": [
+    "murA", "dnaA", "ftsZ", "rpoB", "gyrA", "dnaE", "accA", "secY", "rpsA",
+    "ptsG", "pykF", "xfpk", "pntAB", "edd", "eda", "glf", "glk",
+    "trpE", "trpD", "trpC", "trpB", "trpA", "trpR", "tnaA", "aroG", "aroL", "aroH",
+    "lysC", "dapA", "hom", "thrB", "asd", "dapB", "dapD", "dapE", "dapF", "lysA",
+    "ppc", "pyc", "mdh", "sucA", "sucB", "icd", "gltA"
+  ],
+  "foreign_genes": [
+    "sigB",
+    "comK",
+    "spo0A"
+  ],
+  "foreign_genes_note": "Bacillus subtilis genes (sporulation/competence regulators), included only so BiologicalRuleGate's host-range check has a deliberately-wrong test fixture; not related to any real cross-species transfer analysis."
+}

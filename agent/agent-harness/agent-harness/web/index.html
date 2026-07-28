@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Harness</title>
+<style>
+/* ============ Theme variables ============ */
+:root {
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --card: #ffffff;
+  --text: #1b1e23;
+  --muted: #69707b;
+  --border: #e3e6ea;
+  --accent: #3b82f6;
+  --accent-soft: #e9f0fe;
+  --user-bubble: #3b82f6;
+  --user-text: #ffffff;
+  --ok: #16a34a;
+  --warn: #d97706;
+  --err: #dc2626;
+  --code-bg: #eef0f3;
+  --shadow: 0 1px 2px rgba(20, 24, 32, 0.05);
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --panel: #16191f;
+    --card: #1c2028;
+    --text: #e7e9ec;
+    --muted: #99a1ac;
+    --border: #2a2f38;
+    --accent: #5b9dff;
+    --accent-soft: #1c2b47;
+    --user-bubble: #2f6fed;
+    --user-text: #ffffff;
+    --ok: #34c265;
+    --warn: #e9a23b;
+    --err: #f0605a;
+    --code-bg: #12151b;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* ============ Base ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 14.5px;
+  color: var(--text);
+  background: var(--bg);
+  display: flex;
+  overflow: hidden;
+}
+button { font: inherit; color: inherit; }
+
+/* ============ Sidebar ============ */
+#sidebar {
+  width: 272px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.side-head { padding: 20px 18px 12px; }
+.side-head h1 { font-size: 17px; font-weight: 700; letter-spacing: 0.2px; }
+.chips { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.chip {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+#newSessionBtn { margin: 6px 18px 12px; width: calc(100% - 36px); }
+
+#sessionList { flex: 1; overflow-y: auto; padding: 2px 10px 10px; min-height: 0; }
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.session-item:hover { background: var(--code-bg); }
+.session-item.active { background: var(--accent-soft); }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot.idle { background: var(--ok); }
+.dot.running { background: var(--warn); animation: pulse 1.2s ease-in-out infinite; }
+.session-info { flex: 1; min-width: 0; }
+.session-title {
+  font-size: 13.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.session-time { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.session-item .del {
+  visibility: hidden;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.session-item:hover .del { visibility: visible; }
+.session-item .del:hover { color: var(--err); background: var(--code-bg); }
+
+#toolsBox { border-top: 1px solid var(--border); padding: 8px 12px 12px; max-height: 40%; overflow-y: auto; flex-shrink: 0; }
+#toolsBox summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 6px;
+  user-select: none;
+  list-style-position: inside;
+}
+.tool-item { padding: 7px 8px; border-radius: 8px; }
+.tool-item:hover { background: var(--code-bg); }
+.tool-item-name { font-family: var(--mono); font-size: 12.5px; font-weight: 600; }
+.tool-item-desc { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+
+/* ============ Main ============ */
+#main { flex: 1; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+#mainHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 24px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+#sessionTitle {
+  font-size: 15.5px;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50vw;
+}
+.status { font-size: 12px; padding: 3px 10px; border-radius: 999px; flex-shrink: 0; }
+.status.idle { color: var(--muted); background: var(--code-bg); }
+.status.running { color: var(--warn); background: var(--code-bg); animation: pulse 1.2s ease-in-out infinite; }
+#mainHead .spacer { flex: 1; }
+
+/* ============ Timeline ============ */
+#timeline { flex: 1; overflow-y: auto; overflow-x: hidden; min-height: 0; }
+#timelineInner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 26px 24px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.empty-hint { text-align: center; color: var(--muted); font-size: 13.5px; padding: 60px 0; }
+
+.msg { display: flex; }
+.msg.user { justify-content: flex-end; }
+.msg.assistant { justify-content: flex-start; }
+.bubble {
+  max-width: 82%;
+  padding: 10px 15px;
+  border-radius: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: var(--shadow);
+}
+.user-bubble { background: var(--user-bubble); color: var(--user-text); border-bottom-right-radius: 4px; }
+.assistant-bubble { background: var(--card); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+
+.assistant-bubble .md-code {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 6px 0;
+  overflow-x: auto;
+  white-space: pre;
+}
+.md-inline-code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--code-bg);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+.assistant-bubble a { color: var(--accent); }
+
+/* Markdown block elements inside assistant bubbles */
+.assistant-bubble .md-p { margin: 6px 0; white-space: pre-wrap; }
+.assistant-bubble h1, .assistant-bubble h2, .assistant-bubble h3,
+.assistant-bubble h4, .assistant-bubble h5, .assistant-bubble h6 {
+  margin: 14px 0 6px;
+  line-height: 1.4;
+  font-weight: 650;
+  white-space: normal;
+}
+.assistant-bubble h1 { font-size: 1.3em; }
+.assistant-bubble h2 { font-size: 1.18em; }
+.assistant-bubble h3 { font-size: 1.08em; }
+.assistant-bubble h4, .assistant-bubble h5, .assistant-bubble h6 { font-size: 1em; }
+.assistant-bubble > h1:first-child, .assistant-bubble > h2:first-child,
+.assistant-bubble > h3:first-child, .assistant-bubble > h4:first-child,
+.assistant-bubble > .md-p:first-child { margin-top: 2px; }
+.assistant-bubble .md-list { margin: 6px 0; padding-left: 24px; white-space: normal; }
+.assistant-bubble .md-li { margin: 3px 0; white-space: pre-wrap; }
+.assistant-bubble .md-quote {
+  margin: 8px 0;
+  padding: 2px 12px;
+  border-left: 3px solid var(--accent);
+  opacity: 0.88;
+}
+.assistant-bubble .md-hr { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+.assistant-bubble .md-table-wrap { overflow-x: auto; margin: 8px 0; max-width: 100%; }
+.assistant-bubble .md-table { border-collapse: collapse; font-size: 0.95em; white-space: normal; }
+.assistant-bubble .md-table th, .assistant-bubble .md-table td {
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  text-align: left;
+}
+.assistant-bubble .md-table th { background: var(--code-bg); font-weight: 600; }
+
+.step-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 10px 0 0;
+  user-select: none;
+}
+.step-divider::before, .step-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+details.thinking {
+  align-self: flex-start;
+  max-width: 82%;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 6px 12px;
+  background: transparent;
+}
+details.thinking summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--muted);
+  user-select: none;
+}
+.thinking-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 8px 2px 4px;
+  max-height: 16rem;
+  overflow-y: auto;
+}
+
+/* ============ Tool cards ============ */
+.tool-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 11px 15px;
+  box-shadow: var(--shadow);
+}
+.tool-card.error { border-left-color: var(--err); }
+.tool-head { display: flex; align-items: center; gap: 9px; }
+.tool-name { font-family: var(--mono); font-size: 13px; font-weight: 650; }
+.err-mark { color: var(--err); font-size: 12.5px; font-weight: 650; }
+.duration {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--code-bg);
+  padding: 2px 9px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+.spinner {
+  width: 14px;
+  height: 14px;
+  margin-left: auto;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+details.tool-args { margin-top: 7px; }
+details.tool-args summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--muted);
+  user-select: none;
+}
+.args-pre, .result-pre {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin-top: 6px;
+  overflow-x: auto;
+}
+.result-pre.clamped { max-height: 16rem; overflow-y: auto; }
+.tool-card.error .result-pre { color: var(--err); }
+.expand-btn {
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 2px 0;
+}
+
+/* ============ Run status line ============ */
+.run-status {
+  align-self: center;
+  font-size: 12.5px;
+  padding: 4px 15px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  max-width: 90%;
+  word-break: break-word;
+}
+.run-status.ok { color: var(--ok); }
+.run-status.warn { color: var(--warn); }
+.run-status.err { color: var(--err); }
+
+/* ============ Composer ============ */
+#composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 14px 24px 18px;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+}
+#composer .inner { display: flex; align-items: flex-end; gap: 10px; max-width: 800px; margin: 0 auto; width: 100%; }
+#input {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit;
+  line-height: 1.55;
+  min-height: 42px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+#input:focus { outline: none; border-color: var(--accent); }
+#input::placeholder { color: var(--muted); }
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: filter 0.12s ease;
+}
+.btn:hover { filter: brightness(1.06); }
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.primary:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn.danger { background: var(--err); color: #fff; }
+
+/* ============ Toast ============ */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: var(--bg);
+  font-size: 13px;
+  padding: 9px 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  z-index: 50;
+  max-width: 70vw;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div class="side-head">
+    <h1>Agent Harness</h1>
+    <div class="chips">
+      <span id="providerChip" class="chip">…</span>
+      <span id="modelChip" class="chip">…</span>
+    </div>
+  </div>
+  <button id="newSessionBtn" class="btn primary">新建会话</button>
+  <nav id="sessionList"></nav>
+  <details id="toolsBox">
+    <summary id="toolsSummary">工具 (0)</summary>
+    <div id="toolList"></div>
+  </details>
+</aside>
+
+<main id="main">
+  <header id="mainHead">
+    <h2 id="sessionTitle">—</h2>
+    <span id="runStatus" class="status idle">空闲</span>
+    <span class="spacer"></span>
+    <button id="stopBtn" class="btn danger" hidden>停止</button>
+  </header>
+  <div id="timeline">
+    <div id="timelineInner"></div>
+  </div>
+  <div id="composer">
+    <div class="inner">
+      <textarea id="input" rows="1" placeholder="输入消息,Enter 发送,Shift+Enter 换行"></textarea>
+      <button id="sendBtn" class="btn primary">发送</button>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---------- DOM refs ----------
+  var els = {
+    modelChip: document.getElementById('modelChip'),
+    providerChip: document.getElementById('providerChip'),
+    newSessionBtn: document.getElementById('newSessionBtn'),
+    sessionList: document.getElementById('sessionList'),
+    toolsSummary: document.getElementById('toolsSummary'),
+    toolList: document.getElementById('toolList'),
+    sessionTitle: document.getElementById('sessionTitle'),
+    runStatus: document.getElementById('runStatus'),
+    stopBtn: document.getElementById('stopBtn'),
+    timeline: document.getElementById('timeline'),
+    tl: document.getElementById('timelineInner'),
+    input: document.getElementById('input'),
+    sendBtn: document.getElementById('sendBtn')
+  };
+
+  // ---------- Global state ----------
+  var state = {
+    sessions: [],       // summaries from GET /api/sessions
+    currentId: null,
+    running: null,
+    lastSeq: 0,         // last seen event seq for the current session
+    ws: null,
+    wsGen: 0,           // generation token: invalidates stale sockets/timers
+    wsBackoff: 1000,
+    pinned: true        // auto-scroll pinned to bottom
+  };
+
+  // Per-timeline render state (reset whenever the timeline is cleared).
+  var R = { cur: null, pendingTools: new Map() };
+
+  // ---------- Small helpers ----------
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  function relTime(ts) {
+    var d = Date.now() / 1000 - ts;
+    if (d < 60) return '刚刚';
+    if (d < 3600) return Math.floor(d / 60) + ' 分钟前';
+    if (d < 86400) return Math.floor(d / 3600) + ' 小时前';
+    if (d < 86400 * 7) return Math.floor(d / 86400) + ' 天前';
+    return new Date(ts * 1000).toLocaleDateString();
+  }
+
+  function formatDuration(ms) {
+    if (typeof ms !== 'number') return '';
+    return ms >= 1000 ? (ms / 1000).toFixed(1) + ' s' : ms + ' ms';
+  }
+
+  var toastTimer = null;
+  function toast(msg) {
+    var old = document.getElementById('toast');
+    if (old) old.remove();
+    var t = el('div', null, msg);
+    t.id = 'toast';
+    document.body.appendChild(t);
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.remove(); }, 3200);
+  }
+
+  // ---------- Safe markdown renderer (DOM-built, never innerHTML) ----------
+  // Blocks: fenced code, headings, hr, blockquote, tables, nested lists,
+  // paragraphs. Inline: code, bold, italic, strikethrough, http(s) links.
+  // Unrecognized syntax degrades to plain text; content is never dropped.
+  // [md-render:start]
+  function inlineFrag(text) {
+    var frag = document.createDocumentFragment();
+    var re = /`([^`\n]+)`|\*\*([^*\n]+?)\*\*|\*([^*\s](?:[^*\n]*?[^*\s])?)\*|~~([^~\n]+?)~~|\[([^\]\n]*)\]\((https?:\/\/[^\s)]+)\)/g;
+    var last = 0, m;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+      if (m[1] !== undefined) {
+        frag.appendChild(el('code', 'md-inline-code', m[1]));
+      } else if (m[2] !== undefined) {
+        frag.appendChild(el('strong', null, m[2]));
+      } else if (m[3] !== undefined) {
+        frag.appendChild(el('em', null, m[3]));
+      } else if (m[4] !== undefined) {
+        frag.appendChild(el('del', null, m[4]));
+      } else {
+        var a = el('a', null, m[5] || m[6]);
+        a.href = m[6];
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        frag.appendChild(a);
+      }
+      last = re.lastIndex;
+    }
+    if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+    return frag;
+  }
+
+  var MD_ITEM_RE = /^(\s*)([-*+]|\d{1,3}[.)])\s+([\s\S]*)$/;
+
+  function buildList(items) {
+    var min = Infinity;
+    items.forEach(function (s) {
+      var sp = s.match(/^\s*/)[0].length;
+      if (sp < min) min = sp;
+    });
+    // A marker-type switch (- foo → 1. bar) at the top level starts a new
+    // list, so the result is a fragment of one or more ul/ol elements.
+    var frag = document.createDocumentFragment();
+    var list = null;
+    var listOrdered = null;
+    var k = 0;
+    while (k < items.length) {
+      var m = items[k].match(MD_ITEM_RE);
+      var ordered = /^\d/.test(m[2]);
+      if (!list || ordered !== listOrdered) {
+        list = el(ordered ? 'ol' : 'ul', 'md-list');
+        listOrdered = ordered;
+        frag.appendChild(list);
+      }
+      var li = el('li', 'md-li');
+      li.appendChild(inlineFrag(m[3]));
+      k++;
+      var nested = [];
+      while (k < items.length && items[k].match(/^\s*/)[0].length > min) {
+        nested.push(items[k]);
+        k++;
+      }
+      if (nested.length) li.appendChild(buildList(nested));
+      list.appendChild(li);
+    }
+    return frag;
+  }
+
+  function buildTable(rows) {
+    function cells(row) {
+      var s = row.trim();
+      if (s.charAt(0) === '|') s = s.slice(1);
+      if (s.charAt(s.length - 1) === '|') s = s.slice(0, -1);
+      return s.split('|').map(function (c) { return c.trim(); });
+    }
+    var wrap = el('div', 'md-table-wrap');
+    var table = el('table', 'md-table');
+    var thead = el('thead');
+    var trh = el('tr');
+    cells(rows[0]).forEach(function (c) {
+      var th = el('th');
+      th.appendChild(inlineFrag(c));
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh);
+    table.appendChild(thead);
+    var tbody = el('tbody');
+    for (var r = 2; r < rows.length; r++) {
+      var tr = el('tr');
+      cells(rows[r]).forEach(function (c) {
+        var td = el('td');
+        td.appendChild(inlineFrag(c));
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    return wrap;
+  }
+
+  function mdToFragment(text) {
+    var frag = document.createDocumentFragment();
+    var lines = String(text).split('\n');
+    var para = [];
+    var i = 0;
+
+    function flushPara() {
+      if (!para.length) return;
+      var p = el('p', 'md-p');
+      p.appendChild(inlineFrag(para.join('\n')));
+      frag.appendChild(p);
+      para = [];
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+
+      // Fenced code: the opener must be a whole line of ```info (no backticks
+      // in info); an unclosed fence runs to the end so nothing is dropped.
+      var fence = line.match(/^\s*```([^`]*)\s*$/);
+      if (fence) {
+        flushPara();
+        var body = [];
+        i++;
+        while (i < lines.length && !/^\s*```\s*$/.test(lines[i])) {
+          body.push(lines[i]);
+          i++;
+        }
+        i++; // skip the closing fence (harmless past end)
+        var pre = el('pre', 'md-code');
+        pre.appendChild(el('code', null, body.join('\n')));
+        frag.appendChild(pre);
+        continue;
+      }
+
+      if (/^\s*$/.test(line)) { flushPara(); i++; continue; }
+
+      var h = line.match(/^(#{1,6})\s+(.*)$/);
+      if (h) {
+        flushPara();
+        var hn = el('h' + h[1].length, 'md-h');
+        hn.appendChild(inlineFrag(h[2].replace(/\s+#+\s*$/, '')));
+        frag.appendChild(hn);
+        i++;
+        continue;
+      }
+
+      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+        flushPara();
+        frag.appendChild(el('hr', 'md-hr'));
+        i++;
+        continue;
+      }
+
+      if (/^\s*>/.test(line)) {
+        flushPara();
+        var quoted = [];
+        while (i < lines.length && /^\s*>/.test(lines[i])) {
+          quoted.push(lines[i].replace(/^\s*>\s?/, ''));
+          i++;
+        }
+        var bq = el('blockquote', 'md-quote');
+        bq.appendChild(mdToFragment(quoted.join('\n')));
+        frag.appendChild(bq);
+        continue;
+      }
+
+      // Table: a |-row immediately followed by a |---|-style separator row.
+      if (/^\s*\|/.test(line) && i + 1 < lines.length
+          && /^\s*\|?[\s:|-]+\|?\s*$/.test(lines[i + 1]) && /-/.test(lines[i + 1])) {
+        flushPara();
+        var rows = [];
+        while (i < lines.length
+               && (/^\s*\|/.test(lines[i])
+                   || (rows.length === 1 && /^[\s:|-]+$/.test(lines[i])))) {
+          rows.push(lines[i]);
+          i++;
+        }
+        frag.appendChild(buildTable(rows));
+        continue;
+      }
+
+      if (MD_ITEM_RE.test(line)) {
+        flushPara();
+        var items = [];
+        while (i < lines.length) {
+          if (MD_ITEM_RE.test(lines[i])) {
+            items.push(lines[i]);
+          } else if (/^\s+\S/.test(lines[i]) && items.length) {
+            // Indented continuation line joins the previous item.
+            items[items.length - 1] += '\n' + lines[i].replace(/^\s+/, '');
+          } else {
+            break;
+          }
+          i++;
+        }
+        frag.appendChild(buildList(items));
+        continue;
+      }
+
+      para.push(line);
+      i++;
+    }
+    flushPara();
+    return frag;
+  }
+  // [md-render:end]
+
+  // ---------- Timeline plumbing ----------
+  function clearTimeline() {
+    R.cur = null;
+    R.pendingTools = new Map();
+    state.pinned = true;
+    els.tl.replaceChildren(el('div', 'empty-hint', '发送一条消息,开始与 Agent 对话'));
+  }
+
+  function tlAppend(node) {
+    var hint = els.tl.querySelector('.empty-hint');
+    if (hint) hint.remove();
+    els.tl.appendChild(node);
+  }
+
+  function scrollIfPinned() {
+    if (state.pinned) els.timeline.scrollTop = els.timeline.scrollHeight;
+  }
+
+  els.timeline.addEventListener('scroll', function () {
+    var t = els.timeline;
+    state.pinned = t.scrollTop + t.clientHeight >= t.scrollHeight - 40;
+  });
+
+  function blankCur() {
+    return { step: null, divider: null, thinking: null, thinkingText: null,
+             bubble: null, bubbleWrap: null, bubbleText: null };
+  }
+
+  function ensureThinking() {
+    if (!R.cur) R.cur = blankCur();
+    if (!R.cur.thinkingText) {
+      var det = el('details', 'thinking');
+      det.appendChild(el('summary', null, '思考过程'));
+      var body = el('div', 'thinking-body');
+      var tn = document.createTextNode('');
+      body.appendChild(tn);
+      det.appendChild(body);
+      if (R.cur.bubbleWrap) els.tl.insertBefore(det, R.cur.bubbleWrap);
+      else tlAppend(det);
+      R.cur.thinking = det;
+      R.cur.thinkingText = tn;
+    }
+    return R.cur.thinkingText;
+  }
+
+  function ensureBubble() {
+    if (!R.cur) R.cur = blankCur();
+    if (!R.cur.bubble) {
+      var wrap = el('div', 'msg assistant');
+      var bubble = el('div', 'bubble assistant-bubble');
+      var tn = document.createTextNode('');
+      bubble.appendChild(tn);
+      wrap.appendChild(bubble);
+      tlAppend(wrap);
+      R.cur.bubbleWrap = wrap;
+      R.cur.bubble = bubble;
+      R.cur.bubbleText = tn;
+    }
+    return R.cur;
+  }
+
+  function prettyArgs(v) {
+    if (typeof v === 'string') return v;
+    try { return JSON.stringify(v, null, 2); }
+    catch (e) { return String(v); }
+  }
+
+  function setRunning(r) {
+    if (state.running === r) return;
+    state.running = r;
+    els.runStatus.textContent = r ? '运行中' : '空闲';
+    els.runStatus.className = 'status ' + (r ? 'running' : 'idle');
+    els.stopBtn.hidden = !r;
+    els.sendBtn.disabled = r;
+    var s = null;
+    for (var i = 0; i < state.sessions.length; i++) {
+      if (state.sessions[i].id === state.currentId) { s = state.sessions[i]; break; }
+    }
+    if (s) {
+      s.status = r ? 'running' : 'idle';
+      renderSessionList();
+    }
+  }
+
+  // ---------- The single event renderer (history replay AND live) ----------
+  function renderEvent(ev) {
+    var d = ev.data || {};
+    switch (ev.type) {
+
+      case 'user_message': {
+        var wrap = el('div', 'msg user');
+        wrap.appendChild(el('div', 'bubble user-bubble', String(d.content == null ? '' : d.content)));
+        tlAppend(wrap);
+        break;
+      }
+
+      case 'run_started': {
+        setRunning(true);
+        break;
+      }
+
+      case 'llm_call_started': {
+        R.cur = blankCur();
+        R.cur.step = d.step;
+        R.cur.divider = el('div', 'step-divider', '第 ' + d.step + ' 步 · 思考中…');
+        tlAppend(R.cur.divider);
+        break;
+      }
+
+      case 'assistant_thinking_delta': {
+        ensureThinking().appendData(String(d.text == null ? '' : d.text));
+        break;
+      }
+
+      case 'assistant_delta': {
+        ensureBubble();
+        R.cur.bubbleText.appendData(String(d.text == null ? '' : d.text));
+        break;
+      }
+
+      case 'assistant_message': {
+        if (R.cur && R.cur.divider) R.cur.divider.textContent = '第 ' + R.cur.step + ' 步';
+        if (d.thinking) ensureThinking().data = d.thinking;
+        if (d.content) {
+          ensureBubble();
+          R.cur.bubble.replaceChildren(mdToFragment(d.content));
+        } else if (R.cur && R.cur.bubbleWrap) {
+          R.cur.bubbleWrap.remove();
+        }
+        if (R.cur) {
+          R.cur.bubble = null;
+          R.cur.bubbleWrap = null;
+          R.cur.bubbleText = null;
+        }
+        break;
+      }
+
+      case 'tool_call': {
+        var card = el('div', 'tool-card');
+        var head = el('div', 'tool-head');
+        head.appendChild(el('span', 'tool-icon', '🔧'));
+        head.appendChild(el('span', 'tool-name', String(d.name == null ? '' : d.name)));
+        var spin = el('span', 'spinner');
+        head.appendChild(spin);
+        card.appendChild(head);
+        var argsText = prettyArgs(d.arguments);
+        var args = el('details', 'tool-args');
+        args.appendChild(el('summary', null, '参数'));
+        args.appendChild(el('pre', 'args-pre', argsText));
+        if (argsText.length <= 120) args.open = true;
+        card.appendChild(args);
+        tlAppend(card);
+        R.pendingTools.set(d.id, { card: card, head: head, spin: spin });
+        break;
+      }
+
+      case 'tool_result': {
+        var entry = R.pendingTools.get(d.id);
+        if (!entry) {
+          // Orphan result (no matching tool_call rendered): build a bare card.
+          var c2 = el('div', 'tool-card');
+          var h2 = el('div', 'tool-head');
+          h2.appendChild(el('span', 'tool-icon', '🔧'));
+          h2.appendChild(el('span', 'tool-name', String(d.name == null ? '' : d.name)));
+          c2.appendChild(h2);
+          tlAppend(c2);
+          entry = { card: c2, head: h2, spin: null };
+        }
+        R.pendingTools.delete(d.id);
+        if (entry.spin) entry.spin.remove();
+        if (d.is_error) {
+          entry.card.classList.add('error');
+          entry.head.appendChild(el('span', 'err-mark', '⚠ 出错'));
+        }
+        entry.head.appendChild(el('span', 'duration', formatDuration(d.duration_ms)));
+        var resultText = String(d.result == null ? '' : d.result);
+        var body = el('div', 'tool-result');
+        var pre = el('pre', 'result-pre clamped', resultText);
+        body.appendChild(pre);
+        var isLong = resultText.length > 1000 || (resultText.match(/\n/g) || []).length > 12;
+        if (isLong) {
+          var btn = el('button', 'expand-btn', '展开');
+          btn.addEventListener('click', function () {
+            var clamped = pre.classList.toggle('clamped');
+            btn.textContent = clamped ? '展开' : '收起';
+          });
+          body.appendChild(btn);
+        }
+        entry.card.appendChild(body);
+        break;
+      }
+
+      case 'run_finished': {
+        // Stop any spinners left by interrupted tool calls.
+        R.pendingTools.forEach(function (e) { if (e.spin) e.spin.remove(); });
+        R.pendingTools.clear();
+        var map = {
+          completed: ['✓ 已完成', 'ok'],
+          stopped: ['⏹ 已停止', ''],
+          error: ['⚠ 出错', 'err'],
+          max_steps: ['⚠ 达到最大步数', 'warn']
+        };
+        var info = map[d.status] || ['· ' + d.status, ''];
+        var text = info[0];
+        if (d.status === 'error' && d.error) text += ':' + d.error;
+        tlAppend(el('div', ('run-status ' + info[1]).trim(), text));
+        R.cur = null;
+        setRunning(false);
+        break;
+      }
+
+      case 'session_meta': {
+        var title = String(d.title == null ? '' : d.title);
+        els.sessionTitle.textContent = title;
+        for (var i = 0; i < state.sessions.length; i++) {
+          if (state.sessions[i].id === state.currentId) {
+            state.sessions[i].title = title;
+            break;
+          }
+        }
+        renderSessionList();
+        break;
+      }
+
+      default:
+        break; // unknown event types are ignored
+    }
+  }
+
+  // ---------- WebSocket with seq dedup + auto-reconnect ----------
+  function handleFrame(ev) {
+    if (typeof ev.seq !== 'number') return;   // ping / unknown frames
+    if (ev.seq <= state.lastSeq) return;      // dedup on reconnect replay
+    state.lastSeq = ev.seq;
+    renderEvent(ev);
+    scrollIfPinned();
+  }
+
+  function connectWS(id) {
+    state.wsGen += 1;
+    var gen = state.wsGen;
+    if (state.ws) {
+      try { state.ws.close(); } catch (e) { /* ignore */ }
+      state.ws = null;
+    }
+    state.wsBackoff = 1000;
+    openSocket(id, gen);
+  }
+
+  function openSocket(id, gen) {
+    var proto = location.protocol === 'https:' ? 'wss://' : 'ws://';
+    var ws;
+    try {
+      ws = new WebSocket(proto + location.host + '/ws/' + id);
+    } catch (e) {
+      scheduleReconnect(id, gen);
+      return;
+    }
+    state.ws = ws;
+    ws.onopen = function () {
+      if (gen === state.wsGen) state.wsBackoff = 1000;
+    };
+    ws.onmessage = function (e) {
+      if (gen !== state.wsGen) return;
+      var obj;
+      try { obj = JSON.parse(e.data); } catch (err) { return; }
+      handleFrame(obj);
+    };
+    ws.onclose = function () {
+      if (gen !== state.wsGen) return;
+      scheduleReconnect(id, gen);
+    };
+  }
+
+  function scheduleReconnect(id, gen) {
+    var delay = state.wsBackoff;
+    state.wsBackoff = Math.min(state.wsBackoff * 2, 15000);
+    setTimeout(function () {
+      if (gen === state.wsGen) openSocket(id, gen);
+    }, delay);
+  }
+
+  // ---------- Sidebar: sessions ----------
+  function renderSessionList() {
+    els.sessionList.replaceChildren();
+    state.sessions.forEach(function (s) {
+      var item = el('div', 'session-item' + (s.id === state.currentId ? ' active' : ''));
+      item.appendChild(el('span', 'dot ' + (s.status === 'running' ? 'running' : 'idle')));
+      var info = el('div', 'session-info');
+      info.appendChild(el('div', 'session-title', s.title || '新会话'));
+      info.appendChild(el('div', 'session-time', relTime(s.created_at)));
+      item.appendChild(info);
+      var del = el('button', 'del', '✕');
+      del.title = '删除会话';
+      del.addEventListener('click', function (e) {
+        e.stopPropagation();
+        deleteSession(s.id, s.title || '新会话');
+      });
+      item.appendChild(del);
+      item.addEventListener('click', function () {
+        if (s.id !== state.currentId) selectSession(s.id);
+      });
+      els.sessionList.appendChild(item);
+    });
+  }
+
+  function selectSession(id) {
+    state.currentId = id;
+    state.lastSeq = 0;
+    state.running = null; // force setRunning to apply
+    clearTimeline();
+    var s = null;
+    for (var i = 0; i < state.sessions.length; i++) {
+      if (state.sessions[i].id === id) { s = state.sessions[i]; break; }
+    }
+    els.sessionTitle.textContent = (s && s.title) || '新会话';
+    setRunning(!!(s && s.status === 'running'));
+    renderSessionList();
+    connectWS(id); // backlog replays through renderEvent, then live events follow
+    els.input.focus();
+  }
+
+  function createSession() {
+    return fetch('/api/sessions', { method: 'POST' })
+      .then(function (res) {
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json();
+      })
+      .then(function (s) {
+        state.sessions.unshift(s);
+        selectSession(s.id);
+      })
+      .catch(function () { toast('创建会话失败'); });
+  }
+
+  function deleteSession(id, title) {
+    if (!confirm('确定要删除会话「' + title + '」吗?此操作不可撤销。')) return;
+    fetch('/api/sessions/' + id, { method: 'DELETE' })
+      .then(function (res) {
+        if (!res.ok) {
+          return res.json().catch(function () { return null; }).then(function (j) {
+            toast(res.status === 409 ? '会话正在运行中,无法删除'
+                                     : ((j && j.detail) || '删除失败'));
+          });
+        }
+        state.sessions = state.sessions.filter(function (s) { return s.id !== id; });
+        if (state.currentId === id) {
+          state.currentId = null;
+          if (state.sessions.length) selectSession(state.sessions[0].id);
+          else createSession();
+        } else {
+          renderSessionList();
+        }
+      })
+      .catch(function () { toast('删除失败:网络错误'); });
+  }
+
+  // ---------- Sidebar: health & tools ----------
+  function loadHealth() {
+    fetch('/api/health')
+      .then(function (res) { return res.json(); })
+      .then(function (j) {
+        els.providerChip.textContent = j.provider || '未知供应商';
+        els.modelChip.textContent = j.model || '未设置模型';
+      })
+      .catch(function () { els.modelChip.textContent = '连接失败'; });
+  }
+
+  function loadTools() {
+    fetch('/api/tools')
+      .then(function (res) { return res.json(); })
+      .then(function (j) {
+        var tools = j.tools || [];
+        els.toolsSummary.textContent = '工具 (' + tools.length + ')';
+        els.toolList.replaceChildren();
+        tools.forEach(function (t) {
+          var item = el('div', 'tool-item');
+          item.appendChild(el('div', 'tool-item-name', t.name));
+          if (t.description) item.appendChild(el('div', 'tool-item-desc', t.description));
+          els.toolList.appendChild(item);
+        });
+      })
+      .catch(function () { els.toolsSummary.textContent = '工具 (加载失败)'; });
+  }
+
+  // ---------- Composer ----------
+  function autosize() {
+    els.input.style.height = 'auto';
+    els.input.style.height = Math.min(els.input.scrollHeight, 160) + 'px';
+  }
+
+  function sendMessage() {
+    var content = els.input.value.trim();
+    if (!content || state.running || !state.currentId) return;
+    fetch('/api/sessions/' + state.currentId + '/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: content })
+    })
+      .then(function (res) {
+        if (res.ok) {
+          els.input.value = '';
+          autosize();
+        } else if (res.status === 409) {
+          toast('会话正在运行中,请稍候');
+        } else {
+          toast('发送失败(' + res.status + ')');
+        }
+      })
+      .catch(function () { toast('发送失败:网络错误'); });
+  }
+
+  function stopRun() {
+    if (!state.currentId) return;
+    fetch('/api/sessions/' + state.currentId + '/stop', { method: 'POST' })
+      .catch(function () { toast('停止请求失败'); });
+  }
+
+  // ---------- Wiring ----------
+  els.newSessionBtn.addEventListener('click', createSession);
+  els.stopBtn.addEventListener('click', stopRun);
+  els.sendBtn.addEventListener('click', sendMessage);
+  els.input.addEventListener('input', autosize);
+  els.input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // Keep relative times fresh, and reconcile statuses/titles with the
+  // backend (a run may finish in a session we are not subscribed to).
+  function refreshSessions() {
+    fetch('/api/sessions')
+      .then(function (res) { return res.json(); })
+      .then(function (j) {
+        var byId = {};
+        (j.sessions || []).forEach(function (s) { byId[s.id] = s; });
+        state.sessions.forEach(function (s) {
+          var f = byId[s.id];
+          // The current session is driven by live events; only reconcile
+          // the ones without an open WebSocket.
+          if (f && s.id !== state.currentId) {
+            s.status = f.status;
+            s.title = f.title;
+          }
+        });
+        renderSessionList();
+      })
+      .catch(function () { renderSessionList(); });
+  }
+
+  setInterval(function () {
+    if (state.sessions.length) refreshSessions();
+  }, 60000);
+
+  // ---------- Boot ----------
+  function init() {
+    loadHealth();
+    loadTools();
+    fetch('/api/sessions')
+      .then(function (res) { return res.json(); })
+      .then(function (j) {
+        state.sessions = j.sessions || [];
+        if (state.sessions.length) selectSession(state.sessions[0].id);
+        else return createSession();
+      })
+      .catch(function () { toast('无法连接后端服务'); });
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

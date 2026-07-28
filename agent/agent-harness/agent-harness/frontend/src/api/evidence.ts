@@ -1,0 +1,321 @@
+import { api, ApiError } from "./client";
+
+/**
+ * Literature Evidence adapter (harness/api/generation.py, real,
+ * uncommitted). This is the real vertical slice backing the Knowledge &
+ * Evidence page's "Literature Evidence" domain search - source is the
+ * local DDR knowledge base (`knowledge/ddr_database/*.json`), not a live
+ * network literature API (Repository Truth Audit: no network retrieval
+ * exists in this repo).
+ */
+export interface GenerationHealth {
+  llm: { available: boolean; provider?: string; model?: string; reason?: string };
+  crossref: { available: boolean; reason?: string };
+  localDdr: { available: boolean; reason?: string };
+}
+
+export async function getGenerationHealth(): Promise<GenerationHealth> {
+  const r = await api.get<{
+    llm: { available: boolean; provider?: string; model?: string; reason?: string };
+    crossref: { available: boolean; reason?: string };
+    local_ddr: { available: boolean; reason?: string };
+  }>("/api/generation/health");
+  return { llm: r.llm, crossref: r.crossref, localDdr: r.local_ddr };
+}
+
+export interface EvidenceDocument {
+  sourceId: string;
+  title: string;
+  authors: string[];
+  publicationYear: number | null;
+  journalOrRepository: string | null;
+  doiOrAccession: string | null;
+}
+
+export interface EvidenceSearchResult {
+  sourceName: string;
+  totalAvailable: number;
+  documents: EvidenceDocument[];
+}
+
+export async function searchEvidence(query: string, source: "local_ddr" | "crossref" = "local_ddr"): Promise<EvidenceSearchResult> {
+  const params = new URLSearchParams({ query, source });
+  const r = await api.get<{
+    source_name: string;
+    total_available: number;
+    documents: Array<{
+      source_id: string;
+      title: string;
+      authors: string[];
+      publication_year: number | null;
+      journal_or_repository: string | null;
+      doi_or_accession: string | null;
+    }>;
+  }>(`/api/generation/evidence/search?${params.toString()}`);
+  return {
+    sourceName: r.source_name,
+    totalAvailable: r.total_available,
+    documents: r.documents.map((d) => ({
+      sourceId: d.source_id,
+      title: d.title,
+      authors: d.authors,
+      publicationYear: d.publication_year,
+      journalOrRepository: d.journal_or_repository,
+      doiOrAccession: d.doi_or_accession,
+    })),
+  };
+}
+
+export interface EngineeringAction {
+  modificationType: string;
+  target: string;
+  geneOrPathway: string;
+  rationale: string;
+  expectedEffect: string;
+  risk: string;
+  validation: string[];
+}
+
+export interface ExtractedExperimentalDesign {
+  problemStatement: string;
+  bottlenecks: string[];
+  mechanisticExplanation: string;
+  hypothesis: string;
+  expectedEffect: string;
+  actions: EngineeringAction[];
+}
+
+export interface EvidenceDocumentDetail extends EvidenceDocument {
+  url: string | null;
+  abstractOrSummary: string;
+  /** Only present for local_ddr documents whose curated record actually
+   * carries this content - never fabricated for a crossref document that
+   * has nothing but bibliographic metadata (Knowledge & Evidence page's
+   * "点击一条文献证据查看详情" - see harness/api/generation.py::
+   * get_evidence_document). */
+  engineeringDesign: ExtractedExperimentalDesign | null;
+}
+
+export async function getEvidenceDocument(sourceId: string, source: "local_ddr" | "crossref" = "local_ddr"): Promise<EvidenceDocumentDetail | null> {
+  try {
+    const params = new URLSearchParams({ source });
+    const r = await api.get<{
+      source_id: string;
+      title: string;
+      authors: string[];
+      publication_year: number | null;
+      journal_or_repository: string | null;
+      doi_or_accession: string | null;
+      url: string | null;
+      abstract_or_summary: string;
+      engineering_design: {
+        problem_statement: string;
+        bottlenecks: string[];
+        mechanistic_explanation: string;
+        hypothesis: string;
+        expected_effect: string;
+        actions: Array<{
+          modification_type: string;
+          target: string;
+          gene_or_pathway: string;
+          rationale: string;
+          expected_effect: string;
+          risk: string;
+          validation: string[];
+        }>;
+      } | null;
+    }>(`/api/generation/evidence/documents/${sourceId}?${params.toString()}`);
+    return {
+      sourceId: r.source_id,
+      title: r.title,
+      authors: r.authors ?? [],
+      publicationYear: r.publication_year,
+      journalOrRepository: r.journal_or_repository,
+      doiOrAccession: r.doi_or_accession,
+      url: r.url,
+      abstractOrSummary: r.abstract_or_summary,
+      engineeringDesign: r.engineering_design
+        ? {
+            problemStatement: r.engineering_design.problem_statement,
+            bottlenecks: r.engineering_design.bottlenecks ?? [],
+            mechanisticExplanation: r.engineering_design.mechanistic_explanation,
+            hypothesis: r.engineering_design.hypothesis,
+            expectedEffect: r.engineering_design.expected_effect,
+            actions: (r.engineering_design.actions ?? []).map((a) => ({
+              modificationType: a.modification_type,
+              target: a.target,
+              geneOrPathway: a.gene_or_pathway,
+              rationale: a.rationale,
+              expectedEffect: a.expected_effect,
+              risk: a.risk,
+              validation: a.validation ?? [],
+            })),
+          }
+        : null,
+    };
+  } catch (e) {
+    if (e instanceof ApiError && e.status === 404) return null;
+    throw e;
+  }
+}
+
+/**
+ * Real Crossref DOI resolution (harness/evidence_retrieval/service.py::
+ * verify_doi) - a fabricated/unresolvable DOI comes back `resolved: false`
+ * and is recorded server-side as a GEN_HALLUCINATED_REFERENCE_REJECTED
+ * event (surfaced in ComputationalTraceabilityTab), never silently
+ * accepted (System Invariant 9 "No Unsupported Synthesis").
+ */
+export async function verifyDoi(input: { projectId: string; doi: string; actorId: string }): Promise<{ doi: string; resolved: boolean }> {
+  return api.post<{ doi: string; resolved: boolean }>("/api/generation/evidence/verify-doi", {
+    project_id: input.projectId,
+    doi: input.doi,
+    actor_id: input.actorId,
+  });
+}
+
+/**
+ * EvidenceMatchReport (harness/evidence_retrieval/models.py) - the real
+ * backing for Applicability Context / cross-strain "context mismatch"
+ * signal (Page 3 prompt §17, Scenario E). directness/overall_match_status
+ * are never collapsed to a single color - see MatchReportCard.
+ */
+export interface EvidenceMatchReportSummary {
+  matchReportId: string;
+  evidenceId: string;
+  organismMatch: string;
+  strainMatch: string;
+  genotypeMatch: string;
+  mediumMatch: string;
+  conditionMatch: string;
+  timepointMatch: string;
+  interventionMatch: string;
+  measurementMatch: string;
+  directness: string;
+  overallMatchStatus: string;
+  transferRisks: string[];
+  downgradeReasons: string[];
+  createdAt: number;
+}
+
+export async function listEvidenceMatchReports(evidenceId?: string): Promise<EvidenceMatchReportSummary[]> {
+  const params = evidenceId ? `?${new URLSearchParams({ evidence_id: evidenceId }).toString()}` : "";
+  const r = await api.get<{
+    match_reports: Array<{
+      match_report_id: string;
+      evidence_id: string;
+      organism_match: string;
+      strain_match: string;
+      genotype_match: string;
+      medium_match: string;
+      condition_match: string;
+      timepoint_match: string;
+      intervention_match: string;
+      measurement_match: string;
+      directness: string;
+      overall_match_status: string;
+      transfer_risks: string[];
+      downgrade_reasons: string[];
+      created_at: number;
+    }>;
+  }>(`/api/generation/evidence/match-reports${params}`);
+  return r.match_reports.map((m) => ({
+    matchReportId: m.match_report_id,
+    evidenceId: m.evidence_id,
+    organismMatch: m.organism_match,
+    strainMatch: m.strain_match,
+    genotypeMatch: m.genotype_match,
+    mediumMatch: m.medium_match,
+    conditionMatch: m.condition_match,
+    timepointMatch: m.timepoint_match,
+    interventionMatch: m.intervention_match,
+    measurementMatch: m.measurement_match,
+    directness: m.directness,
+    overallMatchStatus: m.overall_match_status,
+    transferRisks: m.transfer_risks ?? [],
+    downgradeReasons: m.downgrade_reasons ?? [],
+    createdAt: m.created_at,
+  }));
+}
+
+/**
+ * LLMGenerationRecord (harness/llm_generation/models.py) - the real
+ * backing for Computational Traceability (Page 3 prompt §20): every AI-
+ * derived output must show model/version/params/validation status, never
+ * just a bare "AI generated" label.
+ */
+export interface GenerationRecordSummary {
+  generationId: string;
+  taskType: string;
+  provider: string;
+  modelId: string;
+  promptTemplateId: string;
+  promptTemplateVersion: string;
+  outputSchemaVersion: string;
+  validationStatus: string;
+  retryCount: number;
+  fallbackUsed: boolean;
+  sharedModelRisk: boolean;
+  tokenUsageIfAvailable: Record<string, unknown> | null;
+  latency: number | null;
+  createdAt: number;
+}
+
+interface RawGenerationRecord {
+  generation_id: string;
+  task_type: string;
+  provider: string;
+  model_id: string;
+  prompt_template_id: string;
+  prompt_template_version: string;
+  output_schema_version: string;
+  validation_status: string;
+  retry_count: number;
+  fallback_used: boolean;
+  shared_model_risk: boolean;
+  token_usage_if_available: Record<string, unknown> | null;
+  latency: number | null;
+  created_at: number;
+}
+
+function toGenerationRecordSummary(r: RawGenerationRecord): GenerationRecordSummary {
+  return {
+    generationId: r.generation_id,
+    taskType: r.task_type,
+    provider: r.provider,
+    modelId: r.model_id,
+    promptTemplateId: r.prompt_template_id,
+    promptTemplateVersion: r.prompt_template_version,
+    outputSchemaVersion: r.output_schema_version,
+    validationStatus: r.validation_status,
+    retryCount: r.retry_count,
+    fallbackUsed: r.fallback_used,
+    sharedModelRisk: r.shared_model_risk,
+    tokenUsageIfAvailable: r.token_usage_if_available,
+    latency: r.latency,
+    createdAt: r.created_at,
+  };
+}
+
+export async function listGenerationRecords(taskType?: string): Promise<GenerationRecordSummary[]> {
+  const params = taskType ? `?${new URLSearchParams({ task_type: taskType }).toString()}` : "";
+  const r = await api.get<{ records: RawGenerationRecord[] }>(`/api/generation/records${params}`);
+  return r.records.map(toGenerationRecordSummary);
+}
+
+export interface GenerationRecordDetail extends GenerationRecordSummary {
+  rawOutputArtifactRef: string | null;
+  parsedOutputRef: string | null;
+}
+
+export async function getGenerationRecord(generationId: string): Promise<GenerationRecordDetail | null> {
+  try {
+    const r = await api.get<RawGenerationRecord & { raw_output_artifact_ref: string | null; parsed_output_ref: string | null }>(
+      `/api/generation/records/${generationId}`,
+    );
+    return { ...toGenerationRecordSummary(r), rawOutputArtifactRef: r.raw_output_artifact_ref, parsedOutputRef: r.parsed_output_ref };
+  } catch (e) {
+    if (e instanceof ApiError && e.status === 404) return null;
+    throw e;
+  }
+}

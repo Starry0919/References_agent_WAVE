@@ -1,0 +1,11 @@
+{
+  "step_id": "step03_document_parsing",
+  "version": "0.1.0",
+  "implementation": "python_deterministic",
+  "input": {"type": "object", "required": ["validated_source", "raw_text"]},
+  "output": {"type": "object", "required": ["source_id", "blocks"]},
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["PARSING_ERROR", "STRUCTURE_LOSS", "OCR_UNCERTAIN", "FIGURE_NOT_PARSED", "TABLE_NOT_PARSED"],
+  "provenance_requirements": ["step_version", "source_ids"],
+  "human_review": {"supported": true, "triggers": ["no_headings_detected"]}
+}

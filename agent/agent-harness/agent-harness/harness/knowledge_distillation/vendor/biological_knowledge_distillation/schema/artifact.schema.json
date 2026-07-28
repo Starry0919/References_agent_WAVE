@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Biological Knowledge Distillation - Artifact envelope",
+  "type": "object",
+  "required": ["artifact_id", "artifact_type", "step_name", "version", "created_time", "content", "provenance"],
+  "properties": {
+    "artifact_id": {"type": "string"},
+    "artifact_type": {"type": "string"},
+    "step_name": {"type": "string"},
+    "version": {"type": "string"},
+    "input_hash": {"type": "string"},
+    "source_ids": {"type": "array", "items": {"type": "string"}},
+    "created_time": {"type": "string"},
+    "schema_version": {"type": "string"},
+    "content": {},
+    "provenance": {"type": "object"},
+    "validation_status": {"type": "string", "enum": ["valid", "invalid", "unvalidated"]}
+  }
+}
