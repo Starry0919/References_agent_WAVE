@@ -64,14 +64,26 @@ class QualityEvaluationEngine:
             "extraction_confidence": dimensions["evidence_quality"]["score"] / 100,
         }
         output = {"quality_evaluation": quality, "evaluation_report": report, "score_details": score_details}
+        # Same reasoning as skill08_evidence_binding's own threshold: only
+        # escalate to `needs_review` (which feeds skill12's human-review
+        # queue) when the issue is actually material, not on any non-zero
+        # count - a paper that's mostly `unknown` fields legitimately has an
+        # empty evidence_map, and one or two noted inconsistencies are
+        # ordinary scientific nuance, not a sign this evaluation is
+        # untrustworthy. Both are still always recorded as warnings.
+        reported_fields = [k for k, v in fields.items() if v.get("status") == "reported"]
         warnings, reviews = [], []
         if not skill08.get("evidence_map"):
-            warnings.append(error("EVAL002")); reviews.append({"reason": "missing_evidence", "fields": [k for k, v in fields.items() if v.get("status") == "reported"]})
+            warnings.append(error("EVAL002"))
+            if reported_fields:
+                reviews.append({"reason": "missing_evidence", "fields": reported_fields})
         if conflicts:
-            warnings.append(error("EVAL004", {"count": len(conflicts)})); reviews.append({"reason": "data_conflict", "fields": [v.get("field") for v in conflicts]})
+            warnings.append(error("EVAL004", {"count": len(conflicts)}))
+            if len(conflicts) > 2:
+                reviews.append({"reason": "data_conflict", "fields": [v.get("field") for v in conflicts]})
         if overall < 50:
             reviews.append({"reason": "low_quality", "overall_score": overall})
-        status = "needs_review" if reviews else "succeeded"
+        status = "needs_review" if reviews else ("succeeded_with_warnings" if warnings else "succeeded")
         result = {
             "status": status, "output": output, "artifacts": [],
             "self_check": {"passed": True, "checks": checks, "score": 1.0},

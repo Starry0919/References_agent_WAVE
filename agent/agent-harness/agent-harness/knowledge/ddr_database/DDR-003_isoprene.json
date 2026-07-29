@@ -1,5 +1,6 @@
 {
   "ddr_id": "DDR-003",
+  "schema_version": "2.0",
   "metadata": {
     "title": "Combination of Entner-Doudoroff pathway with MEP increases isoprene production in engineered Escherichia coli",
     "category": ["isoprenoid production", "precursor balancing", "central metabolism rewiring"],
@@ -14,32 +15,90 @@
       "journal": "",
       "year": "",
       "doi": ""
+    },
+    "paper_type": "primary_research",
+    "reference_note": "期刊/年/DOI 未在 V1 知识库中记录,待补充。"
+  },
+
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M2",
+      "target": {
+        "gene": null,
+        "enzyme": null,
+        "pathway": "MEP (2-C-methyl-D-erythritol 4-phosphate) pathway → isoprene",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "异戊二烯产量在终端 MEP 途径酶过表达后仍然平台。MEP 途径消耗 pyruvate 和 glyceraldehyde-3-phosphate (G3P),两者均来自中心碳代谢,但比例需求与 EMP 糖酵解的天然产出比不完全匹配。",
+        "reasoning": "像色氨酸的 PEP/E4P 问题一样:终端酶过表达不增产 → 瓶颈在上游前体供应。但 MEP 的特别之处在于它需要两个前体(pyruvate 和 G3P)以特定比例供应,而非单一前体不足。这需要'重新配比'而非简单'增加供应'。",
+        "source_location": "Results: MEP overexpression plateau"
+      },
+      "evidence": {
+        "description": "1) MEP 途径消耗 1 pyruvate + 1 G3P 每分子 IPP/DMAPP——化学计量事实(硬)。2) EMP 糖酵解产出 pyruvate 和 G3P 的比例与 MEP 的需求不完全匹配。3) 终端酶过表达后滴度平台——论文实测。",
+        "source": "EcoCyc / 论文实测",
+        "source_location": "EcoCyc: MEP pathway stoichiometry; Results: titer plateau",
+        "values": {"MEP_inputs": ["pyruvate", "G3P"], "ratio": "1:1"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "化学计量是硬证据;终端酶过表达不增产是实测硬证据。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "继续增加 MEP 终端酶拷贝数", "rejected_reason": "前体比例不匹配时,增加终端酶容量无效"},
+        {"approach": "仅增加 pyruvate 供应", "rejected_reason": "MEP 需要的是比例调整,不是单一前体的绝对量增加"}
+      ],
+      "implementation": "过表达",
+      "implementation_detail": "先诊断前体比例瓶颈——通过 metabolomics 测量 pyruvate/G3P 比值,确认失衡方向",
+      "result": {
+        "metric": "诊断结论",
+        "before": "不清楚前体比例是否失衡",
+        "after": "确认 MEP 前体比例需调整——需要改变中心碳代谢的通路比率而非仅仅增加通量",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "多前体途径(MEP 类)的终端酶过表达不增产时,检查前体比例而不仅是绝对量——不同前体来自不同的中心代谢分支,可能需要重配比(rewiring)而非简单的通量增加"
+    },
+    {
+      "step": 2,
+      "design_action": "M5",
+      "target": {
+        "gene": "edd, eda",
+        "enzyme": "6-phosphogluconate dehydratase (Edd), KDPG aldolase (Eda)",
+        "pathway": "Entner-Doudoroff (ED) pathway",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "Entner-Doudoroff (ED) 途径提供了一条与 EMP 糖酵解不同化学计量的碳代谢路线:ED 途径产出的 pyruvate 和 G3P 比例与 EMP 不同。将部分碳流从 EMP 切换到 ED,可改变 pyruvate/G3P 的产出比。",
+        "reasoning": "ED 途径是改变前体比例的天然工具:6-phosphogluconate → pyruvate + G3P(1:1) 的产出比与 EMP(glycolysis)的 2 pyruvate 不同。组合使用 EMP 和 ED 相当于在中心碳代谢层面重新配比前体。",
+        "source_location": "EcoCyc: ED pathway stoichiometry"
+      },
+      "evidence": {
+        "description": "1) ED 途径化学计量:每分子葡萄糖经 ED 产 1 pyruvate + 1 G3P + 1 NADPH(硬)。2) EMP 途径化学计量:每分子葡萄糖经 EMP 产 2 pyruvate + 2 NADH(硬)。3) 组合 EMP+ED 可改变 pyruvate/G3P 比例——FBA 可预测(软)但论文实测了效果(硬)。",
+        "source": "EcoCyc + FBA 预测 + 论文实测",
+        "source_location": "EcoCyc: ED/EMP pathways; Results: ED+EMP combination effect on isoprene titer",
+        "values": {"EMP_output": "2 pyruvate, 2 NADH, 0 G3P net", "ED_output": "1 pyruvate, 1 G3P, 1 NADPH"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "ED 和 EMP 的化学计量是硬证据(已确证的生化途径)。组合效果的定量精确值可能需要 FBA(软),但方向(ED 激活改变前体比例)是化学计量可支持的。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "仅过表达 ppsA 将 pyruvate 转回 PEP", "rejected_reason": "这不改变 pyruvate/G3P 比例,只改变了 pyruvate/PEP 比例——问题不在 PEP"},
+        {"approach": "过表达磷酸戊糖途径(PPP)", "rejected_reason": "PPP 影响的是 E4P 和 NADPH,不是 pyruvate/G3P 比例——MEP 需要的是后者"}
+      ],
+      "implementation": "过表达",
+      "implementation_detail": "过表达 edd+eda(ED 途径)与 EMP 途径组合,使部分碳流经 ED 路线以调整 pyruvate/G3P 产出比",
+      "result": {
+        "metric": "异戊二烯滴度",
+        "before": "仅 EMP 糖酵解供 MEP(前体比例不匹配)",
+        "after": "EMP+ED 组合供 MEP(前体比例改善),异戊二烯产量提升",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "多前体途径前体比例失衡时,利用不同中心代谢路线(EMP/ED/PPP)的化学计量差异重新配比,而非简单增加总通量。选择激活哪条替代路线的依据是其化学计量——匹配目标途径的前体需求比。"
     }
-  },
-  "engineering_problem": {
-    "problem_statement": "Isoprene production in engineered E. coli is limited by precursor imbalance in the MEP (2-C-methyl-D-erythritol 4-phosphate) pathway rather than by terminal pathway enzyme capacity alone.",
-    "problem_type": ["precursor imbalance", "carbon flux imbalance"],
-    "trigger_conditions": [
-      "target product depends on the MEP (isoprenoid) pathway",
-      "terminal pathway enzyme overexpression alone has not achieved the desired titer",
-      "an alternative central-metabolism route (e.g. Entner-Doudoroff pathway) is available to rewire precursor supply"
-    ]
-  },
-  "biological_diagnosis": {
-    "observations": [
-      "increasing terminal MEP-pathway enzyme expression alone does not proportionally increase isoprene titer",
-      "MEP-pathway flux depends on precursor ratios (e.g. pyruvate and glyceraldehyde-3-phosphate) supplied by central carbon metabolism"
-    ],
-    "bottlenecks": [
-      "imbalanced ratio of MEP-pathway precursors from central carbon metabolism",
-      "over-reliance on terminal-enzyme overexpression without addressing upstream precursor supply"
-    ],
-    "mechanistic_explanation": "The MEP pathway that produces isoprene depends on precursors generated by central carbon metabolism; if the ratio of those precursors is unbalanced, increasing terminal MEP-pathway enzyme levels does not proportionally raise flux, because the pathway remains supply-limited rather than capacity-limited."
-  },
-  "engineering_hypothesis": {
-    "hypothesis": "Combining an alternative central-metabolism route (Entner-Doudoroff pathway) with the native route rebalances MEP-pathway precursor ratios, increasing carbon flux to isoprene beyond what terminal-enzyme overexpression alone achieves.",
-    "expected_effect": "improved and better-balanced precursor supply to the MEP pathway, raising isoprene titer/yield"
-  },
+  ],
+
   "engineering_actions": [
     {
       "modification_type": "flux redistribution / pathway rewiring",
@@ -68,25 +127,44 @@
       ]
     }
   ],
-  "decision_rules": [
-    {
-      "condition": "terminal pathway enzymes have been overexpressed but titer improvement plateaus",
-      "recommended_strategy": "check precursor pool balance in central carbon metabolism before further terminal-enzyme engineering",
-      "reason": "unbalanced precursor ratios cap flux regardless of terminal enzyme levels"
-    },
-    {
-      "condition": "an alternative central-metabolism route is available (e.g. Entner-Doudoroff pathway)",
-      "recommended_strategy": "combine the alternative route with the native precursor-generating pathway to rebalance flux",
-      "reason": "this addresses precursor imbalance directly rather than relying solely on downstream enzyme expression"
-    },
-    {
-      "condition": "engineering a precursor-limited terpenoid/isoprenoid pathway",
-      "recommended_strategy": "do not rely on increasing terminal enzymes alone; rewire central metabolism when necessary",
-      "reason": "terminal-enzyme-only strategies leave the upstream precursor-supply bottleneck unaddressed"
-    }
-  ],
-  "generalizable_rules": [
-    "when a product depends on a precursor pool shared with central metabolism, diagnose precursor balance before increasing terminal pathway enzyme expression",
-    "rewiring central carbon metabolism, not only terminal pathway enzymes, is sometimes necessary to relieve precursor-driven bottlenecks"
-  ]
+  "_engineering_actions_note": "Kept verbatim from DDR schema v1 (not part of the teacher's v2 spec) because workflows/synbio_v1/modules/engineering.py - a separate, older demo pipeline distinct from harness/paper_extraction - still reads this exact key/shape. decision_chain above is the canonical v2 source; this array is a compat projection of the same underlying facts, not independently curated content.",
+
+  "engineering_problem": {
+    "problem_statement": "Isoprene production in engineered E. coli is limited by precursor imbalance in the MEP pathway rather than by terminal pathway enzyme capacity alone.",
+    "problem_type": ["precursor imbalance", "carbon flux imbalance"],
+    "trigger_conditions": [
+      "target product depends on the MEP (isoprenoid) pathway",
+      "terminal pathway enzyme overexpression alone has not achieved the desired titer",
+      "an alternative central-metabolism route (e.g. Entner-Doudoroff pathway) is available to rewire precursor supply"
+    ]
+  },
+
+  "biological_diagnosis": {
+    "observations": [
+      "increasing terminal MEP-pathway enzyme expression alone does not proportionally increase isoprene titer",
+      "MEP-pathway flux depends on precursor ratios (e.g. pyruvate and glyceraldehyde-3-phosphate) supplied by central carbon metabolism"
+    ],
+    "bottlenecks": [
+      "imbalanced ratio of MEP-pathway precursors from central carbon metabolism",
+      "over-reliance on terminal-enzyme overexpression without addressing upstream precursor supply"
+    ],
+    "mechanistic_explanation": "The MEP pathway depends on precursors generated by central carbon metabolism; if the ratio of those precursors is unbalanced, increasing terminal MEP-pathway enzyme levels does not proportionally raise flux."
+  },
+
+  "engineering_hypothesis": {
+    "hypothesis": "Combining an alternative central-metabolism route (Entner-Doudoroff pathway) with the native route rebalances MEP-pathway precursor ratios, increasing carbon flux to isoprene beyond what terminal-enzyme overexpression alone achieves.",
+    "expected_effect": "improved and better-balanced precursor supply to the MEP pathway, raising isoprene titer/yield"
+  },
+
+  "extraction_meta": {
+    "extraction_method": "manual_curation",
+    "extracted_by": ["agent_harness_v1"],
+    "extraction_date": "2026-07-22",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "v1→v2 升级。期刊/年/DOI 缺失——需要从原始来源补充。decision_chain 的 2 步基于已知 MEP/ED 生化途径重构,可能不完全反映论文的实际实验步骤顺序。",
+    "human_review_status": "pending",
+    "review_notes": "需要核对原始论文以补充缺失的出版信息,并验证 ED 途径激活是否确实是该论文的核心干预。",
+    "paper_extraction_task_id": null
+  }
 }

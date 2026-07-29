@@ -1,8 +1,13 @@
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { UploadCloud, FlaskConical, ShieldCheck, AlertTriangle, Dna, ChevronDown, ChevronRight, FileSearch, History, Trash2 } from "lucide-react";
-import { deleteRun, getRun, listRuns, submitRun, uploadPaper, type DetailPanel, type EvidenceItem, type K12AdaptationItem, type RunHistoryItem, type RunResult, type StepCard } from "@/api/paperExtraction";
+import { UploadCloud, FlaskConical, ShieldCheck, AlertTriangle, Dna, ChevronDown, ChevronRight, FileSearch, History, Trash2, BookOpenCheck, Microscope, Info, HelpCircle, ExternalLink } from "lucide-react";
+import {
+  deleteRun, getRun, listRuns, submitRun, uploadPaper,
+  type DetailPanel, type EvidenceItem, type ExtractionSummary,
+  type K12AdaptationItem, type PaperExtractionSummary, type RunHistoryItem, type RunResult, type StepCard,
+} from "@/api/paperExtraction";
+import { DesignTab, paperIdentityTitle, QualityTab, ReasoningTab, TabButton } from "@/pages/paperExtraction/PaperResultTabs";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
 import { useI18n } from "@/lib/i18n";
@@ -15,11 +20,14 @@ import { useI18n } from "@/lib/i18n";
  * governance) once it lands. `?task=` in the URL keeps the run
  * refreshable, matching the Trust & Provenance page's `?run=` convention.
  */
-export function PaperExtractionPage({ embedded = false }: { embedded?: boolean }) {
+export function PaperExtractionPage({ embedded = false, projectId }: { embedded?: boolean; projectId?: string }) {
   const { t } = useI18n();
   const [params, setParams] = useSearchParams();
   const taskId = params.get("task");
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const { projectId: routeProjectId } = useParams<{ projectId: string }>();
+  const resolvedProjectId = projectId ?? routeProjectId;
 
   const runQuery = useQuery({
     queryKey: ["paper-extraction-run", taskId],
@@ -31,6 +39,28 @@ export function PaperExtractionPage({ embedded = false }: { embedded?: boolean }
     },
   });
 
+  // Requirement: once a single-paper run finishes, land the user straight
+  // on that paper's new literature-evidence detail page instead of leaving
+  // them looking at the same run view. Guarded by `navigatedForTaskId` so
+  // this fires exactly once per task - refetches after completion (the
+  // poll keeps running a few seconds past COMPLETED) must not re-navigate
+  // if the user has since clicked away. Multi-paper runs are intentionally
+  // left alone here: there is no single correct destination, so the user
+  // picks via each paper's own "详情" button instead (see PaperResultCard).
+  const navigatedForTaskId = useRef<string | null>(null);
+  useEffect(() => {
+    const run = runQuery.data;
+    if (!run || !resolvedProjectId || !taskId) return;
+    if (run.status !== "COMPLETED") return;
+    if (navigatedForTaskId.current === taskId) return;
+    const papers = run.extractionSummary?.papers ?? [];
+    if (papers.length !== 1) return;
+    const sourceId = papers[0].evidenceSourceId;
+    if (!sourceId) return;
+    navigatedForTaskId.current = taskId;
+    navigate(`/projects/${resolvedProjectId}/evidence/${sourceId}`);
+  }, [runQuery.data, resolvedProjectId, taskId, navigate]);
+
   // Ask #5: `?task=` is the only pointer to the active run - leaving this
   // page (any client-side navigation away and back) drops that URL param
   // and previously fell straight back to a blank SubmissionForm, even
@@ -40,8 +70,13 @@ export function PaperExtractionPage({ embedded = false }: { embedded?: boolean }
   // localStorage) is shown whenever no task is selected, so returning here
   // always has somewhere to click back into instead of looking reset.
   const historyQuery = useQuery({
-    queryKey: ["paper-extraction-history"],
-    queryFn: () => listRuns(),
+    // Scoped to this project (harness/paper_extraction/service.py::list_tasks
+    // already supports filtering by project_id) - without projectId in the
+    // key/call, every project's "history" showed every OTHER project's runs
+    // too, since project A's cached list would otherwise satisfy project B's
+    // query.
+    queryKey: ["paper-extraction-history", projectId],
+    queryFn: () => listRuns(projectId),
     enabled: !taskId,
     refetchInterval: !taskId ? 5000 : false,
   });
@@ -82,6 +117,7 @@ export function PaperExtractionPage({ embedded = false }: { embedded?: boolean }
       {!taskId && (
         <div className="grid items-start gap-5 xl:grid-cols-[minmax(440px,0.9fr)_minmax(520px,1.1fr)]">
           <SubmissionForm
+            projectId={projectId}
             onSubmitted={(id) => {
               setParams({ task: id });
               queryClient.invalidateQueries({ queryKey: ["paper-extraction-history"] });
@@ -215,7 +251,7 @@ function RunHistory({
   );
 }
 
-function SubmissionForm({ onSubmitted }: { onSubmitted: (taskId: string) => void }) {
+function SubmissionForm({ onSubmitted, projectId }: { onSubmitted: (taskId: string) => void; projectId?: string }) {
   const { t } = useI18n();
   const [userRequest, setUserRequest] = useState("");
   const [organism, setOrganism] = useState("");
@@ -236,6 +272,7 @@ function SubmissionForm({ onSubmitted }: { onSubmitted: (taskId: string) => void
   const submitMutation = useMutation({
     mutationFn: () =>
       submitRun({
+        projectId,
         userRequest,
         organism,
         strain,
@@ -379,12 +416,16 @@ function RunView({ run }: { run: RunResult }) {
         </div>
       )}
 
-      {Object.keys(run.skillStates).length > 0 && <SkillProgress skillStates={run.skillStates} skillProgress={run.skillProgress} />}
+      {Object.keys(run.skillStates).length > 0 && (
+        <SkillProgress skillStates={run.skillStates} skillProgress={run.skillProgress} warnings={run.warnings} />
+      )}
 
-      {!run.frontendView && (run.status === "RUNNING" || run.status === "CREATED") && Object.keys(run.skillStates).length === 0 && (
+      {!run.frontendView && !run.extractionSummary?.papers.length && (run.status === "RUNNING" || run.status === "CREATED") && Object.keys(run.skillStates).length === 0 && (
         <EmptyState variant="loading" />
       )}
-      {!run.frontendView && run.status === "FAILED" && <EmptyState variant="failed" />}
+      {!run.frontendView && !run.extractionSummary?.papers.length && run.status === "FAILED" && <EmptyState variant="failed" />}
+
+      {run.extractionSummary && run.extractionSummary.papers.length > 0 && <ExtractionResultSection summary={run.extractionSummary} />}
 
       {run.frontendView && (
         <>
@@ -400,6 +441,88 @@ function RunView({ run }: { run: RunResult }) {
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+/**
+ * The primary results page for a completed (or in-progress) extraction:
+ * for every paper, keeps the agent's own reasoning ("抽取思路" - how it
+ * classified the article, which strains it found and why) visually
+ * separate from the paper's own experimental design content ("实验设计
+ * 思路" - objective/intervention/groups/conditions/outcomes, each with its
+ * literal supporting quote). Independent human review (governance) is
+ * shown as a non-blocking, informational panel - never a banner implying
+ * the results below are unavailable or unapproved.
+ */
+function ExtractionResultSection({ summary }: { summary: ExtractionSummary }) {
+  const { t } = useI18n();
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center justify-between gap-2 border-b border-border pb-2">
+        <h2 className="flex items-center gap-1.5 text-sm font-semibold text-ink">
+          <Microscope size={15} className="text-accent" aria-hidden /> {t("page5.result.title")}
+        </h2>
+        <span className="text-[11px] text-ink-faint">
+          {summary.papers.length} {t("page5.result.paperCount")}
+        </span>
+      </div>
+      {summary.papers.map((paper) => (
+        <PaperResultCard key={paper.paperId} paper={paper} />
+      ))}
+      {summary.reviewTasks.length > 0 && (
+        <div className="panel flex items-start gap-2 border-border bg-surface-sunken p-3 text-[11px] text-ink-muted">
+          <Info size={14} className="mt-0.5 shrink-0 text-ink-faint" aria-hidden />
+          <div>
+            <p className="font-medium text-ink-muted">{t("page5.result.independentReviewTitle")}</p>
+            <p className="mt-0.5">{summary.governanceNote || t("page5.result.independentReviewHint")}</p>
+            <p className="mt-1 text-ink-faint">
+              {summary.reviewTasks.length} {t("page5.result.reviewTaskCount")}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PaperResultCard({ paper }: { paper: PaperExtractionSummary }) {
+  const { t } = useI18n();
+  const [tab, setTab] = useState<"reasoning" | "design" | "quality">("reasoning");
+  const { projectId } = useParams<{ projectId: string }>();
+  const authors = paper.identity.authors.length > 0 ? paper.identity.authors.join(", ") : null;
+  const metaBits = [authors, paper.identity.journal, paper.identity.year ? String(paper.identity.year) : null].filter(Boolean);
+  return (
+    <div className="panel flex flex-col gap-3 p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-sm font-semibold leading-5 text-ink">{paperIdentityTitle(paper, t)}</h3>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-ink-faint">
+            {metaBits.length > 0 && <span>{metaBits.join(" · ")}</span>}
+            {paper.identity.doi && <span className="font-mono">DOI: {paper.identity.doi}</span>}
+            <span className="font-mono">{paper.paperId}</span>
+          </div>
+        </div>
+        {paper.evidenceSourceId && projectId && (
+          <Link
+            to={`/projects/${projectId}/evidence/${paper.evidenceSourceId}`}
+            className="flex shrink-0 items-center gap-1 rounded border border-border px-2 py-1 text-[11px] font-medium text-ink-muted hover:bg-surface-sunken"
+          >
+            <ExternalLink size={11} aria-hidden />
+            {t("common.viewDetail")}
+          </Link>
+        )}
+      </div>
+
+      <div className="flex gap-1 border-b border-border">
+        <TabButton active={tab === "reasoning"} onClick={() => setTab("reasoning")} icon={<BookOpenCheck size={12} />} label={t("page5.result.tabReasoning")} />
+        <TabButton active={tab === "design"} onClick={() => setTab("design")} icon={<FlaskConical size={12} />} label={t("page5.result.tabDesign")} badge={paper.hasDesignContent ? undefined : "!"} />
+        <TabButton active={tab === "quality"} onClick={() => setTab("quality")} icon={<ShieldCheck size={12} />} label={t("page5.result.tabQuality")} />
+      </div>
+
+      {tab === "reasoning" && <ReasoningTab paper={paper} />}
+      {tab === "design" && <DesignTab paper={paper} />}
+      {tab === "quality" && <QualityTab paper={paper} />}
     </div>
   );
 }
@@ -441,7 +564,15 @@ function skillLabel(skillId: string): string {
   return `${num} ${name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}`;
 }
 
-function SkillProgress({ skillStates, skillProgress }: { skillStates: Record<string, string>; skillProgress: Record<string, { completed: number; total: number }> }) {
+function SkillProgress({
+  skillStates,
+  skillProgress,
+  warnings,
+}: {
+  skillStates: Record<string, string>;
+  skillProgress: Record<string, { completed: number; total: number }>;
+  warnings: Array<{ skill: string; message: string; sourceCode?: string }>;
+}) {
   const { t } = useI18n();
   const entries = Object.entries(skillStates).sort(([a], [b]) => a.localeCompare(b));
   return (
@@ -455,11 +586,34 @@ function SkillProgress({ skillStates, skillProgress }: { skillStates: Record<str
           // never shows a stale fraction.
           const progress = skillProgress[skillId];
           const label = progress && progress.total > 1 ? `${status} (${progress.completed}/${progress.total})` : status;
-          const hint = status.toUpperCase() === "WARNING" ? t("page5.progress.warningHint") : undefined;
+          const upperStatus = status.toUpperCase();
+          const isWarning = upperStatus === "WARNING";
+          const isReviewRequired = upperStatus === "REVIEW_REQUIRED";
+          // Real per-warning messages (harness/paper_extraction's
+          // engine.py now records each skill result's own `warnings`, not
+          // just `errors`) - these are also what triggers REVIEW_REQUIRED
+          // in the first place (skill01/08/09/12 always add a matching
+          // warning alongside any review_request), so the same list covers
+          // both statuses. Falls back to a generic hint only if this run
+          // predates that (an old checkpoint with no `warnings` entries).
+          const detail = warnings.filter((w) => w.skill === skillId).map((w) => w.message);
+          const genericHint = isWarning
+            ? t("page5.progress.warningHint")
+            : isReviewRequired
+              ? t("page5.progress.reviewRequiredHint")
+              : undefined;
+          const hint = isWarning || isReviewRequired ? (detail.length > 0 ? detail.join(" ") : genericHint) : undefined;
           return (
             <li key={skillId} className="flex items-center justify-between gap-2 rounded border border-border bg-surface px-2.5 py-1.5 text-xs">
               <span className="text-ink">{skillLabel(skillId)}</span>
-              <StatusBadge status={skillStatusBadge(status)} label={label} hint={hint} />
+              <span className={`flex items-center gap-1.5 ${hint ? "cursor-help" : ""}`} title={hint}>
+                {hint && (
+                  <span className="shrink-0 text-state-caution" aria-hidden>
+                    <HelpCircle size={13} />
+                  </span>
+                )}
+                <StatusBadge status={skillStatusBadge(status)} label={label} hint={hint} />
+              </span>
             </li>
           );
         })}

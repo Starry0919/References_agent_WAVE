@@ -1,44 +1,114 @@
-[
-  {
-    "rule_id": "RULE-001",
-    "statement": "diagnose precursor limitation before overexpressing terminal pathway enzymes",
-    "applicable_conditions": ["precursor limitation"],
-    "source_ddr": "DDR-001"
-  },
-  {
-    "rule_id": "RULE-002",
-    "statement": "when a product pathway shares precursors with central carbon metabolism (e.g. PEP, E4P), explicitly evaluate that supply",
-    "applicable_conditions": ["precursor limitation", "aromatic amino acid production"],
-    "source_ddr": "DDR-001"
-  },
-  {
-    "rule_id": "RULE-003",
-    "statement": "optimizing central carbon metabolism is often necessary, not optional, for efficient production of precursor-limited products",
-    "applicable_conditions": ["precursor limitation"],
-    "source_ddr": "DDR-001"
-  },
-  {
-    "rule_id": "RULE-004",
-    "statement": "when a host lacks a native pathway to a target product, prioritize pathway construction over pathway modification",
-    "applicable_conditions": ["missing native pathway"],
-    "source_ddr": "DDR-002"
-  },
-  {
-    "rule_id": "RULE-005",
-    "statement": "de novo pathway engineering should be paired with host-level optimization of precursor and cofactor supply, not treated as a standalone gene-insertion task",
-    "applicable_conditions": ["missing native pathway", "de novo pathway construction"],
-    "source_ddr": "DDR-002"
-  },
-  {
-    "rule_id": "RULE-006",
-    "statement": "when a product depends on a precursor pool shared with central metabolism, diagnose precursor balance before increasing terminal pathway enzyme expression",
-    "applicable_conditions": ["precursor imbalance"],
-    "source_ddr": "DDR-003"
-  },
-  {
-    "rule_id": "RULE-007",
-    "statement": "rewiring central carbon metabolism, not only terminal pathway enzymes, is sometimes necessary to relieve precursor-driven bottlenecks",
-    "applicable_conditions": ["precursor imbalance", "isoprenoid production"],
-    "source_ddr": "DDR-003"
+{
+  "_schema_version": "2.0",
+  "_description": "规则库 — 从 DDR 决策链中跨论文蒸馏出的可泛化启发式规则。每条规则包含: 规则陈述、触发条件、来源论文、证据分级。仅当 rule 字段对应的 reason_nature 为'机理推断'或'文献类比'时才进入此库。",
+  "_governance": "新增规则需经过:双人独立撰写→对齐→校准→去重→入库。校准状态记录在 calibration_status 字段。",
+
+  "rules": [
+    {
+      "rule_id": "RULE-001",
+      "statement": "天然产物去调控 — committed 酶查末端产物反馈抑制(硬:已知调控/结构/酶动力学),用活性位点附近的点突变解除;中间体查对下游酶的前馈抑制(体外测 IC50 + 结构确认),去抑制有比活代价时跨物种筛选反向调控的异源同工酶(被激活而非被抑制)",
+      "trigger_conditions": ["天然产物合成途径", "终端酶过表达不增产", "中间体积累"],
+      "source_ddrs": ["DDR-005 (Chen & Zeng 2018 色氨酸)", "DDR-001 (Xiong 2021 色氨酸前体)", "DDR-004 (赖氨酸 lysC-fbr 模式)"],
+      "evidence_grading": "硬",
+      "applicable_modules": ["M3"],
+      "cross_references": ["RULE-004 (通量集中)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-002",
+      "statement": "通量集中 — 敲除发酵副产物途径(ldhA/adhE/pflB/pta/frdABCD)减少竞争性碳消耗;还原态产物(需要 NADH)额外敲还原支(mdh)并解阻遏 arcA。先从化学计量计算每个副产物途径的碳/还原力消耗,选对目标产物影响最大的敲;每步敲除后验证生长,用 COBRApy 基因必需性反查防止敲必需基因。OptKnock 生长偶联预测标为软证据",
+      "trigger_conditions": ["副产物积累", "还原态产物合成", "厌氧/微氧发酵"],
+      "source_ddrs": ["DDR-002 (BDO)", "丁醇论文(驱动力规则)", "脂肪酸论文"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "副产物途径的化学计量为硬;敲除效果方向为硬;定量预测(OptKnock)为软",
+      "applicable_modules": ["M5"],
+      "cross_references": ["RULE-001 (去调控)", "RULE-003 (驱动力)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-003",
+      "statement": "可逆通路要驱动力 — CoA 依赖的链延伸通路(如脂肪酸、聚酮、丁醇)需不可逆步骤、辅因子积累或产物原位移除来提供热力学驱动力。热力学不利的可逆步骤会导致中间体积累而无净通量。eQuilibrator 评估关键步骤的 ΔG,缺驱动力的滴度通常比有驱动力的低约一个数量级",
+      "trigger_conditions": ["CoA 依赖途径", "可逆酶促步骤", "中间体积累不转化"],
+      "source_ddrs": ["丁醇论文(驱动力规则)", "脂肪酸论文"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "热力学分析(ΔG)为硬;滴度数量级差为实测硬证据",
+      "applicable_modules": ["M2"],
+      "cross_references": ["RULE-002 (通量集中)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-004",
+      "statement": "前体供应诊断先于终端酶过表达 — 终端途径酶已充分表达但滴度平台时,优先排查前体供应瓶颈(PEP/E4P/pyruvate/G3P 池大小)而非继续增加终端酶。前体供应瓶颈分为两类:绝对量不足(敲 PTS/弱化 pykF 保留 PEP)和比例失衡(激活 ED 途径重配比 pyruvate/G3P)。诊断顺序:测量前体池→FBA 模拟→确定类型→针对性干预",
+      "trigger_conditions": ["终端酶已过表达", "滴度平台", "前体来自中心碳代谢"],
+      "source_ddrs": ["DDR-001 (色氨酸前体)", "DDR-003 (异戊二烯前体比例)"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "前体化学计量为硬;FBA 通量预测为软(需 metabolomics 实测确认)",
+      "applicable_modules": ["M1", "M2"],
+      "cross_references": ["RULE-001 (去调控)", "RULE-007 (非线性表达)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-005",
+      "statement": "de novo 通路构建 — 宿主缺乏目标产物天然途径时,用 RetroPath2/novoStoic 枚举所有热力学可行的合成路线,选酶学最优的(宿主匹配的 codon usage、已知动力学、有晶体结构)。途径插入后必须配宿主优化(前体池+辅因子比+副产物敲除),不能当作独立基因插入任务。途径和宿主的接口(interface)通常才是真正瓶颈",
+      "trigger_conditions": ["非天然产物", "宿主无对应天然途径"],
+      "source_ddrs": ["DDR-002 (BDO de novo 途径)"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "通路枚举为软(计算);宿主-途径接口瓶颈为硬(多篇论文实测验证)",
+      "applicable_modules": ["M1"],
+      "cross_references": ["RULE-002 (通量集中)", "RULE-004 (前体诊断)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-006",
+      "statement": "分支点竞争和必需性感知 — 目标产物和必需营养物共享前体(如 aspartate-semialdehyde 同时供赖氨酸和苏氨酸/甲硫氨酸)时,减弱(CRISPRi/弱化启动子)而非完全敲除竞争支。先用 COBRApy 基因必需性反查确认靶标在给定培养基下是否必需:必需→减弱,非必需→可 KO。减弱程度需实验优化(太弱→营养缺陷,太强→竞争未解除)",
+      "trigger_conditions": ["分支点共享前体", "竞争支产物是必需营养物"],
+      "source_ddrs": ["DDR-004 (赖氨酸 lysC+hom/thrB)", "DDR-002 (BDO 副产物敲除)"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "分支点化学计量为硬;基因必需性为硬(COBRApy 基于化学计量);减弱程度需实测优化",
+      "applicable_modules": ["M5"],
+      "cross_references": ["RULE-002 (通量集中)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-007",
+      "statement": "表达非线性 — 整条通路一起过表达很少给出最大通量;启动子强度×拷贝数×基因顺序存在内部最优,需要通过多变量搜索(如启动子文库筛选、RBS Calculator 预测、Design of Experiments)找到组合最优而非每个基因独立最优。注意过表达组合可能冒出抑制性副产物或代谢负担拐点",
+      "trigger_conditions": ["多基因途径", "过表达组合", "产量与拷贝数非线性关系"],
+      "source_ddrs": ["紫杉二烯论文(表达非线性规则)"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "非线性关系为实测硬证据;具体最优组合需实验搜索(软当未实测时)",
+      "applicable_modules": ["M6"],
+      "cross_references": ["RULE-004 (前体诊断)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-008",
+      "statement": "有毒中间体用动态控制 — 静态启动子导致的代谢失衡(中间体积累至毒性水平)需换用代谢物响应传感器门控下游消耗模块。例如脂肪酸途径中,丙二酰-CoA 感应器控制消耗模块的表达,在中间体低时不浪费资源、高时及时消耗。这是静态过表达的升级:从'一直开'变成'按需开'",
+      "trigger_conditions": ["中间体有毒性", "静态过表达导致失衡", "生长受抑制"],
+      "source_ddrs": ["脂肪酸 DSRS 论文(动态调控规则)"],
+      "evidence_grading": "硬",
+      "evidence_grading_detail": "静态→动态切换的产量/生长改善为实测硬证据;传感器设计为工程化软证据",
+      "applicable_modules": ["M7"],
+      "cross_references": ["RULE-007 (表达非线性)"],
+      "calibration_status": "pending"
+    },
+    {
+      "rule_id": "RULE-009",
+      "statement": "跨论文规则迁移检验 — 将一类产物的规则用到另一类产物上时,先检查化学计量/热力学的同构性:两产物的前体需求是否相似?途径拓扑是否同构?调控层级是否对应?仅在化学计量和拓扑同构时直接迁移;结构不同时仅迁移诊断逻辑(如'先查前体再查终端酶')而非具体基因操作",
+      "trigger_conditions": ["新产物无直接论文先例", "需要从已知产物规则迁移"],
+      "source_ddrs": ["DDR-001→DDR-003 (色氨酸前体逻辑→异戊二烯前体逻辑)", "DDR-005→DDR-004 (色氨酸反馈逻辑→赖氨酸反馈逻辑)"],
+      "evidence_grading": "软",
+      "evidence_grading_detail": "迁移效果需随语料扩大持续检验——这是待验证的假设,标记为软",
+      "applicable_modules": ["M11"],
+      "cross_references": ["RULE-001", "RULE-004", "RULE-006"],
+      "calibration_status": "pending"
+    }
+  ],
+
+  "governance": {
+    "total_rules": 9,
+    "calibrated_rules": 0,
+    "pending_calibration": 9,
+    "last_updated": "2026-07-29",
+    "notes": "P2 初始版本:从 DDR-001~005 中蒸馏出 9 条规则,对齐老师 §4.5 的格式。待双人校准后确认。新增规则须走:双人撰写→对齐→校准→去重→入库。"
   }
-]
+}

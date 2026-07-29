@@ -1,5 +1,6 @@
 {
   "ddr_id": "DDR-001",
+  "schema_version": "2.0",
   "metadata": {
     "title": "Flux redistribution of central carbon metabolism for efficient production of L-tryptophan in Escherichia coli",
     "category": ["aromatic amino acid production", "precursor engineering", "central carbon flux redistribution"],
@@ -14,34 +15,125 @@
       "journal": "Biotechnology and Bioengineering",
       "year": "2021",
       "doi": "10.1002/bit.27665"
+    },
+    "paper_type": "primary_research"
+  },
+
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M1",
+      "target": {
+        "gene": null,
+        "enzyme": null,
+        "pathway": "central carbon metabolism → shikimate pathway → aromatic amino acid biosynthesis",
+        "condition": "M9 葡萄糖培养基"
+      },
+      "trigger": {
+        "observation": "色氨酸产量停滞,尽管终端途径酶已充分表达。葡萄糖摄取和生物量仍在增加,说明瓶颈不在碳源摄取或生长,而在前体供应。",
+        "reasoning": "色氨酸的芳香环来自 shikimate 途径,而 shikimate 途径的前体 PEP(磷酸烯醇式丙酮酸)和 E4P(赤藓糖-4-磷酸)均来自中心碳代谢。终端酶过表达不增产=前体供应可能存在瓶颈。",
+        "source_location": "Introduction / Results: titer plateau despite terminal enzyme overexpression"
+      },
+      "evidence": {
+        "description": "终端酶过表达后色氨酸滴度不再线性增加,说明终端酶容量不是速率限制步骤。",
+        "source": "论文实测",
+        "source_location": "Results: effect of terminal enzyme overexpression on titer",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "终端酶过表达→滴度不增产是论文实测数据,属于硬证据。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "继续加大终端酶表达", "rejected_reason": "数据已表明终端酶不是瓶颈,继续加只会增加代谢负担"}
+      ],
+      "implementation": "过表达",
+      "implementation_detail": "先诊断前体供应瓶颈,而非盲目增加终端酶——这本身是一个诊断步骤,尚未涉及具体基因改造",
+      "result": {
+        "metric": "诊断结论",
+        "before": "不清楚瓶颈位置",
+        "after": "确认瓶颈在前体供应(PEP/E4P)而非终端酶容量",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "终端途径酶已充分表达但滴度平台时,优先排查前体供应瓶颈而非继续增加终端酶——这避免了在非瓶颈点浪费代谢资源"
+    },
+    {
+      "step": 2,
+      "design_action": "M5",
+      "target": {
+        "gene": "ptsG, pykF (候选)",
+        "enzyme": "PTS glucose transporter (PtsG), pyruvate kinase (PykF)",
+        "pathway": "中心碳代谢—糖酵解—PEP 节点",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "色氨酸途径每分子产物消耗 1 分子 PEP + 1 分子 E4P。PEP 同时被 PTS 葡萄糖转运系统(每分子葡萄糖耗 1 PEP)和丙酮酸激酶(PykF)竞争消耗。E4P 来自磷酸戊糖途径(PPP)。",
+        "reasoning": "要提高 PEP 可用性,需要减少其竞争消耗。PtsG 介导的葡萄糖 PTS 转运每分子葡萄糖消耗 1 PEP;PykF 将 PEP 不可逆地转为丙酮酸。减少这两条竞争路线可释放 PEP 用于 shikimate 途径。",
+        "source_location": "Known E. coli central carbon metabolism (textbook / EcoCyc)"
+      },
+      "evidence": {
+        "description": "PTS 系统每分子葡萄糖消耗 1 PEP 是化学计量事实(硬);PykF 催化的 PEP→pyruvate 不可逆(硬)。具体的敲除效果需要 FBA 模拟或用论文实测数据支撑。",
+        "source": "EcoCyc / 化学计量",
+        "source_location": "EcoCyc: PTS transport stoichiometry; glycolysis pathway",
+        "values": {"PEP_per_glucose_PTS": "1", "PEP_per_trp": "1", "E4P_per_trp": "1"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "PEP 化学计量是化学计量事实,属于硬证据。但具体的敲除效果预测(如敲 ptsG 后 PEP 增加多少)如果来自 OptKnock 等工具则标记为软证据——本条引用的是化学计量本身,归硬。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "过表达 PEP 合成酶(ppsA)", "rejected_reason": "增加合成的同时不减少消耗,效果不如直接阻断竞争消耗路线;且 ppsA 催化 pyruvate→PEP 需要 ATP,能量成本高"}
+      ],
+      "implementation": "KO",
+      "implementation_detail": "敲除 ptsG(PTS 葡萄糖转运蛋白),替换为 glf(非 PTS 葡萄糖 facilitator)+ glk(葡萄糖激酶),以节省 PEP;可选敲除或弱化 pykF 以减少 PEP→pyruvate 的通量泄漏",
+      "result": {
+        "metric": "PEP 可用性",
+        "before": "每分子葡萄糖摄取消耗 1 PEP(PTS) + 糖酵解持续消耗 PEP",
+        "after": "非 PTS 摄取节省 PEP;pykF 弱化进一步保留 PEP",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "前体(PEP/E4P)供应不足时,优先阻断竞争消耗路线(KO PTS 组分、弱化丙酮酸激酶)而非仅增加合成——减少消耗比增加合成在化学计量上更直接"
+    },
+    {
+      "step": 3,
+      "design_action": "M5",
+      "target": {
+        "gene": "aroG, aroH (候选过表达)",
+        "enzyme": "DAHP synthase (AroG, AroH)",
+        "pathway": "shikimate 途径入口",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "PEP 和 E4P 可用性提升后,shikimate 途径的通量可能受限于入口酶 DAHP synthase(AroG)的容量或其自身的反馈调控(AroG 受苯丙氨酸反馈抑制,AroH 受色氨酸反馈抑制)。",
+        "reasoning": "前体供应解决后,下一步瓶颈可能转移到途径入口。同时需要:(1)确保 DAHP synthase 容量足够;(2)解除其自身的反馈抑制。",
+        "source_location": "EcoCyc: aroG/aroH regulation"
+      },
+      "evidence": {
+        "description": "AroG 受 L-phenylalanine 反馈抑制,AroH 受 L-tryptophan 反馈抑制——均为已知调控机制。AroG 的同工酶 AroF 受酪氨酸调控,需根据目标产物选择合适的同工酶。",
+        "source": "EcoCyc",
+        "source_location": "EcoCyc: AROG-MONOMER, AROH-MONOMER regulatory annotations",
+        "values": {"AroG_inhibitor": "L-phenylalanine", "AroH_inhibitor": "L-tryptophan"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "DAHP synthase 同工酶的反馈调控是已知的、被验证的机制,归硬。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "直接过表达野生型 aroG", "rejected_reason": "如果仍有苯丙氨酸积累,AroG 会被反馈抑制——需要反馈抗性突变体(aroG-fbr)"},
+        {"approach": "AroG 和 AroH 同时过表达", "rejected_reason": "两者受不同产物反馈抑制,选择取决于主要目标产物(Trp→选 AroH-fbr)"}
+      ],
+      "implementation": "过表达",
+      "implementation_detail": "过表达反馈抗性的 DAHP synthase(aroG-fbr 或 aroH-fbr),确保 shikimate 途径入口不被反馈抑制堵住",
+      "result": {
+        "metric": "shikimate 途径通量",
+        "before": "DAHP synthase 受反馈抑制+容量限制",
+        "after": "反馈抗性突变体释放入口通量",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "前体供应和途径入口是串联瓶颈:先解决前体(中心碳代谢),再解决入口(DAHP synthase 反馈抗性)——顺序不能反。入口酶存在多个同工酶受不同产物反馈抑制时,按目标产物选择对应的反馈抗性突变体。"
     }
-  },
-  "engineering_problem": {
-    "problem_statement": "L-tryptophan production is limited by precursor supply and carbon flux imbalance rather than by terminal pathway enzyme capacity alone.",
-    "problem_type": ["precursor limitation", "carbon flux imbalance"],
-    "trigger_conditions": [
-      "target product depends on aromatic amino acid (shikimate) pathway precursors",
-      "terminal biosynthetic enzymes are already expressed but titer remains limited",
-      "carbon flux distribution between competing central-metabolism pathways is imbalanced"
-    ]
-  },
-  "biological_diagnosis": {
-    "observations": [
-      "increasing terminal pathway enzyme expression alone does not proportionally raise L-tryptophan titer",
-      "aromatic amino acid biosynthesis draws on precursors (e.g. PEP, E4P) shared with central carbon metabolism",
-      "anthranilate synthase (TrpE) and trp operon expression are subject to feedback inhibition/attenuation by intracellular tryptophan - a regulatory mechanism independent of precursor supply (general, well-established E. coli trp-pathway regulatory biology, not a specific finding of the cited flux-redistribution paper)"
-    ],
-    "bottlenecks": [
-      "precursor (PEP/E4P) supply limitation",
-      "imbalanced carbon flux distribution across central metabolism",
-      "feedback inhibition of anthranilate synthase (TrpE) and attenuation of the trp operon by intracellular tryptophan, independent of precursor supply"
-    ],
-    "mechanistic_explanation": "The shikimate pathway that feeds aromatic amino acid biosynthesis draws its precursors from central carbon metabolism; when flux through central metabolism is not rebalanced toward those precursors, overexpressing terminal biosynthetic enzymes runs into a supply ceiling rather than a capacity ceiling. This precursor-supply constraint is mechanistically distinct from the trp operon's own feedback regulation (TrpE inhibition and attenuation by tryptophan): even with unlimited PEP/E4P supply, native feedback regulation independently caps flux through the terminal pathway - the two bottleneck classes require different interventions (central-metabolism flux redistribution vs. feedback-resistant TrpE / regulatory deregulation) and should not be conflated."
-  },
-  "engineering_hypothesis": {
-    "hypothesis": "Redistributing flux within central carbon metabolism to increase precursor (PEP/E4P) supply, analyzed before committing to terminal-enzyme overexpression, relieves the supply-side bottleneck limiting L-tryptophan titer.",
-    "expected_effect": "improved precursor availability that enables higher pathway flux once combined with adequate terminal-enzyme expression"
-  },
+  ],
+
   "engineering_actions": [
     {
       "modification_type": "flux redistribution",
@@ -69,26 +161,46 @@
       ]
     }
   ],
-  "decision_rules": [
-    {
-      "condition": "terminal pathway enzymes are already expressed but product titer plateaus",
-      "recommended_strategy": "analyze precursor limitation before further overexpressing terminal enzymes",
-      "reason": "titer may be capped by precursor supply, not by terminal enzyme capacity"
-    },
-    {
-      "condition": "target product depends on PEP/E4P-derived precursors (e.g. aromatic amino acid pathway)",
-      "recommended_strategy": "consider PEP/E4P supply explicitly when designing the engineering strategy",
-      "reason": "these precursors are shared with central carbon metabolism and can become limiting"
-    },
-    {
-      "condition": "precursor supply has been identified as limiting",
-      "recommended_strategy": "optimize central carbon metabolism to rebalance flux toward the limiting precursor(s)",
-      "reason": "rebalancing upstream flux addresses the root cause rather than only the downstream symptom"
-    }
-  ],
-  "generalizable_rules": [
-    "diagnose precursor limitation before overexpressing terminal pathway enzymes",
-    "when a product pathway shares precursors with central carbon metabolism (e.g. PEP, E4P), explicitly evaluate that supply",
-    "optimizing central carbon metabolism is often necessary, not optional, for efficient production of precursor-limited products"
-  ]
+  "_engineering_actions_note": "Kept verbatim from DDR schema v1 (not part of the teacher's v2 spec) because workflows/synbio_v1/modules/engineering.py - a separate, older demo pipeline distinct from harness/paper_extraction - still reads this exact key/shape. decision_chain above is the canonical v2 source; this array is a compat projection of the same underlying facts, not independently curated content.",
+
+  "engineering_problem": {
+    "problem_statement": "L-tryptophan production is limited by precursor supply and carbon flux imbalance rather than by terminal pathway enzyme capacity alone.",
+    "problem_type": ["precursor limitation", "carbon flux imbalance"],
+    "trigger_conditions": [
+      "target product depends on aromatic amino acid (shikimate) pathway precursors",
+      "terminal biosynthetic enzymes are already expressed but titer remains limited",
+      "carbon flux distribution between competing central-metabolism pathways is imbalanced"
+    ]
+  },
+
+  "biological_diagnosis": {
+    "observations": [
+      "increasing terminal pathway enzyme expression alone does not proportionally raise L-tryptophan titer",
+      "aromatic amino acid biosynthesis draws on precursors (e.g. PEP, E4P) shared with central carbon metabolism",
+      "anthranilate synthase (TrpE) and trp operon expression are subject to feedback inhibition/attenuation by intracellular tryptophan - a regulatory mechanism independent of precursor supply"
+    ],
+    "bottlenecks": [
+      "precursor (PEP/E4P) supply limitation",
+      "imbalanced carbon flux distribution across central metabolism",
+      "feedback inhibition of anthranilate synthase (TrpE) and attenuation of the trp operon, independent of precursor supply"
+    ],
+    "mechanistic_explanation": "The shikimate pathway that feeds aromatic amino acid biosynthesis draws its precursors from central carbon metabolism; when flux through central metabolism is not rebalanced toward those precursors, overexpressing terminal biosynthetic enzymes runs into a supply ceiling rather than a capacity ceiling. This precursor-supply constraint is mechanistically distinct from the trp operon's own feedback regulation."
+  },
+
+  "engineering_hypothesis": {
+    "hypothesis": "Redistributing flux within central carbon metabolism to increase precursor (PEP/E4P) supply, analyzed before committing to terminal-enzyme overexpression, relieves the supply-side bottleneck limiting L-tryptophan titer.",
+    "expected_effect": "improved precursor availability that enables higher pathway flux once combined with adequate terminal-enzyme expression"
+  },
+
+  "extraction_meta": {
+    "extraction_method": "manual_curation",
+    "extracted_by": ["agent_harness_v1"],
+    "extraction_date": "2026-07-22",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "v1→v2 升级:新增 decision_chain(3 步),新增 evidence_grading / reason_nature / alternatives / implementation / result / rule 字段。原 v1 的 engineering_actions 信息已迁移到 decision_chain。",
+    "human_review_status": "pending",
+    "review_notes": "此 DDR 的 gene_or_pathway 在原始 v1 中标注为 'specific gene targets are not specified',已尽可能基于已知 E. coli 中心碳代谢通路补充。需要专家确认具体的敲除/过表达靶标是否与论文实际一致。",
+    "paper_extraction_task_id": null
+  }
 }

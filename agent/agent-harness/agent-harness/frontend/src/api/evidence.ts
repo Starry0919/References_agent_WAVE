@@ -1,4 +1,5 @@
 import { api, ApiError } from "./client";
+import { toPaperExtractionSummary, type PaperExtractionSummary } from "./paperExtraction";
 
 /**
  * Literature Evidence adapter (harness/api/generation.py, real,
@@ -85,6 +86,50 @@ export interface ExtractedExperimentalDesign {
   actions: EngineeringAction[];
 }
 
+/** One "Agent Analysis Record" card in the left-hand reasoning trace - an
+ * observable workflow step, never raw chain-of-thought (harness/paper_
+ * extraction/reasoning_view.py::build_agent_trace). `designStepRef` points
+ * at the matching `ExperimentalDesignStep.step` for click-to-highlight sync,
+ * or `"all"` for the narrative (problem/logic/evidence) cards that summarize
+ * across every design step rather than one specific intervention. */
+export interface AgentTraceStep {
+  step: number;
+  kind: "problem_understanding" | "intervention" | "logic_reconstruction" | "evidence_validation";
+  title: string;
+  status: string;
+  input: string;
+  operation: string;
+  output: string | string[] | Record<string, string>;
+  confidence: number | null;
+  evidence: string[];
+  designStepRef: number | "all" | null;
+}
+
+export interface ExperimentalDesignStep {
+  step: number;
+  title: string;
+  problem: string;
+  hypothesis: string;
+  engineeringAction: { type: string; target: string; modification: string };
+  method: string[];
+  result: string;
+  evidence: string[];
+  evidenceGrading: string | null;
+}
+
+export interface EvidenceProvenanceItem {
+  step: number | null;
+  claim: string;
+  source: string;
+  grading: string | null;
+  confidence: number | null;
+}
+
+export interface EvidenceGraph {
+  nodes: Array<{ id: string; type: string; label: string }>;
+  edges: Array<{ source: string; target: string; type: string }>;
+}
+
 export interface EvidenceDocumentDetail extends EvidenceDocument {
   url: string | null;
   abstractOrSummary: string;
@@ -94,6 +139,29 @@ export interface EvidenceDocumentDetail extends EvidenceDocument {
    * "点击一条文献证据查看详情" - see harness/api/generation.py::
    * get_evidence_document). */
   engineeringDesign: ExtractedExperimentalDesign | null;
+  /** The agent's own parsing reasoning + evidence-bound experimental design
+   * fields, present only for DDRs auto-saved from a paper_extraction run
+   * (harness/paper_extraction/ddr_converter.py::ensure_task_saved_as_evidence).
+   * `null` for hand-curated DDRs that predate that pipeline - the paper
+   * evidence detail page falls back to `engineeringDesign` alone in that case. */
+  paperExtractionDetail: PaperExtractionSummary | null;
+  /** The paper_extraction task_id this evidence was saved from, if any -
+   * lets the detail page link back to that run. */
+  extractionTaskId: string | null;
+  /** Dual-track Evidence Reasoning View (harness/paper_extraction/
+   * reasoning_view.py) - derived from the same DDR's decision_chain, so
+   * present for both hand-curated and pipeline-generated records; empty
+   * arrays only for crossref documents or DDRs with no decision_chain at all. */
+  agentTrace: AgentTraceStep[];
+  experimentalDesign: ExperimentalDesignStep[];
+  evidenceProvenance: EvidenceProvenanceItem[];
+  evidenceGraph: EvidenceGraph;
+  status: "completed" | "pending";
+  evidenceConfidence: "high" | "medium" | "low" | null;
+  humanReviewStatus: string | null;
+  /** The full underlying DDR JSON, for the "Download Extraction JSON"
+   * header action - null for crossref documents (no such record exists). */
+  rawRecord: Record<string, unknown> | null;
 }
 
 export async function getEvidenceDocument(sourceId: string, source: "local_ddr" | "crossref" = "local_ddr"): Promise<EvidenceDocumentDetail | null> {
@@ -108,6 +176,37 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
       doi_or_accession: string | null;
       url: string | null;
       abstract_or_summary: string;
+      paper_extraction_detail: Record<string, unknown> | null;
+      extraction_task_id: string | null;
+      agent_trace: Array<{
+        step: number;
+        kind: AgentTraceStep["kind"];
+        title: string;
+        status: string;
+        input: string;
+        operation: string;
+        output: string | string[] | Record<string, string>;
+        confidence: number | null;
+        evidence: string[];
+        design_step_ref: number | "all" | null;
+      }>;
+      experimental_design: Array<{
+        step: number;
+        title: string;
+        problem: string;
+        hypothesis: string;
+        engineering_action: { type: string; target: string; modification: string };
+        method: string[];
+        result: string;
+        evidence: string[];
+        evidence_grading: string | null;
+      }>;
+      evidence_provenance: Array<{ step: number | null; claim: string; source: string; grading: string | null; confidence: number | null }>;
+      evidence_graph: EvidenceGraph;
+      status: "completed" | "pending";
+      evidence_confidence: "high" | "medium" | "low" | null;
+      human_review_status: string | null;
+      raw_record: Record<string, unknown> | null;
       engineering_design: {
         problem_statement: string;
         bottlenecks: string[];
@@ -134,6 +233,43 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
       doiOrAccession: r.doi_or_accession,
       url: r.url,
       abstractOrSummary: r.abstract_or_summary,
+      paperExtractionDetail: r.paper_extraction_detail ? toPaperExtractionSummary(r.paper_extraction_detail) : null,
+      extractionTaskId: r.extraction_task_id,
+      agentTrace: (r.agent_trace ?? []).map((s) => ({
+        step: s.step,
+        kind: s.kind,
+        title: s.title,
+        status: s.status,
+        input: s.input,
+        operation: s.operation,
+        output: s.output,
+        confidence: s.confidence,
+        evidence: s.evidence ?? [],
+        designStepRef: s.design_step_ref,
+      })),
+      experimentalDesign: (r.experimental_design ?? []).map((s) => ({
+        step: s.step,
+        title: s.title,
+        problem: s.problem,
+        hypothesis: s.hypothesis,
+        engineeringAction: s.engineering_action,
+        method: s.method ?? [],
+        result: s.result,
+        evidence: s.evidence ?? [],
+        evidenceGrading: s.evidence_grading,
+      })),
+      evidenceProvenance: (r.evidence_provenance ?? []).map((e) => ({
+        step: e.step,
+        claim: e.claim,
+        source: e.source,
+        grading: e.grading,
+        confidence: e.confidence,
+      })),
+      evidenceGraph: r.evidence_graph ?? { nodes: [], edges: [] },
+      status: r.status ?? "pending",
+      evidenceConfidence: r.evidence_confidence ?? null,
+      humanReviewStatus: r.human_review_status ?? null,
+      rawRecord: r.raw_record ?? null,
       engineeringDesign: r.engineering_design
         ? {
             problemStatement: r.engineering_design.problem_statement,

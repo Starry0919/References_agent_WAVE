@@ -23,11 +23,19 @@ DDR_DATABASE_DIR = PROJECT_ROOT / "knowledge" / "ddr_database"
 
 
 def load_ddrs() -> list[dict[str, Any]]:
-    """Load every DDR JSON record from the knowledge base, sorted by file name."""
+    """Load every DDR JSON record from the knowledge base, sorted by file name.
+
+    Skips non-DDR files (e.g. `schema_v2.json`, which documents the DDR v2
+    shape but has no `ddr_id`/`metadata` of its own) - same skip pattern as
+    `harness.evidence_retrieval.local_ddr_adapter.LocalDDRAdapter._load_all`.
+    """
     if not DDR_DATABASE_DIR.is_dir():
         return []
     records = []
+    skip_patterns = ("schema_v2.json", ".schema", "_template")
     for path in sorted(DDR_DATABASE_DIR.glob("*.json")):
+        if any(p in path.name for p in skip_patterns):
+            continue
         records.append(json.loads(path.read_text(encoding="utf-8")))
     return records
 

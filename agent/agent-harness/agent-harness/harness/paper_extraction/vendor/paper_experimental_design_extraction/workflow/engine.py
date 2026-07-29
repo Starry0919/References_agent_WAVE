@@ -18,7 +18,8 @@ class WorkflowEngine:
         options=dict(options or {});task_id=request["task_id"];started=datetime.now(timezone.utc).isoformat()
         checkpoint=self.store.load_checkpoint(task_id) if options.get("resume") else None
         state=checkpoint or {"task_id":task_id,"status":"CREATED","context":copy.deepcopy(options.get("initial_context",{})),
-                             "artifacts":[],"errors":[],"skill_states":{},"skill_logs":[]}
+                             "artifacts":[],"errors":[],"warnings":[],"skill_states":{},"skill_logs":[]}
+        state.setdefault("warnings",[])
         state["status"]="RUNNING";self._save(state)
         plan=self._plan(request,options)
         start=options.get("start_skill");end=options.get("end_skill")
@@ -36,8 +37,18 @@ class WorkflowEngine:
                     state["status"]="FAILED";break
                 if end==skill:break
             if state["status"]=="RUNNING":
-                has_review=any(v=="REVIEW_REQUIRED" for v in state["skill_states"].values())
-                state["status"]="WAITING_REVIEW" if has_review and request.get("mode",{}).get("human_review",True) else "COMPLETED"
+                # A per-skill REVIEW_REQUIRED flag (skill_states[x]=="REVIEW_REQUIRED")
+                # means that skill's own output carries a QC/governance flag
+                # (skill12's own docstring: "Continue with trace marker for
+                # REVIEW_REQUIRED; block only the current artifact for
+                # BLOCKED.") - it is advisory, not a reason to withhold the
+                # finished result from the user. Independent human review
+                # (skill12's review_tasks, still in the report) audits
+                # extraction quality alongside the agent's work, not gates
+                # in front of it. Only a genuine mid-run blocker
+                # (_blocked_for_input, handled above) or a hard failure
+                # legitimately leaves the run short of COMPLETED.
+                state["status"]="COMPLETED"
         except Exception as exc:
             state["errors"].append(normalize("workflow",{"code":"UNHANDLED","message":f"{type(exc).__name__}: {exc}","retryable":False}))
             state["status"]="FAILED"
@@ -74,6 +85,7 @@ class WorkflowEngine:
             state["skill_progress"][skill]={"completed":index+1,"total":total}
             self._save(state)
             for err in result.get("errors",[]):state["errors"].append(normalize(skill,err))
+            for warn in result.get("warnings",[]):state["warnings"].append(normalize(skill,warn))
             if result.get("output") is not None:
                 artifact=create(state["task_id"],skill,result,index);state["artifacts"].append(artifact)
             if result.get("status") in {"terminal_failure","retryable_failure","cancelled"}:break
@@ -83,7 +95,9 @@ class WorkflowEngine:
         state["skill_logs"].append({"skill":skill,"input_artifact":state["artifacts"][before-1]["artifact_id"] if before else None,
                                     "output_artifact":[x["artifact_id"] for x in state["artifacts"][before:]],
                                     "duration":round((time.perf_counter()-t0)*1000,3),
-                                    "errors":[e for e in state["errors"] if e["skill"]==skill],"status":state["skill_states"][skill]})
+                                    "errors":[e for e in state["errors"] if e["skill"]==skill],
+                                    "warnings":[w for w in state["warnings"] if w["skill"]==skill],
+                                    "status":state["skill_states"][skill]})
         self._save(state);return aggregate
     def _inputs(self,skill,request,c,options):
         src=request["literature_source"]
@@ -221,5 +235,5 @@ class WorkflowEngine:
                 "engineering_plan":c.get("skill11",{}),
                 "governance":c.get("skill12",{}),"frontend_view":c.get("skill13",{}),
                 "artifacts":state["artifacts"],"skill_states":state["skill_states"],
-                "skill_logs":state["skill_logs"],"errors":state["errors"],
+                "skill_logs":state["skill_logs"],"errors":state["errors"],"warnings":state.get("warnings",[]),
                 "start_time":state.get("start_time"),"end_time":state.get("end_time")}

@@ -90,10 +90,10 @@ class StructuredGenerationClient:
             return AdapterHealth(available=False, provider=provider.name, model=provider.model, reason=f"{type(exc).__name__}: {exc}", latency=time.monotonic() - t0)
         return AdapterHealth(available=True, provider=provider.name, model=provider.model, latency=time.monotonic() - t0)
 
-    def _one_call(self, *, provider, system_prompt: str, user_prompt: str, max_tokens: int, temperature: float | None) -> GenerationAttempt:
+    def _one_call(self, *, provider, system_prompt: str, user_prompt: str, max_tokens: int, temperature: float | None, timeout: float) -> GenerationAttempt:
         t0 = time.monotonic()
         try:
-            client = _openai.OpenAI(api_key=provider.api_key, base_url=provider.base_url, timeout=get_settings().LLM_TIMEOUT_S)
+            client = _openai.OpenAI(api_key=provider.api_key, base_url=provider.base_url, timeout=timeout)
             kwargs: dict[str, Any] = {
                 "model": provider.model,
                 "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}],
@@ -121,7 +121,7 @@ class StructuredGenerationClient:
 
     def generate(
         self, *, system_prompt: str, user_prompt: str, max_tokens: int = 8000, temperature: float | None = None,
-        max_schema_retries: int = 2,
+        max_schema_retries: int = 2, timeout: float | None = None,
     ) -> tuple[list[GenerationAttempt], AdapterHealth]:
         """Returns every attempt made (for provenance) plus a health
         snapshot. The LAST attempt in the list is the one the caller should
@@ -129,7 +129,11 @@ class StructuredGenerationClient:
         parse error appended) up to `max_schema_retries` times; a
         `provider_error` on the FIRST attempt is not retried here at all -
         that is a connectivity/availability problem the caller should treat
-        as "fall back now", not a schema problem worth re-prompting."""
+        as "fall back now", not a schema problem worth re-prompting.
+        `timeout` defaults to `LLM_TIMEOUT_S` (tuned against this module's
+        own hypothesis/strategy-sized prompts); pass an explicit value for
+        calls with a much larger prompt/`max_tokens` budget (e.g. skill07's
+        whole-paper experimental-design extraction)."""
         if _openai is None:
             health = AdapterHealth(available=False, provider="unknown", model="unknown", reason="the 'openai' package is not installed")
             return [GenerationAttempt(None, None, "provider_error", health.reason, None, 0.0)], health
@@ -139,10 +143,11 @@ class StructuredGenerationClient:
             health = AdapterHealth(available=False, provider="unknown", model="unknown", reason=str(exc))
             return [GenerationAttempt(None, None, "provider_error", str(exc), None, 0.0)], health
 
+        resolved_timeout = timeout if timeout is not None else get_settings().LLM_TIMEOUT_S
         attempts: list[GenerationAttempt] = []
         current_user_prompt = user_prompt
         for i in range(max_schema_retries + 1):
-            attempt = self._one_call(provider=provider, system_prompt=system_prompt, user_prompt=current_user_prompt, max_tokens=max_tokens, temperature=temperature)
+            attempt = self._one_call(provider=provider, system_prompt=system_prompt, user_prompt=current_user_prompt, max_tokens=max_tokens, temperature=temperature, timeout=resolved_timeout)
             attempts.append(attempt)
             if attempt.validation_status == "valid":
                 break

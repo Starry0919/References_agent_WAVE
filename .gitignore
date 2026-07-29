@@ -84,5 +84,15 @@ agent/agent-harness/agent-harness/knowledge/models/*.xml
 # Vendor logs
 agent/agent-harness/agent-harness/harness/paper_extraction/vendor/logs/
 
+# Paper artifacts PDFs
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/paper_artifacts/**/*.pdf
+
+# Cache directories
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/paper_experimental_design_extraction/storage/extraction_cache/
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/paper_experimental_design_extraction/storage/pipeline_cache/
+
+# Backup / duplicate directories
+agent/agent-harness/agent-harness - 副本/
+
 # Frontend submodule
 prompt/小组件_模块/论文实验设计思路的抽取/frontend/

@@ -120,7 +120,11 @@ class ScientificMarkdownCleaner:
         warnings = []
         review_requests = []
         if table_warnings:
-            warnings.append({"code": "CLEAN003", "tables": table_warnings})
+            warnings.append({
+                "code": "CLEAN003",
+                "message": "One or more tables could not be repaired safely and were left as-is.",
+                "tables": table_warnings,
+            })
             review_requests.append({"reason": "table_repair_uncertain", "paper_id": paper_id})
         if "�" in original:
             warnings.append({"code": "CLEAN005", "message": "Unresolved replacement characters were preserved."})

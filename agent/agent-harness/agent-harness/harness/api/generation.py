@@ -18,6 +18,13 @@ from harness.evidence_retrieval.models import EvidenceMatchReport
 from harness.evidence_retrieval.service import verify_doi
 from harness.llm_generation.client import StructuredGenerationClient
 from harness.llm_generation.models import LLMGenerationRecord
+from harness.paper_extraction.reasoning_view import (
+    build_agent_trace,
+    build_evidence_graph,
+    build_evidence_provenance,
+    build_experimental_design,
+    build_header_summary,
+)
 
 router = APIRouter(prefix="/api/generation", tags=["generation"])
 
@@ -107,7 +114,14 @@ def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
         raise HTTPException(404, "evidence document not found")
     raw = doc.raw_metadata or {}
     engineering_design = None
+    extraction_meta: dict[str, Any] = {}
+    agent_trace: list[dict[str, Any]] = []
+    experimental_design: list[dict[str, Any]] = []
+    evidence_provenance: list[dict[str, Any]] = []
+    evidence_graph: dict[str, Any] = {"nodes": [], "edges": []}
+    header_summary = {"status": "pending", "evidence_confidence": None, "human_review_status": None}
     if source != "crossref":
+        extraction_meta = raw.get("extraction_meta", {}) or {}
         diagnosis = raw.get("biological_diagnosis", {})
         hypothesis = raw.get("engineering_hypothesis", {})
         actions = raw.get("engineering_actions", [])
@@ -128,10 +142,39 @@ def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
                     for a in actions
                 ],
             }
+        # Dual-track Evidence Reasoning View (prompt/小组件_模块/论文实验设计思路的抽取/
+        # 抽取详情页面.md): reshapes the same DDR record's decision_chain/
+        # engineering_problem/biological_diagnosis/engineering_hypothesis -
+        # present on every DDR-v2 record, hand-curated or pipeline-generated -
+        # into a synchronized agent-reasoning-trace + experimental-design-
+        # reconstruction pair, independent of paper_extraction_detail.
+        experimental_design = build_experimental_design(raw)
+        agent_trace = build_agent_trace(raw)
+        evidence_provenance = build_evidence_provenance(raw)
+        evidence_graph = build_evidence_graph(experimental_design)
+        header_summary = build_header_summary(raw, has_design=bool(experimental_design))
     return {
         "source_id": doc.source_id, "title": doc.title, "authors": doc.authors, "publication_year": doc.publication_year,
         "journal_or_repository": doc.journal_or_repository, "doi_or_accession": doc.doi_or_accession, "url": doc.url,
         "abstract_or_summary": doc.abstract_or_summary, "engineering_design": engineering_design,
+        # Present only for DDRs auto-saved from a paper_extraction run
+        # (harness/paper_extraction/ddr_converter.py::ensure_task_saved_as_evidence) -
+        # None for hand-curated DDRs that predate that pipeline. This is the
+        # agent's own parsing reasoning + evidence-bound design fields, kept
+        # separate from `engineering_design` (the curated decision-chain view).
+        "paper_extraction_detail": extraction_meta.get("paper_extraction_detail"),
+        "extraction_task_id": extraction_meta.get("paper_extraction_task_id"),
+        "agent_trace": agent_trace,
+        "experimental_design": experimental_design,
+        "evidence_provenance": evidence_provenance,
+        "evidence_graph": evidence_graph,
+        "status": header_summary["status"],
+        "evidence_confidence": header_summary["evidence_confidence"],
+        "human_review_status": header_summary["human_review_status"],
+        # Full underlying DDR record, for the detail page's "Download
+        # Extraction JSON" action - never fabricated for crossref documents
+        # that have no such record.
+        "raw_record": raw if source != "crossref" else None,
     }
 
 

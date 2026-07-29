@@ -16,14 +16,18 @@ never touches the real ledger.
 from __future__ import annotations
 
 import base64
+import logging
 from typing import Any, Literal
 
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from harness.paper_extraction import service
+from harness.paper_extraction.ddr_converter import ensure_task_saved_as_evidence
+from harness.paper_extraction.result_summary import build_extraction_summary
 
 router = APIRouter(prefix="/api/paper-extraction", tags=["paper-extraction"])
+logger = logging.getLogger(__name__)
 
 
 class RunRequestBody(BaseModel):
@@ -88,6 +92,15 @@ def get_task(task_id: str) -> dict[str, Any]:
     it's read from the run's on-disk checkpoint, updated after every skill,
     so a client polling this endpoint can show live per-step progress
     instead of an undifferentiated spinner for the whole run.
+
+    `extraction_summary` is a clear, per-paper view of what the agent
+    extracted (its own reasoning about article type / target strains,
+    separate from the paper's evidence-verified experimental design
+    content) - built straight from the checkpoint (see
+    `harness.paper_extraction.result_summary`), so it is available
+    regardless of `result_level` (skill13's engineering-plan-shaped
+    `frontend_view` only runs for `result_level="engineering_plan"`) and
+    regardless of whether independent human review has looked at it yet.
     """
     try:
         status = service.get_status(task_id)
@@ -98,7 +111,29 @@ def get_task(task_id: str) -> dict[str, Any]:
     # Only meaningful while still running - a finished result has nothing left
     # in progress, and the engine never puts `skill_progress` in `_report()`.
     skill_progress = {} if result else service.get_live_skill_progress(task_id)
-    return {**status, "result": result, "skill_states": skill_states, "skill_progress": skill_progress}
+    # Per-skill warning detail (why a step is WARNING, not just that it is) -
+    # same live-checkpoint-vs-finished-result split as `skill_states` above.
+    skill_warnings = result.get("warnings", []) if result else service.get_live_skill_warnings(task_id)
+    extraction_summary = build_extraction_summary(task_id)
+    if extraction_summary:
+        for paper in extraction_summary["papers"]:
+            paper["evidence_source_id"] = None
+        # Requirement: a paper's extraction record should be saved into
+        # "文献证据" (Literature Evidence) once it finishes - triggered here
+        # since this is the endpoint the frontend already polls to
+        # completion; idempotent, so repeated polls/re-opens don't re-save.
+        if status.get("status") == "completed":
+            try:
+                saved = ensure_task_saved_as_evidence(task_id)
+                saved_by_index = {s["paper_index"]: s["evidence_source_id"] for s in saved}
+                for i, paper in enumerate(extraction_summary["papers"]):
+                    paper["evidence_source_id"] = saved_by_index.get(i)
+            except Exception:
+                logger.exception("failed to save task %s as literature evidence", task_id)
+    return {
+        **status, "result": result, "skill_states": skill_states, "skill_progress": skill_progress,
+        "skill_warnings": skill_warnings, "extraction_summary": extraction_summary,
+    }
 
 
 @router.delete("/tasks/{task_id}")

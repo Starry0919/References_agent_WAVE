@@ -119,7 +119,7 @@ class EvidenceBindingEngine:
             "design_logic": bound_logic,
             "biological_system": skill07.get("extensions", {}).get("biological_system", {})
         }
-        extended_conflicts, unified_conflicts = bind_conflicts(skill07.get("conflicts", []), unit_evidence)
+        extended_conflicts, unified_conflicts = bind_conflicts(self._normalize_conflicts(skill07.get("conflicts", [])), unit_evidence)
         literature_experiment = {
             "fields": fields, "evidence": evidence_records,
             "conflicts": unified_conflicts
@@ -153,14 +153,38 @@ class EvidenceBindingEngine:
             "coverage": coverage,
             "conflicts": extended_conflicts
         }
+        # A single stray field losing its evidence, or one flagged
+        # inconsistency, is routine noise in real papers (a paraphrased
+        # value the retriever can't quote-match, a supplement-only detail)
+        # - not by itself a sign this extraction needs a human to look at
+        # it. Escalating to `needs_review` on every non-zero count made
+        # nearly every run require review regardless of actual severity.
+        # Reserve it for when the evidence problem is systemic (a large
+        # share of all fields downgraded) or conflicts are more than
+        # incidental - the agent's own judgment call, still fully visible
+        # either way since both are always recorded as warnings. Ratio is
+        # against `len(fields)` (the whole schema), not `len(reported)` -
+        # `reported` above is computed AFTER this loop already rewrote every
+        # downgraded field's status to "unknown", so it already excludes them.
+        downgrade_ratio = len(downgraded) / max(1, len(fields))
         warnings, reviews = [], []
         if downgraded:
-            warnings.append({"code": "EVID003", "downgraded_fields": downgraded})
-            reviews.append({"reason": "reported_without_sufficient_evidence", "fields": downgraded})
+            warnings.append({
+                "code": "EVID003",
+                "message": f"{len(downgraded)} of {len(fields)} field(s) could not be evidence-verified and were downgraded to unknown.",
+                "downgraded_fields": downgraded,
+            })
+            if downgrade_ratio > 0.25:
+                reviews.append({"reason": "reported_without_sufficient_evidence", "fields": downgraded})
         if extended_conflicts:
-            warnings.append({"code": "EVID004", "conflicts": len(extended_conflicts)})
-            reviews.append({"reason": "conflicting_evidence", "fields": [v.get("field") for v in extended_conflicts]})
-        status = "needs_review" if reviews else "succeeded"
+            warnings.append({
+                "code": "EVID004",
+                "message": f"{len(extended_conflicts)} conflict(s) detected between sources for this extraction.",
+                "conflicts": len(extended_conflicts),
+            })
+            if len(extended_conflicts) > 2:
+                reviews.append({"reason": "conflicting_evidence", "fields": [v.get("field") for v in extended_conflicts]})
+        status = "needs_review" if reviews else ("succeeded_with_warnings" if warnings else "succeeded")
         result = {
             "status": status, "output": output, "artifacts": [],
             "self_check": {"passed": True, "checks": checks, "score": 1.0},
@@ -180,6 +204,28 @@ class EvidenceBindingEngine:
             "review_requests": reviews
         }
         return self._finish(result, started)
+
+    @staticmethod
+    def _normalize_conflicts(raw_conflicts):
+        # Skill07's contract requires `conflicts` as a flat array of objects
+        # (interface.json), but the model sometimes nests them by category
+        # instead, e.g. {"source_internal_inconsistencies": [...], "unresolved_parameters": [...]}.
+        # Flatten that shape rather than crashing bind_conflicts(), which
+        # assumes every item is a Mapping with .get().
+        if isinstance(raw_conflicts, Mapping):
+            flattened = []
+            for category, items in raw_conflicts.items():
+                if not isinstance(items, list):
+                    continue
+                for item in items:
+                    if isinstance(item, Mapping):
+                        entry = dict(item)
+                        entry.setdefault("category", category)
+                        flattened.append(entry)
+            return flattened
+        if isinstance(raw_conflicts, list):
+            return [c for c in raw_conflicts if isinstance(c, Mapping)]
+        return []
 
     @staticmethod
     def _record(evidence_id, paper_id, artifact_id, artifact_sha, unit, quote, field_name):

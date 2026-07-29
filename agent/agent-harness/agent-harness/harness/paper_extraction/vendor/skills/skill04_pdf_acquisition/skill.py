@@ -8,7 +8,7 @@ from typing import Any, Callable, Dict, Mapping, Optional, Sequence
 try:
     from .advisor import DoubaoPdfAdvisor
     from .artifact import ArtifactManager, verify_checksum
-    from .artifact.metadata import paper_identity
+    from .artifact.metadata import enrich_identity_from_pdf, paper_identity
     from .downloader import (DoiDownloader, PublisherDownloader, RepositoryDownloader,
                              OpenAlexDownloader, EuropePmcDownloader, UnpaywallDownloader,
                              SemanticScholarDownloader)
@@ -20,7 +20,7 @@ try:
 except ImportError:
     from advisor import DoubaoPdfAdvisor
     from artifact import ArtifactManager, verify_checksum
-    from artifact.metadata import paper_identity
+    from artifact.metadata import enrich_identity_from_pdf, paper_identity
     from downloader import (DoiDownloader, PublisherDownloader, RepositoryDownloader,
                             OpenAlexDownloader, EuropePmcDownloader, UnpaywallDownloader,
                             SemanticScholarDownloader)
@@ -222,7 +222,14 @@ class PdfAcquisitionSkill:
             }
 
     def _store(self, candidate, data, source_type, source_url, attempts):
+        # Fills a missing title/DOI straight from the PDF itself (its own
+        # document metadata + a page-1 DOI scan) - manual uploads never
+        # supply these (uploader/manual_upload_handler.py only carries
+        # `path`+`paper_id`), and citation metadata for a downloaded
+        # candidate can also arrive with a gap. Never overwrites a value
+        # already known from `candidate`.
         identity = paper_identity(candidate)
+        identity = enrich_identity_from_pdf(identity, data)
         download_time = self.clock().isoformat()
         metadata = {
             "paper_identity": identity,

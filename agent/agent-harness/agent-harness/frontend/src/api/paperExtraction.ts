@@ -155,11 +155,13 @@ export interface RunResult {
   taskId: string;
   status: "CREATED" | "RUNNING" | "WAITING_REVIEW" | "COMPLETED" | "FAILED";
   frontendView: FrontendView | null;
+  extractionSummary: ExtractionSummary | null;
   literatureCandidateCount: number;
   experimentalDesignCount: number;
   skillStates: Record<string, string>;
   skillProgress: Record<string, { completed: number; total: number }>;
   errors: Array<{ code?: string; message?: string; skill?: string; [key: string]: unknown }>;
+  warnings: Array<{ skill: string; message: string; sourceCode?: string }>;
   extractedIdeas: ExtractedIdea[];
 }
 
@@ -179,12 +181,220 @@ export interface ExtractedIdea {
   raw: Record<string, unknown>;
 }
 
+export interface EvidenceQuote {
+  evidenceId: string;
+  quote: string;
+  page: number | null;
+  sectionPath: string[];
+  figureId: string | null;
+  tableId: string | null;
+}
+
+export interface DesignField {
+  key: string;
+  label: string;
+  value: unknown;
+  status: "reported" | "inferred" | "unknown" | "not_applicable" | string;
+  statusLabel: string;
+  confidence: number | null;
+  evidence: EvidenceQuote[];
+  verified: boolean;
+}
+
+export interface TargetStrain {
+  paperOrganism: string | null;
+  paperStrainRaw: string | null;
+  paperStrainNormalized: string | null;
+  role: string | null;
+  paperLabel: string | null;
+  lineageOrEngineeringContext: string | null;
+  status: string | null;
+  confidence: number | null;
+  reasoning: string | null;
+}
+
+export interface ArticleTypeGate {
+  articleType: string | null;
+  isPrimaryExperimentalStudy: boolean | null;
+  confidence: number | null;
+  evidence: string[];
+}
+
+export interface PaperQuality {
+  completeness: number | null;
+  reproducibility: number | null;
+  evidenceLevel: number | null;
+  extractionConfidence: number | null;
+  missingInformation: unknown[];
+  overallScore: number | null;
+  confidenceLabel: string | null;
+  recommendation: string | null;
+  dimensions: Record<string, { score?: number; reason?: string; [key: string]: unknown }>;
+  risks: unknown[];
+}
+
+export interface PaperExtractionSummary {
+  paperId: string;
+  identity: { title: string | null; authors: string[]; journal: string | null; year: number | string | null; doi: string | null };
+  articleType: ArticleTypeGate | null;
+  targetStrains: TargetStrain[];
+  designFields: DesignField[];
+  hasDesignContent: boolean;
+  quality: PaperQuality;
+  coverage: { totalFields?: number; reportedFields?: number; fieldsWithEvidence?: number; unknownFields?: number; reportedEvidenceCoverage?: number; overallFieldCoverage?: number };
+  governanceNote: string | null;
+  /** Set once this paper has been auto-saved into "文献证据" (Literature
+   * Evidence) - see harness/paper_extraction/ddr_converter.py::
+   * ensure_task_saved_as_evidence, triggered on a completed-task poll.
+   * `null` while the run is still in progress or the save hasn't happened
+   * yet; the id of the resulting `knowledge/ddr_database/*.json` record
+   * (its `ddr_id`) once it has. */
+  evidenceSourceId: string | null;
+}
+
+export interface ExtractionSummary {
+  taskId: string;
+  status: string | null;
+  taskUnderstanding: Record<string, unknown>;
+  papers: PaperExtractionSummary[];
+  governanceNote: string;
+  reviewTasks: unknown[];
+}
+
+function toEvidenceQuotes(raw: unknown): EvidenceQuote[] {
+  if (!Array.isArray(raw)) return [];
+  return raw.map((e) => {
+    const r = e as Record<string, unknown>;
+    return {
+      evidenceId: String(r.evidence_id ?? ""),
+      quote: String(r.quote ?? ""),
+      page: (r.page as number | null) ?? null,
+      sectionPath: (r.section_path as string[]) ?? [],
+      figureId: (r.figure_id as string | null) ?? null,
+      tableId: (r.table_id as string | null) ?? null,
+    };
+  });
+}
+
+function toDesignFields(raw: unknown): DesignField[] {
+  if (!Array.isArray(raw)) return [];
+  return raw.map((f) => {
+    const r = f as Record<string, unknown>;
+    return {
+      key: String(r.key ?? ""),
+      label: String(r.label ?? r.key ?? ""),
+      value: r.value,
+      status: String(r.status ?? "unknown"),
+      statusLabel: String(r.status_label ?? r.status ?? "unknown"),
+      confidence: (r.confidence as number | null) ?? null,
+      evidence: toEvidenceQuotes(r.evidence),
+      verified: Boolean(r.verified),
+    };
+  });
+}
+
+function toTargetStrains(raw: unknown): TargetStrain[] {
+  if (!Array.isArray(raw)) return [];
+  return raw.map((s) => {
+    const r = s as Record<string, unknown>;
+    return {
+      paperOrganism: (r.paper_organism as string | null) ?? null,
+      paperStrainRaw: (r.paper_strain_raw as string | null) ?? null,
+      paperStrainNormalized: (r.paper_strain_normalized as string | null) ?? null,
+      role: (r.role as string | null) ?? null,
+      paperLabel: (r.paper_label as string | null) ?? null,
+      lineageOrEngineeringContext: (r.lineage_or_engineering_context as string | null) ?? null,
+      status: (r.status as string | null) ?? null,
+      confidence: (r.confidence as number | null) ?? null,
+      reasoning: (r.reasoning as string | null) ?? null,
+    };
+  });
+}
+
+function toArticleType(raw: unknown): ArticleTypeGate | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  return {
+    articleType: (r.article_type as string | null) ?? null,
+    isPrimaryExperimentalStudy: (r.is_primary_experimental_study as boolean | null) ?? null,
+    confidence: (r.confidence as number | null) ?? null,
+    evidence: (r.evidence as string[]) ?? [],
+  };
+}
+
+/**
+ * Decodes one paper's entry from `extraction_summary.papers[i]` (backend:
+ * harness/paper_extraction/result_summary.py::build_extraction_summary).
+ * Exported so `api/evidence.ts` can decode the same shape from
+ * `paper_extraction_detail` (the same dict, embedded verbatim into a saved
+ * DDR's `extraction_meta`) without duplicating this mapping.
+ */
+export function toPaperExtractionSummary(raw: Record<string, unknown>): PaperExtractionSummary {
+  const identity = (raw.identity as Record<string, unknown>) ?? {};
+  const quality = (raw.quality as Record<string, unknown>) ?? {};
+  const coverage = (raw.coverage as Record<string, unknown>) ?? {};
+  const paperGovernance = (raw.governance as Record<string, unknown>) ?? {};
+  return {
+    paperId: String(raw.paper_id ?? ""),
+    identity: {
+      title: (identity.title as string | null) ?? null,
+      authors: (identity.authors as string[]) ?? [],
+      journal: (identity.journal as string | null) ?? null,
+      year: (identity.year as number | string | null) ?? null,
+      doi: (identity.doi as string | null) ?? null,
+    },
+    articleType: toArticleType(raw.article_type),
+    targetStrains: toTargetStrains(raw.target_strains),
+    designFields: toDesignFields(raw.design_fields),
+    hasDesignContent: Boolean(raw.has_design_content),
+    quality: {
+      completeness: (quality.completeness as number | null) ?? null,
+      reproducibility: (quality.reproducibility as number | null) ?? null,
+      evidenceLevel: (quality.evidence_level as number | null) ?? null,
+      extractionConfidence: (quality.extraction_confidence as number | null) ?? null,
+      missingInformation: (quality.missing_information as unknown[]) ?? [],
+      overallScore: (quality.overall_score as number | null) ?? null,
+      confidenceLabel: (quality.confidence_label as string | null) ?? null,
+      recommendation: (quality.recommendation as string | null) ?? null,
+      dimensions: (quality.dimensions as Record<string, { score?: number; reason?: string }>) ?? {},
+      risks: (quality.risks as unknown[]) ?? [],
+    },
+    coverage: {
+      totalFields: coverage.total_fields as number | undefined,
+      reportedFields: coverage.reported_fields as number | undefined,
+      fieldsWithEvidence: coverage.fields_with_evidence as number | undefined,
+      unknownFields: coverage.unknown_fields as number | undefined,
+      reportedEvidenceCoverage: coverage.reported_evidence_coverage as number | undefined,
+      overallFieldCoverage: coverage.overall_field_coverage as number | undefined,
+    },
+    governanceNote: (paperGovernance.note as string | null) ?? null,
+    evidenceSourceId: (raw.evidence_source_id as string | null) ?? null,
+  };
+}
+
+function toExtractionSummary(raw: unknown): ExtractionSummary | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const papersRaw = (r.papers as Array<Record<string, unknown>>) ?? [];
+  const governance = (r.governance as Record<string, unknown>) ?? {};
+  return {
+    taskId: String(r.task_id ?? ""),
+    status: (r.status as string | null) ?? null,
+    taskUnderstanding: (r.task_understanding as Record<string, unknown>) ?? {},
+    governanceNote: String(governance.note ?? ""),
+    reviewTasks: (governance.review_tasks as unknown[]) ?? [],
+    papers: papersRaw.map(toPaperExtractionSummary),
+  };
+}
+
 interface RawTaskResponse {
   task_id: string;
   status: string;
   error: string | null;
   skill_states?: Record<string, string>;
   skill_progress?: Record<string, { completed: number; total: number }>;
+  skill_warnings?: Array<Record<string, unknown>>;
+  extraction_summary?: Record<string, unknown> | null;
   result: {
     task_id: string;
     status: RunResult["status"];
@@ -304,6 +514,11 @@ export async function getRun(taskId: string): Promise<RunResult> {
     taskId,
     status: (result?.status ?? (r.status === "failed" ? "FAILED" : "RUNNING")) as RunResult["status"],
     frontendView: toFrontendView(result),
+    // Built from the checkpoint directly (harness/paper_extraction/result_summary.py),
+    // so - unlike frontendView above - it's available for every result_level,
+    // not just "engineering_plan", and updates paper-by-paper as the run
+    // progresses rather than only once the whole pipeline finishes.
+    extractionSummary: toExtractionSummary(r.extraction_summary),
     literatureCandidateCount: result?.literature_candidates?.length ?? 0,
     experimentalDesignCount: result?.experimental_designs?.length ?? 0,
     // Top-level `skill_states` reflects the run's live on-disk checkpoint
@@ -315,6 +530,15 @@ export async function getRun(taskId: string): Promise<RunResult> {
     // a finished result has nothing in progress, so this naturally clears itself.
     skillProgress: r.skill_progress ?? {},
     errors: result?.errors ?? (r.error ? [{ message: r.error }] : []),
+    // Per-skill warning detail (harness/paper_extraction/vendor/.../workflow/engine.py's
+    // `state["warnings"]`) - lets the UI explain *why* a step is WARNING
+    // (e.g. "Figure/table count differs from parser content list.")
+    // instead of just showing the bare status.
+    warnings: (r.skill_warnings ?? []).map((w) => ({
+      skill: String(w.skill ?? ""),
+      message: String(w.message ?? w.source_code ?? "warning"),
+      sourceCode: w.source_code != null ? String(w.source_code) : undefined,
+    })),
     extractedIdeas: toExtractedIdeas(result),
   };
 }

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "react-router-dom";
-import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, X, GripVertical, FlaskConical, Sprout } from "lucide-react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, X, GripVertical, FlaskConical, Sprout, ExternalLink } from "lucide-react";
 import { getEvidenceDocument, getGenerationHealth, listEvidenceMatchReports, searchEvidence, verifyDoi, type EvidenceDocumentDetail } from "@/api/evidence";
 import { EmptyState } from "@/components/common/EmptyState";
 import { CapabilityState } from "@/components/common/CapabilityState";
@@ -30,6 +30,7 @@ const TABS: Tab[] = ["claims", "biological", "literature", "extraction", "distil
  * component-local selection that resets on navigation.
  */
 export function KnowledgePage() {
+  const { projectId } = useParams<{ projectId: string }>();
   const [params, setParams] = useSearchParams();
   const tabParam = params.get("tab");
   const tab: Tab = TABS.includes(tabParam as Tab) ? (tabParam as Tab) : "claims";
@@ -64,7 +65,7 @@ export function KnowledgePage() {
         {tab === "claims" && <KnowledgeClaimsTab />}
         {tab === "biological" && <BiologicalKnowledgeTab />}
         {tab === "literature" && <LiteratureEvidenceTab />}
-        {tab === "extraction" && <PaperExtractionPage embedded />}
+        {tab === "extraction" && <PaperExtractionPage embedded projectId={projectId} />}
         {tab === "distillation" && <KnowledgeDistillationPage embedded />}
       </div>
     </div>
@@ -218,11 +219,11 @@ function LiteratureEvidenceTab() {
           <div ref={splitRef} className="flex min-h-[280px] flex-1">
             <ul className="flex min-w-0 flex-1 flex-col gap-2 overflow-y-auto pr-3">
               {(searchQuery.data?.documents ?? []).map((d) => (
-                <li key={d.sourceId}>
+                <li key={d.sourceId} className="relative">
                   <button
                     onClick={() => setSelectedSourceId(d.sourceId)}
                     aria-pressed={selectedSourceId === d.sourceId}
-                    className={`w-full rounded-lg border p-3.5 text-left text-xs transition-colors ${
+                    className={`w-full rounded-lg border p-3.5 pr-16 text-left text-xs transition-colors ${
                       selectedSourceId === d.sourceId ? "border-accent bg-accent-soft" : "border-border bg-surface hover:bg-surface-sunken"
                     }`}
                   >
@@ -234,6 +235,16 @@ function LiteratureEvidenceTab() {
                       <p className="text-[11px] italic text-ink-faint">{t("page3.noDoiReported")}</p>
                     )}
                   </button>
+                  {searchSource === "local_ddr" && (
+                    <Link
+                      to={`/projects/${projectId}/evidence/${d.sourceId}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="absolute right-2.5 top-3 flex items-center gap-1 rounded border border-border bg-surface px-1.5 py-1 text-[10px] font-medium text-ink-muted hover:bg-surface-sunken"
+                    >
+                      <ExternalLink size={10} aria-hidden />
+                      {t("common.viewDetail")}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

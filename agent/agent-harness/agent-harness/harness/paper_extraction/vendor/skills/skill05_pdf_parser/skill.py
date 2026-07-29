@@ -147,7 +147,11 @@ class PdfStructureParsingSkill:
         warnings = []
         review_requests = []
         if parse_status == "partial":
-            warnings.append({"code": "PARSE004", "missing_content": quality["missing_content"]})
+            warnings.append({
+                "code": "PARSE004",
+                "message": "Document structure reconstruction is partial.",
+                "missing_content": quality["missing_content"],
+            })
             review_requests.append({"reason": "partial_structure_reconstruction", "paper_id": paper_id})
         if not checks[-1]["passed"]:
             warnings.append({"code": "PARSE005", "message": "Figure/table count differs from parser content list."})

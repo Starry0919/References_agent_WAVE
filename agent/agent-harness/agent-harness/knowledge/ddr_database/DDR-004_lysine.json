@@ -1,5 +1,6 @@
 {
   "ddr_id": "DDR-004",
+  "schema_version": "2.0",
   "metadata": {
     "title": "General engineering-knowledge synthesis: feedback deregulation and competing-branch attenuation for L-lysine overproduction in Escherichia coli",
     "category": ["amino acid production", "aspartate-family pathway engineering", "feedback deregulation", "competing pathway attenuation"],
@@ -15,34 +16,90 @@
       "year": "",
       "doi": ""
     },
-    "reference_note": "This DDR is a synthesized summary of well-established, textbook-level E. coli aspartate-pathway engineering principles (feedback-resistant lysC, competing-branch attenuation), not a single verified experimental result from one cited paper - deliberately left without an author/journal/DOI rather than attributing it to a fabricated citation. See knowledge/engineering_actions/action_database.json for the same disclosure pattern used elsewhere in this knowledge base."
+    "paper_type": "synthesis",
+    "reference_note": "此 DDR 是已确立的大肠杆菌天冬氨酸途径工程原则(反馈抗性 lysC、竞争支减弱)的综合摘要,非单篇论文的实验结果。无作者/期刊/DOI 是有意为之,不用编造的引用。"
   },
-  "engineering_problem": {
-    "problem_statement": "L-lysine titer is limited by feedback inhibition of aspartate-pathway enzymes by lysine and by flux diversion into the competing threonine/methionine branch, not solely by the capacity of the lysine-specific (DAP) branch enzymes.",
-    "problem_type": ["feedback inhibition", "competing pathway", "precursor branch-point competition"],
-    "trigger_conditions": [
-      "target product depends on the aspartate-derived amino acid family pathway",
-      "aspartokinase and/or dihydrodipicolinate synthase activity is feedback-inhibited by pathway end products",
-      "a substantial fraction of aspartate-semialdehyde flux is consumed by the competing threonine/methionine branch"
-    ]
-  },
-  "biological_diagnosis": {
-    "observations": [
-      "wild-type aspartokinase III (lysC) activity is allosterically inhibited by lysine, capping flux into the aspartate pathway once intracellular lysine rises",
-      "dihydrodipicolinate synthase (dapA), the first committed step of the lysine-specific (DAP) branch, is itself subject to feedback inhibition by lysine in many organisms",
-      "aspartate-semialdehyde is a shared branch-point precursor consumed by both the DAP (lysine) branch and the homoserine (threonine/methionine) branch via homoserine dehydrogenase (hom)"
-    ],
-    "bottlenecks": [
-      "feedback inhibition of aspartokinase (lysC) by lysine limits total flux into the aspartate pathway",
-      "competing consumption of aspartate-semialdehyde by the threonine/methionine branch (hom, thrB) diverts flux away from lysine",
-      "feedback inhibition of dihydrodipicolinate synthase (dapA) limits flux specifically within the lysine-specific DAP branch"
-    ],
-    "mechanistic_explanation": "E. coli's aspartate pathway is a branch-point network feeding lysine, threonine, methionine, and isoleucine biosynthesis from a shared precursor pool (aspartate, then aspartyl-phosphate, then aspartate-semialdehyde). Both the entry enzyme (aspartokinase, of which lysC/AKIII is the isozyme most specific to the lysine branch) and the first lysine-branch-committed enzyme (dihydrodipicolinate synthase, dapA) are subject to allosteric feedback inhibition by lysine, so simply increasing terminal pathway enzyme expression runs into an upstream flux ceiling rather than a capacity ceiling. Independently, the shared aspartate-semialdehyde precursor is also drawn off by the competing homoserine/threonine/methionine branch (hom, thrB), so even after feedback deregulation, uncontrolled competing-branch flux can still limit lysine yield - this is a mechanistically distinct bottleneck class from feedback inhibition, not a restatement of it."
-  },
-  "engineering_hypothesis": {
-    "hypothesis": "Relieving feedback inhibition of the aspartate-pathway entry point (a feedback-resistant lysC allele) together with attenuating - not eliminating - the competing threonine/methionine branch (hom/thrB) redirects aspartate-semialdehyde flux toward the lysine-specific DAP branch more effectively than terminal-enzyme overexpression alone.",
-    "expected_effect": "increased flux through the DAP branch and higher L-lysine titer, provided growth-essential threonine/methionine supply is not eliminated outright"
-  },
+
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M3",
+      "target": {
+        "gene": "lysC",
+        "enzyme": "aspartokinase III (AKIII)",
+        "pathway": "aspartate → aspartyl-phosphate → aspartate-semialdehyde → (lysine branch)",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "野生型 lysC(aspartokinase III)活性被 L-lysine 变构抑制——一旦胞内赖氨酸浓度上升,天冬氨酸途径的入口就被封堵。这是天冬氨酸途径的第一道调控门。",
+        "reasoning": "与色氨酸的 TrpE 反馈抑制同构:committed 酶被末端产物反馈抑制。解除方法是引入反馈抗性突变体(lysC-fbr),使 AKIII 对赖氨酸不敏感。",
+        "source_location": "EcoCyc / 教科书级天冬氨酸途径调控知识"
+      },
+      "evidence": {
+        "description": "LysC 受 L-lysine 反馈抑制是已被充分验证的机制。晶体结构和酶动力学均证实赖氨酸与 LysC 调节域结合、变构抑制催化活性。",
+        "source": "EcoCyc / BRENDA / PDB",
+        "source_location": "EcoCyc: LYSC-MONOMER; BRENDA: lysC inhibition kinetics; PDB: lysC regulatory domain structure",
+        "values": {"inhibitor": "L-lysine", "enzyme": "aspartokinase III (lysC)"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "已知的、被结构和酶动力学多重验证的反馈抑制机制,归硬。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "过表达野生型 lysC", "rejected_reason": "不解除反馈抑制,过表达的酶仍被赖氨酸抑制——等于是增加被锁住的酶的拷贝数"},
+        {"approach": "只用 lysC 的同工酶 lysA/metoK 等绕过", "rejected_reason": "天冬氨酸激酶有三个同工酶(lysC/thrA/metoK),但各自受不同产物反馈——只换同工酶不能解决赖氨酸特异性反馈"}
+      ],
+      "implementation": "点突变",
+      "implementation_detail": "引入 lysC-fbr(feedback-resistant)等位基因——在赖氨酸结合域引入点突变,保留催化活性但消除赖氨酸介导的变构抑制",
+      "result": {
+        "metric": "天冬氨酸途径通量",
+        "before": "胞内赖氨酸升高 → LysC 被抑制 → 途径入口关闭",
+        "after": "lysC-fbr 不受赖氨酸抑制 → 途径入口保持开放,通量上限提升",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "天冬氨酸家族氨基酸(赖氨酸/苏氨酸/甲硫氨酸)的共通第一步:检查 aspartokinase 同工酶的反馈抑制状态。选对同工酶:lysC→赖氨酸途径,thrA→苏氨酸途径,metL→甲硫氨酸途径。引入反馈抗性突变体(fbr)是性价比最高的第一步干预。"
+    },
+    {
+      "step": 2,
+      "design_action": "M5",
+      "target": {
+        "gene": "hom, thrB",
+        "enzyme": "homoserine dehydrogenase (Hom), homoserine kinase (ThrB)",
+        "pathway": "aspartate-semialdehyde → homoserine → threonine/methionine branch (竞争支)",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "aspartate-semialdehyde 是共享分支点前体:一条路走 DAP 分支(→赖氨酸),另一条路走 homoserine 分支(→苏氨酸/甲硫氨酸)。即使 lysC 反馈抗性解除了入口限制,hom+thrB 仍然消耗 aspartate-semialdehyde,与赖氨酸分支竞争。",
+        "reasoning": "解决了入口瓶颈后的下一步是分支点竞争。这和 BDO 的通量集中逻辑一致:要集中碳流到目标产物,必须减少竞争支的消耗。但特殊之处在于:苏氨酸和甲硫氨酸是必需氨基酸,不能完全敲除(除非补料)。所以'减弱'(attenuation)优于'敲除'(KO)。",
+        "source_location": "EcoCyc: aspartate pathway branch point; 教科书级代谢工程原则"
+      },
+      "evidence": {
+        "description": "1) aspartate-semialdehyde 的分支结构是已知代谢网络事实(硬)。2) hom 和 thrB 的酶功能已在 EcoCyc 中策展(硬)。3) 敲除 hom 导致苏氨酸/甲硫氨酸营养缺陷——已知必需性(硬:可用 COBRApy 基因必需性反查验证)。",
+        "source": "EcoCyc / COBRApy 基因必需性",
+        "source_location": "EcoCyc: HOM-MONOMER, THRB-MONOMER; COBRApy: hom/thrB essentiality check on glucose minimal medium",
+        "values": {"competing_branch": "threonine/methionine", "shared_precursor": "aspartate-semialdehyde", "essentiality": "conditional (缺 thr/met 时致死)"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "分支点结构和基因必需性是已确证的事实。减弱的效果方向(减少竞争→增加赖氨酸前体)是化学计量推理(硬),但具体减弱到什么程度需要实验优化。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "完全敲除 hom", "rejected_reason": "苏氨酸和甲硫氨酸是必需氨基酸,完全敲除产生营养缺陷型——除非培养基补料,否则致死。补料增加了成本和过程复杂度。"},
+        {"approach": "只在培养基中补苏氨酸+甲硫氨酸并敲 hom", "rejected_reason": "补料是可行的替代方案,但增加了培养基成本和过程控制复杂度;减弱比敲除+补料更优雅"},
+        {"approach": "忽略竞争支,只做 lysC-fbr", "rejected_reason": "aspartate-semialdehyde 仍然被 hom 大量消耗——赖氨酸得率受限于碳流分配而非入口通量"}
+      ],
+      "implementation": "CRISPRi",
+      "implementation_detail": "用 CRISPRi 或启动子替换减弱(而非敲除)hom 和 thrB 的表达水平,减少竞争支的碳流消耗但保留足够通量维持苏氨酸/甲硫氨酸的基础供应",
+      "result": {
+        "metric": "赖氨酸得率",
+        "before": "aspartate-semialdehyde 被竞争支大量消耗",
+        "after": "更多 aspartate-semialdehyde 碳流进入 DAP/赖氨酸分支,得率提升",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "分支点竞争:当目标产物和必需营养物共享前体时,减弱(KO 或 CRISPRi)竞争支而非完全敲除。先用 COBRApy 基因必需性反查确认靶标是否必需——必需基因改 CRISPi/弱化启动子,非必需基因可直接 KO。减弱程度需要实验优化:太弱→营养缺陷,太强→竞争仍未解除。"
+    }
+  ],
+
   "engineering_actions": [
     {
       "modification_type": "mutation",
@@ -71,26 +128,46 @@
       ]
     }
   ],
-  "decision_rules": [
-    {
-      "condition": "terminal DAP-branch enzymes are functional but lysine titer plateaus",
-      "recommended_strategy": "check aspartokinase and dapA feedback status before assuming a terminal-enzyme capacity limit",
-      "reason": "titer may be capped by feedback inhibition upstream of the terminal branch, not by terminal enzyme capacity"
-    },
-    {
-      "condition": "target product depends on the aspartate-family pathway (lysine, threonine, methionine, isoleucine)",
-      "recommended_strategy": "evaluate the competing branches sharing the same precursor pool before attributing a bottleneck to a single branch",
-      "reason": "aspartate-semialdehyde is a shared branch point; competing consumption elsewhere can mask or compound a feedback-inhibition bottleneck"
-    },
-    {
-      "condition": "a proposed intervention would eliminate flux to a branch producing an essential amino acid",
-      "recommended_strategy": "attenuate rather than fully knock out, or verify the target gene is not essential/conditionally essential under the intended growth medium before proceeding",
-      "reason": "unconditional knockout of a branch supplying an essential nutrient can be lethal or require permanent media supplementation"
-    }
-  ],
-  "generalizable_rules": [
-    "diagnose feedback inhibition at the pathway entry point before assuming a terminal-branch capacity limit",
-    "when a product pathway shares a precursor with other essential-biosynthesis branches, evaluate competing consumption explicitly rather than treating the target branch in isolation",
-    "prefer attenuation over full knockout when a competing branch also supplies an essential nutrient"
-  ]
+  "_engineering_actions_note": "Kept verbatim from DDR schema v1 (not part of the teacher's v2 spec) because workflows/synbio_v1/modules/engineering.py - a separate, older demo pipeline distinct from harness/paper_extraction - still reads this exact key/shape. decision_chain above is the canonical v2 source; this array is a compat projection of the same underlying facts, not independently curated content.",
+
+  "engineering_problem": {
+    "problem_statement": "L-lysine titer is limited by feedback inhibition of aspartate-pathway enzymes by lysine and by flux diversion into the competing threonine/methionine branch, not solely by the capacity of the lysine-specific (DAP) branch enzymes.",
+    "problem_type": ["feedback inhibition", "competing pathway", "precursor branch-point competition"],
+    "trigger_conditions": [
+      "target product depends on the aspartate-derived amino acid family pathway",
+      "aspartokinase and/or dihydrodipicolinate synthase activity is feedback-inhibited by pathway end products",
+      "a substantial fraction of aspartate-semialdehyde flux is consumed by the competing threonine/methionine branch"
+    ]
+  },
+
+  "biological_diagnosis": {
+    "observations": [
+      "wild-type aspartokinase III (lysC) activity is allosterically inhibited by lysine, capping flux into the aspartate pathway once intracellular lysine rises",
+      "dihydrodipicolinate synthase (dapA), the first committed step of the lysine-specific (DAP) branch, is itself subject to feedback inhibition by lysine",
+      "aspartate-semialdehyde is a shared branch-point precursor consumed by both the DAP (lysine) branch and the homoserine (threonine/methionine) branch"
+    ],
+    "bottlenecks": [
+      "feedback inhibition of aspartokinase (lysC) by lysine limits total flux into the aspartate pathway",
+      "competing consumption of aspartate-semialdehyde by the threonine/methionine branch (hom, thrB) diverts flux away from lysine",
+      "feedback inhibition of dihydrodipicolinate synthase (dapA) limits flux specifically within the lysine-specific DAP branch"
+    ],
+    "mechanistic_explanation": "E. coli's aspartate pathway is a branch-point network feeding lysine, threonine, methionine, and isoleucine biosynthesis from a shared precursor pool. Both the entry enzyme (aspartokinase) and the first lysine-branch-committed enzyme (dapA) are subject to allosteric feedback inhibition by lysine. Independently, the shared aspartate-semialdehyde precursor is also drawn off by the competing homoserine/threonine/methionine branch."
+  },
+
+  "engineering_hypothesis": {
+    "hypothesis": "Relieving feedback inhibition of the aspartate-pathway entry point (a feedback-resistant lysC allele) together with attenuating - not eliminating - the competing threonine/methionine branch (hom/thrB) redirects aspartate-semialdehyde flux toward the lysine-specific DAP branch more effectively than terminal-enzyme overexpression alone.",
+    "expected_effect": "increased flux through the DAP branch and higher L-lysine titer"
+  },
+
+  "extraction_meta": {
+    "extraction_method": "manual_curation",
+    "extracted_by": ["agent_harness_v1"],
+    "extraction_date": "2026-07-22",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "v1→v2 升级。此 DDR 为教科书级知识综合,非单篇论文的决策链——已在 reason_nature 中如实标注为'机理推断'而非伪装为论文实测。decision_chain 可扩展到包括 dapA 反馈抗性(第三步),当前 2 步覆盖核心逻辑。",
+    "human_review_status": "pending",
+    "review_notes": "作为 synthesis 类型的 DDR,没有单篇论文可以追溯——这是合理的。但建议在 rule 中引用实际论文先例(如色氨酸的 TrpE-fbr 模式)。",
+    "paper_extraction_task_id": null
+  }
 }

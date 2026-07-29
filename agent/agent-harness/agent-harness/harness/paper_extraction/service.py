@@ -17,10 +17,23 @@ from typing import Any
 from . import _VENDOR_DIR  # noqa: F401  (import triggers the sys.path bootstrap)
 
 from paper_experimental_design_extraction.api.task_manager import TaskManager  # noqa: E402
+from paper_experimental_design_extraction.config import DEFAULT_CONFIG  # noqa: E402
+from paper_experimental_design_extraction.workflow import WorkflowEngine  # noqa: E402
 from harness.paper_extraction.opus_extractor import MODEL as EXTRACTION_MODEL, make_executor
+from harness.paper_extraction.pipeline_cache import make_cached_executor
 
 UPLOAD_DIR = _VENDOR_DIR / "paper_experimental_design_extraction" / "storage" / "uploads"
 RUNTIME_DIR = _VENDOR_DIR / "paper_experimental_design_extraction" / "storage" / "runtime"
+# One JSON row per submitted task (metadata + the original request/options
+# needed to resume it) - written on submit, dropped on delete. Everything
+# else about a run (per-skill progress, the final report) already lives in
+# its own `RUNTIME_DIR/<task_id>/checkpoint.json`, written by WorkflowEngine
+# itself; this file is only the thin index + resume-recipe that used to
+# live solely in the in-memory `_task_meta`/`TaskManager.tasks`, which a
+# server restart (or, during development, uvicorn --reload) wiped entirely -
+# "刷新后历史记录消失" even though every run's own checkpoint was still
+# sitting on disk the whole time.
+_REGISTRY_PATH = _VENDOR_DIR / "paper_experimental_design_extraction" / "storage" / "task_registry.json"
 
 _manager: TaskManager | None = None
 
@@ -28,16 +41,82 @@ _manager: TaskManager | None = None
 # task_id - no submission time or request summary, so a returning user has
 # no way to tell which past run is which. Kept here rather than in the
 # vendored module (frontend-only need, not part of its own input/output
-# schema) - process-lifetime only, same durability as the TaskManager
-# itself (an in-memory dict; a server restart loses in-flight runs either
-# way).
+# schema) - repopulated from `_REGISTRY_PATH` by `_restore_registry` on
+# first use each process, not just held in memory.
 _task_meta: dict[str, dict[str, Any]] = {}
+
+
+def _load_registry() -> dict[str, dict[str, Any]]:
+    if not _REGISTRY_PATH.is_file():
+        return {}
+    try:
+        return json.loads(_REGISTRY_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _save_registry(registry: dict[str, dict[str, Any]]) -> None:
+    _REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp = _REGISTRY_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(registry, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(_REGISTRY_PATH)
+
+
+def _restore_registry(manager: TaskManager) -> None:
+    """Runs once, the first time this process needs a `TaskManager` -
+    repopulates `_task_meta` and `manager`'s per-task status/result from
+    `_REGISTRY_PATH` + each task's own on-disk checkpoint, so history
+    submitted in an earlier process (a prior `--reload` restart, a crash, a
+    normal redeploy) is available immediately instead of only for tasks
+    submitted since this process started.
+
+    A task whose checkpoint shows it was still `RUNNING`/`CREATED` when the
+    process died is genuinely resumed (`WorkflowEngine` checkpoints after
+    every skill and `run(resume=True)` already skips whatever finished
+    before the crash - see engine.py) rather than left to look silently
+    stuck forever. A task that had already reached COMPLETED/FAILED/
+    WAITING_REVIEW is not re-run at all: `WorkflowEngine._report()` is a
+    pure function of the saved checkpoint state (it never reads `self`),
+    so the same report it produced before is rebuilt straight from disk.
+    """
+    registry = _load_registry()
+    engine = WorkflowEngine(DEFAULT_CONFIG)
+    for task_id, entry in registry.items():
+        meta = entry.get("meta", {})
+        _task_meta[task_id] = meta
+        checkpoint_path = RUNTIME_DIR / task_id / "checkpoint.json"
+        if not checkpoint_path.is_file():
+            continue
+        try:
+            state = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        status = state.get("status")
+        if status in ("RUNNING", "CREATED"):
+            request = entry.get("request")
+            if not request:
+                continue
+            options = dict(entry.get("options") or {})
+            options["executors"] = {
+                "skill05_pdf_parser": _SKILL05_EXECUTOR,
+                "skill06_markdown_cleaner": _SKILL06_EXECUTOR,
+                "skill07_experiment_extraction": make_executor(EXTRACTION_MODEL),
+            }
+            options["resume"] = True
+            manager.submit(request, options)
+            continue
+        try:
+            report = engine._report(None, state)
+        except Exception:
+            continue
+        manager.seed(task_id, str(status).lower(), result=report)
 
 
 def _get_manager() -> TaskManager:
     global _manager
     if _manager is None:
         _manager = TaskManager()
+        _restore_registry(_manager)
     return _manager
 
 
@@ -126,20 +205,58 @@ def _project_uploaded_papers(project_id: str | None) -> list[dict[str, Any]]:
     return list(seen.values())
 
 
+def _skill05_cache_key(request: dict[str, Any]) -> str:
+    artifact = request.get("paper_artifact") or {}
+    checksum = artifact.get("integrity", {}).get("checksum_value")
+    if not checksum:
+        raise ValueError("paper_artifact has no checksum to key the parse cache on")
+    policy = request.get("parse_policy") or {}
+    return f"{checksum}\0{json.dumps(policy, sort_keys=True)}"
+
+
+def _skill06_cache_key(request: dict[str, Any]) -> str:
+    document = request.get("document_artifact")
+    if not document:
+        raise ValueError("no document_artifact to key the clean cache on")
+    return json.dumps(document, sort_keys=True, ensure_ascii=False)
+
+
+# Same paper, re-parsed/re-cleaned only once no matter how many projects or
+# runs later reference it (skill07's LLM extraction already gets this via
+# opus_extractor.py's own cache; these two are the deterministic, but still
+# real-time-costing, steps upstream of it - see pipeline_cache.py).
+_SKILL05_EXECUTOR = make_cached_executor("skill05_pdf_parser", _skill05_cache_key)
+_SKILL06_EXECUTOR = make_cached_executor("skill06_markdown_cleaner", _skill06_cache_key)
+
+
 def submit_run(payload: dict[str, Any]) -> dict[str, Any]:
     request = build_request(payload)
     source_type = payload.get("source_type", "auto_search")
     manual_candidates = _project_uploaded_papers(payload.get("project_id")) if source_type == "auto_search" else []
-    # All three source routes converge on the same per-paper skill07
-    # executor.  Its content-addressed cache avoids extracting a paper again
-    # merely because it was later supplied by DOI instead of upload/search.
-    submitted = _get_manager().submit(request, {
-        "executors": {"skill07_experiment_extraction": make_executor(EXTRACTION_MODEL)},
+    # JSON-safe part of the run's options - persisted below so a later
+    # process can resume this exact run; `executors` (a live callable) is
+    # rebuilt fresh from `EXTRACTION_MODEL` on resume instead, both here and
+    # in `_restore_registry`.
+    persistable_options = {
         "pdf_download_policy": {"max_candidates": min(int(payload.get("max_papers", 6)), 8)},
         "retrieval_limit": min(int(payload.get("max_papers", 6)), 8),
         "manual_candidates": manual_candidates,
+    }
+    # All three source routes converge on the same per-paper skill04-07
+    # executors.  Their content-addressed caches avoid re-downloading/
+    # re-parsing/re-cleaning/re-extracting a paper already processed by an
+    # earlier run - in any project - merely because it was supplied again
+    # by DOI instead of upload/search, or the other way around.
+    submitted = _get_manager().submit(request, {
+        **persistable_options,
+        "executors": {
+            "skill05_pdf_parser": _SKILL05_EXECUTOR,
+            "skill06_markdown_cleaner": _SKILL06_EXECUTOR,
+            "skill07_experiment_extraction": make_executor(EXTRACTION_MODEL),
+        },
     })
-    _task_meta[submitted["task_id"]] = {
+    task_id = submitted["task_id"]
+    _task_meta[task_id] = {
         "project_id": payload.get("project_id"),
         "submitted_at": time.time(),
         "user_request": payload["user_request"],
@@ -150,6 +267,9 @@ def submit_run(payload: dict[str, Any]) -> dict[str, Any]:
         "source_type": source_type,
         "extraction_model": EXTRACTION_MODEL,
     }
+    registry = _load_registry()
+    registry[task_id] = {"meta": _task_meta[task_id], "request": request, "options": persistable_options}
+    _save_registry(registry)
     return submitted
 
 
@@ -182,6 +302,23 @@ def get_live_skill_states(task_id: str) -> dict[str, str]:
     except (OSError, ValueError):
         return {}
     return state.get("skill_states", {})
+
+
+def get_live_skill_warnings(task_id: str) -> list[dict[str, Any]]:
+    """Best-effort per-skill warning detail while a task is still `running`
+    (or once it has finished, if the caller has no cached `result`) - same
+    checkpoint-read contract as `get_live_skill_states`: `[]` if unavailable,
+    never raises. Lets the frontend show *why* a step is WARNING (e.g. which
+    figure/table mismatch or damaged section) instead of just the bare
+    status, which the checkpoint's `skill_states` alone can't convey."""
+    path = RUNTIME_DIR / task_id / "checkpoint.json"
+    if not path.is_file():
+        return []
+    try:
+        state = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    return state.get("warnings", [])
 
 
 def get_live_skill_progress(task_id: str) -> dict[str, dict[str, int]]:
@@ -220,6 +357,9 @@ def delete_task(task_id: str) -> None:
         raise ValueError("cannot delete a task that is still running")
     _get_manager().delete(task_id)
     _task_meta.pop(task_id, None)
+    registry = _load_registry()
+    if registry.pop(task_id, None) is not None:
+        _save_registry(registry)
     shutil.rmtree(RUNTIME_DIR / task_id, ignore_errors=True)
 
 

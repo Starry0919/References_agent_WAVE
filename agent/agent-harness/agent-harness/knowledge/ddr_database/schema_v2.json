@@ -1,0 +1,205 @@
+{
+  "_schema_version": "2.0",
+  "_description": "DDR (Design Decision Record) Schema v2 — 对齐老师 §4.2 字段表。每条 DDR = 一篇论文的完整决策链,沿 '想产什么→观察到什么→假设→证据→改动→验证→结果' 切分为若干决策步骤。",
+  "_changelog": "v2 新增: 决策链结构(decision_chain)、证据分级(evidence_grading)、理由性质(reason_nature)、备选方案(alternatives)、量化结果(result.before/after)、双人校准元数据(extraction_meta)。保留 v1 的 engineering_problem/biological_diagnosis/engineering_hypothesis 作为论文级上下文。",
+
+  "ddr_schema": {
+    "ddr_id": {"type": "string", "pattern": "DDR-\\d{3,}", "description": "唯一标识,如 DDR-001"},
+    "schema_version": {"type": "string", "const": "2.0"},
+
+    "metadata": {
+      "type": "object",
+      "description": "论文基本信息",
+      "fields": {
+        "title": {"type": "string", "description": "论文标题"},
+        "category": {"type": "array", "items": "string", "description": "分类标签"},
+        "organism": {"type": "string", "description": "物种"},
+        "host": {"type": "string", "description": "底盘/宿主"},
+        "target_product": {"type": "string", "description": "目标产物"},
+        "product_class": {"type": "string", "description": "产物类别"},
+        "engineering_level": {"type": "string", "description": "工程层次"},
+        "reference": {
+          "type": "object",
+          "fields": {
+            "title": {"type": "string"},
+            "authors": {"type": "string"},
+            "journal": {"type": "string"},
+            "year": {"type": "string"},
+            "doi": {"type": "string"}
+          }
+        },
+        "paper_type": {"type": "string", "enum": ["primary_research", "review", "protocol", "methods_paper", "synthesis"], "description": "论文类型"}
+      }
+    },
+
+    "decision_chain": {
+      "type": "array",
+      "description": "核心: 论文的完整决策链,每一步 = 一个工程决策动作。按时间/逻辑顺序排列。",
+      "items": {
+        "type": "object",
+        "fields": {
+          "step": {"type": "integer", "description": "步骤序号"},
+
+          "design_action": {
+            "type": "string",
+            "description": "设计动作 — 属于哪个模块(对齐老师 §5.2 模块编号)",
+            "enum": ["M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M11"],
+            "examples": ["M3=解除调控", "M4=限速酶识别与工程", "M5=竞争/旁路通量阻断"]
+          },
+
+          "target": {
+            "type": "object",
+            "description": "靶标 — 动了哪个基因/酶/通路/条件",
+            "fields": {
+              "gene": {"type": "string", "description": "目标基因名(如 trpE, lysC)"},
+              "enzyme": {"type": "string", "description": "目标酶名(如 anthranilate synthase)"},
+              "pathway": {"type": "string", "description": "所属通路"},
+              "condition": {"type": "string", "description": "目标条件(如培养基、温度),无则为 null"}
+            }
+          },
+
+          "trigger": {
+            "type": "object",
+            "description": "触发 — 什么观察或推理触发了这一步",
+            "fields": {
+              "observation": {"type": "string", "description": "观察到的现象"},
+              "reasoning": {"type": "string", "description": "从此现象到行动的推理链"},
+              "source_location": {"type": "string", "description": "出处(章节/图表/常识)"}
+            }
+          },
+
+          "evidence": {
+            "type": "object",
+            "description": "证据 — 具体证据,含出处和数值",
+            "fields": {
+              "description": {"type": "string", "description": "证据描述"},
+              "source": {"type": "string", "description": "证据来源(EcoCyc/PDB/BRENDA/论文实测/...) "},
+              "source_location": {"type": "string", "description": "在来源中的具体位置(章节/图表/DOI)"},
+              "values": {"type": "object", "description": "关键数值(如 Km=0.5mM, IC50=0.70mM),无则为 {}"}
+            }
+          },
+
+          "evidence_grading": {
+            "type": "string",
+            "enum": ["硬", "软"],
+            "description": "证据分级。硬 = 实测(结构/动力学/已验证改造结果)或化学计量(理论得率/通量/必需性); 软 = 预测(OptKnock/docking/ΔΔG,待实测确认)"
+          },
+
+          "evidence_grading_rationale": {
+            "type": "string",
+            "description": "为什么判定为硬/软,引述具体理由"
+          },
+
+          "reason_nature": {
+            "type": "string",
+            "enum": ["机理推断", "文献类比", "现成可得", "筛选得来", "事后合理化存疑"],
+            "description": "理由性质。仅 '机理推断' 和 '文献类比' 两类才能抽出可泛化规则。'现成可得'='Keio 库里现成有'类;'筛选得来'='筛库筛出来的'类;'事后合理化存疑'=事后编造的理由"
+          },
+
+          "alternatives": {
+            "type": "array",
+            "description": "备选 — 考虑过又放弃的方案及原因",
+            "items": {
+              "type": "object",
+              "fields": {
+                "approach": {"type": "string", "description": "备选方案描述"},
+                "rejected_reason": {"type": "string", "description": "放弃原因"}
+              }
+            }
+          },
+
+          "implementation": {
+            "type": "string",
+            "enum": ["KO", "CRISPRi", "过表达", "点突变", "启动子工程", "异源表达", "培养基优化", "发酵调控", "RBS工程", "辅因子工程", "动态调控", "其他"],
+            "description": "实现方式"
+          },
+
+          "implementation_detail": {
+            "type": "string",
+            "description": "实现方式的具体描述(如 'TrpE(S40F) 抗性突变' 或 'Ptrc 启动子替换')"
+          },
+
+          "result": {
+            "type": "object",
+            "description": "结果 — 量化结果(滴度/得率,前→后)",
+            "fields": {
+              "metric": {"type": "string", "description": "指标(滴度/得率/抗性/酶活/...)"},
+              "before": {"type": "string", "description": "改动前的值或状态"},
+              "after": {"type": "string", "description": "改动后的值或状态"},
+              "fold_change": {"type": "string", "description": "倍数变化(如 '3×'),无则为 null"},
+              "quantified": {"type": "boolean", "description": "是否有精确数值"}
+            }
+          },
+
+          "rule": {
+            "type": "string",
+            "description": "规则 — 从这一步抽象出的可泛化启发式。仅当 reason_nature 为 '机理推断' 或 '文献类比' 时才填写,否则为 null。格式: 条件→动作→理由"
+          }
+        }
+      }
+    },
+
+    "engineering_problem": {
+      "type": "object",
+      "description": "[v1 兼容] 论文级: 工程问题概述",
+      "fields": {
+        "problem_statement": {"type": "string"},
+        "problem_type": {"type": "array", "items": "string"},
+        "trigger_conditions": {"type": "array", "items": "string"}
+      }
+    },
+
+    "biological_diagnosis": {
+      "type": "object",
+      "description": "[v1 兼容] 论文级: 生物学诊断",
+      "fields": {
+        "observations": {"type": "array", "items": "string"},
+        "bottlenecks": {"type": "array", "items": "string"},
+        "mechanistic_explanation": {"type": "string"}
+      }
+    },
+
+    "engineering_hypothesis": {
+      "type": "object",
+      "description": "[v1 兼容] 论文级: 工程假设",
+      "fields": {
+        "hypothesis": {"type": "string"},
+        "expected_effect": {"type": "string"}
+      }
+    },
+
+    "extraction_meta": {
+      "type": "object",
+      "description": "抽取过程的元数据 — 记录谁抽的、校准状态、审校状态",
+      "fields": {
+        "extraction_method": {
+          "type": "string",
+          "enum": ["manual_curation", "semi_automated"],
+          "description": "手工策展还是 Agent 半自动抽取"
+        },
+        "extracted_by": {
+          "type": "array", "items": "string",
+          "description": "抽取人标识(如 ['reviewer_a', 'reviewer_b'])"
+        },
+        "extraction_date": {"type": "string", "description": "抽取日期 ISO"},
+        "calibration_status": {
+          "type": "string",
+          "enum": ["pending", "in_progress", "calibrated", "disputed"],
+          "description": "双人校准状态"
+        },
+        "calibrated_by": {"type": "array", "items": "string", "description": "校准人"},
+        "calibration_notes": {"type": "string", "description": "对齐过程中的差异和解决记录"},
+        "human_review_status": {
+          "type": "string",
+          "enum": ["pending", "reviewed", "rejected", "needs_revision"],
+          "description": "人工抽检状态"
+        },
+        "review_notes": {"type": "string"},
+        "paper_extraction_task_id": {
+          "type": "string",
+          "description": "如果经由 paper_extraction Skill 半自动抽取,记录 task_id 以便追溯"
+        }
+      }
+    }
+  }
+}

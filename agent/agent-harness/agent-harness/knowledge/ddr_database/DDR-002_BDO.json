@@ -1,5 +1,6 @@
 {
   "ddr_id": "DDR-002",
+  "schema_version": "2.0",
   "metadata": {
     "title": "Metabolic engineering of Escherichia coli for direct production of 1,4-butanediol",
     "category": ["de novo pathway construction", "heterologous pathway engineering", "diol production"],
@@ -7,39 +8,132 @@
     "host": "E. coli",
     "target_product": "1,4-butanediol",
     "product_class": "diol (bio-based chemical)",
-    "engineering_level": "de novo heterologous pathway construction",
+    "engineering_level": "de novo heterologous pathway construction + host optimization",
     "reference": {
       "title": "Metabolic engineering of Escherichia coli for direct production of 1,4-butanediol",
       "authors": "Yim H. et al.",
       "journal": "Nature Chemical Biology",
       "year": "2011",
       "doi": "10.1038/nchembio.580"
+    },
+    "paper_type": "primary_research"
+  },
+
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M1",
+      "target": {
+        "gene": null,
+        "enzyme": null,
+        "pathway": "1,4-BDO biosynthetic pathway (non-native)",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "E. coli 没有 1,4-丁二醇(1,4-BDO)的天然合成途径。这是一个 de novo(从头)通路构建问题,而非对已有通路的改造。",
+        "reasoning": "非天然产物必须先解决'通路从哪来'的问题:需要用 RetroPath/novoStoic 等工具枚举可能的合成路线,然后选择在热力学和酶学上最可行的路线。",
+        "source_location": "Introduction / known E. coli metabolism"
+      },
+      "evidence": {
+        "description": "1,4-BDO 不在 E. coli 天然代谢网络中——这是 EcoCyc/KEGG 可确认的事实。",
+        "source": "EcoCyc / KEGG",
+        "source_location": "KEGG: no native 1,4-butanediol pathway in E. coli",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "代谢网络中的通路存在/不存在是已策展的数据库事实,属硬证据。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "尝试改造 E. coli 的天然二醇途径来产 1,4-BDO", "rejected_reason": "E. coli 没有 C4 二醇的天然骨架,改造成本可能高于从头构建"}
+      ],
+      "implementation": "异源表达",
+      "implementation_detail": "策划并插入完整的异源 1,4-BDO 合成途径(多基因)",
+      "result": {
+        "metric": "通路构建结果",
+        "before": "E. coli 不能产 1,4-BDO",
+        "after": "获得功能性 1,4-BDO 合成能力",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "宿主缺乏目标产物的天然途径时,优先从头构建(de novo pathway construction)而非尝试改造不存在的路线。通路选择需经 RetroPath/novoStoic 等枚举+热力学筛选,不凭直觉选。"
+    },
+    {
+      "step": 2,
+      "design_action": "M2",
+      "target": {
+        "gene": null,
+        "enzyme": null,
+        "pathway": "中心碳代谢 → 前体和辅因子供应 → 异源 1,4-BDO 途径",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "异源途径插入后,1,4-BDO 产量远低于理论预期。异源途径的酶已表达,但通量仍然很低——提示宿主的前体/辅因子供应与该途径不匹配。",
+        "reasoning": "构建 de novo 途径时,最容易忽视的是宿主的代谢网络是否能为新途径提供足够的前体(pyruvate, α-ketoglutarate 等)和辅因子(NADH, NADPH)。这不是'通路建好就自动跑'的问题——异源途径和宿主代谢的接口往往是真正的瓶颈。",
+        "source_location": "Results: initial titers after pathway insertion"
+      },
+      "evidence": {
+        "description": "初始插入异源途径后的低产量(论文实测)。具体的前体/辅因子限制需要 metabolomics 或 FBA 分析确认。",
+        "source": "论文实测",
+        "source_location": "Results: BDO titer after initial pathway construction",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "低产量是实测结果。具体哪些前体/辅因子限制需要进一步实验确认,但'存在限制'这一结论是硬的。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "只增加异源酶的拷贝数", "rejected_reason": "如果限制在前体/辅因子层面,增加酶表达只是增加闲置容量"}
+      ],
+      "implementation": "过表达",
+      "implementation_detail": "宿主优化:增强前体合成途径,调优辅因子再生系统(如 pntAB 过表达改变 NADH/NADPH 平衡)",
+      "result": {
+        "metric": "1,4-BDO 产量",
+        "before": "仅途径插入(宿主未优化)",
+        "after": "途径插入 + 宿主前体/辅因子优化后产量提升",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "de novo 途径工程必须配对宿主层面优化(前体+辅因子供给),不能当作独立的基因插入任务。途径和宿主的接口(interface)往往才是真正的瓶颈——检查前体池、辅因子比和能量状态。"
+    },
+    {
+      "step": 3,
+      "design_action": "M5",
+      "target": {
+        "gene": "ldh, adh, pfl, pta, frd (候选敲除列表)",
+        "enzyme": "lactate dehydrogenase, alcohol dehydrogenase, pyruvate formate lyase, phosphotransacetylase, fumarate reductase",
+        "pathway": "中心碳代谢—发酵副产物途径",
+        "condition": "厌氧/微氧条件"
+      },
+      "trigger": {
+        "observation": "E. coli 在厌氧/微氧条件下通过混合酸发酵消耗大量碳通量:ldh(乳酸)、adh(乙醇)、pfl-pta-ackA(乙酸)、frd(琥珀酸)。这些副产物途径与异源 1,4-BDO 途径竞争同一前体池(pyruvate, acetyl-CoA, NADH)。",
+        "reasoning": "1,4-BDO 途径是还原性途径(消耗 NADH),而 E. coli 的混合酸发酵也是还原性途径。两者竞争 NADH 和碳骨架。要集中碳流 → 必须敲除竞争性的发酵副产物途径。",
+        "source_location": "Known E. coli mixed-acid fermentation pathways (EcoCyc) + OptKnock predictions"
+      },
+      "evidence": {
+        "description": "1) 化学计量:ldh/adh/pfl/pta/frd 各消耗来自 pyruvate 的碳通量——这是已知代谢网络事实(硬)。2) OptKnock 等工具可预测敲除这些基因后的生长偶联效果(软证据,需实测)。3) 论文实测了部分敲除的产量提升。",
+        "source": "EcoCyc + OptKnock 预测 + 论文实测",
+        "source_location": "EcoCyc: fermentation pathways; OptKnock: knockout predictions; Results: knockout effects on titer",
+        "values": {"target_byproducts": ["lactate", "ethanol", "acetate", "succinate"]}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "副产物途径的化学计量是硬证据(已知代谢网络);敲除效果中的化学计量部分(碳不再流入副产物)是硬推理;但生长偶联预测(OptKnock)为软证据。综合:基因必需性反查(硬)+ 敲除效果方向(硬)+ 定量预测(软)。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "不敲除、仅通过过程控制(pH/溶氧)抑制副产物", "rejected_reason": "过程调控无法完全消除副产物,且增加了过程复杂度"},
+        {"approach": "全部敲除", "rejected_reason": "部分基因(如 ackA)对生长有影响,需要逐个验证;不是所有副产物途径都能同时敲"}
+      ],
+      "implementation": "KO",
+      "implementation_detail": "依次敲除 ldhA, adhE, pflB, pta, frdA/B/C——优先敲对生长影响小的,每一步验证产量和生长",
+      "result": {
+        "metric": "1,4-BDO 得率 + 副产物减少",
+        "before": "碳通量分散到多个发酵副产物",
+        "after": "碳通量集中在 1,4-BDO(通过减少副产物竞争实现)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "通量集中:敲发酵副产物途径(ldh/adh/pfl/pta/frd)。还原态产物(需要 NADH 的)再额外敲还原支(mdh)并解阻遏(arcA)。每条敲除前后验证生长——用 COBRApy 基因必需性反查防止敲必需基因。组合敲除效果先 FBA 模拟再实测,OptKnock 的预测标为软证据。"
     }
-  },
-  "engineering_problem": {
-    "problem_statement": "E. coli cannot naturally produce 1,4-butanediol (1,4-BDO); no native biosynthetic pathway to this product exists in the host.",
-    "problem_type": ["missing native pathway", "de novo pathway construction"],
-    "trigger_conditions": [
-      "target product has no native biosynthetic pathway in the host organism",
-      "engineering objective requires introducing a heterologous or fully synthetic pathway"
-    ]
-  },
-  "biological_diagnosis": {
-    "observations": [
-      "the host has no endogenous enzymatic route from central metabolism to 1,4-butanediol",
-      "introducing enzyme activity alone, without host-level support, may not be sufficient for efficient production"
-    ],
-    "bottlenecks": [
-      "absence of a native 1,4-BDO biosynthetic pathway",
-      "precursor and cofactor availability for a newly introduced heterologous pathway",
-      "metabolic burden of expressing a multi-step heterologous pathway"
-    ],
-    "mechanistic_explanation": "Because no native pathway to 1,4-BDO exists, production requires constructing a complete heterologous (or synthetic) enzymatic route and integrating it with host metabolism; simply inserting the pathway genes is insufficient if the host cannot supply adequate precursor and cofactor flux to support it."
-  },
-  "engineering_hypothesis": {
-    "hypothesis": "Combining de novo pathway construction with host-background optimization for precursor and cofactor supply enables functional 1,4-BDO production in a host that lacks the native pathway.",
-    "expected_effect": "acquisition of a functional biosynthetic route to 1,4-BDO, with host optimization improving achievable flux beyond pathway insertion alone"
-  },
+  ],
+
   "engineering_actions": [
     {
       "modification_type": "pathway insertion",
@@ -68,25 +162,44 @@
       ]
     }
   ],
-  "decision_rules": [
-    {
-      "condition": "host organism lacks a native biosynthetic pathway for the target product",
-      "recommended_strategy": "construct a synthetic/heterologous pathway rather than attempting to redirect a nonexistent native route",
-      "reason": "there is no endogenous pathway to modify or redirect flux through"
-    },
-    {
-      "condition": "a heterologous pathway has been introduced",
-      "recommended_strategy": "combine pathway insertion with host-background optimization",
-      "reason": "pathway insertion alone is frequently insufficient without addressing precursor/cofactor supply in the host"
-    },
-    {
-      "condition": "designing a de novo biosynthetic pathway",
-      "recommended_strategy": "explicitly evaluate precursor and cofactor requirements during pathway and strain design",
-      "reason": "mismatched precursor or cofactor availability limits achievable flux regardless of enzyme selection"
-    }
-  ],
-  "generalizable_rules": [
-    "when a host lacks a native pathway to a target product, prioritize pathway construction over pathway modification",
-    "de novo pathway engineering should be paired with host-level optimization of precursor and cofactor supply, not treated as a standalone gene-insertion task"
-  ]
+  "_engineering_actions_note": "Kept verbatim from DDR schema v1 (not part of the teacher's v2 spec) because workflows/synbio_v1/modules/engineering.py - a separate, older demo pipeline distinct from harness/paper_extraction - still reads this exact key/shape. decision_chain above is the canonical v2 source; this array is a compat projection of the same underlying facts, not independently curated content.",
+
+  "engineering_problem": {
+    "problem_statement": "E. coli cannot naturally produce 1,4-butanediol (1,4-BDO); no native biosynthetic pathway to this product exists in the host.",
+    "problem_type": ["missing native pathway", "de novo pathway construction"],
+    "trigger_conditions": [
+      "target product has no native biosynthetic pathway in the host organism",
+      "engineering objective requires introducing a heterologous or fully synthetic pathway"
+    ]
+  },
+
+  "biological_diagnosis": {
+    "observations": [
+      "the host has no endogenous enzymatic route from central metabolism to 1,4-butanediol",
+      "introducing enzyme activity alone, without host-level support, may not be sufficient for efficient production"
+    ],
+    "bottlenecks": [
+      "absence of a native 1,4-BDO biosynthetic pathway",
+      "precursor and cofactor availability for a newly introduced heterologous pathway",
+      "metabolic burden of expressing a multi-step heterologous pathway"
+    ],
+    "mechanistic_explanation": "Because no native pathway to 1,4-BDO exists, production requires constructing a complete heterologous enzymatic route and integrating it with host metabolism; simply inserting the pathway genes is insufficient if the host cannot supply adequate precursor and cofactor flux to support it."
+  },
+
+  "engineering_hypothesis": {
+    "hypothesis": "Combining de novo pathway construction with host-background optimization for precursor and cofactor supply enables functional 1,4-BDO production in a host that lacks the native pathway.",
+    "expected_effect": "acquisition of a functional biosynthetic route to 1,4-BDO, with host optimization improving achievable flux beyond pathway insertion alone"
+  },
+
+  "extraction_meta": {
+    "extraction_method": "manual_curation",
+    "extracted_by": ["agent_harness_v1"],
+    "extraction_date": "2026-07-22",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "v1→v2 升级:新增 decision_chain(3 步),新增 evidence_grading / reason_nature / alternatives / implementation / result / rule 字段。原 v1 的 engineering_actions 信息已迁移。gene_or_pathway 在原 v1 中标记为未指定,已基于已知 E. coli 发酵途径补充候选基因列表。",
+    "human_review_status": "pending",
+    "review_notes": "需要专家确认 ldh/adh/pfl/pta/frd 的敲除顺序和论文实际验证的靶标。BDO 是教师 §4.5 规则库中的通量集中规则来源之一。",
+    "paper_extraction_task_id": null
+  }
 }

@@ -28,12 +28,14 @@ REPORT_HEADINGS = [
 ]
 
 
-def test_knowledge_base_loads_four_ddrs() -> None:
+def test_knowledge_base_loads_five_ddrs() -> None:
     # DDR-004 (lysine) was added for problem 01's biological benchmark #2
     # (workflow/design/evolution/.../problem 01 doc, section 7.3) - see
-    # tests/workflow/test_biological_benchmarks.py.
+    # tests/workflow/test_biological_benchmarks.py. DDR-005 (Chen & Zeng
+    # 2018 tryptophan) is the teacher-specified decision-chain template for
+    # 工作A (文献逆向工程 §4.4) - see knowledge/ddr_database/DDR-005_*.json.
     ddrs = retriever.load_ddrs()
-    assert {d["ddr_id"] for d in ddrs} == {"DDR-001", "DDR-002", "DDR-003", "DDR-004"}
+    assert {d["ddr_id"] for d in ddrs} == {"DDR-001", "DDR-002", "DDR-003", "DDR-004", "DDR-005"}
 
 
 def test_retrieval_example_from_spec_section_11() -> None:

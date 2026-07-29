@@ -22,6 +22,20 @@ SKILL_PATH = Path(__file__).with_name("SKILL.md")
 # unproven. Set this to use whatever harness.providers/.env currently
 # resolves to instead (e.g. Kimi K3) when no Anthropic credential exists.
 _ALLOW_FALLBACK_MODEL = os.getenv("PAPER_EXTRACTION_ALLOW_FALLBACK_MODEL", "").strip().lower() in {"1", "true", "yes"}
+# This call sends a WHOLE paper (skill_instructions + full document JSON) as
+# one prompt and budgets max_tokens=24000 for a reasoning model's response -
+# both well past the ~15-30s-latency, max_tokens=8000 prompts
+# harness.llm_generation.client's own docstring describes tuning
+# LLM_TIMEOUT_S (.env, shared by every StructuredGenerationClient caller)
+# against. Production observed a real extraction still fail with
+# "APITimeoutError: Request timed out" after ~565s even with
+# LLM_TIMEOUT_S=280 - consistent with the OpenAI SDK's default
+# retry-on-timeout burning the 280s budget twice rather than one call ever
+# getting an honest shot at finishing. A skill07-specific, considerably
+# larger ceiling (env-overridable for slower/faster deployments) replaces
+# that instead of raising the shared setting for every other, much smaller,
+# call in this module.
+_SKILL07_TIMEOUT_S = float(os.getenv("PAPER_EXTRACTION_SKILL07_TIMEOUT_S", "900"))
 
 
 def _skill_bytes() -> bytes:
@@ -62,11 +76,40 @@ def _write_atomic(path: Path, value: dict[str, Any]) -> None:
 _EXTRACTION_SYSTEM_PROMPT = "You are a rigorous scientific experimental-design extractor. Output JSON only."
 
 
+_CORE_FIELDS = [
+    "objective", "hypothesis", "strain", "genotype", "engineering_method",
+    "experimental_groups", "controls", "culture_conditions", "medium", "dosage",
+    "time", "replicates", "assay", "instruments", "analysis_methods", "outcomes",
+]
+
+
 def _build_prompt(request: dict[str, Any]) -> dict[str, Any]:
     document = json.loads(_source_bytes(request).decode("utf-8"))
     return {
         "task": "Extract reusable experimental-design ideas from this one paper or textbook chapter.",
         "skill_instructions": SKILL_PATH.read_text(encoding="utf-8"),
+        "output_contract": (
+            "IMPORTANT - this call performs ONLY skill07 (per-paper experimental-design "
+            "extraction) inside the larger 13-skill pipeline described in skill_instructions "
+            "above. The '## 统一输出' JSON example near the end of skill_instructions "
+            "describes the WHOLE PIPELINE's final combined output (after skills 08-13 "
+            "also run) - it is NOT the shape for this call. Do not reuse its top-level keys "
+            "(e.g. 'summary', 'experimental_designs', 'quality_report', 'governance') here. "
+            "Your response must be a single JSON object with EXACTLY these five top-level "
+            "keys and no others: fields, experimental_design_object, field_metadata, "
+            "extensions, conflicts.\n\n"
+            f"'fields' must be an object keyed by exactly these field names: {', '.join(_CORE_FIELDS)}. "
+            "Each value must be an object shaped {value, status, confidence, extraction_method, "
+            "evidence_ids, notes}, where status is one of reported|unknown|inferred (add an "
+            "'inference': {method, rationale} object when status is 'inferred'). A field with "
+            "no evidence in the paper still needs an entry with status='unknown' and value=null "
+            "- never omit a field from this object.\n\n"
+            "'extensions' is where article_type_gate, paper_target_strains, user_target_system "
+            "and target_system_adaptation belong (per skill_instructions' own field "
+            "definitions) - they are reasoning/classification metadata about the paper, not "
+            "experimental-design content, so they must NOT appear inside 'fields' or at the "
+            "top level."
+        ),
         "requirements": [
             "First classify the document with ArticleTypeGate. Never assume it is primary research.",
             "Read the complete available document, including figure/table captions and supplements.",
@@ -77,7 +120,7 @@ def _build_prompt(request: dict[str, Any]) -> dict[str, Any]:
             "Instantiate experiments before attaching host, intervention, conditions, controls, replicates, readouts and outcomes.",
             "Separate reported, inferred, unknown and not_applicable; preserve raw labels and normalized names.",
             "Record unresolved parameters, internal source inconsistencies and supplement-dependent fields.",
-            "Return concise JSON with keys: fields, experimental_design_object, field_metadata, extensions, conflicts.",
+            "Return concise JSON with keys: fields, experimental_design_object, field_metadata, extensions, conflicts - see output_contract above for the exact shape.",
             "Every reported field_metadata item must include source_locations with paragraph IDs.",
         ],
         "document": document,
@@ -122,6 +165,7 @@ def _call_configured_provider(prompt: dict[str, Any]) -> tuple[dict[str, Any] | 
         # much larger than the hypothesis/strategy prompts that module was
         # tuned against, so the budget is sized up accordingly.
         max_tokens=24000,
+        timeout=_SKILL07_TIMEOUT_S,
     )
     last = attempts[-1]
     if last.validation_status != "valid":
@@ -150,6 +194,15 @@ def make_executor(model: str = MODEL):
                 "hit": True, "path": str(cache_path), "key_type": "content_sha256+model+skill_sha256",
             }
             cached["provenance"]["skill_sha256"] = _skill_hash()
+            # The cache key hashes SKILL.md's content but not _build_prompt's
+            # own Python source - a prompt-only fix (like the output_contract
+            # this normalization backs) doesn't invalidate old cache entries,
+            # so a cached pre-fix response could still carry the old drifted
+            # shape. Normalizing on read (not just on fresh extraction) means
+            # a stale cache entry can't keep reproducing the same skill08
+            # failure indefinitely.
+            if isinstance(cached.get("output"), dict):
+                cached["output"] = _normalize_skill07_output(cached["output"])
             return cached
 
         if not api_key and not use_fallback:
@@ -208,6 +261,8 @@ def make_executor(model: str = MODEL):
                 "review_requests": [],
             }
 
+        output = _normalize_skill07_output(output) if isinstance(output, dict) else output
+
         extensions = output.get("extensions") if isinstance(output, dict) else None
         gate = extensions.get("article_type_gate") if isinstance(extensions, dict) else None
         if not isinstance(gate, dict) or not gate.get("article_type"):
@@ -245,6 +300,58 @@ def make_executor(model: str = MODEL):
         return result
 
     return execute
+
+
+_REASONING_KEYS = ("article_type_gate", "paper_target_strains", "user_target_system", "target_system_adaptation")
+
+
+def _normalize_skill07_output(output: dict[str, Any]) -> dict[str, Any]:
+    """Best-effort repair for the schema drift observed in production: despite
+    `output_contract` in `_build_prompt` pinning the exact shape, the model
+    occasionally still returns the SKILL.md's whole-pipeline "统一输出" shape
+    for this single-skill call instead (`fields` missing entirely, or the
+    reasoning keys placed at the top level / inside `fields` rather than
+    inside `extensions`).
+
+    Never invents extraction content - only relocates data the model already
+    produced into the contracted shape, so skill08 (which hard-fails the
+    entire run with "Skill07 input is missing" if `fields` isn't a dict -
+    EVID001) gets something it can process instead of crashing a run whose
+    reasoning/strain-identification output was otherwise usable.
+    """
+    if not isinstance(output, dict):
+        return output
+
+    fields = output.get("fields")
+    extensions = output.get("extensions")
+    if not isinstance(extensions, dict):
+        extensions = {}
+
+    # Reasoning keys sometimes land inside `fields` instead of `extensions`
+    # (observed shape: fields = {article_type_gate, paper_target_strains,
+    # user_target_system, target_system_adaptation} with no real design
+    # content) - or at the top level of `output` alongside `fields`/`extensions`
+    # (observed shape: no `fields` key at all, `experimental_designs` used
+    # instead). Pull them into `extensions` wherever found.
+    if isinstance(fields, dict):
+        for key in _REASONING_KEYS:
+            if key in fields and key not in extensions:
+                extensions[key] = fields.pop(key)
+    for key in _REASONING_KEYS:
+        if key in output and key not in extensions:
+            extensions[key] = output[key]
+
+    output["extensions"] = extensions
+    # skill08 requires `fields` to be a dict (EVID001 otherwise) - an empty
+    # dict is valid and honestly means "no design fields extracted", which
+    # downstream (skill09's completeness score, this repo's own
+    # result_summary.build_extraction_summary) already renders as such,
+    # rather than aborting the whole run.
+    output["fields"] = fields if isinstance(fields, dict) else {}
+    output.setdefault("experimental_design_object", {})
+    output.setdefault("field_metadata", {})
+    output.setdefault("conflicts", [])
+    return output
 
 
 def _fallback_model_name() -> str:

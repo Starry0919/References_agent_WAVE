@@ -1,0 +1,182 @@
+{
+  "ddr_id": "DDR-005",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Metabolic engineering of Escherichia coli for efficient production of L-tryptophan",
+    "category": ["aromatic amino acid production", "feedback deregulation", "enzyme engineering", "heterologous replacement"],
+    "organism": "Escherichia coli",
+    "host": "E. coli K-12",
+    "target_product": "L-tryptophan",
+    "product_class": "aromatic amino acid",
+    "engineering_level": "full-pathway rational engineering (feedback + feedforward + enzyme engineering + heterologous replacement)",
+    "reference": {
+      "title": "Metabolic engineering of Escherichia coli for efficient production of L-tryptophan",
+      "authors": "Chen Y. & Zeng A.-P.",
+      "journal": "Biotechnology and Bioengineering",
+      "year": "2018",
+      "doi": "10.1002/bit.26569"
+    },
+    "paper_type": "primary_research",
+    "template_note": "教师指定模板。决策链完整,理由多为机理推断,适合作DDR抽取的参照标准。"
+  },
+
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M3",
+      "target": {
+        "gene": "trpE",
+        "enzyme": "anthranilate synthase (AS)",
+        "pathway": "tryptophan biosynthesis (shikimate → chorismate → anthranilate → Trp)",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "色氨酸(Trp)对 committed 酶 TrpE(anthranilate synthase)存在反馈抑制——这是 E. coli 色氨酸途径已知的调控机制",
+        "reasoning": "天然产物合成的第一步限速通常来自末端产物对 committed 酶的反馈抑制。要解除通量上限,首先应解除这层调控。",
+        "source_location": "Introduction / known E. coli trp pathway regulation"
+      },
+      "evidence": {
+        "description": "TrpE 受色氨酸反馈抑制是 E. coli 中已被充分验证的机制。Trp 与 TrpE 的调节域结合,变构抑制其催化活性。",
+        "source": "EcoCyc / 文献积累",
+        "source_location": "EcoCyc: TRPE-MONOMER; 经典文献: Caligiuri & Bauerle (1991) JBC",
+        "values": {"inhibitor": "L-tryptophan", "target_enzyme": "anthranilate synthase (TrpE)"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "TrpE 的反馈抑制是已知的、被结构生物学和酶动力学多重验证的机制,属于实测级证据。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "直接过表达野生型 trpE", "rejected_reason": "反馈抑制不解除,过表达野生型酶只会被产物抑制,通量不会显著提升"},
+        {"approach": "敲除 trpR 去阻遏整个操纵子", "rejected_reason": "trpR 解除只能去阻遏转录,不能解除 TrpE 酶活层面的反馈抑制;且整操纵子去阻遏可能导致代谢失衡"}
+      ],
+      "implementation": "点突变",
+      "implementation_detail": "TrpE(S40F) — Ser40 位于 Trp 结合 pocket,突变为 Phe 后失去反馈抑制敏感性但保留催化活性",
+      "result": {
+        "metric": "抗反馈抑制能力",
+        "before": "野生型 TrpE(被 μM 级 Trp 抑制)",
+        "after": "TrpE(S40F) 抗性突变(Trp 不再抑制)",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "天然产物先去调控:查 committed 酶的末端产物反馈抑制,用抗性突变(如活性位点附近的氨基酸替换)解除——优先选不破坏催化活性的点突变"
+    },
+    {
+      "step": 2,
+      "design_action": "M3",
+      "target": {
+        "gene": "trpC",
+        "enzyme": "indole-3-glycerol phosphate synthase (IGPS)",
+        "pathway": "tryptophan biosynthesis (下游,催化 anthranilate → IGP)",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "加大上游拷贝数后,色氨酸产量不增反降,而中间体 anthranilate 大量积累。这提示 anthranilate 可能对下游酶有抑制。",
+        "reasoning": "'加上游不增产 + 中间体积累' 是寻找前馈抑制(feedforward inhibition)的经典信号:中间体堆积说明下游某步被堵住了,而堵住的原因可能是该中间体本身对下游酶有抑制。",
+        "source_location": "Results: upstream overexpression → anthranilate accumulation + no Trp increase"
+      },
+      "evidence": {
+        "description": "1) 体外酶活实验确认 anthranilate 对 IGPS (TrpC) 存在非竞争性抑制(non-competitive inhibition),IC50 = 0.70 mM。2) 晶体结构显示 anthranilate 结合位点紧邻 IGPS 催化位点,与产物 IGP 存在空间互作。3) docking 进一步验证 anthranilate 在该位点的结合模式。",
+        "source": "论文实测 + PDB 结构 + docking",
+        "source_location": "Results: in vitro enzyme assay; Figure: IGPS crystal structure with anthranilate bound; docking results in Supp.",
+        "values": {"IC50": "0.70 mM", "inhibition_type": "non-competitive", "inhibitor": "anthranilate", "target_enzyme": "IGPS (TrpC)"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "体外酶活实验(IC50 测定)和晶体结构解析均属实测证据。docking 部分为软证据,但主要的抑制结论由硬证据(实测 IC50 + 结构)支撑。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "忽视 anthranilate 积累,继续加大上游表达", "rejected_reason": "数据已经显示上游过表达不增产,继续加大只会加重代谢负担"},
+        {"approach": "仅靠 docking 预测就判定抑制存在", "rejected_reason": "先用体外实验拿到实测 IC50,再用结构确认结合位点——docking 只作为补充而非主证据"}
+      ],
+      "implementation": "点突变",
+      "implementation_detail": "TrpC(S60A) — Ser60 位于 anthranilate 结合位点,突变为 Ala 后一定程度上降低 anthranilate 的抑制",
+      "result": {
+        "metric": "抗性提升",
+        "before": "野生型 IGPS 被 anthranilate 非竞争抑制,IC50=0.70 mM",
+        "after": "S60A 突变体抗性升约 3 倍,但比活(bpecific activity)下降",
+        "fold_change": "~3× (抗性), 比活下降",
+        "quantified": true
+      },
+      "rule": "'加上游不增产、中间体积累'时,立即排查该中间体对下游酶的前馈抑制:体外测 IC50 + 晶体结构确认结合位点。去抑制常有比活代价(trade-off),记录并准备替代路线(如异源酶替换)。"
+    },
+    {
+      "step": 3,
+      "design_action": "M4",
+      "target": {
+        "gene": "trpC",
+        "enzyme": "IGPS (TrpC) — 继续工程优化",
+        "pathway": "tryptophan biosynthesis",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "S60A 突变虽然提升了 anthranilate 抗性(约 3×),但比活(bpecific activity)显著下降——这是去抑制突变的常见 trade-off:解除抑制的构象变化同时损害了催化效率。",
+        "reasoning": "既然本源酶去抑制有不可接受的比活代价,应跨物种寻找天然不受 anthranilate 抑制的同工酶——即具有反向调控(被激活而非抑制)的同工酶。",
+        "source_location": "Results: S60A characterization + Discussion on trade-off"
+      },
+      "evidence": {
+        "description": "1) S60A 比活数据实测,确认 trade-off 存在。2) 文献/数据库检索发现 Aspergillus niger 的 IGPS 同工酶不仅不被 anthranilate 抑制,反而被其前馈激活(feedforward activation)。3) 体外酶活实验证实 A. niger IGPS 的激活特性。",
+        "source": "论文实测 + BRENDA/UniProt + 文献检索",
+        "source_location": "Results: S60A specific activity; BRENDA: A. niger IGPS; in vitro characterization of heterologous IGPS",
+        "values": {"source_organism": "Aspergillus niger", "regulation_type": "feedforward activation (反向调控)", "target": "IGPS"}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "S60A 比活 trade-off 是实测;A. niger IGPS 的激活特性有体外酶活实验验证。均属硬证据。",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {"approach": "继续对本源 IGPS 做多轮定向进化", "rejected_reason": "定向进化属于 ALE 范畴,不在本项目理性设计范围内;且多轮进化后突变的可机理解释性下降"},
+        {"approach": "接受 S60A 的 trade-off,用更高拷贝数补偿比活下降", "rejected_reason": "高拷贝数加重代谢负担,且仍不如异源激活型同工酶"}
+      ],
+      "implementation": "异源表达",
+      "implementation_detail": "用 Aspergillus niger 的 IGPS 同工酶替换 E. coli 本源 TrpC——从被 anthranilate 抑制切换为被其激活",
+      "result": {
+        "metric": "色氨酸滴度 + 得率",
+        "before": "Trp 19 g/L, 得率 0.15 g/g",
+        "after": "Trp 29 g/L, 得率 0.18 g/g (理论上限 0.227 g/g)",
+        "fold_change": "滴度提升 ~1.5×, 得率提升至理论上限的 79%",
+        "quantified": true
+      },
+      "rule": "本源酶去抑制有不可接受的比活代价时,跨物种筛选反向调控的同工酶(被激活而非被抑制)——这是比定向进化更可机理解释的理性设计路径"
+    }
+  ],
+
+  "engineering_problem": {
+    "problem_statement": "E. coli 的色氨酸产量受限于多层次的调控:末端反馈抑制(TrpE)、中间体前馈抑制(anthranilate → IGPS)、以及本源酶的性能上限。需要逐步解除这些调控层以达到高产。",
+    "problem_type": ["feedback inhibition", "feedforward inhibition", "enzyme activity trade-off"],
+    "trigger_conditions": [
+      "天然产物色氨酸受多种内源调控限制",
+      "单独解除反馈抑制后产量仍受限于隐藏的前馈抑制",
+      "去抑制突变的比活代价需要替代方案"
+    ]
+  },
+
+  "biological_diagnosis": {
+    "observations": [
+      "TrpE 受色氨酸反馈抑制——通量进入色氨酸途径的第一道门",
+      "加大上游拷贝数后 anthranilate 积累、色氨酸不增产——提示下游被堵",
+      "anthranilate 体外抑制 IGPS, IC50=0.70 mM,非竞争性抑制——确定了被堵的位置和机制",
+      "S60A 去抑制突变的比活显著低于野生型——去抑制和催化效率的 trade-off",
+      "A. niger 同工酶被 anthranilate 激活而非抑制——存在反向调控的天然替代品"
+    ],
+    "bottlenecks": [
+      "TrpE 末端反馈抑制(第一个瓶颈)",
+      "anthranilate 对 IGPS 的前馈抑制(隐藏瓶颈,不做上游过表达不会暴露)",
+      "本源 IGPS 去抑制后的比活 trade-off(工程瓶颈,需要在抗性和活性之间取舍)"
+    ],
+    "mechanistic_explanation": "色氨酸途径受多层调控:入口(TrpE)被产物反馈抑制封堵,中段(IGPS)被中间体前馈抑制隐性限制。这两层调控在逻辑上是串联的——必须先解除反馈抑制让通量进入途径,才能暴露前馈抑制;如果跳过反馈抑制直接过表达上游,anthranilate 积累反而会触发前馈抑制、恶化产量。解除前馈抑制时,本源酶的比活 trade-off 意味着结构约束(anthranilate 结合位点与催化位点邻近),这要求在工程上寻找反向调控的异源替代品。"
+  },
+
+  "engineering_hypothesis": {
+    "hypothesis": "逐步解除 TrpE 反馈抑制 → 识别并解除 anthranilate 对 IGPS 的前馈抑制 → 用反向调控的异源同工酶替换本源 IGPS,三层协同可将色氨酸得率推向理论上限的 ~80%。",
+    "expected_effect": "从 0.15 g/g 提升至 0.18 g/g(得率), 滴度从 19 g/L 提升至 29 g/L"
+  },
+
+  "extraction_meta": {
+    "extraction_method": "manual_curation",
+    "extracted_by": ["agent_harness"],
+    "extraction_date": "2026-07-29",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "作为教师指定的模板 DDR,此条需要一位合成生物学专家人工审核:核对每条 decision_chain 的证据、分级和规则表述是否准确。",
+    "human_review_status": "pending",
+    "review_notes": "待教师或领域专家审核。此 DDR 的 3 步决策链完整对应 Chen & Zeng 2018 的工程逻辑。",
+    "paper_extraction_task_id": null
+  }
+}
