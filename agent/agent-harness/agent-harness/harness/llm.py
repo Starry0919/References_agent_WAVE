@@ -257,3 +257,18 @@ def get_llm_client() -> LLMClient:
     if _cached_client is None:
         _cached_client = LLMClient()
     return _cached_client
+
+
+async def aclose_cached_client() -> None:
+    """关闭进程级缓存客户端并重置缓存(服务器关停时调用一次)。
+
+    底层 AsyncOpenAI/httpx 连接池常驻进程,从不关闭会在退出时留下
+    "unclosed client" 告警。先摘缓存再关闭:并发中的 get_llm_client()
+    只会惰性重建一个新客户端,不会出现"用到半关的客户端"。从未创建过
+    客户端或重复调用都是安全的。
+    """
+    global _cached_client
+    client = _cached_client
+    _cached_client = None
+    if client is not None:
+        await client._client.close()

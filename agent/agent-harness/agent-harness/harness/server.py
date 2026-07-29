@@ -23,9 +23,11 @@ from harness.api import paper_extraction as paper_extraction_api
 from harness.api import projects as projects_api
 from harness.bootstrap import bootstrap_schema
 from harness.config import PROJECT_ROOT
+from harness.llm import aclose_cached_client
 from harness.providers import describe
 from harness.sessions import Session, SessionStore
 from harness.tools import all_tools
+from harness.tools.base import shutdown_tool_pool
 from harness.tools.loader import load_all_tools
 from harness.workflow import checkpoint as workflow_checkpoint
 from harness.workflow.controller import WorkflowController
@@ -34,6 +36,28 @@ from harness.workflow.synbio_stages import build_controller
 logger = logging.getLogger(__name__)
 
 WS_PING_INTERVAL_S = 20.0
+
+
+def _shutdown_tool_executor(app: FastAPI) -> None:
+    """Best-effort 关停工具执行器的线程池(executor.shutdown 此前没有调用方)。
+
+    兼容两种形态:harness/tools/executor.py 若提供模块级 shutdown() 则直接
+    调用;否则经由 lifespan 里构建的 WorkflowController 拿到 ToolExecutor
+    实例来关。executor.py 正由另一处改动并行演进,这里对两种形态都容忍。
+    """
+    try:
+        from harness.tools import executor as tools_executor
+
+        module_shutdown = getattr(tools_executor, "shutdown", None)
+        if callable(module_shutdown):
+            module_shutdown()
+            return
+        controller = getattr(app.state, "workflow_controller", None)
+        tool_executor = getattr(controller, "_tools", None)
+        if tool_executor is not None and hasattr(tool_executor, "shutdown"):
+            tool_executor.shutdown()
+    except Exception:
+        logger.exception("tool executor shutdown failed")
 
 
 class MessageBody(BaseModel):
@@ -93,6 +117,18 @@ def create_app() -> FastAPI:
             info["model"],
         )
         yield
+        # 关停顺序:先 flush 并关闭全部会话文件句柄(保证 run_finished
+        # 之后的日志完整落盘),再释放 LLM 连接池,最后停工具线程池。
+        # 每步 best-effort:一步失败不阻断其余清理。
+        try:
+            app.state.store.close_all()
+        except Exception:
+            logger.exception("session store cleanup failed during shutdown")
+        await aclose_cached_client()
+        _shutdown_tool_executor(app)
+        # 聊天循环的同步工具专用池(base.py 模块级)也一并关停;已被泄漏
+        # 占用的线程不等待(wait=False),避免卡住退出。
+        shutdown_tool_pool()
 
     app = FastAPI(title="Agent Harness", lifespan=lifespan)
 

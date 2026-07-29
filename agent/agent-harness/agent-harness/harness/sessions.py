@@ -17,6 +17,19 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_TITLE = "新会话"
 
+# 落盘缓冲:每行先进内存 pending 缓冲,满足任一条件才真正写盘 ——
+# ① 攒够 FLUSH_LINES 行;② 距上次 flush 超过 FLUSH_INTERVAL_S 秒
+# (在每次 append 时检查时间戳,不加后台任务:流式期间 append 本来就
+# 很频繁,时间阈值实际靠下一次 append 触发)。崩溃窗口上界因此约为
+# FLUSH_INTERVAL_S 秒内的 delta 事件 —— 这是用可接受的丢失换取
+# 每秒几十次 flush 系统调用的消除。
+PENDING_FLUSH_LINES = 64
+PENDING_FLUSH_INTERVAL_S = 0.5
+
+# run 边界事件必须立即同步落盘:run_finished 是重放方判断"本次运行
+# 已完整结束"的依据,崩溃时它之后的日志允许丢失,它本身不允许。
+IMMEDIATE_FLUSH_EVENT_TYPES = frozenset({"run_finished"})
+
 
 @dataclass
 class Session:
@@ -54,6 +67,8 @@ class SessionStore:
         self.runs_dir.mkdir(parents=True, exist_ok=True)
         self._sessions: dict[str, Session] = {}
         self._files: dict[str, TextIO] = {}
+        self._pending: dict[str, list[str]] = {}
+        self._last_flush: dict[str, float] = {}
         self._load_existing()
 
     # -- persistence -------------------------------------------------------
@@ -62,17 +77,65 @@ class SessionStore:
         return self.runs_dir / f"{session_id}.jsonl"
 
     def _append_line(self, session_id: str, obj: dict) -> None:
-        """Append one JSONL line, reusing a per-session file handle.
+        """Append one JSONL line via a per-session buffered writer.
 
-        Token deltas make this the hot path: keeping the handle open avoids
-        a blocking open/write/close cycle on the event loop for every event.
+        Token deltas make this the hot path: the serialized line first
+        lands in an in-memory pending buffer, and is flushed to disk only
+        when ① the buffer reaches PENDING_FLUSH_LINES lines, ② more than
+        PENDING_FLUSH_INTERVAL_S seconds elapsed since the last flush, or
+        ③ the line carries a run-boundary event (run_finished), which is
+        flushed immediately and synchronously so a crash can never lose
+        the terminal record. 缓冲只影响落盘:WS 扇出仍由 EventBus 在 sink
+        返回后立即进行,顺序(内存 list → 落盘排队 → 扇出)保持不变。
         """
+        pending = self._pending.setdefault(session_id, [])
+        pending.append(json.dumps(obj, ensure_ascii=False) + "\n")
+        now = time.monotonic()
+        event = obj.get("event") if obj.get("kind") == "event" else None
+        is_run_boundary = (
+            event is not None and event.get("type") in IMMEDIATE_FLUSH_EVENT_TYPES
+        )
+        if (
+            is_run_boundary
+            or len(pending) >= PENDING_FLUSH_LINES
+            or now - self._last_flush.get(session_id, now) >= PENDING_FLUSH_INTERVAL_S
+        ):
+            self._flush_pending(session_id, now)
+
+    def _flush_pending(self, session_id: str, now: float | None = None) -> None:
+        """Write all buffered lines for one session to disk in one flush."""
+        pending = self._pending.get(session_id)
+        if now is None:
+            now = time.monotonic()
+        self._last_flush[session_id] = now
+        if not pending:
+            return
         fh = self._files.get(session_id)
         if fh is None or fh.closed:
             fh = self._path_for(session_id).open("a", encoding="utf-8")
             self._files[session_id] = fh
-        fh.write(json.dumps(obj, ensure_ascii=False) + "\n")
+        fh.writelines(pending)
         fh.flush()
+        pending.clear()
+
+    def close_all(self) -> None:
+        """Flush every pending buffer and close all open file handles.
+
+        进程退出时由 server lifespan 调用一次。之后 store 仍可用
+        (句柄会在下次 flush 时惰性重开),只是不再常驻持有句柄。
+        """
+        for session_id in set(self._pending) | set(self._files):
+            try:
+                self._flush_pending(session_id)
+            except Exception:
+                logger.exception("could not flush pending lines for session %s", session_id)
+            fh = self._files.pop(session_id, None)
+            if fh is not None:
+                try:
+                    fh.close()
+                except Exception:  # pragma: no cover - best effort
+                    logger.exception("could not close session file for %s", session_id)
+        logger.info("closed all session files")
 
     def _write_meta(self, session: Session) -> None:
         self._append_line(
@@ -196,6 +259,10 @@ class SessionStore:
         if session.status == "running":
             raise RuntimeError("session is running")
         del self._sessions[session_id]
+        # 文件马上要被删掉,未落盘的 pending 直接丢弃 —— 否则之后的
+        # close_all() 会把已删除会话的行写回磁盘、把文件重建出来。
+        self._pending.pop(session_id, None)
+        self._last_flush.pop(session_id, None)
         fh = self._files.pop(session_id, None)
         if fh is not None:
             try:

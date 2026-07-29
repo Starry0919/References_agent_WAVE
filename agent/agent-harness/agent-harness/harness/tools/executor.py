@@ -14,6 +14,7 @@ registry.
 """
 from __future__ import annotations
 
+import logging
 import time
 from concurrent.futures import ThreadPoolExecutor
 from concurrent.futures import TimeoutError as FutureTimeoutError
@@ -21,6 +22,21 @@ from dataclasses import dataclass
 from typing import Any, Callable
 
 from harness.workflow.contracts import ToolFailureClass, ToolRecord, new_id
+
+logger = logging.getLogger(__name__)
+
+# Worker threads orphaned so far by timed-out tool calls: `future.result(timeout=)`
+# only stops *waiting* - Python cannot kill threads - so each timeout leaves its
+# worker running until the tool function returns on its own. Module-level (not
+# per-instance) so the count survives per-run ToolExecutor instances; the
+# executor is synchronous and called from one thread at a time, so a plain int
+# suffices. See `harness/tools/base.py` for the async-side counterpart.
+_LEAKED_THREADS = 0
+
+
+def leaked_thread_count() -> int:
+    """Return how many workflow-tool worker threads have been leaked by timeouts so far."""
+    return _LEAKED_THREADS
 
 
 class ToolTransientError(RuntimeError):
@@ -151,6 +167,15 @@ class ToolExecutor:
                     self._cache[idempotency_key] = result
                 return result
             except FutureTimeoutError:
+                global _LEAKED_THREADS
+                _LEAKED_THREADS += 1
+                logger.warning(
+                    "tool %r timed out after %ss; its worker thread may still "
+                    "be running (leaked workflow-tool threads so far: %d)",
+                    name,
+                    tool.timeout_s,
+                    _LEAKED_THREADS,
+                )
                 failure_class = ToolFailureClass.transient
                 message = f"tool '{name}' timed out after {tool.timeout_s}s"
             except Exception as exc:  # noqa: BLE001 - classified below, never crashes the controller
