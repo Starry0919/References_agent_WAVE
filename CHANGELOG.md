@@ -6,6 +6,53 @@ All notable changes to this project will be documented in this file.
 
 All notable changes to this project will be documented in this file.
 
+## [2026-07-30] Agent-Harness Update — Part 2
+
+### Added
+
+#### Frontend
+- **TrustCenterPage** (`frontend/src/pages/trust/TrustCenterPage.tsx`) — 信任中心页面，展示数据来源、置信度与可解释性信息
+- **ApplicabilityReportPanel** (`frontend/src/pages/evidence/components/ApplicabilityReportPanel.tsx`) — 适用性报告面板，评估知识条目在特定工程场景下的适用度
+- **DebugLogPanel** (`frontend/src/components/common/DebugLogPanel.tsx`) — 调试日志面板，实时展示 Agent 运行日志
+- **rules.ts** (`frontend/src/api/rules.ts`) — 规则管理 API 客户端
+- **logStore.ts** (`frontend/src/lib/logStore.ts`) — 前端日志状态管理
+
+#### Backend — Evidence Retrieval
+- **relevance.py** — 相关性评分模块，支持多维度文献-问题匹配度计算
+
+#### Knowledge Base
+- **DDR-008** — 新增"利用合成装置以乙酰磷酸 acetylphosphate 为核心提高碳得率"知识条目
+
+#### Tests
+- **test_evidence_resolution_api.py** — 证据解析 API 集成测试
+- **test_ddr_applicability.py** — DDR 适用性评估测试
+- **test_local_ddr_adapter_search.py** — 本地 DDR 搜索适配器测试
+- **test_ddr_provenance.py** — DDR 溯源链测试
+- **test_knowledge_claims_from_rules.py** — 规则到知识声明转换测试
+- **test_project_context_summary.py** — 项目上下文摘要测试
+
+### Changed
+
+#### Frontend
+- `AppShell.tsx` — 集成导航入口到信任中心
+- `CommandCenterPage.tsx` — 增强调试日志展示
+- `ErrorBoundary.tsx` — 优化错误捕获与日志上报
+- `client.ts`、`evidence.ts` — API 客户端同步后端变更
+- `router.tsx` — 新增信任中心路由
+
+#### Backend
+- `bootstrap.py` — 初始化逻辑增强
+- `generation.py` — 优化生成参数
+- `paper_extraction.py` — 增强论文提取接口
+- `local_ddr_adapter.py`、`models.py`、`service.py` — 证据检索核心模块更新
+- `projects/service.py` — 项目服务增强上下文摘要能力
+- `server.py` — 服务端配置优化
+
+### Removed
+- 无破坏性删除
+
+---
+
 ## [2026-07-30] Agent-Harness Update
 
 ### Added
