@@ -11,9 +11,11 @@ class MinerUParser:
     name = "MinerU"
     version = "3.4.4"
 
-    def __init__(self, mineru_root=Path(r"D:\MinerU")):
-        self.root = Path(mineru_root)
-        self.executable = self.root / ".venv" / "Scripts" / "mineru.exe"
+    def __init__(self, mineru_root=None):
+        self.root = Path(mineru_root or os.getenv("MINERU_ROOT", r"D:\MinerU"))
+        windows_executable = self.root / ".venv" / "Scripts" / "mineru.exe"
+        posix_executable = self.root / ".venv" / "bin" / "mineru"
+        self.executable = windows_executable if windows_executable.is_file() else posix_executable
 
     def parse(self, pdf_path: Path, output_root: Path, mode="pipeline", timeout_seconds=1800):
         if not self.executable.is_file():
@@ -53,4 +55,3 @@ class MinerUParser:
             output_files=files, command=command,
             stdout_tail=(completed.stdout + completed.stderr)[-2000:]
         )
-

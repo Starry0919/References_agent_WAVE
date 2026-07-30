@@ -388,6 +388,9 @@ function SubmissionForm({ onSubmitted, projectId }: { onSubmitted: (taskId: stri
               {fileNames.length} {t("page5.form.filesAttached")}: {fileNames.join(", ")}
             </p>
           )}
+          {uploadMutation.isError && (
+            <p className="text-[11px] text-state-risk">{String(uploadMutation.error)}</p>
+          )}
         </div>
       )}
       {sourceType === "doi" && (

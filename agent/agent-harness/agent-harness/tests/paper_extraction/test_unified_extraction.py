@@ -66,16 +66,64 @@ def test_opus_executor_reuses_content_addressed_cache(tmp_path, monkeypatch):
     assert result["provenance"]["skill_sha256"]
 
 
-def test_opus_is_required_not_silently_relabelled(monkeypatch, tmp_path):
+def test_missing_poe_code_cli_is_reported_without_relabelling_model(monkeypatch, tmp_path):
     clean = tmp_path / "paper.json"
     clean.write_text('{"paragraphs":[]}', encoding="utf-8")
-    monkeypatch.delenv("KIMI_API_KEY", raising=False)
-    monkeypatch.delenv("MOONSHOT_API_KEY", raising=False)
+    monkeypatch.setenv("POE_CODE_CLI_DIR", str(tmp_path / "missing-cli"))
     import harness.paper_extraction.opus_extractor as module
     monkeypatch.setattr(module, "CACHE_DIR", tmp_path / "empty-cache")
-    result = make_executor("k3")(
+    result = make_executor("claude-sonnet-4.6")(
         {"clean_document_artifact": {"clean_json_path": str(clean)}}
     )
     assert result["status"] == "terminal_failure"
     assert result["errors"][0]["code"] == "MODEL_NOT_CONFIGURED"
-    assert result["provenance"]["model"] == "k3"
+    assert result["provenance"]["model"] == "claude-sonnet-4.6"
+    assert result["provenance"]["extractor"] == "poe_code_cli"
+
+
+def test_extraction_uses_poe_code_cli(monkeypatch, tmp_path):
+    clean = tmp_path / "paper.json"
+    clean.write_text('{"paragraphs":[]}', encoding="utf-8")
+    import harness.paper_extraction.opus_extractor as module
+    monkeypatch.setattr(module, "CACHE_DIR", tmp_path / "empty-cache")
+    monkeypatch.setattr(module, "_poe_cli_configuration_error", lambda: None)
+    monkeypatch.setattr(
+        module,
+        "_call_poe_code_cli",
+        lambda model, prompt: (
+            {
+                "fields": {},
+                "experimental_design_object": {},
+                "field_metadata": {},
+                "extensions": {"article_type_gate": {"article_type": "primary_research"}},
+                "conflicts": [],
+            },
+            model,
+            {},
+            None,
+        ),
+    )
+
+    result = make_executor("claude-sonnet-4.6")(
+        {"clean_document_artifact": {"clean_json_path": str(clean)}}
+    )
+
+    assert result["status"] == "succeeded"
+    assert result["provenance"]["extractor"] == "poe_code_cli"
+    assert result["provenance"]["model"] == "claude-sonnet-4.6"
+
+
+def test_poe_code_cli_parser_uses_the_last_complete_result():
+    import harness.paper_extraction.opus_extractor as module
+
+    stdout = (
+        f"{module._CLI_RESULT_BEGIN}\n{{\"stale\": true}}\n{module._CLI_RESULT_END}\n"
+        f"● {module._CLI_RESULT_BEGIN}\n"
+        "│ Here is the requested object:\n"
+        "│ ```json\n"
+        "│ {\"fre\n"
+        "│ sh\": true}\n"
+        "│ ```\n"
+        f"│ {module._CLI_RESULT_END}\n"
+    )
+    assert module._parse_cli_result(stdout) == {"fresh": True}
