@@ -26,12 +26,26 @@ def build_clean_json(markdown, metadata, cleaning_history):
     if current:
         current["content"] = "\n".join(current.pop("_lines")).strip()
 
+    # PyMuPDF's text fallback preserves the paper body but does not infer
+    # Markdown ``#`` headings.  Do not let that turn a non-empty paper into
+    # an empty JSON document: retain the complete cleaned text in one
+    # explicitly marked fallback section.  Documents with real Markdown
+    # headings keep the existing sectioning behavior unchanged.
+    if not sections and markdown.strip():
+        sections.append({
+            "id": "document",
+            "title": metadata.get("title") or "Unsectioned document",
+            "level": 1,
+            "content": markdown.strip(),
+            "is_fallback": True,
+        })
+
     paragraphs = []
     for section in sections:
         blocks = re.split(r"\n\s*\n", section["content"])
         for block in blocks:
             text = block.strip()
-            if not text or _is_table_block(text):
+            if not text or _is_table_block(text) or _is_page_marker(text):
                 continue
             paragraphs.append({
                 "paragraph_id": f"{section['id']}_p{sum(v['section'] == section['id'] for v in paragraphs) + 1:03d}",
@@ -114,6 +128,10 @@ def _is_table_block(text):
     return len(lines) >= 2 and all("|" in line for line in lines)
 
 
+def _is_page_marker(text):
+    return bool(re.fullmatch(r"(?:<!--\s*page:\d+\s*-->\s*)+", text, re.I))
+
+
 def _deduplicate(items, key):
     seen, result = set(), []
     for item in items:
@@ -122,4 +140,3 @@ def _deduplicate(items, key):
             seen.add(normalized)
             result.append(item)
     return result
-

@@ -4,8 +4,8 @@ from pathlib import Path
 from typing import Any
 
 SKILL_ID = "skill06_markdown_cleaner"
-SKILL_VERSION = "0.3.0"
-RULE_SET_VERSION = "scientific-cleaning-rules/0.3.0"
+SKILL_VERSION = "0.3.1"
+RULE_SET_VERSION = "scientific-cleaning-rules/0.3.1"
 
 
 def sha256_text(text: str) -> str:

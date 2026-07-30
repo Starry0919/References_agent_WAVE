@@ -27,6 +27,16 @@ def test_english_text_is_translated_and_cached(tmp_path, monkeypatch):
     assert first == ["你好世界"]
     assert fake.call_count == 1
 
+
+def test_cache_only_returns_uncached_source_without_calling_llm(tmp_path, monkeypatch):
+    monkeypatch.setattr(service, "CACHE_DIR", tmp_path / "cache")
+    fake = FakeStructuredGenerationClient(scripted_contents=[json.dumps({"translations": ["你好世界"]})])
+
+    result = service.translate_batch(["Hello world"], client=fake, cache_only=True)
+
+    assert result == ["Hello world"]
+    assert fake.call_count == 0
+
     # Second call for the same text is a pure cache hit - no further LLM call.
     second = service.translate_batch(["Hello world"], client=fake)
     assert second == ["你好世界"]

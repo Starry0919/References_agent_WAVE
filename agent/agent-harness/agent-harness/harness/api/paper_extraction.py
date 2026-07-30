@@ -141,14 +141,22 @@ def get_task(task_id: str) -> dict[str, Any]:
     except KeyError:
         raise HTTPException(404, "task not found")
     result = service.get_result(task_id)
+    task_meta = service.get_task_metadata(task_id)
     skill_states = result["skill_states"] if result else service.get_live_skill_states(task_id)
-    # Only meaningful while still running - a finished result has nothing left
-    # in progress, and the engine never puts `skill_progress` in `_report()`.
-    skill_progress = {} if result else service.get_live_skill_progress(task_id)
+    # Keep terminal progress too: on failure it tells the user how many papers
+    # completed successfully before the failed item. Workflow reports now
+    # preserve the same checkpoint field used by live polling.
+    skill_progress = result.get("skill_progress", {}) if result else service.get_live_skill_progress(task_id)
+    updated_at = result.get("updated_at") if result else service.get_live_updated_at(task_id)
     # Per-skill warning detail (why a step is WARNING, not just that it is) -
     # same live-checkpoint-vs-finished-result split as `skill_states` above.
     skill_warnings = result.get("warnings", []) if result else service.get_live_skill_warnings(task_id)
-    extraction_summary = build_extraction_summary(task_id)
+    # Polling must stay a cheap checkpoint read. Translating an English paper
+    # title can invoke the configured LLM for up to several minutes on a cache
+    # miss; doing that here used to freeze the progress response at its first
+    # 0% snapshot and made refresh sit on "loading" while the extraction itself
+    # continued normally.
+    extraction_summary = build_extraction_summary(task_id, translate_titles=False)
     if extraction_summary:
         for paper in extraction_summary["papers"]:
             paper["evidence_source_id"] = None
@@ -158,15 +166,20 @@ def get_task(task_id: str) -> dict[str, Any]:
         # completion; idempotent, so repeated polls/re-opens don't re-save.
         if status.get("status") == "completed":
             try:
-                saved = ensure_task_saved_as_evidence(task_id)
+                saved = ensure_task_saved_as_evidence(
+                    task_id,
+                    extraction_summary=extraction_summary,
+                )
                 saved_by_index = {s["paper_index"]: s["evidence_source_id"] for s in saved}
                 for i, paper in enumerate(extraction_summary["papers"]):
                     paper["evidence_source_id"] = saved_by_index.get(i)
             except Exception:
                 logger.exception("failed to save task %s as literature evidence", task_id)
     return {
-        **status, "result": result, "skill_states": skill_states, "skill_progress": skill_progress,
-        "skill_warnings": skill_warnings, "extraction_summary": extraction_summary,
+        **status, "submitted_at": task_meta.get("submitted_at"),
+        "result": result, "skill_states": skill_states, "skill_progress": skill_progress,
+        "updated_at": updated_at, "skill_warnings": skill_warnings,
+        "extraction_summary": extraction_summary,
     }
 
 

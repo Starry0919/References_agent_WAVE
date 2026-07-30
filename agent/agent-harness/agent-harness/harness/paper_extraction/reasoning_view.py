@@ -23,6 +23,19 @@ from harness.translation.service import translate_batch
 _GRADE_CONFIDENCE = {"硬": 0.9, "软": 0.6}
 
 
+def _display_text(value: Any) -> str:
+    """Normalize legacy strings and provenance-rich Skill07 field records."""
+    if value is None:
+        return ""
+    if isinstance(value, dict):
+        if "value" in value:
+            return _display_text(value.get("value"))
+        return ""
+    if isinstance(value, (list, tuple)):
+        return "; ".join(filter(None, (_display_text(item) for item in value)))
+    return str(value)
+
+
 def _grade_to_confidence(grade: str | None) -> float | None:
     return _GRADE_CONFIDENCE.get(grade or "")
 
@@ -83,11 +96,17 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
             raw_texts.append(trigger.get("observation") or "")
             raw_texts.append(s.get("implementation_detail") or "")
             raw_texts.append((s.get("result") or {}).get("metric") or "")
-        raw_texts.append(hypothesis_obj.get("hypothesis") or "")
-        raw_texts.append(hypothesis_obj.get("expected_effect") or "")
+        raw_texts.append(_display_text(hypothesis_obj.get("hypothesis")))
+        raw_texts.append(_display_text(hypothesis_obj.get("expected_effect")))
         unique_texts = list(dict.fromkeys(txt for txt in raw_texts if txt))
         if unique_texts:
-            translation_map = dict(zip(unique_texts, translate_batch(unique_texts, locale)))
+            # Evidence-detail reads must be independent of external-model
+            # availability. Cached translations are welcome; uncached source
+            # text is returned immediately.
+            translation_map = dict(zip(
+                unique_texts,
+                translate_batch(unique_texts, locale, cache_only=True),
+            ))
 
     def tr(text: str) -> str:
         return translation_map.get(text, text) if text else text
@@ -95,7 +114,7 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
     steps: list[dict[str, Any]] = []
     idx = 1
 
-    problem_statement = problem.get("problem_statement", "")
+    problem_statement = _display_text(problem.get("problem_statement"))
     if problem_statement:
         steps.append({
             "step": idx,
@@ -147,7 +166,9 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
         })
         idx += 1
 
-    if hypothesis_obj.get("hypothesis"):
+    hypothesis_text = _display_text(hypothesis_obj.get("hypothesis"))
+    expected_effect_text = _display_text(hypothesis_obj.get("expected_effect"))
+    if hypothesis_text:
         modifications = "；".join(filter(None, (tr(s.get("implementation_detail") or "") for s in chain)))
         measurements = "；".join(filter(None, (tr((s.get("result") or {}).get("metric") or "") for s in chain)))
         steps.append({
@@ -159,10 +180,10 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
             "operation": t("agent_trace.logic_reconstruction.operation"),
             "output": {
                 "problem": problem_statement,
-                "hypothesis": tr(hypothesis_obj.get("hypothesis", "")),
+                "hypothesis": tr(hypothesis_text),
                 "modification": modifications,
                 "measurement": measurements,
-                "conclusion": tr(hypothesis_obj.get("expected_effect", "")),
+                "conclusion": tr(expected_effect_text),
             },
             "confidence": _overall_confidence(chain),
             "evidence": [],
@@ -255,8 +276,8 @@ def build_experimental_design(raw: dict[str, Any]) -> list[dict[str, Any]]:
         fallback.append({
             "step": i,
             "title": a.get("modification_type") or f"实验步骤 {i}",
-            "problem": ep.get("problem_statement", ""),
-            "hypothesis": eh.get("hypothesis", ""),
+            "problem": _display_text(ep.get("problem_statement")),
+            "hypothesis": _display_text(eh.get("hypothesis")),
             "engineering_action": {
                 "type": a.get("modification_type", ""),
                 "target": a.get("target", ""),

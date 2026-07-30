@@ -33,7 +33,19 @@ fi
 
 if [[ "$frontend_stale" == true ]]; then
   echo "Building frontend..."
-  (cd frontend && npm run build)
+  # This repository is commonly launched from WSL while its frontend
+  # dependencies were installed by Windows npm. Rollup's optional native
+  # package is platform-specific, so Linux node cannot load a Windows
+  # node_modules tree. Reuse Windows npm in that case instead of asking the
+  # user to delete/reinstall dependencies every time the server starts.
+  if [[ -d frontend/node_modules/@rollup/rollup-win32-x64-msvc ]] \
+      && command -v cmd.exe >/dev/null 2>&1 \
+      && command -v wslpath >/dev/null 2>&1; then
+    win_frontend="$(wslpath -w "$app_dir/frontend")"
+    cmd.exe /d /c "cd /d \"$win_frontend\" && npm.cmd run build"
+  else
+    (cd frontend && npm run build)
+  fi
 fi
 
 exec .venv/bin/python main.py

@@ -111,7 +111,13 @@ def _write_cache(path: Path, text: str, translation: str, target_locale: str, mo
             os.unlink(tmp_name)
 
 
-def translate_batch(texts: list[str], target_locale: str = "zh-CN", *, client: Any = None) -> list[str]:
+def translate_batch(
+    texts: list[str],
+    target_locale: str = "zh-CN",
+    *,
+    client: Any = None,
+    cache_only: bool = False,
+) -> list[str]:
     """Translates `texts` to `target_locale` ("zh-CN" or "en-US"), in order.
     A string that already looks like it's in the target language (no Latin
     letters left to translate into zh-CN, or no CJK characters left to
@@ -128,8 +134,6 @@ def translate_batch(texts: list[str], target_locale: str = "zh-CN", *, client: A
     `tests.llm_generation.fakes.FakeStructuredGenerationClient` instead of
     hitting the network.
     """
-    if client is None:
-        client = StructuredGenerationClient()
     model_id = providers.describe().get("model", "")
     results: list[str | None] = [None] * len(texts)
     to_translate: list[tuple[int, str, Path]] = []
@@ -145,7 +149,14 @@ def translate_batch(texts: list[str], target_locale: str = "zh-CN", *, client: A
         else:
             to_translate.append((i, text, cache_path))
 
+    if cache_only:
+        for i, text, _cache_path_value in to_translate:
+            results[i] = text
+        to_translate = []
+
     if to_translate:
+        if client is None:
+            client = StructuredGenerationClient()
         user_prompt = json.dumps({"target_locale": target_locale, "texts": [t for _, t, _ in to_translate]}, ensure_ascii=False)
         attempts, _health = client.generate(
             system_prompt=_system_prompt(target_locale), user_prompt=user_prompt, max_tokens=4000,

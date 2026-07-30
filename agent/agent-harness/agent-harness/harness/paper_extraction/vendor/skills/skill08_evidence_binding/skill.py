@@ -82,6 +82,23 @@ class EvidenceBindingEngine:
             units, audit = retriever.retrieve(field.get("value"), field.get("evidence_ids", []))
             quotes = [minimal_quote(field.get("value"), unit["text"]) for unit in units]
             supported, unsupported = supports_value(field.get("value"), quotes)
+            if not supported and field.get("evidence_ids"):
+                # A compact model can identify the right fact but choose an
+                # adjacent page-sized paragraph anchor. Search all structured
+                # text once more using token overlap before downgrading it.
+                recovered_units, recovery_audit = retriever.retrieve(
+                    field.get("value"), []
+                )
+                audit.extend(recovery_audit)
+                if recovered_units:
+                    units = recovered_units
+                    quotes = [
+                        minimal_quote(field.get("value"), unit["text"])
+                        for unit in units
+                    ]
+                    supported, unsupported = supports_value(
+                        field.get("value"), quotes
+                    )
             binding_audit[field_name] = {
                 "attempts": audit, "candidate_units": [u["unit_id"] for u in units],
                 "supported": supported, "unsupported_values": unsupported
