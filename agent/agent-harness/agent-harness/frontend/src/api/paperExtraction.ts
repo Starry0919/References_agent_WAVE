@@ -154,13 +154,23 @@ export interface FrontendView {
 export interface RunResult {
   taskId: string;
   status: "CREATED" | "RUNNING" | "WAITING_REVIEW" | "COMPLETED" | "FAILED";
+  submittedAt: number | null;
+  lastUpdatedAt: string | null;
   frontendView: FrontendView | null;
   extractionSummary: ExtractionSummary | null;
   literatureCandidateCount: number;
   experimentalDesignCount: number;
   skillStates: Record<string, string>;
   skillProgress: Record<string, { completed: number; total: number }>;
-  errors: Array<{ code?: string; message?: string; skill?: string; [key: string]: unknown }>;
+  errors: Array<{
+    code?: string;
+    source_code?: string;
+    message?: string;
+    skill?: string;
+    retryable?: boolean;
+    suggested_action?: string;
+    [key: string]: unknown;
+  }>;
   warnings: Array<{ skill: string; message: string; sourceCode?: string }>;
   extractedIdeas: ExtractedIdea[];
 }
@@ -415,6 +425,8 @@ interface RawTaskResponse {
   task_id: string;
   status: string;
   error: string | null;
+  submitted_at?: number | null;
+  updated_at?: string | null;
   skill_states?: Record<string, string>;
   skill_progress?: Record<string, { completed: number; total: number }>;
   skill_warnings?: Array<Record<string, unknown>>;
@@ -534,9 +546,28 @@ function toFrontendView(raw: RawTaskResponse["result"]): FrontendView | null {
 export async function getRun(taskId: string): Promise<RunResult> {
   const r = await api.get<RawTaskResponse>(`/api/paper-extraction/tasks/${taskId}`);
   const result = r.result;
+  const liveStatus = (() => {
+    switch (r.status.toLowerCase()) {
+      case "created":
+        return "CREATED";
+      case "waiting_review":
+        return "WAITING_REVIEW";
+      case "completed":
+        return "COMPLETED";
+      case "failed":
+        return "FAILED";
+      default:
+        return "RUNNING";
+    }
+  })() satisfies RunResult["status"];
   return {
     taskId,
-    status: (result?.status ?? (r.status === "failed" ? "FAILED" : "RUNNING")) as RunResult["status"],
+    // Preserve the task manager's waiting/created states while `result` is
+    // still null. Treating every non-failed live task as RUNNING made a
+    // blocked review checkpoint look like active model work forever.
+    status: result?.status ?? liveStatus,
+    submittedAt: typeof r.submitted_at === "number" ? r.submitted_at : null,
+    lastUpdatedAt: typeof r.updated_at === "string" ? r.updated_at : null,
     frontendView: toFrontendView(result),
     // Built from the checkpoint directly (harness/paper_extraction/result_summary.py),
     // so - unlike frontendView above - it's available for every result_level,
@@ -550,10 +581,17 @@ export async function getRun(taskId: string): Promise<RunResult> {
     // once the whole pipeline finishes) - lets the page show which step is
     // currently running instead of an undifferentiated spinner.
     skillStates: result?.skill_states ?? r.skill_states ?? {},
-    // Only ever populated while RUNNING (see harness/api/paper_extraction.py) -
-    // a finished result has nothing in progress, so this naturally clears itself.
+    // The engine preserves the last completed/total checkpoint after the stage
+    // finishes, so refreshes and terminal results retain an honest item count.
     skillProgress: r.skill_progress ?? {},
-    errors: result?.errors ?? (r.error ? [{ message: r.error }] : []),
+    errors: (result?.errors ?? (r.error ? [{ message: r.error }] : [])).map((error) => ({
+      ...error,
+      code: typeof error.code === "string"
+        ? error.code
+        : typeof error.source_code === "string"
+          ? error.source_code
+          : undefined,
+    })),
     // Per-skill warning detail (harness/paper_extraction/vendor/.../workflow/engine.py's
     // `state["warnings"]`) - lets the UI explain *why* a step is WARNING
     // (e.g. "Figure/table count differs from parser content list.")

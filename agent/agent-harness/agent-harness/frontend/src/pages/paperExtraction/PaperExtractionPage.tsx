@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { UploadCloud, FlaskConical, ShieldCheck, AlertTriangle, Dna, ChevronDown, ChevronRight, FileSearch, History, Trash2, BookOpenCheck, Microscope, Info, HelpCircle, ExternalLink, Columns2 } from "lucide-react";
+import { UploadCloud, FlaskConical, ShieldCheck, AlertTriangle, Dna, ChevronDown, ChevronRight, FileSearch, History, Trash2, BookOpenCheck, Microscope, Info, HelpCircle, ExternalLink, Columns2, Clock3 } from "lucide-react";
 import {
   deleteRun, getRun, listRuns, submitRun, uploadPaper,
   type DetailPanel, type EvidenceItem, type ExtractionSummary,
   type K12AdaptationItem, type PaperExtractionSummary, type RunHistoryItem, type RunResult, type StepCard,
 } from "@/api/paperExtraction";
 import { CompareTab, DesignTab, paperIdentityTitle, QualityTab, ReasoningTab, TabButton } from "@/pages/paperExtraction/PaperResultTabs";
+import { calculatePaperExtractionProgress, PAPER_EXTRACTION_SKILLS, type ProgressTone } from "@/pages/paperExtraction/progress";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, type DictKey } from "@/lib/i18n";
 
 /**
  * Paper Experimental Design Extraction (harness/api/paper_extraction.py,
@@ -452,22 +453,38 @@ function RunView({ run }: { run: RunResult }) {
             <AlertTriangle size={12} /> {t("page5.errorsTitle")}
           </h3>
           {run.errors.map((e, i) => (
-            <p key={i} className="text-[11px] text-state-risk">
-              {e.skill ? `${e.skill}: ` : ""}
-              {String(e.message ?? e.code ?? JSON.stringify(e))}
-            </p>
+            <div key={i} className="rounded border border-red-200 bg-white/60 px-2.5 py-2 text-[11px] text-state-risk">
+              <p className="break-words">
+                {e.skill ? `${e.skill}: ` : ""}
+                {String(e.message ?? e.code ?? JSON.stringify(e))}
+              </p>
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                {e.code && <code className="rounded bg-red-100 px-1.5 py-0.5">{e.code}</code>}
+                {e.retryable === true && (
+                  <span className="rounded bg-amber-100 px-1.5 py-0.5 text-amber-800">
+                    {t("page5.error.retryable")}
+                  </span>
+                )}
+              </div>
+              {e.suggested_action && (
+                <p className="mt-1 break-words text-ink-muted">
+                  {t("page5.error.suggestedAction")}: {e.suggested_action}
+                </p>
+              )}
+            </div>
           ))}
         </div>
       )}
 
-      {Object.keys(run.skillStates).length > 0 && (
-        <SkillProgress skillStates={run.skillStates} skillProgress={run.skillProgress} warnings={run.warnings} />
-      )}
-
-      {!run.frontendView && !run.extractionSummary?.papers.length && (run.status === "RUNNING" || run.status === "CREATED") && Object.keys(run.skillStates).length === 0 && (
-        <EmptyState variant="loading" />
-      )}
-      {!run.frontendView && !run.extractionSummary?.papers.length && run.status === "FAILED" && <EmptyState variant="failed" />}
+      <SkillProgress
+        taskId={run.taskId}
+        runStatus={run.status}
+        submittedAt={run.submittedAt}
+        lastUpdatedAt={run.lastUpdatedAt}
+        skillStates={run.skillStates}
+        skillProgress={run.skillProgress}
+        warnings={run.warnings}
+      />
 
       {run.extractionSummary && run.extractionSummary.papers.length > 0 && <ExtractionResultSection summary={run.extractionSummary} />}
 
@@ -587,6 +604,8 @@ function skillStatusBadge(status: string): BadgeStatus {
     case "FAILED":
     case "ERROR":
       return "failed";
+    case "BLOCKED":
+      return "blocked";
     case "SKIPPED":
       return "absent";
     case "PENDING":
@@ -597,41 +616,255 @@ function skillStatusBadge(status: string): BadgeStatus {
   }
 }
 
-/** "skill07_experiment_extraction" -> "07 Experiment Extraction" - the
- * vendored pipeline's own step ids (`skillNN_name`), reused as the
- * display label rather than hand-maintaining a parallel list of the same
- * 13 names that would drift once the vendored module changes. Keys sort
- * lexicographically into the pipeline's real run order since NN is
- * zero-padded. */
-function skillLabel(skillId: string): string {
+const SKILL_LABEL_KEYS: Partial<Record<string, DictKey>> = {
+  [PAPER_EXTRACTION_SKILLS.skill01]: "page5.progress.skill01",
+  [PAPER_EXTRACTION_SKILLS.skill02]: "page5.progress.skill02",
+  [PAPER_EXTRACTION_SKILLS.skill03]: "page5.progress.skill03",
+  [PAPER_EXTRACTION_SKILLS.skill04]: "page5.progress.skill04",
+  [PAPER_EXTRACTION_SKILLS.skill05]: "page5.progress.skill05",
+  [PAPER_EXTRACTION_SKILLS.skill06]: "page5.progress.skill06",
+  [PAPER_EXTRACTION_SKILLS.skill07]: "page5.progress.skill07",
+  [PAPER_EXTRACTION_SKILLS.skill08]: "page5.progress.skill08",
+  [PAPER_EXTRACTION_SKILLS.skill09]: "page5.progress.skill09",
+  [PAPER_EXTRACTION_SKILLS.skill10]: "page5.progress.skill10",
+  [PAPER_EXTRACTION_SKILLS.skill11]: "page5.progress.skill11",
+  [PAPER_EXTRACTION_SKILLS.skill12]: "page5.progress.skill12",
+  [PAPER_EXTRACTION_SKILLS.skill13]: "page5.progress.skill13",
+};
+
+const PROGRESS_STATUS_KEYS: Partial<Record<string, DictKey>> = {
+  SUCCESS: "page5.progress.status.SUCCESS",
+  WARNING: "page5.progress.status.WARNING",
+  REVIEW_REQUIRED: "page5.progress.status.REVIEW_REQUIRED",
+  RUNNING: "page5.progress.status.RUNNING",
+  IN_PROGRESS: "page5.progress.status.IN_PROGRESS",
+  FAILED: "page5.progress.status.FAILED",
+  ERROR: "page5.progress.status.ERROR",
+  BLOCKED: "page5.progress.status.BLOCKED",
+  SKIPPED: "page5.progress.status.SKIPPED",
+  PENDING: "page5.progress.status.PENDING",
+  NOT_STARTED: "page5.progress.status.NOT_STARTED",
+};
+
+function skillLabel(
+  skillId: string,
+  t: ReturnType<typeof useI18n>["t"],
+  includeNumber = false,
+): string {
   const match = /^skill(\d+)_(.+)$/.exec(skillId);
+  const translated = SKILL_LABEL_KEYS[skillId];
+  if (translated) {
+    return `${includeNumber && match ? `${match[1]} ` : ""}${t(translated)}`;
+  }
   if (!match) return skillId;
   const [, num, name] = match;
   return `${num} ${name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}`;
 }
 
+function progressStatusLabel(status: string, t: ReturnType<typeof useI18n>["t"]): string {
+  const key = PROGRESS_STATUS_KEYS[status.toUpperCase()];
+  return key ? t(key) : status;
+}
+
+const TERMINAL_RUN_STATUSES = new Set<RunResult["status"]>(["COMPLETED", "FAILED", "WAITING_REVIEW"]);
+const RUN_CLOCK_KEY_PREFIX = "paper-extraction.run-clock.";
+
+interface StoredRunClock {
+  startedAt: number;
+  finishedAt: number | null;
+}
+
+function loadRunClock(
+  taskId: string,
+  runStatus: RunResult["status"],
+  submittedAt: number | null,
+): StoredRunClock | null {
+  const isTerminal = TERMINAL_RUN_STATUSES.has(runStatus);
+  const now = Date.now();
+  const backendStartedAt = submittedAt !== null && Number.isFinite(submittedAt) && submittedAt > 0
+    ? submittedAt * 1000
+    : null;
+  try {
+    const storageKey = `${RUN_CLOCK_KEY_PREFIX}${taskId}`;
+    const stored = sessionStorage.getItem(storageKey);
+    if (!stored) {
+      // A historical terminal run has no trustworthy frontend start time.
+      // Display an honest unavailable state instead of inventing "00:00".
+      if (isTerminal) return null;
+      const created = { startedAt: backendStartedAt ?? now, finishedAt: null };
+      sessionStorage.setItem(storageKey, JSON.stringify(created));
+      return created;
+    }
+    const parsed = JSON.parse(stored) as Partial<StoredRunClock>;
+    if (typeof parsed.startedAt !== "number") return null;
+    const clock: StoredRunClock = {
+      // The backend timestamp is authoritative and survives reloads, tabs and
+      // browser restarts. Session storage remains useful only for freezing the
+      // end time when a task becomes terminal while this tab is observing it.
+      startedAt: backendStartedAt ?? parsed.startedAt,
+      finishedAt: typeof parsed.finishedAt === "number" ? parsed.finishedAt : null,
+    };
+    if (isTerminal && clock.finishedAt === null) {
+      clock.finishedAt = now;
+      sessionStorage.setItem(storageKey, JSON.stringify(clock));
+    }
+    return clock;
+  } catch {
+    return isTerminal ? null : { startedAt: backendStartedAt ?? now, finishedAt: null };
+  }
+}
+
+function useRunElapsedSeconds(
+  taskId: string,
+  runStatus: RunResult["status"],
+  submittedAt: number | null,
+): number | null {
+  const [clock, setClock] = useState<StoredRunClock | null>(() => loadRunClock(taskId, runStatus, submittedAt));
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    setClock(loadRunClock(taskId, runStatus, submittedAt));
+    setNow(Date.now());
+  }, [taskId, runStatus, submittedAt]);
+
+  useEffect(() => {
+    if (TERMINAL_RUN_STATUSES.has(runStatus)) return;
+    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(timer);
+  }, [runStatus]);
+
+  if (!clock) return null;
+  return Math.max(0, Math.floor(((clock.finishedAt ?? now) - clock.startedAt) / 1000));
+}
+
+function formatDuration(seconds: number): string {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+  if (hours > 0) {
+    return `${hours}:${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+  }
+  return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
+function progressToneClasses(tone: ProgressTone): { bar: string; current: string; percentage: string } {
+  switch (tone) {
+    case "success":
+      return { bar: "bg-state-success", current: "border-emerald-300 bg-emerald-50", percentage: "text-state-success" };
+    case "warning":
+    case "review":
+      return { bar: "bg-state-caution", current: "border-amber-300 bg-amber-50", percentage: "text-state-caution" };
+    case "failed":
+      return { bar: "bg-state-risk", current: "border-red-300 bg-red-50", percentage: "text-state-risk" };
+    case "blocked":
+      return { bar: "bg-state-blocked", current: "border-slate-300 bg-slate-100", percentage: "text-state-blocked" };
+    default:
+      return { bar: "bg-accent", current: "border-accent bg-accent-soft", percentage: "text-accent-strong" };
+  }
+}
+
 function SkillProgress({
+  taskId,
+  runStatus,
+  submittedAt,
+  lastUpdatedAt,
   skillStates,
   skillProgress,
   warnings,
 }: {
+  taskId: string;
+  runStatus: RunResult["status"];
+  submittedAt: number | null;
+  lastUpdatedAt: string | null;
   skillStates: Record<string, string>;
   skillProgress: Record<string, { completed: number; total: number }>;
   warnings: Array<{ skill: string; message: string; sourceCode?: string }>;
 }) {
   const { t } = useI18n();
-  const entries = Object.entries(skillStates).sort(([a], [b]) => a.localeCompare(b));
+  const snapshot = calculatePaperExtractionProgress(runStatus, skillStates, skillProgress);
+  const elapsedSeconds = useRunElapsedSeconds(taskId, runStatus, submittedAt);
+  const lastUpdatedTimestamp = lastUpdatedAt ? Date.parse(lastUpdatedAt) : Number.NaN;
+  const lastActivitySeconds = Number.isFinite(lastUpdatedTimestamp)
+    ? Math.max(0, Math.floor((Date.now() - lastUpdatedTimestamp) / 1000))
+    : null;
+  const heartbeatDelayed = runStatus === "RUNNING"
+    && lastActivitySeconds !== null
+    && lastActivitySeconds > 45;
+  const toneClasses = progressToneClasses(snapshot.tone);
+  const currentStageName = snapshot.currentSkillId ? skillLabel(snapshot.currentSkillId, t) : null;
+  const headline = runStatus === "COMPLETED"
+    ? t("page5.progress.completedAll")
+    : `${t(snapshot.tone === "failed"
+      ? "page5.progress.failedAt"
+      : snapshot.tone === "blocked"
+        ? "page5.progress.blockedAt"
+        : "page5.progress.currentStage")}: ${currentStageName ?? "—"}`;
+  const itemProgressLabel = snapshot.activeItemProgress
+    ? t("page5.progress.itemProgress")
+      .replace("{completed}", String(snapshot.activeItemProgress.completed))
+      .replace("{total}", String(snapshot.activeItemProgress.total))
+    : null;
+
   return (
-    <div className="flex flex-col gap-2">
-      <h3 className="label-caps">{t("page5.progressTitle")}</h3>
-      <ul className="flex flex-col gap-1">
-        {entries.map(([skillId, status]) => {
-          // Only present while this skill is still RUNNING (e.g. skill07
-          // extracting papers one at a time, minutes each) - the engine
-          // clears it once the stage finishes, so a finished/failed row
-          // never shows a stale fraction.
+    <section className="panel p-4" aria-labelledby="paper-extraction-progress-title">
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <h3 id="paper-extraction-progress-title" className="label-caps">{t("page5.progress.overall")}</h3>
+          <p className="mt-1 truncate text-sm font-medium text-ink" aria-live="polite">{headline}</p>
+        </div>
+        <span className={`shrink-0 text-2xl font-semibold tabular-nums ${toneClasses.percentage}`}>
+          {snapshot.percentage}%
+        </span>
+      </div>
+
+      <div
+        className="mt-3 h-2.5 overflow-hidden rounded-full bg-surface-sunken"
+        role="progressbar"
+        aria-label={t("page5.progress.overall")}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={snapshot.percentage}
+      >
+        <div
+          className={`h-full rounded-full transition-[width] duration-500 ${toneClasses.bar}`}
+          style={{ width: `${snapshot.percentage}%` }}
+        />
+      </div>
+
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-ink-muted">
+        <span
+          className="inline-flex items-center gap-1"
+          title={elapsedSeconds === null ? t("page5.progress.elapsedUnavailable") : undefined}
+        >
+          <Clock3 size={12} aria-hidden />
+          {t("page5.progress.elapsed")}: {elapsedSeconds === null ? "—" : formatDuration(elapsedSeconds)}
+        </span>
+        {lastActivitySeconds !== null && (
+          <span className={heartbeatDelayed ? "font-medium text-state-caution" : ""}>
+            {heartbeatDelayed
+              ? t("page5.progress.heartbeatDelayed")
+              : t("page5.progress.lastActivity").replace("{seconds}", String(lastActivitySeconds))}
+          </span>
+        )}
+        {itemProgressLabel && <span className="font-medium text-accent-strong">{itemProgressLabel}</span>}
+        {snapshot.currentSkillId && (
+          <StatusBadge
+            status={skillStatusBadge(snapshot.currentStatus)}
+            label={progressStatusLabel(snapshot.currentStatus, t)}
+          />
+        )}
+      </div>
+
+      <h4 className="label-caps mt-4">{t("page5.progressTitle")}</h4>
+      <ul className="mt-2 grid gap-1.5 md:grid-cols-2">
+        {snapshot.stages.map(({ skillId, status, isCurrent }) => {
+          // Preserved in the checkpoint after a stage finishes, so refreshes
+          // and terminal results keep the last honest completed/total count.
           const progress = skillProgress[skillId];
-          const label = progress && progress.total > 1 ? `${status} (${progress.completed}/${progress.total})` : status;
+          const translatedStatus = progressStatusLabel(status, t);
+          const label = progress && progress.total > 1
+            ? `${translatedStatus} (${progress.completed}/${progress.total})`
+            : translatedStatus;
           const upperStatus = status.toUpperCase();
           const isWarning = upperStatus === "WARNING";
           const isReviewRequired = upperStatus === "REVIEW_REQUIRED";
@@ -650,8 +883,15 @@ function SkillProgress({
               : undefined;
           const hint = isWarning || isReviewRequired ? (detail.length > 0 ? detail.join(" ") : genericHint) : undefined;
           return (
-            <li key={skillId} className="flex items-center justify-between gap-2 rounded border border-border bg-surface px-2.5 py-1.5 text-xs">
-              <span className="text-ink">{skillLabel(skillId)}</span>
+            <li
+              key={skillId}
+              className={`flex min-w-0 items-center justify-between gap-2 rounded border px-2.5 py-1.5 text-xs ${
+                isCurrent ? toneClasses.current : "border-border bg-surface"
+              }`}
+            >
+              <span className={`truncate ${isCurrent ? "font-medium text-ink" : "text-ink-muted"}`}>
+                {skillLabel(skillId, t, true)}
+              </span>
               <span className={`flex items-center gap-1.5 ${hint ? "cursor-help" : ""}`} title={hint}>
                 {hint && (
                   <span className="shrink-0 text-state-caution" aria-hidden>
@@ -664,7 +904,7 @@ function SkillProgress({
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }
 

@@ -58,6 +58,30 @@ def test_build_agent_trace_has_problem_intervention_logic_and_validation_steps()
     assert [s["step"] for s in trace] == [1, 2, 3, 4, 5]
 
 
+def test_build_agent_trace_unwraps_skill07_field_records():
+    raw = {
+        "engineering_problem": {
+            "problem_statement": {
+                "value": "Engineer E. coli for high-efficiency tryptophan production",
+                "status": "reported",
+            },
+        },
+        "biological_diagnosis": {},
+        "engineering_hypothesis": {
+            "hypothesis": {"value": "Reduce acetate overflow", "status": "reported"},
+            "expected_effect": {"value": "Increase product yield", "status": "reported"},
+        },
+        "decision_chain": [],
+    }
+
+    trace = build_agent_trace(raw)
+
+    assert trace[0]["output"] == "Engineer E. coli for high-efficiency tryptophan production"
+    logic = next(step for step in trace if step["kind"] == "logic_reconstruction")
+    assert logic["output"]["hypothesis"] == "Reduce acetate overflow"
+    assert logic["output"]["conclusion"] == "Increase product yield"
+
+
 def test_build_agent_trace_confidence_reflects_evidence_grading():
     trace = build_agent_trace(_RAW)
     hard_step = next(s for s in trace if s["design_step_ref"] == 1)

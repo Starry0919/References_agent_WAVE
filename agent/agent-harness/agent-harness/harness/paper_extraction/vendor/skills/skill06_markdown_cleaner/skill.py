@@ -86,6 +86,7 @@ class ScientificMarkdownCleaner:
         )
         original_sections = source.get("structure_map", {}).get("sections", [])
         clean_sections = clean_json["sections"]
+        fallback_structure_used = any(v.get("is_fallback") for v in clean_sections)
         missing_sections = [
             v.get("title") for v in original_sections
             if v.get("title") and v.get("title") not in {s["title"] for s in clean_sections}
@@ -97,6 +98,7 @@ class ScientificMarkdownCleaner:
             "tables_preserved": len(clean_json["tables"]),
             "citations_preserved": next(v["passed"] for v in checks if v["name"] == "citations_preserved"),
             "sections_preserved": not missing_sections,
+            "fallback_structure_used": fallback_structure_used,
             "missing_sections": missing_sections,
             "confidence": round(sum(v["passed"] for v in checks) / len(checks), 4)
         }
@@ -129,8 +131,11 @@ class ScientificMarkdownCleaner:
         if "�" in original:
             warnings.append({"code": "CLEAN005", "message": "Unresolved replacement characters were preserved."})
             review_requests.append({"reason": "encoding_uncertain", "paper_id": paper_id})
-        if not clean_sections:
-            warnings.append({"code": "CLEAN002", "message": "No Markdown section headings were found."})
+        if fallback_structure_used:
+            warnings.append({
+                "code": "CLEAN002",
+                "message": "No Markdown section headings were found; the full text was retained in a fallback section.",
+            })
             review_requests.append({"reason": "structure_missing", "paper_id": paper_id})
         status = "succeeded_with_warnings" if warnings else "succeeded"
         result = {

@@ -281,6 +281,16 @@ def get_result(task_id: str) -> dict[str, Any] | None:
     return _get_manager().result(task_id)
 
 
+def get_task_metadata(task_id: str) -> dict[str, Any]:
+    """Return persisted frontend metadata for one known task.
+
+    ``get_status`` is expected to run first, which initializes/restores the
+    registry. A defensive empty dict keeps legacy checkpoints without a
+    registry row pollable.
+    """
+    return dict(_task_meta.get(task_id, {}))
+
+
 def get_live_skill_states(task_id: str) -> dict[str, str]:
     """Best-effort per-skill progress while a task is still `running`.
 
@@ -337,6 +347,19 @@ def get_live_skill_progress(task_id: str) -> dict[str, dict[str, int]]:
     return state.get("skill_progress", {})
 
 
+def get_live_updated_at(task_id: str) -> str | None:
+    """Return the latest checkpoint heartbeat timestamp, if available."""
+    path = RUNTIME_DIR / task_id / "checkpoint.json"
+    if not path.is_file():
+        return None
+    try:
+        state = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    value = state.get("updated_at")
+    return value if isinstance(value, str) else None
+
+
 def delete_task(task_id: str) -> None:
     """Remove a finished (completed/failed) run from history - both the
     frontend-facing metadata (`_task_meta`) and the TaskManager's own
@@ -368,12 +391,16 @@ def list_tasks(project_id: str | None = None) -> list[dict[str, Any]]:
     the frontend show run history instead of losing track of a task the
     moment its `?task=` URL param is gone (navigating away and back, a
     fresh tab, etc)."""
+    # A history request is commonly the first paper-extraction call after a
+    # process restart. Initialize the manager before iterating `_task_meta`;
+    # `_restore_registry` is what repopulates that mapping from disk.
+    manager = _get_manager()
     rows = []
     for task_id, meta in _task_meta.items():
         if project_id is not None and meta.get("project_id") != project_id:
             continue
         try:
-            status = _get_manager().status(task_id)
+            status = manager.status(task_id)
         except KeyError:
             continue
         rows.append({"task_id": task_id, **meta, **status})

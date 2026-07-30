@@ -1,5 +1,5 @@
 from __future__ import annotations
-import copy,time
+import copy,logging,os,threading,time
 from datetime import datetime,timezone
 from pathlib import Path
 from .artifacts import create
@@ -9,11 +9,15 @@ from .logger import WorkflowLogger
 from ..skills import SkillRegistry,SKILLS
 from ..storage import ArtifactStore
 
+logger=logging.getLogger(__name__)
+DEFAULT_CHECKPOINT_HEARTBEAT_SECONDS=15.0
+
 class WorkflowEngine:
     def __init__(self,config,executors=None):
         self.config=config;self.registry=SkillRegistry(executors)
         self.store=ArtifactStore(config.state_dir)
         self.logger=WorkflowLogger(Path(config.state_dir).parent/"workflow.jsonl")
+        self._checkpoint_lock=threading.RLock()
     def run(self,request,options=None):
         options=dict(options or {});task_id=request["task_id"];started=datetime.now(timezone.utc).isoformat()
         checkpoint=self.store.load_checkpoint(task_id) if options.get("resume") else None
@@ -74,20 +78,29 @@ class WorkflowEngine:
         results=[]
         total=len(requests)
         state.setdefault("skill_progress",{})[skill]={"completed":0,"total":total}
+        # Persist the denominator before the first (potentially multi-minute)
+        # executor call. Otherwise the UI cannot distinguish "0/6 in progress"
+        # from a stage that has not discovered its work items yet.
+        self._save(state)
         for index,payload in enumerate(requests):
-            result=self.registry.execute(skill,payload,options.get("skill_kwargs",{}).get(skill))
+            result=self._execute_with_heartbeat(
+                skill,payload,options.get("skill_kwargs",{}).get(skill),state,options
+            )
             results.append(result)
-            # Some stages (skill07 experiment extraction) call the model once per
-            # paper in this loop, sequentially - each one can take minutes, so
-            # without this a client watching the checkpoint sees nothing change
-            # for the entire stage duration. Saved per-item rather than once at
-            # the end so "3/6 papers" is visible mid-stage, not just at the end.
-            state["skill_progress"][skill]={"completed":index+1,"total":total}
-            self._save(state)
             for err in result.get("errors",[]):state["errors"].append(normalize(skill,err))
             for warn in result.get("warnings",[]):state["warnings"].append(normalize(skill,warn))
             if result.get("output") is not None:
                 artifact=create(state["task_id"],skill,result,index);state["artifacts"].append(artifact)
+            item_state=skill_state(result.get("status"))
+            if item_state in {"SUCCESS","WARNING","REVIEW_REQUIRED"}:
+                # "completed" means a usable item result exists. A failed or
+                # cancelled attempt was processed, but must not inflate the
+                # completed-paper count shown to the user.
+                state["skill_progress"][skill]["completed"]+=1
+            # Save result-derived errors/artifacts and the accurate count
+            # together, so a crash cannot persist "completed: 1" before the
+            # corresponding durable output.
+            self._save(state)
             if result.get("status") in {"terminal_failure","retryable_failure","cancelled"}:break
         aggregate=self._update_context(skill,results,state["context"])
         statuses=[skill_state(r.get("status")) for r in results]
@@ -216,9 +229,52 @@ class WorkflowEngine:
         return [{"paper_id":f"doi:{doi}","title":f"DOI {doi}","authors":[],"journal":None,"year":None,
                  "identifiers":{"doi":doi},"retrieval_sources":["user_doi"],
                  "citation_validation":{"status":"unknown","attempts":0,"checks":[]}} for doi in dois]
+    @staticmethod
+    def _heartbeat_seconds(options):
+        raw=options.get(
+            "checkpoint_heartbeat_seconds",
+            os.getenv("PAPER_EXTRACTION_CHECKPOINT_HEARTBEAT_SECONDS",DEFAULT_CHECKPOINT_HEARTBEAT_SECONDS),
+        )
+        try:return max(0.0,float(raw))
+        except (TypeError,ValueError):return DEFAULT_CHECKPOINT_HEARTBEAT_SECONDS
+    def _execute_with_heartbeat(self,skill,payload,kwargs,state,options):
+        """Execute one potentially blocking skill item while refreshing its
+        checkpoint lease.
+
+        The heartbeat runs only while the main thread is blocked inside the
+        executor. The main thread does not mutate ``state`` in that interval,
+        and ``_save`` serializes checkpoint writers, so every poll observes a
+        complete atomic snapshot. Set ``checkpoint_heartbeat_seconds`` to 0 to
+        disable it (useful for deterministic callers/tests).
+        """
+        interval=self._heartbeat_seconds(options)
+        if interval<=0:
+            return self.registry.execute(skill,payload,kwargs)
+        stop=threading.Event()
+        def heartbeat():
+            while not stop.wait(interval):
+                try:self._save(state)
+                except Exception:
+                    # A heartbeat is advisory liveness data. The main-thread
+                    # save after the executor remains authoritative and will
+                    # surface a persistent storage failure normally.
+                    logger.exception("checkpoint heartbeat failed for %s",skill)
+                    return
+        worker=threading.Thread(
+            target=heartbeat,
+            name=f"checkpoint-heartbeat-{state['task_id'][:8]}-{skill}",
+            daemon=True,
+        )
+        worker.start()
+        try:return self.registry.execute(skill,payload,kwargs)
+        finally:
+            stop.set()
+            worker.join()
     def _save(self,state):
-        state["context"]["artifacts_snapshot"]=state["artifacts"]
-        self.store.save_checkpoint(state["task_id"],state)
+        with self._checkpoint_lock:
+            state["updated_at"]=datetime.now(timezone.utc).isoformat()
+            state["context"]["artifacts_snapshot"]=state["artifacts"]
+            self.store.save_checkpoint(state["task_id"],state)
     def _report(self,request,state):
         c=state["context"]
         return {"task_id":state["task_id"],"status":state["status"],
@@ -235,5 +291,6 @@ class WorkflowEngine:
                 "engineering_plan":c.get("skill11",{}),
                 "governance":c.get("skill12",{}),"frontend_view":c.get("skill13",{}),
                 "artifacts":state["artifacts"],"skill_states":state["skill_states"],
+                "skill_progress":state.get("skill_progress",{}),"updated_at":state.get("updated_at"),
                 "skill_logs":state["skill_logs"],"errors":state["errors"],"warnings":state.get("warnings",[]),
                 "start_time":state.get("start_time"),"end_time":state.get("end_time")}

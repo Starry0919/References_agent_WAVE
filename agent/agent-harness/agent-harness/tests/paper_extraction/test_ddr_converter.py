@@ -216,3 +216,34 @@ def test_knockout_experiment_maps_to_M5_not_default_M3():
         "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
     })
     assert result.ddr["decision_chain"][0]["design_action"] == "M5"
+
+
+def test_converter_unwraps_skill07_field_records_for_ddr_narrative():
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {
+            "fields": {
+                "objective": {
+                    "value": "Engineer E. coli for tryptophan production",
+                    "status": "reported",
+                    "confidence": 0.9,
+                },
+                "hypothesis": {
+                    "value": "Reducing acetate overflow increases tryptophan yield",
+                    "status": "inferred",
+                    "confidence": 0.7,
+                },
+                "target_product": {
+                    "value": "L-tryptophan",
+                    "status": "reported",
+                    "confidence": 0.95,
+                },
+            },
+            "experimental_design_object": {},
+        },
+        "paper_identity": {"title": "Tryptophan study"},
+    })
+
+    assert result.ddr["engineering_problem"]["problem_statement"] == "Engineer E. coli for tryptophan production"
+    assert result.ddr["engineering_hypothesis"]["hypothesis"] == "Reducing acetate overflow increases tryptophan yield"
+    assert result.ddr["metadata"]["target_product"] == "L-tryptophan"
+    assert result.ddr["metadata"]["category"] == ["L-tryptophan production"]

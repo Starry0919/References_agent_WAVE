@@ -156,13 +156,19 @@ def _build_design_fields(bound_fields: dict[str, Any] | None, raw_fields: dict[s
     return out
 
 
-def _paper_identity(papers: list[dict[str, Any]], index: int, fallback_paper_id: str | None) -> dict[str, Any]:
+def _paper_identity(
+    papers: list[dict[str, Any]],
+    index: int,
+    fallback_paper_id: str | None,
+    *,
+    translate_titles: bool,
+) -> dict[str, Any]:
     if index < len(papers):
         identity = papers[index].get("paper_identity") or {}
     else:
         identity = {}
     title = identity.get("title")
-    if title and get_locale() in ("zh-CN", "en-US"):
+    if translate_titles and title and get_locale() in ("zh-CN", "en-US"):
         title = translate_text(title, get_locale())
     return {
         "paper_id": identity.get("paper_id") or fallback_paper_id or f"paper_{index + 1}",
@@ -184,12 +190,14 @@ def _extract_reasoning(raw_fields: dict[str, Any], extensions: dict[str, Any], k
     return extensions.get(key)
 
 
-def build_extraction_summary(task_id: str) -> dict[str, Any] | None:
+def build_extraction_summary(task_id: str, *, translate_titles: bool = True) -> dict[str, Any] | None:
     """Build the full extraction summary for one task. Returns None if no
     checkpoint exists yet for this task_id (e.g. the task hasn't started).
 
     Safe to call at any point in the run's lifecycle - reflects whatever
-    has been checkpointed so far, paper by paper.
+    has been checkpointed so far, paper by paper. Callers on latency-sensitive
+    polling paths must pass ``translate_titles=False``: title translation can
+    invoke an LLM on a cache miss and must never hold up progress delivery.
     """
     state = _load_checkpoint(task_id)
     if state is None:
@@ -216,8 +224,18 @@ def build_extraction_summary(task_id: str) -> dict[str, Any] | None:
         bound_fields = (s08.get("literature_experiment", {}) or {}).get("fields")
         evidence_map = s08.get("evidence_map", {}) or {}
 
-        fallback_paper_id = (s07.get("experimental_design_object", {}) or {}).get("paper_id")
-        identity = _paper_identity(papers, i, fallback_paper_id)
+        design_object = s07.get("experimental_design_object", {}) or {}
+        fallback_paper_id = (
+            design_object.get("paper_id")
+            if isinstance(design_object, dict)
+            else None
+        )
+        identity = _paper_identity(
+            papers,
+            i,
+            fallback_paper_id,
+            translate_titles=translate_titles,
+        )
 
         article_type = _extract_reasoning(raw_fields, extensions, "article_type_gate")
         target_strains = _extract_reasoning(raw_fields, extensions, "paper_target_strains") or []

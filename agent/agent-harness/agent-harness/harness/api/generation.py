@@ -125,6 +125,19 @@ _ENGINEERING_DESIGN_TEXT_FIELDS = ("problem_statement", "mechanistic_explanation
 _ACTION_TEXT_FIELDS = ("rationale", "expected_effect")
 
 
+def _evidence_display_text(value: Any) -> str:
+    """Extract display text from a scalar or a Skill07 field record."""
+    if value is None:
+        return ""
+    if isinstance(value, dict):
+        if "value" in value:
+            return _evidence_display_text(value.get("value"))
+        return ""
+    if isinstance(value, (list, tuple)):
+        return "; ".join(filter(None, (_evidence_display_text(item) for item in value)))
+    return str(value)
+
+
 def _localize_evidence_document(
     title: str, abstract_or_summary: str, engineering_design: dict[str, Any] | None,
 ) -> tuple[str, str, dict[str, Any] | None]:
@@ -142,13 +155,22 @@ def _localize_evidence_document(
     locale = get_locale()
     if locale not in ("zh-CN", "en-US"):
         return title, abstract_or_summary, engineering_design
-    texts = [title, abstract_or_summary or ""]
+    title = _evidence_display_text(title)
+    abstract_or_summary = _evidence_display_text(abstract_or_summary)
+    texts = [title, abstract_or_summary]
     if engineering_design:
-        texts.extend(engineering_design.get(field) or "" for field in _ENGINEERING_DESIGN_TEXT_FIELDS)
+        for field in _ENGINEERING_DESIGN_TEXT_FIELDS:
+            engineering_design[field] = _evidence_display_text(engineering_design.get(field))
+            texts.append(engineering_design[field])
         actions = engineering_design.get("actions") or []
         for action in actions:
-            texts.extend(action.get(field) or "" for field in _ACTION_TEXT_FIELDS)
-    translated = translate_batch(texts, locale)
+            for field in _ACTION_TEXT_FIELDS:
+                action[field] = _evidence_display_text(action.get(field))
+                texts.append(action[field])
+    # A read-only evidence page must never wait on an external model. Reuse
+    # translations already prepared in the cache and otherwise surface the
+    # source text immediately.
+    translated = translate_batch(texts, locale, cache_only=True)
     it = iter(translated)
     title = next(it)
     abstract_or_summary = next(it)

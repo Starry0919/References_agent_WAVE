@@ -121,3 +121,25 @@ def test_reasoning_survives_the_skill08_raw_field_fallback_path(tmp_path, monkey
     assert field["verified"] is False
     assert field["reasoning"]["extraction_method"] == "rule"
     assert field["reasoning"]["notes"] == "matched a known assay keyword"
+
+
+def test_polling_summary_can_skip_title_translation(tmp_path, monkeypatch):
+    """A live progress poll must never wait for a title-localization LLM call.
+
+    The raw source title is still useful while the run is active; translation
+    can happen later on a non-latency-sensitive read path.
+    """
+    monkeypatch.setattr(result_summary, "RUNTIME_DIR", tmp_path / "runtime")
+    _write_checkpoint(tmp_path / "runtime", "task-live-poll", fields={})
+
+    def fail_if_translated(*_args, **_kwargs):
+        raise AssertionError("polling summary attempted an LLM translation")
+
+    monkeypatch.setattr(result_summary, "translate_text", fail_if_translated)
+
+    summary = result_summary.build_extraction_summary(
+        "task-live-poll",
+        translate_titles=False,
+    )
+
+    assert summary["papers"][0]["identity"]["title"] == "Test Paper"

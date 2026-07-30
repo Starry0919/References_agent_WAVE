@@ -276,9 +276,9 @@ def _build_metadata(
         "category": _infer_categories(fields),
         "organism": target_strain.get("paper_organism") or paper_id.get("organism", ""),
         "host": target_strain.get("paper_strain_normalized") or target_strain.get("paper_strain_raw", ""),
-        "target_product": fields.get("target_product", ""),
-        "product_class": fields.get("product_class", ""),
-        "engineering_level": fields.get("engineering_level", ""),
+        "target_product": _field_value(fields.get("target_product")),
+        "product_class": _field_value(fields.get("product_class")),
+        "engineering_level": _field_value(fields.get("engineering_level")),
         "reference": ref,
         "paper_type": gate.get("article_type", "primary_research"),
     }
@@ -508,8 +508,10 @@ def _build_engineering_problem(
 ) -> dict[str, Any]:
     """Synthesize the engineering problem from available data."""
     ep = fields.get("engineering_problem", {})
+    if not isinstance(ep, dict):
+        ep = {}
     return {
-        "problem_statement": ep.get("problem_statement") or fields.get("objective", ""),
+        "problem_statement": _field_value(ep.get("problem_statement")) or _field_value(fields.get("objective")),
         "problem_type": ep.get("problem_type") or _infer_problem_types(decision_chain),
         "trigger_conditions": ep.get("trigger_conditions") or _infer_trigger_conditions(decision_chain),
     }
@@ -544,9 +546,11 @@ def _build_engineering_hypothesis(
 ) -> dict[str, Any]:
     """Synthesize hypothesis from available data."""
     hyp = fields.get("engineering_hypothesis", {})
+    if not isinstance(hyp, dict):
+        hyp = {}
     return {
-        "hypothesis": hyp.get("hypothesis", ""),
-        "expected_effect": hyp.get("expected_effect", ""),
+        "hypothesis": _field_value(hyp.get("hypothesis")) or _field_value(fields.get("hypothesis")),
+        "expected_effect": _field_value(hyp.get("expected_effect")),
     }
 
 
@@ -707,10 +711,14 @@ def _auto_reason_nature(data: dict[str, Any], fields: dict[str, Any]) -> str:
 
 def _infer_categories(fields: dict[str, Any]) -> list[str]:
     """Infer category tags from fields."""
-    cats = fields.get("category", [])
+    cats = _field_value(fields.get("category"), [])
+    if isinstance(cats, str):
+        cats = [cats] if cats else []
+    elif not isinstance(cats, list):
+        cats = []
     if not cats:
-        product = fields.get("target_product", "")
-        product_class = fields.get("product_class", "")
+        product = _field_value(fields.get("target_product"))
+        product_class = _field_value(fields.get("product_class"))
         if product:
             cats.append(f"{product} production")
         if product_class:
@@ -784,6 +792,13 @@ def _get_nested(d: dict[str, Any], key: str, default: Any = None) -> Any:
     if not isinstance(d, dict):
         return default
     return d.get(key, default)
+
+
+def _field_value(value: Any, default: Any = "") -> Any:
+    """Unwrap Skill07's ``{"value", "status", ...}`` field-record shape."""
+    if isinstance(value, dict) and "value" in value:
+        value = value.get("value")
+    return default if value is None else value
 
 
 # ---------------------------------------------------------------------------
@@ -876,7 +891,11 @@ def _existing_saved_indices(task_id: str) -> dict[int, str]:
     return out
 
 
-def ensure_task_saved_as_evidence(task_id: str) -> list[dict[str, Any]]:
+def ensure_task_saved_as_evidence(
+    task_id: str,
+    *,
+    extraction_summary: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
     """Idempotently save every paper of a completed task as a literature-
     evidence DDR record, and return each paper's resulting evidence id.
 
@@ -916,7 +935,13 @@ def ensure_task_saved_as_evidence(task_id: str) -> list[dict[str, Any]]:
         if isinstance(ed, dict) and (ed.get("fields") or ed.get("experimental_design_object"))
     ]
 
-    summary = build_extraction_summary(task_id) or {}
+    # Automatic evidence persistence runs inside the completed-task polling
+    # request. Reuse the poll's already-built, untranslated summary when
+    # available; the fallback must also skip translation so this idempotent
+    # save can never turn a status read into an LLM call.
+    summary = extraction_summary
+    if summary is None:
+        summary = build_extraction_summary(task_id, translate_titles=False) or {}
     summary_papers: list[dict[str, Any]] = summary.get("papers", [])
     already = _existing_saved_indices(task_id)
 
