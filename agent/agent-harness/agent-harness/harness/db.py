@@ -75,11 +75,21 @@ def check_and_bump_version(row, expected_version: int) -> None:  # noqa: ANN001
 def _make_engine(url: str) -> Engine:
     engine = create_engine(url, future=True)
 
-    @event.listens_for(engine, "connect")
-    def _set_sqlite_pragma(dbapi_connection, _connection_record) -> None:  # noqa: ANN001
-        cursor = dbapi_connection.cursor()
-        cursor.execute("PRAGMA foreign_keys=ON")
-        cursor.close()
+    if url.startswith("sqlite"):
+
+        @event.listens_for(engine, "connect")
+        def _set_sqlite_pragma(dbapi_connection, _connection_record) -> None:  # noqa: ANN001
+            cursor = dbapi_connection.cursor()
+            cursor.execute("PRAGMA foreign_keys=ON")
+            # WAL: readers no longer block behind the single writer (and vice
+            # versa) - before this, any concurrent write during a slow request
+            # surfaced as a bare 500 "database is locked". busy_timeout makes a
+            # contender wait 5s for the lock instead of failing immediately.
+            # journal_mode persists in the db file; busy_timeout is
+            # per-connection, so both are (idempotently) set on every connect.
+            cursor.execute("PRAGMA journal_mode=WAL")
+            cursor.execute("PRAGMA busy_timeout=5000")
+            cursor.close()
 
     return engine
 
