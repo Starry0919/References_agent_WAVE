@@ -17,6 +17,9 @@ from __future__ import annotations
 
 from typing import Any
 
+from harness.i18n import get_locale, t
+from harness.translation.service import translate_batch
+
 _GRADE_CONFIDENCE = {"硬": 0.9, "软": 0.6}
 
 
@@ -52,6 +55,43 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
     hypothesis_obj = raw.get("engineering_hypothesis") or {}
     chain = raw.get("decision_chain") or []
 
+    # These per-step fields are raw source-paper text (English for most
+    # papers, but hand-curated DDR-001..005 records carry Chinese-authored
+    # equivalents) interpolated straight into the narrative shell below -
+    # neither i18n.tsx nor harness/i18n.py's static dictionaries cover this
+    # (they only translate UI chrome / generated narrative, not literature
+    # content), so it goes through the LLM translation cache instead, one
+    # batched call for the whole trace rather than one call per step.
+    # Symmetric: a zh-CN viewer gets English fragments translated to
+    # Chinese, an en-US viewer gets Chinese fragments translated to English -
+    # `translate_batch`'s own needs-translation check skips whichever
+    # fragments are already in the target language, so this is a no-op (no
+    # LLM call) for content that doesn't need it either way.
+    #
+    # The surrounding narrative-shell labels ("问题理解"/"Problem
+    # Understanding" etc. below) are fixed, not per-record content, so they
+    # are hand-translated in `harness/i18n.py`'s CATALOG (`agent_trace.*`
+    # keys) via `t()` instead - same convention as the diagnosis/design
+    # generators' narrative strings, and no LLM/network call involved.
+    translation_map: dict[str, str] = {}
+    locale = get_locale()
+    if locale in ("zh-CN", "en-US"):
+        raw_texts: list[str] = []
+        for s in chain:
+            trigger = s.get("trigger") or {}
+            raw_texts.append(trigger.get("reasoning") or "")
+            raw_texts.append(trigger.get("observation") or "")
+            raw_texts.append(s.get("implementation_detail") or "")
+            raw_texts.append((s.get("result") or {}).get("metric") or "")
+        raw_texts.append(hypothesis_obj.get("hypothesis") or "")
+        raw_texts.append(hypothesis_obj.get("expected_effect") or "")
+        unique_texts = list(dict.fromkeys(txt for txt in raw_texts if txt))
+        if unique_texts:
+            translation_map = dict(zip(unique_texts, translate_batch(unique_texts, locale)))
+
+    def tr(text: str) -> str:
+        return translation_map.get(text, text) if text else text
+
     steps: list[dict[str, Any]] = []
     idx = 1
 
@@ -60,10 +100,10 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
         steps.append({
             "step": idx,
             "kind": "problem_understanding",
-            "title": "问题理解",
+            "title": t("agent_trace.problem_understanding.title"),
             "status": "completed",
-            "input": "论文摘要与引言",
-            "operation": "识别该论文试图解决的工程/生物学问题",
+            "input": t("agent_trace.problem_understanding.input"),
+            "operation": t("agent_trace.problem_understanding.operation"),
             "output": problem_statement,
             "confidence": _overall_confidence(chain),
             "evidence": list(problem.get("trigger_conditions") or []),
@@ -78,11 +118,11 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
         steps.append({
             "step": idx,
             "kind": "intervention",
-            "title": f"瓶颈识别与改造提取 · {target_label}",
+            "title": t("agent_trace.intervention.title", target_label=target_label),
             "status": "completed",
-            "input": trigger.get("source_location") or "结果与讨论",
-            "operation": trigger.get("reasoning", ""),
-            "output": trigger.get("observation", ""),
+            "input": trigger.get("source_location") or t("agent_trace.intervention.input_fallback"),
+            "operation": tr(trigger.get("reasoning", "")),
+            "output": tr(trigger.get("observation", "")),
             "confidence": _grade_to_confidence(s.get("evidence_grading")),
             "evidence": _step_evidence(s),
             "design_step_ref": s.get("step"),
@@ -96,10 +136,10 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
         steps.append({
             "step": idx,
             "kind": "intervention",
-            "title": "生物学瓶颈识别",
+            "title": t("agent_trace.bottleneck.title"),
             "status": "completed",
-            "input": "结果与讨论",
-            "operation": "定位限制目标表型的关键调控/代谢瓶颈",
+            "input": t("agent_trace.intervention.input_fallback"),
+            "operation": t("agent_trace.bottleneck.operation"),
             "output": list(diagnosis.get("bottlenecks") or []),
             "confidence": None,
             "evidence": list(diagnosis.get("observations") or []),
@@ -108,21 +148,21 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
         idx += 1
 
     if hypothesis_obj.get("hypothesis"):
-        modifications = "；".join(filter(None, (s.get("implementation_detail") for s in chain)))
-        measurements = "；".join(filter(None, ((s.get("result") or {}).get("metric") for s in chain)))
+        modifications = "；".join(filter(None, (tr(s.get("implementation_detail") or "") for s in chain)))
+        measurements = "；".join(filter(None, (tr((s.get("result") or {}).get("metric") or "") for s in chain)))
         steps.append({
             "step": idx,
             "kind": "logic_reconstruction",
-            "title": "实验逻辑重建",
+            "title": t("agent_trace.logic_reconstruction.title"),
             "status": "completed",
-            "input": "决策链全流程",
-            "operation": "串联 问题 → 假设 → 改造 → 测量 → 结论",
+            "input": t("agent_trace.logic_reconstruction.input"),
+            "operation": t("agent_trace.logic_reconstruction.operation"),
             "output": {
                 "problem": problem_statement,
-                "hypothesis": hypothesis_obj.get("hypothesis", ""),
+                "hypothesis": tr(hypothesis_obj.get("hypothesis", "")),
                 "modification": modifications,
                 "measurement": measurements,
-                "conclusion": hypothesis_obj.get("expected_effect", ""),
+                "conclusion": tr(hypothesis_obj.get("expected_effect", "")),
             },
             "confidence": _overall_confidence(chain),
             "evidence": [],
@@ -140,11 +180,11 @@ def build_agent_trace(raw: dict[str, Any]) -> list[dict[str, Any]]:
         steps.append({
             "step": idx,
             "kind": "evidence_validation",
-            "title": "证据校验",
+            "title": t("agent_trace.evidence_validation.title"),
             "status": "completed",
-            "input": "方法与结果部分",
-            "operation": "核验每一步决策背后的证据强度（实测/结构 vs. 推断/类比）",
-            "output": f"{hard}/{len(chain)} 步基于硬证据（实测、结构解析、化学计量等）",
+            "input": t("agent_trace.evidence_validation.input"),
+            "operation": t("agent_trace.evidence_validation.operation"),
+            "output": t("agent_trace.evidence_validation.output", hard=hard, total=len(chain)),
             "confidence": hard / len(chain) if chain else None,
             "evidence": sources,
             "design_step_ref": "all",
@@ -190,6 +230,19 @@ def build_experimental_design(raw: dict[str, Any]) -> list[dict[str, Any]]:
             "result": result_str,
             "evidence": _step_evidence(s),
             "evidence_grading": s.get("evidence_grading"),
+            # reason_nature/alternatives/rule were computed by ddr_converter
+            # (or hand-curated) but never reached this view or the frontend -
+            # a reviewer calibrating evidence_grading had no way to also see
+            # *why* the step was classified that way, or to catch a rule that
+            # should have been suppressed. See 老师 §4.2: reason_nature is
+            # the field that gates rule generation, so it has to be visible
+            # wherever a human is asked to calibrate a step.
+            "reason_nature": s.get("reason_nature"),
+            "alternatives": [
+                {"approach": a.get("approach", ""), "rejected_reason": a.get("rejected_reason", "")}
+                for a in (s.get("alternatives") or [])
+            ],
+            "rule": s.get("rule"),
         })
     if design:
         return design
@@ -213,6 +266,9 @@ def build_experimental_design(raw: dict[str, Any]) -> list[dict[str, Any]]:
             "result": a.get("expected_effect", ""),
             "evidence": [a["source"]] if a.get("source") else [],
             "evidence_grading": None,
+            "reason_nature": None,
+            "alternatives": [],
+            "rule": None,
         })
     return fallback
 

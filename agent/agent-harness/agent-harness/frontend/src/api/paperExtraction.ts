@@ -190,6 +190,18 @@ export interface EvidenceQuote {
   tableId: string | null;
 }
 
+/** skill07's per-field "how did the agent get here" trace (harness/
+ * paper_extraction/result_summary.py::_field_reasoning) - the closest thing
+ * this pipeline has to a step-by-step process narrative for one field,
+ * since the underlying LLM call returns only a final JSON object and never
+ * a logged chain-of-thought to replay. */
+export interface FieldReasoning {
+  extractionMethod: string | null;
+  notes: string | null;
+  inferenceMethod: string | null;
+  inferenceRationale: string | null;
+}
+
 export interface DesignField {
   key: string;
   label: string;
@@ -198,6 +210,7 @@ export interface DesignField {
   statusLabel: string;
   confidence: number | null;
   evidence: EvidenceQuote[];
+  reasoning: FieldReasoning;
   verified: boolean;
 }
 
@@ -276,6 +289,16 @@ function toEvidenceQuotes(raw: unknown): EvidenceQuote[] {
   });
 }
 
+function toFieldReasoning(raw: unknown): FieldReasoning {
+  const r = (raw as Record<string, unknown>) ?? {};
+  return {
+    extractionMethod: (r.extraction_method as string | null) ?? null,
+    notes: (r.notes as string | null) ?? null,
+    inferenceMethod: (r.inference_method as string | null) ?? null,
+    inferenceRationale: (r.inference_rationale as string | null) ?? null,
+  };
+}
+
 function toDesignFields(raw: unknown): DesignField[] {
   if (!Array.isArray(raw)) return [];
   return raw.map((f) => {
@@ -288,6 +311,7 @@ function toDesignFields(raw: unknown): DesignField[] {
       statusLabel: String(r.status_label ?? r.status ?? "unknown"),
       confidence: (r.confidence as number | null) ?? null,
       evidence: toEvidenceQuotes(r.evidence),
+      reasoning: toFieldReasoning(r.reasoning),
       verified: Boolean(r.verified),
     };
   });

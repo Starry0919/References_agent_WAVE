@@ -53,13 +53,13 @@ def test_opus_executor_reuses_content_addressed_cache(tmp_path, monkeypatch):
 
     import harness.paper_extraction.opus_extractor as module
     monkeypatch.setattr(module, "CACHE_DIR", tmp_path / "cache")
-    cache_path = module._cache_path(request, "claude-opus-5")
+    cache_path = module._cache_path(request, "k3")
     cache_path.parent.mkdir()
     cache_path.write_text(json.dumps({
         "status": "succeeded", "output": {"fields": {}}, "provenance": {},
     }), encoding="utf-8")
 
-    result = make_executor("claude-opus-5")(request)
+    result = make_executor("k3")(request)
     assert result["status"] == "succeeded"
     assert result["provenance"]["cache"]["hit"] is True
     assert result["provenance"]["cache"]["key_type"] == "content_sha256+model+skill_sha256"
@@ -69,12 +69,13 @@ def test_opus_executor_reuses_content_addressed_cache(tmp_path, monkeypatch):
 def test_opus_is_required_not_silently_relabelled(monkeypatch, tmp_path):
     clean = tmp_path / "paper.json"
     clean.write_text('{"paragraphs":[]}', encoding="utf-8")
-    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("KIMI_API_KEY", raising=False)
+    monkeypatch.delenv("MOONSHOT_API_KEY", raising=False)
     import harness.paper_extraction.opus_extractor as module
     monkeypatch.setattr(module, "CACHE_DIR", tmp_path / "empty-cache")
-    result = make_executor("claude-opus-5")(
+    result = make_executor("k3")(
         {"clean_document_artifact": {"clean_json_path": str(clean)}}
     )
     assert result["status"] == "terminal_failure"
     assert result["errors"][0]["code"] == "MODEL_NOT_CONFIGURED"
-    assert result["provenance"]["model"] == "claude-opus-5"
+    assert result["provenance"]["model"] == "k3"

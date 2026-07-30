@@ -219,4 +219,40 @@ CATALOG: dict[str, dict[str, str]] = {
         "zh-CN": "对 high_upside 方案进行单一改造的降级裁剪（排除 low_risk 已覆盖的部分），"
                  "作为完整组合干预在构建或质控失败时的备用方案",
     },
+    # harness/paper_extraction/reasoning_view.py::build_agent_trace - fixed
+    # narrative-shell labels (never per-record content, so hand-translated
+    # here rather than run through harness.translation.service like the
+    # actual per-record reasoning fragments in the same function are).
+    "agent_trace.problem_understanding.title": {"en-US": "Problem Understanding", "zh-CN": "问题理解"},
+    "agent_trace.problem_understanding.input": {"en-US": "Paper abstract & introduction", "zh-CN": "论文摘要与引言"},
+    "agent_trace.problem_understanding.operation": {
+        "en-US": "Identify the engineering/biological problem this paper attempts to solve",
+        "zh-CN": "识别该论文试图解决的工程/生物学问题",
+    },
+    "agent_trace.intervention.title": {
+        "en-US": "Bottleneck Identification & Modification Extraction · {target_label}",
+        "zh-CN": "瓶颈识别与改造提取 · {target_label}",
+    },
+    "agent_trace.intervention.input_fallback": {"en-US": "Results & Discussion", "zh-CN": "结果与讨论"},
+    "agent_trace.bottleneck.title": {"en-US": "Biological Bottleneck Identification", "zh-CN": "生物学瓶颈识别"},
+    "agent_trace.bottleneck.operation": {
+        "en-US": "Locate the key regulatory/metabolic bottleneck limiting the target phenotype",
+        "zh-CN": "定位限制目标表型的关键调控/代谢瓶颈",
+    },
+    "agent_trace.logic_reconstruction.title": {"en-US": "Experimental Logic Reconstruction", "zh-CN": "实验逻辑重建"},
+    "agent_trace.logic_reconstruction.input": {"en-US": "Full decision chain", "zh-CN": "决策链全流程"},
+    "agent_trace.logic_reconstruction.operation": {
+        "en-US": "Chain problem -> hypothesis -> modification -> measurement -> conclusion",
+        "zh-CN": "串联 问题 → 假设 → 改造 → 测量 → 结论",
+    },
+    "agent_trace.evidence_validation.title": {"en-US": "Evidence Validation", "zh-CN": "证据校验"},
+    "agent_trace.evidence_validation.input": {"en-US": "Methods & Results sections", "zh-CN": "方法与结果部分"},
+    "agent_trace.evidence_validation.operation": {
+        "en-US": "Verify the evidence strength behind each decision (measured/structural vs. inferred/analogical)",
+        "zh-CN": "核验每一步决策背后的证据强度（实测/结构 vs. 推断/类比）",
+    },
+    "agent_trace.evidence_validation.output": {
+        "en-US": "{hard}/{total} steps based on hard evidence (measurement, structural resolution, stoichiometry, etc.)",
+        "zh-CN": "{hard}/{total} 步基于硬证据（实测、结构解析、化学计量等）",
+    },
 }

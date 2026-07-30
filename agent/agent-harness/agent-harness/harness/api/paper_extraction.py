@@ -23,8 +23,10 @@ from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from harness.paper_extraction import service
+from harness.paper_extraction.calibration import get_conflicts, record_extraction_attempt
 from harness.paper_extraction.ddr_converter import ensure_task_saved_as_evidence
 from harness.paper_extraction.result_summary import build_extraction_summary
+from harness.paper_extraction.rule_distillation import distill_rules, search_rules
 
 router = APIRouter(prefix="/api/paper-extraction", tags=["paper-extraction"])
 logger = logging.getLogger(__name__)
@@ -134,6 +136,53 @@ def get_task(task_id: str) -> dict[str, Any]:
         **status, "result": result, "skill_states": skill_states, "skill_progress": skill_progress,
         "skill_warnings": skill_warnings, "extraction_summary": extraction_summary,
     }
+
+
+@router.get("/rules")
+def search_rules_route(query: str = "") -> dict[str, Any]:
+    """Rule-library keyword search (老师 §4.5/§5.3: 自建 DB "规则库") -
+    previously nothing in the codebase read ``knowledge/biological_rules/
+    rules.json`` at all; an empty query returns every rule."""
+    rules = search_rules(query)
+    return {"rules": rules, "total": len(rules)}
+
+
+@router.post("/rules/distill")
+def distill_rules_route(write: bool = False) -> dict[str, Any]:
+    """Scan the DDR knowledge base for eligible rule-bearing decision-chain
+    steps not yet represented in the rule library, and (if `write`) append
+    them as new pending-calibration entries. Never touches DDR-001..005's
+    already hand-distilled RULE-001..009 — see rule_distillation.py's
+    module docstring for why."""
+    candidates = distill_rules(write=write)
+    return {"new_candidates": candidates, "written": write}
+
+
+class ExtractionAttemptBody(BaseModel):
+    annotator: str
+    decision_chain: list[dict[str, Any]]
+
+
+@router.post("/ddr/{ddr_id}/attempts")
+def submit_extraction_attempt(ddr_id: str, body: ExtractionAttemptBody) -> dict[str, Any]:
+    """Record one annotator's independent decision_chain draft for a saved
+    DDR (老师 §4.3 step 3: dual independent extraction → conflict detection
+    → calibration). Two attempts recorded here is what makes
+    GET .../conflicts below meaningful — a single attempt has nothing to
+    compare against."""
+    try:
+        return record_extraction_attempt(ddr_id, body.annotator, body.decision_chain)
+    except FileNotFoundError as exc:
+        raise HTTPException(404, str(exc)) from exc
+
+
+@router.get("/ddr/{ddr_id}/conflicts")
+def get_extraction_conflicts(ddr_id: str) -> dict[str, Any]:
+    try:
+        conflicts = get_conflicts(ddr_id)
+    except FileNotFoundError as exc:
+        raise HTTPException(404, str(exc)) from exc
+    return {"ddr_id": ddr_id, "conflicts": conflicts, "total": len(conflicts)}
 
 
 @router.delete("/tasks/{task_id}")

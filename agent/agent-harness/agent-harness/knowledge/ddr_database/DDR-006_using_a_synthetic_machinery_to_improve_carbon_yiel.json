@@ -1,0 +1,753 @@
+{
+  "ddr_id": "DDR-006",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Using a synthetic machinery to improve carbon yield with acetylphosphate as the core",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Using a synthetic machinery to improve carbon yield with acetylphosphate as the core",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1038/s41467-023-41135-7"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "In vitro assays, 50 mM Tris/HCl pH 8.0, 37 °C, 30 min"
+      },
+      "trigger": {
+        "observation": "",
+        "reasoning": "Select SBPase/FBPase and validate Xfspk in vitro",
+        "source_location": "E. coli BL21(DE3) for protein expression"
+      },
+      "evidence": {
+        "description": "Phosphate release (malachite green, 620 nm); AcP formation",
+        "source": "论文实测",
+        "source_location": "Substrate-specific reactions; standards KH2PO4 0-0.5 mM",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Expression/purification of Shb17 and GlpX homologs from 6 species; Xfspk from B. longum NCC2705",
+      "result": {
+        "metric": "Phosphate release (malachite green, 620 nm); AcP formation",
+        "before": "",
+        "after": "SyGlpX selected (highest SBPase + FBPase activity); Xfspk validated on S7P/F6P/X5P",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 2,
+      "design_action": "M5",
+      "target": {
+        "gene": "tktAB",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB and modified M9 + 1 g/L yeast extract ± potassium acetate"
+      },
+      "trigger": {
+        "observation": "SyGlpX selected (highest SBPase + FBPase activity); Xfspk validated on S7P/F6P/X5P",
+        "reasoning": "Validate SCTPK function in vivo",
+        "source_location": "E. coli BW25113 derivatives Q3952, Q3952ΔaceE, Q3964, gnd mutants"
+      },
+      "evidence": {
+        "description": "Growth, AcP, pyruvate",
+        "source": "论文实测",
+        "source_location": "Q3952 control; WT BW25113",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "Deletion of tktAB, talAB, poxB, ldhA, adhE, pflB, aceE, gnd; introduction of Xfspk + SyGlpX",
+      "result": {
+        "metric": "Growth, AcP, pyruvate",
+        "before": "",
+        "after": "SCTPK rescues aceE and gnd growth defects; AcP +1.79-fold; pyruvate elevated",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 3,
+      "design_action": "M6",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 + 2% glucose for AcP assay"
+      },
+      "trigger": {
+        "observation": "SCTPK rescues aceE and gnd growth defects; AcP +1.79-fold; pyruvate elevated",
+        "reasoning": "Hierarchical knockdown of pfkA/gapA/gapB to optimize SCTPK",
+        "source_location": "Q3964-derived strains"
+      },
+      "evidence": {
+        "description": "AcP, growth, mRNA (qRT-PCR), CO2 emission, acetate",
+        "source": "论文实测",
+        "source_location": "Stem-only control strain (no asRNA)",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Paired-termini asRNA arrays, variable length (0-200 nt) and promoters (Pj23116/118/119)",
+      "result": {
+        "metric": "AcP, growth, mRNA (qRT-PCR), CO2 emission, acetate",
+        "before": "",
+        "after": "Q4531 (strong pfkA / moderate gapA / weak gapB repression): AcP 2.83× WT, CO2 -52.6%, acetate 11% of WT",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 4,
+      "design_action": "M6",
+      "target": {
+        "gene": "phlO",
+        "enzyme": "",
+        "pathway": "",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "Q4531 (strong pfkA / moderate gapA / weak gapB repression): AcP 2.83× WT, CO2 -52.6%, acetate 11% of WT",
+        "reasoning": "Build AcP-activated (AI-AV) and AcP-inhibited (RI-RIV) genetic circuits",
+        "source_location": "BW25113 ΔglnL platform with rrnB T1 terminator insertion"
+      },
+      "evidence": {
+        "description": "GFP/BFP/mCherry fluorescence, confocal microscopy, western blot, β-gal",
+        "source": "论文实测",
+        "source_location": "phlO mutation, DAPG addition; strain without fluorescent protein",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "glnAp2 enhancer/governor mutations (9-promoter library), NRI expression tuning; PhlF-cI fusion with linker and phlO operator spacing variants",
+      "result": {
+        "metric": "GFP/BFP/mCherry fluorescence, confocal microscopy, western blot, β-gal",
+        "before": "",
+        "after": "Dynamic range up to 57.1-fold; PhlF-(PT)4P-cI with 66-bp spacing best repression; DNA-looping 11-bp periodicity",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 5,
+      "design_action": "M7",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": null
+      },
+      "trigger": {
+        "observation": "Dynamic range up to 57.1-fold; PhlF-(PT)4P-cI with 66-bp spacing best repression; DNA-looping 11-bp periodicity",
+        "reasoning": "Assemble and characterize AcP-centered gene-metabolic oscillators",
+        "source_location": "BW25113 derivatives incl. Q4602 (SCTPK + Oscillator III)"
+      },
+      "evidence": {
+        "description": "Time-course fluorescence, AcP, anti-AcK immunoblot, spatial patterning on agar",
+        "source": "论文实测",
+        "source_location": "Constitutive GFP/mCherry strain",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Oscillators I-V combining activation/repression circuits controlling pta and xfspk",
+      "result": {
+        "metric": "Time-course fluorescence, AcP, anti-AcK immunoblot, spatial patterning on agar",
+        "before": "",
+        "after": "Unsustained, sustained (~12 h, III), accelerated (~9 h, IV), and damped (V) oscillations; AcP homeostasis restored; spatial red/green patterning",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 6,
+      "design_action": "M7",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Shake flask (50 mL, 37 °C); 5-L fed-batch, pH 7.0, DO>40%, 50% glucose feed"
+      },
+      "trigger": {
+        "observation": "Unsustained, sustained (~12 h, III), accelerated (~9 h, IV), and damped (V) oscillations; AcP homeostasis restored; spatial red/green patterning",
+        "reasoning": "Apply machinery to 3HP, MVA, PHB production",
+        "source_location": "BW25113/Q3952/Q4531 backgrounds with pathway plasmids; Q4617, Q4624, Q4632 best strains"
+      },
+      "evidence": {
+        "description": "HPLC titers, yields, byproducts, OD",
+        "source": "论文实测",
+        "source_location": "No-glucose medium control for extract contribution; WT-background pathway strains (Q4607, Q4618)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Static vs dynamic switch vs oscillator regulation of pathway genes",
+      "result": {
+        "metric": "HPLC titers, yields, byproducts, OD",
+        "before": "",
+        "after": "3HP 73.42 g/L 0.51 g/g (fed-batch); MVA 4.67 g/L 0.61 g/g (>native theoretical); PHB 3.31 g/L 0.41 g/g; byproducts suppressed",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": {
+      "value": "Construct and optimize a synthetic carbon-conserving pathway (SCTPK) plus AcP-responsive gene-metabolic oscillator in E. coli to improve carbon atom economy and yield of acetyl-CoA-derived chemicals (3HP, MVA, PHB).",
+      "status": "reported",
+      "confidence": 0.98,
+      "extraction_method": "abstract_and_intro_and_discussion",
+      "evidence_ids": [
+        "using_a_synthetic_machinery_to_improve_carbon_yield_with_acetylphosphate_as_the_core_p006",
+        "using_a_synthetic_machinery_to_improve_carbon_yield_with_acetylphosphate_as_the_core_p015",
+        "discussion_p001"
+      ],
+      "notes": "Subject: current_article."
+    },
+    "problem_type": [
+      "competing pathway",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "SyGlpX selected (highest SBPase + FBPase activity); Xfspk validated on S7P/F6P/X5P",
+      "SCTPK rescues aceE and gnd growth defects; AcP +1.79-fold; pyruvate elevated",
+      "Q4531 (strong pfkA / moderate gapA / weak gapB repression): AcP 2.83× WT, CO2 -52.6%, acetate 11% of WT",
+      "Dynamic range up to 57.1-fold; PhlF-(PT)4P-cI with 66-bp spacing best repression; DNA-looping 11-bp periodicity",
+      "Unsustained, sustained (~12 h, III), accelerated (~9 h, IV), and damped (V) oscillations; AcP homeostasis restored; spat"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "SyGlpX selected (highest SBPase + FBPase activity); Xfspk validated on S7P/F6P/X5P",
+      "SCTPK rescues aceE and gnd growth defects; AcP +1.79-fold; pyruvate elevated",
+      "Q4531 (strong pfkA / moderate gapA / weak gapB repression): AcP 2.83× WT, CO2 -52.6%, acetate 11% of WT",
+      "Dynamic range up to 57.1-fold; PhlF-(PT)4P-cI with 66-bp spacing best repression; DNA-looping 11-bp periodicity",
+      "Unsustained, sustained (~12 h, III), accelerated (~9 h, IV), and damped (V) oscillations; AcP homeostasis restored; spatial red/green patterning"
+    ],
+    "bottlenecks": [
+      ": ",
+      "tktAB: SyGlpX selected (highest SBPase + FBPase activity); Xfspk validated on S7P/F6P/X",
+      ": SCTPK rescues aceE and gnd growth defects; AcP +1.79-fold; pyruvate elevated",
+      "phlO: Q4531 (strong pfkA / moderate gapA / weak gapB repression): AcP 2.83× WT, CO2 -5",
+      ": Dynamic range up to 57.1-fold; PhlF-(PT)4P-cI with 66-bp spacing best repression",
+      ": Unsustained, sustained (~12 h, III), accelerated (~9 h, IV), and damped (V) osci"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-07-29",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。17 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "344c3aba23394f08a109c972a9eedd00",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "6473b7cfff1345cdaddb61d29c0e8bab_s41467-023-41135-7",
+      "identity": {
+        "paper_id": "6473b7cfff1345cdaddb61d29c0e8bab_s41467-023-41135-7",
+        "title": "Using a synthetic machinery to improve carbon yield with acetylphosphate as the core",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1038/s41467-023-41135-7"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "using_a_synthetic_machinery_to_improve_carbon_yield_with_acetylphosphate_as_the_core_p006",
+          "strains_and_plasmids_p001",
+          "analytical_methods_p001"
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli BW25113",
+          "paper_strain_normalized": "Escherichia coli BW25113 (K-12 derivative)",
+          "role": "parental",
+          "paper_label": "wild-type",
+          "lineage_or_engineering_context": "Standard laboratory K-12 strain used as host for SCTPK construction, optimization, and application; 'wild type' refers to unmodified BW25113, not a natural isolate.",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type laboratory strain",
+          "evidence": [
+            "strains_and_plasmids_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly stated in Methods as host for SCTPK work."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Q3952",
+          "paper_strain_normalized": "E. coli BW25113 ΔtktAB ΔtalAB ΔpoxB ΔldhA ΔadhE ΔpflB",
+          "role": "engineered",
+          "paper_label": "Q3952",
+          "lineage_or_engineering_context": "Starting strain for SCTPK; deletions exclude NOG interference and byproduct formation",
+          "combination_status": "demonstrated",
+          "genotype": "ΔtktAB ΔtalAB ΔpoxB ΔldhA ΔadhE ΔpflB",
+          "evidence": [
+            "construction_of_the_carbon_conservation_pathway_sctpk_in_e_coli_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly described as starting strain with listed deletions."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Q3964",
+          "paper_strain_normalized": "E. coli Q3952 ΔaceE + Xfspk + SyGlpX",
+          "role": "engineered",
+          "paper_label": "Q3964",
+          "lineage_or_engineering_context": "First SCTPK-carrying strain",
+          "combination_status": "demonstrated",
+          "genotype": "Q3952 ΔaceE with Synechocystis glpX integrated (Pj23119, B0034) and plasmid-borne xfspk",
+          "evidence": [
+            "construction_of_the_carbon_conservation_pathway_sctpk_in_e_coli_p002",
+            "optimization_of_the_sctpk_for_higher_acp_production_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Described as generated by introducing Xfspk and SyGlpX into Q3952 ΔaceE."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Q4531",
+          "paper_strain_normalized": "E. coli Q3964 + combinatorial asRNA (strong anti-pfkA, moderate anti-gapA, weak anti-gapB)",
+          "role": "engineered",
+          "paper_label": "Q4531",
+          "lineage_or_engineering_context": "Best optimized SCTPK strain",
+          "combination_status": "demonstrated",
+          "genotype": "hierarchical asRNA repression of pfkA/gapA/gapB in SCTPK background",
+          "evidence": [
+            "optimization_of_the_sctpk_for_higher_acp_production_p006"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named explicitly as best strain with hierarchical repression."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Q4602 / Q4617 / Q4624 / Q4632 / Q4562 / Q4607 / Q4618 / Q4634",
+          "paper_strain_normalized": "BW25113-derived application and circuit strains",
+          "role": "engineered",
+          "paper_label": "application strains",
+          "lineage_or_engineering_context": "Q4602: SCTPK+Oscillator III; Q4617: best 3HP (SCTPK+Oscillator IV); Q4624: best MVA; Q4632: best PHB; Q4562: circuit RI carrier; Q4607/Q4618: pathway-only controls; Q4634: Q3952+3HP pathway",
+          "combination_status": "demonstrated",
+          "genotype": "requires_supplement (Supplementary Data 3)",
+          "evidence": [
+            "establishment_of_acp_centered_oscillation_system_p027",
+            "establishment_of_acp_centered_oscillation_system_p028",
+            "establishment_of_acp_centered_oscillation_system_p030",
+            "establishment_of_acp_centered_oscillation_system_p026"
+          ],
+          "status": "reported",
+          "confidence": 0.85,
+          "reasoning": "Strain roles stated in Results; exact genotypes in supplement."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DH5α, BL21(DE3)",
+          "paper_strain_normalized": "E. coli DH5α; E. coli BL21(DE3)",
+          "role": "other",
+          "paper_label": "cloning/expression hosts",
+          "lineage_or_engineering_context": "DH5α for plasmid construction; BL21(DE3) with pET28a for enzyme purification",
+          "combination_status": "not_applicable",
+          "genotype": "not_applicable",
+          "evidence": [
+            "strains_and_plasmids_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly stated in Methods."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; paper-internal extraction only."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 4 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    }
+  }
+}

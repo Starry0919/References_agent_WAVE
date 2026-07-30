@@ -270,6 +270,8 @@ function LiteratureEvidenceTab() {
                 isLoading={detailQuery.isLoading}
                 hasSelection={!!selectedSourceId}
                 onClose={() => setSelectedSourceId(null)}
+                projectId={projectId}
+                isLocalDdr={searchSource === "local_ddr"}
               />
             </div>
           </div>
@@ -350,11 +352,15 @@ function LiteratureDetailPanel({
   isLoading,
   hasSelection,
   onClose,
+  projectId,
+  isLocalDdr,
 }: {
   detail: EvidenceDocumentDetail | null;
   isLoading: boolean;
   hasSelection: boolean;
   onClose: () => void;
+  projectId: string | undefined;
+  isLocalDdr: boolean;
 }) {
   const { t } = useI18n();
   if (!hasSelection) {
@@ -414,6 +420,21 @@ function LiteratureDetailPanel({
         <a href={detail.url} target="_blank" rel="noreferrer" className="w-fit text-[11px] text-accent-strong underline decoration-dotted underline-offset-2">
           {t("page3.detail.openSource")}
         </a>
+      )}
+
+      {/* Only local_ddr documents have a matching PaperEvidenceDetailPage
+          route (harness/api/generation.py::get_evidence_document) - this is
+          where the 抽取思路/实验设计思路/质量与置信度/原文对照 tabs live,
+          none of which fit in this narrow inline panel. Without this the
+          panel above was a dead end: nothing here linked back out to them. */}
+      {isLocalDdr && projectId && (
+        <Link
+          to={`/projects/${projectId}/evidence/${detail.sourceId}`}
+          className="flex w-fit items-center gap-1 rounded border border-border bg-surface px-2 py-1 text-[11px] font-medium text-ink-muted hover:bg-surface-sunken"
+        >
+          <ExternalLink size={11} aria-hidden />
+          {t("page3.detail.viewFullDetail")}
+        </Link>
       )}
 
       {detail.abstractOrSummary && (

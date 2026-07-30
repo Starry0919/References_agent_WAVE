@@ -198,6 +198,22 @@
         "paper_extraction_task_id": {
           "type": "string",
           "description": "如果经由 paper_extraction Skill 半自动抽取,记录 task_id 以便追溯"
+        },
+        "extraction_attempts": {
+          "type": "array",
+          "description": "[v2.1 新增, 可选] 双人独立抽取记录(老师 §4.3 步骤3)。每条 = 一位标注人独立写的 decision_chain 草稿。由 harness/paper_extraction/calibration.py::record_extraction_attempt 追加;不存在时视为只有一次抽取。",
+          "items": {
+            "type": "object",
+            "fields": {
+              "annotator": {"type": "string"},
+              "decision_chain": {"type": "array", "description": "该标注人独立写的 decision_chain,字段结构同顶层 decision_chain"},
+              "recorded_at": {"type": "string", "description": "ISO 时间戳"}
+            }
+          }
+        },
+        "conflict_count": {
+          "type": "integer",
+          "description": "[v2.1 新增, 可选] extraction_attempts 中 ≥2 人在 design_action/evidence_grading/reason_nature/rule 上不一致的 (step, field) 数量,由 calibration.detect_conflicts 计算。非零时 calibration_status 应为 'disputed'。"
         }
       }
     }

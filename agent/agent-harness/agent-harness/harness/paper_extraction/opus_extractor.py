@@ -12,15 +12,15 @@ import httpx
 
 from . import _VENDOR_DIR
 
-MODEL = os.getenv("PAPER_EXTRACTION_MODEL", "claude-opus-5")
+MODEL = os.getenv("PAPER_EXTRACTION_MODEL", "k3")
 CACHE_DIR = _VENDOR_DIR / "paper_experimental_design_extraction" / "storage" / "extraction_cache"
-ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
+KIMI_URL = "https://api.kimi.com/coding/v1/chat/completions"
 SKILL_PATH = Path(__file__).with_name("SKILL.md")
-# Opt-in only: without ANTHROPIC_API_KEY this stage fails loudly by default
+# Opt-in only: without KIMI_API_KEY this stage fails loudly by default
 # (test_opus_is_required_not_silently_relabelled) rather than silently
 # substituting a model whose extraction quality/behavior for this task is
 # unproven. Set this to use whatever harness.providers/.env currently
-# resolves to instead (e.g. Kimi K3) when no Anthropic credential exists.
+# resolves to instead when no Kimi K3 credential exists.
 _ALLOW_FALLBACK_MODEL = os.getenv("PAPER_EXTRACTION_ALLOW_FALLBACK_MODEL", "").strip().lower() in {"1", "true", "yes"}
 # This call sends a WHOLE paper (skill_instructions + full document JSON) as
 # one prompt and budgets max_tokens=24000 for a reasoning model's response -
@@ -127,32 +127,38 @@ def _build_prompt(request: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _call_anthropic(api_key: str, model: str, prompt: dict[str, Any]) -> tuple[dict[str, Any], str, dict[str, Any]]:
+def _call_kimi(api_key: str, model: str, prompt: dict[str, Any]) -> tuple[dict[str, Any], str, dict[str, Any]]:
+    # Kimi Code member-benefit credential (not the Moonshot open platform):
+    # OpenAI-compatible protocol at api.kimi.com/coding/v1, model id "k3"
+    # (not "kimi-k3"), reasoning_effort instead of temperature/top_p/n -
+    # this endpoint rejects sampling params outright.
     response = httpx.post(
-        ANTHROPIC_URL,
-        headers={"x-api-key": api_key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
+        KIMI_URL,
+        headers={"Authorization": f"Bearer {api_key}", "content-type": "application/json"},
         json={
-            "model": model, "max_tokens": 12000, "temperature": 0,
-            "system": _EXTRACTION_SYSTEM_PROMPT,
-            "messages": [{"role": "user", "content": json.dumps(prompt, ensure_ascii=False)}],
+            "model": model, "reasoning_effort": "max",
+            "response_format": {"type": "json_object"},
+            "messages": [
+                {"role": "system", "content": _EXTRACTION_SYSTEM_PROMPT},
+                {"role": "user", "content": json.dumps(prompt, ensure_ascii=False)},
+            ],
         },
         timeout=180.0,
     )
     response.raise_for_status()
     payload = response.json()
-    text = "".join(block.get("text", "") for block in payload.get("content", []) if block.get("type") == "text")
+    text = payload.get("choices", [{}])[0].get("message", {}).get("content", "")
     output = json.loads(text.removeprefix("```json").removesuffix("```").strip())
-    usage = {"input_tokens": payload.get("usage", {}).get("input_tokens"), "output_tokens": payload.get("usage", {}).get("output_tokens")}
+    usage = {"input_tokens": payload.get("usage", {}).get("prompt_tokens"), "output_tokens": payload.get("usage", {}).get("completion_tokens")}
     return output, payload.get("model", model), usage
 
 
 def _call_configured_provider(prompt: dict[str, Any]) -> tuple[dict[str, Any] | None, str, dict[str, Any], str | None]:
-    """Fallback path when no ANTHROPIC_API_KEY is configured: use whatever
+    """Fallback path when no KIMI_API_KEY is configured: use whatever
     OpenAI-compatible provider `harness.providers`/`.env` currently resolves
-    to (this deployment: Kimi K3), via the same structured-JSON client
-    `harness.llm_generation` already uses elsewhere, instead of hard-failing
-    the whole extraction stage just because Claude Opus specifically isn't
-    available."""
+    to, via the same structured-JSON client `harness.llm_generation` already
+    uses elsewhere, instead of hard-failing the whole extraction stage just
+    because Kimi K3 specifically isn't available."""
     from harness.llm_generation.client import StructuredGenerationClient
 
     client = StructuredGenerationClient()
@@ -181,11 +187,11 @@ def make_executor(model: str = MODEL):
     extraction skill therefore invalidates stale extractions automatically.
     """
     def execute(request: dict[str, Any]) -> dict[str, Any]:
-        api_key = os.getenv("ANTHROPIC_API_KEY")
+        api_key = os.getenv("KIMI_API_KEY") or os.getenv("MOONSHOT_API_KEY")
         use_fallback = not api_key and _ALLOW_FALLBACK_MODEL
-        # Cache key stays pinned to `model` (e.g. "claude-opus-5") whenever
+        # Cache key stays pinned to `model` (e.g. "k3") whenever
         # the fallback isn't in play, unchanged from before this existed -
-        # a cache entry written under the Opus path must never be reused as
+        # a cache entry written under the Kimi K3 path must never be reused as
         # if a different model had produced it, and vice versa.
         cache_path = _cache_path(request, _fallback_model_name() if use_fallback else model)
         if cache_path.is_file():
@@ -214,16 +220,16 @@ def make_executor(model: str = MODEL):
                     "code": "MODEL_NOT_CONFIGURED", "local_code": "EXP005",
                     "category": "model", "message": (
                         f"{model} is required for experimental-design extraction; "
-                        "set ANTHROPIC_API_KEY or provide a skill07 executor."
+                        "set KIMI_API_KEY or provide a skill07 executor."
                     ),
                     "retryable": True, "severity": "error", "context": {"model": model},
-                    "suggested_action": "Configure the Anthropic credential and retry.",
+                    "suggested_action": "Configure the Kimi K3 credential and retry.",
                 }],
                 "metrics": {},
                 "provenance": {
                     "skill_id": "skill07_experiment_extraction", "skill_version": "opus-1",
                     "input_hash": hashlib.sha256(_source_bytes(request)).hexdigest(),
-                    "output_hash": None, "extractor": "anthropic_messages",
+                    "output_hash": None, "extractor": "kimi_chat_completions",
                     "model": model, "skill_sha256": _skill_hash(),
                     "cache": {"hit": False, "path": str(cache_path), "key_type": "content_sha256+model+skill_sha256"},
                 },
@@ -232,12 +238,22 @@ def make_executor(model: str = MODEL):
 
         prompt = _build_prompt(request)
         if api_key:
-            output, resolved_model, usage = _call_anthropic(api_key, model, prompt)
-            extractor_name = "anthropic_messages"
+            output, resolved_model, usage = _call_kimi(api_key, model, prompt)
+            extractor_name = "kimi_chat_completions"
             error = None
         else:
             output, resolved_model, usage, error = _call_configured_provider(prompt)
             extractor_name = "openai_compatible_chat"
+            # Kimi K3 is the only backend this platform runs on (BUILD_LOOP
+            # §1.4) - the generic-provider fallback above ultimately still
+            # resolves to it via LLM_PROVIDER=kimi in .env. When even that
+            # can't resolve a provider at all, `_call_configured_provider`
+            # has nothing better to report than the placeholder "unknown" -
+            # that must never replace the model this call actually asked
+            # for (test_opus_is_required_not_silently_relabelled: a total
+            # configuration failure still names "k3", not "unknown").
+            if not resolved_model or resolved_model == "unknown":
+                resolved_model = model
 
         if error is not None:
             return {
@@ -248,7 +264,7 @@ def make_executor(model: str = MODEL):
                     "code": "MODEL_NOT_CONFIGURED", "local_code": "EXP005",
                     "category": "model", "message": f"experimental-design extraction failed via {resolved_model}: {error}",
                     "retryable": True, "severity": "error", "context": {"model": resolved_model},
-                    "suggested_action": "Configure a working ANTHROPIC_API_KEY or LLM_PROVIDER/*_API_KEY and retry.",
+                    "suggested_action": "Configure a working KIMI_API_KEY or LLM_PROVIDER/*_API_KEY and retry.",
                 }],
                 "metrics": {},
                 "provenance": {
@@ -356,7 +372,7 @@ def _normalize_skill07_output(output: dict[str, Any]) -> dict[str, Any]:
 
 def _fallback_model_name() -> str:
     """Best-effort model name for cache-key/provenance purposes when no
-    ANTHROPIC_API_KEY is configured - resolved lazily (not at import time)
+    KIMI_API_KEY is configured - resolved lazily (not at import time)
     so a missing/misconfigured provider doesn't crash the whole module."""
     try:
         from harness.providers import resolve

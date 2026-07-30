@@ -762,6 +762,7 @@ const dict = {
     "page3.detail.close": "关闭详情面板",
     "page3.detail.resizeHandle": "拖动以调整左右宽度",
     "page3.detail.openSource": "打开原文链接 ↗",
+    "page3.detail.viewFullDetail": "查看完整详情与原文对照 →",
     "page3.detail.abstractOrSummary": "摘要/问题概述",
     "page3.detail.extractedDesignTitle": "抽取出的实验设计思路",
     "page3.detail.noExtractedDesignTitle": "该文献尚无抽取出的实验设计内容",
@@ -1018,6 +1019,7 @@ const dict = {
     "page5.result.tabReasoning": "抽取思路",
     "page5.result.tabDesign": "实验设计思路",
     "page5.result.tabQuality": "质量与置信度",
+    "page5.result.tabCompare": "原文对照",
     "page5.result.articleTypeTitle": "论文类型判定",
     "page5.result.articleType.primary_research": "原创实验研究",
     "page5.result.articleType.review_article": "综述",
@@ -1054,6 +1056,20 @@ const dict = {
     "page5.result.independentReviewTitle": "独立质控 · 供人工审核参考",
     "page5.result.independentReviewHint": "以下为独立质控流程生成的复核任务，用于审核抽取质量，不会阻塞上方结果的展示。",
     "page5.result.reviewTaskCount": "项待复核",
+    "page5.result.compare.hint": "第一栏是 Agent 抽取该字段时的过程说明（抽取方式、依据、推断理由），第二栏是抽取并结构化后的最终思路，第三栏是对应的论文原文引用——逐行核对三者是否一致，是发现抽取偏差最直接的方式。",
+    "page5.result.compare.processColumn": "Agent 抽取过程",
+    "page5.result.compare.agentColumn": "Agent 抽取的思路",
+    "page5.result.compare.paperColumn": "论文原文引用",
+    "page5.result.compare.noQuote": "论文原文中未找到对应引用——该字段可能是模型推断，而非原文直接报道，请重点核查。",
+    "page5.result.compare.extractionMethodLabel": "抽取方式",
+    "page5.result.compare.inferenceLabel": "推断依据",
+    "page5.result.compare.noProcessNote": "该字段未记录额外的抽取过程说明。",
+    "page5.result.extractionMethod.rule": "基于规则匹配抽取",
+    "page5.result.extractionMethod.rule_based": "基于规则匹配抽取",
+    "page5.result.extractionMethod.hybrid": "规则匹配 + 模型判断",
+    "page5.result.extractionMethod.model_inference": "模型推断",
+    "page5.result.extractionMethod.direct_quote": "论文原文直接引用",
+    "page5.result.extractionMethod.not_applicable": "不适用",
 
     "nav.knowledgeDistillation": "教材知识蒸馏",
     "page6.title": "生物学知识蒸馏",
@@ -1199,6 +1215,88 @@ const dict = {
     "paperEvidence.extractionTitle": "Agent 解析思路与抽取结果",
     "paperEvidence.noAutoDetailTitle": "无自动抽取记录",
     "paperEvidence.noAutoDetailDetail": "该文献证据为人工整理录入，没有对应的论文抽取逐步解析记录。",
+    "paperEvidence.header.viewOriginal": "查看原文",
+    "paperEvidence.header.downloadJson": "下载抽取 JSON",
+    "paperEvidence.header.viewGraph": "查看证据关系图",
+    "paperEvidence.header.statusCompleted": "抽取已完成",
+    "paperEvidence.header.statusPending": "待复核",
+    "paperEvidence.header.confidenceLabel": "证据置信度",
+    "paperEvidence.header.confidenceHigh": "高",
+    "paperEvidence.header.confidenceMedium": "中",
+    "paperEvidence.header.confidenceLow": "低",
+    "paperEvidence.trace.title": "Agent 推理轨迹",
+    "paperEvidence.trace.subtitle": "Agent 可观测的分析步骤记录，而非隐藏的模型思维链",
+    "paperEvidence.trace.emptyTitle": "暂无可展示的推理步骤",
+    "paperEvidence.trace.stepLabel": "步骤",
+    "paperEvidence.trace.input": "输入",
+    "paperEvidence.trace.operation": "操作",
+    "paperEvidence.trace.output": "输出",
+    "paperEvidence.trace.kind.problemUnderstanding": "问题理解",
+    "paperEvidence.trace.kind.intervention": "瓶颈识别与改造提取",
+    "paperEvidence.trace.kind.logicReconstruction": "实验逻辑重建",
+    "paperEvidence.trace.kind.evidenceValidation": "证据校验",
+    "paperEvidence.trace.logic.problem": "问题",
+    "paperEvidence.trace.logic.hypothesis": "假设",
+    "paperEvidence.trace.logic.modification": "改造",
+    "paperEvidence.trace.logic.measurement": "测量",
+    "paperEvidence.trace.logic.conclusion": "结论",
+    "paperEvidence.design.title": "论文实验设计重建",
+    "paperEvidence.design.subtitle": "从论文重构出的合成生物学实验 SOP，而非摘要复述",
+    "paperEvidence.design.emptyTitle": "暂无可展示的实验设计步骤",
+    "paperEvidence.design.stepLabel": "实验步骤",
+    "paperEvidence.design.why": "为什么（WHY）",
+    "paperEvidence.design.how": "怎么做（HOW）",
+    "paperEvidence.design.problem": "问题",
+    "paperEvidence.design.hypothesis": "工程假设",
+    "paperEvidence.design.modification": "改造方式",
+    "paperEvidence.design.validation": "验证方法",
+    "paperEvidence.design.result": "结果",
+    "paperEvidence.design.reasonNature": "理由性质",
+    "paperEvidence.design.alternatives": "备选方案",
+    "paperEvidence.design.rule": "可泛化规则",
+    "paperEvidence.design.ruleSuppressed": "理由性质非机理推断/文献类比，未生成规则",
+    "paperEvidence.provenance.title": "证据溯源",
+    "paperEvidence.provenance.emptyTitle": "暂无可展示的证据溯源记录",
+    "paperEvidence.provenance.claim": "结论",
+    "paperEvidence.provenance.source": "证据来源",
+    "paperEvidence.graph.title": "证据关系图",
+    "paperEvidence.graph.subtitle": "按决策链顺序展示每一实验步骤及其支持证据",
+    "paperEvidence.graph.close": "关闭证据关系图",
+    "paperEvidence.graph.empty": "暂无可展示的证据关系",
+    "paperEvidence.calibration.title": "人工校准（双人独立抽取）",
+    "paperEvidence.calibration.subtitle": "第二位标注人独立填写决策链草稿，系统在 design_action / evidence_grading / reason_nature / rule 上比对差异，不一致时不会自动判定谁对，只标记为待核实。",
+    "paperEvidence.calibration.noAttempts": "尚无独立抽取记录，当前仅有原始一次抽取。",
+    "paperEvidence.calibration.newAttemptButton": "提交新的独立抽取草稿",
+    "paperEvidence.calibration.addStep": "添加步骤",
+    "paperEvidence.calibration.removeStep": "删除该步骤",
+    "paperEvidence.calibration.submit": "提交草稿",
+    "paperEvidence.calibration.submitting": "提交中…",
+    "paperEvidence.calibration.cancel": "取消",
+    "paperEvidence.calibration.annotatorPlaceholder": "标注人姓名或工号",
+    "paperEvidence.calibration.conflictsTitle": "发现分歧",
+    "paperEvidence.calibration.stepCountMismatch": "步骤数不一致",
+    "paperEvidence.calibration.status.pending": "待校准",
+    "paperEvidence.calibration.status.in_progress": "校准中",
+    "paperEvidence.calibration.status.calibrated": "已校准",
+    "paperEvidence.calibration.status.disputed": "存在分歧",
+    "paperEvidence.calibration.field.annotator": "标注人",
+    "paperEvidence.calibration.field.designAction": "设计动作",
+    "paperEvidence.calibration.field.evidenceGrading": "证据分级",
+    "paperEvidence.calibration.field.reasonNature": "理由性质",
+    "paperEvidence.calibration.field.implementation": "实现方式",
+    "paperEvidence.calibration.field.targetGene": "靶标·基因",
+    "paperEvidence.calibration.field.targetEnzyme": "靶标·酶",
+    "paperEvidence.calibration.field.targetPathway": "靶标·通路",
+    "paperEvidence.calibration.field.targetCondition": "靶标·条件",
+    "paperEvidence.calibration.field.triggerObservation": "触发·观察",
+    "paperEvidence.calibration.field.triggerReasoning": "触发·推理",
+    "paperEvidence.calibration.field.evidenceDescription": "证据描述",
+    "paperEvidence.calibration.field.evidenceSource": "证据来源",
+    "paperEvidence.calibration.field.resultMetric": "结果·指标",
+    "paperEvidence.calibration.field.resultBefore": "结果·前",
+    "paperEvidence.calibration.field.resultAfter": "结果·后",
+    "paperEvidence.calibration.field.resultFoldChange": "结果·倍数变化",
+    "paperEvidence.calibration.field.rule": "可泛化规则",
   },
   "en-US": {
     "nav.commandCenter": "Command Center",
@@ -1950,6 +2048,7 @@ const dict = {
     "page3.detail.close": "Close detail panel",
     "page3.detail.resizeHandle": "Drag to resize the left/right split",
     "page3.detail.openSource": "Open source ↗",
+    "page3.detail.viewFullDetail": "View full detail & source comparison →",
     "page3.detail.abstractOrSummary": "Abstract / problem summary",
     "page3.detail.extractedDesignTitle": "Extracted experimental design idea",
     "page3.detail.noExtractedDesignTitle": "No extracted design content for this document",
@@ -2206,6 +2305,7 @@ const dict = {
     "page5.result.tabReasoning": "Extraction Reasoning",
     "page5.result.tabDesign": "Experimental Design",
     "page5.result.tabQuality": "Quality & Confidence",
+    "page5.result.tabCompare": "Source Comparison",
     "page5.result.articleTypeTitle": "Article Type Classification",
     "page5.result.articleType.primary_research": "Primary experimental research",
     "page5.result.articleType.review_article": "Review article",
@@ -2242,6 +2342,20 @@ const dict = {
     "page5.result.independentReviewTitle": "Independent QC · for human reviewer reference",
     "page5.result.independentReviewHint": "The following review tasks were generated by an independent QC pass to audit extraction quality - they do not block the results shown above.",
     "page5.result.reviewTaskCount": "pending review",
+    "page5.result.compare.hint": "Column 1 is the agent's per-field extraction process (method, notes, inference rationale); column 2 is its final structured claim; column 3 is the matching literal quote from the paper - comparing all three row by row is the most direct way to catch extraction drift.",
+    "page5.result.compare.processColumn": "Agent's Extraction Process",
+    "page5.result.compare.agentColumn": "Agent's Extracted Reasoning",
+    "page5.result.compare.paperColumn": "Paper's Original Text",
+    "page5.result.compare.noQuote": "No supporting quote found in the paper - this field may be a model inference rather than something the paper directly reports, so check it carefully.",
+    "page5.result.compare.extractionMethodLabel": "Extraction method",
+    "page5.result.compare.inferenceLabel": "Inference rationale",
+    "page5.result.compare.noProcessNote": "No additional extraction-process notes were recorded for this field.",
+    "page5.result.extractionMethod.rule": "Rule-based matching",
+    "page5.result.extractionMethod.rule_based": "Rule-based matching",
+    "page5.result.extractionMethod.hybrid": "Rule matching + model judgment",
+    "page5.result.extractionMethod.model_inference": "Model inference",
+    "page5.result.extractionMethod.direct_quote": "Direct quote from the paper",
+    "page5.result.extractionMethod.not_applicable": "Not applicable",
 
     "nav.knowledgeDistillation": "Textbook Knowledge Distillation",
     "page6.title": "Biological Knowledge Distillation",
@@ -2387,6 +2501,88 @@ const dict = {
     "paperEvidence.extractionTitle": "Agent parsing reasoning & extraction result",
     "paperEvidence.noAutoDetailTitle": "No auto-extraction record",
     "paperEvidence.noAutoDetailDetail": "This evidence entry was curated by hand and has no step-by-step paper-extraction record.",
+    "paperEvidence.header.viewOriginal": "View original paper",
+    "paperEvidence.header.downloadJson": "Download extraction JSON",
+    "paperEvidence.header.viewGraph": "View evidence graph",
+    "paperEvidence.header.statusCompleted": "Extraction completed",
+    "paperEvidence.header.statusPending": "Pending review",
+    "paperEvidence.header.confidenceLabel": "Evidence confidence",
+    "paperEvidence.header.confidenceHigh": "High",
+    "paperEvidence.header.confidenceMedium": "Medium",
+    "paperEvidence.header.confidenceLow": "Low",
+    "paperEvidence.trace.title": "Agent Reasoning Trace",
+    "paperEvidence.trace.subtitle": "Observable analysis steps the agent recorded - not a hidden model chain-of-thought",
+    "paperEvidence.trace.emptyTitle": "No reasoning steps to show yet",
+    "paperEvidence.trace.stepLabel": "Step",
+    "paperEvidence.trace.input": "Input",
+    "paperEvidence.trace.operation": "Operation",
+    "paperEvidence.trace.output": "Output",
+    "paperEvidence.trace.kind.problemUnderstanding": "Problem Understanding",
+    "paperEvidence.trace.kind.intervention": "Bottleneck Identification & Intervention Extraction",
+    "paperEvidence.trace.kind.logicReconstruction": "Experimental Logic Reconstruction",
+    "paperEvidence.trace.kind.evidenceValidation": "Evidence Validation",
+    "paperEvidence.trace.logic.problem": "Problem",
+    "paperEvidence.trace.logic.hypothesis": "Hypothesis",
+    "paperEvidence.trace.logic.modification": "Modification",
+    "paperEvidence.trace.logic.measurement": "Measurement",
+    "paperEvidence.trace.logic.conclusion": "Conclusion",
+    "paperEvidence.design.title": "Extracted Experimental Design",
+    "paperEvidence.design.subtitle": "A synthetic-biology experimental SOP reconstructed from the paper - not a summary",
+    "paperEvidence.design.emptyTitle": "No experimental design steps to show yet",
+    "paperEvidence.design.stepLabel": "Experimental Step",
+    "paperEvidence.design.why": "WHY",
+    "paperEvidence.design.how": "HOW",
+    "paperEvidence.design.problem": "Problem",
+    "paperEvidence.design.hypothesis": "Engineering hypothesis",
+    "paperEvidence.design.modification": "Modification",
+    "paperEvidence.design.validation": "Validation",
+    "paperEvidence.design.result": "Result",
+    "paperEvidence.design.reasonNature": "Reason nature",
+    "paperEvidence.design.alternatives": "Alternatives considered",
+    "paperEvidence.design.rule": "Generalizable rule",
+    "paperEvidence.design.ruleSuppressed": "No rule generated - reason nature is not mechanistic/literature-analogy",
+    "paperEvidence.provenance.title": "Evidence Trace",
+    "paperEvidence.provenance.emptyTitle": "No evidence trace to show yet",
+    "paperEvidence.provenance.claim": "Claim",
+    "paperEvidence.provenance.source": "Evidence source",
+    "paperEvidence.graph.title": "Evidence Graph",
+    "paperEvidence.graph.subtitle": "Each experimental step in decision-chain order, with its supporting evidence",
+    "paperEvidence.graph.close": "Close evidence graph",
+    "paperEvidence.graph.empty": "No evidence graph to show yet",
+    "paperEvidence.calibration.title": "Human Calibration (Dual Independent Extraction)",
+    "paperEvidence.calibration.subtitle": "A second annotator independently drafts the decision chain; the system compares design_action / evidence_grading / reason_nature / rule and flags disagreements for review rather than auto-resolving who is right.",
+    "paperEvidence.calibration.noAttempts": "No independent attempt recorded yet - only the original extraction exists.",
+    "paperEvidence.calibration.newAttemptButton": "Submit a new independent draft",
+    "paperEvidence.calibration.addStep": "Add step",
+    "paperEvidence.calibration.removeStep": "Remove this step",
+    "paperEvidence.calibration.submit": "Submit draft",
+    "paperEvidence.calibration.submitting": "Submitting…",
+    "paperEvidence.calibration.cancel": "Cancel",
+    "paperEvidence.calibration.annotatorPlaceholder": "Annotator name or id",
+    "paperEvidence.calibration.conflictsTitle": "Conflicts found",
+    "paperEvidence.calibration.stepCountMismatch": "Step count mismatch",
+    "paperEvidence.calibration.status.pending": "Pending calibration",
+    "paperEvidence.calibration.status.in_progress": "Calibrating",
+    "paperEvidence.calibration.status.calibrated": "Calibrated",
+    "paperEvidence.calibration.status.disputed": "Disputed",
+    "paperEvidence.calibration.field.annotator": "Annotator",
+    "paperEvidence.calibration.field.designAction": "Design action",
+    "paperEvidence.calibration.field.evidenceGrading": "Evidence grading",
+    "paperEvidence.calibration.field.reasonNature": "Reason nature",
+    "paperEvidence.calibration.field.implementation": "Implementation",
+    "paperEvidence.calibration.field.targetGene": "Target · gene",
+    "paperEvidence.calibration.field.targetEnzyme": "Target · enzyme",
+    "paperEvidence.calibration.field.targetPathway": "Target · pathway",
+    "paperEvidence.calibration.field.targetCondition": "Target · condition",
+    "paperEvidence.calibration.field.triggerObservation": "Trigger · observation",
+    "paperEvidence.calibration.field.triggerReasoning": "Trigger · reasoning",
+    "paperEvidence.calibration.field.evidenceDescription": "Evidence description",
+    "paperEvidence.calibration.field.evidenceSource": "Evidence source",
+    "paperEvidence.calibration.field.resultMetric": "Result · metric",
+    "paperEvidence.calibration.field.resultBefore": "Result · before",
+    "paperEvidence.calibration.field.resultAfter": "Result · after",
+    "paperEvidence.calibration.field.resultFoldChange": "Result · fold change",
+    "paperEvidence.calibration.field.rule": "Generalizable rule",
   },
 } as const;
 
@@ -2618,6 +2814,72 @@ const STRATEGY_CLASS_LABELS: Record<string, Record<Lang, string>> = {
   diagnostic_measurement_probe: { "zh-CN": "诊断性测量探针", "en-US": "Diagnostic Measurement Probe" },
 };
 
+/**
+ * Fallback for a `DictKey` that has no curated entry for the active language
+ * (yet): rather than showing the raw internal key string, translate the
+ * *other* language's entry via the backend's LLM translation endpoint
+ * (`harness/translation/service.py`, `POST /api/translation/batch`), once
+ * per (language, key) pair ever - the result is cached in localStorage, so
+ * this only costs a network round-trip the very first time any given key is
+ * rendered in that language, on any machine. Symmetric: missing `zh-CN` gets
+ * machine-translated from `en-US`, and missing `en-US` gets machine-
+ * translated from `zh-CN` - this is what lets a new UI string be added to
+ * just one half of `dict` below and still read naturally in the other
+ * language, without a developer hand-authoring the matching line.
+ */
+const AUTO_TRANSLATE_CACHE_KEY = "dbtl-os.autoTranslateCache";
+
+function loadAutoTranslateCache(): Map<string, string> {
+  try {
+    const raw = localStorage.getItem(AUTO_TRANSLATE_CACHE_KEY);
+    if (!raw) return new Map();
+    return new Map(Object.entries(JSON.parse(raw) as Record<string, string>));
+  } catch {
+    return new Map();
+  }
+}
+
+function persistAutoTranslateCache(cache: Map<string, string>): void {
+  try {
+    localStorage.setItem(AUTO_TRANSLATE_CACHE_KEY, JSON.stringify(Object.fromEntries(cache)));
+  } catch {
+    // best-effort - a full/unavailable localStorage is not fatal here
+  }
+}
+
+const missingTranslationCache = loadAutoTranslateCache();
+const inFlightTranslations = new Set<string>();
+
+/** Cache/dedup key: the same DictKey can independently need translation
+ * *into* zh-CN (missing zh-CN entry) or *into* en-US (missing en-US entry),
+ * so the target language is part of the key, not just the DictKey itself. */
+function autoTranslateCacheKey(targetLang: Lang, key: string): string {
+  return `${targetLang} ${key}`;
+}
+
+function scheduleAutoTranslate(cacheKey: string, sourceText: string, targetLang: Lang, onResolved: () => void): void {
+  if (inFlightTranslations.has(cacheKey) || missingTranslationCache.has(cacheKey)) return;
+  inFlightTranslations.add(cacheKey);
+  fetch("/api/translation/batch", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ texts: [sourceText], target_locale: targetLang }),
+  })
+    .then((res) => (res.ok ? (res.json() as Promise<{ translations?: string[] }>) : null))
+    .then((data) => {
+      const translated = data?.translations?.[0];
+      if (translated) {
+        missingTranslationCache.set(cacheKey, translated);
+        persistAutoTranslateCache(missingTranslationCache);
+        onResolved();
+      }
+    })
+    .catch(() => {
+      // network/backend unavailable - stay on the other-language fallback, never throw
+    })
+    .finally(() => inFlightTranslations.delete(cacheKey));
+}
+
 export type DictKey = keyof (typeof dict)["zh-CN"];
 
 interface I18nContextValue {
@@ -2642,6 +2904,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem(STORAGE_KEY);
     return saved === "en-US" || saved === "zh-CN" ? saved : "zh-CN";
   });
+  // Bumped once a background auto-translation resolves, purely to force
+  // `value` to recompute below so subscribed components re-render with the
+  // now-cached translation - `t` itself always reads the live cache, so its
+  // own identity doesn't need to change, but context consumers only
+  // re-render when the provided value is referentially new.
+  const [translationTick, setTranslationTick] = useState(0);
 
   const setLang = (l: Lang) => {
     localStorage.setItem(STORAGE_KEY, l);
@@ -2652,7 +2920,17 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     () => ({
       lang,
       setLang,
-      t: (key: DictKey) => dict[lang][key] ?? key,
+      t: (key: DictKey) => {
+        const own = dict[lang][key];
+        if (own) return own;
+        const other: Lang = lang === "zh-CN" ? "en-US" : "zh-CN";
+        const fallbackText = dict[other][key] ?? key;
+        const cacheKey = autoTranslateCacheKey(lang, key);
+        const cached = missingTranslationCache.get(cacheKey);
+        if (cached) return cached;
+        scheduleAutoTranslate(cacheKey, fallbackText, lang, () => setTranslationTick((v) => v + 1));
+        return fallbackText;
+      },
       tEventType: (value: string) => EVENT_TYPE_LABELS[value]?.[lang] ?? value,
       tEntityType: (value: string) => ENTITY_TYPE_LABELS[value]?.[lang] ?? value,
       tActorType: (value: string) => ACTOR_TYPE_LABELS[value]?.[lang] ?? value,
@@ -2661,7 +2939,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       tReadiness: (value: string) => READINESS_LABELS[value]?.[lang] ?? value,
       tStrategyClass: (value: string) => STRATEGY_CLASS_LABELS[value]?.[lang] ?? value,
     }),
-    [lang],
+    [lang, translationTick],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
@@ -2673,9 +2951,14 @@ export function useI18n(): I18nContextValue {
   return ctx;
 }
 
-/** For non-hook contexts (e.g. class component error boundaries) that can't call useI18n(). */
+/** For non-hook contexts (e.g. class component error boundaries) that can't
+ * call useI18n() - can't schedule a live re-render on translation, so it
+ * only consults whatever the auto-translate cache already has. */
 export function translate(key: DictKey): string {
   const saved = localStorage.getItem(STORAGE_KEY);
   const lang: Lang = saved === "en-US" || saved === "zh-CN" ? saved : "zh-CN";
-  return dict[lang][key] ?? key;
+  const own = dict[lang][key];
+  if (own) return own;
+  const other: Lang = lang === "zh-CN" ? "en-US" : "zh-CN";
+  return missingTranslationCache.get(autoTranslateCacheKey(lang, key)) ?? dict[other][key] ?? key;
 }

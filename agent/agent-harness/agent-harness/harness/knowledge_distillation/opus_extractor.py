@@ -28,9 +28,9 @@ import httpx
 
 from . import _VENDOR_DIR
 
-MODEL = os.getenv("KNOWLEDGE_DISTILLATION_MODEL", "claude-opus-5")
+MODEL = os.getenv("KNOWLEDGE_DISTILLATION_MODEL", "k3")
 CACHE_DIR = _VENDOR_DIR / "biological_knowledge_distillation" / "storage" / "extraction_cache"
-ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
+KIMI_URL = "https://api.kimi.com/coding/v1/chat/completions"
 SKILL_PATH = Path(__file__).with_name("SKILL.md")
 
 _REQUIRED_CONCEPT_FIELDS = {
@@ -88,13 +88,13 @@ def _not_configured(request: dict[str, Any], model: str, cache_path: Path) -> di
         "status": "terminal_failure", "output": None,
         "errors": [{
             "code": "SCHEMA_VALIDATION_ERROR",
-            "message": f"{model} is required for Step05 basic-knowledge extraction; set ANTHROPIC_API_KEY or provide a step05 executor.",
+            "message": f"{model} is required for Step05 basic-knowledge extraction; set KIMI_API_KEY or provide a step05 executor.",
             "retryable": True, "source_id": request.get("source_structure", {}).get("source_id"),
         }],
         "provenance": {
             "step_id": "step05_basic_knowledge_extraction", "step_version": "opus-1",
             "input_hash": hashlib.sha256(_source_bytes(request)).hexdigest(), "output_hash": None,
-            "extractor": "anthropic_messages", "model": model, "skill_sha256": _skill_hash(),
+            "extractor": "kimi_chat_completions", "model": model, "skill_sha256": _skill_hash(),
             "cache": {"hit": False, "path": str(cache_path), "key_type": "content_sha256+model+skill_sha256"},
         },
     }
@@ -139,7 +139,7 @@ def make_executor(model: str = MODEL):
             cached.setdefault("provenance", {})["cache"] = {"hit": True, "path": str(cache_path), "key_type": "content_sha256+model+skill_sha256"}
             return cached
 
-        api_key = os.getenv("ANTHROPIC_API_KEY")
+        api_key = os.getenv("KIMI_API_KEY") or os.getenv("MOONSHOT_API_KEY")
         if not api_key:
             return _not_configured(request, model, cache_path)
 
@@ -165,19 +165,26 @@ def make_executor(model: str = MODEL):
             "source_id": source_id,
             "blocks": eligible_blocks,
         }
+        # Kimi Code member-benefit credential (not the Moonshot open
+        # platform): OpenAI-compatible protocol at api.kimi.com/coding/v1,
+        # model id "k3" (not "kimi-k3"), reasoning_effort instead of
+        # temperature/top_p/n - this endpoint rejects sampling params outright.
         response = httpx.post(
-            ANTHROPIC_URL,
-            headers={"x-api-key": api_key, "anthropic-version": "2023-06-01", "content-type": "application/json"},
+            KIMI_URL,
+            headers={"Authorization": f"Bearer {api_key}", "content-type": "application/json"},
             json={
-                "model": model, "max_tokens": 8000, "temperature": 0,
-                "system": "You are a rigorous biological-knowledge extractor. Output JSON only, never fabricate evidence.",
-                "messages": [{"role": "user", "content": json.dumps(prompt, ensure_ascii=False)}],
+                "model": model, "reasoning_effort": "max",
+                "response_format": {"type": "json_object"},
+                "messages": [
+                    {"role": "system", "content": "You are a rigorous biological-knowledge extractor. Output JSON only, never fabricate evidence."},
+                    {"role": "user", "content": json.dumps(prompt, ensure_ascii=False)},
+                ],
             },
             timeout=180.0,
         )
         response.raise_for_status()
         payload = response.json()
-        text = "".join(block.get("text", "") for block in payload.get("content", []) if block.get("type") == "text")
+        text = payload.get("choices", [{}])[0].get("message", {}).get("content", "")
         raw_output = json.loads(text.removeprefix("```json").removesuffix("```").strip())
         output, warnings = _sanitize(raw_output, eligible_blocks, source_id)
 
@@ -189,7 +196,7 @@ def make_executor(model: str = MODEL):
                 "step_id": "step05_basic_knowledge_extraction", "step_version": "opus-1",
                 "input_hash": hashlib.sha256(_source_bytes(request)).hexdigest(),
                 "output_hash": hashlib.sha256(json.dumps(output, sort_keys=True).encode()).hexdigest(),
-                "extractor": "anthropic_messages", "model": payload.get("model", model), "skill_sha256": _skill_hash(),
+                "extractor": "kimi_chat_completions", "model": payload.get("model", model), "skill_sha256": _skill_hash(),
                 "cache": {"hit": False, "path": str(cache_path), "key_type": "content_sha256+model+skill_sha256"},
                 "source_ids": [source_id],
             },

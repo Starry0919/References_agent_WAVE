@@ -16,6 +16,7 @@ from harness.evidence_retrieval.crossref_adapter import CrossrefEvidenceAdapter
 from harness.evidence_retrieval.local_ddr_adapter import LocalDDRAdapter
 from harness.evidence_retrieval.models import EvidenceMatchReport
 from harness.evidence_retrieval.service import verify_doi
+from harness.i18n import get_locale
 from harness.llm_generation.client import StructuredGenerationClient
 from harness.llm_generation.models import LLMGenerationRecord
 from harness.paper_extraction.reasoning_view import (
@@ -25,6 +26,7 @@ from harness.paper_extraction.reasoning_view import (
     build_experimental_design,
     build_header_summary,
 )
+from harness.translation.service import translate_batch
 
 router = APIRouter(prefix="/api/generation", tags=["generation"])
 
@@ -97,6 +99,46 @@ def search_evidence(query: str, source: str = "local_ddr") -> dict:
     }
 
 
+_ENGINEERING_DESIGN_TEXT_FIELDS = ("problem_statement", "mechanistic_explanation", "hypothesis", "expected_effect")
+_ACTION_TEXT_FIELDS = ("rationale", "expected_effect")
+
+
+def _localize_evidence_document(
+    title: str, abstract_or_summary: str, engineering_design: dict[str, Any] | None,
+) -> tuple[str, str, dict[str, Any] | None]:
+    """Translates the raw source-paper text this route surfaces (title,
+    abstract, curated engineering-design narrative) to the requesting
+    client's locale - none of this content is UI chrome, so it is never
+    covered by the static `i18n.tsx`/`harness/i18n.py` dictionaries.
+    Symmetric: a zh-CN viewer gets English paper text translated to
+    Chinese; an en-US viewer gets Chinese-authored text (e.g. hand-curated
+    DDR records) translated to English. One batched call via
+    `harness.translation.service.translate_batch` (cached per-string,
+    per-target-locale), so a repeat view of the same document in the same
+    locale is free.
+    """
+    locale = get_locale()
+    if locale not in ("zh-CN", "en-US"):
+        return title, abstract_or_summary, engineering_design
+    texts = [title, abstract_or_summary or ""]
+    if engineering_design:
+        texts.extend(engineering_design.get(field) or "" for field in _ENGINEERING_DESIGN_TEXT_FIELDS)
+        actions = engineering_design.get("actions") or []
+        for action in actions:
+            texts.extend(action.get(field) or "" for field in _ACTION_TEXT_FIELDS)
+    translated = translate_batch(texts, locale)
+    it = iter(translated)
+    title = next(it)
+    abstract_or_summary = next(it)
+    if engineering_design:
+        for field in _ENGINEERING_DESIGN_TEXT_FIELDS:
+            engineering_design[field] = next(it)
+        for action in engineering_design.get("actions") or []:
+            for field in _ACTION_TEXT_FIELDS:
+                action[field] = next(it)
+    return title, abstract_or_summary, engineering_design
+
+
 @router.get("/evidence/documents/{source_id}")
 def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
     """Single-document detail (Knowledge & Evidence page's Literature
@@ -153,10 +195,13 @@ def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
         evidence_provenance = build_evidence_provenance(raw)
         evidence_graph = build_evidence_graph(experimental_design)
         header_summary = build_header_summary(raw, has_design=bool(experimental_design))
+    title, abstract_or_summary, engineering_design = _localize_evidence_document(
+        doc.title, doc.abstract_or_summary, engineering_design,
+    )
     return {
-        "source_id": doc.source_id, "title": doc.title, "authors": doc.authors, "publication_year": doc.publication_year,
+        "source_id": doc.source_id, "title": title, "authors": doc.authors, "publication_year": doc.publication_year,
         "journal_or_repository": doc.journal_or_repository, "doi_or_accession": doc.doi_or_accession, "url": doc.url,
-        "abstract_or_summary": doc.abstract_or_summary, "engineering_design": engineering_design,
+        "abstract_or_summary": abstract_or_summary, "engineering_design": engineering_design,
         # Present only for DDRs auto-saved from a paper_extraction run
         # (harness/paper_extraction/ddr_converter.py::ensure_task_saved_as_evidence) -
         # None for hand-curated DDRs that predate that pipeline. This is the
@@ -171,6 +216,16 @@ def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
         "status": header_summary["status"],
         "evidence_confidence": header_summary["evidence_confidence"],
         "human_review_status": header_summary["human_review_status"],
+        # Dual-annotator calibration state (harness/paper_extraction/
+        # calibration.py, 老师 §4.3 step 3) - None/0/[] for crossref
+        # documents and for DDRs no second attempt has ever been recorded
+        # against yet.
+        "calibration_status": extraction_meta.get("calibration_status"),
+        "conflict_count": extraction_meta.get("conflict_count", 0),
+        "extraction_attempts": [
+            {"annotator": a.get("annotator"), "recorded_at": a.get("recorded_at"), "step_count": len(a.get("decision_chain") or [])}
+            for a in extraction_meta.get("extraction_attempts", []) or []
+        ],
         # Full underlying DDR record, for the detail page's "Download
         # Extraction JSON" action - never fabricated for crossref documents
         # that have no such record.

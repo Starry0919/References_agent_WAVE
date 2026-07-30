@@ -115,6 +115,16 @@ export interface ExperimentalDesignStep {
   result: string;
   evidence: string[];
   evidenceGrading: string | null;
+  /** 理由性质 (harness/paper_extraction/ddr_converter.py's reason_nature) -
+   * gates whether `rule` may be non-null. Surfaced so a reviewer calibrating
+   * a step can see *why* it was/wasn't allowed to produce a rule, not just
+   * the evidence grade. */
+  reasonNature: string | null;
+  alternatives: Array<{ approach: string; rejectedReason: string }>;
+  /** Generalizable heuristic distilled from this step - always null unless
+   * reasonNature is 机理推断/文献类比 (mechanistic reasoning or reliable
+   * literature analogy); never fabricated by the converter itself. */
+  rule: string | null;
 }
 
 export interface EvidenceProvenanceItem {
@@ -159,6 +169,13 @@ export interface EvidenceDocumentDetail extends EvidenceDocument {
   status: "completed" | "pending";
   evidenceConfidence: "high" | "medium" | "low" | null;
   humanReviewStatus: string | null;
+  /** Dual-annotator calibration state (harness/paper_extraction/
+   * calibration.py, 老师 §4.3 step 3: independent extraction → conflict
+   * detection → calibration). `null`/`0`/`[]` for crossref documents and
+   * for DDRs no second attempt has ever been recorded against. */
+  calibrationStatus: string | null;
+  conflictCount: number;
+  extractionAttempts: Array<{ annotator: string; recordedAt: string; stepCount: number }>;
   /** The full underlying DDR JSON, for the "Download Extraction JSON"
    * header action - null for crossref documents (no such record exists). */
   rawRecord: Record<string, unknown> | null;
@@ -200,12 +217,18 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
         result: string;
         evidence: string[];
         evidence_grading: string | null;
+        reason_nature: string | null;
+        alternatives: Array<{ approach: string; rejected_reason: string }>;
+        rule: string | null;
       }>;
       evidence_provenance: Array<{ step: number | null; claim: string; source: string; grading: string | null; confidence: number | null }>;
       evidence_graph: EvidenceGraph;
       status: "completed" | "pending";
       evidence_confidence: "high" | "medium" | "low" | null;
       human_review_status: string | null;
+      calibration_status: string | null;
+      conflict_count: number;
+      extraction_attempts: Array<{ annotator: string; recorded_at: string; step_count: number }>;
       raw_record: Record<string, unknown> | null;
       engineering_design: {
         problem_statement: string;
@@ -257,6 +280,9 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
         result: s.result,
         evidence: s.evidence ?? [],
         evidenceGrading: s.evidence_grading,
+        reasonNature: s.reason_nature,
+        alternatives: (s.alternatives ?? []).map((a) => ({ approach: a.approach, rejectedReason: a.rejected_reason })),
+        rule: s.rule,
       })),
       evidenceProvenance: (r.evidence_provenance ?? []).map((e) => ({
         step: e.step,
@@ -269,6 +295,9 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
       status: r.status ?? "pending",
       evidenceConfidence: r.evidence_confidence ?? null,
       humanReviewStatus: r.human_review_status ?? null,
+      calibrationStatus: r.calibration_status ?? null,
+      conflictCount: r.conflict_count ?? 0,
+      extractionAttempts: (r.extraction_attempts ?? []).map((a) => ({ annotator: a.annotator, recordedAt: a.recorded_at, stepCount: a.step_count })),
       rawRecord: r.raw_record ?? null,
       engineeringDesign: r.engineering_design
         ? {
@@ -293,6 +322,86 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
     if (e instanceof ApiError && e.status === 404) return null;
     throw e;
   }
+}
+
+/**
+ * One decision_chain step, as edited by a human annotator submitting an
+ * independent extraction attempt (老师 §4.3 step 3). Same field shape as
+ * `knowledge/ddr_database/schema_v2.json`'s `decision_chain` items - this
+ * is a *draft*, not the reshaped `ExperimentalDesignStep` view above, since
+ * `harness/paper_extraction/calibration.py::detect_conflicts` compares raw
+ * decision_chain fields directly.
+ */
+export interface DecisionChainStepDraft {
+  step: number;
+  design_action: string;
+  target: { gene: string; enzyme: string; pathway: string; condition: string };
+  trigger: { observation: string; reasoning: string; source_location: string };
+  evidence: { description: string; source: string; source_location: string };
+  evidence_grading: string;
+  reason_nature: string;
+  alternatives: Array<{ approach: string; rejected_reason: string }>;
+  implementation: string;
+  implementation_detail: string;
+  result: { metric: string; before: string; after: string; fold_change: string; quantified: boolean };
+  rule: string;
+}
+
+export function blankDecisionChainStep(step: number): DecisionChainStepDraft {
+  return {
+    step,
+    design_action: "M3",
+    target: { gene: "", enzyme: "", pathway: "", condition: "" },
+    trigger: { observation: "", reasoning: "", source_location: "" },
+    evidence: { description: "", source: "", source_location: "" },
+    evidence_grading: "软",
+    reason_nature: "事后合理化存疑",
+    alternatives: [],
+    implementation: "其他",
+    implementation_detail: "",
+    result: { metric: "", before: "", after: "", fold_change: "", quantified: false },
+    rule: "",
+  };
+}
+
+export interface ExtractionConflict {
+  step: number | null;
+  field: string;
+  valuesByAnnotator: Record<string, unknown>;
+}
+
+/**
+ * Submits one annotator's independent decision_chain draft for a saved DDR
+ * (harness/api/paper_extraction.py::submit_extraction_attempt →
+ * calibration.record_extraction_attempt). Recomputes conflicts across every
+ * attempt recorded so far and flips `calibration_status` to `"disputed"`
+ * the moment any field disagrees - the response mirrors that immediately so
+ * the panel doesn't need a second round-trip to show it.
+ */
+export async function submitExtractionAttempt(
+  ddrId: string,
+  annotator: string,
+  decisionChain: DecisionChainStepDraft[],
+): Promise<{ ddrId: string; attempts: number; conflicts: ExtractionConflict[]; calibrationStatus: string }> {
+  const r = await api.post<{ ddr_id: string; attempts: number; conflicts: Array<{ step: number | null; field: string; values_by_annotator: Record<string, unknown> }>; calibration_status: string }>(
+    `/api/paper-extraction/ddr/${ddrId}/attempts`,
+    { annotator, decision_chain: decisionChain },
+  );
+  return {
+    ddrId: r.ddr_id,
+    attempts: r.attempts,
+    conflicts: r.conflicts.map((c) => ({ step: c.step, field: c.field, valuesByAnnotator: c.values_by_annotator })),
+    calibrationStatus: r.calibration_status,
+  };
+}
+
+/** Read-only conflict recompute (harness/api/paper_extraction.py::
+ * get_extraction_conflicts) - does not require submitting a new attempt. */
+export async function getExtractionConflicts(ddrId: string): Promise<ExtractionConflict[]> {
+  const r = await api.get<{ ddr_id: string; conflicts: Array<{ step: number | null; field: string; values_by_annotator: Record<string, unknown> }>; total: number }>(
+    `/api/paper-extraction/ddr/${ddrId}/conflicts`,
+  );
+  return r.conflicts.map((c) => ({ step: c.step, field: c.field, valuesByAnnotator: c.values_by_annotator }));
 }
 
 /**

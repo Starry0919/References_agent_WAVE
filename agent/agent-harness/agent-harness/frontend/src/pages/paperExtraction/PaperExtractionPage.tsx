@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { UploadCloud, FlaskConical, ShieldCheck, AlertTriangle, Dna, ChevronDown, ChevronRight, FileSearch, History, Trash2, BookOpenCheck, Microscope, Info, HelpCircle, ExternalLink } from "lucide-react";
+import { UploadCloud, FlaskConical, ShieldCheck, AlertTriangle, Dna, ChevronDown, ChevronRight, FileSearch, History, Trash2, BookOpenCheck, Microscope, Info, HelpCircle, ExternalLink, Columns2 } from "lucide-react";
 import {
   deleteRun, getRun, listRuns, submitRun, uploadPaper,
   type DetailPanel, type EvidenceItem, type ExtractionSummary,
   type K12AdaptationItem, type PaperExtractionSummary, type RunHistoryItem, type RunResult, type StepCard,
 } from "@/api/paperExtraction";
-import { DesignTab, paperIdentityTitle, QualityTab, ReasoningTab, TabButton } from "@/pages/paperExtraction/PaperResultTabs";
+import { CompareTab, DesignTab, paperIdentityTitle, QualityTab, ReasoningTab, TabButton } from "@/pages/paperExtraction/PaperResultTabs";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
 import { useI18n } from "@/lib/i18n";
@@ -29,15 +29,40 @@ export function PaperExtractionPage({ embedded = false, projectId }: { embedded?
   const { projectId: routeProjectId } = useParams<{ projectId: string }>();
   const resolvedProjectId = projectId ?? routeProjectId;
 
+  // `ensure_task_saved_as_evidence` (harness/api/paper_extraction.py::get_task)
+  // runs synchronously inside the same poll that first reports COMPLETED,
+  // but swallows its own exceptions (logged server-side only) - if that one
+  // save attempt fails, `evidenceSourceId` stays null in this response with
+  // no client-visible error. Since polling used to stop the instant status
+  // left RUNNING/CREATED, that failure was permanent from the frontend's
+  // point of view: no later poll ever gave the (idempotent) save a second
+  // try, so a single-paper run could finish with no "详情" button and no
+  // auto-navigate. Keep polling a bounded number of extra times specifically
+  // while that save is still pending, so a transient failure self-heals.
+  const pendingSaveRetries = useRef(0);
   const runQuery = useQuery({
     queryKey: ["paper-extraction-run", taskId],
     queryFn: () => getRun(taskId as string),
     enabled: !!taskId,
     refetchInterval: (query) => {
-      const status = query.state.data?.status;
-      return status === "RUNNING" || status === "CREATED" || status === undefined ? 3000 : false;
+      const data = query.state.data;
+      const status = data?.status;
+      if (status === "RUNNING" || status === "CREATED" || status === undefined) return 3000;
+      if (status === "COMPLETED") {
+        const papers = data?.extractionSummary?.papers ?? [];
+        const savePending = papers.length === 1 && !papers[0].evidenceSourceId;
+        if (savePending && pendingSaveRetries.current < 5) {
+          pendingSaveRetries.current += 1;
+          return 2000;
+        }
+      }
+      return false;
     },
   });
+
+  useEffect(() => {
+    pendingSaveRetries.current = 0;
+  }, [taskId]);
 
   // Requirement: once a single-paper run finishes, land the user straight
   // on that paper's new literature-evidence detail page instead of leaving
@@ -488,7 +513,7 @@ function ExtractionResultSection({ summary }: { summary: ExtractionSummary }) {
 
 function PaperResultCard({ paper }: { paper: PaperExtractionSummary }) {
   const { t } = useI18n();
-  const [tab, setTab] = useState<"reasoning" | "design" | "quality">("reasoning");
+  const [tab, setTab] = useState<"reasoning" | "design" | "quality" | "compare">("reasoning");
   const { projectId } = useParams<{ projectId: string }>();
   const authors = paper.identity.authors.length > 0 ? paper.identity.authors.join(", ") : null;
   const metaBits = [authors, paper.identity.journal, paper.identity.year ? String(paper.identity.year) : null].filter(Boolean);
@@ -518,11 +543,13 @@ function PaperResultCard({ paper }: { paper: PaperExtractionSummary }) {
         <TabButton active={tab === "reasoning"} onClick={() => setTab("reasoning")} icon={<BookOpenCheck size={12} />} label={t("page5.result.tabReasoning")} />
         <TabButton active={tab === "design"} onClick={() => setTab("design")} icon={<FlaskConical size={12} />} label={t("page5.result.tabDesign")} badge={paper.hasDesignContent ? undefined : "!"} />
         <TabButton active={tab === "quality"} onClick={() => setTab("quality")} icon={<ShieldCheck size={12} />} label={t("page5.result.tabQuality")} />
+        <TabButton active={tab === "compare"} onClick={() => setTab("compare")} icon={<Columns2 size={12} />} label={t("page5.result.tabCompare")} />
       </div>
 
       {tab === "reasoning" && <ReasoningTab paper={paper} />}
       {tab === "design" && <DesignTab paper={paper} />}
       {tab === "quality" && <QualityTab paper={paper} />}
+      {tab === "compare" && <CompareTab paper={paper} />}
     </div>
   );
 }

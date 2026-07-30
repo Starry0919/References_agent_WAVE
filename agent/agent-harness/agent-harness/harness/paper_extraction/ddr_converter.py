@@ -91,6 +91,32 @@ EVIDENCE_GRADING_HEURISTICS = {
     ],
 }
 
+# reason_nature keyword heuristics. Mirrors the conservatism of the evidence
+# heuristics above: only an explicit textual signal earns a *positive*
+# classification. "机理推断" is deliberately NOT the fallback (see
+# _auto_reason_nature) — 老师 §4.1 warns that forcing a paper without a clean
+# decision chain into a mechanistic-sounding rule is exactly how the rule
+# library gets polluted by post-hoc rationalization.
+SCREENING_KEYWORDS = (
+    "library", "screening", "screen", "keio", "random_mutagenesis",
+    "directed_evolution", "high_throughput_screen", "ale",
+    "adaptive_laboratory_evolution",
+)
+LITERATURE_ANALOGY_KEYWORDS = (
+    "as_described_previously", "as_reported_by", "following_the_protocol_of",
+    "similar_to", "analogous_to",
+)
+AVAILABLE_RESOURCE_KEYWORDS = (
+    "available_strain", "commercial_kit", "off_the_shelf", "convenient",
+    "readily_available",
+)
+MECHANISTIC_KEYWORDS = (
+    "feedback", "feedforward", "allosteric", "kinetic", "km", "ic50",
+    "binding_site", "crystal_structure", "docking", "inhibit", "represses",
+    "represser", "repressor", "activates", "regulation", "regulon",
+    "mechanism", "rate_limiting", "rate-limiting",
+)
+
 
 # ---------------------------------------------------------------------------
 # Data structures
@@ -284,9 +310,17 @@ def _build_decision_chain(
         warnings.append("no step candidates found in extraction output; decision_chain will be empty")
         return chain
 
+    # Design doc §4.1: a decision step's trigger is "what observation caused
+    # this action" — usually the *previous* step's result, not the paper's
+    # abstract. Tracked across the loop so step i>1 can point at step i-1's
+    # outcome instead of leaving trigger.observation blank whenever the
+    # source record has no explicit per-step observation field of its own
+    # (true for Skill07's flat experiment records — see _build_single_step).
+    prev_outcome = ""
     for i, candidate in enumerate(step_candidates, start=1):
-        step = _build_single_step(i, candidate, fields, pending)
+        step = _build_single_step(i, candidate, fields, pending, prev_outcome=prev_outcome)
         chain.append(step)
+        prev_outcome = step["result"].get("after") or prev_outcome
 
     return chain
 
@@ -334,37 +368,74 @@ def _build_single_step(
     candidate: dict[str, Any],
     fields: dict[str, Any],
     pending: list[str],
+    *,
+    prev_outcome: str = "",
 ) -> dict[str, Any]:
-    """Build one decision_chain step from a candidate."""
+    """Build one decision_chain step from a candidate.
+
+    Two source shapes are handled. "design_steps"/"interventions" candidates
+    (hand-assembled or from a future richer Skill07 extension) already carry
+    decision-chain-shaped keys (action_type/gene/trigger_observation/
+    rationale/...). "experiments" candidates are Skill07's *actual* current
+    output shape — flat experimental-design records with keys
+    (experiment_id/purpose/host/intervention/conditions/control/replicates/
+    readout/outcome) that were never decision-chain keys to begin with; every
+    field below that reads `data.get("action_type")` etc. returned "" for
+    that shape (confirmed against a real converted record, DDR-006 in
+    knowledge/ddr_database/ — every step landed on the "M3" default and
+    implementation "KO" from a separate substring-match bug in
+    _map_implementation, with every other field blank). The `intervention`/
+    `purpose`/`readout`/`outcome` fallbacks below close that gap.
+    """
     data = candidate["data"]
     source = candidate["source"]
+
+    intervention_text = str(data.get("intervention") or "")
+    purpose_text = str(data.get("purpose") or "")
 
     # --- design_action ---
     action_type = data.get("action_type") or data.get("modification_type") or data.get("intervention_type", "")
     design_action = _map_design_action(action_type, data)
-    if not design_action or design_action == "M3":
-        pending.append(f"step_{step_num}.design_action: unable to map '{action_type}' confidently")
+    if design_action == "M3" and not action_type:
+        # No explicit action_type key on this candidate shape (true for all
+        # "experiments" candidates) — try inferring from the free-text
+        # intervention/purpose description before falling back to the M3
+        # default, so a knockout/competing-pathway experiment doesn't get
+        # silently mislabeled as feedback deregulation.
+        inferred = _infer_design_action_from_text(f"{intervention_text} {purpose_text}")
+        if inferred:
+            design_action = inferred
+        else:
+            pending.append(f"step_{step_num}.design_action: unable to map '{action_type or intervention_text[:60]}' confidently, defaulted to M3")
 
     # --- target ---
+    gene_match = _extract_gene_symbol(intervention_text)
     target = {
-        "gene": data.get("gene") or data.get("target_gene") or data.get("gene_or_pathway", ""),
+        "gene": data.get("gene") or data.get("target_gene") or data.get("gene_or_pathway", "") or gene_match,
         "enzyme": data.get("enzyme") or data.get("target_enzyme", ""),
         "pathway": data.get("pathway") or data.get("target_pathway", ""),
-        "condition": data.get("condition") or data.get("medium", None),
+        "condition": data.get("condition") or data.get("medium") or data.get("conditions", None),
     }
+    if not target["gene"] and not target["enzyme"] and not target["pathway"]:
+        pending.append(f"step_{step_num}.target: no gene/enzyme/pathway extracted from '{intervention_text[:60]}'; needs human fill-in")
 
     # --- trigger ---
+    # Design doc §4.1: trigger.observation = "what did the researcher observe
+    # that led to this step" — for a flat experiment record there is no such
+    # field; the previous step's measured outcome is the best available
+    # proxy for a sequential decision chain (falls back to "" for step 1,
+    # same as before, rather than fabricating an observation).
     trigger = {
-        "observation": data.get("trigger_observation") or data.get("observation", ""),
-        "reasoning": data.get("rationale") or data.get("trigger_reasoning", ""),
-        "source_location": data.get("source_location", ""),
+        "observation": data.get("trigger_observation") or data.get("observation", "") or prev_outcome,
+        "reasoning": data.get("rationale") or data.get("trigger_reasoning", "") or purpose_text,
+        "source_location": data.get("source_location") or data.get("host", ""),
     }
 
     # --- evidence ---
     evidence = {
-        "description": data.get("evidence_description") or data.get("evidence", ""),
-        "source": data.get("evidence_source") or data.get("source", ""),
-        "source_location": data.get("evidence_location", ""),
+        "description": data.get("evidence_description") or data.get("evidence", "") or data.get("readout", ""),
+        "source": data.get("evidence_source") or data.get("source", "") or ("论文实测" if data.get("readout") or data.get("outcome") else ""),
+        "source_location": data.get("evidence_location") or data.get("control", ""),
         "values": data.get("evidence_values") or data.get("values", {}),
     }
 
@@ -387,19 +458,23 @@ def _build_single_step(
     alternatives = data.get("alternatives", [])
 
     # --- implementation ---
-    impl_raw = data.get("implementation") or data.get("modification_type") or data.get("intervention_type", "")
+    impl_raw = data.get("implementation") or data.get("modification_type") or data.get("intervention_type", "") or intervention_text
     implementation = _map_implementation(impl_raw)
 
     # --- implementation_detail ---
-    impl_detail = data.get("implementation_detail") or data.get("modification_detail", "")
+    # Free-text `intervention` has no structured home elsewhere in the DDR
+    # schema (target.gene/enzyme only fit a single symbol) — keeping the full
+    # sentence here means a step never regresses to fully empty just because
+    # the source shape had no dedicated gene/enzyme/pathway keys.
+    impl_detail = data.get("implementation_detail") or data.get("modification_detail", "") or intervention_text
 
     # --- result ---
     result = {
-        "metric": data.get("result_metric", ""),
+        "metric": data.get("result_metric", "") or data.get("readout", ""),
         "before": data.get("result_before", ""),
-        "after": data.get("result_after", ""),
+        "after": data.get("result_after", "") or str(data.get("outcome") or ""),
         "fold_change": data.get("fold_change", None),
-        "quantified": bool(data.get("result_quantified", False)),
+        "quantified": bool(data.get("result_quantified", False)) or bool(re.search(r"\d", str(data.get("outcome") or ""))),
     }
 
     # --- rule: ALWAYS pending human review ---
@@ -507,17 +582,76 @@ def _map_design_action(action_type: str, data: dict[str, Any]) -> str:
     return MODULE_TO_DESIGN_ACTION.get(normalized, "M3")  # default to M3 (解除调控) since most common
 
 
+# Keyword → module code, for inferring design_action from free-text
+# intervention/purpose descriptions when no explicit action_type field
+# exists (Skill07's "experiments" shape never has one — see
+# _build_single_step). Checked in order; first match wins, so more specific
+# module keywords are listed before generic ones.
+_TEXT_TO_DESIGN_ACTION: tuple[tuple[str, str], ...] = (
+    ("knockout", "M5"), ("delet", "M5"), ("Δ", "M5"), ("competing", "M5"), ("byproduct", "M5"), ("by-product", "M5"),
+    ("feedback", "M3"), ("feedforward", "M3"), ("derepress", "M3"), ("deregulat", "M3"), ("point mutation", "M3"),
+    ("rate-limiting", "M4"), ("rate limiting", "M4"), ("heterologous", "M4"), ("enzyme engineering", "M4"),
+    ("promoter", "M6"), ("rbs", "M6"), ("copy number", "M6"), ("plasmid expression", "M6"),
+    ("sensor", "M7"), ("dynamic control", "M7"), ("oscillat", "M7"),
+    ("precursor", "M2"), ("cofactor", "M2"), ("nadh", "M2"), ("nadph", "M2"),
+    ("de novo pathway", "M1"), ("pathway construction", "M1"), ("retropath", "M1"),
+    ("fermentation", "M9"), ("medium", "M9"), ("induction", "M9"), ("fed-batch", "M9"), ("bioreactor", "M9"),
+)
+
+
+def _infer_design_action_from_text(text: str) -> str | None:
+    """Best-effort module inference from a free-text description. Returns
+    None (never a guess) when nothing matches, so the caller's own pending
+    human-review flag still fires."""
+    lowered = text.lower()
+    for keyword, module in _TEXT_TO_DESIGN_ACTION:
+        if keyword.lower() in lowered:
+            return module
+    return None
+
+
+# E. coli gene symbols: 3-4 lowercase letters optionally followed by an
+# uppercase letter/digits denoting the operon member (trpE, tktAB, aceE,
+# gapA, lysC). Deliberately narrow — a missed gene falls through to the
+# pending-review flag rather than a wrong match from a broader pattern.
+_GENE_SYMBOL_RE = re.compile(r"\bΔ?([a-z]{3,4}[A-Z]{1,3}\d?)\b")
+
+
+def _extract_gene_symbol(text: str) -> str:
+    """Pull the first E. coli-style gene symbol out of free text, or ''."""
+    match = _GENE_SYMBOL_RE.search(text)
+    return match.group(1) if match else ""
+
+
 def _map_implementation(impl_raw: str) -> str:
-    """Map intervention type to standardized implementation method."""
+    """Map intervention type/description to a standardized implementation method."""
     normalized = impl_raw.lower().replace(" ", "_").replace("-", "_")
-    # Direct match
+    if not normalized:
+        return "其他"
+    # Direct match (short canonical tokens, e.g. "knockout")
     if normalized in INTERVENTION_TO_IMPLEMENTATION:
         return INTERVENTION_TO_IMPLEMENTATION[normalized]
-    # Partial match
+    # Substring match against a longer free-text description (e.g. a full
+    # `intervention` sentence). Only `key in normalized` makes sense here —
+    # `normalized in key` would match any short/empty string against every
+    # key, which is how every step used to fall through to the dict's first
+    # entry ("knockout" → "KO") whenever impl_raw was "".
     for key, value in INTERVENTION_TO_IMPLEMENTATION.items():
-        if key in normalized or normalized in key:
+        if key in normalized:
             return value
     return "其他"
+
+
+def _normalized_haystack(data: dict[str, Any]) -> str:
+    """Lowercased JSON dump with whitespace/hyphens collapsed to underscores,
+    so snake_case heuristic keywords (``in_vitro_assay``, ``known_regulation``)
+    also match the natural free-text phrasing ("in vitro assay", "known
+    regulation") that Skill07's actual ``experiments`` records use — before
+    this, every hard-evidence keyword containing an underscore could only
+    ever match already-underscore-cased input, which real extracted text
+    never is, silently disabling most of the hard/soft keyword list."""
+    text = json.dumps(data, ensure_ascii=False).lower()
+    return re.sub(r"[\s\-]+", "_", text)
 
 
 def _auto_evidence_grade(data: dict[str, Any]) -> str | None:
@@ -526,7 +660,7 @@ def _auto_evidence_grade(data: dict[str, Any]) -> str | None:
     These heuristics are deliberately conservative. They only flag clear cases;
     borderline cases return None → human must decide.
     """
-    evidence_text = json.dumps(data, ensure_ascii=False).lower()
+    evidence_text = _normalized_haystack(data)
 
     hard_hits = sum(1 for kw in EVIDENCE_GRADING_HEURISTICS["硬"] if kw in evidence_text)
     soft_hits = sum(1 for kw in EVIDENCE_GRADING_HEURISTICS["软"] if kw in evidence_text)
@@ -545,26 +679,30 @@ def _auto_evidence_grade(data: dict[str, Any]) -> str | None:
 def _auto_reason_nature(data: dict[str, Any], fields: dict[str, Any]) -> str:
     """Heuristic reason_nature classification.
 
-    This is intentionally conservative — most cases will default to '机理推断'
-    based on the paper's own stated rationale, but the auto-classification is
-    ALWAYS flagged for human review in the pending list.
+    Conservative in the same direction as _auto_evidence_grade: only an
+    explicit textual signal earns a positive classification. The default is
+    NOT "机理推断" — 老师 §4.1 explicitly warns against forcing a paper
+    without a clean, mechanism-stated decision chain into a mechanism-
+    sounding rule ("硬把这类论文凑成一条听起来合理的规则,会用事后编造的
+    理由污染规则库"). A record with no mechanistic language detected
+    defaults to "事后合理化存疑" (post-hoc/uncertain), which — via
+    _build_single_step's `if reason_nature not in (机理推断, 文献类比):
+    rule = None` — also suppresses rule generation until a human confirms
+    otherwise. The auto-classification is ALWAYS flagged for human review in
+    the pending list regardless of which branch is taken.
     """
-    text = json.dumps(data, ensure_ascii=False).lower()
+    text = _normalized_haystack(data)
 
-    # Screening/library hints
-    if any(kw in text for kw in ["library", "screening", "screen", "keio", "random_mutagenesis", "directed_evolution"]):
+    if any(kw in text for kw in SCREENING_KEYWORDS):
         return "筛选得来"
-
-    # "As done in [previous paper]" patterns
-    if any(kw in text for kw in ["as_described_previously", "as_reported_by", "following_the_protocol_of"]):
+    if any(kw in text for kw in LITERATURE_ANALOGY_KEYWORDS):
         return "文献类比"
-
-    # "Readily available" / "convenient" patterns
-    if any(kw in text for kw in ["available_strain", "commercial_kit", "off_the_shelf", "convenient"]):
+    if any(kw in text for kw in AVAILABLE_RESOURCE_KEYWORDS):
         return "现成可得"
+    if any(kw in text for kw in MECHANISTIC_KEYWORDS):
+        return "机理推断"
 
-    # Default: papers almost always present their rationale as mechanism-based
-    return "机理推断"
+    return "事后合理化存疑"
 
 
 def _infer_categories(fields: dict[str, Any]) -> list[str]:

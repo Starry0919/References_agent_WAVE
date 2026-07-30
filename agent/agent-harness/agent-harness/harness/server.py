@@ -21,6 +21,7 @@ from harness.api import knowledge_distillation as knowledge_distillation_api
 from harness.api import learning as learning_api
 from harness.api import paper_extraction as paper_extraction_api
 from harness.api import projects as projects_api
+from harness.api import translation as translation_api
 from harness.bootstrap import bootstrap_schema
 from harness.config import PROJECT_ROOT
 from harness.providers import describe
@@ -115,6 +116,10 @@ def create_app() -> FastAPI:
     app.include_router(generation_api.router)
     app.include_router(ideas_api.router)
     app.include_router(paper_extraction_api.router)
+    # LLM-backed translation fallback for i18n.tsx keys with no curated
+    # zh-CN entry yet (harness/translation/service.py) - see harness/i18n.py
+    # for the (separate) generated-narrative locale mechanism.
+    app.include_router(translation_api.router)
     # Sibling module to paper_extraction: textbook/monograph/guideline ->
     # evidence-gated Engineering Principle / Decision Rule / Design Pattern
     # knowledge objects, distinct from paper_extraction's ExperimentalCase

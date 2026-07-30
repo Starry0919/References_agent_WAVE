@@ -24,6 +24,9 @@ from __future__ import annotations
 import json
 from typing import Any
 
+from harness.i18n import get_locale
+from harness.translation.service import translate_text
+
 from harness.paper_extraction.service import RUNTIME_DIR
 
 # Fields that are the agent's own reasoning about the paper/task, not part
@@ -93,6 +96,23 @@ def _resolve_evidence(evidence_ids: list[str], evidence_map: dict[str, Any]) -> 
     return items
 
 
+def _field_reasoning(bound: dict[str, Any]) -> dict[str, Any]:
+    """skill07's per-field `extraction_method`/`notes` (always present per
+    schema.py's `unknown_field`/`reported_field`) plus the optional
+    `inference: {method, rationale}` object the opus_extractor prompt
+    contracts for status="inferred" - together the closest thing this
+    pipeline has to a per-field "how did the agent get here" trace, since
+    the underlying LLM call returns only a final JSON object, never a
+    logged chain-of-thought to replay."""
+    inference = bound.get("inference") if isinstance(bound.get("inference"), dict) else {}
+    return {
+        "extraction_method": bound.get("extraction_method"),
+        "notes": bound.get("notes"),
+        "inference_method": inference.get("method"),
+        "inference_rationale": inference.get("rationale"),
+    }
+
+
 def _build_design_fields(bound_fields: dict[str, Any] | None, raw_fields: dict[str, Any], evidence_map: dict[str, Any]) -> list[dict[str, Any]]:
     """Prefer skill08's evidence-verified fields (a field downgraded to
     "unknown" there means no supporting quote could be found - more
@@ -115,6 +135,7 @@ def _build_design_fields(bound_fields: dict[str, Any] | None, raw_fields: dict[s
             "status_label": _STATUS_LABELS_ZH.get(bound.get("status", "unknown"), bound.get("status", "unknown")),
             "confidence": bound.get("confidence"),
             "evidence": _resolve_evidence(bound.get("evidence_ids", []), evidence_map),
+            "reasoning": _field_reasoning(bound),
             "verified": True,
         })
     for key, value in (raw_fields or {}).items():
@@ -129,6 +150,7 @@ def _build_design_fields(bound_fields: dict[str, Any] | None, raw_fields: dict[s
             "status_label": _STATUS_LABELS_ZH.get(bound.get("status", "unknown"), bound.get("status", "unknown")),
             "confidence": bound.get("confidence"),
             "evidence": _resolve_evidence(bound.get("evidence_ids", []), evidence_map),
+            "reasoning": _field_reasoning(bound),
             "verified": False,
         })
     return out
@@ -139,9 +161,12 @@ def _paper_identity(papers: list[dict[str, Any]], index: int, fallback_paper_id:
         identity = papers[index].get("paper_identity") or {}
     else:
         identity = {}
+    title = identity.get("title")
+    if title and get_locale() in ("zh-CN", "en-US"):
+        title = translate_text(title, get_locale())
     return {
         "paper_id": identity.get("paper_id") or fallback_paper_id or f"paper_{index + 1}",
-        "title": identity.get("title"),
+        "title": title,
         "authors": identity.get("authors", []),
         "journal": identity.get("journal"),
         "year": identity.get("year"),
