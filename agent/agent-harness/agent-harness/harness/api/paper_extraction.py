@@ -25,9 +25,11 @@ from sqlalchemy.orm import Session
 
 from harness.api.deps import get_db_session
 from harness.evidence_retrieval.local_ddr_adapter import LocalDDRAdapter
+from harness.evidence_retrieval.relevance import product_search_variants
 from harness.paper_extraction import service
 from harness.paper_extraction.calibration import get_conflicts, record_extraction_attempt
 from harness.paper_extraction.ddr_converter import ensure_task_saved_as_evidence
+from harness.paper_extraction.engineering_actions_catalog import search_engineering_actions
 from harness.paper_extraction.result_summary import build_extraction_summary
 from harness.paper_extraction.rule_distillation import (
     distill_rules,
@@ -42,24 +44,27 @@ router = APIRouter(prefix="/api/paper-extraction", tags=["paper-extraction"])
 logger = logging.getLogger(__name__)
 
 
-def _rule_relevance(rule: dict[str, Any], *, project_product: str | None) -> bool:
+def _rule_relevance(rule: dict[str, Any], *, project_product: str | None, project_product_variants: list[str] | None = None) -> bool:
     """A rule is "relevant" to a project's target product when at least one
     of its cited *source DDRs* was itself about that product
     (`metadata.target_product`) - not the rule's own statement text, which
     is deliberately abstracted away from any one product (老师 §四.5: a
     rule distilled from butanol is meant to transfer to fatty acids, so its
     wording never names a specific product to match against). Never used
-    to hide rules, only to rank/tag."""
+    to hide rules, only to rank/tag. `project_product_variants` (see
+    `product_search_variants`) lets a caller precompute the zh/en
+    translation once per request instead of per rule/DDR; omitting it falls
+    back to matching on `project_product` alone."""
     if not project_product:
         return False
-    pp = project_product.strip().lower()
+    variants = [v.strip().lower() for v in (project_product_variants or [project_product]) if v and v.strip()]
     adapter = LocalDDRAdapter()
     for ddr_id in rule_source_ddr_ids(rule):
         doc = adapter.fetch(ddr_id)
         if doc is None:
             continue
         ddr_product = str((doc.raw_metadata or {}).get("metadata", {}).get("target_product", "")).strip().lower()
-        if ddr_product and (pp in ddr_product or ddr_product in pp):
+        if ddr_product and any(pp in ddr_product or ddr_product in pp for pp in variants):
             return True
     return False
 
@@ -181,8 +186,9 @@ def search_rules_route(query: str = "", project_id: str | None = None, session: 
     if project_id:
         project = session.get(Project, project_id)
         project_product = project.target_product if project is not None else None
+        project_product_variants = product_search_variants(project_product)
         for r in rules:
-            r["relevant"] = _rule_relevance(r, project_product=project_product)
+            r["relevant"] = _rule_relevance(r, project_product=project_product, project_product_variants=project_product_variants)
         rules.sort(key=lambda r: not r["relevant"])
     return {"rules": rules, "total": len(rules)}
 
@@ -204,10 +210,23 @@ def list_knowledge_claims_from_rules(query: str = "", project_id: str | None = N
     if project_id:
         project = session.get(Project, project_id)
         project_product = project.target_product if project is not None else None
+        project_product_variants = product_search_variants(project_product)
         for rule, claim in zip(rules, claims):
-            claim["relevant"] = _rule_relevance(rule, project_product=project_product)
+            claim["relevant"] = _rule_relevance(rule, project_product=project_product, project_product_variants=project_product_variants)
         claims.sort(key=lambda c: not c.get("relevant", False))
     return {"claims": claims, "total": len(claims)}
+
+
+@router.get("/engineering-actions")
+def search_engineering_actions_route(query: str = "") -> dict[str, Any]:
+    """Keyword search over `knowledge/engineering_actions/action_database.json`
+    (老师 §四.5/§5.3: 自建 DB "工程操作库") - the third knowledge-base
+    category, alongside `/rules` (biological rules) and the DDR database
+    (browsable today via `/api/generation/evidence/search?source=local_ddr`).
+    Empty
+    query returns every action (full browse)."""
+    actions = search_engineering_actions(query)
+    return {"actions": actions, "total": len(actions)}
 
 
 @router.post("/rules/distill")

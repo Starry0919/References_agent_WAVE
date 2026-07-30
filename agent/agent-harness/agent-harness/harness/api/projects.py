@@ -4,6 +4,8 @@ capability surface a future dashboard would call.
 """
 from __future__ import annotations
 
+import logging
+import os
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -23,6 +25,7 @@ from harness.workflow.iterative_loop import GateRejectedError, IllegalCycleTrans
 router = APIRouter(prefix="/api/projects", tags=["projects"])
 _loop = IterativeLoopController()
 DEFAULT_HOST = {"species": "Escherichia coli", "strain": "K-12"}
+logger = logging.getLogger(__name__)
 
 
 def _host_or_default(value: dict[str, Any] | None) -> dict[str, Any]:
@@ -39,11 +42,59 @@ class CreateProjectBody(BaseModel):
     actor_id: str
 
 
+def _auto_submit_idea_retrieval(*, project_id: str, host_definition: dict[str, Any], target_product: str, objectives: list[str]) -> None:
+    """Kicks off a literature retrieval run (same `auto_search` request the
+    Idea Workspace's "获取思路" button submits) the moment a project is
+    created, scoped to its target product/host - so the dashboard's
+    "候选路径" (candidate paths) panel and the Idea Workspace already have a
+    full, target-matched candidate set to show instead of staying empty
+    until a human manually clicks retrieve. Fire-and-forget: `submit_run`
+    just enqueues onto the module's own thread pool and returns
+    immediately, so this never blocks project creation; a search/LLM
+    hiccup here is logged and swallowed rather than failing the request
+    that has nothing to do with retrieval succeeding.
+
+    Skipped entirely under pytest: 30+ test files across the suite create
+    projects through this same endpoint without ever mocking the paper
+    extraction pipeline, and `TaskManager`'s `ThreadPoolExecutor` threads
+    are non-daemon - letting a real literature search/LLM extraction fire
+    on every one of those would make unrelated suites slow/flaky and can
+    hang interpreter exit waiting for those threads to finish real network
+    calls. Real usage (frontend, manual API calls) is unaffected; the
+    pipeline's own dedicated tests still exercise it directly."""
+    if "PYTEST_CURRENT_TEST" in os.environ:
+        return
+    from harness.paper_extraction import service as paper_extraction_service
+
+    objective = " · ".join(o for o in objectives if o and o.strip()) or target_product
+    user_request = " ".join(
+        part for part in (host_definition.get("species"), host_definition.get("strain"), objective) if part and str(part).strip()
+    ).strip()
+    if not user_request:
+        return
+    try:
+        paper_extraction_service.submit_run({
+            "project_id": project_id,
+            "user_request": user_request,
+            "organism": host_definition.get("species", ""),
+            "strain": host_definition.get("strain", ""),
+            "source_type": "auto_search",
+            "result_level": "extract",
+            "document_kind": "auto",
+        })
+    except Exception:
+        logger.exception("auto idea-retrieval submission failed for project %s", project_id)
+
+
 @router.post("")
 def create_project(body: CreateProjectBody, session: Session = Depends(get_db_session)) -> dict:
+    host_definition = {**DEFAULT_HOST, **(body.host_definition or {})}
     p = proj_svc.create_project(
-        session, name=body.name, host_definition={**DEFAULT_HOST, **(body.host_definition or {})}, target_product=body.target_product,
+        session, name=body.name, host_definition=host_definition, target_product=body.target_product,
         objectives=body.objectives, constraints=body.constraints, actor_id=body.actor_id,
+    )
+    _auto_submit_idea_retrieval(
+        project_id=p.project_id, host_definition=host_definition, target_product=body.target_product, objectives=body.objectives,
     )
     return {"project_id": p.project_id, "name": p.name, "status": p.status, "lifecycle_stage": p.lifecycle_stage, "version": p.version}
 

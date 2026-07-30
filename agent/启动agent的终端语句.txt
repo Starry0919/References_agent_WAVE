@@ -1,0 +1,47 @@
+苹果电脑用这个：
+【【（第一次）】】
+【后端】
+cd ~/Desktop/agent/agent/agent-harness/agent-harness
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+python main.py --reload
+
+【前端（另开终端）】
+cd ~/Desktop/agent/agent/agent-harness/agent-harness/frontend
+npm install
+npm run dev
+
+
+【【（第二次及以后）】】（可自行创建.bat文件，复制下面的内容，未来双击文件即可启用）
+cd ~/Desktop/agent/agent/agent-harness/agent-harness
+source .venv/bin/activate
+python main.py --reload
+cd ~/Desktop/agent/agent/agent-harness/agent-harness/frontend
+npm run dev
+
+
+
+Windows系统用这个：
+【【（第一次）】】
+【后端】
+cd /d "D:\Users\Starry\Desktop\agent\agent\agent-harness\agent-harness"
+python -m venv .venv_win
+.venv_win\Scripts\activate.bat
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+python main.py --reload
+
+【前端（另开终端）】
+cd /d "D:\Users\Starry\Desktop\agent\agent\agent-harness\agent-harness\frontend"
+npm install
+npm run dev
+
+
+【【（第二次及以后）】】（可自行创建.bat文件，复制下面的内容，未来双击文件即可启用）
+cd /d "D:\Users\Starry\Desktop\agent\agent\agent-harness\agent-harness"
+.venv_win\Scripts\activate.bat
+python main.py --reload
+cd /d "D:\Users\Starry\Desktop\agent\agent\agent-harness\agent-harness\frontend"
+npm run dev

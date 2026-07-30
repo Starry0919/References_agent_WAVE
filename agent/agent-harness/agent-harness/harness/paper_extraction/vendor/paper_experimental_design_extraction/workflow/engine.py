@@ -1,5 +1,6 @@
 from __future__ import annotations
-import copy,time
+import copy,os,threading,time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime,timezone
 from pathlib import Path
 from .artifacts import create
@@ -8,6 +9,18 @@ from .state import skill_state
 from .logger import WorkflowLogger
 from ..skills import SkillRegistry,SKILLS
 from ..storage import ArtifactStore
+
+# skill07 (per-paper reasoning-model extraction) is the one per-item stage
+# that is genuinely slow - a single call can take minutes (see
+# opus_extractor.py). Run its per-paper items concurrently instead of one
+# after another so N papers cost roughly one paper's latency instead of N.
+# skill05/06/08/09 are cheap local transforms already and are included here
+# too since running them concurrently is harmless, but they were never the
+# bottleneck. skill02-04/10-13 always produce exactly one request (see
+# _inputs below) so concurrency does not apply to them.
+_PARALLEL_SKILLS={"skill05_pdf_parser","skill06_markdown_cleaner","skill07_experiment_extraction",
+                  "skill08_evidence_binding","skill09_quality_evaluation"}
+_MAX_PARALLEL_ITEMS=int(os.getenv("PAPER_EXTRACTION_MAX_PARALLEL_ITEMS","4"))
 
 class WorkflowEngine:
     def __init__(self,config,executors=None):
@@ -71,25 +84,52 @@ class WorkflowEngine:
                 "errors":[state["errors"][-1]],"status":"BLOCKED"})
             self._save(state)
             return {"_blocked_for_input":True}
-        results=[]
         total=len(requests)
         state.setdefault("skill_progress",{})[skill]={"completed":0,"total":total}
-        for index,payload in enumerate(requests):
+        results:list=[None]*total
+        artifacts_by_index:list=[None]*total
+        save_lock=threading.Lock()
+        def run_one(index,payload):
             result=self.registry.execute(skill,payload,options.get("skill_kwargs",{}).get(skill))
-            results.append(result)
-            # Some stages (skill07 experiment extraction) call the model once per
-            # paper in this loop, sequentially - each one can take minutes, so
-            # without this a client watching the checkpoint sees nothing change
-            # for the entire stage duration. Saved per-item rather than once at
-            # the end so "3/6 papers" is visible mid-stage, not just at the end.
-            state["skill_progress"][skill]={"completed":index+1,"total":total}
-            self._save(state)
-            for err in result.get("errors",[]):state["errors"].append(normalize(skill,err))
-            for warn in result.get("warnings",[]):state["warnings"].append(normalize(skill,warn))
-            if result.get("output") is not None:
-                artifact=create(state["task_id"],skill,result,index);state["artifacts"].append(artifact)
-            if result.get("status") in {"terminal_failure","retryable_failure","cancelled"}:break
+            with save_lock:
+                results[index]=result
+                # Some stages (skill07 experiment extraction) call the model once per
+                # paper - each one can take minutes, so without this a client watching
+                # the checkpoint sees nothing change for the entire stage duration.
+                # Saved per-item (as each item finishes, in whatever order that
+                # happens) rather than once at the end so "3/6 papers" is visible
+                # mid-stage, not just at the end.
+                state["skill_progress"][skill]={"completed":sum(1 for r in results if r is not None),"total":total}
+                for err in result.get("errors",[]):state["errors"].append(normalize(skill,err))
+                for warn in result.get("warnings",[]):state["warnings"].append(normalize(skill,warn))
+                if result.get("output") is not None:
+                    artifacts_by_index[index]=create(state["task_id"],skill,result,index)
+                self._save(state)
+            return result
+        # Items within one stage are independent (different papers/documents),
+        # so a failure on one has no bearing on the others - run them
+        # concurrently, bounded, instead of the previous strictly-sequential
+        # loop that also aborted every remaining item the instant one failed.
+        max_workers=min(total,_MAX_PARALLEL_ITEMS) if (total>1 and skill in _PARALLEL_SKILLS) else 1
+        if max_workers>1:
+            with ThreadPoolExecutor(max_workers=max_workers) as pool:
+                list(pool.map(run_one,range(total),requests))
+        else:
+            for index,payload in enumerate(requests):
+                run_one(index,payload)
+        for artifact in artifacts_by_index:
+            if artifact is not None:state["artifacts"].append(artifact)
         aggregate=self._update_context(skill,results,state["context"])
+        # With items now running concurrently (rather than the previous
+        # sequential loop, where a hard failure was always the last thing
+        # `results` held before its `break`), `results[-1]` is just whichever
+        # request happened to occupy the final index - not necessarily the
+        # failing one. `run()` decides whether to abort the whole workflow
+        # from this return value alone, so a hard failure anywhere in this
+        # stage must still surface here even when a later, successful item's
+        # result would otherwise be what `_update_context` hands back.
+        failed_item=next((r for r in results if r.get("status") in {"terminal_failure","retryable_failure","cancelled"}),None)
+        if failed_item is not None:aggregate=failed_item
         statuses=[skill_state(r.get("status")) for r in results]
         state["skill_states"][skill]="FAILED" if "FAILED" in statuses else "BLOCKED" if "BLOCKED" in statuses else "REVIEW_REQUIRED" if "REVIEW_REQUIRED" in statuses else "WARNING" if "WARNING" in statuses else "SUCCESS"
         state["skill_logs"].append({"skill":skill,"input_artifact":state["artifacts"][before-1]["artifact_id"] if before else None,

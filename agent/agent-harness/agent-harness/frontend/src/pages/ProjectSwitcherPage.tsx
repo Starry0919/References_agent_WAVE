@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, FlaskConical, MoreVertical, TestTube2 } from "lucide-react";
+import { Plus, FlaskConical, MoreVertical, TestTube2, Trash2, X } from "lucide-react";
 import { createProject, deleteProject, listProjects, renameProject } from "@/api/projects";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
@@ -29,6 +29,14 @@ export function ProjectSwitcherPage() {
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<ProjectSummary | null>(null);
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [showBatchDeleteConfirm, setShowBatchDeleteConfirm] = useState(false);
+
+  function exitSelectionMode() {
+    setSelectionMode(false);
+    setSelectedIds(new Set());
+  }
 
   const createMutation = useMutation({
     mutationFn: () => createProject({ name, targetProduct, objectives: [], constraints: [], actorId: "frontend-user" }),
@@ -54,6 +62,24 @@ export function ProjectSwitcherPage() {
     },
   });
 
+  const batchDeleteMutation = useMutation({
+    mutationFn: (projectIds: string[]) => Promise.all(projectIds.map((id) => deleteProject(id))),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["projects"] });
+      setShowBatchDeleteConfirm(false);
+      exitSelectionMode();
+    },
+  });
+
+  function toggleSelected(projectId: string) {
+    setSelectedIds((cur) => {
+      const next = new Set(cur);
+      if (next.has(projectId)) next.delete(projectId);
+      else next.add(projectId);
+      return next;
+    });
+  }
+
   return (
     <div className="mx-auto flex h-full max-w-2xl flex-col gap-4 overflow-y-auto p-8">
       <div className="flex items-start justify-between gap-3">
@@ -68,6 +94,26 @@ export function ProjectSwitcherPage() {
           >
             <TestTube2 size={14} /> {t("switcher.simulationDemoEntry")}
           </Link>
+          {connected && projectsQuery.data && projectsQuery.data.length > 0 && (
+            <button
+              onClick={() => (selectionMode ? exitSelectionMode() : setSelectionMode(true))}
+              className={
+                selectionMode
+                  ? "flex items-center gap-1.5 rounded border border-border px-2.5 py-1.5 text-xs font-medium text-ink-muted hover:border-accent hover:text-accent-strong"
+                  : "flex items-center gap-1.5 rounded border border-state-risk px-2.5 py-1.5 text-xs font-medium text-state-risk hover:bg-state-risk/10"
+              }
+            >
+              {selectionMode ? (
+                <>
+                  <X size={14} /> {t("switcher.cancel")}
+                </>
+              ) : (
+                <>
+                  <Trash2 size={14} /> {t("switcher.batchDelete")}
+                </>
+              )}
+            </button>
+          )}
           <LanguageToggle />
         </div>
       </div>
@@ -90,9 +136,39 @@ export function ProjectSwitcherPage() {
       )}
 
       {connected && projectsQuery.data && projectsQuery.data.length > 0 && (
-        <ul className="flex flex-col gap-1.5">
+        <>
+          {selectionMode && (
+            <div className="flex items-center justify-between gap-3 px-1">
+              <label className="flex items-center gap-2 text-xs font-medium text-ink-muted">
+                <input
+                  type="checkbox"
+                  checked={selectedIds.size > 0 && selectedIds.size === projectsQuery.data.length}
+                  onChange={(e) => setSelectedIds(e.target.checked ? new Set(projectsQuery.data!.map((p) => p.projectId)) : new Set())}
+                />
+                {selectedIds.size > 0 ? `${t("switcher.selectedCount")} ${selectedIds.size}` : t("switcher.selectAll")}
+              </label>
+              {selectedIds.size > 0 && (
+                <button
+                  onClick={() => setShowBatchDeleteConfirm(true)}
+                  className="rounded px-2.5 py-1 text-xs font-medium text-state-risk hover:bg-surface-sunken"
+                >
+                  {t("switcher.batchDeleteSelected")}
+                </button>
+              )}
+            </div>
+          )}
+          <ul className="flex flex-col gap-1.5">
           {projectsQuery.data.map((p) => (
             <li key={p.projectId} className="panel relative flex w-full items-center justify-between gap-3 px-3 py-2.5 hover:border-accent">
+              {selectionMode && (
+                <input
+                  type="checkbox"
+                  className="mr-1 flex-shrink-0"
+                  checked={selectedIds.has(p.projectId)}
+                  onChange={() => toggleSelected(p.projectId)}
+                  aria-label={t("switcher.selectProject")}
+                />
+              )}
               {renamingId === p.projectId ? (
                 <div className="flex flex-1 items-center gap-2">
                   <input
@@ -169,7 +245,42 @@ export function ProjectSwitcherPage() {
               )}
             </li>
           ))}
-        </ul>
+          </ul>
+        </>
+      )}
+
+      {showBatchDeleteConfirm && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/40 p-4">
+          <div className="panel w-full max-w-sm p-4">
+            <p className="text-sm font-medium text-ink">{t("switcher.batchDeleteConfirmTitle")}</p>
+            <p className="mt-1 text-xs text-ink-muted">
+              {(projectsQuery.data ?? [])
+                .filter((p) => selectedIds.has(p.projectId))
+                .slice(0, 5)
+                .map((p) => p.name)
+                .join("、")}
+              {selectedIds.size > 5 ? ` ${t("switcher.batchDeleteAndMore").replace("{count}", String(selectedIds.size - 5))}` : ""}
+            </p>
+            <p className="mt-2 text-xs text-ink-muted">{t("switcher.batchDeleteConfirmDetail")}</p>
+            {batchDeleteMutation.isError && <p className="mt-2 text-xs text-state-risk">{String(batchDeleteMutation.error)}</p>}
+            <div className="mt-3 flex justify-end gap-2">
+              <button
+                onClick={() => setShowBatchDeleteConfirm(false)}
+                disabled={batchDeleteMutation.isPending}
+                className="rounded px-3 py-1.5 text-xs text-ink-muted"
+              >
+                {t("switcher.cancel")}
+              </button>
+              <button
+                onClick={() => batchDeleteMutation.mutate([...selectedIds])}
+                disabled={batchDeleteMutation.isPending}
+                className="rounded bg-state-risk px-3 py-1.5 text-xs font-medium text-white disabled:opacity-40"
+              >
+                {batchDeleteMutation.isPending ? t("switcher.deleting") : t("switcher.batchDelete")}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {deleteTarget && (

@@ -458,7 +458,7 @@ function RunView({ run }: { run: RunResult }) {
       )}
 
       {Object.keys(run.skillStates).length > 0 && (
-        <SkillProgress skillStates={run.skillStates} skillProgress={run.skillProgress} warnings={run.warnings} />
+        <SkillProgress skillStates={run.skillStates} skillProgress={run.skillProgress} warnings={run.warnings} errors={run.errors} />
       )}
 
       {!run.frontendView && !run.extractionSummary?.papers.length && (run.status === "RUNNING" || run.status === "CREATED") && Object.keys(run.skillStates).length === 0 && (
@@ -600,7 +600,7 @@ function skillStatusBadge(status: string): BadgeStatus {
  * 13 names that would drift once the vendored module changes. Keys sort
  * lexicographically into the pipeline's real run order since NN is
  * zero-padded. */
-function skillLabel(skillId: string): string {
+export function skillLabel(skillId: string): string {
   const match = /^skill(\d+)_(.+)$/.exec(skillId);
   if (!match) return skillId;
   const [, num, name] = match;
@@ -611,10 +611,12 @@ function SkillProgress({
   skillStates,
   skillProgress,
   warnings,
+  errors,
 }: {
   skillStates: Record<string, string>;
   skillProgress: Record<string, { completed: number; total: number }>;
   warnings: Array<{ skill: string; message: string; sourceCode?: string }>;
+  errors: Array<{ skill?: string; message?: string; code?: string }>;
 }) {
   const { t } = useI18n();
   const entries = Object.entries(skillStates).sort(([a], [b]) => a.localeCompare(b));
@@ -632,6 +634,7 @@ function SkillProgress({
           const upperStatus = status.toUpperCase();
           const isWarning = upperStatus === "WARNING";
           const isReviewRequired = upperStatus === "REVIEW_REQUIRED";
+          const isFailed = upperStatus === "FAILED";
           // Real per-warning messages (harness/paper_extraction's
           // engine.py now records each skill result's own `warnings`, not
           // just `errors`) - these are also what triggers REVIEW_REQUIRED
@@ -640,23 +643,35 @@ function SkillProgress({
           // both statuses. Falls back to a generic hint only if this run
           // predates that (an old checkpoint with no `warnings` entries).
           const detail = warnings.filter((w) => w.skill === skillId).map((w) => w.message);
+          // FAILED rows get their own error message inline too, not just in
+          // the top-level errors panel - without this, "which stage broke
+          // and why" required scrolling up and matching skill ids by eye.
+          const failureDetail = errors.filter((e) => e.skill === skillId).map((e) => String(e.message ?? e.code ?? ""));
           const genericHint = isWarning
             ? t("page5.progress.warningHint")
             : isReviewRequired
               ? t("page5.progress.reviewRequiredHint")
               : undefined;
           const hint = isWarning || isReviewRequired ? (detail.length > 0 ? detail.join(" ") : genericHint) : undefined;
+          const failureHint = isFailed && failureDetail.length > 0 ? failureDetail.join(" ") : undefined;
           return (
-            <li key={skillId} className="flex items-center justify-between gap-2 rounded border border-border bg-surface px-2.5 py-1.5 text-xs">
-              <span className="text-ink">{skillLabel(skillId)}</span>
-              <span className={`flex items-center gap-1.5 ${hint ? "cursor-help" : ""}`} title={hint}>
-                {hint && (
-                  <span className="shrink-0 text-state-caution" aria-hidden>
-                    <HelpCircle size={13} />
-                  </span>
-                )}
-                <StatusBadge status={skillStatusBadge(status)} label={label} hint={hint} />
-              </span>
+            <li key={skillId} className="flex flex-col gap-1 rounded border border-border bg-surface px-2.5 py-1.5 text-xs">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-ink">{skillLabel(skillId)}</span>
+                <StatusBadge status={skillStatusBadge(status)} label={label} hint={hint ?? failureHint} />
+              </div>
+              {hint && (
+                <p className="flex items-start gap-1 text-[11px] text-state-caution">
+                  <HelpCircle size={12} className="mt-0.5 shrink-0" aria-hidden />
+                  <span>{hint}</span>
+                </p>
+              )}
+              {failureHint && (
+                <p className="flex items-start gap-1 text-[11px] text-state-risk">
+                  <AlertTriangle size={12} className="mt-0.5 shrink-0" aria-hidden />
+                  <span>{failureHint}</span>
+                </p>
+              )}
             </li>
           );
         })}

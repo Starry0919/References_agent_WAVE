@@ -114,6 +114,62 @@ export async function getDdrProvenance(ddrId: string): Promise<DdrProvenance | n
   }
 }
 
+/** One entry from `knowledge/engineering_actions/action_database.json` - the
+ * third knowledge-base category (harness/paper_extraction/
+ * engineering_actions_catalog.py), alongside biological rules (above) and
+ * the DDR database (@/api/evidence's `searchEvidence(..., "local_ddr")`). A
+ * catalog of well-established engineering operations (gene target +
+ * modification + mechanism), not necessarily traceable to one specific
+ * paper - see `evidence` for whether this entry is a verified experimental
+ * result or a general pattern. */
+export interface EngineeringAction {
+  actionId: string;
+  actionType: string;
+  targetGene: string | null;
+  modification: string | null;
+  replacement: string | null;
+  biologicalEffect: string | null;
+  mechanism: string | null;
+  expectedEffect: string | null;
+  risk: string | null;
+  applicableConditions: string[];
+  evidence: string | null;
+}
+
+interface RawEngineeringAction {
+  action_id: string;
+  action_type: string;
+  target_gene: string | null;
+  modification: string | null;
+  replacement: string | null;
+  biological_effect: string | null;
+  mechanism: string | null;
+  expected_effect: string | null;
+  risk: string | null;
+  applicable_conditions?: string[];
+  evidence: string | null;
+}
+
+export async function listEngineeringActions(query = ""): Promise<EngineeringAction[]> {
+  const params = new URLSearchParams();
+  if (query) params.set("query", query);
+  const qs = params.toString();
+  const r = await api.get<{ actions: RawEngineeringAction[]; total: number }>(`/api/paper-extraction/engineering-actions${qs ? `?${qs}` : ""}`);
+  return r.actions.map((a) => ({
+    actionId: a.action_id,
+    actionType: a.action_type,
+    targetGene: a.target_gene,
+    modification: a.modification,
+    replacement: a.replacement,
+    biologicalEffect: a.biological_effect,
+    mechanism: a.mechanism,
+    expectedEffect: a.expected_effect,
+    risk: a.risk,
+    applicableConditions: a.applicable_conditions ?? [],
+    evidence: a.evidence,
+  }));
+}
+
 export async function listDdrKnowledgeClaims(query = "", projectId?: string): Promise<DdrKnowledgeClaim[]> {
   const params = new URLSearchParams();
   if (query) params.set("query", query);

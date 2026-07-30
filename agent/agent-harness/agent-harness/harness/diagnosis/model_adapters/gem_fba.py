@@ -23,6 +23,22 @@ from harness.diagnosis.model_adapters.base import CapabilityStatus, ModelAdapter
 
 _CACHE: dict[str, Any] = {}
 
+# Curated, narrow: only genes whose knockout/overexpression is a well-known
+# bound change on cobrapy's bundled e_coli_core textbook model. Single
+# source of truth shared by every caller that needs to turn one of this
+# repo's own gene-level engineering decisions into a real FBA input instead
+# of re-deriving (or duplicating) the mapping per caller -
+# `harness.engineering_design.counterfactual_service` and
+# `harness.workflow.synbio_stages` both import this rather than keeping
+# their own copy.
+GENE_TO_REACTION_BOUND_HINT: dict[str, dict[str, Any]] = {
+    "pykF": {"reaction": "PYK", "knockout": {"lower": 0, "upper": 0}, "overexpression": {"lower": 0, "upper": 1000}},
+    "ptsG": {"reaction": "GLCpts", "knockout": {"lower": 0, "upper": 0}},
+    "ppc": {"reaction": "PPC", "overexpression": {"lower": 0, "upper": 1000}},
+}
+# Verified against cobrapy's bundled "textbook" e_coli_core model.
+BIOMASS_OBJECTIVE_ECOLI_CORE = "Biomass_Ecoli_core"
+
 
 def _load_model() -> Any:
     if "model" not in _CACHE:

@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, ShieldCheck, X, GripVertical, FlaskConical, Sprout, ExternalLink } from "lucide-react";
+import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, ShieldCheck, Check, X, GripVertical, FlaskConical, Sprout, ExternalLink } from "lucide-react";
 import { getEvidenceDocument, getGenerationHealth, listEvidenceMatchReports, searchEvidence, verifyDoi, type EvidenceDocumentDetail } from "@/api/evidence";
-import { listDdrKnowledgeClaims, type DdrKnowledgeClaim } from "@/api/rules";
+import { listDdrKnowledgeClaims, listEngineeringActions, type DdrKnowledgeClaim, type EngineeringAction } from "@/api/rules";
 import { EmptyState } from "@/components/common/EmptyState";
 import { CapabilityState } from "@/components/common/CapabilityState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
@@ -87,12 +87,61 @@ function TabButton({ active, onClick, icon: Icon, label }: { active: boolean; on
   );
 }
 
+type KnowledgeSource = "rules" | "ddr" | "actions";
+const KNOWLEDGE_SOURCES: KnowledgeSource[] = ["rules", "ddr", "actions"];
+
+/** The three on-disk knowledge-base categories (`knowledge/biological_rules/`,
+ * `knowledge/ddr_database/`, `knowledge/engineering_actions/`) are distinct
+ * kinds of object, not three views of the same list:
+ * - DDR database: one record per *paper*, its full trigger→reasoning→
+ *   evidence→action decision chain (a case study tied to one citation).
+ * - Biological rules: cross-paper heuristics *distilled from* multiple DDRs
+ *   (no single-paper citation of their own - each cites the DDRs it
+ *   generalizes from).
+ * - Engineering actions: a catalog of concrete gene-level operations
+ *   (target + modification + mechanism), most of which are established
+ *   patterns rather than one verified experimental result - see each
+ *   entry's own `evidence` field.
+ * The filter below is multi-select (all three checked by default) since a
+ * user comparing rules against their source DDRs, or actions against the
+ * rule that recommends them, legitimately wants more than one category
+ * visible at once. */
 function BiologicalKnowledgeTab() {
   const { t } = useI18n();
   const { projectId } = useParams<{ projectId: string }>();
+  const [params, setParams] = useSearchParams();
+  const activeSources = useMemo(() => {
+    const raw = params.get("sources");
+    if (!raw) return new Set<KnowledgeSource>(KNOWLEDGE_SOURCES);
+    const parsed = raw.split(",").filter((s): s is KnowledgeSource => KNOWLEDGE_SOURCES.includes(s as KnowledgeSource));
+    return new Set(parsed);
+  }, [params]);
+  function toggleSource(source: KnowledgeSource) {
+    const next = new Set(activeSources);
+    if (next.has(source)) next.delete(source);
+    else next.add(source);
+    const nextParams = new URLSearchParams(params);
+    // Omit the param entirely when all three are active - keeps the default,
+    // most-common state out of the URL instead of always appending `?sources=...`.
+    if (next.size === KNOWLEDGE_SOURCES.length) nextParams.delete("sources");
+    else nextParams.set("sources", [...next].join(","));
+    setParams(nextParams, { replace: true });
+  }
+
   const claimsQuery = useQuery({
     queryKey: ["ddr-knowledge-claims", projectId],
     queryFn: () => listDdrKnowledgeClaims("", projectId),
+    enabled: activeSources.has("rules"),
+  });
+  const ddrQuery = useQuery({
+    queryKey: ["evidence-search", "", "local_ddr", projectId],
+    queryFn: () => searchEvidence("", "local_ddr", projectId),
+    enabled: activeSources.has("ddr"),
+  });
+  const actionsQuery = useQuery({
+    queryKey: ["engineering-actions"],
+    queryFn: () => listEngineeringActions(),
+    enabled: activeSources.has("actions"),
   });
 
   return (
@@ -108,29 +157,118 @@ function BiologicalKnowledgeTab() {
           </div>
         </div>
         <div className="grid gap-3 p-4 md:grid-cols-3">
-          <KnowledgeArea icon={Dna} title="Biological rules" path="knowledge/biological_rules/" />
-          <KnowledgeArea icon={Layers} title="DDR database" path="knowledge/ddr_database/" />
-          <KnowledgeArea icon={FlaskConical} title="Engineering actions" path="knowledge/engineering_actions/" />
+          <KnowledgeArea
+            icon={Dna}
+            title={t("page3.source.rulesTitle")}
+            detail={t("page3.source.rulesDetail")}
+            path="knowledge/biological_rules/"
+            active={activeSources.has("rules")}
+            onToggle={() => toggleSource("rules")}
+            count={activeSources.has("rules") ? claimsQuery.data?.length : undefined}
+          />
+          <KnowledgeArea
+            icon={Layers}
+            title={t("page3.source.ddrTitle")}
+            detail={t("page3.source.ddrDetail")}
+            path="knowledge/ddr_database/"
+            active={activeSources.has("ddr")}
+            onToggle={() => toggleSource("ddr")}
+            count={activeSources.has("ddr") ? ddrQuery.data?.documents.length : undefined}
+          />
+          <KnowledgeArea
+            icon={FlaskConical}
+            title={t("page3.source.actionsTitle")}
+            detail={t("page3.source.actionsDetail")}
+            path="knowledge/engineering_actions/"
+            active={activeSources.has("actions")}
+            onToggle={() => toggleSource("actions")}
+            count={activeSources.has("actions") ? actionsQuery.data?.length : undefined}
+          />
         </div>
       </section>
 
-      <section className="panel flex flex-col gap-3 p-4">
-        <div>
-          <h3 className="text-sm font-semibold text-ink">{t("page3.ddrKnowledgeClaimsTitle")}</h3>
-          <p className="mt-1 text-[11px] text-ink-faint">{t("page3.ddrKnowledgeClaimsDetail")}</p>
-        </div>
-        {claimsQuery.isLoading && <EmptyState variant="loading" />}
-        {claimsQuery.isError && <EmptyState variant="failed" detail={String(claimsQuery.error)} />}
-        {claimsQuery.data && claimsQuery.data.length === 0 && <EmptyState variant="no_result" title={t("page3.ddrKnowledgeClaimsEmptyTitle")} />}
-        {claimsQuery.data && claimsQuery.data.length > 0 && (
-          <ul className="flex flex-col gap-2">
-            {claimsQuery.data.map((c) => (
-              <DdrKnowledgeClaimCard key={c.claimId} claim={c} projectId={projectId} />
-            ))}
-          </ul>
-        )}
-      </section>
+      {activeSources.has("rules") && (
+        <section className="panel flex flex-col gap-3 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-ink">{t("page3.ddrKnowledgeClaimsTitle")}</h3>
+            <p className="mt-1 text-[11px] text-ink-faint">{t("page3.ddrKnowledgeClaimsDetail")}</p>
+          </div>
+          {claimsQuery.isLoading && <EmptyState variant="loading" />}
+          {claimsQuery.isError && <EmptyState variant="failed" detail={String(claimsQuery.error)} />}
+          {claimsQuery.data && claimsQuery.data.length === 0 && <EmptyState variant="no_result" title={t("page3.ddrKnowledgeClaimsEmptyTitle")} />}
+          {claimsQuery.data && claimsQuery.data.length > 0 && (
+            <ul className="flex flex-col gap-2">
+              {claimsQuery.data.map((c) => (
+                <DdrKnowledgeClaimCard key={c.claimId} claim={c} projectId={projectId} />
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
+
+      {activeSources.has("ddr") && (
+        <section className="panel flex flex-col gap-3 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-ink">{t("page3.source.ddrTitle")}</h3>
+            <p className="mt-1 text-[11px] text-ink-faint">{t("page3.source.ddrDetail")}</p>
+          </div>
+          {ddrQuery.isLoading && <EmptyState variant="loading" />}
+          {ddrQuery.isError && <EmptyState variant="failed" detail={String(ddrQuery.error)} />}
+          {ddrQuery.data && ddrQuery.data.documents.length === 0 && <EmptyState variant="no_result" />}
+          {ddrQuery.data && ddrQuery.data.documents.length > 0 && (
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {ddrQuery.data.documents.map((d) => (
+                <li key={d.sourceId} className="rounded-lg border border-border bg-surface p-3 text-xs">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-medium text-ink">{d.title || t("page3.noTitle")}</p>
+                    {projectId && (
+                      <Link to={`/projects/${projectId}/evidence/${d.sourceId}`} className="shrink-0 text-accent-strong">
+                        <ExternalLink size={12} aria-hidden />
+                      </Link>
+                    )}
+                  </div>
+                  <p className="mt-1 font-mono text-[10px] text-ink-faint">{d.sourceId}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
+
+      {activeSources.has("actions") && (
+        <section className="panel flex flex-col gap-3 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-ink">{t("page3.source.actionsTitle")}</h3>
+            <p className="mt-1 text-[11px] text-ink-faint">{t("page3.source.actionsDetail")}</p>
+          </div>
+          {actionsQuery.isLoading && <EmptyState variant="loading" />}
+          {actionsQuery.isError && <EmptyState variant="failed" detail={String(actionsQuery.error)} />}
+          {actionsQuery.data && actionsQuery.data.length === 0 && <EmptyState variant="no_result" />}
+          {actionsQuery.data && actionsQuery.data.length > 0 && (
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {actionsQuery.data.map((a) => (
+                <EngineeringActionCard key={a.actionId} action={a} />
+              ))}
+            </ul>
+          )}
+        </section>
+      )}
     </div>
+  );
+}
+
+function EngineeringActionCard({ action }: { action: EngineeringAction }) {
+  const { t } = useI18n();
+  return (
+    <li className="rounded-lg border border-border bg-surface p-3 text-xs">
+      <div className="flex items-start justify-between gap-2">
+        <p className="font-medium text-ink">{action.actionType}</p>
+        <span className="font-mono text-[10px] text-ink-faint">{action.actionId}</span>
+      </div>
+      {action.targetGene && <p className="mt-1 text-ink-muted">{t("page3.source.actionTarget")}: {action.targetGene}</p>}
+      {action.mechanism && <p className="mt-1 text-[11px] text-ink-faint">{action.mechanism}</p>}
+      {action.risk && <p className="mt-1 text-[11px] text-state-caution">{t("page5.risk")}: {action.risk}</p>}
+    </li>
   );
 }
 
@@ -179,13 +317,53 @@ function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim;
   );
 }
 
-function KnowledgeArea({ icon: Icon, title, path }: { icon: typeof Dna; title: string; path: string }) {
+function KnowledgeArea({
+  icon: Icon,
+  title,
+  detail,
+  path,
+  active,
+  onToggle,
+  count,
+}: {
+  icon: typeof Dna;
+  title: string;
+  detail: string;
+  path: string;
+  active: boolean;
+  onToggle: () => void;
+  count?: number;
+}) {
+  const { t } = useI18n();
   return (
-    <div className="rounded-lg border border-border bg-surface-sunken/40 p-4">
-      <Icon size={16} className="text-accent" aria-hidden />
-      <p className="mt-3 text-sm font-medium text-ink">{title}</p>
-      <p className="mt-1 break-all font-mono text-[11px] text-ink-faint">{path}</p>
-    </div>
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-pressed={active}
+      className={`flex flex-col items-start rounded-lg border p-4 text-left transition-colors ${
+        active ? "border-accent bg-accent-soft/40" : "border-border bg-surface-sunken/40 hover:bg-surface-sunken"
+      }`}
+    >
+      <div className="flex w-full items-start justify-between gap-2">
+        <Icon size={16} className={active ? "text-accent-strong" : "text-accent"} aria-hidden />
+        <span
+          className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
+            active ? "border-accent bg-accent text-white" : "border-border bg-surface"
+          }`}
+        >
+          {active && <Check size={11} aria-hidden />}
+        </span>
+      </div>
+      <p className="mt-3 text-sm font-medium text-ink">
+        {title}
+        {count !== undefined && <span className="ml-1.5 font-normal text-ink-faint">({count})</span>}
+      </p>
+      <p className="mt-1 text-[11px] leading-4 text-ink-muted">{detail}</p>
+      <p className="mt-2 break-all font-mono text-[10px] text-ink-faint">{path}</p>
+      <span className="mt-2 text-[10px] font-medium text-accent-strong">
+        {active ? t("page3.source.shownInList") : t("page3.source.hiddenFromList")}
+      </span>
+    </button>
   );
 }
 

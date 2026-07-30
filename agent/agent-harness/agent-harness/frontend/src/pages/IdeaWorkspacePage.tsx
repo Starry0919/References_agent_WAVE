@@ -17,9 +17,10 @@ import {
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { listIdeas, type ProjectIdea } from "@/api/ideas";
-import { getRun, listRuns, submitRun, type ExtractedIdea } from "@/api/paperExtraction";
+import { getRun, listRuns, submitRun, type ExtractedIdea, type RunResult } from "@/api/paperExtraction";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge } from "@/components/common/StatusBadge";
+import { skillLabel } from "@/pages/paperExtraction/PaperExtractionPage";
 import { useI18n, type DictKey } from "@/lib/i18n";
 import { useBackendHealth } from "@/state/BackendHealth";
 import { useProjectContext } from "@/state/useProjectContext";
@@ -65,6 +66,16 @@ export function IdeaWorkspacePage() {
   });
   const extractedIdeas = useMemo(
     () => runResults.flatMap((query) => query.data?.extractedIdeas ?? []),
+    [runResults],
+  );
+  // Real per-stage progress (skill_states/skill_progress, already fetched
+  // above for extractedIdeas) instead of a plain "processing" spinner -
+  // extraction genuinely takes minutes per paper (skill07 is one large
+  // reasoning-model call), so showing which of the 13 pipeline stages is
+  // running, and "N/M papers" when a stage fans out per-paper, gives the
+  // user something real to watch rather than an unexplained wait.
+  const activeRunProgress = useMemo(
+    () => runResults.map((query) => query.data).filter((r): r is RunResult => !!r && (r.status === "RUNNING" || r.status === "CREATED")).map(describeRunProgress).find(Boolean) ?? null,
     [runResults],
   );
   const retrievalMutation = useMutation({
@@ -176,6 +187,7 @@ export function IdeaWorkspacePage() {
             ideas={extractedIdeas}
             filterText={filterText}
             running={Boolean((runsQuery.data ?? []).some((run) => !["completed", "failed"].includes(run.status)))}
+            progressDetail={activeRunProgress}
           />
           {!selected && extractedIdeas.length === 0 ? (
             <EmptyState variant="first_use" title={t("ideaWorkspace.selectIdeaTitle")} detail={t("ideaWorkspace.selectIdeaDetail")} />
@@ -189,7 +201,32 @@ export function IdeaWorkspacePage() {
   );
 }
 
-function RetrievedIdeas({ ideas, filterText, running }: { ideas: ExtractedIdea[]; filterText: string; running: boolean }) {
+/** Turns one in-flight run's real skill_states/skill_progress into a short,
+ * human-readable status line - e.g. "07 Experiment Extraction (2/5)" while
+ * skill07 is mid-fan-out, or "12 Qc Human Review" once single-item stages
+ * are running. Returns null when there's nothing running yet to report
+ * (CREATED with no skill_states) so the caller can fall back to a generic
+ * message instead of an empty string. */
+function describeRunProgress(run: RunResult): string | null {
+  const entries = Object.entries(run.skillStates).filter(([, status]) => status.toUpperCase() === "RUNNING");
+  if (entries.length === 0) return null;
+  const [skillId] = entries.sort(([a], [b]) => a.localeCompare(b))[0];
+  const progress = run.skillProgress[skillId];
+  const fraction = progress && progress.total > 1 ? ` (${progress.completed}/${progress.total})` : "";
+  return `${skillLabel(skillId)}${fraction}`;
+}
+
+function RetrievedIdeas({
+  ideas,
+  filterText,
+  running,
+  progressDetail,
+}: {
+  ideas: ExtractedIdea[];
+  filterText: string;
+  running: boolean;
+  progressDetail: string | null;
+}) {
   const { t } = useI18n();
   const words = filterText.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const filtered = words.length === 0 ? ideas : ideas.filter((idea) => {
@@ -209,10 +246,15 @@ function RetrievedIdeas({ ideas, filterText, running }: { ideas: ExtractedIdea[]
         <div>
           <h2 className="text-sm font-semibold text-ink">{t("ideaWorkspace.autoRetrievedTitle")}</h2>
           <p className="mt-0.5 text-xs text-ink-muted">
-            {running ? t("ideaWorkspace.retrievingDetail") : `${filtered.length} ${t("ideaWorkspace.groupedByType")}`}
+            {running ? (progressDetail ?? t("ideaWorkspace.retrievingDetail")) : `${filtered.length} ${t("ideaWorkspace.groupedByType")}`}
           </p>
         </div>
-        {running && <span className="rounded-full bg-accent-soft px-3 py-1 text-[11px] font-medium text-accent-strong">{t("ideaWorkspace.processing")}</span>}
+        {running && (
+          <span className="flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-[11px] font-medium text-accent-strong">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-strong" aria-hidden />
+            {progressDetail ?? t("ideaWorkspace.processing")}
+          </span>
+        )}
       </div>
       {groups.length > 1 && (
         <nav className="sticky top-0 z-10 mb-4 flex flex-wrap gap-2 rounded-lg border border-border bg-surface/95 p-2 shadow-sm backdrop-blur">

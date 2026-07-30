@@ -1,10 +1,11 @@
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, BookOpen, BrainCircuit, Check, Dna, FlaskConical, Lightbulb, Pencil, Sparkles, Target, X } from "lucide-react";
-import { useMutation, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
-import { useState, type ReactNode } from "react";
+import { useMutation, useQueries, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
+import { useMemo, useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import { searchEvidence, type EvidenceSearchResult } from "@/api/evidence";
 import { listIdeas } from "@/api/ideas";
+import { getRun, listRuns } from "@/api/paperExtraction";
 import { getProjectStatusView, getTimeline, updateProjectContext } from "@/api/projects";
 import { listDdrKnowledgeClaims, type DdrKnowledgeClaim } from "@/api/rules";
 import { EmptyState } from "@/components/common/EmptyState";
@@ -31,6 +32,26 @@ export function CommandCenterPage() {
     queryFn: () => listIdeas(projectId as string),
     enabled,
   });
+  // Candidate paths auto-retrieved from the knowledge base for this
+  // project's target product (harness/api/projects.py::create_project
+  // auto-submits this run at creation time) - shown here too, not just in
+  // the Idea Workspace, so the dashboard isn't empty until a human
+  // manually captures a free-text idea.
+  const runsQuery = useQuery({
+    queryKey: ["paper-extraction-runs", projectId],
+    queryFn: () => listRuns(projectId),
+    enabled,
+    refetchInterval: 4_000,
+  });
+  const runResults = useQueries({
+    queries: (runsQuery.data ?? []).slice(0, 6).map((run) => ({
+      queryKey: ["paper-extraction-run", run.taskId],
+      queryFn: () => getRun(run.taskId),
+      refetchInterval: run.status === "completed" || run.status === "failed" ? false : 3_000,
+    })),
+  });
+  const extractedIdeas = useMemo(() => runResults.flatMap((query) => query.data?.extractedIdeas ?? []), [runResults]);
+  const retrievalRunning = (runsQuery.data ?? []).some((run) => !["completed", "failed"].includes(run.status));
   const timelineQuery = useQuery({
     queryKey: ["project", projectId, "timeline"],
     queryFn: () => getTimeline(projectId as string),
@@ -73,6 +94,7 @@ export function CommandCenterPage() {
   const evidenceCount = relevantDocs.length;
   const biologicalKnowledgeCount = relevantClaims.length;
   const activeIdeas = ideas.filter((idea) => idea.status !== "dismissed");
+  const sourceTotal = Math.max(1, evidenceCount + biologicalKnowledgeCount + extractedIdeas.length + activeIdeas.length);
   const designCount = new Set([
     ...activeIdeas.map((idea) => idea.linkedDesignProjectId).filter(Boolean),
     ...timeline.filter((event) => /design/i.test(event.entityType)).map((event) => event.entityId),
@@ -141,7 +163,7 @@ export function CommandCenterPage() {
             </Link>
           </div>
           {ideasQuery.isLoading && <div className="p-5"><EmptyState variant="loading" /></div>}
-          {!ideasQuery.isLoading && activeIdeas.length === 0 && (
+          {!ideasQuery.isLoading && activeIdeas.length === 0 && extractedIdeas.length === 0 && !retrievalRunning && (
             <div className="p-5"><EmptyState variant="first_use" title={t("dashboard.noIdeas")} detail={t("dashboard.noIdeasDetail")} /></div>
           )}
           {activeIdeas.length > 0 && (
@@ -163,15 +185,48 @@ export function CommandCenterPage() {
               ))}
             </div>
           )}
+          {(extractedIdeas.length > 0 || retrievalRunning) && (
+            <div className="border-t border-border p-4">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <h3 className="text-xs font-semibold text-ink">{t("ideaWorkspace.autoRetrievedTitle")}</h3>
+                {retrievalRunning && (
+                  <span className="rounded-full bg-accent-soft px-2 py-1 text-[11px] font-medium text-accent-strong">{t("ideaWorkspace.processing")}</span>
+                )}
+              </div>
+              {retrievalRunning && extractedIdeas.length === 0 && (
+                <p className="text-xs text-ink-muted">{t("ideaWorkspace.retrievingDetail")}</p>
+              )}
+              {extractedIdeas.length > 0 && (
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {extractedIdeas.slice(0, 6).map((idea) => (
+                    <Link
+                      key={idea.ideaId}
+                      to={`/projects/${projectId}/ideas`}
+                      className="block rounded-lg border border-border p-2.5 text-xs hover:border-accent hover:bg-accent-soft/40"
+                    >
+                      <p className="line-clamp-2 font-medium text-ink">{idea.title}</p>
+                      <p className="mt-1 line-clamp-2 text-[11px] text-ink-muted">{idea.summary}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
+              {extractedIdeas.length > 6 && (
+                <Link to={`/projects/${projectId}/ideas`} className="mt-3 flex items-center gap-1 text-xs font-medium text-accent-strong">
+                  {t("dashboard.goToIdeaWorkspace")} <ArrowRight size={13} />
+                </Link>
+              )}
+            </div>
+          )}
         </section>
 
         <div className="flex flex-col gap-4">
           <section className="panel p-4">
             <h2 className="text-sm font-semibold text-ink">{t("dashboard.sourceDistribution")}</h2>
             <div className="mt-4 flex flex-col gap-4">
-              <SourceBar icon={BookOpen} label={t("dashboard.sourceLiterature")} value={evidenceCount} total={Math.max(1, evidenceCount + biologicalKnowledgeCount + activeIdeas.length)} />
-              <SourceBar icon={BrainCircuit} label={t("dashboard.sourceBiologyBooks")} value={biologicalKnowledgeCount} total={Math.max(1, evidenceCount + biologicalKnowledgeCount + activeIdeas.length)} />
-              <SourceBar icon={Lightbulb} label={t("dashboard.sourceHuman")} value={activeIdeas.length} total={Math.max(1, evidenceCount + biologicalKnowledgeCount + activeIdeas.length)} />
+              <SourceBar icon={BookOpen} label={t("dashboard.sourceLiterature")} value={evidenceCount} total={sourceTotal} />
+              <SourceBar icon={BrainCircuit} label={t("dashboard.sourceBiologyBooks")} value={biologicalKnowledgeCount} total={sourceTotal} />
+              <SourceBar icon={Sparkles} label={t("dashboard.sourceAuto")} value={extractedIdeas.length} total={sourceTotal} />
+              <SourceBar icon={Lightbulb} label={t("dashboard.sourceHuman")} value={activeIdeas.length} total={sourceTotal} />
             </div>
             <Link to={`/projects/${projectId}/knowledge`} className="mt-5 flex items-center gap-1 text-xs font-medium text-accent-strong">
               {t("dashboard.openKnowledge")} <ArrowRight size={13} />

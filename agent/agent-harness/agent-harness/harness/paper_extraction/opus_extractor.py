@@ -143,7 +143,7 @@ def _call_kimi(api_key: str, model: str, prompt: dict[str, Any]) -> tuple[dict[s
                 {"role": "user", "content": json.dumps(prompt, ensure_ascii=False)},
             ],
         },
-        timeout=180.0,
+        timeout=_SKILL07_TIMEOUT_S,
     )
     response.raise_for_status()
     payload = response.json()
@@ -237,10 +237,23 @@ def make_executor(model: str = MODEL):
             }
 
         prompt = _build_prompt(request)
+        error_code, error_local_code = "MODEL_NOT_CONFIGURED", "EXP005"
         if api_key:
-            output, resolved_model, usage = _call_kimi(api_key, model, prompt)
             extractor_name = "kimi_chat_completions"
-            error = None
+            try:
+                output, resolved_model, usage = _call_kimi(api_key, model, prompt)
+                error = None
+            except httpx.HTTPError as exc:
+                output, resolved_model, usage = None, model, {}
+                # Distinguishing this from MODEL_NOT_CONFIGURED matters: Kimi
+                # *was* configured and reachable, it just didn't answer
+                # within _SKILL07_TIMEOUT_S (or returned an HTTP error) -
+                # surfacing that distinctly is what lets a checkpoint reader
+                # tell "no credential" apart from "credential fine, request
+                # timed out/rejected" without re-deriving it from the raw
+                # exception text.
+                error = f"{type(exc).__name__}: {exc}"
+                error_code, error_local_code = "PROVIDER_REQUEST_FAILED", "EXP006"
         else:
             output, resolved_model, usage, error = _call_configured_provider(prompt)
             extractor_name = "openai_compatible_chat"
@@ -256,15 +269,22 @@ def make_executor(model: str = MODEL):
                 resolved_model = model
 
         if error is not None:
+            suggested_action = (
+                f"Kimi did not respond within PAPER_EXTRACTION_SKILL07_TIMEOUT_S={_SKILL07_TIMEOUT_S:.0f}s "
+                "(or returned an HTTP error); retry, or raise that timeout if this paper is unusually "
+                "large/slow."
+                if error_code == "PROVIDER_REQUEST_FAILED"
+                else "Configure a working KIMI_API_KEY or LLM_PROVIDER/*_API_KEY and retry."
+            )
             return {
                 "status": "terminal_failure", "output": None, "artifacts": [],
                 "self_check": {"passed": False, "checks": [], "score": 0.0},
                 "warnings": [],
                 "errors": [{
-                    "code": "MODEL_NOT_CONFIGURED", "local_code": "EXP005",
+                    "code": error_code, "local_code": error_local_code,
                     "category": "model", "message": f"experimental-design extraction failed via {resolved_model}: {error}",
                     "retryable": True, "severity": "error", "context": {"model": resolved_model},
-                    "suggested_action": "Configure a working KIMI_API_KEY or LLM_PROVIDER/*_API_KEY and retry.",
+                    "suggested_action": suggested_action,
                 }],
                 "metrics": {},
                 "provenance": {

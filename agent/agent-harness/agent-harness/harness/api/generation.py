@@ -15,7 +15,7 @@ from harness.api.deps import get_db_session
 from harness.evidence_retrieval.crossref_adapter import CrossrefEvidenceAdapter
 from harness.evidence_retrieval.local_ddr_adapter import LocalDDRAdapter
 from harness.evidence_retrieval.models import EvidenceMatchReport
-from harness.evidence_retrieval.relevance import ddr_relevance
+from harness.evidence_retrieval.relevance import ddr_relevance, product_search_variants
 from harness.evidence_retrieval.service import assess_ddr_applicability, verify_doi
 from harness.i18n import get_locale
 from harness.llm_generation.client import StructuredGenerationClient
@@ -102,17 +102,22 @@ def search_evidence(query: str = "", source: str = "local_ddr", project_id: str 
     adapter = CrossrefEvidenceAdapter() if source == "crossref" else LocalDDRAdapter()
     result = adapter.search(query, {}, {})
     project_host = project_product = None
+    project_product_variants: list[str] = []
     if project_id and source != "crossref":
         project = session.get(Project, project_id)
         if project is not None:
             ctx = project_context_summary(project)
             project_host, project_product = ctx["host"], ctx["target_product"]
+            project_product_variants = product_search_variants(project_product)
 
     def _doc_dict(d: Any) -> dict[str, Any]:
         out = {"source_id": d.source_id, "title": d.title, "authors": d.authors, "publication_year": d.publication_year,
                "journal_or_repository": d.journal_or_repository, "doi_or_accession": d.doi_or_accession}
         if project_host or project_product:
-            out.update(ddr_relevance(d.raw_metadata, project_host=project_host, project_product=project_product))
+            out.update(ddr_relevance(
+                d.raw_metadata, project_host=project_host, project_product=project_product,
+                project_product_variants=project_product_variants,
+            ))
         return out
 
     documents = [_doc_dict(d) for d in result.documents]
