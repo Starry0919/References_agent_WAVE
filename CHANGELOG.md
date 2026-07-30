@@ -2,6 +2,63 @@
 
 All notable changes to this project will be documented in this file.
 
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [2026-07-30] Agent-Harness Update
+
+### Added
+
+#### Frontend
+- **AgentTracePanel** (`frontend/src/pages/evidence/components/AgentTracePanel.tsx`) — Agent 推理过程追踪面板，展示 LLM 提取过程中的中间步骤与决策路径
+- **CalibrationPanel** (`frontend/src/pages/evidence/components/CalibrationPanel.tsx`) — 提取校准面板，支持人工标注修正与自动校准反馈
+- **EvidenceGraphModal** (`frontend/src/pages/evidence/components/EvidenceGraphModal.tsx`) — 证据关系图谱弹窗，可视化论文间证据引用网络
+- **EvidenceProvenancePanel** (`frontend/src/pages/evidence/components/EvidenceProvenancePanel.tsx`) — 证据溯源面板，追踪结论到原始文献的完整链路
+- **ExperimentalDesignPanel** (`frontend/src/pages/evidence/components/ExperimentalDesignPanel.tsx`) — 实验设计面板，结构化展示提取的实验方案
+- **ExperimentalStepCard** (`frontend/src/pages/evidence/components/ExperimentalStepCard.tsx`) — 实验步骤卡片，展示单步实验操作与参数
+- **PaperHeader** (`frontend/src/pages/evidence/components/PaperHeader.tsx`) — 论文头部信息组件，聚合标题、作者、期刊、DOI 等元数据
+
+#### Backend — Paper Extraction
+- **calibration.py** — 提取校准模块，支持基于人工反馈的自校准与置信度修正
+- **rule_distillation.py** — 规则蒸馏模块，从标注数据中提取可复用的提取规则
+- **translation/service.py** — 论文翻译服务，支持中英双语互译与术语标准化
+
+#### Backend — API
+- **translation.py** (`harness/api/translation.py`) — 翻译 REST API，暴露翻译、术语查询等接口
+
+#### Knowledge Base
+- **DDR-006/007** (`knowledge/ddr_database/`) — 新增"利用合成机器提升碳得率"相关 DDR 知识条目（2 条）
+
+#### Documentation
+- **WORK_A_ALIGNMENT_REPORT.md** — Work A 对齐报告，记录当前实现与需求目标的差距分析
+
+#### Tests
+- **test_calibration.py** — 提取校准模块单元测试
+- **test_reasoning_view.py** — 推理视图构建器测试
+- **test_result_summary.py** — 结果摘要生成测试
+- **test_rule_distillation.py** — 规则蒸馏模块测试
+- **test_translation_service.py** — 翻译服务测试
+
+### Changed
+
+#### Frontend
+- `PaperEvidenceDetailPage.tsx` — 接入 AgentTracePanel、CalibrationPanel、EvidenceGraphModal 等新组件
+- `KnowledgePage.tsx` — 优化知识条目展示布局
+- `PaperExtractionPage.tsx` — 增强提取结果交互
+- `PaperResultTabs.tsx` — 新增校准与溯源标签页
+
+#### Backend
+- `opus_extractor.py` — 集成 calibration 与 rule_distillation 能力
+- `ddr_converter.py` — 增强对 schema_v2 新字段的处理
+- `reasoning_view.py` — 支持多层级推理链展示
+- `result_summary.py` — 优化跨论文结果聚合逻辑
+
+### Removed
+- 无破坏性删除
+
+---
+
 ## [2026-07-29] Agent-Harness Update
 
 ### Added
