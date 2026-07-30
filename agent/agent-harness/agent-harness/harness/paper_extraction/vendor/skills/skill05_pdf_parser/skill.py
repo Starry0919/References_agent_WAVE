@@ -85,7 +85,8 @@ class PdfStructureParsingSkill:
             except Exception as exc:
                 attempts.append({
                     "attempt": number, "parser": getattr(parser, "name", type(parser).__name__),
-                    "mode": mode, "status": "failed", "error_type": type(exc).__name__
+                    "mode": mode, "status": "failed", "error_type": type(exc).__name__,
+                    "message": str(exc),
                 })
 
         if parse_result is None:
