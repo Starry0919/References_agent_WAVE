@@ -2,12 +2,14 @@
 from __future__ import annotations
 
 import asyncio
+import functools
 import inspect
 import json
 import logging
 import re
 import time
 import types
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from typing import Any, Callable, Union, get_args, get_origin, get_type_hints
 
@@ -16,6 +18,71 @@ from harness.config import get_settings
 logger = logging.getLogger(__name__)
 
 _MAX_RESULT_CHARS = 50_000
+
+# Sync tools run on a dedicated, bounded pool instead of the asyncio default
+# executor: a timeout (or cancellation) only stops *waiting* for the worker -
+# Python cannot kill threads - so every timed-out call orphans its thread.
+# With `asyncio.to_thread` those zombies pile up in the shared default pool
+# and eventually starve every sync tool; here they are quarantined in this
+# pool. Trade-off: a flood of slow tools can still exhaust these
+# `_TOOL_POOL_WORKERS` slots, but the blast radius stays limited to sync tool
+# execution and the leak is observable via `leaked_thread_count()`.
+_TOOL_POOL_WORKERS = 8
+# Lazily (re)created by `_get_tool_pool`: `shutdown_tool_pool()` tears the
+# pool down at server shutdown, and a process that keeps running afterwards
+# (test suites host several app lifecycles in one interpreter) must get a
+# fresh pool instead of "cannot schedule new futures after shutdown".
+_TOOL_POOL: ThreadPoolExecutor | None = None
+
+# Worker threads orphaned so far by timed-out / cancelled sync tool calls.
+# Module-level (not per-event-loop) so the count accumulates across runs and
+# stays assertable in tests; incremented only from event-loop threads, so a
+# plain int is enough for an observability counter.
+_LEAKED_THREADS = 0
+
+
+def leaked_thread_count() -> int:
+    """Return how many sync-tool worker threads have been leaked so far."""
+    return _LEAKED_THREADS
+
+
+def _note_leaked_thread(name: str, cause: str) -> None:
+    """Count and log one orphaned worker thread of sync tool `name`."""
+    global _LEAKED_THREADS
+    _LEAKED_THREADS += 1
+    logger.warning(
+        "tool %r %s; its worker thread may still be running "
+        "(leaked sync-tool threads so far: %d)",
+        name,
+        cause,
+        _LEAKED_THREADS,
+    )
+
+
+def _get_tool_pool() -> ThreadPoolExecutor:
+    """Return the live sync-tool pool, recreating it after a shutdown."""
+    global _TOOL_POOL
+    pool = _TOOL_POOL
+    if pool is None:
+        pool = ThreadPoolExecutor(
+            max_workers=_TOOL_POOL_WORKERS, thread_name_prefix="harness-tool"
+        )
+        _TOOL_POOL = pool
+    return pool
+
+
+def shutdown_tool_pool() -> None:
+    """Shut down the dedicated sync-tool pool (called once at server shutdown).
+
+    `wait=False`: threads orphaned by timed-out tools may never return, and
+    shutdown must not block on them. The pool is recreated lazily on the next
+    `execute_tool` call, so this is safe in long-lived test processes too.
+    """
+    global _TOOL_POOL
+    pool = _TOOL_POOL
+    _TOOL_POOL = None
+    if pool is not None:
+        pool.shutdown(wait=False)
 
 _SCALAR_TYPES: dict[Any, str] = {
     str: "string",
@@ -265,14 +332,29 @@ async def execute_tool(name: str, arguments: dict) -> ToolOutcome:
         if spec.is_async:
             awaitable = spec.func(*args, **kwargs)
         else:
-            awaitable = asyncio.to_thread(spec.func, *args, **kwargs)
+            # Dedicated pool (see top of file): keeps zombie threads out of
+            # the asyncio default executor. `run_in_executor` takes no
+            # kwargs, hence the partial.
+            loop = asyncio.get_running_loop()
+            awaitable = loop.run_in_executor(
+                _get_tool_pool(), functools.partial(spec.func, *args, **kwargs)
+            )
         raw = await asyncio.wait_for(awaitable, timeout=timeout)
         # Serialize inside the try: an unserializable return value (cycles,
         # non-primitive dict keys) must become an error outcome, not a crash.
         if not isinstance(raw, str):
             raw = json.dumps(raw, ensure_ascii=False, default=str)
+    except asyncio.CancelledError:
+        # Run stopped by the user mid-tool: a sync worker is orphaned just
+        # like on timeout (async coroutines get cancelled, nothing leaks).
+        if not spec.is_async:
+            _note_leaked_thread(name, "was cancelled")
+        raise
     except asyncio.TimeoutError:
-        logger.warning("tool %r timed out after %ss", name, timeout)
+        if spec.is_async:
+            logger.warning("tool %r timed out after %ss", name, timeout)
+        else:
+            _note_leaked_thread(name, f"timed out after {timeout}s")
         return ToolOutcome(
             result=f"ERROR: TimeoutError: tool '{name}' did not finish within {timeout}s",
             is_error=True,
