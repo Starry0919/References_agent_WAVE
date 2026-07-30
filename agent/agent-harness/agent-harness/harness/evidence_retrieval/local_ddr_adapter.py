@@ -58,7 +58,16 @@ class LocalDDRAdapter:
                              latency=time.monotonic() - t0)
 
     def search(self, query: str, filters: dict[str, Any] | None = None, pagination: dict[str, Any] | None = None) -> EvidenceSearchResult:
-        query_lower = query.lower()
+        # Empty/whitespace query = full browse of the corpus (老师 §Phase2:
+        # "空搜索：返回全部可用 DDR" - a DDR knowledge base is a decision-
+        # record corpus to browse, not a search box that stays blank until
+        # typed into). Explicit branch rather than relying on `"" in
+        # haystack` always being True, so the "browse everything" behavior
+        # is a stated contract, not an accident of Python string semantics.
+        query_lower = query.strip().lower()
+        if not query_lower:
+            all_docs = [self._to_document(rec) for rec in self._load_all()]
+            return EvidenceSearchResult(query=query, documents=all_docs, total_available=len(all_docs), source_name=self.source_name)
         docs = []
         for rec in self._load_all():
             meta = rec.get("metadata", {})

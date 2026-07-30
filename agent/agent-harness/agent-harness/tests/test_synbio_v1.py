@@ -34,8 +34,12 @@ def test_knowledge_base_loads_five_ddrs() -> None:
     # tests/workflow/test_biological_benchmarks.py. DDR-005 (Chen & Zeng
     # 2018 tryptophan) is the teacher-specified decision-chain template for
     # 工作A (文献逆向工程 §4.4) - see knowledge/ddr_database/DDR-005_*.json.
+    # A superset check, not exact equality: the DDR corpus has since grown
+    # past these five (DDR-006/007/008, 老师 §Phase2 knowledge-base updates)
+    # - this test only guarantees the original five are still loadable, not
+    # that the corpus is frozen at five.
     ddrs = retriever.load_ddrs()
-    assert {d["ddr_id"] for d in ddrs} == {"DDR-001", "DDR-002", "DDR-003", "DDR-004", "DDR-005"}
+    assert {d["ddr_id"] for d in ddrs} >= {"DDR-001", "DDR-002", "DDR-003", "DDR-004", "DDR-005"}
 
 
 def test_retrieval_example_from_spec_section_11() -> None:

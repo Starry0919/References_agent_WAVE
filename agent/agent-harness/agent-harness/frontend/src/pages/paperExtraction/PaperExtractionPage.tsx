@@ -106,8 +106,18 @@ export function PaperExtractionPage({ embedded = false, projectId }: { embedded?
     refetchInterval: !taskId ? 5000 : false,
   });
 
+  // Merge into the existing search params rather than replacing them
+  // outright (`setParams({...})` clobbers the whole query string) - this
+  // page is always embedded as a tab of KnowledgePage sharing one URL
+  // (`?tab=extraction`), so a bare `setParams({task: id})` was dropping
+  // `tab` and silently bouncing the user to KnowledgePage's default tab
+  // ("知识主张"/Knowledge Claims) right after submitting a run. Matches the
+  // merge pattern KnowledgeDistillationPage already uses for the same
+  // shared-params situation.
   const startNew = () => {
-    setParams({});
+    const next = new URLSearchParams(params);
+    next.delete("task");
+    setParams(next, { replace: true });
     queryClient.removeQueries({ queryKey: ["paper-extraction-run"] });
   };
 
@@ -144,7 +154,9 @@ export function PaperExtractionPage({ embedded = false, projectId }: { embedded?
           <SubmissionForm
             projectId={projectId}
             onSubmitted={(id) => {
-              setParams({ task: id });
+              const next = new URLSearchParams(params);
+              next.set("task", id);
+              setParams(next, { replace: true });
               queryClient.invalidateQueries({ queryKey: ["paper-extraction-history"] });
             }}
           />
@@ -152,7 +164,11 @@ export function PaperExtractionPage({ embedded = false, projectId }: { embedded?
             <RunHistory
               items={historyQuery.data ?? []}
               isLoading={historyQuery.isLoading}
-              onSelect={(id) => setParams({ task: id })}
+              onSelect={(id) => {
+                const next = new URLSearchParams(params);
+                next.set("task", id);
+                setParams(next, { replace: true });
+              }}
               onDeleteRequest={(item) => setDeleteTarget(item)}
             />
           </div>

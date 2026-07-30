@@ -1,10 +1,12 @@
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, BookOpen, BrainCircuit, Check, Dna, FlaskConical, Lightbulb, Pencil, Target, X } from "lucide-react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { ArrowRight, BookOpen, BrainCircuit, Check, Dna, FlaskConical, Lightbulb, Pencil, Sparkles, Target, X } from "lucide-react";
+import { useMutation, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
 import { useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
+import { searchEvidence, type EvidenceSearchResult } from "@/api/evidence";
 import { listIdeas } from "@/api/ideas";
 import { getProjectStatusView, getTimeline, updateProjectContext } from "@/api/projects";
+import { listDdrKnowledgeClaims, type DdrKnowledgeClaim } from "@/api/rules";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { useI18n } from "@/lib/i18n";
@@ -39,6 +41,20 @@ export function CommandCenterPage() {
     queryFn: () => getProjectStatusView(projectId as string),
     enabled,
   });
+  // Keyed on `targetProduct` (not just projectId) so editing it in
+  // ProjectGoalCard's modal - or having just set it at project creation -
+  // refetches immediately instead of showing a stale/empty match set until
+  // some unrelated navigation happens to remount this query.
+  const linkedLiteratureQuery = useQuery({
+    queryKey: ["project", projectId, "linked-knowledge", "literature", project?.targetProduct],
+    queryFn: () => searchEvidence("", "local_ddr", projectId as string),
+    enabled: enabled && Boolean(project?.targetProduct),
+  });
+  const linkedClaimsQuery = useQuery({
+    queryKey: ["project", projectId, "linked-knowledge", "claims", project?.targetProduct],
+    queryFn: () => listDdrKnowledgeClaims("", projectId as string),
+    enabled: enabled && Boolean(project?.targetProduct),
+  });
 
   if (!connected) return <div className="p-6"><EmptyState variant="disconnected" /></div>;
   if (projectLoading) return <div className="p-6"><EmptyState variant="loading" /></div>;
@@ -46,12 +62,16 @@ export function CommandCenterPage() {
 
   const ideas = ideasQuery.data ?? [];
   const timeline = timelineQuery.data ?? [];
-  const evidenceCount = new Set(
-    timeline.filter((event) => /evidence|paper|literature/i.test(event.entityType)).map((event) => event.entityId),
-  ).size;
-  const biologicalKnowledgeCount = new Set(
-    timeline.filter((event) => /knowledgeclaim|biological/i.test(event.entityType)).map((event) => event.entityId),
-  ).size;
+  // Reuse the same relevance-matched literature/claims the linked-knowledge
+  // panel below already fetches, instead of scanning `timeline` for
+  // evidence/knowledge-claim events - those events only exist once someone
+  // has manually worked with a document, so a freshly created project (or
+  // one whose matches were never opened) showed 0 here even when the DDR
+  // corpus already has relevant hits for its target product.
+  const relevantDocs = (linkedLiteratureQuery.data?.documents ?? []).filter((d) => d.relevant);
+  const relevantClaims = (linkedClaimsQuery.data ?? []).filter((c) => c.relevant);
+  const evidenceCount = relevantDocs.length;
+  const biologicalKnowledgeCount = relevantClaims.length;
   const activeIdeas = ideas.filter((idea) => idea.status !== "dismissed");
   const designCount = new Set([
     ...activeIdeas.map((idea) => idea.linkedDesignProjectId).filter(Boolean),
@@ -64,6 +84,14 @@ export function CommandCenterPage() {
   return (
     <main className="flex flex-1 flex-col gap-5 overflow-y-auto bg-surface-sunken p-5">
       <ProjectGoalCard project={project} cycle={cycle} />
+      <LinkedKnowledgePanel
+        projectId={projectId as string}
+        targetProduct={project.targetProduct}
+        literatureQuery={linkedLiteratureQuery}
+        claimsQuery={linkedClaimsQuery}
+        relevantDocs={relevantDocs}
+        relevantClaims={relevantClaims}
+      />
       {false && project && (<div className="hidden">
       <section className="overflow-hidden rounded-xl border border-border bg-gradient-to-br from-slate-950 to-slate-800 p-6 text-white shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-5">
@@ -263,6 +291,109 @@ function ProjectGoalCard({ project, cycle }: { project: ProjectDetail; cycle: Cy
         </div>
       )}
     </>
+  );
+}
+
+/**
+ * Auto-surfaces the local DDR knowledge base entries relevant to this
+ * project's `target_product` right on the overview page, the moment the
+ * project has one - reusing the exact relevance tagging
+ * (`harness/evidence_retrieval/relevance.py::ddr_relevance`) the Knowledge
+ * page's Literature/Biological tabs already compute, instead of requiring a
+ * separate manual visit + search to discover the same overlap. Previously
+ * this page only counted past *timeline events* (knowledge already
+ * produced through some other workflow) - a freshly created project had
+ * nothing to show even though matching DDRs already existed in the corpus.
+ */
+function LinkedKnowledgePanel({
+  projectId,
+  targetProduct,
+  literatureQuery,
+  claimsQuery,
+  relevantDocs,
+  relevantClaims,
+}: {
+  projectId: string;
+  targetProduct: string;
+  literatureQuery: UseQueryResult<EvidenceSearchResult>;
+  claimsQuery: UseQueryResult<DdrKnowledgeClaim[]>;
+  relevantDocs: EvidenceSearchResult["documents"];
+  relevantClaims: DdrKnowledgeClaim[];
+}) {
+  const { t } = useI18n();
+
+  if (!targetProduct.trim()) {
+    return (
+      <section className="panel p-4">
+        <PanelHeading projectId={projectId} t={t} />
+        <EmptyState
+          variant="incomplete"
+          title={t("dashboard.linkedKnowledgeNeedsProductTitle")}
+          detail={t("dashboard.linkedKnowledgeNeedsProductDetail")}
+        />
+      </section>
+    );
+  }
+
+  const isLoading = literatureQuery.isLoading || claimsQuery.isLoading;
+  const isError = literatureQuery.isError || claimsQuery.isError;
+
+  return (
+    <section className="panel p-4">
+      <PanelHeading projectId={projectId} t={t} />
+      {isLoading && <EmptyState variant="loading" />}
+      {!isLoading && isError && <EmptyState variant="failed" detail={String(literatureQuery.error ?? claimsQuery.error)} />}
+      {!isLoading && !isError && relevantDocs.length === 0 && relevantClaims.length === 0 && (
+        <EmptyState
+          variant="no_result"
+          title={t("dashboard.linkedKnowledgeEmptyTitle")}
+          detail={`${t("dashboard.linkedKnowledgeEmptyDetail")} "${targetProduct}"`}
+        />
+      )}
+      {(relevantDocs.length > 0 || relevantClaims.length > 0) && (
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
+          {relevantDocs.length > 0 && (
+            <ul className="flex flex-col gap-2">
+              {relevantDocs.slice(0, 4).map((d) => (
+                <li key={d.sourceId}>
+                  <Link
+                    to={`/projects/${projectId}/evidence/${d.sourceId}`}
+                    className="block rounded-lg border border-accent bg-accent-soft/40 p-2.5 text-xs hover:bg-accent-soft"
+                  >
+                    <p className="font-medium text-ink">{d.title || t("page3.noTitle")}</p>
+                    <p className="mt-0.5 text-[11px] text-ink-muted">{d.authors.join(", ") || t("page3.authorsNotReported")}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          {relevantClaims.length > 0 && (
+            <ul className="flex flex-col gap-2">
+              {relevantClaims.slice(0, 4).map((c) => (
+                <li key={c.claimId} className="rounded-lg border border-accent bg-accent-soft/40 p-2.5 text-xs">
+                  <p className="font-medium text-ink">{c.statement}</p>
+                  <p className="mt-0.5 text-[11px] text-ink-muted">{c.claimId} · {t("page3.claimEvidenceCount")}: {c.evidenceCount}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function PanelHeading({ projectId, t }: { projectId: string; t: ReturnType<typeof useI18n>["t"] }) {
+  return (
+    <div className="flex items-center justify-between">
+      <div>
+        <h2 className="flex items-center gap-1.5 text-sm font-semibold text-ink"><Sparkles size={14} className="text-accent" /> {t("dashboard.linkedKnowledgeTitle")}</h2>
+        <p className="mt-0.5 text-xs text-ink-muted">{t("dashboard.linkedKnowledgeDetail")}</p>
+      </div>
+      <Link to={`/projects/${projectId}/knowledge?tab=literature`} className="flex items-center gap-1 text-xs font-medium text-accent-strong">
+        {t("dashboard.openKnowledge")} <ArrowRight size={13} />
+      </Link>
+    </div>
   );
 }
 

@@ -15,13 +15,18 @@ from harness.agent import run_agent_turn
 from harness.api import diagnosis as diagnosis_api
 from harness.api import designs as designs_api
 from harness.api import engineering_design as engineering_design_api
+from harness.api import experiments as experiments_api
 from harness.api import generation as generation_api
+from harness.api import golden_set as golden_set_api
 from harness.api import ideas as ideas_api
 from harness.api import knowledge_distillation as knowledge_distillation_api
 from harness.api import learning as learning_api
+from harness.api import orchestrator as orchestrator_api
 from harness.api import paper_extraction as paper_extraction_api
 from harness.api import projects as projects_api
+from harness.api import scientific_evaluation as scientific_evaluation_api
 from harness.api import translation as translation_api
+from harness.api import virtual_cell as virtual_cell_api
 from harness.bootstrap import bootstrap_schema
 from harness.config import PROJECT_ROOT
 from harness.providers import describe
@@ -128,11 +133,20 @@ def create_app() -> FastAPI:
     app.include_router(knowledge_distillation_api.router)
     # Core idea workflow: diagnosis explains whether/why an extracted idea
     # is credible; engineering design turns an accepted idea into an
-    # actionable intervention. These are intentionally kept while the
-    # simulation and execution-oriented modules remain removed.
+    # actionable intervention.
     app.include_router(diagnosis_api.router)
     app.include_router(engineering_design_api.router)
     app.include_router(designs_api.router)
+    # Remounted (Round 2, per user instruction "API重新挂回来"): these five
+    # were fully implemented and tested at the service layer but never
+    # wired into the live app - `removed_api_module` below silently 404'd
+    # every request to them. That mismatch was the root cause of ~22 of the
+    # 26 failing tests found in the Round 2 test audit.
+    app.include_router(virtual_cell_api.router)
+    app.include_router(orchestrator_api.router)
+    app.include_router(golden_set_api.router)
+    app.include_router(scientific_evaluation_api.router)
+    app.include_router(experiments_api.router)
 
     # The prior single-file chat remains available for compatibility.
     @app.get("/legacy/chat")

@@ -31,6 +31,11 @@ export interface EvidenceDocument {
   publicationYear: number | null;
   journalOrRepository: string | null;
   doiOrAccession: string | null;
+  /** Only set when the search was scoped with `project_id` - host/product
+   * overlap with the project's own context (harness/evidence_retrieval/
+   * relevance.py). `null` means "no project context supplied", never
+   * "confirmed irrelevant". */
+  relevant: boolean | null;
 }
 
 export interface EvidenceSearchResult {
@@ -39,8 +44,9 @@ export interface EvidenceSearchResult {
   documents: EvidenceDocument[];
 }
 
-export async function searchEvidence(query: string, source: "local_ddr" | "crossref" = "local_ddr"): Promise<EvidenceSearchResult> {
+export async function searchEvidence(query: string, source: "local_ddr" | "crossref" = "local_ddr", projectId?: string): Promise<EvidenceSearchResult> {
   const params = new URLSearchParams({ query, source });
+  if (projectId) params.set("project_id", projectId);
   const r = await api.get<{
     source_name: string;
     total_available: number;
@@ -51,6 +57,9 @@ export async function searchEvidence(query: string, source: "local_ddr" | "cross
       publication_year: number | null;
       journal_or_repository: string | null;
       doi_or_accession: string | null;
+      relevant?: boolean;
+      host_match?: boolean;
+      product_match?: boolean;
     }>;
   }>(`/api/generation/evidence/search?${params.toString()}`);
   return {
@@ -63,6 +72,7 @@ export async function searchEvidence(query: string, source: "local_ddr" | "cross
       publicationYear: d.publication_year,
       journalOrRepository: d.journal_or_repository,
       doiOrAccession: d.doi_or_accession,
+      relevant: d.relevant ?? null,
     })),
   };
 }
@@ -251,6 +261,7 @@ export async function getEvidenceDocument(sourceId: string, source: "local_ddr" 
       sourceId: r.source_id,
       title: r.title,
       authors: r.authors ?? [],
+      relevant: null,
       publicationYear: r.publication_year,
       journalOrRepository: r.journal_or_repository,
       doiOrAccession: r.doi_or_accession,
@@ -443,8 +454,72 @@ export interface EvidenceMatchReportSummary {
   createdAt: number;
 }
 
-export async function listEvidenceMatchReports(evidenceId?: string): Promise<EvidenceMatchReportSummary[]> {
-  const params = evidenceId ? `?${new URLSearchParams({ evidence_id: evidenceId }).toString()}` : "";
+/**
+ * DDR "Applicability Report" against a project's current context
+ * (harness/evidence_retrieval/service.py::assess_ddr_applicability). Reuses
+ * the same `EvidenceMatchReport` engine/table `listEvidenceMatchReports`
+ * reads - this POST just computes + persists one, then the caller can
+ * re-list by `evidenceId` to see it alongside any prior assessments.
+ */
+export interface DdrApplicabilityReport {
+  matchReportId: string;
+  ddrId: string;
+  projectId: string;
+  organismMatch: "match" | "mismatch" | "unknown";
+  productMatch: "match" | "mismatch" | "unknown";
+  overallMatchStatus: string;
+  matchingFactors: string[];
+  transferRisks: string[];
+  downgradeReasons: string[];
+  missingDataForFullReport: string[];
+  confidence: number;
+  /** Engineering-mechanism dimension (harness/evidence_retrieval/service.py::
+   * assess_ddr_applicability, 老师 §Phase3/§Phase4 Round 2): the DDR's own
+   * decision_chain `design_action` codes, and the rule(s) distilled from it
+   * (`rule_ids`, cross-reference into `/api/paper-extraction/ddr/{id}/
+   * provenance` for the full chain) - reused, not re-derived. */
+  designActions: string[];
+  ruleIds: string[];
+}
+
+export async function assessDdrApplicability(sourceId: string, projectId: string, actorId = "frontend-user"): Promise<DdrApplicabilityReport> {
+  const r = await api.post<{
+    match_report_id: string;
+    ddr_id: string;
+    project_id: string;
+    organism_match: "match" | "mismatch" | "unknown";
+    product_match: "match" | "mismatch" | "unknown";
+    overall_match_status: string;
+    matching_factors: string[];
+    transfer_risks: string[];
+    downgrade_reasons: string[];
+    missing_data_for_full_report: string[];
+    confidence: number;
+    design_actions: string[];
+    rule_ids: string[];
+  }>(`/api/generation/evidence/documents/${sourceId}/applicability`, { project_id: projectId, actor_id: actorId });
+  return {
+    matchReportId: r.match_report_id,
+    ddrId: r.ddr_id,
+    projectId: r.project_id,
+    organismMatch: r.organism_match,
+    productMatch: r.product_match,
+    overallMatchStatus: r.overall_match_status,
+    matchingFactors: r.matching_factors,
+    transferRisks: r.transfer_risks,
+    downgradeReasons: r.downgrade_reasons,
+    missingDataForFullReport: r.missing_data_for_full_report,
+    confidence: r.confidence,
+    designActions: r.design_actions ?? [],
+    ruleIds: r.rule_ids ?? [],
+  };
+}
+
+export async function listEvidenceMatchReports(evidenceId?: string, projectId?: string): Promise<EvidenceMatchReportSummary[]> {
+  const filters: Record<string, string> = {};
+  if (evidenceId) filters.evidence_id = evidenceId;
+  if (projectId) filters.project_id = projectId;
+  const params = Object.keys(filters).length > 0 ? `?${new URLSearchParams(filters).toString()}` : "";
   const r = await api.get<{
     match_reports: Array<{
       match_report_id: string;

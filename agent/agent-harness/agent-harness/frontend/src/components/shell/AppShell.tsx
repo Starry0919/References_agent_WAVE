@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { TopNav } from "./TopNav";
 import { ProjectContextBar } from "./ProjectContextBar";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
+import { DebugLogPanel } from "@/components/common/DebugLogPanel";
 
 /**
  * L0 in the component hierarchy (prompt §13.7): global nav, context and
@@ -18,6 +19,7 @@ export function AppShell() {
           <Outlet />
         </ErrorBoundary>
       </main>
+      <DebugLogPanel />
     </div>
   );
 }

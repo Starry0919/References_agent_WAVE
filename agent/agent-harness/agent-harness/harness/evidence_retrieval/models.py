@@ -23,6 +23,7 @@ class EvidenceMatchReport(Base):
     __tablename__ = "evidence_match_reports"
 
     match_report_id: Mapped[str] = mapped_column(String, primary_key=True)
+    project_id: Mapped[str] = mapped_column(String, default="", index=True)
     query_context_ref: Mapped[dict] = mapped_column(JSON, default=dict)
     evidence_id: Mapped[str] = mapped_column(String, index=True)
     organism_match: Mapped[str] = mapped_column(String, default="unknown")

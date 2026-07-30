@@ -252,6 +252,24 @@ def _project_ideas_schema(session: Session) -> None:
     Base.metadata.create_all(bind=session.get_bind(), checkfirst=True)
 
 
+_NEW_EVIDENCE_MATCH_REPORT_COLUMNS = {
+    "project_id": "VARCHAR",
+}
+
+
+@migration("0013_evidence_match_report_project_id")
+def _evidence_match_report_project_id(session: Session) -> None:
+    """Fix for the Knowledge page's "适用范围 / 情境匹配报告" panel showing the
+    same rows forever regardless of which project is open: it was querying
+    `evidence_match_reports` with no project scope at all (there was no
+    column to scope by), so it always rendered every match report ever
+    computed, for every project, since the table was created. `project_id`
+    is additive/nullable - existing rows stay valid without backfill, same
+    pattern as 0002/0005/0007/0008/0010/0011."""
+    _add_missing_columns(session, "evidence_match_reports", _NEW_EVIDENCE_MATCH_REPORT_COLUMNS)
+    Base.metadata.create_all(bind=session.get_bind(), checkfirst=True)
+
+
 def bootstrap_schema() -> list[str]:
     """Idempotent: safe to call on every process start. Returns the
     migration versions newly applied this call (empty if already current)."""

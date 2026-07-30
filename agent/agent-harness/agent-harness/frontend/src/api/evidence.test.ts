@@ -46,6 +46,12 @@ describe("listEvidenceMatchReports", () => {
     await listEvidenceMatchReports("EVID-1");
     expect(getSpy).toHaveBeenCalledWith("/api/generation/evidence/match-reports?evidence_id=EVID-1");
   });
+
+  it("passes project_id as a query filter when provided (Knowledge page scoping)", async () => {
+    const getSpy = vi.spyOn(api, "get").mockResolvedValue({ match_reports: [] });
+    await listEvidenceMatchReports(undefined, "PROJ-1");
+    expect(getSpy).toHaveBeenCalledWith("/api/generation/evidence/match-reports?project_id=PROJ-1");
+  });
 });
 
 describe("listGenerationRecords / getGenerationRecord", () => {

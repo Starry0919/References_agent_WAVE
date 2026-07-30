@@ -19,17 +19,49 @@ import base64
 import logging
 from typing import Any, Literal
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
 
+from harness.api.deps import get_db_session
+from harness.evidence_retrieval.local_ddr_adapter import LocalDDRAdapter
 from harness.paper_extraction import service
 from harness.paper_extraction.calibration import get_conflicts, record_extraction_attempt
 from harness.paper_extraction.ddr_converter import ensure_task_saved_as_evidence
 from harness.paper_extraction.result_summary import build_extraction_summary
-from harness.paper_extraction.rule_distillation import distill_rules, search_rules
+from harness.paper_extraction.rule_distillation import (
+    distill_rules,
+    rule_as_knowledge_claim_view,
+    rule_source_ddr_ids,
+    rules_citing_ddr_ids,
+    search_rules,
+)
+from harness.projects.models import Project
 
 router = APIRouter(prefix="/api/paper-extraction", tags=["paper-extraction"])
 logger = logging.getLogger(__name__)
+
+
+def _rule_relevance(rule: dict[str, Any], *, project_product: str | None) -> bool:
+    """A rule is "relevant" to a project's target product when at least one
+    of its cited *source DDRs* was itself about that product
+    (`metadata.target_product`) - not the rule's own statement text, which
+    is deliberately abstracted away from any one product (老师 §四.5: a
+    rule distilled from butanol is meant to transfer to fatty acids, so its
+    wording never names a specific product to match against). Never used
+    to hide rules, only to rank/tag."""
+    if not project_product:
+        return False
+    pp = project_product.strip().lower()
+    adapter = LocalDDRAdapter()
+    for ddr_id in rule_source_ddr_ids(rule):
+        doc = adapter.fetch(ddr_id)
+        if doc is None:
+            continue
+        ddr_product = str((doc.raw_metadata or {}).get("metadata", {}).get("target_product", "")).strip().lower()
+        if ddr_product and (pp in ddr_product or ddr_product in pp):
+            return True
+    return False
 
 
 class RunRequestBody(BaseModel):
@@ -139,12 +171,43 @@ def get_task(task_id: str) -> dict[str, Any]:
 
 
 @router.get("/rules")
-def search_rules_route(query: str = "") -> dict[str, Any]:
+def search_rules_route(query: str = "", project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict[str, Any]:
     """Rule-library keyword search (老师 §4.5/§5.3: 自建 DB "规则库") -
     previously nothing in the codebase read ``knowledge/biological_rules/
-    rules.json`` at all; an empty query returns every rule."""
+    rules.json`` at all; an empty query returns every rule. Optional
+    `project_id` tags each rule `relevant` (target-product text overlap)
+    and sorts relevant-first, without hiding the rest (老师 §Phase5)."""
     rules = search_rules(query)
+    if project_id:
+        project = session.get(Project, project_id)
+        project_product = project.target_product if project is not None else None
+        for r in rules:
+            r["relevant"] = _rule_relevance(r, project_product=project_product)
+        rules.sort(key=lambda r: not r["relevant"])
     return {"rules": rules, "total": len(rules)}
+
+
+@router.get("/knowledge-claims")
+def list_knowledge_claims_from_rules(query: str = "", project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict[str, Any]:
+    """DDR-backed Knowledge Claims (老师 §Phase4): each rule-library entry
+    reshaped into claim/evidence/confidence/boundary, since the rule
+    library already IS the "多个 DDR 支持的可迁移知识" aggregation - see
+    `rule_as_knowledge_claim_view`'s docstring for why this reuses the rule
+    library instead of a new claim schema. Distinct from
+    `/api/learning/knowledge-claims` (harness/learning/models.py), which
+    aggregates wet-lab *experiment runs*, not literature DDRs - the two are
+    genuinely different objects that happen to share the English name
+    "Knowledge Claim"; this route is intentionally under `paper-extraction`
+    (the DDR/rule pipeline's own namespace) to keep them apart."""
+    rules = search_rules(query)
+    claims = [rule_as_knowledge_claim_view(r) for r in rules]
+    if project_id:
+        project = session.get(Project, project_id)
+        project_product = project.target_product if project is not None else None
+        for rule, claim in zip(rules, claims):
+            claim["relevant"] = _rule_relevance(rule, project_product=project_product)
+        claims.sort(key=lambda c: not c.get("relevant", False))
+    return {"claims": claims, "total": len(claims)}
 
 
 @router.post("/rules/distill")
@@ -183,6 +246,51 @@ def get_extraction_conflicts(ddr_id: str) -> dict[str, Any]:
     except FileNotFoundError as exc:
         raise HTTPException(404, str(exc)) from exc
     return {"ddr_id": ddr_id, "conflicts": conflicts, "total": len(conflicts)}
+
+
+@router.get("/ddr/{ddr_id}/provenance")
+def get_ddr_provenance(ddr_id: str) -> dict[str, Any]:
+    """Trust & Provenance minimal closure (老师 §Phase5 Round 2): the full,
+    non-fabricated "why do we believe this" chain for one DDR - Design
+    Action -> Rule -> DDR -> Paper -> Evidence Grade. Built entirely from
+    data that already exists (the DDR record itself + `rules.json` via
+    `rules_citing_ddr_ids`) - no new schema, no synthesized text. This is
+    the one endpoint both the DDR Applicability Report (`matching_factors`)
+    and a future Trust Center page can point at, so the resolution logic
+    lives in exactly one place."""
+    doc = LocalDDRAdapter().fetch(ddr_id)
+    if doc is None:
+        raise HTTPException(404, f"no such DDR: {ddr_id}")
+    rec = doc.raw_metadata or {}
+    decision_chain = rec.get("decision_chain", [])
+
+    design_actions = sorted({step.get("design_action") for step in decision_chain if step.get("design_action")})
+    evidence_grades = sorted({step.get("evidence_grading") for step in decision_chain if step.get("evidence_grading")})
+
+    rule_ids = rules_citing_ddr_ids([ddr_id])
+    rules_by_id = {r["rule_id"]: r for r in search_rules("")}
+    rules = [rule_as_knowledge_claim_view(rules_by_id[rid]) for rid in rule_ids if rid in rules_by_id]
+
+    hard = "硬" in evidence_grades
+    if hard and len(rule_ids) >= 2:
+        confidence = "high"
+    elif hard or rule_ids:
+        confidence = "medium"
+    else:
+        confidence = "low"
+
+    return {
+        "ddr_id": ddr_id,
+        "paper": {
+            "title": doc.title, "authors": doc.authors, "publication_year": doc.publication_year,
+            "journal_or_repository": doc.journal_or_repository, "doi_or_accession": doc.doi_or_accession,
+        },
+        "design_actions": design_actions,
+        "evidence_grades": evidence_grades,
+        "rule_ids": rule_ids,
+        "rules": rules,
+        "confidence": confidence,
+    }
 
 
 @router.delete("/tasks/{task_id}")

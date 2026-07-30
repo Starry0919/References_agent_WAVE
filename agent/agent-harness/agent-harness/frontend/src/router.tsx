@@ -5,6 +5,7 @@ import { CommandCenterPage } from "@/pages/CommandCenterPage";
 import { KnowledgePage } from "@/pages/knowledge/KnowledgePage";
 import { IdeaWorkspacePage } from "@/pages/IdeaWorkspacePage";
 import { PaperEvidenceDetailPage } from "@/pages/evidence/PaperEvidenceDetailPage";
+import { TrustCenterPage } from "@/pages/trust/TrustCenterPage";
 
 /**
  * Route contract (prompt §6.3). All object-bearing routes are addressable
@@ -26,6 +27,7 @@ export const router = createBrowserRouter(
         { path: "knowledge", element: <KnowledgePage /> },
         { path: "paper-extraction", element: <Navigate to="../knowledge?tab=extraction" replace /> },
         { path: "evidence/:sourceId", element: <PaperEvidenceDetailPage /> },
+        { path: "trust/:ddrId", element: <TrustCenterPage /> },
       ],
     },
     { path: "*", element: <Navigate to="/projects" replace /> },

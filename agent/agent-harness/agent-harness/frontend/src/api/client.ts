@@ -18,6 +18,7 @@
  * `/simulation/*` route subtree.
  */
 import { STORAGE_KEY as LANG_STORAGE_KEY } from "@/lib/i18n";
+import { pushLog } from "@/lib/logStore";
 
 let basePath = "";
 
@@ -53,6 +54,9 @@ export class ApiError extends Error {
 export class NetworkUnavailableError extends Error {}
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const method = (init?.method ?? "GET").toUpperCase();
+  const startedAt = performance.now();
+  const elapsed = () => `${Math.round(performance.now() - startedAt)}ms`;
   let res: Response;
   try {
     res = await fetch(basePath + path, {
@@ -64,7 +68,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       },
     });
   } catch (e) {
-    throw new NetworkUnavailableError(e instanceof Error ? e.message : "network error");
+    const message = e instanceof Error ? e.message : "network error";
+    pushLog("error", "api", `${method} ${basePath + path} — network unavailable (${elapsed()})`, message);
+    throw new NetworkUnavailableError(message);
   }
   if (!res.ok) {
     let body: unknown = undefined;
@@ -77,8 +83,15 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       body && typeof body === "object" && "detail" in body
         ? String((body as { detail: unknown }).detail)
         : res.statusText;
+    pushLog(
+      "error",
+      "api",
+      `${method} ${basePath + path} — ${res.status} (${elapsed()})`,
+      body ? `${detail}\n${JSON.stringify(body, null, 2)}` : detail,
+    );
     throw new ApiError(res.status, detail, body);
   }
+  pushLog("info", "api", `${method} ${basePath + path} — ${res.status} (${elapsed()})`);
   if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
 }

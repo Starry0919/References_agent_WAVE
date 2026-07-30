@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, X, GripVertical, FlaskConical, Sprout, ExternalLink } from "lucide-react";
+import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, ShieldCheck, X, GripVertical, FlaskConical, Sprout, ExternalLink } from "lucide-react";
 import { getEvidenceDocument, getGenerationHealth, listEvidenceMatchReports, searchEvidence, verifyDoi, type EvidenceDocumentDetail } from "@/api/evidence";
+import { listDdrKnowledgeClaims, type DdrKnowledgeClaim } from "@/api/rules";
 import { EmptyState } from "@/components/common/EmptyState";
 import { CapabilityState } from "@/components/common/CapabilityState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
@@ -88,6 +89,12 @@ function TabButton({ active, onClick, icon: Icon, label }: { active: boolean; on
 
 function BiologicalKnowledgeTab() {
   const { t } = useI18n();
+  const { projectId } = useParams<{ projectId: string }>();
+  const claimsQuery = useQuery({
+    queryKey: ["ddr-knowledge-claims", projectId],
+    queryFn: () => listDdrKnowledgeClaims("", projectId),
+  });
+
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-4">
       <section className="panel overflow-hidden">
@@ -106,10 +113,69 @@ function BiologicalKnowledgeTab() {
           <KnowledgeArea icon={FlaskConical} title="Engineering actions" path="knowledge/engineering_actions/" />
         </div>
       </section>
-      <div className="panel flex min-h-52 items-center justify-center p-5">
-        <EmptyState variant="partial" title={t("page3.biologicalKnowledgeTitle")} detail={t("page3.biologicalKnowledgeDetail")} />
-      </div>
+
+      <section className="panel flex flex-col gap-3 p-4">
+        <div>
+          <h3 className="text-sm font-semibold text-ink">{t("page3.ddrKnowledgeClaimsTitle")}</h3>
+          <p className="mt-1 text-[11px] text-ink-faint">{t("page3.ddrKnowledgeClaimsDetail")}</p>
+        </div>
+        {claimsQuery.isLoading && <EmptyState variant="loading" />}
+        {claimsQuery.isError && <EmptyState variant="failed" detail={String(claimsQuery.error)} />}
+        {claimsQuery.data && claimsQuery.data.length === 0 && <EmptyState variant="no_result" title={t("page3.ddrKnowledgeClaimsEmptyTitle")} />}
+        {claimsQuery.data && claimsQuery.data.length > 0 && (
+          <ul className="flex flex-col gap-2">
+            {claimsQuery.data.map((c) => (
+              <DdrKnowledgeClaimCard key={c.claimId} claim={c} projectId={projectId} />
+            ))}
+          </ul>
+        )}
+      </section>
     </div>
+  );
+}
+
+const CONFIDENCE_BADGE: Record<DdrKnowledgeClaim["confidence"], BadgeStatus> = { high: "approved", medium: "needs_revision", low: "unclear" };
+
+function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim; projectId: string | undefined }) {
+  const { t } = useI18n();
+  return (
+    <li className={`rounded-lg border p-3.5 text-xs ${claim.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
+      <div className="flex items-start justify-between gap-2">
+        <p className="font-medium text-ink">{claim.statement}</p>
+        <div className="flex shrink-0 items-center gap-1.5">
+          {claim.relevant && <span className="rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>}
+          <StatusBadge status={CONFIDENCE_BADGE[claim.confidence]} label={claim.confidence} />
+        </div>
+      </div>
+      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-ink-muted">
+        <span className="font-mono text-ink-faint">{claim.claimId}</span>
+        {claim.evidenceGrading && <span>{claim.evidenceGrading}证据</span>}
+        <span>{t("page3.claimEvidenceCount")}: {claim.evidenceCount}</span>
+        {claim.applicableModules.length > 0 && <span>{claim.applicableModules.join(", ")}</span>}
+      </div>
+      {claim.evidenceDdrIds.length > 0 && (
+        <div className="mt-1.5 flex flex-wrap gap-1.5">
+          {claim.evidenceDdrIds.map((id) =>
+            projectId ? (
+              <Link key={id} to={`/projects/${projectId}/evidence/${id}`} className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-accent-strong underline decoration-dotted underline-offset-2">
+                {id}
+              </Link>
+            ) : (
+              <span key={id} className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-ink-muted">{id}</span>
+            ),
+          )}
+        </div>
+      )}
+      <p className="mt-1.5 text-[11px] text-ink-faint">{t("page3.claimBoundary")}: {claim.boundary}</p>
+      {projectId && claim.evidenceDdrIds.length > 0 && (
+        <Link
+          to={`/projects/${projectId}/trust/${claim.evidenceDdrIds[0]}`}
+          className="mt-1.5 flex w-fit items-center gap-1 text-[11px] font-medium text-accent-strong hover:underline"
+        >
+          <ShieldCheck size={11} aria-hidden /> {t("paperEvidence.applicability.viewProvenance")}
+        </Link>
+      )}
+    </li>
   );
 }
 
@@ -134,7 +200,11 @@ const LITERATURE_DETAIL_DEFAULT_WIDTH = 480;
 function LiteratureEvidenceTab() {
   const { t } = useI18n();
   const { projectId } = useParams<{ projectId: string }>();
-  const [query, setQuery] = useState("tryptophan");
+  // Empty query = full browse of the DDR corpus (老师 §Phase2: "空搜索：
+  // 返回全部可用 DDR"), not an unset/loading state - starting blank rather
+  // than pre-filled with "tryptophan" is what actually exercises that path
+  // on first load instead of masking it behind a default keyword.
+  const [query, setQuery] = useState("");
   const [searchSource, setSearchSource] = useState<"local_ddr" | "crossref">("local_ddr");
   const [doi, setDoi] = useState("");
   const [actorId] = useState("frontend-user");
@@ -146,16 +216,23 @@ function LiteratureEvidenceTab() {
   const splitRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
   const searchQuery = useQuery({
-    queryKey: ["evidence-search", query, searchSource],
-    queryFn: () => searchEvidence(query, searchSource),
-    enabled: query.length > 0,
+    // Always enabled (no `query.length > 0` gate) - an empty query is a
+    // real, supported request ("browse everything"), not an unset input
+    // to wait out (老师 §Phase2). `projectId` scopes DDR results to the
+    // current project's host/product context for relevance ranking.
+    queryKey: ["evidence-search", query, searchSource, projectId],
+    queryFn: () => searchEvidence(query, searchSource, projectId),
   });
   const detailQuery = useQuery({
     queryKey: ["evidence-document", selectedSourceId, searchSource],
     queryFn: () => getEvidenceDocument(selectedSourceId as string, searchSource),
     enabled: !!selectedSourceId,
   });
-  const matchReportsQuery = useQuery({ queryKey: ["evidence-match-reports"], queryFn: () => listEvidenceMatchReports() });
+  const matchReportsQuery = useQuery({
+    queryKey: ["evidence-match-reports", projectId],
+    queryFn: () => listEvidenceMatchReports(undefined, projectId),
+    enabled: !!projectId,
+  });
   const verifyMutation = useMutation({
     mutationFn: () => verifyDoi({ projectId: projectId as string, doi, actorId }),
   });
@@ -227,7 +304,12 @@ function LiteratureEvidenceTab() {
                       selectedSourceId === d.sourceId ? "border-accent bg-accent-soft" : "border-border bg-surface hover:bg-surface-sunken"
                     }`}
                   >
-                    <p className="font-medium text-ink">{d.title || t("page3.noTitle")}</p>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="font-medium text-ink">{d.title || t("page3.noTitle")}</p>
+                      {d.relevant === true && (
+                        <span className="shrink-0 rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>
+                      )}
+                    </div>
                     <p className="text-ink-muted">{d.authors.join(", ") || t("page3.authorsNotReported")} · {d.publicationYear ?? t("page3.noDate")} · {d.journalOrRepository ?? t("page3.metadataOnly")}</p>
                     {d.doiOrAccession ? (
                       <p className="font-mono text-[11px] text-ink-faint">{d.doiOrAccession}</p>
@@ -301,8 +383,9 @@ function LiteratureEvidenceTab() {
       <div className="panel flex min-h-44 flex-col gap-2 p-4">
         <h3 className="text-sm font-semibold text-ink">{t("page3.applicabilityReports")}</h3>
         <p className="text-[11px] text-ink-faint">{t("page3.applicabilityReportsDetail")}</p>
-        {matchReportsQuery.isLoading && <EmptyState variant="loading" />}
-        {matchReportsQuery.data && matchReportsQuery.data.length === 0 && (
+        {!projectId && <p className="text-[11px] text-ink-faint">{t("paperEvidence.applicability.noProjectDetail")}</p>}
+        {projectId && matchReportsQuery.isLoading && <EmptyState variant="loading" />}
+        {projectId && matchReportsQuery.data && matchReportsQuery.data.length === 0 && (
           <EmptyState variant="first_use" title={t("page3.noMatchReportsYet")} detail={t("page3.noMatchReportsDetail")} />
         )}
         {matchReportsQuery.data && matchReportsQuery.data.length > 0 && (

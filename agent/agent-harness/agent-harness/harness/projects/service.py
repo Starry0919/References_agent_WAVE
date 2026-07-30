@@ -94,6 +94,30 @@ def get_project(session: Session, project_id: str) -> Project | None:
     return session.get(Project, project_id)
 
 
+def project_context_summary(project: Project) -> dict[str, Any]:
+    """Normalized read view of "Current Project Context" (老师 §Phase2
+    Round 2: "统一读取入口，不要每个模块自己重新定义一份 project context 的
+    子集"). `host_definition` is a free-form JSON dict (`{species, strain,
+    host, ...}` - callers have historically written `species` and/or the
+    legacy key `host` interchangeably), so this is the one place that
+    resolves which key wins, instead of every consumer repeating its own
+    `(project.host_definition or {}).get("species") or .get("host")`
+    (previously duplicated in `harness/api/generation.py` and
+    `harness/evidence_retrieval/service.py`). Read-only - does not touch
+    `harness.engineering_design.models.EngineeringDesignProject`'s own,
+    deliberately-separate objective/constraint formalization (doc04 §2.2:
+    a human-gated step, not something to silently inherit from here)."""
+    host = project.host_definition or {}
+    return {
+        "project_id": project.project_id,
+        "host": host.get("species") or host.get("host"),
+        "strain": host.get("strain"),
+        "target_product": project.target_product,
+        "objectives": list(project.objectives or []),
+        "constraints": list(project.constraints or []),
+    }
+
+
 def get_active_cycle(session: Session, project_id: str) -> IterativeCycleState | None:
     from sqlalchemy import select
 

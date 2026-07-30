@@ -137,11 +137,14 @@ def distill_rules(*, write: bool = False) -> list[dict[str, Any]]:
 def search_rules(query: str) -> list[dict[str, Any]]:
     """Keyword search over the rule library — the retrieval path §4.5/§5.3
     (自建 DB: 规则库) calls for, and that nothing previously read this file
-    for."""
-    query_lower = query.lower()
+    for. Empty query returns every rule (full browse)."""
+    query_lower = query.strip().lower()
     words = [w for w in query_lower.split() if len(w) > 1]
     hits = []
     for rule in _load_rules().get("rules", []):
+        if not query_lower:
+            hits.append(rule)
+            continue
         haystack = " ".join([
             rule.get("statement", ""),
             " ".join(rule.get("trigger_conditions", [])),
@@ -150,3 +153,69 @@ def search_rules(query: str) -> list[dict[str, Any]]:
         if query_lower in haystack or any(w in haystack for w in words):
             hits.append(rule)
     return hits
+
+
+def rule_source_ddr_ids(rule: dict[str, Any]) -> list[str]:
+    """Extracts real `DDR-\\d+` ids out of a rule's free-text `source_ddrs`
+    entries (e.g. ``"DDR-005 (Chen & Zeng 2018 色氨酸)"`` -> ``"DDR-005"``).
+    Some entries name a paper with no matching DDR record at all (e.g.
+    ``"丁醇论文(驱动力规则)"``) - those are silently skipped rather than
+    fabricating an id, matching `rule_distillation._already_covered_ddr_ids`'s
+    own convention.
+    """
+    ids: list[str] = []
+    for src in rule.get("source_ddrs", []):
+        ids.extend(m for m in _DDR_ID_RE.findall(str(src)) if m not in ids)
+    return ids
+
+
+def rules_citing_ddr_ids(ddr_ids: list[str]) -> list[str]:
+    """Reverse of `rule_source_ddr_ids`: every `rule_id` whose own
+    `source_ddrs` cites at least one of `ddr_ids` (老师 §Phase4 Round 2:
+    "Design Decision → Rule → DDR" provenance needs to walk from a DDR back
+    to the rule(s) distilled from it, not just forward from rule to DDR).
+    Order follows `rules.json` (`RULE-001` first), not `ddr_ids` order.
+    """
+    wanted = set(ddr_ids)
+    if not wanted:
+        return []
+    return [
+        rule["rule_id"] for rule in _load_rules().get("rules", [])
+        if wanted & set(rule_source_ddr_ids(rule))
+    ]
+
+
+def rule_as_knowledge_claim_view(rule: dict[str, Any]) -> dict[str, Any]:
+    """Reshapes one rule-library entry into the "多个 DDR 支持的可迁移知识"
+    Knowledge Claim shape 老师 §Phase4 asks for (statement/evidence/
+    confidence/boundary) - *without* a second schema or storage layer:
+    `knowledge/biological_rules/rules.json` already IS "DDR aggregation"
+    (each rule's `source_ddrs` cites the DDRs it was distilled from,
+    `evidence_grading` is the same 硬/软 vocabulary a DDR step uses) - this
+    is a read-only view over that existing data, not a new claim object
+    (老师 §第一阶段: "如果已有实现：不要重复建设").
+    """
+    ddr_ids = rule_source_ddr_ids(rule)
+    hard = rule.get("evidence_grading") == "硬"
+    calibrated = rule.get("calibration_status") == "calibrated"
+    if hard and len(ddr_ids) >= 2:
+        confidence = "high"
+    elif hard or len(ddr_ids) >= 2:
+        confidence = "medium"
+    else:
+        confidence = "low"
+    boundary_parts = list(rule.get("trigger_conditions") or [])
+    if not calibrated:
+        boundary_parts.append("尚未完成人工校准（calibration_status=pending），规则表述需人工复核")
+    boundary_parts.append("规则为跨论文蒸馏的启发式，不替代针对当前项目的实测验证")
+    return {
+        "claim_id": rule.get("rule_id"),
+        "statement": rule.get("statement", ""),
+        "evidence_ddr_ids": ddr_ids,
+        "evidence_count": len(ddr_ids),
+        "evidence_grading": rule.get("evidence_grading"),
+        "confidence": confidence,
+        "boundary": "；".join(boundary_parts),
+        "applicable_modules": rule.get("applicable_modules", []),
+        "calibration_status": rule.get("calibration_status"),
+    }

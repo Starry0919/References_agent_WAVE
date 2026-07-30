@@ -10,6 +10,7 @@ import { PaperHeader } from "./components/PaperHeader";
 import { AgentTracePanel } from "./components/AgentTracePanel";
 import { ExperimentalDesignPanel } from "./components/ExperimentalDesignPanel";
 import { EvidenceProvenancePanel } from "./components/EvidenceProvenancePanel";
+import { ApplicabilityReportPanel } from "./components/ApplicabilityReportPanel";
 import { EvidenceGraphModal } from "./components/EvidenceGraphModal";
 import { CalibrationPanel } from "./components/CalibrationPanel";
 
@@ -132,6 +133,8 @@ export function PaperEvidenceDetailPage() {
           )}
 
           {detail.evidenceProvenance.length > 0 && <EvidenceProvenancePanel items={detail.evidenceProvenance} onSelectStep={selectDesignByStepNumber} />}
+
+          <ApplicabilityReportPanel ddrId={detail.sourceId} projectId={projectId} />
 
           {detail.rawRecord && (
             <CalibrationPanel

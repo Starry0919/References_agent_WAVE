@@ -15,7 +15,8 @@ from harness.api.deps import get_db_session
 from harness.evidence_retrieval.crossref_adapter import CrossrefEvidenceAdapter
 from harness.evidence_retrieval.local_ddr_adapter import LocalDDRAdapter
 from harness.evidence_retrieval.models import EvidenceMatchReport
-from harness.evidence_retrieval.service import verify_doi
+from harness.evidence_retrieval.relevance import ddr_relevance
+from harness.evidence_retrieval.service import assess_ddr_applicability, verify_doi
 from harness.i18n import get_locale
 from harness.llm_generation.client import StructuredGenerationClient
 from harness.llm_generation.models import LLMGenerationRecord
@@ -26,6 +27,8 @@ from harness.paper_extraction.reasoning_view import (
     build_experimental_design,
     build_header_summary,
 )
+from harness.projects.models import Project
+from harness.projects.service import project_context_summary
 from harness.translation.service import translate_batch
 
 router = APIRouter(prefix="/api/generation", tags=["generation"])
@@ -86,17 +89,36 @@ def verify_doi_route(body: VerifyDoiBody, session: Session = Depends(get_db_sess
 
 
 @router.get("/evidence/search")
-def search_evidence(query: str, source: str = "local_ddr") -> dict:
+def search_evidence(query: str = "", source: str = "local_ddr", project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict:
+    """Empty `query` is a full browse of the corpus, not a 422 or an empty
+    result (老师 §Phase2) - `LocalDDRAdapter.search` returns everything for
+    `""`/whitespace. Optional `project_id` tags each result `relevant`
+    (host/product overlap with the project's own context) and sorts
+    relevant-first, without hiding the rest - a DDR from an unrelated
+    product can still hold a transferable rule (老师 §四.5), so "project
+    filter" here means ranking, not exclusion (老师 §Phase5: "根据 Current
+    Project Context 筛选 Relevant DDR ... 而不是静态展示数据库").
+    """
     adapter = CrossrefEvidenceAdapter() if source == "crossref" else LocalDDRAdapter()
     result = adapter.search(query, {}, {})
-    return {
-        "source_name": result.source_name, "total_available": result.total_available,
-        "documents": [
-            {"source_id": d.source_id, "title": d.title, "authors": d.authors, "publication_year": d.publication_year,
-             "journal_or_repository": d.journal_or_repository, "doi_or_accession": d.doi_or_accession}
-            for d in result.documents
-        ],
-    }
+    project_host = project_product = None
+    if project_id and source != "crossref":
+        project = session.get(Project, project_id)
+        if project is not None:
+            ctx = project_context_summary(project)
+            project_host, project_product = ctx["host"], ctx["target_product"]
+
+    def _doc_dict(d: Any) -> dict[str, Any]:
+        out = {"source_id": d.source_id, "title": d.title, "authors": d.authors, "publication_year": d.publication_year,
+               "journal_or_repository": d.journal_or_repository, "doi_or_accession": d.doi_or_accession}
+        if project_host or project_product:
+            out.update(ddr_relevance(d.raw_metadata, project_host=project_host, project_product=project_product))
+        return out
+
+    documents = [_doc_dict(d) for d in result.documents]
+    if project_host or project_product:
+        documents.sort(key=lambda d: not d.get("relevant", False))
+    return {"source_name": result.source_name, "total_available": result.total_available, "documents": documents}
 
 
 _ENGINEERING_DESIGN_TEXT_FIELDS = ("problem_statement", "mechanistic_explanation", "hypothesis", "expected_effect")
@@ -233,15 +255,61 @@ def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
     }
 
 
+class AssessApplicabilityBody(BaseModel):
+    project_id: str
+    actor_id: str = "frontend-user"
+
+
+@router.post("/evidence/documents/{source_id}/applicability")
+def assess_applicability(source_id: str, body: AssessApplicabilityBody, session: Session = Depends(get_db_session)) -> dict:
+    """Computes + persists a DDR's "Applicability Report" against a
+    project's current context (老师 §Phase3). `source_id` must be a
+    `local_ddr` document - crossref bibliographic records have no
+    `metadata.organism`/`target_product` to compare against."""
+    project = session.get(Project, body.project_id)
+    if project is None:
+        raise HTTPException(404, f"no such project: {body.project_id}")
+    doc = LocalDDRAdapter().fetch(source_id)
+    if doc is None:
+        raise HTTPException(404, f"no such local_ddr document: {source_id}")
+    return assess_ddr_applicability(session, project_id=body.project_id, ddr_record=doc.raw_metadata, project=project, actor_id=body.actor_id)
+
+
 @router.get("/evidence/match-reports")
-def list_match_reports(evidence_id: str | None = None, session: Session = Depends(get_db_session)) -> dict:
+def list_match_reports(evidence_id: str | None = None, project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict:
+    """`project_id` scopes the list to one project's own match reports -
+    without it (and without `evidence_id`) this previously returned every
+    match report ever computed, for every project, since the table was
+    created (the Knowledge page's "适用范围/情境匹配报告" panel called this
+    with no filter at all, so it never reflected the open project). When
+    `project_id` is given without a specific `evidence_id`, only the most
+    recent report per evidence_id is returned - `EvidenceMatchReport` rows
+    are immutable/append-only (harness/db.py::guard_immutable_fields), so
+    re-assessing the same DDR against the same project inserts a new row
+    rather than updating the old one, and this view is "current status per
+    piece of evidence", not a full audit trail (the full history is still
+    available by filtering on a specific `evidence_id`)."""
     stmt = select(EvidenceMatchReport).order_by(EvidenceMatchReport.created_at.desc())
     if evidence_id:
         stmt = stmt.where(EvidenceMatchReport.evidence_id == evidence_id)
-    rows = session.execute(stmt).scalars().all()
+    if project_id:
+        stmt = stmt.where(EvidenceMatchReport.project_id == project_id)
+    rows = list(session.execute(stmt).scalars().all())
+    if project_id and not evidence_id:
+        seen: set[str] = set()
+        deduped = []
+        for r in rows:
+            if r.evidence_id in seen:
+                continue
+            seen.add(r.evidence_id)
+            deduped.append(r)
+        rows = deduped
     return {
         "match_reports": [
-            {"match_report_id": r.match_report_id, "evidence_id": r.evidence_id, "overall_match_status": r.overall_match_status,
+            {"match_report_id": r.match_report_id, "evidence_id": r.evidence_id, "organism_match": r.organism_match,
+             "strain_match": r.strain_match, "genotype_match": r.genotype_match, "medium_match": r.medium_match,
+             "condition_match": r.condition_match, "timepoint_match": r.timepoint_match, "intervention_match": r.intervention_match,
+             "measurement_match": r.measurement_match, "overall_match_status": r.overall_match_status,
              "downgrade_reasons": r.downgrade_reasons, "transfer_risks": r.transfer_risks, "directness": r.directness, "created_at": r.created_at}
             for r in rows
         ]

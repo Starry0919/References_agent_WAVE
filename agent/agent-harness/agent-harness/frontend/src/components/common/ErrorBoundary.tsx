@@ -1,6 +1,7 @@
 import { Component, type ReactNode } from "react";
 import { EmptyState } from "./EmptyState";
 import { translate } from "@/lib/i18n";
+import { pushLog } from "@/lib/logStore";
 
 interface Props {
   children: ReactNode;
@@ -19,6 +20,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, info: { componentStack: string }) {
     console.error("[ErrorBoundary]", error, info.componentStack);
+    pushLog("error", "boundary", error.message, `${error.stack ?? ""}\n${info.componentStack}`);
   }
 
   render() {
