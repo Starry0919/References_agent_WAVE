@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, ShieldCheck, Check, X, GripVertical, FlaskConical, Sprout, ExternalLink } from "lucide-react";
+import { Search, Dna, BookOpen, Layers, FileSearch, ShieldQuestion, ShieldCheck, Check, X, GripVertical, FlaskConical, Sprout, ExternalLink, EyeOff } from "lucide-react";
 import { getEvidenceDocument, getGenerationHealth, listEvidenceMatchReports, searchEvidence, verifyDoi, type EvidenceDocumentDetail } from "@/api/evidence";
 import { listDdrKnowledgeClaims, listEngineeringActions, type DdrKnowledgeClaim, type EngineeringAction } from "@/api/rules";
 import { EmptyState } from "@/components/common/EmptyState";
@@ -111,6 +111,7 @@ function BiologicalKnowledgeTab() {
   const { projectId } = useParams<{ projectId: string }>();
   const [params, setParams] = useSearchParams();
   const [filterText, setFilterText] = useState("");
+  const [hideUnbacked, setHideUnbacked] = useState(false);
   // `params.has` (not just `!raw`) so an explicit "none selected" (`?sources=`,
   // an empty string) is distinguished from "the param was never set" (the
   // all-three default) - deselecting all three cards must leave the list
@@ -148,6 +149,19 @@ function BiologicalKnowledgeTab() {
     queryFn: () => listEngineeringActions(filterText, projectId),
     enabled: activeSources.has("actions"),
   });
+
+  // "Unbacked" = no citable evidence at all (empty `evidenceDdrIds` for a
+  // rule, null `evidence` for an action) - not the DDR database section,
+  // whose entries are each the primary source record itself and so have
+  // nothing to be "backed by".
+  const visibleClaims = useMemo(
+    () => (hideUnbacked ? claimsQuery.data?.filter((c) => c.evidenceDdrIds.length > 0) : claimsQuery.data),
+    [claimsQuery.data, hideUnbacked],
+  );
+  const visibleActions = useMemo(
+    () => (hideUnbacked ? actionsQuery.data?.filter((a) => !!a.evidence) : actionsQuery.data),
+    [actionsQuery.data, hideUnbacked],
+  );
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-4">
@@ -190,14 +204,25 @@ function BiologicalKnowledgeTab() {
             count={activeSources.has("actions") ? actionsQuery.data?.length : undefined}
           />
         </div>
-        <div className="flex items-center gap-2 border-t border-border px-4 py-3">
+        <div className="flex flex-wrap items-center gap-2 border-t border-border px-4 py-3">
           <Search size={13} className="shrink-0 text-ink-faint" aria-hidden />
           <input
             value={filterText}
             onChange={(e) => setFilterText(e.target.value)}
             placeholder={t("page3.source.filterPlaceholder")}
-            className="w-full min-w-0 border-0 bg-transparent text-xs outline-none"
+            className="w-full min-w-0 flex-1 border-0 bg-transparent text-xs outline-none"
           />
+          <button
+            type="button"
+            onClick={() => setHideUnbacked((v) => !v)}
+            aria-pressed={hideUnbacked}
+            className={`flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-[11px] font-medium transition ${
+              hideUnbacked ? "border-red-300 bg-red-50 text-state-risk" : "border-border bg-surface text-ink-muted hover:bg-surface-sunken"
+            }`}
+          >
+            <EyeOff size={12} aria-hidden />
+            {t("page3.hideUnbackedEntries")}
+          </button>
         </div>
       </section>
 
@@ -212,9 +237,12 @@ function BiologicalKnowledgeTab() {
           {claimsQuery.isLoading && <EmptyState variant="loading" />}
           {claimsQuery.isError && <EmptyState variant="failed" detail={String(claimsQuery.error)} />}
           {claimsQuery.data && claimsQuery.data.length === 0 && <EmptyState variant="no_result" title={t("page3.ddrKnowledgeClaimsEmptyTitle")} />}
-          {claimsQuery.data && claimsQuery.data.length > 0 && (
+          {claimsQuery.data && claimsQuery.data.length > 0 && visibleClaims && visibleClaims.length === 0 && (
+            <EmptyState variant="no_result" title={t("page3.noClaimsMatchFilter")} />
+          )}
+          {visibleClaims && visibleClaims.length > 0 && (
             <ul className="flex flex-col gap-2">
-              {claimsQuery.data.map((c) => (
+              {visibleClaims.map((c) => (
                 <DdrKnowledgeClaimCard key={c.claimId} claim={c} projectId={projectId} />
               ))}
             </ul>
@@ -271,9 +299,12 @@ function BiologicalKnowledgeTab() {
           {actionsQuery.isLoading && <EmptyState variant="loading" />}
           {actionsQuery.isError && <EmptyState variant="failed" detail={String(actionsQuery.error)} />}
           {actionsQuery.data && actionsQuery.data.length === 0 && <EmptyState variant="no_result" />}
-          {actionsQuery.data && actionsQuery.data.length > 0 && (
+          {actionsQuery.data && actionsQuery.data.length > 0 && visibleActions && visibleActions.length === 0 && (
+            <EmptyState variant="no_result" />
+          )}
+          {visibleActions && visibleActions.length > 0 && (
             <ul className="grid gap-2 sm:grid-cols-2">
-              {actionsQuery.data.map((a) => (
+              {visibleActions.map((a) => (
                 <EngineeringActionCard key={a.actionId} action={a} />
               ))}
             </ul>
@@ -286,8 +317,9 @@ function BiologicalKnowledgeTab() {
 
 function EngineeringActionCard({ action }: { action: EngineeringAction }) {
   const { t } = useI18n();
+  const unbacked = !action.evidence;
   return (
-    <li className={`rounded-lg border p-3 text-xs ${action.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
+    <li className={`rounded-lg border p-3 text-xs ${unbacked ? "border-red-300 bg-red-50" : action.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
       <div className="flex items-start justify-between gap-2">
         <p className="font-medium text-ink">{action.actionType}</p>
         <div className="flex shrink-0 items-center gap-1.5">
@@ -301,13 +333,12 @@ function EngineeringActionCard({ action }: { action: EngineeringAction }) {
       {/* Source: most catalog entries are an established general pattern,
           not one paper's verified result - this field says which, instead
           of the card implying every action is a citable experimental
-          finding. */}
-      {action.evidence && (
-        <p className="mt-1.5 border-t border-border pt-1.5 text-[11px] text-ink-faint">
-          <span className="font-medium">{t("page3.source.label")}: </span>
-          {action.evidence}
-        </p>
-      )}
+          finding. Always shown (not just when present) so an unbacked
+          entry is visibly flagged rather than silently omitting the line. */}
+      <p className={`mt-1.5 border-t pt-1.5 text-[11px] ${unbacked ? "border-red-200 font-medium text-state-risk" : "border-border text-ink-faint"}`}>
+        <span className="font-medium">{t("page3.source.label")}: </span>
+        {action.evidence || t("page3.source.noEvidenceRecorded")}
+      </p>
     </li>
   );
 }
@@ -316,8 +347,9 @@ const CONFIDENCE_BADGE: Record<DdrKnowledgeClaim["confidence"], BadgeStatus> = {
 
 function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim; projectId: string | undefined }) {
   const { t } = useI18n();
+  const unbacked = claim.evidenceDdrIds.length === 0;
   return (
-    <li className={`rounded-lg border p-3.5 text-xs ${claim.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
+    <li className={`rounded-lg border p-3.5 text-xs ${unbacked ? "border-red-300 bg-red-50" : claim.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
       <div className="flex items-start justify-between gap-2">
         <p className="font-medium text-ink">{claim.statement}</p>
         <div className="flex shrink-0 items-center gap-1.5">
@@ -331,7 +363,7 @@ function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim;
         <span>{t("page3.claimEvidenceCount")}: {claim.evidenceCount}</span>
         {claim.applicableModules.length > 0 && <span>{claim.applicableModules.join(", ")}</span>}
       </div>
-      <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px] text-ink-faint">
+      <div className={`mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px] ${unbacked ? "text-state-risk" : "text-ink-faint"}`}>
         <span className="font-medium">{t("page3.source.label")}:</span>
         {claim.evidenceDdrIds.length > 0 ? (
           claim.evidenceDdrIds.map((id) =>
@@ -344,7 +376,7 @@ function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim;
             ),
           )
         ) : (
-          <span className="italic">{t("page3.source.noneRecorded")}</span>
+          <span className="italic font-medium">{t("page3.source.noneRecorded")}</span>
         )}
       </div>
       <p className="mt-1.5 text-[11px] text-ink-faint">{t("page3.claimBoundary")}: {claim.boundary}</p>

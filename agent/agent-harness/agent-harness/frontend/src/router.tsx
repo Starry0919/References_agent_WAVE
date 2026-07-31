@@ -3,7 +3,12 @@ import { AppShell } from "@/components/shell/AppShell";
 import { ProjectSwitcherPage } from "@/pages/ProjectSwitcherPage";
 import { CommandCenterPage } from "@/pages/CommandCenterPage";
 import { KnowledgePage } from "@/pages/knowledge/KnowledgePage";
+import { EvaluationMetricsPage } from "@/pages/metrics/EvaluationMetricsPage";
 import { IdeaWorkspacePage } from "@/pages/IdeaWorkspacePage";
+import { DiagnosisWorkbenchPage } from "@/pages/diagnosis/DiagnosisWorkbenchPage";
+import { DiagnosisSessionDetailPage } from "@/pages/diagnosis/DiagnosisSessionDetailPage";
+import { DesignWorkbenchPage } from "@/pages/design/DesignWorkbenchPage";
+import { DesignProjectDetailPage } from "@/pages/design/DesignProjectDetailPage";
 import { PaperEvidenceDetailPage } from "@/pages/evidence/PaperEvidenceDetailPage";
 import { TrustCenterPage } from "@/pages/trust/TrustCenterPage";
 
@@ -24,7 +29,12 @@ export const router = createBrowserRouter(
         { index: true, element: <CommandCenterPage /> },
         { path: "ideas", element: <IdeaWorkspacePage /> },
         { path: "workspace", element: <Navigate to="../ideas" replace /> },
+        { path: "diagnosis", element: <DiagnosisWorkbenchPage /> },
+        { path: "diagnosis/:sessionId", element: <DiagnosisSessionDetailPage /> },
+        { path: "design", element: <DesignWorkbenchPage /> },
+        { path: "design/:designProjectId", element: <DesignProjectDetailPage /> },
         { path: "knowledge", element: <KnowledgePage /> },
+        { path: "metrics", element: <EvaluationMetricsPage /> },
         { path: "paper-extraction", element: <Navigate to="../knowledge?tab=extraction" replace /> },
         { path: "evidence/:sourceId", element: <PaperEvidenceDetailPage /> },
         { path: "trust/:ddrId", element: <TrustCenterPage /> },

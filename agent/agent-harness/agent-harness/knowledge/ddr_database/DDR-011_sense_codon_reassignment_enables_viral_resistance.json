@@ -1,0 +1,1036 @@
+{
+  "ddr_id": "DDR-011",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Sense codon reassignment enables viral resistance and encoded polymer synthesis",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Sense codon reassignment enables viral resistance and encoded polymer synthesis",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": ""
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Mutated cultures dynamically diluted based on growth rate (details in fig. S1 and supplement)"
+      },
+      "trigger": {
+        "observation": "Syn61 grows 1.6 times slower than the strain it was derived from, motivating fitness recovery before further engineering.",
+        "reasoning": "Increase growth rate of Syn61 before tRNA/RF1 deletion",
+        "source_location": "E. coli Syn61"
+      },
+      "evidence": {
+        "description": [
+          "creating_syn61d3_p002",
+          "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p007"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Outcome is a measured 1.3-fold growth-rate improvement from growth curves.",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Two consecutive rounds of random parallel mutagenesis + automated dynamic parallel selection (feedback-controlled dilution by growth rate; method from ref 19)",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Syn61(ev2) grew 1.3-fold faster than Syn61",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 2,
+      "design_action": "M5",
+      "target": {
+        "gene": "serT",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "deletion protocol in supplement (fig. S1C, data S1/S2)"
+      },
+      "trigger": {
+        "observation": "Syn61's genome already lacks annotated TCG/TCA/TAG codons, predicting its decoders are dispensable; prior work deleted each gene only in separate strains, leaving epistasis untested; sense codons are >=10x more abundant than amber in viral genomes, predicting unreadable sense codons would block full-length viral protein synthesis.",
+        "reasoning": "Test whether all decoders of the removed codons can be deleted in one strain, capturing potential epistasis missed by prior separate deletions",
+        "source_location": "E. coli Syn61(ev2)"
+      },
+      "evidence": {
+        "description": [
+          "creating_syn61d3_p003",
+          "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p014"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Feasibility rested on the completed genomic recoding and genomic codon counts; viability and phenotype were then measured directly.",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {
+          "approach": "Separate single deletions (done previously, ref 18) - rejected as insufficient because they do not capture epistasis between serT, serU and prfA",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "KO",
+      "implementation_detail": "Deletion of serT, serU and prfA (combined genotype directly demonstrated in this study)",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Viable Syn61Δ3 obtained; grew 1.7x slower than Syn61(ev2). Authors suggest growth defect may reflect unannotated target codons and/or noncanonical tRNA roles (author_interpretation, not causally validated).",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "Once synonymous codon compression has removed all annotated genomic instances of a codon set, the cognate tRNAs/release factor can be deleted in a single strain; the resulting unreadable codons simultaneously block viral translation and create blank codons for reassignment via orthogonal aaRS/tRNA pairs."
+    },
+    {
+      "step": 3,
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "as EXP1 (fig. S1, F-H; data S1)"
+      },
+      "trigger": {
+        "observation": "Syn61Δ3 grew 1.7 times slower than Syn61(ev2) after deletion of serT/serU/prfA.",
+        "reasoning": "Recover fitness of Syn61Δ3 after triple deletion",
+        "source_location": "E. coli Syn61Δ3"
+      },
+      "evidence": {
+        "description": [
+          "creating_syn61d3_p004",
+          "fig_3_reassigning_two_sense_codons_and_a_stop_codon_to_noncanonical_amino_acid_in_p014"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured 1.6-fold growth improvement and doubling time; genome sequenced.",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Three sequential rounds of random parallel mutagenesis + automated dynamic parallel selection",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Syn61Δ3(ev5) grew 1.6-fold faster than Syn61Δ3; doubling time 38.72 +/- 1.02 min; 482 additional mutations (420 substitutions, 62 indels, 72 intergenic); no target codon reversion; 16 sense codons in nonessential genes converted to target codons (5xTCG, 3xTCA, 8xTAG). Mutations accumulated across the whole lineage; attribution of specific mutations to individual selection rounds not reported.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 4,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "4-hour time course; gentamicin arm ablates protein synthesis"
+      },
+      "trigger": {
+        "observation": "Syn61Δ3(ev5) grew 1.6-fold faster than Syn61Δ3; doubling time 38.72 +/- 1.02 min; 482 additional mutations (420 substitutions, 62 indels, 72 intergenic); no target codon reversion; 16 sense codons in nonessential genes converted to target codons (5xTCG, 3xTCA, 8xTAG). Mutations accumulated across the whole lineage; attribution of specific mutations to individual selection rounds not reported.",
+        "reasoning": "Test whether unreadable TCG/TCA/TAG codons block phage propagation and cell lysis",
+        "source_location": "E. coli Syn61Δ3 (vs Syn61(ev2), Syn61ΔRF1)"
+      },
+      "evidence": {
+        "description": [
+          "trna_deletion_ablates_virus_production_in_syn61d3_p001",
+          "trna_deletion_ablates_virus_production_in_syn61d3_p002",
+          "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p008"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "T6 infection at MOI 5x10^-2 (modified one-step growth); T7 infection; simultaneous cocktail of lambda, P1vir, T4, T6, T7 at MOI 1x10^-2 each",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Syn61Δ3 showed steadily decreasing T6 titer comparable to gentamicin ablation and minimal OD impact; RF1 deletion alone had little/no effect; cocktail lysed Syn61(ev2) and Syn61ΔRF1 but not Syn61Δ3. Scope: tested phages, MOIs, 4-h window; no long-term escape assay.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 5,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "expression in presence/absence of BocK (concentrations in supplement)"
+      },
+      "trigger": {
+        "observation": "Target codons are unreadable by endogenous machinery in Syn61Δ3 (no product without ncAA), creating orthogonal codons available for reassignment.",
+        "reasoning": "Reassign each target codon (TCG/TCA/TAG) to a single ncAA and show endogenous machinery cannot read them",
+        "source_location": "E. coli Syn61Δ3(ev5)"
+      },
+      "evidence": {
+        "description": [
+          "reassigning_target_codons_for_ncaa_incorporation_p001",
+          "reassigning_target_codons_for_ncaa_incorporation_p002",
+          "reassigning_target_codons_for_ncaa_incorporation_p024",
+          "fig_3_reassigning_two_sense_codons_and_a_stop_codon_to_noncanonical_amino_acid_in_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Reassignment verified by western blot dependence on ncAA and by ESI-MS/MS-MS mass confirmation.",
+      "reason_nature": "现成可得",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Introduction of orthogonal MmPylRS/MmtRNA_Pyl_YYY pair (anticodon complementary to the target codon; pair from ref 25) plus Ub_11XXX-His6 reporter; +/- BocK",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Little/no ubiquitin without ncAA; BocK addition restored full-length Ub to wt-comparable levels; site-specific BocK incorporation confirmed for each codon",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null
+    },
+    {
+      "step": 6,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "+/- BocK"
+      },
+      "trigger": {
+        "observation": "Single-site reassignment succeeded, prompting test of sequential multi-site incorporation needed for heteropolymer encoding.",
+        "reasoning": "Show multi-site incorporation of one ncAA in response to each reassigned codon",
+        "source_location": "E. coli Syn61Δ3 derivatives"
+      },
+      "evidence": {
+        "description": [
+          "fig_3_reassigning_two_sense_codons_and_a_stop_codon_to_noncanonical_amino_acid_in_p012",
+          "fig_3_reassigning_two_sense_codons_and_a_stop_codon_to_noncanonical_amino_acid_in_p013",
+          "reassigning_target_codons_for_ncaa_incorporation_p024"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Multi-site products confirmed by ESI-MS mass matching.",
+      "reason_nature": "现成可得",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Ub genes with 2 (11,65), 3 (11,14,65) or 4 (9,11,14,65) target codons + cognate MmPylRS/MmtRNA_Pyl_YYY pair + BocK; separate experiment: 9 TCG codons in a repeat protein (fig. S6)",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Good yields of Ub incorporating 2-4 BocK per polypeptide in response to each codon; 9 incorporations shown in supplement",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 7,
+      "design_action": "M5",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "+/- CbzK and p-I-Phe"
+      },
+      "trigger": {
+        "observation": "Single-codon reassignment established; synthesizing heteropolymers requires distinct monomers on distinct codons in one cell.",
+        "reasoning": "Encode two distinct ncAAs at two distinct codons in one gene",
+        "source_location": "E. coli Syn61Δ3(ev4)"
+      },
+      "evidence": {
+        "description": [
+          "reassigning_target_codons_for_ncaa_incorporation_p005",
+          "reassigning_target_codons_for_ncaa_incorporation_p007",
+          "encoding_distinct_ncaas_in_response_to_distinct_target_codons_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Dual incorporation verified by western blot and ESI-MS of purified product.",
+      "reason_nature": "现成可得",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Co-expression of 1R26PylRS(CbzK)/AlvtRNA_ΔNPyl(8)_CGA pair (CbzK->TCG; ref 16) and AfTyrRS(p-I-Phe)/AftRNA_Tyr(A01)_CUA pair (p-I-Phe->TAG; ref 29) with Ub_11TCG,65TAG or Ub_9TCG,11TCG,14TAG,65TAG",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Quantitative incorporation of CbzK at TCG and p-I-Phe at TAG, including 4-site double incorporation (scope: purified products analyzed)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 8,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "+/- CbzK, BocK, p-I-Phe"
+      },
+      "trigger": {
+        "observation": "Double incorporation succeeded; the three blank codons (TCG/TCA/TAG) offer three independent channels if three mutually orthogonal pairs can coexist.",
+        "reasoning": "Encode three distinct ncAAs at TCG, TCA and TAG in a single gene",
+        "source_location": "E. coli Syn61Δ3(ev4)"
+      },
+      "evidence": {
+        "description": [
+          "reassigning_target_codons_for_ncaa_incorporation_p007",
+          "encoding_distinct_ncaas_in_response_to_distinct_target_codons_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Triple incorporation verified by western blot and ESI-MS.",
+      "reason_nature": "现成可得",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Three triply orthogonal pairs: 1R26PylRS(CbzK)/AlvtRNA_CGA (CbzK->TCG), MmPylRS/MmtRNA_Pyl_UGA (BocK->TCA), AfTyrRS(p-I-Phe)/AftRNA_CUA (p-I-Phe->TAG); reporter Ub_9TAG,11TCG,14TCA",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Full-length Ub with three distinct ncAAs produced only with all ncAAs present; mass-confirmed",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null
+    },
+    {
+      "step": 9,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "+/- both ncAAs (dependence test)"
+      },
+      "trigger": {
+        "observation": "Triply orthogonal decoding (EXP8) showed two/three monomers can be placed at distinct codons, implying codon order can program monomer sequence.",
+        "reasoning": "Demonstrate programmable encoded ribosomal synthesis of noncanonical heteropolymers from user-written codon sequences",
+        "source_location": "E. coli Syn61Δ3(ev5)"
+      },
+      "evidence": {
+        "description": [
+          "encoded_noncanonical_polymers_and_macrocycles_p001",
+          "reassigning_target_codons_for_ncaa_incorporation_p014",
+          "reassigning_target_codons_for_ncaa_incorporation_p022"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Products verified by ncAA-dependent expression and ESI-MS of purified fusions.",
+      "reason_nature": "现成可得",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "sfGFP-His6 with encoded di-/tetra-/hexa-/octamer inserts at codon 3 (TCG/TAG dinucleotide steps AA/BB/AB/BA); three reassignment schemes (r.s.1 AllocK/CbzK, r.s.2 BocK/p-I-Phe, r.s.3 CbzK/p-I-Phe) reprogramming monomer identity on the same DNA; 22 synthetic polymer sequences total",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "All encoded polymerizations were ncAA-dependent; hexamer/octamer identities mass-confirmed; cells reprogrammable to different polymers from one DNA sequence",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null
+    },
+    {
+      "step": 10,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "expression with r.s.1 pairs (AllocK/CbzK); purification per fig. S13"
+      },
+      "trigger": {
+        "observation": "sfGFP-fused polymers demonstrated encoding, but applications require free polymers and cyclized products.",
+        "reasoning": "Produce free (non-fusion) noncanonical polymers and a macrocycle",
+        "source_location": "E. coli Syn61Δ3(ev5)"
+      },
+      "evidence": {
+        "description": [
+          "encoded_noncanonical_polymers_and_macrocycles_p001",
+          "reassigning_target_codons_for_ncaa_incorporation_p022"
+        ],
+        "source": "论文实测",
+        "source_location": "",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Products purified and confirmed by ESI-MS.",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Tetramer/hexamer sequences encoded between SUMO and GyrA-CBD; Ulp1 cleavage + GyrA transthioesterification release free polymers; an upstream cysteine enables self-cleavage and macrocycle release",
+      "result": {
+        "metric": "",
+        "before": "",
+        "after": "Free noncanonical tetramer/hexamer and a macrocycle reminiscent of nonribosomal peptide synthetase products obtained and mass-confirmed",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Test whether deleting the tRNAs (serT, serU) and release factor 1 (prfA) that decode TCG, TCA and TAG in the recoded Escherichia coli strain Syn61 makes these codons unreadable, and whether the resulting cells (Syn61Δ3 and evolved derivatives) are (a) completely resistant to viruses and (b) able to reassigned the three codons to noncanonical amino acids (ncAAs) for encoded synthesis of proteins containing three distinct ncAAs and of noncanonical heteropolymers and macrocycles.",
+    "problem_type": [
+      "competing pathway",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "Syn61 grows 1.6 times slower than the strain it was derived from, motivating fitness recovery before further engineering",
+      "Syn61's genome already lacks annotated TCG/TCA/TAG codons, predicting its decoders are dispensable; prior work deleted e",
+      "Syn61Δ3 grew 1.7 times slower than Syn61(ev2) after deletion of serT/serU/prfA.",
+      "Syn61Δ3(ev5) grew 1.6-fold faster than Syn61Δ3; doubling time 38.72 +/- 1.02 min; 482 additional mutations (420 substitu",
+      "Target codons are unreadable by endogenous machinery in Syn61Δ3 (no product without ncAA), creating orthogonal codons av",
+      "Single-site reassignment succeeded, prompting test of sequential multi-site incorporation needed for heteropolymer encod",
+      "Single-codon reassignment established; synthesizing heteropolymers requires distinct monomers on distinct codons in one ",
+      "Double incorporation succeeded; the three blank codons (TCG/TCA/TAG) offer three independent channels if three mutually ",
+      "Triply orthogonal decoding (EXP8) showed two/three monomers can be placed at distinct codons, implying codon order can p",
+      "sfGFP-fused polymers demonstrated encoding, but applications require free polymers and cyclized products."
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "Syn61 grows 1.6 times slower than the strain it was derived from, motivating fitness recovery before further engineering.",
+      "Syn61's genome already lacks annotated TCG/TCA/TAG codons, predicting its decoders are dispensable; prior work deleted each gene only in separate strains, leaving epistasis untested; sense codons are >=10x more abundant than amber in viral genomes, predicting unreadable sense codons would block full-length viral protein synthesis.",
+      "Syn61Δ3 grew 1.7 times slower than Syn61(ev2) after deletion of serT/serU/prfA.",
+      "Syn61Δ3(ev5) grew 1.6-fold faster than Syn61Δ3; doubling time 38.72 +/- 1.02 min; 482 additional mutations (420 substitutions, 62 indels, 72 intergenic); no target codon reversion; 16 sense codons in nonessential genes converted to target codons (5xTCG, 3xTCA, 8xTAG). Mutations accumulated across the whole lineage; attribution of specific mutations to individual selection rounds not reported.",
+      "Target codons are unreadable by endogenous machinery in Syn61Δ3 (no product without ncAA), creating orthogonal codons available for reassignment.",
+      "Single-site reassignment succeeded, prompting test of sequential multi-site incorporation needed for heteropolymer encoding.",
+      "Single-codon reassignment established; synthesizing heteropolymers requires distinct monomers on distinct codons in one cell.",
+      "Double incorporation succeeded; the three blank codons (TCG/TCA/TAG) offer three independent channels if three mutually orthogonal pairs can coexist.",
+      "Triply orthogonal decoding (EXP8) showed two/three monomers can be placed at distinct codons, implying codon order can program monomer sequence.",
+      "sfGFP-fused polymers demonstrated encoding, but applications require free polymers and cyclized products."
+    ],
+    "bottlenecks": [
+      ": Syn61 grows 1.6 times slower than the strain it was derived from, motivating fit",
+      "serT: Syn61's genome already lacks annotated TCG/TCA/TAG codons, predicting its decode",
+      ": Syn61Δ3 grew 1.7 times slower than Syn61(ev2) after deletion of serT/serU/prfA.",
+      ": Syn61Δ3(ev5) grew 1.6-fold faster than Syn61Δ3; doubling time 38.72 +/- 1.02 min",
+      ": Target codons are unreadable by endogenous machinery in Syn61Δ3 (no product with",
+      ": Single-site reassignment succeeded, prompting test of sequential multi-site inco",
+      ": Single-codon reassignment established; synthesizing heteropolymers requires dist",
+      ": Double incorporation succeeded; the three blank codons (TCG/TCA/TAG) offer three",
+      ": Triply orthogonal decoding (EXP8) showed two/three monomers can be placed at dis",
+      ": sfGFP-fused polymers demonstrated encoding, but applications require free polyme"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-07-31",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。43 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "4736317b55ef4bb98226bf02db25eca7",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "07e2c86e63824cd8b73d5bb153a491a5_science.abg3029-1",
+      "identity": {
+        "paper_id": "07e2c86e63824cd8b73d5bb153a491a5_science.abg3029-1",
+        "title": "Sense codon reassignment enables viral resistance and encoded polymer synthesis",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": null
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p002",
+          "creating_syn61d3_p002",
+          "trna_deletion_ablates_virus_production_in_syn61d3_p001",
+          "encoded_noncanonical_polymers_and_macrocycles_p001"
+        ],
+        "notes": "Science research article reporting original experiments by the authors (strain construction, evolution, phage assays, ncAA incorporation). The bundled 'Designing bacterial superpowers' blurb is the journal's editorial summary of this article, not a separate study."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61",
+          "paper_strain_normalized": "E. coli Syn61",
+          "role": "parental",
+          "paper_label": "Syn61",
+          "lineage_or_engineering_context": "Synthetic recoded genome with all annotated TCG, TCA and TAG replaced by synonymous codons; created in prior work (ref 18, Fredens et al. 2019). Its own ancestor is not named in this paper.",
+          "combination_status": "not_applicable",
+          "genotype": "recoded genome (TCG/TCA/TAG removed); full genotype in ref 18 / data S1",
+          "evidence": [
+            "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p005"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named in main text as starting strain; recoding itself is background_citation, its use here is current_article."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61(ev2)",
+          "paper_strain_normalized": "E. coli Syn61(ev2)",
+          "role": "engineered",
+          "paper_label": "Syn61(ev2)",
+          "lineage_or_engineering_context": "Syn61 after two rounds of random parallel mutagenesis + automated dynamic parallel selection",
+          "combination_status": "not_applicable",
+          "genotype": "Syn61 + evolution-acquired mutations (data S1/S3)",
+          "evidence": [
+            "creating_syn61d3_p002",
+            "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p007"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly described construction and 1.3-fold faster growth."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61D3",
+          "paper_strain_normalized": "E. coli Syn61Δ3 (= Syn61(ev2) ΔserT ΔserU ΔprfA)",
+          "role": "target",
+          "paper_label": "Syn61D3 (OCR rendering of Syn61Δ3)",
+          "lineage_or_engineering_context": "Triple deletion of the decoders of TCG/TCA/TAG in Syn61(ev2); first strain unable to read these codons",
+          "combination_status": "demonstrated (combined ΔserT ΔserU ΔprfA directly constructed and verified in one strain)",
+          "genotype": "ΔserT ΔserU ΔprfA",
+          "evidence": [
+            "creating_syn61d3_p003",
+            "sense_codon_reassignment_enables_viral_resistance_and_encoded_polymer_synthesis_p007"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Combined genotype directly stated; distinct from prior separate deletions (ref 18)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61D3(ev4)",
+          "paper_strain_normalized": "E. coli Syn61Δ3(ev4)",
+          "role": "host",
+          "paper_label": "Syn61D3(ev4)",
+          "lineage_or_engineering_context": "Evolved Syn61Δ3 intermediate used as host for Fig. 4 double/triple ncAA incorporation; construction not described in main text (presumably intermediate of the three post-deletion evolution rounds; data S1)",
+          "combination_status": "not_applicable",
+          "genotype": "Syn61Δ3 + evolution-acquired mutations (subset of ev5 set; requires_supplement)",
+          "evidence": [
+            "reassigning_target_codons_for_ncaa_incorporation_p005",
+            "reassigning_target_codons_for_ncaa_incorporation_p007"
+          ],
+          "status": "inferred",
+          "confidence": 0.7,
+          "reasoning": "Name and usage reported; exact relationship to ev5 inferred from naming and Fig. 1 evolution series."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61D3(ev5)",
+          "paper_strain_normalized": "E. coli Syn61Δ3(ev5)",
+          "role": "engineered",
+          "paper_label": "Syn61D3(ev5)",
+          "lineage_or_engineering_context": "Syn61Δ3 after three further rounds of mutagenesis/selection; host for Fig. 3 and Fig. 5 experiments",
+          "combination_status": "not_applicable",
+          "genotype": "Syn61Δ3 + 482 additional mutations vs Syn61 (420 substitutions, 62 indels; 72 intergenic); 16 sense codons in nonessential genes converted to target codons",
+          "evidence": [
+            "creating_syn61d3_p004",
+            "fig_3_reassigning_two_sense_codons_and_a_stop_codon_to_noncanonical_amino_acid_in_p014",
+            "reassigning_target_codons_for_ncaa_incorporation_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly described; doubling time 38.72 ± 1.02 min in LB."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61DRF1",
+          "paper_strain_normalized": "E. coli Syn61ΔRF1 (ΔprfA)",
+          "role": "control",
+          "paper_label": "Syn61DRF1",
+          "lineage_or_engineering_context": "Syn61 background with RF1 (prfA) deletion only; used to show RF1 deletion alone does not confer phage resistance",
+          "combination_status": "not_applicable",
+          "genotype": "ΔprfA in Syn61 background (data S1)",
+          "evidence": [
+            "trna_deletion_ablates_virus_production_in_syn61d3_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.85,
+          "reasoning": "Named in Results as comparison strain; details in data S1."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "user_target_system absent; per pipeline rules, stop at evidence-bound extraction without adaptation."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 4 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    }
+  }
+}

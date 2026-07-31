@@ -15,6 +15,7 @@ from harness.agent import run_agent_turn
 from harness.api import diagnosis as diagnosis_api
 from harness.api import designs as designs_api
 from harness.api import engineering_design as engineering_design_api
+from harness.api import evaluation_metrics as evaluation_metrics_api
 from harness.api import experiments as experiments_api
 from harness.api import generation as generation_api
 from harness.api import golden_set as golden_set_api
@@ -181,6 +182,7 @@ def create_app() -> FastAPI:
     app.include_router(virtual_cell_api.router)
     app.include_router(orchestrator_api.router)
     app.include_router(golden_set_api.router)
+    app.include_router(evaluation_metrics_api.router)
     app.include_router(scientific_evaluation_api.router)
     app.include_router(experiments_api.router)
 

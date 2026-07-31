@@ -1,0 +1,969 @@
+{
+  "ddr_id": "DDR-010",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Refactored genetic codes enable bidirectional genetic isolation",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Refactored genetic codes enable bidirectional genetic isolation",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": ""
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M5",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Agar plates ± spectinomycin; spotted cells; overnight incubation; medium/temperature unknown (requires_supplement)"
+      },
+      "trigger": {
+        "observation": "Prior observation (ref 18, confirmed here) that canonical-code SpecR is not read in Syn61Δ3; hypothesis that code compression provides no barrier to information escape because the compressed code is a subset of the canonical code.",
+        "reasoning": "Test whether compressed genetic codes provide a barrier to genetic-information flow (functionality of canonical vs compressed resistance genes in canonical vs compressed decoding hosts)",
+        "source_location": [
+          "Syn61 WT (canonical decoding)",
+          "Syn61Δ3"
+        ]
+      },
+      "evidence": {
+        "description": "Growth/no growth on selective plates (Fig. 1B)",
+        "source": "论文实测",
+        "source_location": "Same gene in cognate-decoder cells (positive) and non-cognate cells (negative); no-drug plates",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct functional measurement (growth on selective plates) of the constructed gene in both hosts.",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Introduction of SpecR WT or recoded recSpecR(ΔTCG,TCA) (codon-compressed spectinomycin resistance gene); analogous hygromycin constructs (fig. S1)",
+      "result": {
+        "metric": "Growth/no growth on selective plates (Fig. 1B)",
+        "before": "",
+        "after": "SpecR WT functional only in canonical cells; recSpecR functional in both — compressed codes are nonorthogonal",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "A gene recoded to use only a subset of canonical codons remains readable by canonical translation machinery; codon compression alone cannot prevent information flow to natural organisms — orthogonality requires sense-codon reassignment, not just compression."
+    },
+    {
+      "step": 2,
+      "design_action": "M5",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Conjugation assay; transconjugants counted per ~10^6 cells; details requires_supplement"
+      },
+      "trigger": {
+        "observation": "SpecR WT functional only in canonical cells; recSpecR functional in both — compressed codes are nonorthogonal",
+        "reasoning": "Test whether code compression plus cognate tRNA deletion blocks conjugative transfer of a canonical-code mobile element, and probe rare escape events",
+        "source_location": [
+          "Syn61 WT (recipient control)",
+          "Syn61Δ3",
+          "Syn61Δ2 (escape-selection recipient)"
+        ]
+      },
+      "evidence": {
+        "description": "Transconjugant colony counts; sequencing of 2 escape clones (Fig. 1E, fig. S2, data file S1)",
+        "source": "论文实测",
+        "source_location": "F(WT) transfer into Syn61 WT (positive control for conjugation efficiency)",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Conjugation of F(WT) plasmid from canonical-code donors into recipients; selection for transfer into Syn61Δ2",
+      "result": {
+        "metric": "Transconjugant colony counts; sequencing of 2 escape clones (Fig. 1E, fig. S2, data file S1)",
+        "before": "",
+        "after": "F(WT) not transferred to Syn61Δ3; rare transfer into Syn61Δ2 via acquisition of donor serT",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 3,
+      "design_action": "M5",
+      "target": {
+        "gene": "serT",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Conjugation; transconjugants per ~10^6 cells"
+      },
+      "trigger": {
+        "observation": "Sequencing of the 2 Syn61Δ2 escape clones showed they had acquired donor sequences containing serT.",
+        "reasoning": "Test sufficiency of serT carriage to restore transfer of a canonical-code mobile element into Syn61Δ3",
+        "source_location": [
+          "Syn61 WT",
+          "Syn61Δ3"
+        ]
+      },
+      "evidence": {
+        "description": "Transconjugant colony counts (Fig. 1E)",
+        "source": "论文实测",
+        "source_location": "F(WT) transfer in parallel (serT-dependence control)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct conjugation measurement with the engineered element.",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Construction of F(WT + serT): F(WT) variant carrying serT (tRNA_UGA^Ser), then conjugation",
+      "result": {
+        "metric": "Transconjugant colony counts (Fig. 1E)",
+        "before": "",
+        "after": "F(WT+serT) transferred to both Syn61 WT and Syn61Δ3; transfer dependent on serT",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "Mobile genetic elements that carry tRNAs decoding a host's deleted codons can breach isolation based on codon compression plus tRNA deletion; biocontainment by codon deletion must also account for element-borne translation factors."
+    },
+    {
+      "step": 4,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Expression in Syn61Δ3 with sfGFP (codon position 3) or ubiquitin (position 11) reporters; details requires_supplement"
+      },
+      "trigger": {
+        "observation": "Need for tRNAs that direct incorporation of distinct canonical amino acids at TCG/TCA to refactor code structure (Fig. 2A concept).",
+        "reasoning": "Reassign TCG/TCA codons to non-serine canonical amino acids via anticodon-mutated tRNAs (rational candidates)",
+        "source_location": [
+          "Syn61Δ3"
+        ]
+      },
+      "evidence": {
+        "description": "ESI-MS amino-acid identity at reassigned codon; protein yields (fig. S3); growth comparison (fig. S15)",
+        "source": "论文实测",
+        "source_location": "Mass-spectrometric comparison against expected masses; specificity checked against other TCN codons (figs. S6, S7)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Amino-acid incorporation measured directly by mass spectrometry.",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {
+          "approach": "Remaining Ala/His/Leu/Pro reassigners beyond the rational candidates were instead found through a screen (fig. S14)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Introduction of chimeric alanyl- and leucyl-tRNAs with anticodons altered to CGA or UGA (Watson-Crick complement of TCG/TCA), pairwise combinations",
+      "result": {
+        "metric": "ESI-MS amino-acid identity at reassigned codon; protein yields (fig. S3); growth comparison (fig. S15)",
+        "before": "",
+        "after": "Specific incorporation of parent-isoacceptor amino acid; tRNA_UGA^Leu lower fidelity; chimeric tRNAs decode the exact Watson-Crick complement codon",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When reassigning a codon through tRNA anticodon mutation, prefer isoacceptor tRNAs whose anticodon is not an aminoacyl-tRNA-synthetase identity element, because these are more likely to retain correct aminoacylation after anticodon swap."
+    },
+    {
+      "step": 5,
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Same sfGFP/ubiquitin ESI-MS readout system as E4a"
+      },
+      "trigger": {
+        "observation": "Ala/Leu rational candidates succeeded; equivalent reassigners for His and Pro could not be assumed a priori and had to be found empirically.",
+        "reasoning": "Identify additional reassignment tRNAs (His, Pro) to complete the 4×4 matrix of 16 genetic codes",
+        "source_location": [
+          "Syn61Δ3"
+        ]
+      },
+      "evidence": {
+        "description": "ESI-MS; 16-code matrix (Fig. 2B/C)",
+        "source": "论文实测",
+        "source_location": "Same as E4a",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Screen output verified by mass spectrometry of reporter proteins.",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Screen of anticodon-mutated tRNAs (fig. S14) to find His and Pro reassigners; pairwise introduction into Syn61Δ3",
+      "result": {
+        "metric": "ESI-MS; 16-code matrix (Fig. 2B/C)",
+        "before": "",
+        "after": "16 genetic codes with TCG/TCA independently reassigned to Ala/His/Leu/Pro; expansion of Ala/Pro codon boxes 4→6, His 2→4, Leu 6→8; UCN box split",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 6,
+      "design_action": "M5",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Spot assay ± spectinomycin, overnight"
+      },
+      "trigger": {
+        "observation": "E1 showed compressed genes are read by canonical cells (nonorthogonal); E4 showed TCG/TCA can be reassigned to other amino acids — combining both motivates a gene whose codons require reassigned decoding.",
+        "reasoning": "Create and validate a synthetic gene written in an orthogonal code that is readable only by the cognate orthogonal decoder",
+        "source_location": [
+          "Syn61 WT",
+          "Syn61Δ3(tRNA_CGA^Ala, tRNA_UGA^His)"
+        ]
+      },
+      "evidence": {
+        "description": "Growth on spectinomycin (Fig. 3B)",
+        "source": "论文实测",
+        "source_location": "SpecR WT in both hosts; O-SpecR in canonical-decoding cells (negative)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured function (resistance) in defined decoder backgrounds.",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Gene design/synthesis: O-SpecR(TCG-Ala,TCA-His) — recSpecR(ΔTCG,TCA) with all 27 GCN (Ala) codons→TCG and all 6 CAT/C (His) codons→TCA; extended to 6 other reassignment schemes and other genes (fig. S16)",
+      "result": {
+        "metric": "Growth on spectinomycin (Fig. 3B)",
+        "before": "",
+        "after": "O-SpecR functional only in cognate orthogonal cells; SpecR WT nonfunctional in orthogonal cells — functionally orthogonal code–decoder pair",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "Designing a synthetic gene to maximize the number of codons subject to reassignment maximizes its functional orthogonality to the canonical code; pairing such genes with the cognate reassigned-decoder host yields bidirectional isolation."
+    },
+    {
+      "step": 7,
+      "design_action": "M3",
+      "target": {
+        "gene": "trfA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Conjugation; transconjugants per ~10^6 donor cells"
+      },
+      "trigger": {
+        "observation": "E5 established orthogonal gene–decoder pairs; extending the principle to an entire mobile element (with an essential recoded gene) tests whether transfer itself can be confined to code-matched hosts.",
+        "reasoning": "Build orthogonal and mutually orthogonal HGT systems by recoding a conjugative mobile element",
+        "source_location": [
+          "Syn61 WT",
+          "Syn61Δ3(tRNA_CGA^Ala, tRNA_UGA^His)",
+          "other reassigned-decoder strains for the 5-system matrix"
+        ]
+      },
+      "evidence": {
+        "description": "Transconjugant colony counts; heat map of donor×recipient matrix (Fig. 4B/C; fig. S17)",
+        "source": "论文实测",
+        "source_location": "F(WT) transfer into same recipients",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct conjugation measurements across the donor×recipient matrix.",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Synthesis of O-F1(TCG-Ala,TCA-His): all annotated F-plasmid ORFs code-compressed (Syn61 scheme); essential replication gene trfA recoded (GCN→TCG, CAT/C→TCA); conjugation into matched/mismatched recipients",
+      "result": {
+        "metric": "Transconjugant colony counts; heat map of donor×recipient matrix (Fig. 4B/C; fig. S17)",
+        "before": "",
+        "after": "O-F1 transferred only to compatible orthogonal-decoder cells; five mutually orthogonal HGT systems demonstrated (scalability)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "Recoding a gene essential for a mobile element's replication into an orthogonal code confines the element's horizontal transfer to hosts carrying the cognate decoder; stacking multiple reassigned codons in essential genes strengthens isolation."
+    },
+    {
+      "step": 8,
+      "design_action": "M3",
+      "target": {
+        "gene": "serT",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Conjugation ± spectinomycin; transconjugants per ~10^6 cells"
+      },
+      "trigger": {
+        "observation": "E3 showed serT-carrying elements still transfer to Syn61Δ3; reassignment alone only obstructs (~10^4-fold) because invading tRNA_UGA^Ser competes with reassigned tRNAs — escapees remain.",
+        "reasoning": "Block invasion by mobile elements that carry their own decoding tRNAs, by locking the orthogonal code into an essential host gene",
+        "source_location": [
+          "Syn61Δ3(tRNA_CGA^Ala, tRNA_UGA^His, O-SpecR[TCG-Ala,TCA-His]) and analogous code-locked strains (other codes/essential genes, figs. S18–S19)"
+        ]
+      },
+      "evidence": {
+        "description": "Transconjugant colony counts (Fig. 5C)",
+        "source": "论文实测",
+        "source_location": "No-spectinomycin condition (unlocked baseline); F(WT+serT) into Syn61Δ3 without code locking (E3)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured transconjugant counts with and without selection; complete ablation observed under the stated condition and detection limit.",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Code locking: host carries O-SpecR; spectinomycin selection makes Ala-decoding of TCG and His-decoding of TCA essential ('locked in'); challenge with F(WT+serT) ± spectinomycin",
+      "result": {
+        "metric": "Transconjugant colony counts (Fig. 5C)",
+        "before": "",
+        "after": "Transfer obstructed ~10^4-fold without selection (competing tRNAs cause stochastic misdecoding) and completely ablated under selection; generalizes to other codes and essential genes",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "Locking reassigned codons into a conditionally essential gene converts partial obstruction into complete ablation of invading mobile elements, including elements carrying their own tRNAs; the essentiality is conditional on the selective agent, not constitutive."
+    },
+    {
+      "step": 9,
+      "design_action": "M5",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Plaque assays in presence of spectinomycin; inputs 1.1×10^10 PFU/ml (phage 12) and 7.5×10^9 PFU/ml (phage 06)"
+      },
+      "trigger": {
+        "observation": "Isolated phage 06/12 carry tRNA_UGA^Ser — the same class of element-borne decoder shown in E3 to breach compression-based isolation.",
+        "reasoning": "Test whether code-locked refactored strains resist viral invasion, using environmental phages that carry their own tRNA",
+        "source_location": [
+          "Syn61Δ3 (susceptible control)",
+          "refactored code-locked strains"
+        ]
+      },
+      "evidence": {
+        "description": "Plaque counts (Fig. 5D; figs. S20–S22); phage genome de novo assembly; data file S4",
+        "source": "论文实测",
+        "source_location": "Syn61Δ3 as susceptible host; T4 without tRNA expression as noninfectious control",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct plaque assays measuring infectivity.",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Isolation of phage pools from River Cam; isolation of T4-like phage 06 and 12 (carry identical tRNA_UGA^Ser); plaque assays; in a linked validation, expression of tRNA_UGA^Ser in Syn61Δ3 to test susceptibility to otherwise noninfectious T4 (fig. S21)",
+      "result": {
+        "metric": "Plaque counts (Fig. 5D; figs. S20–S22); phage genome de novo assembly; data file S4",
+        "before": "",
+        "after": "Phage 06/12 infect Syn61Δ3 but not code-locked strains; tRNA_UGA^Ser expression confers T4 susceptibility on Syn61Δ3",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "Viruses carrying their own translation factors can invade codon-compressed hosts; sense-codon reassignment locked into essential genes protects against such tRNA-carrying viruses."
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Refactor the structure of the genetic code in Escherichia coli by reassigning sense codons (TCG/TCA) to distinct canonical amino acids, in order to create orthogonal genetic codes that (i) restrict escape of synthetic genetic information into natural life, (ii) enable orthogonal and mutually orthogonal horizontal gene transfer systems, and (iii) when locked into essential genes, block invasion by mobile genetic elements including tRNA-carrying viruses.",
+    "problem_type": [
+      "competing pathway",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "Prior observation (ref 18, confirmed here) that canonical-code SpecR is not read in Syn61Δ3; hypothesis that code compre",
+      "SpecR WT functional only in canonical cells; recSpecR functional in both — compressed codes are nonorthogonal",
+      "Sequencing of the 2 Syn61Δ2 escape clones showed they had acquired donor sequences containing serT.",
+      "Need for tRNAs that direct incorporation of distinct canonical amino acids at TCG/TCA to refactor code structure (Fig. 2",
+      "Ala/Leu rational candidates succeeded; equivalent reassigners for His and Pro could not be assumed a priori and had to b",
+      "E1 showed compressed genes are read by canonical cells (nonorthogonal); E4 showed TCG/TCA can be reassigned to other ami",
+      "E5 established orthogonal gene–decoder pairs; extending the principle to an entire mobile element (with an essential rec",
+      "E3 showed serT-carrying elements still transfer to Syn61Δ3; reassignment alone only obstructs (~10^4-fold) because invad",
+      "Isolated phage 06/12 carry tRNA_UGA^Ser — the same class of element-borne decoder shown in E3 to breach compression-base"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "Prior observation (ref 18, confirmed here) that canonical-code SpecR is not read in Syn61Δ3; hypothesis that code compression provides no barrier to information escape because the compressed code is a subset of the canonical code.",
+      "SpecR WT functional only in canonical cells; recSpecR functional in both — compressed codes are nonorthogonal",
+      "Sequencing of the 2 Syn61Δ2 escape clones showed they had acquired donor sequences containing serT.",
+      "Need for tRNAs that direct incorporation of distinct canonical amino acids at TCG/TCA to refactor code structure (Fig. 2A concept).",
+      "Ala/Leu rational candidates succeeded; equivalent reassigners for His and Pro could not be assumed a priori and had to be found empirically.",
+      "E1 showed compressed genes are read by canonical cells (nonorthogonal); E4 showed TCG/TCA can be reassigned to other amino acids — combining both motivates a gene whose codons require reassigned decoding.",
+      "E5 established orthogonal gene–decoder pairs; extending the principle to an entire mobile element (with an essential recoded gene) tests whether transfer itself can be confined to code-matched hosts.",
+      "E3 showed serT-carrying elements still transfer to Syn61Δ3; reassignment alone only obstructs (~10^4-fold) because invading tRNA_UGA^Ser competes with reassigned tRNAs — escapees remain.",
+      "Isolated phage 06/12 carry tRNA_UGA^Ser — the same class of element-borne decoder shown in E3 to breach compression-based isolation."
+    ],
+    "bottlenecks": [
+      ": Prior observation (ref 18, confirmed here) that canonical-code SpecR is not read",
+      ": SpecR WT functional only in canonical cells; recSpecR functional in both — compr",
+      "serT: Sequencing of the 2 Syn61Δ2 escape clones showed they had acquired donor sequenc",
+      ": Need for tRNAs that direct incorporation of distinct canonical amino acids at TC",
+      ": Ala/Leu rational candidates succeeded; equivalent reassigners for His and Pro co",
+      ": E1 showed compressed genes are read by canonical cells (nonorthogonal); E4 showe",
+      "trfA: E5 established orthogonal gene–decoder pairs; extending the principle to an enti",
+      "serT: E3 showed serT-carrying elements still transfer to Syn61Δ3; reassignment alone o",
+      ": Isolated phage 06/12 carry tRNA_UGA^Ser — the same class of element-borne decode"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-07-31",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。41 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "28a152a81f334b7e8d685dbdddc7e69c",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "be83fabfd5df4b53bfd6d2014142982c_science.add8943-1",
+      "identity": {
+        "paper_id": "be83fabfd5df4b53bfd6d2014142982c_science.add8943-1",
+        "title": "Refactored genetic codes enable bidirectional genetic isolation",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": null
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "refactored_genetic_codes_enable_bidirectional_genetic_isolation_p002",
+          "refactored_genetic_codes_enable_bidirectional_genetic_isolation_p006",
+          "refactored_genetic_codes_enable_bidirectional_genetic_isolation_p007",
+          "compressed_codes_are_nonorthogonal_p002",
+          "acknowledgments_p001"
+        ],
+        "notes": "Science Research Article (DOI 10.1126/science.add8943): reports novel experiments with author-executed conjugation, mass-spectrometry and phage assays; author-contribution statement confirms original experimental work. The appended 'Changing the genetic code's structure' blurb is journal editorial content (signed —DJ), attributed to background_citation/editorial, not to the article body."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61 WT",
+          "paper_strain_normalized": "Escherichia coli Syn61 (recoded genome: TCG/TCA→AGC/AGT, TAG→TAA)",
+          "role": "parental|control",
+          "paper_label": "Syn61 WT; 'WT' here denotes canonical decoding capacity, not a natural wild-type isolate — Syn61 is a fully synthetic-recoded genome",
+          "lineage_or_engineering_context": "Constructed by prior work (Fredens et al. 2019, ref 14); serves as the canonical-code-reading reference strain in this paper",
+          "combination_status": "demonstrated",
+          "genotype": "genome-wide TCG/TCA→AGC/AGT synonymous replacement; TAG→TAA",
+          "evidence": [
+            "refactored_genetic_codes_enable_bidirectional_genetic_isolation_p006",
+            "trnas_enable_invasion_of_codon_compressed_organisms_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named in Fig. 1 caption and Results as the canonical-decoding strain."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61D3 (OCR rendering of Syn61Δ3)",
+          "paper_strain_normalized": "Escherichia coli Syn61Δ3",
+          "role": "target|host|engineered",
+          "paper_label": "Syn61Δ3",
+          "lineage_or_engineering_context": "Evolved from Syn61 and deleted for serU, serT and prfA (prior work, ref 18); the chassis into which all reassigned tRNAs and orthogonal genes are introduced in this paper",
+          "combination_status": "demonstrated",
+          "genotype": "Syn61 background; ΔserU (tRNA_CGA^Ser), ΔserT (tRNA_UGA^Ser), ΔprfA (RF-1)",
+          "evidence": [
+            "refactored_genetic_codes_enable_bidirectional_genetic_isolation_p006",
+            "compressed_codes_are_nonorthogonal_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Genotype explicitly described in Introduction; used throughout as recipient/host."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61D2 (OCR rendering of Syn61Δ2)",
+          "paper_strain_normalized": "Escherichia coli Syn61Δ2",
+          "role": "other",
+          "paper_label": "Syn61Δ2",
+          "lineage_or_engineering_context": "Syn61 deleted for serU and serT but retaining prfA; used specifically as recipient in the F(WT) escape-selection experiment because TAG-containing selection was compatible with prfA presence",
+          "combination_status": "demonstrated",
+          "genotype": "Syn61 ΔserU ΔserT prfA+",
+          "evidence": [
+            "trnas_enable_invasion_of_codon_compressed_organisms_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Defined parenthetically in the escape-selection paragraph."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Syn61D3(tRNA_CGA^Ala, tRNA_UGA^His) and 15 further tRNA-pair variants",
+          "paper_strain_normalized": "Escherichia coli Syn61Δ3 bearing anticodon-mutated isoacceptor tRNAs in pairwise combinations (Ala/His/Leu/Pro × CGA/UGA anticodons; 16 genetic codes)",
+          "role": "engineered|target",
+          "paper_label": "reassigned-code strains; code-locked strains when additionally carrying O-SpecR under spectinomycin",
+          "lineage_or_engineering_context": "Created in this paper by introducing chimeric tRNAs into Syn61Δ3; the Ala/His combination is the exemplar in Figs. 3–5",
+          "combination_status": "demonstrated (each pairwise tRNA combination directly shown in Fig. 2B; code-locked derivatives shown in Fig. 5C/D)",
+          "genotype": "Syn61Δ3 + tRNA_X^aa pairs with CGA or UGA anticodons (aa ∈ {Ala, His, Leu, Pro}); code-locked versions additionally carry O-SpecR(TCG-Ala,TCA-His) or other orthogonal essential genes",
+          "evidence": [
+            "trnas_enable_invasion_of_codon_compressed_organisms_p006",
+            "refactoring_code_structure_p001",
+            "blocking_invading_codes_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "16-code matrix stated in text and Fig. 2C; whether tRNAs are plasmid- or genome-borne requires_supplement (data file S5 lists plasmid accessions)."
+        },
+        {
+          "paper_organism": "Bacteriophage (T4-like)",
+          "paper_strain_raw": "phage 12 and phage 06",
+          "paper_strain_normalized": "T4-like bacteriophages 06 and 12 isolated from River Cam water",
+          "role": "other",
+          "paper_label": "phage 06, phage 12",
+          "lineage_or_engineering_context": "Environmental isolates selected for ability to infect Syn61Δ3; both carry an identical tRNA_UGA^Ser gene",
+          "combination_status": "not_applicable",
+          "genotype": "tRNA_UGA^Ser+",
+          "evidence": [
+            "blocking_invading_codes_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Isolation source and tRNA carriage stated in Results; genome sequences in data file S4."
+        }
+      ],
+      "target_system_adaptation": null,
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "full_text_search_no_match",
+            "notes": "No medium named anywhere in main text or figure captions. Supplementary Materials and Methods (listed but not provided) must be consulted; blocked_pending_supplement for exact reproduction.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "full_text_search_no_match",
+            "notes": "No replicate statement in main text or figure captions. The 2 escape colonies in E2 are recovered clones, not replicates, and cannot be treated as two independent escape events without further evidence. Replicate numbers/types presumably in supplementary methods/MDAR checklist; requires_supplement.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 5 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    }
+  }
+}

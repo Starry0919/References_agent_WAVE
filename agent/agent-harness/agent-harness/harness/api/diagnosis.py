@@ -18,7 +18,7 @@ from harness.diagnosis import model_service as model_svc
 from harness.diagnosis import service as diag_svc
 from harness.diagnosis.loop import DiagnosisGateRejectedError, DiagnosisLoopController, IllegalDiagnosisTransitionError
 from harness.diagnosis.model_adapters.registry import detect_all_capabilities
-from harness.diagnosis.models import DiagnosisDecision, DiagnosisTransition, EvidenceLink, HypothesisAssessment
+from harness.diagnosis.models import DiagnosisDecision, DiagnosisSession, DiagnosisTransition, EvidenceLink, HypothesisAssessment
 from harness.diagnosis.report import render_report
 from harness.learning.models import HypothesisVersion
 
@@ -52,6 +52,23 @@ def get_session(diagnosis_session_id: str, session: Session = Depends(get_db_ses
         "data_sufficiency": sess.data_sufficiency, "approval_state": sess.approval_state,
         "active_hypothesis_set_version": sess.active_hypothesis_set_version, "biological_system": sess.biological_system,
         "baseline_observation_ids": sess.baseline_observation_ids, "version": sess.version,
+    }
+
+
+@router.get("/sessions")
+def list_sessions_for_project(project_id: str, session: Session = Depends(get_db_session)) -> dict:
+    rows = session.execute(
+        select(DiagnosisSession).where(DiagnosisSession.project_id == project_id).order_by(DiagnosisSession.created_at.desc())
+    ).scalars().all()
+    return {
+        "sessions": [
+            {
+                "diagnosis_session_id": s.diagnosis_session_id, "project_id": s.project_id, "status": s.status,
+                "data_sufficiency": s.data_sufficiency, "approval_state": s.approval_state,
+                "biological_system": s.biological_system, "created_at": s.created_at, "updated_at": s.updated_at,
+            }
+            for s in rows
+        ]
     }
 
 

@@ -68,16 +68,19 @@ def _draft_to_generated_strategy(draft: dict[str, Any], *, objective: str, groun
     )
 
 
-def generate_llm_strategy_drafts(
-    session: Session, *, project_id: str, design_project_id: str, diagnosis_reference: str, objective: str,
-    supported_hypotheses: list[dict[str, Any]], primary_metrics: list[dict[str, Any]], actor_id: str,
-    client: StructuredGenerationClient | None = None,
+def draft_strategies_via_llm(
+    client: StructuredGenerationClient, *, objective: str,
+    supported_hypotheses: list[dict[str, Any]], primary_metrics: list[dict[str, Any]],
 ):
-    """Returns `(rows, fallback_used)`. On any LLM failure `rows == []` and
-    `fallback_used=True` - the caller keeps whatever the deterministic
-    `generate_and_persist_strategies` already produced; nothing here ever
-    blocks or replaces that call."""
-    client = client or StructuredGenerationClient()
+    """The LLM call + validation core, with no session/persistence/project
+    dependency - shared by `generate_llm_strategy_drafts` below (persists
+    valid drafts as real `EngineeringStrategy` rows) and
+    `harness.evaluation_metrics.consistency_sampler` (draws N independent
+    samples for the same design task without writing any of them into the
+    project's real strategy list). Returns `(generated_strategies,
+    fallback_used, attempts, health, raw_valid_drafts)` - the raw dicts are
+    only needed by callers that persist (to carry `evidence_queries` into
+    provenance); the sampler ignores them."""
     hyp_summary = "; ".join(f"{h['mechanism_class']}: {h['statement']}" for h in supported_hypotheses) or "(no supported hypotheses recorded)"
     user_prompt = (
         f"Objective: {objective}\nPrimary metrics: {primary_metrics}\nSupported diagnosis hypotheses: {hyp_summary}\n"
@@ -97,6 +100,28 @@ def generate_llm_strategy_drafts(
             if valid_drafts:
                 fallback_used = False
 
+    if fallback_used:
+        return [], True, attempts, health, []
+
+    grounding_ids = [h["hypothesis_version_id"] for h in supported_hypotheses]
+    generated = [_draft_to_generated_strategy(d, objective=objective, grounding_hypothesis_ids=grounding_ids) for d in valid_drafts]
+    return generated, False, attempts, health, valid_drafts
+
+
+def generate_llm_strategy_drafts(
+    session: Session, *, project_id: str, design_project_id: str, diagnosis_reference: str, objective: str,
+    supported_hypotheses: list[dict[str, Any]], primary_metrics: list[dict[str, Any]], actor_id: str,
+    client: StructuredGenerationClient | None = None,
+):
+    """Returns `(rows, fallback_used)`. On any LLM failure `rows == []` and
+    `fallback_used=True` - the caller keeps whatever the deterministic
+    `generate_and_persist_strategies` already produced; nothing here ever
+    blocks or replaces that call."""
+    client = client or StructuredGenerationClient()
+    generated, fallback_used, attempts, health, valid_drafts = draft_strategies_via_llm(
+        client, objective=objective, supported_hypotheses=supported_hypotheses, primary_metrics=primary_metrics,
+    )
+
     record = record_generation(
         session, project_id=project_id, task_type="strategy", health=health, attempts=attempts,
         prompt_template_id=PROMPT_TEMPLATE_ID, prompt_template_version=PROMPT_TEMPLATE_VERSION,
@@ -107,8 +132,6 @@ def generate_llm_strategy_drafts(
     if fallback_used:
         return [], True, record
 
-    grounding_ids = [h["hypothesis_version_id"] for h in supported_hypotheses]
-    generated = [_draft_to_generated_strategy(d, objective=objective, grounding_hypothesis_ids=grounding_ids) for d in valid_drafts]
     rows = _persist_strategies(
         session, project_id=project_id, design_project_id=design_project_id, diagnosis_reference=diagnosis_reference,
         strategies=generated, excluded_payload=[], provenance_method="llm_draft_v1", actor_id=actor_id,

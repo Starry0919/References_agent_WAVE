@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
-import { FlaskConical, GitCompare, Plus, Search, ShieldCheck, XCircle } from "lucide-react";
+import { EyeOff, FlaskConical, GitCompare, Plus, Search, ShieldCheck, XCircle } from "lucide-react";
 import { useProjectContext } from "@/state/useProjectContext";
 import {
   APPLICABILITY_SCOPE_KEYS,
@@ -88,6 +88,7 @@ export function KnowledgeClaimsTab() {
   const [params, setParams] = useSearchParams();
   const [statusFilter, setStatusFilter] = useState<(typeof STATUS_FILTERS)[number]["id"]>("all");
   const [filterText, setFilterText] = useState("");
+  const [hideUnbacked, setHideUnbacked] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [evidence, setEvidence] = useState<{ items: EvidenceSummary[]; subject?: string }>({ items: [] });
   const [showSubmitForm, setShowSubmitForm] = useState(false);
@@ -144,12 +145,22 @@ export function KnowledgeClaimsTab() {
 
   const words = useMemo(() => filterText.trim().toLowerCase().split(/\s+/).filter(Boolean), [filterText]);
   const filteredClaims = useMemo(() => {
-    if (words.length === 0) return statusFiltered;
-    return statusFiltered.filter((c) => {
-      const blob = `${c.statement} ${c.claimId} ${Object.values(c.scope).join(" ")}`.toLowerCase();
-      return words.every((w) => blob.includes(w));
-    });
-  }, [statusFiltered, words]);
+    let result = statusFiltered;
+    if (words.length > 0) {
+      result = result.filter((c) => {
+        const blob = `${c.statement} ${c.claimId} ${Object.values(c.scope).join(" ")}`.toLowerCase();
+        return words.every((w) => blob.includes(w));
+      });
+    }
+    // Zero supporting experiments is a stronger claim than "insufficient" (below
+    // the promotion threshold but still has some independent groups) - a
+    // dedicated toggle so a user auditing the list can hide fully-unbacked
+    // entries without also losing ones that just haven't hit the threshold yet.
+    if (hideUnbacked) {
+      result = result.filter((c) => countIndependentGroups(c.independenceGroups) > 0);
+    }
+    return result;
+  }, [statusFiltered, words, hideUnbacked]);
 
   const selectedClaim = claims.find((c) => c.claimId === selectedClaimId) ?? null;
 
@@ -206,6 +217,17 @@ export function KnowledgeClaimsTab() {
                   {t(f.labelKey)} <span className="text-ink-faint">({counts[f.id] ?? 0})</span>
                 </button>
               ))}
+              <button
+                type="button"
+                onClick={() => setHideUnbacked((v) => !v)}
+                aria-pressed={hideUnbacked}
+                className={`ml-1.5 flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-[11px] font-medium transition ${
+                  hideUnbacked ? "border-red-300 bg-red-50 text-state-risk" : "border-border bg-surface text-ink-muted hover:bg-surface-sunken"
+                }`}
+              >
+                <EyeOff size={12} aria-hidden />
+                {t("page3.hideUnbackedEntries")}
+              </button>
             </div>
             <button
               onClick={() => setShowSubmitForm((v) => !v)}
@@ -262,12 +284,17 @@ export function KnowledgeClaimsTab() {
               {filteredClaims.map((claim) => {
                 const indepCount = countIndependentGroups(claim.independenceGroups);
                 const insufficient = indepCount < MIN_INDEPENDENT_GROUPS_FOR_PROMOTION;
+                const unbacked = indepCount === 0;
                 const relevant = claimRelevance(claim, project?.hostDefinition.species, project?.hostDefinition.strain);
                 return (
                   <li key={claim.claimId}>
                     <div
                       className={`flex flex-col gap-2 rounded-lg border px-3.5 py-3 text-left text-xs transition-colors ${
-                        selectedClaimId === claim.claimId ? "border-accent bg-accent-soft" : "border-border bg-surface hover:bg-surface-sunken"
+                        selectedClaimId === claim.claimId
+                          ? "border-accent bg-accent-soft"
+                          : unbacked
+                          ? "border-red-300 bg-red-50"
+                          : "border-border bg-surface hover:bg-surface-sunken"
                       }`}
                     >
                       <button onClick={() => setSelectedClaimId(claim.claimId)} aria-pressed={selectedClaimId === claim.claimId} className="flex w-full items-start justify-between gap-2 text-left">
@@ -281,7 +308,11 @@ export function KnowledgeClaimsTab() {
                         <span className="font-mono text-ink-faint">{claim.claimId}</span>
                         <span>{t("claim.evidenceGradeLabel")}: {claim.evidenceGrade}</span>
                         <span>{indepCount} {t("claim.independentGroupUnit")}</span>
-                        {insufficient && <span className="rounded border border-amber-300 bg-amber-50 px-1 py-0.5 text-state-caution">{t("claim.belowPromotionThreshold")}{MIN_INDEPENDENT_GROUPS_FOR_PROMOTION})</span>}
+                        {unbacked ? (
+                          <span className="rounded border border-red-300 bg-red-50 px-1 py-0.5 font-medium text-state-risk">{t("page3.unbackedBadge")}</span>
+                        ) : insufficient ? (
+                          <span className="rounded border border-amber-300 bg-amber-50 px-1 py-0.5 text-state-caution">{t("claim.belowPromotionThreshold")}{MIN_INDEPENDENT_GROUPS_FOR_PROMOTION})</span>
+                        ) : null}
                         <span>{claim.promotionRecord.length} {t("claim.versionUnit")}</span>
                         <button
                           type="button"

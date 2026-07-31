@@ -18,7 +18,10 @@ export interface TopLevelModule {
 export const TOP_LEVEL_MODULES: TopLevelModule[] = [
   { id: "command-center", route: "/projects/:projectId", labelKey: "nav.commandCenter", requiresProjectContext: true, navVisible: true },
   { id: "idea-workspace", route: "/projects/:projectId/ideas", labelKey: "nav.ideaWorkspace", requiresProjectContext: true, navVisible: true },
+  { id: "diagnosis", route: "/projects/:projectId/diagnosis", labelKey: "nav.diagnosis", requiresProjectContext: true, navVisible: true },
+  { id: "engineering-design", route: "/projects/:projectId/design", labelKey: "nav.engineeringDesign", requiresProjectContext: true, navVisible: true },
   { id: "knowledge", route: "/projects/:projectId/knowledge", labelKey: "nav.knowledge", requiresProjectContext: true, navVisible: true },
+  { id: "eval-metrics", route: "/projects/:projectId/metrics", labelKey: "nav.evalMetrics", requiresProjectContext: true, navVisible: true },
 ];
 
 

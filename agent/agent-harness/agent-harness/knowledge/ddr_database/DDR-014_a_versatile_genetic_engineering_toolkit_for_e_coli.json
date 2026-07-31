@@ -1,0 +1,847 @@
+{
+  "ddr_id": "DDR-014",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "A versatile genetic engineering toolkit for E. coli based on CRISPR-prime editing",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "A versatile genetic engineering toolkit for E. coli based on CRISPR-prime editing",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1038/s41467-021-25541-3"
+    },
+    "paper_type": "methods_paper"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M0",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 °C, antibiotics per plasmid, ATc induction"
+      },
+      "trigger": {
+        "observation": "CRISPR base editors in bacteria are restricted to fixed single-nucleotide substitutions within a narrow window; prime editing demonstrated in human/rice/wheat cells performs search-and-replace edits without DSBs, and single-strand nicking was hypothesized to be non-lethal in NHEJ-lacking bacteria",
+        "reasoning": "Build a DSB-free prime-editing toolkit for E. coli (Cas9n-M-MLV2 fusion + PEgRNA + GFP reporter on three compatible plasmids)",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p001",
+          "results_p005",
+          "results_p008",
+          "methods_p005",
+          "methods_p007",
+          "methods_p008",
+          "methods_p009",
+          "Fig. 1"
+        ],
+        "source": "论文实测",
+        "source_location": "No-PEgRNA control; non-induced plates",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Adopted fusion architecture (M-MLV2 mutations, H840A nickase) was previously experimentally validated in human cells (Anzalone et al. 2019); functionality re-verified here by measured editing",
+      "reason_nature": "文献类比",
+      "alternatives": [
+        {
+          "approach": "CRISPR base editors (restricted substitution types/window)",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "MAGE/pORTMAGE/retron recombineering (efficiency and host-background limitations)",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "CAST/INTEGRATE (large-fragment insertion focus)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "异源表达",
+      "implementation_detail": "Heterologous expression of ATc-inducible Cas9n(H840A)-33aa-linker-M-MLV2 fusion; constitutive PEgRNA (J23119) and GFP reporter (J23106); compatible oris p15A/ColE1/ColDF13",
+      "result": {
+        "metric": "GFP fluorescence loss; Sanger sequencing",
+        "before": "",
+        "after": "Functional system; all four edit classes achieved on plasmid",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "DSB-free nickase-reverse-transcriptase prime-editing architectures developed in eukaryotes are a rational starting point for bacterial hosts lacking NHEJ, provided codon optimization, inducible expression and compatible multi-plasmid delivery are re-engineered for the host"
+    },
+    {
+      "step": 2,
+      "design_action": "M9",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar + antibiotics, 37 °C, 24 h, foil-covered"
+      },
+      "trigger": {
+        "observation": "Fusion protein is under an ATc-inducible promoter, so induction strength was an untuned variable expected to control editing efficiency",
+        "reasoning": "Determine optimal induction condition for the ATc-driven Cas9n-M-MLV2 fusion",
+        "source_location": "E. coli DH10B (3-plasmid system)"
+      },
+      "evidence": {
+        "description": [
+          "results_p016",
+          "Fig. 3"
+        ],
+        "source": "论文实测",
+        "source_location": "0 ng/mL ATc plates",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Directly measured editing efficiencies across the titration in three biological replicates",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Fermentation/process condition change: 8 ATc concentrations 0–1000 ng/mL",
+      "result": {
+        "metric": "Non-green colony ratio per edit type",
+        "before": "",
+        "after": "Dose-dependent induction; plateau 100–500 ng/mL; max 43.7% (1-bp del) at 1000 ng/mL; 200 ng/mL adopted as standard",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 3,
+      "design_action": "M6",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "200 ng/mL ATc, LB, 37 °C, 24 h"
+      },
+      "trigger": {
+        "observation": "Initial 13+13 nt design was adopted from human-cell PE; whether these lengths are optimal in E. coli was unknown",
+        "reasoning": "Define functional PBS and RTT scaffold length windows for E. coli prime editing",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p017",
+          "Fig. 3"
+        ],
+        "source": "论文实测",
+        "source_location": "Baseline 13 nt PBS / 13 nt RTT scaffold design",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured insertion frequencies for each length variant",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "PEgRNA component engineering: PBS 5/8/13/17 nt; RTT scaffold 4/5/8/13/20 nt",
+      "result": {
+        "metric": "TAA-STOP insertion frequency (non-green ratio)",
+        "before": "",
+        "after": "PBS window 13–17 nt; RTT optimum ~13 nt; <10 or >20 nt reduces efficiency; consistent with eukaryotic reports",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 4,
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar, 37 °C, 24 h"
+      },
+      "trigger": {
+        "observation": "Practical utility for gene inactivation/promoter insertion requires knowing achievable edit sizes and their efficiency trade-off",
+        "reasoning": "Systematically test insertion (3/12/18/33 bp, incl. mini-T7 promoter) and deletion (1–97 bp) capacity",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p017",
+          "Fig. 3"
+        ],
+        "source": "论文实测",
+        "source_location": "Smallest edit (1-bp deletion / 3-bp insertion) as baseline",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured efficiencies per size in triplicate",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Varied edit cargo size at fixed optimal PBS/RTT and 200 ng/mL ATc",
+      "result": {
+        "metric": "Non-green colony ratio per size",
+        "before": "",
+        "after": "All designed events obtainable; efficiency drops sharply with size (<2% deletions ≥23 bp; <1% insertions ≥18 bp)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 5,
+      "design_action": "M4",
+      "target": {
+        "gene": "pnsgRNA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Standard induction; 400 µL electroporation culture plated"
+      },
+      "trigger": {
+        "observation": "Reports that a second nick increased PE efficiency in mammalian and plant cells (PE3 strategy)",
+        "reasoning": "Test whether a second nick in the non-edited strand (PE3-like strategy) increases editing efficiency in E. coli",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p019",
+          "methods_p010",
+          "methods_p012"
+        ],
+        "source": "论文实测",
+        "source_location": "Single-nick PE system",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Outcome measured directly (colony lethality), though the motivating premise was literature-derived",
+      "reason_nature": "文献类比",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Addition of pnsgRNA-delivered second nicking guide paired with the PEgRNA (two strategies, Supplementary Note 1)",
+      "result": {
+        "metric": "Colony formation after second-nick introduction",
+        "before": "",
+        "after": "Almost no visible colonies; second nick is lethal, not efficiency-enhancing, in NHEJ-lacking E. coli",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "PE3-style second-nick enhancement should not be transferred to bacteria lacking NHEJ without viability testing; in E. coli it causes near-complete cell death rather than efficiency gains"
+    },
+    {
+      "step": 6,
+      "design_action": "M11",
+      "target": {
+        "gene": "lacZ",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "X-gal LB plates (lacZ); M63 + 0.1% 2-DOG + 0.2% glycerol (galK); 200 ng/mL ATc"
+      },
+      "trigger": {
+        "observation": "Plasmid-target editing succeeded; chromosomal applicability in a standard K-12 strain was the outstanding question for practical strain engineering",
+        "reasoning": "Validate chromosomal editing in E. coli MG1655 using selectable/screenable metabolic markers lacZ (X-gal) and galK (2-DOG)",
+        "source_location": "E. coli MG1655"
+      },
+      "evidence": {
+        "description": [
+          "results_p020",
+          "results_p021",
+          "results_p022",
+          "discussion_p006",
+          "Fig. 4"
+        ],
+        "source": "论文实测",
+        "source_location": "Wild-type MG1655 on X-gal; parental MG1655 for WGS background",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured efficiencies, sequencing validation and WGS fidelity assessment",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "Stop-codon introduction into lacZ (TAG insertion, GC deletion, GT→TA substitution) and galK (TAA insertion) via the 3-plasmid PE system",
+      "result": {
+        "metric": "White/blue colony ratio; 2-DOG resistant colonies; Sanger sequencing",
+        "before": "",
+        "after": "lacZ efficiencies 6.8%/12.2%/26% (sub/ins/del); all sequenced clones correct; galK 4/4 correct; high on-target fidelity genome-wide",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Establish and evaluate a DSB-free CRISPR-Prime Editing genetic manipulation toolkit for E. coli capable of substitutions, deletions, insertions and combinations thereof on plasmids and the chromosome at single-nucleotide resolution, and characterize its efficiency, design parameters (ATc dose, PBS/RTT length, edit size), multiplexing ability and genome-wide fidelity.",
+    "problem_type": [
+      "enzyme activity bottleneck"
+    ],
+    "trigger_conditions": [
+      "CRISPR base editors in bacteria are restricted to fixed single-nucleotide substitutions within a narrow window; prime ed",
+      "Fusion protein is under an ATc-inducible promoter, so induction strength was an untuned variable expected to control edi",
+      "Initial 13+13 nt design was adopted from human-cell PE; whether these lengths are optimal in E. coli was unknown",
+      "Practical utility for gene inactivation/promoter insertion requires knowing achievable edit sizes and their efficiency t",
+      "Reports that a second nick increased PE efficiency in mammalian and plant cells (PE3 strategy)",
+      "Plasmid-target editing succeeded; chromosomal applicability in a standard K-12 strain was the outstanding question for p"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "CRISPR base editors in bacteria are restricted to fixed single-nucleotide substitutions within a narrow window; prime editing demonstrated in human/rice/wheat cells performs search-and-replace edits without DSBs, and single-strand nicking was hypothesized to be non-lethal in NHEJ-lacking bacteria",
+      "Fusion protein is under an ATc-inducible promoter, so induction strength was an untuned variable expected to control editing efficiency",
+      "Initial 13+13 nt design was adopted from human-cell PE; whether these lengths are optimal in E. coli was unknown",
+      "Practical utility for gene inactivation/promoter insertion requires knowing achievable edit sizes and their efficiency trade-off",
+      "Reports that a second nick increased PE efficiency in mammalian and plant cells (PE3 strategy)",
+      "Plasmid-target editing succeeded; chromosomal applicability in a standard K-12 strain was the outstanding question for practical strain engineering"
+    ],
+    "bottlenecks": [
+      ": CRISPR base editors in bacteria are restricted to fixed single-nucleotide substi",
+      ": Fusion protein is under an ATc-inducible promoter, so induction strength was an ",
+      ": Initial 13+13 nt design was adopted from human-cell PE; whether these lengths ar",
+      ": Practical utility for gene inactivation/promoter insertion requires knowing achi",
+      "pnsgRNA: Reports that a second nick increased PE efficiency in mammalian and plant cells ",
+      "lacZ: Plasmid-target editing succeeded; chromosomal applicability in a standard K-12 s"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-07-31",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。20 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "7fc3a97432d1425f9c4bf169956aa9e9",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "c9dada9ac63540e49cfd7dbf49d6e6dc_09_2021_10.1038_s41467-021-25541-3",
+      "identity": {
+        "paper_id": "c9dada9ac63540e49cfd7dbf49d6e6dc_09_2021_10.1038_s41467-021-25541-3",
+        "title": "A versatile genetic engineering toolkit for E. coli based on CRISPR-prime editing",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1038/s41467-021-25541-3"
+      },
+      "article_type": {
+        "article_type": "methods_paper",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "methods_schema",
+        "confidence": 0.9,
+        "evidence": [
+          {
+            "paragraph_id": "a_versatile_genetic_engineering_toolkit_for_e_coli_based_on_crispr_prime_editing_p002",
+            "note": "Abstract: 'we adapt a CRISPR-Prime Editing-based... toolkit for prokaryotes' — tool development framing"
+          },
+          {
+            "paragraph_id": "results_p001",
+            "note": "Original experiments: toolkit construction, plasmid/chromosome editing, characterization, WGS fidelity evaluation"
+          },
+          {
+            "paragraph_id": "methods_p001",
+            "note": "Full original Methods section present"
+          },
+          {
+            "paragraph_id": "discussion_p005",
+            "note": "Method-development claims with validation experiments; distinctions: method development (toolkit), validation experiments (GFP/lacZ/galK), application examples (multiplexing)"
+          }
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DH10B (also rendered 'DH10β' and 'DH10beta' in Methods)",
+          "paper_strain_normalized": "E. coli DH10B",
+          "role": "host",
+          "paper_label": "DH10B / DH10β",
+          "lineage_or_engineering_context": "Recipient for the 3-plasmid (and 4-plasmid multiplex) PE system; used for plasmid-target editing, electroporation, CFU and growth assays; reference genome NC_010473; parental strain sequenced for background",
+          "combination_status": "not_applicable",
+          "genotype": "Wild-type lab strain + plasmids pCDF-GFPplus / pPEgRNA / pCRISPR-PE (± pVRb_PEgRNA/pnsgRNA); edited derivatives carry designed GFP-locus edits",
+          "evidence": [
+            {
+              "paragraph_id": "results_p015"
+            },
+            {
+              "paragraph_id": "methods_p013"
+            },
+            {
+              "paragraph_id": "editing_efficiency_evaluation_using_a_fluorescence_based_colony_counting_p003"
+            },
+            {
+              "paragraph_id": "illumina_deep_sequencing_based_genome_wide_on_off_target_evaluation_and_p002"
+            }
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named explicitly in Results and Methods as transformation/editing host; full genotype listing deferred to Supplementary Table 1"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655",
+          "paper_strain_normalized": "E. coli MG1655 (K-12 lineage)",
+          "role": "target",
+          "paper_label": "MG1655 / wild type E. coli MG1655",
+          "lineage_or_engineering_context": "K-12 wild-type strain used for chromosomal editing of lacZ and galK; reference genome NC_U00096; 'wild type' label denotes the unedited parental MG1655 in Fig. 4b, not a separate natural isolate; known to lose the 776-bp insB1–insA fragment during cultivation (background variable mutation)",
+          "combination_status": "not_applicable",
+          "genotype": "Wild-type K-12 MG1655; edited derivatives: lacZ (TAG ins, GC del, GT→TA sub) and galK (TAA ins) stop-codon knockouts",
+          "evidence": [
+            {
+              "paragraph_id": "results_p020"
+            },
+            {
+              "paragraph_id": "results_p021"
+            },
+            {
+              "paragraph_id": "results_p022"
+            },
+            {
+              "paragraph_id": "discussion_p006"
+            }
+          ],
+          "status": "reported",
+          "confidence": 0.96,
+          "reasoning": "Explicitly named as chromosomal editing host in Results; K-12 lineage is standard knowledge consistent with reference genome NC_U00096 used by the authors"
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided in the extraction request; per skill rule, adaptation is not performed and K-12-specific tools are not invoked. Paper strains were identified independently from full text as required."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 5 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    }
+  }
+}

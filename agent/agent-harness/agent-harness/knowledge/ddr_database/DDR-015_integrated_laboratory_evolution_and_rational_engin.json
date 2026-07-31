@@ -1,0 +1,1088 @@
+{
+  "ddr_id": "DDR-015",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Integrated laboratory evolution and rational engineering of GalP/Glk-dependent Escherichia coli for higher yield and productivity of L-tryptophan biosynthesis",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Integrated laboratory evolution and rational engineering of GalP/Glk-dependent Escherichia coli for higher yield and productivity of L-tryptophan biosynthesis",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1016/j.mec.2021.e00167"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "design_action": "M2",
+      "target": {
+        "gene": "ptsI",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 + glucose sole carbon source, initial OD600 0.10, ~60 h"
+      },
+      "trigger": {
+        "observation": "化学计量分析：PTS每内化1 mol葡萄糖消耗1 mol PEP，PTS菌株Trp理论得率上限0.227 g/g，GalP/Glk路线可达0.454 g/g",
+        "reasoning": "Construct PTS-defective Trp producer to redirect PEP from glucose transport into Trp biosynthesis",
+        "source_location": "S028TS/pCas9 (S028 + Ptac-tnaC-eGFP biosensor)"
+      },
+      "evidence": {
+        "description": [
+          "2_results_p002",
+          "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "parental S028 (PTS-functional; comparison reference)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 基于化学计量/理论得率计算（Fig. S1），属硬证据",
+      "reason_nature": "机理推断",
+      "alternatives": [
+        {
+          "approach": "Zymomonas mobilis Glf + Glk 路线（文献提及，未采用）",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "KO",
+      "implementation_detail": "CRISPR/Cas9 knockout of ptsI → strain G028",
+      "result": {
+        "metric": "OD600 growth",
+        "before": "",
+        "after": "G028 reached OD600 0.21 +/- 0.02 after ~60 h — glucose uptake blocked, growth severely impaired (direct_observation)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "在以PEP为限速前体的芳香族产物宿主中，失活PTS并启用非PTS葡萄糖摄取（如GalP/Glk）可理论性提高产品得率，但需同时解决生长受损问题"
+    },
+    {
+      "step": 2,
+      "design_action": "M6",
+      "target": {
+        "gene": "galP",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 agar → 96-deep-well M9 screen → FM-III batch fermentation in 50 mL conical tubes, 37 C 250 rpm"
+      },
+      "trigger": {
+        "observation": "ptsI敲除导致葡萄糖摄取阻断、生长严重受损（exp1实测OD600仅0.21）",
+        "reasoning": "Restore glucose uptake/growth of PTS-defective strain by modulating galP/glk expression",
+        "source_location": "G028Cm (G028Δglk::CmR; CmR provides sgRNA target)"
+      },
+      "evidence": {
+        "description": [
+          "2_results_p003",
+          "2_results_p004",
+          "2_results_p005",
+          "2_results_p007",
+          "4_2_2_construction_ofpromoter_variant_library_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "S028 positive control (H1-H6); G028GG non-mutated synthetic promoter reference (H7-H12)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 筛选结果来自实测生长与荧光数据",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Random mutagenesis of galP/glk promoter -10/-35 elements (plasmid library pCmN20-GG^MT), CRISPR/Cas9 chromosomal integration → G028a mutants",
+      "result": {
+        "metric": "OD600 + eGFP fluorescence (MFU) heat maps",
+        "before": "",
+        "after": "12 mutants with growth >1.25 and high MFU; best 4 still below S028 — further evolution needed (direct_observation)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "PTS缺陷菌株中可通过启动子文库调节替代性葡萄糖摄取/磷酸化途径（GalP/Glk）的表达强度，在生长恢复与产物合成间取得平衡"
+    },
+    {
+      "step": 3,
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "batch ALE (details supplement-dependent); fed-batch evaluation DASGIP, initial glucose 25 g/L, OD600 0.45"
+      },
+      "trigger": {
+        "observation": "启动子工程突变体的生长和MFU仍低于阳性对照S028",
+        "reasoning": "Further improve GalP/Glk-dependent strain performance",
+        "source_location": "12 selected promoter mutants"
+      },
+      "evidence": {
+        "description": [
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p004",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p009"
+        ],
+        "source": "论文实测",
+        "source_location": "S028 reference in fed-batch",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 进化产物经实测发酵表征",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Batch-mode adaptive laboratory evolution (details in Supplementary Materials)",
+      "result": {
+        "metric": "growth, Trp, yield, qTrp, glucose uptake rate, shikimate, pyruvate",
+        "before": "",
+        "after": "K3: yield 0.137 g/g (below S028 0.150), higher glucose uptake in stationary phase (4.10 g/L/h, 40-50 h), pyruvate 2.95 g/L (~5x S028), lower shikimate; no mutations in galP/glk/galR (direct_observation); authors hypothesize evolution favored pyruvate-synthesis for growth over Trp (author_interpretation)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 4,
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "SynM + 15 ug/mL Cm + 25 ug/mL Kan, 30 C, OD600 setpoint 0.8, inlet 60-80 mL/h, constant 30 mL; phase 1: 0-380 h; phase 2: 381-550 h"
+      },
+      "trigger": {
+        "observation": "分批ALE得到的K3得率未提高，且进化方向偏向生长（丙酮酸合成）而非Trp生产；需要更高效的进化方法",
+        "reasoning": "Obtain a better GalP/Glk-dependent Trp producer with higher yield via automated continuous evolution",
+        "source_location": "G028JC (G028Cm/pJC184/pCas9MT) with integrated promoter library; phase 2 seeded with best phase-1 mutant G028c"
+      },
+      "evidence": {
+        "description": [
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p001",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p002",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p004",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p006",
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "S028, K3, G028c positive controls in 96-well characterization",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 系统输出为实时实测OD与荧光；产物经发酵实测验证",
+      "reason_nature": "筛选得来",
+      "alternatives": [
+        {
+          "approach": "分批ALE（已实施，效果不足，故开发连续系统）",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Continuous ALE in auxostat with arabinose-induced in vivo mutagenesis (pJC184 mutators), real-time OD600 feedback control of flow rates and online flow-cytometry fluorescence monitoring (auto-CGSS)",
+      "result": {
+        "metric": "real-time OD600 + MFU; offline: 10 h SynM 96-well growth/MFU, 20 h FM-III shake-flask growth/MFU",
+        "before": "",
+        "after": "Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phase-2 max ~13,541 MFU (~390-438 h) with late decline; later time-point colonies grew better but had lower MFU (6480.30 +/- 872.70 vs 10230.70 +/- 1136.60) — PTS-defective cells preferentially evolve toward growth over Trp synthesis; 10 mutants with MFU >10000 advanced; T5 selected as best (direct_observation)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 5,
+      "design_action": "M9",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "DASGIP 4x1.5 L, initial working volume 500 mL, 65 h, initial glucose 25 g/L, inoculation OD600 0.45"
+      },
+      "trigger": {
+        "observation": "Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phase-2 max ~13,541 MFU (~390-438 h) with late decline; later time-point colonies grew better but had lower MFU (6480.30 +/- 872.70 vs 10230.70 +/- 1136.60) — PTS-defective cells preferentially evolve toward growth over Trp synthesis; 10 mutants with MFU >10000 advanced; T5 selected as best (direct_observation)",
+        "reasoning": "Evaluate T5 production performance in fed-batch (phenotype validation of evolved strain)",
+        "source_location": "T5 (pJC184 cured via Cas9/sgRNA-CmR cleavage induced by IPTG)"
+      },
+      "evidence": {
+        "description": [
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p017",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p019",
+          "4_5_fermentation_conditions_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "S028 reference fermentation",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "文献类比",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "none beyond plasmid curing; fed-batch fermentation",
+      "result": {
+        "metric": "OD600, DCW, Trp, qTrp, yield, Vp, SA, DSA",
+        "before": "",
+        "after": "T5: 38.77 +/- 0.02 g/L Trp, yield 0.164 g/g, qTrp 25.28 mg/gDCW/h, DCW 22.89 +/- 0.20 g/L (32.02% below S028); yield still far below theoretical maxima; SA/DSA accumulation patterns similar to S028 indicating downstream pathway limitation (direct_observation)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 6,
+      "design_action": "M4",
+      "target": {
+        "gene": "aroG",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "fed-batch as in exp5"
+      },
+      "trigger": {
+        "observation": "T5得率仍远低于理论最大值，且SA/DSA积累提示下游通路受限；此前研究已证明两变体可显著提高Trp产量和葡萄糖转化得率",
+        "reasoning": "Further enhance Trp synthesis by integrating previously validated enzyme variants into evolved and reference backgrounds",
+        "source_location": "T5 and S028"
+      },
+      "evidence": {
+        "description": [
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p021",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p022",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p023",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016"
+        ],
+        "source": "论文实测",
+        "source_location": "internal comparison T5AA vs S028AA; contextual comparison to T5/S028",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 变体效果在此前的实测研究中已验证（Chen et al. 2018, 2019），本研究再次经发酵实测",
+      "reason_nature": "机理推断",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Chromosomal integration of aroG(D6G-D7A) (L-phenylalanine-resistant DAHP synthase) and AntrpC(R378F) (anthranilate-activated enzyme) → T5AA and S028AA (Figs. S6-S7; details in Supplementary Materials)",
+      "result": {
+        "metric": "growth, Trp, glucose, yield, qTrp, Vp",
+        "before": "",
+        "after": "T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp (+7.03% vs T5), qTrp 28.83 mg/gDCW/h, DCW 23.17 g/L (28.20% below S028AA); S028AA: 0.185 g/g, 48.27 g/L, Vp 0.77 vs 0.67 g/L/h — T5AA lower volumetric productivity due to growth defect (direct_observation); authors attribute improved yield mainly to increased PEP availability (author_interpretation)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "在芳香族氨基酸生产中，将抗反馈抑制的DAHP合酶与利用途径中间体前馈激活的下游酶变体组合，可协同提高碳流向目标产物的分配"
+    },
+    {
+      "step": 7,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "BGISEQ WGS, 8,764,210 reads"
+      },
+      "trigger": {
+        "observation": "T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp (+7.03% vs T5), qTrp 28.83 mg/gDCW/h, DCW 23.17 g/L (28.20% below S028AA); S028AA: 0.185 g/g, 48.27 g/L, Vp 0.77 vs 0.67 g/L/h — T5AA lower volumetric productivity due to growth defect (direct_observation); authors attribute improved yield mainly to increased PEP availability (author_interpretation)",
+        "reasoning": "Elucidate mutations underlying T5 behavior",
+        "source_location": "T5"
+      },
+      "evidence": {
+        "description": [
+          "2_6_genomic_analysis_of_the_strain_t5_p002",
+          "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+          "3_4_further_developments_of_the_trp_producing_strain_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "reference genome E. coli W3110; key mutations cross-checked in S028 by PCR sequencing",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "none (characterization)",
+      "result": {
+        "metric": "SNPs, InDels (15 modified + 5 deleted genes, Table 2)",
+        "before": "",
+        "after": "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null
+    },
+    {
+      "step": 8,
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Modeller v9.24 homology model on STP10 template (PDB 6H7D); AutoDock Vina docking in Chimera; PyMOL alignment"
+      },
+      "trigger": {
+        "observation": "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation",
+        "reasoning": "Explore structural effect of GalP mutations (K137T, P195A, F204L) on glucose permeation",
+        "source_location": "not_applicable (in silico)"
+      },
+      "evidence": {
+        "description": [
+          "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p001",
+          "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p002",
+          "4_7_structure_analysis_and_docking_study_p001",
+          "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p006"
+        ],
+        "source": "论文实测",
+        "source_location": "wild-type GalP model",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动启发式判定(软): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "none (computational analysis)",
+      "result": {
+        "metric": "modeled structure, H-bond distances, ICH-domain conformation",
+        "before": "",
+        "after": "Mutations hypothesized to increase ICH flexibility and glucose-binding affinity (author_interpretation; authors state confirmation by further experiments is needed)",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Develop a GalP/Glk-dependent PTS-deficient E. coli L-tryptophan producer to exploit the ~2x higher theoretical Trp yield of PTS-independent glucose uptake, by combining CRISPR/Cas9-facilitated promoter engineering of galP/glk, batch-mode ALE, and a novel continuous automatic evolution system (auto-CGSS) coupling in vivo mutagenesis with real-time growth and Trp-biosensor fluorescence monitoring; then integrate previously engineered enzyme variants AroG(D6G-D7A) and AnTrpC(R378F) to further raise yield and specific production rate.",
+    "problem_type": [
+      "enzyme activity bottleneck",
+      "feedback inhibition",
+      "precursor limitation"
+    ],
+    "trigger_conditions": [
+      "化学计量分析：PTS每内化1 mol葡萄糖消耗1 mol PEP，PTS菌株Trp理论得率上限0.227 g/g，GalP/Glk路线可达0.454 g/g",
+      "ptsI敲除导致葡萄糖摄取阻断、生长严重受损（exp1实测OD600仅0.21）",
+      "启动子工程突变体的生长和MFU仍低于阳性对照S028",
+      "分批ALE得到的K3得率未提高，且进化方向偏向生长（丙酮酸合成）而非Trp生产；需要更高效的进化方法",
+      "Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phase-2 max ~13,541 MFU (~390-438 h) with la",
+      "T5得率仍远低于理论最大值，且SA/DSA积累提示下游通路受限；此前研究已证明两变体可显著提高Trp产量和葡萄糖转化得率",
+      "T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp (+7.03% vs T5), qTrp 28.83 mg/gDCW/h, DC",
+      "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequ"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "化学计量分析：PTS每内化1 mol葡萄糖消耗1 mol PEP，PTS菌株Trp理论得率上限0.227 g/g，GalP/Glk路线可达0.454 g/g",
+      "ptsI敲除导致葡萄糖摄取阻断、生长严重受损（exp1实测OD600仅0.21）",
+      "启动子工程突变体的生长和MFU仍低于阳性对照S028",
+      "分批ALE得到的K3得率未提高，且进化方向偏向生长（丙酮酸合成）而非Trp生产；需要更高效的进化方法",
+      "Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phase-2 max ~13,541 MFU (~390-438 h) with late decline; later time-point colonies grew better but had lower MFU (6480.30 +/- 872.70 vs 10230.70 +/- 1136.60) — PTS-defective cells preferentially evolve toward growth over Trp synthesis; 10 mutants with MFU >10000 advanced; T5 selected as best (direct_observation)",
+      "T5得率仍远低于理论最大值，且SA/DSA积累提示下游通路受限；此前研究已证明两变体可显著提高Trp产量和葡萄糖转化得率",
+      "T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp (+7.03% vs T5), qTrp 28.83 mg/gDCW/h, DCW 23.17 g/L (28.20% below S028AA); S028AA: 0.185 g/g, 48.27 g/L, Vp 0.77 vs 0.67 g/L/h — T5AA lower volumetric productivity due to growth defect (direct_observation); authors attribute improved yield mainly to increased PEP availability (author_interpretation)",
+      "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation"
+    ],
+    "bottlenecks": [
+      "ptsI: 化学计量分析：PTS每内化1 mol葡萄糖消耗1 mol PEP，PTS菌株Trp理论得率上限0.227 g/g，GalP/Glk路线可达0.454 g/g",
+      "galP: ptsI敲除导致葡萄糖摄取阻断、生长严重受损（exp1实测OD600仅0.21）",
+      ": 启动子工程突变体的生长和MFU仍低于阳性对照S028",
+      ": 分批ALE得到的K3得率未提高，且进化方向偏向生长（丙酮酸合成）而非Trp生产；需要更高效的进化方法",
+      ": Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phas",
+      "aroG: T5得率仍远低于理论最大值，且SA/DSA积累提示下游通路受限；此前研究已证明两变体可显著提高Trp产量和葡萄糖转化得率",
+      ": T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp ",
+      ": mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci "
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-07-31",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。29 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "603f1b4e2d0d4439a9bc762015e336df",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "3759b85c0dee413b8816182678d1ab47_02 曾老师-色氨酸",
+      "identity": {
+        "paper_id": "3759b85c0dee413b8816182678d1ab47_02 曾老师-色氨酸",
+        "title": "Integrated laboratory evolution and rational engineering of GalP/Glk-dependent Escherichia coli for higher yield and productivity of L-tryptophan biosynthesis",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1016/j.mec.2021.e00167"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          {
+            "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+            "note": "abstract reports original strain construction, evolution and fermentation results"
+          },
+          {
+            "paragraph_id": "4_1_strains_plasmids_and_primers_p001",
+            "note": "full original Methods section present"
+          },
+          {
+            "paragraph_id": "a_r_t_i_c_l_e_i_n_f_o_p001",
+            "note": "keywords indicate original experimental work"
+          }
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "T5AA",
+          "paper_strain_normalized": "E. coli T5AA",
+          "role": "target",
+          "paper_label": "T5AA",
+          "lineage_or_engineering_context": "T5 + chromosomal aroG(D6G-D7A) + AntrpC(R378F); final highly productive strain",
+          "combination_status": "demonstrated",
+          "genotype": "T5 background + aroG(D6G-D7A) + AntrpC(R378F)",
+          "evidence": [
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+            "a_b_s_t_r_a_c_t_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicitly designated final strain with measured 0.195 g/g yield"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "T5",
+          "paper_strain_normalized": "E. coli T5",
+          "role": "engineered",
+          "paper_label": "T5",
+          "lineage_or_engineering_context": "product of two-phase continuous auto-CGSS evolution of G028JC; pJC184 cured",
+          "combination_status": "evolved_lineage",
+          "genotype": "15 modified + 5 deleted genes vs W3110 reference (Table 2), incl. Δmlc, zwf E165Stop, galP K137T/P195A/F204L",
+          "evidence": [
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p004",
+            "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "3_4_further_developments_of_the_trp_producing_strain_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Named evolved strain, fed-batch validated"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "K3",
+          "paper_strain_normalized": "E. coli K3",
+          "role": "engineered",
+          "paper_label": "K3",
+          "lineage_or_engineering_context": "batch-ALE product of 12 galP/glk promoter mutants; intermediate strain",
+          "combination_status": "evolved_lineage",
+          "genotype": "no mutations in galP/glk/galR (sequenced); full genotype not reported",
+          "evidence": [
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named strain, fed-batch compared to S028"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028",
+          "paper_strain_normalized": "E. coli G028",
+          "role": "engineered",
+          "paper_label": "G028",
+          "lineage_or_engineering_context": "PTS-defective intermediate: S028TS/pCas9 ΔptsI",
+          "combination_status": "demonstrated",
+          "genotype": "ΔptsI; chromosomal Ptac-tnaC-eGFP biosensor",
+          "evidence": [
+            "2_results_p002",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicitly constructed and named"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028Δglk::CmR (G028Cm); G028JC = G028Cm/pJC184/pCas9MT",
+          "paper_strain_normalized": "E. coli G028Cm / G028JC",
+          "role": "host",
+          "paper_label": "G028Cm, G028JC",
+          "lineage_or_engineering_context": "screening host: glk promoter 50-0 bp replaced by CmR as sgRNA target; G028JC carries mutagenesis and Cas9 plasmids for continuous evolution",
+          "combination_status": "demonstrated",
+          "genotype": "G028 Δglk::CmR (+pJC184 +pCas9MT)",
+          "evidence": [
+            "2_results_p003",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+            "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly constructed host strains"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "S028",
+          "paper_strain_normalized": "E. coli S028",
+          "role": "parental",
+          "paper_label": "S028",
+          "lineage_or_engineering_context": "rationally developed Trp producer (Chen and Zeng 2017); PTS-functional parent and positive/reference control in all comparisons",
+          "combination_status": "demonstrated",
+          "genotype": "full genotype in Chen and Zeng 2017 (external); carries rational variants aroG(S180F), trpE(S40F), serA(H344A/N364A), rpsL(K43R) per Table 2 note",
+          "evidence": [
+            "1_introduction_p001",
+            "2_results_p004",
+            "3_4_further_developments_of_the_trp_producing_strain_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named parent/control; 'wild type' label never applied to it"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "S028TS/pCas9",
+          "paper_strain_normalized": "E. coli S028TS/pCas9",
+          "role": "engineered",
+          "paper_label": "S028TS/pCas9",
+          "lineage_or_engineering_context": "S028 + chromosomal Trp biosensor (Ptac-tnaC-eGFP), direct parent of G028",
+          "combination_status": "demonstrated",
+          "genotype": "S028 + Ptac-tnaC-eGFP, pCas9",
+          "evidence": [
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+            "2_results_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicit construction described"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028GG",
+          "paper_strain_normalized": "E. coli G028GG",
+          "role": "control",
+          "paper_label": "G028GG",
+          "lineage_or_engineering_context": "G028 with non-mutated synthetic promoters ptac-galP-pJ23119-glk; reference control in promoter screen",
+          "combination_status": "demonstrated",
+          "genotype": "ptac-galP-pJ23119-glk in G028 background",
+          "evidence": [
+            "2_results_p004",
+            "2_results_p007"
+          ],
+          "status": "reported",
+          "confidence": 0.93,
+          "reasoning": "Defined as reference control in Fig. 1"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028c",
+          "paper_strain_normalized": "E. coli G028c",
+          "role": "engineered",
+          "paper_label": "G028c",
+          "lineage_or_engineering_context": "best-characterized mutant of continuous-evolution phase 1; seed for phase 2; positive control in phase-2 screen",
+          "combination_status": "evolved_lineage",
+          "genotype": "not fully reported",
+          "evidence": [
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named intermediate evolved strain"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "S028AA",
+          "paper_strain_normalized": "E. coli S028AA",
+          "role": "control",
+          "paper_label": "S028AA",
+          "lineage_or_engineering_context": "S028 + aroG(D6G-D7A) + AntrpC(R378F); comparison strain isolating the effect of enzyme variants in PTS+ background",
+          "combination_status": "demonstrated",
+          "genotype": "S028 + aroG(D6G-D7A) + AntrpC(R378F)",
+          "evidence": [
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly constructed comparison strain"
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "E. coli W3110",
+          "role": "other",
+          "paper_label": "W3110",
+          "lineage_or_engineering_context": "reference genome for T5 variant calling; use as reference suggests (not proves) W3110 lineage of S028",
+          "combination_status": "not_applicable",
+          "genotype": "reference",
+          "evidence": [
+            "2_6_genomic_analysis_of_the_strain_t5_p002"
+          ],
+          "status": "inferred",
+          "confidence": 0.6,
+          "reasoning": "Only used as alignment reference; S028-W3110 lineage is an inference, marked accordingly",
+          "inference": {
+            "method": "reference_genome_usage",
+            "rationale": "Pairwise alignment against W3110 implies close ancestry, standard for K-12-derived producers"
+          }
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Top10",
+          "paper_strain_normalized": "E. coli Top10",
+          "role": "host",
+          "paper_label": "Top10",
+          "lineage_or_engineering_context": "cloning host for promoter variant plasmid library only; not a production strain",
+          "combination_status": "not_applicable",
+          "genotype": "commercial cloning strain",
+          "evidence": [
+            "4_2_2_construction_ofpromoter_variant_library_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly used for library cloning"
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "user_target_system absent; adaptation (Skill10/11) not executed. No default to E. coli K-12."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 6 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    }
+  }
+}

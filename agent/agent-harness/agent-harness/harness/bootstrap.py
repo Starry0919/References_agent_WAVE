@@ -20,6 +20,7 @@ from harness.constructs import models as _constructs_models  # noqa: F401
 from harness.designs import models as _designs_models  # noqa: F401
 from harness.diagnosis import models as _diagnosis_models  # noqa: F401
 from harness.engineering_design import models as _engineering_design_models  # noqa: F401
+from harness.evaluation_metrics import models as _evaluation_metrics_models  # noqa: F401
 from harness.evidence_retrieval import models as _evidence_retrieval_models  # noqa: F401
 from harness.experiments import models as _experiments_models  # noqa: F401
 from harness.golden_set import models as _golden_set_models  # noqa: F401
@@ -267,6 +268,21 @@ def _evidence_match_report_project_id(session: Session) -> None:
     is additive/nullable - existing rows stay valid without backfill, same
     pattern as 0002/0005/0007/0008/0010/0011."""
     _add_missing_columns(session, "evidence_match_reports", _NEW_EVIDENCE_MATCH_REPORT_COLUMNS)
+    Base.metadata.create_all(bind=session.get_bind(), checkfirst=True)
+
+
+_NEW_DESIGN_PROJECT_COLUMNS = {
+    "reference_ddr_ids": "JSON",
+}
+
+
+@migration("0014_evaluation_metrics_schema")
+def _evaluation_metrics_schema(session: Session) -> None:
+    """260718 设计文档 §7 evaluation metrics: additive `reference_ddr_ids` on
+    `design_projects` (nullable/defaulted, same pattern as 0002/0005/0007/
+    0008/0010/0011/0013) plus the brand-new `consistency_sampling_runs`
+    table (safe `create_all`, same reasoning as 0009/0013)."""
+    _add_missing_columns(session, "design_projects", _NEW_DESIGN_PROJECT_COLUMNS)
     Base.metadata.create_all(bind=session.get_bind(), checkfirst=True)
 
 

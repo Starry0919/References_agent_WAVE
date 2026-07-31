@@ -148,7 +148,7 @@ export function CommandCenterPage() {
         <MetricCard icon={Lightbulb} label={t("dashboard.totalIdeas")} value={activeIdeas.length} detail={t("dashboard.totalIdeasDetail")} tone="amber" />
         <MetricCard icon={BookOpen} label={t("dashboard.references")} value={evidenceCount} detail={t("dashboard.referencesDetail")} tone="blue" />
         <MetricCard icon={Dna} label={t("dashboard.biologicalKnowledge")} value={biologicalKnowledgeCount} detail={t("dashboard.biologicalKnowledgeDetail")} tone="emerald" />
-        <MetricCard icon={FlaskConical} label={t("dashboard.designs")} value={designCount} detail={t("dashboard.designsDetail")} tone="violet" />
+        <MetricCard icon={FlaskConical} label={t("dashboard.designs")} value={designCount} detail={t("dashboard.designsDetail")} tone="violet" to={`/projects/${projectId}/design`} />
       </section>
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,1fr)]">
@@ -247,6 +247,9 @@ export function CommandCenterPage() {
                 {status?.blockers.length ?? 0}
               </dd>
             </dl>
+            <Link to={`/projects/${projectId}/diagnosis`} className="mt-3 flex items-center gap-1 text-xs font-medium text-accent-strong">
+              {t("dashboard.openDiagnosis")} <ArrowRight size={13} />
+            </Link>
           </section>
         </div>
       </div>
@@ -463,17 +466,25 @@ const tones = {
   violet: "bg-violet-50 text-violet-700",
 };
 
-function MetricCard({ icon: Icon, label, value, detail, tone }: { icon: LucideIcon; label: string; value: number; detail: string; tone: keyof typeof tones }) {
-  return (
-    <article className="panel flex items-center gap-4 p-4">
+function MetricCard({ icon: Icon, label, value, detail, tone, to }: { icon: LucideIcon; label: string; value: number; detail: string; tone: keyof typeof tones; to?: string }) {
+  const content = (
+    <>
       <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${tones[tone]}`}><Icon size={19} /></span>
       <div>
         <p className="text-2xl font-semibold leading-none text-ink">{value}</p>
         <p className="mt-1.5 text-xs font-medium text-ink">{label}</p>
         <p className="mt-0.5 text-[11px] text-ink-faint">{detail}</p>
       </div>
-    </article>
+    </>
   );
+  if (to) {
+    return (
+      <Link to={to} className="panel flex items-center gap-4 p-4 hover:border-accent hover:bg-accent-soft/20">
+        {content}
+      </Link>
+    );
+  }
+  return <article className="panel flex items-center gap-4 p-4">{content}</article>;
 }
 
 function SourceBar({ icon: Icon, label, value, total }: { icon: LucideIcon; label: string; value: number; total: number }) {

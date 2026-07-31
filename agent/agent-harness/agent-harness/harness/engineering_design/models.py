@@ -121,6 +121,11 @@ class EngineeringDesignProject(Base):
     required_human_gates: Mapped[list] = mapped_column(JSON, default=lambda: ["build_approval"])
     status: Mapped[str] = mapped_column(String, default="diagnostic_blocked")
     revision_count: Mapped[int] = mapped_column(Integer, default=0)
+    # 260718 设计文档 §7 evaluation metrics: DDR id(s) (knowledge/ddr_database)
+    # for this project's source paper, when known - links a design project to
+    # gene-level ground truth so 合理新颖/复现率 can be computed. Empty list
+    # means "not linked yet", never a silent 0/1 - see harness/evaluation_metrics.
+    reference_ddr_ids: Mapped[list] = mapped_column(JSON, default=list)
     created_by: Mapped[str] = mapped_column(String)
     created_at: Mapped[float] = mapped_column(Float)
     updated_at: Mapped[float] = mapped_column(Float)
@@ -132,6 +137,7 @@ guard_immutable_fields(
     mutable_fields={
         "status", "revision_count", "updated_at", "version", "required_human_gates",
         "primary_metrics", "secondary_metrics", "hard_constraints", "preferences_or_weights", "available_resources",
+        "reference_ddr_ids",
     },
 )
 

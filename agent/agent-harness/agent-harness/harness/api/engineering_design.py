@@ -55,10 +55,12 @@ def _project_dict(p: EngineeringDesignProject) -> dict[str, Any]:
 
 def _handoff_dict(h: DiagnosisHandoffRecord) -> dict[str, Any]:
     return {
-        "handoff_id": h.handoff_id, "design_project_id": h.design_project_id, "handoff_kind": h.handoff_kind,
+        "handoff_id": h.handoff_id, "design_project_id": h.design_project_id,
+        "diagnosis_session_id": h.diagnosis_session_id, "diagnosis_decision_id": h.diagnosis_decision_id,
+        "diagnosis_version": h.diagnosis_version, "handoff_kind": h.handoff_kind,
         "decision_status": h.decision_status, "supported_hypotheses": h.supported_hypotheses,
         "unresolved_alternatives": h.unresolved_alternatives, "approved_for_design": h.approved_for_design,
-        "is_stale": h.is_stale, "adapter_provenance": h.adapter_provenance,
+        "is_stale": h.is_stale, "adapter_provenance": h.adapter_provenance, "created_at": h.created_at,
     }
 
 
@@ -115,6 +117,14 @@ def get_project(design_project_id: str, session: Session = Depends(get_db_sessio
     if proj is None:
         raise HTTPException(404, "design project not found")
     return _project_dict(proj)
+
+
+@router.get("/projects/{design_project_id}/handoff")
+def list_handoffs(design_project_id: str, session: Session = Depends(get_db_session)) -> dict:
+    rows = session.execute(
+        select(DiagnosisHandoffRecord).where(DiagnosisHandoffRecord.design_project_id == design_project_id).order_by(DiagnosisHandoffRecord.created_at.desc())
+    ).scalars().all()
+    return {"handoffs": [_handoff_dict(h) for h in rows]}
 
 
 class ObjectivesBody(BaseModel):
