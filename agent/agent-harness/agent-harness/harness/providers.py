@@ -1,7 +1,7 @@
 """LLM provider registry: switch vendors by editing .env, not code.
 
 Every preset speaks the OpenAI-compatible chat-completions protocol, which
-covers most vendors (DeepSeek, Moonshot/Kimi, Qwen, Zhipu, OpenAI, ...).
+covers most vendors (DeepSeek, Moonshot, Qwen, Zhipu, OpenAI, Poe, ...).
 
 Switching vendors in .env:
     LLM_PROVIDER=moonshot        # pick a preset from PROVIDERS below
@@ -48,9 +48,14 @@ PROVIDERS: dict[str, Provider] = {
         "qwen", "https://dashscope.aliyuncs.com/compatible-mode/v1", "DASHSCOPE_API_KEY"
     ),
     "zhipu": Provider("zhipu", "https://open.bigmodel.cn/api/paas/v4", "ZHIPU_API_KEY"),
-    "kimi": Provider(
-        "kimi", "https://api.kimi.com/coding/v1", "KIMI_API_KEY", "kimi-for-coding-highspeed"
-    ),
+    # Poe's OpenAI-compatible gateway (https://creator.poe.com/docs) hosts
+    # many vendors' models (Kimi K3, Claude, GPT, Grok, ...) behind one
+    # credential, selected by LLM_MODEL. Defaults to "kimi-k3" - the model
+    # id Poe's own /v1/models lists for Kimi K3 (confirmed non-streaming,
+    # streaming, and tool-calling all work against this id) - since that is
+    # what every direct-Kimi-K3 credential in this repo is being replaced
+    # with; override LLM_MODEL to route elsewhere through the same key.
+    "poe": Provider("poe", "https://api.poe.com/v1", "POE_API_KEY", "kimi-k3"),
     "custom": Provider("custom", "", "LLM_API_KEY"),
 }
 

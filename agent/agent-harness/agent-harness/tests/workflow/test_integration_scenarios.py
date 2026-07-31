@@ -2,6 +2,8 @@
 `WorkflowController` (not just unit-level gate/contract checks)."""
 from __future__ import annotations
 
+import pytest
+
 from harness.workflow import gates
 from harness.workflow.contracts import (
     DecisionStatus,
@@ -14,8 +16,10 @@ from harness.workflow.contracts import (
 from harness.workflow.controller import StageOutcome, WorkflowController
 from harness.workflow.definitions import Stage
 from harness.workflow.state import RunStatus
+from harness.tools.executor import ToolOutOfDomainError
 from harness.workflow.synbio_stages import (
     STAGE_IMPLS,
+    _fba_flux_analysis,
     _near_tie_conflict_note,
     build_controller,
     build_tool_executor,
@@ -61,22 +65,47 @@ def test_scenario_2_missing_target_blocks_instead_of_guessing() -> None:
     assert "product" in run.task_spec.missing_fields
 
 
-# 3. FBA tool unavailable ----------------------------------------------------
+# 3. FBA tool: real for in-domain genes, honestly out-of-domain otherwise ---
 
 
-def test_scenario_3_fba_unavailable_degrades_gracefully_not_fatally() -> None:
+def test_scenario_3_fba_grounds_the_trp_precursor_supply_check_with_real_numbers() -> None:
+    """`ptsG`/`pykF` (PEP-sparing knockouts, `knowledge/engineering_actions/
+    action_database.json`) are exactly the kind of precursor-supply
+    candidate the 260718 doc's M2 wants a real COBRApy number for, and they
+    fall inside `GENE_TO_REACTION_BOUND_HINT` - so the tryptophan request
+    now gets a real, non-fabricated FBA result instead of a permanent stub."""
     controller = build_controller()
     run = controller.create_run(TRYPTOPHAN_REQUEST)  # a metabolic-production goal -> _looks_metabolic True
     run = controller.run_to_completion_or_pause(run, max_steps=30)
 
-    assert run.status == RunStatus.completed  # unavailability never crashes the run
+    assert run.status == RunStatus.completed
     fba_calls = [t for t in run.tool_records if t.name == "fba_flux_analysis"]
     assert fba_calls, "expected the workflow to have attempted the FBA tool for a metabolic-production request"
-    assert fba_calls[0].is_error
-    assert fba_calls[0].failure_class.value == "unavailable"
-    # ModelApplicabilityGate must record this honestly, not fabricate a prediction
-    mv_record = next(r for r in run.stage_records if r.stage_id == Stage.MODEL_AND_RULE_VALIDATION.value)
-    assert any("not_applicable" in a for a in mv_record.gate_result.required_actions)
+    assert not fba_calls[0].is_error, fba_calls[0].result_summary
+    assert fba_calls[0].result_summary and "objective_value" in fba_calls[0].result_summary
+
+
+def test_scenario_3b_fba_out_of_domain_degrades_gracefully_not_fatally() -> None:
+    """A gene outside `GENE_TO_REACTION_BOUND_HINT` (this repo's curated,
+    narrow FBA domain) must never get a fabricated flux prediction - the
+    tool honestly raises `ToolOutOfDomainError`, the same non-fabrication
+    contract `harness.engineering_design.counterfactual_service` uses for
+    the identical mapping."""
+    with pytest.raises(ToolOutOfDomainError):
+        _fba_flux_analysis(host="E. coli K-12", product="L-tryptophan", gene_targets=[("trpR", "knockout")])
+
+    # And through the full stage/gate path, this degrades exactly like the
+    # old permanent stub used to: run completes, gate records not_applicable,
+    # nothing is fabricated.
+    tools = build_tool_executor()
+    result = tools.execute(
+        "fba_flux_analysis",
+        {"host": "E. coli K-12", "product": "L-tryptophan", "gene_targets": [("trpR", "knockout")]},
+        allowlist=("fba_flux_analysis",),
+        stage_id=Stage.MODEL_AND_RULE_VALIDATION.value,
+    )
+    assert result.record.is_error
+    assert result.record.failure_class.value == "out_of_domain"
 
 
 # 4. Literature vs. model/retrieval conflict --------------------------------

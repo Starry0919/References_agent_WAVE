@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,13 @@ _CLI_RESULT_BEGIN = "POE_EXTRACTION_RESULT_BEGIN"
 _CLI_RESULT_END = "POE_EXTRACTION_RESULT_END"
 _ANSI_ESCAPE = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
 _SKILL07_TIMEOUT_S = float(os.getenv("PAPER_EXTRACTION_SKILL07_TIMEOUT_S", "900"))
+# The CLI call runs over a single long-lived HTTPS connection; on unstable
+# links (e.g. a consumer VPN tunnel dropping sustained transfers) it can be
+# killed mid-flight by the network layer well before _SKILL07_TIMEOUT_S is
+# reached (undici raises "TypeError: terminated" for a closed socket, not a
+# timeout). That failure is transient, so retrying a few times is worthwhile.
+_SKILL07_MAX_ATTEMPTS = max(1, int(os.getenv("PAPER_EXTRACTION_SKILL07_MAX_ATTEMPTS", "3")))
+_SKILL07_RETRY_DELAY_S = float(os.getenv("PAPER_EXTRACTION_SKILL07_RETRY_DELAY_S", "10"))
 
 
 def _skill_bytes() -> bytes:
@@ -93,7 +101,21 @@ def _build_prompt(request: dict[str, Any]) -> dict[str, Any]:
             "and target_system_adaptation belong (per skill_instructions' own field "
             "definitions) - they are reasoning/classification metadata about the paper, not "
             "experimental-design content, so they must NOT appear inside 'fields' or at the "
-            "top level."
+            "top level.\n\n"
+            "'experimental_design_object' experiment/intervention entries that represent an "
+            "engineering decision (knockout, overexpression, point mutation, heterologous "
+            "expression, promoter/RBS engineering, fermentation-condition change, etc.) must "
+            "each carry a nested 'ddr_annotation' object exactly per skill_instructions section "
+            "'5.5 工程决策标注（DDR 标注）' above (design_action, design_action_rationale, "
+            "trigger_observation, evidence_grading, evidence_grading_rationale, reason_nature, "
+            "reason_nature_rationale, generalizable_rule, alternatives_considered). This nested "
+            "field lives inside 'experimental_design_object' - do NOT add it as a new top-level "
+            "key. reason_nature defaults to '事后合理化存疑' whenever the paper does not state "
+            "an explicit mechanistic reason - never default to '机理推断' to sound more "
+            "confident. generalizable_rule MUST be null unless reason_nature is '机理推断' or "
+            "'文献类比' - never fabricate a plausible-sounding rule for any other reason_nature, "
+            "even though it would be technically easy to do so; a fabricated rule here silently "
+            "poisons the rule library downstream, which is worse than leaving it null."
         ),
         "requirements": [
             "First classify the document with ArticleTypeGate. Never assume it is primary research.",
@@ -105,6 +127,7 @@ def _build_prompt(request: dict[str, Any]) -> dict[str, Any]:
             "Instantiate experiments before attaching host, intervention, conditions, controls, replicates, readouts and outcomes.",
             "Separate reported, inferred, unknown and not_applicable; preserve raw labels and normalized names.",
             "Record unresolved parameters, internal source inconsistencies and supplement-dependent fields.",
+            "For every engineering-decision experiment/intervention, attach the 'ddr_annotation' object described above and in skill_instructions §5.5 - reason honestly about reason_nature and evidence_grading instead of defaulting to the most confident-sounding label, and leave generalizable_rule null whenever reason_nature requires it.",
             "Return concise JSON with keys: fields, experimental_design_object, field_metadata, extensions, conflicts - see output_contract above for the exact shape.",
             "Every reported field_metadata item must include source_locations with paragraph IDs.",
         ],
@@ -220,16 +243,16 @@ def _call_poe_code_cli(
             prompt_path.write_text(prompt_text, encoding="utf-8")
             command = [
                 _poe_node_command(),
-                str((cli_dir / "launcher.mjs").relative_to(_REPO_ROOT)),
+                str(cli_dir / "launcher.mjs"),
                 "run",
                 "--model",
                 model,
                 "--mode",
                 "edit",
                 "--cwd",
-                str(workspace_dir.relative_to(_REPO_ROOT)),
+                str(workspace_dir),
                 "--prompt-file",
-                str(prompt_path.relative_to(_REPO_ROOT)),
+                str(prompt_path),
                 "--once",
                 "--timeout-ms",
                 str(int(_SKILL07_TIMEOUT_S * 1000)),
@@ -321,8 +344,15 @@ def make_executor(model: str = MODEL):
             }
 
         prompt = _build_prompt(request)
-        output, resolved_model, usage, error = _call_poe_code_cli(model, prompt)
         extractor_name = "poe_code_cli"
+        output = resolved_model = usage = error = None
+        attempts = 0
+        for attempts in range(1, _SKILL07_MAX_ATTEMPTS + 1):
+            output, resolved_model, usage, error = _call_poe_code_cli(model, prompt)
+            if error is None:
+                break
+            if attempts < _SKILL07_MAX_ATTEMPTS:
+                time.sleep(_SKILL07_RETRY_DELAY_S)
         if error is not None:
             return {
                 "status": "terminal_failure", "output": None, "artifacts": [],
@@ -330,7 +360,11 @@ def make_executor(model: str = MODEL):
                 "warnings": [],
                 "errors": [{
                     "code": "MODEL_NOT_CONFIGURED", "local_code": "EXP005",
-                    "category": "model", "message": f"experimental-design extraction failed via {resolved_model}: {error}",
+                    "category": "model",
+                    "message": (
+                        f"experimental-design extraction failed via {resolved_model} "
+                        f"after {attempts} attempt(s): {error}"
+                    ),
                     "retryable": True, "severity": "error", "context": {"model": resolved_model},
                     "suggested_action": "Run Poe-Code-CLI doctor/verify and retry.",
                 }],

@@ -51,6 +51,14 @@ DEFAULT_LITERATURE_POLICY: dict[str, Any] = {
         "genome engineering", "gene knockout", "knockout", "gene overexpression",
         "overexpression", "metabolic engineering", "synthetic regulation",
         "protein engineering", "crispr", "promoter engineering",
+        # Broadened from the original compound-phrase-only list: real
+        # Crossref titles/abstracts routinely say just "engineering"/
+        # "engineered" or use a different compound ("rational engineering",
+        # "strain engineering", "pathway design") for the same signal - the
+        # narrow list above was excluding genuinely on-topic papers.
+        "engineering", "engineered", "genetic engineering", "strain engineering",
+        "rational design", "pathway design", "laboratory evolution",
+        "directed evolution",
     ],
     "must_have_groups": [
         ["engineer", "knockout", "overexpression", "crispr", "mutation", "deletion"],
@@ -106,7 +114,7 @@ class CrossrefEvidenceAdapter:
             "query.bibliographic": focused_query,
             "rows": rows,
             "filter": ",".join(crossref_filters),
-            "select": "DOI,title,author,published-print,published-online,issued,container-title,URL,abstract,type,subtype",
+            "select": "DOI,title,author,published-print,published-online,issued,container-title,URL,abstract,type",
         }
         try:
             r = httpx.get(f"{_BASE_URL}/works", params=params, timeout=_TIMEOUT_S)

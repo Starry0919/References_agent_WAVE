@@ -20,7 +20,7 @@ def test_health_reports_real_provider_and_source_status():
         assert r.status_code == 200
         body = r.json()
         assert body["llm"]["available"] is True
-        assert body["llm"]["provider"] == "kimi"
+        assert body["llm"]["provider"] == "poe"
         assert body["crossref"]["available"] is True
         assert body["local_ddr"]["available"] is True
 

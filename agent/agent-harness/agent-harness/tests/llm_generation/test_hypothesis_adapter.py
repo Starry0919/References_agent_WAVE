@@ -83,7 +83,7 @@ def test_schema_invalid_exhausts_retries_and_falls_back():
 def test_provider_unavailable_falls_back_immediately_without_retry():
     with db.session_scope() as s:
         proj = _make_project(s)
-        fake = FakeStructuredGenerationClient(scripted_contents=[], available=False, unavailable_reason="missing API key for provider 'kimi'")
+        fake = FakeStructuredGenerationClient(scripted_contents=[], available=False, unavailable_reason="missing API key for provider 'poe'")
         candidates, fallback_used = generate_llm_hypothesis_candidates(
             s, project_id=proj.project_id, phenotype="titer plateau", product="L-tryptophan", host="E. coli K-12", context={}, actor_id="agent", client=fake,
         )

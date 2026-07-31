@@ -25,10 +25,10 @@ from sqlalchemy.orm import Session
 
 from harness.api.deps import get_db_session
 from harness.evidence_retrieval.local_ddr_adapter import LocalDDRAdapter
-from harness.evidence_retrieval.relevance import product_search_variants
+from harness.evidence_retrieval.relevance import ddr_relevance, product_search_variants
 from harness.paper_extraction import service
 from harness.paper_extraction.calibration import get_conflicts, record_extraction_attempt
-from harness.paper_extraction.ddr_converter import ensure_task_saved_as_evidence
+from harness.paper_extraction.ddr_converter import ddr_to_idea_view, ensure_task_saved_as_evidence
 from harness.paper_extraction.engineering_actions_catalog import search_engineering_actions
 from harness.paper_extraction.result_summary import build_extraction_summary
 from harness.paper_extraction.rule_distillation import (
@@ -39,6 +39,7 @@ from harness.paper_extraction.rule_distillation import (
     search_rules,
 )
 from harness.projects.models import Project
+from harness.projects.service import project_context_summary
 
 router = APIRouter(prefix="/api/paper-extraction", tags=["paper-extraction"])
 logger = logging.getLogger(__name__)
@@ -67,6 +68,29 @@ def _rule_relevance(rule: dict[str, Any], *, project_product: str | None, projec
         if ddr_product and any(pp in ddr_product or ddr_product in pp for pp in variants):
             return True
     return False
+
+
+def _action_relevance(action: dict[str, Any], *, project_product_variants: list[str] | None) -> bool:
+    """An engineering action is "relevant" to a project's target product when
+    the product name (or its zh/en translation, see `product_search_variants`)
+    appears in the action's own text fields - `applicable_conditions` first
+    (the field this catalog already uses to scope an action to a phenotype
+    class), then `biological_effect`/`mechanism`/`expected_effect` as a
+    fallback for actions whose conditions are written more generically.
+    Actions have no `source_ddrs` to check like `_rule_relevance` does - the
+    catalog is a general operations library, not a per-paper record - so
+    this matches on the action's own description instead."""
+    if not project_product_variants:
+        return False
+    haystack = " ".join([
+        *action.get("applicable_conditions", []),
+        str(action.get("biological_effect", "")),
+        str(action.get("mechanism", "")),
+        str(action.get("expected_effect", "")),
+    ]).strip().lower()
+    if not haystack:
+        return False
+    return any(pp in haystack for pp in project_product_variants)
 
 
 class RunRequestBody(BaseModel):
@@ -217,15 +241,60 @@ def list_knowledge_claims_from_rules(query: str = "", project_id: str | None = N
     return {"claims": claims, "total": len(claims)}
 
 
+@router.get("/knowledge-ideas")
+def list_knowledge_ideas_route(project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict[str, Any]:
+    """DDR-backed "ideas" for the Idea Workbench (思路工作台): every DDR
+    already sitting in the knowledge base - not just the ones produced by a
+    run submitted under this exact `project_id`, which is all the frontend's
+    live-run-derived `extractedIdeas` can see - reshaped into the same idea
+    card a live run shows (`ddr_converter.ddr_to_idea_view`). Optional
+    `project_id` tags each idea `relevant` (target-product overlap via
+    `ddr_relevance`, the same signal `/knowledge-claims` and
+    `/engineering-actions` already use) so the workbench can auto-populate
+    itself from every already-extracted idea that matches this project's
+    target product, without requiring a fresh retrieval run first."""
+    documents = LocalDDRAdapter().search("").documents
+    project_host = project_product = None
+    project_product_variants: list[str] = []
+    if project_id:
+        project = session.get(Project, project_id)
+        if project is not None:
+            ctx = project_context_summary(project)
+            project_host, project_product = ctx["host"], ctx["target_product"]
+            project_product_variants = product_search_variants(project_product)
+
+    ideas = []
+    for doc in documents:
+        idea = ddr_to_idea_view(doc.raw_metadata)
+        if project_host or project_product:
+            idea["relevant"] = ddr_relevance(
+                doc.raw_metadata, project_host=project_host, project_product=project_product,
+                project_product_variants=project_product_variants,
+            )["relevant"]
+        ideas.append(idea)
+    if project_host or project_product:
+        ideas.sort(key=lambda i: not i.get("relevant", False))
+    return {"ideas": ideas, "total": len(ideas)}
+
+
 @router.get("/engineering-actions")
-def search_engineering_actions_route(query: str = "") -> dict[str, Any]:
+def search_engineering_actions_route(query: str = "", project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict[str, Any]:
     """Keyword search over `knowledge/engineering_actions/action_database.json`
     (老师 §四.5/§5.3: 自建 DB "工程操作库") - the third knowledge-base
     category, alongside `/rules` (biological rules) and the DDR database
     (browsable today via `/api/generation/evidence/search?source=local_ddr`).
-    Empty
-    query returns every action (full browse)."""
+    Empty query returns every action (full browse). Optional `project_id`
+    tags each action `relevant` and sorts relevant-first, mirroring
+    `/knowledge-claims`'s and `/api/generation/evidence/search`'s own
+    project-relevance convention, without hiding the rest."""
     actions = search_engineering_actions(query)
+    if project_id:
+        project = session.get(Project, project_id)
+        project_product = project.target_product if project is not None else None
+        project_product_variants = product_search_variants(project_product)
+        for action in actions:
+            action["relevant"] = _action_relevance(action, project_product_variants=project_product_variants)
+        actions.sort(key=lambda a: not a.get("relevant", False))
     return {"actions": actions, "total": len(actions)}
 
 

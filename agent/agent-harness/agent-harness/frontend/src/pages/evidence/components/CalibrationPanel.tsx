@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { AlertTriangle, CheckCircle2, Plus, Trash2, UserCheck } from "lucide-react";
+import { AlertTriangle, CheckCircle2, UserCheck } from "lucide-react";
 import {
-  blankDecisionChainStep,
   getExtractionConflicts,
   submitExtractionAttempt,
   type DecisionChainStepDraft,
@@ -13,13 +12,32 @@ import { useI18n, type DictKey } from "@/lib/i18n";
 const DESIGN_ACTIONS = ["M0", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M11"];
 const EVIDENCE_GRADINGS = ["硬", "软"];
 const REASON_NATURES = ["机理推断", "文献类比", "现成可得", "筛选得来", "事后合理化存疑"];
-const IMPLEMENTATIONS = ["KO", "CRISPRi", "过表达", "点突变", "启动子工程", "异源表达", "培养基优化", "发酵调控", "RBS工程", "辅因子工程", "动态调控", "其他"];
 
 const inputCls = "w-full rounded border border-border bg-surface px-2 py-1 text-[11px] outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/10";
 const labelCls = "label-caps";
 
+/** The only 4 fields `harness/paper_extraction/calibration.py::
+ * detect_conflicts` (`_COMPARED_FIELDS`) actually compares between two
+ * annotators - every other decision_chain field (target/trigger/evidence/
+ * implementation/result/alternatives) is free-text description that
+ * naturally varies in wording without being a real disagreement, and was
+ * never part of conflict detection in the first place. The original
+ * full-form UI asked a second annotator to retype all ~17 fields per step
+ * regardless; this only asks about the 4 that can ever produce a flagged
+ * conflict, defaulting every field to "agree with the first annotator" -
+ * she only edits a field when she actively disagrees with it. */
+const COMPARED_FIELDS = ["design_action", "evidence_grading", "reason_nature", "rule"] as const;
+type ComparedField = (typeof COMPARED_FIELDS)[number];
+
+const FIELD_LABEL_KEY: Record<ComparedField, DictKey> = {
+  design_action: "paperEvidence.calibration.field.designAction",
+  evidence_grading: "paperEvidence.calibration.field.evidenceGrading",
+  reason_nature: "paperEvidence.calibration.field.reasonNature",
+  rule: "paperEvidence.calibration.field.rule",
+};
+
 function decisionChainFromRaw(raw: unknown): DecisionChainStepDraft[] {
-  if (!Array.isArray(raw) || raw.length === 0) return [blankDecisionChainStep(1)];
+  if (!Array.isArray(raw) || raw.length === 0) return [];
   return raw.map((s, i) => {
     const r = (s ?? {}) as Record<string, unknown>;
     const target = (r.target ?? {}) as Record<string, unknown>;
@@ -63,172 +81,158 @@ function decisionChainFromRaw(raw: unknown): DecisionChainStepDraft[] {
   });
 }
 
-function StepEditor({
-  step,
-  index,
+interface FieldReview {
+  disagree: boolean;
+  value: string;
+  note: string;
+}
+
+interface StepReview {
+  original: DecisionChainStepDraft;
+  fields: Record<ComparedField, FieldReview>;
+}
+
+function stepReviewFromOriginal(original: DecisionChainStepDraft): StepReview {
+  const fields = {} as Record<ComparedField, FieldReview>;
+  for (const field of COMPARED_FIELDS) {
+    fields[field] = { disagree: false, value: String(original[field]), note: "" };
+  }
+  return { original, fields };
+}
+
+function ruleAllowedFor(reasonNature: string): boolean {
+  return reasonNature === "机理推断" || reasonNature === "文献类比";
+}
+
+/** The decision_chain step this review state would submit as, applying each
+ * field's agree/disagree state - agreed fields pass the first annotator's
+ * value through verbatim, disagreed fields use the second annotator's typed
+ * value. `rule` additionally respects the same reason_nature gating the
+ * original single-annotator form did (never carries a rule value when the
+ * *effective* reason_nature - post-override - doesn't allow one). */
+function buildSubmissionStep(review: StepReview): DecisionChainStepDraft {
+  const effectiveReasonNature = review.fields.reason_nature.disagree ? review.fields.reason_nature.value : review.original.reason_nature;
+  const ruleAllowed = ruleAllowedFor(effectiveReasonNature);
+  const notes: Record<string, string> = {};
+  for (const field of COMPARED_FIELDS) {
+    const fr = review.fields[field];
+    if (fr.disagree && fr.note.trim()) notes[field] = fr.note.trim();
+  }
+  return {
+    ...review.original,
+    design_action: review.fields.design_action.disagree ? review.fields.design_action.value : review.original.design_action,
+    evidence_grading: review.fields.evidence_grading.disagree ? review.fields.evidence_grading.value : review.original.evidence_grading,
+    reason_nature: effectiveReasonNature,
+    rule: ruleAllowed ? (review.fields.rule.disagree ? review.fields.rule.value : review.original.rule) : "",
+    _disagreement_notes: Object.keys(notes).length > 0 ? notes : undefined,
+  };
+}
+
+function FieldReviewRow({
+  field,
+  review,
+  originalValue,
+  disabled,
   onChange,
-  onRemove,
-  canRemove,
 }: {
-  step: DecisionChainStepDraft;
-  index: number;
-  onChange: (next: DecisionChainStepDraft) => void;
-  onRemove: () => void;
-  canRemove: boolean;
+  field: ComparedField;
+  review: FieldReview;
+  originalValue: string;
+  disabled?: boolean;
+  onChange: (next: FieldReview) => void;
 }) {
   const { t } = useI18n();
-  const ruleAllowed = step.reason_nature === "机理推断" || step.reason_nature === "文献类比";
+  const options = field === "design_action" ? DESIGN_ACTIONS : field === "evidence_grading" ? EVIDENCE_GRADINGS : field === "reason_nature" ? REASON_NATURES : null;
+  return (
+    <div className={`flex flex-col gap-1.5 rounded border border-border p-2 ${disabled ? "opacity-50" : ""}`}>
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[11px] font-medium text-ink">{t(FIELD_LABEL_KEY[field])}</span>
+        <label className="flex items-center gap-1.5 text-[11px] text-ink-muted">
+          <input
+            type="checkbox"
+            checked={review.disagree}
+            disabled={disabled}
+            onChange={(e) => onChange({ ...review, disagree: e.target.checked, value: e.target.checked ? review.value : originalValue })}
+          />
+          {t("paperEvidence.calibration.disagreeToggle")}
+        </label>
+      </div>
+      {!review.disagree ? (
+        <p className="truncate text-[11px] text-ink-faint" title={originalValue || "—"}>
+          {originalValue || "—"}
+        </p>
+      ) : (
+        <div className="flex flex-col gap-1">
+          {options ? (
+            <select className={inputCls} value={review.value} disabled={disabled} onChange={(e) => onChange({ ...review, value: e.target.value })}>
+              {options.map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <textarea rows={2} className={inputCls} disabled={disabled} value={review.value} onChange={(e) => onChange({ ...review, value: e.target.value })} />
+          )}
+          <input
+            className={inputCls}
+            disabled={disabled}
+            value={review.note}
+            onChange={(e) => onChange({ ...review, note: e.target.value })}
+            placeholder={t("paperEvidence.calibration.notePlaceholder")}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StepReviewCard({ index, review, onChange }: { index: number; review: StepReview; onChange: (next: StepReview) => void }) {
+  const { t } = useI18n();
+  const original = review.original;
+  const effectiveReasonNature = review.fields.reason_nature.disagree ? review.fields.reason_nature.value : original.reason_nature;
+  const ruleAllowed = ruleAllowedFor(effectiveReasonNature);
+
+  function updateField(field: ComparedField, next: FieldReview) {
+    onChange({ ...review, fields: { ...review.fields, [field]: next } });
+  }
+
   return (
     <div className="flex flex-col gap-2 rounded-lg border border-border p-2.5">
-      <div className="flex items-center justify-between">
-        <span className="rounded bg-emerald-100 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-emerald-700">
-          {t("paperEvidence.design.stepLabel")} {String(index + 1).padStart(2, "0")}
-        </span>
-        {canRemove && (
-          <button type="button" onClick={onRemove} className="text-ink-faint hover:text-state-risk" aria-label={t("paperEvidence.calibration.removeStep")}>
-            <Trash2 size={13} aria-hidden />
-          </button>
-        )}
-      </div>
+      <span className="w-fit rounded bg-emerald-100 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-emerald-700">
+        {t("paperEvidence.design.stepLabel")} {String(index + 1).padStart(2, "0")}
+      </span>
 
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.designAction")}</label>
-          <select className={inputCls} value={step.design_action} onChange={(e) => onChange({ ...step, design_action: e.target.value })}>
-            {DESIGN_ACTIONS.map((a) => (
-              <option key={a} value={a}>
-                {a}
-              </option>
-            ))}
-          </select>
+      {/* Read-only context from the first annotator's draft - the second
+          annotator only needs to judge the 4 fields below against this, not
+          re-type it. */}
+      <details className="text-[11px] text-ink-muted">
+        <summary className="cursor-pointer select-none text-ink-faint">{t("paperEvidence.calibration.readOnlyDraftTitle")}</summary>
+        <div className="mt-1.5 grid grid-cols-1 gap-x-3 gap-y-1 rounded bg-surface-sunken p-2 sm:grid-cols-2">
+          <p><span className="text-ink-faint">{t("paperEvidence.calibration.field.targetGene")}: </span>{original.target.gene || "—"}</p>
+          <p><span className="text-ink-faint">{t("paperEvidence.calibration.field.targetPathway")}: </span>{original.target.pathway || "—"}</p>
+          <p className="sm:col-span-2"><span className="text-ink-faint">{t("paperEvidence.calibration.field.triggerObservation")}: </span>{original.trigger.observation || "—"}</p>
+          <p className="sm:col-span-2"><span className="text-ink-faint">{t("paperEvidence.calibration.field.triggerReasoning")}: </span>{original.trigger.reasoning || "—"}</p>
+          <p className="sm:col-span-2"><span className="text-ink-faint">{t("paperEvidence.calibration.field.evidenceDescription")}: </span>{original.evidence.description || "—"}</p>
+          <p><span className="text-ink-faint">{t("paperEvidence.calibration.field.implementation")}: </span>{original.implementation || "—"}</p>
+          <p><span className="text-ink-faint">{t("paperEvidence.calibration.field.resultMetric")}: </span>{original.result.metric || "—"}</p>
         </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.evidenceGrading")}</label>
-          <select className={inputCls} value={step.evidence_grading} onChange={(e) => onChange({ ...step, evidence_grading: e.target.value })}>
-            {EVIDENCE_GRADINGS.map((g) => (
-              <option key={g} value={g}>
-                {g}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.reasonNature")}</label>
-          <select
-            className={inputCls}
-            value={step.reason_nature}
-            onChange={(e) => {
-              const reason_nature = e.target.value;
-              const allowed = reason_nature === "机理推断" || reason_nature === "文献类比";
-              onChange({ ...step, reason_nature, rule: allowed ? step.rule : "" });
-            }}
-          >
-            {REASON_NATURES.map((r) => (
-              <option key={r} value={r}>
-                {r}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.implementation")}</label>
-          <select className={inputCls} value={step.implementation} onChange={(e) => onChange({ ...step, implementation: e.target.value })}>
-            {IMPLEMENTATIONS.map((i) => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.targetGene")}</label>
-          <input className={inputCls} value={step.target.gene} onChange={(e) => onChange({ ...step, target: { ...step.target, gene: e.target.value } })} />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.targetEnzyme")}</label>
-          <input className={inputCls} value={step.target.enzyme} onChange={(e) => onChange({ ...step, target: { ...step.target, enzyme: e.target.value } })} />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.targetPathway")}</label>
-          <input className={inputCls} value={step.target.pathway} onChange={(e) => onChange({ ...step, target: { ...step.target, pathway: e.target.value } })} />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.targetCondition")}</label>
-          <input className={inputCls} value={step.target.condition} onChange={(e) => onChange({ ...step, target: { ...step.target, condition: e.target.value } })} />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.triggerObservation")}</label>
-          <textarea
-            rows={2}
-            className={inputCls}
-            value={step.trigger.observation}
-            onChange={(e) => onChange({ ...step, trigger: { ...step.trigger, observation: e.target.value } })}
-          />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.triggerReasoning")}</label>
-          <textarea
-            rows={2}
-            className={inputCls}
-            value={step.trigger.reasoning}
-            onChange={(e) => onChange({ ...step, trigger: { ...step.trigger, reasoning: e.target.value } })}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.evidenceDescription")}</label>
-          <textarea
-            rows={2}
-            className={inputCls}
-            value={step.evidence.description}
-            onChange={(e) => onChange({ ...step, evidence: { ...step.evidence, description: e.target.value } })}
-          />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.evidenceSource")}</label>
-          <input className={inputCls} value={step.evidence.source} onChange={(e) => onChange({ ...step, evidence: { ...step.evidence, source: e.target.value } })} />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.resultMetric")}</label>
-          <input className={inputCls} value={step.result.metric} onChange={(e) => onChange({ ...step, result: { ...step.result, metric: e.target.value } })} />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.resultBefore")}</label>
-          <input className={inputCls} value={step.result.before} onChange={(e) => onChange({ ...step, result: { ...step.result, before: e.target.value } })} />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.resultAfter")}</label>
-          <input className={inputCls} value={step.result.after} onChange={(e) => onChange({ ...step, result: { ...step.result, after: e.target.value } })} />
-        </div>
-        <div>
-          <label className={labelCls}>{t("paperEvidence.calibration.field.resultFoldChange")}</label>
-          <input className={inputCls} value={step.result.fold_change} onChange={(e) => onChange({ ...step, result: { ...step.result, fold_change: e.target.value } })} />
-        </div>
-      </div>
+      </details>
 
       <div>
-        <label className={labelCls}>
-          {t("paperEvidence.calibration.field.rule")}
-          {!ruleAllowed && <span className="ml-1 font-normal normal-case text-ink-faint">({t("paperEvidence.design.ruleSuppressed")})</span>}
-        </label>
-        <textarea
-          rows={2}
-          disabled={!ruleAllowed}
-          className={`${inputCls} disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:text-ink-faint`}
-          value={step.rule}
-          onChange={(e) => onChange({ ...step, rule: e.target.value })}
-        />
+        <h4 className="label-caps mb-1">{t("paperEvidence.calibration.reviewFieldsTitle")}</h4>
+        <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+          <FieldReviewRow field="design_action" review={review.fields.design_action} originalValue={original.design_action} onChange={(next) => updateField("design_action", next)} />
+          <FieldReviewRow field="evidence_grading" review={review.fields.evidence_grading} originalValue={original.evidence_grading} onChange={(next) => updateField("evidence_grading", next)} />
+          <FieldReviewRow field="reason_nature" review={review.fields.reason_nature} originalValue={original.reason_nature} onChange={(next) => updateField("reason_nature", next)} />
+          <FieldReviewRow
+            field="rule"
+            review={review.fields.rule}
+            originalValue={ruleAllowed ? original.rule : t("paperEvidence.design.ruleSuppressed")}
+            disabled={!ruleAllowed}
+            onChange={(next) => updateField("rule", next)}
+          />
+        </div>
       </div>
     </div>
   );
@@ -254,6 +258,7 @@ function ConflictList({ conflicts }: { conflicts: ExtractionConflict[] }) {
                 <span key={annotator}>
                   <span className="text-ink-faint">{annotator}: </span>
                   {value == null || value === "" ? "—" : JSON.stringify(value)}
+                  {c.notes?.[annotator] && <span className="italic text-ink-faint"> ({c.notes[annotator]})</span>}
                 </span>
               ))}
             </div>
@@ -286,6 +291,13 @@ const STATUS_LABEL_KEYS: Record<string, DictKey> = {
  * first UI that lets a second reviewer actually submit a draft and see
  * where it disagrees with the first, closing the "backend-only" gap noted
  * in WORK_A_ALIGNMENT_REPORT.md §8.
+ *
+ * Simplified review flow (request: the original per-step form asked for
+ * all ~17 decision_chain fields, retyped from scratch, when conflict
+ * detection only ever compares 4 of them - see COMPARED_FIELDS above): the
+ * second annotator sees the first annotator's draft read-only and only
+ * agrees/flags-and-corrects the 4 fields that can actually produce a
+ * conflict, each with an optional one-line rationale for why she disagrees.
  */
 export function CalibrationPanel({
   ddrId,
@@ -306,7 +318,7 @@ export function CalibrationPanel({
   const queryClient = useQueryClient();
   const [formOpen, setFormOpen] = useState(false);
   const [annotator, setAnnotator] = useState("");
-  const [steps, setSteps] = useState<DecisionChainStepDraft[]>(() => decisionChainFromRaw(rawRecord?.decision_chain));
+  const [reviews, setReviews] = useState<StepReview[]>(() => decisionChainFromRaw(rawRecord?.decision_chain).map(stepReviewFromOriginal));
   const [lastConflicts, setLastConflicts] = useState<ExtractionConflict[] | null>(null);
 
   const conflictsQuery = useQuery({
@@ -318,7 +330,7 @@ export function CalibrationPanel({
   const displayedConflicts = lastConflicts ?? conflictsQuery.data ?? [];
 
   const submitMutation = useMutation({
-    mutationFn: () => submitExtractionAttempt(ddrId, annotator.trim(), steps),
+    mutationFn: () => submitExtractionAttempt(ddrId, annotator.trim(), reviews.map(buildSubmissionStep)),
     onSuccess: (res) => {
       setLastConflicts(res.conflicts);
       setFormOpen(false);
@@ -329,12 +341,8 @@ export function CalibrationPanel({
   });
 
   function openForm() {
-    setSteps(decisionChainFromRaw(rawRecord?.decision_chain));
+    setReviews(decisionChainFromRaw(rawRecord?.decision_chain).map(stepReviewFromOriginal));
     setFormOpen(true);
-  }
-
-  function updateStep(index: number, next: DecisionChainStepDraft) {
-    setSteps((prev) => prev.map((s, i) => (i === index ? next : s)));
   }
 
   return (
@@ -384,32 +392,17 @@ export function CalibrationPanel({
           </div>
 
           <div className="flex flex-col gap-2">
-            {steps.map((s, i) => (
-              <StepEditor
-                key={i}
-                step={s}
-                index={i}
-                canRemove={steps.length > 1}
-                onChange={(next) => updateStep(i, next)}
-                onRemove={() => setSteps((prev) => prev.filter((_, idx) => idx !== i))}
-              />
+            {reviews.map((review, i) => (
+              <StepReviewCard key={i} index={i} review={review} onChange={(next) => setReviews((prev) => prev.map((r, idx) => (idx === i ? next : r)))} />
             ))}
           </div>
-
-          <button
-            type="button"
-            onClick={() => setSteps((prev) => [...prev, blankDecisionChainStep(prev.length + 1)])}
-            className="flex w-fit items-center gap-1 rounded border border-dashed border-border px-2 py-1 text-[11px] text-ink-muted hover:bg-surface-sunken"
-          >
-            <Plus size={12} aria-hidden /> {t("paperEvidence.calibration.addStep")}
-          </button>
 
           {submitMutation.isError && <p className="text-[11px] text-state-risk">{String(submitMutation.error)}</p>}
 
           <div className="flex items-center gap-2">
             <button
               type="button"
-              disabled={annotator.trim().length === 0 || submitMutation.isPending}
+              disabled={annotator.trim().length === 0 || reviews.length === 0 || submitMutation.isPending}
               onClick={() => submitMutation.mutate()}
               className="rounded-lg bg-accent px-3 py-1.5 text-[11px] font-medium text-white shadow-sm transition hover:brightness-95 disabled:opacity-40"
             >

@@ -240,6 +240,7 @@ def build_experimental_design(raw: dict[str, Any]) -> list[dict[str, Any]]:
             "reason_nature": s.get("reason_nature"),
             "alternatives": [
                 {"approach": a.get("approach", ""), "rejected_reason": a.get("rejected_reason", "")}
+                if isinstance(a, dict) else {"approach": str(a), "rejected_reason": ""}
                 for a in (s.get("alternatives") or [])
             ],
             "rule": s.get("rule"),

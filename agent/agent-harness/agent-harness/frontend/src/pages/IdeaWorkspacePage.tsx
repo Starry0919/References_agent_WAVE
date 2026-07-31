@@ -17,7 +17,7 @@ import {
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { listIdeas, type ProjectIdea } from "@/api/ideas";
-import { getRun, listRuns, submitRun, type ExtractedIdea, type RunResult } from "@/api/paperExtraction";
+import { getRun, listKnowledgeIdeas, listRuns, submitRun, type ExtractedIdea, type RunResult } from "@/api/paperExtraction";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { skillLabel } from "@/pages/paperExtraction/PaperExtractionPage";
@@ -64,20 +64,38 @@ export function IdeaWorkspacePage() {
       refetchInterval: run.status === "completed" || run.status === "failed" ? false : 3_000,
     })),
   });
-  const extractedIdeas = useMemo(
-    () => runResults.flatMap((query) => query.data?.extractedIdeas ?? []),
-    [runResults],
+  // Every DDR already sitting in the knowledge base (from any past run, any
+  // project) that matches this project's own target product - lets the
+  // workbench populate itself immediately from ideas the agent has already
+  // extracted, instead of starting empty until a fresh retrieval run is
+  // submitted for this exact project (harness/api/paper_extraction.py's
+  // /knowledge-ideas route, harness.evidence_retrieval.relevance.ddr_relevance).
+  const knowledgeIdeasQuery = useQuery({
+    queryKey: ["paper-extraction-knowledge-ideas", projectId],
+    queryFn: () => listKnowledgeIdeas(projectId),
+    enabled: Boolean(projectId && connected),
+  });
+  const relevantKnowledgeIdeas = useMemo(
+    () => (knowledgeIdeasQuery.data ?? []).filter((idea) => idea.relevant),
+    [knowledgeIdeasQuery.data],
   );
+  const extractedIdeas = useMemo(() => {
+    const fromRuns = runResults.flatMap((query) => query.data?.extractedIdeas ?? []);
+    const seen = new Set(fromRuns.map((idea) => idea.ideaId));
+    return [...fromRuns, ...relevantKnowledgeIdeas.filter((idea) => !seen.has(idea.ideaId))];
+  }, [runResults, relevantKnowledgeIdeas]);
   // Real per-stage progress (skill_states/skill_progress, already fetched
   // above for extractedIdeas) instead of a plain "processing" spinner -
   // extraction genuinely takes minutes per paper (skill07 is one large
-  // reasoning-model call), so showing which of the 13 pipeline stages is
-  // running, and "N/M papers" when a stage fans out per-paper, gives the
-  // user something real to watch rather than an unexplained wait.
-  const activeRunProgress = useMemo(
-    () => runResults.map((query) => query.data).filter((r): r is RunResult => !!r && (r.status === "RUNNING" || r.status === "CREATED")).map(describeRunProgress).find(Boolean) ?? null,
+  // reasoning-model call), so showing which pipeline stage is running, and
+  // an actual progress bar across the whole run, gives the user something
+  // real to watch rather than an unexplained wait.
+  const activeRun = useMemo(
+    () => runResults.map((query) => query.data).find((r): r is RunResult => !!r && (r.status === "RUNNING" || r.status === "CREATED")) ?? null,
     [runResults],
   );
+  const activeRunProgress = activeRun ? describeRunProgress(activeRun) : null;
+  const activeRunPct = activeRun ? computeRunProgressPct(activeRun) : 0;
   const retrievalMutation = useMutation({
     mutationFn: () => submitRun({
       projectId,
@@ -188,6 +206,7 @@ export function IdeaWorkspacePage() {
             filterText={filterText}
             running={Boolean((runsQuery.data ?? []).some((run) => !["completed", "failed"].includes(run.status)))}
             progressDetail={activeRunProgress}
+            progressPct={activeRunPct}
           />
           {!selected && extractedIdeas.length === 0 ? (
             <EmptyState variant="first_use" title={t("ideaWorkspace.selectIdeaTitle")} detail={t("ideaWorkspace.selectIdeaDetail")} />
@@ -216,16 +235,50 @@ function describeRunProgress(run: RunResult): string | null {
   return `${skillLabel(skillId)}${fraction}`;
 }
 
+// IdeaWorkspacePage's retrievalMutation always submits sourceType:
+// "auto_search", resultLevel: "extract" - engine.py's own _plan() is
+// deterministic for that combination: SKILLS[:9] (skill01..skill09) plus
+// skill12_qc_human_review always appended, and skill10/11/13 only for
+// result_level in {"adapt","engineering_plan"} - never reached here. 10 is
+// therefore the real total stage count for this specific caller, not a
+// guess; if that call site's request shape ever changes, this constant
+// needs to move with it.
+const AUTO_SEARCH_EXTRACT_STAGE_COUNT = 10;
+const _TERMINAL_SKILL_STATUSES = new Set(["SUCCESS", "WARNING", "REVIEW_REQUIRED", "FAILED", "BLOCKED"]);
+
+/** Overall completion percentage across the whole run (not just the
+ * currently-running stage) - full credit for each finished stage, plus
+ * fractional credit for the in-flight stage's own per-item fan-out (e.g.
+ * skill07 3/6 papers counts as 0.5 of that one stage), so the bar advances
+ * continuously instead of jumping in 1/10th increments only at stage
+ * boundaries. */
+function computeRunProgressPct(run: RunResult): number {
+  let completed = 0;
+  let partial = 0;
+  for (const [skillId, status] of Object.entries(run.skillStates)) {
+    const upper = status.toUpperCase();
+    if (_TERMINAL_SKILL_STATUSES.has(upper)) {
+      completed += 1;
+    } else if (upper === "RUNNING") {
+      const progress = run.skillProgress[skillId];
+      partial = progress && progress.total > 0 ? progress.completed / progress.total : 0;
+    }
+  }
+  return Math.min(100, Math.round(((completed + partial) / AUTO_SEARCH_EXTRACT_STAGE_COUNT) * 100));
+}
+
 function RetrievedIdeas({
   ideas,
   filterText,
   running,
   progressDetail,
+  progressPct,
 }: {
   ideas: ExtractedIdea[];
   filterText: string;
   running: boolean;
   progressDetail: string | null;
+  progressPct: number;
 }) {
   const { t } = useI18n();
   const words = filterText.trim().toLowerCase().split(/\s+/).filter(Boolean);
@@ -256,6 +309,14 @@ function RetrievedIdeas({
           </span>
         )}
       </div>
+      {running && (
+        <div className="mb-4 flex items-center gap-2">
+          <div className="h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-surface-sunken" role="progressbar" aria-valuenow={progressPct} aria-valuemin={0} aria-valuemax={100}>
+            <div className="h-full rounded-full bg-accent-strong transition-all duration-500" style={{ width: `${progressPct}%` }} />
+          </div>
+          <span className="w-9 shrink-0 text-right text-[11px] font-medium tabular-nums text-ink-muted">{progressPct}%</span>
+        </div>
+      )}
       {groups.length > 1 && (
         <nav className="sticky top-0 z-10 mb-4 flex flex-wrap gap-2 rounded-lg border border-border bg-surface/95 p-2 shadow-sm backdrop-blur">
           {groups.map(([category, rows]) => (

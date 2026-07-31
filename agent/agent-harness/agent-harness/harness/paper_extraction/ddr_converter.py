@@ -11,12 +11,24 @@ r"""paper_extraction → DDR v2 转换桥接层.
 - 不覆盖需要人工判断的字段 (evidence_grading, reason_nature, rule)
 - 这些字段标记为 ``pending_human_review``,交给人工抽检环节
 - 转化后立即入库,校准状态为 ``pending``
+
+evidence_grading/reason_nature/rule 现在有两层信号,都不直接免检:
+- 模型自评 (``ddr_annotation``, 见 ``harness/paper_extraction/SKILL.md`` §5.5)——
+  Skill07 抽取时已被明确教导硬/软证据定义、五类理由性质及"仅机理推断/文献
+  类比才允许写规则"的纪律,不再默认答成"机理推断"
+- 本模块自己的关键词启发式 (``_auto_evidence_grade``/``_auto_reason_nature``)
+
+模型自评存在且合法时优先采用,否则回退到关键词启发式;两者分歧时额外记入
+``pending`` 提示人工重点复核。``rule`` 字段的"仅机理推断/文献类比可填"约束在
+Python 侧无条件重新校验一遍,不管模型自己是否已经遵守——这是防止"抽取阶段
+提示词是唯一防线、一旦提示词被忽略规则库就被污染"的第二道防线。
 """
 from __future__ import annotations
 
 import json
 import re
 import uuid
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
@@ -116,6 +128,17 @@ MECHANISTIC_KEYWORDS = (
     "represser", "repressor", "activates", "regulation", "regulon",
     "mechanism", "rate_limiting", "rate-limiting",
 )
+
+# Valid values for a model-supplied `ddr_annotation` (SKILL.md §5.5) - the
+# extraction model is now taught the same DDR discipline as this module's own
+# keyword heuristics (a second line of defense: if the Python heuristics
+# below have a bug, the model's own honest self-assessment, produced under an
+# explicit anti-fabrication instruction, is still available as a check).
+# Never trust an out-of-vocabulary value from the model - fall back to the
+# keyword heuristic instead of passing through an unvalidated string.
+_VALID_DESIGN_ACTIONS = frozenset(MODULE_TO_DESIGN_ACTION.values()) | {"M0", "M11"}
+_VALID_EVIDENCE_GRADES = frozenset({"硬", "软"})
+_VALID_REASON_NATURES = frozenset({"机理推断", "文献类比", "现成可得", "筛选得来", "事后合理化存疑"})
 
 
 # ---------------------------------------------------------------------------
@@ -393,20 +416,38 @@ def _build_single_step(
     intervention_text = str(data.get("intervention") or "")
     purpose_text = str(data.get("purpose") or "")
 
+    # The extraction model may have already self-assessed this step per
+    # SKILL.md §5.5 ("ddr_annotation"). Validate before trusting it - an
+    # out-of-vocabulary or missing value falls through to the existing
+    # keyword heuristics below exactly as if no annotation were present.
+    annotation = data.get("ddr_annotation") if isinstance(data.get("ddr_annotation"), dict) else {}
+    model_design_action = annotation.get("design_action")
+    if model_design_action not in _VALID_DESIGN_ACTIONS:
+        model_design_action = None
+    model_evidence_grade = annotation.get("evidence_grading")
+    if model_evidence_grade not in _VALID_EVIDENCE_GRADES:
+        model_evidence_grade = None
+    model_reason_nature = annotation.get("reason_nature")
+    if model_reason_nature not in _VALID_REASON_NATURES:
+        model_reason_nature = None
+
     # --- design_action ---
-    action_type = data.get("action_type") or data.get("modification_type") or data.get("intervention_type", "")
-    design_action = _map_design_action(action_type, data)
-    if design_action == "M3" and not action_type:
-        # No explicit action_type key on this candidate shape (true for all
-        # "experiments" candidates) — try inferring from the free-text
-        # intervention/purpose description before falling back to the M3
-        # default, so a knockout/competing-pathway experiment doesn't get
-        # silently mislabeled as feedback deregulation.
-        inferred = _infer_design_action_from_text(f"{intervention_text} {purpose_text}")
-        if inferred:
-            design_action = inferred
-        else:
-            pending.append(f"step_{step_num}.design_action: unable to map '{action_type or intervention_text[:60]}' confidently, defaulted to M3")
+    if model_design_action:
+        design_action = model_design_action
+    else:
+        action_type = data.get("action_type") or data.get("modification_type") or data.get("intervention_type", "")
+        design_action = _map_design_action(action_type, data)
+        if design_action == "M3" and not action_type:
+            # No explicit action_type key on this candidate shape (true for all
+            # "experiments" candidates) — try inferring from the free-text
+            # intervention/purpose description before falling back to the M3
+            # default, so a knockout/competing-pathway experiment doesn't get
+            # silently mislabeled as feedback deregulation.
+            inferred = _infer_design_action_from_text(f"{intervention_text} {purpose_text}")
+            if inferred:
+                design_action = inferred
+            else:
+                pending.append(f"step_{step_num}.design_action: unable to map '{action_type or intervention_text[:60]}' confidently, defaulted to M3")
 
     # --- target ---
     gene_match = _extract_gene_symbol(intervention_text)
@@ -426,7 +467,7 @@ def _build_single_step(
     # proxy for a sequential decision chain (falls back to "" for step 1,
     # same as before, rather than fabricating an observation).
     trigger = {
-        "observation": data.get("trigger_observation") or data.get("observation", "") or prev_outcome,
+        "observation": annotation.get("trigger_observation") or data.get("trigger_observation") or data.get("observation", "") or prev_outcome,
         "reasoning": data.get("rationale") or data.get("trigger_reasoning", "") or purpose_text,
         "source_location": data.get("source_location") or data.get("host", ""),
     }
@@ -439,23 +480,58 @@ def _build_single_step(
         "values": data.get("evidence_values") or data.get("values", {}),
     }
 
-    # --- evidence_grading: ALWAYS pending human review ---
-    evidence_grading = "软"  # default conservative
-    grading_rationale = ""
+    # --- evidence_grading: ALWAYS pending human review, regardless of source ---
+    # Two independent signals feed this, in priority order: the extraction
+    # model's own self-assessment (SKILL.md §5.5 `ddr_annotation`, produced
+    # under an explicit hard/soft definition and anti-fabrication
+    # instruction) first, then this module's own keyword heuristic as a
+    # fallback for candidates the model didn't annotate. Neither signal is
+    # ever auto-trusted into the DDR without human review - see `pending`.
     auto_grade = _auto_evidence_grade(data)
-    if auto_grade:
+    if model_evidence_grade:
+        evidence_grading = model_evidence_grade
+        grading_rationale = f"模型自评({model_evidence_grade}): 见 ddr_annotation.evidence_grading_rationale——需人工确认"
+        if annotation.get("evidence_grading_rationale"):
+            grading_rationale += f" | {annotation['evidence_grading_rationale']}"
+        if auto_grade and auto_grade != model_evidence_grade:
+            pending.append(
+                f"step_{step_num}.evidence_grading: model self-assessment ({model_evidence_grade}) "
+                f"disagrees with keyword heuristic ({auto_grade}) — flag for careful human review"
+            )
+    elif auto_grade:
         evidence_grading = auto_grade
         grading_rationale = f"自动启发式判定({auto_grade}): 基于证据关键词匹配——需人工确认"
     else:
+        evidence_grading = "软"  # default conservative
         grading_rationale = "自动判定失败——请人工判定"
-    pending.append(f"step_{step_num}.evidence_grading: auto={auto_grade or 'none'}, requires human review")
+    pending.append(
+        f"step_{step_num}.evidence_grading: model={model_evidence_grade or 'none'}, "
+        f"heuristic={auto_grade or 'none'}, requires human review"
+    )
 
-    # --- reason_nature: ALWAYS pending human review ---
-    reason_nature = _auto_reason_nature(data, fields)
-    pending.append(f"step_{step_num}.reason_nature: auto={reason_nature}, requires human review")
+    # --- reason_nature: ALWAYS pending human review, regardless of source ---
+    auto_reason_nature = _auto_reason_nature(data, fields)
+    reason_nature = model_reason_nature or auto_reason_nature
+    if model_reason_nature and model_reason_nature != auto_reason_nature:
+        pending.append(
+            f"step_{step_num}.reason_nature: model self-assessment ({model_reason_nature}) disagrees "
+            f"with keyword heuristic ({auto_reason_nature}) — flag for careful human review"
+        )
+    pending.append(
+        f"step_{step_num}.reason_nature: model={model_reason_nature or 'none'}, "
+        f"heuristic={auto_reason_nature}, requires human review"
+    )
 
     # --- alternatives ---
-    alternatives = data.get("alternatives", [])
+    # Contract is a list of {approach, rejected_reason} objects (SKILL.md
+    # §5.5), but some models (observed: kimi-k3) return a list of plain
+    # strings instead - normalize here so every consumer of decision_chain
+    # sees the contracted shape regardless of which model produced it.
+    raw_alternatives = annotation.get("alternatives_considered") or data.get("alternatives", [])
+    alternatives = [
+        a if isinstance(a, dict) else {"approach": str(a), "rejected_reason": ""}
+        for a in raw_alternatives
+    ]
 
     # --- implementation ---
     impl_raw = data.get("implementation") or data.get("modification_type") or data.get("intervention_type", "") or intervention_text
@@ -478,7 +554,15 @@ def _build_single_step(
     }
 
     # --- rule: ALWAYS pending human review ---
-    rule = data.get("generalizable_rule") or data.get("rule", None)
+    # `annotation["generalizable_rule"]` is the model's own SKILL.md §5.5
+    # output, produced under the same "null unless 机理推断/文献类比"
+    # instruction as the gate immediately below - but that instruction is a
+    # prompt, not a guarantee, so the Python gate re-checks it independently
+    # against `reason_nature` regardless of source. This is the second line
+    # of defense the model-level instruction was added for: even a model
+    # that ignores its own instructions, or a reason_nature the model
+    # disagreed with above, still can't get a fabricated rule past this line.
+    rule = annotation.get("generalizable_rule") or data.get("generalizable_rule") or data.get("rule", None)
     if reason_nature not in ("机理推断", "文献类比"):
         rule = None  # 不写出可能编造的规则
     elif rule:
@@ -501,6 +585,18 @@ def _build_single_step(
     }
 
 
+def _field_text(fields: dict[str, Any], key: str) -> str:
+    """Skill07's `fields[key]` is a {value, status, confidence, ...} object
+    per the extraction contract (see opus_extractor.py's output_contract),
+    not a plain string - unwrap `.value` here so callers that need the text
+    (not the whole field-metadata object) never propagate a dict downstream
+    into places (e.g. translation, template strings) that expect `str`."""
+    value = fields.get(key)
+    if isinstance(value, dict):
+        value = value.get("value")
+    return value if isinstance(value, str) else ""
+
+
 def _build_engineering_problem(
     fields: dict[str, Any],
     ed_obj: dict[str, Any],
@@ -509,7 +605,7 @@ def _build_engineering_problem(
     """Synthesize the engineering problem from available data."""
     ep = fields.get("engineering_problem", {})
     return {
-        "problem_statement": ep.get("problem_statement") or fields.get("objective", ""),
+        "problem_statement": ep.get("problem_statement") or _field_text(fields, "objective"),
         "problem_type": ep.get("problem_type") or _infer_problem_types(decision_chain),
         "trigger_conditions": ep.get("trigger_conditions") or _infer_trigger_conditions(decision_chain),
     }
@@ -938,3 +1034,68 @@ def ensure_task_saved_as_evidence(task_id: str) -> list[dict[str, Any]]:
         )
         results.append({"paper_index": i, "evidence_source_id": conv.ddr["ddr_id"]})
     return results
+
+
+# ---------------------------------------------------------------------------
+# Idea Workbench view (used by the paper_extraction API's /knowledge-ideas route)
+# ---------------------------------------------------------------------------
+
+# design_action module code -> ExtractedIdea category (frontend/src/api/
+# paperExtraction.ts's `ExtractedIdea["category"]`), reusing the same M1-M9
+# vocabulary MODULE_TO_DESIGN_ACTION above already maps intervention types
+# into, so this needs no separate keyword classifier of its own.
+_DESIGN_ACTION_CATEGORY: dict[str, str] = {
+    "M1": "metabolism", "M2": "metabolism", "M9": "metabolism",
+    "M3": "regulation", "M7": "regulation",
+    "M4": "protein",
+    "M5": "genome",
+    "M6": "expression",
+}
+
+
+def _category_for_decision_chain(decision_chain: list[dict[str, Any]]) -> str:
+    """Best-effort idea category for one DDR, majority-voted across its own
+    decision_chain steps' design_action codes - falls back to "other" for a
+    DDR with no decision_chain steps at all."""
+    if not decision_chain:
+        return "other"
+    votes = Counter(_DESIGN_ACTION_CATEGORY.get(step.get("design_action", ""), "other") for step in decision_chain)
+    return votes.most_common(1)[0][0]
+
+
+def ddr_to_idea_view(rec: dict[str, Any]) -> dict[str, Any]:
+    """Reshapes one DDR record already sitting in the knowledge base into the
+    same "extracted idea" card shape the Idea Workbench renders for a live
+    paper_extraction run's experimental_designs (`toExtractedIdeas` in
+    frontend/src/api/paperExtraction.ts) - so a DDR from *any* past run
+    (any project, any upload) can populate the workbench without requiring a
+    fresh retrieval run scoped to this one project. Read-only view over
+    fields the DDR already has; never fabricates a summary/title the record
+    doesn't already contain (same discipline as `rule_as_knowledge_claim_view`
+    in `rule_distillation.py`)."""
+    meta = rec.get("metadata", {})
+    ref = meta.get("reference", {})
+    problem = rec.get("engineering_problem", {})
+    diagnosis = rec.get("biological_diagnosis", {})
+    hypothesis = rec.get("engineering_hypothesis", {})
+    decision_chain = rec.get("decision_chain", [])
+    summary = (
+        hypothesis.get("hypothesis")
+        or diagnosis.get("mechanistic_explanation")
+        or next(iter(diagnosis.get("observations") or []), "")
+    )
+    ddr_id = rec.get("ddr_id", "")
+    return {
+        "idea_id": ddr_id,
+        "title": problem.get("problem_statement") or meta.get("title") or ddr_id,
+        "summary": summary,
+        "category": _category_for_decision_chain(decision_chain),
+        "source": {
+            "paper_id": ddr_id,
+            "title": ref.get("title") or meta.get("title", ""),
+            "journal": ref.get("journal", ""),
+            "year": str(ref.get("year", "")),
+            "doi": ref.get("doi", ""),
+        },
+        "evidence_ids": [f"{ddr_id}:{step.get('step')}" for step in decision_chain],
+    }

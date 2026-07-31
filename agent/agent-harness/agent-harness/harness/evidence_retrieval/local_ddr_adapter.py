@@ -131,6 +131,11 @@ class LocalDDRAdapter:
         ref = meta.get("reference", {})
         # Build a richer abstract from v2 decision_chain or v1 problem statement
         abstract = rec.get("engineering_problem", {}).get("problem_statement", "")
+        if isinstance(abstract, dict):
+            # Legacy records written before ddr_converter.py's _field_text fix
+            # carry skill07's raw {value, status, ...} field-metadata object
+            # here instead of the unwrapped string.
+            abstract = abstract.get("value") or ""
         if not abstract:
             # Synthesize from decision_chain
             steps = rec.get("decision_chain", [])

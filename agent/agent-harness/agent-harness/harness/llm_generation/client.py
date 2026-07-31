@@ -103,7 +103,7 @@ class StructuredGenerationClient:
             if temperature is not None:
                 kwargs["temperature"] = temperature
             settings = get_settings()
-            if settings.REASONING_EFFORT and provider.name == "kimi":
+            if settings.REASONING_EFFORT and provider.name == "poe":
                 kwargs["reasoning_effort"] = settings.REASONING_EFFORT
             resp = client.chat.completions.create(**kwargs)
         except Exception as exc:  # noqa: BLE001

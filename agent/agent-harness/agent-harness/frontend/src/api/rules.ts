@@ -134,6 +134,11 @@ export interface EngineeringAction {
   risk: string | null;
   applicableConditions: string[];
   evidence: string | null;
+  /** Only set when the query was scoped with `project_id` - target-product
+   * text overlap with the project's own context, same convention as
+   * `DdrKnowledgeClaim.relevant` and `EvidenceDocument.relevant`. `null` =
+   * no project context supplied. */
+  relevant: boolean | null;
 }
 
 interface RawEngineeringAction {
@@ -148,11 +153,13 @@ interface RawEngineeringAction {
   risk: string | null;
   applicable_conditions?: string[];
   evidence: string | null;
+  relevant?: boolean;
 }
 
-export async function listEngineeringActions(query = ""): Promise<EngineeringAction[]> {
+export async function listEngineeringActions(query = "", projectId?: string): Promise<EngineeringAction[]> {
   const params = new URLSearchParams();
   if (query) params.set("query", query);
+  if (projectId) params.set("project_id", projectId);
   const qs = params.toString();
   const r = await api.get<{ actions: RawEngineeringAction[]; total: number }>(`/api/paper-extraction/engineering-actions${qs ? `?${qs}` : ""}`);
   return r.actions.map((a) => ({
@@ -164,6 +171,7 @@ export async function listEngineeringActions(query = ""): Promise<EngineeringAct
     biologicalEffect: a.biological_effect,
     mechanism: a.mechanism,
     expectedEffect: a.expected_effect,
+    relevant: a.relevant ?? null,
     risk: a.risk,
     applicableConditions: a.applicable_conditions ?? [],
     evidence: a.evidence,

@@ -20,6 +20,7 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
+from harness.diagnosis.model_adapters.gem_fba import BIOMASS_OBJECTIVE_ECOLI_CORE, GENE_TO_REACTION_BOUND_HINT
 from harness.diagnosis.model_adapters.registry import get_adapter
 from harness.engineering_design.models import CandidateDesign, EngineeringDesignProject
 from harness.ids import new_id, now
@@ -32,14 +33,12 @@ RUN_SNAPSHOT_FIELDS = (
     "qualitative_expectation_text", "reproducibility_ref", "log_summary", "created_at",
 )
 
-# Curated, narrow: only genes whose knockout/overexpression is a
-# well-known bound change on cobrapy's bundled e_coli_core textbook model.
-_GENE_TO_REACTION_BOUND_HINT: dict[str, dict[str, Any]] = {
-    "pykF": {"reaction": "PYK", "knockout": {"lower": 0, "upper": 0}, "overexpression": {"lower": 0, "upper": 1000}},
-    "ptsG": {"reaction": "GLCpts", "knockout": {"lower": 0, "upper": 0}},
-    "ppc": {"reaction": "PPC", "overexpression": {"lower": 0, "upper": 1000}},
-}
-_BIOMASS_OBJECTIVE = "Biomass_Ecoli_core"  # verified against cobrapy's bundled "textbook" e_coli_core model
+# Kept as module-level aliases (not inlined at each call site below) so this
+# file's own diff stays minimal if the shared mapping ever needs a
+# service-local override; the values themselves now live in
+# `harness.diagnosis.model_adapters.gem_fba` as the single source of truth.
+_GENE_TO_REACTION_BOUND_HINT = GENE_TO_REACTION_BOUND_HINT
+_BIOMASS_OBJECTIVE = BIOMASS_OBJECTIVE_ECOLI_CORE
 
 
 def default_gem_inputs_for_candidate(candidate: CandidateDesign) -> dict[str, Any] | None:

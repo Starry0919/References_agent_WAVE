@@ -618,3 +618,51 @@ function toExtractedIdeas(raw: RawTaskResponse["result"]): ExtractedIdea[] {
     };
   });
 }
+
+/** An `ExtractedIdea` sourced from the persisted DDR knowledge base
+ * (`harness/api/paper_extraction.py`'s `/knowledge-ideas` route) rather than
+ * one live run's own `experimental_designs` - `relevant` is the same
+ * target-product-overlap tag `/knowledge-claims` and `/engineering-actions`
+ * already compute (`harness.evidence_retrieval.relevance.ddr_relevance`). */
+export interface KnowledgeIdea extends ExtractedIdea {
+  relevant: boolean;
+}
+
+interface RawKnowledgeIdea {
+  idea_id: string;
+  title: string;
+  summary: string;
+  category: ExtractedIdea["category"];
+  source: { paper_id: string; title: string; journal: string; year: string; doi: string };
+  evidence_ids: string[];
+  relevant?: boolean;
+}
+
+/** Every DDR already sitting in the knowledge base, reshaped into the same
+ * idea-card shape a live extraction run produces - lets the Idea Workbench
+ * populate itself from ideas extracted in any past run (any project, any
+ * upload), not just ones the current project's own run history can see.
+ * Passing `projectId` tags/sorts by relevance to that project's target
+ * product without hiding anything (`ddr_relevance`'s own "tag, don't hide"
+ * convention). */
+export async function listKnowledgeIdeas(projectId?: string): Promise<KnowledgeIdea[]> {
+  const r = await api.get<{ ideas: RawKnowledgeIdea[]; total: number }>(
+    `/api/paper-extraction/knowledge-ideas${projectId ? `?project_id=${encodeURIComponent(projectId)}` : ""}`,
+  );
+  return r.ideas.map((idea) => ({
+    ideaId: idea.idea_id,
+    title: idea.title,
+    summary: idea.summary,
+    category: idea.category,
+    source: {
+      paperId: idea.source.paper_id,
+      title: idea.source.title,
+      journal: idea.source.journal,
+      year: idea.source.year,
+      doi: idea.source.doi,
+    },
+    evidenceIds: idea.evidence_ids,
+    raw: idea as unknown as Record<string, unknown>,
+    relevant: idea.relevant ?? false,
+  }));
+}

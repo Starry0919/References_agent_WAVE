@@ -195,8 +195,14 @@ def get_evidence_document(source_id: str, source: str = "local_ddr") -> dict:
         hypothesis = raw.get("engineering_hypothesis", {})
         actions = raw.get("engineering_actions", [])
         if diagnosis or hypothesis or actions:
+            problem_statement = raw.get("engineering_problem", {}).get("problem_statement", "")
+            if isinstance(problem_statement, dict):
+                # Legacy records written before ddr_converter.py's _field_text
+                # fix carry skill07's raw {value, status, ...} field-metadata
+                # object here instead of the unwrapped string.
+                problem_statement = problem_statement.get("value") or ""
             engineering_design = {
-                "problem_statement": raw.get("engineering_problem", {}).get("problem_statement", ""),
+                "problem_statement": problem_statement,
                 "bottlenecks": diagnosis.get("bottlenecks", []),
                 "mechanistic_explanation": diagnosis.get("mechanistic_explanation", ""),
                 "hypothesis": hypothesis.get("hypothesis", ""),

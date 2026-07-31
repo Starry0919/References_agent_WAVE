@@ -10,7 +10,7 @@ import {
 import { CompareTab, DesignTab, paperIdentityTitle, QualityTab, ReasoningTab, TabButton } from "@/pages/paperExtraction/PaperResultTabs";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, type DictKey } from "@/lib/i18n";
 
 /**
  * Paper Experimental Design Extraction (harness/api/paper_extraction.py,
@@ -434,6 +434,39 @@ function runStatusBadge(status: RunResult["status"]): BadgeStatus {
   }
 }
 
+/** Every field the harness's error normalizer (paper_experimental_design_extraction/
+ * workflow/error_manager.py::normalize) passes through beyond the bare message -
+ * e.g. skill07's Poe Code CLI config errors carry local_code/category/suggested_action/
+ * context describing exactly which file is missing and how to fix it. Rendered as an
+ * indented key/value list under the headline message so a failure is diagnosable from
+ * the page alone, without reading server logs. Fields are looked up by key so an error
+ * that only has `message` (most skills) renders no extra rows at all. */
+const ERROR_DETAIL_FIELDS: Array<{ key: string; labelKey: DictKey }> = [
+  { key: "local_code", labelKey: "page5.errorsDetail.localCode" },
+  { key: "category", labelKey: "page5.errorsDetail.category" },
+  { key: "severity", labelKey: "page5.errorsDetail.severity" },
+  { key: "suggested_action", labelKey: "page5.errorsDetail.suggestedAction" },
+  { key: "source_code", labelKey: "page5.errorsDetail.sourceCode" },
+  { key: "context", labelKey: "page5.errorsDetail.context" },
+];
+
+function ErrorDetail({ error }: { error: Record<string, unknown> }) {
+  const { t } = useI18n();
+  const rows = ERROR_DETAIL_FIELDS.map(({ key, labelKey }) => {
+    const value = error[key];
+    if (value === undefined || value === null || value === "") return null;
+    const text = typeof value === "string" ? value : JSON.stringify(value);
+    return (
+      <div key={key} className="flex gap-1 text-[11px]">
+        <span className="shrink-0 font-medium text-state-risk/80">{t(labelKey)}:</span>
+        <span className="break-all text-ink-muted">{text}</span>
+      </div>
+    );
+  }).filter(Boolean);
+  if (rows.length === 0) return null;
+  return <div className="ml-3 flex flex-col gap-0.5 border-l-2 border-red-200 pl-2">{rows}</div>;
+}
+
 function RunView({ run }: { run: RunResult }) {
   const { t } = useI18n();
   return (
@@ -447,15 +480,18 @@ function RunView({ run }: { run: RunResult }) {
       </div>
 
       {run.errors.length > 0 && (
-        <div className="panel flex flex-col gap-1 border-red-300 bg-red-50 p-3">
+        <div className="panel flex flex-col gap-2 border-red-300 bg-red-50 p-3">
           <h3 className="label-caps flex items-center gap-1 text-state-risk">
             <AlertTriangle size={12} /> {t("page5.errorsTitle")}
           </h3>
           {run.errors.map((e, i) => (
-            <p key={i} className="text-[11px] text-state-risk">
-              {e.skill ? `${e.skill}: ` : ""}
-              {String(e.message ?? e.code ?? JSON.stringify(e))}
-            </p>
+            <div key={i} className="flex flex-col gap-1">
+              <p className="text-[11px] font-medium text-state-risk">
+                {e.skill ? `${e.skill}: ` : ""}
+                {String(e.message ?? e.code ?? JSON.stringify(e))}
+              </p>
+              <ErrorDetail error={e} />
+            </div>
           ))}
         </div>
       )}

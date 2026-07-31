@@ -110,9 +110,14 @@ function BiologicalKnowledgeTab() {
   const { t } = useI18n();
   const { projectId } = useParams<{ projectId: string }>();
   const [params, setParams] = useSearchParams();
+  const [filterText, setFilterText] = useState("");
+  // `params.has` (not just `!raw`) so an explicit "none selected" (`?sources=`,
+  // an empty string) is distinguished from "the param was never set" (the
+  // all-three default) - deselecting all three cards must leave the list
+  // empty below, not silently snap back to showing everything.
   const activeSources = useMemo(() => {
-    const raw = params.get("sources");
-    if (!raw) return new Set<KnowledgeSource>(KNOWLEDGE_SOURCES);
+    if (!params.has("sources")) return new Set<KnowledgeSource>(KNOWLEDGE_SOURCES);
+    const raw = params.get("sources") ?? "";
     const parsed = raw.split(",").filter((s): s is KnowledgeSource => KNOWLEDGE_SOURCES.includes(s as KnowledgeSource));
     return new Set(parsed);
   }, [params]);
@@ -129,18 +134,18 @@ function BiologicalKnowledgeTab() {
   }
 
   const claimsQuery = useQuery({
-    queryKey: ["ddr-knowledge-claims", projectId],
-    queryFn: () => listDdrKnowledgeClaims("", projectId),
+    queryKey: ["ddr-knowledge-claims", projectId, filterText],
+    queryFn: () => listDdrKnowledgeClaims(filterText, projectId),
     enabled: activeSources.has("rules"),
   });
   const ddrQuery = useQuery({
-    queryKey: ["evidence-search", "", "local_ddr", projectId],
-    queryFn: () => searchEvidence("", "local_ddr", projectId),
+    queryKey: ["evidence-search", filterText, "local_ddr", projectId],
+    queryFn: () => searchEvidence(filterText, "local_ddr", projectId),
     enabled: activeSources.has("ddr"),
   });
   const actionsQuery = useQuery({
-    queryKey: ["engineering-actions"],
-    queryFn: () => listEngineeringActions(),
+    queryKey: ["engineering-actions", filterText, projectId],
+    queryFn: () => listEngineeringActions(filterText, projectId),
     enabled: activeSources.has("actions"),
   });
 
@@ -185,7 +190,18 @@ function BiologicalKnowledgeTab() {
             count={activeSources.has("actions") ? actionsQuery.data?.length : undefined}
           />
         </div>
+        <div className="flex items-center gap-2 border-t border-border px-4 py-3">
+          <Search size={13} className="shrink-0 text-ink-faint" aria-hidden />
+          <input
+            value={filterText}
+            onChange={(e) => setFilterText(e.target.value)}
+            placeholder={t("page3.source.filterPlaceholder")}
+            className="w-full min-w-0 border-0 bg-transparent text-xs outline-none"
+          />
+        </div>
       </section>
+
+      {activeSources.size === 0 && <EmptyState variant="no_result" title={t("page3.source.noneSelectedTitle")} />}
 
       {activeSources.has("rules") && (
         <section className="panel flex flex-col gap-3 p-4">
@@ -218,15 +234,26 @@ function BiologicalKnowledgeTab() {
           {ddrQuery.data && ddrQuery.data.documents.length > 0 && (
             <ul className="grid gap-2 sm:grid-cols-2">
               {ddrQuery.data.documents.map((d) => (
-                <li key={d.sourceId} className="rounded-lg border border-border bg-surface p-3 text-xs">
+                <li key={d.sourceId} className={`rounded-lg border p-3 text-xs ${d.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
                   <div className="flex items-start justify-between gap-2">
                     <p className="font-medium text-ink">{d.title || t("page3.noTitle")}</p>
-                    {projectId && (
-                      <Link to={`/projects/${projectId}/evidence/${d.sourceId}`} className="shrink-0 text-accent-strong">
-                        <ExternalLink size={12} aria-hidden />
-                      </Link>
-                    )}
+                    <div className="flex shrink-0 items-center gap-1.5">
+                      {d.relevant && <span className="rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>}
+                      {projectId && (
+                        <Link to={`/projects/${projectId}/evidence/${d.sourceId}`} className="text-accent-strong">
+                          <ExternalLink size={12} aria-hidden />
+                        </Link>
+                      )}
+                    </div>
                   </div>
+                  {/* Source: the DDR's own citation - this record's whole
+                      reason for existing is that it's one paper's decision
+                      chain, so the paper it came from must be visible here,
+                      not just the internal DDR-NNN id. */}
+                  <p className="mt-1 text-ink-muted">
+                    {d.authors.join(", ") || t("page3.authorsNotReported")} · {d.publicationYear ?? t("page3.noDate")} · {d.journalOrRepository ?? t("page3.metadataOnly")}
+                  </p>
+                  {d.doiOrAccession && <p className="mt-0.5 font-mono text-[10px] text-ink-faint">{d.doiOrAccession}</p>}
                   <p className="mt-1 font-mono text-[10px] text-ink-faint">{d.sourceId}</p>
                 </li>
               ))}
@@ -260,14 +287,27 @@ function BiologicalKnowledgeTab() {
 function EngineeringActionCard({ action }: { action: EngineeringAction }) {
   const { t } = useI18n();
   return (
-    <li className="rounded-lg border border-border bg-surface p-3 text-xs">
+    <li className={`rounded-lg border p-3 text-xs ${action.relevant ? "border-accent bg-accent-soft/40" : "border-border bg-surface"}`}>
       <div className="flex items-start justify-between gap-2">
         <p className="font-medium text-ink">{action.actionType}</p>
-        <span className="font-mono text-[10px] text-ink-faint">{action.actionId}</span>
+        <div className="flex shrink-0 items-center gap-1.5">
+          {action.relevant && <span className="rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>}
+          <span className="font-mono text-[10px] text-ink-faint">{action.actionId}</span>
+        </div>
       </div>
       {action.targetGene && <p className="mt-1 text-ink-muted">{t("page3.source.actionTarget")}: {action.targetGene}</p>}
       {action.mechanism && <p className="mt-1 text-[11px] text-ink-faint">{action.mechanism}</p>}
       {action.risk && <p className="mt-1 text-[11px] text-state-caution">{t("page5.risk")}: {action.risk}</p>}
+      {/* Source: most catalog entries are an established general pattern,
+          not one paper's verified result - this field says which, instead
+          of the card implying every action is a citable experimental
+          finding. */}
+      {action.evidence && (
+        <p className="mt-1.5 border-t border-border pt-1.5 text-[11px] text-ink-faint">
+          <span className="font-medium">{t("page3.source.label")}: </span>
+          {action.evidence}
+        </p>
+      )}
     </li>
   );
 }
@@ -291,9 +331,10 @@ function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim;
         <span>{t("page3.claimEvidenceCount")}: {claim.evidenceCount}</span>
         {claim.applicableModules.length > 0 && <span>{claim.applicableModules.join(", ")}</span>}
       </div>
-      {claim.evidenceDdrIds.length > 0 && (
-        <div className="mt-1.5 flex flex-wrap gap-1.5">
-          {claim.evidenceDdrIds.map((id) =>
+      <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-[11px] text-ink-faint">
+        <span className="font-medium">{t("page3.source.label")}:</span>
+        {claim.evidenceDdrIds.length > 0 ? (
+          claim.evidenceDdrIds.map((id) =>
             projectId ? (
               <Link key={id} to={`/projects/${projectId}/evidence/${id}`} className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-accent-strong underline decoration-dotted underline-offset-2">
                 {id}
@@ -301,9 +342,11 @@ function DdrKnowledgeClaimCard({ claim, projectId }: { claim: DdrKnowledgeClaim;
             ) : (
               <span key={id} className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-ink-muted">{id}</span>
             ),
-          )}
-        </div>
-      )}
+          )
+        ) : (
+          <span className="italic">{t("page3.source.noneRecorded")}</span>
+        )}
+      </div>
       <p className="mt-1.5 text-[11px] text-ink-faint">{t("page3.claimBoundary")}: {claim.boundary}</p>
       {projectId && claim.evidenceDdrIds.length > 0 && (
         <Link
@@ -478,14 +521,18 @@ function LiteratureEvidenceTab() {
                   <button
                     onClick={() => setSelectedSourceId(d.sourceId)}
                     aria-pressed={selectedSourceId === d.sourceId}
-                    className={`w-full rounded-lg border p-3.5 pr-16 text-left text-xs transition-colors ${
+                    className={`w-full rounded-lg border p-3.5 pr-24 text-left text-xs transition-colors ${
                       selectedSourceId === d.sourceId ? "border-accent bg-accent-soft" : "border-border bg-surface hover:bg-surface-sunken"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-2">
                       <p className="font-medium text-ink">{d.title || t("page3.noTitle")}</p>
+                      {/* mr-1: the "详情" button sits absolutely-positioned
+                          at right-2.5 outside this button's own pr-24 -
+                          without this the badge, flush against that padded
+                          edge, visually touches/overlaps it. */}
                       {d.relevant === true && (
-                        <span className="shrink-0 rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>
+                        <span className="mr-1 shrink-0 rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>
                       )}
                     </div>
                     <p className="text-ink-muted">{d.authors.join(", ") || t("page3.authorsNotReported")} · {d.publicationYear ?? t("page3.noDate")} · {d.journalOrRepository ?? t("page3.metadataOnly")}</p>
@@ -568,24 +615,51 @@ function LiteratureEvidenceTab() {
         )}
         {matchReportsQuery.data && matchReportsQuery.data.length > 0 && (
           <ul className="flex flex-col gap-1.5">
-            {matchReportsQuery.data.map((m) => (
-              <li key={m.matchReportId} className="panel flex flex-col gap-1 p-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-ink-faint">{m.evidenceId}</span>
-                  <StatusBadge status={matchStatusToBadge(m.overallMatchStatus)} label={m.overallMatchStatus} />
-                </div>
-                <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-ink-muted">
-                  <span>{t("page3.organism")}: {m.organismMatch}</span>
-                  <span>{t("page3.strain")}: {m.strainMatch}</span>
-                  <span>{t("page3.genotype")}: {m.genotypeMatch}</span>
-                  <span>{t("page3.medium")}: {m.mediumMatch}</span>
-                  <span>{t("page3.condition")}: {m.conditionMatch}</span>
-                  <span>{t("page3.directness")}: {m.directness}</span>
-                </div>
-                {m.transferRisks.length > 0 && <p className="text-[11px] text-state-caution">{t("page3.transferRisks")}: {m.transferRisks.join("; ")}</p>}
-                {m.downgradeReasons.length > 0 && <p className="text-[11px] text-state-risk">{t("page3.downgraded")}: {m.downgradeReasons.join("; ")}</p>}
-              </li>
-            ))}
+            {matchReportsQuery.data.map((m) => {
+              // DDR-sourced evidence only ever carries `organism` as a
+              // structured comparable field (harness/evidence_retrieval/
+              // service.py::assess_ddr_applicability) - strain/genotype/
+              // medium/condition are permanently "unknown" for every DDR,
+              // not a per-item signal. Showing all four every time buried
+              // the one thing that actually varies (organism/directness/
+              // the mismatch reasons below) under repeated noise.
+              const dimensions: Array<[string, string]> = [
+                [t("page3.strain"), m.strainMatch],
+                [t("page3.genotype"), m.genotypeMatch],
+                [t("page3.medium"), m.mediumMatch],
+                [t("page3.condition"), m.conditionMatch],
+              ];
+              const knownDimensions = dimensions.filter(([, value]) => value !== "unknown");
+              const uncomparableLabels = dimensions.filter(([, value]) => value === "unknown").map(([label]) => label);
+              return (
+                <li key={m.matchReportId} className="panel flex flex-col gap-1 p-2.5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-ink-faint">{m.evidenceId}</span>
+                    <StatusBadge status={matchStatusToBadge(m.overallMatchStatus)} label={m.overallMatchStatus} />
+                  </div>
+                  <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] text-ink-muted">
+                    <span>{t("page3.organism")}: {m.organismMatch}</span>
+                    {knownDimensions.map(([label, value]) => <span key={label}>{label}: {value}</span>)}
+                    <span>{t("page3.directness")}: {m.directness}</span>
+                  </div>
+                  {uncomparableLabels.length > 0 && (
+                    <p className="text-[11px] text-ink-faint">
+                      {t("paperEvidence.applicability.missingDataPrefix")} {uncomparableLabels.join(", ")}
+                    </p>
+                  )}
+                  {/* "X could not be compared (missing metadata)" entries are
+                      the same fact as `uncomparableLabels` above, restated
+                      per-dimension - only show risks that say something new. */}
+                  {(() => {
+                    const meaningfulRisks = m.transferRisks.filter((r) => !r.endsWith("could not be compared (missing metadata)"));
+                    return meaningfulRisks.length > 0 && (
+                      <p className="text-[11px] text-state-caution">{t("page3.transferRisks")}: {meaningfulRisks.join("; ")}</p>
+                    );
+                  })()}
+                  {m.downgradeReasons.length > 0 && <p className="text-[11px] text-state-risk">{t("page3.downgraded")}: {m.downgradeReasons.join("; ")}</p>}
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

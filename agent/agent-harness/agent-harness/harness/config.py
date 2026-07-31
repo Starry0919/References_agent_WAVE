@@ -100,8 +100,8 @@ class Settings:
     HOST: str = "127.0.0.1"
     PORT: int = 8642
     SYSTEM_PROMPT: str = DEFAULT_SYSTEM_PROMPT
-    # k3 (and other reasoning-only endpoints) take "low"/"high"/"max" here
-    # instead of temperature/top_p; "" = don't send the field at all.
+    # Poe's kimi-k3 (and other reasoning-only models) take "low"/"medium"/
+    # "high" here instead of temperature/top_p; "" = don't send the field.
     REASONING_EFFORT: str = ""
 
 

@@ -216,3 +216,109 @@ def test_knockout_experiment_maps_to_M5_not_default_M3():
         "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
     })
     assert result.ddr["decision_chain"][0]["design_action"] == "M5"
+
+
+# ---------------------------------------------------------------------------
+# SKILL.md §5.5 `ddr_annotation` (model self-assessment) — second line of
+# defense on top of the keyword heuristics tested above.
+# ---------------------------------------------------------------------------
+
+
+def test_model_self_assessed_ddr_annotation_is_preferred_over_keyword_heuristic():
+    """When the extraction model already produced a valid `ddr_annotation`
+    (SKILL.md §5.5), its design_action/evidence_grading/reason_nature are
+    used directly instead of re-derived from keywords, and the rationale
+    string records that the source was the model's own self-assessment."""
+    exp = _experiment(
+        purpose="Engineer the strain",
+        intervention="Modify pathway gene X",  # deliberately keyword-free — heuristics alone would find nothing
+        outcome="titer improved",
+        ddr_annotation={
+            "design_action": "M4",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "作者报告了体外酶动力学实测结果",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "论文明确说明该酶是限速酶且给出了动力学参数",
+            "generalizable_rule": "限速酶经动力学确认后优先异源替换",
+            "alternatives_considered": ["点突变（放弃，因活性损失过大）"],
+        },
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    step = result.ddr["decision_chain"][0]
+    assert step["design_action"] == "M4"
+    assert step["evidence_grading"] == "硬"
+    assert step["evidence_grading_rationale"].startswith("模型自评")
+    assert step["reason_nature"] == "机理推断"
+    assert step["rule"] == "限速酶经动力学确认后优先异源替换"
+    assert step["alternatives"] == ["点突变（放弃，因活性损失过大）"]
+
+
+def test_invalid_model_annotation_values_fall_back_to_keyword_heuristic():
+    """An out-of-vocabulary `ddr_annotation` value (wrong enum, hallucinated
+    module code) must never be trusted verbatim — it falls back to this
+    module's own keyword heuristic exactly as if no annotation were given."""
+    exp = _experiment(
+        purpose="Screen the Keio knockout collection for improved growth phenotype",
+        intervention="High-throughput screening of Keio library knockouts",
+        outcome="Strain JW1234 showed improved titer in the screen",
+        ddr_annotation={
+            "design_action": "M99",  # not a real module code
+            "evidence_grading": "medium",  # not 硬/软
+            "reason_nature": "not_sure",  # not one of the 5 valid values
+        },
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    step = result.ddr["decision_chain"][0]
+    assert step["design_action"] != "M99"
+    assert step["evidence_grading"] in ("硬", "软")
+    # An invalid reason_nature value is discarded, so the keyword heuristic
+    # (筛选得来) decides here — model/heuristic disagreement is never silently
+    # resolved in the model's favor once the model's own value fails validation.
+    assert step["reason_nature"] == "筛选得来"
+    assert step["rule"] is None
+
+
+def test_model_claiming_screening_reason_still_gets_rule_nulled_even_if_model_supplied_one():
+    """Defense in depth: even when the model *correctly* self-reports a
+    non-mechanistic reason_nature but (contrary to its own SKILL.md §5.5
+    instruction) still fills in `generalizable_rule`, the Python-side gate
+    nulls it unconditionally — the prompt-level instruction is not the only
+    thing standing between a screening-derived step and a fabricated rule
+    reaching the rule library."""
+    exp = _experiment(
+        purpose="Use an available Keio deletion strain",
+        intervention="Obtain JW1234 (ptsG deletion) from the Keio collection",
+        outcome="titer improved",
+        ddr_annotation={
+            "reason_nature": "现成可得",
+            "generalizable_rule": "编造的规则：敲除任意 PTS 基因即可提升产量",  # should never survive
+        },
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    step = result.ddr["decision_chain"][0]
+    assert step["reason_nature"] == "现成可得"
+    assert step["rule"] is None
+
+
+def test_model_heuristic_disagreement_is_flagged_for_human_review():
+    """A model self-assessment that disagrees with the independent keyword
+    heuristic is exactly the case that most needs a human's attention —
+    both values must survive into `pending_human_review_fields`, not just
+    whichever one ddr_converter happened to prefer."""
+    exp = _experiment(
+        purpose="Relieve feedback inhibition of a committed enzyme, a known regulation mechanism",
+        intervention="Point mutation to resist feedback inhibition",
+        outcome="titer measured to increase; enzyme kinetics confirmed",
+        ddr_annotation={"reason_nature": "筛选得来"},  # disagrees with the mechanistic language above
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    disagreement_flags = [f for f in result.pending_human_review_fields if "disagrees" in f]
+    assert disagreement_flags, result.pending_human_review_fields

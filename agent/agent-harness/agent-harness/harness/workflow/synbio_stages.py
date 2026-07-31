@@ -13,7 +13,14 @@ import re
 import time
 from typing import Any
 
-from harness.tools.executor import ToolExecutor, ToolUnavailableError, WorkflowTool
+from harness.diagnosis.model_adapters.gem_fba import GENE_TO_REACTION_BOUND_HINT
+from harness.diagnosis.model_adapters.registry import get_adapter
+from harness.tools.executor import (
+    ToolExecutor,
+    ToolOutOfDomainError,
+    ToolUnavailableError,
+    WorkflowTool,
+)
 from harness.workflow.contracts import (
     BottleneckClass,
     DecisionStatus,
@@ -206,27 +213,72 @@ def _classify_bottleneck(text: str) -> BottleneckClass:
 
 
 # ---------------------------------------------------------------------------
-# Stub tool: FBA is not implemented this round (doc explicitly permits
-# deferring AMN/FBA integration). Declared and always "unavailable" so
-# ModelApplicabilityGate and the FBA-unavailable integration scenario have
-# something real to exercise, instead of a fake mechanistic prediction.
+# FBA tool: reuses the SAME real cobrapy/e_coli_core adapter
+# (`harness.diagnosis.model_adapters.gem_fba`) that Problem 3's Bottleneck
+# Diagnosis Loop and Problem 4's `counterfactual_service` already run against
+# - not a second model-execution stack (260718 doc 5.2/5.3: M2/M5 are
+# supposed to call COBRApy for real, not recite a stub). Only genes in the
+# curated `GENE_TO_REACTION_BOUND_HINT` domain get a real number; anything
+# else honestly raises ToolOutOfDomainError rather than fabricate one -
+# same non-fabrication contract the adapter registry enforces everywhere
+# else it's used.
 # ---------------------------------------------------------------------------
 
 
-def _fba_flux_analysis_stub(host: str, product: str) -> dict[str, Any]:
-    raise ToolUnavailableError(
-        f"no FBA/genome-scale metabolic model is registered this round for host={host!r} "
-        f"product={product!r}; ModelApplicabilityGate records this as not_applicable rather "
-        "than fabricate a flux prediction"
-    )
+def _fba_flux_analysis(
+    host: str, product: str, gene_targets: list[tuple[str, str]] | None = None
+) -> dict[str, Any]:
+    gene_targets = gene_targets or []
+    reaction_bounds: dict[str, Any] = {}
+    unmapped: list[str] = []
+    for gene, operation in gene_targets:
+        hint = GENE_TO_REACTION_BOUND_HINT.get(gene)
+        if hint is None:
+            unmapped.append(gene)
+            continue
+        bound = hint.get(operation)
+        if bound is not None:
+            reaction_bounds[hint["reaction"]] = bound
+
+    if not reaction_bounds:
+        raise ToolOutOfDomainError(
+            f"none of the proposed gene targets {[g for g, _ in gene_targets]!r} fall within "
+            f"gem_fba's curated central-carbon-metabolism domain {sorted(GENE_TO_REACTION_BOUND_HINT)!r} "
+            f"for host={host!r} product={product!r}; this candidate batch cannot get a real FBA number "
+            "this round (unmapped genes could still be added to the curated hint later)"
+        )
+
+    adapter = get_adapter("gem_fba")
+    capability = adapter.detect_capability()
+    if not capability.available:
+        raise ToolUnavailableError(f"gem_fba adapter unavailable: {capability.reason}")
+
+    inputs = {"reaction_bounds": reaction_bounds, "objective_reaction": "Biomass_Ecoli_core"}
+    valid, errors = adapter.validate_input(inputs, {"host": host, "product": product})
+    if not valid:
+        raise ToolOutOfDomainError(f"gem_fba rejected the mapped inputs: {errors}")
+
+    result = adapter.run(inputs, {"host": host, "product": product}, {})
+    return {
+        "runtime_status": result.runtime_status,
+        "outputs": result.outputs,
+        "domain_flags": result.domain_flags + ([f"unmapped genes (no curated hint): {unmapped}"] if unmapped else []),
+        "model_name": adapter.model_name,
+        "model_version": adapter.model_version,
+        "reproducibility_ref": result.reproducibility_ref,
+    }
 
 
 WORKFLOW_TOOLS: dict[str, WorkflowTool] = {
     "fba_flux_analysis": WorkflowTool(
         name="fba_flux_analysis",
-        func=_fba_flux_analysis_stub,
-        timeout_s=5.0,
-        domain="genome-scale metabolic flux analysis - NOT implemented this round (doc 4.4/AMN mapping)",
+        func=_fba_flux_analysis,
+        timeout_s=10.0,
+        domain=(
+            "genome-scale metabolic flux analysis via cobrapy + bundled e_coli_core "
+            "(harness.diagnosis.model_adapters.gem_fba); real for genes in "
+            "GENE_TO_REACTION_BOUND_HINT, honestly out_of_domain otherwise"
+        ),
     ),
 }
 
@@ -501,12 +553,17 @@ def model_and_rule_validation(run: WorkflowRun, tools: ToolExecutor) -> StageOut
     tool_records = []
     model_available = False
     if unresolved and _looks_metabolic(run):
+        gene_targets = [
+            (c.target_entity.canonical_id, c.operation.value)
+            for c in unresolved
+            if c.target_entity.type == TargetEntityType.gene
+        ]
         result = tools.execute(
             "fba_flux_analysis",
-            {"host": run.task_spec.host, "product": run.task_spec.product},
+            {"host": run.task_spec.host, "product": run.task_spec.product, "gene_targets": gene_targets},
             allowlist=("fba_flux_analysis",),
             stage_id=Stage.MODEL_AND_RULE_VALIDATION.value,
-            idempotency_key=f"fba:{run.task_spec.host}:{run.task_spec.product}",
+            idempotency_key=f"fba:{run.task_spec.host}:{run.task_spec.product}:{gene_targets}",
         )
         tool_records.append(result.record)
         model_available = not result.record.is_error and result.value is not None

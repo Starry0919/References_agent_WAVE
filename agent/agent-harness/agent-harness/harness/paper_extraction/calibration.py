@@ -87,7 +87,23 @@ def detect_conflicts(attempts: list[dict[str, Any]]) -> list[dict[str, Any]]:
             # but future-proof) compare by value, not identity.
             distinct = {json.dumps(v, ensure_ascii=False, sort_keys=True) for v in values.values()}
             if len(distinct) > 1:
-                conflicts.append({"step": step_num, "field": field, "values_by_annotator": values})
+                entry: dict[str, Any] = {"step": step_num, "field": field, "values_by_annotator": values}
+                # Optional per-annotator one-line rationale for why they
+                # picked this value - the simplified calibration UI collects
+                # this only for fields the annotator actively flagged as a
+                # disagreement (frontend/CalibrationPanel.tsx), stored
+                # alongside the step under `_disagreement_notes` rather than
+                # as a new top-level attempt field, so an older attempt
+                # recorded before this existed still compares cleanly (no
+                # notes = key simply absent, not a fabricated empty string).
+                notes = {
+                    annotator: s.get("_disagreement_notes", {}).get(field)
+                    for annotator, s in by_annotator.items()
+                    if isinstance(s.get("_disagreement_notes"), dict) and s["_disagreement_notes"].get(field)
+                }
+                if notes:
+                    entry["notes"] = notes
+                conflicts.append(entry)
 
     return conflicts
 

@@ -356,29 +356,23 @@ export interface DecisionChainStepDraft {
   implementation_detail: string;
   result: { metric: string; before: string; after: string; fold_change: string; quantified: boolean };
   rule: string;
-}
-
-export function blankDecisionChainStep(step: number): DecisionChainStepDraft {
-  return {
-    step,
-    design_action: "M3",
-    target: { gene: "", enzyme: "", pathway: "", condition: "" },
-    trigger: { observation: "", reasoning: "", source_location: "" },
-    evidence: { description: "", source: "", source_location: "" },
-    evidence_grading: "软",
-    reason_nature: "事后合理化存疑",
-    alternatives: [],
-    implementation: "其他",
-    implementation_detail: "",
-    result: { metric: "", before: "", after: "", fold_change: "", quantified: false },
-    rule: "",
-  };
+  /** One-line rationale per flagged field, keyed by field name - only
+   * populated for fields the second annotator actively marked as a
+   * disagreement (CalibrationPanel's simplified review flow: agree by
+   * default, using the first annotator's value verbatim; only flagged
+   * fields get an edited value + this note). Surfaced back on the matching
+   * `ExtractionConflict.notes` once both attempts are in. */
+  _disagreement_notes?: Record<string, string>;
 }
 
 export interface ExtractionConflict {
   step: number | null;
   field: string;
   valuesByAnnotator: Record<string, unknown>;
+  /** Per-annotator one-line rationale, only present for annotators who
+   * actively flagged this field as a disagreement (see
+   * `DecisionChainStepDraft._disagreement_notes`). */
+  notes?: Record<string, string>;
 }
 
 /**
@@ -394,14 +388,14 @@ export async function submitExtractionAttempt(
   annotator: string,
   decisionChain: DecisionChainStepDraft[],
 ): Promise<{ ddrId: string; attempts: number; conflicts: ExtractionConflict[]; calibrationStatus: string }> {
-  const r = await api.post<{ ddr_id: string; attempts: number; conflicts: Array<{ step: number | null; field: string; values_by_annotator: Record<string, unknown> }>; calibration_status: string }>(
+  const r = await api.post<{ ddr_id: string; attempts: number; conflicts: Array<{ step: number | null; field: string; values_by_annotator: Record<string, unknown>; notes?: Record<string, string> }>; calibration_status: string }>(
     `/api/paper-extraction/ddr/${ddrId}/attempts`,
     { annotator, decision_chain: decisionChain },
   );
   return {
     ddrId: r.ddr_id,
     attempts: r.attempts,
-    conflicts: r.conflicts.map((c) => ({ step: c.step, field: c.field, valuesByAnnotator: c.values_by_annotator })),
+    conflicts: r.conflicts.map((c) => ({ step: c.step, field: c.field, valuesByAnnotator: c.values_by_annotator, notes: c.notes })),
     calibrationStatus: r.calibration_status,
   };
 }
@@ -409,10 +403,10 @@ export async function submitExtractionAttempt(
 /** Read-only conflict recompute (harness/api/paper_extraction.py::
  * get_extraction_conflicts) - does not require submitting a new attempt. */
 export async function getExtractionConflicts(ddrId: string): Promise<ExtractionConflict[]> {
-  const r = await api.get<{ ddr_id: string; conflicts: Array<{ step: number | null; field: string; values_by_annotator: Record<string, unknown> }>; total: number }>(
+  const r = await api.get<{ ddr_id: string; conflicts: Array<{ step: number | null; field: string; values_by_annotator: Record<string, unknown>; notes?: Record<string, string> }>; total: number }>(
     `/api/paper-extraction/ddr/${ddrId}/conflicts`,
   );
-  return r.conflicts.map((c) => ({ step: c.step, field: c.field, valuesByAnnotator: c.values_by_annotator }));
+  return r.conflicts.map((c) => ({ step: c.step, field: c.field, valuesByAnnotator: c.values_by_annotator, notes: c.notes }));
 }
 
 /**

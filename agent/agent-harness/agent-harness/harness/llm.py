@@ -167,9 +167,12 @@ class LLMClient:
             kwargs["max_tokens"] = settings.LLM_MAX_TOKENS
         if settings.TEMPERATURE is not None:
             kwargs["temperature"] = settings.TEMPERATURE
-        if settings.REASONING_EFFORT and self._provider.name == "kimi":
-            # k3 rejects temperature/top_p/n/penalty outright and takes
-            # reasoning_effort (low/high/max) instead - see kimi_client.py.
+        if settings.REASONING_EFFORT and self._provider.name == "poe":
+            # Poe's kimi-k3 (like the direct Kimi K3 endpoint before it) is a
+            # reasoning model that can burn a whole small max_tokens budget
+            # on reasoning_content before any visible text is emitted -
+            # reasoning_effort (low/medium/high) trades reasoning depth for
+            # a better chance of finishing within budget/timeout.
             kwargs["reasoning_effort"] = settings.REASONING_EFFORT
 
         stream = await self._client.chat.completions.create(**kwargs)

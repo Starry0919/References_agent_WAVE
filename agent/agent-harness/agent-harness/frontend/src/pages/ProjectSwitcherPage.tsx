@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, FlaskConical, MoreVertical, TestTube2, Trash2, X } from "lucide-react";
+import { Plus, FlaskConical, MoreVertical, Trash2, X } from "lucide-react";
 import { createProject, deleteProject, listProjects, renameProject } from "@/api/projects";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge, type BadgeStatus } from "@/components/common/StatusBadge";
@@ -88,12 +88,6 @@ export function ProjectSwitcherPage() {
           <p className="text-sm text-ink-muted">{t("switcher.subtitle")}</p>
         </div>
         <div className="flex items-center gap-3">
-          <Link
-            to="/simulation"
-            className="flex items-center gap-1.5 rounded border border-border px-2.5 py-1.5 text-xs font-medium text-ink-muted hover:border-accent hover:text-accent-strong"
-          >
-            <TestTube2 size={14} /> {t("switcher.simulationDemoEntry")}
-          </Link>
           {connected && projectsQuery.data && projectsQuery.data.length > 0 && (
             <button
               onClick={() => (selectionMode ? exitSelectionMode() : setSelectionMode(true))}

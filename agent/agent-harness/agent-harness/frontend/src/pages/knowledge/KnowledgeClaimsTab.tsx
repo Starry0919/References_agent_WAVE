@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useMutation, useQueries, useQuery, useQueryClient } from "@tanstack/react-query";
-import { FlaskConical, GitCompare, Plus, ShieldCheck, XCircle } from "lucide-react";
+import { FlaskConical, GitCompare, Plus, Search, ShieldCheck, XCircle } from "lucide-react";
+import { useProjectContext } from "@/state/useProjectContext";
 import {
   APPLICABILITY_SCOPE_KEYS,
   MIN_INDEPENDENT_GROUPS_FOR_PROMOTION,
@@ -59,13 +60,34 @@ const COMPARE_CAP = 4;
  * audit (the GET route does not return supporting/contradicting
  * experiments, reviewers, or timestamps).
  */
+/** "Relevant to project" for a wet-lab claim, mirroring the same
+ * project-relevance convention `/knowledge-claims` (DDR-derived) and
+ * `/api/generation/evidence/search` already use - here computed client-side
+ * since this claim type's GET route has no `project_id` param of its own
+ * (harness/learning/models.py has no target-product field to match
+ * against): species/strain overlap between the claim's own applicability
+ * scope and the project's host definition. `null` = no project context
+ * loaded yet, never "confirmed irrelevant". */
+function claimRelevance(claim: KnowledgeClaim, species: unknown, strain: unknown): boolean | null {
+  if (!species && !strain) return null;
+  const scopeSpecies = String(claim.scope.species ?? "").trim().toLowerCase();
+  const scopeStrain = String(claim.scope.strain_background ?? "").trim().toLowerCase();
+  const speciesLower = String(species ?? "").trim().toLowerCase();
+  const strainLower = String(strain ?? "").trim().toLowerCase();
+  const speciesMatch = Boolean(speciesLower && scopeSpecies && (scopeSpecies.includes(speciesLower) || speciesLower.includes(scopeSpecies)));
+  const strainMatch = Boolean(strainLower && scopeStrain && (scopeStrain.includes(strainLower) || strainLower.includes(scopeStrain)));
+  return speciesMatch || strainMatch;
+}
+
 export function KnowledgeClaimsTab() {
   const { t } = useI18n();
   const { projectId } = useParams<{ projectId: string }>();
+  const { project } = useProjectContext();
   const qc = useQueryClient();
   const [selectedClaimId, setSelectedClaimId] = useUrlSelection();
   const [params, setParams] = useSearchParams();
   const [statusFilter, setStatusFilter] = useState<(typeof STATUS_FILTERS)[number]["id"]>("all");
+  const [filterText, setFilterText] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [evidence, setEvidence] = useState<{ items: EvidenceSummary[]; subject?: string }>({ items: [] });
   const [showSubmitForm, setShowSubmitForm] = useState(false);
@@ -112,13 +134,22 @@ export function KnowledgeClaimsTab() {
     return c;
   }, [claims]);
 
-  const filteredClaims = useMemo(() => {
+  const statusFiltered = useMemo(() => {
     if (statusFilter === "all") return claims;
     if (statusFilter === "insufficient_evidence") {
       return claims.filter((c) => countIndependentGroups(c.independenceGroups) < MIN_INDEPENDENT_GROUPS_FOR_PROMOTION);
     }
     return claims.filter((c) => c.status === statusFilter);
   }, [claims, statusFilter]);
+
+  const words = useMemo(() => filterText.trim().toLowerCase().split(/\s+/).filter(Boolean), [filterText]);
+  const filteredClaims = useMemo(() => {
+    if (words.length === 0) return statusFiltered;
+    return statusFiltered.filter((c) => {
+      const blob = `${c.statement} ${c.claimId} ${Object.values(c.scope).join(" ")}`.toLowerCase();
+      return words.every((w) => blob.includes(w));
+    });
+  }, [statusFiltered, words]);
 
   const selectedClaim = claims.find((c) => c.claimId === selectedClaimId) ?? null;
 
@@ -161,26 +192,37 @@ export function KnowledgeClaimsTab() {
   return (
     <div className="grid items-start gap-4 xl:grid-cols-[minmax(560px,1fr)_380px]">
       <div className="flex min-w-0 flex-1 flex-col gap-3">
-        <div className="panel flex flex-wrap items-center justify-between gap-3 p-3">
-          <div className="flex flex-wrap items-center gap-1.5">
-            {STATUS_FILTERS.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => setStatusFilter(f.id)}
-                className={`rounded-full border px-2.5 py-1.5 text-[11px] font-medium transition ${
-                  statusFilter === f.id ? "border-accent bg-accent-soft text-accent-strong" : "border-border bg-surface text-ink-muted hover:bg-surface-sunken"
-                }`}
-              >
-                {t(f.labelKey)} <span className="text-ink-faint">({counts[f.id] ?? 0})</span>
-              </button>
-            ))}
+        <div className="panel flex flex-col gap-2 p-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-1.5">
+              {STATUS_FILTERS.map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => setStatusFilter(f.id)}
+                  className={`rounded-full border px-2.5 py-1.5 text-[11px] font-medium transition ${
+                    statusFilter === f.id ? "border-accent bg-accent-soft text-accent-strong" : "border-border bg-surface text-ink-muted hover:bg-surface-sunken"
+                  }`}
+                >
+                  {t(f.labelKey)} <span className="text-ink-faint">({counts[f.id] ?? 0})</span>
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => setShowSubmitForm((v) => !v)}
+              className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-medium text-white shadow-sm"
+            >
+              <Plus size={13} /> {t("page3.submitClaimButton")}
+            </button>
           </div>
-          <button
-            onClick={() => setShowSubmitForm((v) => !v)}
-            className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-medium text-white shadow-sm"
-          >
-            <Plus size={13} /> {t("page3.submitClaimButton")}
-          </button>
+          <div className="flex items-center gap-2 rounded-lg border border-border px-2.5 py-1.5">
+            <Search size={13} className="shrink-0 text-ink-faint" aria-hidden />
+            <input
+              value={filterText}
+              onChange={(e) => setFilterText(e.target.value)}
+              placeholder={t("page3.filterClaimsPlaceholder")}
+              className="w-full min-w-0 border-0 bg-transparent text-xs outline-none"
+            />
+          </div>
         </div>
 
         {showSubmitForm && (
@@ -220,6 +262,7 @@ export function KnowledgeClaimsTab() {
               {filteredClaims.map((claim) => {
                 const indepCount = countIndependentGroups(claim.independenceGroups);
                 const insufficient = indepCount < MIN_INDEPENDENT_GROUPS_FOR_PROMOTION;
+                const relevant = claimRelevance(claim, project?.hostDefinition.species, project?.hostDefinition.strain);
                 return (
                   <li key={claim.claimId}>
                     <div
@@ -229,7 +272,10 @@ export function KnowledgeClaimsTab() {
                     >
                       <button onClick={() => setSelectedClaimId(claim.claimId)} aria-pressed={selectedClaimId === claim.claimId} className="flex w-full items-start justify-between gap-2 text-left">
                         <span className="font-medium text-ink">{claim.statement || t("claim.noStatementRecorded")}</span>
-                        <StatusBadge status={claim.status as BadgeStatus} />
+                        <span className="flex shrink-0 items-center gap-1.5">
+                          {relevant && <span className="rounded-full border border-accent px-1.5 py-0.5 text-[10px] font-medium text-accent-strong">{t("page3.relevantToProject")}</span>}
+                          <StatusBadge status={claim.status as BadgeStatus} />
+                        </span>
                       </button>
                       <div className="flex flex-wrap items-center gap-2 text-[11px] text-ink-muted">
                         <span className="font-mono text-ink-faint">{claim.claimId}</span>

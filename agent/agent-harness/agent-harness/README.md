@@ -363,7 +363,7 @@ MOONSHOT_API_KEY=sk-xxxx
 LLM_MODEL=kimi-latest        # deepseek 之外的预设没有默认模型,必须指定
 ```
 
-内置预设:`deepseek`(默认,模型默认 `deepseek-v4-pro`)、`openai`、`moonshot`、`qwen`(阿里 DashScope 兼容模式)、`zhipu`。
+内置预设:`deepseek`(默认,模型默认 `deepseek-v4-pro`)、`openai`、`moonshot`、`qwen`(阿里 DashScope 兼容模式)、`zhipu`、`poe`(Poe 的 OpenAI 兼容网关,一把 `POE_API_KEY` 挂多家模型,必须显式指定 `LLM_MODEL`,如 `Kimi-K3`/`Claude-Sonnet-4.6`)。
 
 **接入自建 / 本地端点**(vLLM、Ollama、各类 OpenAI 兼容网关):
 
