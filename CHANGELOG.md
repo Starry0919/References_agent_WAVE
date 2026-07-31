@@ -6,6 +6,42 @@ All notable changes to this project will be documented in this file.
 
 All notable changes to this project will be documented in this file.
 
+## [2026-07-31] Agent-Harness Update
+
+### Added
+
+#### Knowledge Base
+- **DDR-009** (`knowledge/ddr_database/`) — 新增"Integrated Laboratory Evolution and Rational Engineering"知识条目
+
+#### Tests
+- **test_knowledge_ideas.py** — 知识-想法关联测试，验证从论文提取到工程想法的转换链路
+
+#### External Tools
+- **Poe-Code-correlation/** — Poe API 相关工具与实验代码（`poe-api.env` 已排除，密钥本地保留）
+
+### Changed
+
+#### Frontend
+- `IdeaWorkspacePage.tsx` — 优化想法工作区交互
+- `ProjectSwitcherPage.tsx` — 增强项目切换体验
+- `KnowledgePage.tsx`、`KnowledgeClaimsTab.tsx` — 知识页面布局与声明展示优化
+- `CalibrationPanel.tsx` — 校准面板功能增强
+- `PaperExtractionPage.tsx` — 提取页面交互改进
+
+#### Backend
+- `config.py` — 配置系统扩展，支持更多运行时参数
+- `bootstrap.py` — 启动逻辑优化
+- `generation.py`、`paper_extraction.py` — 生成与提取接口增强
+- `evidence.ts`、`paperExtraction.ts`、`rules.ts` — API 客户端同步后端变更
+
+#### Paper Artifacts
+- 新增 12 篇论文的元数据与校验和（`paper_artifacts/papers/`）
+
+### Infrastructure
+- `.gitignore` — 新增排除 `poe-api.env`（防止 API 密钥泄露）
+
+---
+
 ## [2026-07-30] Agent-Harness Update — Part 2
 
 ### Added
