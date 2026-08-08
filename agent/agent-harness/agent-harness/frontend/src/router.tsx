@@ -8,6 +8,7 @@ import { DiagnosisWorkbenchPage } from "@/pages/diagnosis/DiagnosisWorkbenchPage
 import { DiagnosisSessionDetailPage } from "@/pages/diagnosis/DiagnosisSessionDetailPage";
 import { DesignWorkbenchPage } from "@/pages/design/DesignWorkbenchPage";
 import { DesignProjectDetailPage } from "@/pages/design/DesignProjectDetailPage";
+import { HistoricalIdeasPage } from "@/pages/HistoricalIdeasPage";
 import { PaperEvidenceDetailPage } from "@/pages/evidence/PaperEvidenceDetailPage";
 import { TrustCenterPage } from "@/pages/trust/TrustCenterPage";
 
@@ -27,6 +28,7 @@ export const router = createBrowserRouter(
       children: [
         { index: true, element: <CommandCenterPage /> },
         { path: "ideas", element: <IdeaWorkspacePage /> },
+        { path: "historical-ideas", element: <HistoricalIdeasPage /> },
         { path: "workspace", element: <Navigate to="../ideas" replace /> },
         { path: "diagnosis", element: <DiagnosisWorkbenchPage /> },
         { path: "diagnosis/:sessionId", element: <DiagnosisSessionDetailPage /> },

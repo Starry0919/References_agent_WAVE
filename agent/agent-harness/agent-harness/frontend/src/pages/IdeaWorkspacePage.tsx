@@ -7,6 +7,7 @@ import {
   CircleDashed,
   Dna,
   GitBranch,
+  History,
   Lightbulb,
   Search,
   Send,
@@ -149,15 +150,24 @@ export function IdeaWorkspacePage() {
               {t("ideaWorkspace.subtitle")}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => retrievalMutation.mutate()}
-            disabled={retrievalMutation.isPending}
-            className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white"
-          >
-            <WandSparkles size={14} />
-            {retrievalMutation.isPending ? t("ideaWorkspace.startingRetrieval") : t("ideaWorkspace.getIdeas")}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => retrievalMutation.mutate()}
+              disabled={retrievalMutation.isPending}
+              className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white"
+            >
+              <WandSparkles size={14} />
+              {retrievalMutation.isPending ? t("ideaWorkspace.startingRetrieval") : t("ideaWorkspace.getIdeas")}
+            </button>
+            <Link
+              to={`/projects/${projectId}/historical-ideas`}
+              className="flex items-center gap-1.5 rounded-lg border border-border bg-surface px-3 py-2 text-xs font-semibold text-ink hover:bg-surface-sunken"
+            >
+              <History size={14} />
+              {t("ideaWorkspace.viewHistoricalIdeas")}
+            </Link>
+          </div>
         </div>
         <div className="mt-4 flex items-start gap-3 rounded-lg border border-accent/20 bg-accent-soft px-4 py-3">
           <Dna size={16} className="mt-0.5 flex-none text-accent-strong" />
