@@ -23,6 +23,7 @@
   "decision_chain": [
     {
       "step": 1,
+      "decision_type": "engineering_decision",
       "design_action": "M6",
       "target": {
         "gene": "",
@@ -61,6 +62,7 @@
     },
     {
       "step": 2,
+      "decision_type": "engineering_decision",
       "design_action": "M6",
       "target": {
         "gene": "",
@@ -99,44 +101,6 @@
     },
     {
       "step": 3,
-      "design_action": "M7",
-      "target": {
-        "gene": "",
-        "enzyme": "",
-        "pathway": "",
-        "condition": "Fluorescence after 18 h of culture; other conditions unknown"
-      },
-      "trigger": {
-        "observation": "Negative-response biosensors pL19, pL25, pL35 with defined kinetic parameters; pL19 linear FBP detection range ~0-50 mmol/g DCW (Supplementary Fig. 3C)",
-        "reasoning": "Verify that biosensor output reports in vivo FBP concentration and glycolysis flux",
-        "source_location": "BW25113 and deficiency strains BW-pfkA, BW-ptsG, BW-pykF harboring pL19"
-      },
-      "evidence": {
-        "description": [
-          "EV_INT3",
-          "EV_FIG4"
-        ],
-        "source": "论文实测",
-        "source_location": "BW25113 as reference strain",
-        "values": {}
-      },
-      "evidence_grading": "软",
-      "evidence_grading_rationale": "自动判定失败——请人工判定",
-      "reason_nature": "事后合理化存疑",
-      "alternatives": [],
-      "implementation": "其他",
-      "implementation_detail": "None (observational/validation using pre-existing deficiency strains); pL19 fluorescence readout",
-      "result": {
-        "metric": "Fluorescence; intracellular FBP; specific glucose consumption rate; specific growth rate",
-        "before": "",
-        "after": "Fluorescence (18 h) of BW-pfkA, BW-ptsG, BW-pykF = 11.32x, 7.13x, 1.11x of BW25113; fluorescence negatively related to FBP level; growth rate and glucose consumption rate increased with FBP; biosensor range covers in vivo FBP (0-31 mM/g DCW)",
-        "fold_change": null,
-        "quantified": true
-      },
-      "rule": null
-    },
-    {
-      "step": 4,
       "design_action": "M7",
       "target": {
         "gene": "pfkA",
@@ -180,10 +144,11 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": "When static knockout of an essential glycolytic step causes severe growth defects, replace it with metabolite-responsive dynamic repression to temporally uncouple cell growth from production."
+      "rule": "When static knockout of an essential glycolytic step causes severe growth defects, replace it with metabolite-responsive dynamic repression to temporally uncouple cell growth from production.",
+      "decision_type": "engineering_decision"
     },
     {
-      "step": 5,
+      "step": 4,
       "design_action": "M7",
       "target": {
         "gene": "pfkA",
@@ -218,44 +183,8 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": "For products whose precursor competes with glycolysis, pair dynamic repression of the competing glycolytic step with delayed dynamic activation of the product-forming enzyme when early constitutive expression of that enzyme is growth-toxic."
-    },
-    {
-      "step": 6,
-      "design_action": "M5",
-      "target": {
-        "gene": "ackA",
-        "enzyme": "",
-        "pathway": "",
-        "condition": "not applicable (constructed in previous studies)"
-      },
-      "trigger": {
-        "observation": "unknown in this document (design made in previous studies)",
-        "reasoning": "Background construct: DN5 chassis for GlcNAc production",
-        "source_location": "E. coli DH5alpha derivative DN5"
-      },
-      "evidence": {
-        "description": [
-          "EV_R35_1"
-        ],
-        "source": "论文实测",
-        "source_location": "not applicable",
-        "values": {}
-      },
-      "evidence_grading": "硬",
-      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Knockouts exist as constructed strain, but the driving measurements were reported elsewhere",
-      "reason_nature": "现成可得",
-      "alternatives": [],
-      "implementation": "KO",
-      "implementation_detail": "Knockout of nag, ackA, poxB, ldhA and nan",
-      "result": {
-        "metric": "not applicable",
-        "before": "",
-        "after": "DN5 used here as the GlcNAc-producing chassis/control",
-        "fold_change": null,
-        "quantified": true
-      },
-      "rule": null
+      "rule": "For products whose precursor competes with glycolysis, pair dynamic repression of the competing glycolytic step with delayed dynamic activation of the product-forming enzyme when early constitutive expression of that enzyme is growth-toxic.",
+      "decision_type": "engineering_decision"
     }
   ],
   "engineering_problem": {
@@ -303,7 +232,7 @@
     "extraction_date": "2026-07-31",
     "calibration_status": "pending",
     "calibrated_by": [],
-    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。24 个字段待人工审核。",
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。24 个字段待人工审核。 [0804 优化回归修正] 按 Phase 3 Q1/Q2/Q3 过滤：原 step3（体内验证生物传感器报告 FBP/通量，无新改造动作）标记为 validation，原 step6（DN5 底盘，注明为此前研究构建）标记为 background，均移出 decision_chain 至 excluded_records；剩余工程决策步骤重新编号 1-4。",
     "human_review_status": "pending",
     "review_notes": "",
     "paper_extraction_task_id": "2227d49c049b4dbab8d7c323fd2b05c3",
@@ -1005,5 +934,92 @@
         "note": null
       }
     }
-  }
+  },
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 3,
+        "design_action": "M7",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Fluorescence after 18 h of culture; other conditions unknown"
+        },
+        "trigger": {
+          "observation": "Negative-response biosensors pL19, pL25, pL35 with defined kinetic parameters; pL19 linear FBP detection range ~0-50 mmol/g DCW (Supplementary Fig. 3C)",
+          "reasoning": "Verify that biosensor output reports in vivo FBP concentration and glycolysis flux",
+          "source_location": "BW25113 and deficiency strains BW-pfkA, BW-ptsG, BW-pykF harboring pL19"
+        },
+        "evidence": {
+          "description": [
+            "EV_INT3",
+            "EV_FIG4"
+          ],
+          "source": "论文实测",
+          "source_location": "BW25113 as reference strain",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "事后合理化存疑",
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "None (observational/validation using pre-existing deficiency strains); pL19 fluorescence readout",
+        "result": {
+          "metric": "Fluorescence; intracellular FBP; specific glucose consumption rate; specific growth rate",
+          "before": "",
+          "after": "Fluorescence (18 h) of BW-pfkA, BW-ptsG, BW-pykF = 11.32x, 7.13x, 1.11x of BW25113; fluorescence negatively related to FBP level; growth rate and glucose consumption rate increased with FBP; biosensor range covers in vivo FBP (0-31 mM/g DCW)",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "decision_type": "validation"
+      }
+    },
+    {
+      "decision_type": "background",
+      "exclusion_reason": "Q2 未通过：本文引用/沿用此前研究已构建的底盘或元件，非本文完成的设计决策",
+      "step_snapshot": {
+        "step": 6,
+        "design_action": "M5",
+        "target": {
+          "gene": "ackA",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "not applicable (constructed in previous studies)"
+        },
+        "trigger": {
+          "observation": "unknown in this document (design made in previous studies)",
+          "reasoning": "Background construct: DN5 chassis for GlcNAc production",
+          "source_location": "E. coli DH5alpha derivative DN5"
+        },
+        "evidence": {
+          "description": [
+            "EV_R35_1"
+          ],
+          "source": "论文实测",
+          "source_location": "not applicable",
+          "values": {}
+        },
+        "evidence_grading": "硬",
+        "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Knockouts exist as constructed strain, but the driving measurements were reported elsewhere",
+        "reason_nature": "现成可得",
+        "alternatives": [],
+        "implementation": "KO",
+        "implementation_detail": "Knockout of nag, ackA, poxB, ldhA and nan",
+        "result": {
+          "metric": "not applicable",
+          "before": "",
+          "after": "DN5 used here as the GlcNAc-producing chassis/control",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "decision_type": "background"
+      }
+    }
+  ]
 }

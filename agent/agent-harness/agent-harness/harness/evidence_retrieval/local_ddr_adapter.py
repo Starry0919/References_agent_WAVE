@@ -19,6 +19,7 @@ from typing import Any
 
 from harness.config import PROJECT_ROOT
 from harness.evidence_retrieval.contracts import AdapterHealth, EvidenceClaimDraft, EvidenceDocument, EvidenceSearchResult
+from harness.paper_extraction.knowledge_sync import pull_latest
 
 _DDR_DIR = PROJECT_ROOT / "knowledge" / "ddr_database"
 

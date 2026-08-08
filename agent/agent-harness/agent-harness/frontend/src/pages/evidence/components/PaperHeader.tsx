@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import { Download, ExternalLink, Microscope, Workflow } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { Download, ExternalLink, Microscope, RotateCw, Workflow } from "lucide-react";
 import type { EvidenceDocumentDetail } from "@/api/evidence";
+import { reExtractTask } from "@/api/paperExtraction";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { useI18n } from "@/lib/i18n";
 
@@ -28,8 +30,16 @@ export function PaperHeader({
   onViewGraph: () => void;
 }) {
   const { t } = useI18n();
+  const navigate = useNavigate();
   const authors = detail.authors.length > 0 ? detail.authors.join(", ") : null;
   const metaBits = [authors, detail.journalOrRepository, detail.publicationYear != null ? String(detail.publicationYear) : null].filter(Boolean);
+
+  const reExtractMutation = useMutation({
+    mutationFn: () => reExtractTask(detail.extractionTaskId as string),
+    onSuccess: (res) => {
+      navigate(`/projects/${projectId}/knowledge?tab=extraction&task=${res.task_id}`);
+    },
+  });
 
   return (
     <div className="rounded-xl border border-border bg-surface px-5 py-4 shadow-sm">
@@ -65,7 +75,20 @@ export function PaperHeader({
             )}
           </div>
         </div>
+        {detail.extractionTaskId && (
+          <button
+            type="button"
+            disabled={reExtractMutation.isPending}
+            onClick={() => reExtractMutation.mutate()}
+            title={t("paperEvidence.header.reExtractHint")}
+            className="flex shrink-0 items-center gap-1 rounded border border-border px-2 py-1 text-[11px] font-medium text-ink-muted hover:border-accent hover:text-accent disabled:opacity-50"
+          >
+            <RotateCw size={12} className={reExtractMutation.isPending ? "animate-spin" : undefined} aria-hidden />
+            {reExtractMutation.isPending ? t("paperEvidence.header.reExtracting") : t("paperEvidence.header.reExtract")}
+          </button>
+        )}
       </div>
+      {reExtractMutation.isError && <p className="mt-1.5 text-[11px] text-state-risk">{String(reExtractMutation.error)}</p>}
 
       <div className="mt-3 flex flex-wrap gap-1.5 border-t border-border pt-3">
         {detail.url && (

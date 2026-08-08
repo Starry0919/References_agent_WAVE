@@ -164,6 +164,37 @@ description: 将用户目标、论文 PDF 或 DOI 转换为证据可追溯的实
 
 把综述中的 `performed in duplicate`、双人筛查、双人数据抽取和共识处理记录在 `review_process`，不得映射成湿实验的技术重复。
 
+### 3.1 工程策略类型判定（Engineering Strategy Type）
+
+`ArticleTypeGate` 判定的是文章体裁（原创研究/综述/方法学…）；这里判定的是另一个独立维度——原创实验论文本身属于哪一类（或哪几类）工程策略。只对 `is_primary_experimental_study = true` 的论文执行，判定结果影响第 5 节抽取时的详略取舍，但不改变已有的 Q1/Q2/Q3 过滤和证据规则。
+
+允许的取值（可多选，一篇论文可能同时属于多类）：
+
+- `metabolic_engineering`：敲除、过表达、通路优化、通量重分配。
+- `biosensor_platform`：代谢物生物传感器、遗传线路、调控开关、动态控制系统。
+- `evolutionary_engineering`：ALE、适应性进化、筛选、基因组进化。
+- `protein_engineering`：酶变体、定向进化、结构指导的突变。
+- `chassis_engineering`：底盘/宿主重新设计、耐受性工程。
+- `multi_strategy`：以上多类策略在同一论文中均为主要贡献时使用，与具体类别并列输出，不替代它们。
+
+输出：
+
+```json
+{
+  "engineering_paper_type": ["biosensor_platform", "metabolic_engineering"],
+  "engineering_paper_type_rationale": ""
+}
+```
+
+无法从全文判定出至少一类时留空数组，不得为了填充而猜测。
+
+**判定结果必须影响抽取详略，而不是仅仅贴一个标签**：
+
+- `biosensor_platform`：聚焦感应原理、调控结构、调谐策略、应用层决策；不要在每一个启动子/RBS 变体上平均用力——大量筛选变体属于证据细节，不是各自独立的工程决策。
+- `evolutionary_engineering`：聚焦选择压力、进化瓶颈、适应性策略、被发现的突变；不得默认这些突变是理性设计的产物——除非论文明确说作者预先设计了该突变。
+- `protein_engineering`：聚焦酶活限制因素、结构假设、突变理由、活性提升幅度。
+- `metabolic_engineering`：聚焦通路瓶颈、碳流分配、前体竞争、生长-产物权衡。
+
 ### 4. 全文阅读并解析目标菌株
 
 在抽取其他实验字段前，完整阅读可获得的论文全文，不得只读摘要、关键词、搜索命中段落或 Methods 的局部片段。至少检查：
@@ -340,10 +371,25 @@ description: 将用户目标、论文 PDF 或 DOI 转换为证据可追溯的实
 
 ### 5.5 工程决策标注（DDR 标注）
 
-对每条代表"为达成生产或表型目标而做的改造/干预"的实验记录（敲除、过表达、点突变、异源表达、启动子/RBS 工程、发酵条件调整等设计动作），在该实验记录上追加一个 `ddr_annotation` 对象，把这条改动放回其决策链位置：想产什么 → 观察到什么 → 提出什么假设 → 拿什么证据 → 做了什么改动 → 验证结果 → 可迁移到其他产物的规则。这一标注只服务于下游决策记录（DDR）与规则库的转换，不改变本文档其余章节已有的抽取、证据绑定和置信度规则。非工程干预的实验记录（纯观测、纯表征、方法学验证等）不需要此标注。
+对每条实验记录，先用 Q1/Q2/Q3 三问判定它是否代表"为达成生产或表型目标而主动做出的工程决策"，只有三问全部通过时才继续标注这条记录去追溯其决策链位置：想产什么 → 观察到什么 → 提出什么假设 → 拿什么证据 → 做了什么改动 → 验证结果 → 可迁移到其他产物的规则。这一标注只服务于下游决策记录（DDR）与规则库的转换，不改变本文档其余章节已有的抽取、证据绑定和置信度规则。
+
+**Q1/Q2/Q3 过滤（先于标注执行）**
+
+- **Q1 是否存在明确工程动作？** 记录里必须有作者主动施加的改造/干预（敲除、过表达、点突变、异源表达、启动子/RBS 工程、发酵条件调整、动态调控回路搭建、ALE/筛选campaign 的发起等）。纯测量、纯表征、结构建模/docking、基因组测序解读、验证已有假设的读数，本身不是工程动作——即使这条记录里出现了基因名或数值。反例：`"measure FBP concentration"``"WGS 鉴定 T5 突变位点"``"docking 分析 GalP 突变对糖转运的结构影响"` 都不通过 Q1。正例：`"replace pfkA promoter with a negative-response biosensor promoter"` 通过 Q1。
+- **Q2 是否为本文完成？** 若作者明确说明这个底盘/元件/菌株是此前研究构建的（"was constructed previously"、"as described in our previous study"、"沿用之前实验室菌株"、"not applicable (constructed in previous studies)"之类表述），即使本文继续使用它作为出发菌株，也不通过 Q2——它是背景条件，不是本文的设计决策。
+- **Q3 是否改变未来设计选择？** 若这条记录只是证明"某个已经做出的设计选择确实有效/确实符合预期"（验证性发酵、验证性表征、验证已选中菌株的表型），而没有引出新的改造动作或新的策略选择，不通过 Q3。区分：`"构建并验证了 T5AA 展现更高得率"` 中"构建 T5AA"通过（新改造+新证据驱动后续判断），但同一批次里"用发酵罐评估已入选进化菌株 T5 的生产性能，未做任何新改造"不通过 Q3。
+
+三问全部通过 → 继续下方标注，`decision_type = "engineering_decision"`，进入 `decision_chain`。任意一问未通过 → 不生成 `ddr_annotation` 的工程决策字段，仅按下方规则标注 `decision_type`，该记录进入 `excluded_records`，不占用 `decision_chain` 的位置，也绝不能为其编造 `design_action`/`rule`：
+
+- Q1 未通过、且记录只是测量/验证已有设计 → `decision_type = "validation"`。
+- Q2 未通过（此前论文已构建） → `decision_type = "background"`。
+- 记录内容来自 Discussion、结构分析、docking、基因组测序结果的事后解释，且未驱动任何本文的改造决策 → `decision_type = "post_hoc_interpretation"`。
+- 同一条记录可能同时具备多个特征时，按 Q1→Q2→Q3 的顺序取第一个未通过的问题决定分类。
 
 ```json
 {
+  "decision_type": "engineering_decision|validation|background|post_hoc_interpretation",
+  "decision_type_rationale": "",
   "design_action": "M0|M1|M2|M3|M4|M5|M6|M7|M8|M9|M11",
   "design_action_rationale": "",
   "trigger_observation": "",
@@ -351,19 +397,24 @@ description: 将用户目标、论文 PDF 或 DOI 转换为证据可追溯的实
   "evidence_grading_rationale": "",
   "reason_nature": "机理推断|文献类比|现成可得|筛选得来|事后合理化存疑",
   "reason_nature_rationale": "",
+  "reason_nature_tags": [],
   "generalizable_rule": null,
-  "alternatives_considered": []
+  "alternatives_considered": [],
+  "strategy_categories": []
 }
 ```
 
 字段含义与判定纪律：
 
+- `decision_type`：Q1/Q2/Q3 三问的判定结果，见上。`design_action`、`generalizable_rule` 等其余字段只在 `decision_type = "engineering_decision"` 时才需要认真填写；其余三类只需给出 `decision_type_rationale`，其余字段留空。
 - `design_action`：这步改动对应的设计动作类别——M0 意图框定、M1 通路解析、M2 前体与还原力供给、M3 解除调控、M4 限速酶识别与工程、M5 竞争/旁路通量阻断、M6 表达平衡、M7 动态调控、M8 副产物与毒性管理、M9 发酵与过程、M11 集成筛选。无法确定时留空，不得为了填满字段而归到某个默认类别。
-- `trigger_observation`：促成这一步改动的观察或推理，通常是上一步的实测结果或论文明确陈述的限制因素，不是论文摘要的笼统复述。参考反例：`"研究者敲除了 trpE"` 不合格；`"提高上游表达并未增产，提示存在反馈抑制"` 才是合格的触发描述。
+- `trigger_observation`：促成这一步改动的观察或推理，通常是上一步的实测结果或论文明确陈述的限制因素，不是论文摘要的笼统复述。禁止用这一步的结果反推出一个触发原因——触发必须在时间/逻辑上先于这步改动。参考反例：`"研究者敲除了 trpE"` 不合格；`"提高上游表达并未增产，提示存在反馈抑制"` 才是合格的触发描述。
 - `evidence_grading`：硬 = 实测（结构、动力学、已验证的改造结果）或化学计量（理论得率、通量、基因必需性）；软 = 预测性工具输出（OptKnock 生长偶联预测、docking、ΔΔG、AlphaFold 结构预测等）。软证据必须在 `evidence_grading_rationale` 中注明"预测性，需实测确认"，不得与实测证据同权处理。
 - `reason_nature`：如实反映论文陈述或暗示的改造理由，**默认不是"机理推断"**。只有论文文本明确给出机制性解释（反馈/前馈抑制、别构调控、结合位点、动力学参数、转录阻遏等）时才标"机理推断"；论文明确说"参照某文献做法"时标"文献类比"；论文明确说明是使用现成菌株、试剂盒、质粒库或 Keio 敲除库中已有的构建时标"现成可得"；论文明确来自随机诱变、定向进化或高通量筛选结果时标"筛选得来"；论文没有给出清晰的机制性理由、或给出的理由更像是对已有结果的事后解释而非驱动决策的原因时，如实标"事后合理化存疑"——这是允许且预期会出现的诚实结果，不是抽取失败，不得为了让这一步看起来"更有道理"而拔高成"机理推断"。
-- `generalizable_rule`：只有当 `reason_nature` 为"机理推断"或"文献类比"时才允许填写这个可迁移到其他产物的启发式规则；`reason_nature` 为"现成可得"、"筛选得来"或"事后合理化存疑"时，此字段必须为 `null`——即使能编出一条听起来合理的规则，也不得填写。伪造出的机制性规则会污染下游规则库，其代价高于留空。
+- `reason_nature_tags`：只有当同一步改动确实同时具备"机理推断"和"文献类比"两种理由时才双标（例如论文既给出了动力学机制、又说明这一策略参照了某篇文献），此时填 `["机理推断", "文献类比"]`；单一理由时留空数组即可，不必重复填写 `reason_nature` 的值。`reason_nature` 为"现成可得""筛选得来""事后合理化存疑"时不得往这里塞入"机理推断"或"文献类比"——多标签只用来补充同一确定基调下的第二个理由，不能用来把不合格的理由性质"洗白"成合格。
+- `generalizable_rule`：只有当 `decision_type` 为"engineering_decision"且 `reason_nature` 为"机理推断"或"文献类比"时才允许填写这个可迁移到其他产物的启发式规则；否则此字段必须为 `null`——即使能编出一条听起来合理的规则，也不得填写。伪造出的机制性规则会污染下游规则库，其代价高于留空。规则必须使用 `When [engineering context], apply [strategy], because [mechanism].` 的结构，并将适用范围限定到本文实际验证过的产物/宿主类别（例如"L-色氨酸生产系统"），不得扩大成"所有氨基酸生产"这类未经验证的泛化。
 - `alternatives_considered`：论文中提到但被放弃的备选方案及放弃原因，没有则留空数组，不得编造。
+- `strategy_categories`：这步改动属于哪个/哪些工程策略受控词表分类——`flux_redirection`（通量重定向）、`precursor_supply_enhancement`（前体供给增强）、`competitive_pathway_removal`（竞争支路移除）、`dynamic_control`（动态调控，涵盖"dynamic regulation"/"feedback regulation"/"metabolite-responsive control"等同义表述）、`enzyme_activity_improvement`（酶活提升）、`transport_engineering`（转运工程）、`stress_tolerance_engineering`（耐受性工程）、`evolutionary_optimization`（进化优化）。可多选；判断依据必须是本步的实际改动内容，不是论文标题或摘要的泛泛描述；无法归类时留空数组。
 
 任何字段无法从原文确定时留空或标记为空，不得为了让这个对象看起来完整而编造内容。
 

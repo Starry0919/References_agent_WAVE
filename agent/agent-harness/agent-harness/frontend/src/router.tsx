@@ -3,7 +3,6 @@ import { AppShell } from "@/components/shell/AppShell";
 import { ProjectSwitcherPage } from "@/pages/ProjectSwitcherPage";
 import { CommandCenterPage } from "@/pages/CommandCenterPage";
 import { KnowledgePage } from "@/pages/knowledge/KnowledgePage";
-import { EvaluationMetricsPage } from "@/pages/metrics/EvaluationMetricsPage";
 import { IdeaWorkspacePage } from "@/pages/IdeaWorkspacePage";
 import { DiagnosisWorkbenchPage } from "@/pages/diagnosis/DiagnosisWorkbenchPage";
 import { DiagnosisSessionDetailPage } from "@/pages/diagnosis/DiagnosisSessionDetailPage";
@@ -34,7 +33,7 @@ export const router = createBrowserRouter(
         { path: "design", element: <DesignWorkbenchPage /> },
         { path: "design/:designProjectId", element: <DesignProjectDetailPage /> },
         { path: "knowledge", element: <KnowledgePage /> },
-        { path: "metrics", element: <EvaluationMetricsPage /> },
+        { path: "metrics", element: <Navigate to="../design" replace /> },
         { path: "paper-extraction", element: <Navigate to="../knowledge?tab=extraction" replace /> },
         { path: "evidence/:sourceId", element: <PaperEvidenceDetailPage /> },
         { path: "trust/:ddrId", element: <TrustCenterPage /> },

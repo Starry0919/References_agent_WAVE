@@ -60,6 +60,34 @@ def test_list_sessions_for_project_returns_newest_first():
         assert r2.json()["sessions"] == []
 
 
+def test_create_evidence_item_generates_id_and_lists_it_scoped_to_project():
+    with _client() as client:
+        p = client.post("/api/projects", json={"name": "t", "target_product": "trp", "actor_id": "pi"}).json()
+        other = client.post("/api/projects", json={"name": "other", "target_product": "trp", "actor_id": "pi"}).json()
+
+        r = client.post("/api/diagnosis/evidence-items", json={
+            "project_id": p["project_id"], "actor_id": "pi", "source_type": "expert_rule",
+            "content_summary": "growth rate drops under low-oxygen conditions",
+        })
+        assert r.status_code == 200
+        evidence_item_id = r.json()["evidence_item_id"]
+        assert evidence_item_id  # server-generated, never supplied by the caller
+
+        listed = client.get("/api/diagnosis/evidence-items", params={"project_id": p["project_id"]}).json()
+        assert [i["evidence_item_id"] for i in listed["evidence_items"]] == [evidence_item_id]
+
+        other_listed = client.get("/api/diagnosis/evidence-items", params={"project_id": other["project_id"]}).json()
+        assert other_listed["evidence_items"] == []
+
+
+def test_review_evidence_link_endpoint_rejects_unknown_link():
+    with _client() as client:
+        bad = client.post("/api/diagnosis/evidence-links/ELINK-does-not-exist/review", json={"verdict": "confirmed", "actor_id": "pi"})
+        assert bad.status_code == 404
+        bad_verdict = client.post("/api/diagnosis/evidence-links/ELINK-does-not-exist/review", json={"verdict": "maybe", "actor_id": "pi"})
+        assert bad_verdict.status_code in (404, 422)  # verdict validated before or after the lookup, either is a real rejection
+
+
 def test_run_model_endpoint_executes_real_fba():
     with _client() as client:
         p = client.post("/api/projects", json={"name": "t", "target_product": "trp", "actor_id": "pi"}).json()

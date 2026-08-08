@@ -252,7 +252,7 @@ def test_model_self_assessed_ddr_annotation_is_preferred_over_keyword_heuristic(
     assert step["evidence_grading_rationale"].startswith("模型自评")
     assert step["reason_nature"] == "机理推断"
     assert step["rule"] == "限速酶经动力学确认后优先异源替换"
-    assert step["alternatives"] == ["点突变（放弃，因活性损失过大）"]
+    assert step["alternatives"] == [{"approach": "点突变（放弃，因活性损失过大）", "rejected_reason": ""}]
 
 
 def test_invalid_model_annotation_values_fall_back_to_keyword_heuristic():
@@ -304,6 +304,150 @@ def test_model_claiming_screening_reason_still_gets_rule_nulled_even_if_model_su
     step = result.ddr["decision_chain"][0]
     assert step["reason_nature"] == "现成可得"
     assert step["rule"] is None
+
+
+# ---------------------------------------------------------------------------
+# decision_type Q1/Q2/Q3 filter (0804 优化 §3 Phase 3 / §7) — validation/
+# background/post_hoc_interpretation candidates must never sit in
+# decision_chain alongside real engineering_decision steps, and must never
+# carry a rule. Regression coverage for the exact DDR-013/DDR-009(→DDR-015)
+# defects the 0804 优化 doc calls out by name: biosensor validation DDR, DN5
+# chassis DDR, T5 validation DDR, genome analysis DDR, docking DDR.
+# ---------------------------------------------------------------------------
+
+
+def test_background_chassis_step_excluded_from_decision_chain():
+    """A step whose only 'engineering' content is a chassis explicitly said
+    to be built in a previous study (the DDR-013 'DN5 chassis DDR' defect)
+    must not become a decision_chain engineering_decision — it belongs in
+    excluded_records as background."""
+    exp = _experiment(
+        purpose="Background construct: DN5 chassis for GlcNAc production",
+        intervention="Knockout of nag, ackA, poxB, ldhA and nan; DN5 was constructed previously in prior lab studies",
+        outcome="DN5 used here as the GlcNAc-producing chassis",
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    assert result.ddr["decision_chain"] == []
+    assert len(result.ddr["excluded_records"]) == 1
+    record = result.ddr["excluded_records"][0]
+    assert record["decision_type"] == "background"
+    assert record["step_snapshot"]["rule"] is None
+
+
+def test_validation_only_step_excluded_from_decision_chain():
+    """A step that only verifies an already-selected design (no new
+    modification) — the DDR-013 'biosensor validation DDR' defect — must be
+    filed as validation, not treated as an engineering_decision."""
+    exp = _experiment(
+        purpose="Verify that biosensor output reports in vivo FBP concentration and glycolysis flux",
+        intervention="Use pre-existing deficiency strains BW-pfkA, BW-ptsG, BW-pykF harboring the biosensor",
+        implementation_detail="None (observational/validation using pre-existing deficiency strains); pL19 fluorescence readout",
+        outcome="Fluorescence negatively related to FBP level",
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    assert result.ddr["decision_chain"] == []
+    record = result.ddr["excluded_records"][0]
+    assert record["decision_type"] == "validation"
+    assert record["step_snapshot"]["rule"] is None
+
+
+def test_docking_analysis_step_excluded_as_post_hoc():
+    """Pure in-silico structural/docking analysis with no new engineering
+    action — the DDR-009/DDR-015 'docking DDR' defect — must be filed as
+    post_hoc_interpretation, never as an engineering_decision, and must
+    never carry a rule even if reason_nature happens to look mechanistic."""
+    exp = _experiment(
+        purpose="Explore structural effect of GalP mutations (K137T, P195A, F204L) on glucose permeation via docking analysis",
+        intervention="Homology model and docking study of GalP mutants",
+        implementation_detail="none (computational analysis)",
+        outcome="Mutations hypothesized to increase binding affinity",
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    assert result.ddr["decision_chain"] == []
+    record = result.ddr["excluded_records"][0]
+    assert record["decision_type"] == "post_hoc_interpretation"
+    assert record["step_snapshot"]["rule"] is None
+
+
+def test_decision_chain_renumbered_contiguously_after_exclusion():
+    """Filtering out a background step from the middle of the sequence must
+    not leave a gap in decision_chain's step numbers — the doc's Engineering
+    Decision Map is meant to read as a clean sequence."""
+    exp1 = _experiment(experiment_id="e1", purpose="engineer the pathway", intervention="Knockout of ldhA to eliminate byproduct", outcome="byproduct reduced")
+    exp2 = _experiment(
+        experiment_id="e2",
+        purpose="Background construct",
+        intervention="Host strain was constructed previously in a previous study",
+        outcome="",
+    )
+    exp3 = _experiment(experiment_id="e3", purpose="engineer further", intervention="Overexpress downstream gene", outcome="titer improved")
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp1, exp2, exp3]}},
+    })
+    chain = result.ddr["decision_chain"]
+    assert [s["step"] for s in chain] == [1, 2]
+    assert len(result.ddr["excluded_records"]) == 1
+    assert result.ddr["excluded_records"][0]["step_snapshot"]["step"] == 2  # original position preserved
+
+
+def test_model_supplied_decision_type_is_honored():
+    """A model-self-assessed decision_type=validation (SKILL.md §5.5) must
+    keep the step out of decision_chain even when the keyword heuristic
+    alone would have called it an engineering_decision."""
+    exp = _experiment(
+        purpose="Engineer the strain",
+        intervention="Modify pathway gene X",
+        outcome="titer improved",
+        ddr_annotation={"decision_type": "validation"},
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    assert result.ddr["decision_chain"] == []
+    assert result.ddr["excluded_records"][0]["decision_type"] == "validation"
+
+
+def test_invalid_model_decision_type_falls_back_to_heuristic():
+    """An out-of-vocabulary decision_type from the model must not be trusted
+    verbatim — falls back to the keyword heuristic exactly like every other
+    ddr_annotation field."""
+    exp = _experiment(
+        purpose="Background construct",
+        intervention="Chassis was constructed previously in our previous work",
+        outcome="",
+        ddr_annotation={"decision_type": "not_a_real_value"},
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    assert result.ddr["decision_chain"] == []
+    assert result.ddr["excluded_records"][0]["decision_type"] == "background"
+
+
+def test_genuine_engineering_decision_step_keeps_decision_type_and_rule():
+    """The positive case: a real engineering step with a mechanistic rule
+    must still end up in decision_chain, tagged engineering_decision, with
+    its rule intact — the filter must not become overzealous."""
+    exp = _experiment(
+        purpose="Relieve feedback inhibition of a committed enzyme, a known regulation mechanism",
+        intervention="Site-directed point mutation to resist feedback inhibition",
+        outcome="Titer measured to increase; enzyme kinetics confirmed loss of feedback sensitivity",
+        rule="去调控:查 committed 酶的末端产物反馈抑制,用抗性突变解除",
+    )
+    result = ddr_converter.convert_extraction_to_ddr({
+        "output": {"fields": {}, "experimental_design_object": {"experiments": [exp]}},
+    })
+    assert len(result.ddr["decision_chain"]) == 1
+    step = result.ddr["decision_chain"][0]
+    assert step["decision_type"] == "engineering_decision"
+    assert step["rule"] is not None
+    assert result.ddr["excluded_records"] == []
 
 
 def test_model_heuristic_disagreement_is_flagged_for_human_review():

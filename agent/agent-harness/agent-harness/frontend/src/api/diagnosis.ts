@@ -43,12 +43,26 @@ export interface HypothesisRow {
   contradictions: unknown[];
 }
 
+export type EvidenceReviewStatus = "unreviewed" | "confirmed" | "incorrect";
+
 export interface EvidenceLinkRow {
   evidenceLinkId: string;
   hypothesisVersionId: string;
   evidenceItemId: string;
   relation: string;
   claim: string;
+  reviewStatus: EvidenceReviewStatus;
+  reviewNote: string;
+}
+
+export interface EvidenceItemRow {
+  evidenceItemId: string;
+  sourceType: string;
+  sourceReference: string | null;
+  contentSummary: string;
+  quality: string;
+  directness: string;
+  createdAt: number;
 }
 
 export interface ModelCapability {
@@ -167,12 +181,22 @@ export async function listHypotheses(diagnosisSessionId: string): Promise<Hypoth
 /** `GET /api/diagnosis/sessions/{id}/evidence`. */
 export async function listEvidence(diagnosisSessionId: string): Promise<EvidenceLinkRow[]> {
   const raw = await api.get<{
-    evidence_links: Array<{ evidence_link_id: string; hypothesis_version_id: string; evidence_item_id: string; relation: string; claim: string }>;
+    evidence_links: Array<{
+      evidence_link_id: string; hypothesis_version_id: string; evidence_item_id: string; relation: string; claim: string;
+      review_status: EvidenceReviewStatus; review_note: string;
+    }>;
   }>(`/api/diagnosis/sessions/${diagnosisSessionId}/evidence`);
   return raw.evidence_links.map((e) => ({
     evidenceLinkId: e.evidence_link_id, hypothesisVersionId: e.hypothesis_version_id,
     evidenceItemId: e.evidence_item_id, relation: e.relation, claim: e.claim,
+    reviewStatus: e.review_status, reviewNote: e.review_note,
   }));
+}
+
+/** `POST /api/diagnosis/evidence-links/{id}/review` - a human's spot-check of an
+ * agent-created link; purely an audit annotation, never gates the diagnosis loop. */
+export async function reviewEvidenceLink(evidenceLinkId: string, verdict: "confirmed" | "incorrect", actorId: string, note = ""): Promise<void> {
+  await api.post(`/api/diagnosis/evidence-links/${evidenceLinkId}/review`, { verdict, actor_id: actorId, note });
 }
 
 export interface LinkEvidenceInput {
@@ -192,6 +216,42 @@ export async function linkEvidence(input: LinkEvidenceInput): Promise<string> {
     condition_match: input.conditionMatch ?? "unknown",
   });
   return raw.evidence_link_id;
+}
+
+/** `GET /api/diagnosis/evidence-items?project_id=` - existing evidence items available to link
+ * against a hypothesis, so the UI can offer a picker instead of a free-text id field. */
+export async function listEvidenceItems(projectId: string): Promise<EvidenceItemRow[]> {
+  const raw = await api.get<{
+    evidence_items: Array<{
+      evidence_item_id: string; source_type: string; source_reference: string | null;
+      content_summary: string; quality: string; directness: string; created_at: number;
+    }>;
+  }>(`/api/diagnosis/evidence-items?project_id=${encodeURIComponent(projectId)}`);
+  return raw.evidence_items.map((e) => ({
+    evidenceItemId: e.evidence_item_id, sourceType: e.source_type, sourceReference: e.source_reference,
+    contentSummary: e.content_summary, quality: e.quality, directness: e.directness, createdAt: e.created_at,
+  }));
+}
+
+export interface CreateEvidenceItemInput {
+  projectId: string;
+  actorId: string;
+  sourceType: string;
+  contentSummary: string;
+  sourceReference?: string;
+  quality?: string;
+  directness?: string;
+}
+
+/** `POST /api/diagnosis/evidence-items` - `evidenceItemId` is always server-generated; the
+ * caller never supplies (or needs to remember) one. */
+export async function createEvidenceItem(input: CreateEvidenceItemInput): Promise<string> {
+  const raw = await api.post<{ evidence_item_id: string }>("/api/diagnosis/evidence-items", {
+    project_id: input.projectId, actor_id: input.actorId, source_type: input.sourceType,
+    content_summary: input.contentSummary, source_reference: input.sourceReference ?? null,
+    quality: input.quality ?? "low", directness: input.directness ?? "indirect",
+  });
+  return raw.evidence_item_id;
 }
 
 /** `GET /api/diagnosis/model-capabilities`. */

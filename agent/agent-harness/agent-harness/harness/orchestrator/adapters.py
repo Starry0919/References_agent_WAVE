@@ -74,6 +74,7 @@ class DiagnosisAdapter:
         became sufficient) - for a given session this runs exactly once,
         regardless of which caller triggers it."""
         from harness.diagnosis import decision_service as dec_svc
+        from harness.diagnosis import evidence as evidence_svc
         from harness.diagnosis import service as diag_svc
         from harness.diagnosis.assessor import AssessmentInput, assess_hypothesis, rank_hypotheses
         from harness.diagnosis.dedup import deduplicate
@@ -119,9 +120,37 @@ class DiagnosisAdapter:
         loop.mark_evidence_assessed(session, sess, actor_id=actor_id)
         loop.mark_hypotheses_ranked(session, sess, actor_id=actor_id)
 
+        # Ground each biological_mechanism hypothesis in the DDR knowledge-base
+        # entry it was actually generated from - `causal_graph_edges[].source_ref`
+        # is only ever a real DDR id here (hypothesis_generator only produces a
+        # biological_mechanism hypothesis at all when a DDR matched; "generic_
+        # skeleton" edges belong to measurement/model nodes, never included in a
+        # hypothesis's own edges). Tagged expert_rule/quality=low per evidence.py's
+        # own documented convention - never a fabricated literature/experiment
+        # source. Ungrounded hypotheses (no DDR match) get no evidence and
+        # correctly stay "untested" below - nothing here is invented.
+        hyp_supporting_links: dict[str, list[dict[str, Any]]] = {}
+        for h, hv in zip(kept, persisted):
+            ddr_ids = {e["source_ref"] for e in h.causal_graph_edges if e.get("source_ref") and e["source_ref"] != "generic_skeleton"}
+            for ddr_id in ddr_ids:
+                item = evidence_svc.record_evidence_item(
+                    session, project_id=project_id, source_type="expert_rule", content_summary=h.statement,
+                    actor_id=actor_id, source_reference=ddr_id, quality="low", directness="indirect",
+                )
+                evidence_svc.link_evidence(
+                    session, hypothesis_version_id=hv.hypothesis_version_id, evidence_item_id=item.evidence_item_id,
+                    relation="supports", actor_id=actor_id, claim=h.statement,
+                )
+                hyp_supporting_links.setdefault(hv.hypothesis_version_id, []).append(
+                    {"evidence_item_id": item.evidence_item_id, "quality": "low", "directness": "indirect", "claim": h.statement},
+                )
+
         assessments = [
             assess_hypothesis(
-                AssessmentInput(hypothesis_id=hv.hypothesis_version_id, observations_explained_count=1, observations_total_count=max(len(persisted), 1)),
+                AssessmentInput(
+                    hypothesis_id=hv.hypothesis_version_id, supporting_links=hyp_supporting_links.get(hv.hypothesis_version_id, []),
+                    observations_explained_count=1, observations_total_count=max(len(persisted), 1),
+                ),
                 has_predeclared_discriminating_prediction=True, has_sufficient_measurement_sensitivity=True,
                 has_valid_controls=True, condition_matches=True, alternatives_reviewed=True,
             )
@@ -167,13 +196,18 @@ class DiagnosisAdapter:
                 engineering_leverage="high", has_objective=True,
             )
             loop.enter_handoff_ready(session, sess, actor_id=actor_id, engineering_value_gate_result=value_gate)
-            leading = [p.hypothesis_version_id for p in persisted[:2]] or [p.hypothesis_version_id for p in persisted]
+            # Derived from `ranked` (real assessment status tier + coverage), not
+            # generation order - previously "first two persisted" was disconnected
+            # from both the assessor's own ranking and report.py's "Leading
+            # Hypothesis Set" section (which filters on assessment status), so the
+            # two could name different hypotheses as "leading" for the same session.
+            leading = [a.hypothesis_id for a in ranked[:2]] or [a.hypothesis_id for a in ranked]
             # `get_handoff()` re-queries this row by diagnosis_session_id -
             # nothing further to hold onto here.
             dec_svc.create_diagnosis_decision(
                 session, diagnosis_session_id=sess.diagnosis_session_id, diagnosis_version=1, actor_id=actor_id,
                 context_reference=context, leading_hypothesis_ids=leading, supported_hypothesis_ids=leading,
-                alternatives_not_excluded_ids=[p.hypothesis_version_id for p in persisted if p.hypothesis_version_id not in leading],
+                alternatives_not_excluded_ids=[a.hypothesis_id for a in ranked if a.hypothesis_id not in leading],
                 contradictions=[], confidence_representation={"overall": "medium"},
                 uncertainty="no GEM/kinetic model run in this pass; mechanism_classes=" + str(sorted(mechanism_classes)),
                 evidence_references=[], stopping_reason="actionable_stop", allowed_next_action="handoff_to_design",

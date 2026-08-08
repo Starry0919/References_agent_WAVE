@@ -83,6 +83,13 @@ def _env_opt_float(name: str) -> float | None:
         return None
 
 
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    return raw.strip().lower() not in ("false", "0", "no", "off")
+
+
 @dataclass(frozen=True)
 class Settings:
     """Runtime settings; every field maps to an env var of the same name."""
@@ -103,6 +110,13 @@ class Settings:
     # Poe's kimi-k3 (and other reasoning-only models) take "low"/"medium"/
     # "high" here instead of temperature/top_p; "" = don't send the field.
     REASONING_EFFORT: str = ""
+    # knowledge/ddr_database/*.json is a git-tracked directory, not a
+    # database - this lets the paper-extraction pipeline auto commit+push
+    # after every save and auto pull before every read, so the same
+    # knowledge base stays in sync across machines via the repo's own
+    # remote. Off by default under pytest (see knowledge_sync.py); set to
+    # "false" in .env to disable elsewhere too (e.g. no remote configured).
+    PAPER_EXTRACTION_GIT_SYNC: bool = True
 
 
 @lru_cache(maxsize=1)
@@ -127,4 +141,5 @@ def get_settings() -> Settings:
         PORT=_env_int("PORT", 8642),
         SYSTEM_PROMPT=_load_system_prompt(_env_str("SYSTEM_PROMPT", DEFAULT_SYSTEM_PROMPT)),
         REASONING_EFFORT=_env_str("REASONING_EFFORT", ""),
+        PAPER_EXTRACTION_GIT_SYNC=_env_bool("PAPER_EXTRACTION_GIT_SYNC", True),
     )

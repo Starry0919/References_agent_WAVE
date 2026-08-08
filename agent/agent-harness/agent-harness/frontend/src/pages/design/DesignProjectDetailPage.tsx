@@ -1,32 +1,55 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "react-router-dom";
-import { ClipboardList, Lightbulb, Boxes, History } from "lucide-react";
+import { Link, useParams, useSearchParams } from "react-router-dom";
+import { ClipboardList, Lightbulb, Boxes, History, Gauge, Workflow } from "lucide-react";
 import {
   confirmObjective, generatePortfolio, generateStrategies, getAuditTrail, getHistory, getProject,
   listCandidates, listHandoffs, listStrategies, markPlanningComplete, markTestPending, requestApproval,
   resolveEvidenceLink, setObjectives, startNextIteration, type CandidateDesign,
 } from "@/api/engineeringDesign";
+import { linkIdeaToDesign, listIdeas } from "@/api/ideas";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge } from "@/components/common/StatusBadge";
 import { designStatusToBadge, candidateStatusToBadge, strategyStatusToBadge } from "@/lib/workflowStatus";
 import { useUrlSelection } from "@/hooks/useUrlSelection";
 import { useI18n, type DictKey } from "@/lib/i18n";
 import { CandidateDetailDrawer } from "./CandidateDetailDrawer";
+import { DesignMetricsTab } from "./DesignMetricsTab";
 
 const ACTOR_ID = "frontend-user";
 
-type Tab = "overview" | "strategies" | "portfolio" | "history";
-const TABS: Tab[] = ["overview", "strategies", "portfolio", "history"];
-const TAB_ICON: Record<Tab, typeof ClipboardList> = { overview: ClipboardList, strategies: Lightbulb, portfolio: Boxes, history: History };
+interface PrimaryMetricRow {
+  metric: string;
+  unit: string;
+}
+
+interface HardConstraintRow {
+  type: string;
+  constraint: string;
+  value?: number;
+}
+
+/** Was 5 individually-clickable tabs; consolidated per the same user request
+ * (and the same stacked-panel/anchor-nav pattern) as `DiagnosisSessionDetailPage`
+ * - "process" is the working loop (set objectives, generate/review strategies
+ * & portfolio, read validation metrics), "governance" is the read-only
+ * history/audit trail. */
+type Tab = "process" | "governance";
+const TABS: Tab[] = ["process", "governance"];
+const TAB_ICON: Record<Tab, typeof ClipboardList> = { process: Workflow, governance: History };
+
+type Section = "overview" | "strategies" | "portfolio" | "metrics" | "history";
+const SECTION_ICON: Record<Section, typeof ClipboardList> = {
+  overview: ClipboardList, strategies: Lightbulb, portfolio: Boxes, metrics: Gauge, history: History,
+};
 
 export function DesignProjectDetailPage() {
-  const { designProjectId } = useParams<{ projectId: string; designProjectId: string }>();
+  const { projectId, designProjectId } = useParams<{ projectId: string; designProjectId: string }>();
   const { t } = useI18n();
   const [params, setParams] = useSearchParams();
   const [selectedCandidateId, setSelectedCandidateId] = useUrlSelection("candidate");
   const tabParam = params.get("tab");
-  const tab: Tab = TABS.includes(tabParam as Tab) ? (tabParam as Tab) : "overview";
+  const tab: Tab = TABS.includes(tabParam as Tab) ? (tabParam as Tab) : "process";
   function setTab(next: Tab) {
     const nextParams = new URLSearchParams(params);
     nextParams.set("tab", next);
@@ -55,7 +78,7 @@ export function DesignProjectDetailPage() {
       <h1 className="sr-only">{t("design.projectTitle")}</h1>
       <div className="flex items-center gap-1 border-b border-border bg-surface px-3 py-2">
         {TABS.map((tb) => (
-          <TabButton key={tb} active={tab === tb} onClick={() => setTab(tb)} icon={TAB_ICON[tb]} label={t(`design.tab.${tb}` as DictKey)} />
+          <TabButton key={tb} active={tab === tb} onClick={() => setTab(tb)} icon={TAB_ICON[tb]} label={t(`design.page.${tb}` as DictKey)} />
         ))}
       </div>
       <div className="flex min-h-0 flex-1">
@@ -69,12 +92,13 @@ export function DesignProjectDetailPage() {
               <StatusBadge status={designStatusToBadge(project.status)} label={project.status} />
             </header>
 
-            {tab === "overview" && <OverviewTab project={project} handoff={latestHandoff} />}
-            {tab === "strategies" && <StrategiesTab designProjectId={project.designProjectId} handoffId={latestHandoff?.handoffId ?? null} />}
-            {tab === "portfolio" && (
-              <PortfolioTab designProjectId={project.designProjectId} onSelectCandidate={setSelectedCandidateId} selectedCandidateId={selectedCandidateId} />
+            {tab === "process" && (
+              <ProcessPage
+                project={project} handoff={latestHandoff} projectId={projectId as string}
+                selectedCandidateId={selectedCandidateId} onSelectCandidate={setSelectedCandidateId}
+              />
             )}
-            {tab === "history" && <HistoryTab designProjectId={project.designProjectId} />}
+            {tab === "governance" && <GovernancePage designProjectId={project.designProjectId} />}
           </div>
         </div>
         {selectedCandidateId && (
@@ -103,27 +127,89 @@ function TabButton({ active, onClick, icon: Icon, label }: { active: boolean; on
   );
 }
 
-function OverviewTab({ project, handoff }: { project: Awaited<ReturnType<typeof getProject>>; handoff: Awaited<ReturnType<typeof listHandoffs>>[number] | null }) {
+function SectionHeader({ id, section }: { id: Section; section: Section }) {
+  const { t } = useI18n();
+  const Icon = SECTION_ICON[section];
+  return (
+    <a id={id} href={`#${id}`} className="group flex scroll-mt-16 items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-ink-faint hover:text-ink-muted">
+      <Icon size={13} aria-hidden />
+      {t(`design.section.${section}` as DictKey)}
+    </a>
+  );
+}
+
+function SectionNav({ sections }: { sections: Section[] }) {
+  const { t } = useI18n();
+  return (
+    <nav className="sticky top-0 z-10 -mx-4 flex flex-wrap gap-x-3 gap-y-1 border-b border-border bg-surface px-4 py-2 text-[11px]">
+      {sections.map((s) => (
+        <a key={s} href={`#${s}`} className="text-ink-faint hover:text-accent-strong">{t(`design.section.${s}` as DictKey)}</a>
+      ))}
+    </nav>
+  );
+}
+
+function ProcessPage({
+  project, handoff, projectId, selectedCandidateId, onSelectCandidate,
+}: {
+  project: Awaited<ReturnType<typeof getProject>>;
+  handoff: Awaited<ReturnType<typeof listHandoffs>>[number] | null;
+  projectId: string;
+  selectedCandidateId: string | null;
+  onSelectCandidate: (id: string | null) => void;
+}) {
+  const sections: Section[] = ["overview", "strategies", "portfolio", "metrics"];
+  return (
+    <div className="flex flex-col gap-6">
+      <SectionNav sections={sections} />
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="overview" section="overview" />
+        <OverviewTab project={project} handoff={handoff} projectId={projectId} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="strategies" section="strategies" />
+        <StrategiesTab designProjectId={project.designProjectId} handoffId={handoff?.handoffId ?? null} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="portfolio" section="portfolio" />
+        <PortfolioTab designProjectId={project.designProjectId} onSelectCandidate={onSelectCandidate} selectedCandidateId={selectedCandidateId} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="metrics" section="metrics" />
+        <DesignMetricsTab designProjectId={project.designProjectId} referenceDdrIds={project.referenceDdrIds} />
+      </div>
+    </div>
+  );
+}
+
+function GovernancePage({ designProjectId }: { designProjectId: string }) {
+  return <HistoryTab designProjectId={designProjectId} />;
+}
+
+function OverviewTab({
+  project, handoff, projectId,
+}: {
+  project: Awaited<ReturnType<typeof getProject>>;
+  handoff: Awaited<ReturnType<typeof listHandoffs>>[number] | null;
+  projectId: string;
+}) {
   const { t } = useI18n();
   const queryClient = useQueryClient();
-  const [primaryMetricsText, setPrimaryMetricsText] = useState('[{"metric": "titer", "unit": "g/L"}]');
-  const [hardConstraintsText, setHardConstraintsText] = useState("[]");
+  const [primaryMetrics, setPrimaryMetrics] = useState<PrimaryMetricRow[]>([{ metric: "titer", unit: "g/L" }]);
+  const [hardConstraints, setHardConstraints] = useState<HardConstraintRow[]>([]);
 
   function invalidate() {
     queryClient.invalidateQueries({ queryKey: ["design-project", project.designProjectId] });
   }
 
   const setObjectivesMutation = useMutation({
-    mutationFn: () => {
-      let primaryMetrics: unknown[]; let hardConstraints: unknown[];
-      try {
-        primaryMetrics = JSON.parse(primaryMetricsText);
-        hardConstraints = JSON.parse(hardConstraintsText);
-      } catch {
-        throw new Error(t("design.overview.invalidJson"));
-      }
-      return setObjectives(project.designProjectId, { primaryMetrics, hardConstraints, expectedVersion: project.version, actorId: ACTOR_ID });
-    },
+    mutationFn: () => setObjectives(project.designProjectId, {
+      primaryMetrics: primaryMetrics.filter((m) => m.metric.trim()).map((m) => ({ metric: m.metric, unit: m.unit })),
+      hardConstraints: hardConstraints.filter((c) => c.constraint.trim()).map((c) => (
+        c.type === "max_modifications" ? { constraint: c.constraint, type: c.type, value: c.value } : { constraint: c.constraint, type: c.type }
+      )),
+      expectedVersion: project.version, actorId: ACTOR_ID,
+    }),
     onSuccess: invalidate,
   });
   const confirmMutation = useMutation({
@@ -137,6 +223,8 @@ function OverviewTab({ project, handoff }: { project: Awaited<ReturnType<typeof 
 
   return (
     <div className="flex flex-col gap-4">
+      <IdeaLinkPanel projectId={projectId} designProjectId={project.designProjectId} />
+
       <section className="panel flex flex-col gap-2 p-4">
         <h3 className="text-sm font-semibold text-ink">{t("design.overview.handoffTitle")}</h3>
         {handoff ? (
@@ -151,14 +239,81 @@ function OverviewTab({ project, handoff }: { project: Awaited<ReturnType<typeof 
       </section>
 
       {project.status === "objective_draft" && (
-        <section className="panel flex flex-col gap-2 p-4">
-          <h3 className="text-sm font-semibold text-ink">{t("design.overview.objectivesTitle")}</h3>
-          <p className="text-[11px] text-ink-faint">{t("design.overview.objectivesDetail")}</p>
-          <label className="label-caps">{t("design.overview.primaryMetrics")}</label>
-          <textarea value={primaryMetricsText} onChange={(e) => setPrimaryMetricsText(e.target.value)} rows={3} className="rounded-lg border border-border px-2.5 py-1.5 font-mono text-[11px] outline-none focus:border-accent" />
-          <label className="label-caps">{t("design.overview.hardConstraints")}</label>
-          <textarea value={hardConstraintsText} onChange={(e) => setHardConstraintsText(e.target.value)} rows={3} className="rounded-lg border border-border px-2.5 py-1.5 font-mono text-[11px] outline-none focus:border-accent" />
-          <div className="flex gap-2">
+        <section className="panel flex flex-col gap-3 p-4">
+          <div>
+            <h3 className="text-sm font-semibold text-ink">{t("design.overview.objectivesTitle")}</h3>
+            <p className="mt-1 text-[11px] text-ink-faint">{t("design.overview.objectivesDetail")}</p>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className="label-caps">{t("design.overview.primaryMetrics")}</label>
+            {primaryMetrics.map((m, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <input
+                  value={m.metric}
+                  onChange={(e) => setPrimaryMetrics((rows) => rows.map((r, ri) => (ri === i ? { ...r, metric: e.target.value } : r)))}
+                  placeholder={t("design.overview.metricNamePlaceholder")}
+                  className="flex-1 rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent"
+                />
+                <input
+                  value={m.unit}
+                  onChange={(e) => setPrimaryMetrics((rows) => rows.map((r, ri) => (ri === i ? { ...r, unit: e.target.value } : r)))}
+                  placeholder={t("design.overview.metricUnitPlaceholder")}
+                  className="w-24 rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent"
+                />
+                <button type="button" onClick={() => setPrimaryMetrics((rows) => rows.filter((_, ri) => ri !== i))} className="shrink-0 text-ink-faint hover:text-state-risk">✕</button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => setPrimaryMetrics((rows) => [...rows, { metric: "", unit: "" }])}
+              className="w-fit text-[11px] font-medium text-accent-strong hover:underline"
+            >
+              + {t("design.overview.addMetric")}
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label className="label-caps">{t("design.overview.hardConstraints")}</label>
+            {hardConstraints.map((c, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <select
+                  value={c.type}
+                  onChange={(e) => setHardConstraints((rows) => rows.map((r, ri) => (ri === i ? { ...r, type: e.target.value } : r)))}
+                  className="w-40 shrink-0 rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none"
+                >
+                  <option value="no_essential_gene_knockout">{t("design.overview.constraintType.no_essential_gene_knockout")}</option>
+                  <option value="max_modifications">{t("design.overview.constraintType.max_modifications")}</option>
+                  <option value="manual_review">{t("design.overview.constraintType.manual_review")}</option>
+                </select>
+                <input
+                  value={c.constraint}
+                  onChange={(e) => setHardConstraints((rows) => rows.map((r, ri) => (ri === i ? { ...r, constraint: e.target.value } : r)))}
+                  placeholder={t("design.overview.constraintLabelPlaceholder")}
+                  className="flex-1 rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent"
+                />
+                {c.type === "max_modifications" && (
+                  <input
+                    type="number"
+                    value={c.value ?? ""}
+                    onChange={(e) => setHardConstraints((rows) => rows.map((r, ri) => (ri === i ? { ...r, value: e.target.value === "" ? undefined : Number(e.target.value) } : r)))}
+                    placeholder={t("design.overview.constraintValuePlaceholder")}
+                    className="w-20 shrink-0 rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent"
+                  />
+                )}
+                <button type="button" onClick={() => setHardConstraints((rows) => rows.filter((_, ri) => ri !== i))} className="shrink-0 text-ink-faint hover:text-state-risk">✕</button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => setHardConstraints((rows) => [...rows, { type: "no_essential_gene_knockout", constraint: "" }])}
+              className="w-fit text-[11px] font-medium text-accent-strong hover:underline"
+            >
+              + {t("design.overview.addConstraint")}
+            </button>
+          </div>
+
+          <div className="flex gap-2 border-t border-border pt-2">
             <button type="button" disabled={setObjectivesMutation.isPending} onClick={() => setObjectivesMutation.mutate()} className="w-fit rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-ink hover:bg-surface-sunken disabled:opacity-40">
               {t("design.overview.saveObjectives")}
             </button>
@@ -201,6 +356,76 @@ function ActionButton({ label, pending, onClick }: { label: string; pending: boo
     <button type="button" disabled={pending} onClick={onClick} className="rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-ink hover:bg-surface-sunken disabled:opacity-40">
       {label}
     </button>
+  );
+}
+
+/** Surfaces the idea -> scheme traceability chain (`ProjectIdea.
+ * linked_design_project_id`, already a real field/endpoint - `harness/
+ * ideas/service.py::link_idea_to_design` - just never called from any UI
+ * before now). Shows which idea (if any) this design project originated
+ * from, and lets a user record that link retroactively when the handoff
+ * happened without going through an idea first. */
+function IdeaLinkPanel({ projectId, designProjectId }: { projectId: string; designProjectId: string }) {
+  const { t } = useI18n();
+  const queryClient = useQueryClient();
+  const [selectedIdeaId, setSelectedIdeaId] = useState("");
+
+  const ideasQuery = useQuery({
+    queryKey: ["project-ideas", projectId, designProjectId],
+    queryFn: () => listIdeas(projectId, designProjectId),
+  });
+  const ideas = ideasQuery.data?.ideas ?? [];
+  const recommendedIdeaId = ideasQuery.data?.recommendedIdeaId ?? null;
+  const linkedIdea = ideas.find((i) => i.linkedDesignProjectId === designProjectId) ?? null;
+  // Ranked by `listIdeas`'s relevance sort when a recommendation was found, so the
+  // most likely idea already sorts first - the select is still a manual confirm-
+  // click (`link_idea_to_design` stays honest bookkeeping), just pre-suggested.
+  const linkableIdeas = ideas.filter((i) => i.status !== "dismissed" && i.linkedDesignProjectId !== designProjectId);
+  const effectiveSelectedIdeaId = selectedIdeaId || recommendedIdeaId || "";
+
+  const linkMutation = useMutation({
+    mutationFn: () => linkIdeaToDesign(effectiveSelectedIdeaId, { designProjectId, actorId: ACTOR_ID }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["project-ideas", projectId, designProjectId] }),
+  });
+
+  return (
+    <section className="panel flex flex-col gap-2 p-4">
+      <h3 className="text-sm font-semibold text-ink">{t("design.overview.ideaLinkTitle")}</h3>
+      {linkedIdea ? (
+        <Link to={`/projects/${projectId}/ideas?selected=${encodeURIComponent(linkedIdea.ideaId)}`} className="rounded-lg border border-accent bg-accent-soft/40 p-2.5 text-xs text-accent-strong hover:bg-accent-soft">
+          {linkedIdea.freeText}
+        </Link>
+      ) : !ideasQuery.isLoading && linkableIdeas.length === 0 ? (
+        <EmptyState
+          variant="first_use"
+          title={t("design.overview.noIdeasTitle")}
+          detail={t("design.overview.noIdeasDetail")}
+          action={
+            <Link to={`/projects/${projectId}/ideas`} className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white hover:opacity-90">
+              {t("design.overview.goCaptureIdea")}
+            </Link>
+          }
+        />
+      ) : (
+        <div className="flex flex-wrap items-center gap-2">
+          <select value={effectiveSelectedIdeaId} onChange={(e) => setSelectedIdeaId(e.target.value)} className="min-w-56 flex-1 rounded-lg border border-border bg-surface px-2.5 py-1.5 text-xs outline-none">
+            <option value="">{t("design.overview.selectIdeaToLink")}</option>
+            {linkableIdeas.map((i) => (
+              <option key={i.ideaId} value={i.ideaId}>{i.ideaId === recommendedIdeaId ? `★ ${i.freeText} (${t("design.overview.ideaRecommended")})` : i.freeText}</option>
+            ))}
+          </select>
+          <button
+            type="button"
+            disabled={linkMutation.isPending || !effectiveSelectedIdeaId}
+            onClick={() => linkMutation.mutate()}
+            className="rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white disabled:opacity-40"
+          >
+            {linkMutation.isPending ? t("design.overview.linkingIdea") : t("design.overview.linkIdea")}
+          </button>
+        </div>
+      )}
+      {linkMutation.isError && <EmptyState variant="failed" detail={String(linkMutation.error)} />}
+    </section>
   );
 }
 

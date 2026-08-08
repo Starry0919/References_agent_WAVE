@@ -16,12 +16,13 @@ which Starlette/anyio propagate correctly into the thread-pooled sync route
 handlers FastAPI uses for this app's `def` (non-async) routes.
 
 Scope (Page 2 追加需求 - 全局中文覆盖诊断/设计阶段生成内容): this currently
-covers `harness.diagnosis.hypothesis_generator` and
-`harness.engineering_design.{strategy_generator,portfolio_generator}` -
-the content actually rendered by the Diagnose/Design stage UI today.
-Deeper narrative clusters (scientific_evaluation critic/gates, orchestrator
-transition reasons, workflow gate violation messages) are NOT covered yet;
-they remain English-only pending a follow-up pass.
+covers `harness.diagnosis.hypothesis_generator`,
+`harness.engineering_design.{strategy_generator,portfolio_generator}`, and
+`harness.diagnosis.report`'s empty-section narrative notes - the content
+actually rendered by the Diagnose/Design stage UI today. Deeper narrative
+clusters (scientific_evaluation critic/gates, orchestrator transition
+reasons, workflow gate violation messages) are NOT covered yet; they
+remain English-only pending a follow-up pass.
 """
 from __future__ import annotations
 
@@ -254,5 +255,18 @@ CATALOG: dict[str, dict[str, str]] = {
     "agent_trace.evidence_validation.output": {
         "en-US": "{hard}/{total} steps based on hard evidence (measurement, structural resolution, stoichiometry, etc.)",
         "zh-CN": "{hard}/{total} 步基于硬证据（实测、结构解析、化学计量等）",
+    },
+    # harness/diagnosis/report.py - explicit narrative for legitimately-empty
+    # sections, so a reader sees "not done yet" instead of a bare "-" that
+    # could as easily read as broken.
+    "report.next_test.empty_note": {
+        "en-US": "No diagnostic test has been proposed or selected in this pass yet - test selection is a "
+                 "deliberate, human/API-gated step given its cost and risk tradeoffs.",
+        "zh-CN": "本轮诊断尚未提出或选定诊断测试——测试选择涉及成本与风险权衡，需人工/接口显式确认，不会自动执行。",
+    },
+    "report.model_conflicts.empty_note": {
+        "en-US": "No independent model (GEM/kinetic) evidence was run in this pass - running a model is an "
+                 "optional cross-check, not a required step.",
+        "zh-CN": "本轮诊断未运行任何独立模型（代谢网络/动力学）证据——运行模型是可选的交叉验证步骤，并非必需。",
     },
 }

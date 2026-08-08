@@ -21,5 +21,11 @@ dependencies = [
     "PyMuPDF>=1.24",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4",
+    "pytest-asyncio>=1.4",
+]
+
 [tool.setuptools.packages.find]
 include = ["harness*"]

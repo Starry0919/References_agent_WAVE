@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { FlaskConical } from "lucide-react";
 import {
   getMetricsSummary,
   listConsistencyRuns,
-  listDesignProjectsForProject,
   runConsistencySample,
   setReferenceDdr,
   type CoverageByClassEntry,
@@ -16,71 +14,17 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { useI18n, type DictKey } from "@/lib/i18n";
 
 /**
- * 260718 设计文档 §7 (验证方式) evaluation-metrics dashboard. Structured to
- * make the doc's own 3-layer split visible in the UI itself (过程层/能力层/
- * 结果层), with 复现率 rendered separately and visibly de-emphasized - the
- * doc is explicit that it must never read as a primary metric alongside the
- * other four (harness/evaluation_metrics/aggregator.py mirrors the same
- * layering server-side).
+ * 260718 设计文档 §7 (验证方式) evaluation-metrics, scoped to one design
+ * project - lives as a tab inside `DesignProjectDetailPage` (not a
+ * standalone top-level page) since the metrics only ever mean anything in
+ * the context of a specific scheme/candidate set, never in the abstract.
+ * Structured to make the doc's own 3-layer split visible in the UI itself
+ * (过程层/能力层/结果层), with 复现率 rendered separately and visibly
+ * de-emphasized - the doc is explicit that it must never read as a
+ * primary metric alongside the other four (harness/evaluation_metrics/
+ * aggregator.py mirrors the same layering server-side).
  */
-export function EvaluationMetricsPage() {
-  const { projectId } = useParams<{ projectId: string }>();
-  const { t } = useI18n();
-  const [selectedDesignProjectId, setSelectedDesignProjectId] = useState<string | null>(null);
-
-  const designProjectsQuery = useQuery({
-    queryKey: ["eval-metrics-design-projects", projectId],
-    queryFn: () => listDesignProjectsForProject(projectId as string),
-    enabled: !!projectId,
-  });
-
-  const designProjects = designProjectsQuery.data ?? [];
-  const activeDesignProjectId = selectedDesignProjectId ?? designProjects[0]?.designProjectId ?? null;
-  const activeDesignProject = designProjects.find((dp) => dp.designProjectId === activeDesignProjectId) ?? null;
-
-  return (
-    <div className="flex min-h-0 flex-1 flex-col">
-      <h1 className="sr-only">{t("metrics.title")}</h1>
-      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-4">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4">
-          <header>
-            <h2 className="text-base font-semibold text-ink">{t("metrics.title")}</h2>
-            <p className="mt-1 text-sm text-ink-muted">{t("metrics.subtitle")}</p>
-          </header>
-
-          {designProjectsQuery.isLoading && <EmptyState variant="loading" />}
-          {designProjectsQuery.isError && <EmptyState variant="failed" detail={String(designProjectsQuery.error)} />}
-          {designProjectsQuery.data && designProjects.length === 0 && (
-            <EmptyState variant="first_use" title={t("metrics.noDesignProject.title")} detail={t("metrics.noDesignProject.detail")} />
-          )}
-
-          {designProjects.length > 1 && (
-            <div className="flex items-center gap-2 text-xs">
-              <label className="label-caps">{t("metrics.designProjectSelector.label")}</label>
-              <select
-                value={activeDesignProjectId ?? ""}
-                onChange={(e) => setSelectedDesignProjectId(e.target.value)}
-                className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none"
-              >
-                {designProjects.map((dp) => (
-                  <option key={dp.designProjectId} value={dp.designProjectId}>
-                    {dp.designProjectId} · {dp.status}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          {activeDesignProjectId && activeDesignProject && (
-            <MetricsBody designProjectId={activeDesignProjectId} referenceDdrIds={activeDesignProject.referenceDdrIds} />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function MetricsBody({ designProjectId, referenceDdrIds }: { designProjectId: string; referenceDdrIds: string[] }) {
+export function DesignMetricsTab({ designProjectId, referenceDdrIds }: { designProjectId: string; referenceDdrIds: string[] }) {
   const { t } = useI18n();
   const queryClient = useQueryClient();
 
@@ -91,7 +35,7 @@ function MetricsBody({ designProjectId, referenceDdrIds }: { designProjectId: st
 
   function invalidateAfterLink() {
     queryClient.invalidateQueries({ queryKey: ["eval-metrics-summary", designProjectId] });
-    queryClient.invalidateQueries({ queryKey: ["eval-metrics-design-projects"] });
+    queryClient.invalidateQueries({ queryKey: ["design-project", designProjectId] });
   }
 
   if (summaryQuery.isLoading) return <EmptyState variant="loading" />;
@@ -101,6 +45,7 @@ function MetricsBody({ designProjectId, referenceDdrIds }: { designProjectId: st
 
   return (
     <div className="flex flex-col gap-4">
+      <p className="text-[11px] text-ink-faint">{t("metrics.subtitle")}</p>
       <ReferenceDdrPanel designProjectId={designProjectId} referenceDdrIds={referenceDdrIds} onLinked={invalidateAfterLink} />
 
       <section className="flex flex-col gap-2">

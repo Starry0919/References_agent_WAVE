@@ -18,9 +18,13 @@ from harness.diagnosis import model_service as model_svc
 from harness.diagnosis import service as diag_svc
 from harness.diagnosis.loop import DiagnosisGateRejectedError, DiagnosisLoopController, IllegalDiagnosisTransitionError
 from harness.diagnosis.model_adapters.registry import detect_all_capabilities
-from harness.diagnosis.models import DiagnosisDecision, DiagnosisSession, DiagnosisTransition, EvidenceLink, HypothesisAssessment
+from harness.diagnosis.models import (
+    DiagnosisDecision, DiagnosisSession, DiagnosisTransition, EvidenceItem, EvidenceLink, HypothesisAssessment,
+)
 from harness.diagnosis.report import render_report
 from harness.learning.models import HypothesisVersion
+from harness.memory import event_types as et
+from harness.projects.models import ProjectEvent
 
 router = APIRouter(prefix="/api/diagnosis", tags=["diagnosis"])
 _loop = DiagnosisLoopController()
@@ -95,6 +99,23 @@ def list_hypotheses(diagnosis_session_id: str, session: Session = Depends(get_db
     }
 
 
+def _latest_reviews(session: Session, evidence_link_ids: list[str]) -> dict[str, dict]:
+    """Latest human review verdict per evidence link, read back off the
+    `ProjectEvent` ledger (see `evidence_svc.review_evidence_link`'s
+    docstring for why this isn't a mutable column)."""
+    if not evidence_link_ids:
+        return {}
+    rows = session.execute(
+        select(ProjectEvent)
+        .where(ProjectEvent.entity_type == "EvidenceLink", ProjectEvent.entity_id.in_(evidence_link_ids), ProjectEvent.event_type == et.DIAGNOSIS_EVIDENCE_LINK_REVIEWED)
+        .order_by(ProjectEvent.seq)
+    ).scalars().all()
+    latest: dict[str, dict] = {}
+    for r in rows:
+        latest[r.entity_id] = r.payload  # ordered by seq ascending, so the last write per id wins
+    return latest
+
+
 @router.get("/sessions/{diagnosis_session_id}/evidence")
 def list_evidence(diagnosis_session_id: str, session: Session = Depends(get_db_session)) -> dict:
     assessments = session.execute(
@@ -102,13 +123,35 @@ def list_evidence(diagnosis_session_id: str, session: Session = Depends(get_db_s
     ).scalars().all()
     hyp_ids = {a.hypothesis_version_id for a in assessments}
     links = session.execute(select(EvidenceLink).where(EvidenceLink.hypothesis_version_id.in_(hyp_ids))).scalars().all() if hyp_ids else []
+    reviews = _latest_reviews(session, [l.evidence_link_id for l in links])
     return {
         "evidence_links": [
-            {"evidence_link_id": l.evidence_link_id, "hypothesis_version_id": l.hypothesis_version_id,
-             "evidence_item_id": l.evidence_item_id, "relation": l.relation, "claim": l.claim}
+            {
+                "evidence_link_id": l.evidence_link_id, "hypothesis_version_id": l.hypothesis_version_id,
+                "evidence_item_id": l.evidence_item_id, "relation": l.relation, "claim": l.claim,
+                "review_status": reviews[l.evidence_link_id]["verdict"] if l.evidence_link_id in reviews else "unreviewed",
+                "review_note": reviews[l.evidence_link_id].get("note", "") if l.evidence_link_id in reviews else "",
+            }
             for l in links
         ]
     }
+
+
+class ReviewEvidenceLinkBody(BaseModel):
+    verdict: str
+    actor_id: str
+    note: str = ""
+
+
+@router.post("/evidence-links/{evidence_link_id}/review")
+def review_evidence_link(evidence_link_id: str, body: ReviewEvidenceLinkBody, session: Session = Depends(get_db_session)) -> dict:
+    try:
+        evidence_svc.review_evidence_link(session, evidence_link_id=evidence_link_id, **body.model_dump())
+    except evidence_svc.InvalidReviewVerdict as e:
+        raise HTTPException(422, str(e))
+    except ValueError as e:
+        raise HTTPException(404, str(e))
+    return {"evidence_link_id": evidence_link_id, "verdict": body.verdict}
 
 
 class LinkEvidenceBody(BaseModel):
@@ -127,6 +170,43 @@ def link_evidence(body: LinkEvidenceBody, session: Session = Depends(get_db_sess
     except evidence_svc.InvalidEvidenceRelation as e:
         raise HTTPException(422, str(e))
     return {"evidence_link_id": link.evidence_link_id}
+
+
+@router.get("/evidence-items")
+def list_evidence_items(project_id: str, session: Session = Depends(get_db_session)) -> dict:
+    """So the frontend can offer a picker instead of asking the user to
+    remember/type an `evidence_item_id` by hand."""
+    rows = session.execute(
+        select(EvidenceItem).where(EvidenceItem.project_id == project_id).order_by(EvidenceItem.created_at.desc())
+    ).scalars().all()
+    return {
+        "evidence_items": [
+            {
+                "evidence_item_id": r.evidence_item_id, "source_type": r.source_type,
+                "source_reference": r.source_reference, "content_summary": r.content_summary,
+                "quality": r.quality, "directness": r.directness, "created_at": r.created_at,
+            }
+            for r in rows
+        ]
+    }
+
+
+class CreateEvidenceItemBody(BaseModel):
+    project_id: str
+    actor_id: str
+    source_type: str
+    content_summary: str
+    source_reference: str | None = None
+    quality: str = "low"
+    directness: str = "indirect"
+
+
+@router.post("/evidence-items")
+def create_evidence_item(body: CreateEvidenceItemBody, session: Session = Depends(get_db_session)) -> dict:
+    """`evidence_item_id` is always server-generated (`evidence_svc.record_evidence_item`
+    -> `new_id("EVID")`) - the request body never carries a caller-supplied id."""
+    item = evidence_svc.record_evidence_item(session, **body.model_dump())
+    return {"evidence_item_id": item.evidence_item_id}
 
 
 @router.get("/model-capabilities")

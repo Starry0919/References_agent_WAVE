@@ -30,6 +30,37 @@ def test_evidence_link_relation_must_be_one_of_the_four():
         assert link.relation == "is_consistent_with"
 
 
+def test_review_evidence_link_records_verdict_via_ledger_not_a_mutable_column():
+    """`EvidenceLink` is fully immutable (`guard_immutable_fields(EvidenceLink,
+    mutable_fields=set())`) - review_evidence_link must not touch the row at
+    all, only append a ProjectEvent; `list_evidence` reads that back for the
+    latest verdict, and an unreviewed link reports "unreviewed"."""
+    project_id, hv_id = _project_and_hypothesis()
+    with db.session_scope() as s:
+        item = evidence_svc.record_evidence_item(s, project_id=project_id, source_type="expert_rule", content_summary="x", actor_id="agent")
+        link = evidence_svc.link_evidence(s, hypothesis_version_id=hv_id, evidence_item_id=item.evidence_item_id, relation="supports", actor_id="agent")
+        link_id, created_at = link.evidence_link_id, link.created_at
+
+        with pytest.raises(evidence_svc.InvalidReviewVerdict):
+            evidence_svc.review_evidence_link(s, evidence_link_id=link_id, verdict="maybe", actor_id="pi")
+
+        evidence_svc.review_evidence_link(s, evidence_link_id=link_id, verdict="incorrect", actor_id="pi", note="wrong hypothesis")
+        # A second review (human changed their mind) must be legal - append another
+        # event, not edit the first - and the latest one must win on read-back.
+        evidence_svc.review_evidence_link(s, evidence_link_id=link_id, verdict="confirmed", actor_id="pi")
+
+    with db.session_scope() as s:
+        from harness.diagnosis.models import EvidenceLink
+
+        reloaded = s.get(EvidenceLink, link_id)
+        assert reloaded.created_at == created_at  # untouched by either review
+
+        from harness.api.diagnosis import _latest_reviews
+
+        reviews = _latest_reviews(s, [link_id])
+        assert reviews[link_id]["verdict"] == "confirmed"
+
+
 def test_consistent_with_is_never_the_same_as_supports_in_assessment():
     """doc03 2.3: 'consistent with' must not be treated as 'proves' - the
     assessor's status computation only counts `supporting_links`, so a

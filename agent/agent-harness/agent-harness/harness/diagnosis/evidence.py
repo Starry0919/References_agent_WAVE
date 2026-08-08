@@ -111,6 +111,64 @@ def link_evidence(
     return link
 
 
+EVIDENCE_REVIEW_VERDICTS = ("confirmed", "incorrect")
+
+
+class InvalidReviewVerdict(ValueError):
+    pass
+
+
+def review_evidence_link(session: Session, *, evidence_link_id: str, verdict: str, actor_id: str, note: str = "") -> None:
+    """A human's spot-check of an agent-created `EvidenceLink` (doc03 4.5's
+    auto-grounding, wired up in `harness/orchestrator/adapters.py`) - purely
+    an audit annotation, recorded on the append-only `ProjectEvent` ledger
+    rather than a mutable column, because `EvidenceLink` itself is guarded
+    fully immutable (`guard_immutable_fields(EvidenceLink, mutable_fields=set())`
+    in `harness/diagnosis/models.py`). Never gates or changes the diagnosis
+    loop - `harness/api/diagnosis.py::list_evidence` just reads the latest
+    review event per link back out for display."""
+    if verdict not in EVIDENCE_REVIEW_VERDICTS:
+        raise InvalidReviewVerdict(f"verdict must be one of {EVIDENCE_REVIEW_VERDICTS}, got {verdict!r}")
+    link = session.get(EvidenceLink, evidence_link_id)
+    if link is None:
+        raise ValueError(f"no such evidence link: {evidence_link_id}")
+    item = session.get(EvidenceItem, link.evidence_item_id)
+    append_event(
+        session, project_id=item.project_id, event_type=et.DIAGNOSIS_EVIDENCE_LINK_REVIEWED, entity_type="EvidenceLink",
+        entity_id=evidence_link_id, payload={"evidence_link_id": evidence_link_id, "verdict": verdict, "note": note},
+        actor_type="human", actor_id=actor_id,
+    )
+
+
+EVIDENCE_REVIEW_VERDICTS = ("confirmed", "incorrect")
+
+
+class InvalidReviewVerdict(ValueError):
+    pass
+
+
+def review_evidence_link(session: Session, *, evidence_link_id: str, verdict: str, actor_id: str, note: str = "") -> None:
+    """A human's spot-check of an agent-created `EvidenceLink` (doc03 4.5's
+    auto-grounding, wired up in `harness/orchestrator/adapters.py`) - purely
+    an audit annotation, recorded on the append-only `ProjectEvent` ledger
+    rather than a mutable column, because `EvidenceLink` itself is guarded
+    fully immutable (`guard_immutable_fields(EvidenceLink, mutable_fields=set())`
+    in `harness/diagnosis/models.py`). Never gates or changes the diagnosis
+    loop - `harness/api/diagnosis.py::list_evidence` just reads the latest
+    review event per link back out for display."""
+    if verdict not in EVIDENCE_REVIEW_VERDICTS:
+        raise InvalidReviewVerdict(f"verdict must be one of {EVIDENCE_REVIEW_VERDICTS}, got {verdict!r}")
+    link = session.get(EvidenceLink, evidence_link_id)
+    if link is None:
+        raise ValueError(f"no such evidence link: {evidence_link_id}")
+    item = session.get(EvidenceItem, link.evidence_item_id)
+    append_event(
+        session, project_id=item.project_id, event_type=et.DIAGNOSIS_EVIDENCE_LINK_REVIEWED, entity_type="EvidenceLink",
+        entity_id=evidence_link_id, payload={"evidence_link_id": evidence_link_id, "verdict": verdict, "note": note},
+        actor_type="human", actor_id=actor_id,
+    )
+
+
 def supersede_evidence_item(session: Session, *, evidence_item_id: str, superseded_by_id: str, actor_id: str) -> EvidenceItem:
     """doc03 3.6: a publication correction/supersession must not be
     silently ignored by evidence links formed before it - callers of

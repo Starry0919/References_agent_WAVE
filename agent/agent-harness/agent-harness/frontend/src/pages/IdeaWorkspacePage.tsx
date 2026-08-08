@@ -47,7 +47,7 @@ export function IdeaWorkspacePage() {
   });
 
   const ideas = useMemo(
-    () => (ideasQuery.data ?? []).filter((idea) => idea.status !== "dismissed"),
+    () => (ideasQuery.data?.ideas ?? []).filter((idea) => idea.status !== "dismissed"),
     [ideasQuery.data],
   );
   const objective = project?.objectives.join(" · ") || project?.targetProduct || t("ideaWorkspace.noObjectiveDefined");
@@ -96,6 +96,21 @@ export function IdeaWorkspacePage() {
   );
   const activeRunProgress = activeRun ? describeRunProgress(activeRun) : null;
   const activeRunPct = activeRun ? computeRunProgressPct(activeRun) : 0;
+  // Lets ExtractedIdeaCard resolve a live run's idea.source.paperId (the
+  // literature paper's own id) to the "文献证据" record it was auto-saved
+  // into (ddr_converter.py::ensure_task_saved_as_evidence) - the id the
+  // /projects/:id/evidence/:sourceId route actually expects. Knowledge-base
+  // ideas need no lookup: ddr_to_idea_view sets their paperId to the ddr_id
+  // itself, recognizable by its "DDR-" prefix.
+  const evidenceSourceByPaperId = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const query of runResults) {
+      for (const paper of query.data?.extractionSummary?.papers ?? []) {
+        if (paper.evidenceSourceId) map.set(paper.paperId, paper.evidenceSourceId);
+      }
+    }
+    return map;
+  }, [runResults]);
   const retrievalMutation = useMutation({
     mutationFn: () => submitRun({
       projectId,
@@ -207,6 +222,8 @@ export function IdeaWorkspacePage() {
             running={Boolean((runsQuery.data ?? []).some((run) => !["completed", "failed"].includes(run.status)))}
             progressDetail={activeRunProgress}
             progressPct={activeRunPct}
+            projectId={projectId as string}
+            evidenceSourceByPaperId={evidenceSourceByPaperId}
           />
           {!selected && extractedIdeas.length === 0 ? (
             <EmptyState variant="first_use" title={t("ideaWorkspace.selectIdeaTitle")} detail={t("ideaWorkspace.selectIdeaDetail")} />
@@ -273,12 +290,16 @@ function RetrievedIdeas({
   running,
   progressDetail,
   progressPct,
+  projectId,
+  evidenceSourceByPaperId,
 }: {
   ideas: ExtractedIdea[];
   filterText: string;
   running: boolean;
   progressDetail: string | null;
   progressPct: number;
+  projectId: string;
+  evidenceSourceByPaperId: Map<string, string>;
 }) {
   const { t } = useI18n();
   const words = filterText.trim().toLowerCase().split(/\s+/).filter(Boolean);
@@ -331,7 +352,14 @@ function RetrievedIdeas({
           <div key={category} id={`idea-category-${category}`} className="scroll-mt-14">
             <h3 className="mb-2 text-xs font-semibold text-ink">{categoryLabel(category as ExtractedIdea["category"], t)}</h3>
             <div className="grid gap-3 2xl:grid-cols-2">
-              {rows.map((idea) => <ExtractedIdeaCard key={idea.ideaId} idea={idea} />)}
+              {rows.map((idea) => (
+                <ExtractedIdeaCard
+                  key={idea.ideaId}
+                  idea={idea}
+                  projectId={projectId}
+                  evidenceSourceByPaperId={evidenceSourceByPaperId}
+                />
+              ))}
             </div>
           </div>
         ))}
@@ -343,8 +371,19 @@ function RetrievedIdeas({
   );
 }
 
-function ExtractedIdeaCard({ idea }: { idea: ExtractedIdea }) {
+function ExtractedIdeaCard({
+  idea,
+  projectId,
+  evidenceSourceByPaperId,
+}: {
+  idea: ExtractedIdea;
+  projectId: string;
+  evidenceSourceByPaperId: Map<string, string>;
+}) {
   const { t } = useI18n();
+  const evidenceSourceId = idea.source.paperId.startsWith("DDR-")
+    ? idea.source.paperId
+    : evidenceSourceByPaperId.get(idea.source.paperId) ?? null;
   return (
     <article className="panel overflow-hidden">
       <div className="p-4">
@@ -359,12 +398,39 @@ function ExtractedIdeaCard({ idea }: { idea: ExtractedIdea }) {
           <p className="text-[11px] font-semibold text-ink-muted">{t("ideaWorkspace.summaryLabel")}</p>
           <p className="mt-1 text-xs leading-5 text-ink">{idea.summary}</p>
         </div>
+        {idea.evidenceIds.length > 0 && (
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            {idea.evidenceIds.map((evidenceId) =>
+              evidenceSourceId ? (
+                <Link
+                  key={evidenceId}
+                  to={`/projects/${projectId}/evidence/${evidenceSourceId}`}
+                  className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-accent-strong underline decoration-dotted underline-offset-2"
+                >
+                  {evidenceId}
+                </Link>
+              ) : (
+                <span key={evidenceId} className="rounded border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-ink-muted">
+                  {evidenceId}
+                </span>
+              ),
+            )}
+          </div>
+        )}
       </div>
       <footer className="border-t border-border bg-surface-sunken px-4 py-3">
         <p className="flex items-start gap-2 text-xs font-medium text-ink"><BookOpen size={13} className="mt-0.5 flex-none text-accent-strong" /> {idea.source.title}</p>
         <p className="mt-1 pl-5 text-[11px] text-ink-muted">
           {[idea.source.journal, idea.source.year, idea.source.doi && `DOI ${idea.source.doi}`].filter(Boolean).join(" · ")}
         </p>
+        {evidenceSourceId && (
+          <Link
+            to={`/projects/${projectId}/evidence/${evidenceSourceId}`}
+            className="mt-2 flex w-fit items-center gap-1 pl-5 text-[11px] font-medium text-accent-strong hover:underline"
+          >
+            {t("ideaWorkspace.viewEvidenceDetail")} <ArrowRight size={11} />
+          </Link>
+        )}
       </footer>
     </article>
   );
@@ -483,7 +549,18 @@ function IdeaDetail({
         <dl className="mt-4 grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
           <Fact label={t("ideaWorkspace.interventionTarget")} value={idea.targetGene || t("ideaWorkspace.pendingDiagnosis")} />
           <Fact label={t("ideaWorkspace.interventionType")} value={idea.modificationType || t("ideaWorkspace.pendingDiagnosis")} />
-          <Fact label={t("ideaWorkspace.designLink")} value={idea.linkedDesignProjectId || t("ideaWorkspace.noDesignYet")} />
+          <div>
+            <dt className="text-xs text-ink-muted">{t("ideaWorkspace.designLink")}</dt>
+            <dd className="mt-0.5 text-sm font-medium text-ink">
+              {idea.linkedDesignProjectId ? (
+                <Link to={`/projects/${projectId}/design/${idea.linkedDesignProjectId}`} className="font-mono text-accent-strong hover:underline">
+                  {idea.linkedDesignProjectId}
+                </Link>
+              ) : (
+                t("ideaWorkspace.noDesignYet")
+              )}
+            </dd>
+          </div>
         </dl>
       </section>
 
@@ -492,7 +569,7 @@ function IdeaDetail({
         <ModeButton active={mode === "design"} icon={GitBranch} label={t("ideaWorkspace.modeDesign")} onClick={() => onModeChange("design")} />
       </div>
 
-      {mode === "diagnosis" ? <DiagnosisPanel idea={idea} /> : <DesignPanel idea={idea} />}
+      {mode === "diagnosis" ? <DiagnosisPanel idea={idea} /> : <DesignPanel idea={idea} projectId={projectId} />}
     </div>
   );
 }
@@ -531,7 +608,7 @@ function DiagnosisPanel({ idea }: { idea: ProjectIdea }) {
   );
 }
 
-function DesignPanel({ idea }: { idea: ProjectIdea }) {
+function DesignPanel({ idea, projectId }: { idea: ProjectIdea; projectId: string }) {
   const { t } = useI18n();
   return (
     <div className="grid gap-4 lg:grid-cols-3">
@@ -544,7 +621,16 @@ function DesignPanel({ idea }: { idea: ProjectIdea }) {
             <h3 className="text-sm font-semibold text-ink">{t("ideaWorkspace.designNotSimTitle")}</h3>
             <p className="mt-1 text-xs text-ink-muted">{t("ideaWorkspace.designNotSimDetail")}</p>
           </div>
-          <StatusBadge status={idea.linkedDesignProjectId ? "approved" : "not_started"} label={idea.linkedDesignProjectId ? t("ideaWorkspace.hasDesignProject") : t("ideaWorkspace.waitingForDesign")} />
+          {idea.linkedDesignProjectId ? (
+            <Link
+              to={`/projects/${projectId}/design/${idea.linkedDesignProjectId}`}
+              className="flex items-center gap-1 rounded-full border border-accent bg-accent-soft px-2.5 py-1 text-[11px] font-medium text-accent-strong hover:bg-accent-soft/70"
+            >
+              {t("ideaWorkspace.hasDesignProject")} <ArrowRight size={12} />
+            </Link>
+          ) : (
+            <StatusBadge status="not_started" label={t("ideaWorkspace.waitingForDesign")} />
+          )}
         </div>
       </section>
     </div>

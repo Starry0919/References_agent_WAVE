@@ -8,9 +8,11 @@ from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from harness.api.deps import get_db_session
+from harness.ideas import matching as ideas_matching
 from harness.ideas import service as ideas_service
 from harness.ideas.models import ProjectIdea
 
@@ -42,9 +44,37 @@ def capture_idea(project_id: str, body: CaptureIdeaBody, session: Session = Depe
     return _idea_dict(idea)
 
 
+def _target_texts_for_design_project(session: Session, design_project_id: str) -> list[str]:
+    """Originating diagnosis hypothesis statements for a design project -
+    used only to rank idea relevance (`ideas.matching`), never to
+    auto-select/auto-link anything."""
+    from harness.diagnosis.models import DiagnosisDecision
+    from harness.engineering_design.models import EngineeringDesignProject
+    from harness.learning.models import HypothesisVersion
+
+    proj = session.get(EngineeringDesignProject, design_project_id)
+    if proj is None or not proj.diagnosis_decision_id:
+        return []
+    decision = session.get(DiagnosisDecision, proj.diagnosis_decision_id)
+    if decision is None or not decision.leading_hypothesis_ids:
+        return []
+    hyps = session.execute(
+        select(HypothesisVersion).where(HypothesisVersion.hypothesis_version_id.in_(decision.leading_hypothesis_ids))
+    ).scalars().all()
+    return [h.statement for h in hyps if h.statement]
+
+
 @router.get("/api/projects/{project_id}/ideas")
-def list_ideas(project_id: str, session: Session = Depends(get_db_session)) -> dict:
-    return {"ideas": [_idea_dict(i) for i in ideas_service.list_ideas(session, project_id)]}
+def list_ideas(project_id: str, rank_for_design_project_id: str | None = None, session: Session = Depends(get_db_session)) -> dict:
+    ideas = ideas_service.list_ideas(session, project_id)
+    recommended_idea_id = None
+    if rank_for_design_project_id:
+        target_texts = _target_texts_for_design_project(session, rank_for_design_project_id)
+        if target_texts:
+            ideas = ideas_matching.rank_ideas_by_relevance(ideas, target_texts)
+            if ideas and ideas_matching.relevance_score(ideas[0], target_texts) > 0:
+                recommended_idea_id = ideas[0].idea_id
+    return {"ideas": [_idea_dict(i) for i in ideas], "recommended_idea_id": recommended_idea_id}
 
 
 class LinkIdeaBody(BaseModel):

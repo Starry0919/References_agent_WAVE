@@ -1,0 +1,57 @@
+{
+  "paper_identity": {
+    "paper_id": "paper:5cd581678b23a4e1a323",
+    "title": "Direct 1,3-butadiene biosynthesis in Escherichia coli via a tailored ferulic acid decarboxylase mutant",
+    "doi": "10.1038/s41467-021-22504-6",
+    "authors": [
+      "Yutaro Mori",
+      "Shuhei Noda",
+      "Tomokazu Shirai",
+      "Akihiko Kondo"
+    ],
+    "journal": "Nature Communications",
+    "year": 2021
+  },
+  "source_information": {
+    "source_type": "europe_pmc_oa",
+    "source_url": "https://europepmc.org/articles/PMC8044207?pdf=render",
+    "download_time": "2026-07-31T13:31:52.080729+00:00"
+  },
+  "download_attempts": [
+    {
+      "attempt": 1,
+      "source_type": "openalex_oa",
+      "source_url": "https://www.nature.com/articles/s41467-021-22504-6.pdf",
+      "status": "invalid",
+      "validation_errors": [
+        "invalid_magic_header",
+        "missing_eof_marker",
+        "invalid_mime_type"
+      ],
+      "advisor": "deterministic",
+      "metadata_url": "https://api.openalex.org/works/doi:10.1038%2Fs41467-021-22504-6",
+      "license": "cc-by"
+    },
+    {
+      "attempt": 2,
+      "source_type": "europe_pmc_oa",
+      "source_url": "https://europepmc.org/articles/PMC8044207?pdf=render",
+      "status": "verified",
+      "validation_errors": [],
+      "advisor": "deterministic",
+      "metadata_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1038%2Fs41467-021-22504-6&format=json"
+    }
+  ],
+  "processing_status": "verified",
+  "file_information": {
+    "file_name": "original.pdf",
+    "path": "D:\\Users\\Starry\\Desktop\\agent\\agent\\agent-harness\\agent-harness\\harness\\paper_extraction\\vendor\\paper_artifacts\\papers\\paper_5cd581678b23a4e1a323\\original.pdf",
+    "size_bytes": 1793399,
+    "mime_type": "application/pdf"
+  },
+  "integrity": {
+    "checksum_algorithm": "sha256",
+    "checksum_value": "838ca43b33a07d6736cf1c073c154ea618bf18e2101d9362b8c61b942f0c3303"
+  },
+  "artifact_version": "1"
+}

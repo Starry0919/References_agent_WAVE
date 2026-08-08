@@ -49,7 +49,7 @@ def _project_dict(p: EngineeringDesignProject) -> dict[str, Any]:
         "primary_metrics": p.primary_metrics, "secondary_metrics": p.secondary_metrics,
         "hard_constraints": p.hard_constraints, "preferences_or_weights": p.preferences_or_weights,
         "autonomy_level": p.autonomy_level, "status": p.status, "revision_count": p.revision_count,
-        "version": p.version,
+        "version": p.version, "reference_ddr_ids": p.reference_ddr_ids,
     }
 
 

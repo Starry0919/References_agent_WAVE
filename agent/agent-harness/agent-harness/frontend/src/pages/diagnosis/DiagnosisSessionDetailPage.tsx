@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
-  ClipboardList, Lightbulb, BookOpen, Cpu, TestTube2, Gavel, History,
+  ClipboardList, Lightbulb, BookOpen, Cpu, TestTube2, Gavel, History, Workflow, Plus,
 } from "lucide-react";
 import {
-  approveDecision, getAuditTrail, getReport, getSession, linkEvidence, listDecisions, listEvidence,
-  listHypotheses, listModelCapabilities, listTests, runModel, sessionAction,
-  DIAGNOSIS_SESSION_ACTIONS, type DiagnosisSessionAction,
+  approveDecision, createEvidenceItem, getAuditTrail, getReport, getSession, linkEvidence, listDecisions,
+  listEvidence, listEvidenceItems, listHypotheses, listModelCapabilities, listTests, reviewEvidenceLink, runModel,
+  sessionAction, DIAGNOSIS_SESSION_ACTIONS, type DiagnosisSessionAction,
 } from "@/api/diagnosis";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge } from "@/components/common/StatusBadge";
@@ -35,9 +35,17 @@ const ACTION_FROM_STATES: Record<DiagnosisSessionAction, string[]> = {
   close_diagnosis: ["evidence_limited", "actionable", "handed_off_to_design", "human_review_required"],
 };
 
-type Tab = "overview" | "hypotheses" | "evidence" | "models" | "tests" | "decisions" | "audit";
-const TABS: Tab[] = ["overview", "hypotheses", "evidence", "models", "tests", "decisions", "audit"];
-const TAB_ICON: Record<Tab, typeof ClipboardList> = {
+/** Was 7 individually-clickable tabs (one section visible at a time); consolidated per
+ * user request into 2 pages so each groups its sections as stacked, scrollable panels
+ * instead of hiding them behind further tab clicks - "process" is the working loop
+ * (act on the session, review hypotheses/evidence, run models/tests), "governance" is
+ * the output side (approve decisions, read the audit trail/report). */
+type Tab = "process" | "governance";
+const TABS: Tab[] = ["process", "governance"];
+const TAB_ICON: Record<Tab, typeof ClipboardList> = { process: Workflow, governance: Gavel };
+
+type Section = "overview" | "hypotheses" | "evidence" | "models" | "tests" | "decisions" | "audit";
+const SECTION_ICON: Record<Section, typeof ClipboardList> = {
   overview: ClipboardList, hypotheses: Lightbulb, evidence: BookOpen, models: Cpu,
   tests: TestTube2, decisions: Gavel, audit: History,
 };
@@ -47,7 +55,7 @@ export function DiagnosisSessionDetailPage() {
   const { t } = useI18n();
   const [params, setParams] = useSearchParams();
   const tabParam = params.get("tab");
-  const tab: Tab = TABS.includes(tabParam as Tab) ? (tabParam as Tab) : "overview";
+  const tab: Tab = TABS.includes(tabParam as Tab) ? (tabParam as Tab) : "process";
   function setTab(next: Tab) {
     const nextParams = new URLSearchParams(params);
     nextParams.set("tab", next);
@@ -75,7 +83,7 @@ export function DiagnosisSessionDetailPage() {
       <h1 className="sr-only">{t("diagnosis.sessionTitle")}</h1>
       <div className="flex items-center gap-1 border-b border-border bg-surface px-3 py-2">
         {TABS.map((tb) => (
-          <TabButton key={tb} active={tab === tb} onClick={() => setTab(tb)} icon={TAB_ICON[tb]} label={t(`diagnosis.tab.${tb}` as DictKey)} />
+          <TabButton key={tb} active={tab === tb} onClick={() => setTab(tb)} icon={TAB_ICON[tb]} label={t(`diagnosis.page.${tb}` as DictKey)} />
         ))}
       </div>
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-4">
@@ -90,13 +98,18 @@ export function DiagnosisSessionDetailPage() {
             <StatusBadge status={diagnosisStatusToBadge(session.status)} label={session.status} />
           </header>
 
-          {tab === "overview" && <OverviewTab sessionId={session.diagnosisSessionId} status={session.status} />}
-          {tab === "hypotheses" && <HypothesesTab hypotheses={hypothesesQuery.data} isLoading={hypothesesQuery.isLoading} isError={hypothesesQuery.isError} error={hypothesesQuery.error} />}
-          {tab === "evidence" && <EvidenceTab sessionId={session.diagnosisSessionId} hypotheses={hypothesesQuery.data ?? []} />}
-          {tab === "models" && <ModelRunsTab projectId={projectId as string} sessionId={session.diagnosisSessionId} />}
-          {tab === "tests" && <TestsTab sessionId={session.diagnosisSessionId} />}
-          {tab === "decisions" && <DecisionsTab projectId={projectId as string} sessionId={session.diagnosisSessionId} />}
-          {tab === "audit" && <AuditReportTab sessionId={session.diagnosisSessionId} />}
+          {tab === "process" && (
+            <ProcessPage
+              projectId={projectId as string}
+              sessionId={session.diagnosisSessionId}
+              status={session.status}
+              hypotheses={hypothesesQuery.data}
+              hypothesesLoading={hypothesesQuery.isLoading}
+              hypothesesError={hypothesesQuery.isError}
+              hypothesesErrorDetail={hypothesesQuery.error}
+            />
+          )}
+          {tab === "governance" && <GovernancePage projectId={projectId as string} sessionId={session.diagnosisSessionId} />}
         </div>
       </div>
     </div>
@@ -114,6 +127,92 @@ function TabButton({ active, onClick, icon: Icon, label }: { active: boolean; on
       <Icon size={13} aria-hidden />
       {label}
     </button>
+  );
+}
+
+function SectionHeader({ id, section }: { id: Section; section: Section }) {
+  const { t } = useI18n();
+  const Icon = SECTION_ICON[section];
+  return (
+    <a id={id} href={`#${id}`} className="group flex scroll-mt-16 items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-ink-faint hover:text-ink-muted">
+      <Icon size={13} aria-hidden />
+      {t(`diagnosis.section.${section}` as DictKey)}
+    </a>
+  );
+}
+
+function SectionNav({ sections }: { sections: Section[] }) {
+  const { t } = useI18n();
+  return (
+    <nav className="sticky top-0 z-10 -mx-4 flex flex-wrap gap-x-3 gap-y-1 border-b border-border bg-surface px-4 py-2 text-[11px]">
+      {sections.map((s) => (
+        <a key={s} href={`#${s}`} className="text-ink-faint hover:text-accent-strong">{t(`diagnosis.section.${s}` as DictKey)}</a>
+      ))}
+    </nav>
+  );
+}
+
+function ProcessPage({
+  projectId, sessionId, status, hypotheses, hypothesesLoading, hypothesesError, hypothesesErrorDetail,
+}: {
+  projectId: string;
+  sessionId: string;
+  status: string;
+  hypotheses: Awaited<ReturnType<typeof listHypotheses>> | undefined;
+  hypothesesLoading: boolean;
+  hypothesesError: boolean;
+  hypothesesErrorDetail: unknown;
+}) {
+  const sections: Section[] = ["overview", "hypotheses", "evidence", "models", "tests"];
+  const evidenceQuery = useQuery({ queryKey: ["diagnosis-evidence", sessionId], queryFn: () => listEvidence(sessionId) });
+  const evidenceByHypothesis = new Map<string, Awaited<ReturnType<typeof listEvidence>>>();
+  for (const e of evidenceQuery.data ?? []) {
+    evidenceByHypothesis.set(e.hypothesisVersionId, [...(evidenceByHypothesis.get(e.hypothesisVersionId) ?? []), e]);
+  }
+  return (
+    <div className="flex flex-col gap-6">
+      <SectionNav sections={sections} />
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="overview" section="overview" />
+        <OverviewTab sessionId={sessionId} status={status} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="hypotheses" section="hypotheses" />
+        <HypothesesTab
+          sessionId={sessionId} hypotheses={hypotheses} isLoading={hypothesesLoading} isError={hypothesesError} error={hypothesesErrorDetail}
+          evidenceByHypothesis={evidenceByHypothesis}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="evidence" section="evidence" />
+        <EvidenceTab projectId={projectId} sessionId={sessionId} hypotheses={hypotheses ?? []} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="models" section="models" />
+        <ModelRunsTab projectId={projectId} sessionId={sessionId} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="tests" section="tests" />
+        <TestsTab sessionId={sessionId} />
+      </div>
+    </div>
+  );
+}
+
+function GovernancePage({ projectId, sessionId }: { projectId: string; sessionId: string }) {
+  const sections: Section[] = ["decisions", "audit"];
+  return (
+    <div className="flex flex-col gap-6">
+      <SectionNav sections={sections} />
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="decisions" section="decisions" />
+        <DecisionsTab projectId={projectId} sessionId={sessionId} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <SectionHeader id="audit" section="audit" />
+        <AuditReportTab sessionId={sessionId} />
+      </div>
+    </div>
   );
 }
 
@@ -208,13 +307,44 @@ function OverviewTab({ sessionId, status }: { sessionId: string; status: string 
   );
 }
 
+function EvidenceReviewControls({ link, sessionId }: { link: Awaited<ReturnType<typeof listEvidence>>[number]; sessionId: string }) {
+  const { t } = useI18n();
+  const queryClient = useQueryClient();
+  const reviewMutation = useMutation({
+    mutationFn: (verdict: "confirmed" | "incorrect") => reviewEvidenceLink(link.evidenceLinkId, verdict, ACTOR_ID),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["diagnosis-evidence", sessionId] }),
+  });
+  return (
+    <div className="flex shrink-0 items-center gap-1" title={t("diagnosis.evidence.reviewHint")}>
+      <button
+        type="button"
+        disabled={reviewMutation.isPending}
+        onClick={() => reviewMutation.mutate("confirmed")}
+        className={`rounded border px-1.5 py-0.5 text-[10px] disabled:opacity-40 ${link.reviewStatus === "confirmed" ? "border-emerald-300 bg-emerald-50 text-state-success" : "border-border text-ink-faint hover:bg-surface-sunken"}`}
+      >
+        ✓ {t("diagnosis.evidence.reviewConfirm")}
+      </button>
+      <button
+        type="button"
+        disabled={reviewMutation.isPending}
+        onClick={() => reviewMutation.mutate("incorrect")}
+        className={`rounded border px-1.5 py-0.5 text-[10px] disabled:opacity-40 ${link.reviewStatus === "incorrect" ? "border-red-300 bg-red-50 text-state-risk" : "border-border text-ink-faint hover:bg-surface-sunken"}`}
+      >
+        ✗ {t("diagnosis.evidence.reviewFlag")}
+      </button>
+    </div>
+  );
+}
+
 function HypothesesTab({
-  hypotheses, isLoading, isError, error,
+  sessionId, hypotheses, isLoading, isError, error, evidenceByHypothesis,
 }: {
+  sessionId: string;
   hypotheses: Awaited<ReturnType<typeof listHypotheses>> | undefined;
   isLoading: boolean;
   isError: boolean;
   error: unknown;
+  evidenceByHypothesis: Map<string, Awaited<ReturnType<typeof listEvidence>>>;
 }) {
   const { t } = useI18n();
   return (
@@ -225,33 +355,91 @@ function HypothesesTab({
       {hypotheses && hypotheses.length === 0 && <EmptyState variant="first_use" title={t("diagnosis.hypotheses.emptyTitle")} />}
       {hypotheses && hypotheses.length > 0 && (
         <ul className="flex flex-col gap-2">
-          {hypotheses.map((h) => (
-            <li key={h.hypothesisVersionId} className="panel flex flex-col gap-1 p-3 text-xs">
-              <div className="flex items-start justify-between gap-2">
-                <p className="font-medium text-ink">{h.statement ?? h.hypothesisVersionId}</p>
-                <StatusBadge status="active" label={h.status} />
-              </div>
-              {h.mechanismClass && <p className="text-ink-faint">{t("diagnosis.hypotheses.mechanismClass")}: {h.mechanismClass}</p>}
-              {h.contradictions.length > 0 && (
-                <p className="text-state-caution">{t("diagnosis.hypotheses.contradictions")}: {JSON.stringify(h.contradictions)}</p>
-              )}
-            </li>
-          ))}
+          {hypotheses.map((h) => {
+            const links = evidenceByHypothesis.get(h.hypothesisVersionId) ?? [];
+            return (
+              <li key={h.hypothesisVersionId} className="panel flex flex-col gap-1 p-3 text-xs">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-medium text-ink">{h.statement ?? h.hypothesisVersionId}</p>
+                  <StatusBadge status="active" label={h.status} />
+                </div>
+                {h.mechanismClass && <p className="text-ink-faint">{t("diagnosis.hypotheses.mechanismClass")}: {h.mechanismClass}</p>}
+                {h.contradictions.length > 0 && (
+                  <p className="text-state-caution">{t("diagnosis.hypotheses.contradictions")}: {JSON.stringify(h.contradictions)}</p>
+                )}
+                {links.length > 0 ? (
+                  <ul className="flex flex-col gap-1.5 border-t border-border pt-1.5">
+                    {links.map((l) => (
+                      <li key={l.evidenceLinkId} className="flex items-start justify-between gap-2">
+                        <div className="flex items-start gap-1.5">
+                          <StatusBadge status={l.relation === "contradicts" ? "rejected" : "approved"} label={l.relation} />
+                          <span className="text-ink-muted">{l.claim}</span>
+                        </div>
+                        <EvidenceReviewControls link={l} sessionId={sessionId} />
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="border-t border-border pt-1.5 text-ink-faint">{t("diagnosis.hypotheses.noEvidence")}</p>
+                )}
+              </li>
+            );
+          })}
         </ul>
       )}
     </section>
   );
 }
 
-function EvidenceTab({ sessionId, hypotheses }: { sessionId: string; hypotheses: Awaited<ReturnType<typeof listHypotheses>> }) {
+const EVIDENCE_SOURCE_TYPES = ["literature", "expert_rule", "llm_reasoning", "model_run", "experiment_result", "observation"];
+const EVIDENCE_QUALITIES = ["high", "medium", "low"];
+const EVIDENCE_DIRECTNESS = ["direct", "indirect"];
+
+function evidenceItemLabel(item: Awaited<ReturnType<typeof listEvidenceItems>>[number]): string {
+  const summary = item.contentSummary.trim();
+  const truncated = summary.length > 64 ? `${summary.slice(0, 64)}…` : summary;
+  return truncated ? `${truncated} (${item.sourceType})` : `${item.evidenceItemId} (${item.sourceType})`;
+}
+
+function EvidenceTab({
+  projectId, sessionId, hypotheses,
+}: {
+  projectId: string;
+  sessionId: string;
+  hypotheses: Awaited<ReturnType<typeof listHypotheses>>;
+}) {
   const { t } = useI18n();
   const queryClient = useQueryClient();
+  const [showLink, setShowLink] = useState(false);
   const [hypothesisVersionId, setHypothesisVersionId] = useState("");
   const [evidenceItemId, setEvidenceItemId] = useState("");
   const [relation, setRelation] = useState("supports");
   const [claim, setClaim] = useState("");
+  const [showCreate, setShowCreate] = useState(false);
+  const [newSourceType, setNewSourceType] = useState("expert_rule");
+  const [newContentSummary, setNewContentSummary] = useState("");
+  const [newQuality, setNewQuality] = useState("low");
+  const [newDirectness, setNewDirectness] = useState("indirect");
 
-  const evidenceQuery = useQuery({ queryKey: ["diagnosis-evidence", sessionId], queryFn: () => listEvidence(sessionId) });
+  const evidenceItemsQuery = useQuery({
+    queryKey: ["diagnosis-evidence-items", projectId],
+    queryFn: () => listEvidenceItems(projectId),
+    enabled: !!projectId,
+  });
+
+  const createItemMutation = useMutation({
+    mutationFn: () => createEvidenceItem({
+      projectId, actorId: ACTOR_ID, sourceType: newSourceType, contentSummary: newContentSummary,
+      quality: newQuality, directness: newDirectness,
+    }),
+    onSuccess: (newEvidenceItemId) => {
+      queryClient.invalidateQueries({ queryKey: ["diagnosis-evidence-items", projectId] });
+      setEvidenceItemId(newEvidenceItemId);
+      setNewContentSummary("");
+      setShowCreate(false);
+    },
+  });
+
   const linkMutation = useMutation({
     mutationFn: () => linkEvidence({ hypothesisVersionId, evidenceItemId, relation, actorId: ACTOR_ID, claim }),
     onSuccess: () => {
@@ -263,55 +451,112 @@ function EvidenceTab({ sessionId, hypotheses }: { sessionId: string; hypotheses:
 
   return (
     <section className="flex flex-col gap-3">
+      <p className="text-[11px] text-ink-faint">{t("diagnosis.evidence.redirectNote")}</p>
+
       <div className="panel flex flex-col gap-2 p-4">
-        <h3 className="text-sm font-semibold text-ink">{t("diagnosis.evidence.linkTitle")}</h3>
-        <p className="text-[11px] text-ink-faint">{t("diagnosis.evidence.linkDetail")}</p>
-        <div className="grid gap-2 sm:grid-cols-2">
-          <select value={hypothesisVersionId} onChange={(e) => setHypothesisVersionId(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
-            <option value="">{t("diagnosis.evidence.selectHypothesis")}</option>
-            {hypotheses.map((h) => (
-              <option key={h.hypothesisVersionId} value={h.hypothesisVersionId}>{h.statement ?? h.hypothesisVersionId}</option>
-            ))}
-          </select>
-          <select value={relation} onChange={(e) => setRelation(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
-            <option value="supports">supports</option>
-            <option value="contradicts">contradicts</option>
-            <option value="is_consistent_with">is_consistent_with</option>
-            <option value="does_not_discriminate">does_not_discriminate</option>
-          </select>
-          <input value={evidenceItemId} onChange={(e) => setEvidenceItemId(e.target.value)} placeholder={t("diagnosis.evidence.evidenceItemIdPlaceholder")} className="rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent sm:col-span-2" />
-          <input value={claim} onChange={(e) => setClaim(e.target.value)} placeholder={t("diagnosis.evidence.claimPlaceholder")} className="rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent sm:col-span-2" />
-        </div>
         <button
           type="button"
-          disabled={linkMutation.isPending || !hypothesisVersionId || !evidenceItemId.trim()}
-          onClick={() => linkMutation.mutate()}
-          className="w-fit rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white disabled:opacity-40"
+          onClick={() => setShowLink((v) => !v)}
+          className="flex w-fit items-center gap-1 text-xs font-medium text-accent-strong hover:underline"
         >
-          {linkMutation.isPending ? t("diagnosis.evidence.linking") : t("diagnosis.evidence.link")}
+          <Plus size={13} aria-hidden />
+          {t("diagnosis.evidence.linkTitle")}
         </button>
-        {linkMutation.isError && <EmptyState variant="failed" detail={String(linkMutation.error)} />}
+        {showLink && (
+          <div className="flex flex-col gap-2 border-t border-border pt-2">
+            <p className="text-[11px] text-ink-faint">{t("diagnosis.evidence.linkDetail")}</p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <select value={hypothesisVersionId} onChange={(e) => setHypothesisVersionId(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
+                <option value="">{t("diagnosis.evidence.selectHypothesis")}</option>
+                {hypotheses.map((h) => (
+                  <option key={h.hypothesisVersionId} value={h.hypothesisVersionId}>{h.statement ?? h.hypothesisVersionId}</option>
+                ))}
+              </select>
+              <select value={relation} onChange={(e) => setRelation(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
+                <option value="supports">supports</option>
+                <option value="contradicts">contradicts</option>
+                <option value="is_consistent_with">is_consistent_with</option>
+                <option value="does_not_discriminate">does_not_discriminate</option>
+              </select>
+              <select
+                value={evidenceItemId}
+                onChange={(e) => setEvidenceItemId(e.target.value)}
+                className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none sm:col-span-2"
+              >
+                <option value="">{t("diagnosis.evidence.selectItem")}</option>
+                {evidenceItemsQuery.data?.map((item) => (
+                  <option key={item.evidenceItemId} value={item.evidenceItemId}>{evidenceItemLabel(item)}</option>
+                ))}
+              </select>
+              <input value={claim} onChange={(e) => setClaim(e.target.value)} placeholder={t("diagnosis.evidence.claimPlaceholder")} className="rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent sm:col-span-2" />
+            </div>
+            <button
+              type="button"
+              disabled={linkMutation.isPending || !hypothesisVersionId || !evidenceItemId}
+              onClick={() => linkMutation.mutate()}
+              className="w-fit rounded-lg bg-accent px-3 py-1.5 text-xs font-medium text-white disabled:opacity-40"
+            >
+              {linkMutation.isPending ? t("diagnosis.evidence.linking") : t("diagnosis.evidence.link")}
+            </button>
+            {linkMutation.isError && <EmptyState variant="failed" detail={String(linkMutation.error)} />}
+          </div>
+        )}
       </div>
 
-      {evidenceQuery.isLoading && <EmptyState variant="loading" />}
-      {evidenceQuery.isError && <EmptyState variant="failed" detail={String(evidenceQuery.error)} />}
-      {evidenceQuery.data && evidenceQuery.data.length === 0 && <EmptyState variant="first_use" title={t("diagnosis.evidence.emptyTitle")} />}
-      {evidenceQuery.data && evidenceQuery.data.length > 0 && (
-        <ul className="flex flex-col gap-2">
-          {evidenceQuery.data.map((e) => (
-            <li key={e.evidenceLinkId} className="panel flex flex-col gap-1 p-3 text-xs">
-              <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-[11px] text-ink-faint">{e.evidenceItemId}</span>
-                <StatusBadge status={e.relation === "contradicts" ? "rejected" : "approved"} label={e.relation} />
-              </div>
-              {e.claim && <p className="text-ink-muted">{e.claim}</p>}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="panel flex flex-col gap-2 p-4">
+        <button
+          type="button"
+          onClick={() => setShowCreate((v) => !v)}
+          className="flex w-fit items-center gap-1 text-xs font-medium text-accent-strong hover:underline"
+        >
+          <Plus size={13} aria-hidden />
+          {t("diagnosis.evidence.createNew")}
+        </button>
+        {showCreate && (
+          <div className="flex flex-col gap-2 border-t border-border pt-2">
+            <div className="grid gap-2 sm:grid-cols-2">
+              <select value={newSourceType} onChange={(e) => setNewSourceType(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
+                {EVIDENCE_SOURCE_TYPES.map((st) => <option key={st} value={st}>{st}</option>)}
+              </select>
+              <select value={newQuality} onChange={(e) => setNewQuality(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
+                {EVIDENCE_QUALITIES.map((q) => <option key={q} value={q}>{t(`diagnosis.evidence.quality.${q}` as DictKey)}</option>)}
+              </select>
+              <select value={newDirectness} onChange={(e) => setNewDirectness(e.target.value)} className="rounded-lg border border-border bg-surface px-2 py-1.5 text-xs outline-none">
+                {EVIDENCE_DIRECTNESS.map((d) => <option key={d} value={d}>{t(`diagnosis.evidence.directness.${d}` as DictKey)}</option>)}
+              </select>
+              <input
+                value={newContentSummary}
+                onChange={(e) => setNewContentSummary(e.target.value)}
+                placeholder={t("diagnosis.evidence.contentSummaryPlaceholder")}
+                className="rounded-lg border border-border px-2.5 py-1.5 text-xs outline-none focus:border-accent sm:col-span-2"
+              />
+            </div>
+            <button
+              type="button"
+              disabled={createItemMutation.isPending || !newContentSummary.trim()}
+              onClick={() => createItemMutation.mutate()}
+              className="w-fit rounded-lg border border-border bg-surface px-3 py-1.5 text-xs font-medium text-ink hover:bg-surface-sunken disabled:opacity-40"
+            >
+              {createItemMutation.isPending ? t("diagnosis.evidence.creating") : t("diagnosis.evidence.create")}
+            </button>
+            {createItemMutation.isError && <EmptyState variant="failed" detail={String(createItemMutation.error)} />}
+          </div>
+        )}
+      </div>
     </section>
   );
 }
+
+/** Curated one-line explanations for the fixed adapter set (harness/diagnosis/
+ * model_adapters/*.py docstrings) - the backend's `cap.reason` string is a
+ * technical availability reason (still shown as a hover title), not an
+ * explanation of what the adapter does or when to pick it. */
+const MODEL_ADAPTER_INFO: Record<string, DictKey> = {
+  gem_fba: "diagnosis.models.adapter.gem_fba",
+  gem_fba_iml1515: "diagnosis.models.adapter.gem_fba_iml1515",
+  vecoli: "diagnosis.models.adapter.vecoli",
+  kinetic_resource: "diagnosis.models.adapter.kinetic_resource",
+};
 
 function ModelRunsTab({ projectId, sessionId }: { projectId: string; sessionId: string }) {
   const { t } = useI18n();
@@ -333,17 +578,24 @@ function ModelRunsTab({ projectId, sessionId }: { projectId: string; sessionId: 
 
   return (
     <section className="flex flex-col gap-3">
+      <p className="text-[11px] text-ink-faint">{t("diagnosis.models.purpose")}</p>
       <div className="panel flex flex-col gap-2 p-4">
         <h3 className="text-sm font-semibold text-ink">{t("diagnosis.models.capabilitiesTitle")}</h3>
         {capsQuery.isLoading && <EmptyState variant="loading" />}
         {capsQuery.data && (
-          <div className="flex flex-wrap gap-2">
+          <ul className="flex flex-col gap-1.5">
             {Object.entries(capsQuery.data).map(([name, cap]) => (
-              <span key={name} className={`rounded border px-2 py-1 text-[11px] ${cap.available ? "border-emerald-300 bg-emerald-50 text-state-success" : "border-slate-300 bg-slate-100 text-state-unavailable"}`} title={cap.reason}>
-                {name}
-              </span>
+              <li key={name} className="flex items-start gap-2 text-[11px]">
+                <span
+                  className={`shrink-0 rounded border px-2 py-1 font-mono ${cap.available ? "border-emerald-300 bg-emerald-50 text-state-success" : "border-slate-300 bg-slate-100 text-state-unavailable"}`}
+                  title={cap.reason}
+                >
+                  {name}
+                </span>
+                <span className="text-ink-muted">{MODEL_ADAPTER_INFO[name] ? t(MODEL_ADAPTER_INFO[name]) : cap.reason}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
 
@@ -353,6 +605,9 @@ function ModelRunsTab({ projectId, sessionId }: { projectId: string; sessionId: 
           <option value="">{t("diagnosis.models.selectAdapter")}</option>
           {capsQuery.data && Object.keys(capsQuery.data).map((name) => <option key={name} value={name}>{name}</option>)}
         </select>
+        {adapterName && MODEL_ADAPTER_INFO[adapterName] && (
+          <p className="text-[11px] text-ink-faint">{t(MODEL_ADAPTER_INFO[adapterName])}</p>
+        )}
         <textarea
           value={inputsText}
           onChange={(e) => setInputsText(e.target.value)}
@@ -493,17 +748,15 @@ function AuditReportTab({ sessionId }: { sessionId: string }) {
         )}
       </div>
 
-      <div className="panel flex flex-col gap-2 p-4">
+      <div className="panel flex flex-col gap-3 p-4">
         <h3 className="text-sm font-semibold text-ink">{t("diagnosis.audit.reportTitle")}</h3>
         {reportQuery.isLoading && <EmptyState variant="loading" />}
         {reportQuery.data && reportQuery.data.length > 0 && (
           <div className="flex flex-col gap-3">
             {reportQuery.data.map((s) => (
-              <div key={s.title}>
-                <h4 className="label-caps">{s.title}</h4>
-                <pre className="mt-1 overflow-x-auto whitespace-pre-wrap rounded bg-surface-sunken p-2 text-[11px] text-ink-muted">
-                  {JSON.stringify(s.content, null, 2)}
-                </pre>
+              <div key={s.title} className="rounded-lg border border-border p-3">
+                <h4 className="text-xs font-semibold text-ink">{s.title}</h4>
+                <ReportContent content={s.content} />
               </div>
             ))}
           </div>
@@ -511,4 +764,54 @@ function AuditReportTab({ sessionId }: { sessionId: string }) {
       </div>
     </section>
   );
+}
+
+const REPORT_LABEL_OVERRIDE: Record<string, string> = {
+  status: "状态", data_sufficiency: "数据充分性", stopping_reason: "停止原因", allowed_next_action: "允许的下一步动作",
+  note: "说明", biological_system: "生物系统", baseline_observation_ids: "基线观测", leading_hypothesis_ids: "主导假设",
+  alternatives_not_excluded_ids: "未排除的备选假设", contradictions: "矛盾点", confidence_representation: "置信度",
+  uncertainty: "不确定性", evidence_references: "证据引用",
+};
+
+function reportFieldLabel(key: string): string {
+  return REPORT_LABEL_OVERRIDE[key] ?? key.replace(/_/g, " ");
+}
+
+/** Report sections come back as an arbitrary-shaped dict (harness/diagnosis/
+ * report.py's `ReportSection.content`) - renders it as readable label:value
+ * rows instead of a raw JSON dump, so a non-technical reader can actually
+ * follow the diagnosis's own narrative summary. Falls back to a compact
+ * inline join for primitives/arrays and one level of nested key:value for
+ * objects; never silently drops a field. */
+function ReportContent({ content }: { content: Record<string, unknown> }) {
+  const entries = Object.entries(content).filter(([, v]) => v !== null && v !== undefined && v !== "");
+  if (entries.length === 0) return <p className="mt-1 text-[11px] text-ink-faint">—</p>;
+  return (
+    <dl className="mt-2 flex flex-col gap-1.5 text-[11px]">
+      {entries.map(([key, value]) => (
+        <div key={key} className="flex flex-col gap-0.5 sm:flex-row sm:gap-2">
+          <dt className="shrink-0 font-medium text-ink-faint sm:w-40">{reportFieldLabel(key)}</dt>
+          <dd className="min-w-0 flex-1 text-ink-muted"><ReportValue value={value} /></dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function ReportValue({ value }: { value: unknown }) {
+  if (Array.isArray(value)) {
+    if (value.length === 0) return <span className="italic text-ink-faint">—</span>;
+    if (value.every((v) => typeof v !== "object" || v === null)) return <span>{value.join("、")}</span>;
+    return (
+      <ul className="flex flex-col gap-1">
+        {value.map((v, i) => (
+          <li key={i} className="rounded border border-border bg-surface-sunken px-1.5 py-1">
+            {typeof v === "object" && v !== null ? <ReportContent content={v as Record<string, unknown>} /> : String(v)}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  if (value !== null && typeof value === "object") return <ReportContent content={value as Record<string, unknown>} />;
+  return <span>{String(value)}</span>;
 }

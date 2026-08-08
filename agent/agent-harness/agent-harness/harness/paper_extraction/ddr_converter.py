@@ -35,6 +35,7 @@ from pathlib import Path
 from typing import Any
 
 from harness.config import PROJECT_ROOT
+from harness.paper_extraction.knowledge_sync import sync_after_save
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -129,6 +130,129 @@ MECHANISTIC_KEYWORDS = (
     "mechanism", "rate_limiting", "rate-limiting",
 )
 
+# decision_type keyword heuristics (0804 优化 §3 Phase 3 / §7 Q1-Q3 filter).
+# A candidate step is "engineering_decision" (enters decision_chain) only if
+# none of these signals fire — same conservative direction as the grading
+# heuristics above: a positive match on a *narrower* category always wins
+# over the default. Checked in this order: background (Q2) > post_hoc (needs
+# BOTH a post-hoc-context signal and a no-new-action signal) > validation
+# (Q1/Q3) > engineering_decision.
+BACKGROUND_KEYWORDS = (
+    "constructed previously", "constructed in previous studies",
+    "constructed in prior", "as previously described", "as described previously",
+    "in our previous study", "in our previous work", "in a previous study",
+    "in previous studies", "previously constructed", "background construct",
+    "not applicable (constructed",
+)
+NO_NEW_ACTION_KEYWORDS = (
+    "none (characterization)", "none (computational", "none (observational",
+    "none beyond", "no new modification", "none (in silico)",
+)
+VALIDATION_KEYWORDS = (
+    "verify that", "verify the", "validate that", "validate the",
+    "confirm that", "confirm the", "evaluate the performance of",
+    "phenotype validation", "assess the performance",
+)
+POST_HOC_SIGNAL_KEYWORDS = (
+    "docking", "structure-based", "structural analysis", "structural effect",
+    "homology model", "genome sequenc", "genomic analysis", "whole genome", "wgs",
+)
+
+# ---------------------------------------------------------------------------
+# Engineering paper-type classification (0804 优化_2 §3/§4, SKILL.md §3.1) —
+# paper-level, not per-step. design_action is the primary signal (every
+# retained decision_chain step already has one); keyword overrides catch the
+# two categories no M-code maps to directly (protein_engineering vs. plain
+# M4 enzyme work, chassis_engineering) and disambiguate M4 between "swapped
+# in a rate-limiting enzyme" (metabolic) and "engineered the enzyme itself"
+# (protein). Order matters: keyword overrides checked before the M-code
+# default so an M4 step described with mutagenesis language routes to
+# protein_engineering instead of the metabolic_engineering default.
+BIOSENSOR_TYPE_KEYWORDS = ("biosensor", "genetic circuit", "regulatory switch", "dynamic control", "dose-response")
+PROTEIN_ENG_TYPE_KEYWORDS = (
+    "enzyme variant", "directed evolution", "structure-guided", "site-directed mutagenesis",
+    "point mutation", "protein engineering", "rational design of the enzyme",
+)
+CHASSIS_TYPE_KEYWORDS = ("chassis engineering", "host redesign", "tolerance engineering", "genome reduction", "minimal genome")
+EVOLUTIONARY_TYPE_KEYWORDS = SCREENING_KEYWORDS  # library/screening/ALE/directed_evolution — already defined above
+
+_DESIGN_ACTION_TO_ENGINEERING_PAPER_TYPE: dict[str, str] = {
+    "M0": "metabolic_engineering", "M1": "metabolic_engineering", "M2": "metabolic_engineering",
+    "M3": "metabolic_engineering", "M4": "metabolic_engineering", "M5": "metabolic_engineering",
+    "M6": "metabolic_engineering", "M8": "metabolic_engineering", "M9": "metabolic_engineering",
+    "M7": "biosensor_platform", "M11": "evolutionary_engineering",
+}
+
+_VALID_ENGINEERING_PAPER_TYPES = frozenset({
+    "metabolic_engineering", "biosensor_platform", "evolutionary_engineering",
+    "protein_engineering", "chassis_engineering", "multi_strategy",
+})
+_VALID_CALIBRATION_STATUSES = frozenset({"auto_accepted", "needs_review", "rejected"})
+
+# Rule Scope Validator (0804 优化_2 §12): a rule containing one of these
+# over-broad scope phrases claims more than a single paper's decision_chain
+# can support and must be flagged for human review, never silently trusted
+# or silently rewritten (rewriting a claim it didn't verify is itself a
+# fabrication risk - flagging is the safe action here).
+BROAD_RULE_SCOPE_KEYWORDS = (
+    "all amino acid", "all amino acids", "any product", "all products",
+    "all metabolic", "universally", "所有氨基酸", "任何产物", "所有产物", "普遍适用",
+)
+
+# ---------------------------------------------------------------------------
+# Engineering Strategy Ontology (0804 优化_3 §13/§14) — controlled vocabulary
+# a decision_chain step maps into, collapsing synonymous phrasing across
+# papers (e.g. "dynamic regulation"/"dynamic control"/"feedback regulation"/
+# "metabolite-responsive control" all → dynamic_control) onto §14's fixed
+# category names. A step can map to more than one category; unmatched steps
+# get an empty list rather than a forced guess.
+STRATEGY_ONTOLOGY_KEYWORDS: dict[str, tuple[str, ...]] = {
+    "flux_redirection": ("flux redistribution", "redirect carbon flux", "flux redirection", "carbon flux"),
+    "precursor_supply_enhancement": ("precursor supply", "precursor availability", "increase precursor", "cofactor balancing", "nadph supply", "nadh supply"),
+    "competitive_pathway_removal": ("competing pathway", "competing byproduct", "byproduct pathway", "eliminate competing", "knockout of ldha", "knockout of adhe"),
+    "dynamic_control": (
+        "dynamic regulation", "dynamic control", "feedback regulation", "feedback control",
+        "metabolite-responsive control", "metabolite-responsive", "biosensor", "autonomous regulation", "dynamic pathway",
+    ),
+    "enzyme_activity_improvement": ("rate-limiting enzyme", "rate limiting enzyme", "enzyme engineering", "enzyme activity", "kinetic improvement", "resist feedback inhibition"),
+    "transport_engineering": ("glucose uptake", "transporter", "galp", "pts", "membrane transport", "substrate uptake"),
+    "stress_tolerance_engineering": ("tolerance engineering", "stress tolerance", "toxicity management", "solvent tolerance", "acid tolerance"),
+    "evolutionary_optimization": ("adaptive laboratory evolution", "directed evolution", "screening", "ale ", "genome evolution"),
+}
+_VALID_STRATEGY_CATEGORIES = frozenset(STRATEGY_ONTOLOGY_KEYWORDS.keys())
+
+# ---------------------------------------------------------------------------
+# Rule Provenance System (0804 优化_3 §9-§12).
+# ---------------------------------------------------------------------------
+_VALID_RULE_SOURCES = frozenset({"single_paper", "multi_paper_supported", "textbook_mechanism", "expert_curated"})
+_VALID_RULE_CONFIDENCES = frozenset({"high", "medium", "low"})
+_VALID_EDGE_RELATIONS = frozenset({"triggered_by", "solves", "alternative_to", "validated_by", "depends_on"})
+
+# Cross-paper rule similarity: plain token-overlap (Jaccard-style), not an
+# embedding search - conservative on purpose, mirrors _find_existing_ddr's
+# "no fuzzy matching, a false positive is worse than a false negative" stance.
+_RULE_STOPWORDS = frozenset({
+    "the", "a", "an", "of", "in", "to", "for", "and", "or", "with", "by", "on", "when", "apply",
+    "because", "this", "that", "is", "are", "may", "can", "improve", "increase", "reduce",
+})
+_RULE_SIMILARITY_THRESHOLD = 0.5
+
+
+def _rule_tokens(rule_text: str) -> set[str]:
+    words = re.findall(r"[a-zA-Z一-鿿]+", rule_text.lower())
+    return {w for w in words if w not in _RULE_STOPWORDS and len(w) > 2}
+
+
+# Failure-driven reasoning (0804 优化_3 §8): text signals that the previous
+# step's outcome was a setback rather than progress - used to add a `solves`
+# edge (this step solves that setback) on top of the deterministic
+# `triggered_by` edge, and to populate failure_points.
+FAILURE_SIGNAL_KEYWORDS = (
+    "suppressed", "severely", "impaired", "growth defect", "defect", "declined",
+    "did not increase", "no improvement", "growth-product tradeoff", "inhibited growth",
+    "toxic", "toxicity", "reduced growth", "lower productivity",
+)
+
 # Valid values for a model-supplied `ddr_annotation` (SKILL.md §5.5) - the
 # extraction model is now taught the same DDR discipline as this module's own
 # keyword heuristics (a second line of defense: if the Python heuristics
@@ -139,6 +263,7 @@ MECHANISTIC_KEYWORDS = (
 _VALID_DESIGN_ACTIONS = frozenset(MODULE_TO_DESIGN_ACTION.values()) | {"M0", "M11"}
 _VALID_EVIDENCE_GRADES = frozenset({"硬", "软"})
 _VALID_REASON_NATURES = frozenset({"机理推断", "文献类比", "现成可得", "筛选得来", "事后合理化存疑"})
+_VALID_DECISION_TYPES = frozenset({"engineering_decision", "validation", "background", "post_hoc_interpretation"})
 
 
 # ---------------------------------------------------------------------------
@@ -215,27 +340,71 @@ def convert_extraction_to_ddr(
     metadata = _build_metadata(extraction_output, fields, gate, warnings)
 
     # -- Step 3: Build decision_chain -------------------------------------------------
-    decision_chain = _build_decision_chain(extraction_output, fields, ed_obj, warnings, pending)
+    decision_chain, excluded_records = _build_decision_chain(extraction_output, fields, ed_obj, warnings, pending)
 
     # -- Step 4: Build paper-level context (v1 compat) --------------------------------
     problem = _build_engineering_problem(fields, ed_obj, decision_chain)
     diagnosis = _build_biological_diagnosis(fields, ed_obj, decision_chain)
     hypothesis = _build_engineering_hypothesis(fields, ed_obj, decision_chain)
 
+    # -- Step 4.5: Reasoning layer (0804 优化_2, additive on top of V2) ---------------
+    engineering_paper_type, engineering_paper_type_rationale = _classify_engineering_paper_type(decision_chain, extensions)
+    decision_map = _build_engineering_decision_map(decision_chain, problem, diagnosis, hypothesis)
+    reasoning_overview = _build_paper_reasoning_overview(engineering_paper_type, decision_map)
+    calibration_report = _build_human_calibration_report(decision_chain)
+
+    # -- Step 4.6: Knowledge representation layer (0804 优化_3, additive on top of V2.1) --
+    decision_graph = _build_engineering_decision_graph(decision_chain, excluded_records)
+    failure_points = _build_failure_points(decision_chain)
+    logic_chain = _build_engineering_logic_chain(decision_map, failure_points)
+
     # -- Step 5: Build extraction_meta ------------------------------------------------
-    extraction_meta = _build_extraction_meta(pending, extraction_task_id, paper_index, paper_extraction_detail)
+    extraction_meta = _build_extraction_meta(
+        pending, extraction_task_id, paper_index, paper_extraction_detail,
+        engineering_paper_type=engineering_paper_type,
+        engineering_paper_type_rationale=engineering_paper_type_rationale,
+    )
 
     # -- Step 6: Assemble DDR ---------------------------------------------------------
-    ddr_id = _allocate_ddr_id()
+    # Re-extracting a paper already in the knowledge base (same DOI, or same
+    # title when no DOI) reuses that paper's ddr_id instead of allocating a
+    # new one, so _save_ddr overwrites it - "only the latest extraction is
+    # kept" rather than accumulating duplicates every time a paper is
+    # (re-)submitted (see the DDR-006/007 and DDR-009/012/015 duplicates
+    # this replaced).
+    existing = _find_existing_ddr(metadata.get("reference", {}))
+    if existing is not None:
+        ddr_id = existing.get("ddr_id") or _allocate_ddr_id()
+        prev_task_id = existing.get("extraction_meta", {}).get("paper_extraction_task_id")
+        if prev_task_id and prev_task_id != extraction_task_id:
+            extraction_meta["previous_extraction_task_id"] = prev_task_id
+    else:
+        ddr_id = _allocate_ddr_id()
+
+    # rule_source's cross-paper scan and the graph nodes' source_ddr_id both
+    # need ddr_id, which only exists from this point on - see the placeholder
+    # comments in _build_single_step / _build_engineering_decision_graph.
+    _apply_rule_provenance(decision_chain, ddr_id)
+    for node in decision_graph["nodes"]:
+        node["source_ddr_id"] = ddr_id
+    rule_provenance = _build_rule_provenance(decision_chain)
+
     ddr = {
         "ddr_id": ddr_id,
         "schema_version": "2.0",
         "metadata": metadata,
         "decision_chain": decision_chain,
+        "excluded_records": excluded_records,
         "engineering_problem": problem,
         "biological_diagnosis": diagnosis,
         "engineering_hypothesis": hypothesis,
         "extraction_meta": extraction_meta,
+        "engineering_decision_map": decision_map,
+        "paper_reasoning_overview": reasoning_overview,
+        "human_calibration_report": calibration_report,
+        "engineering_decision_graph": decision_graph,
+        "engineering_logic_chain": logic_chain,
+        "rule_provenance": rule_provenance,
     }
 
     result = DDRConversionResult(
@@ -307,19 +476,36 @@ def _build_metadata(
     }
 
 
+_EXCLUSION_REASON_BY_TYPE = {
+    "validation": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+    "background": "Q2 未通过：本文引用/沿用此前研究已构建的底盘或元件，非本文完成的设计决策",
+    "post_hoc_interpretation": "Q1 未通过：Discussion/结构分析/docking/基因组测序等事后解释，未驱动本文的工程决策",
+}
+
+
 def _build_decision_chain(
     extraction_output: dict[str, Any],
     fields: dict[str, Any],
     ed_obj: dict[str, Any],
     warnings: list[str],
     pending: list[str],
-) -> list[dict[str, Any]]:
-    """Build the decision_chain from extraction output.
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Build the decision_chain (and excluded_records) from extraction output.
 
     Uses experimental_design_object's intervention/experiment list as the primary
     source for decision steps. Falls back to extracting from fields.
+
+    Every candidate is first built into a full step record (see
+    _build_single_step), then partitioned by its `decision_type` (0804 优化
+    §3 Phase 3 Q1/Q2/Q3 filter): only `engineering_decision` steps stay in
+    `decision_chain` and get renumbered 1..N contiguously so the saved chain
+    reads as a clean decision sequence with no gaps; validation/background/
+    post_hoc_interpretation steps move to `excluded_records` instead, keeping
+    their original step index inside `step_snapshot` for traceability but
+    never occupying a decision_chain slot or contributing a rule.
     """
     chain: list[dict[str, Any]] = []
+    excluded: list[dict[str, Any]] = []
 
     # Primary source: experimental_design_object with explicit interventions
     experiments = ed_obj.get("experiments", [])
@@ -331,7 +517,7 @@ def _build_decision_chain(
 
     if not step_candidates:
         warnings.append("no step candidates found in extraction output; decision_chain will be empty")
-        return chain
+        return chain, excluded
 
     # Design doc §4.1: a decision step's trigger is "what observation caused
     # this action" — usually the *previous* step's result, not the paper's
@@ -339,13 +525,31 @@ def _build_decision_chain(
     # outcome instead of leaving trigger.observation blank whenever the
     # source record has no explicit per-step observation field of its own
     # (true for Skill07's flat experiment records — see _build_single_step).
+    # Threaded across *all* candidates (not just retained ones) so a filtered
+    # background/validation step's outcome can still serve as the next real
+    # engineering step's trigger — excluding a step from decision_chain
+    # doesn't erase it from the paper's actual causal sequence.
     prev_outcome = ""
+    raw_steps: list[dict[str, Any]] = []
     for i, candidate in enumerate(step_candidates, start=1):
         step = _build_single_step(i, candidate, fields, pending, prev_outcome=prev_outcome)
-        chain.append(step)
+        raw_steps.append(step)
         prev_outcome = step["result"].get("after") or prev_outcome
 
-    return chain
+    next_step_num = 1
+    for step in raw_steps:
+        if step["decision_type"] == "engineering_decision":
+            step["step"] = next_step_num
+            next_step_num += 1
+            chain.append(step)
+        else:
+            excluded.append({
+                "decision_type": step["decision_type"],
+                "exclusion_reason": _EXCLUSION_REASON_BY_TYPE.get(step["decision_type"], ""),
+                "step_snapshot": step,
+            })
+
+    return chain, excluded
 
 
 def _collect_step_candidates(
@@ -568,8 +772,116 @@ def _build_single_step(
     elif rule:
         pending.append(f"step_{step_num}.rule: requires human calibration (dual-review process)")
 
+    # --- decision_type: Q1/Q2/Q3 filter (0804 优化 §3 Phase 3 / §7) ---
+    # Model self-assessment first (SKILL.md §5.5's own Q1/Q2/Q3 discipline),
+    # falling back to the keyword heuristic exactly like every other field
+    # above. This decides whether the step is a real engineering_decision
+    # (stays in decision_chain) or gets filed under excluded_records as
+    # validation/background/post_hoc_interpretation — see _build_decision_chain.
+    model_decision_type = annotation.get("decision_type")
+    if model_decision_type not in _VALID_DECISION_TYPES:
+        model_decision_type = None
+    step_haystack = " ".join(
+        str(x).lower() for x in (
+            intervention_text, purpose_text, trigger["observation"], trigger["reasoning"],
+            target.get("condition") or "", impl_detail,
+        )
+    )
+    evidence_desc = evidence.get("description")
+    evidence_haystack = " ".join(str(x) for x in evidence_desc) if isinstance(evidence_desc, list) else str(evidence_desc or "")
+    evidence_haystack = evidence_haystack.replace("_", " ").lower()
+
+    # --- reason_nature_tags: additive multi-label (0804 优化_2 §9) ---
+    # Only ever a *supplement* to `reason_nature` (never a replacement), and
+    # only ever populated when the primary value already qualifies for rule
+    # generation (机理推断/文献类比) — this is deliberate: rule-gating logic
+    # elsewhere reads `reason_nature` (the single value), never this array,
+    # so a screening-derived/post-hoc step can never gain rule eligibility by
+    # having a stray "机理推断" keyword coincidentally land in its tags.
+    model_reason_nature_tags = annotation.get("reason_nature_tags")
+    if reason_nature in ("机理推断", "文献类比") and isinstance(model_reason_nature_tags, list):
+        reason_nature_tags = [t for t in model_reason_nature_tags if t in _VALID_REASON_NATURES and t != reason_nature]
+    elif reason_nature in ("机理推断", "文献类比"):
+        # LITERATURE_ANALOGY_KEYWORDS/MECHANISTIC_KEYWORDS are underscore-cased
+        # (e.g. "as_described_previously") to match `_normalized_haystack`'s
+        # convention elsewhere in this module - re-normalize step_haystack the
+        # same way here rather than matching against the raw space-separated
+        # text, or these keyword lists silently never match anything.
+        step_haystack_underscored = re.sub(r"[\s\-]+", "_", step_haystack)
+        reason_nature_tags = []
+        if reason_nature == "机理推断" and any(kw in step_haystack_underscored for kw in LITERATURE_ANALOGY_KEYWORDS):
+            reason_nature_tags.append("文献类比")
+        if reason_nature == "文献类比" and any(kw in step_haystack_underscored for kw in MECHANISTIC_KEYWORDS):
+            reason_nature_tags.append("机理推断")
+    else:
+        reason_nature_tags = []
+
+    auto_decision_type, auto_decision_type_reason = _auto_decision_type(step_haystack, evidence_haystack)
+    if model_decision_type:
+        decision_type = model_decision_type
+        if auto_decision_type != model_decision_type:
+            pending.append(
+                f"step_{step_num}.decision_type: model self-assessment ({model_decision_type}) disagrees "
+                f"with keyword heuristic ({auto_decision_type}) — flag for careful human review"
+            )
+    else:
+        decision_type = auto_decision_type
+        if decision_type != "engineering_decision":
+            pending.append(f"step_{step_num}.decision_type: heuristic classified as {decision_type} ({auto_decision_type_reason}) — requires human confirmation")
+
+    if decision_type != "engineering_decision":
+        rule = None  # 只有 engineering_decision 才允许携带可迁移规则
+
+    # --- strategy_categories: controlled vocabulary (0804 优化_3 §13/§14) ---
+    model_strategy_categories = annotation.get("strategy_categories")
+    if isinstance(model_strategy_categories, list):
+        strategy_categories = sorted({c for c in model_strategy_categories if c in _VALID_STRATEGY_CATEGORIES})
+    else:
+        strategy_categories = []
+    if not strategy_categories:
+        strategy_categories = sorted({
+            category for category, keywords in STRATEGY_ONTOLOGY_KEYWORDS.items()
+            if any(kw in step_haystack for kw in keywords)
+        })
+
+    # --- rule provenance placeholders (0804 优化_3 §9-§12) ---
+    # rule_source needs to exclude *this paper's own* already-saved DDR file
+    # when scanning the knowledge base for similar rules (otherwise
+    # re-extracting the same paper would "discover" its own prior save as a
+    # second supporting paper) - but the ddr_id isn't allocated yet at this
+    # point in the pipeline (see convert_extraction_to_ddr's Step 6). Left as
+    # placeholders here and filled in by _apply_rule_provenance once the
+    # ddr_id is known, exactly like source_ddr_id on the decision graph nodes.
+    rule_source = None
+    rule_confidence = None
+    supporting_ddr: list[str] = []
+
+    # --- calibration_status: per-step uncertainty flag (0804 优化_2 §7/§8/§12) ---
+    # Distinct from extraction_meta.calibration_status (paper-level, dual-
+    # annotator agreement) - this is single-annotator, single-step "should a
+    # human look at this before trusting it downstream".
+    calibration_reasons: list[str] = []
+    if decision_type == "engineering_decision" and any(
+        f"step_{step_num}.design_action: unable to map" in p for p in pending
+    ) and not (target["gene"] or target["enzyme"] or target["pathway"]):
+        calibration_status, calibration_reason = "rejected", (
+            "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+        )
+    else:
+        if reason_nature_tags:
+            calibration_reasons.append("reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立")
+        if decision_type == "engineering_decision" and any(kw in step_haystack or kw in evidence_haystack for kw in POST_HOC_SIGNAL_KEYWORDS):
+            calibration_reasons.append("命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身")
+        if rule and any(kw in rule.lower() for kw in BROAD_RULE_SCOPE_KEYWORDS):
+            calibration_reasons.append("rule 命中过宽泛的适用范围用词（Case 3），可能超出本文证据范围，需人工确认")
+        if calibration_reasons:
+            calibration_status, calibration_reason = "needs_review", "; ".join(calibration_reasons)
+        else:
+            calibration_status, calibration_reason = "auto_accepted", ""
+
     return {
         "step": step_num,
+        "decision_type": decision_type,
         "design_action": design_action,
         "target": target,
         "trigger": trigger,
@@ -577,11 +889,18 @@ def _build_single_step(
         "evidence_grading": evidence_grading,
         "evidence_grading_rationale": grading_rationale,
         "reason_nature": reason_nature,
+        "reason_nature_tags": reason_nature_tags,
         "alternatives": alternatives,
         "implementation": implementation,
         "implementation_detail": impl_detail,
         "result": result,
         "rule": rule,
+        "rule_source": rule_source,
+        "rule_confidence": rule_confidence,
+        "supporting_ddr": supporting_ddr,
+        "strategy_categories": strategy_categories,
+        "calibration_status": calibration_status,
+        "calibration_reason": calibration_reason,
     }
 
 
@@ -646,11 +965,337 @@ def _build_engineering_hypothesis(
     }
 
 
+# ---------------------------------------------------------------------------
+# Reasoning layer (0804 优化_2, additive on top of V2's decision_type filter)
+# ---------------------------------------------------------------------------
+
+
+def _step_engineering_paper_type(step: dict[str, Any]) -> str | None:
+    """Best-effort engineering-strategy category for one decision_chain step.
+
+    Keyword overrides are checked before the design_action default so a
+    step whose implementation_detail reads as protein engineering or
+    chassis engineering doesn't get swallowed by the generic M-code
+    default. Returns None (never a guess) when nothing matches."""
+    target = step.get("target") or {}
+    text = " ".join(str(x).lower() for x in (
+        step.get("implementation_detail") or "", target.get("gene") or "",
+        target.get("enzyme") or "", target.get("pathway") or "",
+    ))
+    if any(kw in text for kw in CHASSIS_TYPE_KEYWORDS):
+        return "chassis_engineering"
+    if any(kw in text for kw in BIOSENSOR_TYPE_KEYWORDS):
+        return "biosensor_platform"
+    if any(kw in text for kw in PROTEIN_ENG_TYPE_KEYWORDS):
+        return "protein_engineering"
+    if any(kw in text for kw in EVOLUTIONARY_TYPE_KEYWORDS):
+        return "evolutionary_engineering"
+    return _DESIGN_ACTION_TO_ENGINEERING_PAPER_TYPE.get(step.get("design_action", ""))
+
+
+def _classify_engineering_paper_type(
+    decision_chain: list[dict[str, Any]],
+    extensions: dict[str, Any],
+) -> tuple[list[str], str]:
+    """Paper-level engineering-strategy classification (SKILL.md §3.1).
+
+    Model self-assessment first (paper-level `extensions.engineering_paper_type`,
+    validated against the same enum the DDR schema declares), falling back to
+    a heuristic aggregated across the already-filtered decision_chain's
+    design_action/implementation_detail — same model-first/heuristic-fallback
+    pattern used everywhere else in this module. `multi_strategy` is a
+    holistic judgment call about which strategies are *central* to the paper,
+    not just present, so the heuristic never emits it on its own; it only
+    passes it through when the model explicitly says so.
+    """
+    raw_model_types = extensions.get("engineering_paper_type")
+    if isinstance(raw_model_types, list):
+        model_types = sorted({t for t in raw_model_types if t in _VALID_ENGINEERING_PAPER_TYPES})
+        if model_types:
+            rationale = extensions.get("engineering_paper_type_rationale") or "模型自评(SKILL.md §3.1 engineering_paper_type)"
+            return model_types, rationale
+
+    if not decision_chain:
+        return [], ""
+    categories = {cat for step in decision_chain if (cat := _step_engineering_paper_type(step))}
+    if not categories:
+        return [], ""
+    return sorted(categories), "基于 decision_chain 的 design_action/implementation_detail 关键词启发式判定——需人工确认"
+
+
+def _build_engineering_decision_map(
+    decision_chain: list[dict[str, Any]],
+    problem: dict[str, Any],
+    diagnosis: dict[str, Any],
+    hypothesis: dict[str, Any],
+) -> dict[str, Any]:
+    """Human-readable reasoning chain connecting DDRs (0804 优化_2 §5/§6) —
+    not the DDR itself. `decision_sequence` is a simplified projection of
+    `decision_chain`, which V2's Q1/Q2/Q3 filter has already restricted to
+    engineering_decision steps only, so no additional filtering is needed
+    here (§6's "only include decision_type = engineering_decision" is
+    already an invariant of decision_chain, not something this function has
+    to re-check)."""
+    initial_bottleneck = ""
+    key_hypothesis = hypothesis.get("hypothesis", "")
+    if decision_chain:
+        # §6: the bottleneck must precede engineering, not be a post-hoc
+        # result description - the first retained step's own trigger is by
+        # construction the observation that existed before that first action.
+        # trigger.observation is often empty for a true first step (there is
+        # no prior step's outcome to draw from - see _build_decision_chain's
+        # prev_outcome threading), so trigger.reasoning (the stated rationale
+        # for that first action, still a pre-engineering constraint
+        # statement) is tried next, before falling back to some other step's
+        # diagnosis observation that isn't actually about the initial state.
+        first_trigger = decision_chain[0]["trigger"]
+        initial_bottleneck = first_trigger.get("observation", "") or first_trigger.get("reasoning", "")
+        if not key_hypothesis:
+            key_hypothesis = first_trigger.get("reasoning", "")
+    if not initial_bottleneck:
+        observations = diagnosis.get("observations") or []
+        initial_bottleneck = observations[0] if observations else ""
+
+    decision_sequence = [
+        {
+            "step": step.get("step"),
+            "design_action": step.get("design_action", ""),
+            "action_summary": step.get("implementation_detail") or step.get("implementation", ""),
+        }
+        for step in decision_chain
+    ]
+
+    return {
+        "goal": problem.get("problem_statement", ""),
+        "initial_bottleneck": initial_bottleneck,
+        "key_hypothesis": key_hypothesis,
+        "decision_sequence": decision_sequence,
+    }
+
+
+def _build_paper_reasoning_overview(
+    engineering_paper_type: list[str],
+    decision_map: dict[str, Any],
+) -> dict[str, Any]:
+    """Convenience projection for Part 1 ("Paper Reasoning Overview") -
+    aggregates fields already computed elsewhere, introduces no new source
+    of truth."""
+    return {
+        "paper_type": engineering_paper_type,
+        "goal": decision_map.get("goal", ""),
+        "initial_bottleneck": decision_map.get("initial_bottleneck", ""),
+        "key_hypothesis": decision_map.get("key_hypothesis", ""),
+    }
+
+
+def _build_human_calibration_report(decision_chain: list[dict[str, Any]]) -> dict[str, Any]:
+    """Aggregate per-step calibration_status across decision_chain (Part 5).
+    Scoped to decision_chain (real engineering decisions) rather than also
+    including excluded_records - those are already visible as their own
+    separately-labeled bucket and don't compete for the same review queue."""
+    counts = Counter(step.get("calibration_status", "auto_accepted") for step in decision_chain)
+    needs_review_steps = [
+        {
+            "step": step.get("step"),
+            "calibration_status": step.get("calibration_status"),
+            "calibration_reason": step.get("calibration_reason", ""),
+        }
+        for step in decision_chain
+        if step.get("calibration_status") != "auto_accepted"
+    ]
+    return {
+        "auto_accepted": counts.get("auto_accepted", 0),
+        "needs_review": counts.get("needs_review", 0),
+        "rejected": counts.get("rejected", 0),
+        "needs_review_steps": needs_review_steps,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Knowledge representation layer (0804 优化_3): decision graph, failure-driven
+# reasoning, rule provenance aggregate.
+# ---------------------------------------------------------------------------
+
+
+def _node_target_text(step: dict[str, Any]) -> str:
+    target = step.get("target") or {}
+    return target.get("gene") or target.get("enzyme") or target.get("pathway") or ""
+
+
+def _build_engineering_decision_graph(
+    decision_chain: list[dict[str, Any]],
+    excluded_records: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Within-paper decision dependency graph (0804 优化_3 §2-§6).
+
+    Only infers edges the data itself already supports - see
+    schema_v2.json's engineering_decision_graph._relation_generation_notes
+    for exactly which signal justifies each relation. `depends_on` is
+    deliberately never auto-generated (documented there as a known
+    limitation) rather than guessed from weak text overlap.
+    """
+    nodes: list[dict[str, Any]] = []
+    edges: list[dict[str, Any]] = []
+    node_id_by_step: dict[int, str] = {}
+
+    for step in decision_chain:
+        node_id = f"D{step['step']}"
+        node_id_by_step[step["step"]] = node_id
+        trigger = step.get("trigger") or {}
+        nodes.append({
+            "id": node_id,
+            "type": "engineering_decision",
+            "target": _node_target_text(step),
+            "decision_summary": step.get("implementation_detail") or step.get("implementation", ""),
+            "trigger": trigger.get("observation") or trigger.get("reasoning", ""),
+            "evidence_level": step.get("evidence_grading", ""),
+            "reason_nature": step.get("reason_nature", ""),
+            "source_ddr_id": "",  # patched by convert_extraction_to_ddr once ddr_id is allocated
+        })
+
+    # triggered_by / solves: deterministic - a later step's trigger.observation
+    # equal to the previous step's result.after is the same linkage
+    # _build_decision_chain's prev_outcome threading already establishes, not
+    # a new guess. `solves` piggybacks on that edge only when the earlier
+    # outcome reads as a setback (FAILURE_SIGNAL_KEYWORDS).
+    for i in range(1, len(decision_chain)):
+        prev_step, cur_step = decision_chain[i - 1], decision_chain[i]
+        prev_id, cur_id = node_id_by_step[prev_step["step"]], node_id_by_step[cur_step["step"]]
+        prev_outcome = (prev_step.get("result") or {}).get("after") or ""
+        cur_observation = (cur_step.get("trigger") or {}).get("observation") or ""
+        if cur_observation and prev_outcome and cur_observation == prev_outcome:
+            edges.append({"from": prev_id, "to": cur_id, "relation": "triggered_by", "evidence": cur_observation})
+            if any(kw in prev_outcome.lower() for kw in FAILURE_SIGNAL_KEYWORDS):
+                edges.append({
+                    "from": cur_id, "to": prev_id, "relation": "solves",
+                    "evidence": f"{cur_step.get('implementation_detail', '')} addresses: {prev_outcome}",
+                })
+
+    # alternative_to: an alternative naming the same gene symbol as another
+    # real step's target in this paper's own decision_chain. Gene-symbol
+    # equality only (no fuzzy text matching) - a missed edge is preferable
+    # to a fabricated relationship between two unrelated steps.
+    seen_alt_edges: set[tuple[str, str]] = set()
+    for step in decision_chain:
+        step_id = node_id_by_step[step["step"]]
+        for alt in step.get("alternatives") or []:
+            approach = alt.get("approach", "") if isinstance(alt, dict) else str(alt)
+            gene = _extract_gene_symbol(approach)
+            if not gene:
+                continue
+            for other in decision_chain:
+                if other["step"] == step["step"]:
+                    continue
+                if (other.get("target") or {}).get("gene") == gene:
+                    other_id = node_id_by_step[other["step"]]
+                    key = (step_id, other_id) if step_id < other_id else (other_id, step_id)
+                    if key in seen_alt_edges:
+                        continue
+                    seen_alt_edges.add(key)
+                    edges.append({"from": step_id, "to": other_id, "relation": "alternative_to", "evidence": approach})
+
+    # validated_by: a validation-type excluded_record whose target matches a
+    # decision node's target becomes its own node, linked back to that
+    # decision - excluded_records already carries exactly this information
+    # (V2's Q1/Q2/Q3 filter), this just surfaces it as a graph edge instead
+    # of leaving it only reachable by scanning excluded_records separately.
+    validation_counter = 0
+    for record in excluded_records:
+        if record.get("decision_type") != "validation":
+            continue
+        snapshot = record.get("step_snapshot", {})
+        val_target = _node_target_text(snapshot)
+        matching_decision = next(
+            (step for step in decision_chain if val_target and _node_target_text(step) == val_target),
+            None,
+        )
+        if matching_decision is None:
+            continue
+        validation_counter += 1
+        val_id = f"V{validation_counter}"
+        snap_trigger = snapshot.get("trigger") or {}
+        nodes.append({
+            "id": val_id,
+            "type": "validation_evidence",
+            "target": val_target,
+            "decision_summary": snap_trigger.get("reasoning") or snapshot.get("implementation_detail", ""),
+            "trigger": snap_trigger.get("observation", ""),
+            "evidence_level": snapshot.get("evidence_grading", ""),
+            "reason_nature": "",
+            "source_ddr_id": "",
+        })
+        edges.append({
+            "from": node_id_by_step[matching_decision["step"]],
+            "to": val_id,
+            "relation": "validated_by",
+            "evidence": (snapshot.get("result") or {}).get("after", ""),
+        })
+
+    return {"nodes": nodes, "edges": edges}
+
+
+def _build_failure_points(decision_chain: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Explicit failure→pivot pattern (0804 优化_3 §8). Reuses the same
+    adjacent-step signal as the decision graph's `solves` edges, kept as a
+    standalone list so engineering_logic_chain doesn't need to parse the
+    graph just to answer "where did the reasoning pivot because something
+    didn't work"."""
+    points: list[dict[str, Any]] = []
+    for i in range(1, len(decision_chain)):
+        prev_step, cur_step = decision_chain[i - 1], decision_chain[i]
+        prev_outcome = (prev_step.get("result") or {}).get("after") or ""
+        cur_observation = (cur_step.get("trigger") or {}).get("observation") or ""
+        if cur_observation and prev_outcome and cur_observation == prev_outcome and any(
+            kw in prev_outcome.lower() for kw in FAILURE_SIGNAL_KEYWORDS
+        ):
+            points.append({
+                "failure_point": prev_outcome,
+                "caused_by": prev_step.get("implementation_detail") or prev_step.get("implementation", ""),
+                "resolved_by": cur_step.get("implementation_detail") or cur_step.get("implementation", ""),
+            })
+    return points
+
+
+def _build_engineering_logic_chain(
+    decision_map: dict[str, Any],
+    failure_points: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """§7's upgraded view. Reuses engineering_decision_map's already-computed
+    goal/initial_bottleneck/key_hypothesis (that function's own docstring
+    explains the fallback order) rather than recomputing them a second,
+    possibly-divergent way."""
+    return {
+        "goal": decision_map.get("goal", ""),
+        "initial_bottleneck": decision_map.get("initial_bottleneck", ""),
+        "hypothesis": decision_map.get("key_hypothesis", ""),
+        "failure_points": failure_points,
+        "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）",
+    }
+
+
+def _build_rule_provenance(decision_chain: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Part 6 aggregate - only steps with a non-null rule."""
+    return [
+        {
+            "step": step.get("step"),
+            "rule": step["rule"],
+            "rule_source": step.get("rule_source"),
+            "rule_confidence": step.get("rule_confidence"),
+            "supporting_ddr": step.get("supporting_ddr", []),
+        }
+        for step in decision_chain
+        if step.get("rule")
+    ]
+
+
 def _build_extraction_meta(
     pending: list[str],
     extraction_task_id: str | None,
     paper_index: int | None = None,
     paper_extraction_detail: dict[str, Any] | None = None,
+    *,
+    engineering_paper_type: list[str] | None = None,
+    engineering_paper_type_rationale: str = "",
 ) -> dict[str, Any]:
     return {
         "extraction_method": "semi_automated",
@@ -664,6 +1309,8 @@ def _build_extraction_meta(
         "paper_extraction_task_id": extraction_task_id,
         "paper_index": paper_index,
         "paper_extraction_detail": paper_extraction_detail,
+        "engineering_paper_type": engineering_paper_type or [],
+        "engineering_paper_type_rationale": engineering_paper_type_rationale,
     }
 
 
@@ -801,6 +1448,41 @@ def _auto_reason_nature(data: dict[str, Any], fields: dict[str, Any]) -> str:
     return "事后合理化存疑"
 
 
+def _auto_decision_type(
+    haystack: str,
+    evidence_haystack: str,
+) -> tuple[str, str]:
+    """Heuristic Q1/Q2/Q3 classification (0804 优化 §3 Phase 3) — returns
+    ``(decision_type, rationale)``.
+
+    ``haystack`` should already combine the step's intervention/purpose/
+    trigger/implementation-detail text (lowercased); ``evidence_haystack``
+    the step's evidence description/source text (paragraph anchors etc.,
+    underscores normalized to spaces) — genome/docking signals typically
+    only show up there, not in the intervention text itself. Order matters:
+    background (Q2) is checked first because a background chassis mentioned
+    alongside real new engineering in the same record should still be
+    flagged for human review rather than silently kept; post_hoc requires a
+    *combination* of a post-hoc-context signal and a no-new-action signal
+    (never `reason_nature` alone — SCREENING_KEYWORDS's bare "ale" substring
+    already false-positives on ordinary words like "genome-scale", so
+    reason_nature=="筛选得来" is not a reliable second signal here) so a
+    genuinely new but docking-supported engineering step isn't misfiled.
+    """
+    if any(kw in haystack for kw in BACKGROUND_KEYWORDS):
+        return "background", "命中背景底盘关键词（本文引用/沿用此前研究已构建的构建体，未通过 Q2）"
+
+    no_new_action = any(kw in haystack for kw in NO_NEW_ACTION_KEYWORDS)
+    post_hoc_signal = any(kw in haystack or kw in evidence_haystack for kw in POST_HOC_SIGNAL_KEYWORDS)
+    if post_hoc_signal and no_new_action:
+        return "post_hoc_interpretation", "命中结构分析/docking/基因组测序等事后解释信号，且无新改造动作，未驱动本文的工程决策（未通过 Q1）"
+
+    if no_new_action or any(kw in haystack for kw in VALIDATION_KEYWORDS):
+        return "validation", "记录只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择（未通过 Q1 或 Q3）"
+
+    return "engineering_decision", ""
+
+
 def _infer_categories(fields: dict[str, Any]) -> list[str]:
     """Infer category tags from fields."""
     cats = fields.get("category", [])
@@ -863,15 +1545,134 @@ def _allocate_ddr_id() -> str:
     return f"DDR-{next_id:03d}"
 
 
+def _normalize_title(title: str) -> str:
+    return re.sub(r"[^\w]+", " ", title.lower()).strip()
+
+
+def _find_existing_ddr(ref: dict[str, Any]) -> dict[str, Any] | None:
+    """Find an already-saved DDR for the same paper, so re-extracting it
+    overwrites the existing record instead of creating a duplicate.
+
+    Matches by DOI first (case/whitespace-insensitive exact match, when both
+    records have a non-empty DOI), falling back to normalized title (also
+    exact match). Deliberately no fuzzy matching - a false-positive merge
+    would silently discard a different paper's record."""
+    if not DDR_DIR.is_dir():
+        return None
+    doi = (ref.get("doi") or "").strip().lower()
+    title = _normalize_title(ref.get("title") or "")
+    if not doi and not title:
+        return None
+    for f in DDR_DIR.glob("DDR-*.json"):
+        try:
+            rec = json.loads(f.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        rec_ref = rec.get("metadata", {}).get("reference", {})
+        rec_doi = (rec_ref.get("doi") or "").strip().lower()
+        if doi and rec_doi and doi == rec_doi:
+            return rec
+        rec_title = _normalize_title(rec_ref.get("title") or "")
+        if not doi and title and title == rec_title:
+            return rec
+    return None
+
+
+def _classify_rule_source(rule_text: str, own_ddr_id: str | None) -> tuple[str, list[str]]:
+    """Scan the knowledge base for other DDRs carrying a similar rule
+    (0804 优化_3 §9/§10). Conservative token-overlap match, same philosophy
+    as `_find_existing_ddr` - a false-positive "this rule is already
+    supported elsewhere" is worse than the default `single_paper`, so the
+    threshold is deliberately not tuned to be clever. `textbook_mechanism`
+    and `expert_curated` are never auto-assigned - those require a human
+    judgment this scan can't make."""
+    if not rule_text or not DDR_DIR.is_dir():
+        return "single_paper", []
+    own_tokens = _rule_tokens(rule_text)
+    if not own_tokens:
+        return "single_paper", []
+    supporting: list[str] = []
+    for f in DDR_DIR.glob("DDR-*.json"):
+        if f.stem.startswith(f"{own_ddr_id}_") or f.stem == own_ddr_id:
+            continue
+        try:
+            rec = json.loads(f.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        rec_id = rec.get("ddr_id")
+        for step in rec.get("decision_chain", []):
+            other_rule = step.get("rule")
+            if not other_rule:
+                continue
+            other_tokens = _rule_tokens(other_rule)
+            if not other_tokens:
+                continue
+            overlap = len(own_tokens & other_tokens) / len(own_tokens | other_tokens)
+            if overlap >= _RULE_SIMILARITY_THRESHOLD and rec_id and rec_id not in supporting:
+                supporting.append(rec_id)
+                break
+    if supporting:
+        return "multi_paper_supported", supporting
+    return "single_paper", []
+
+
+def _classify_rule_confidence(
+    reason_nature: str,
+    evidence_grading: str,
+    rule_source: str,
+    rule_scope_too_broad: bool,
+) -> str:
+    """0804 优化_3 §11: high = mechanistic reasoning + multiple evidence
+    sources; medium = one strong paper; low = analogy or incomplete
+    evidence. An over-broad rule (§12) is capped at low unconditionally,
+    even if every other signal would otherwise support a higher grade -
+    scope violation is itself evidence the claim outran what was verified."""
+    if rule_scope_too_broad:
+        return "low"
+    if reason_nature == "文献类比":
+        return "low"
+    if reason_nature == "机理推断" and evidence_grading == "硬":
+        if rule_source in ("multi_paper_supported", "textbook_mechanism", "expert_curated"):
+            return "high"
+        return "medium"
+    return "low"
+
+
+def _apply_rule_provenance(decision_chain: list[dict[str, Any]], ddr_id: str) -> None:
+    """Fills in rule_source/rule_confidence/supporting_ddr for every step
+    with a non-null rule, now that ddr_id is known (see the placeholder
+    comment in _build_single_step for why this can't happen earlier).
+    Mutates decision_chain's step dicts in place."""
+    for step in decision_chain:
+        rule = step.get("rule")
+        if not rule:
+            continue
+        rule_source, supporting = _classify_rule_source(rule, ddr_id)
+        rule_scope_too_broad = any(kw in rule.lower() for kw in BROAD_RULE_SCOPE_KEYWORDS)
+        step["rule_source"] = rule_source
+        step["supporting_ddr"] = supporting
+        step["rule_confidence"] = _classify_rule_confidence(
+            step.get("reason_nature", ""), step.get("evidence_grading", ""), rule_source, rule_scope_too_broad,
+        )
+
+
 def _save_ddr(ddr: dict[str, Any]) -> Path:
-    """Persist a converted DDR to the knowledge base directory."""
+    """Persist a converted DDR to the knowledge base directory, overwriting
+    any existing file(s) for the same ddr_id (the filename embeds a title
+    slug, which can drift slightly between extractions of the same paper -
+    stale same-id files are removed so overwriting never leaves a
+    half-duplicate behind)."""
     DDR_DIR.mkdir(parents=True, exist_ok=True)
     ddr_id = ddr["ddr_id"]
+    stale = list(DDR_DIR.glob(f"{ddr_id}_*.json"))
+    for f in stale:
+        f.unlink(missing_ok=True)
     # Create a safe filename from title
     title = ddr.get("metadata", {}).get("title", "")
     safe_title = re.sub(r"[^\w\s-]", "", title.lower())[:50].strip().replace(" ", "_") or "untitled"
     path = DDR_DIR / f"{ddr_id}_{safe_title}.json"
     path.write_text(json.dumps(ddr, ensure_ascii=False, indent=2), encoding="utf-8")
+    sync_after_save([path])
     return path
 
 

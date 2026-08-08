@@ -62,7 +62,8 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": "在以PEP为限速前体的芳香族产物宿主中，失活PTS并启用非PTS葡萄糖摄取（如GalP/Glk）可理论性提高产品得率，但需同时解决生长受损问题"
+      "rule": "在以PEP为限速前体的芳香族产物宿主中，失活PTS并启用非PTS葡萄糖摄取（如GalP/Glk）可理论性提高产品得率，但需同时解决生长受损问题",
+      "decision_type": "engineering_decision"
     },
     {
       "step": 2,
@@ -103,7 +104,8 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": "PTS缺陷菌株中可通过启动子文库调节替代性葡萄糖摄取/磷酸化途径（GalP/Glk）的表达强度，在生长恢复与产物合成间取得平衡"
+      "rule": "PTS缺陷菌株中可通过启动子文库调节替代性葡萄糖摄取/磷酸化途径（GalP/Glk）的表达强度，在生长恢复与产物合成间取得平衡",
+      "decision_type": "engineering_decision"
     },
     {
       "step": 3,
@@ -143,7 +145,8 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": null
+      "rule": null,
+      "decision_type": "engineering_decision"
     },
     {
       "step": 4,
@@ -190,52 +193,11 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": null
+      "rule": null,
+      "decision_type": "engineering_decision"
     },
     {
       "step": 5,
-      "design_action": "M9",
-      "target": {
-        "gene": "",
-        "enzyme": "",
-        "pathway": "",
-        "condition": "DASGIP 4x1.5 L, initial working volume 500 mL, 65 h, initial glucose 25 g/L, inoculation OD600 0.45"
-      },
-      "trigger": {
-        "observation": "Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phase-2 max ~13,541 MFU (~390-438 h) with late decline; later time-point colonies grew better but had lower MFU (6480.30 +/- 872.70 vs 10230.70 +/- 1136.60) — PTS-defective cells preferentially evolve toward growth over Trp synthesis; 10 mutants with MFU >10000 advanced; T5 selected as best (direct_observation)",
-        "reasoning": "Evaluate T5 production performance in fed-batch (phenotype validation of evolved strain)",
-        "source_location": "T5 (pJC184 cured via Cas9/sgRNA-CmR cleavage induced by IPTG)"
-      },
-      "evidence": {
-        "description": [
-          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
-          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
-          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p017",
-          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
-          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p019",
-          "4_5_fermentation_conditions_p001"
-        ],
-        "source": "论文实测",
-        "source_location": "S028 reference fermentation",
-        "values": {}
-      },
-      "evidence_grading": "软",
-      "evidence_grading_rationale": "自动判定失败——请人工判定",
-      "reason_nature": "文献类比",
-      "alternatives": [],
-      "implementation": "其他",
-      "implementation_detail": "none beyond plasmid curing; fed-batch fermentation",
-      "result": {
-        "metric": "OD600, DCW, Trp, qTrp, yield, Vp, SA, DSA",
-        "before": "",
-        "after": "T5: 38.77 +/- 0.02 g/L Trp, yield 0.164 g/g, qTrp 25.28 mg/gDCW/h, DCW 22.89 +/- 0.20 g/L (32.02% below S028); yield still far below theoretical maxima; SA/DSA accumulation patterns similar to S028 indicating downstream pathway limitation (direct_observation)",
-        "fold_change": null,
-        "quantified": true
-      },
-      "rule": null
-    },
-    {
-      "step": 6,
       "design_action": "M4",
       "target": {
         "gene": "aroG",
@@ -273,86 +235,8 @@
         "fold_change": null,
         "quantified": true
       },
-      "rule": "在芳香族氨基酸生产中，将抗反馈抑制的DAHP合酶与利用途径中间体前馈激活的下游酶变体组合，可协同提高碳流向目标产物的分配"
-    },
-    {
-      "step": 7,
-      "design_action": "M3",
-      "target": {
-        "gene": "",
-        "enzyme": "",
-        "pathway": "",
-        "condition": "BGISEQ WGS, 8,764,210 reads"
-      },
-      "trigger": {
-        "observation": "T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp (+7.03% vs T5), qTrp 28.83 mg/gDCW/h, DCW 23.17 g/L (28.20% below S028AA); S028AA: 0.185 g/g, 48.27 g/L, Vp 0.77 vs 0.67 g/L/h — T5AA lower volumetric productivity due to growth defect (direct_observation); authors attribute improved yield mainly to increased PEP availability (author_interpretation)",
-        "reasoning": "Elucidate mutations underlying T5 behavior",
-        "source_location": "T5"
-      },
-      "evidence": {
-        "description": [
-          "2_6_genomic_analysis_of_the_strain_t5_p002",
-          "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
-          "3_4_further_developments_of_the_trp_producing_strain_p002"
-        ],
-        "source": "论文实测",
-        "source_location": "reference genome E. coli W3110; key mutations cross-checked in S028 by PCR sequencing",
-        "values": {}
-      },
-      "evidence_grading": "软",
-      "evidence_grading_rationale": "自动判定失败——请人工判定",
-      "reason_nature": "事后合理化存疑",
-      "alternatives": [],
-      "implementation": "其他",
-      "implementation_detail": "none (characterization)",
-      "result": {
-        "metric": "SNPs, InDels (15 modified + 5 deleted genes, Table 2)",
-        "before": "",
-        "after": "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation",
-        "fold_change": null,
-        "quantified": true
-      },
-      "rule": null
-    },
-    {
-      "step": 8,
-      "design_action": "M3",
-      "target": {
-        "gene": "",
-        "enzyme": "",
-        "pathway": "",
-        "condition": "Modeller v9.24 homology model on STP10 template (PDB 6H7D); AutoDock Vina docking in Chimera; PyMOL alignment"
-      },
-      "trigger": {
-        "observation": "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation",
-        "reasoning": "Explore structural effect of GalP mutations (K137T, P195A, F204L) on glucose permeation",
-        "source_location": "not_applicable (in silico)"
-      },
-      "evidence": {
-        "description": [
-          "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p001",
-          "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p002",
-          "4_7_structure_analysis_and_docking_study_p001",
-          "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p006"
-        ],
-        "source": "论文实测",
-        "source_location": "wild-type GalP model",
-        "values": {}
-      },
-      "evidence_grading": "软",
-      "evidence_grading_rationale": "自动启发式判定(软): 基于证据关键词匹配——需人工确认",
-      "reason_nature": "筛选得来",
-      "alternatives": [],
-      "implementation": "其他",
-      "implementation_detail": "none (computational analysis)",
-      "result": {
-        "metric": "modeled structure, H-bond distances, ICH-domain conformation",
-        "before": "",
-        "after": "Mutations hypothesized to increase ICH flexibility and glucose-binding affinity (author_interpretation; authors state confirmation by further experiments is needed)",
-        "fold_change": null,
-        "quantified": false
-      },
-      "rule": null
+      "rule": "在芳香族氨基酸生产中，将抗反馈抑制的DAHP合酶与利用途径中间体前馈激活的下游酶变体组合，可协同提高碳流向目标产物的分配",
+      "decision_type": "engineering_decision"
     }
   ],
   "engineering_problem": {
@@ -408,7 +292,7 @@
     "extraction_date": "2026-07-31",
     "calibration_status": "pending",
     "calibrated_by": [],
-    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。29 个字段待人工审核。",
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。29 个字段待人工审核。 [0804 优化回归修正，对齐 DDR-009 regression 要求] 按 Phase 3 Q1/Q2/Q3 过滤：原 step5（T5 补料分批发酵表型验证，无新改造动作）标记为 validation，原 step7（T5 全基因组测序解析突变位点，纯表征）与原 step8（GalP 突变体 docking/结构分析，纯计算/事后解释）标记为 post_hoc_interpretation，均移出 decision_chain 至 excluded_records；剩余工程决策步骤重新编号 1-5。",
     "human_review_status": "pending",
     "review_notes": "",
     "paper_extraction_task_id": "603f1b4e2d0d4439a9bc762015e336df",
@@ -1084,5 +968,143 @@
         "note": null
       }
     }
-  }
+  },
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 5,
+        "design_action": "M9",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "DASGIP 4x1.5 L, initial working volume 500 mL, 65 h, initial glucose 25 g/L, inoculation OD600 0.45"
+        },
+        "trigger": {
+          "observation": "Phase-1 fluorescence max ~11,446 MFU at 126 h then declined to 8,000-9,000; phase-2 max ~13,541 MFU (~390-438 h) with late decline; later time-point colonies grew better but had lower MFU (6480.30 +/- 872.70 vs 10230.70 +/- 1136.60) — PTS-defective cells preferentially evolve toward growth over Trp synthesis; 10 mutants with MFU >10000 advanced; T5 selected as best (direct_observation)",
+          "reasoning": "Evaluate T5 production performance in fed-batch (phenotype validation of evolved strain)",
+          "source_location": "T5 (pJC184 cured via Cas9/sgRNA-CmR cleavage induced by IPTG)"
+        },
+        "evidence": {
+          "description": [
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p017",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p019",
+            "4_5_fermentation_conditions_p001"
+          ],
+          "source": "论文实测",
+          "source_location": "S028 reference fermentation",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "文献类比",
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "none beyond plasmid curing; fed-batch fermentation",
+        "result": {
+          "metric": "OD600, DCW, Trp, qTrp, yield, Vp, SA, DSA",
+          "before": "",
+          "after": "T5: 38.77 +/- 0.02 g/L Trp, yield 0.164 g/g, qTrp 25.28 mg/gDCW/h, DCW 22.89 +/- 0.20 g/L (32.02% below S028); yield still far below theoretical maxima; SA/DSA accumulation patterns similar to S028 indicating downstream pathway limitation (direct_observation)",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "decision_type": "validation"
+      }
+    },
+    {
+      "decision_type": "post_hoc_interpretation",
+      "exclusion_reason": "Q1 未通过：Discussion/结构分析/docking/基因组测序等事后解释，未驱动本文的工程决策",
+      "step_snapshot": {
+        "step": 7,
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "BGISEQ WGS, 8,764,210 reads"
+        },
+        "trigger": {
+          "observation": "T5AA: yield 0.195 g/g (+18.90% vs T5; +5.41% vs S028AA), 41.49 +/- 0.03 g/L Trp (+7.03% vs T5), qTrp 28.83 mg/gDCW/h, DCW 23.17 g/L (28.20% below S028AA); S028AA: 0.185 g/g, 48.27 g/L, Vp 0.77 vs 0.67 g/L/h — T5AA lower volumetric productivity due to growth defect (direct_observation); authors attribute improved yield mainly to increased PEP availability (author_interpretation)",
+          "reasoning": "Elucidate mutations underlying T5 behavior",
+          "source_location": "T5"
+        },
+        "evidence": {
+          "description": [
+            "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+            "3_4_further_developments_of_the_trp_producing_strain_p002"
+          ],
+          "source": "论文实测",
+          "source_location": "reference genome E. coli W3110; key mutations cross-checked in S028 by PCR sequencing",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "事后合理化存疑",
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "none (characterization)",
+        "result": {
+          "metric": "SNPs, InDels (15 modified + 5 deleted genes, Table 2)",
+          "before": "",
+          "after": "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "decision_type": "post_hoc_interpretation"
+      }
+    },
+    {
+      "decision_type": "post_hoc_interpretation",
+      "exclusion_reason": "Q1 未通过：Discussion/结构分析/docking/基因组测序等事后解释，未驱动本文的工程决策",
+      "step_snapshot": {
+        "step": 8,
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Modeller v9.24 homology model on STP10 template (PDB 6H7D); AutoDock Vina docking in Chimera; PyMOL alignment"
+        },
+        "trigger": {
+          "observation": "mlc(dgsA) deletion, zwf E165Stop, galP K137T/P195A/F204L among 20 affected loci (direct_observation); functional consequences are author_interpretation requiring confirmation",
+          "reasoning": "Explore structural effect of GalP mutations (K137T, P195A, F204L) on glucose permeation",
+          "source_location": "not_applicable (in silico)"
+        },
+        "evidence": {
+          "description": [
+            "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p001",
+            "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p002",
+            "4_7_structure_analysis_and_docking_study_p001",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p006"
+          ],
+          "source": "论文实测",
+          "source_location": "wild-type GalP model",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动启发式判定(软): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "none (computational analysis)",
+        "result": {
+          "metric": "modeled structure, H-bond distances, ICH-domain conformation",
+          "before": "",
+          "after": "Mutations hypothesized to increase ICH flexibility and glucose-binding affinity (author_interpretation; authors state confirmation by further experiments is needed)",
+          "fold_change": null,
+          "quantified": false
+        },
+        "rule": null,
+        "decision_type": "post_hoc_interpretation"
+      }
+    }
+  ]
 }

@@ -1,29 +1,25 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { I18nProvider } from "@/lib/i18n";
 import type { EvaluationMetricsSummary } from "@/api/evaluationMetrics";
-import { EvaluationMetricsPage } from "./EvaluationMetricsPage";
+import { DesignMetricsTab } from "./DesignMetricsTab";
 
 const mocks = vi.hoisted(() => ({
-  designProjects: vi.fn(), summary: vi.fn(), consistencyRuns: vi.fn(), setReferenceDdr: vi.fn(), runConsistency: vi.fn(),
+  summary: vi.fn(), consistencyRuns: vi.fn(), setReferenceDdr: vi.fn(), runConsistency: vi.fn(),
 }));
 vi.mock("@/api/evaluationMetrics", () => ({
-  listDesignProjectsForProject: (...args: unknown[]) => mocks.designProjects(...args),
   getMetricsSummary: (...args: unknown[]) => mocks.summary(...args),
   listConsistencyRuns: (...args: unknown[]) => mocks.consistencyRuns(...args),
   setReferenceDdr: (...args: unknown[]) => mocks.setReferenceDdr(...args),
   runConsistencySample: (...args: unknown[]) => mocks.runConsistency(...args),
 }));
 
-function renderPage() {
+function renderTab(referenceDdrIds: string[] = []) {
   return render(
     <I18nProvider>
       <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
-        <MemoryRouter initialEntries={["/projects/PROJ-1/metrics"]}>
-          <Routes><Route path="/projects/:projectId/metrics" element={<EvaluationMetricsPage />} /></Routes>
-        </MemoryRouter>
+        <DesignMetricsTab designProjectId="DESIGNPROJ-1" referenceDdrIds={referenceDdrIds} />
       </QueryClientProvider>
     </I18nProvider>,
   );
@@ -59,29 +55,20 @@ const FULL_SUMMARY: EvaluationMetricsSummary = {
 
 beforeEach(() => {
   localStorage.setItem("dbtl-os.lang", "zh-CN");
-  mocks.designProjects.mockReset();
   mocks.summary.mockReset();
   mocks.consistencyRuns.mockReset();
   mocks.consistencyRuns.mockResolvedValue([]);
 });
 
-describe("EvaluationMetricsPage", () => {
-  it("shows a first-use empty state when the project has no design project yet", async () => {
-    mocks.designProjects.mockResolvedValue([]);
-    renderPage();
-    expect(await screen.findByText("该项目尚无工程设计项目")).toBeInTheDocument();
-  });
-
-  it("renders metric tiles from a populated summary", async () => {
-    mocks.designProjects.mockResolvedValue([
-      { designProjectId: "DESIGNPROJ-1", status: "portfolio_generated", referenceDdrIds: ["DDR-001"], createdAt: 1_700_000_000 },
-    ]);
+describe("DesignMetricsTab", () => {
+  it("renders metric tiles from a populated summary, scoped to the given design project", async () => {
     mocks.summary.mockResolvedValue(FULL_SUMMARY);
-    renderPage();
+    renderTab(["DDR-001"]);
 
     expect(await screen.findByText("接地率")).toBeInTheDocument();
     expect(screen.getByText("50%")).toBeInTheDocument();
     expect(screen.getByText("2 / 4")).toBeInTheDocument();
+    expect(mocks.summary).toHaveBeenCalledWith("DESIGNPROJ-1");
 
     expect(screen.getByText("3 / 9")).toBeInTheDocument();
     expect(screen.getByText("feedback_relief")).toBeInTheDocument();
@@ -97,15 +84,12 @@ describe("EvaluationMetricsPage", () => {
   });
 
   it("shows an unavailable state for novelty/reproduction when not applicable", async () => {
-    mocks.designProjects.mockResolvedValue([
-      { designProjectId: "DESIGNPROJ-1", status: "portfolio_generated", referenceDdrIds: [], createdAt: 1_700_000_000 },
-    ]);
     mocks.summary.mockResolvedValue({
       ...FULL_SUMMARY,
       capability: { ...FULL_SUMMARY.capability, reasonedNovelty: { value: null, numerator: 0, denominator: 0, applicable: false, note: "design project has no reference_ddr_ids linked yet", novelGroundedGenes: [] } },
       sanityCheck: { reproductionRate: { value: null, numerator: 0, denominator: 0, applicable: false, note: "design project has no reference_ddr_ids linked yet" } },
     });
-    renderPage();
+    renderTab([]);
 
     expect(await screen.findByText("暂不可计算")).toBeInTheDocument();
   });

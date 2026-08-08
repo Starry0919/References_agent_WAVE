@@ -1,5 +1,5 @@
 import { NavLink, useParams } from "react-router-dom";
-import { Gauge, LayoutDashboard, Library, Sparkles, Stethoscope, FlaskConical } from "lucide-react";
+import { LayoutDashboard, Library, Sparkles, Stethoscope, FlaskConical } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useI18n, type DictKey } from "@/lib/i18n";
 import { useBackendHealth } from "@/state/BackendHealth";
@@ -19,7 +19,6 @@ const NAV_ITEMS: Array<{ id: string; icon: LucideIcon; labelKey: DictKey; path: 
   { id: "diagnosis", icon: Stethoscope, labelKey: "nav.diagnosis", path: (p) => `/projects/${p}/diagnosis` },
   { id: "engineering-design", icon: FlaskConical, labelKey: "nav.engineeringDesign", path: (p) => `/projects/${p}/design` },
   { id: "knowledge", icon: Library, labelKey: "nav.knowledge", path: (p) => `/projects/${p}/knowledge` },
-  { id: "eval-metrics", icon: Gauge, labelKey: "nav.evalMetrics", path: (p) => `/projects/${p}/metrics` },
 ];
 
 export function TopNav() {

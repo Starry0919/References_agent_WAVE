@@ -33,6 +33,7 @@ from harness.config import PROJECT_ROOT
 from harness.llm import aclose_cached_client
 from harness.providers import describe
 from harness.sessions import Session, SessionStore
+from harness.simulation_demo.app import simulation_app
 from harness.tools import all_tools
 from harness.tools.base import shutdown_tool_pool
 from harness.tools.loader import load_all_tools
@@ -185,6 +186,13 @@ def create_app() -> FastAPI:
     app.include_router(evaluation_metrics_api.router)
     app.include_router(scientific_evaluation_api.router)
     app.include_router(experiments_api.router)
+    # Simulation/Demo Workspace sub-app (harness/simulation_demo/app.py):
+    # reuses the real content routers unmodified against a separate DB
+    # session, so a teaching/demo run never touches the real project
+    # ledger. The sub-app was fully built but never mounted here, which
+    # silently 404'd every /api/simulation/* request via
+    # `removed_api_module` below.
+    app.mount("/api/simulation", simulation_app)
 
     # The prior single-file chat remains available for compatibility.
     @app.get("/legacy/chat")

@@ -65,9 +65,21 @@ export async function captureIdea(
   return toIdea(r);
 }
 
-export async function listIdeas(projectId: string): Promise<ProjectIdea[]> {
-  const r = await api.get<{ ideas: RawIdea[] }>(`/api/projects/${projectId}/ideas`);
-  return r.ideas.map(toIdea);
+export interface RankedIdeas {
+  ideas: ProjectIdea[];
+  /** Set only when `rankForDesignProjectId` was passed and at least one idea's free text
+   * actually overlaps the design project's originating diagnosis hypotheses - never a
+   * fabricated suggestion when nothing really matched. */
+  recommendedIdeaId: string | null;
+}
+
+/** `rankForDesignProjectId`, when given, orders the result by relevance to that design
+ * project's originating diagnosis hypotheses (`harness/ideas/matching.py`) instead of the
+ * default newest-first order - lets the UI pre-suggest a likely idea instead of a blank pick. */
+export async function listIdeas(projectId: string, rankForDesignProjectId?: string): Promise<RankedIdeas> {
+  const suffix = rankForDesignProjectId ? `?rank_for_design_project_id=${encodeURIComponent(rankForDesignProjectId)}` : "";
+  const r = await api.get<{ ideas: RawIdea[]; recommended_idea_id: string | null }>(`/api/projects/${projectId}/ideas${suffix}`);
+  return { ideas: r.ideas.map(toIdea), recommendedIdeaId: r.recommended_idea_id };
 }
 
 export async function linkIdeaToDesign(ideaId: string, input: { designProjectId: string; actorId: string }): Promise<ProjectIdea> {

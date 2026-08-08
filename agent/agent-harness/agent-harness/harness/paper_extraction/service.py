@@ -273,6 +273,55 @@ def submit_run(payload: dict[str, Any]) -> dict[str, Any]:
     return submitted
 
 
+def resubmit_task(task_id: str) -> dict[str, Any]:
+    """Re-run a past task's exact source spec (same upload/DOI/search
+    settings) as a brand-new run - the "重新抽取" action. Reconstructed
+    entirely from what `submit_run` already persisted in the registry
+    (`meta` + the built `request`), so it works for any past task without
+    needing extra state saved up front.
+
+    Raises
+    ------
+    KeyError
+        `task_id` has no registry entry (unknown task).
+    FileNotFoundError
+        The run was an `upload`/`textbook` submission whose source PDF no
+        longer exists on this machine (e.g. it was uploaded on a different
+        computer - uploaded files are local-disk only, unlike the synced
+        `knowledge/ddr_database/` results).
+    """
+    registry = _load_registry()
+    entry = registry.get(task_id)
+    if entry is None:
+        raise KeyError(task_id)
+    meta = entry.get("meta", {})
+    request = entry.get("request", {})
+    literature = request.get("literature_source", {})
+    files = literature.get("files", [])
+    source_type = meta.get("source_type", "auto_search")
+    if source_type in ("upload", "textbook"):
+        missing = [f for f in files if not Path(f).is_file()]
+        if missing:
+            raise FileNotFoundError(
+                f"original source file(s) not available on this machine, only where they were uploaded: {', '.join(missing)}"
+            )
+    payload = {
+        "project_id": meta.get("project_id"),
+        "user_request": request.get("user_request", ""),
+        "organism": request.get("target_system", {}).get("organism", ""),
+        "strain": request.get("target_system", {}).get("strain", ""),
+        "source_type": source_type,
+        "result_level": meta.get("result_level", "extract"),
+        "document_kind": meta.get("document_kind", "auto"),
+        "files": files,
+        "doi": literature.get("doi", []),
+        "automatic": request.get("mode", {}).get("automatic", True),
+        "human_review": request.get("mode", {}).get("human_review", True),
+        "max_papers": (entry.get("options") or {}).get("retrieval_limit", 6),
+    }
+    return submit_run(payload)
+
+
 def get_status(task_id: str) -> dict[str, Any]:
     return _get_manager().status(task_id)
 

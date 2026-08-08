@@ -1,15 +1,17 @@
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, BookOpen, BrainCircuit, Check, Dna, FlaskConical, Lightbulb, Pencil, Sparkles, Target, X } from "lucide-react";
+import { ArrowRight, BookOpen, BrainCircuit, Check, Dna, FlaskConical, Lightbulb, Pencil, Sparkles, Target, Workflow, X } from "lucide-react";
 import { useMutation, useQueries, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import { searchEvidence, type EvidenceSearchResult } from "@/api/evidence";
 import { listIdeas } from "@/api/ideas";
 import { getRun, listRuns } from "@/api/paperExtraction";
+import { listRuns as listOrchestratorRuns, type WorkflowRun } from "@/api/orchestrator";
 import { getProjectStatusView, getTimeline, updateProjectContext } from "@/api/projects";
 import { listDdrKnowledgeClaims, type DdrKnowledgeClaim } from "@/api/rules";
 import { EmptyState } from "@/components/common/EmptyState";
 import { StatusBadge } from "@/components/common/StatusBadge";
+import { autoRunDiagnosisAndDesign } from "@/lib/autoRun";
 import { useI18n } from "@/lib/i18n";
 import { useBackendHealth } from "@/state/BackendHealth";
 import { useProjectContext } from "@/state/useProjectContext";
@@ -81,7 +83,7 @@ export function CommandCenterPage() {
   if (projectLoading) return <div className="p-6"><EmptyState variant="loading" /></div>;
   if (!project) return <div className="p-6"><EmptyState variant="failed" title={t("page1.projectNotFound")} /></div>;
 
-  const ideas = ideasQuery.data ?? [];
+  const ideas = ideasQuery.data?.ideas ?? [];
   const timeline = timelineQuery.data ?? [];
   // Reuse the same relevance-matched literature/claims the linked-knowledge
   // panel below already fetches, instead of scanning `timeline` for
@@ -106,6 +108,7 @@ export function CommandCenterPage() {
   return (
     <main className="flex flex-1 flex-col gap-5 overflow-y-auto bg-surface-sunken p-5">
       <ProjectGoalCard project={project} cycle={cycle} />
+      <AutoRunPanel projectId={projectId as string} targetProduct={project.targetProduct} />
       <LinkedKnowledgePanel
         projectId={projectId as string}
         targetProduct={project.targetProduct}
@@ -254,6 +257,102 @@ export function CommandCenterPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+/** Auto-runs diagnosis + engineering design from the project's target
+ * product the first time this page sees a project with no
+ * `UnifiedWorkflowRun` yet (default chassis E. coli K-12, per user
+ * direction) - `autoRunDiagnosisAndDesign` sequences the two orchestrator
+ * calls that already auto-chain each module end-to-end server-side
+ * (`DiagnosisAdapter.start()`/`DesignAdapter.start()`,
+ * harness/orchestrator/adapters.py). Evaluation/build/human-approval are
+ * never auto-triggered - those stay in the manual Diagnosis/Engineering
+ * Design workbenches by design. `triggeredRef` guards against firing more
+ * than once per mount (e.g. React StrictMode's double-invoke, or the
+ * `runsQuery` refetching) - once fired for this project, revisiting later
+ * only ever displays the existing run's status. */
+function AutoRunPanel({ projectId, targetProduct }: { projectId: string; targetProduct: string }) {
+  const { t } = useI18n();
+  const queryClient = useQueryClient();
+  const triggeredRef = useRef(false);
+
+  const runsQuery = useQuery({
+    queryKey: ["orchestrator-runs", projectId],
+    queryFn: () => listOrchestratorRuns(projectId),
+  });
+
+  const autoRunMutation = useMutation({
+    mutationFn: () => autoRunDiagnosisAndDesign(projectId, targetProduct),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["orchestrator-runs", projectId] }),
+  });
+
+  useEffect(() => {
+    if (triggeredRef.current || !runsQuery.data) return;
+    triggeredRef.current = true;
+    if (runsQuery.data.length === 0) autoRunMutation.mutate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [runsQuery.data]);
+
+  const run: WorkflowRun | null = runsQuery.data?.[0] ?? null;
+
+  if (runsQuery.isLoading) return null;
+  if (autoRunMutation.isPending || (!run && !autoRunMutation.isError)) {
+    return (
+      <section className="panel flex items-center gap-3 p-4">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent-strong">
+          <Workflow size={17} className="animate-pulse" aria-hidden />
+        </span>
+        <div>
+          <h3 className="text-sm font-semibold text-ink">{t("autoRun.title")}</h3>
+          <p className="mt-0.5 text-xs text-ink-muted">{t("autoRun.running")}</p>
+        </div>
+      </section>
+    );
+  }
+  if (autoRunMutation.isError) {
+    return (
+      <section className="panel p-4">
+        <h3 className="text-sm font-semibold text-ink">{t("autoRun.title")}</h3>
+        <EmptyState variant="failed" title={t("autoRun.failedTitle")} detail={String(autoRunMutation.error)} />
+      </section>
+    );
+  }
+  if (!run) return null;
+
+  const reachedDesign = Boolean(run.designProjectRef);
+  const diagnosisOnly = Boolean(run.diagnosisRunRef) && !reachedDesign;
+
+  return (
+    <section className="panel flex items-center justify-between gap-3 p-4">
+      <div className="flex items-center gap-3">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent-strong">
+          <Workflow size={17} aria-hidden />
+        </span>
+        <div>
+          <h3 className="text-sm font-semibold text-ink">{t("autoRun.title")}</h3>
+          <p className="mt-0.5 text-xs text-ink-muted">
+            {reachedDesign
+              ? t("autoRun.portfolioReady")
+              : diagnosisOnly
+                ? t("autoRun.diagnosisNeedsAttention")
+                : t("autoRun.phase") + ": " + run.currentPhase}
+          </p>
+        </div>
+      </div>
+      <div className="flex shrink-0 items-center gap-2">
+        {run.diagnosisRunRef && (
+          <Link to={`/projects/${projectId}/diagnosis/${run.diagnosisRunRef}`} className="flex items-center gap-1 text-xs font-medium text-accent-strong">
+            {t("autoRun.viewDiagnosis")} <ArrowRight size={12} />
+          </Link>
+        )}
+        {run.designProjectRef && (
+          <Link to={`/projects/${projectId}/design/${run.designProjectRef}`} className="flex items-center gap-1 text-xs font-medium text-accent-strong">
+            {t("autoRun.viewDesign")} <ArrowRight size={12} />
+          </Link>
+        )}
+      </div>
+    </section>
   );
 }
 

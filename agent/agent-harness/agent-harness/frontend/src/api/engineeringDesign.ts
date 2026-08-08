@@ -24,6 +24,7 @@ export interface DesignProject {
   status: string;
   revisionCount: number;
   version: number;
+  referenceDdrIds: string[];
 }
 
 export interface HandoffRecord {
@@ -72,7 +73,7 @@ function toProject(p: {
   design_project_id: string; project_id: string; chassis: string; chassis_version_or_genotype: string;
   diagnosis_session_id: string; diagnosis_decision_id: string; diagnosis_version: number; primary_metrics: unknown[];
   secondary_metrics: unknown[]; hard_constraints: unknown[]; preferences_or_weights: unknown[]; autonomy_level: string;
-  status: string; revision_count: number; version: number;
+  status: string; revision_count: number; version: number; reference_ddr_ids: string[];
 }): DesignProject {
   return {
     designProjectId: p.design_project_id, projectId: p.project_id, chassis: p.chassis,
@@ -80,6 +81,7 @@ function toProject(p: {
     diagnosisDecisionId: p.diagnosis_decision_id, diagnosisVersion: p.diagnosis_version, primaryMetrics: p.primary_metrics,
     secondaryMetrics: p.secondary_metrics, hardConstraints: p.hard_constraints, preferencesOrWeights: p.preferences_or_weights,
     autonomyLevel: p.autonomy_level, status: p.status, revisionCount: p.revision_count, version: p.version,
+    referenceDdrIds: p.reference_ddr_ids,
   };
 }
 

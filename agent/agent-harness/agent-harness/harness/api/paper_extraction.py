@@ -136,6 +136,22 @@ def submit_task(body: RunRequestBody) -> dict:
         raise HTTPException(400, str(exc)) from exc
 
 
+@router.post("/tasks/{task_id}/reextract", status_code=202)
+def reextract_task(task_id: str) -> dict:
+    """"重新抽取" (paperEvidence.header.reExtract): re-run a past task's
+    exact source spec as a brand-new run. The new run's result lands on the
+    same DDR record once it completes (see `ddr_converter._find_existing_ddr`
+    - matched by DOI/title, so it overwrites rather than duplicates), so the
+    caller just needs to poll `GET /tasks/{new_task_id}` same as any other
+    submission."""
+    try:
+        return service.resubmit_task(task_id)
+    except KeyError:
+        raise HTTPException(404, "task not found")
+    except FileNotFoundError as exc:
+        raise HTTPException(409, str(exc)) from exc
+
+
 @router.get("/tasks")
 def list_tasks(project_id: str | None = Query(default=None)) -> dict:
     """Run history (newest first) - lets the page show past/in-progress

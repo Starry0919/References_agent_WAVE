@@ -1,0 +1,56 @@
+{
+  "paper_identity": {
+    "paper_id": "paper:b417b89cb5a4135b81cc",
+    "title": "Draft genome sequences of a novel\n                    <i>Escherichia coli</i>\n                    K-12 MG1655 L-form strain and its evolved variant",
+    "doi": "10.1128/mra.01283-24",
+    "authors": [
+      "Marjolein E. Crooijmans",
+      "Johannes H. de Winde",
+      "Dennis Claessen"
+    ],
+    "journal": "Microbiology Resource Announcements",
+    "year": 2025
+  },
+  "source_information": {
+    "source_type": "europe_pmc_oa",
+    "source_url": "https://europepmc.org/articles/PMC12160447?pdf=render",
+    "download_time": "2026-07-31T15:14:35.185631+00:00"
+  },
+  "download_attempts": [
+    {
+      "attempt": 1,
+      "source_type": "openalex_oa",
+      "source_url": "https://scholarlypublications.universiteitleiden.nl/access/item%3A4258891/view",
+      "status": "invalid",
+      "validation_errors": [
+        "invalid_magic_header",
+        "missing_eof_marker",
+        "invalid_mime_type"
+      ],
+      "advisor": "deterministic",
+      "metadata_url": "https://api.openalex.org/works/doi:10.1128%2Fmra.01283-24",
+      "license": "cc-by"
+    },
+    {
+      "attempt": 2,
+      "source_type": "europe_pmc_oa",
+      "source_url": "https://europepmc.org/articles/PMC12160447?pdf=render",
+      "status": "verified",
+      "validation_errors": [],
+      "advisor": "deterministic",
+      "metadata_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI:10.1128%2Fmra.01283-24&format=json"
+    }
+  ],
+  "processing_status": "verified",
+  "file_information": {
+    "file_name": "original.pdf",
+    "path": "D:\\Users\\Starry\\Desktop\\agent\\agent\\agent-harness\\agent-harness\\harness\\paper_extraction\\vendor\\paper_artifacts\\papers\\paper_b417b89cb5a4135b81cc\\original.pdf",
+    "size_bytes": 479212,
+    "mime_type": "application/pdf"
+  },
+  "integrity": {
+    "checksum_algorithm": "sha256",
+    "checksum_value": "57195573719954c09540c46ffff050693c960888fa3263101d44affb20e6bf16"
+  },
+  "artifact_version": "1"
+}

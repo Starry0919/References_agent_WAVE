@@ -20,6 +20,7 @@ from harness.diagnosis.models import (
     HypothesisAssessment,
     ModelEvidenceAssessment,
 )
+from harness.i18n import t
 from harness.learning.models import HypothesisVersion
 
 
@@ -97,7 +98,15 @@ def render_report(session: Session, *, diagnosis_session_id: str) -> DiagnosisRe
 
     report.sections.append(ReportSection(
         title="Alternatives Not Excluded",
-        content={"hypotheses": [{"hypothesis_version_id": a.hypothesis_version_id, "status": a.status} for a in not_excluded]},
+        content={"hypotheses": [
+            {
+                "hypothesis_version_id": a.hypothesis_version_id,
+                "statement": hyps[a.hypothesis_version_id].statement if a.hypothesis_version_id in hyps else None,
+                "mechanism_class": hyps[a.hypothesis_version_id].mechanism_class if a.hypothesis_version_id in hyps else None,
+                "status": a.status,
+            }
+            for a in not_excluded
+        ]},
         trace_ids=[a.assessment_id for a in not_excluded],
     ))
 
@@ -105,13 +114,17 @@ def render_report(session: Session, *, diagnosis_session_id: str) -> DiagnosisRe
         session.execute(select(EvidenceLink).where(EvidenceLink.hypothesis_version_id.in_(hyp_ids))).scalars().all()
         if hyp_ids else []
     )
+
+    def _link_entry(l: EvidenceLink) -> dict[str, Any]:
+        return {"evidence_link_id": l.evidence_link_id, "hypothesis_version_id": l.hypothesis_version_id, "claim": l.claim}
+
     report.sections.append(ReportSection(
         title="Support & Contradiction",
         content={
-            "supports": [l.evidence_link_id for l in links if l.relation == "supports"],
-            "contradicts": [l.evidence_link_id for l in links if l.relation == "contradicts"],
-            "is_consistent_with": [l.evidence_link_id for l in links if l.relation == "is_consistent_with"],
-            "does_not_discriminate": [l.evidence_link_id for l in links if l.relation == "does_not_discriminate"],
+            "supports": [_link_entry(l) for l in links if l.relation == "supports"],
+            "contradicts": [_link_entry(l) for l in links if l.relation == "contradicts"],
+            "is_consistent_with": [_link_entry(l) for l in links if l.relation == "is_consistent_with"],
+            "does_not_discriminate": [_link_entry(l) for l in links if l.relation == "does_not_discriminate"],
         },
         trace_ids=[l.evidence_link_id for l in links],
     ))
@@ -130,8 +143,11 @@ def render_report(session: Session, *, diagnosis_session_id: str) -> DiagnosisRe
     ).scalars().all()
     report.sections.append(ReportSection(
         title="Next Diagnostic Test",
-        content={"tests": [{"test_id": t.test_id, "assay": t.assay, "discriminates_hypotheses": t.discriminates_hypotheses, "status": t.status} for t in tests]},
-        trace_ids=[t.test_id for t in tests],
+        content={
+            "tests": [{"test_id": tst.test_id, "assay": tst.assay, "discriminates_hypotheses": tst.discriminates_hypotheses, "status": tst.status} for tst in tests],
+            **({} if tests else {"note": t("report.next_test.empty_note")}),
+        },
+        trace_ids=[tst.test_id for tst in tests],
     ))
 
     model_assessments = session.execute(
@@ -139,10 +155,13 @@ def render_report(session: Session, *, diagnosis_session_id: str) -> DiagnosisRe
     ).scalars().all()
     report.sections.append(ReportSection(
         title="Model Conflicts / Sensitivity",
-        content={"assessments": [
-            {"assessment_id": m.assessment_id, "convergence_status": m.convergence_status, "conflict_explanation": m.conflict_explanation}
-            for m in model_assessments
-        ]},
+        content={
+            "assessments": [
+                {"assessment_id": m.assessment_id, "convergence_status": m.convergence_status, "conflict_explanation": m.conflict_explanation}
+                for m in model_assessments
+            ],
+            **({} if model_assessments else {"note": t("report.model_conflicts.empty_note")}),
+        },
         trace_ids=[m.assessment_id for m in model_assessments],
     ))
 

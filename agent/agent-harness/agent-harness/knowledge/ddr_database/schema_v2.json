@@ -1,7 +1,7 @@
 {
   "_schema_version": "2.0",
   "_description": "DDR (Design Decision Record) Schema v2 — 对齐老师 §4.2 字段表。每条 DDR = 一篇论文的完整决策链,沿 '想产什么→观察到什么→假设→证据→改动→验证→结果' 切分为若干决策步骤。",
-  "_changelog": "v2 新增: 决策链结构(decision_chain)、证据分级(evidence_grading)、理由性质(reason_nature)、备选方案(alternatives)、量化结果(result.before/after)、双人校准元数据(extraction_meta)。保留 v1 的 engineering_problem/biological_diagnosis/engineering_hypothesis 作为论文级上下文。",
+  "_changelog": "v2 新增: 决策链结构(decision_chain)、证据分级(evidence_grading)、理由性质(reason_nature)、备选方案(alternatives)、量化结果(result.before/after)、双人校准元数据(extraction_meta)。保留 v1 的 engineering_problem/biological_diagnosis/engineering_hypothesis 作为论文级上下文。v2.2 新增: decision_type 字段与 excluded_records —— 只有 decision_type=engineering_decision 的候选步骤才进入 decision_chain,validation/background/post_hoc_interpretation 候选步骤改存入 excluded_records,不再与真正的工程决策混排(对齐 0804 优化任务 Phase 3 过滤问题与 DDR Quality Gate Check 1-3)。v2.3(0804优化_2, Reasoning Layer)新增,均为在 v2.2 之上的纯增量字段,不改变已有字段语义: decision_chain 步骤增加 reason_nature_tags(多标签,仅在同一步确实同时具备'机理推断'与'文献类比'时使用)与 calibration_status/calibration_reason(单步不确定性标记,区别于 extraction_meta 里面向双人抽取的 calibration_status); extraction_meta 增加 engineering_paper_type(论文级工程策略分类,多选); 顶层新增 engineering_decision_map(人类可读的决策推理链,聚合自 decision_chain,不是 DDR 本身)、paper_reasoning_overview(论文推理概览的便捷投影)、human_calibration_report(全篇校准状态汇总)。v2.4(0804优化_3,文档自身编号为'V2.2 Knowledge Representation Layer',与本文件的 v2.x 编号是两套独立计数,不要混淆)新增,均为在 v2.3 之上的纯增量字段: decision_chain 步骤增加 strategy_categories(工程策略受控词表,多选,跨论文归一化同义表述)与 rule 的出处三元组 rule_source/rule_confidence/supporting_ddr(仅当 rule 非空时有意义); 顶层新增 engineering_decision_graph(nodes/edges,论文内决策依赖图,只在同一篇论文的 decision_chain 内部推断边,不做跨论文全量两两比对)、engineering_logic_chain(在 engineering_decision_map 之外新增的失败驱动推理视图,含 failure_points,decision_map 本身保留不变以免破坏 v2.3 的既有消费者)、rule_provenance(全篇 rule 出处的汇总列表,Part 6)。",
 
   "ddr_schema": {
     "ddr_id": {"type": "string", "pattern": "DDR-\\d{3,}", "description": "唯一标识,如 DDR-001"},
@@ -39,6 +39,12 @@
         "type": "object",
         "fields": {
           "step": {"type": "integer", "description": "步骤序号"},
+
+          "decision_type": {
+            "type": "string",
+            "const": "engineering_decision",
+            "description": "只有通过 Phase 3 三问过滤(存在明确工程动作 / 本文完成 / 改变未来设计选择)的候选步骤才会作为 decision_chain 条目落库,因此这里恒为 engineering_decision。validation/background/post_hoc_interpretation 候选改存入顶层 excluded_records,不与真正的工程决策混排。"
+          },
 
           "design_action": {
             "type": "string",
@@ -96,6 +102,23 @@
             "description": "理由性质。仅 '机理推断' 和 '文献类比' 两类才能抽出可泛化规则。'现成可得'='Keio 库里现成有'类;'筛选得来'='筛库筛出来的'类;'事后合理化存疑'=事后编造的理由"
           },
 
+          "reason_nature_tags": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["机理推断", "文献类比", "现成可得", "筛选得来", "事后合理化存疑"]},
+            "description": "[v2.3 新增] reason_nature 的多标签补充,只在同一步改动确实同时具备'机理推断'和'文献类比'两种理由时才携带第二个标签(如 GalP 工程既有动力学机制、又参照了文献策略)。reason_nature 为'现成可得'/'筛选得来'/'事后合理化存疑'时此数组不得包含'机理推断'或'文献类比'——多标签只补充同一确定基调下的第二理由,不能放宽 rule 生成门槛。rule 生成的判定条件仍然只看 reason_nature(单值)是否为'机理推断'或'文献类比',不读这个数组。"
+          },
+
+          "calibration_status": {
+            "type": "string",
+            "enum": ["auto_accepted", "needs_review", "rejected"],
+            "description": "[v2.3 新增] 单步不确定性标记,区别于 extraction_meta.calibration_status(面向双人独立抽取的论文级校准状态)。needs_review 触发条件: (1) reason_nature_tags 携带了第二个标签; (2) 命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision(潜在误判,需要人工复核该分类本身); (3) rule 命中过宽泛用词(如'所有氨基酸生产'/'all amino acid production')。rejected: 该步骤连 design_action 和 target 都无法确定(抽取失败,不应作为可信 DDR 使用)。其余情况为 auto_accepted。"
+          },
+
+          "calibration_reason": {
+            "type": "string",
+            "description": "[v2.3 新增] calibration_status 非 auto_accepted 时,说明具体触发了哪一条判据。"
+          },
+
           "alternatives": {
             "type": "array",
             "description": "备选 — 考虑过又放弃的方案及原因",
@@ -134,7 +157,48 @@
           "rule": {
             "type": "string",
             "description": "规则 — 从这一步抽象出的可泛化启发式。仅当 reason_nature 为 '机理推断' 或 '文献类比' 时才填写,否则为 null。格式: 条件→动作→理由"
+          },
+
+          "rule_source": {
+            "type": "string",
+            "enum": ["single_paper", "multi_paper_supported", "textbook_mechanism", "expert_curated"],
+            "description": "[v2.4 新增] rule 非空时才有意义。single_paper/multi_paper_supported 由 ddr_converter 扫描知识库中其他 DDR 的 rule 文本自动判定(token 重叠度阈值,保守——找不到相似规则时默认 single_paper);textbook_mechanism/expert_curated 不由启发式自动赋值,留给人工标注。"
+          },
+
+          "rule_confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "description": "[v2.4 新增] rule 非空时才有意义。high = 机理推断 + 硬证据 + 有其他论文支持(multi_paper_supported/textbook_mechanism/expert_curated);medium = 机理推断 + 硬证据但仅此一篇论文支持;low = 文献类比,或证据为软证据,或 rule 命中过宽泛适用范围用词(此时无条件封顶为 low,即使其他信号都支持更高置信度)。"
+          },
+
+          "supporting_ddr": {
+            "type": "array",
+            "items": "string",
+            "description": "[v2.4 新增] rule_source=multi_paper_supported 时,记录知识库中携带相似规则的其他 ddr_id;其余情况为空数组。"
+          },
+
+          "strategy_categories": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["flux_redirection", "precursor_supply_enhancement", "competitive_pathway_removal", "dynamic_control", "enzyme_activity_improvement", "transport_engineering", "stress_tolerance_engineering", "evolutionary_optimization"]},
+            "description": "[v2.4 新增] 工程策略受控词表(老师 §14),用于跨论文归一化同义表述(如 'dynamic regulation'/'dynamic control'/'feedback regulation'/'metabolite-responsive control' 统一映射到 dynamic_control)。可多选,无法判定时为空数组。"
           }
+        }
+      }
+    },
+
+    "excluded_records": {
+      "type": "array",
+      "description": "被 Phase 3 过滤问题(Q1 是否存在明确工程动作 / Q2 是否为本文完成 / Q3 是否改变未来设计选择)排除出 decision_chain 的候选步骤,按老师 §2.2/§10 的三层信息分类保存,供人工复核和前端'Non-DDR Information'展示,不参与规则抽取。",
+      "items": {
+        "type": "object",
+        "fields": {
+          "decision_type": {
+            "type": "string",
+            "enum": ["validation", "background", "post_hoc_interpretation"],
+            "description": "validation = 证明已有方案有效但未改变未来设计选择(Layer B); background = 本文引用/沿用此前论文已构建的底盘或元件,非本文设计决策(Layer C); post_hoc_interpretation = Discussion/结构分析/docking/测序解释等事后合理化,未驱动改造决策"
+          },
+          "exclusion_reason": {"type": "string", "description": "为什么这一步没有进入 decision_chain,引述具体判据(Q1/Q2/Q3 中未通过的那一条)"},
+          "step_snapshot": {"type": "object", "description": "被排除前该步骤的完整字段快照(与 decision_chain 条目同构,但不含 decision_type=engineering_decision 保证,也不参与 rule 抽取),保留供追溯"}
         }
       }
     },
@@ -214,6 +278,146 @@
         "conflict_count": {
           "type": "integer",
           "description": "[v2.1 新增, 可选] extraction_attempts 中 ≥2 人在 design_action/evidence_grading/reason_nature/rule 上不一致的 (step, field) 数量,由 calibration.detect_conflicts 计算。非零时 calibration_status 应为 'disputed'。"
+        },
+        "engineering_paper_type": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["metabolic_engineering", "biosensor_platform", "evolutionary_engineering", "protein_engineering", "chassis_engineering", "multi_strategy"]},
+          "description": "[v2.3 新增] 论文级工程策略分类(可多选),与 metadata.paper_type(文章体裁: primary_research/review/...)是独立维度。用于让抽取详略取舍适配论文类型(SKILL.md §3.1),也用于下游 Engineering Decision Map/Rule Library 按策略类型检索。无法判定时为空数组。"
+        },
+        "engineering_paper_type_rationale": {
+          "type": "string",
+          "description": "[v2.3 新增] engineering_paper_type 判定依据。"
+        }
+      }
+    },
+
+    "engineering_decision_map": {
+      "type": "object",
+      "description": "[v2.3 新增] 人类可读的工程推理链,聚合自 decision_chain(已经过 Q1/Q2/Q3 过滤,只含 engineering_decision 步骤),回答'为什么这些决策按这个顺序发生',不是 DDR 本身,不重复存储证据细节。",
+      "fields": {
+        "goal": {"type": "string", "description": "论文优化的产物或功能目标"},
+        "initial_bottleneck": {"type": "string", "description": "工程改造开始之前就存在的限制因素,不得使用'改造后达到高产量'这类结果性描述"},
+        "key_hypothesis": {"type": "string", "description": "作者认为该干预会起效的理由"},
+        "decision_sequence": {
+          "type": "array",
+          "description": "按 decision_chain 顺序排列的简化视图,每项 = 一个 engineering_decision 步骤的摘要,不含完整证据细节",
+          "items": {
+            "type": "object",
+            "fields": {
+              "step": {"type": "integer"},
+              "design_action": {"type": "string"},
+              "action_summary": {"type": "string", "description": "这一步做了什么改动,人类可读的一句话"}
+            }
+          }
+        }
+      }
+    },
+
+    "paper_reasoning_overview": {
+      "type": "object",
+      "description": "[v2.3 新增] 论文推理概览的便捷投影,聚合 engineering_paper_type 与 engineering_decision_map 的 goal/initial_bottleneck/key_hypothesis,供前端 Part 1 展示,不引入新信息来源。",
+      "fields": {
+        "paper_type": {"type": "array", "items": "string", "description": "= extraction_meta.engineering_paper_type"},
+        "goal": {"type": "string", "description": "= engineering_decision_map.goal"},
+        "initial_bottleneck": {"type": "string", "description": "= engineering_decision_map.initial_bottleneck"},
+        "key_hypothesis": {"type": "string", "description": "= engineering_decision_map.key_hypothesis"}
+      }
+    },
+
+    "human_calibration_report": {
+      "type": "object",
+      "description": "[v2.3 新增] decision_chain 各步 calibration_status 的汇总,供人工复核排期使用。",
+      "fields": {
+        "auto_accepted": {"type": "integer"},
+        "needs_review": {"type": "integer"},
+        "rejected": {"type": "integer"},
+        "needs_review_steps": {
+          "type": "array",
+          "description": "需要人工复核的步骤列表",
+          "items": {
+            "type": "object",
+            "fields": {
+              "step": {"type": "integer"},
+              "calibration_status": {"type": "string"},
+              "calibration_reason": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+
+    "engineering_decision_graph": {
+      "type": "object",
+      "description": "[v2.4 新增] 论文内的工程决策依赖图,把 decision_chain 从线性序列升级为显式的推理关系网络。只在同一篇论文的 decision_chain(+ 其 validation 类 excluded_records)内部推断边,不做跨论文的全量两两比对——跨论文关联通过 rule_provenance/supporting_ddr 单独表达,不在这张图里。",
+      "fields": {
+        "nodes": {
+          "type": "array",
+          "description": "每个 decision_chain 步骤对应一个 engineering_decision 节点;每条被判定为 validation 且能与某个决策节点的 target 匹配上的 excluded_records 条目额外贡献一个 validation_evidence 节点,用于承载 validated_by 边的终点。",
+          "items": {
+            "type": "object",
+            "fields": {
+              "id": {"type": "string", "description": "节点 ID,如 'D1'(决策节点)或 'V1'(验证证据节点)"},
+              "type": {"type": "string", "enum": ["engineering_decision", "validation_evidence"]},
+              "target": {"type": "string", "description": "基因/酶/通路(取自 target.gene/enzyme/pathway,取第一个非空值)"},
+              "decision_summary": {"type": "string", "description": "人类可读的一句话摘要(取自 implementation_detail 或验证记录的 trigger.reasoning)"},
+              "trigger": {"type": "string", "description": "触发这一步的观察或推理"},
+              "evidence_level": {"type": "string", "description": "= 对应 decision_chain 步骤的 evidence_grading,验证节点为空"},
+              "reason_nature": {"type": "string", "description": "= 对应 decision_chain 步骤的 reason_nature,验证节点为空"},
+              "source_ddr_id": {"type": "string", "description": "本 DDR 的 ddr_id"}
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "description": "只包含能从 decision_chain 数据结构本身确定性推导、或经保守关键词启发式支持的边,不猜测。允许的 relation 见下,每种都有明确、可复核的生成依据——找不到证据时宁可不生成边。",
+          "items": {
+            "type": "object",
+            "fields": {
+              "from": {"type": "string", "description": "起点节点 id"},
+              "to": {"type": "string", "description": "终点节点 id"},
+              "relation": {"type": "string", "enum": ["triggered_by", "solves", "alternative_to", "validated_by", "depends_on"]},
+              "evidence": {"type": "string", "description": "支持这条边的原文/字段依据"}
+            }
+          }
+        }
+      },
+      "_relation_generation_notes": "triggered_by: 确定性——后一步 trigger.observation 等于前一步 result.after 时生成(与 decision_chain 已有的 prev_outcome 串联逻辑同源,不是新猜测)。solves: 在已生成的 triggered_by 边基础上,若前一步 result.after 命中失败信号关键词(如 'suppressed'/'impaired'/'growth defect'),额外生成反向 solves 边。validated_by: 决策节点与 target 匹配的 validation_evidence 节点之间。alternative_to: 某步 alternatives_considered 的 approach 文本与本篇同一 decision_chain 内其他步骤的 implementation_detail/target 有实质关键词重合时生成;找不到匹配步骤时该条 alternative 不生成边(不虚构不存在的节点)。depends_on: [已知限制] 本轮启发式不自动生成——需要跨步骤的菌株谱系追踪,当前 target/trigger 文本粒度不足以可靠判定,留给未来人工标注或更细粒度的菌株谱系字段。"
+    },
+
+    "engineering_logic_chain": {
+      "type": "object",
+      "description": "[v2.4 新增] 在 engineering_decision_map(v2.3,保留不变)之外新增的失败驱动推理视图(老师 §7/§8)。两者并存而非互相替代,避免破坏已经消费 engineering_decision_map.decision_sequence 的下游代码。",
+      "fields": {
+        "goal": {"type": "string", "description": "= engineering_decision_map.goal"},
+        "initial_bottleneck": {"type": "string", "description": "= engineering_decision_map.initial_bottleneck"},
+        "hypothesis": {"type": "string", "description": "= engineering_decision_map.key_hypothesis"},
+        "failure_points": {
+          "type": "array",
+          "description": "专家常常'先失败、再改路线'——显式记录这一模式,而不是把失败步骤和成功步骤平铺成同等地位的序列",
+          "items": {
+            "type": "object",
+            "fields": {
+              "failure_point": {"type": "string", "description": "失败/受限的现象(取自前一步 result.after)"},
+              "caused_by": {"type": "string", "description": "导致这一失败的改动(取自前一步 implementation_detail)"},
+              "resolved_by": {"type": "string", "description": "后续如何解决(取自后一步 implementation_detail)"}
+            }
+          }
+        },
+        "decision_graph": {"type": "string", "description": "指向顶层 engineering_decision_graph 的引用说明,不重复存储图数据本身"}
+      }
+    },
+
+    "rule_provenance": {
+      "type": "array",
+      "description": "[v2.4 新增] 全篇 rule 出处的汇总列表(Part 6),把散落在各 decision_chain 步骤里的 rule/rule_source/rule_confidence/supporting_ddr 聚合成一份可直接检索的清单;只收录 rule 非空的步骤。",
+      "items": {
+        "type": "object",
+        "fields": {
+          "step": {"type": "integer"},
+          "rule": {"type": "string"},
+          "rule_source": {"type": "string"},
+          "rule_confidence": {"type": "string"},
+          "supporting_ddr": {"type": "array", "items": "string"}
         }
       }
     }

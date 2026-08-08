@@ -37,6 +37,20 @@ export async function submitRun(input: RunSubmission): Promise<{ task_id: string
   });
 }
 
+/**
+ * "重新抽取" (paperEvidence.header.reExtract): re-runs a past task's exact
+ * source spec (same upload/DOI/search settings) as a brand-new run
+ * (harness/api/paper_extraction.py::reextract_task ->
+ * service.resubmit_task). The new run's result lands on the same DDR
+ * record once it completes (matched by DOI/title - see
+ * ddr_converter._find_existing_ddr), overwriting rather than duplicating
+ * it, so the caller just needs to poll the returned task_id the same way
+ * `submitRun`'s result is polled.
+ */
+export async function reExtractTask(taskId: string): Promise<{ task_id: string; status: string }> {
+  return api.post(`/api/paper-extraction/tasks/${encodeURIComponent(taskId)}/reextract`);
+}
+
 export interface RunHistoryItem {
   taskId: string;
   status: string;
