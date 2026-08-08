@@ -76,7 +76,7 @@ export function IdeaWorkspacePage() {
     enabled: Boolean(projectId && connected),
   });
   const relevantKnowledgeIdeas = useMemo(
-    () => (knowledgeIdeasQuery.data ?? []).filter((idea) => idea.relevant),
+    () => (knowledgeIdeasQuery.data ?? []).filter((idea) => idea.relevant !== false),
     [knowledgeIdeasQuery.data],
   );
   const extractedIdeas = useMemo(() => {
