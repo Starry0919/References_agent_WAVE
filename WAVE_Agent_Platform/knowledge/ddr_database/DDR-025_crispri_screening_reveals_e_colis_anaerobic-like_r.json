@@ -1,0 +1,609 @@
+{
+  "ddr_id": "DDR-025",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "CRISPRi screening reveals E. coli’s anaerobic-like respiratory adaptations to gentamicin: membrane depolarization by CpxR",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "CRISPRi screening reveals E. coli’s anaerobic-like respiratory adaptations to gentamicin: membrane depolarization by CpxR",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1128/msystems.00353-25"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [],
+  "excluded_records": [],
+  "engineering_problem": {
+    "problem_statement": "Investigate genome-wide fitness effects of gentamicin on E. coli using a high-resolution CRISPRi screen to understand cellular defense/resistance mechanisms; compare with anaerobic-condition fitness changes; identify regulators (CpxR, ArcA) of respiratory adaptation and membrane depolarization via transcriptomics (iModulon), ChIP-Seq, and membrane potential assays.",
+    "problem_type": [],
+    "trigger_conditions": []
+  },
+  "biological_diagnosis": {
+    "observations": [],
+    "bottlenecks": [],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。0 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "706740090b0143fd844f79da8ba277bf",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+      "identity": {
+        "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+        "title": "CRISPRi screening reveals E. coli’s anaerobic-like respiratory adaptations to gentamicin: membrane depolarization by CpxR",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1128/msystems.00353-25"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "Original CRISPRi screen, RNA-Seq, ChIP-Seq, growth and flow cytometry experiments described in first person in RESULTS and MATERIALS AND METHODS",
+          "Journal research-article format (mSystems) with Abstract/Importance/Results/Discussion/Methods",
+          "Data availability with new ENA accession PRJEB33267"
+        ],
+        "engineering_paper_type": [],
+        "engineering_paper_type_rationale": "No allowed category fits cleanly: the study is a genome-wide CRISPRi functional-genomics study of antibiotic response mechanisms, not metabolic engineering, biosensor platform, evolutionary engineering, protein engineering, or chassis engineering. Per the no-guessing rule, the array is left empty."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "target",
+          "paper_label": "E. coli K-12 MG1655",
+          "lineage_or_engineering_context": "Wild-type K-12 strain used as CRISPRi screening host (with pdCas9), RNA-Seq host, and ChIP-Seq host (cpxR c-myc tagged)",
+          "combination_status": "not_applicable",
+          "genotype": "MG1655 + pdCas9 (Addgene #46569); ChIP variant: cpxR C-terminal c-myc tag",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "sgrna_library_preparation_for_crispri_screening_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicitly named in Methods for screening and tagging; Fig 1 schematic confirms."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli K-12 BW25113",
+          "paper_strain_normalized": "Escherichia coli K-12 BW25113",
+          "role": "control",
+          "paper_label": "wild-type control",
+          "lineage_or_engineering_context": "Keio collection parental strain used as WT control; NOT a natural isolate",
+          "combination_status": "not_applicable",
+          "genotype": "BW25113 (Keio parent)",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "membrane_potential_assay_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Stated as wild-type control for Keio knockouts and used in membrane potential assay (Fig 6C)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH5a / Lucigen Endura",
+          "paper_strain_normalized": "Escherichia coli DH5a (Endura competent cells)",
+          "role": "other",
+          "paper_label": "E. coli DH5a",
+          "lineage_or_engineering_context": "Cloning/library-amplification host without dCas9; initial library reference",
+          "combination_status": "not_applicable",
+          "genotype": "Endura competent cells + sgRNA library plasmids",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named in Methods and Fig 1 as initial library host."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "KEIO single knockouts: fre, ubiX, ubiC, hemX, bhsA, cpxA, cpxR, arcA, arcB",
+          "paper_strain_normalized": "BW25113 single-gene deletions (Keio collection)",
+          "role": "engineered",
+          "paper_label": "single knockout strains from the KEIO collection",
+          "lineage_or_engineering_context": "Constructed previously (Baba et al. 2006, ref 58); used here for validation only; each deletion is a separate strain, no combination genotypes tested",
+          "combination_status": "not_demonstrated",
+          "genotype": "Nine independent single-gene deletions in BW25113 background",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Methods list each knockout individually; no double mutants described."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; pipeline stops at evidence-bound extraction per core principle 5."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 3 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [],
+    "engineering_paper_type_rationale": ""
+  },
+  "engineering_decision_map": {
+    "goal": "Investigate genome-wide fitness effects of gentamicin on E. coli using a high-resolution CRISPRi screen to understand cellular defense/resistance mechanisms; compare with anaerobic-condition fitness changes; identify regulators (CpxR, ArcA) of respiratory adaptation and membrane depolarization via transcriptomics (iModulon), ChIP-Seq, and membrane potential assays.",
+    "initial_bottleneck": "",
+    "key_hypothesis": "",
+    "decision_sequence": []
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [],
+    "goal": "Investigate genome-wide fitness effects of gentamicin on E. coli using a high-resolution CRISPRi screen to understand cellular defense/resistance mechanisms; compare with anaerobic-condition fitness changes; identify regulators (CpxR, ArcA) of respiratory adaptation and membrane depolarization via transcriptomics (iModulon), ChIP-Seq, and membrane potential assays.",
+    "initial_bottleneck": "",
+    "key_hypothesis": ""
+  },
+  "human_calibration_report": {
+    "auto_accepted": 0,
+    "needs_review": 0,
+    "rejected": 0,
+    "needs_review_steps": []
+  },
+  "engineering_decision_graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Investigate genome-wide fitness effects of gentamicin on E. coli using a high-resolution CRISPRi screen to understand cellular defense/resistance mechanisms; compare with anaerobic-condition fitness changes; identify regulators (CpxR, ArcA) of respiratory adaptation and membrane depolarization via transcriptomics (iModulon), ChIP-Seq, and membrane potential assays.",
+    "initial_bottleneck": "",
+    "hypothesis": "",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": []
+}
