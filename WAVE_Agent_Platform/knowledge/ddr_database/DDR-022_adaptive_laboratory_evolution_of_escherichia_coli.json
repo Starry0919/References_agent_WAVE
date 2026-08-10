@@ -1,0 +1,1377 @@
+{
+  "ddr_id": "DDR-022",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Adaptive laboratory evolution of Escherichia coli W enhances gamma-aminobutyric acid production using glycerol as the carbon source",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Adaptive laboratory evolution of Escherichia coli W enhances gamma-aminobutyric acid production using glycerol as the carbon source",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1016/j.ymben.2021.11.004"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 minimal, glycerol sole carbon, 37 C, 200 rpm."
+      },
+      "trigger": {
+        "observation": "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA producers from glycerol but without optimization (Hou and Kang, 2018).",
+        "reasoning": "Adapt E. coli W to glycerol limitation to improve glycerol utilization and growth as a chassis for growth-coupled GABA production.",
+        "source_location": "Escherichia coli W (parental wild-type)"
+      },
+      "evidence": {
+        "description": "Doubling time/growth rate trajectory (Fig. 1B/C), specific growth rate, glycerol consumption rate (Fig. 1D).",
+        "source": "论文实测",
+        "source_location": "Parental E. coli W grown in parallel assays (growth-rate and glycerol-consumption comparison, incl. M9-glucose reference).",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Outcome measured directly: growth rates, glycerol uptake rates, WGS mutation profiles.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Serial-batch adaptive laboratory evolution in M9 + 0.2% (v/v) glycerol; 50 mL / 250 mL flask, 37 C, agitation; transfer every 12 h; initial OD600 stepped down 0.0008 -> 0.0004 -> 0.00016; ~1300 generations; single clone CY02 isolated from fittest endpoint lineage on M9-glycerol agar.",
+      "result": {
+        "metric": "Doubling time/growth rate trajectory (Fig. 1B/C), specific growth rate, glycerol consumption rate (Fig. 1D).",
+        "before": "",
+        "after": "Growth rate +~40% (0.67 -> 0.94 /hr); glycerol consumption rate significantly increased; negligible fitness change on glucose (glycerol-specialist adaptation).",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When improving an E. coli host for growth-coupled product formation from the low-energy-density feedstock glycerol, apply serial-batch ALE under glycerol limitation (order of 10^3 generations), because selection enriches substrate-uptake/utilization mutations (e.g., glpK, crp) that raise fitness and feedstock conversion, as validated for E. coli W glycerol utilization and GABA production in this study.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "evolutionary_optimization"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M4",
+      "target": {
+        "gene": "glpK",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 + 0.2% glycerol, 37 C, 200 rpm."
+      },
+      "trigger": {
+        "observation": "WGS found glpK^m and crp^m shared between endpoint population and CY02 and recurrent across published glycerol/nutrient-limitation ALE experiments; mglC failed validation as hitchhiker.",
+        "reasoning": "Test whether glpK^m and crp^m recapitulate fitness benefits in the parental background.",
+        "source_location": "E. coli W parental background"
+      },
+      "evidence": {
+        "description": "Specific growth rate and specific glycerol uptake rate.",
+        "source": "论文实测",
+        "source_location": "Parental wild-type.",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Fitness and GUR effects measured directly in reconstructed strains; enzyme phenotype confirmed by kinetics (EXP4).",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "ptsP, rsfS and mglC were candidate causal mutations but deprioritized (mglC shown phenotypically neutral; rsfS low recurrence; ptsP role left unresolved)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Lambda-Red recombineering (Datsenko-Wanner) to construct glpK^m, crp^m singles and glpK^m crp^m double mutant.",
+      "result": {
+        "metric": "Specific growth rate and specific glycerol uptake rate.",
+        "before": "",
+        "after": "glpK^m +1.45-fold growth (p<0.022), +1.78-fold GUR (p=0.02); double +1.56/+1.70; CY02 +1.63/+1.60; crp^m alone not significant; glpK^m accounts for >90% of CY02 fitness increase (Discussion).",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "enzyme_activity_improvement"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M9",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB + 2% (v/v) glycerol, 37 C, 200 rpm, 50 mL/250 mL flask."
+      },
+      "trigger": {
+        "observation": "Final GABA titers in minimal glycerol medium were negligible and identical between WT and CY02 (0.06 g/L), despite improved glycerol uptake.",
+        "reasoning": "Overcome negligible GABA production observed in minimal glycerol medium.",
+        "source_location": "WT, glpK^m, crp^m, glpK^m crp^m, CY02 (lacZ:mtGAD)"
+      },
+      "evidence": {
+        "description": "Final GABA: minimal medium 0.06 vs 0.06 g/L (WT vs CY02, negligible); LB + 2% glycerol: WT 0.05, crp^m 0.06, glpK^m 0.07, glpK^m crp^m 0.07, CY02 0.17 g/L.",
+        "source": "论文实测",
+        "source_location": "Wild-type in each medium.",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Decisions followed measured titers and measured growth-rate optima (Fig. S7).",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [
+        "机理推断"
+      ],
+      "alternatives": [
+        {
+          "approach": "Continuing in minimal medium with higher glycerol alone (rejected: 0.2% glycerol itself limiting and growth inefficiency persists)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Switch from M9 + 0.2% glycerol + 50 mg/L yeast extract to amino-acid-rich LB + glycerol; glycerol concentration screen (0-? %; optimum 2% v/v) using growth rate as proxy assuming growth-coupled production; stationary-phase GABA screen of all strains.",
+      "result": {
+        "metric": "Final GABA: minimal medium 0.06 vs 0.06 g/L (WT vs CY02, negligible); LB + 2% glycerol: WT 0.05, crp^m 0.06, glpK^m 0.07, glpK^m crp^m 0.07, CY02 0.17 g/L.",
+        "before": "",
+        "after": "Medium composition identified as integral; CY02 advantage manifests only in rich medium with sufficient carbon.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When growth-coupled production of an amino-acid-derived product (GABA) from glycerol stalls in minimal medium, switch to an amino-acid-rich complex medium and re-optimize feedstock concentration using growth rate as proxy, because biosynthetic precursor (L-glutamate) cost and carbon availability, not uptake capacity, limit product formation - demonstrated for E. coli W GABA production.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "ackA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB + 2% (v/v) glycerol, 37 C, 200 rpm, 50 mL/250 mL flasks."
+      },
+      "trigger": {
+        "observation": "CY02 exhibited pronounced acetate overflow (EXP8) wiring excess substrate influx to acetate; known risk of methylglyoxal accumulation to cytotoxic levels in FBP-insensitive glpK backgrounds; GABA shunt recycles product into TCA.",
+        "reasoning": "Redirect acetate-overflow and bypass fluxes toward GABA production.",
+        "source_location": "CY02 and wild-type lacZ:mtGAD backgrounds"
+      },
+      "evidence": {
+        "description": "Growth (lag phase prolonged in ΔackA strains, growth rate unaffected), glycerol consumption, final GABA titer: singles below WT; doubles ΔgabTΔackA 0.46 +/- 0.02, ΔgabTΔmgsA 0.45 +/- 0.01 g/L; ΔmgsAΔackA 0.37 +/- 0.04; CY02_TKO 0.59 +/- 0.04 g/L, productivity 0.13 +/- 0.02 g/L/hr (1.5/1.6-fold vs CY02; 3.9/4.3-fold vs WT).",
+        "source": "论文实测",
+        "source_location": "Respective non-knockout parent (CY02; WT lacZ:mtGAD).",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Acetate overflow measured in this study (Fig. 4B); knockout phenotypes measured directly (Fig. 6, Table 3).",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [
+        "文献类比"
+      ],
+      "alternatives": [
+        {
+          "approach": "Other (unspecified) knockout targets were considered; ackA/mgsA/gabT chosen for the stated reasons",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "KO",
+      "implementation_detail": "Lambda-Red deletion of ackA, mgsA, gabT singly, as three doubles, and as triple (CY02_TKO), in both CY02 and wild-type backgrounds.",
+      "result": {
+        "metric": "Growth (lag phase prolonged in ΔackA strains, growth rate unaffected), glycerol consumption, final GABA titer: singles below WT; doubles ΔgabTΔackA 0.46 +/- 0.02, ΔgabTΔmgsA 0.45 +/- 0.01 g/L; ΔmgsAΔackA 0.37 +/- 0.04; CY02_TKO 0.59 +/- 0.04 g/L, productivity 0.13 +/- 0.02 g/L/hr (1.5/1.6-fold vs CY02; 3.9/4.3-fold vs WT).",
+        "before": "",
+        "after": "Combined triple deletion synergistic in CY02 background only; benefit absent in wild-type background - epistasis with ALE-acquired mutations; gabT deletion most important single contributor.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When a glycerol-adapted E. coli strain with enhanced substrate influx channels excess carbon into acetate overflow during GABA production, delete ackA, mgsA and gabT in combination, because blocking the acetate sink, the methylglyoxal bypass and the GABA shunt redirects carbon toward GABA - validated only in the evolved E. coli W CY02 background; the same deletions did not improve production in the wild-type background, so the rule is background-dependent.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "competitive_pathway_removal",
+        "flux_redirection"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 2,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "gDNA from cultures; TruSeq DNA LT library."
+        },
+        "trigger": {
+          "observation": "Growth rate +~40% (0.67 -> 0.94 /hr); glycerol consumption rate significantly increased; negligible fitness change on glucose (glycerol-specialist adaptation).",
+          "reasoning": "Identify causal mutations underlying fitness improvement.",
+          "source_location": "Parental E. coli W, endpoint population, CY02"
+        },
+        "evidence": {
+          "description": "Mutation calls: 30 (population) / 28 (CY02) new mutations; shared set incl. glpK T235M, crp R209H, ptsP fs, rsfS Q6*, mglC fs.",
+          "source": "论文实测",
+          "source_location": "Parental strain sequence as reference baseline.",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Whole-genome resequencing (MiSeq 50-cycle SE); background mutations of lab stock vs NC_017635.1 excluded; shared mutations between population and clone prioritized.",
+        "result": {
+          "metric": "Mutation calls: 30 (population) / 28 (CY02) new mutations; shared set incl. glpK T235M, crp R209H, ptsP fs, rsfS Q6*, mglC fs.",
+          "before": "",
+          "after": "glpK^m and crp^m nominated as key causal mutations; mglC judged hitchhiker (reverse-engineered mutant grew like WT, Fig. S2).",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 4,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "50 mM PIPES pH 7.0, 5 mM MgCl2, 20 mM KCl, 2.5 mM ATP, 25 C, A340."
+        },
+        "trigger": {
+          "observation": "glpK^m +1.45-fold growth (p<0.022), +1.78-fold GUR (p=0.02); double +1.56/+1.70; CY02 +1.63/+1.60; crp^m alone not significant; glpK^m accounts for >90% of CY02 fitness increase (Discussion).",
+          "reasoning": "Determine whether T235M alters GlpK catalytic/allosteric properties.",
+          "source_location": "In vitro: purified GlpK^w and GlpK T235M (overexpressed in BL21(DE3), pET28a, Ni-NTA)."
+        },
+        "evidence": {
+          "description": "Vmax, Km_gly, kcat, kcat/Km, FBP K0.5 (Table 2).",
+          "source": "论文实测",
+          "source_location": "Wild-type GlpK.",
+          "values": {}
+        },
+        "evidence_grading": "硬",
+        "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Coupled PK/LDH kinetic assay; FBP titration 0-10 mM.",
+        "result": {
+          "metric": "Vmax, Km_gly, kcat, kcat/Km, FBP K0.5 (Table 2).",
+          "before": "",
+          "after": "Catalytic parameters essentially unchanged; FBP K0.5 386 uM (WT) vs >10,000 uM (T235M): mutant insensitive to FBP inhibition; WT expected maximally inhibited at cytosolic FBP ~5.85 mM.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 5,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "M9-glycerol exponential cultures."
+        },
+        "trigger": {
+          "observation": "Catalytic parameters essentially unchanged; FBP K0.5 386 uM (WT) vs >10,000 uM (T235M): mutant insensitive to FBP inhibition; WT expected maximally inhibited at cytosolic FBP ~5.85 mM.",
+          "reasoning": "Test whether glycerol adaptation rewires cAMP-CRP signaling.",
+          "source_location": "WT, glpK^m, crp^m, glpK^m crp^m, CY02"
+        },
+        "evidence": {
+          "description": "cAMP relative to WT: glpK^m-harboring strains ~2% (98% decrease), CY02 ~20%, crp^m ~36%; all P<0.001.",
+          "source": "论文实测",
+          "source_location": "Wild-type.",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Intracellular cAMP extraction (65% ethanol) and commercial ELISA (Invitrogen) at exponential phase.",
+        "result": {
+          "metric": "cAMP relative to WT: glpK^m-harboring strains ~2% (98% decrease), CY02 ~20%, crp^m ~36%; all P<0.001.",
+          "before": "",
+          "after": "GlpK-driven cAMP depletion confirmed; crp^m unexpectedly lowers cAMP; CY02 intermediate level interpreted as adaptive vs maladaptive extremes of single mutants.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 6,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "M9 + 2 g/L glycerol, exponential phase."
+        },
+        "trigger": {
+          "observation": "GlpK-driven cAMP depletion confirmed; crp^m unexpectedly lowers cAMP; CY02 intermediate level interpreted as adaptive vs maladaptive extremes of single mutants.",
+          "reasoning": "Profile genome-wide expression changes after glycerol adaptation.",
+          "source_location": "WT vs CY02"
+        },
+        "evidence": {
+          "description": "640 DEGs (149 up, 491 down); 181 DEGs are CRP regulons (>2-fold enrichment over genomic ~12%); 148/157 positively CRP-regulated genes downregulated; lower glycolysis up, TCA/respiration/ATP synthase down, pta-ackA up, acs down.",
+          "source": "论文实测",
+          "source_location": "Wild-type.",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "RNA-seq (RNASnap extraction, RiboZero depletion, TruSeq stranded, HiSeq 50-cycle SE) at OD600 0.4-0.5 in M9 + 2 g/L glycerol.",
+        "result": {
+          "metric": "640 DEGs (149 up, 491 down); 181 DEGs are CRP regulons (>2-fold enrichment over genomic ~12%); 148/157 positively CRP-regulated genes downregulated; lower glycolysis up, TCA/respiration/ATP synthase down, pta-ackA up, acs down.",
+          "before": "",
+          "after": "Transcriptome consistent with cAMP depletion and aerobic acetate overflow phenotype.",
+          "fold_change": null,
+          "quantified": false
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 7,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "glpK",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "M9-glycerol log-phase RNA."
+        },
+        "trigger": {
+          "observation": "Transcriptome consistent with cAMP depletion and aerobic acetate overflow phenotype.",
+          "reasoning": "Verify glpK mRNA downregulation across mutants.",
+          "source_location": "WT, mutants, CY02"
+        },
+        "evidence": {
+          "description": "glpK expression 3-6% of WT in glpK^m-harboring strains incl. CY02; ~22% in crp^m; < half of glpK^m single in the double.",
+          "source": "论文实测",
+          "source_location": "Wild-type.",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "RT-qPCR of glpK normalized to rrsA/ihfB.",
+        "result": {
+          "metric": "glpK expression 3-6% of WT in glpK^m-harboring strains incl. CY02; ~22% in crp^m; < half of glpK^m single in the double.",
+          "before": "",
+          "after": "Supports G3P-mediated auto-catabolite repression of the glpFKX operon.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 8,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "M9 + 0.2% glycerol, exponential phase, 1 h sampling intervals."
+        },
+        "trigger": {
+          "observation": "Supports G3P-mediated auto-catabolite repression of the glpFKX operon.",
+          "reasoning": "Test whether transcriptomic signs of overflow translate into acetate secretion.",
+          "source_location": "WT, glpK^m, crp^m, glpK^m crp^m, CY02"
+        },
+        "evidence": {
+          "description": "Acetate secretion rate: above detection in CY02 and glpK^m-harboring mutants; not determinable for WT and crp^m.",
+          "source": "论文实测",
+          "source_location": "Wild-type (secretion below accurate determination limit).",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Acetate quantification (Cedex Acetate V2) in exponential M9-glycerol cultures; rate per Eq. (3).",
+        "result": {
+          "metric": "Acetate secretion rate: above detection in CY02 and glpK^m-harboring mutants; not determinable for WT and crp^m.",
+          "before": "",
+          "after": "Overflow linked to glpK^m (not to cAMP level alone); motivates ackA knockout in EXP12.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "background",
+      "exclusion_reason": "Q2 未通过：本文引用/沿用此前研究已构建的底盘或元件，非本文完成的设计决策",
+      "step_snapshot": {
+        "step": 9,
+        "decision_type": "background",
+        "design_action": "M6",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Production media as in EXP10/EXP11."
+        },
+        "trigger": {
+          "observation": "Overflow linked to glpK^m (not to cAMP level alone); motivates ackA knockout in EXP12.",
+          "reasoning": "Enable GABA production in E. coli W backgrounds.",
+          "source_location": "E. coli W wild-type and CY02 (lacZ:mtGAD)"
+        },
+        "evidence": {
+          "description": "GABA production capability.",
+          "source": "论文实测",
+          "source_location": "n/a (enabling construct)",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Chromosomal insertion of mutant glutamate decarboxylase B (mtGAD, active at physiological pH) under inducible promoter PLtetQ-1; constitutive expression because E. coli W lacks the cognate repressor; marker-free.",
+        "result": {
+          "metric": "GABA production capability.",
+          "before": "",
+          "after": "Both WT and CY02 converted to GABA producers; plasmid/antibiotic-free expression.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 11,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "LB + 2% (v/v) glycerol, 37 C, 200 rpm."
+        },
+        "trigger": {
+          "observation": "Medium composition identified as integral; CY02 advantage manifests only in rich medium with sufficient carbon.",
+          "reasoning": "Quantify time-course GABA titer/productivity benefit of ALE strain.",
+          "source_location": "WT vs CY02 (lacZ:mtGAD)"
+        },
+        "evidence": {
+          "description": "Max titer 0.15 +/- 0.01 (WT) vs 0.39 +/- 0.03 g/L (CY02); productivity 0.03 vs 0.08 g/L/hr (~2.6-fold); glycerol consumption totals similar.",
+          "source": "论文实测",
+          "source_location": "Wild-type.",
+          "values": {}
+        },
+        "evidence_grading": "硬",
+        "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "24 h time-course sampling of growth, GABA and glycerol in LB + 2% glycerol.",
+        "result": {
+          "metric": "Max titer 0.15 +/- 0.01 (WT) vs 0.39 +/- 0.03 g/L (CY02); productivity 0.03 vs 0.08 g/L/hr (~2.6-fold); glycerol consumption totals similar.",
+          "before": "",
+          "after": "ALE alone confers ~2.6-fold production gain attributed to improved metabolic efficiency/biomass yield rather than more glycerol consumed.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [
+          "evolutionary_optimization"
+        ],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Construct an Escherichia coli W derivative with improved gamma-aminobutyric acid (GABA) production from glycerol by combining adaptive laboratory evolution (1300 generations under glycerol limitation) with rational metabolic engineering (deletion of ackA, mgsA, gabT), and decipher the molecular basis of glycerol adaptation (mutation profiling, enzyme kinetics, transcriptomics).",
+    "problem_type": [
+      "competing pathway",
+      "enzyme activity bottleneck"
+    ],
+    "trigger_conditions": [
+      "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA produc",
+      "WGS found glpK^m and crp^m shared between endpoint population and CY02 and recurrent across published glycerol/nutrient-",
+      "Final GABA titers in minimal glycerol medium were negligible and identical between WT and CY02 (0.06 g/L), despite impro",
+      "CY02 exhibited pronounced acetate overflow (EXP8) wiring excess substrate influx to acetate; known risk of methylglyoxal"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA producers from glycerol but without optimization (Hou and Kang, 2018).",
+      "WGS found glpK^m and crp^m shared between endpoint population and CY02 and recurrent across published glycerol/nutrient-limitation ALE experiments; mglC failed validation as hitchhiker.",
+      "Final GABA titers in minimal glycerol medium were negligible and identical between WT and CY02 (0.06 g/L), despite improved glycerol uptake.",
+      "CY02 exhibited pronounced acetate overflow (EXP8) wiring excess substrate influx to acetate; known risk of methylglyoxal accumulation to cytotoxic levels in FBP-insensitive glpK backgrounds; GABA shunt recycles product into TCA."
+    ],
+    "bottlenecks": [
+      ": Glycerol is a non-preferential, low-energy-density carbon source; prior work sho",
+      "glpK: WGS found glpK^m and crp^m shared between endpoint population and CY02 and recur",
+      ": Final GABA titers in minimal glycerol medium were negligible and identical betwe",
+      "ackA: CY02 exhibited pronounced acetate overflow (EXP8) wiring excess substrate influx"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。54 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "d1ad71b289e44786a1b46ddc8682bb90",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "5d7a4a4777aa44a8b4c792bf04ff675d_1_1-s2.0-S1096717621001750-main",
+      "identity": {
+        "paper_id": "5d7a4a4777aa44a8b4c792bf04ff675d_1_1-s2.0-S1096717621001750-main",
+        "title": "Adaptive laboratory evolution of Escherichia coli W enhances gamma-aminobutyric acid production using glycerol as the carbon source",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1016/j.ymben.2021.11.004"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "Abstract reports original experiments performed by the authors (ALE, resequencing, kinetics, transcriptomics, engineering)",
+          "Full Materials and Methods section with primary protocols (sections 4.1-4.12)",
+          "Results organized around novel data (Fig. 1-6, Tables 1-3)",
+          "Journal article format (Metabolic Engineering, doi 10.1016/j.ymben.2021.11.004 per supplement link)"
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli W",
+          "paper_strain_normalized": "Escherichia coli W (ATCC 9637; refseq NC_017635.1)",
+          "role": "parental",
+          "paper_label": "wild-type / parental strain",
+          "lineage_or_engineering_context": "Natural isolate lineage used as ALE starting strain and baseline control; ATCC 9637 identity comes from cited Archer et al. 2011 (background_citation support), reference genome NC_017635.1 stated in this paper",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type (lab stock carries undisclosed background differences vs NC_017635.1)",
+          "evidence": [
+            "1_introduction_p002",
+            "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+            "4_11_data_processing_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.93,
+          "reasoning": "Named throughout as the working strain; 'wild type' label = parental lab stock, not an engineered parent."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CY02",
+          "paper_strain_normalized": "E. coli W CY02 (glycerol-evolved single clone)",
+          "role": "engineered",
+          "paper_label": "CY02",
+          "lineage_or_engineering_context": "Single clone isolated from the fittest endpoint lineage of a 1300-generation glycerol-limited ALE of E. coli W",
+          "combination_status": "demonstrated",
+          "genotype": "28 new mutations incl. glpK T235M, crp R209H, ptsP fs, rsfS Q6*, mglC fs (partial list; full set in Fig. S1, supplement unavailable)",
+          "evidence": [
+            "1_introduction_p003",
+            "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+            "4_2_ale_and_strain_isolation_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Isolated and characterized in this study."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "glpK^m, crp^m, glpK^m crp^m (reverse-engineered)",
+          "paper_strain_normalized": "E. coli W glpK(T235M); E. coli W crp(R209H); E. coli W glpK(T235M) crp(R209H)",
+          "role": "engineered",
+          "paper_label": "single mutants / double mutant",
+          "lineage_or_engineering_context": "Lambda-Red reverse engineering of ALE-derived alleles into parental W background",
+          "combination_status": "demonstrated",
+          "genotype": "as normalized",
+          "evidence": [
+            "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+            "4_4_construction_of_mutant_strains_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Constructed and phenotyped in this study (Fig. 2-4)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "reverse-engineered mglC mutant",
+          "paper_strain_normalized": "E. coli W mglC(Asn4fs)",
+          "role": "engineered",
+          "paper_label": "mglC mutant",
+          "lineage_or_engineering_context": "Constructed to test causality; growth unchanged vs WT (Fig. S2) - judged hitchhiker",
+          "combination_status": "not_demonstrated",
+          "genotype": "mglC 15Adel (Asn4fs)",
+          "evidence": [
+            "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.8,
+          "reasoning": "Mentioned with result in supplement only."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CY02_ΔackA, CY02_ΔgabT, CY02_ΔmgsA, CY02_ΔgabTΔackA, CY02_ΔgabTΔmgsA, CY02_ΔmgsAΔackA, CY02_TKO",
+          "paper_strain_normalized": "CY02 with single/double/triple deletions of ackA, gabT, mgsA",
+          "role": "engineered",
+          "paper_label": "CY02 knockout derivatives",
+          "lineage_or_engineering_context": "Lambda-Red deletions in evolved CY02 background; all carry chromosomal lacZ::PLtetQ-1-mtGAD",
+          "combination_status": "demonstrated",
+          "genotype": "ΔackA / ΔgabT / ΔmgsA singles, three doubles, one triple",
+          "evidence": [
+            "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p001",
+            "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.92,
+          "reasoning": "Single and double/triple combinations each directly constructed and measured."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "wild-type lacZ:mtGAD strain and its knockout derivatives",
+          "paper_strain_normalized": "E. coli W lacZ::PLtetQ-1-mtGAD (+/- ΔackA, ΔgabT, ΔmgsA combinations)",
+          "role": "control",
+          "paper_label": "wild-type / WT background",
+          "lineage_or_engineering_context": "GABA-producing control background used to test background-dependence (epistasis) of knockout effects; mtGAD cassette originates from prior work (background element)",
+          "combination_status": "demonstrated",
+          "genotype": "lacZ::PLtetQ-1-mtGAD; knockout derivatives as above",
+          "evidence": [
+            "2_6_gaba_production_in_e_coli_w_p001",
+            "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.85,
+          "reasoning": "'wild-type' here means non-evolved parent, itself engineered with the mtGAD cassette - not a natural isolate."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BL21 (DE3)",
+          "paper_strain_normalized": "E. coli BL21(DE3)",
+          "role": "host",
+          "paper_label": "expression host",
+          "lineage_or_engineering_context": "Used solely for GlpK overexpression/purification (pET28a)",
+          "combination_status": "not_applicable",
+          "genotype": "pET28a-glpK (WT or T235M), KanR",
+          "evidence": [
+            "4_6_glpk_expression_and_purification_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Methods 4.6."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules, no adaptation analysis performed and no default E. coli K-12 assumption applied."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 5 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "Core contributions are a 1300-generation ALE campaign with mutation discovery (evolutionary engineering) and rational knockouts redirecting flux to GABA (metabolic engineering); protein characterization (GlpK kinetics) is supporting evidence, not a protein-engineering campaign. Note: glpK^m/crp^m mutations are evolution-derived, not rationally designed."
+  },
+  "engineering_decision_map": {
+    "goal": "Construct an Escherichia coli W derivative with improved gamma-aminobutyric acid (GABA) production from glycerol by combining adaptive laboratory evolution (1300 generations under glycerol limitation) with rational metabolic engineering (deletion of ackA, mgsA, gabT), and decipher the molecular basis of glycerol adaptation (mutation profiling, enzyme kinetics, transcriptomics).",
+    "initial_bottleneck": "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA producers from glycerol but without optimization (Hou and Kang, 2018).",
+    "key_hypothesis": "Adapt E. coli W to glycerol limitation to improve glycerol utilization and growth as a chassis for growth-coupled GABA production.",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M11",
+        "action_summary": "Serial-batch adaptive laboratory evolution in M9 + 0.2% (v/v) glycerol; 50 mL / 250 mL flask, 37 C, agitation; transfer every 12 h; initial OD600 stepped down 0.0008 -> 0.0004 -> 0.00016; ~1300 generations; single clone CY02 isolated from fittest endpoint lineage on M9-glycerol agar."
+      },
+      {
+        "step": 2,
+        "design_action": "M4",
+        "action_summary": "Lambda-Red recombineering (Datsenko-Wanner) to construct glpK^m, crp^m singles and glpK^m crp^m double mutant."
+      },
+      {
+        "step": 3,
+        "design_action": "M9",
+        "action_summary": "Switch from M9 + 0.2% glycerol + 50 mg/L yeast extract to amino-acid-rich LB + glycerol; glycerol concentration screen (0-? %; optimum 2% v/v) using growth rate as proxy assuming growth-coupled production; stationary-phase GABA screen of all strains."
+      },
+      {
+        "step": 4,
+        "design_action": "M5",
+        "action_summary": "Lambda-Red deletion of ackA, mgsA, gabT singly, as three doubles, and as triple (CY02_TKO), in both CY02 and wild-type backgrounds."
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "goal": "Construct an Escherichia coli W derivative with improved gamma-aminobutyric acid (GABA) production from glycerol by combining adaptive laboratory evolution (1300 generations under glycerol limitation) with rational metabolic engineering (deletion of ackA, mgsA, gabT), and decipher the molecular basis of glycerol adaptation (mutation profiling, enzyme kinetics, transcriptomics).",
+    "initial_bottleneck": "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA producers from glycerol but without optimization (Hou and Kang, 2018).",
+    "key_hypothesis": "Adapt E. coli W to glycerol limitation to improve glycerol utilization and growth as a chassis for growth-coupled GABA production."
+  },
+  "human_calibration_report": {
+    "auto_accepted": 1,
+    "needs_review": 3,
+    "rejected": 0,
+    "needs_review_steps": [
+      {
+        "step": 2,
+        "calibration_status": "needs_review",
+        "calibration_reason": "命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+      },
+      {
+        "step": 3,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+      },
+      {
+        "step": 4,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Serial-batch adaptive laboratory evolution in M9 + 0.2% (v/v) glycerol; 50 mL / 250 mL flask, 37 C, agitation; transfer every 12 h; initial OD600 stepped down 0.0008 -> 0.0004 -> 0.00016; ~1300 generations; single clone CY02 isolated from fittest endpoint lineage on M9-glycerol agar.",
+        "trigger": "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA producers from glycerol but without optimization (Hou and Kang, 2018).",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-022"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "glpK",
+        "decision_summary": "Lambda-Red recombineering (Datsenko-Wanner) to construct glpK^m, crp^m singles and glpK^m crp^m double mutant.",
+        "trigger": "WGS found glpK^m and crp^m shared between endpoint population and CY02 and recurrent across published glycerol/nutrient-limitation ALE experiments; mglC failed validation as hitchhiker.",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-022"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Switch from M9 + 0.2% glycerol + 50 mg/L yeast extract to amino-acid-rich LB + glycerol; glycerol concentration screen (0-? %; optimum 2% v/v) using growth rate as proxy assuming growth-coupled production; stationary-phase GABA screen of all strains.",
+        "trigger": "Final GABA titers in minimal glycerol medium were negligible and identical between WT and CY02 (0.06 g/L), despite improved glycerol uptake.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-022"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "ackA",
+        "decision_summary": "Lambda-Red deletion of ackA, mgsA, gabT singly, as three doubles, and as triple (CY02_TKO), in both CY02 and wild-type backgrounds.",
+        "trigger": "CY02 exhibited pronounced acetate overflow (EXP8) wiring excess substrate influx to acetate; known risk of methylglyoxal accumulation to cytotoxic levels in FBP-insensitive glpK backgrounds; GABA shunt recycles product into TCA.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-022"
+      },
+      {
+        "id": "V1",
+        "type": "validation_evidence",
+        "target": "glpK",
+        "decision_summary": "Verify glpK mRNA downregulation across mutants.",
+        "trigger": "Transcriptome consistent with cAMP depletion and aerobic acetate overflow phenotype.",
+        "evidence_level": "软",
+        "reason_nature": "",
+        "source_ddr_id": "DDR-022"
+      }
+    ],
+    "edges": [
+      {
+        "from": "D2",
+        "to": "V1",
+        "relation": "validated_by",
+        "evidence": "Supports G3P-mediated auto-catabolite repression of the glpFKX operon."
+      }
+    ]
+  },
+  "engineering_logic_chain": {
+    "goal": "Construct an Escherichia coli W derivative with improved gamma-aminobutyric acid (GABA) production from glycerol by combining adaptive laboratory evolution (1300 generations under glycerol limitation) with rational metabolic engineering (deletion of ackA, mgsA, gabT), and decipher the molecular basis of glycerol adaptation (mutation profiling, enzyme kinetics, transcriptomics).",
+    "initial_bottleneck": "Glycerol is a non-preferential, low-energy-density carbon source; prior work showed E. coli W among the best GABA producers from glycerol but without optimization (Hou and Kang, 2018).",
+    "hypothesis": "Adapt E. coli W to glycerol limitation to improve glycerol utilization and growth as a chassis for growth-coupled GABA production.",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 1,
+      "rule": "When improving an E. coli host for growth-coupled product formation from the low-energy-density feedstock glycerol, apply serial-batch ALE under glycerol limitation (order of 10^3 generations), because selection enriches substrate-uptake/utilization mutations (e.g., glpK, crp) that raise fitness and feedstock conversion, as validated for E. coli W glycerol utilization and GABA production in this study.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 3,
+      "rule": "When growth-coupled production of an amino-acid-derived product (GABA) from glycerol stalls in minimal medium, switch to an amino-acid-rich complex medium and re-optimize feedstock concentration using growth rate as proxy, because biosynthetic precursor (L-glutamate) cost and carbon availability, not uptake capacity, limit product formation - demonstrated for E. coli W GABA production.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 4,
+      "rule": "When a glycerol-adapted E. coli strain with enhanced substrate influx channels excess carbon into acetate overflow during GABA production, delete ackA, mgsA and gabT in combination, because blocking the acetate sink, the methylglyoxal bypass and the GABA shunt redirects carbon toward GABA - validated only in the evolved E. coli W CY02 background; the same deletions did not improve production in the wild-type background, so the rule is background-dependent.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    }
+  ]
+}
