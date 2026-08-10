@@ -1,0 +1,1160 @@
+{
+  "ddr_id": "DDR-024",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Untitled paper (0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735)",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Untitled paper (0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735)",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1093/nar/gkab735"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 minimal + 0.2% glucose, 37 degC, mid-log (OD600 ~0.5); 1% formaldehyde 25 min RT cross-linking; 2.5 M glycine 5 min quench; per-strain conditions listed in Dataset S2 (supplement-dependent)"
+      },
+      "trigger": {
+        "observation": "",
+        "reasoning": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+        "source_location": "E. coli K-12 MG1655 derivative strains, each carrying a chromosomal C-terminal 8-myc tag on one candidate TF (40 strains; Dataset S1)"
+      },
+      "evidence": {
+        "description": [
+          "identifying_the_binding_sites_for_candidate_tfs_p001",
+          "identifying_the_binding_sites_for_candidate_tfs_p002",
+          "multiplexed_chip_exo_experiment_p001",
+          "multiplexed_chip_exo_experiment_p002",
+          "multiplexed_chip_exo_experiment_p003",
+          "peak_calling_for_chip_exo_dataset_p001",
+          "bacterial_strains_media_and_growth_conditions_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "Mock IP as S/N denominator in peak calling (S/N >= 1.5 filter); no untagged-strain IP control described in main text",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Lambda red-mediated C-terminal 8-myc tagging (construction; per strain); multiplexed ChIP-exo with anti-myc 9E10 antibody; barcoded first adapters pooled for library prep; most strains in glucose M9 at OD600 0.5; YbcM profiled additionally under 250 uM paraquat oxidative stress (20 min from OD600 0.3)",
+      "result": {
+        "metric": "ChIP-exo sequencing on HiSeq 2500; bowtie mapping to NC_000913.2; MACE peak calling with S/N and bimodal-shape filters",
+        "before": "",
+        "after": "34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/YeeY/YpdC show no binding under tested conditions",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "same ChIP-exo workflow and growth conditions as EXP1"
+      },
+      "trigger": {
+        "observation": "34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/YeeY/YpdC show no binding under tested conditions",
+        "reasoning": "Map RNAP (beta') and sigma70 (RpoD) binding to determine the relative position of TF binding sites to the transcription machinery",
+        "source_location": "E. coli K-12 MG1655 wild type"
+      },
+      "evidence": {
+        "description": [
+          "multiplexed_chip_exo_experiment_p003",
+          "identifying_the_binding_sites_for_candidate_tfs_p005"
+        ],
+        "source": "论文实测",
+        "source_location": "same Mock-based S/N filtering framework",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "ChIP-exo with NT63 (anti-RNAP beta') and 2G10 (anti-sigma70) antibodies",
+      "result": {
+        "metric": "ChIP-exo binding maps for RNAP and RpoD",
+        "before": "",
+        "after": "208 type-(i) and 75 type-(ii) events; 283/588 (48%) TF binding sites overlap RNAP",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "same growth conditions as ChIP-exo experiments; mid-log harvest; RNAprotect stabilization"
+      },
+      "trigger": {
+        "observation": "7 consensus motifs obtained; 8 additional TFs show sequence-specific patterns despite few sites",
+        "reasoning": "Identify genes directly regulated by each representative TF by comparing WT and TF-deletion transcriptomes",
+        "source_location": "E. coli K-12 MG1655 WT and single-gene deletion strains (ΔyidZ, ΔyfeC, ΔyciT, ΔygbI in main text; others in supplement)"
+      },
+      "evidence": {
+        "description": [
+          "transcriptomics_p001",
+          "calculation_of_differentially_expressed_genes_p001",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p005",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p010",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p025",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p035",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p033",
+          "discussion_p022"
+        ],
+        "source": "论文实测",
+        "source_location": "WT MG1655 grown and processed in parallel",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "single-gene deletion (construction method not specified in main text; strains listed in Dataset S1)",
+      "result": {
+        "metric": "strand-specific paired-end RNA-seq (KAPA Hyper Prep, HiSeq 2500); bowtie v1.2.3 + summarizeOverlaps + DESeq2 (TPM; Wald test; BH adjustment; |log2FC| >= 1 and padj < 0.05)",
+        "before": "",
+        "after": "ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (16 repressed); ΔyciT: ybiV/ybiY/fsaA/cusF differentially expressed; ΔygbI: 113 DEGs including upregulated ygbJKLMN",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "yciT",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 minimal + 0.2% (w/v) glucose, fructose, or sorbitol; osmotic variant: M9 sorbitol + 0.5 M NaCl at culture start; 37 degC with agitation; 1/200 dilution from overnight; OD600 every 30 min"
+      },
+      "trigger": {
+        "observation": "ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (16 repressed); ΔyciT: ybiV/ybiY/fsaA/cusF differentially expressed; ΔygbI: 113 DEGs including upregulated ygbJKLMN",
+        "reasoning": "Test physiological role of YciT in carbon-source utilization and osmotic stress",
+        "source_location": "E. coli K-12 MG1655 WT and ΔyciT"
+      },
+      "evidence": {
+        "description": [
+          "bacterial_strains_media_and_growth_conditions_p004",
+          "bacterial_strains_media_and_growth_conditions_p005",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p026",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p027",
+          "discussion_p006"
+        ],
+        "source": "论文实测",
+        "source_location": "WT MG1655 under identical conditions",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "ΔyciT deletion strain (pre-existing within study) exposed to alternative carbon sources and osmotic stress",
+      "result": {
+        "metric": "growth curves on Bioscreen C; Figure 5D shows SD bands",
+        "before": "",
+        "after": "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "ybcM",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "mid-log cells (OD600 ~0.5), PBS-washed, resuspended in M9; 60 mM H2O2 final for 15 min; samples before/after, plated on LB in triplicate; 37 degC up to 24 h for viable counts"
+      },
+      "trigger": {
+        "observation": "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control",
+        "reasoning": "Confirm YbcM role in oxidative stress response by comparing WT and ΔybcM survival under H2O2",
+        "source_location": "E. coli K-12 MG1655 WT and ΔybcM"
+      },
+      "evidence": {
+        "description": [
+          "bacterial_strains_media_and_growth_conditions_p003",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p030",
+          "discussion_p015"
+        ],
+        "source": "论文实测",
+        "source_location": "WT MG1655 treated identically; untreated cells at time zero as survival baseline (percent survival)",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "ΔybcM deletion strain challenged with H2O2",
+      "result": {
+        "metric": "viable counts; percent survival relative to t=0",
+        "before": "",
+        "after": "WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement in ROS stress response confirmed",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 6,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "ygbI",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "20 mM L-tartrate medium (base composition not specified in main text)"
+      },
+      "trigger": {
+        "observation": "WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement in ROS stress response confirmed",
+        "reasoning": "Verify YgbI function as repressor of the L-tartrate catabolic pathway via growth profiling of WT vs ΔygbI on L-tartrate",
+        "source_location": "E. coli K-12 MG1655 WT and ΔygbI"
+      },
+      "evidence": {
+        "description": [
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p034",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p035",
+          "deciphering_regulatory_roles_of_candidate_transcription_factors_p036",
+          "discussion_p022"
+        ],
+        "source": "论文实测",
+        "source_location": "WT MG1655 in the same medium",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "ΔygbI deletion strain grown on L-tartrate",
+      "result": {
+        "metric": "growth profiles (Figure 7D; circle = WT, triangle = ΔygbI)",
+        "before": "",
+        "after": "ΔygbI grows on L-tartrate whereas WT does not; supports model of YgbI directly repressing ygbJK promoter and indirectly inhibiting ygbLM/ygbN",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 3,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "not applicable"
+        },
+        "trigger": {
+          "observation": "208 type-(i) and 75 type-(ii) events; 283/588 (48%) TF binding sites overlap RNAP",
+          "reasoning": "Determine consensus binding motifs of validated TFs",
+          "source_location": "in silico on binding-region sequences from reference genome NC_000913.2"
+        },
+        "evidence": {
+          "description": [
+            "motif_search_from_chip_exo_peaks_p001",
+            "identifying_the_binding_sites_for_candidate_tfs_p003"
+          ],
+          "source": "论文实测",
+          "source_location": "not applicable",
+          "values": {}
+        },
+        "evidence_grading": "硬",
+        "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "none (computational)",
+        "result": {
+          "metric": "MEME suite motif search (E-value < 1e-3)",
+          "before": "",
+          "after": "7 consensus motifs obtained; 8 additional TFs show sequence-specific patterns despite few sites",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "post_hoc_interpretation",
+      "exclusion_reason": "Q1 未通过：Discussion/结构分析/docking/基因组测序等事后解释，未驱动本文的工程决策",
+      "step_snapshot": {
+        "step": 8,
+        "decision_type": "post_hoc_interpretation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "not applicable"
+        },
+        "trigger": {
+          "observation": "ΔygbI grows on L-tartrate whereas WT does not; supports model of YgbI directly repressing ygbJK promoter and indirectly inhibiting ygbLM/ygbN",
+          "reasoning": "Annotate TF family types and oligomeric states of candidate TFs to contextualize binding behavior",
+          "source_location": "in silico (protein sequences)"
+        },
+        "evidence": {
+          "description": [
+            "screening_putative_transcription_factors_in_e_coli_k_12_mg1655_p002",
+            "structural_analysis_of_candidate_tfs_p001",
+            "deciphering_regulatory_roles_of_candidate_transcription_factors_p003",
+            "deciphering_regulatory_roles_of_candidate_transcription_factors_p009"
+          ],
+          "source": "论文实测",
+          "source_location": "not applicable",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动启发式判定(软): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "none (computational)",
+        "result": {
+          "metric": "SUPERFAMILY 2 HMM annotation; SWISS-MODEL homology models; VMD visualization; UniProt annotation",
+          "before": "",
+          "after": "majority of 40 candidates contain winged HTH domains across nine families; YfjR/YgeR/YggD/YhjB/YjjJ lack predicted DNA-binding domains (consistent with no binding for four of them)",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Experimentally evaluate 40 computationally predicted candidate transcription factors in Escherichia coli K-12 MG1655 using multiplexed ChIP-exo to determine which are genuine DNA-binding TFs, map their genome-wide binding sites, compare their locations with RNAP/RpoD binding, classify them by target-gene count (global/local/single-target), and infer and validate the physiological functions of representative TFs via RNA-seq and deletion-mutant phenotyping.",
+    "problem_type": [
+      "competing pathway",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/YeeY/YpdC show no binding under tested c",
+      "7 consensus motifs obtained; 8 additional TFs show sequence-specific patterns despite few sites",
+      "ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (16 repressed); ΔyciT: ybiV/ybiY/fsaA/cus",
+      "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT",
+      "WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement in ROS stress response confirmed"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/YeeY/YpdC show no binding under tested conditions",
+      "7 consensus motifs obtained; 8 additional TFs show sequence-specific patterns despite few sites",
+      "ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (16 repressed); ΔyciT: ybiV/ybiY/fsaA/cusF differentially expressed; ΔygbI: 113 DEGs including upregulated ygbJKLMN",
+      "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control",
+      "WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement in ROS stress response confirmed"
+    ],
+    "bottlenecks": [
+      ": ",
+      ": 34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/",
+      ": 7 consensus motifs obtained; 8 additional TFs show sequence-specific patterns de",
+      "yciT: ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (",
+      "ybcM: no significant growth deficiency on the three carbon sources (slightly lower sta",
+      "ygbI: WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。27 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "c5026e6e23d54843873f7c1e4eaffde9",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "identity": {
+        "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+        "title": null,
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1093/nar/gkab735"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "Original experiments described in Materials and Methods (ChIP-exo, RNA-seq, growth and survival assays) with biological replicates and instrument details",
+          "Results section reports new data (588 binding sites, 34/40 validated TFs) with main figures and tables",
+          "NAR article format with Received/Revised/Accepted dates; data deposited in GEO (GSE159777, GSE159658)"
+        ],
+        "evidence_paragraph_ids": [
+          "abstract_p001",
+          "multiplexed_chip_exo_experiment_p003",
+          "data_availability_p001"
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "target",
+          "paper_label": "wild type / E. coli K-12 MG1655",
+          "lineage_or_engineering_context": "Standard laboratory K-12 strain; unmodified parental background for all derivatives",
+          "combination_status": "not_applicable",
+          "genotype": "wild type (reference genome NC_000913.2 used for mapping)",
+          "evidence": [
+            "bacterial_strains_media_and_growth_conditions_p001",
+            "abstract_p001",
+            "peak_calling_for_chip_exo_dataset_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.99,
+          "reasoning": "Named explicitly in abstract, Methods and throughout Results; Methods states all study strains are MG1655 and its derivatives."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli strains harboring 8-myc (40 myc-tagged strains)",
+          "paper_strain_normalized": "E. coli K-12 MG1655 with chromosomal C-terminal 8-myc tag on each candidate TF (40 separate strains)",
+          "role": "engineered",
+          "paper_label": "myc-tagged strains",
+          "lineage_or_engineering_context": "Generated by lambda red-mediated site-specific recombination targeting the C-terminal region (method per ref 12, Cho et al. 2006)",
+          "combination_status": "not_demonstrated",
+          "genotype": "one myc-tagged TF locus per strain; full list in Dataset S1 (supplement-dependent)",
+          "evidence": [
+            "bacterial_strains_media_and_growth_conditions_p001",
+            "identifying_the_binding_sites_for_candidate_tfs_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "40 strains constructed in this study for ChIP-exo; per-strain genotypes require Dataset S1."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "deletion strains (yfeC, yciT, ybcM, ygbI deletions tested phenotypically; yidZ deletion used for RNA-seq)",
+          "paper_strain_normalized": "E. coli K-12 MG1655 single-gene deletion strains ΔyfeC, ΔyciT, ΔybcM, ΔygbI, ΔyidZ (separate strains)",
+          "role": "engineered",
+          "paper_label": "deletion strains / knockout strains / mutant strains",
+          "lineage_or_engineering_context": "Derived from MG1655; construction method not described in main text; strains listed in Dataset S1",
+          "combination_status": "not_demonstrated",
+          "genotype": "single-gene deletions only; no combined genotypes reported",
+          "evidence": [
+            "bacterial_strains_media_and_growth_conditions_p001",
+            "results_p001",
+            "deciphering_regulatory_roles_of_candidate_transcription_factors_p005",
+            "deciphering_regulatory_roles_of_candidate_transcription_factors_p030",
+            "deciphering_regulatory_roles_of_candidate_transcription_factors_p035"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Five deletions explicitly used in main text; Dataset S1 may list additional deletion strains used for the five supplementary TFs."
+        }
+      ],
+      "target_system_adaptation": null,
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 4 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "基于 decision_chain 的 design_action/implementation_detail 关键词启发式判定——需人工确认"
+  },
+  "engineering_decision_map": {
+    "goal": "Experimentally evaluate 40 computationally predicted candidate transcription factors in Escherichia coli K-12 MG1655 using multiplexed ChIP-exo to determine which are genuine DNA-binding TFs, map their genome-wide binding sites, compare their locations with RNAP/RpoD binding, classify them by target-gene count (global/local/single-target), and infer and validate the physiological functions of representative TFs via RNA-seq and deletion-mutant phenotyping.",
+    "initial_bottleneck": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+    "key_hypothesis": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M3",
+        "action_summary": "Lambda red-mediated C-terminal 8-myc tagging (construction; per strain); multiplexed ChIP-exo with anti-myc 9E10 antibody; barcoded first adapters pooled for library prep; most strains in glucose M9 at OD600 0.5; YbcM profiled additionally under 250 uM paraquat oxidative stress (20 min from OD600 0.3)"
+      },
+      {
+        "step": 2,
+        "design_action": "M3",
+        "action_summary": "ChIP-exo with NT63 (anti-RNAP beta') and 2G10 (anti-sigma70) antibodies"
+      },
+      {
+        "step": 3,
+        "design_action": "M5",
+        "action_summary": "single-gene deletion (construction method not specified in main text; strains listed in Dataset S1)"
+      },
+      {
+        "step": 4,
+        "design_action": "M5",
+        "action_summary": "ΔyciT deletion strain (pre-existing within study) exposed to alternative carbon sources and osmotic stress"
+      },
+      {
+        "step": 5,
+        "design_action": "M5",
+        "action_summary": "ΔybcM deletion strain challenged with H2O2"
+      },
+      {
+        "step": 6,
+        "design_action": "M5",
+        "action_summary": "ΔygbI deletion strain grown on L-tartrate"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "goal": "Experimentally evaluate 40 computationally predicted candidate transcription factors in Escherichia coli K-12 MG1655 using multiplexed ChIP-exo to determine which are genuine DNA-binding TFs, map their genome-wide binding sites, compare their locations with RNAP/RpoD binding, classify them by target-gene count (global/local/single-target), and infer and validate the physiological functions of representative TFs via RNA-seq and deletion-mutant phenotyping.",
+    "initial_bottleneck": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+    "key_hypothesis": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 4,
+    "needs_review": 0,
+    "rejected": 2,
+    "needs_review_steps": [
+      {
+        "step": 1,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 2,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Lambda red-mediated C-terminal 8-myc tagging (construction; per strain); multiplexed ChIP-exo with anti-myc 9E10 antibody; barcoded first adapters pooled for library prep; most strains in glucose M9 at OD600 0.5; YbcM profiled additionally under 250 uM paraquat oxidative stress (20 min from OD600 0.3)",
+        "trigger": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-024"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "ChIP-exo with NT63 (anti-RNAP beta') and 2G10 (anti-sigma70) antibodies",
+        "trigger": "34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/YeeY/YpdC show no binding under tested conditions",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-024"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "single-gene deletion (construction method not specified in main text; strains listed in Dataset S1)",
+        "trigger": "7 consensus motifs obtained; 8 additional TFs show sequence-specific patterns despite few sites",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-024"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "yciT",
+        "decision_summary": "ΔyciT deletion strain (pre-existing within study) exposed to alternative carbon sources and osmotic stress",
+        "trigger": "ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (16 repressed); ΔyciT: ybiV/ybiY/fsaA/cusF differentially expressed; ΔygbI: 113 DEGs including upregulated ygbJKLMN",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-024"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "ybcM",
+        "decision_summary": "ΔybcM deletion strain challenged with H2O2",
+        "trigger": "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-024"
+      },
+      {
+        "id": "D6",
+        "type": "engineering_decision",
+        "target": "ygbI",
+        "decision_summary": "ΔygbI deletion strain grown on L-tartrate",
+        "trigger": "WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement in ROS stress response confirmed",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-024"
+      }
+    ],
+    "edges": [
+      {
+        "from": "D1",
+        "to": "D2",
+        "relation": "triggered_by",
+        "evidence": "34/40 candidates show DNA binding; 588 total binding sites; YgeR/YggD/YjjJ/YfjR/YeeY/YpdC show no binding under tested conditions"
+      },
+      {
+        "from": "D3",
+        "to": "D4",
+        "relation": "triggered_by",
+        "evidence": "ΔyidZ: 74 DEGs (19/118 direct); ΔyfeC: 124 up/81 down, 20 direct regulon genes (16 repressed); ΔyciT: ybiV/ybiY/fsaA/cusF differentially expressed; ΔygbI: 113 DEGs including upregulated ygbJKLMN"
+      },
+      {
+        "from": "D4",
+        "to": "D5",
+        "relation": "triggered_by",
+        "evidence": "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control"
+      },
+      {
+        "from": "D5",
+        "to": "D4",
+        "relation": "solves",
+        "evidence": "ΔybcM deletion strain challenged with H2O2 addresses: no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control"
+      },
+      {
+        "from": "D5",
+        "to": "D6",
+        "relation": "triggered_by",
+        "evidence": "WT survival 8-fold higher than ΔybcM after 15 min 60 mM H2O2 -> YbcM involvement in ROS stress response confirmed"
+      }
+    ]
+  },
+  "engineering_logic_chain": {
+    "goal": "Experimentally evaluate 40 computationally predicted candidate transcription factors in Escherichia coli K-12 MG1655 using multiplexed ChIP-exo to determine which are genuine DNA-binding TFs, map their genome-wide binding sites, compare their locations with RNAP/RpoD binding, classify them by target-gene count (global/local/single-target), and infer and validate the physiological functions of representative TFs via RNA-seq and deletion-mutant phenotyping.",
+    "initial_bottleneck": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+    "hypothesis": "Identify in vivo genome-wide binding sites of 40 computationally predicted candidate TFs to determine which are genuine DNA-binding proteins",
+    "failure_points": [
+      {
+        "failure_point": "no significant growth deficiency on the three carbon sources (slightly lower stationary OD600 for ΔyciT); impaired ΔyciT growth under 0.5 M NaCl -> YciT involved in osmolarity control",
+        "caused_by": "ΔyciT deletion strain (pre-existing within study) exposed to alternative carbon sources and osmotic stress",
+        "resolved_by": "ΔybcM deletion strain challenged with H2O2"
+      }
+    ],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": []
+}
