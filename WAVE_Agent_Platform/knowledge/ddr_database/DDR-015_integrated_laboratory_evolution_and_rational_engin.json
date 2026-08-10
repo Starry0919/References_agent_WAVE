@@ -537,12 +537,12 @@
     "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。32 个字段待人工审核。",
     "human_review_status": "pending",
     "review_notes": "",
-    "paper_extraction_task_id": "bb6e0adfc54c4bd8a83c7b98c6e0d9f9",
+    "paper_extraction_task_id": "ed341b72fa8141bc81d46da51145da61",
     "paper_index": 0,
     "paper_extraction_detail": {
-      "paper_id": "eb8827485fa74c2396b820200acbf6b7_02 曾老师-色氨酸",
+      "paper_id": "47416b17266e46d98ec7dfa25df3e90c_02 曾老师-色氨酸",
       "identity": {
-        "paper_id": "eb8827485fa74c2396b820200acbf6b7_02 曾老师-色氨酸",
+        "paper_id": "47416b17266e46d98ec7dfa25df3e90c_02 曾老师-色氨酸",
         "title": "Integrated laboratory evolution and rational engineering of GalP/Glk-dependent Escherichia coli for higher yield and productivity of L-tryptophan biosynthesis",
         "authors": [],
         "journal": null,
@@ -1190,7 +1190,7 @@
       "metabolic_engineering"
     ],
     "engineering_paper_type_rationale": "基于 decision_chain 的 design_action/implementation_detail 关键词启发式判定——需人工确认",
-    "previous_extraction_task_id": "ed341b72fa8141bc81d46da51145da61"
+    "previous_extraction_task_id": "bb6e0adfc54c4bd8a83c7b98c6e0d9f9"
   },
   "engineering_decision_map": {
     "goal": "Develop a GalP/Glk-dependent, PTS-defective Escherichia coli L-tryptophan producer with higher yield and specific productivity by combining rational engineering (ptsI knockout, galP/glk promoter engineering, integration of AroG^D6G-D7A and AnTrpC^R378F variants) with batch and continuous adaptive laboratory evolution using an automatic CRISPR/Cas9-facilitated growth-coupled sensor-guided screening system (auto-CGSS).",
