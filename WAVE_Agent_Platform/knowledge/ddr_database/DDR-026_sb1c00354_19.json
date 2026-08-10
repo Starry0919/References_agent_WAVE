@@ -1,0 +1,1170 @@
+{
+  "ddr_id": "DDR-026",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "sb1c00354 1..9",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "sb1c00354 1..9",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1021/acssynbio.1c00354"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M7",
+      "target": {
+        "gene": "ccdA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB medium, antibiotics as appropriate, 37 C, 220 rpm seed cultures; characterization in 24-well plates (1.5 mL)."
+      },
+      "trigger": {
+        "observation": "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+        "reasoning": "Construct a synthetic competitive ecosystem by cross-wiring two orthogonal QS systems (tra*, las) to a ccd toxin-antitoxin effect module in two E. coli Top10 strains (CG: GFP; CR: RFP), each carrying a cis-acting positive feedback (self-rescue via antitoxin CcdA) and a trans-acting negative feedback (killing via CcdB induced by partner's HSL).",
+        "source_location": "Escherichia coli Top10"
+      },
+      "evidence": {
+        "description": [
+          "results_and_discussion_p001",
+          "results_and_discussion_p002",
+          "results_and_discussion_p009",
+          "results_and_discussion_p015",
+          "methods_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "Single-strain cultures; no-inducer baselines.",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Rests on previously measured orthogonality of the tra*/las systems (ref 30, measured) and the characterized CcdB-gyrase/CcdA-antidote mechanism; circuit function verified by growth assays.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "Cross-feeding/auxotrophy approaches (background, refs 10-14) noted to suffer metabolic burden and asymmetric strain ratios (Kerner et al.)",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "Toxin/lysis-based density-control ecosystems (refs 26,27) noted as unable to control subpopulation ratios",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Genetic circuit construction: intact tra* system self-inducing ccdA + partial las system controlling ccdB in CG; intact las system self-inducing ccdA + partial tra* system controlling ccdB in CR; chromosomal GFP/RFP integration (CRIM method, helper pAH69, pHK-GFP/pHK-RFP, multicopy clones).",
+      "result": {
+        "metric": "GFP/RFP fluorescence growth curves; agar-plate spatial fluorescence patterns.",
+        "before": "",
+        "after": "Mutual growth inhibition achieved; competitive relationship confirmed in liquid and on plates; dominant strain switchable through HSL synthesis rate / effect-module expression tuning.",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When constructing a two-strain E. coli consortium with a defined ecological interaction, reconfigure cis- vs trans-acting QS activation of a shared toxin-antitoxin effect module, because assigning self-HSL to antitoxin and partner-HSL to toxin yields competition whereas the inverse assignment yields symbiosis (validated in E. coli Top10 QS-ccd proof-of-concept consortia).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "dynamic_control"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "ccdA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C, 24-well plates, various HSL concentrations."
+      },
+      "trigger": {
+        "observation": "Desired ecological relationships require regulated expression of key genes; un-tuned constructs did not show target behaviors.",
+        "reasoning": "Tune synthesis rate of HSLs and expression of CcdA/CcdB to obtain strains with desired ecological behavior.",
+        "source_location": "Escherichia coli Top10 (CG/CR and SG/SR strain families)"
+      },
+      "evidence": {
+        "description": [
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p016",
+          "results_and_discussion_p006"
+        ],
+        "source": "论文实测",
+        "source_location": "No-inducer groups.",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Strain behaviors measured directly in growth/fluorescence assays.",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "RBS工程",
+      "implementation_detail": "RBS engineering: different RBSs used to control HSL synthases, ccdA and ccdB; representative strains (CG01, CG02, CR01, CR02, SG01, SR01) selected by growth/fluorescence characterization under added HSLs.",
+      "result": {
+        "metric": "Fluorescence and OD600 growth curves.",
+        "before": "",
+        "after": "CG02 growth defect without inducer attributed to weaker EsaI RBS (reduced CcdA activation), rescued by high 3OC6HSL; CR01 partially inhibited and CR02 completely inhibited within 12 h by 10 uM 3OC6HSL; 100 nM 3OC6HSL had no effect; SG01/SR01 selected for symbiosis.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M7",
+      "target": {
+        "gene": "ccdB",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB liquid and agar; different inoculation ratios; no-inducer plates."
+      },
+      "trigger": {
+        "observation": "The competitive design showed that cis/trans assignment of effect-module activation defines interaction type, predicting that inversion yields mutual protection.",
+        "reasoning": "Construct a synthetic symbiotic ecosystem by inverting the cis/trans activation layout: each strain self-induces its own toxin (negative feedback) and is rescued by the partner's HSL activating its antitoxin (positive feedback).",
+        "source_location": "Escherichia coli Top10 (SG: GFP; SR: RFP)"
+      },
+      "evidence": {
+        "description": [
+          "results_and_discussion_p007",
+          "results_and_discussion_p016",
+          "results_and_discussion_p017",
+          "results_and_discussion_p022",
+          "results_and_discussion_p024"
+        ],
+        "source": "论文实测",
+        "source_location": "Single strains; signal-deficient control strains cocultured with SG01 or SR01.",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Symbiotic phenotypes measured in growth, dilution, coculture-with-control and 72 h coexistence assays.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Circuit construction: intact las system self-inducing ccdB + partial tra* controlling ccdA in SG; intact tra* self-inducing ccdB + partial las controlling ccdA in SR; RBS tuning; selection of SG01 and SR01.",
+      "result": {
+        "metric": "Fluorescence growth curves; plate images.",
+        "before": "",
+        "after": "Mutual growth promotion: coculture fluorescence exceeded single strains; SG01 growth increased with SR01 inoculation ratio; symbiosis maintained after two dilutions and 72 h; neither strain grew with signal-deficient controls; SR01 grew toward SG01 on plates.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When engineering a two-strain E. coli mutualism from a QS-ccd toolkit, assign each strain's own HSL to toxin expression and the partner's HSL to antitoxin expression, because this converts aggression into suicidal behavior that is rescued only by the partner, yielding obligate-like mutual protection (validated for the SG01/SR01 E. coli Top10 pair in LB liquid and agar).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "dynamic_control"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M7",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "24-well plates, 1.5 mL LB, 37 C, 12 h; inducer Combinations I-IV (Ara 0-1300 uM increasing; aTc 1000-0 ng/mL decreasing; exact values in Supplementary Table S5)."
+      },
+      "trigger": {
+        "observation": "Self-induced ecosystems couple signal production to population density and therefore do not allow external setting of subpopulation ratios; composition control is needed for community function.",
+        "reasoning": "Enable external, quantitative regulation of subpopulation ratios by converting HSL synthase expression from self-induced to inducer-induced.",
+        "source_location": "Escherichia coli Top10 (CGi, CRi, SGi, SRi)"
+      },
+      "evidence": {
+        "description": [
+          "results_and_discussion_p025",
+          "results_and_discussion_p038",
+          "results_and_discussion_p039",
+          "results_and_discussion_p040",
+          "results_and_discussion_p041",
+          "results_and_discussion_p042",
+          "results_and_discussion_p037",
+          "methods_p005"
+        ],
+        "source": "论文实测",
+        "source_location": "No QS Control system (NG/NR); same-inoculum cocultures across inducer combinations.",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Ratio control measured directly by flow cytometry across four inducer combinations in two ecosystems, with independent replicates.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "Microfluidic population regulation (refs 20,26,32-34) noted as requiring restricted culture conditions such as controlled flow rate; authors chose batch 1.5 mL inducible circuits instead",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "启动子工程",
+      "implementation_detail": "Promoter replacement: in CGi, EsaI synthase promoter replaced with L-arabinose-inducible promoter; in CRi, LasI promoter replaced with aTc-inducible promoter; in SGi, aTc-inducible promoter regulating LasI; in SRi, EsaI promoter replaced with Ara-inducible promoter. Strains selected by same characterization method.",
+      "result": {
+        "metric": "Flow cytometry: 20000 events/sample, FITC (GFP) and PE-Texas Red (RFP) channels, FSC/SSC gating; quadrants Q1=RFP, Q3=GFP, Q4=impurities/dead cells.",
+        "before": "",
+        "after": "Inducible competitive ecosystem: CGi 22.2% -> 92.8%, CRi 71.3% -> 3.14% from Combination I to IV. Inducible symbiotic ecosystem: SGi 12.2% -> 84.4%, SRi 81.1% -> 10.4%, with relatively stable dynamics. Dominant-strain switch achieved only in the QS-based inducible ecosystem, not in No QS Control.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When externally tunable subpopulation ratios are needed in a QS-based two-strain E. coli consortium, replace the self-inducing QS promoters of the HSL synthases with orthogonal inducible promoters (Ara/aTc), because inducer dosage then sets signal production, which propagates through the toxin-antitoxin feedbacks to set the steady-state strain ratio (validated in E. coli Top10 competitive and symbiotic ecosystems at 1.5 mL scale).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "dynamic_control"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Standard LB cloning conditions."
+      },
+      "trigger": {
+        "observation": "Dead cells affect OD600-based density detection and OD600 cannot distinguish the two strains in coculture.",
+        "reasoning": "Enable distinguishing the two subpopulations in coculture, where OD600 cannot separate strains and dead cells distort density readings.",
+        "source_location": "Escherichia coli Top10"
+      },
+      "evidence": {
+        "description": [
+          "methods_p002",
+          "results_and_discussion_p009"
+        ],
+        "source": "论文实测",
+        "source_location": null,
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Reporter function demonstrated throughout measured experiments.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Chromosomal integration of GFP and RFP using the CRIM plasmid method: helper plasmid pAH69 into TOP10, integration induced at elevated temperature, electro-transformation of pHK-GFP / pHK-RFP, selection of multicopy clones for higher reporter expression.",
+      "result": {
+        "metric": "GFP/RFP fluorescence.",
+        "before": "",
+        "after": "Unified indirect fluorescence readout for strain-specific growth in coculture; enabled plate, plate-reader and flow-cytometry discrimination.",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When monitoring two E. coli subpopulations in coculture, integrate distinguishable fluorescent reporters into the chromosome (e.g., CRIM method) and use fluorescence rather than OD600 as the growth readout, because OD600 cannot resolve strains and is biased by dead cells (validated in LB liquid and agar cocultures of QS-ccd ecosystems).",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 3,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Liquid: 24-well, 1.5 mL LB, 37 C vigorous shaking. Plate: overnight incubation, gel imager."
+        },
+        "trigger": {
+          "observation": "CG02 growth defect without inducer attributed to weaker EsaI RBS (reduced CcdA activation), rescued by high 3OC6HSL; CR01 partially inhibited and CR02 completely inhibited within 12 h by 10 uM 3OC6HSL; 100 nM 3OC6HSL had no effect; SG01/SR01 selected for symbiosis.",
+          "reasoning": "Validate competitive interaction of selected CG/CR pairs in liquid coculture and spatially on agar plates.",
+          "source_location": "CG01, CG02, CR01, CR02"
+        },
+        "evidence": {
+          "description": [
+            "results_and_discussion_p010",
+            "results_and_discussion_p011",
+            "results_and_discussion_p012",
+            "results_and_discussion_p013",
+            "results_and_discussion_p014",
+            "results_and_discussion_p015"
+          ],
+          "source": "论文实测",
+          "source_location": "Single-strain characterizations (Supplementary Figures S1, S4).",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Coculture of four pairwise combinations; four spatial distributions on plates (same position, adjacent, CR surrounded by CG, CG surrounded by CR); 5 uL drops.",
+        "result": {
+          "metric": "Fluorescence growth curves; plate fluorescence images.",
+          "before": "",
+          "after": "All strains inhibited in coculture vs monoculture; CR01 dominant in Combinations 1 and 3, CG01 dominant in Combination 2, mutual strong inhibition in Combination 4; interaction strength distance-dependent on plates.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 7,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Same coculture conditions as inducible ecosystems (Supplementary Figures S15-S17)."
+        },
+        "trigger": {
+          "observation": "Unified indirect fluorescence readout for strain-specific growth in coculture; enabled plate, plate-reader and flow-cytometry discrimination.",
+          "reasoning": "Test whether the QS communication module is necessary for population regulation.",
+          "source_location": "Escherichia coli Top10 (NG, NR)"
+        },
+        "evidence": {
+          "description": [
+            "results_and_discussion_p042"
+          ],
+          "source": "论文实测",
+          "source_location": "Inducible competitive ecosystem as the QS-containing comparator.",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Construction of No QS Control strains expressing the toxin-antitoxin system without QS systems; coculture and dominant-strain switch attempt with inducers.",
+        "result": {
+          "metric": "Growth and subpopulation dominance (supplementary).",
+          "before": "",
+          "after": "NG/NR coculture growth significantly inhibited (attributed by authors to lack of QS growth buffering); dominant-strain switchover not achieved, unlike the inducible competitive ecosystem.",
+          "fold_change": null,
+          "quantified": false
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Establish modular synthetic microbial ecosystems in E. coli that realize different ecological interactions (competition and symbiosis) by reconfiguring the layout between a quorum-sensing communication module and a toxin-antitoxin effect module, and further build inducible synthetic ecosystems (Ara/aTc) to regulate subpopulation ratios over a wide range.",
+    "problem_type": [],
+    "trigger_conditions": [
+      "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure",
+      "Desired ecological relationships require regulated expression of key genes; un-tuned constructs did not show target beha",
+      "The competitive design showed that cis/trans assignment of effect-module activation defines interaction type, predicting",
+      "Self-induced ecosystems couple signal production to population density and therefore do not allow external setting of su",
+      "Dead cells affect OD600-based density detection and OD600 cannot distinguish the two strains in coculture."
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+      "Desired ecological relationships require regulated expression of key genes; un-tuned constructs did not show target behaviors.",
+      "The competitive design showed that cis/trans assignment of effect-module activation defines interaction type, predicting that inversion yields mutual protection.",
+      "Self-induced ecosystems couple signal production to population density and therefore do not allow external setting of subpopulation ratios; composition control is needed for community function.",
+      "Dead cells affect OD600-based density detection and OD600 cannot distinguish the two strains in coculture."
+    ],
+    "bottlenecks": [
+      "ccdA: Prior ecosystems lacked a general modular route to distinct ecological interacti",
+      "ccdA: Desired ecological relationships require regulated expression of key genes; un-t",
+      "ccdB: The competitive design showed that cis/trans assignment of effect-module activat",
+      ": Self-induced ecosystems couple signal production to population density and there",
+      ": Dead cells affect OD600-based density detection and OD600 cannot distinguish the"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。30 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "13de54079540486eb712a240529e0b6e",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+      "identity": {
+        "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+        "title": "sb1c00354 1..9",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1021/acssynbio.1c00354"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p008",
+          "methods_p001",
+          "results_and_discussion_p002",
+          "author_contributions_p001"
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli Top10",
+          "paper_strain_normalized": "Escherichia coli TOP10",
+          "role": "host",
+          "paper_label": "Top10",
+          "lineage_or_engineering_context": "Host for all synthetic ecosystems; helper plasmid pAH69 for CRIM integration",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type-label host; exact genotype not stated in main text",
+          "evidence": [
+            "methods_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in Methods as ecosystem construction host."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH5a",
+          "paper_strain_normalized": "Escherichia coli DH5alpha",
+          "role": "other",
+          "paper_label": "DH5a",
+          "lineage_or_engineering_context": "Plasmid construction (cloning) host only",
+          "combination_status": "not_applicable",
+          "genotype": "not stated",
+          "evidence": [
+            "methods_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in Methods."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CG01, CG02",
+          "paper_strain_normalized": "E. coli TOP10 CG01 / CG02",
+          "role": "engineered",
+          "paper_label": "CG",
+          "lineage_or_engineering_context": "Competitive ecosystem GFP strain; intact tra* -> ccdA, partial las -> ccdB; differ in EsaI RBS strength",
+          "combination_status": "not_applicable",
+          "genotype": "circuit-level in main text; plasmids/RBS in Supplementary Tables S1-S2 (requires_supplement)",
+          "evidence": [
+            "results_and_discussion_p002",
+            "results_and_discussion_p009",
+            "results_and_discussion_p006"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named representative strains with characterization in Figure 2a,b."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CR01, CR02",
+          "paper_strain_normalized": "E. coli TOP10 CR01 / CR02",
+          "role": "engineered",
+          "paper_label": "CR",
+          "lineage_or_engineering_context": "Competitive ecosystem RFP strain; intact las -> ccdA, partial tra* -> ccdB; CR01 lower CcdB expression gives growth advantage",
+          "combination_status": "not_applicable",
+          "genotype": "circuit-level in main text; details requires_supplement",
+          "evidence": [
+            "results_and_discussion_p002",
+            "results_and_discussion_p010"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named representative strains, Figure 2c,d."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "SG01, SR01",
+          "paper_strain_normalized": "E. coli TOP10 SG01 / SR01",
+          "role": "engineered",
+          "paper_label": "SG/SR",
+          "lineage_or_engineering_context": "Symbiotic ecosystem; self-induced ccdB, partner-HSL-induced ccdA; GFP in SG01, RFP in SR01",
+          "combination_status": "not_applicable",
+          "genotype": "circuit-level in main text; details requires_supplement",
+          "evidence": [
+            "results_and_discussion_p007",
+            "results_and_discussion_p016"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named representative strains, Figure 4."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CGi, CRi, SGi, SRi",
+          "paper_strain_normalized": "E. coli TOP10 inducible variants",
+          "role": "engineered",
+          "paper_label": "CGi/CRi/SGi/SRi",
+          "lineage_or_engineering_context": "Inducible ecosystems: Ara-inducible promoter driving EsaI (CGi, SRi), aTc-inducible promoter driving LasI (CRi, SGi)",
+          "combination_status": "not_applicable",
+          "genotype": "promoter swaps described; exact promoters in supplement",
+          "evidence": [
+            "results_and_discussion_p038",
+            "results_and_discussion_p039"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Construction described in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "NG, NR",
+          "paper_strain_normalized": "E. coli TOP10 NG / NR",
+          "role": "control",
+          "paper_label": "No QS Control",
+          "lineage_or_engineering_context": "Express toxin-antitoxin system without QS systems",
+          "combination_status": "not_applicable",
+          "genotype": "not detailed in main text (Supplementary Figure S15)",
+          "evidence": [
+            "results_and_discussion_p042"
+          ],
+          "status": "reported",
+          "confidence": 0.85,
+          "reasoning": "Explicitly constructed as control system."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "control strains which cannot produce signals",
+          "paper_strain_normalized": "unknown (signal-deficient E. coli controls)",
+          "role": "control",
+          "paper_label": "control strains",
+          "lineage_or_engineering_context": "Coculture controls for symbiosis; cannot produce HSL signals",
+          "combination_status": "not_applicable",
+          "genotype": "unknown; identity requires_supplement",
+          "evidence": [
+            "results_and_discussion_p017"
+          ],
+          "status": "reported",
+          "confidence": 0.7,
+          "reasoning": "Functionally described but not named in main text."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules no adaptation (including K-12) is performed."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 1 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "biosensor_platform"
+    ],
+    "engineering_paper_type_rationale": "Core contribution is QS-based genetic communication/regulation circuits (communication + effect modules, feedbacks, inducible control of population composition); no pathway flux, evolution, or protein-variant engineering. Many RBS variants were screened but are evidence details, not independent engineering decisions."
+  },
+  "engineering_decision_map": {
+    "goal": "Establish modular synthetic microbial ecosystems in E. coli that realize different ecological interactions (competition and symbiosis) by reconfiguring the layout between a quorum-sensing communication module and a toxin-antitoxin effect module, and further build inducible synthetic ecosystems (Ara/aTc) to regulate subpopulation ratios over a wide range.",
+    "initial_bottleneck": "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+    "key_hypothesis": "Construct a synthetic competitive ecosystem by cross-wiring two orthogonal QS systems (tra*, las) to a ccd toxin-antitoxin effect module in two E. coli Top10 strains (CG: GFP; CR: RFP), each carrying a cis-acting positive feedback (self-rescue via antitoxin CcdA) and a trans-acting negative feedback (killing via CcdB induced by partner's HSL).",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M7",
+        "action_summary": "Genetic circuit construction: intact tra* system self-inducing ccdA + partial las system controlling ccdB in CG; intact las system self-inducing ccdA + partial tra* system controlling ccdB in CR; chromosomal GFP/RFP integration (CRIM method, helper pAH69, pHK-GFP/pHK-RFP, multicopy clones)."
+      },
+      {
+        "step": 2,
+        "design_action": "M6",
+        "action_summary": "RBS engineering: different RBSs used to control HSL synthases, ccdA and ccdB; representative strains (CG01, CG02, CR01, CR02, SG01, SR01) selected by growth/fluorescence characterization under added HSLs."
+      },
+      {
+        "step": 3,
+        "design_action": "M7",
+        "action_summary": "Circuit construction: intact las system self-inducing ccdB + partial tra* controlling ccdA in SG; intact tra* self-inducing ccdB + partial las controlling ccdA in SR; RBS tuning; selection of SG01 and SR01."
+      },
+      {
+        "step": 4,
+        "design_action": "M7",
+        "action_summary": "Promoter replacement: in CGi, EsaI synthase promoter replaced with L-arabinose-inducible promoter; in CRi, LasI promoter replaced with aTc-inducible promoter; in SGi, aTc-inducible promoter regulating LasI; in SRi, EsaI promoter replaced with Ara-inducible promoter. Strains selected by same characterization method."
+      },
+      {
+        "step": 5,
+        "design_action": "M11",
+        "action_summary": "Chromosomal integration of GFP and RFP using the CRIM plasmid method: helper plasmid pAH69 into TOP10, integration induced at elevated temperature, electro-transformation of pHK-GFP / pHK-RFP, selection of multicopy clones for higher reporter expression."
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "biosensor_platform"
+    ],
+    "goal": "Establish modular synthetic microbial ecosystems in E. coli that realize different ecological interactions (competition and symbiosis) by reconfiguring the layout between a quorum-sensing communication module and a toxin-antitoxin effect module, and further build inducible synthetic ecosystems (Ara/aTc) to regulate subpopulation ratios over a wide range.",
+    "initial_bottleneck": "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+    "key_hypothesis": "Construct a synthetic competitive ecosystem by cross-wiring two orthogonal QS systems (tra*, las) to a ccd toxin-antitoxin effect module in two E. coli Top10 strains (CG: GFP; CR: RFP), each carrying a cis-acting positive feedback (self-rescue via antitoxin CcdA) and a trans-acting negative feedback (killing via CcdB induced by partner's HSL)."
+  },
+  "human_calibration_report": {
+    "auto_accepted": 5,
+    "needs_review": 0,
+    "rejected": 0,
+    "needs_review_steps": []
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "ccdA",
+        "decision_summary": "Genetic circuit construction: intact tra* system self-inducing ccdA + partial las system controlling ccdB in CG; intact las system self-inducing ccdA + partial tra* system controlling ccdB in CR; chromosomal GFP/RFP integration (CRIM method, helper pAH69, pHK-GFP/pHK-RFP, multicopy clones).",
+        "trigger": "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-026"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "ccdA",
+        "decision_summary": "RBS engineering: different RBSs used to control HSL synthases, ccdA and ccdB; representative strains (CG01, CG02, CR01, CR02, SG01, SR01) selected by growth/fluorescence characterization under added HSLs.",
+        "trigger": "Desired ecological relationships require regulated expression of key genes; un-tuned constructs did not show target behaviors.",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-026"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "ccdB",
+        "decision_summary": "Circuit construction: intact las system self-inducing ccdB + partial tra* controlling ccdA in SG; intact tra* self-inducing ccdB + partial las controlling ccdA in SR; RBS tuning; selection of SG01 and SR01.",
+        "trigger": "The competitive design showed that cis/trans assignment of effect-module activation defines interaction type, predicting that inversion yields mutual protection.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-026"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Promoter replacement: in CGi, EsaI synthase promoter replaced with L-arabinose-inducible promoter; in CRi, LasI promoter replaced with aTc-inducible promoter; in SGi, aTc-inducible promoter regulating LasI; in SRi, EsaI promoter replaced with Ara-inducible promoter. Strains selected by same characterization method.",
+        "trigger": "Self-induced ecosystems couple signal production to population density and therefore do not allow external setting of subpopulation ratios; composition control is needed for community function.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-026"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Chromosomal integration of GFP and RFP using the CRIM plasmid method: helper plasmid pAH69 into TOP10, integration induced at elevated temperature, electro-transformation of pHK-GFP / pHK-RFP, selection of multicopy clones for higher reporter expression.",
+        "trigger": "Dead cells affect OD600-based density detection and OD600 cannot distinguish the two strains in coculture.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-026"
+      }
+    ],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Establish modular synthetic microbial ecosystems in E. coli that realize different ecological interactions (competition and symbiosis) by reconfiguring the layout between a quorum-sensing communication module and a toxin-antitoxin effect module, and further build inducible synthetic ecosystems (Ara/aTc) to regulate subpopulation ratios over a wide range.",
+    "initial_bottleneck": "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+    "hypothesis": "Construct a synthetic competitive ecosystem by cross-wiring two orthogonal QS systems (tra*, las) to a ccd toxin-antitoxin effect module in two E. coli Top10 strains (CG: GFP; CR: RFP), each carrying a cis-acting positive feedback (self-rescue via antitoxin CcdA) and a trans-acting negative feedback (killing via CcdB induced by partner's HSL).",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 1,
+      "rule": "When constructing a two-strain E. coli consortium with a defined ecological interaction, reconfigure cis- vs trans-acting QS activation of a shared toxin-antitoxin effect module, because assigning self-HSL to antitoxin and partner-HSL to toxin yields competition whereas the inverse assignment yields symbiosis (validated in E. coli Top10 QS-ccd proof-of-concept consortia).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 3,
+      "rule": "When engineering a two-strain E. coli mutualism from a QS-ccd toolkit, assign each strain's own HSL to toxin expression and the partner's HSL to antitoxin expression, because this converts aggression into suicidal behavior that is rescued only by the partner, yielding obligate-like mutual protection (validated for the SG01/SR01 E. coli Top10 pair in LB liquid and agar).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 4,
+      "rule": "When externally tunable subpopulation ratios are needed in a QS-based two-strain E. coli consortium, replace the self-inducing QS promoters of the HSL synthases with orthogonal inducible promoters (Ara/aTc), because inducer dosage then sets signal production, which propagates through the toxin-antitoxin feedbacks to set the steady-state strain ratio (validated in E. coli Top10 competitive and symbiotic ecosystems at 1.5 mL scale).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 5,
+      "rule": "When monitoring two E. coli subpopulations in coculture, integrate distinguishable fluorescent reporters into the chromosome (e.g., CRIM method) and use fluorescence rather than OD600 as the growth readout, because OD600 cannot resolve strains and is biased by dead cells (validated in LB liquid and agar cocultures of QS-ccd ecosystems).",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    }
+  ]
+}
