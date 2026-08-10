@@ -1,0 +1,1014 @@
+{
+  "ddr_id": "DDR-019",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Fine tuning the glycolytic flux ratio of EP-bifido pathway for mevalonate production by enhancing glucose-6-phosphate dehydrogenase (Zwf) and CRISPRi suppressing 6-phosphofructose kinase (PfkA) in Escherichia coli",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Fine tuning the glycolytic flux ratio of EP-bifido pathway for mevalonate production by enhancing glucose-6-phosphate dehydrogenase (Zwf) and CRISPRi suppressing 6-phosphofructose kinase (PfkA) in Escherichia coli",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1186/s12934-021-01526-1"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M2",
+      "target": {
+        "gene": "atoB",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "50-mL shake flasks, M9 + 0.2% yeast extract + 20 g/L glucose, 37 °C, 120 rpm; MVA titers reported at 72 h (Methods state 48 h - inconsistency)"
+      },
+      "trigger": {
+        "observation": "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) with insufficient NADPH from oxidative PPP.",
+        "reasoning": "Enhance PPP flux and NADPH supply by replacing the genomic zwf promoter with graded-strength constitutive promoters, and test effect on MVA production",
+        "source_location": "BW-P (BW25113 ΔpfkA::FRT) derivatives BW-P 23100/23104/23105/23108/23114-zwf, each carrying pBSA + pFF (BW-P10/04/05/08/14 BF)"
+      },
+      "evidence": {
+        "description": [
+          "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p001",
+          "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p002",
+          "abstract_p002",
+          "discussion_p003",
+          "promoter_replacement_on_e_coli_genome_p001",
+          "promoter_replacement_on_e_coli_genome_p002",
+          "Fig. 1"
+        ],
+        "source": "论文实测",
+        "source_location": "BW-P BF (BW-P/pBSA pFF, native zwf promoter)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Trigger and outcome are measured: prior 13C-MFA split ratio, fermentation titers, and this study's 13C-MFA showing increased oxidative PPP flux and promoter-strength-correlated NADPH.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [
+        "文献类比"
+      ],
+      "alternatives": [],
+      "implementation": "启动子工程",
+      "implementation_detail": "genomic zwf promoter replacement via Red homologous recombination (CmR cassette, 300-500 bp homology arms); transformation with MVA pathway plasmids pBSA (atoB, mvaS, mvaA) and pFF (fbp, fxpk)",
+      "result": {
+        "metric": "MVA titer and molar conversion rate (HPLC), OD600, glucose consumption over fermentation",
+        "before": "",
+        "after": "BW-P10 BF (J23100): 11.2 g/L MVA, 62.2% conversion at 72 h; BBa-J23100 and BBa-J23108 gave highest yields (64.3% and 62.3% mol/mol per Results text); growth and glucose consumption similar to control; fewer byproducts",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When an acetyl-CoA-derived, NADPH-dependent product (e.g., mevalonate in an E. coli EP-bifido system) is limited by an EMP/PPP split skewed toward EMP, apply graded-strength promoter replacement at the zwf locus, because increasing G6PDH flux stoichiometrically raises NADPH supply - while noting yield does not scale monotonically with promoter strength, so a promoter ladder rather than the single strongest promoter should be screened.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "flux_redirection",
+        "precursor_supply_enhancement"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M7",
+      "target": {
+        "gene": "pfkA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "same shake-flask fermentation regime as EXP2; induction at 12 h"
+      },
+      "trigger": {
+        "observation": "The static pfkA knockout in the EP-bifido strain caused severe growth defects, limiting applicability; early-growth carbon should ideally go to biomass, so flexible/timed repression was needed.",
+        "reasoning": "Replace the static, growth-damaging pfkA knockout with time-controlled, tunable CRISPRi repression to dynamically balance EMP/PPP flux and improve MVA conversion",
+        "source_location": "BW25113 23100-zwf (pfkA intact, zwf promoter replaced with BBa-J23100) carrying CRISPRi plasmid combinations: pBSA-dCas9+pFF-sgRNA1/2/3 (BiBF1-3) or pBSA-sgRNA1/2/3+pFF-dCas9 (BiB1F/BiB2F/BiB3F)"
+      },
+      "evidence": {
+        "description": [
+          "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p001",
+          "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003",
+          "construction_of_crispri_suppression_system_p001",
+          "discussion_p004",
+          "abstract_p002",
+          "Fig. 3",
+          "Fig. 4"
+        ],
+        "source": "论文实测",
+        "source_location": "BBF (BW25113 23100-zwf + pFF + pBSA, no CRISPRi); additional component controls BB1F, BBFd, BiBd1F (EXP5, Figure S1)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Fermentation outcomes (growth, glucose, MVA titer/yield, byproducts) were measured for all six CRISPRi strains and four component controls.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [
+        "文献类比"
+      ],
+      "alternatives": [
+        {
+          "approach": "Promoter-replacement methods for down-regulation (rejected: CRISPRi does not require genome editing of the target gene)",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "Post-transcriptional/post-translational tools such as anti-sense RNA and RNAi (mentioned as alternatives, not tested)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "CRISPRi",
+      "implementation_detail": "CRISPRi system: dcas9 under weak promoter BBa-J23134; three sgRNAs targeting pfkA promoter region (sgRNA1), +100 bp (sgRNA2) and +200 bp (sgRNA3) downstream of start codon; IPTG-inducible expression, induced with 200 µM IPTG at 12 h",
+      "result": {
+        "metric": "MVA titer/yield (HPLC), OD600, glucose consumption, byproduct (acetate/ethanol) detection",
+        "before": "",
+        "after": "sgRNA1 (promoter-targeting) gave best repression balance; BiB1F reached 8.53 g/L MVA and 68.7% molar conversion - highest reported shake-flask MVA conversion; CRISPRi introduction reduced growth and glucose consumption (attributed to dCas9 toxicity/leaky expression); acetate/ethanol byproducts hardly detected",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When a competing-glycolytic-pathway knockout (e.g., pfkA) improves product yield but causes severe growth defects in an E. coli acetyl-CoA-derived production system, apply inducible CRISPRi repression targeting the gene's promoter region with a weakly expressed dCas9, because tunable, time-delayed transcriptional repression preserves early-growth EMP flux while still redirecting carbon toward the product pathway after induction.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "competitive_pathway_removal",
+        "dynamic_control",
+        "flux_redirection"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 1,
+        "decision_type": "validation",
+        "design_action": "M6",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "LB culture, fluorescence/OD600 measured at 16 h"
+        },
+        "trigger": {
+          "observation": "",
+          "reasoning": "Verify actual strengths of five Anderson constitutive promoters relative to native zwf promoter before genomic engineering",
+          "source_location": "E. coli (BW25113 background) carrying GFP reporter plasmids P23100/23104/23105/23108/23114-GFP and Pzwf-GFP"
+        },
+        "evidence": {
+          "description": [
+            "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p001",
+            "Fig. 1"
+          ],
+          "source": "论文实测",
+          "source_location": "native zwf promoter construct (Pzwf-GFP)",
+          "values": {}
+        },
+        "evidence_grading": "硬",
+        "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "plasmid-borne promoter-gfp fusions (characterization only)",
+        "result": {
+          "metric": "fluorescence/OD600",
+          "before": "",
+          "after": "BBa-J23100 strongest; J23100 and J23104 relatively strong; native zwf promoter weak (between J23108 and J23114); library-consistent",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 3,
+        "decision_type": "validation",
+        "design_action": "M2",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "100% [1-13C]glucose 10 g/L, exponential-phase harvest, protein hydrolysis (6 M HCl, 120 °C, 24 h), TBDMS derivatization (105 °C, 1 h), GC-MS"
+        },
+        "trigger": {
+          "observation": "BW-P10 BF (J23100): 11.2 g/L MVA, 62.2% conversion at 72 h; BBa-J23100 and BBa-J23108 gave highest yields (64.3% and 62.3% mol/mol per Results text); growth and glucose consumption similar to control; fewer byproducts",
+          "reasoning": "Confirm that zwf enhancement redistributed flux from EMP to PPP and quantify cofactor (NADPH/NADH/ATP) generation changes",
+          "source_location": "BW-P10 BF, BW-P08 BF; control BW-P BF; wild-type BW25113 as cofactor-derivation reference"
+        },
+        "evidence": {
+          "description": [
+            "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p001",
+            "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p002",
+            "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p003",
+            "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p005",
+            "sup_13_sup_c_mfa_p001",
+            "Fig. 2",
+            "Fig. 5"
+          ],
+          "source": "论文实测",
+          "source_location": "BW-P BF and BW25113",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "none new - analysis of strains from EXP2 (13C labeling experiment)",
+        "result": {
+          "metric": "mass isotopomer distributions of proteinogenic amino acids; estimated flux map (Fig. 5); NADPH/NADH/ATP generation and derivation (Fig. 2)",
+          "before": "",
+          "after": "Oxidative PPP flux increased, TCA flux decreased in zwf-enhanced strains; NADPH main source shifted from ICDH (TCA) to G6PDH (PPP); NADH decreased; ATP yield per glucose increased but total ATP decreased; TCA flux difference between BW-P10 BF and BW-P08 BF may explain growth differences",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 5,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "fermentation per Additional file 1: Figure S1 (supplement not available in payload)"
+        },
+        "trigger": {
+          "observation": "sgRNA1 (promoter-targeting) gave best repression balance; BiB1F reached 8.53 g/L MVA and 68.7% molar conversion - highest reported shake-flask MVA conversion; CRISPRi introduction reduced growth and glucose consumption (attributed to dCas9 toxicity/leaky expression); acetate/ethanol byproducts hardly detected",
+          "reasoning": "Confirm the effect of CRISPRi components (dCas9 alone, sgRNA1 alone) on cell growth to attribute observed growth inhibition",
+          "source_location": "BW25113 23100-zwf with BB1F (sgRNA1 only), BBFd (dCas9 only), BiBd1F (sgRNA1-dCas9 combined plasmid), BBF (neither)"
+        },
+        "evidence": {
+          "description": [
+            "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003",
+            "supplementary_information_p002"
+          ],
+          "source": "论文实测",
+          "source_location": "BBF",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "CRISPRi",
+        "implementation_detail": "partial CRISPRi components (control constructions)",
+        "result": {
+          "metric": "fermentation/growth (Figure S1)",
+          "before": "",
+          "after": "CRISPRi can restrain cell growth effectively in these engineered strains (Figure S1; data not in main text)",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Fine-tune the glycolytic flux ratio between the EMP pathway and the pentose phosphate pathway (PPP) in the previously constructed EP-bifido pathway in Escherichia coli to improve NADPH supply, carbon conversion rate and mevalonate (MVA) production, by (1) enhancing zwf expression via genomic promoter replacement and (2) dynamically down-regulating pfkA using a CRISPRi system.",
+    "problem_type": [
+      "precursor limitation"
+    ],
+    "trigger_conditions": [
+      "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) ",
+      "The static pfkA knockout in the EP-bifido strain caused severe growth defects, limiting applicability; early-growth carb"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) with insufficient NADPH from oxidative PPP.",
+      "The static pfkA knockout in the EP-bifido strain caused severe growth defects, limiting applicability; early-growth carbon should ideally go to biomass, so flexible/timed repression was needed."
+    ],
+    "bottlenecks": [
+      "atoB: Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0",
+      "pfkA: The static pfkA knockout in the EP-bifido strain caused severe growth defects, l"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。19 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "e31619b476c542dfb1e6d9d821b94b74",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1",
+      "identity": {
+        "paper_id": "ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1",
+        "title": "Fine tuning the glycolytic flux ratio of EP-bifido pathway for mevalonate production by enhancing glucose-6-phosphate dehydrogenase (Zwf) and CRISPRi suppressing 6-phosphofructose kinase (PfkA) in Escherichia coli",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1186/s12934-021-01526-1"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.95,
+        "evidence": [
+          "abstract_p002",
+          "strains_and_plasmids_p001",
+          "media_and_culture_p001",
+          "authors_contributions_p001"
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli BW25113",
+          "paper_strain_normalized": "Escherichia coli K-12 BW25113",
+          "role": "control",
+          "paper_label": "wild-type strain BW25113",
+          "lineage_or_engineering_context": "Standard lab strain, lab stock; used as wild-type reference for NADPH/NADH derivation analysis and as background for CRISPRi strains",
+          "combination_status": "not_applicable",
+          "genotype": "F- Δ(araD-araB)567, ΔlacZ4787(::rrnB-3), λ-, rph-1, Δ(rhaD-rhaB)568, hsdR514",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Table 1 explicit; K-12 lineage inferred from ref [35] method context and standard BW25113 provenance - normalization marked inferred at species-subspecies level only. Paper label 'wild type' denotes the standard lab strain, not a natural isolate."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-P",
+          "paper_strain_normalized": "E. coli BW25113 ΔpfkA::FRT",
+          "role": "parental",
+          "paper_label": "BW-P (starting strain)",
+          "lineage_or_engineering_context": "Constructed in previous study [13] as EP-bifido base strain (background also reports edd knockout as part of prior EP-bifido construction, but Table 1 lists only ΔpfkA::FRT)",
+          "combination_status": "not_applicable",
+          "genotype": "BW25113 derivative, ΔpfkA::FRT",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "strains_and_plasmids_p001",
+            "background_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Table 1 marks source [13]; this paper did not re-derive it, so prior construction treated as background condition, not a current-paper engineering decision."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-P 23100/23104/23105/23108/23114-zwf",
+          "paper_strain_normalized": "E. coli BW-P with zwf promoter replaced by BBa-J23100/J23104/J23105/J23108/J23114 (CmR)",
+          "role": "engineered",
+          "paper_label": "zwf-enhanced chassis strains",
+          "lineage_or_engineering_context": "This study; genomic promoter replacement via Red recombination",
+          "combination_status": "demonstrated individually (each is a single-promoter replacement)",
+          "genotype": "BW-P, zwf promoter::BBa-J231xx, CmR",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "promoter_replacement_on_e_coli_genome_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Table 1 rows marked 'This study'."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-P10 BF, BW-P04 BF, BW-P 05 BF, BW-P 08 BF, BW-P 14 BF (control BW-P BF)",
+          "paper_strain_normalized": "zwf-promoter-replaced BW-P strains carrying pBSA and pFF",
+          "role": "target",
+          "paper_label": "zwf-enhanced MVA production strains",
+          "lineage_or_engineering_context": "This study; production hosts for EXP2/EXP3 fermentation and MFA",
+          "combination_status": "demonstrated",
+          "genotype": "BW-P 231xx-zwf + pBSA (atoB, mvaS, mvaA) + pFF (fbp, fxpk)",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Table 1 + Results; BW-P10 BF is the headline 11.2 g/L strain (abstract abbreviation 'BP10BF')."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113 23100-zwf",
+          "paper_strain_normalized": "E. coli BW25113 with zwf promoter::BBa-J23100",
+          "role": "engineered",
+          "paper_label": "BW25113 23100-zwf (a.k.a. BW25113 zwf-23100)",
+          "lineage_or_engineering_context": "This study; pfkA-intact chassis for CRISPRi experiments (avoids ΔpfkA growth defect)",
+          "combination_status": "demonstrated",
+          "genotype": "BW25113, zwf promoter::BBa-J23100",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.92,
+          "reasoning": "Table 1 row present; note text spells 'BW25113 zwf-23100' while table concatenates 'BW2511323100-zwf' - formatting artifact."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BiBF1/2/3, BiB1F, BiB2F, BiB3F",
+          "paper_strain_normalized": "BW25113 23100-zwf carrying CRISPRi plasmid pairs (pBSA-dCas9+pFF-sgRNAx or pBSA-sgRNAx+pFF-dCas9)",
+          "role": "target",
+          "paper_label": "CRISPRi-regulated strains",
+          "lineage_or_engineering_context": "This study; six combinations of dcas9 and three anti-pfkA sgRNAs across two plasmid configurations",
+          "combination_status": "demonstrated (each strain an explicitly listed combination)",
+          "genotype": "BW25113 23100-zwf + dCas9/sgRNA plasmids per Table 1",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003",
+            "abstract_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Table 1 lists all six; abstract/Results highlight BiB1F (8.53 g/L, 68.7%); text synonym 'BW25113 pFF-dCas9 pBSA-sgRNA1' for BiB1F noted as naming inconsistency."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BB1F, BBFd, BiBd1F, BBF",
+          "paper_strain_normalized": "BW25113 23100-zwf with partial/no CRISPRi components",
+          "role": "control",
+          "paper_label": "CRISPRi control strains",
+          "lineage_or_engineering_context": "This study; constructed to confirm CRISPRi component effects on growth (Figure S1)",
+          "combination_status": "demonstrated",
+          "genotype": "per Table 1 (sgRNA1 only / dCas9 only / sgRNA1-dCas9 single plasmid / neither)",
+          "evidence": [
+            "construction_of_crispri_suppression_system_p002",
+            "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Explicitly described as constructed controls; results deferred to Additional file 1 Figure S1 (requires_supplement for data)."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules, no adaptation analysis performed and no default to E. coli K-12 as a target."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "full-text search for replicate/sample-size statements",
+            "notes": "No statement of biological or technical replicate numbers, error bars, or statistical tests found in the available text, figure captions, or methods.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 5 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "biosensor_platform",
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "Core contribution is metabolic flux redistribution (zwf promoter engineering, pfkA down-regulation) for MVA production - metabolic_engineering. The CRISPRi dynamic/tunable regulation layer (inducible dCas9/sgRNA controlling EMP/PPP split) contributes a genetic-circuit/dynamic-control element, hence biosensor_platform as secondary classification (dynamic control circuitry, not a metabolite sensor)."
+  },
+  "engineering_decision_map": {
+    "goal": "Fine-tune the glycolytic flux ratio between the EMP pathway and the pentose phosphate pathway (PPP) in the previously constructed EP-bifido pathway in Escherichia coli to improve NADPH supply, carbon conversion rate and mevalonate (MVA) production, by (1) enhancing zwf expression via genomic promoter replacement and (2) dynamically down-regulating pfkA using a CRISPRi system.",
+    "initial_bottleneck": "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) with insufficient NADPH from oxidative PPP.",
+    "key_hypothesis": "Enhance PPP flux and NADPH supply by replacing the genomic zwf promoter with graded-strength constitutive promoters, and test effect on MVA production",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M2",
+        "action_summary": "genomic zwf promoter replacement via Red homologous recombination (CmR cassette, 300-500 bp homology arms); transformation with MVA pathway plasmids pBSA (atoB, mvaS, mvaA) and pFF (fbp, fxpk)"
+      },
+      {
+        "step": 2,
+        "design_action": "M7",
+        "action_summary": "CRISPRi system: dcas9 under weak promoter BBa-J23134; three sgRNAs targeting pfkA promoter region (sgRNA1), +100 bp (sgRNA2) and +200 bp (sgRNA3) downstream of start codon; IPTG-inducible expression, induced with 200 µM IPTG at 12 h"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "biosensor_platform",
+      "metabolic_engineering"
+    ],
+    "goal": "Fine-tune the glycolytic flux ratio between the EMP pathway and the pentose phosphate pathway (PPP) in the previously constructed EP-bifido pathway in Escherichia coli to improve NADPH supply, carbon conversion rate and mevalonate (MVA) production, by (1) enhancing zwf expression via genomic promoter replacement and (2) dynamically down-regulating pfkA using a CRISPRi system.",
+    "initial_bottleneck": "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) with insufficient NADPH from oxidative PPP.",
+    "key_hypothesis": "Enhance PPP flux and NADPH supply by replacing the genomic zwf promoter with graded-strength constitutive promoters, and test effect on MVA production"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 0,
+    "needs_review": 2,
+    "rejected": 0,
+    "needs_review_steps": [
+      {
+        "step": 1,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+      },
+      {
+        "step": 2,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "atoB",
+        "decision_summary": "genomic zwf promoter replacement via Red homologous recombination (CmR cassette, 300-500 bp homology arms); transformation with MVA pathway plasmids pBSA (atoB, mvaS, mvaA) and pFF (fbp, fxpk)",
+        "trigger": "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) with insufficient NADPH from oxidative PPP.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-019"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "pfkA",
+        "decision_summary": "CRISPRi system: dcas9 under weak promoter BBa-J23134; three sgRNAs targeting pfkA promoter region (sgRNA1), +100 bp (sgRNA2) and +200 bp (sgRNA3) downstream of start codon; IPTG-inducible expression, induced with 200 µM IPTG at 12 h",
+        "trigger": "The static pfkA knockout in the EP-bifido strain caused severe growth defects, limiting applicability; early-growth carbon should ideally go to biomass, so flexible/timed repression was needed.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-019"
+      }
+    ],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Fine-tune the glycolytic flux ratio between the EMP pathway and the pentose phosphate pathway (PPP) in the previously constructed EP-bifido pathway in Escherichia coli to improve NADPH supply, carbon conversion rate and mevalonate (MVA) production, by (1) enhancing zwf expression via genomic promoter replacement and (2) dynamically down-regulating pfkA using a CRISPRi system.",
+    "initial_bottleneck": "Prior 13C-MFA of the EP-bifido MVA strain showed PPP split ratio too low (0.43:0.57 EMP:PPP vs theoretical optimum 1:6) with insufficient NADPH from oxidative PPP.",
+    "hypothesis": "Enhance PPP flux and NADPH supply by replacing the genomic zwf promoter with graded-strength constitutive promoters, and test effect on MVA production",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 1,
+      "rule": "When an acetyl-CoA-derived, NADPH-dependent product (e.g., mevalonate in an E. coli EP-bifido system) is limited by an EMP/PPP split skewed toward EMP, apply graded-strength promoter replacement at the zwf locus, because increasing G6PDH flux stoichiometrically raises NADPH supply - while noting yield does not scale monotonically with promoter strength, so a promoter ladder rather than the single strongest promoter should be screened.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 2,
+      "rule": "When a competing-glycolytic-pathway knockout (e.g., pfkA) improves product yield but causes severe growth defects in an E. coli acetyl-CoA-derived production system, apply inducible CRISPRi repression targeting the gene's promoter region with a weakly expressed dCas9, because tunable, time-delayed transcriptional repression preserves early-growth EMP flux while still redirecting carbon toward the product pathway after induction.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    }
+  ]
+}
