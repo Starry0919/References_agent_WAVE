@@ -1,0 +1,642 @@
+{
+  "ddr_id": "DDR-013",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Development of bifunctional biosensors for sensing and dynamic control of glycolysis flux in metabolic engineering",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Development of bifunctional biosensors for sensing and dynamic control of glycolysis flux in metabolic engineering",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1016/j.ymben.2021.09.011"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [],
+  "excluded_records": [],
+  "engineering_problem": {
+    "problem_statement": "Design, construct and tune bifunctional (positive- and negative-response) glycolysis-flux biosensors based on the Cra-FBP pair that sense intracellular fructose-1,6-diphosphate (FBP) and dynamically regulate glycolysis flux, then apply them to balance biosynthesis of mevalonate (MVA) and N-acetylglucosamine (GlcNAc) in Escherichia coli.",
+    "problem_type": [],
+    "trigger_conditions": []
+  },
+  "biological_diagnosis": {
+    "observations": [],
+    "bottlenecks": [],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。0 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "cf6cdd59c0f34acc9014c9d0752fadab",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "f0ff7d4b6fca4fc289be44e747f6dcfe_2021-祁老师",
+      "identity": {
+        "paper_id": "f0ff7d4b6fca4fc289be44e747f6dcfe_2021-祁老师",
+        "title": "Development of bifunctional biosensors for sensing and dynamic control of glycolysis flux in metabolic engineering",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1016/j.ymben.2021.09.011"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.9,
+        "evidence": [
+          "Original strain construction and fermentation results in Results sections 3.4/3.5",
+          "Methods section absent from parsed document, so gating relies on abstract/results/figure captions",
+          "Metabolic Engineering journal article, DOI 10.1016/j.ymben.2021.09.011"
+        ],
+        "engineering_paper_type": [
+          "biosensor_platform",
+          "metabolic_engineering",
+          "protein_engineering"
+        ],
+        "engineering_paper_type_rationale": "Core contribution is a tunable metabolite biosensor platform (biosensor_platform) applied to pathway flux control for MVA/GlcNAc (metabolic_engineering); Cra ligand-affinity mutagenesis (aa 57-60) is a supporting protein-engineering element."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113",
+          "paper_strain_normalized": "E. coli BW25113",
+          "role": "control",
+          "paper_label": "control BW25113",
+          "lineage_or_engineering_context": "K-12-derived parent for biosensor characterization and deficiency-strain comparison",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type lab strain (as used here)",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV05"
+          ],
+          "reasoning": "Named as control in Results/Fig. 4."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-pfkA / BW-ptsG / BW-pykF",
+          "paper_strain_normalized": "E. coli BW25113 single-gene deficiency strains (pfkA, ptsG, pykF)",
+          "role": "engineered",
+          "paper_label": "deficiency strains",
+          "lineage_or_engineering_context": "Graded glycolytic defects used to validate pL19 sensor response",
+          "combination_status": "single_deletions_only",
+          "genotype": "delta-pfkA / delta-ptsG / delta-pykF (inferred from 'deficiency strains' naming; exact construction not described in parsed text)",
+          "status": "inferred",
+          "confidence": 0.6,
+          "evidence_ids": [
+            "EV05"
+          ],
+          "reasoning": "Text calls them deficiency strains but gives no construction details; knockout genotypes inferred from names and glycolysis context."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-Pzwf::P23109",
+          "paper_strain_normalized": "E. coli BW25113 EP-bifido background with zwf promoter replaced by P23109",
+          "role": "parental",
+          "paper_label": "non-regulated control strain",
+          "lineage_or_engineering_context": "Base strain for dynamic pfkA control; PP pathway enhancement",
+          "combination_status": "demonstrated",
+          "genotype": "Pzwf::P23109",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV06"
+          ],
+          "reasoning": "Explicitly described in 3.4."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-PMT / BW-PR",
+          "paper_strain_normalized": "BW-Pzwf::P23109 with PpfkA replaced by Ppam (pL19) / Ppar (pL25)",
+          "role": "engineered",
+          "paper_label": "dynamic EP-bifido strains",
+          "lineage_or_engineering_context": "FBP-responsive dynamic repression of pfkA for MVA",
+          "combination_status": "demonstrated",
+          "genotype": "Pzwf::P23109, PpfkA::Ppam or Ppar",
+          "status": "reported",
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV06"
+          ],
+          "reasoning": "Construction and phenotypes in 3.4 and Fig. 5."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5",
+          "paper_strain_normalized": "E. coli DH5alpha derivative, delta-nag delta-ackA delta-poxB delta-ldhA delta-nan",
+          "role": "parental",
+          "paper_label": "control strain DN5",
+          "lineage_or_engineering_context": "GlcNAc production chassis; constructed in authors' previous studies (background, Q2 fail for this paper)",
+          "combination_status": "demonstrated_in_prior_work",
+          "genotype": "delta-nag delta-ackA delta-poxB delta-ldhA delta-nan",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV03"
+          ],
+          "reasoning": "Explicit statement in 3.5."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5-IM, DN5-PM, DN5-GM, DN5-GAR, DN5-IMM, DN5-IMAR",
+          "paper_strain_normalized": "DN5 derivatives with dynamic pfkA repression and/or dynamic glmS activation (pBacm/pBacar)",
+          "role": "engineered",
+          "paper_label": "dynamic GlcNAc strains",
+          "lineage_or_engineering_context": "FBP-responsive dual regulation at F6P node",
+          "combination_status": "demonstrated",
+          "genotype": "PpfkA::Ppam or Ppar; glmS under PM23107 (pBacm) or PR23107-cra + cra-P23102 (pBacar)",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV09",
+            "EV10"
+          ],
+          "reasoning": "Construction and titers in 3.5/Fig. 6; DN5-IMAR appears in caption without text-reported titer."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; adaptation (skill10/11) not run. Paper's own strains were identified from full text as required."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "full_text_search_negative",
+            "notes": "No Methods section in parsed document. Only clue: 'glucose was used as the sole carbon source' for GlcNAc biosynthesis context. Medium identity must not be guessed.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "full_text_search_negative",
+            "notes": "Replicate counts/types and statistics (n, error bars, tests) are not stated anywhere in the parsed main text; presumably in missing Methods/Supplement. replicate_type unresolved.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "full_text_search_negative",
+            "notes": "No instrument names appear in parsed document (Methods absent).",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 4 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [],
+    "engineering_paper_type_rationale": "",
+    "previous_extraction_task_id": "2227d49c049b4dbab8d7c323fd2b05c3"
+  },
+  "engineering_decision_map": {
+    "goal": "Design, construct and tune bifunctional (positive- and negative-response) glycolysis-flux biosensors based on the Cra-FBP pair that sense intracellular fructose-1,6-diphosphate (FBP) and dynamically regulate glycolysis flux, then apply them to balance biosynthesis of mevalonate (MVA) and N-acetylglucosamine (GlcNAc) in Escherichia coli.",
+    "initial_bottleneck": "",
+    "key_hypothesis": "",
+    "decision_sequence": []
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [],
+    "goal": "Design, construct and tune bifunctional (positive- and negative-response) glycolysis-flux biosensors based on the Cra-FBP pair that sense intracellular fructose-1,6-diphosphate (FBP) and dynamically regulate glycolysis flux, then apply them to balance biosynthesis of mevalonate (MVA) and N-acetylglucosamine (GlcNAc) in Escherichia coli.",
+    "initial_bottleneck": "",
+    "key_hypothesis": ""
+  },
+  "human_calibration_report": {
+    "auto_accepted": 0,
+    "needs_review": 0,
+    "rejected": 0,
+    "needs_review_steps": []
+  },
+  "engineering_decision_graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Design, construct and tune bifunctional (positive- and negative-response) glycolysis-flux biosensors based on the Cra-FBP pair that sense intracellular fructose-1,6-diphosphate (FBP) and dynamically regulate glycolysis flux, then apply them to balance biosynthesis of mevalonate (MVA) and N-acetylglucosamine (GlcNAc) in Escherichia coli.",
+    "initial_bottleneck": "",
+    "hypothesis": "",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": []
+}
