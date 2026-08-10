@@ -1,0 +1,1129 @@
+{
+  "ddr_id": "DDR-018",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Systematic strategies for developing phage resistant Escherichia coli strains",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Systematic strategies for developing phage resistant Escherichia coli strains",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1038/s41467-022-31934-9"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C, 100 ug/mL ampicillin; phage challenge at MOI 0.05/0.5/5 at OD600 0.6 (growth curves, 12 h) or t=0 per Fig. 1c caption; plaque spot assay 12 h; EOP overnight"
+      },
+      "trigger": {
+        "observation": "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+        "reasoning": "Validate that plasmid-borne SspBCDE from E. coli 3234/A confers DNA PT modification and broad phage protection in laboratory/industrial E. coli hosts without growth cost",
+        "source_location": "E. coli K-12 MG1655 (primary); extended to MG1655(DE3), W3110, BW25113, JM109, E. coli B OP50, wild-type E. coli W"
+      },
+      "evidence": {
+        "description": [
+          "results_p001",
+          "results_p005",
+          "methods_p002",
+          "methods_p009",
+          "methods_p011",
+          "methods_p012"
+        ],
+        "source": "论文实测",
+        "source_location": "Same hosts with empty vector pBluescript II SK(+); LB blank reference",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Outcome measured directly by EOP, plaque assays and growth curves.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "Plasmid-encoded natural antiphage systems previously used in dairy starter strains (CRISPR-Cas, Abi, antisense mRNA, R-M) noted as background approaches with narrow range or postsegregational killing risk",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "R-M systems rejected implicitly because REase loss causes host cell death; SspE chosen because it is non-toxic without sspABCD",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Transformation with pWHU3640 (pBluescript II SK(+) carrying ~8 kb sspBCDE cassette cloned from E. coli 3234/A genomic DNA via PCR + Gibson assembly)",
+      "result": {
+        "metric": "OD600 growth curves, plaque size/morphology, EOP fold protection",
+        "before": "",
+        "after": "Up to 10^6-fold protection against most tested coliphages; no protection against T5; no growth impairment; protection observed across all 7 host backgrounds",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When engineering phage resistance into phage-sensitive E. coli production hosts, first evaluate the candidate defense module on a plasmid across multiple host backgrounds and a phage panel spanning all three Caudovirales morphological families, because module efficacy is host- and phage-dependent and plasmid delivery allows rapid screening before committing to genome integration.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "sspBCD",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C; kanamycin 50 ug/mL selection; overnight 42 C curing"
+      },
+      "trigger": {
+        "observation": "Plasmid-encoded defense is limited by plasmid incompatibility, instability, copy-number variability and metabolic burden of plasmid maintenance (results_p002, citing refs 36, 37).",
+        "reasoning": "Generate stable phage-resistant strain avoiding plasmid incompatibility, instability, copy-number variation and metabolic burden",
+        "source_location": "E. coli MG1655 (then W3110, MG1655(DE3))"
+      },
+      "evidence": {
+        "description": [
+          "results_p002",
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "results_p012"
+        ],
+        "source": "论文实测",
+        "source_location": "MG1655 parent and MG1655(pWHU3640) for growth and expression comparison",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Integration verified by colony PCR and genome sequencing; protection gain measured by EOP.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "Continued use of plasmid-borne sspBCDE (rejected due to plasmid incompatibility/instability/copy-number/metabolic burden)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Integration of 5.4 kb sspBCD at safe site SS9 (int(aslA-glmZ)) via pKOV-Kan two-step double crossover (pWHU6401); subsequent lambda-red recombineering integration of 2.6 kb sspE with FRT-Kan marker (pKD46 induced with 0.2% arabinose; pKD13 template), marker excision with pCP20, plasmid curing at 42 C, verification by colony PCR and genome sequencing -> E. coli-PT strains",
+      "result": {
+        "metric": "Colony PCR, genome sequencing, growth profile, RT-qPCR sspE:sspBCD ratio, EOP",
+        "before": "",
+        "after": "MG1655-PT grows like MG1655(pWHU3640); sspE:sspBCD ratio slightly higher; at least 10-fold increased protection against T1, T4, EEP, lambda vs plasmid system",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When converting a plasmid-borne defense or pathway module into a stable industrial E. coli host, integrate the module at a characterized intergenic safe site (e.g., SS9) using markerless two-step double-crossover plus lambda-red recombineering, because chromosomal integration removes plasmid-instability and antibiotic-selection burdens while preserving host viability.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "needs_review",
+      "calibration_reason": "命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "fhuA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C; sequential construction; verification by genome sequencing"
+      },
+      "trigger": {
+        "observation": "EOP data showed phage T5 was insensitive to SspBCDE defense (results_p001) and T7 remained a threat; known biology: T1/T5/phi80 use FhuA as receptor (ref 41) and T7 uses host TrxA as processivity factor (ref 42).",
+        "reasoning": "Achieve tolerance to phages T5 and T7, which evaded or were insufficiently restricted by SspBCDE alone",
+        "source_location": "E. coli-PT strains (MG1655-PT, W3110-PT, MG1655(DE3)-PT)"
+      },
+      "evidence": {
+        "description": [
+          "results_p004",
+          "results_p006",
+          "results_p007",
+          "results_p012",
+          "results_p020",
+          "methods_p006",
+          "methods_p007"
+        ],
+        "source": "论文实测",
+        "source_location": "WT, plasmid-bearing and -PT counterparts in each background",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Insensitivity of T5 measured by EOP (hard data); receptor/factor roles grounded in cited experimental literature; outcome verified by plaque/EOP/growth assays.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [
+        "机理推断"
+      ],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "Deletion of FhuA extracellular loop 8 (fhuA Delta552-558 with NESG peptide insertion to preserve beta-barrel formation) via pWHU6402 two-step double crossover, followed by trxA deletion via pWHU6403 -> E. coli-EPR strains",
+      "result": {
+        "metric": "Plaque assay, EOP, growth curves at MOI up to 10, phage cocktail challenge",
+        "before": "",
+        "after": "Plaques barely formed on EPR lawns even at highest phage titer; no lysis by T1/T5/EEP/JMPW2 at MOI 10; significant resistance to T4/T7 at MOI 0.1 and lambda at MOI 0.5; identical growth to parents; resistant to 7-phage cocktail",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When a DNA-level defense system leaves specific phages unrestricted in an E. coli production host, layer receptor/essential-host-factor mutations targeting those phages' infection cycle (e.g., delete FhuA loop 8 for FhuA-dependent phages, delete trxA for T7-family polymerase dependence) on top of the defense module, because phages unable to inject or replicate DNA cannot escape through restriction-insensitivity mechanisms.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立; 命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 4,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "2 L baffled flasks, 1 L LB, 37 C; DAAO 12 h; nsp8 induced 0.1 mM IPTG at OD600 0.6 then 28 C for 18 h; cocktail: 4.0x10^9 PFU/L T4+T7, 2.0x10^10 PFU/L lambda, 4.0x10^11 PFU/L T1/JMPW2/T5/EEP"
+        },
+        "trigger": {
+          "observation": "Plaques barely formed on EPR lawns even at highest phage titer; no lysis by T1/T5/EEP/JMPW2 at MOI 10; significant resistance to T4/T7 at MOI 0.1 and lambda at MOI 0.5; identical growth to parents; resistant to 7-phage cocktail",
+          "reasoning": "Test whether EPR strains maintain recombinant protein production under high-titer phage cocktail challenge",
+          "source_location": "MG1655-EPR and W3110-EPR carrying pGEMKT-DAAO; MG1655(DE3)-EPR carrying pWHU6404"
+        },
+        "evidence": {
+          "description": [
+            "results_p008",
+            "results_p009",
+            "results_p010",
+            "discussion_p015",
+            "methods_p014",
+            "methods_p015",
+            "methods_p017",
+            "methods_p018"
+          ],
+          "source": "论文实测",
+          "source_location": "SM-buffer blank (no phage) for each strain/plasmid; WT parents with plasmid +/- cocktail",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Transformation of production plasmids (constitutive dao from Trigonopsis variabilis; IPTG-inducible T7-driven nsp8) into EPR strains; phage cocktail added at start of cultivation",
+        "result": {
+          "metric": "OD600, DAAO activity (U/mL), soluble nsp8 concentration (SDS-PAGE + Bradford)",
+          "before": "",
+          "after": "EPR strains grew robustly and produced DAAO (2.03 +/- 0.07 and 1.88 +/- 0.10 U/mL) and nsp8 (~64 mg/L) under cocktail challenge, comparable to unchallenged parents; WT controls died under cocktail",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 5,
+        "decision_type": "validation",
+        "design_action": "M9",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "1.9 L initial medium (20 g/L tryptone, 14 g/L yeast extract, 10 g/L NaCl, 20 g/L glycerol); pH 7.5 (5 M NaOH); 4 L/min air; 400-600 rpm; feed 200 g/L glycerol + 40 g/L tryptone + 20 g/L yeast extract; 48 h; cocktail 5.0x10^9 PFU/L T4+T7, 2.5x10^10 PFU/L lambda, 5.0x10^11 PFU/L T1/JMPW2/T5/EEP"
+        },
+        "trigger": {
+          "observation": "EPR strains grew robustly and produced DAAO (2.03 +/- 0.07 and 1.88 +/- 0.10 U/mL) and nsp8 (~64 mg/L) under cocktail challenge, comparable to unchallenged parents; WT controls died under cocktail",
+          "reasoning": "Assess EPR strain robustness during fed-batch fermentation, the industrial mode most vulnerable to phage attack",
+          "source_location": "MG1655-EPR(pGEMKT-DAAO), W3110-EPR(pGEMKT-DAAO), MG1655(DE3)-EPR(pWHU6404) with WT counterparts"
+        },
+        "evidence": {
+          "description": [
+            "results_p011",
+            "results_p021",
+            "methods_p016",
+            "discussion_p015",
+            "discussion_p022"
+          ],
+          "source": "论文实测",
+          "source_location": "SM-buffer/no-phage fermentation of each strain; WT + cocktail groups",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Fed-batch cultivation in 5 L bioreactor with high-concentration phage cocktail added at start; IPTG (1 mM) induction at OD600 20 with 28 C shift for nsp8",
+        "result": {
+          "metric": "OD600, DO profiles, DAAO activity, nsp8 titer",
+          "before": "",
+          "after": "EPR strains matched unchallenged growth/DO profiles; DAAO 28.53 +/- 2.79 U/mL (MG1655-EPR + cocktail) vs ~0 for challenged WT; nsp8 1.46 +/- 0.09 g/L with cocktail vs 1.52 +/- 0.16 for WT without; no phage escape observed over 48 h",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 6,
+        "decision_type": "validation",
+        "design_action": "M9",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "LB, 37 C; sampling every 20 generations (shake-flask fermentation) and every 40 generations (plaque assay)"
+        },
+        "trigger": {
+          "observation": "EPR strains matched unchallenged growth/DO profiles; DAAO 28.53 +/- 2.79 U/mL (MG1655-EPR + cocktail) vs ~0 for challenged WT; nsp8 1.46 +/- 0.09 g/L with cocktail vs 1.52 +/- 0.16 for WT without; no phage escape observed over 48 h",
+          "reasoning": "Determine inheritance of phage resistance and fermentation stability of EPR strains over long-term propagation",
+          "source_location": "All three EPR strains"
+        },
+        "evidence": {
+          "description": [
+            "methods_p019",
+            "results_p010",
+            "results_p021",
+            "discussion_p022"
+          ],
+          "source": "论文实测",
+          "source_location": "none beyond initial-generation baseline (no separate control strain described)",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Serial transfer every 12 h at 1:1000 dilution for 47 transfers (~400 generations) at 37 C; periodic phenotyping",
+        "result": {
+          "metric": "Plaque assay (resistance), shake-flask fermentation performance; LM-PCR for genomic integrity",
+          "before": "",
+          "after": "Resistance and production maintained through ~400 generations; no genomic changes detected by LM-PCR even after phage-cocktail exposure",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Develop phage-resistant Escherichia coli host strains for laboratory and industrial bioprocesses by simultaneous genomic integration of the DNA phosphorothioation-based SspBCDE defense module and mutation of host components essential for phage infection cycles, while preserving growth and recombinant protein production capability.",
+    "problem_type": [
+      "competing pathway",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activ",
+      "Plasmid-encoded defense is limited by plasmid incompatibility, instability, copy-number variability and metabolic burden",
+      "EOP data showed phage T5 was insensitive to SspBCDE defense (results_p001) and T7 remained a threat; known biology: T1/T"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+      "Plasmid-encoded defense is limited by plasmid incompatibility, instability, copy-number variability and metabolic burden of plasmid maintenance (results_p002, citing refs 36, 37).",
+      "EOP data showed phage T5 was insensitive to SspBCDE defense (results_p001) and T7 remained a threat; known biology: T1/T5/phi80 use FhuA as receptor (ref 41) and T7 uses host TrxA as processivity factor (ref 42)."
+    ],
+    "bottlenecks": [
+      ": The SspABCD-SspE system was recently identified by the group as a PT-modulated d",
+      "sspBCD: Plasmid-encoded defense is limited by plasmid incompatibility, instability, copy",
+      "fhuA: EOP data showed phage T5 was insensitive to SspBCDE defense (results_p001) and T"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。27 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "6a15828f6a4441e98211662fb92bc916",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9",
+      "identity": {
+        "paper_id": "697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9",
+        "title": "Systematic strategies for developing phage resistant Escherichia coli strains",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1038/s41467-022-31934-9"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p002",
+          "results_p001",
+          "methods_p001",
+          "author_contributions_p001"
+        ],
+        "rationale": "Abstract reports new engineered strains and experiments; Results describe original strain construction and assays; Methods detail protocols; author contributions confirm experiments conducted by the authors. Nature Communications original research article."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "parental",
+          "paper_label": "WT-MG1655",
+          "lineage_or_engineering_context": "K-12 wild-type laboratory strain; lacks endogenous ssp genes; parent of MG1655-PT and MG1655-EPR",
+          "combination_status": "not_applicable",
+          "genotype": "wild type (parental); full genotype in Supplementary Data 2 (not available)",
+          "evidence": [
+            "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+            "results_p001",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly named as chosen host and parental control throughout."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655 (DE3)",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655(DE3)",
+          "role": "parental",
+          "paper_label": "WT-MG1655(DE3)",
+          "lineage_or_engineering_context": "DE3-lysogenized MG1655 derivative carrying T7 RNA polymerase; used as T7-expression host; parent of MG1655(DE3)-PT/EPR",
+          "combination_status": "not_applicable",
+          "genotype": "MG1655 with DE3 lysogen (paper treats as given strain; not constructed here)",
+          "evidence": [
+            "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+            "results_p006",
+            "results_p010"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named in objective; DE3 construct origin not described in this paper (pre-existing strain, background)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "Escherichia coli K-12 W3110",
+          "role": "parental",
+          "paper_label": "WT-W3110",
+          "lineage_or_engineering_context": "K-12 strain widely used industrially; parent of W3110-PT/EPR",
+          "combination_status": "not_applicable",
+          "genotype": "wild type (parental)",
+          "evidence": [
+            "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+            "results_p001",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly named."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655-PT / W3110-PT / MG1655(DE3)-PT",
+          "paper_strain_normalized": "E. coli int(aslA-glmZ)::sspBCDE in MG1655, W3110, MG1655(DE3) backgrounds",
+          "role": "engineered",
+          "paper_label": "E. coli-PT",
+          "lineage_or_engineering_context": "Intermediate: chromosomal sspBCD at SS9 plus lambda-red-integrated sspE; Kan marker removed via FRT/pCP20; verified by genome sequencing",
+          "combination_status": "demonstrated (sspBCD + sspE integrated combination verified by sequencing)",
+          "genotype": "int(aslA-glmZ)::sspBCDE",
+          "evidence": [
+            "results_p002",
+            "methods_p003",
+            "methods_p004",
+            "methods_p005",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Construction workflow and verification described in Methods; phenotype in Fig. 2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655-EPR / W3110-EPR / MG1655 (DE3)-EPR",
+          "paper_strain_normalized": "E. coli int(aslA-glmZ)::sspBCDE fhuA(Delta552-558 NESG) Delta trxA in MG1655, W3110, MG1655(DE3) backgrounds",
+          "role": "engineered",
+          "paper_label": "EPR strains",
+          "lineage_or_engineering_context": "Final engineered phage-resistant chassis: PT intermediate + FhuA loop-8 deletion (with NESG insertion) + trxA deletion, sequential two-step double crossover",
+          "combination_status": "demonstrated (all three modifications combined in each host and verified; Fig. 2a-c compare WT/plasmid/PT/EPR per background)",
+          "genotype": "int(aslA-glmZ)::sspBCDE, fhuA(Delta552-558 NESG), Delta trxA",
+          "evidence": [
+            "results_p004",
+            "results_p006",
+            "methods_p006",
+            "methods_p007",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.96,
+          "reasoning": "Methods describe sequential construction; combination directly shown per background. Inserted peptide spelled NSEG/NESG inconsistently (see conflicts)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655 (pWHU3640)",
+          "paper_strain_normalized": "E. coli MG1655 carrying pWHU3640 (pBluescript II SK(+)::sspBCDE from E. coli 3234/A)",
+          "role": "engineered",
+          "paper_label": "MG1655 (pWHU3640)",
+          "lineage_or_engineering_context": "Plasmid-based validation strain for SspBCDE defense; also transformed into MG1655(DE3), W3110, BW25113, JM109, OP50, E. coli W",
+          "combination_status": "not_applicable",
+          "genotype": "plasmid pWHU3640 in listed hosts",
+          "evidence": [
+            "results_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicit plasmid construction and transformation."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113, JM109, OP50, wild-type E. coli W",
+          "paper_strain_normalized": "E. coli K-12 BW25113; E. coli K-12 JM109; E. coli B OP50; E. coli W (wild isolate)",
+          "role": "host",
+          "paper_label": "as named",
+          "lineage_or_engineering_context": "Additional hosts used only to demonstrate plasmid-borne sspBCDE host breadth (Fig. 1e); no genome engineering performed on them in this study",
+          "combination_status": "not_applicable",
+          "genotype": "as supplied (not modified)",
+          "evidence": [
+            "results_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.93,
+          "reasoning": "Listed explicitly as validation hosts."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH10B",
+          "paper_strain_normalized": "Escherichia coli DH10B",
+          "role": "host",
+          "paper_label": "DH10B",
+          "lineage_or_engineering_context": "Cloning/plasmid maintenance host only; not a phage-resistance experimental subject",
+          "combination_status": "not_applicable",
+          "genotype": "cloning host (full genotype not given)",
+          "evidence": [
+            "methods_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Methods state its role explicitly."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli 3234/A",
+          "paper_strain_normalized": "Escherichia coli 3234/A",
+          "role": "other",
+          "paper_label": "3234/A",
+          "lineage_or_engineering_context": "Donor strain of the sspBCDE gene cassette; source of template genomic DNA only",
+          "combination_status": "not_applicable",
+          "genotype": "carries native sspABCD and unlinked sspE region (sspBCDE cluster cloned)",
+          "evidence": [
+            "results_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named as cassette source; not an experimental host."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system was provided; adaptation analysis not performed. Note the paper's own scope limit: authors state the strategy must be re-tested/adjusted for E. coli strains with other genetic backgrounds and is limited in non-E. coli species by knowledge gaps on phage receptors/host factors (discussion_p021)."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 5 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "基于 decision_chain 的 design_action/implementation_detail 关键词启发式判定——需人工确认"
+  },
+  "engineering_decision_map": {
+    "goal": "Develop phage-resistant Escherichia coli host strains for laboratory and industrial bioprocesses by simultaneous genomic integration of the DNA phosphorothioation-based SspBCDE defense module and mutation of host components essential for phage infection cycles, while preserving growth and recombinant protein production capability.",
+    "initial_bottleneck": "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+    "key_hypothesis": "Validate that plasmid-borne SspBCDE from E. coli 3234/A confers DNA PT modification and broad phage protection in laboratory/industrial E. coli hosts without growth cost",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M3",
+        "action_summary": "Transformation with pWHU3640 (pBluescript II SK(+) carrying ~8 kb sspBCDE cassette cloned from E. coli 3234/A genomic DNA via PCR + Gibson assembly)"
+      },
+      {
+        "step": 2,
+        "design_action": "M3",
+        "action_summary": "Integration of 5.4 kb sspBCD at safe site SS9 (int(aslA-glmZ)) via pKOV-Kan two-step double crossover (pWHU6401); subsequent lambda-red recombineering integration of 2.6 kb sspE with FRT-Kan marker (pKD46 induced with 0.2% arabinose; pKD13 template), marker excision with pCP20, plasmid curing at 42 C, verification by colony PCR and genome sequencing -> E. coli-PT strains"
+      },
+      {
+        "step": 3,
+        "design_action": "M5",
+        "action_summary": "Deletion of FhuA extracellular loop 8 (fhuA Delta552-558 with NESG peptide insertion to preserve beta-barrel formation) via pWHU6402 two-step double crossover, followed by trxA deletion via pWHU6403 -> E. coli-EPR strains"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "metabolic_engineering"
+    ],
+    "goal": "Develop phage-resistant Escherichia coli host strains for laboratory and industrial bioprocesses by simultaneous genomic integration of the DNA phosphorothioation-based SspBCDE defense module and mutation of host components essential for phage infection cycles, while preserving growth and recombinant protein production capability.",
+    "initial_bottleneck": "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+    "key_hypothesis": "Validate that plasmid-borne SspBCDE from E. coli 3234/A confers DNA PT modification and broad phage protection in laboratory/industrial E. coli hosts without growth cost"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 1,
+    "needs_review": 2,
+    "rejected": 0,
+    "needs_review_steps": [
+      {
+        "step": 2,
+        "calibration_status": "needs_review",
+        "calibration_reason": "命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+      },
+      {
+        "step": 3,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立; 命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Transformation with pWHU3640 (pBluescript II SK(+) carrying ~8 kb sspBCDE cassette cloned from E. coli 3234/A genomic DNA via PCR + Gibson assembly)",
+        "trigger": "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-018"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "sspBCD",
+        "decision_summary": "Integration of 5.4 kb sspBCD at safe site SS9 (int(aslA-glmZ)) via pKOV-Kan two-step double crossover (pWHU6401); subsequent lambda-red recombineering integration of 2.6 kb sspE with FRT-Kan marker (pKD46 induced with 0.2% arabinose; pKD13 template), marker excision with pCP20, plasmid curing at 42 C, verification by colony PCR and genome sequencing -> E. coli-PT strains",
+        "trigger": "Plasmid-encoded defense is limited by plasmid incompatibility, instability, copy-number variability and metabolic burden of plasmid maintenance (results_p002, citing refs 36, 37).",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-018"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "fhuA",
+        "decision_summary": "Deletion of FhuA extracellular loop 8 (fhuA Delta552-558 with NESG peptide insertion to preserve beta-barrel formation) via pWHU6402 two-step double crossover, followed by trxA deletion via pWHU6403 -> E. coli-EPR strains",
+        "trigger": "EOP data showed phage T5 was insensitive to SspBCDE defense (results_p001) and T7 remained a threat; known biology: T1/T5/phi80 use FhuA as receptor (ref 41) and T7 uses host TrxA as processivity factor (ref 42).",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-018"
+      }
+    ],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Develop phage-resistant Escherichia coli host strains for laboratory and industrial bioprocesses by simultaneous genomic integration of the DNA phosphorothioation-based SspBCDE defense module and mutation of host components essential for phage infection cycles, while preserving growth and recombinant protein production capability.",
+    "initial_bottleneck": "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+    "hypothesis": "Validate that plasmid-borne SspBCDE from E. coli 3234/A confers DNA PT modification and broad phage protection in laboratory/industrial E. coli hosts without growth cost",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 1,
+      "rule": "When engineering phage resistance into phage-sensitive E. coli production hosts, first evaluate the candidate defense module on a plasmid across multiple host backgrounds and a phage panel spanning all three Caudovirales morphological families, because module efficacy is host- and phage-dependent and plasmid delivery allows rapid screening before committing to genome integration.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 2,
+      "rule": "When converting a plasmid-borne defense or pathway module into a stable industrial E. coli host, integrate the module at a characterized intergenic safe site (e.g., SS9) using markerless two-step double-crossover plus lambda-red recombineering, because chromosomal integration removes plasmid-instability and antibiotic-selection burdens while preserving host viability.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 3,
+      "rule": "When a DNA-level defense system leaves specific phages unrestricted in an E. coli production host, layer receptor/essential-host-factor mutations targeting those phages' infection cycle (e.g., delete FhuA loop 8 for FhuA-dependent phages, delete trxA for T7-family polymerase dependence) on top of the defense module, because phages unable to inject or replicate DNA cannot escape through restriction-insensitivity mechanisms.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    }
+  ]
+}
