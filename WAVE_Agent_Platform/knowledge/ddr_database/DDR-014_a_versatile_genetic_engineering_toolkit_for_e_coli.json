@@ -1,0 +1,1308 @@
+{
+  "ddr_id": "DDR-014",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "A versatile genetic engineering toolkit for E. coli based on CRISPR-prime editing",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "A versatile genetic engineering toolkit for E. coli based on CRISPR-prime editing",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1038/s41467-021-25541-3"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M4",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar plates with antibiotics (spectinomycin 50 µg/mL, ampicillin 100 µg/mL, chloramphenicol 25 µg/mL), 37 °C, 24 h incubation with 200 ng/mL ATc"
+      },
+      "trigger": {
+        "observation": "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 causes cell death in bacteria lacking NHEJ; prime editing demonstrated in eukaryotes offers potential solution",
+        "reasoning": "Validate that CRISPR-Prime Editing system can perform diverse DNA engineering events (insertion, deletion, substitution, combinatorial) on plasmid DNA in E. coli",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p002",
+          "results_p005",
+          "results_p006",
+          "results_p007",
+          "results_p008",
+          "results_p009"
+        ],
+        "source": "论文实测",
+        "source_location": "No PEgRNA control; non-induced (no ATc) control",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "模型自评(软): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 软 (soft) = predictive. The initial design was based on analogy to eukaryotic PE systems (Anzalone et al. 2019, Lin et al. 2020) and the hypothesis that single-strand nicking would not be lethal in bacteria. This was a prediction requiring experimental validation in the bacterial context.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [
+        "机理推断"
+      ],
+      "alternatives": [
+        {
+          "approach": "CRISPR base editors (restricted to substitutions, narrow window)",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "CRISPR-Cas9 with DSB (lethal in bacteria lacking NHEJ)",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "Recombineering/MAGE (requires specific genetic backgrounds, lower efficiency or fidelity)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "KO",
+      "implementation_detail": "Transformation with three-plasmid system (pCDF-GFPplus reporter, pPEgRNA expressing guide targeting GFP, pCRISPR-PE expressing Cas9n-M-MLV2 fusion) programmed for four editing types: (1) TAA 3-bp insertion, (2) T to A 1-bp substitution, (3) T 1-bp deletion, (4) combinatorial edit; induction with 200 ng/mL ATc for 24 h",
+      "result": {
+        "metric": "GFP fluorescence loss (non-green colonies) as proxy for editing; Sanger sequencing to confirm designed edits",
+        "before": "",
+        "after": "Non-green colonies observed for all four editing types after 24 h induction; almost all Sanger-sequenced clones carried designed stop codon edits (Fig. 2a); target-adjacent unintended indels (indels near target nucleotide) observed in 8/24 clones of 1 bp substitution event, but not in other editing types (Fig. 2b)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When adapting eukaryotic genome editing tools for bacteria, single-strand nicking systems (e.g., prime editing) are likely to be less toxic and more applicable than double-strand break systems (e.g., CRISPR-Cas9), because most bacteria lack NHEJ and DSBs are lethal.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "enzyme_activity_improvement"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M9",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar plates with antibiotics and varying ATc concentrations, 37 °C, 24 h"
+      },
+      "trigger": {
+        "observation": "Cas9n-M-MLV2 fusion is under tetracycline-inducible promoter; need to determine optimal induction level",
+        "reasoning": "Determine optimal inducer (ATc) concentration for CRISPR-PE system activation",
+        "source_location": "E. coli DH10B harboring three-plasmid system"
+      },
+      "evidence": {
+        "description": [
+          "results_p016",
+          "results_p014"
+        ],
+        "source": "论文实测",
+        "source_location": "No ATc (0 ng/mL) baseline",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 硬 (hard) = empirical measurement. Dose-response was directly measured experimentally.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "Induction with eight different ATc concentrations: 0, 10, 20, 50, 100, 200, 500, 1000 ng/mL for four editing events (3 bp insertion, 1 bp deletion, 1 bp substitution, combinatorial)",
+      "result": {
+        "metric": "Editing efficiency = (non-green colonies / total colonies) × 100%",
+        "before": "",
+        "after": "Dose-dependent induction observed for all editing types; at 1000 ng/mL: 1 bp deletion 43.7%, 3 bp insertion 13.8%, 1 bp substitution 19.9%, combinatorial 2.1%; efficiency did not change significantly between 100-500 ng/mL, so 200 ng/mL chosen as standard",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When optimizing inducible CRISPR systems, identify the dose-response plateau region and select a concentration within this range to balance efficiency and potential toxicity.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M4",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar plates with antibiotics, 200 ng/mL ATc, 37 °C, 24 h"
+      },
+      "trigger": {
+        "observation": "Initial PEgRNA design (13 nt PBS, 13 nt RTT) based on eukaryotic studies; need to determine if optimal in bacterial context",
+        "reasoning": "Optimize primer binding site (PBS) and reverse transcription template (RTT) lengths for maximum editing efficiency",
+        "source_location": "E. coli DH10B harboring three-plasmid system"
+      },
+      "evidence": {
+        "description": [
+          "results_p017",
+          "results_p014"
+        ],
+        "source": "论文实测",
+        "source_location": "Baseline with initial 13 nt PBS and 13 nt RTT",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 硬 (hard) = empirical measurement. Length optimization was directly tested experimentally.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "PBS length variants: 5, 8, 13, 17 nt; RTT scaffold length variants: 4, 5, 8, 13, 20 nt; tested for TAA-STOP codon insertion editing; induction with 200 ng/mL ATc",
+      "result": {
+        "metric": "Editing efficiency = (non-green colonies / total colonies) × 100%",
+        "before": "",
+        "after": "PBS: nearly no edits with 5 or 8 nt; 17 nt equivalent to 13 nt; functional window 13-17 nt. RTT: too short (<10 nt) or too long (>20 nt) reduced efficiency; optimal ~13 nt.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When designing PEgRNAs for prime editing in bacteria, use a PBS of 13-17 nt and an RTT scaffold of approximately 13 nt, as these lengths balance binding stability, editing window accessibility, and reverse transcription efficiency.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "enzyme_activity_improvement"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M4",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar plates with antibiotics, 200 ng/mL ATc, 37 °C, 24 h"
+      },
+      "trigger": {
+        "observation": "Need to define the practical range of edit sizes achievable with the toolkit",
+        "reasoning": "Determine size limits for DNA fragment insertion and deletion using CRISPR-PE system",
+        "source_location": "E. coli DH10B harboring three-plasmid system"
+      },
+      "evidence": {
+        "description": [
+          "results_p017",
+          "results_p014"
+        ],
+        "source": "论文实测",
+        "source_location": "Baseline 3 bp insertion and 1 bp deletion",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 硬 (hard) = empirical measurement. Size capacity was directly tested experimentally.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "Designed insertions: 3, 12, 18, 33 bp; designed deletions: 1, 10, 23, 36, 49, 97 bp; induction with 200 ng/mL ATc",
+      "result": {
+        "metric": "Editing efficiency = (non-green colonies / total colonies) × 100%",
+        "before": "",
+        "after": "All designed insertions and deletions (up to 33 bp and 97 bp, respectively) could be obtained, but efficiency dropped sharply with size. At 200 ng/mL ATc: 1 bp deletion 29.5%, 10 bp deletion 17.8%, 23-97 bp deletions <2%; 3 bp insertion ~10%, 18-33 bp insertions <1%. Insertion generally less efficient than deletion.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When using prime editing for bacterial genome engineering, expect high efficiency for small edits (1-10 bp) and sharp efficiency decline for larger edits (>20 bp); plan for lower success rates or increased screening effort when designing edits >20 bp.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M1",
+      "target": {
+        "gene": "lacZ",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "For lacZ: LB plates with X-gal (40 µL of 20 mg/mL per plate) and antibiotics, 200 ng/mL ATc, 37 °C; for galK: M63 minimal medium plates with 0.1% 2-DOG for positive selection"
+      },
+      "trigger": {
+        "observation": "Successful plasmid editing demonstrated; need to test if system works on chromosomal DNA",
+        "reasoning": "Assess ability of CRISPR-PE system to edit chromosomal DNA in E. coli",
+        "source_location": "E. coli MG1655"
+      },
+      "evidence": {
+        "description": [
+          "results_p020",
+          "discussion_p006"
+        ],
+        "source": "论文实测",
+        "source_location": "WT E. coli MG1655 (for lacZ phenotype comparison); non-induced controls",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 硬 (hard) = empirical measurement. Chromosomal editing was directly tested and validated.",
+      "reason_nature": "现成可得",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "KO",
+      "implementation_detail": "For lacZ: designed early stop codon introduction via TAG insertion, GC deletion, or GT to TA substitution (three separate experiments); for galK: designed TAA stop codon insertion; induction with 200 ng/mL ATc",
+      "result": {
+        "metric": "For lacZ: white vs. blue colonies on X-gal plates (editing efficiency = white/total); for galK: colony formation on 2-DOG plates; Sanger sequencing confirmation",
+        "before": "",
+        "after": "lacZ editing efficiencies: substitution 6.8%, insertion 12.2%, deletion 26%; all Sanger-sequenced non-blue colonies (8 per type) bore expected edits. galK: all 4 colonies from 2-DOG plate showed expected TAA insertion.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 6,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar plates with antibiotics, 200 ng/mL ATc, 37 °C, 24 h"
+      },
+      "trigger": {
+        "observation": "Desire to extend toolkit to multiplexed editing for more complex engineering tasks",
+        "reasoning": "Assess capability for multiplexed editing using two PEgRNAs",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p015",
+          "results_p007"
+        ],
+        "source": "论文实测",
+        "source_location": "Single-edit controls (three-plasmid system only)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 硬 (hard) = empirical measurement. Multiplexing was directly tested.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "PEgRNA self-processing machinery like Csy4 (mentioned in Discussion as future direction)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "KO",
+      "implementation_detail": "Introduction of fourth plasmid pVRb_PEgRNA (pSC101 ori, KanR) carrying second PEgRNA for G deletion, into cells already harboring three-plasmid system programmed for TAA insertion, T deletion, T to A substitution, two Ts to two Cs substitution, or combinatory editing; induction with 200 ng/mL ATc",
+      "result": {
+        "metric": "Sanger sequencing to identify clones with both designed edits (two nicks 111 bp apart)",
+        "before": "",
+        "after": "All expected dual-editing events successfully identified (Fig. 2c), but editing efficiency was relatively low (<1%)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When multiplexing prime editing in bacteria, delivering multiple PEgRNAs from separate compatible plasmids can achieve simultaneous editing, but expect low efficiency (<1%); further optimization of PEgRNA processing or delivery is needed for practical multiplexing.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 7,
+      "decision_type": "engineering_decision",
+      "design_action": "M4",
+      "target": {
+        "gene": "pnsgRNA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB agar plates with antibiotics, 200 ng/mL ATc, 37 °C"
+      },
+      "trigger": {
+        "observation": "Second nick in non-edited strand increases PE efficiency in some mammalian and plant cells (refs 19, 20)",
+        "reasoning": "Test whether introducing a second nick in the non-edited strand increases editing efficiency (as observed in some mammalian and plant cells)",
+        "source_location": "E. coli DH10B"
+      },
+      "evidence": {
+        "description": [
+          "results_p019"
+        ],
+        "source": "论文实测",
+        "source_location": "Standard single-nick PE system",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | 硬 (hard) = empirical measurement. Second nick strategies were directly tested.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Designed and validated two strategies for second nick introduction (details in Supplementary Note 1); co-transformation with plasmid expressing second nicking sgRNA (pnsgRNA) alongside PE system",
+      "result": {
+        "metric": "Colony formation (viability); editing efficiency",
+        "before": "",
+        "after": "Almost no visible colonies after second nick introduction; second nick does not increase efficiency in E. coli and instead compromises the system, likely due to absence of NHEJ leading to DSB-like lethality",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When adapting prime editing enhancements from eukaryotes to bacteria, be cautious with strategies that introduce additional nicks or breaks, as bacteria lacking NHEJ may not tolerate them; test viability first before assessing efficiency gains.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 8,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Overnight culture in LB without antibiotics, 37 °C, 300 rpm, 24 h for DNA isolation"
+        },
+        "trigger": {
+          "observation": "Almost no visible colonies after second nick introduction; second nick does not increase efficiency in E. coli and instead compromises the system, likely due to absence of NHEJ leading to DSB-like lethality",
+          "reasoning": "Systematically evaluate on-target and off-target mutations caused by CRISPR-PE system using whole-genome sequencing",
+          "source_location": "E. coli DH10B (plasmid editing) and MG1655 (chromosomal editing)"
+        },
+        "evidence": {
+          "description": [
+            "results_p021",
+            "results_p022",
+            "illumina_deep_sequencing_based_genome_wide_on_off_target_evaluation_and_p001",
+            "illumina_deep_sequencing_based_genome_wide_on_off_target_evaluation_and_p002",
+            "methods_p011"
+          ],
+          "source": "论文实测",
+          "source_location": "Parental strains DH10B and MG1655 (unmodified) sequenced to assess background mutations",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Selection of one or two Sanger-validated clones per editing event; whole-genome sequencing using Illumina platform; mutation calling with breseq",
+        "result": {
+          "metric": "Whole-genome sequencing; mutation calls using breseq (v. 0.33.2)",
+          "before": "",
+          "after": "All designed on-target edits present. Off-target analysis: most strains had 0 chromosomal off-targets; single nucleotide substitutions found in 1 bp deletion (chr. pos. 396,221 C→T), 1 bp substitution (chr. pos. 2,198,023 A→G), and combinatorial editing (chr. pos. 4,047,371 G→T); 3 bp insertion and 2 bp substitution had 0 off-targets. insB1-insA 776 bp mobile element excision in MG1655 attributed to parental variation (reported in literature), not PE-related. Overall high fidelity demonstrated.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "post_hoc_interpretation",
+      "exclusion_reason": "Q1 未通过：Discussion/结构分析/docking/基因组测序等事后解释，未驱动本文的工程决策",
+      "step_snapshot": {
+        "step": 9,
+        "decision_type": "post_hoc_interpretation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "Overnight culture in LB without antibiotics, 37 °C, 300 rpm, 24 h"
+        },
+        "trigger": {
+          "observation": "All designed on-target edits present. Off-target analysis: most strains had 0 chromosomal off-targets; single nucleotide substitutions found in 1 bp deletion (chr. pos. 396,221 C→T), 1 bp substitution (chr. pos. 2,198,023 A→G), and combinatorial editing (chr. pos. 4,047,371 G→T); 3 bp insertion and 2 bp substitution had 0 off-targets. insB1-insA 776 bp mobile element excision in MG1655 attributed to parental variation (reported in literature), not PE-related. Overall high fidelity demonstrated.",
+          "reasoning": "Investigate mechanisms by which cells escape CRISPR-PE editing (remain GFP-fluorescent despite induced PE system)",
+          "source_location": "E. coli DH10B"
+        },
+        "evidence": {
+          "description": [
+            "results_p017",
+            "results_p018",
+            "illumina_deep_sequencing_based_genome_wide_on_off_target_evaluation_and_p001"
+          ],
+          "source": "论文实测",
+          "source_location": "4 control strains",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Randomly picked 10 'escaper' clones (GFP-fluorescent despite induced PE system targeting GFP) plus 4 controls; whole-genome sequencing",
+        "result": {
+          "metric": "Whole-genome sequencing; SNP profiling",
+          "before": "",
+          "after": "7/10 escapers lost the 26 bp 3' extension sequence of PEgRNA (except these deletions, other plasmid and chromosomal regions intact); 3/10 escapers had no identifiable mutations explaining escape. Suggests that besides guide RNA mutation, yet-unknown escape mechanisms exist in E. coli.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 10,
+        "decision_type": "validation",
+        "design_action": "M9",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "CFU assay on solid agar plates; liquid cultivation in 96-well microtiter plates with OD630 measurements every 20 min for 24 h at 37 °C"
+        },
+        "trigger": {
+          "observation": "7/10 escapers lost the 26 bp 3' extension sequence of PEgRNA (except these deletions, other plasmid and chromosomal regions intact); 3/10 escapers had no identifiable mutations explaining escape. Suggests that besides guide RNA mutation, yet-unknown escape mechanisms exist in E. coli.",
+          "reasoning": "Assess fitness effects of non-targeting CRISPR-PE system and ATc induction on E. coli growth",
+          "source_location": "E. coli DH10B"
+        },
+        "evidence": {
+          "description": [
+            "results_p005",
+            "editing_efficiency_evaluation_using_a_fluorescence_based_colony_counting_p003",
+            "editing_efficiency_evaluation_using_a_fluorescence_based_colony_counting_p004",
+            "editing_efficiency_evaluation_using_a_fluorescence_based_colony_counting_p005"
+          ],
+          "source": "论文实测",
+          "source_location": "Non-induced controls; strains with non-targeting PE system",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Growth profiling of strains bearing different plasmids (including non-targeting PE system) with and without 200 ng/mL ATc induction",
+        "result": {
+          "metric": "CFU counts; growth curves (OD630 over time); maximal doubling time",
+          "before": "",
+          "after": "Non-targeting PE system caused almost no fitness changes; mild ~10% negative effect on maximal doubling time with 200 ng/mL ATc induction",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "To adapt a CRISPR-Prime Editing-based, DSB-free, versatile, single-nucleotide resolution genetic manipulation toolkit for prokaryotes (specifically E. coli) that can introduce substitutions, deletions, insertions, and combinations thereof in both plasmids and the chromosome",
+    "problem_type": [
+      "enzyme activity bottleneck",
+      "pathway construction"
+    ],
+    "trigger_conditions": [
+      "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 ",
+      "Cas9n-M-MLV2 fusion is under tetracycline-inducible promoter; need to determine optimal induction level",
+      "Initial PEgRNA design (13 nt PBS, 13 nt RTT) based on eukaryotic studies; need to determine if optimal in bacterial cont",
+      "Need to define the practical range of edit sizes achievable with the toolkit",
+      "Successful plasmid editing demonstrated; need to test if system works on chromosomal DNA",
+      "Desire to extend toolkit to multiplexed editing for more complex engineering tasks",
+      "Second nick in non-edited strand increases PE efficiency in some mammalian and plant cells (refs 19, 20)"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 causes cell death in bacteria lacking NHEJ; prime editing demonstrated in eukaryotes offers potential solution",
+      "Cas9n-M-MLV2 fusion is under tetracycline-inducible promoter; need to determine optimal induction level",
+      "Initial PEgRNA design (13 nt PBS, 13 nt RTT) based on eukaryotic studies; need to determine if optimal in bacterial context",
+      "Need to define the practical range of edit sizes achievable with the toolkit",
+      "Successful plasmid editing demonstrated; need to test if system works on chromosomal DNA",
+      "Desire to extend toolkit to multiplexed editing for more complex engineering tasks",
+      "Second nick in non-edited strand increases PE efficiency in some mammalian and plant cells (refs 19, 20)"
+    ],
+    "bottlenecks": [
+      ": CRISPR base editors are restricted to single-nucleotide substitutions and narrow",
+      ": Cas9n-M-MLV2 fusion is under tetracycline-inducible promoter; need to determine ",
+      ": Initial PEgRNA design (13 nt PBS, 13 nt RTT) based on eukaryotic studies; need t",
+      ": Need to define the practical range of edit sizes achievable with the toolkit",
+      "lacZ: Successful plasmid editing demonstrated; need to test if system works on chromos",
+      ": Desire to extend toolkit to multiplexed editing for more complex engineering tas",
+      "pnsgRNA: Second nick in non-edited strand increases PE efficiency in some mammalian and p"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。47 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "8d68f276ac80424f9f28b1c1237500f6",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3",
+      "identity": {
+        "paper_id": "80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3",
+        "title": "A versatile genetic engineering toolkit for E. coli based on CRISPR-prime editing",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1038/s41467-021-25541-3"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "a_versatile_genetic_engineering_toolkit_for_e_coli_based_on_crispr_prime_editing_p002",
+          "results_p001",
+          "methods_p001"
+        ],
+        "rationale": "Paper reports original development and experimental validation of a new CRISPR-Prime Editing toolkit for E. coli, including proof-of-concept, characterization, and validation experiments. Not a review, protocol, or methods-only paper."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DH10B",
+          "paper_strain_normalized": "Escherichia coli DH10B",
+          "role": "host",
+          "paper_label": "DH10B",
+          "lineage_or_engineering_context": "Standard laboratory cloning strain; used for plasmid-based editing experiments",
+          "combination_status": "not_applicable",
+          "genotype": "Wild-type (no pre-existing modifications mentioned); transformed with plasmids pCDF-GFPplus, pPEgRNA, pCRISPR-PE, and optionally pVRb_PEgRNA",
+          "evidence": [
+            "results_p015",
+            "methods_p013",
+            "illumina_deep_sequencing_based_genome_wide_on_off_target_evaluation_and_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in methods and results as host for plasmid editing."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655",
+          "paper_strain_normalized": "Escherichia coli MG1655",
+          "role": "target",
+          "paper_label": "MG1655",
+          "lineage_or_engineering_context": "Wild-type K-12 strain; used for chromosomal editing experiments (lacZ and galK genes)",
+          "combination_status": "not_applicable",
+          "genotype": "Wild-type; chromosomal edits introduced at lacZ (TAG insertion, GC deletion, GT to TA substitution) and galK (TAA insertion) loci",
+          "evidence": [
+            "results_p020",
+            "illumina_deep_sequencing_based_genome_wide_on_off_target_evaluation_and_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in results and methods as host for chromosomal editing."
+        }
+      ],
+      "target_system_adaptation": null,
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": [
+            "E. coli DH10B",
+            "E. coli MG1655"
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.95,
+          "evidence": [
+            {
+              "evidence_id": "ev_00001",
+              "quote": "CAC codon. We obtained eight non-fluorescent clones out of which six clones were correctly edited (Supplementary Fig. 2). To further assess whether CRISPR-Prime Editing system for E. coli is capable of multiplexed editing, we introduced another compatible plasmid pVRb carrying a second PEgRNA for a G deletion (pVRb\\_PEgRNA\\_312Gdel) into E. coli DH10B harboring the 3-plasmid system for TAA insertion, T deletion, T to an A substitution, two Ts to two Cs substitution, and combinatory editing. We successfully identified all expected dual-editing events (Fig. 2c), however the editing efficiency was relatively low (<1%).",
+              "page": null,
+              "section_path": [
+                "Results"
+              ],
+              "figure_id": null,
+              "table_id": null
+            },
+            {
+              "evidence_id": "ev_00002",
+              "quote": "Assessing the ability of chromosomal DNA editing with CRISPR-Prime Editing system in E. coli. Beyond editing plasmid DNA, we also assessed if CRISPR-Prime Editing system is capable of engineering chromosomal DNA in E. coli. To this end, two metabolic pathways for lactose and D-galactose degradation in E. coli MG1655 were selected. β-galactosidase, encoded by the lacZ gene within the lactose metabolic pathway, metabolizes X-gal (5-bromo-4-chloro-3-indolyl-β-D-galactoside, an analog of lactose) into 5-bromo-4-chloro-indoxyl, which will form dark blue 5,5<sup>′</sup>-dibromo-4,4<sup>′</sup>-dichloro-indigo by oxidation. On the contrary, X-gal remains colorless if the lacZ gene is inactivated (Fig. 4a, b). An early stop codon was designed to be introduced into the lacZ gene of E. coli MG1655 by insertion of TAG, deletion of GC, and substitution of GT to TA. In general, the editing efficiencies similar to those for plasmid DNA engineering were observed by counting the white colonies out of the total formed colonies on X-gal supplemented LB plates (Fig. 4c). Editing efficiencies of substitution, insertion, and deletion were 6.8%, 12.2%, and 26%, respectively. To validate the editing events, the targeted region of eight randomly picked non-blue colonies from each designed DNA engineering event were PCR amplified and further subjected to Sanger sequencing. All sequenced clones bore the expected edits (Fig. 4d–f). Moreover, another gene, the galK gene from the Leloir pathway of D-galactose metabolism in E. coli MG1655 was tested. The loss of function of the galK gene can be positively selected by supplementing a galactose analog 2-deoxy-D-galactose (2-DOG), as 2-DOG will be metabolized by galactokinase (encoded by the galK gene) to form a toxic compound 2- deoxy-galactose-1-phosphate, which cannot be further metabolized<sup>22</sup> (Fig. 4g, h). A TAA stop codon was designed to be inserted into the galK gene in E. coli MG1655 strain. Of the visible colonies on the 2-DOG supplemented M63 agar plate, all four that were randomly picked showed the expected insertion (Fig. 4i).",
+              "page": null,
+              "section_path": [
+                "Results"
+              ],
+              "figure_id": null,
+              "table_id": null
+            },
+            {
+              "evidence_id": "ev_00003",
+              "quote": "High throughput electroporation of multiple plasmids. In vivo assay of strains carrying multiple plasmids were performed from freshly transformed E. coli DH10β strains. A HT Nucleofector™ System (Lonza, Switzerland) together with 96- well Nucleocuvette plates (Lonza, Switzerland) were used for high throughput electroporation. Before electroporation, the 96-well Nucleocuvette plate was transferred from −20 °C to ice for 10 min. Twenty microliter of electrocompetent DH10β or MG1655 E. coli cells with 10% glycerol were added into each desired well, 0.5 µL of each plasmid (about 30 ng) was subsequently added. A total amount of plasmid DNA of <100 ng per transformation normally performed well. The program used in this study is X\\_bacteria\\_14, with the code GN-100. After electroporation, 180 µL of fresh LB broth were added into each well. The cultures were then transferred into a 96-deep well plate containing 200 µL of fresh LB broth (making the transformation culture in total 400 µL) for recovery for 1 h at 37 °C and 300 rpm.",
+              "page": null,
+              "section_path": [
+                "Methods"
+              ],
+              "figure_id": null,
+              "table_id": null
+            },
+            {
+              "evidence_id": "ev_00004",
+              "quote": "The illumina reads obtained from the sequenced samples were trimmed using Trim Galore (v. 0.6.4\\_dev, Cutadapt v. 2.10) with the switches --length 100 and --quality 20. All mutation calls were performed using breseq (v. 0.33.2, bowtie2 v. 2.3.4.1)<sup>23,39</sup> with default parameters. For plasmid-based editing, the E. coli DH10B genome sequence NC\\_010473 is used as the reference, while for chromosomebased editing, the E. coli MG1655 genome sequence NC\\_ U00096 is used as the reference, both along with the relevant plasmids. Mutation calls that existed in all samples as well as the parental strain were not counted as off-target effects.",
+              "page": null,
+              "section_path": [
+                "Illumina deep sequencing-based genome-wide on/off-target evaluation and"
+              ],
+              "figure_id": null,
+              "table_id": null
+            }
+          ],
+          "reasoning": {
+            "extraction_method": "hybrid",
+            "notes": "Two strains used: DH10B for plasmid-based editing experiments, MG1655 for chromosome-based editing experiments. Both explicitly named in methods and results.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": true,
+      "quality": {
+        "completeness": 0.1,
+        "reproducibility": 0.2,
+        "evidence_level": 0.7178,
+        "extraction_confidence": 0.7178,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "time"
+        ],
+        "overall_score": 23.45,
+        "confidence_label": "medium",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 10.0,
+            "reason": "1 of 10 required design fields are defined.",
+            "missing_fields": [
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 50.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 71.78,
+            "reason": "1 of 1 reported fields have bound evidence; 15 fields are unknown; source quality is 0.75.",
+            "grade": "C",
+            "coverage": 1.0,
+            "source_quality": 0.75,
+            "source_distribution": {
+              "methods": 1,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 2,
+              "other": 1
+            },
+            "unknown_fraction": 0.9375,
+            "issues": [
+              "majority_fields_unknown"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 20.0,
+            "reason": "1 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "1 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "15 unknown fields, including 4 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 0 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 1,
+        "fields_with_evidence": 1,
+        "unknown_fields": 15,
+        "reported_evidence_coverage": 1.0,
+        "overall_field_coverage": 0.0625
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "biosensor_platform",
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "The paper develops a genome engineering toolkit (prime editing) applicable to metabolic engineering and strain development. The GFP-based screening assay functions as a biosensor platform for editing detection. While not a metabolic engineering study per se (no specific metabolite production), the toolkit is explicitly framed as enabling metabolic engineering and DBTL cycles. The biosensor aspect (GFP fluorescence loss as readout) is central to the screening workflow.",
+    "previous_extraction_task_id": "7fc3a97432d1425f9c4bf169956aa9e9"
+  },
+  "engineering_decision_map": {
+    "goal": "To adapt a CRISPR-Prime Editing-based, DSB-free, versatile, single-nucleotide resolution genetic manipulation toolkit for prokaryotes (specifically E. coli) that can introduce substitutions, deletions, insertions, and combinations thereof in both plasmids and the chromosome",
+    "initial_bottleneck": "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 causes cell death in bacteria lacking NHEJ; prime editing demonstrated in eukaryotes offers potential solution",
+    "key_hypothesis": "Validate that CRISPR-Prime Editing system can perform diverse DNA engineering events (insertion, deletion, substitution, combinatorial) on plasmid DNA in E. coli",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M4",
+        "action_summary": "Transformation with three-plasmid system (pCDF-GFPplus reporter, pPEgRNA expressing guide targeting GFP, pCRISPR-PE expressing Cas9n-M-MLV2 fusion) programmed for four editing types: (1) TAA 3-bp insertion, (2) T to A 1-bp substitution, (3) T 1-bp deletion, (4) combinatorial edit; induction with 200 ng/mL ATc for 24 h"
+      },
+      {
+        "step": 2,
+        "design_action": "M9",
+        "action_summary": "Induction with eight different ATc concentrations: 0, 10, 20, 50, 100, 200, 500, 1000 ng/mL for four editing events (3 bp insertion, 1 bp deletion, 1 bp substitution, combinatorial)"
+      },
+      {
+        "step": 3,
+        "design_action": "M4",
+        "action_summary": "PBS length variants: 5, 8, 13, 17 nt; RTT scaffold length variants: 4, 5, 8, 13, 20 nt; tested for TAA-STOP codon insertion editing; induction with 200 ng/mL ATc"
+      },
+      {
+        "step": 4,
+        "design_action": "M4",
+        "action_summary": "Designed insertions: 3, 12, 18, 33 bp; designed deletions: 1, 10, 23, 36, 49, 97 bp; induction with 200 ng/mL ATc"
+      },
+      {
+        "step": 5,
+        "design_action": "M1",
+        "action_summary": "For lacZ: designed early stop codon introduction via TAG insertion, GC deletion, or GT to TA substitution (three separate experiments); for galK: designed TAA stop codon insertion; induction with 200 ng/mL ATc"
+      },
+      {
+        "step": 6,
+        "design_action": "M6",
+        "action_summary": "Introduction of fourth plasmid pVRb_PEgRNA (pSC101 ori, KanR) carrying second PEgRNA for G deletion, into cells already harboring three-plasmid system programmed for TAA insertion, T deletion, T to A substitution, two Ts to two Cs substitution, or combinatory editing; induction with 200 ng/mL ATc"
+      },
+      {
+        "step": 7,
+        "design_action": "M4",
+        "action_summary": "Designed and validated two strategies for second nick introduction (details in Supplementary Note 1); co-transformation with plasmid expressing second nicking sgRNA (pnsgRNA) alongside PE system"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "biosensor_platform",
+      "metabolic_engineering"
+    ],
+    "goal": "To adapt a CRISPR-Prime Editing-based, DSB-free, versatile, single-nucleotide resolution genetic manipulation toolkit for prokaryotes (specifically E. coli) that can introduce substitutions, deletions, insertions, and combinations thereof in both plasmids and the chromosome",
+    "initial_bottleneck": "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 causes cell death in bacteria lacking NHEJ; prime editing demonstrated in eukaryotes offers potential solution",
+    "key_hypothesis": "Validate that CRISPR-Prime Editing system can perform diverse DNA engineering events (insertion, deletion, substitution, combinatorial) on plasmid DNA in E. coli"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 6,
+    "needs_review": 1,
+    "rejected": 0,
+    "needs_review_steps": [
+      {
+        "step": 1,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Transformation with three-plasmid system (pCDF-GFPplus reporter, pPEgRNA expressing guide targeting GFP, pCRISPR-PE expressing Cas9n-M-MLV2 fusion) programmed for four editing types: (1) TAA 3-bp insertion, (2) T to A 1-bp substitution, (3) T 1-bp deletion, (4) combinatorial edit; induction with 200 ng/mL ATc for 24 h",
+        "trigger": "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 causes cell death in bacteria lacking NHEJ; prime editing demonstrated in eukaryotes offers potential solution",
+        "evidence_level": "软",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-014"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Induction with eight different ATc concentrations: 0, 10, 20, 50, 100, 200, 500, 1000 ng/mL for four editing events (3 bp insertion, 1 bp deletion, 1 bp substitution, combinatorial)",
+        "trigger": "Cas9n-M-MLV2 fusion is under tetracycline-inducible promoter; need to determine optimal induction level",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-014"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "PBS length variants: 5, 8, 13, 17 nt; RTT scaffold length variants: 4, 5, 8, 13, 20 nt; tested for TAA-STOP codon insertion editing; induction with 200 ng/mL ATc",
+        "trigger": "Initial PEgRNA design (13 nt PBS, 13 nt RTT) based on eukaryotic studies; need to determine if optimal in bacterial context",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-014"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Designed insertions: 3, 12, 18, 33 bp; designed deletions: 1, 10, 23, 36, 49, 97 bp; induction with 200 ng/mL ATc",
+        "trigger": "Need to define the practical range of edit sizes achievable with the toolkit",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-014"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "lacZ",
+        "decision_summary": "For lacZ: designed early stop codon introduction via TAG insertion, GC deletion, or GT to TA substitution (three separate experiments); for galK: designed TAA stop codon insertion; induction with 200 ng/mL ATc",
+        "trigger": "Successful plasmid editing demonstrated; need to test if system works on chromosomal DNA",
+        "evidence_level": "硬",
+        "reason_nature": "现成可得",
+        "source_ddr_id": "DDR-014"
+      },
+      {
+        "id": "D6",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Introduction of fourth plasmid pVRb_PEgRNA (pSC101 ori, KanR) carrying second PEgRNA for G deletion, into cells already harboring three-plasmid system programmed for TAA insertion, T deletion, T to A substitution, two Ts to two Cs substitution, or combinatory editing; induction with 200 ng/mL ATc",
+        "trigger": "Desire to extend toolkit to multiplexed editing for more complex engineering tasks",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-014"
+      },
+      {
+        "id": "D7",
+        "type": "engineering_decision",
+        "target": "pnsgRNA",
+        "decision_summary": "Designed and validated two strategies for second nick introduction (details in Supplementary Note 1); co-transformation with plasmid expressing second nicking sgRNA (pnsgRNA) alongside PE system",
+        "trigger": "Second nick in non-edited strand increases PE efficiency in some mammalian and plant cells (refs 19, 20)",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-014"
+      }
+    ],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "To adapt a CRISPR-Prime Editing-based, DSB-free, versatile, single-nucleotide resolution genetic manipulation toolkit for prokaryotes (specifically E. coli) that can introduce substitutions, deletions, insertions, and combinations thereof in both plasmids and the chromosome",
+    "initial_bottleneck": "CRISPR base editors are restricted to single-nucleotide substitutions and narrow editing windows; DSB-based CRISPR-Cas9 causes cell death in bacteria lacking NHEJ; prime editing demonstrated in eukaryotes offers potential solution",
+    "hypothesis": "Validate that CRISPR-Prime Editing system can perform diverse DNA engineering events (insertion, deletion, substitution, combinatorial) on plasmid DNA in E. coli",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 1,
+      "rule": "When adapting eukaryotic genome editing tools for bacteria, single-strand nicking systems (e.g., prime editing) are likely to be less toxic and more applicable than double-strand break systems (e.g., CRISPR-Cas9), because most bacteria lack NHEJ and DSBs are lethal.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 2,
+      "rule": "When optimizing inducible CRISPR systems, identify the dose-response plateau region and select a concentration within this range to balance efficiency and potential toxicity.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 3,
+      "rule": "When designing PEgRNAs for prime editing in bacteria, use a PBS of 13-17 nt and an RTT scaffold of approximately 13 nt, as these lengths balance binding stability, editing window accessibility, and reverse transcription efficiency.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 4,
+      "rule": "When using prime editing for bacterial genome engineering, expect high efficiency for small edits (1-10 bp) and sharp efficiency decline for larger edits (>20 bp); plan for lower success rates or increased screening effort when designing edits >20 bp.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 6,
+      "rule": "When multiplexing prime editing in bacteria, delivering multiple PEgRNAs from separate compatible plasmids can achieve simultaneous editing, but expect low efficiency (<1%); further optimization of PEgRNA processing or delivery is needed for practical multiplexing.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 7,
+      "rule": "When adapting prime editing enhancements from eukaryotes to bacteria, be cautious with strategies that introduce additional nicks or breaks, as bacteria lacking NHEJ may not tolerate them; test viability first before assessing efficiency gains.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    }
+  ]
+}
