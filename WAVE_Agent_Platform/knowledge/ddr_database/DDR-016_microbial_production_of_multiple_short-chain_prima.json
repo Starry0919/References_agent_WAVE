@@ -559,12 +559,12 @@
     "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。38 个字段待人工审核。",
     "human_review_status": "pending",
     "review_notes": "",
-    "paper_extraction_task_id": "12ba04883a6447c0904acd8e2e00a24d",
+    "paper_extraction_task_id": "3da0777d17b04684b185b4377175da19",
     "paper_index": 0,
     "paper_extraction_detail": {
-      "paper_id": "817080c7686c4f0ebac5751ff9da10f2_07_2020_10.1038_s41467-020-20423-6",
+      "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
       "identity": {
-        "paper_id": "817080c7686c4f0ebac5751ff9da10f2_07_2020_10.1038_s41467-020-20423-6",
+        "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
         "title": "Microbial production of multiple short-chain primary amines via retrobiosynthesis",
         "authors": [],
         "journal": null,
@@ -1241,7 +1241,7 @@
       "protein_engineering"
     ],
     "engineering_paper_type_rationale": "Core contributions are pathway design + precursor-supply/competing-pathway engineering for SCPA overproduction (metabolic_engineering); a final proof-of-concept section applies rational mutagenesis to VlmD (protein_engineering). Biosensor, evolutionary and chassis-redesign strategies absent.",
-    "previous_extraction_task_id": "3da0777d17b04684b185b4377175da19"
+    "previous_extraction_task_id": "12ba04883a6447c0904acd8e2e00a24d"
   },
   "engineering_decision_map": {
     "goal": "Develop a general strategy combining retrobiosynthesis and a precursor selection step to design biosynthetic pathways for 15 short-chain primary amines (SCPAs), and construct platform E. coli strains producing SCPAs first from fed amino-acid precursors and then de novo from glucose, including enhanced iso-butylamine and ethylamine production.",
