@@ -1,0 +1,1260 @@
+{
+  "ddr_id": "DDR-017",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Biosynthesizing structurally diverse diols via a general route combining oxidative and reductive formations of OH-groups",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Biosynthesizing structurally diverse diols via a general route combining oxidative and reductive formations of OH-groups",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1038/s41467-022-29216-5"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "hilA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "FM-II + 25 mM respective amino acid, 37 °C, 200 rpm, 48 h, 1 mM IPTG induction at OD 0.4-0.6"
+      },
+      "trigger": {
+        "observation": "",
+        "reasoning": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+        "source_location": "E. coli BL21(DE3)"
+      },
+      "evidence": {
+        "description": [
+          "results_p005",
+          "results_p006",
+          "results_p012",
+          "results_p016"
+        ],
+        "source": "论文实测",
+        "source_location": "Not explicitly reported in main text (requires_supplement)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Co-expression of MFL (pET28a) + AADvul/KDC/YqhD (pZA-aky) = DL01; variants DL02 (hilA), DL03 (hilB), DL04 (griE), DL05-DL08 (avi/bpe x pdc/kdc for 1,3-PDO)",
+      "result": {
+        "metric": "GC-FID diol titer; GC-MS identity confirmation",
+        "before": "",
+        "after": "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3-PDO",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "FM-II + 25 mM threonine, 48 h shake flask"
+      },
+      "trigger": {
+        "observation": "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3-PDO",
+        "reasoning": "Produce 1,3-PDO by extending threonine catabolism (threonine hydroxylase AVI/BPE + endogenous IlvA deaminase + KDC/PDC + YqhD)",
+        "source_location": "E. coli BL21(DE3)"
+      },
+      "evidence": {
+        "description": [
+          "results_p015",
+          "results_p016"
+        ],
+        "source": "论文实测",
+        "source_location": "Comparison among the four enzyme combinations; no empty-vector control reported",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "过表达",
+      "implementation_detail": "First iteration: AVI or BPE assembled with KDC or PDC relying on endogenous IlvA (4 strains); second iteration: overexpression of hydroxylase + decarboxylase + YqhD to enforce hydroxylation-first order (DL05-DL08)",
+      "result": {
+        "metric": "GC-FID 1,3-PDO titer; in vitro threonine-deaminase assay on 4-hydroxy-threonine (Suppl. Fig. 14)",
+        "before": "",
+        "after": "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 (PDC) still zero.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "FM-II + 5 mM precursor, 48 h; in vitro assays per Methods"
+      },
+      "trigger": {
+        "observation": "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 (PDC) still zero.",
+        "reasoning": "Determine which of six possible reaction orders (R1-R6) operate for IPDO production from leucine",
+        "source_location": "E. coli BL21(DE3)"
+      },
+      "evidence": {
+        "description": [
+          "results_p018",
+          "results_p019",
+          "results_p022",
+          "results_p023"
+        ],
+        "source": "论文实测",
+        "source_location": "Strain x precursor combinations act as mutual route tests; in vitro absence-of-enzyme conditions (Suppl. Fig. 16)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Partial-pathway strains DL01-R12 (pZA-aky), DL01-R34 (pZA-ky + pET-mfl), DL01-R4 (pET-mfl) fed with pathway intermediates (5 mM 4OH-Leu, KIC, isopentanol); in vitro activity assays of KDC/YqhD/MFL on candidate intermediates",
+      "result": {
+        "metric": "IPDO titer (GC); in vitro enzyme activities",
+        "before": "",
+        "after": "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack of enzyme activity on required intermediates; both routes co-exist from leucine with R1 dominant",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "in silico"
+      },
+      "trigger": {
+        "observation": "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack of enzyme activity on required intermediates; both routes co-exist from leucine with R1 dominant",
+        "reasoning": "Compare thermodynamic profiles of R1 vs R3 and conceptualize an ideal pathway driving-force profile",
+        "source_location": "not_applicable (computational)"
+      },
+      "evidence": {
+        "description": [
+          "results_p024",
+          "results_p025",
+          "results_p026",
+          "discussion_p004"
+        ],
+        "source": "论文实测",
+        "source_location": "not_applicable",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Group-contribution estimation of standard Gibbs free energies; schematic profile comparison (Fig. 4)",
+      "result": {
+        "metric": "Delta_rG profiles",
+        "before": "",
+        "after": "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "enzyme_activity_improvement"
+      ],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "FM-II ± 25 mM leucine, 48 h"
+      },
+      "trigger": {
+        "observation": "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux",
+        "reasoning": "Identify best hydroxylase and alpha-keto decarboxylase for IPDO production (Route 1)",
+        "source_location": "E. coli BL21(DE3)"
+      },
+      "evidence": {
+        "description": [
+          "results_p027",
+          "results_p029",
+          "results_p032",
+          "discussion_p008"
+        ],
+        "source": "论文实测",
+        "source_location": "IP01 (=DL01) as baseline strain",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Strains IP01-IP07 swapping decarboxylase (KDC/PDC/THI3) or hydroxylase (MFL/AVI/IDO/GOX/BPE); codon-optimized synthesized genes",
+      "result": {
+        "metric": "IPDO titer",
+        "before": "",
+        "after": "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3 mg/L); IP01 retained for further work due to lower Km of MFL",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 6,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "leuA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "FM-II without leucine supplementation, 48 h"
+      },
+      "trigger": {
+        "observation": "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3 mg/L); IP01 retained for further work due to lower Km of MFL",
+        "reasoning": "Enhance endogenous leucine/KIC supply for IPDO production from glucose without leucine feeding",
+        "source_location": "E. coli BL21(DE3)"
+      },
+      "evidence": {
+        "description": [
+          "results_p028",
+          "results_p032"
+        ],
+        "source": "论文实测",
+        "source_location": "IP01 baseline (15.3 mg/L without leucine)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "IP08: overexpress leuA^fbrBCD (E. coli W3110) on p15AS under J23119; IP09: + alsS (B. subtilis) and ilvCD (E. coli); IP10: + tyrB (E. coli)",
+      "result": {
+        "metric": "IPDO titer; extracellular leucine and valine concentrations (HPLC)",
+        "before": "",
+        "after": "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62-fold IP09) with valine reduced to 5.43 mg/L and leucine 0.35 mg/L",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 7,
+      "decision_type": "engineering_decision",
+      "design_action": "M4",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Selection: M9 + 4 g/L yeast, 0.2 g/L leucine, 0.2 g/L alpha-KG, 0.1 mM IPTG, 48 h plates; in vitro assay 30 °C 1 h; IP11 shake-flask fermentation 96 h"
+      },
+      "trigger": {
+        "observation": "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62-fold IP09) with valine reduced to 5.43 mg/L and leucine 0.35 mg/L",
+        "reasoning": "Improve catalytic activity of rate-limiting hydroxylase MFL via random mutagenesis and growth-coupled selection",
+        "source_location": "E. coli Δ3A (BL21 ΔsucAΔaceAΔputA (DE3)(pLysS)) selection host; BL21(DE3) for enzyme characterization and production"
+      },
+      "evidence": {
+        "description": [
+          "results_p033",
+          "results_p039",
+          "results_p040",
+          "results_p041",
+          "results_p042",
+          "results_p043",
+          "discussion_p006"
+        ],
+        "source": "论文实测",
+        "source_location": "Δ3A + empty pET28a (growth control); MFL_wt (activity baseline); IP10 (fermentation control strain)",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "EP-PCR random mutagenesis of mfl (library 5000-6000; second library biased toward 2-3 mutations); growth-coupled selection in succinate auxotroph; replacement of MFL_wt by MFL_m1 in IP10 -> IP11",
+      "result": {
+        "metric": "Colony size; in vitro hydroxylase activity (succinate formation) on leucine and KIC; IPDO titer and OD time course; extracellular Leu/Val",
+        "before": "",
+        "after": "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/1.3-fold); second library: MFL_Hm1 (D57V/K235E) 2.5-fold; IP11 produced 0.31 g/L IPDO, 1.3-2.0x IP10 over 24-96 h; valine byproduct persisted",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 8,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "glucose uptake 15 mmol/g/DCW; O2/N/P/S unconstrained"
+      },
+      "trigger": {
+        "observation": "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/1.3-fold); second library: MFL_Hm1 (D57V/K235E) 2.5-fold; IP11 produced 0.31 g/L IPDO, 1.3-2.0x IP10 over 24-96 h; valine byproduct persisted",
+        "reasoning": "Estimate theoretical IPDO yield from glucose",
+        "source_location": "not_applicable (in silico, E. coli K-12 W3110 model iY75_1357)"
+      },
+      "evidence": {
+        "description": [
+          "results_p025",
+          "methods_p014",
+          "methods_p015",
+          "methods_p016",
+          "methods_p017",
+          "methods_p018",
+          "methods_p019"
+        ],
+        "source": "论文实测",
+        "source_location": "not_applicable",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Model expansion with 4 IPDO pathway reactions (iY75_1357_IPDO); constraint-based FBA",
+      "result": {
+        "metric": "predicted theoretical yield",
+        "before": "",
+        "after": "theoretical IPDO yield 0.628 mol/mol glucose",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "transport_engineering"
+      ],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    }
+  ],
+  "excluded_records": [],
+  "engineering_problem": {
+    "problem_statement": "Establish a general biosynthetic platform for producing structurally diverse C3-C5 diols (especially branched-chain 1,n-diols) in E. coli by combining an oxidative pathway (amino-acid hydroxylase) with a reductive pathway (deaminase -> decarboxylase -> aldehyde reductase) for formation of the two hydroxyl groups, and demonstrate the route by synthesizing 10 diols and optimizing IPDO production.",
+    "problem_type": [
+      "enzyme activity bottleneck",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3",
+      "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 ",
+      "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack ",
+      "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux",
+      "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3",
+      "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62",
+      "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3-PDO",
+      "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 (PDC) still zero.",
+      "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack of enzyme activity on required intermediates; both routes co-exist from leucine with R1 dominant",
+      "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux",
+      "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3 mg/L); IP01 retained for further work due to lower Km of MFL",
+      "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62-fold IP09) with valine reduced to 5.43 mg/L and leucine 0.35 mg/L",
+      "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/1.3-fold); second library: MFL_Hm1 (D57V/K235E) 2.5-fold; IP11 produced 0.31 g/L IPDO, 1.3-2.0x IP10 over 24-96 h; valine byproduct persisted"
+    ],
+    "bottlenecks": [
+      "hilA: ",
+      ": 9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 m",
+      ": First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.",
+      ": R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L fro",
+      ": R1 shows a stronger initial exergonic step and a more harmonized profile, consis",
+      "leuA: KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); M",
+      ": IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/",
+      ": MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC p"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。29 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "f104d8fe976846a9abc9eca95de2705c",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "367036c3954648ea9e1691a9df36ace0_04_2022_曾老师",
+      "identity": {
+        "paper_id": "367036c3954648ea9e1691a9df36ace0_04_2022_曾老师",
+        "title": "Biosynthesizing structurally diverse diols via a general route combining oxidative and reductive formations of OH-groups",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1038/s41467-022-29216-5"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "Original strain construction, cultivation, enzyme assays, directed evolution and modeling reported as own work (Results; Methods)",
+          "Nature Communications research article format with Methods, Data availability, Reporting Summary (additional_information_p001)",
+          "Received/Accepted dates present (data_availability_p002)"
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BL21(DE3)",
+          "paper_strain_normalized": "Escherichia coli BL21(DE3)",
+          "role": "host",
+          "paper_label": "BL21(DE3)",
+          "lineage_or_engineering_context": "Expression and production host for all DL/IP strains and protein purification",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type lab strain background; pathway plasmids pET28a/pZA/p15AS variants",
+          "evidence": [
+            "methods_p001",
+            "results_p005"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly stated in Methods as expression host and in Results as host of DL01 etc."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Top10",
+          "paper_strain_normalized": "Escherichia coli Top10",
+          "role": "other",
+          "paper_label": "Top10",
+          "lineage_or_engineering_context": "Cloning host for plasmid construction and EP-PCR library",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "methods_p001",
+            "methods_p003",
+            "methods_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Stated in Methods for gene cloning."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli BL21 ΔsucAΔaceAΔputA (DE3)(pLysS)",
+          "paper_strain_normalized": "Escherichia coli BL21(DE3)(pLysS) ΔsucA ΔaceA ΔputA",
+          "role": "engineered",
+          "paper_label": "Δ3A",
+          "lineage_or_engineering_context": "Succinate-auxotrophic selection strain; gift from B. Bühler group (ref 35, Theodosiou et al.) - constructed previously, used here as screening tool",
+          "combination_status": "demonstrated_as_received",
+          "genotype": "ΔsucA ΔaceA ΔputA, pLysS",
+          "evidence": [
+            "methods_p001",
+            "results_p033"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Full genotype given in Methods; engineered auxotroph, not a natural wild type; its construction is background (Q2 fails for DDR purposes) but its optimization as selection tool was done in this paper."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "Escherichia coli W3110 (K-12 derivative)",
+          "role": "other",
+          "paper_label": "W3110",
+          "lineage_or_engineering_context": "Gene donor for yqhD and leuA^fbrBCD; also the reference strain of the iY75_1357 FBA model; not used as experimental wet-lab host",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "results_p005",
+            "results_p028",
+            "methods_p014"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Mentioned as gene source and FBA model strain; distinguished from actual experimental host BL21(DE3)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655",
+          "paper_strain_normalized": "Escherichia coli MG1655 (K-12)",
+          "role": "other",
+          "paper_label": "MG1655",
+          "lineage_or_engineering_context": "Listed as template DNA source in EP-PCR protocol (methods_p004) - likely a template-copying inconsistency since the mutagenesis target is mfl (see conflicts)",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "methods_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.8,
+          "reasoning": "Only occurrence is the EP-PCR component list; role is template DNA, not an experimental host."
+        },
+        {
+          "paper_organism": "multiple (enzyme donor species)",
+          "paper_strain_raw": "Methylobacillus flagellatus KT; Proteus vulgaris; Lactobacillus lactis; Pantoea ananatis AJ13355; Streptomyces DSM 40835; Agrobacterium vitis; Bordetella petrii; Bacillus thuringiensis; Gluconobacter oxydans; Zymomonas mobilis; Saccharomyces cerevisiae; Bacillus subtilis",
+          "paper_strain_normalized": "gene-donor organisms, not experimental hosts",
+          "role": "other",
+          "paper_label": "enzyme origins",
+          "lineage_or_engineering_context": "Sources of heterologous enzymes (hydroxylases, deaminase, decarboxylases, alsS); genes synthesized with optimized codons",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "results_p005",
+            "results_p006",
+            "results_p016",
+            "results_p027",
+            "methods_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Recorded to avoid conflating donor species with experimental strains."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules, stop at evidence-bound extraction and do not default to K-12 adaptation."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 5 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "metabolic_engineering",
+      "protein_engineering"
+    ],
+    "engineering_paper_type_rationale": "Core contributions are pathway design + precursor-supply/flux metabolic engineering in E. coli; a second major contribution is directed evolution (protein engineering) of hydroxylase MFL. Not a biosensor, ALE, or chassis-redesign paper."
+  },
+  "engineering_decision_map": {
+    "goal": "Establish a general biosynthetic platform for producing structurally diverse C3-C5 diols (especially branched-chain 1,n-diols) in E. coli by combining an oxidative pathway (amino-acid hydroxylase) with a reductive pathway (deaminase -> decarboxylase -> aldehyde reductase) for formation of the two hydroxyl groups, and demonstrate the route by synthesizing 10 diols and optimizing IPDO production.",
+    "initial_bottleneck": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+    "key_hypothesis": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M3",
+        "action_summary": "Co-expression of MFL (pET28a) + AADvul/KDC/YqhD (pZA-aky) = DL01; variants DL02 (hilA), DL03 (hilB), DL04 (griE), DL05-DL08 (avi/bpe x pdc/kdc for 1,3-PDO)"
+      },
+      {
+        "step": 2,
+        "design_action": "M3",
+        "action_summary": "First iteration: AVI or BPE assembled with KDC or PDC relying on endogenous IlvA (4 strains); second iteration: overexpression of hydroxylase + decarboxylase + YqhD to enforce hydroxylation-first order (DL05-DL08)"
+      },
+      {
+        "step": 3,
+        "design_action": "M3",
+        "action_summary": "Partial-pathway strains DL01-R12 (pZA-aky), DL01-R34 (pZA-ky + pET-mfl), DL01-R4 (pET-mfl) fed with pathway intermediates (5 mM 4OH-Leu, KIC, isopentanol); in vitro activity assays of KDC/YqhD/MFL on candidate intermediates"
+      },
+      {
+        "step": 4,
+        "design_action": "M3",
+        "action_summary": "Group-contribution estimation of standard Gibbs free energies; schematic profile comparison (Fig. 4)"
+      },
+      {
+        "step": 5,
+        "design_action": "M3",
+        "action_summary": "Strains IP01-IP07 swapping decarboxylase (KDC/PDC/THI3) or hydroxylase (MFL/AVI/IDO/GOX/BPE); codon-optimized synthesized genes"
+      },
+      {
+        "step": 6,
+        "design_action": "M3",
+        "action_summary": "IP08: overexpress leuA^fbrBCD (E. coli W3110) on p15AS under J23119; IP09: + alsS (B. subtilis) and ilvCD (E. coli); IP10: + tyrB (E. coli)"
+      },
+      {
+        "step": 7,
+        "design_action": "M4",
+        "action_summary": "EP-PCR random mutagenesis of mfl (library 5000-6000; second library biased toward 2-3 mutations); growth-coupled selection in succinate auxotroph; replacement of MFL_wt by MFL_m1 in IP10 -> IP11"
+      },
+      {
+        "step": 8,
+        "design_action": "M3",
+        "action_summary": "Model expansion with 4 IPDO pathway reactions (iY75_1357_IPDO); constraint-based FBA"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "metabolic_engineering",
+      "protein_engineering"
+    ],
+    "goal": "Establish a general biosynthetic platform for producing structurally diverse C3-C5 diols (especially branched-chain 1,n-diols) in E. coli by combining an oxidative pathway (amino-acid hydroxylase) with a reductive pathway (deaminase -> decarboxylase -> aldehyde reductase) for formation of the two hydroxyl groups, and demonstrate the route by synthesizing 10 diols and optimizing IPDO production.",
+    "initial_bottleneck": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+    "key_hypothesis": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 3,
+    "needs_review": 0,
+    "rejected": 5,
+    "needs_review_steps": [
+      {
+        "step": 2,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 3,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 4,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 5,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 8,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "hilA",
+        "decision_summary": "Co-expression of MFL (pET28a) + AADvul/KDC/YqhD (pZA-aky) = DL01; variants DL02 (hilA), DL03 (hilB), DL04 (griE), DL05-DL08 (avi/bpe x pdc/kdc for 1,3-PDO)",
+        "trigger": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "First iteration: AVI or BPE assembled with KDC or PDC relying on endogenous IlvA (4 strains); second iteration: overexpression of hydroxylase + decarboxylase + YqhD to enforce hydroxylation-first order (DL05-DL08)",
+        "trigger": "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3-PDO",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Partial-pathway strains DL01-R12 (pZA-aky), DL01-R34 (pZA-ky + pET-mfl), DL01-R4 (pET-mfl) fed with pathway intermediates (5 mM 4OH-Leu, KIC, isopentanol); in vitro activity assays of KDC/YqhD/MFL on candidate intermediates",
+        "trigger": "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 (PDC) still zero.",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Group-contribution estimation of standard Gibbs free energies; schematic profile comparison (Fig. 4)",
+        "trigger": "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack of enzyme activity on required intermediates; both routes co-exist from leucine with R1 dominant",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Strains IP01-IP07 swapping decarboxylase (KDC/PDC/THI3) or hydroxylase (MFL/AVI/IDO/GOX/BPE); codon-optimized synthesized genes",
+        "trigger": "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D6",
+        "type": "engineering_decision",
+        "target": "leuA",
+        "decision_summary": "IP08: overexpress leuA^fbrBCD (E. coli W3110) on p15AS under J23119; IP09: + alsS (B. subtilis) and ilvCD (E. coli); IP10: + tyrB (E. coli)",
+        "trigger": "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3 mg/L); IP01 retained for further work due to lower Km of MFL",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D7",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "EP-PCR random mutagenesis of mfl (library 5000-6000; second library biased toward 2-3 mutations); growth-coupled selection in succinate auxotroph; replacement of MFL_wt by MFL_m1 in IP10 -> IP11",
+        "trigger": "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62-fold IP09) with valine reduced to 5.43 mg/L and leucine 0.35 mg/L",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      },
+      {
+        "id": "D8",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Model expansion with 4 IPDO pathway reactions (iY75_1357_IPDO); constraint-based FBA",
+        "trigger": "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/1.3-fold); second library: MFL_Hm1 (D57V/K235E) 2.5-fold; IP11 produced 0.31 g/L IPDO, 1.3-2.0x IP10 over 24-96 h; valine byproduct persisted",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-017"
+      }
+    ],
+    "edges": [
+      {
+        "from": "D1",
+        "to": "D2",
+        "relation": "triggered_by",
+        "evidence": "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3-PDO"
+      },
+      {
+        "from": "D2",
+        "to": "D3",
+        "relation": "triggered_by",
+        "evidence": "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 (PDC) still zero."
+      },
+      {
+        "from": "D3",
+        "to": "D4",
+        "relation": "triggered_by",
+        "evidence": "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack of enzyme activity on required intermediates; both routes co-exist from leucine with R1 dominant"
+      },
+      {
+        "from": "D4",
+        "to": "D5",
+        "relation": "triggered_by",
+        "evidence": "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux"
+      },
+      {
+        "from": "D5",
+        "to": "D6",
+        "relation": "triggered_by",
+        "evidence": "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3 mg/L); IP01 retained for further work due to lower Km of MFL"
+      },
+      {
+        "from": "D6",
+        "to": "D7",
+        "relation": "triggered_by",
+        "evidence": "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62-fold IP09) with valine reduced to 5.43 mg/L and leucine 0.35 mg/L"
+      },
+      {
+        "from": "D7",
+        "to": "D8",
+        "relation": "triggered_by",
+        "evidence": "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/1.3-fold); second library: MFL_Hm1 (D57V/K235E) 2.5-fold; IP11 produced 0.31 g/L IPDO, 1.3-2.0x IP10 over 24-96 h; valine byproduct persisted"
+      }
+    ]
+  },
+  "engineering_logic_chain": {
+    "goal": "Establish a general biosynthetic platform for producing structurally diverse C3-C5 diols (especially branched-chain 1,n-diols) in E. coli by combining an oxidative pathway (amino-acid hydroxylase) with a reductive pathway (deaminase -> decarboxylase -> aldehyde reductase) for formation of the two hydroxyl groups, and demonstrate the route by synthesizing 10 diols and optimizing IPDO production.",
+    "initial_bottleneck": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+    "hypothesis": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": []
+}
