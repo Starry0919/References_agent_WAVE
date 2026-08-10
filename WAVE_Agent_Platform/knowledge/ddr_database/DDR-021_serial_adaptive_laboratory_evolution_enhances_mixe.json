@@ -1,0 +1,1512 @@
+{
+  "ddr_id": "DDR-021",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Serial adaptive laboratory evolution enhances mixed carbon metabolic capacity of Escherichia coli",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Serial adaptive laboratory evolution enhances mixed carbon metabolic capacity of Escherichia coli",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1016/j.ymben.2024.04.004"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "medium": "M9 minimal + 0.2% v/v single carbon per phase",
+          "temperature_C": 30,
+          "agitation_rpm": 200,
+          "duration_generations": "1400-1600 total",
+          "selection": "fastest-growing progeny via mid-exponential serial transfer"
+        }
+      },
+      "trigger": {
+        "observation": "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+        "reasoning": "Evolve E. coli MG1655 sequentially on two alternative carbon sources to obtain generalist end-point strains and test serial-ALE as a strain-optimization scheme.",
+        "source_location": "E. coli K-12 MG1655 (clonal ancestral population)"
+      },
+      "evidence": {
+        "description": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p003",
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p004",
+          "4_2_adaptive_laboratory_evolution_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Wild-type MG1655 (fitness baseline); phase-1 ancestors LA/GL as comparators for end-point strains",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Outcome measured directly (growth rates, uptake rates, WGS of evolving populations).",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "Simultaneous mixed-carbon ALE (contrasted with Sandberg et al., 2017; avoided to evade trade-offs/bet-hedging)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Two-phase serial ALE: phase 1 ~800 generations on M9+lactate (LA) or M9+glycerol (GL); carbon switch at fitness plateau; phase 2 600-800 generations on the other carbon (LA-GL, GL-LA); 60 mL M9 in 300 mL flasks, 30 C, 200 rpm, transfer twice daily at OD600 0.4-0.6.",
+      "result": {
+        "metric": "Doubling time per passage vs cumulative generation; end-point SGR and CUR in each carbon source",
+        "before": "",
+        "after": "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without trade-off on the first carbon; GL showed trade-off in lactate (single-ALE specialist).",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When optimizing E. coli for utilization of multiple metabolically related alternative carbon sources (e.g., gluconeogenic glycerol and L-lactate), apply serial single-carbon ALE phases (~800 generations each to fitness plateau) instead of simultaneous mixed-carbon evolution, because sequential adaptation fixed carbon-specialist plus generalist mutations and avoided fitness trade-offs and specialist subpopulation splitting in the tested two-carbon system.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "evolutionary_optimization"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "sequencing": "Illumina HiSeq 2500, 50-cycle SE, TruSeq DNA PCR-free library",
+          "variant_calling": "min coverage 10, min frequency 10%, CLC Genomics Workbench"
+        }
+      },
+      "trigger": {
+        "observation": "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without trade-off on the first carbon; GL showed trade-off in lactate (single-ALE specialist).",
+        "reasoning": "Identify causal adaptive mutations via whole-genome resequencing every 50 generations, using cross-study recurrence and ALEdb as causality priors.",
+        "source_location": "Evolving populations of GL-LA and LA-GL lineages"
+      },
+      "evidence": {
+        "description": [
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p001",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002",
+          "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution_p001",
+          "4_5_whole_genome_re_sequencing_and_data_analysis_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Reference genome NC_000913.3",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "None (measurement only)",
+      "result": {
+        "metric": "Allele-frequency trajectories of mutations",
+        "before": "",
+        "after": "Ordered acquisition of rph-pyrE(del), hfq, cyaA, ppsA, ydcI (LA) and rpoC, glpK (GL); second phase re-acquired ppsA/ydcI/rph-pyrE variants; ppsA(72T>G) and ydcI(5A>C) declined during phase 2 on glycerol.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "evolutionary_optimization"
+      ],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M1",
+      "target": {
+        "gene": "rpoC",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "readout_assay": "48-well plate reader, 300 uL, 30 C, 24 h, OD600 30-min intervals",
+          "media": [
+            "M9 glycerol",
+            "M9 lactate",
+            "M9 mix"
+          ]
+        }
+      },
+      "trigger": {
+        "observation": "WGS revealed recurrent mutations whose individual and combined fitness effects were unknown.",
+        "reasoning": "Quantify causal contribution of each adaptive mutation by reconstructing single and sequential (temporal-order) mutants in the wild-type background.",
+        "source_location": "E. coli MG1655 wild-type background"
+      },
+      "evidence": {
+        "description": [
+          "2_4_fitness_contribution_of_adaptive_mutations_p001",
+          "2_4_fitness_contribution_of_adaptive_mutations_p002",
+          "2_4_fitness_contribution_of_adaptive_mutations_p003",
+          "4_6_reverse_engineering_of_mutations_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Wild-type MG1655; end-point strains as reference for percent-contribution calculation",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Fitness of each construct directly measured in plate-reader growth assays.",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "rpoC reconstruction (abandoned: technical difficulty of engineering essential genes)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Lambda-Red one-step inactivation (Datsenko-Wanner): overlap-extension PCR of mutant allele + pKD13 kanamycin cassette, electroporation into pKD46 cells, 50 ug/mL kanamycin selection, PCR verification, pCP20 marker excision at 42 C. 11 mutants (LA-GL set) and 7 mutants (GL-LA set); rpoC excluded (essential-gene engineering difficulty).",
+      "result": {
+        "metric": "SGR; percent fitness contribution = mutant SGR relative to end-point strain SGR",
+        "before": "",
+        "after": "glpK variants = glycerol specialists (~40% of GL fitness on glycerol); rph-pyrE(del) = generalist (fittest on lactate, 2nd on glycerol); hfq generalist-like but antagonistic in combination; cyaA single mutant poor on lactate; ydcI variants negligible; glpK+ppsA synergy on glycerol (+15%); four-variant combination >80% of end-point fitness.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "evolutionary_optimization"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M11",
+      "target": {
+        "gene": "glpK",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "media": [
+            "M9 mix (0.1% v/v glycerol + 0.1% v/v L-lactate)"
+          ],
+          "assay": "plate-reader growth, biological triplicates"
+        }
+      },
+      "trigger": {
+        "observation": "Specialist mutants (glpK, ppsA) lost their fitness contribution specifically in the mixed-carbon condition whereas generalist rph-pyrE(del) retained its contribution, suggesting positive epistasis.",
+        "reasoning": "Test whether rph-pyrE(del) rescues/strengthens specialist mutants (glpK, ppsA) under mixed-carbon conditions.",
+        "source_location": "E. coli MG1655 background"
+      },
+      "evidence": {
+        "description": [
+          "2_5_co_utilization_of_glycerol_and_lactate_p002",
+          "2_5_co_utilization_of_glycerol_and_lactate_p009",
+          "2_5_co_utilization_of_glycerol_and_lactate_p008"
+        ],
+        "source": "论文实测",
+        "source_location": "Corresponding single mutants and wild-type in identical mixed-carbon condition",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct fitness measurements of constructed double mutants.",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Construction of double mutants glpK(694G>T)-rph-pyrE(del) and ppsA(13G>T)-rph-pyrE(del) using the same recombineering pipeline.",
+      "result": {
+        "metric": "Percent fitness contribution in mixed-carbon condition",
+        "before": "",
+        "after": "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; specialist single mutants showed near-WT contribution in mixed carbon while quadruple mutant gained +47%/+75% over rph-pyrE single and triple mutants.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "evolutionary_optimization"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "sampling": "exponential phase",
+          "rna_prep": "RNASnap + RNase H custom rRNA depletion + DNase I",
+          "sequencing": "HiSeq X Ten, 150-cycle PE"
+        }
+      },
+      "trigger": {
+        "observation": "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; specialist single mutants showed near-WT contribution in mixed carbon while quadruple mutant gained +47%/+75% over rph-pyrE single and triple mutants.",
+        "reasoning": "Characterize global transcriptomic adaptation and condition-specific regulator activities of evolved strains.",
+        "source_location": "WT and end-point evolved strains"
+      },
+      "evidence": {
+        "description": [
+          "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p001",
+          "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Wild-type in matched media; ICA baseline 'control__wt_glc'; PRECISE 278-dataset compendium",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "None (measurement only)",
+      "result": {
+        "metric": "Gene expression (TPM), DEGs (1205 across 10 datasets), iModulon activities",
+        "before": "",
+        "after": "Lineage-specific transcriptome divergence despite fitness convergence; larger rewiring in phase 1 than phase 2; lldP/lldD up in lactate-evolved strains; glpK down-regulated in glpK-mutant strains; RpoS/GadW iModulons down in all evolved strains; GlpR/LldR/Zur/Crp-2 condition-specific; translation genes up in mixed carbon.",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 6,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "inoculum": "OD600=0.05 in IF-0a GN/GP",
+          "plates": "PM1 and PM2A",
+          "instrument": "OmniLog, 30 C, 48 h"
+        }
+      },
+      "trigger": {
+        "observation": "Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than WT (Supplementary Fig. S4B).",
+        "reasoning": "Assess breadth of metabolic-capacity gains across diverse carbon sources (specific respiration rates).",
+        "source_location": "WT and evolved strains"
+      },
+      "evidence": {
+        "description": [
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p003",
+          "4_12_biolog_phenotype_microarray_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Negative-control wells (AUC baseline for false-negative exclusion)",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "None (measurement only)",
+      "result": {
+        "metric": "Respiration AUC per carbon source",
+        "before": "",
+        "after": "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolved strains (glycolytic intermediates, saccharides, gluconeogenic substrates).",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 7,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "media": [
+            "M9 + acetate 0.2% v/v",
+            "M9 + D-xylose 0.2% w/v",
+            "M9 + D-glucose 0.2% w/v",
+            "LB",
+            "TB"
+          ],
+          "assay": "same plate-reader settings as mutant growth assays"
+        }
+      },
+      "trigger": {
+        "observation": "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolved strains (glycolytic intermediates, saccharides, gluconeogenic substrates).",
+        "reasoning": "Test whether SRR gains translate to growth gains on conventional carbons and whether trade-offs appear in rich media.",
+        "source_location": "WT, LA, GL, LA-GL, GL-LA"
+      },
+      "evidence": {
+        "description": [
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p004",
+          "4_3_growth_assay_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Wild-type per medium",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "None (measurement only)",
+      "result": {
+        "metric": "Growth rates",
+        "before": "",
+        "after": "Serial-ALE strains fastest on acetate/xylose/glucose; fitness deficits vs WT in LB/TB (minimal-media evolution trade-off).",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 8,
+      "decision_type": "engineering_decision",
+      "design_action": "M0",
+      "target": {
+        "gene": "mutT",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "method": "chromosomal insertion at lacZ (same recombineering toolkit context)"
+        }
+      },
+      "trigger": {
+        "observation": "LA and LA-GL carried mutT and dam mutations conferring mutator phenotypes, undesirable for stable bioproduction hosts.",
+        "reasoning": "Remove mutator phenotypes from LA and LA-GL before using them as bioproduction hosts.",
+        "source_location": "LA and LA-GL strains"
+      },
+      "evidence": {
+        "description": [
+          "4_6_reverse_engineering_of_mutations_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "Unrestored LA/LA-GL",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Edits constructed and genotype-confirmed; mutation-rate reversion itself not quantified in main text.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Introduction of wild-type mutT and dam into the lacZ locus; in LA-GL, dam placed upstream of lacZ::mutT.",
+      "result": {
+        "metric": "Genotype restoration (mutation-rate measurement not reported in main text)",
+        "before": "",
+        "after": "Restored-mutability LA and LA-GL used for acetoin bioproduction.",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When deploying ALE-derived E. coli lineages as production hosts, check and restore DNA-repair defects (e.g., mutT/dam mutator alleles) before pathway introduction, because mutator backgrounds accumulated during evolution destabilize the production genotype - validated here only for lactate/glycerol-evolved MG1655 lineages used for acetoin production.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "evolutionary_optimization"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 9,
+      "decision_type": "engineering_decision",
+      "design_action": "M9",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": {
+          "media": "M9 + carbon source + 0.2% Casamino Acids + 100 ug/mL ampicillin"
+        }
+      },
+      "trigger": {
+        "observation": "Plasmid-bearing strains showed delayed lag phase and low cell density (plasmid-encoded metabolic burden), and prior acetoin processes used LB or amino-acid-supplemented defined media.",
+        "reasoning": "Enable acetoin production with glycerol or lactate as sole carbon substrate despite plasmid-encoded metabolic burden.",
+        "source_location": "Plasmid-bearing WT, GL, GL-LA"
+      },
+      "evidence": {
+        "description": [
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+          "4_13_acetoin_production_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "None reported for the supplementation choice itself",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Resulting growth and productivity measured directly.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "LB broth production",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "defined media with exogenous amino acids (both cited from prior work)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Supplementation of production media with 0.2% Casamino Acids as exogenous nitrogen/amino-acid source.",
+      "result": {
+        "metric": "Growth and acetoin productivity",
+        "before": "",
+        "after": "Condition enabled growth and production on glycerol/lactate as sole carbons; plasmid burden (delayed lag, low density) noted.",
+        "fold_change": null,
+        "quantified": false
+      },
+      "rule": "When producing acetoin in E. coli minimal medium with glycerol or L-lactate as the sole carbon source under plasmid-borne alsSD expression, supplement Casamino Acids (0.2%) as exogenous nitrogen/amino-acid source, because plasmid-encoded metabolic burden limits growth and prior acetoin fermentations relied on enriched or amino-acid-supplemented media.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "precursor_supply_enhancement"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 6,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": {
+            "harvest": "exponential phase, ~20 mL at OD600=1.0",
+            "kit": "cAMP ELISA Colorimetric Kit (Cell Biolabs), non-acetylation protocol"
+          }
+        },
+        "trigger": {
+          "observation": "Lineage-specific transcriptome divergence despite fitness convergence; larger rewiring in phase 1 than phase 2; lldP/lldD up in lactate-evolved strains; glpK down-regulated in glpK-mutant strains; RpoS/GadW iModulons down in all evolved strains; GlpR/LldR/Zur/Crp-2 condition-specific; translation genes up in mixed carbon.",
+          "reasoning": "Verify that glpK missense mutations reduce intracellular cAMP (linking glycerol-3-phosphate build-up to adenylate cyclase repression).",
+          "source_location": "WT and end-point lineages"
+        },
+        "evidence": {
+          "description": [
+            "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p001",
+            "4_11_intracellular_camp_assay_p001"
+          ],
+          "source": "论文实测",
+          "source_location": "Wild-type cAMP level",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "事后合理化存疑",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "None (measurement only)",
+        "result": {
+          "metric": "Intracellular cAMP concentration",
+          "before": "",
+          "after": "Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than WT (Supplementary Fig. S4B).",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "background",
+      "exclusion_reason": "Q2 未通过：本文引用/沿用此前研究已构建的底盘或元件，非本文完成的设计决策",
+      "step_snapshot": {
+        "step": 10,
+        "decision_type": "background",
+        "design_action": "M9",
+        "target": {
+          "gene": "alsSD",
+          "enzyme": "",
+          "pathway": "",
+          "condition": {
+            "carbon_sources": [
+              "glycerol 0.2% v/v",
+              "L-lactate 0.2% v/v",
+              "mix 0.1% v/v each"
+            ],
+            "nitrogen_supplement": "0.2% Casamino Acids",
+            "inducer": "10 uM IPTG"
+          }
+        },
+        "trigger": {
+          "observation": "Restored-mutability LA and LA-GL used for acetoin bioproduction.",
+          "reasoning": "Assess whether serial-ALE chassis improves acetoin production from single and mixed alternative carbons.",
+          "source_location": "WT, GL, GL-LA (mutT/dam-restored backgrounds per Methods 4.6)"
+        },
+        "evidence": {
+          "description": [
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p001",
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+            "4_13_acetoin_production_p001"
+          ],
+          "source": "论文实测",
+          "source_location": "Plasmid-bearing WT and single-ALE GL in identical media",
+          "values": {}
+        },
+        "evidence_grading": "硬",
+        "evidence_grading_rationale": "自动启发式判定(硬): 基于证据关键词匹配——需人工确认",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Transformation with pTrcHis2A-alsSD expressing B. subtilis alsS and A. hydrophila alsD; IPTG induction (10 uM, 2 h post-inoculation); production in M9 glycerol / M9 lactate / M9 mix each + 0.2% Casamino Acids + 100 ug/mL ampicillin, 30 C, 24 h batch, sampling every 2 h.",
+        "result": {
+          "metric": "Maximum specific acetoin productivity (HPLC); substrate uptake rates",
+          "before": "",
+          "after": "GL-LA highest specific acetoin productivity in all conditions: ~3.7x and 2.9x vs WT in glycerol (GL-LA, GL); GL-LA 1.3x over GL in glycerol; 1.6x/1.4x over WT/GL in lactate; superior in mix; highest productivity when lactate consumption fastest.",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [
+          "evolutionary_optimization"
+        ],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Test whether E. coli can optimally utilize multiple alternative carbon sources via serial adaptive laboratory evolution (ALE) first in L-lactate then glycerol and vice versa; elucidate the genetic and transcriptomic basis of serial adaptation; and assess serial-ALE strains for acetoin bioproduction under single and mixed-carbon conditions.",
+    "problem_type": [
+      "feedback inhibition",
+      "pathway construction"
+    ],
+    "trigger_conditions": [
+      "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenot",
+      "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without tr",
+      "WGS revealed recurrent mutations whose individual and combined fitness effects were unknown.",
+      "Specialist mutants (glpK, ppsA) lost their fitness contribution specifically in the mixed-carbon condition whereas gener",
+      "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; special",
+      "Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than WT (Supplementary Fig. S4B).",
+      "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolv",
+      "LA and LA-GL carried mutT and dam mutations conferring mutator phenotypes, undesirable for stable bioproduction hosts.",
+      "Plasmid-bearing strains showed delayed lag phase and low cell density (plasmid-encoded metabolic burden), and prior acet"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+      "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without trade-off on the first carbon; GL showed trade-off in lactate (single-ALE specialist).",
+      "WGS revealed recurrent mutations whose individual and combined fitness effects were unknown.",
+      "Specialist mutants (glpK, ppsA) lost their fitness contribution specifically in the mixed-carbon condition whereas generalist rph-pyrE(del) retained its contribution, suggesting positive epistasis.",
+      "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; specialist single mutants showed near-WT contribution in mixed carbon while quadruple mutant gained +47%/+75% over rph-pyrE single and triple mutants.",
+      "Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than WT (Supplementary Fig. S4B).",
+      "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolved strains (glycolytic intermediates, saccharides, gluconeogenic substrates).",
+      "LA and LA-GL carried mutT and dam mutations conferring mutator phenotypes, undesirable for stable bioproduction hosts.",
+      "Plasmid-bearing strains showed delayed lag phase and low cell density (plasmid-encoded metabolic burden), and prior acetoin processes used LB or amino-acid-supplemented defined media."
+    ],
+    "bottlenecks": [
+      ": E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior sing",
+      ": End-point strains LA-GL and GL-LA acquired universal growth advantage on both si",
+      "rpoC: WGS revealed recurrent mutations whose individual and combined fitness effects w",
+      "glpK: Specialist mutants (glpK, ppsA) lost their fitness contribution specifically in ",
+      ": glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; pp",
+      ": Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than",
+      ": 82 carbons with significantly increased SRR in at least one evolved strain; 36 w",
+      "mutT: LA and LA-GL carried mutT and dam mutations conferring mutator phenotypes, undes",
+      ": Plasmid-bearing strains showed delayed lag phase and low cell density (plasmid-e"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。42 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "6c55c4a9a3b1436f859be08bea355885",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "a79c2d2ce93048c48ce873145d776b39_2_1-s2.0-S1096717624000582-main",
+      "identity": {
+        "paper_id": "a79c2d2ce93048c48ce873145d776b39_2_1-s2.0-S1096717624000582-main",
+        "title": "Serial adaptive laboratory evolution enhances mixed carbon metabolic capacity of Escherichia coli",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1016/j.ymben.2024.04.004"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "Original ALE, WGS, RNA-seq, reverse-engineering, ELISA, Biolog and production experiments described in dedicated Methods section (4.1-4.13) with first-person Results; journal article format (Metabolic Engineering); title/abstract report new experiments."
+        ]
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli MG1655 wild-type / E. coli K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "parental",
+          "paper_label": "wild-type",
+          "lineage_or_engineering_context": "Standard laboratory K-12 strain; clonal ancestor of all ALE lineages; carries ancestral rph frameshift defect background (Jensen 1993 context)",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type MG1655",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+            "4_1_bacterial_strains_and_growth_conditions_p001",
+            "4_2_adaptive_laboratory_evolution_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Named explicitly in Results 2.1 and Methods 4.1/4.2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "LA",
+          "paper_strain_normalized": "E. coli MG1655 lactate-evolved (phase-1 end-point), mutT/dam mutator background later restored",
+          "role": "engineered",
+          "paper_label": "LA",
+          "lineage_or_engineering_context": "~800 generations on M9 L-lactate; key mutations rph-pyrE(del), hfq(142A>T), cyaA, ppsA(72T>G), ydcI(5A>C)",
+          "combination_status": "demonstrated (population genotype profile)",
+          "genotype": "see fields.genotype",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Defined in Results 2.1/2.2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "GL",
+          "paper_strain_normalized": "E. coli MG1655 glycerol-evolved (phase-1 end-point)",
+          "role": "engineered",
+          "paper_label": "GL",
+          "lineage_or_engineering_context": "~800 generations on M9 glycerol; key mutations rpoC(3610del9), glpK(694G>T)",
+          "combination_status": "demonstrated",
+          "genotype": "see fields.genotype",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Defined in Results 2.1/2.2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "LA-GL",
+          "paper_strain_normalized": "E. coli MG1655 serial ALE lactate-then-glycerol end-point (mutT/dam restored for production)",
+          "role": "target",
+          "paper_label": "LA-GL",
+          "lineage_or_engineering_context": "1400-1600 generations total across two carbon landscapes",
+          "combination_status": "demonstrated",
+          "genotype": "LA-phase mutations plus second-phase acquisitions on glycerol",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "4_6_reverse_engineering_of_mutations_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Defined in Results 2.1; mutT/dam restoration in Methods 4.6."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "GL-LA",
+          "paper_strain_normalized": "E. coli MG1655 serial ALE glycerol-then-lactate end-point",
+          "role": "target",
+          "paper_label": "GL-LA",
+          "lineage_or_engineering_context": "1400-1600 generations; chosen as proxy chassis for acetoin bioproduction",
+          "combination_status": "demonstrated",
+          "genotype": "glpK(694G>T), rpoC(3610del9), ppsA(13G>T), ydcI(686-7insG), rph-pyrE(del), hdfR(463G>T) (per Fig. 1D; requires figure/supplement confirmation of final fixed set)",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+            "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p008"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Defined in Results 2.1; bioproduction role in 2.10."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "reconstructed single/sequential mutants and double mutants",
+          "paper_strain_normalized": "MG1655 with individual or combined adaptive alleles (11 LA-GL-set constructs, 7 GL-LA-set constructs, plus glpK-rph-pyrE and ppsA-rph-pyrE double mutants)",
+          "role": "engineered",
+          "paper_label": "reconstituted mutants",
+          "lineage_or_engineering_context": "Built by Datsenko-Wanner recombineering to recapitulate temporal mutation order; rpoC excluded",
+          "combination_status": "demonstrated only for constructs explicitly built (no unverified composite genotypes assumed)",
+          "genotype": "per-construct",
+          "evidence": [
+            "2_4_fitness_contribution_of_adaptive_mutations_p001",
+            "2_5_co_utilization_of_glycerol_and_lactate_p009",
+            "4_6_reverse_engineering_of_mutations_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Methods 4.6 and Results 2.4/2.5."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "WT, GL, GL-LA carrying pTrcHis2A-alsSD",
+          "paper_strain_normalized": "Acetoin production strains",
+          "role": "host",
+          "paper_label": "production strains",
+          "lineage_or_engineering_context": "Plasmid from Choe et al. 2022 (background, previously constructed)",
+          "combination_status": "demonstrated",
+          "genotype": "host genotype + pTrcHis2A-alsSD (Bsu alsS, Ahy alsD), ampicillin resistance",
+          "evidence": [
+            "4_13_acetoin_production_p001",
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Methods 4.13."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules no K-12 adaptation tool is run by default and no migration analysis is generated."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 9 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "Core contribution is serial ALE (evolutionary optimization) plus reverse engineering of evolved mutations; secondary application is bioproduction (acetoin) testing. Mutations are evolution-derived, not rational designs."
+  },
+  "engineering_decision_map": {
+    "goal": "Test whether E. coli can optimally utilize multiple alternative carbon sources via serial adaptive laboratory evolution (ALE) first in L-lactate then glycerol and vice versa; elucidate the genetic and transcriptomic basis of serial adaptation; and assess serial-ALE strains for acetoin bioproduction under single and mixed-carbon conditions.",
+    "initial_bottleneck": "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+    "key_hypothesis": "Evolve E. coli MG1655 sequentially on two alternative carbon sources to obtain generalist end-point strains and test serial-ALE as a strain-optimization scheme.",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M11",
+        "action_summary": "Two-phase serial ALE: phase 1 ~800 generations on M9+lactate (LA) or M9+glycerol (GL); carbon switch at fitness plateau; phase 2 600-800 generations on the other carbon (LA-GL, GL-LA); 60 mL M9 in 300 mL flasks, 30 C, 200 rpm, transfer twice daily at OD600 0.4-0.6."
+      },
+      {
+        "step": 2,
+        "design_action": "M3",
+        "action_summary": "None (measurement only)"
+      },
+      {
+        "step": 3,
+        "design_action": "M1",
+        "action_summary": "Lambda-Red one-step inactivation (Datsenko-Wanner): overlap-extension PCR of mutant allele + pKD13 kanamycin cassette, electroporation into pKD46 cells, 50 ug/mL kanamycin selection, PCR verification, pCP20 marker excision at 42 C. 11 mutants (LA-GL set) and 7 mutants (GL-LA set); rpoC excluded (essential-gene engineering difficulty)."
+      },
+      {
+        "step": 4,
+        "design_action": "M11",
+        "action_summary": "Construction of double mutants glpK(694G>T)-rph-pyrE(del) and ppsA(13G>T)-rph-pyrE(del) using the same recombineering pipeline."
+      },
+      {
+        "step": 5,
+        "design_action": "M3",
+        "action_summary": "None (measurement only)"
+      },
+      {
+        "step": 6,
+        "design_action": "M3",
+        "action_summary": "None (measurement only)"
+      },
+      {
+        "step": 7,
+        "design_action": "M3",
+        "action_summary": "None (measurement only)"
+      },
+      {
+        "step": 8,
+        "design_action": "M0",
+        "action_summary": "Introduction of wild-type mutT and dam into the lacZ locus; in LA-GL, dam placed upstream of lacZ::mutT."
+      },
+      {
+        "step": 9,
+        "design_action": "M9",
+        "action_summary": "Supplementation of production media with 0.2% Casamino Acids as exogenous nitrogen/amino-acid source."
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "goal": "Test whether E. coli can optimally utilize multiple alternative carbon sources via serial adaptive laboratory evolution (ALE) first in L-lactate then glycerol and vice versa; elucidate the genetic and transcriptomic basis of serial adaptation; and assess serial-ALE strains for acetoin bioproduction under single and mixed-carbon conditions.",
+    "initial_bottleneck": "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+    "key_hypothesis": "Evolve E. coli MG1655 sequentially on two alternative carbon sources to obtain generalist end-point strains and test serial-ALE as a strain-optimization scheme."
+  },
+  "human_calibration_report": {
+    "auto_accepted": 4,
+    "needs_review": 1,
+    "rejected": 4,
+    "needs_review_steps": [
+      {
+        "step": 2,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 3,
+        "calibration_status": "needs_review",
+        "calibration_reason": "命中结构分析/docking/基因组测序等事后解释信号但仍判定为 engineering_decision（Case 2），需人工复核该分类本身"
+      },
+      {
+        "step": 5,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 6,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 7,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Two-phase serial ALE: phase 1 ~800 generations on M9+lactate (LA) or M9+glycerol (GL); carbon switch at fitness plateau; phase 2 600-800 generations on the other carbon (LA-GL, GL-LA); 60 mL M9 in 300 mL flasks, 30 C, 200 rpm, transfer twice daily at OD600 0.4-0.6.",
+        "trigger": "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "None (measurement only)",
+        "trigger": "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without trade-off on the first carbon; GL showed trade-off in lactate (single-ALE specialist).",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "rpoC",
+        "decision_summary": "Lambda-Red one-step inactivation (Datsenko-Wanner): overlap-extension PCR of mutant allele + pKD13 kanamycin cassette, electroporation into pKD46 cells, 50 ug/mL kanamycin selection, PCR verification, pCP20 marker excision at 42 C. 11 mutants (LA-GL set) and 7 mutants (GL-LA set); rpoC excluded (essential-gene engineering difficulty).",
+        "trigger": "WGS revealed recurrent mutations whose individual and combined fitness effects were unknown.",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "glpK",
+        "decision_summary": "Construction of double mutants glpK(694G>T)-rph-pyrE(del) and ppsA(13G>T)-rph-pyrE(del) using the same recombineering pipeline.",
+        "trigger": "Specialist mutants (glpK, ppsA) lost their fitness contribution specifically in the mixed-carbon condition whereas generalist rph-pyrE(del) retained its contribution, suggesting positive epistasis.",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "None (measurement only)",
+        "trigger": "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; specialist single mutants showed near-WT contribution in mixed carbon while quadruple mutant gained +47%/+75% over rph-pyrE single and triple mutants.",
+        "evidence_level": "软",
+        "reason_nature": "事后合理化存疑",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D6",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "None (measurement only)",
+        "trigger": "Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than WT (Supplementary Fig. S4B).",
+        "evidence_level": "软",
+        "reason_nature": "事后合理化存疑",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D7",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "None (measurement only)",
+        "trigger": "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolved strains (glycolytic intermediates, saccharides, gluconeogenic substrates).",
+        "evidence_level": "软",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D8",
+        "type": "engineering_decision",
+        "target": "mutT",
+        "decision_summary": "Introduction of wild-type mutT and dam into the lacZ locus; in LA-GL, dam placed upstream of lacZ::mutT.",
+        "trigger": "LA and LA-GL carried mutT and dam mutations conferring mutator phenotypes, undesirable for stable bioproduction hosts.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-021"
+      },
+      {
+        "id": "D9",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Supplementation of production media with 0.2% Casamino Acids as exogenous nitrogen/amino-acid source.",
+        "trigger": "Plasmid-bearing strains showed delayed lag phase and low cell density (plasmid-encoded metabolic burden), and prior acetoin processes used LB or amino-acid-supplemented defined media.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-021"
+      }
+    ],
+    "edges": [
+      {
+        "from": "D1",
+        "to": "D2",
+        "relation": "triggered_by",
+        "evidence": "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without trade-off on the first carbon; GL showed trade-off in lactate (single-ALE specialist)."
+      },
+      {
+        "from": "D4",
+        "to": "D5",
+        "relation": "triggered_by",
+        "evidence": "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; specialist single mutants showed near-WT contribution in mixed carbon while quadruple mutant gained +47%/+75% over rph-pyrE single and triple mutants."
+      },
+      {
+        "from": "D6",
+        "to": "D7",
+        "relation": "triggered_by",
+        "evidence": "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolved strains (glycolytic intermediates, saccharides, gluconeogenic substrates)."
+      }
+    ]
+  },
+  "engineering_logic_chain": {
+    "goal": "Test whether E. coli can optimally utilize multiple alternative carbon sources via serial adaptive laboratory evolution (ALE) first in L-lactate then glycerol and vice versa; elucidate the genetic and transcriptomic basis of serial adaptation; and assess serial-ALE strains for acetoin bioproduction under single and mixed-carbon conditions.",
+    "initial_bottleneck": "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+    "hypothesis": "Evolve E. coli MG1655 sequentially on two alternative carbon sources to obtain generalist end-point strains and test serial-ALE as a strain-optimization scheme.",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 1,
+      "rule": "When optimizing E. coli for utilization of multiple metabolically related alternative carbon sources (e.g., gluconeogenic glycerol and L-lactate), apply serial single-carbon ALE phases (~800 generations each to fitness plateau) instead of simultaneous mixed-carbon evolution, because sequential adaptation fixed carbon-specialist plus generalist mutations and avoided fitness trade-offs and specialist subpopulation splitting in the tested two-carbon system.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 8,
+      "rule": "When deploying ALE-derived E. coli lineages as production hosts, check and restore DNA-repair defects (e.g., mutT/dam mutator alleles) before pathway introduction, because mutator backgrounds accumulated during evolution destabilize the production genotype - validated here only for lactate/glycerol-evolved MG1655 lineages used for acetoin production.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 9,
+      "rule": "When producing acetoin in E. coli minimal medium with glycerol or L-lactate as the sole carbon source under plasmid-borne alsSD expression, supplement Casamino Acids (0.2%) as exogenous nitrogen/amino-acid source, because plasmid-encoded metabolic burden limits growth and prior acetoin fermentations relied on enriched or amino-acid-supplemented media.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    }
+  ]
+}
