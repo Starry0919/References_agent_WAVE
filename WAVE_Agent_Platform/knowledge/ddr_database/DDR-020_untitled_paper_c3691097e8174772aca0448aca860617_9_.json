@@ -1,0 +1,1152 @@
+{
+  "ddr_id": "DDR-020",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Untitled paper (c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x)",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Untitled paper (c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x)",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1186/s12934-025-02697-x"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 24-well plates, 37 C, 18 h, inducer panel per Fig 2A"
+      },
+      "trigger": {
+        "observation": "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; needed independently controllable, low-leakage promoters.",
+        "reasoning": "Identify inducible promoters with low background leakage and high induced expression for sgRNA expression",
+        "source_location": "E. coli BW25113 and MG1655"
+      },
+      "evidence": {
+        "description": [
+          "screening_of_inducible_promoters_p001",
+          "screening_of_inducible_promoters_p002",
+          "bacterial_strains_plasmids_and_media_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "No-inducer condition per promoter (leakage baseline)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct fluorescence measurements of all 8 promoters with/without inducers.",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "PrhaBAD - excluded because 10 g/L glucose abolished Rha induction, incompatible with glucose-based fermentation",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "PLuxB, PCin, PsalTTC, PCymRC - excluded for significant background leakage",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Express mKate reporter from 8 candidate inducible promoters (PlacO1, PLtetO-1, ParaBAD, PrhaBAD, PCymRC, PLuxB, PsalTTC, PCin) with/without cognate inducer",
+      "result": {
+        "metric": "mKate fluorescence (590/640 nm) and OD600 every 15 min",
+        "before": "",
+        "after": "PrhaBAD, ParaBAD, PLtetO-1, PlacO1 selected (leakage 27/31/40/48 RFU; induction 176.3/107.8/43.3/7.4-fold); PLuxB, PCin, PsalTTC, PCymRC excluded for high leakage",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "dynamic_control"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C, 18 h microplate assay"
+      },
+      "trigger": {
+        "observation": "Rha lost the ability to activate PrhaBAD in the presence of 10 g/L glucose (Figure S2).",
+        "reasoning": "Verify orthogonality of the 4 selected promoters and their compatibility with glucose fermentation",
+        "source_location": "E. coli BW25113/MG1655"
+      },
+      "evidence": {
+        "description": [
+          "screening_of_inducible_promoters_p005",
+          "screening_of_inducible_promoters_p006"
+        ],
+        "source": "论文实测",
+        "source_location": "Non-cognate inducer conditions",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured loss of induction in glucose.",
+      "reason_nature": "筛选得来",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Cross-test 4 inducers x 4 promoters with mKate reporter; test PrhaBAD induction with 10 g/L glucose",
+      "result": {
+        "metric": "mKate fluorescence",
+        "before": "",
+        "after": "Each inducer activated only its cognate promoter; PrhaBAD excluded (glucose catabolite effect); final set = PlacO1, PLtetO-1, ParaBAD",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M11",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "20 uL Golden Gate reactions; transformants selected on LB + 25 ug/mL spectinomycin"
+      },
+      "trigger": {
+        "observation": "Covering all repression combinations of n genes requires 2^n - 1 sgRNA plasmids with conventional arrays - labor-intensive and inefficient.",
+        "reasoning": "Enable rapid construction of a three-sgRNA expression plasmid without building separate plasmids per combination",
+        "source_location": "E. coli DH5alpha (cloning)"
+      },
+      "evidence": {
+        "description": [
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p003",
+          "construction_of_the_combinatorial_repression_system_p001",
+          "construction_of_the_combinatorial_repression_system_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "none reported for assembly itself",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Assembly success directly verified by sequencing 7 clones.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "Conventional sgRNA array plasmid per combination - rejected as time- and labor-intensive",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Build p3gRNA-LTA with three sgRNA insertion sites flanked by paired BbsI/BsaI/SapI Type IIS sites; one-pot sequential ligation of three annealed spacer fragments (37 C 5 min / 25 C 15 min, 10 cycles per round, reagents added successively)",
+      "result": {
+        "metric": "Sanger sequencing of inserted spacers",
+        "before": "",
+        "after": "5/7 clones correctly assembled all three sgRNAs; 2/7 contained only the first two spacers",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When many multi-sgRNA plasmid variants must be built for combinatorial CRISPRi screening in E. coli, apply a one-pot sequential Type IIS (Golden Gate) ligation with distinct enzyme pairs per insertion site, because orthogonal sticky ends allow successive spacer insertion in a single reaction mixture.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C, 18 h induction; inducers 0.5 mM IPTG / 4.3 uM aTc / 13.3 mM Ara"
+      },
+      "trigger": {
+        "observation": "All three promoters showed substantial leaky repression without inducer (rfp reduced 21.8-74.9%), which would confound combinatorial control.",
+        "reasoning": "Reduce leaky (inducer-independent) repression of the CRISPRi system",
+        "source_location": "E. coli (characterization strains; reporter rfp, then lacZ)"
+      },
+      "evidence": {
+        "description": [
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p001",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p002",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p003",
+          "discussion_p007"
+        ],
+        "source": "论文实测",
+        "source_location": "Strain constitutively expressing fluorescent protein without CRISPRi; no-inducer condition",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Leakage and repression directly measured via fluorescence and enzyme activity for each mutant.",
+      "reason_nature": "文献类比",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "crRNA mismatches, decoy crRNA binding sites, feedback control of crRNA expression (Hove et al. [42]) - not adopted; handle mutation requires only a fixed handle swap with no extra design",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "Test 7 sgRNA handle mutants (#1-#7, from Reis et al. [28]) under each of the 3 promoters; select handle #3 for PlacO1 and #5 for PLtetO-1/ParaBAD; rebuild p3gRNA-LTA",
+      "result": {
+        "metric": "rfp fluorescence; lacZ beta-galactosidase activity (ONPG, 420 nm)",
+        "before": "",
+        "after": "Wild-type handle leakage: 21.8%/74.9%/37.5% repression without inducer. Handle #3: lacZ nearly intact uninduced, 84.5% repressed induced (PlacO1). Handle #5: low leakage for PLtetO-1/ParaBAD (leakage reduced from ~90% to ~20% per Discussion).",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When inducible-promoter CRISPRi in E. coli shows leaky repression that corrupts combinatorial control, apply sgRNA handle mutations that modestly reduce dCas9 affinity, because lower affinity raises the sgRNA expression threshold needed for repression while preserving inducer-dependent knockdown.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "dynamic_control"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M11",
+      "target": {
+        "gene": "gusA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "LB, 37 C, 18 h"
+      },
+      "trigger": {
+        "observation": "Need to test simultaneous independent repression of three genes distinguished by orthogonal readouts; native lacZ/gusA are under endogenous regulation that would confound readouts.",
+        "reasoning": "Characterize independent multi-gene control of the optimized system on genomic and plasmid reporters",
+        "source_location": "E. coli MG1655RFP (constructed here: delta-lacI, delta-gusR, constitutive lacZ/gusA promoters, genomically integrated constitutive rfp)"
+      },
+      "evidence": {
+        "description": [
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p002"
+        ],
+        "source": "论文实测",
+        "source_location": "Strain without gene-targeting sgRNA (normalized to 1)",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Reporter responses directly measured across all 8 inducer combinations in triplicate.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Co-transform p3gRNA-LTA (sgRNAs targeting gusA via PlacO1, rfp via PLtetO-1, lacZ via ParaBAD) with pdCas9-3TFs; apply all 8 inducer combinations",
+      "result": {
+        "metric": "gusA activity, RFP fluorescence, lacZ activity",
+        "before": "",
+        "after": "IPTG-only: gusA -48.3%; aTc-only: RFP -74%; Ara-only: lacZ -32.4%; targets stayed repressed (41-72%) when other inducers added; residual PLtetO-1 leakage (RFP -22.2% uninduced)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When benchmarking a multi-channel CRISPRi system on native genomic reporters in E. coli, delete the endogenous regulators (e.g., lacI, gusR) and drive the reporters from constitutive promoters, because otherwise native regulation confounds the CRISPRi-specific repression readout.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 6,
+      "decision_type": "engineering_decision",
+      "design_action": "M2",
+      "target": {
+        "gene": "ptsI",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "50 mL MTB + 30 g/L glucose + ampicillin, 4% inoculum, 30 C, 220 rpm, inducers added at transfer to shake flask; 200 uM IPTG at OD600 0.4-0.6 per Methods; pH ~7.0 via 30% NH4OH; 48 h; sampling every 6-12 h"
+      },
+      "trigger": {
+        "observation": "DN5/pB3 accumulated large amounts of ManNAc (direct NeuAc precursor) while PEP showed no accumulation, indicating PEP was limiting relative to ManNAc.",
+        "reasoning": "Demonstrate the system by optimizing NeuAc biosynthesis through combinatorial repression of PEP-consuming genes",
+        "source_location": "E. coli DN5/pB3 (DN5 = DH5alpha derivative with delta-nanATEK, delta-nagEBAC, delta-ldhA, delta-poxB, delta-ackA from prior work [29]; pB3 carries neuB, slr1975, GNA1, glmS-fbr [30])"
+      },
+      "evidence": {
+        "description": [
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p005",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p006",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p007",
+          "batch_fermentation_of_neuac_p001"
+        ],
+        "source": "论文实测",
+        "source_location": "DN5/pB3 with plasmid lacking gene-targeting sgRNA",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Precursor accumulation measured by HPLC; intervention outcomes measured as NeuAc titers across all combinations in triplicate.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Introduce p3gRNA-LTA with sgRNAs targeting pta (PlacO1), ptsI (PLtetO-1), pykA (ParaBAD); apply 7 inducer combinations during shake-flask fermentation",
+      "result": {
+        "metric": "NeuAc titer; by-products GlcNAc, ManNAc, pyruvate, acetate (HPLC); OD600",
+        "before": "",
+        "after": "ptsI single repression best: 2.62 g/L (240.8% of control); ptsI/pykA 2.22 g/L (203.7%); pta/ptsI/pykA 1.91 g/L (176%); multi-gene repression NOT superior to ptsI alone; ptsI repression raised GlcNAc +83.2%, ManNAc +63.2%, pyruvate -68%; OD600 unaffected",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When one precursor (PEP) is limiting relative to a co-substrate (ManNAc) in E. coli NeuAc biosynthesis, repress PEP-dissipating reactions (PTS component ptsI, pyruvate kinase pykA) rather than only pushing the downstream pathway, because conserving the limiting precursor redirects flux toward product formation; note single-node repression (ptsI) outperformed combinations here, so combinations must be tested rather than assumed additive.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "competitive_pathway_removal",
+        "flux_redirection",
+        "precursor_supply_enhancement"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 5,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "lacZ",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "LB, 37 C, 18 h"
+        },
+        "trigger": {
+          "observation": "Wild-type handle leakage: 21.8%/74.9%/37.5% repression without inducer. Handle #3: lacZ nearly intact uninduced, 84.5% repressed induced (PlacO1). Handle #5: low leakage for PLtetO-1/ParaBAD (leakage reduced from ~90% to ~20% per Discussion).",
+          "reasoning": "Assess effect of sgRNA target position and spacer length on repression",
+          "source_location": "E. coli characterization strains"
+        },
+        "evidence": {
+          "description": [
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p004",
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p009"
+          ],
+          "source": "论文实测",
+          "source_location": "No inducer",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "Express 3 lacZ-targeting and 3 gusA-targeting spacers from ParaBAD; test 17/22/24/27 bp spacers at lacZ1 site",
+        "result": {
+          "metric": "lacZ/gusA enzyme activity",
+          "before": "",
+          "after": "Sites nearer the start codon repress more strongly (lacZ1, gusA1 best); 17-27 bp spacers gave 70.4-79.4% repression with no significant length effect",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Develop a rapid CRISPRi-based combinatorial repression system for multiple genes in E. coli by expressing different sgRNAs from orthogonal low-leakage inducible promoters (PlacO1, PLtetO-1, ParaBAD) on a single plasmid (p3gRNA-LTA), so that repression combinations are generated by adding inducers instead of building many sgRNA plasmids; demonstrate it on NeuAc biosynthesis.",
+    "problem_type": [
+      "precursor limitation"
+    ],
+    "trigger_conditions": [
+      "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; n",
+      "Rha lost the ability to activate PrhaBAD in the presence of 10 g/L glucose (Figure S2).",
+      "Covering all repression combinations of n genes requires 2^n - 1 sgRNA plasmids with conventional arrays - labor-intensi",
+      "All three promoters showed substantial leaky repression without inducer (rfp reduced 21.8-74.9%), which would confound c",
+      "Need to test simultaneous independent repression of three genes distinguished by orthogonal readouts; native lacZ/gusA a",
+      "DN5/pB3 accumulated large amounts of ManNAc (direct NeuAc precursor) while PEP showed no accumulation, indicating PEP wa"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; needed independently controllable, low-leakage promoters.",
+      "Rha lost the ability to activate PrhaBAD in the presence of 10 g/L glucose (Figure S2).",
+      "Covering all repression combinations of n genes requires 2^n - 1 sgRNA plasmids with conventional arrays - labor-intensive and inefficient.",
+      "All three promoters showed substantial leaky repression without inducer (rfp reduced 21.8-74.9%), which would confound combinatorial control.",
+      "Need to test simultaneous independent repression of three genes distinguished by orthogonal readouts; native lacZ/gusA are under endogenous regulation that would confound readouts.",
+      "DN5/pB3 accumulated large amounts of ManNAc (direct NeuAc precursor) while PEP showed no accumulation, indicating PEP was limiting relative to ManNAc."
+    ],
+    "bottlenecks": [
+      ": CRISPRi is functional immediately upon sgRNA transcription, so even weak promote",
+      ": Rha lost the ability to activate PrhaBAD in the presence of 10 g/L glucose (Figu",
+      ": Covering all repression combinations of n genes requires 2^n - 1 sgRNA plasmids ",
+      ": All three promoters showed substantial leaky repression without inducer (rfp red",
+      "gusA: Need to test simultaneous independent repression of three genes distinguished by",
+      "ptsI: DN5/pB3 accumulated large amounts of ManNAc (direct NeuAc precursor) while PEP s"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。28 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "def8da1138e44df69a9f08c0af80faa8",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x",
+      "identity": {
+        "paper_id": "c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x",
+        "title": null,
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1186/s12934-025-02697-x"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "abstract_p002",
+          "methods",
+          "bacterial_strains_plasmids_and_media_p001",
+          "screening_of_inducible_promoters_p001"
+        ],
+        "rationale": "Original methods-development research with own experiments (plasmid construction, strain engineering, fermentation); Journal: Microbial Cell Factories; DOI 10.1186/s12934-025-02697-x."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DH5alpha",
+          "paper_strain_normalized": "E. coli DH5alpha",
+          "role": "host",
+          "paper_label": "DH5alpha",
+          "lineage_or_engineering_context": "Cloning host; also the background of production strain DN5",
+          "combination_status": "not_applicable",
+          "genotype": "not detailed in this paper",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicitly stated in Methods."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113",
+          "paper_strain_normalized": "E. coli BW25113",
+          "role": "target",
+          "paper_label": "BW25113",
+          "lineage_or_engineering_context": "Used for system characterization",
+          "combination_status": "not_applicable",
+          "genotype": "not detailed in this paper",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicitly stated in Methods."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655",
+          "paper_strain_normalized": "E. coli MG1655",
+          "role": "target",
+          "paper_label": "MG1655",
+          "lineage_or_engineering_context": "Used for system characterization; parent of MG1655RFP",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type K-12 lab strain (parental)",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly stated; MG1655RFP explicitly derived from MG1655 in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655RFP",
+          "paper_strain_normalized": "E. coli MG1655 delta-lacI delta-gusR P_lacZ::constitutive P_gusA::constitutive genome::rfp(constitutive)",
+          "role": "engineered",
+          "paper_label": "MG1655RFP",
+          "lineage_or_engineering_context": "Constructed in this study as multi-reporter chassis for the combinatorial repression system",
+          "combination_status": "demonstrated",
+          "genotype": "delta-lacI, delta-gusR, lacZ/gusA promoters replaced with constitutive promoters, rfp integrated into genome",
+          "evidence": [
+            "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Construction described directly in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5",
+          "paper_strain_normalized": "E. coli DH5alpha delta-nanATEK delta-nagEBAC delta-ldhA delta-poxB delta-ackA",
+          "role": "parental",
+          "paper_label": "DN5",
+          "lineage_or_engineering_context": "NeuAc production chassis constructed in previous study [29]; used here with pB3 and the CRISPRi plasmids",
+          "combination_status": "demonstrated (in prior work)",
+          "genotype": "deletions of nan operon, nag operon, ldhA, poxB, ackA",
+          "evidence": [
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+            "bacterial_strains_plasmids_and_media_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Paper states DN5 was previously constructed; background construct, not a this-paper engineering decision."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5/pB3",
+          "paper_strain_normalized": "E. coli DN5 + plasmid pB3 (neuB, slr1975, GNA1, glmS-fbr)",
+          "role": "engineered",
+          "paper_label": "DN5/pB3",
+          "lineage_or_engineering_context": "NeuAc fermentation strain; pB3 from previous study [30]; baseline titer 1.62 g/L",
+          "combination_status": "demonstrated",
+          "genotype": "DN5 genotype + pB3 plasmid",
+          "evidence": [
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly described as the fermentation strain."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; only in-paper extraction performed."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 3 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "基于 decision_chain 的 design_action/implementation_detail 关键词启发式判定——需人工确认"
+  },
+  "engineering_decision_map": {
+    "goal": "Develop a rapid CRISPRi-based combinatorial repression system for multiple genes in E. coli by expressing different sgRNAs from orthogonal low-leakage inducible promoters (PlacO1, PLtetO-1, ParaBAD) on a single plasmid (p3gRNA-LTA), so that repression combinations are generated by adding inducers instead of building many sgRNA plasmids; demonstrate it on NeuAc biosynthesis.",
+    "initial_bottleneck": "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; needed independently controllable, low-leakage promoters.",
+    "key_hypothesis": "Identify inducible promoters with low background leakage and high induced expression for sgRNA expression",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M6",
+        "action_summary": "Express mKate reporter from 8 candidate inducible promoters (PlacO1, PLtetO-1, ParaBAD, PrhaBAD, PCymRC, PLuxB, PsalTTC, PCin) with/without cognate inducer"
+      },
+      {
+        "step": 2,
+        "design_action": "M6",
+        "action_summary": "Cross-test 4 inducers x 4 promoters with mKate reporter; test PrhaBAD induction with 10 g/L glucose"
+      },
+      {
+        "step": 3,
+        "design_action": "M11",
+        "action_summary": "Build p3gRNA-LTA with three sgRNA insertion sites flanked by paired BbsI/BsaI/SapI Type IIS sites; one-pot sequential ligation of three annealed spacer fragments (37 C 5 min / 25 C 15 min, 10 cycles per round, reagents added successively)"
+      },
+      {
+        "step": 4,
+        "design_action": "M6",
+        "action_summary": "Test 7 sgRNA handle mutants (#1-#7, from Reis et al. [28]) under each of the 3 promoters; select handle #3 for PlacO1 and #5 for PLtetO-1/ParaBAD; rebuild p3gRNA-LTA"
+      },
+      {
+        "step": 5,
+        "design_action": "M11",
+        "action_summary": "Co-transform p3gRNA-LTA (sgRNAs targeting gusA via PlacO1, rfp via PLtetO-1, lacZ via ParaBAD) with pdCas9-3TFs; apply all 8 inducer combinations"
+      },
+      {
+        "step": 6,
+        "design_action": "M2",
+        "action_summary": "Introduce p3gRNA-LTA with sgRNAs targeting pta (PlacO1), ptsI (PLtetO-1), pykA (ParaBAD); apply 7 inducer combinations during shake-flask fermentation"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "evolutionary_engineering",
+      "metabolic_engineering"
+    ],
+    "goal": "Develop a rapid CRISPRi-based combinatorial repression system for multiple genes in E. coli by expressing different sgRNAs from orthogonal low-leakage inducible promoters (PlacO1, PLtetO-1, ParaBAD) on a single plasmid (p3gRNA-LTA), so that repression combinations are generated by adding inducers instead of building many sgRNA plasmids; demonstrate it on NeuAc biosynthesis.",
+    "initial_bottleneck": "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; needed independently controllable, low-leakage promoters.",
+    "key_hypothesis": "Identify inducible promoters with low background leakage and high induced expression for sgRNA expression"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 6,
+    "needs_review": 0,
+    "rejected": 0,
+    "needs_review_steps": []
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Express mKate reporter from 8 candidate inducible promoters (PlacO1, PLtetO-1, ParaBAD, PrhaBAD, PCymRC, PLuxB, PsalTTC, PCin) with/without cognate inducer",
+        "trigger": "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; needed independently controllable, low-leakage promoters.",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-020"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Cross-test 4 inducers x 4 promoters with mKate reporter; test PrhaBAD induction with 10 g/L glucose",
+        "trigger": "Rha lost the ability to activate PrhaBAD in the presence of 10 g/L glucose (Figure S2).",
+        "evidence_level": "硬",
+        "reason_nature": "筛选得来",
+        "source_ddr_id": "DDR-020"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Build p3gRNA-LTA with three sgRNA insertion sites flanked by paired BbsI/BsaI/SapI Type IIS sites; one-pot sequential ligation of three annealed spacer fragments (37 C 5 min / 25 C 15 min, 10 cycles per round, reagents added successively)",
+        "trigger": "Covering all repression combinations of n genes requires 2^n - 1 sgRNA plasmids with conventional arrays - labor-intensive and inefficient.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-020"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Test 7 sgRNA handle mutants (#1-#7, from Reis et al. [28]) under each of the 3 promoters; select handle #3 for PlacO1 and #5 for PLtetO-1/ParaBAD; rebuild p3gRNA-LTA",
+        "trigger": "All three promoters showed substantial leaky repression without inducer (rfp reduced 21.8-74.9%), which would confound combinatorial control.",
+        "evidence_level": "硬",
+        "reason_nature": "文献类比",
+        "source_ddr_id": "DDR-020"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "gusA",
+        "decision_summary": "Co-transform p3gRNA-LTA (sgRNAs targeting gusA via PlacO1, rfp via PLtetO-1, lacZ via ParaBAD) with pdCas9-3TFs; apply all 8 inducer combinations",
+        "trigger": "Need to test simultaneous independent repression of three genes distinguished by orthogonal readouts; native lacZ/gusA are under endogenous regulation that would confound readouts.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-020"
+      },
+      {
+        "id": "D6",
+        "type": "engineering_decision",
+        "target": "ptsI",
+        "decision_summary": "Introduce p3gRNA-LTA with sgRNAs targeting pta (PlacO1), ptsI (PLtetO-1), pykA (ParaBAD); apply 7 inducer combinations during shake-flask fermentation",
+        "trigger": "DN5/pB3 accumulated large amounts of ManNAc (direct NeuAc precursor) while PEP showed no accumulation, indicating PEP was limiting relative to ManNAc.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-020"
+      }
+    ],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Develop a rapid CRISPRi-based combinatorial repression system for multiple genes in E. coli by expressing different sgRNAs from orthogonal low-leakage inducible promoters (PlacO1, PLtetO-1, ParaBAD) on a single plasmid (p3gRNA-LTA), so that repression combinations are generated by adding inducers instead of building many sgRNA plasmids; demonstrate it on NeuAc biosynthesis.",
+    "initial_bottleneck": "CRISPRi is functional immediately upon sgRNA transcription, so even weak promoter leakage causes undesired repression; needed independently controllable, low-leakage promoters.",
+    "hypothesis": "Identify inducible promoters with low background leakage and high induced expression for sgRNA expression",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 3,
+      "rule": "When many multi-sgRNA plasmid variants must be built for combinatorial CRISPRi screening in E. coli, apply a one-pot sequential Type IIS (Golden Gate) ligation with distinct enzyme pairs per insertion site, because orthogonal sticky ends allow successive spacer insertion in a single reaction mixture.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 4,
+      "rule": "When inducible-promoter CRISPRi in E. coli shows leaky repression that corrupts combinatorial control, apply sgRNA handle mutations that modestly reduce dCas9 affinity, because lower affinity raises the sgRNA expression threshold needed for repression while preserving inducer-dependent knockdown.",
+      "rule_source": "single_paper",
+      "rule_confidence": "low",
+      "supporting_ddr": []
+    },
+    {
+      "step": 5,
+      "rule": "When benchmarking a multi-channel CRISPRi system on native genomic reporters in E. coli, delete the endogenous regulators (e.g., lacI, gusR) and drive the reporters from constitutive promoters, because otherwise native regulation confounds the CRISPRi-specific repression readout.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 6,
+      "rule": "When one precursor (PEP) is limiting relative to a co-substrate (ManNAc) in E. coli NeuAc biosynthesis, repress PEP-dissipating reactions (PTS component ptsI, pyruvate kinase pykA) rather than only pushing the downstream pathway, because conserving the limiting precursor redirects flux toward product formation; note single-node repression (ptsI) outperformed combinations here, so combinations must be tested rather than assumed additive.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    }
+  ]
+}
