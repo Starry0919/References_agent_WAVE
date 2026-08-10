@@ -1,0 +1,1194 @@
+{
+  "ddr_id": "DDR-023",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Untitled paper (e1143725633c4f1db4b7e81606f8f7d4_12_gkac206)",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Untitled paper (e1143725633c4f1db4b7e81606f8f7d4_12_gkac206)",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": "10.1093/nar/gkac206"
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [
+    {
+      "step": 1,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "Mid-log phase sampling; RNAsnap extraction; RiboZero depletion; HiSeq 2500 50-cycle SE"
+      },
+      "trigger": {
+        "observation": "",
+        "reasoning": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+        "source_location": "E. coli K-12 MG1655"
+      },
+      "evidence": {
+        "description": [
+          "ev_013",
+          "ev_010",
+          "ev_011",
+          "ev_029"
+        ],
+        "source": "论文实测",
+        "source_location": "1000 random genomic positions (folding energy); 100,000 random positions (RNA-Seq meta-analysis); prior datasets as cross-validation",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动启发式判定(软): 基于证据关键词匹配——需人工确认",
+      "reason_nature": "事后合理化存疑",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "Term-Seq on mid-log RNA + KNN machine-learning T3PE calling; comparison with prior BW25113/MG1655 datasets",
+      "result": {
+        "metric": "1,629 stable T3PEs; classes: 407 RIT, 413 r/tRNA processing, 809 other motif-less; 852 novel",
+        "before": "",
+        "after": "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 2,
+      "decision_type": "engineering_decision",
+      "design_action": "M3",
+      "target": {
+        "gene": "",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 glucose, 400 µL, OD600 0.05 start, 24 h"
+      },
+      "trigger": {
+        "observation": "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination",
+        "reasoning": "Quantitative characterization of termination strength of 150 T3PEs via dual reporter",
+        "source_location": "E. coli K-12 MG1655"
+      },
+      "evidence": {
+        "description": [
+          "ev_014",
+          "ev_008",
+          "ev_021",
+          "ev_022"
+        ],
+        "source": "论文实测",
+        "source_location": "pDRA1 empty (read-through = 1); pDRA1 rrnBT",
+        "values": {}
+      },
+      "evidence_grading": "软",
+      "evidence_grading_rationale": "自动判定失败——请人工判定",
+      "reason_nature": "事后合理化存疑",
+      "reason_nature_tags": [],
+      "alternatives": [],
+      "implementation": "其他",
+      "implementation_detail": "pDRA1 plasmids: 70-nt T3PE-upstream fragments cloned between egfp and mrfp1 (50 RITs + 100 motif-less)",
+      "result": {
+        "metric": "Read-through fraction RFP/GFP, range 0.004-91.4; RIT mean 0.294",
+        "before": "",
+        "after": "Wide tunable termination-strength range; motif-less T3PEs significantly weaker; RNase III / BIME / attenuator cases identified",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": null,
+      "rule_source": null,
+      "rule_confidence": null,
+      "supporting_ddr": [],
+      "strategy_categories": [],
+      "calibration_status": "rejected",
+      "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+    },
+    {
+      "step": 3,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "araC",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "M9 glucose, 24 h, 37°C; IPTG 1/10 µM; L-arabinose 1/10/30 mM"
+      },
+      "trigger": {
+        "observation": "Promoter/5'-UTR control requires precious inducer molecules and introduces noise via trans-acting elements (Introduction); goal of reducing genetic-circuit complexity.",
+        "reasoning": "Compare expression noise of terminator-biopart architecture vs conventional dual-promoter regulation",
+        "source_location": "E. coli K-12 MG1655"
+      },
+      "evidence": {
+        "description": [
+          "ev_018",
+          "ev_033"
+        ],
+        "source": "论文实测",
+        "source_location": "dual-promoter system as conventional reference architecture",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Direct single-cell flow-cytometry noise measurements of both architectures in this study.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "conventional dual-promoter (lac + araBAD) system - higher intrinsic noise (η_int 18.4)",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "pDRA2 DualP (araC-araBAD cassette added to drive RFP independently) as dual-promoter reference vs single-promoter terminator-biopart pDRA2",
+      "result": {
+        "metric": "Dual-promoter: η_ext 0.451, η_int 18.4, η_tot 18.4; terminator system: η_int 4.08-fold lower, η_tot 4.07-fold lower, η_ext ~unchanged (1.04×)",
+        "before": "",
+        "after": "Terminator bioparts give ~4.1-fold lower total noise by removing transcription-initiation/TF sources of intrinsic variation",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When balancing multi-gene expression in E. coli synthetic pathways where inducer cost and expression noise must be minimized, apply a single promoter with 3'-UTR terminator bioparts of graded strength instead of multiple inducible promoters, because terminator control removes trans-acting-element-dependent initiation noise (≈4-fold lower intrinsic noise) while retaining tunable relative expression.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "flux_redirection"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 4,
+      "decision_type": "engineering_decision",
+      "design_action": "M6",
+      "target": {
+        "gene": "alsS",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "60 mL M9 high-glucose (10 g/L) + 100 µg/mL amp + 0.1 mM IPTG, OD600 0.05, 300 mL flask, 37°C, 24 h, aerobic"
+      },
+      "trigger": {
+        "observation": "RITs characterized by pDRA1/pDRA2 span a wide quantitative read-through range (0.004-91.4), providing a parts basis for graded downstream-gene control without extra promoters.",
+        "reasoning": "Demonstrate terminator 'metabolic valve' control of the acetoin → 2,3-BDO branch",
+        "source_location": "E. coli K-12 MG1655"
+      },
+      "evidence": {
+        "description": [
+          "ev_019",
+          "ev_009",
+          "ev_023",
+          "ev_034"
+        ],
+        "source": "论文实测",
+        "source_location": "pBDO empty (fully induced, no termination) as negative control; pBDO rrnBT strong-termination reference",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured extracellular titers (HPLC) across the valve series plus prior measured read-through values; the Group B processing explanation (RBS exposure after cleavage) is supported by dRNA-Seq for 5/13 but remains partly inferential.",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [],
+      "alternatives": [
+        {
+          "approach": "changing gene order to obtain higher downstream expression - unnecessary because read-through >1 elements exist",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "Group C short-half-life terminators - reduced both product titers, rejected for production use",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "其他",
+      "implementation_detail": "pBDO plasmids: alsS(B. subtilis)-alsD(A. hydrophila)-[RIT valve]-bdh(T. brockii, codon-optimized); three RIT groups (A: read-through <1, 5 RITs; B: read-through >1, 4 RITs; C: 3 short-half-life RITs) + empty",
+      "result": {
+        "metric": "HPLC titers of acetoin and 2,3-BDO at 24 h: rrnBT 0.126 g/L BDO; empty 0.382 g/L; Group B max 0.513 g/L; plateau at read-through 2.343 (T3PE-390); Group C lowest",
+        "before": "",
+        "after": "Terminators quantitatively valve flux between acetoin and 2,3-BDO; read-through >1 Group B elements exceed no-terminator expression (attributed by authors to post-transcriptional processing exposing RBS; 5/13 Group B showed stable 5'-ends by dRNA-Seq)",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When tuning flux split between two consecutive products of a branched heterologous pathway in E. coli (validated for acetoin/2,3-BDO from pyruvate), apply an intercistronic Rho-independent terminator of chosen read-through strength to set downstream-enzyme expression, because the product ratio scales logarithmically with terminator read-through, allowing single-promoter, inducer-free pathway balancing.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "flux_redirection"
+      ],
+      "calibration_status": "auto_accepted",
+      "calibration_reason": ""
+    },
+    {
+      "step": 5,
+      "decision_type": "engineering_decision",
+      "design_action": "M5",
+      "target": {
+        "gene": "pfkA",
+        "enzyme": "",
+        "pathway": "",
+        "condition": "60 mL M9 high-glucose (10 g/L) + 100 µg/mL amp + 0.1 mM IPTG, OD600 0.05, 300 mL flask, 30°C, up to 48 h, aerobic"
+      },
+      "trigger": {
+        "observation": "Uncontrolled INO1 overexpression in the ΔpfkA Δzwf background caused severe growth retardation with marginal MI production, showing that hard blocking of glycolysis starves biomass/precursor supply and that a tunable intermediate pfkA level is needed.",
+        "reasoning": "Apply terminator valve to balance glycolytic growth flux vs myo-inositol (MI) production in two host backgrounds",
+        "source_location": "E. coli MG1655 ΔpfkA Δzwf and E. coli eMS57 ΔpfkA Δzwf (genome-reduced)"
+      },
+      "evidence": {
+        "description": [
+          "ev_020",
+          "ev_006",
+          "ev_009",
+          "ev_024"
+        ],
+        "source": "论文实测",
+        "source_location": "conv. sys.: MG1655 wild-type (pfkA, zwf unperturbed) + pTrc-INO1 without valve",
+        "values": {}
+      },
+      "evidence_grading": "硬",
+      "evidence_grading_rationale": "模型自评(硬): 见 ddr_annotation.evidence_grading_rationale——需人工确认 | Measured MI titers, glucose consumption, yields and growth across 5 valve strengths in both hosts; pfkA is cited as the effective rate-limiting glycolytic enzyme (ref 54).",
+      "reason_nature": "机理推断",
+      "reason_nature_tags": [
+        "文献类比"
+      ],
+      "alternatives": [
+        {
+          "approach": "constitutive INO1 overexpression without flux control (conventional pTrc-INO1 system) - severe growth retardation, marginal MI",
+          "rejected_reason": ""
+        },
+        {
+          "approach": "complete glycolysis block with no pfkA re-expression - growth failure",
+          "rejected_reason": ""
+        }
+      ],
+      "implementation": "KO",
+      "implementation_detail": "pMI plasmids: INO1(S. cerevisiae)-[RIT valve]-pfkA(E. coli); 5 valve plasmids tested in ΔpfkA Δzwf hosts; hosts built by sequential lambda-Red knockout (zwf then pfkA)",
+      "result": {
+        "metric": "MG1655 ΔpfkA Δzwf optimum at T3PE-383 (read-through 0.519): 0.682 g/L MI, 8.92× conventional system, +38% yield; eMS57 ΔpfkA Δzwf optimum at strong rrnBT: 0.864 g/L (1.27× MG1655 max); unvalved INO1 overexpression caused severe growth retardation and marginal MI",
+        "before": "",
+        "after": "An intermediate pfkA read-through maximizes MI in MG1655 background; genome-reduced host optimum shifts to strong termination (lower carbon cost of growth); demonstrates host-dependent optimal flux balance findable by valve screening",
+        "fold_change": null,
+        "quantified": true
+      },
+      "rule": "When a heterologous production pathway in E. coli draws on glycolytic carbon and full knockout of the competing glycolytic step (pfkA) causes growth failure, apply a 3'-UTR terminator valve to reintroduce the blocked enzyme at graded expression levels in a ΔpfkA Δzwf background, because an intermediate glycolytic flux balances biomass generation against product flux; the optimal valve strength is host-dependent and must be screened per chassis (validated for myo-inositol production in MG1655 and genome-reduced eMS57 backgrounds).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": [],
+      "strategy_categories": [
+        "competitive_pathway_removal",
+        "flux_redirection"
+      ],
+      "calibration_status": "needs_review",
+      "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+    }
+  ],
+  "excluded_records": [
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 3,
+        "decision_type": "validation",
+        "design_action": "M6",
+        "target": {
+          "gene": "rrnBT",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "M9 glucose; various IPTG concentrations (exact series in Suppl. Fig S4/Table S7)"
+        },
+        "trigger": {
+          "observation": "Wide tunable termination-strength range; motif-less T3PEs significantly weaker; RNase III / BIME / attenuator cases identified",
+          "reasoning": "Test whether termination strength is invariant across transcription-initiation levels",
+          "source_location": "E. coli K-12 MG1655"
+        },
+        "evidence": {
+          "description": [
+            "ev_015",
+            "ev_008"
+          ],
+          "source": "论文实测",
+          "source_location": "empty, rrnBT",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "pDRA2 (IPTG-inducible lac promoter driving egfp-terminator-mrfp1), 49 RITs + empty + rrnBT, IPTG titration",
+        "result": {
+          "metric": "Read-through vs IPTG; termination generally stronger at higher expression",
+          "before": "",
+          "after": "Termination strength is expression-level dependent, limiting standardization; attributed by authors to elongation-rate/resource effects (inference)",
+          "fold_change": null,
+          "quantified": false
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 4,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "50 mL M9 glucose + 100 µg/mL amp + 1 mM IPTG; rifampicin 50 µg/mL at OD600 0.3; samples 0.5/5/10 min"
+        },
+        "trigger": {
+          "observation": "Termination strength is expression-level dependent, limiting standardization; attributed by authors to elongation-rate/resource effects (inference)",
+          "reasoning": "Test hypothesis that 3'-UTR T3PE sequence affects mRNA stability, confounding fluorescence-based termination measurement",
+          "source_location": "E. coli K-12 MG1655"
+        },
+        "evidence": {
+          "description": [
+            "ev_016",
+            "ev_027",
+            "ev_012",
+            "ev_030"
+          ],
+          "source": "论文实测",
+          "source_location": "rrsA (16S rRNA) internal qPCR reference; pGFP empty/rrnBT in model validation",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "pGFP plasmids (pDRA2 minus mrfp1) with different terminators; rifampicin chase",
+        "result": {
+          "metric": "mRNA half-lives 3.0-14.8 min; GFP intensity directly proportional to half-life (max 5-fold difference)",
+          "before": "",
+          "after": "Differential decay of gfp-only vs gfp-rfp transcripts biases read-through-based termination strength by up to 27% (model); correction framework provided",
+          "fold_change": null,
+          "quantified": true
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    },
+    {
+      "decision_type": "validation",
+      "exclusion_reason": "Q1/Q3 未通过：只验证/表征已选定的设计，未包含新的改造动作或未引出新的策略选择",
+      "step_snapshot": {
+        "step": 5,
+        "decision_type": "validation",
+        "design_action": "M3",
+        "target": {
+          "gene": "",
+          "enzyme": "",
+          "pathway": "",
+          "condition": "M9 glucose 2 g/L (reference), M9 glycerol 2 g/L, M9 high-glucose 10 g/L, LB, TB, and 30°C"
+        },
+        "trigger": {
+          "observation": "Differential decay of gfp-only vs gfp-rfp transcripts biases read-through-based termination strength by up to 27% (model); correction framework provided",
+          "reasoning": "Assess robustness/consistency of RIT termination strength across media and temperature",
+          "source_location": "E. coli K-12 MG1655"
+        },
+        "evidence": {
+          "description": [
+            "ev_017",
+            "ev_031"
+          ],
+          "source": "论文实测",
+          "source_location": "M9 glucose 37°C reference condition",
+          "values": {}
+        },
+        "evidence_grading": "软",
+        "evidence_grading_rationale": "自动判定失败——请人工判定",
+        "reason_nature": "筛选得来",
+        "reason_nature_tags": [],
+        "alternatives": [],
+        "implementation": "其他",
+        "implementation_detail": "pDRA2 RIT panel assayed in 5 additional conditions",
+        "result": {
+          "metric": "Fold-changes vs reference: high-glucose 0.96 (R²=0.93), LB 1.09, M9 glycerol 0.66, TB 1.84, 30°C 1.34",
+          "before": "",
+          "after": "Relative terminator strength ranking is consistent; absolute strength shifts with growth/elongation rate",
+          "fold_change": null,
+          "quantified": false
+        },
+        "rule": null,
+        "rule_source": null,
+        "rule_confidence": null,
+        "supporting_ddr": [],
+        "strategy_categories": [
+          "transport_engineering"
+        ],
+        "calibration_status": "auto_accepted",
+        "calibration_reason": ""
+      }
+    }
+  ],
+  "engineering_problem": {
+    "problem_statement": "Characterize E. coli transcript 3'-ends (T3PEs) genome-wide using Term-Seq plus machine learning to build a tunable collection of 3'-UTR/Rho-independent terminator bioparts, and apply them as synthetic 3'-UTR 'metabolic valves' to optimally balance flux between heterologous product pathways (2,3-butanediol from acetoin; myo-inositol production) and endogenous metabolism in E. coli.",
+    "problem_type": [
+      "competing pathway",
+      "feedback inhibition"
+    ],
+    "trigger_conditions": [
+      "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination",
+      "Promoter/5'-UTR control requires precious inducer molecules and introduces noise via trans-acting elements (Introduction",
+      "RITs characterized by pDRA1/pDRA2 span a wide quantitative read-through range (0.004-91.4), providing a parts basis for ",
+      "Uncontrolled INO1 overexpression in the ΔpfkA Δzwf background caused severe growth retardation with marginal MI producti"
+    ]
+  },
+  "biological_diagnosis": {
+    "observations": [
+      "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination",
+      "Promoter/5'-UTR control requires precious inducer molecules and introduces noise via trans-acting elements (Introduction); goal of reducing genetic-circuit complexity.",
+      "RITs characterized by pDRA1/pDRA2 span a wide quantitative read-through range (0.004-91.4), providing a parts basis for graded downstream-gene control without extra promoters.",
+      "Uncontrolled INO1 overexpression in the ΔpfkA Δzwf background caused severe growth retardation with marginal MI production, showing that hard blocking of glycolysis starves biomass/precursor supply and that a tunable intermediate pfkA level is needed."
+    ],
+    "bottlenecks": [
+      ": ",
+      ": Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of trans",
+      "araC: Promoter/5'-UTR control requires precious inducer molecules and introduces noise",
+      "alsS: RITs characterized by pDRA1/pDRA2 span a wide quantitative read-through range (0",
+      "pfkA: Uncontrolled INO1 overexpression in the ΔpfkA Δzwf background caused severe grow"
+    ],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-10",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。33 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "840e0205e3974daab1f265a4cefcf31a",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "e1143725633c4f1db4b7e81606f8f7d4_12_gkac206",
+      "identity": {
+        "paper_id": "e1143725633c4f1db4b7e81606f8f7d4_12_gkac206",
+        "title": null,
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": "10.1093/nar/gkac206"
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "ev_036",
+          "ev_010",
+          "ev_013",
+          "ev_029"
+        ],
+        "rationale": "Original experimental study with full Methods (strain construction, Term-Seq, reporter assays, fermentations) and Results reporting novel data generated by the authors."
+      },
+      "target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "target",
+          "paper_label": "E. coli K-12 MG1655 / 'wild-type' (Fig 5F conv. sys.)",
+          "lineage_or_engineering_context": "Reference genome NC_000913.3; base host for Term-Seq discovery, all reporter assays, BDO production, and conventional-system MI benchmark",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type K-12 MG1655 (plasmid-bearing variants: pDRA1/pDRA2/pGFP/pBDO/pMI series)",
+          "evidence": [
+            "ev_005",
+            "ev_007"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly named in Abstract, Methods and throughout Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "genome-reduced E. coli eMS57",
+          "paper_strain_normalized": "Escherichia coli eMS57",
+          "role": "host",
+          "paper_label": "genome-reduced E. coli eMS57",
+          "lineage_or_engineering_context": "Genome-reduced chassis derived by adaptive laboratory evolution in prior study (ref 55, Choe et al. 2019) - background element, not constructed here",
+          "combination_status": "not_applicable",
+          "genotype": "genome-reduced MG1655 derivative (exact deleted loci defined in ref 55, not restated here)",
+          "evidence": [
+            "ev_005",
+            "ev_020"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named in Methods and used as second production host in Results; prior origin acknowledged by citation (55)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655 ΔpfkA Δzwf double-knockout strain",
+          "paper_strain_normalized": "Escherichia coli MG1655 ΔpfkA Δzwf",
+          "role": "engineered",
+          "paper_label": "E. coli MG1655 ΔpfkA Δzwf",
+          "lineage_or_engineering_context": "Constructed in this study by two sequential lambda-Red recombination steps (zwf first with pKD13/pKD46, FLP cassette removal via pCP20, then pfkA; curing at 42°C)",
+          "combination_status": "demonstrated",
+          "genotype": "Δzwf ΔpfkA (scarless after FLP excision)",
+          "evidence": [
+            "ev_006"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Construction explicitly described in Methods; combination double knockout directly stated."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "eMS57 ΔpfkA Δzwf double knockout strain",
+          "paper_strain_normalized": "Escherichia coli eMS57 ΔpfkA Δzwf",
+          "role": "engineered",
+          "paper_label": "eMS57 ΔpfkA Δzwf",
+          "lineage_or_engineering_context": "Double-knockout derivative of genome-reduced eMS57 used for pMI valve screening; construction method stated generically ('the same method' as MG1655 knockout)",
+          "combination_status": "demonstrated",
+          "genotype": "Δzwf ΔpfkA in eMS57 background",
+          "evidence": [
+            "ev_007",
+            "ev_020"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Methods explicitly list 'E. coli MG1655 or eMS57 ΔpfkA Δzwf double knockout strains harboring the pMI plasmid'; Results describe valve tests in the genome-reduced strain."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113 (comparison dataset only)",
+          "paper_strain_normalized": "Escherichia coli BW25113",
+          "role": "other",
+          "paper_label": "E. coli BW25113 (ref 14 data)",
+          "lineage_or_engineering_context": "NOT used experimentally in this study; prior Term-Seq dataset from Dar & Sorek (ref 14) used only for cross-validation comparison",
+          "combination_status": "not_applicable",
+          "genotype": "not applicable to current experiments",
+          "evidence": [
+            "ev_037"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Mentioned solely as the strain of a previously reported T3PE dataset; attribution kept as background_citation data, not a current-article experimental strain."
+        }
+      ],
+      "target_system_adaptation": {
+        "status": "not_generated",
+        "reason": "No user target system provided in this skill07 call; adaptation is out of scope for this extraction stage. Note: valve strategy is itself E. coli K-12-based."
+      },
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 1.0,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "Skill07 value was downgraded because no sufficient quote was found.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": true
+        }
+      ],
+      "has_design_content": false,
+      "quality": {
+        "completeness": 0.0,
+        "reproducibility": 0.0,
+        "evidence_level": 0.0,
+        "extraction_confidence": 0.0,
+        "missing_information": [
+          "analysis_methods",
+          "assay",
+          "controls",
+          "culture_conditions",
+          "dosage",
+          "engineering_method",
+          "experimental_groups",
+          "genotype",
+          "hypothesis",
+          "instruments",
+          "medium",
+          "objective",
+          "outcomes",
+          "replicates",
+          "strain",
+          "time"
+        ],
+        "overall_score": 0.0,
+        "confidence_label": "low",
+        "recommendation": "Do not use as a standalone downstream input; human review and source completion are required.",
+        "dimensions": {
+          "field_completeness": {
+            "score": 0.0,
+            "reason": "0 of 10 required design fields are defined.",
+            "missing_fields": [
+              "strain",
+              "genotype",
+              "engineering_method",
+              "experimental_groups",
+              "controls",
+              "culture_conditions",
+              "assay",
+              "instruments",
+              "analysis_methods",
+              "outcomes"
+            ],
+            "group_scores": {
+              "biological_system": 0.0,
+              "engineering": 0.0,
+              "experimental_setup": 0.0,
+              "measurement": 0.0,
+              "outcome": 0.0
+            }
+          },
+          "evidence_quality": {
+            "score": 0.0,
+            "reason": "0 of 0 reported fields have bound evidence; 16 fields are unknown; source quality is 0.00.",
+            "grade": "D",
+            "coverage": 0.0,
+            "source_quality": 0,
+            "source_distribution": {
+              "methods": 0,
+              "supplement": 0,
+              "figure_table": 0,
+              "results": 0,
+              "other": 0
+            },
+            "unknown_fraction": 1.0,
+            "issues": [
+              "majority_fields_unknown",
+              "conflicting_evidence"
+            ]
+          },
+          "experimental_logic": {
+            "score": 0.0,
+            "reason": "0 of 5 logic links are explicitly represented.",
+            "missing_components": [
+              "research_question",
+              "hypothesis",
+              "intervention",
+              "measurement",
+              "outcome"
+            ],
+            "components": {
+              "research_question": false,
+              "hypothesis": false,
+              "intervention": false,
+              "measurement": false,
+              "outcome": false
+            }
+          },
+          "variable_quality": {
+            "score": 0.0,
+            "reason": "0 of 3 variable categories are defined.",
+            "variable_quality": "poor",
+            "issues": [
+              "independent",
+              "dependent",
+              "controlled"
+            ]
+          },
+          "workflow_quality": {
+            "score": 0.0,
+            "reason": "0 of 4 workflow stages are represented.",
+            "missing_steps": [
+              "construction",
+              "cultivation",
+              "measurement",
+              "analysis"
+            ],
+            "stages": {
+              "construction": false,
+              "cultivation": false,
+              "measurement": false,
+              "analysis": false
+            }
+          },
+          "reproducibility": {
+            "score": 0.0,
+            "reason": "0 of 5 reproduction-critical components are reported.",
+            "level": "high",
+            "missing_components": [
+              "strain",
+              "protocol",
+              "condition",
+              "replicate",
+              "measurement"
+            ]
+          },
+          "method_quality": {
+            "score": 0.0,
+            "reason": "0 of 5 method-description components are available.",
+            "strengths": [],
+            "limitations": [
+              "control",
+              "replicate",
+              "assay",
+              "validation",
+              "statistical_analysis"
+            ]
+          }
+        },
+        "risks": {
+          "replication_risk": {
+            "level": "high",
+            "reason": "0 of 5 reproduction-critical components are reported."
+          },
+          "information_missing_risk": {
+            "level": "high",
+            "reason": "16 unknown fields, including 5 reproduction-critical fields."
+          },
+          "interpretation_risk": {
+            "level": "high",
+            "reason": "Logic score is 0.0; 4 conflicts are unresolved."
+          }
+        }
+      },
+      "coverage": {
+        "total_fields": 16,
+        "reported_fields": 0,
+        "fields_with_evidence": 0,
+        "unknown_fields": 16,
+        "reported_evidence_coverage": 0.0,
+        "overall_field_coverage": 0.0
+      },
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [
+      "metabolic_engineering"
+    ],
+    "engineering_paper_type_rationale": "基于 decision_chain 的 design_action/implementation_detail 关键词启发式判定——需人工确认"
+  },
+  "engineering_decision_map": {
+    "goal": "Characterize E. coli transcript 3'-ends (T3PEs) genome-wide using Term-Seq plus machine learning to build a tunable collection of 3'-UTR/Rho-independent terminator bioparts, and apply them as synthetic 3'-UTR 'metabolic valves' to optimally balance flux between heterologous product pathways (2,3-butanediol from acetoin; myo-inositol production) and endogenous metabolism in E. coli.",
+    "initial_bottleneck": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+    "key_hypothesis": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+    "decision_sequence": [
+      {
+        "step": 1,
+        "design_action": "M3",
+        "action_summary": "Term-Seq on mid-log RNA + KNN machine-learning T3PE calling; comparison with prior BW25113/MG1655 datasets"
+      },
+      {
+        "step": 2,
+        "design_action": "M3",
+        "action_summary": "pDRA1 plasmids: 70-nt T3PE-upstream fragments cloned between egfp and mrfp1 (50 RITs + 100 motif-less)"
+      },
+      {
+        "step": 3,
+        "design_action": "M6",
+        "action_summary": "pDRA2 DualP (araC-araBAD cassette added to drive RFP independently) as dual-promoter reference vs single-promoter terminator-biopart pDRA2"
+      },
+      {
+        "step": 4,
+        "design_action": "M6",
+        "action_summary": "pBDO plasmids: alsS(B. subtilis)-alsD(A. hydrophila)-[RIT valve]-bdh(T. brockii, codon-optimized); three RIT groups (A: read-through <1, 5 RITs; B: read-through >1, 4 RITs; C: 3 short-half-life RITs) + empty"
+      },
+      {
+        "step": 5,
+        "design_action": "M5",
+        "action_summary": "pMI plasmids: INO1(S. cerevisiae)-[RIT valve]-pfkA(E. coli); 5 valve plasmids tested in ΔpfkA Δzwf hosts; hosts built by sequential lambda-Red knockout (zwf then pfkA)"
+      }
+    ]
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [
+      "metabolic_engineering"
+    ],
+    "goal": "Characterize E. coli transcript 3'-ends (T3PEs) genome-wide using Term-Seq plus machine learning to build a tunable collection of 3'-UTR/Rho-independent terminator bioparts, and apply them as synthetic 3'-UTR 'metabolic valves' to optimally balance flux between heterologous product pathways (2,3-butanediol from acetoin; myo-inositol production) and endogenous metabolism in E. coli.",
+    "initial_bottleneck": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+    "key_hypothesis": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655"
+  },
+  "human_calibration_report": {
+    "auto_accepted": 2,
+    "needs_review": 1,
+    "rejected": 2,
+    "needs_review_steps": [
+      {
+        "step": 1,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 2,
+        "calibration_status": "rejected",
+        "calibration_reason": "engineering_decision 步骤既未能确定 design_action 也未提取到 target（基因/酶/通路），抽取失败，不应作为可信 DDR 使用"
+      },
+      {
+        "step": 5,
+        "calibration_status": "needs_review",
+        "calibration_reason": "reason_nature 存在多个标签（Case 1），需人工确认是否两者都成立"
+      }
+    ]
+  },
+  "engineering_decision_graph": {
+    "nodes": [
+      {
+        "id": "D1",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "Term-Seq on mid-log RNA + KNN machine-learning T3PE calling; comparison with prior BW25113/MG1655 datasets",
+        "trigger": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+        "evidence_level": "软",
+        "reason_nature": "事后合理化存疑",
+        "source_ddr_id": "DDR-023"
+      },
+      {
+        "id": "D2",
+        "type": "engineering_decision",
+        "target": "",
+        "decision_summary": "pDRA1 plasmids: 70-nt T3PE-upstream fragments cloned between egfp and mrfp1 (50 RITs + 100 motif-less)",
+        "trigger": "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination",
+        "evidence_level": "软",
+        "reason_nature": "事后合理化存疑",
+        "source_ddr_id": "DDR-023"
+      },
+      {
+        "id": "D3",
+        "type": "engineering_decision",
+        "target": "araC",
+        "decision_summary": "pDRA2 DualP (araC-araBAD cassette added to drive RFP independently) as dual-promoter reference vs single-promoter terminator-biopart pDRA2",
+        "trigger": "Promoter/5'-UTR control requires precious inducer molecules and introduces noise via trans-acting elements (Introduction); goal of reducing genetic-circuit complexity.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-023"
+      },
+      {
+        "id": "D4",
+        "type": "engineering_decision",
+        "target": "alsS",
+        "decision_summary": "pBDO plasmids: alsS(B. subtilis)-alsD(A. hydrophila)-[RIT valve]-bdh(T. brockii, codon-optimized); three RIT groups (A: read-through <1, 5 RITs; B: read-through >1, 4 RITs; C: 3 short-half-life RITs) + empty",
+        "trigger": "RITs characterized by pDRA1/pDRA2 span a wide quantitative read-through range (0.004-91.4), providing a parts basis for graded downstream-gene control without extra promoters.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-023"
+      },
+      {
+        "id": "D5",
+        "type": "engineering_decision",
+        "target": "pfkA",
+        "decision_summary": "pMI plasmids: INO1(S. cerevisiae)-[RIT valve]-pfkA(E. coli); 5 valve plasmids tested in ΔpfkA Δzwf hosts; hosts built by sequential lambda-Red knockout (zwf then pfkA)",
+        "trigger": "Uncontrolled INO1 overexpression in the ΔpfkA Δzwf background caused severe growth retardation with marginal MI production, showing that hard blocking of glycolysis starves biomass/precursor supply and that a tunable intermediate pfkA level is needed.",
+        "evidence_level": "硬",
+        "reason_nature": "机理推断",
+        "source_ddr_id": "DDR-023"
+      }
+    ],
+    "edges": [
+      {
+        "from": "D1",
+        "to": "D2",
+        "relation": "triggered_by",
+        "evidence": "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination"
+      }
+    ]
+  },
+  "engineering_logic_chain": {
+    "goal": "Characterize E. coli transcript 3'-ends (T3PEs) genome-wide using Term-Seq plus machine learning to build a tunable collection of 3'-UTR/Rho-independent terminator bioparts, and apply them as synthetic 3'-UTR 'metabolic valves' to optimally balance flux between heterologous product pathways (2,3-butanediol from acetoin; myo-inositol production) and endogenous metabolism in E. coli.",
+    "initial_bottleneck": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+    "hypothesis": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [
+    {
+      "step": 3,
+      "rule": "When balancing multi-gene expression in E. coli synthetic pathways where inducer cost and expression noise must be minimized, apply a single promoter with 3'-UTR terminator bioparts of graded strength instead of multiple inducible promoters, because terminator control removes trans-acting-element-dependent initiation noise (≈4-fold lower intrinsic noise) while retaining tunable relative expression.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 4,
+      "rule": "When tuning flux split between two consecutive products of a branched heterologous pathway in E. coli (validated for acetoin/2,3-BDO from pyruvate), apply an intercistronic Rho-independent terminator of chosen read-through strength to set downstream-enzyme expression, because the product ratio scales logarithmically with terminator read-through, allowing single-promoter, inducer-free pathway balancing.",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    },
+    {
+      "step": 5,
+      "rule": "When a heterologous production pathway in E. coli draws on glycolytic carbon and full knockout of the competing glycolytic step (pfkA) causes growth failure, apply a 3'-UTR terminator valve to reintroduce the blocked enzyme at graded expression levels in a ΔpfkA Δzwf background, because an intermediate glycolytic flux balances biomass generation against product flux; the optimal valve strength is host-dependent and must be screened per chassis (validated for myo-inositol production in MG1655 and genome-reduced eMS57 backgrounds).",
+      "rule_source": "single_paper",
+      "rule_confidence": "medium",
+      "supporting_ddr": []
+    }
+  ]
+}
