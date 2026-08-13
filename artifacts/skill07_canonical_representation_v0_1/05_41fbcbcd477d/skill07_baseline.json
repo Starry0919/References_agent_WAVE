@@ -1,0 +1,1973 @@
+{
+  "status": "succeeded",
+  "model": "kimi-k3",
+  "usage": {
+    "input_tokens": 130619,
+    "output_tokens": 56997
+  },
+  "prompt_chars": 180991,
+  "prompt_build_ms": 172.1986997872591,
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_ms": 492018.4162002988,
+      "error": null
+    }
+  ],
+  "repairs": [
+    {
+      "repair": 1,
+      "duration_ms": 337366.92000040784,
+      "prompt_chars": 253642,
+      "error": null
+    }
+  ],
+  "normalization_actions": [],
+  "checks": [
+    {
+      "name": "top_level_and_field_schema",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "field_semantic_invariants",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "evidence_role_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "candidate_evidence_anchors_resolve",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "article_type_gate_valid",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "experiment_graph_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "ddr_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "document_coverage_consistent",
+      "passed": true,
+      "required": true
+    }
+  ],
+  "output": {
+    "contract_version": "skill07_semantic_contract_v1",
+    "fields": {
+      "objective": {
+        "value": "Develop platform Escherichia coli strains for the bio-based production of multiple short-chain primary amines (SCPAs) by designing biosynthetic pathways through a combined retrobiosynthesis and precursor selection strategy, and demonstrate SCPA production in vitro (purified VlmD), in vivo (precursor feeding), and de novo from glucose, including enhanced iso-butylamine and ethylamine production.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p002",
+          "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p006"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "hypothesis": {
+        "value": "Two explicit hypotheses: (1) amino acids would serve as ideal precursors of SCPAs because their metabolic pathways are well characterized and can be engineered to carry high fluxes; (2) valine decarboxylase (VlmD), if sufficiently promiscuous, might convert other amino acid precursors into the corresponding SCPAs. Decarboxylation was additionally expected to serve as a driving force for metabolic fluxes because it is irreversible.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_p002",
+          "results_p003"
+        ],
+        "notes": "Hypotheses are stated by the authors prior to experimental validation; they are author expectations, not verified mechanisms.",
+        "inference": null
+      },
+      "strain": {
+        "value": [
+          {
+            "label": "E. coli WL3110",
+            "role": "production host",
+            "note": "lacI knockout mutant of E. coli W3110"
+          },
+          {
+            "label": "PA01",
+            "role": "SCPA platform strain (precursor feeding)",
+            "note": "WL3110 harboring pTac15-vlmDopt (codon-optimized S. viridifaciens vlmD)"
+          },
+          {
+            "label": "EA01",
+            "role": "de novo ethylamine strain",
+            "note": "overexpressing codon-optimized vlmD and G. stearothermophilus alaD"
+          },
+          {
+            "label": "iBA01",
+            "role": "de novo iso-butylamine strain",
+            "note": "Val (pKBRilvBNCED) + pTac15-vlmDopt; auxotrophic to L-isoleucine, L-leucine, D-pantothenate"
+          },
+          {
+            "label": "iAA01",
+            "role": "de novo iso-amylamine strain",
+            "note": "iBA01 with additional leuABCD overexpression"
+          },
+          {
+            "label": "iBA02",
+            "role": "iso-butylamine fed-batch strain without auxotrophies",
+            "note": "WLGBH (pKBRilvBNCED) + pTac15-vlmDopt-anti-ilvA-leuA-panB (sRNA knockdown)"
+          },
+          {
+            "label": "EA01-V94I and 11 other VlmD-variant strains",
+            "role": "enzyme engineering strains",
+            "note": "WL3110 overexpressing alaD and one of 12 vlmD variants"
+          },
+          {
+            "label": "NC01, NC02, NC03",
+            "role": "control strains",
+            "note": "controls without vlmD for EA01, iBA01, iAA01 comparisons respectively"
+          },
+          {
+            "label": "E. coli BL21(DE3) harboring pET-his-vlmDopt",
+            "role": "VlmD overexpression for purification"
+          },
+          {
+            "label": "E. coli NEB 10-beta",
+            "role": "cloning host"
+          },
+          {
+            "label": "Val (pKBRilvBNCED) and WLGBH",
+            "role": "parental strains from previous study (ref 21)",
+            "note": "Val is L-valine overproducer with ilvA/leuA/panB deleted; WLGBH is its parent with intact ilvA, leuA, panB"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p005",
+          "results_p008",
+          "results_p033",
+          "results_p034",
+          "results_p037",
+          "results_p048",
+          "results_p052"
+        ],
+        "notes": "Document-level projection aggregating multiple experiment-specific strains; instance-level binding is in experimental_design_object. Complete strain/plasmid list resides in Supplementary Table 2, which is not provided (requires_supplement); strain set here is limited to strains named in the main text.",
+        "inference": null
+      },
+      "genotype": {
+        "value": {
+          "WL3110": "lacI knockout mutant of E. coli W3110 (full genotype not given in main text)",
+          "PA01": "WL3110 + pTac15-vlmDopt (pTac15K carrying codon-optimized S. viridifaciens vlmD inserted at EcoRI/KpnI)",
+          "EA01": "WL3110 + pTac15-vlmDopt-alaDopt (codon-optimized G. stearothermophilus alaD inserted at KpnI/PstI)",
+          "iBA01": "Val (pKBRilvBNCED) + pTac15-vlmDopt; Val strain carries ilvA, leuA, panB deletions (from ref 21)",
+          "iAA01": "iBA01 + pTac-driven leuABCD overexpression (pTac15-vlmDopt-pTac-leuABCD)",
+          "iBA02": "WLGBH (pKBRilvBNCED) + pTac15-vlmDopt-anti-ilvA-leuA-panB (synthetic sRNA knockdown cassettes; WLGBH has intact ilvA, leuA, panB)",
+          "EA01-variants": "WL3110 + pTac15-vlmDopt-XYZ-alaDopt where XYZ is one of V94I, V94L, V114I, V114L, T397A, T397V, W399L, S431T, S431V, S431L, D515K, D515N",
+          "NC02": "Val (pKBRilvBNCED) harboring an empty plasmid without vlmD"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.55,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p005",
+          "methods_p006",
+          "methods_p007",
+          "results_p008",
+          "results_p033",
+          "results_p034",
+          "results_p037",
+          "results_p048",
+          "results_p049"
+        ],
+        "notes": "Genotypes are reconstructed only from main-text descriptions; authoritative strain/plasmid genotypes are in Supplementary Table 2 (not provided; requires_supplement). NC01 and NC03 exact genotypes are not described in the main text beyond lacking vlmD. Plasmid backbones: pTac15K and pET-22b(+); pKBRilvBNCED obtained from previous study (ref 21).",
+        "inference": null
+      },
+      "engineering_method": {
+        "value": [
+          "Computational retrobiosynthesis with 84 SMARTS reaction rules for pathway design",
+          "Precursor selection step: molecular-type filtering (PubChem MeSH Tree via PubChemPy) and relative-position-of-functional-groups comparison (RDT v1.5.1)",
+          "Heterologous expression of codon-optimized S. viridifaciens vlmD from pTac15K-based plasmids",
+          "Overexpression of codon-optimized G. stearothermophilus alaD (pyruvate to L-alanine)",
+          "Use of previously developed L-valine-overproducing Val (pKBRilvBNCED) strain",
+          "Additional overexpression of leuABCD operon for L-leucine supply",
+          "Synthetic sRNA knockdown of ilvA, leuA and panB (Gibson-assembled anti-ilvA/leuA/panB cassettes) instead of gene knockout",
+          "Rational protein engineering of VlmD: homology modeling (SWISS-MODEL, GAD67/2OKJ template), AutoDock Vina docking of PLP-L-alanine, BLASTP-based substitution candidate search, site-directed mutagenesis (12 single mutations)",
+          "Fed-batch fermentation in 6.6 L bioreactor with DO-stat and manual glucose feeding"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p001",
+          "methods_p003",
+          "methods_p006",
+          "methods_p007",
+          "methods_p010",
+          "methods_p013",
+          "results_p033",
+          "results_p034",
+          "results_p037",
+          "results_p048",
+          "results_p049"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "experimental_groups": {
+        "value": [
+          "EXP1 (computational): retrobiosynthesis + precursor selection for 15 target SCPAs",
+          "EXP2 (in vitro): purified His-tagged VlmD assayed against 13 amino acid precursors (1 mM each), 2 h, 37 °C",
+          "EXP3 (in vivo feeding): PA01 cultured with individual feeding of 12 amino acid precursors (2 g/L each)",
+          "EXP4 (de novo ethylamine): EA01 vs NC01, glucose as sole carbon source",
+          "EXP5 (de novo iso-butylamine): iBA01 vs NC02, glucose",
+          "EXP6 (de novo iso-amylamine): iAA01 vs NC03, glucose",
+          "EXP7 (fed-batch): iBA01 in NM3 with L-isoleucine/L-leucine/D-pantothenate supplementation",
+          "EXP8 (fed-batch): iBA02 in NM3 without amino acid/vitamin supplementation",
+          "EXP9 (enzyme engineering): flask cultures of EA01 and 12 VlmD-variant derivative strains"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_p001",
+          "results_p006",
+          "results_p008",
+          "results_p033",
+          "results_p034",
+          "results_p037",
+          "results_p047",
+          "results_p048",
+          "results_p052",
+          "results_p044"
+        ],
+        "notes": "Groups are instantiated per experiment in experimental_design_object; this projection must not be read as a single merged experiment.",
+        "inference": null
+      },
+      "controls": {
+        "value": [
+          "In vitro enzyme assays without VlmD (no-enzyme control) for each of the 12 tested conversions (Fig. 3)",
+          "NC01: control strain for EA01 de novo ethylamine comparison (Fig. 6a)",
+          "NC02: Val (pKBRilvBNCED) harboring an empty plasmid without vlmD; control for iBA01 (Fig. 6b)",
+          "NC03: L-leucine-producing strain without vlmD; control for iAA01 (Fig. 6c)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_p032",
+          "results_p034",
+          "results_p037",
+          "results_p044"
+        ],
+        "notes": "Exact NC01/NC03 genotypes are only in Supplementary Table 2 (not provided). No negative control is explicitly described in the main text for the PA01 precursor-feeding experiment.",
+        "inference": null
+      },
+      "culture_conditions": {
+        "value": {
+          "seed_culture": "10 mL LB in 25 mL test tube at 37 °C, 8 h; fed-batch seed: 50 mL LB in 250 mL flask, 7 h at 30 °C, 200 rpm",
+          "flask": "300 mL baffled flask with 50 mL medium, 200 rpm shaking incubator; 37 °C for PA01 and EA01; 30 °C for iBA01 and iAA01",
+          "fed_batch": "6.6 L bioreactor (Bioflo 3000), 2 L NM3 medium, 30 °C, pH 7.0 maintained with 28% (v/v) ammonia, air 2 L/min, DO held at 40% air saturation via agitation 200-1000 rpm plus pure oxygen; 100 mL feeding solution added manually when residual glucose < 3 g/L",
+          "enzyme_expression": "BL21(DE3) pET-his-vlmDopt in 200 mL LB at 37 °C; induced with 1 mM IPTG after 3 h; harvested after additional 5 h",
+          "in_vitro_assay": "50 mM potassium phosphate buffer (pH 7.5), 2 h at 37 °C"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p004",
+          "methods_p008",
+          "methods_p009",
+          "methods_p010"
+        ],
+        "notes": "Temperatures are bound to distinct process steps (cultivation vs enzymatic reaction) and must not be merged.",
+        "inference": null
+      },
+      "medium": {
+        "value": {
+          "MR": "pH 7.0; per liter: 6.67 g KH2PO4, 4 g (NH4)2HPO4, 0.8 g MgSO4·7H2O, 0.8 g citric acid, 5 mL trace metal solution; supplemented with 10 g/L glucose + 2 g/L amino acid precursor (PA01) or 20 g/L glucose (EA01)",
+          "NM2": "per liter: 50 g glucose, 30 g CaCO3, 12.5 g (NH4)2SO4, 4.0 g KH2PO4, 2.0 g MgSO4·7H2O, yeast extract (amount unreadable), 0.262 g L-isoleucine, 0.262 g L-leucine, 0.425 mg sodium D-pantothenate, 5 mL trace metal solution; iAA01 cultured in NM2 without L-leucine",
+          "NM3": "per liter: 20 g glucose, 20 g (NH4)2SO4, 2 g KH2PO4, 0.4 g MgSO4·7H2O, 1.6 g NaCl, 5 g yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.362 mg sodium D-pantothenate, 5 mL trace metal solution; iBA02 version excludes L-isoleucine, L-leucine, sodium D-pantothenate",
+          "LB": "used for cloning, plasmid/strain construction and seed cultures",
+          "feeding_solution": "400 g/L glucose, 20 g/L KH2PO4, 2.1 g/L L-isoleucine, 2.1 g/L L-leucine, 3.62 mg/L sodium D-pantothenate"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.6,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p005",
+          "methods_p008",
+          "methods_p009",
+          "methods_p010"
+        ],
+        "notes": "OCR corruption in source: MR medium shows '(NH ) HPO ' (likely (NH4)2HPO4) and NM2 shows repeated 'LaO4' artifacts and a missing yeast-extract quantity; NM3 shows 'KH PO'. Compositions must be verified against the original PDF before reuse. Trace metal solution composition is reported per liter of 0.5 M HCl (ref 40).",
+        "inference": null
+      },
+      "dosage": {
+        "value": {
+          "in_vitro_assay": "1 mM amino acid precursor, 0.1 mM PLP, 150 µg/mL purified His-tagged VlmD",
+          "precursor_feeding": "2 g/L of each of the 12 amino acid precursors, fed individually",
+          "glucose": "10 g/L (PA01, MR), 20 g/L (EA01, MR; NM3 batch medium), 50 g/L (NM2); feeding solution 400 g/L glucose",
+          "inducer": "1 mM IPTG",
+          "antibiotics": "kanamycin 25 µg/mL; ampicillin 50 µg/mL",
+          "fed_batch_supplements": "0.262 g/L L-isoleucine, 0.262 g/L L-leucine, 0.362 mg/L sodium D-pantothenate in NM3 (iBA01 only)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p004",
+          "methods_p005",
+          "methods_p008",
+          "methods_p010",
+          "results_p008"
+        ],
+        "notes": "Dosages are bound to specific experiments/process steps as indicated; they are not interchangeable.",
+        "inference": null
+      },
+      "time": {
+        "value": {
+          "in_vitro_enzyme_assay": "2 h at 37 °C",
+          "PA01_flask_culture": "36 h",
+          "EA01_flask_culture": "48 h",
+          "iBA01_iAA01_flask_culture": "48 h",
+          "seed_culture": "8 h (flask experiments); 7 h (fed-batch seed)",
+          "vlmD_expression": "IPTG induction after 3 h; cells collected after additional 5 h",
+          "fed_batch_duration": "not stated in available text"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p004",
+          "methods_p008",
+          "methods_p009",
+          "methods_p010"
+        ],
+        "notes": "Fed-batch total run time is not given numerically in the main text; fermentation profiles are in Fig. 7 (visual not available) and Source Data (not provided).",
+        "inference": null
+      },
+      "replicates": {
+        "value": {
+          "in_vitro_assays": "triplicates",
+          "in_vivo_precursor_feeding": "triplicates per SCPA",
+          "de_novo_flask_cultures": "triplicates; 'All the flask cultures were repeated three times'",
+          "enzyme_variant_flask_cultures": "triplicates",
+          "fed_batch": "iBA02 fermentation repeated once for reproducibility (Supplementary Fig. 5, not provided); iBA01 replicate count not stated"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.7,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_p032",
+          "results_p036",
+          "results_p044",
+          "results_p051",
+          "methods_p009",
+          "results_p046"
+        ],
+        "notes": "Replicate type (biological vs technical vs independent cultures) is not specified anywhere in the available text; 'triplicates' cannot be further classified without the Source Data or Supplement.",
+        "inference": null
+      },
+      "assay": {
+        "value": [
+          "SCPA quantification by HPLC with automatic precolumn o-phthaldialdehyde (OPA) derivatization, Eclipse plus C18 column at 25 °C, detection at 230 nm",
+          "Product identity confirmation by LC-MS after AccQ-Tag Ultra derivatization (ESI positive mode, 50-500 m/z)",
+          "Cell growth by OD600",
+          "Glucose concentration by glucose analyzer",
+          "Protein concentration by Bio-Rad Protein Assay Kit with BSA standard"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p004",
+          "methods_p011",
+          "methods_p012",
+          "results_p006"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "instruments": {
+        "value": [
+          "Ultrospec 3000 spectrophotometer (Amersham Biosciences)",
+          "2700 STAT glucose analyzer (Yellow Springs Instrument)",
+          "1100 Series HPLC (Agilent Technologies) with Eclipse plus C18 column (4.6 x 150 mm) and G1314A variable wavelength detector",
+          "LC/MSD VL (Agilent Technologies) with XBridge C18 column (5 µm, 4.6 x 150 mm; Waters)",
+          "Bioflo 3000 6.6 L bioreactor (New Brunswick Scientific)",
+          "VCX-600 ultrasonic homogenizer with titanium probe 40 T (Sonics and Materials)",
+          "Talon metal affinity resin (Clontech)",
+          "Amicon Ultra-15 Centricon 10 kDa (Millipore)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p004",
+          "methods_p010",
+          "methods_p011",
+          "methods_p012"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "analysis_methods": {
+        "value": [
+          "In-house retrobiosynthesis tool (ref 20) with 84 SMARTS reaction rules derived from KEGG third-level EC numbers",
+          "Precursor molecular-type classification via PubChem MeSH Tree accessed through PubChemPy v1.0.4",
+          "Functional-group relative-position comparison using Reaction Decoder Tool (RDT) v1.5.1",
+          "Homology modeling with SWISS-MODEL using GAD67 (PDB 2OKJ; 19.76% sequence identity) as template",
+          "Docking of PLP-L-alanine with AutoDock Vina v1.1.2",
+          "BLASTP v2.10.1 against nr database (250 homologous sequences) for substitution candidates",
+          "HPLC raw data collected with Agilent ChemStation 4.03; data analyzed with Microsoft Excel 2013 and OriginPro 2019",
+          "Data presented as mean values ± s.d.; no inferential statistical test is reported in the available text"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "methods_p001",
+          "methods_p003",
+          "methods_p011",
+          "methods_p013",
+          "results_p032"
+        ],
+        "notes": "Absence of reported statistical tests limits assessment of statistical rigor; Source Data file (not provided) would be needed for per-point values.",
+        "inference": null
+      },
+      "outcomes": {
+        "value": {
+          "in_vitro": "VlmD converted 12 of 13 amino acid precursors to corresponding SCPAs; glycine to methylamine showed no activity; near or above 80% conversion for L-2-aminobutyrate, L-norvaline, L-valine, L-isovaline, L-isoleucine and 1-aminocyclohexanecarboxylic acid (product pairing for the latter conflicts with Fig. 3 caption; see conflicts)",
+          "in_vivo_feeding": "PA01 produced 10 of 12 SCPAs: ethylamine 76.28 mg/L, n-propylamine 873.31 mg/L, iso-propylamine 337.57 mg/L, n-butylamine 979.17 mg/L, iso-butylamine 1289.18 mg/L, (R)-sec-butylamine 936.70 mg/L, iso-amylamine 1052.36 mg/L, 2-methylbutylamine 1015.75 mg/L, cyclopentylamine 264.03 mg/L, cyclohexylamine 105.82 mg/L; n-amylamine and benzylamine not produced (precursors L-norleucine and L-2-phenylglycine poorly utilized)",
+          "de_novo": "EA01: 2.89 mg/L ethylamine with 22.78 mg/L L-alanine byproduct; iBA01: 1155.74 mg/L iso-butylamine, no L-valine byproduct; iAA01: 93.23 mg/L iso-amylamine with 991.23 mg/L L-leucine and 759.89 mg/L iso-butylamine byproducts",
+          "fed_batch": "iBA01: 8.63 g/L iso-butylamine, productivity 0.21 g/L/h, yield 0.062 g/g (6.50-fold over flask); iBA02: 10.67 g/L iso-butylamine, 0.36 g/L/h, yield 0.057 g/g, max OD600 60.5 without supplementation (59.6% higher than iBA01's 37.9)",
+          "enzyme_engineering": "EA01-V94I produced 5.69 mg/L ethylamine from glucose, 96.9% higher than EA01 (2.89 mg/L)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_p006",
+          "results_p008",
+          "results_p033",
+          "results_p034",
+          "results_p037",
+          "results_p047",
+          "results_p048",
+          "results_p052"
+        ],
+        "notes": "Several numeric values in the source carry OCR artifacts (e.g., '979.1 7', '0. 2 1'); values were read conservatively from context. Per-point data, error bars and exact conversion percentages require the Source Data file (not provided). Outcomes are observations; causal attributions made by authors (e.g., 'strong driving force') are author_interpretation, not verified mechanism.",
+        "inference": null
+      }
+    },
+    "experimental_design_object": {
+      "biological_objects": [
+        {
+          "object_id": "obj_host_wl3110",
+          "paper_label": "WL3110",
+          "object_type": "host",
+          "normalized_name": "Escherichia coli WL3110",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "genotype": "lacI knockout mutant of E. coli W3110",
+          "lineage": {
+            "parent": "E. coli W3110"
+          },
+          "evidence": [
+            "methods_p005"
+          ]
+        },
+        {
+          "object_id": "obj_pa01",
+          "paper_label": "PA01",
+          "object_type": "engineered_strain",
+          "normalized_name": "E. coli WL3110 (pTac15-vlmDopt)",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "lineage": {
+            "parent": "WL3110",
+            "carries": "pTac15-vlmDopt"
+          },
+          "evidence": [
+            "results_p008"
+          ]
+        },
+        {
+          "object_id": "obj_ea01",
+          "paper_label": "EA01",
+          "object_type": "engineered_strain",
+          "identity_status": "reported",
+          "lineage": {
+            "parent": "WL3110",
+            "carries": "pTac15-vlmDopt-alaDopt"
+          },
+          "evidence": [
+            "results_p033",
+            "methods_p006"
+          ]
+        },
+        {
+          "object_id": "obj_val",
+          "paper_label": "Val (pKBRilvBNCED)",
+          "object_type": "parent_strain",
+          "identity_status": "reported",
+          "note": "L-valine-overproducing strain from previous study (ref 21); ilvA, leuA, panB deleted; auxotrophic to L-isoleucine, L-leucine, D-pantothenate",
+          "lineage": {
+            "parent": "WLGBH"
+          },
+          "evidence": [
+            "results_p034",
+            "results_p048"
+          ]
+        },
+        {
+          "object_id": "obj_wlgbh",
+          "paper_label": "WLGBH",
+          "object_type": "parent_strain",
+          "identity_status": "reported",
+          "note": "parental strain of Val with intact ilvA, leuA, panB",
+          "evidence": [
+            "results_p048"
+          ]
+        },
+        {
+          "object_id": "obj_iba01",
+          "paper_label": "iBA01",
+          "object_type": "engineered_strain",
+          "identity_status": "reported",
+          "lineage": {
+            "parent": "Val (pKBRilvBNCED)",
+            "carries": "pTac15-vlmDopt"
+          },
+          "evidence": [
+            "results_p034"
+          ]
+        },
+        {
+          "object_id": "obj_iaa01",
+          "paper_label": "iAA01",
+          "object_type": "engineered_strain",
+          "identity_status": "reported",
+          "lineage": {
+            "parent": "iBA01",
+            "modification": "leuABCD overexpression"
+          },
+          "evidence": [
+            "results_p037"
+          ]
+        },
+        {
+          "object_id": "obj_iba02",
+          "paper_label": "iBA02",
+          "object_type": "engineered_strain",
+          "identity_status": "reported",
+          "lineage": {
+            "parent": "WLGBH (pKBRilvBNCED)",
+            "carries": "pTac15-vlmDopt-anti-ilvA-leuA-panB"
+          },
+          "evidence": [
+            "results_p048"
+          ]
+        },
+        {
+          "object_id": "obj_ea01_variants",
+          "paper_label": "EA01-V94I and 11 other derivative strains",
+          "object_type": "library",
+          "identity_status": "reported",
+          "note": "12 strains, each overexpressing alaDopt and one vlmD variant (V94I, V94L, V114I, V114L, T397A, T397V, W399L, S431T, S431V, S431L, D515K, D515N) in WL3110; independent single-mutation constructs, not a combinatorial library",
+          "evidence": [
+            "results_p049",
+            "results_p052",
+            "methods_p007"
+          ]
+        },
+        {
+          "object_id": "obj_nc01_nc03",
+          "paper_label": "NC01, NC02, NC03",
+          "object_type": "control",
+          "identity_status": "reported",
+          "note": "control strains lacking vlmD; NC02 is Val (pKBRilvBNCED) with empty plasmid; NC01/NC03 exact genotypes only in Supplementary Table 2 (not provided)",
+          "evidence": [
+            "results_p034",
+            "results_p037",
+            "results_p044"
+          ]
+        },
+        {
+          "object_id": "obj_bl21_pet",
+          "paper_label": "BL21(DE3) pET-his-vlmDopt",
+          "object_type": "engineered_strain",
+          "identity_status": "reported",
+          "note": "N-terminal His-tagged VlmD overexpression for purification",
+          "evidence": [
+            "methods_p004"
+          ]
+        },
+        {
+          "object_id": "obj_neb10b",
+          "paper_label": "NEB 10-beta",
+          "object_type": "host",
+          "identity_status": "reported",
+          "note": "cloning host",
+          "evidence": [
+            "methods_p005"
+          ]
+        },
+        {
+          "object_id": "obj_vlmd",
+          "paper_label": "VlmD (valine decarboxylase, S. viridifaciens; UniProt Q84F32)",
+          "object_type": "construct",
+          "identity_status": "reported",
+          "note": "PLP-dependent decarboxylase, EC 4.1.1.-; codon-optimized for E. coli; previously reported substrates L-valine, L-leucine, L-isoleucine (ref 28, background_citation)",
+          "evidence": [
+            "results_p003",
+            "methods_p006",
+            "data_availability_p001"
+          ]
+        },
+        {
+          "object_id": "obj_plasmids",
+          "paper_label": "pTac15-vlmDopt; pET-his-vlmDopt; pTac15-vlmDopt-alaDopt; pTac15-alaDopt; pTac15-vlmDopt-pTac-leuABCD; pTac15-leuABCD; pTac15-vlmDopt-anti-ilvA(-leuA(-panB)); pTac15-vlmDopt-XYZ-alaDopt series",
+          "object_type": "plasmid",
+          "identity_status": "reported",
+          "note": "full plasmid list in Supplementary Table 2 (not provided)",
+          "evidence": [
+            "methods_p006",
+            "methods_p007"
+          ]
+        }
+      ],
+      "experiments": [
+        {
+          "experiment_id": "EXP1_retrobiosynthesis_design",
+          "name": "Retrobiosynthesis and precursor selection for 15 SCPAs",
+          "type": "computational_design",
+          "objects": [
+            "15 target SCPAs (methylamine, ethylamine, n-propylamine, iso-propylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine, tert-butylamine, n-amylamine, iso-amylamine, 2-methylbutylamine, cyclopentylamine, cyclohexylamine, aniline, benzylamine)"
+          ],
+          "intervention": "In-house retrobiosynthesis with 84 SMARTS reaction rules; precursor filtering by molecular type (amino acids retained) and by relative position of functional groups vs L-valine/L-leucine/L-isoleucine",
+          "conditions": "PubChem MeSH Tree via PubChemPy v1.0.4; RDT v1.5.1",
+          "controls": [],
+          "replicates": "not_applicable (computational)",
+          "readouts": "4-21 precursors predicted per SCPA; 1-5 amino acid precursors per SCPA; best precursor identified for 13 SCPAs; tert-butylamine and aniline excluded (no suitable amino acid precursor)",
+          "outcomes": "13 SCPAs carried forward; EC 4.1.1.- (decarboxylase) identified as candidate enzyme class; VlmD selected as proof-of-concept enzyme",
+          "evidence": [
+            "results_p001",
+            "results_p002",
+            "results_p003",
+            "results_p004",
+            "methods_p001",
+            "methods_p002",
+            "methods_p003"
+          ]
+        },
+        {
+          "experiment_id": "EXP2_in_vitro_vlmd_assay",
+          "name": "In vitro enzyme assay of purified His-tagged VlmD on 13 amino acid precursors",
+          "type": "in_vitro_enzyme_assay",
+          "objects": [
+            "obj_bl21_pet (enzyme source)",
+            "obj_vlmd"
+          ],
+          "intervention": "Incubation of purified VlmD with each precursor",
+          "conditions": "50 mM potassium phosphate buffer pH 7.5, 1 mM amino acid precursor, 0.1 mM PLP, 150 µg/mL VlmD, 2 h, 37 °C",
+          "controls": [
+            "assays without VlmD (Fig. 3, black chromatograms)"
+          ],
+          "replicates": "triplicates (type unspecified)",
+          "readouts": "HPLC (OPA derivatization) conversion percentages; LC-MS product confirmation (Supplementary Fig. 2, not provided)",
+          "outcomes": "12 of 13 precursors converted; glycine to methylamine inactive; 6 substrates at >= ~80% conversion",
+          "evidence": [
+            "results_p006",
+            "results_p032",
+            "methods_p004"
+          ]
+        },
+        {
+          "experiment_id": "EXP3_in_vivo_precursor_feeding",
+          "name": "In vivo SCPA production by PA01 feeding 12 direct precursors",
+          "type": "whole_cell_biotransformation_flask",
+          "objects": [
+            "obj_pa01"
+          ],
+          "intervention": "Individual feeding of 2 g/L of each of 12 amino acid precursors",
+          "conditions": "MR medium pH 7.0 + 10 g/L glucose; 300 mL baffled flask, 50 mL, 37 °C, 200 rpm, 36 h",
+          "controls": [
+            "no explicit negative control described in main text"
+          ],
+          "replicates": "triplicates per SCPA (type unspecified)",
+          "readouts": "SCPA titers by HPLC-OPA",
+          "outcomes": "10 SCPAs produced (76.28-1289.18 mg/L); n-amylamine and benzylamine not produced; residual L-norleucine 1.92 g/L and L-2-phenylglycine 1.82 g/L of 2 g/L fed (Supplementary Fig. 3, not provided)",
+          "evidence": [
+            "results_p008",
+            "results_p036",
+            "methods_p008"
+          ]
+        },
+        {
+          "experiment_id": "EXP4_de_novo_ethylamine",
+          "name": "De novo ethylamine production from glucose (EA01 vs NC01)",
+          "type": "de_novo_flask_production",
+          "objects": [
+            "obj_ea01",
+            "obj_nc01_nc03 (NC01 control)"
+          ],
+          "intervention": "Overexpression of codon-optimized alaD (G. stearothermophilus) in PA01 background",
+          "conditions": "MR medium pH 7.0 + 20 g/L glucose; 37 °C, 200 rpm, 48 h",
+          "controls": [
+            "NC01 (control, no vlmD; exact genotype in Supplementary Table 2, not provided)"
+          ],
+          "replicates": "triplicates (type unspecified)",
+          "readouts": "ethylamine and L-alanine concentrations (HPLC)",
+          "outcomes": "2.89 mg/L ethylamine; 22.78 mg/L L-alanine secreted as byproduct",
+          "evidence": [
+            "results_p033",
+            "results_p044",
+            "methods_p008"
+          ]
+        },
+        {
+          "experiment_id": "EXP5_de_novo_isobutylamine",
+          "name": "De novo iso-butylamine production from glucose (iBA01 vs NC02)",
+          "type": "de_novo_flask_production",
+          "objects": [
+            "obj_iba01",
+            "obj_nc01_nc03 (NC02 control)"
+          ],
+          "intervention": "Expression of vlmDopt in L-valine-overproducing Val (pKBRilvBNCED)",
+          "conditions": "NM2 medium; 30 °C, 200 rpm, 48 h",
+          "controls": [
+            "NC02: Val (pKBRilvBNCED) with empty plasmid"
+          ],
+          "replicates": "triplicates (type unspecified)",
+          "readouts": "iso-butylamine and L-valine concentrations",
+          "outcomes": "1155.74 mg/L (15.80 mM) iso-butylamine, no L-valine byproduct; NC02 produced 524.91 mg/L (4.48 mM) L-valine",
+          "evidence": [
+            "results_p034",
+            "results_p044",
+            "methods_p009"
+          ]
+        },
+        {
+          "experiment_id": "EXP6_de_novo_isoamylamine",
+          "name": "De novo iso-amylamine production from glucose (iAA01 vs NC03)",
+          "type": "de_novo_flask_production",
+          "objects": [
+            "obj_iaa01",
+            "obj_nc01_nc03 (NC03 control)"
+          ],
+          "intervention": "Additional overexpression of leuABCD in iBA01",
+          "conditions": "NM2 medium without L-leucine; 30 °C, 200 rpm, 48 h",
+          "controls": [
+            "NC03: L-leucine-producing strain without vlmD"
+          ],
+          "replicates": "triplicates (type unspecified)",
+          "readouts": "iso-amylamine, L-leucine, iso-butylamine, L-valine concentrations",
+          "outcomes": "93.23 mg/L iso-amylamine; byproducts 991.23 mg/L L-leucine and 759.89 mg/L iso-butylamine; NC03 produced 892.67 mg/L L-valine as byproduct (Supplementary Fig. 4, not provided)",
+          "evidence": [
+            "results_p037",
+            "results_p044",
+            "methods_p009"
+          ]
+        },
+        {
+          "experiment_id": "EXP7_fedbatch_iba01",
+          "name": "Fed-batch fermentation of iBA01",
+          "type": "fed_batch_fermentation",
+          "objects": [
+            "obj_iba01"
+          ],
+          "intervention": "Scale-up to fed-batch with supplementation of auxotrophy requirements",
+          "conditions": "6.6 L Bioflo 3000, 2 L NM3 (+L-isoleucine/L-leucine/D-pantothenate), 30 °C, pH 7.0 (28% ammonia), air 2 L/min, DO 40%, manual feeding of 100 mL feeding solution when glucose < 3 g/L",
+          "controls": [],
+          "replicates": "not stated",
+          "readouts": "OD600, glucose, iso-butylamine over time (Fig. 7a)",
+          "outcomes": "8.63 g/L iso-butylamine, 0.21 g/L/h, yield 0.062 g/g; max OD600 37.9",
+          "evidence": [
+            "results_p047",
+            "results_p046",
+            "methods_p010"
+          ]
+        },
+        {
+          "experiment_id": "EXP8_fedbatch_iba02",
+          "name": "Fed-batch fermentation of iBA02 (sRNA knockdown, no supplementation)",
+          "type": "fed_batch_fermentation",
+          "objects": [
+            "obj_iba02"
+          ],
+          "intervention": "sRNA knockdown of ilvA, leuA, panB in WLGBH (pKBRilvBNCED) + vlmDopt; fed-batch without amino acid/vitamin supplementation",
+          "conditions": "same as EXP7 except L-isoleucine, L-leucine and sodium D-pantothenate excluded from medium and feeding solution",
+          "controls": [
+            "comparison against iBA01 fed-batch profile (EXP7)"
+          ],
+          "replicates": "one replicate run reported for reproducibility in Supplementary Fig. 5 (not provided)",
+          "readouts": "OD600, glucose, iso-butylamine over time (Fig. 7b)",
+          "outcomes": "10.67 g/L iso-butylamine, 0.36 g/L/h, yield 0.057 g/g; max OD600 60.5 (59.6% higher than iBA01)",
+          "evidence": [
+            "results_p048",
+            "results_p046",
+            "methods_p010"
+          ]
+        },
+        {
+          "experiment_id": "EXP9_vlmd_protein_engineering",
+          "name": "Rational protein engineering of VlmD for improved L-alanine activity",
+          "type": "enzyme_engineering_flask_screen",
+          "objects": [
+            "obj_ea01",
+            "obj_ea01_variants"
+          ],
+          "intervention": "Homology modeling (SWISS-MODEL, GAD67/2OKJ template), PLP-L-alanine docking (AutoDock Vina), selection of 6 active-site residues, 12 single substitutions chosen from 250 BLASTP homologs with larger-side-chain criterion; site-directed mutagenesis; flask cultivation of 12 variant strains",
+          "conditions": "flask cultures as for EA01 (MR + 20 g/L glucose, 37 °C, 48 h)",
+          "controls": [
+            "EA01 with native VlmD"
+          ],
+          "replicates": "triplicates (type unspecified)",
+          "readouts": "ethylamine titer (Fig. 8b)",
+          "outcomes": "EA01-V94I best: 5.69 mg/L ethylamine, 96.9% higher than EA01; other variant titers only in Fig. 8b/Source Data (not provided)",
+          "evidence": [
+            "results_p049",
+            "results_p051",
+            "results_p052",
+            "methods_p013",
+            "methods_p007"
+          ]
+        }
+      ],
+      "supplement_dependencies": [
+        "Supplementary Table 1 (SCPA list/properties)",
+        "Supplementary Table 2 (full strain and plasmid list/genotypes)",
+        "Supplementary Table 3 (primers)",
+        "Supplementary Table 4 (codon-optimized gene sequences)",
+        "Supplementary Data 1 (84 reaction rules) and 2 (predicted precursors)",
+        "Supplementary Figs 1-6",
+        "Source Data file (per-point values, error bars)"
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p006",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis",
+            "page": null,
+            "figure": "Fig. 1",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Here, we report the development of platform Escherichia coli strains for the production of various SCPAs.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p002",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we report a strategy combining retrobiosynthesis and precursor selection step to design biosynthetic pathways for multiple short-chain primary amines (SCPAs)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p002",
+            "section": "results",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "it was hypothesized that amino acids would serve as ideal precursors of SCPAs",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p003",
+            "section": "results",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "It was hypothesized that valine decarboxylase, if it is promiscuous enough, might be able to convert other amino acid precursors into the corresponding SCPAs of our interest.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p005",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "E. coli WL3110 strain, which is a lacI knockout mutant of E. coli W3110, was used as a host strain for the production of SCPAs.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p008",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 4",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "E. coli PA01 was constructed by transforming E. coli WL3110 with the plasmid pTac15-vlmDopt harboring the codonoptimized S. viridifaciens vlmD gene",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p048",
+            "section": "results",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the E. coli iBA02 strain was constructed by transforming the pTac15-vlmDopt-anti-ilvA-leuA-panB into the WLGBH (pKBRilvBNCED) strain",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p033",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 6",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "The resulting E. coli EA01 strain simultaneously overexpressing the codon-optimized vlmD and alaD genes",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p034",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 6",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "the corresponding biosynthetic genes, ilvA, leuA and panB, respectively, were deleted to remove the competing pathways during the course of strain optimization",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p037",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 6",
+            "panel": "c",
+            "table": null,
+            "supplement": null,
+            "quote": "leuABCD genes, all involved in the L-leucine biosynthesis, were additionally overexpressed in the iBA01 strain to increase the precursor, L-leucine, resulting in the iAA01 strain.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p007",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "pTac15-vlmDopt-anti-ilvA-leuApanB was constructed by Gibson assembly",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p048",
+            "section": "results",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we knocked down the expression of these three genes by employing synthetic small regulatory RNAs (sRNAs)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p049",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 8",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "rational protein engineering of VlmD was conducted to improve its activity toward L-alanine as a proof-of-concept target",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p001",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "84 reaction rules were constructed by manually extracting meaningful chemical transformation patterns on the basis of the third-level enzyme commission (EC) numbers from all the biochemical reactions available at the KEGG database",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p006",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 3",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "in vitro enzyme assays were first performed using the purified His -tagged VlmD",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p008",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "By individually feeding 2 g L−1 of the 12 corresponding precursors, the PA01 strain produced 10 SCPAs in vivo",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p044",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "(a) ethylamine from the NC01 (control) and EA01 strains; (b) iso-butylamine from the NC02 (control) and iBA01 strains; and (c) iso-amylamine from the NC03 (control) and iAA01 strains",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p032",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 3",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Black and red lines in the left graph for each SCPA indicate chromatograms from in vitro enzyme assays without VlmD (control) and with VlmD, respectively.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p034",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 6",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "the NC02 strain, a control strain which is the Val (pKBRilvBNCED) strain harboring an empty plasmid without the vlmD gene",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p008",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "1.5 mL of the seed culture was transferred to a 300 mL baffled flask containing 50 mL of culture medium, then cultivated at 37 °C and 200 rpm in a shaking incubator.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p010",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Fermentation was performed at 30 °C, and the culture pH was adjusted to 7.0 by adding 28% (v/v) ammonia solution.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p010",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The dissolved oxygen (DO) level was kept at 40% of air saturation by automatically controlling the agitation speed from 200 to 1000 rpm",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p008",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The MR medium (pH 7.0) contains (per liter): 6.67 g KH2PO4, 4 g (NH ) HPO , 0.8 g MgSO4·7H2O, 0.8 g citric acid, and 5 mL trace metal solution",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p009",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The NM2 medium contains per liter: 50 g glucose, 30 g CaCO3, 12.5 g (NH4)2SO4, 4.0 g KH2PO4, 2.0 g MgSO4·7H2O ... yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.425 mg sodium Dpantothenate, and 5 mL trace metal solution.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p010",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The NM3 medium contains per liter: 20 g glucose, 20 g (NH4)2SO4, 2 g KH PO , 0.4 g MgSO ·7H O, 1.6 g NaCl, 5 g yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.362 mg sodium D-pantothenate, and 5 mL trace metal solution.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p004",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "supplemented with 1 mM of an amino acid precursor ... 0.1 mM of PLP, and 150 μg mL−1 of the purified His -tagged VlmD",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p008",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "By individually feeding 2 g L−1 of the 12 corresponding precursors",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p005",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "kanamycin (Km), 25 μg mL−1; and ampicillin (Ap), 50 μg mL−1",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "time": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p008",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The PA01 strain was cultured for 36 h, and the EA01 strain was cultured for 48 h.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p004",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The enzymatic reaction was carried out for 2 h at 37 °C.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p004",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "induced by adding 1 mM of isopropyl -D-1-thiogalactopyranoside (IPTG) after 3 h. Cells were collected after additional 5 h of cultivation",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "replicates": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p032",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 3",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Experiments were conducted in triplicates. Data are presented as mean values ± s.d.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p009",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "All the flask cultures were repeated three times.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p046",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 7",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Another fed-batch fermentation profile of the iBA02 strain, which was conducted for the reproducibility, is available in Supplementary Fig. 5.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p011",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Automatic precolumn derivatizations of the 13 SCPAs were performed by using o-phthaldialdehyde (OPA; Sigma, St. Louis, MO) in HPLC.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p006",
+            "section": "results",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The SCPAs produced from the in vitro enzyme assay reactions were further confirmed by liquid chromatography-mass spectrometry (LC-MS) analysis",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p011",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Cell growth was monitored by measuring the optical density at 600 nm (OD600) using Ultrospec 3000 spectrophotometer (Amersham Biosciences, Uppsala, Sweden). Glucose concentration was determined using the glucose analyzer (model 2700 STAT; Yellow Springs Instrument, Yellow Springs, OH).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p010",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "performed in a 6.6 L bioreactor (Bioflo 3000; New Brunswick Scientific Co., Edison, NJ)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p012",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "analyzed using HPLC (1100 Series HPLC; Agilent Technologies) connected with MS (LC/MSD VL; Agilent Technologies)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p003",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Reaction decoder tool (RDT) (v1.5.1) was used for this purpose.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p013",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "A homology model of VlmD was generated using GAD67 from Homo sapiens (PDB ID: 2OKJ). GAD67 was used as a template because it showed the greatest sequence identity (19.76%) with VlmD among proteins that use PLP as a cofactor.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p011",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "analyzed using Microsoft Excel 2013 (15.0.5111.1000) and OriginPro 2019",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_p008",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the PA01 strain produced 10 SCPAs in vivo (Fig. 5): 76.28 mg L−1 of ethylamine, 873.31 mg L−1 of n-propylamine ... and 105.82 mg L−1 of cyclohexylamine.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p048",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 7",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "the iBA02 strain was able to produce 10.67 g L−1 of iso-butylamine with a productivity of 0.36 g L−1 h−1, without the amino acid and vitamin supplementation, although the yield was slightly decreased to 0.057 g g−1",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_p052",
+            "section": "results",
+            "page": null,
+            "figure": "Fig. 8",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "the EA01-V94I strain equipped with the V94I mutant of VlmD produced 5.69 mg L−1 of ethylamine from glucose. Although still low, this titer is 96.9% higher than that (2.89 mg L−1) obtained with the EA01 strain harboring the native VlmD",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "contains_original_experiment": true,
+        "original_experiment_scope": "full_study",
+        "classification_evidence": [
+          "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p002",
+          "results_p001",
+          "methods_p001",
+          "author_contributions_p001"
+        ],
+        "classification_uncertainty": null
+      },
+      "document_coverage": {
+        "available_sections": [
+          "title/abstract/introduction (combined first section)",
+          "results",
+          "discussion",
+          "methods",
+          "data_availability",
+          "code_availability",
+          "references",
+          "acknowledgements (empty)",
+          "author_contributions",
+          "competing_interests",
+          "additional_information"
+        ],
+        "available_modalities": [
+          "body_text",
+          "figure_captions",
+          "figure_metadata"
+        ],
+        "missing_or_unparsed": [
+          "figure visuals (figure_visual_available=false); only captions were readable",
+          "tables (table_metadata_available=false); no tables provided",
+          "Supplementary Information: Supplementary Figs 1-6, Supplementary Tables 1-4, Supplementary Data 1-2 (supplement_available=false)",
+          "Source Data file (referenced but not provided)"
+        ],
+        "blocked_fields_or_uses": [
+          "full strain/plasmid genotypes and exact NC01/NC03 identity (Supplementary Table 2) - blocks exact strain reconstruction",
+          "codon-optimized gene sequences (Supplementary Table 4) and primer sequences (Supplementary Table 3) - blocks construct re-synthesis",
+          "per-point data, error bars, exact conversion percentages and fed-batch time courses (Source Data; Figs 3,5,6,7,8 visuals) - blocks quantitative re-analysis",
+          "84 reaction rule definitions and predicted precursor lists (Supplementary Data 1-2) - blocks pathway re-prediction",
+          "VlmD purification quality (Supplementary Fig. 1), LC-MS spectra (Supplementary Fig. 2), precursor utilization (Supplementary Fig. 3), iAA01 byproduct data (Supplementary Fig. 4), iBA02 replicate fermentation (Supplementary Fig. 5), docking comparison (Supplementary Fig. 6)"
+        ]
+      },
+      "paper_target_strains": [
+        {
+          "raw_identity": "WL3110",
+          "normalized_identity": "Escherichia coli WL3110 (lacI knockout of W3110)",
+          "normalization_basis": "document_internal",
+          "role": "host",
+          "identity_confidence": 0.95
+        },
+        {
+          "raw_identity": "PA01",
+          "normalized_identity": "E. coli WL3110 (pTac15-vlmDopt)",
+          "normalization_basis": "document_internal",
+          "role": "platform strain",
+          "identity_confidence": 0.9
+        },
+        {
+          "raw_identity": "EA01",
+          "normalized_identity": "E. coli WL3110 (pTac15-vlmDopt-alaDopt)",
+          "normalization_basis": "document_internal",
+          "role": "ethylamine de novo",
+          "identity_confidence": 0.85
+        },
+        {
+          "raw_identity": "iBA01",
+          "normalized_identity": "E. coli Val (pKBRilvBNCED) (pTac15-vlmDopt)",
+          "normalization_basis": "document_internal",
+          "role": "iso-butylamine de novo",
+          "identity_confidence": 0.85
+        },
+        {
+          "raw_identity": "iAA01",
+          "normalized_identity": "iBA01 with leuABCD overexpression",
+          "normalization_basis": "document_internal",
+          "role": "iso-amylamine de novo",
+          "identity_confidence": 0.85
+        },
+        {
+          "raw_identity": "iBA02",
+          "normalized_identity": "E. coli WLGBH (pKBRilvBNCED) (pTac15-vlmDopt-anti-ilvA-leuA-panB)",
+          "normalization_basis": "document_internal",
+          "role": "iso-butylamine fed-batch prototroph",
+          "identity_confidence": 0.85
+        },
+        {
+          "raw_identity": "EA01-V94I (and 11 other vlmD variant strains)",
+          "normalized_identity": "E. coli WL3110 expressing alaDopt + vlmD variant",
+          "normalization_basis": "document_internal",
+          "role": "enzyme engineering",
+          "identity_confidence": 0.8
+        },
+        {
+          "raw_identity": "NC01, NC02, NC03",
+          "normalized_identity": "control strains lacking vlmD",
+          "normalization_basis": "document_internal",
+          "role": "controls",
+          "identity_confidence": 0.7
+        },
+        {
+          "raw_identity": "BL21(DE3) pET-his-vlmDopt",
+          "normalized_identity": "E. coli BL21(DE3) (pET-22b(+) his-vlmDopt)",
+          "normalization_basis": "document_internal",
+          "role": "enzyme expression",
+          "identity_confidence": 0.9
+        }
+      ],
+      "user_target_system": {},
+      "variables": {
+        "independent": [
+          "amino acid precursor identity (13 in vitro / 12 fed)",
+          "strain genotype (vlmD, alaD, leuABCD, sRNA knockdown, vlmD variants)",
+          "medium (MR/NM2/NM3, supplementation)",
+          "cultivation mode (flask vs fed-batch)"
+        ],
+        "dependent": [
+          "SCPA titer",
+          "conversion percentage (in vitro)",
+          "byproduct concentrations (L-alanine, L-valine, L-leucine, iso-butylamine)",
+          "OD600",
+          "productivity",
+          "yield"
+        ],
+        "controlled": [
+          "temperature per step",
+          "pH 7.0-7.5",
+          "precursor dose 2 g/L",
+          "in vitro 1 mM precursor / 0.1 mM PLP / 150 µg/mL VlmD / 2 h / 37 °C"
+        ]
+      },
+      "experiment_workflow": {
+        "stages": [
+          "EXP1 computational design (retrobiosynthesis + precursor selection)",
+          "EXP2 in vitro validation with purified VlmD",
+          "EXP3 in vivo precursor feeding (PA01)",
+          "EXP4-6 de novo production from glucose (EA01, iBA01, iAA01)",
+          "EXP7-8 fed-batch scale-up (iBA01, iBA02)",
+          "EXP9 VlmD rational engineering (12 variants)"
+        ],
+        "value_roles_note": "Predicted precursors (EXP1) are design-stage values; measured titers are final measured values; no planned-vs-implemented discrepancies were reported."
+      },
+      "design_logic": {
+        "ddr_annotations": [
+          {
+            "ddr_id": "DDR1",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Authors actively selected amino acids as the precursor molecular class for pathway construction (Q1: design choice; Q2: performed in this study; Q3: an actual design decision shaping all subsequent constructs, not a measurement).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "From 4-21 retrobiosynthesis-predicted precursors per SCPA (classes: amino alcohols, amino acids, SCPAs, alkyl-CoA, hydrocarbons), select amino acids (proteinogenic and nonproteinogenic) as the precursor molecular type.",
+            "design_action_rationale": "Amino acid pathways are well characterized and engineerable to high fluxes (refs 21,22); amino alcohol/SCPA/alkyl-CoA pathways poorly characterized; short-chain hydrocarbons considered harder to produce microbially (refs 23,24).",
+            "trigger_observation": "Retrobiosynthesis predicted multiple chemically diverse precursor classes for each of the 15 SCPAs, requiring a narrowing step before experiments (results_p001).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=literature_precedent + author_assertion; the superiority of amino acids over other classes was not experimentally compared in this paper.",
+            "reason_nature": "literature_analogy",
+            "reason_nature_rationale": "Choice justified by cited prior amino-acid metabolic engineering literature, not by new measurements in this study.",
+            "reason_nature_tags": [
+              "literature_precedent",
+              "author_assertion"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "When retrobiosynthesis predicts multiple precursor classes for a target chemical, restricting to precursor classes with well-characterized, high-flux biosynthetic pathways (here: amino acids) is a workable pathway-design heuristic.",
+              "tested_scope": "15 SCPA targets in E. coli with a PLP-dependent decarboxylase (VlmD); amino-acid route validated for 12/13 precursors in vitro and 10/12 in vivo",
+              "excluded_scope": "Other precursor classes were not experimentally compared; other enzyme classes, hosts and product families untested"
+            },
+            "alternatives_considered": [
+              "amino alcohols, SCPAs and alkyl-CoA precursors (rejected: pathways poorly characterized)",
+              "hydrocarbons (rejected: considered more challenging to produce microbially than amino acids)"
+            ],
+            "strategy_categories": [
+              "pathway_design",
+              "precursor_selection"
+            ]
+          },
+          {
+            "ddr_id": "DDR2",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Selection of VlmD as the proof-of-concept promiscuous enzyme is an active design choice by the current authors (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Select valine decarboxylase (vlmD, Streptomyces viridifaciens), an EC 4.1.1.- decarboxylase, as the proof-of-concept promiscuous enzyme for SCPA production.",
+            "design_action_rationale": "All selected amino acid precursors were predicted convertible by EC 4.1.1.- enzymes; decarboxylation is irreversible and expected to drive flux; VlmD was previously reported to convert L-valine, L-leucine and L-isoleucine to iso-butylamine, iso-amylamine and 2-methylbutylamine (ref 28).",
+            "trigger_observation": "Retrobiosynthesis assigned third-level EC 4.1.1.- (reaction rule #51) to all amino-acid-precursor conversions (results_p003).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=literature_precedent (ref 28 substrate report) + mechanistic expectation of irreversibility (ref 25); promiscuity toward the other 10 precursors was a hypothesis tested afterward, not prior evidence.",
+            "reason_nature": "literature_analogy",
+            "reason_nature_rationale": "Enzyme chosen by analogy to its previously reported substrates; the irreversibility argument is textbook knowledge (ref 25), not new mechanistic evidence.",
+            "reason_nature_tags": [
+              "literature_precedent",
+              "prior_substrate_report"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "A promiscuous enzyme with reported activity on structurally related substrates (same functional-group layout) can serve as a proof-of-concept catalyst for converting additional analog precursors predicted by retrobiosynthesis.",
+              "tested_scope": "VlmD on 13 amino acid precursors in vitro (12 active) and 12 in vivo in E. coli WL3110 (10 produced)",
+              "excluded_scope": "Other EC 4.1.1.- enzymes explicitly noted as examinable but not tested; non-amino-acid substrates; other hosts"
+            },
+            "alternatives_considered": [
+              "other enzymes having EC number 4.1.1.- (mentioned as examinable, not tested)"
+            ],
+            "strategy_categories": [
+              "enzyme_selection",
+              "pathway_design"
+            ]
+          },
+          {
+            "ddr_id": "DDR3",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "The functional-group relative-position criterion is an explicit, author-applied design filter that selected one precursor per SCPA (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "For each SCPA, select the single amino acid precursor whose amine/carboxyl relative positions match those of the known VlmD substrates L-valine, L-leucine and L-isoleucine (using RDT).",
+            "design_action_rationale": "Reaction feasibility is affected by electron-configuration changes with functional-group position relative to the reaction center (ref 29); functional-group positions affect substrate binding in the enzyme active site (ref 30).",
+            "trigger_observation": "1-5 amino acid precursors per SCPA remained after molecular-type filtering, requiring a further selection criterion (results_p004).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=literature_precedent (refs 29,30) for the criterion; its predictive value was then supported experimentally (12/13 in vitro success), which is a screening result, not a mechanistic proof.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Criterion grounded in stated physical-organic and binding reasoning established before the experiments; however the underlying citations are external, so the mechanistic basis is borrowed rather than demonstrated here.",
+            "reason_nature_tags": [
+              "structure_reactivity",
+              "binding_geometry",
+              "literature_supported"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "Matching the relative positions of functional groups (distance to the reaction-center carbon) between candidate precursors and an enzyme's known substrates is a useful precursor-selection criterion for promiscuous-enzyme pathway design.",
+              "tested_scope": "13 SCPAs with VlmD; 12/13 selected precursors converted in vitro; 10/12 produced in vivo",
+              "excluded_scope": "tert-butylamine and aniline (no matching precursor; dropped); other enzymes and other functional-group chemistries untested"
+            },
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "precursor_selection",
+              "pathway_design"
+            ]
+          },
+          {
+            "ddr_id": "DDR4",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Overexpression of alaD to supply L-alanine from glucose is an implemented engineering action chosen by the authors (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Introduce codon-optimized Geobacillus stearothermophilus alaD (alanine dehydrogenase) into PA01, creating EA01, to convert pyruvate to the L-alanine precursor for de novo ethylamine production.",
+            "design_action_rationale": "Alanine dehydrogenase converts pyruvate to L-alanine (ref 31); alaD codon-optimized for heterologous expression in E. coli.",
+            "trigger_observation": "Goal of de novo production from glucose without external precursor feeding, after precursor-feeding proof of concept (results_p033).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type=experimental_measurement for enzyme function from cited literature (ref 31) and confirmed in this study by ethylamine detection; design rationale itself is enzyme-function knowledge.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Direct enzyme-catalyzed precursor supply; mechanism stated before construction.",
+            "reason_nature_tags": [
+              "precursor_supply",
+              "heterologous_enzyme"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "Overexpressing a dehydrogenase that forms the amino acid precursor from a central metabolite (e.g., AlaD: pyruvate to L-alanine) can enable de novo SCPA production from glucose in a vlmD-expressing host.",
+              "tested_scope": "EA01 (WL3110, vlmDopt + alaDopt), flask, MR + 20 g/L glucose; 2.89 mg/L ethylamine with 22.78 mg/L residual L-alanine",
+              "excluded_scope": "Low VlmD activity toward L-alanine left most precursor unconverted; flux balancing untested; other precursors/hosts untested"
+            },
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "precursor_supply",
+              "heterologous_expression"
+            ]
+          },
+          {
+            "ddr_id": "DDR5",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Using the previously developed L-valine overproducer Val (pKBRilvBNCED) as chassis for iBA01 is an implemented design choice (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Transform the L-valine-overproducing E. coli Val (pKBRilvBNCED) strain (from ref 21) with pTac15-vlmDopt to create iBA01 for de novo iso-butylamine production.",
+            "design_action_rationale": "The Val strain already carries high flux toward L-valine, the direct precursor of iso-butylamine; the strain was available from the authors' previous work.",
+            "trigger_observation": "Need for an L-valine supply from glucose for de novo iso-butylamine production (results_p034).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type=experimental_measurement (L-valine overproduction previously demonstrated; iso-butylamine production measured here).",
+            "reason_nature": "resource_available",
+            "reason_nature_rationale": "Paper explicitly states the Val strain was 'previously developed' by the authors; reuse of an existing overproducer is the stated basis.",
+            "reason_nature_tags": [
+              "existing_strain_reuse",
+              "precursor_supply"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "precursor_supply",
+              "chassis_selection"
+            ]
+          },
+          {
+            "ddr_id": "DDR6",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Additional leuABCD overexpression in iBA01 to create iAA01 is an implemented engineering action (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Overexpress the leuABCD operon (L-leucine biosynthesis) in iBA01 to increase L-leucine supply, yielding iAA01 for de novo iso-amylamine production.",
+            "design_action_rationale": "leuABCD genes are all involved in L-leucine biosynthesis; L-leucine is the direct precursor of iso-amylamine.",
+            "trigger_observation": "Need to supply the L-leucine precursor from glucose for iso-amylamine production (results_p037).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type=experimental_measurement (iso-amylamine detected), though pathway function is standard pathway knowledge.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Direct pathway-based precursor supply reasoning stated at design time.",
+            "reason_nature_tags": [
+              "precursor_supply",
+              "pathway_overexpression"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "precursor_supply",
+              "pathway_overexpression"
+            ]
+          },
+          {
+            "ddr_id": "DDR7",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Replacing gene knockouts with synthetic sRNA knockdown of ilvA/leuA/panB to remove auxotrophies is an explicit, implemented design decision with a stated prior problem (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Knock down (not knock out) ilvA, leuA and panB using synthetic sRNA cassettes (pTac15-vlmDopt-anti-ilvA-leuA-panB) in the prototrophic parental background WLGBH (pKBRilvBNCED), creating iBA02.",
+            "design_action_rationale": "Knockdown reduces competing pathways while retaining the biosynthetic capacity that knockout removes, thereby eliminating the L-isoleucine/L-leucine/D-pantothenate auxotrophies of the Val-derived iBA01.",
+            "trigger_observation": "iBA01 is auxotrophic for L-isoleucine, L-leucine and D-pantothenate because ilvA, leuA and panB had been deleted in the Val strain; this 'poses a problem in industrial fermentation' and required supplementation in fed-batch (results_p034, results_p047, results_p048). Trigger precedes the iBA02 construction.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type=experimental_measurement: iBA02 fed-batch without supplementation reached OD600 60.5 and 10.67 g/L iso-butylamine vs iBA01 with supplementation; sRNA technology itself from ref 32.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "The knockdown-vs-knockout logic (retain residual gene function to preserve prototrophy while reducing competing flux) is stated in the paper at design time.",
+            "reason_nature_tags": [
+              "knockdown_vs_knockout",
+              "auxotrophy_removal",
+              "competing_pathway"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "When a production strain's competing-pathway deletions cause auxotrophies requiring costly supplementation, synthetic sRNA knockdown of the same genes in a prototrophic parent can remove the auxotrophies while maintaining or improving production.",
+              "tested_scope": "ilvA/leuA/panB knockdown in E. coli WLGBH (pKBRilvBNCED) + vlmDopt; fed-batch NM3 without supplementation; 10.67 g/L iso-butylamine, higher OD, slightly lower yield (0.057 vs 0.062 g/g)",
+              "excluded_scope": "Single target product (iso-butylamine) and one gene set tested; knockdown strength tuning not reported; yield trade-off observed but not resolved"
+            },
+            "alternatives_considered": [
+              "gene knockout of ilvA, leuA, panB as in Val (pKBRilvBNCED) (rejected because it causes the auxotrophies)"
+            ],
+            "strategy_categories": [
+              "competing_pathway_downregulation",
+              "sRNA_knockdown",
+              "auxotrophy_removal"
+            ]
+          },
+          {
+            "ddr_id": "DDR8",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Rational engineering of VlmD toward L-alanine (12 designed single mutations) is an implemented, structure-guided design decision (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Build a VlmD homology model (SWISS-MODEL, GAD67/2OKJ template), dock PLP-L-alanine (AutoDock Vina), select 6 active-site residues appearing to interact with L-alanine, and test 12 single substitutions toward larger side chains (V94I, V94L, V114I, V114L, T397A, T397V, W399L, S431T, S431V, S431L, D515K, D515N) identified from 250 BLASTP homologs.",
+            "design_action_rationale": "L-alanine is smaller than VlmD's preferred substrates; larger residues in the active site were expected to reduce active-site volume and increase interaction with the smaller substrate.",
+            "trigger_observation": "VlmD showed the lowest in vitro conversion efficiency toward L-alanine among the 12 active substrates (Fig. 3), and EA01 secreted more L-alanine (22.78 mg/L) than ethylamine produced (2.89 mg/L) (results_p033, results_p049). Both observations precede the engineering.",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=structural_prediction + computational_prediction (homology model with 19.76% identity template; docking) guiding the design; predictions required and received experimental testing (flask screen of 12 variants).",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Active-site-volume reasoning stated before variant construction; however it rests on a predicted (not experimentally determined) structure, so the mechanistic basis is model-based.",
+            "reason_nature_tags": [
+              "rational_design",
+              "active_site_volume",
+              "structure_prediction_based"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "For a PLP-dependent decarboxylase with poor activity toward a smaller-than-preferred substrate, introducing larger active-site residues to reduce pocket volume can improve activity toward the smaller substrate.",
+              "tested_scope": "VlmD toward L-alanine in E. coli WL3110 flask cultures; best variant V94I gave 5.69 mg/L ethylamine (+96.9% over native); absolute titer remains low",
+              "excluded_scope": "Only 12 single mutations at 6 residues tested; combinations untested; other enzymes/substrates untested; structural basis not experimentally confirmed"
+            },
+            "alternatives_considered": [
+              "12 candidate substitutions were compared experimentally; 11 performed worse than V94I (per-variant titers only in Fig. 8b/Source Data, not provided)"
+            ],
+            "strategy_categories": [
+              "enzyme_engineering",
+              "rational_design",
+              "site_directed_mutagenesis"
+            ]
+          },
+          {
+            "ddr_id": "DDR9",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Subjecting iBA01 to fed-batch fermentation in NM3 is an implemented bioprocess design decision (Q1-Q3 pass).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Scale iBA01 from flask to fed-batch fermentation in NM3 medium with DO-stat control and manual glucose feeding, supplementing L-isoleucine, L-leucine and D-pantothenate.",
+            "design_action_rationale": "Stated rationale: iBA01 showed efficient iso-butylamine production without L-valine byproduct in flask cultivation.",
+            "trigger_observation": "Flask result: iBA01 produced 1155.74 mg/L iso-butylamine with no L-valine byproduct (results_p034, results_p047).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type=experimental_measurement (flask performance) as the basis for scale-up; outcome measured in fed-batch.",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "The strain was advanced to scale-up because it was the best-performing, cleanest producer among the de novo strains; mapped to screening_derived because selection was based on measured comparative performance.",
+            "reason_nature_tags": [
+              "best_performer_selection",
+              "scale_up"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "fermentation_optimization",
+              "scale_up"
+            ]
+          }
+        ],
+        "non_engineering_records": [
+          {
+            "item": "In vitro VlmD assays on 13 precursors (EXP2)",
+            "classification": "validation",
+            "note": "Measurement/validation of the retrobiosynthesis prediction; fails Q3 (not a design choice)."
+          },
+          {
+            "item": "LC-MS confirmation of in vitro products",
+            "classification": "characterization",
+            "note": "Analytical confirmation only."
+          },
+          {
+            "item": "Homology modeling and docking simulations per se",
+            "classification": "measurement",
+            "note": "Computational characterization feeding DDR8; not itself an engineering action."
+          },
+          {
+            "item": "Statement that n-amylamine and benzylamine 'should be producible' if precursors were transported or overproduced",
+            "classification": "post_hoc_interpretation",
+            "note": "Author speculation after a negative result; not an implemented action."
+          },
+          {
+            "item": "Prior VlmD substrate report (ref 28) and Val strain construction (ref 21)",
+            "classification": "background",
+            "note": "background_citation; not experiments of the current authors."
+          }
+        ]
+      }
+    },
+    "conflicts": [
+      {
+        "field_path": "experimental_design_object.experiments[EXP2].outcomes / outcomes.value.in_vitro",
+        "conflict_type": "identity",
+        "candidate_values": [
+          "1-aminocyclohexanecarboxylic acid is converted to cyclopentylamine (results_p006 text pairing)",
+          "1-aminocyclohexanecarboxylic acid is converted to cyclohexylamine, and 1-aminocyclopentanecarboxylic acid to cyclopentylamine (Fig. 3 caption, results_p032; consistent with methods_p004 precursor list and chemical logic)"
+        ],
+        "sources": [
+          "results_p006",
+          "results_p032"
+        ],
+        "conflict_reason": "The Results text pairs the >=80% conversion of 1-aminocyclohexanecarboxylic acid with cyclopentylamine, whereas the Fig. 3 caption pairs cyclopentylamine with 1-aminocyclopetanecarboxylic acid (panel j) and cyclohexylamine with 1-aminocyclohexanecarboxylic acid (panel k). Substrate-product identity cannot be silently resolved from available sources.",
+        "review_action": "Check the original Fig. 3 panels and Source Data; the caption mapping is chemically consistent (ring size retained), suggesting a Results-text wording error, but this requires human verification."
+      },
+      {
+        "field_path": "experimental_design_object.experiments[EXP9].trigger_observation",
+        "conflict_type": "identity",
+        "candidate_values": [
+          "L-2-phenylalanine listed among low-efficiency VlmD substrates (results_p049)",
+          "L-2-phenylglycine is the actual benzylamine precursor used in vitro and in vivo (results_p008, results_p032, methods_p004)"
+        ],
+        "sources": [
+          "results_p049",
+          "results_p008"
+        ],
+        "conflict_reason": "results_p049 names 'L-2-phenylalanine' as a poorly converted substrate, but everywhere else the paper uses L-2-phenylglycine for benzylamine; L-2-phenylalanine does not appear in the assay precursor list.",
+        "review_action": "Verify against the original article and Source Data whether L-2-phenylalanine was an additional tested substrate or a wording error for L-2-phenylglycine."
+      },
+      {
+        "field_path": "fields.medium.value.NM2",
+        "conflict_type": "other",
+        "candidate_values": [
+          "NM2 composition as OCR-parsed: '2 g LaO4, 2.0 g LaO4, 2.0 g LaO4·7H2O' with yeast extract amount missing (methods_p009)",
+          "NM2 composition as previously reported (ref 21, not provided in this document)"
+        ],
+        "sources": [
+          "methods_p009",
+          "references_p021"
+        ],
+        "conflict_reason": "OCR corruption ('LaO4' repeated three times; yeast-extract quantity lost) makes the NM2 composition in the provided text internally garbled and unreliable for reproduction.",
+        "review_action": "Re-extract NM2 composition from the original PDF or from ref 21 (Park et al. 2007) before any experimental reuse."
+      },
+      {
+        "field_path": "experimental_design_object.experiments[EXP7].evidence",
+        "conflict_type": "cross_modal",
+        "candidate_values": [
+          "results_p047 cites 'Fig. 6a' for iBA01 flask cultivation of iso-butylamine",
+          "Fig. 6 caption assigns iso-butylamine to panel b (Fig. 6b) and panel a to ethylamine (results_p044)"
+        ],
+        "sources": [
+          "results_p047",
+          "results_p044"
+        ],
+        "conflict_reason": "Internal cross-reference inconsistency between Results text and Fig. 6 caption panel assignment.",
+        "review_action": "Treat Fig. 6b as the intended reference (consistent with caption and strain data); note the textual citation error for human review."
+      }
+    ]
+  }
+}

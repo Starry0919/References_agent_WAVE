@@ -1,0 +1,2041 @@
+{
+  "document_metadata": {
+    "paper_id": "04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main",
+    "title": null,
+    "parser": "MinerU",
+    "parser_version": "3.4.4",
+    "cleaner": "skill06_markdown_cleaner",
+    "cleaner_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "source_markdown_sha256": "15287d03c363ec70593168e6450cb89b234fd1aafff279b402b356c9d579a840",
+    "clean_markdown_sha256": "47ba7f847ec3c651542e85f246650f3c2a6176d091ad929f329a1fa28b19b6f6"
+  },
+  "figures": [
+    {
+      "figure_id": "Fig. 1",
+      "caption": "- Serial adaptive laboratory evolution of E. coli in M9 glycerol and M9 lactate. (A) An overview of the fitness trajectory of evolving populations of GL-LA and LA-GL represented by generations per passage as the function of accumulated generation. The populations in the first phase of ALE (strain GL in M9 glycerol and strain LA in M9 lactate) were allowed to reach a fitness plateau before transition to the second phase of ALE. Fitness assessment of the evolved strains in M9 glycero and M9 lactate. Error bar represents standard deviation between biological triplicates. (B) Comparison of specific growth rates (SGR) between MG1655 wild-type and the evolved strains. (C) Comparison of carbon uptake rates (CUR) between MG1655 wild-type and the evolved strains. (D–E) Mutational analysis in the evolving populations of GL-LA and LA-GL. Trajectory of proposed causal mutations in (D) GL-LA and (E) LA-GL lineages in the course of ALE. (F–G) Fitness assessment of causative mutations identified during adaptive laboratory evolution. Percent contribution to the end-point strain fitness was calculated as the SGR of each mutant relative to that of end-point strains, for each of single and sequential mutant derived from (F) GL-LA and (G) LA-GL, in respective evolutionary media. ‘na’ denotes strains with fitness contribution lesser than −20%. ‘fs’ denotes frameshift mutation. (\\*) for P-value less than 0.05, (\\*\\*) less or equal to 0.01, and (\\*\\*\\*) less or equal to 0.001. The full pair-wise comparison of statistical significance between samples is outlined in Table S3. Error bars represent standard deviations between biological triplicates.",
+      "related_paragraphs": [
+        "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011",
+        "2_5_co_utilization_of_glycerol_and_lactate_p002",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p001"
+      ]
+    },
+    {
+      "figure_id": "Fig. 2",
+      "caption": "- Strain growth phenotypes in the mixed carbon condition.",
+      "related_paragraphs": [
+        "2_5_co_utilization_of_glycerol_and_lactate_p008"
+      ]
+    },
+    {
+      "figure_id": "Fig. 3",
+      "caption": "- Transcriptome analysis on single- and mixed-carbon culture conditions. (A) Principal component analysis of transcriptome sequencing reads of wildtype and the evolved strains. Note the strain- and condition-specific clustering of each dataset. PC denotes a principle component. (B) Hierarchical clustering (method: Euclidean, complete) of DEGs in the mixed-carbon condition relative to either glycerol- or lactate-limiting culture conditions. We identified three clusters with unilateral upregulation of genes in the mixed-carbon condition as compared with lactate (cluster 1), glycerol (cluster 2), and both (cluster 3). (C) Carbon-specific changes in the activity of GlpR, LldR, Zur, and Crp-2 iModulons. (D) Scatterplot of GlpR-Zur and LldR-CRP-2 iModulon activities. Serial ALE samples are coloured by relevant culture conditions.",
+      "related_paragraphs": [
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p007"
+      ]
+    },
+    {
+      "figure_id": "Fig. 4",
+      "caption": "- Assessment of bioproduction capacity in evolved strains of the GL-LA lineage. (A) The episomal expression system for alsS and alsD. (B) A simplified illustration of metabolic pathways involved in acetoin production using glycerol and lactate as the carbon source(s). Abbreviations – glyc: glycerol, glyc3p: glycerol 3-phosphate, dhap: glycerone phosphate, g3p: glyceraldehyde 3-phosphate, 13dpg: 1,3-bisphosphate-D-glycerate, 3 pg: 3-phosphoglycerate, 2 pg: 2-phosphoglyc erate, pep: phosphoenolpyruvate, pyr: pyruvate, q8h2: ubiquinol-8, q8: ubiquinone-8, lac\\_\\_L: L-lactate, alac: acetolactate, actn: acetoin, suffix \\_c: cytoplasm, suffix \\_e: extracytoplasmic. (C) Comparison of maximum acetoin specific productivity. (\\*) for P-value less than 0.05, (\\*\\*) less or equal to 0.01, (\\*\\*\\*) less or equal to 0.001, (ns) non-significant. Error bars represent standard deviations in three biological replicates.",
+      "related_paragraphs": [
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p006"
+      ]
+    }
+  ],
+  "tables": [],
+  "citations": [],
+  "cleaning_metadata": {
+    "cleaning_history": []
+  },
+  "canonical_representation": {
+    "version": "skill07_canonical_document_v0.1",
+    "source_sha256": "6f1e2256016b42ff09939b9df3a6c0a666a71084f48f87358325a6a30d38da67",
+    "text_source_of_truth": "paragraphs[].text",
+    "section_content_policy": "ordered paragraph references plus position-aware residual_content",
+    "reversible": true
+  },
+  "sections": [
+    {
+      "title": "Serial adaptive laboratory evolution enhances mixed carbon metabolic capacity of Escherichia coli",
+      "level": 1,
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 0,
+      "parent_section_id": null,
+      "paragraph_ids": [
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p001",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p002",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p003",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p004",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p005",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p006",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p007",
+        "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p008"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "A R T I C L E I N F O",
+      "level": 2,
+      "section_id": "a_r_t_i_c_l_e_i_n_f_o",
+      "position": 1,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "a_r_t_i_c_l_e_i_n_f_o_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "A B S T R A C T",
+      "level": 2,
+      "section_id": "a_b_s_t_r_a_c_t",
+      "position": 2,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "a_b_s_t_r_a_c_t_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "1. Introduction",
+      "level": 2,
+      "section_id": "1_introduction",
+      "position": 3,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "1_introduction_p001",
+        "1_introduction_p002",
+        "1_introduction_p003",
+        "1_introduction_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2. Results",
+      "level": 2,
+      "section_id": "2_results",
+      "position": 4,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "2.1. Serial adaptive laboratory evolution of E. coli",
+      "level": 2,
+      "section_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli",
+      "position": 5,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+        "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+        "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p003",
+        "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.2. Mutation profiles in the first phase of adaptive evolution",
+      "level": 2,
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 6,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p001",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p003",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p004",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p005",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p006",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p007",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p008",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p009",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p010",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011",
+        "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p012"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 11,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.3. Mutation profiles in the second phase of adaptive evolution",
+      "level": 2,
+      "section_id": "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution",
+      "position": 7,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution_p001",
+        "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.4. Fitness contribution of adaptive mutations",
+      "level": 2,
+      "section_id": "2_4_fitness_contribution_of_adaptive_mutations",
+      "position": 8,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_4_fitness_contribution_of_adaptive_mutations_p001",
+        "2_4_fitness_contribution_of_adaptive_mutations_p002",
+        "2_4_fitness_contribution_of_adaptive_mutations_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.5. Co-utilization of glycerol and lactate",
+      "level": 2,
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 9,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_5_co_utilization_of_glycerol_and_lactate_p001",
+        "2_5_co_utilization_of_glycerol_and_lactate_p002",
+        "2_5_co_utilization_of_glycerol_and_lactate_p003",
+        "2_5_co_utilization_of_glycerol_and_lactate_p004",
+        "2_5_co_utilization_of_glycerol_and_lactate_p005",
+        "2_5_co_utilization_of_glycerol_and_lactate_p006",
+        "2_5_co_utilization_of_glycerol_and_lactate_p007",
+        "2_5_co_utilization_of_glycerol_and_lactate_p008",
+        "2_5_co_utilization_of_glycerol_and_lactate_p009"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.6. Transcriptome adaptions in response to serial adaptive evolution",
+      "level": 2,
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 10,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p001",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p002",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p003",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p004",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p005",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p006",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p007",
+        "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p008"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.7. Transcriptomes changes reflect improved metabolic efficiency",
+      "level": 2,
+      "section_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency",
+      "position": 11,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p001",
+        "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p002",
+        "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p003",
+        "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.8. Transcriptomic response to the mixed-carbon conditions",
+      "level": 2,
+      "section_id": "2_8_transcriptomic_response_to_the_mixed_carbon_conditions",
+      "position": 12,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p001",
+        "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.9. Key regulators governing the ALE- and the condition-specific transcriptome adaptations",
+      "level": 2,
+      "section_id": "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations",
+      "position": 13,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations_p001",
+        "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.10. Serial ALE enhances bioconversion capacity of E. coli",
+      "level": 2,
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 14,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p001",
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p002",
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p003",
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+        "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "3. Discussion",
+      "level": 2,
+      "section_id": "3_discussion",
+      "position": 15,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "3_discussion_p001",
+        "3_discussion_p002",
+        "3_discussion_p003",
+        "3_discussion_p004",
+        "3_discussion_p005"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4. Materials and methods",
+      "level": 2,
+      "section_id": "4_materials_and_methods",
+      "position": 16,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.1. Bacterial strains and growth conditions",
+      "level": 2,
+      "section_id": "4_1_bacterial_strains_and_growth_conditions",
+      "position": 17,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_1_bacterial_strains_and_growth_conditions_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.2. Adaptive laboratory evolution",
+      "level": 2,
+      "section_id": "4_2_adaptive_laboratory_evolution",
+      "position": 18,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_2_adaptive_laboratory_evolution_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.3. Growth assay",
+      "level": 2,
+      "section_id": "4_3_growth_assay",
+      "position": 19,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_3_growth_assay_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.4. Quantification of carbon substrates and metabolites",
+      "level": 2,
+      "section_id": "4_4_quantification_of_carbon_substrates_and_metabolites",
+      "position": 20,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_4_quantification_of_carbon_substrates_and_metabolites_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.5. Whole-genome re-sequencing and data analysis",
+      "level": 2,
+      "section_id": "4_5_whole_genome_re_sequencing_and_data_analysis",
+      "position": 21,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_5_whole_genome_re_sequencing_and_data_analysis_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.6. Reverse engineering of mutations",
+      "level": 2,
+      "section_id": "4_6_reverse_engineering_of_mutations",
+      "position": 22,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_6_reverse_engineering_of_mutations_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.7. Total RNA extraction and ribosomal RNA depletion",
+      "level": 2,
+      "section_id": "4_7_total_rna_extraction_and_ribosomal_rna_depletion",
+      "position": 23,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_7_total_rna_extraction_and_ribosomal_rna_depletion_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.8. Transcriptome sequencing (RNA-seq)",
+      "level": 2,
+      "section_id": "4_8_transcriptome_sequencing_rna_seq",
+      "position": 24,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_8_transcriptome_sequencing_rna_seq_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.9. Data processing",
+      "level": 2,
+      "section_id": "4_9_data_processing",
+      "position": 25,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_9_data_processing_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.10. iModulon analysis of RNA-seq data",
+      "level": 2,
+      "section_id": "4_10_imodulon_analysis_of_rna_seq_data",
+      "position": 26,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_10_imodulon_analysis_of_rna_seq_data_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.11. Intracellular cAMP assay",
+      "level": 2,
+      "section_id": "4_11_intracellular_camp_assay",
+      "position": 27,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_11_intracellular_camp_assay_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.12. Biolog phenotype microarray",
+      "level": 2,
+      "section_id": "4_12_biolog_phenotype_microarray",
+      "position": 28,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_12_biolog_phenotype_microarray_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.13. Acetoin production",
+      "level": 2,
+      "section_id": "4_13_acetoin_production",
+      "position": 29,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "4_13_acetoin_production_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "CRediT authorship contribution statement",
+      "level": 2,
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 30,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "credit_authorship_contribution_statement_p001",
+        "credit_authorship_contribution_statement_p002",
+        "credit_authorship_contribution_statement_p003",
+        "credit_authorship_contribution_statement_p004",
+        "credit_authorship_contribution_statement_p005",
+        "credit_authorship_contribution_statement_p006",
+        "credit_authorship_contribution_statement_p007"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Appendix A. Supplementary data",
+      "level": 2,
+      "section_id": "appendix_a_supplementary_data",
+      "position": 31,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "appendix_a_supplementary_data_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "References",
+      "level": 2,
+      "section_id": "references",
+      "position": 32,
+      "parent_section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "paragraph_ids": [
+        "references_p001",
+        "references_p002",
+        "references_p003",
+        "references_p004",
+        "references_p005",
+        "references_p006",
+        "references_p007",
+        "references_p008",
+        "references_p009",
+        "references_p010",
+        "references_p011",
+        "references_p012",
+        "references_p013",
+        "references_p014",
+        "references_p015",
+        "references_p016",
+        "references_p017",
+        "references_p018",
+        "references_p019",
+        "references_p020",
+        "references_p021",
+        "references_p022",
+        "references_p023",
+        "references_p024",
+        "references_p025",
+        "references_p026",
+        "references_p027",
+        "references_p028",
+        "references_p029",
+        "references_p030",
+        "references_p031",
+        "references_p032",
+        "references_p033",
+        "references_p034",
+        "references_p035",
+        "references_p036",
+        "references_p037",
+        "references_p038",
+        "references_p039",
+        "references_p040",
+        "references_p041",
+        "references_p042",
+        "references_p043",
+        "references_p044",
+        "references_p045",
+        "references_p046",
+        "references_p047",
+        "references_p048",
+        "references_p049",
+        "references_p050",
+        "references_p051",
+        "references_p052",
+        "references_p053",
+        "references_p054",
+        "references_p055",
+        "references_p056",
+        "references_p057",
+        "references_p058",
+        "references_p059",
+        "references_p060",
+        "references_p061",
+        "references_p062",
+        "references_p063",
+        "references_p064",
+        "references_p065"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 11,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 12,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 13,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 14,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 15,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 16,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 17,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 18,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 19,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 20,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 21,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 22,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 23,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 24,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 25,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 26,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 27,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 28,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 29,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 30,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 31,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 32,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 33,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 34,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 35,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 36,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 37,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 38,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 39,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 40,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 41,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 42,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 43,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 44,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 45,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 46,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 47,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 48,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 49,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 50,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 51,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 52,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 53,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 54,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 55,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 56,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 57,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 58,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 59,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 60,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 61,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 62,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 63,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 64,
+          "content": "\n\n"
+        }
+      ]
+    }
+  ],
+  "paragraphs": [
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p001",
+      "text": "![](images/41d7a9d94c5da42697012c3d9c950c1c2af6e74b190bb326fe1e425199474cb0.jpg)",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 0
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p002",
+      "text": "Kangsan Kim <sup>a,b</sup>, Donghui Choe <sup>c</sup>, Minjeong Kang <sup>a,b</sup>, Sang-Hyeok Cho <sup>a,b</sup>, Suhyung Cho <sup>b</sup>, Ki Jun Jeong <sup>b,d,e</sup>, Bernhard Palsson <sup>c,f</sup>, Byung-Kwan Cho <sup>a,b,e,\\*</sup>",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 1
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p003",
+      "text": "<sup>a</sup> Department of Biological Sciences, Korea Advanced Institute of Science and Technology, Daejeon, 34141, Republic of Korea",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 2
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p004",
+      "text": "<sup>b</sup> KAIST Institute for the BioCentury, Korea Advanced Institute of Science and Technology, Daejeon, 34141, Republic of Korea",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 3
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p005",
+      "text": "<sup>c</sup> Department of Bioengineering, University of California San Diego, La Jolla, CA, 92093, USA",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 4
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p006",
+      "text": "<sup>d</sup> Department of Chemical and Biomolecular Engineering, Korea Advanced Institute of Science and Technology, Daejeon, 34141, Republic of Korea",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 5
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p007",
+      "text": "<sup>e</sup> Graduate School of Engineering Biology, Korea Advanced Institute of Science and Technology, Daejeon, 34141, Republic of Korea",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 6
+    },
+    {
+      "paragraph_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli_p008",
+      "text": "<sup>f</sup> Department of Pediatrics, University of California San Diego, La Jolla, CA, 92093, USA",
+      "section_id": "serial_adaptive_laboratory_evolution_enhances_mixed_carbon_metabolic_capacity_of_escherichia_coli",
+      "position": 7
+    },
+    {
+      "paragraph_id": "a_r_t_i_c_l_e_i_n_f_o_p001",
+      "text": "Keywords:\nAdaptive laboratory evolution\nBioproduction\nMixed-carbon\nSystems biology",
+      "section_id": "a_r_t_i_c_l_e_i_n_f_o",
+      "position": 8
+    },
+    {
+      "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+      "text": "Microbes have inherent capacities for utilizing various carbon sources, however they often exhibit sub-par fitness due to low metabolic efficiency. To test whether a bacterial strain can optimally utilize multiple carbon sources, Escherichia coli was serially evolved in L-lactate and glycerol. This yielded two end-point strains that evolved first in L-lactate then in glycerol, and vice versa. The end-point strains displayed a universal growth advantage on single and a mixture of adaptive carbon sources, enabled by a concerted action of carbon source-specialists and generalist mutants. The combination of just four variants of glpK, ppsA, ydcI, and rph-pyrE, accounted for more than 80% of end-point strain fitness. In addition, machine learning analysis revealed a coordinated activity of transcriptional regulators imparting condition-specific regulation of gene expression. The effectiveness of the serial adaptive laboratory evolution (ALE) scheme in bioproduction applications was assessed under single and mixed-carbon culture conditions, in which serial ALE strain exhibited superior productivity of acetoin compared to ancestral strains. Together, systems-level analysis elucidated the molecular basis of serial evolution, which hold potential utility in bioproduction applications.",
+      "section_id": "a_b_s_t_r_a_c_t",
+      "position": 9
+    },
+    {
+      "paragraph_id": "1_introduction_p001",
+      "text": "Workhorse microbes have a versatile metabolic capacity that allows for the uptake and conversion of diverse chemicals from one form to another. Such metabolic versatility has long been leveraged for the production of biochemicals (Lee et al., 2019) and is now increasingly exploited for the biotransformation of renewable waste to address the growing demand for sustainability (Zhang et al., 2016). Microbial bioconversion typically entails the use of functionally versatile bacteria for transforming low-value biomass, such as industrial by-products (Kim et al., 2022), microbial fermentation wastes (Seong et al., 2020), and other solid waste (Zhang et al., 2016), into value-added products.",
+      "section_id": "1_introduction",
+      "position": 10
+    },
+    {
+      "paragraph_id": "1_introduction_p002",
+      "text": "However, the catabolic efficiency for carbon substrates metabolized by microbes varies extensively, resulting in different biochemical production yields depending on the type of carbon sources used (Lee et al., 2019). Unlike simple sugars, microbial fitness on alternative carbon sources is often suboptimal, and the inherent toxicity of several carbon compounds must be overcome to achieve efficient biotransformation. For example, E. coli strain K-12 exhibits suboptimal fitness in glycerol (Ibarra et al., 2002), presumably due to a toxic intermediate that constraint glycerol uptake (Booth 2005), but such suboptimal phenotypes can be reconfigured through ALE, also known as experimental evolution (Jin et al., 1983). For this reason, microbial biotransformation of alternative carbon sources is often accompanied by ALE to improve substrate utilization and biotransformation efficiency (Kim et al., 2023).",
+      "section_id": "1_introduction",
+      "position": 11
+    },
+    {
+      "paragraph_id": "1_introduction_p003",
+      "text": "ALE capitalizes on the principles of natural evolution, enabling the selection of offspring with desired traits through a sustained propagation under specific selection pressures. The robustness of ALE in strain optimization is exemplified by the seminal long-term evolution experiment that has been ongoing for more than 30 years, highlighting the untapped potential of microbes to explore and acquire mutations beneficial for survival (Barrick et al., 2020; Good et al., 2017). Adaptive mutations impart fitness benefits through various mechanisms, such as activation of latent genes and pathways (Jin et al., 1983) as well as the rewiring of regulatory (Conrad et al., 2010) and metabolic networks (Cheng et al., 2014). These changes ultimately steer evolving populations towards optimal fitness.",
+      "section_id": "1_introduction",
+      "position": 12
+    },
+    {
+      "paragraph_id": "1_introduction_p004",
+      "text": "To date, ALE-based fitness optimization has been conducted in the presence of a single or multiple carbon sources, elucidating the generality of adaptive strategies and the potential industrial relevance of adapted strains (Sandberg et al., 2017; Saxer et al., 2010). However, the evolvability of microbes subjected to sequential adaptation in more than one fitness landscape is seldom explored. Here, we employed systems biology approach to investigate the outcome of serial adaptation in microbes using two different alternative carbon sources, glycerol and lactate. In addition, we examined the performance of serially evolved E. coli in the bioconversion of alternative carbon sources into a value-added product, acetoin. The current findings demonstrate that serial ALE can serve as an effective tool for harnessing potent strains capable of transforming multiple, otherwise inefficiently-utilized carbon sources into commodity biochemicals.",
+      "section_id": "1_introduction",
+      "position": 13
+    },
+    {
+      "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+      "text": "ALE was employed to serially adapt wild-type E. coli MG1655 on two different carbon sources, glycerol and L-lactate (hereafter referred to as lactate) (see Graphical Abstract, Fig. 1); carbon sources on which E. coli was shown to exhibit sub-optimal growth phenotypes (Fong et al., 2003; Ibarra et al., 2002). Three independent populations were serially passaged during the mid-exponential growth phase in order to harness the fastest-growing progeny. We estimated the doubling time per passage as a function of cumulative generation to infer changes in adaptive fitness (Kang et al., 2019).",
+      "section_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli",
+      "position": 14
+    },
+    {
+      "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+      "text": "During the first phase of ALE, a rapid increase in strain fitness was observed in the first 300–400 generations of both lactate- and glyceroladapting lineages (hereafter ‘LA’ and ‘GL’, respectively). The incremental slope plateaued by the 800th generation, which is indicative of an endpoint for ALE (Sandberg et al., 2019) (Fig. 1A). This fitness trajectory was consistent with our previous finding where an 800-generation evolutionary timescale provided a sufficient window for the fixation of key beneficial mutations (Kang et al., 2019). The carbon source was switched upon reaching the 800th generation, and the LA and GL lineages were propagated for another 600 to 800 generations on switched carbon sources until the fitness plateau was reached. Notably, the doubling time of strain GL appeared close to that of wild-type, while strain LA was minimally perturbed upon carbon shift. We reasoned that such divergence is ascribed to the acquisition of a generalist mutant rph-pyrE in LA, which will be described further in subsequent section. Together, the serial ALE experiments yielded lactate-glycerol (LA-GL) and glycerol-lactate (GL-LA) end-point strains that underwent 1400 to 1600 generations of ALE in two different fitness landscapes.",
+      "section_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli",
+      "position": 15
+    },
+    {
+      "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p003",
+      "text": "Next, we measured the specific growth rates and carbon uptake rates of end-point strains (Fig. 1B and $\\mathrm { C } ,$ Supplementary Fig. S1). First, statistically significant improvements in specific growth rates (SGRs) were obtained across the evolved strains LA, GL, LA-GL, and GL-LA in their respective evolutionary media, when compared to the wild-type (Fig. 1B; Table S3). Such fitness gains were consistent with the enhanced specific carbon uptake rates (CURs) in corresponding culture media (Fig. 1C; Table S3). As consistent with the observed changes in doubling time upon the carbon shift in Fig. 1A, the SGR and CUR of the glycerol-evolved strain GL showed a statistically significant decline in lactate compared to the wild-type, strongly implying a fitness trade-off in the non-evolutionary condition. Similarly, the SGR of the lactateevolved strain LA was higher in glycerol compared to the parental strain, which explains the relatively modest perturbation of its fitness upon carbon shift (Fig. 1B and $\\mathrm { C } ;$ Table S3).",
+      "section_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli",
+      "position": 16
+    },
+    {
+      "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p004",
+      "text": "Second, the end-point strains of serial ALE, GL-LA, and LA-GL exhibited a generalist phenotype, marked by superior fitness in both glycerol and lactate (Fig. 1B and $\\mathrm { C } ;$ Table S3). The second phase of adaptive evolution led to a significant enhancement in the fitness parameters on new carbon sources without observable fitness trade-offs on previously used carbon sources for adaptive evolution. For instance, the SGR and CUR of LA-GL in glycerol increased 1.23- and 1.97-fold in comparison with those of its predecessor strain LA, while maintaining its pre-adaptive fitness on lactate. Similarly, compared to its ancestral strain GL, GL-LA exhibited 1.89- and 1.73-fold increase in SGR and CUR, respectively, without compromising the pre-adaptive fitness in glycerol (Fig. 1B and C; Table S3). The fitness parameters in the serially-evolved strains LA-GL and GL-LA differed in that the SGRs of LA-GL were higher than GL-LA in both glycerol and lactate, while the CURs and maximum cell densities were lower in comparison to GL-LA (Figs. S1A and B). Together, these results suggest that under similar selection conditions, serial ALE can harness end-point lineages with a universal growth advantage, manifesting as distinct phenotypic outcomes, in more than one carbon sources.",
+      "section_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli",
+      "position": 17
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p001",
+      "text": "To identify causal mutations of adaptation, we performed wholegenome resequencing of the evolved populations at a 50-generation interval (Fig. 1D and E). We searched for mutants that were highly recurrent across independent ALE studies, where parallel mutation profiles indicate causality. In addition, we consulted ALEdb, the E. coli ALE mutation database, to obtain insight into the causality of mutations (Phaneuf et al., 2019).",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 18
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002",
+      "text": "In strain LA, notable causal mutants were of metabolic and regulatory genes that emerged in the order of rph-pyrE (RNase PH/orotate phosphoribosyltransferase), hfq (RNA-binding protein), cyaA (adenylate cyclase), ppsA (phosphoenolpyruvate synthetase), and ydcI (a putative transcriptional regulator) (Fig. 1E). It is worth noting the 69 bp deletion in the intergenic region toward the $3 ^ { \\prime }$ end of rph (hereafter rph-pyrE (del)), the first mutation that reached 100% population frequency by the 50th cumulative generation, which is strongly indicative of a selective advantage. The deletion mutation in rph-pyrE is a highly recurrent mutation in E. coli MG1655 under nutrient-limited conditions as evident through the sheer recurrence across independent ALE experiments (Phaneuf et al., 2019). The mutation shifts the stop codon of rph past the attenuator loop preceding pyrE, thereby alleviating the transcriptional inhibition on pyrE, which arises from a point deletion in the rph gene (Jensen 1993; Turnbough and Switzer 2008).",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 19
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p003",
+      "text": "Such transcript-level control is also relevant among ppsA mutants, where it was demonstrated that mutations in ppsA confer a selective advantage in the presence of lactate through the upregulation of gene expression rather than enzyme kinetics (Conrad et al., 2009; Fong et al., 2005). Since the influx of gluconeogenic carbon substrate lactate is directed toward the pyruvate-phosphoenolpyruvate node, it is speculated that upregulation of ppsA is favored during gluconeogenesis. Point mutations in ppsA $( 7 2 \\textrm { T } > \\textrm { G } )$ emerged in the middle of lactate ALE, followed by mutations in regulatory genes hfq (142 $\\mathbf A > \\mathrm { T } )$ and cyaA (2336 T > G) (Fig. 1E). In addition, mutant derivatives of cyaA exhibited a fitness advantage on non-PTS carbon sources, including lactate and glycerol, with a high frequency of fixation across parallel ALE experiments, probably owing to its role in the regulation of intracellular cAMP (Conrad et al., 2009; Herring et al., 2006; Peabody et al., 2017).",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 20
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p004",
+      "text": "On the other hand, hfq mutants have been shown to confer a growth advantage in various sub-optimal nutrient-limited culture conditions (Conrad et al., 2009; Maharjan et al., 2013; Wang et al., 2010), mainly by increasing the transport of limiting carbon substrates through the upregulation of transporter protein expression (Maharjan et al., 2013). Finally, the ydcI (5 A > C) mutant was observed in the 600th generation (Fig. 1E). Previous studies suggested the involvement of YdcI in cellular persistence (Hingley-Wilson et al., 2020), pH homeostasis and acetate metabolism (Gao et al., 2018). However, the biology behind the recurrence of ydcI mutants across multiple ALE experiments remains unclear.",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 21
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p005",
+      "text": "A\n![](images/b5eaaf2415712a827793f6ecf459113ec54d11e20ac2d417a6ac04b5a51e3d18.jpg)",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 22
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p006",
+      "text": "![](images/bef4393525c1fa2dad7e1e2e264d0978062de0e974ae170aab92407cfb72106d.jpg)",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 23
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p007",
+      "text": "C\n![](images/06ecc7d5bace19506f703da4c92d3ae113208273452939804408dce9e527c015.jpg)",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 24
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p008",
+      "text": "D\n<table><tr><td>CDS</td><td>nt. change</td><td>aa. change</td><td colspan=\"10\">50 - 800 generations</td><td></td><td></td><td></td><td></td><td></td><td></td><td>850 - 1400 generations</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>glycerol</td></tr><tr><td>glpK</td><td>694G&gt;T</td><td>G232C</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>rpoC</td><td>3610del9</td><td>V1204fs.</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>ppsA</td><td>13G&gt;T</td><td>G5R</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>lactate</td></tr><tr><td>ydcl</td><td>686-7insG</td><td>G229fs.</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>rph</td><td>619del69</td><td>E207fs.</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td></tr><tr><td>hdfR</td><td>463G&gt;T</td><td>E155*</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>Freq. (%)</td></tr></table>",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 25
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p009",
+      "text": "E",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 26
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p010",
+      "text": "F\n![](images/9274aa545f6e8f565d6a19adb0846bd9013793400700427d9844ee8bd4f36ee7.jpg)",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 27
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011",
+      "text": "![](images/ccb1c9f2595908f15425fe6cdce47a22cbb048943cf0146f6b95075276a2dcdc.jpg)\nFig. 1. - Serial adaptive laboratory evolution of E. coli in M9 glycerol and M9 lactate. (A) An overview of the fitness trajectory of evolving populations of GL-LA and LA-GL represented by generations per passage as the function of accumulated generation. The populations in the first phase of ALE (strain GL in M9 glycerol and strain LA in M9 lactate) were allowed to reach a fitness plateau before transition to the second phase of ALE. Fitness assessment of the evolved strains in M9 glycero and M9 lactate. Error bar represents standard deviation between biological triplicates. (B) Comparison of specific growth rates (SGR) between MG1655 wild-type and the evolved strains. (C) Comparison of carbon uptake rates (CUR) between MG1655 wild-type and the evolved strains. (D–E) Mutational analysis in the evolving populations of GL-LA and LA-GL. Trajectory of proposed causal mutations in (D) GL-LA and (E) LA-GL lineages in the course of ALE. (F–G) Fitness assessment of causative mutations identified during adaptive laboratory evolution. Percent contribution to the end-point strain fitness was calculated as the SGR of each mutant relative to that of end-point strains, for each of single and sequential mutant derived from (F) GL-LA and (G) LA-GL, in respective evolutionary media. ‘na’ denotes strains with fitness contribution lesser than −20%. ‘fs’ denotes frameshift mutation. (\\*) for P-value less than 0.05, (\\*\\*) less or equal to 0.01, and (\\*\\*\\*) less or equal to 0.001. The full pair-wise comparison of statistical significance between samples is outlined in Table S3. Error bars represent standard deviations between biological triplicates.",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 28
+    },
+    {
+      "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p012",
+      "text": "Causal mutations found in GL included rpoC (an RNA polymerase subunit) and glpK (glycerol kinase) (Fig. 1D). Each mutant emerged during the early phase of the ALE. Deletion mutations in rpoC have been shown to induce global metabolic rewiring that re-directs cellular resource into biomass formation, while reducing wasteful overflow in non-essential metabolic pathways (Cheng et al., 2014). In contrast, mutations in glpK often render allosteric inhibition on GlpK obsolete (Applebee et al., 2011), which triggers a superfluous uptake of glycerol that may lead to a carbon overflow (Basan et al., 2015; Cheng et al., 2014). The rpoC and glpK mutants are positively epistatic and function synergistically to improve strain fitness on glycerol, where the dual mutants may represent nearly 100% of fitness gains in end-point strains (Herring et al., 2006). Taken together, the adaptive changes in strain LA and GL were similar to those previously documented, showing the reproducibility of adaptive evolution outcomes under similar selection pressures.",
+      "section_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution",
+      "position": 29
+    },
+    {
+      "paragraph_id": "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution_p001",
+      "text": "Next, we examined mutation profiles in the second phase of ALE (endpoint lineages of LA-GL and GL-LA). Unexpectedly, we observed a rapid decline in the allelic frequency of ppsA $( 7 2 \\mathrm { T } > \\mathrm { G } )$ and ydcI (5 A > C) in the second phase of ALE on glycerol (Fig. 1D and E). This is because neither mutation completely reached the fixation frequency by the end of lactate evolution. The rapid clearance also suggests that the fitness of the two mutants may be negligible under glycerol conditions, as supported by the fitness assay performed on reconstituted mutants (Fig. 1F and G).",
+      "section_id": "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution",
+      "position": 30
+    },
+    {
+      "paragraph_id": "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution_p002",
+      "text": "The mutation profiles of LA-GL and GL-LA reproduced some of the key mutations initially found in LA and GL (Fig. 1D and E). Given that the two carbons share a fair portion of the gluconeogenic pathway, it is possible that mutations attained during evolution on lactate may be beneficial in glycerol-limited conditions or vice versa. In fact, adaptive evolution on mixtures of carbon substrates that are metabolically similar tends to yield a single generalist with a growth advantage on all carbon sources, while those that are dissimilar give rise to subpopulations of specialists (Sandberg et al., 2019). To address this question, we performed fitness analysis of reconstructed mutants with single and multiple mutations in lactate and glycerol growth conditions.",
+      "section_id": "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution",
+      "position": 31
+    },
+    {
+      "paragraph_id": "2_4_fitness_contribution_of_adaptive_mutations_p001",
+      "text": "Single and multiple mutations in LA-GL and GL-LA were introduced in the wild-type strain to assess the contribution of each mutation under lactate and glycerol growth conditions. Eleven and seven mutants were constructed from mutations identified in LA-GL and GL-LA, respectively, in their temporal order of acquisition (Fig. 1F and G). The rpoC mutant was excluded due to technical difficulties in engineering essential genes.",
+      "section_id": "2_4_fitness_contribution_of_adaptive_mutations",
+      "position": 32
+    },
+    {
+      "paragraph_id": "2_4_fitness_contribution_of_adaptive_mutations_p002",
+      "text": "The specific growth rate of each mutant under the two growth conditions was measured to calculate the percent contribution of fitness in the end-point lineages. In this manner, we quantified the fitness contributions of each mutant. In addition, fitness comparison of the two culture conditions can help infer the nature of mutants, either as a generalist exhibiting a fitness advantage on both glycerol and lactate, or as a specialist mutant that acts in a condition-specific manner. For instance, the well-known ‘glycerol-specialist’ mutant derivatives glpK $( 6 9 4 \\mathrm { G } > \\mathrm { T } )$ and glpK $( 1 8 9 \\mathrm { ~ A ~ } > \\mathrm { ~ C ~ } )$ accounted for the largest fitness increase specifically on glycerol, with a negligible effect on lactate (Fig. 1F and G). On the other hand, rph-pyrE (del) was the fittest single mutant on lactate and was the second largest fitness contributor to glycerol, highlighting the generalist nature of rph-pyrE (del) mutant, as reported previously (Kang et al., 2019).",
+      "section_id": "2_4_fitness_contribution_of_adaptive_mutations",
+      "position": 33
+    },
+    {
+      "paragraph_id": "2_4_fitness_contribution_of_adaptive_mutations_p003",
+      "text": "Similarly, hfq (142 A > T) also displayed a generalist-like phenotype, judging from the parallel fitness contribution under both culture conditions (Fig. 1F and G). Lastly, the fitness assessment in sequential mutants, which were designed to recapitulate the temporal order of mutation acquisition in the GL-LA and LA-GL lineages, revealed insight into potential interactions between mutations. Taking the GL-LA lineage as an example, while ppsA $( 1 3 \\mathrm { G } > \\mathrm { T } )$ alone lacked did not contribute to fitness on glycerol, the fitness contribution of glpK $( 6 9 4 \\mathrm { G } > \\mathrm { T } )$ and ppsA $( 1 3 \\mathrm { G } > \\mathrm { T } )$ double mutants was 15% higher compared to that of the glpK single mutant alone (Fig. 1F). This suggests the presence of a synergistic interaction between the two mutants in glycerol, which was unexpected because the emergence of ppsA mutants was confined to lactate growth conditions (Conrad et al., 2009; Herring et al., 2006; Kang et al., 2019; Kim et al., 2022; Peabody et al., 2017). On a similar note, the combinatorial mutant harboring all four single mutants showed a drastic increase in fitness contribution compared to that of the triple mutant (Fig. 1F), strongly implying the presence of a synergistic interaction imparted by the fourth mutant rph-pyrE (del). In contrast, a decrease in fitness contribution was observed in sequential mutants after the acquisition of $h f q \\ ( 1 4 2 \\mathrm { ~ A ~ } > \\mathrm { ~ T ~ } )$ (Fig. 1G), suggesting an antagonistic interaction. This antagonism is ascribed to the growth-dependent nature of the hfq mutant, which confers benefits in slow-growing cells but constrains growth in fast-growing populations (Maharjan et al., 2013). Despite the apparent fitness defect in the form of a combinatorial mutation, the basis of selection for the hfq mutant remains elusive. Similarly, cyaA $( 2 2 3 6 \\mathsf { T } > \\mathsf { G } )$ single mutant had a drastically reduced fitness on lactate, which was unexpected given the beneficial role of cyaA $( 2 2 3 6 \\mathsf { T } > \\mathsf { G } )$ on glycerol utilization. Another unanticipated observation was the negligible fitness contribution of the ydcI mutant derivatives ydcI (5 $\\mathbf A > \\mathbf C )$ and ydcI $( 6 8 6 - 7 \\mathrm { i n s G } ) ,$ irrespective of the culture conditions and genetic contexts. Further investigation into the role of ydcI mutants in strain fitness is required to explain the high recurrence of ydcI mutants across independent ALE experiments.",
+      "section_id": "2_4_fitness_contribution_of_adaptive_mutations",
+      "position": 34
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p001",
+      "text": "Next, we assessed strain performance in the presence of both glycerol and lactate. As expected, a diauxic growth pattern was not observed in strains growing on a mixture of non-PTS carbon sources (Fig. 2A). In keeping with the observations in single-carbon environments, adaptively evolved strains retained the fitness advantage compared to the wild-type, where the fold-change in growth rates ranged between 1.38- and 2.15-fold for GL and LA-GL, respectively (Fig. 2B). Notably, serial ALE strains exhibited distinct fitness advantages in the mixed carbon condition, as exemplified by their superior SGRs compared to their single carbon-adapted ancestors (Fig. 2B; Table S3). The increase in SGRs was accompanied by concordant changes in CURs, though apparent ‘preference’ toward carbon substrates differed between strains $( \\mathrm { F i g . ~ 2 C ; \\mathrm { T a b l e ~ S 3 } } )$ . For example, while CURs were generally higher in LA-GL and GL-LA than their ancestral LA and GL, the lactate uptake rate in LA-GL was lower than that in the pre-adapted ancestor (Fig. 2C). We speculate that such a decrease in the lactate uptake rate in LA-GL under the mixed carbon condition is due to loss of the ppsA $( 7 2 \\mathbf { T } > \\mathbf { G } )$ mutant during the 2nd phase of serial ALE (Fig. 1E). The CURs for glycerol and lactate in GL-LA were both higher than those in ancestral GL (Fig. 2C). The increase in lactate uptake rate was especially prominent, at approximately 2.5-fold (Table S3). It is presumed that the acquisition of ppsA $( 1 3 6 ~ > ~ \\mathrm { T } )$ and rph-pyrE (del) during the 2nd phase of ALE contributed to the adaptive changes in CUR (Fig. 1D). Together, the superior fitness observed in LA-GL and GL-LA under the mixed-carbon condition suggests that the fitness objective can be optimized through serial evolution on multiple target carbons.",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 35
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p002",
+      "text": "To gain insight into the genetic underpinnings of fitness improvement in the mixed-carbon environment, we measured the fitness of each mutant under mixed-carbon conditions. Intriguingly, the fitness contributions of glpK (189 A > C and $6 9 4 \\mathrm { G } > \\mathrm { T } )$ and ppsA $( 7 2 \\mathrm { T } > \\mathrm { G }$ and 13G > T) mutants, each of which represents a glycerol- and lactate specialist mutation, remained almost similar to that of the parental wild-type strain (Fig. 2D). This was unexpected, especially for the glpK mutant, which accounted for as much as 40% of GL fitness improvement on glycerol (Fig. 1). Instead, a notable fitness contribution came from the generalist mutant rph-pyrE (del) as well as the quadruple mutant with glpK (694G > T), ppsA (13G > T), ydcI (686-7insG), and rph-pyrE (del). In particular, quadruple mutant fitness increased by nearly 47% and 75% compared to the rph-pyrE (del) single mutant and glpK (694G > T)-ppsA (13G > T)-ydcI (686-7insG) triple mutant, respectively (Fig. 2D). The rph-pyrE (del) mediated fitness restoration was also relevant in the LA-GL genotypes (Fig. 2E), strongly implying that rph-pyrE (del) plays a crucial role in the mixed-carbon condition by imposing a positive epistatic interaction between existing specialist mutations.",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 36
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p003",
+      "text": "D\n![](images/28c592d2deb70ec612fdc518c446d1f02db90b40237672b8e6724ab48e24b624.jpg)",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 37
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p004",
+      "text": "![](images/04bbb707b4ab93555de848f6b34d5cd6ca65ad4603f259e95d5589065efeaca3.jpg)",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 38
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p005",
+      "text": "![](images/c1ced5f7ce06d85177008dde56a1dd71b3eea6a468888a6cd33388abd65aa029.jpg)\nE",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 39
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p006",
+      "text": "![](images/cac2b50a01c5ab06b3331f19d44be2a20fce74941733b266ee1f0ca9f62ac63d.jpg)",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 40
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p007",
+      "text": "![](images/33bf1d7fd0b01b46d4ff379ac44510f6bc68762093fdf68653f6d0914adfdbc1.jpg)",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 41
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p008",
+      "text": "![](images/250d7013a58f8a26983a8f68c0d976a654e03dd9ffca7b499fe15e3b0ab1bbe4.jpg)\nFig. 2. - Strain growth phenotypes in the mixed carbon condition.\n(A) Growth profile of the end-point strains in the mixed-carbon minimal medium containing glycerol and lactate. Comparison of (B) specific growth rates (SGR) and (C) specific carbon uptake rates (CUR) between wild-type and the evolved strains. (\\*\\*) for P-value less than or equal to 0.01. Error bars represent standard deviations of biological triplicates. Fitness contribution of single and sequential mutants acquired by (D) GL-LA and (E) LA-GL in the mixed-carbon condition. Note the diminished fitness effects in glpK and ppsA variants. (F) Introduction of rph-pyrE (del) mutation in the glpK and ppsA variant background seems to impart positive epistatic interactions to rescue and strengthen the fitness effects of respective mutants in the mixed-carbon condition.",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 42
+    },
+    {
+      "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p009",
+      "text": "This prompted us to test whether the incorporation of rph-pyrE (del) into glpK and ppsA single-mutant backgrounds would result in a synergistic increase in strain fitness under mixed-carbon conditions. To this end, we constructed double-mutant pairs of glpK (694G > T)-rph-pyrE (del) and ppsA (13G > T)-rph-pyrE (del). To our surprise, the fitness contribution of glpK and rph-pyrE (del) double mutants was twice as great as that of the rph-pyrE (del) single mutant and increased by at least 8% in ppsA-rph-pyrE (del) double mutants (Fig. 2F). This strongly supported the notion that rph-pyrE (del) acts not only to rescue, but also strengthens the fitness effects of specialist mutants in the mixed carbon condition. Given that distinct metabolic pathways are active in the presence of different carbon sources (Pan et al., 2021; Sandberg et al., 2017), the high transcriptional demand for global regulation of mixed carbon sources may impose a bottleneck for fitness in strains with impaired pyrimidine biosynthesis. However, the null effect of specialist mutants and the exact mechanism underlying the epistatic effect imparted by rph-pyrE (del) under mixed-carbon conditions remains elusive.",
+      "section_id": "2_5_co_utilization_of_glycerol_and_lactate",
+      "position": 43
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p001",
+      "text": "Next, whole-transcriptome sequencing (RNA-Seq) was used to analyse changes in the global transcriptomic states of the evolved populations in their respective evolutionary medium as well as mixedcarbon conditions. Principal component analysis (PCA) clustering revealed the optimal gene expression state of individual strains in a condition-specific manner (Sandberg et al., 2017). Strains that share a common evolutionary history clustered in a similar region of ‘transcriptomic optimality’ (Fig. 3A). Interestingly, we observed a pronounced divergence in evolutionary trajectory at the transcriptome level in a lineage-specific manner, despite apparent parity in fitness and the causal mutations (Fig. 1).",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 44
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p002",
+      "text": "A\n![](images/0c97ded392bfd905af3f649d7b72b815b8697b13ebd5b2ca40b66c173b91df0b.jpg)",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 45
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p003",
+      "text": "C\n![](images/50cd4081fd47a7be6c7cb1f2b32668eaf5f462e7e2f9ebc0cae4e9074b3b4846.jpg)",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 46
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p004",
+      "text": "B\n![](images/09b0b20ddf6cd7e2d06abb6d6f4c975fb60472e2a841f0323dde0039658c9abb.jpg)",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 47
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p005",
+      "text": "![](images/0017b5e8fe6c01b8085d1d7a08d8bc1468271e78b226664bf6b5bd3d8d326370.jpg)",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 48
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p006",
+      "text": "![](images/48a37a797751fb0f610d379c2344d4bfbafc9e419330b84fd6b3f66996cb73e9.jpg)",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 49
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p007",
+      "text": "![](images/4a6def2e34858a0a79787bf44bd1c55c9b6d8503a084a96b13803ba133ef29d4.jpg)\nFig. 3. - Transcriptome analysis on single- and mixed-carbon culture conditions. (A) Principal component analysis of transcriptome sequencing reads of wildtype and the evolved strains. Note the strain- and condition-specific clustering of each dataset. PC denotes a principle component. (B) Hierarchical clustering (method: Euclidean, complete) of DEGs in the mixed-carbon condition relative to either glycerol- or lactate-limiting culture conditions. We identified three clusters with unilateral upregulation of genes in the mixed-carbon condition as compared with lactate (cluster 1), glycerol (cluster 2), and both (cluster 3). (C) Carbon-specific changes in the activity of GlpR, LldR, Zur, and Crp-2 iModulons. (D) Scatterplot of GlpR-Zur and LldR-CRP-2 iModulon activities. Serial ALE samples are coloured by relevant culture conditions.",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 50
+    },
+    {
+      "paragraph_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p008",
+      "text": "Hierarchical clustering of gene read counts also supported the divergent transcriptional strategies adopted by GL-LA and LA-GL (Supplementary Fig. S2A). Together, these results suggest that transcriptome states of serially evolving cells are contingent upon the transcriptomic states of their ancestral strains and that the serial adaptation regime displays order dependency at the molecular level despite apparent convergence of end-point strain fitness. In addition, the percent variance in principal components suggested that the transcriptome states were rewired more extensively in the first phase of ALE (between wild-type and GL, or wild-type and LA) than in the second phase (between GL and GL-LA or LA and LA-GL; Fig. 3A). Corroborating this observation, the number of differentially expressed genes (DEGs) was also considerably lower in the second phase of ALEs relative the first phase, signifying the progression of evolution (Supplementary Figs. S2B and C) (Kavvas et al., 2022). This line of evidence further highlights the differences in the magnitude of transcriptome rewiring between the two phases.",
+      "section_id": "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution",
+      "position": 51
+    },
+    {
+      "paragraph_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p001",
+      "text": "With evidence suggesting a re-wiring of alternative carbon metabolism in the evolved lineages, we moved forward with the analysis of core metabolic pathways, ranging from carbon uptake to energy metabolism (Supplementary Fig. S3). First, DEG analysis showed condition-specific differences in gene expression between the evolved strains, which were most evident in genes associated with carbon uptake. Notably, lldP and lldD encoding L-lactate permease and L-lactate dehydrogenase, respectively, were significantly upregulated in all lactate-evolved strains in M9 lactate compared to the wild-type strain, as previously reported (Hua et al., 2007). Also notable was the significant down-regulation of glpK in strains harbouring missense mutations in glpK (GL, LA-GL, and GL-LA) in M9 glycerol. This results from the enhanced glycerol uptake in cells which leads to elevation of intracellular glycerol 3-phosphate concentrations, which in turn, represses adenylate cyclase (Supplementary Fig. S4A) (Eppler et al., 2002). The resultant drop in intracellular cAMP levels leads to the repression of glpFKX operon (Applebee et al., 2011; Cheng et al., 2014; Kim et al., 2022). As expected, quantification of intracellular cAMP levels showed that strains harboring the mutant glpK derivatives had their intracellular cAMP concentrations reduced by up to 38% compared to the wild-type (Supplementary Fig. S4B).",
+      "section_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency",
+      "position": 52
+    },
+    {
+      "paragraph_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p002",
+      "text": "Second, genes that were universally upregulated across all evolved strains in different culture conditions involved glycolytic and gluconeogenic pathways, a convergent feature in ALE strains that reflect the cellular response to elevated carbon uptake rates (Supplementary Fig. S3) (Kavvas et al., 2022). In addition, genes related to biomass generation and energy production were also upregulated. This reflects a general transcriptome response to fulfil the increased demand for biomass and energy production in bacterial strains adaptively evolved under nutrient limitations (Choe et al., 2019; Kim et al., 2022; LaCroix et al., 2015; Seong et al., 2020). On the other hand, lineage-specific differences in gene expression was seen in the TCA cycle, electron-transferring cytochromes and oxidoreductases (Supplementary Fig. S3), which seems to contribute to the observed divergence in transcriptome profiles between GL-LA and LA-GL lineages (Fig. 3A).",
+      "section_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency",
+      "position": 53
+    },
+    {
+      "paragraph_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p003",
+      "text": "We reasoned that the up-regulation of the core metabolic pathways reflects increased metabolic efficiency in the evolved strains. In this light, we, further examined the strain fitness across a range of hydrocarbons of glycolytic or gluconeogenic nature. As expected, specific respiration rates (SRR) of the evolved strains on an array of single carbon sources were in general higher compared to wild-type, where the number of carbons with increased SRR was at least twice as much greater than those with decreased SRR (Supplementary Fig. S5). Overall, of the 82 carbons with a significant increase of SRR in at least one the evolved strains, we identified 36 carbons with concordant increase in SRR across the evolved strains. These included intermediates of glycolysis such as D-glucose 6-phosphate, and D-fructose 6-phosphate, various mono- and oligosaccharides, as well as carbon and amino acids that are gluconeogenic in nature (Supplementary Table S4).",
+      "section_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency",
+      "position": 54
+    },
+    {
+      "paragraph_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p004",
+      "text": "To test whether the changes in SRR translate to improvements in growth rates, we conducted growth profiling of the wild-type and evolved strains in various conventional carbon sources, including acetate (0.2% v/v), D-xylose (0.2% w/v), and D-glucose (0.2% w/v) in M9 minimal media. Additionally, growth profiling was performed in enriched media – Luria Bertani (LB) and Terrific Broth (TB). As expected, the serially evolved strains LA-GL and GL-LA displayed faster growth rates compared to that of the wild-type and those of their ancestral strain LA or GL (Supplementary Fig. S6). Given the gluconeogenic (lactate and glycerol) and partially glycolytic (glycerol) nature of the carbon assimilation pathway in E. coli, optimization of metabolism towards the two carbon sources may have also translated to improved metabolic efficiency in carbon sources that utilize similar metabolic pathways. However, the evolved strains displayed fitness deficits in enriched media compared to the wild-type, which were consistent with the fitness trade-offs reported in strains evolved in minimal media (Conrad et al., 2010). Together, serial ALE expands the carbon utilization capacity of E. coli to other non-adaptive, conventionally-utilized carbon sources, at the cost of a fitness deficit in enriched culture conditions.",
+      "section_id": "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency",
+      "position": 55
+    },
+    {
+      "paragraph_id": "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p001",
+      "text": "Next, we explored whether there are specific transcriptomic strategies that cells employ for optimal growth under mixed-carbon growth conditions. To this end, we compared gene expression profiles between single- and mixed-carbon condition, obtaining 1205 DEGs in 10 different datasets (Fig. 3B).",
+      "section_id": "2_8_transcriptomic_response_to_the_mixed_carbon_conditions",
+      "position": 56
+    },
+    {
+      "paragraph_id": "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p002",
+      "text": "Hierarchical clustering of DEGs based on their fold-change values revealed three distinct groups in their expression patterns. First, DEGs between the glycerol and mixed-carbon conditions showed significant upregulation in lactate metabolic genes lldP, lldR, and lldD (Cluster 1, Fig. 3B). As mentioned earlier, these three genes encode an inner membrane permease, a regulatory protein, and a dehydrogenase specific to lactate, respectively, and their upregulation is correlated with greater lactate influx in E. coli (Hua et al., 2007). Similarly, DEGs between the lactate and mixed-carbon conditions revealed a marked increase in glycerol metabolic genes, including the respiratory glpKD and glpABC pathways as well as the fermentative gldA/dhaKLM pathways (Cluster 2, Fig. 3B) (Booth 2005; Gonzalez et al., 2008). Among these, expression fold-change values were highest in representative glycerol assimilatory genes glpK and glpD within the cluster as well as among all DEGs, further emphasizing the pivotal role of glpK and glpD in glycerol utilization. The last cluster was characterized by a universal upregulation of its members in all strains, most of which were functionally relevant to translation and protein biosynthesis (Cluster 3, Fig. 3B). While an increase in the activity, including transcriptomic changes, of the translation machinery is controlled by strain growth (Cummings et al., 1991; Forchhammer and Lindahl 1971), specific growth rates in the mixed carbon condition were not particularly high compared to those in single carbon conditions, with the exception of LA-GL and GL-LA. However, strains in the mixed-carbon condition showed higher maximum cell density than those in lactate or glycerol (Fig. 2A and Supplementary Fig. S1), in accordance with the upregulation of translation-related genes in Cluster 3 (Fig. 3B). It is presumed that the increase in maximum cell density in the mixed-carbon condition is ascribed to the topology of the metabolic network. The effective partitioning of input fluxes into metabolically adjacent precursor pools allows a more efficient synthesis of various building blocks that translates into improved growth capacity (Wang et al., 2019). Taken together, we identified a unilateral transcriptome response in the mixed-carbon conditions, as characterized by the simultaneous upregulation of a subset of genes specific to glycerol and lactate conditions, regardless of evolutionary history.",
+      "section_id": "2_8_transcriptomic_response_to_the_mixed_carbon_conditions",
+      "position": 57
+    },
+    {
+      "paragraph_id": "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations_p001",
+      "text": "To explore deeper into the adaptive and condition-specific transcriptomic responses in serial ALE strains, we conducted independent component analysis (ICA) on our datasets along with the compendium of 278 expression data in PRECISE (Sastry et al., 2019). The ICA generates groups of genes that are independently modulated by specific transcriptional regulators. The expression of genes is quantitatively weighed as the function of each condition, with specific thresholds to determine whether a gene is part of an independently modulated signal in an iModulon. Thus, significant changes in gene expression or regulator activities following a suite of genetic (ALE) and environmental alterations can be visualized in iModulon activities (Kavvas et al., 2022).",
+      "section_id": "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations",
+      "position": 58
+    },
+    {
+      "paragraph_id": "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations_p002",
+      "text": "First, the ICA revealed a unilateral decrease in the activities in the RpoS and GadW iModulons in all but wild-type (Supplementary Figs. S7A and B). Such changes in these two iModulons have been shown to be associated with adaptive increase in strain growth rates, particularly in adaptively evolved strains (Kavvas et al., 2022). Second, the condition-specific transcriptome responses in the presence of glycerol, lactate, or both were reflected in the GlpR and LldR iModulons (Fig. 3C). GlpR is a transcriptional regulator of genes associated with glycerol metabolism, the expression of which is dependent upon glycerol intake and resulting changes in the intracellular concentrations of cAMP-CRP (Eppler et al., 2002). Similarly, LldR is a transcription factor that controls L-lactate metabolism in E. coli (Aguilera et al., 2008). As expected, the activity changes in the GlpR iModulon was specific to the glycerol and the mix culture conditions, and the LldR iModulon was active specifically in the presence of lactate. Interestingly, such condition-specific iModulon activities was also apparent in the Zur and Crp-2 iModulons. The Zur iModulon, enriched with genes associated with zinc ion transport and metabolism including znuABC and zinT, showed strong activity in the presence of glycerol (Fig. 3C and D and Supplementary Fig. S7C). Interestingly, the magnitude of its activation closely mirrored the specific glycerol uptake rates of respective strains, which seems to reflect the cooperative role of zinc ions in facilitating the interaction between GlpK and the allosteric repressor $\\mathrm { E I I A } ^ { \\mathrm { G l c } }$ (Feese et al., 1994). However, given that $\\mathrm { E I I A } ^ { \\mathrm { G l c } }$ is inhibitory toward GlpK, the biological implication underlying the positive correlation between the Zur activity and glycerol uptake rates warrants further investigation. Similarly, the Crp-2 iModulon was universally activated in all strains in lactate, but were generally greater in the strains underwent ALE (Fig. 3B). The Crp-2 iModulons are enriched with phosphotransferase system (PTS; Supplementary Fig. S7D), the activation of which may indicate a higher PTS activity, and increase in ATP concentrations (Rychel et al., 2022). In support of this notion, genes associated with ATP biosynthesis pathways were significantly up-regulated in adaptively evolved strains compared to wild-type across all three culture conditions (Supplementary Fig. S3). Taken together, the activation of key regulators remained conserved during the course of ALE, but the magnitude of activation may alter in response to rewired cellular physiologies (i.e. carbon uptake and intracellular ATP availability).",
+      "section_id": "2_9_key_regulators_governing_the_ale_and_the_condition_specific_transcriptome_adaptations",
+      "position": 59
+    },
+    {
+      "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p001",
+      "text": "Lastly, we assessed whether the rewired cellular physiology in serially-evolved strains would translate to an improved bioproduction capacity. To this end, we targeted acetoin, an industrially competitive biochemical with diverse industrial applications (Cui et al., 2022). The acetoin biosynthetic pathway comprised of acetolactate synthase (AlsS) and acetolactate decarboxylase (AlsD), in which the two enzymes siphon off 2 mol of pyruvate to form a single acetoin molecule (Fig, 4A, B).",
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 60
+    },
+    {
+      "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p002",
+      "text": "![](images/2eff84fead10144f4e565426fb760883d276365a490cd6055cd1cde8183da31f.jpg)\nB\nC",
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 61
+    },
+    {
+      "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p003",
+      "text": "![](images/e6d96418bab0992199ed4fe38558616f3bb3893788840cee6ff80424f430b71b.jpg)",
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 62
+    },
+    {
+      "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+      "text": "We used the GL-LA lineage, which retains core mutations causal in M9 glycerol and lactate environments (Fig. 1D), as the proxy to assess bioproduction capacity of acetoin. However, the strains harboring an acetoin production plasmid displayed a substantially delayed lag phase and low cell density, indicating a plasmid-encoded metabolic burden (Silva et al., 2012). The culture media used for acetoin production were either LB broth (Li et al., 2010; Nielsen et al., 2010; Tong et al., 2016) or defined media supplemented with exogeneous amino acids (Nakashima et al., 2014; Novak et al., 2020; Shen et al., 2012). To allow cells to utilize glycerol or lactate as the sole carbon substrate, we supplemented casamino acids as the exogenous nitrogen source in the production media (see Methods).",
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 63
+    },
+    {
+      "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+      "text": "In the course of 24 h batch culture experiment, the specific acetoin productivities of GL-LA were the highest across all culture conditions compared with wild-type and GL. (Fig. 4C and Supplementary Fig. S8). Most prominent changes in acetoin productivity was observed in glycerol, where GL-LA and GL showed approximately 3.7- and 2.9-fold increase in specific acetoin productivity, respectively, compared to wildtype (Fig. 4C). Notably, GL-LA also showed a statistically significant, 1.3-fold higher enhancement in the productivity compared to GL (Fig. 4C), highlighting that a prolonged evolution on the second carbon source further optimized its metabolic efficiency. In fact, the specific glycerol uptake rate in GL-LA was significantly higher compared to wildtype and the single-ALE strain (Supplementary Figs. S8A and B). In lactate, significant changes in the productivity was only evident in GL-LA, where it demonstrated 1.6- and 1.4-fold higher acetoin productivity compared to wild-type and GL, respectively. The difference between that of GL and wild-type remained non-significant (Fig. 4C), which seems differences also stemmed from strain-specific differences in specific lactate uptake rates (Supplementary Figs. S8C and D). Finally, in the presence of both carbon sources (‘mixed’), GL-LA displayed superior acetoin productivity than the rest, as consistent with the results in single-carbon environments (Fig. 4C). Intriguingly, highest specific acetoin productivity was observed when the rate consumption of lactate was the fastest, rather than glycerol (Supplementary Figs. S8E and F). It is speculated that such observation is ascribed to differences in the metabolic distance between input carbon substrates and target metabolite (Waschina et al., 2016), where four-step bioconversion of lactate into acetoin may incur less metabolic costs and thus more efficient compared to glycerol (Fig. 4B). Together, this line of evidence underscores that strains with a history of serial adaptation on multiple carbon sources exhibit superior performance in terms of strain fitness and target metabolite production on each of the single and mixtures of evolutionary carbon substrates. This demonstrates the potential utility of the serial ALE approach for harnessing a production strain with a desirable capacity for bioproduction in multi-carbon environments.",
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 64
+    },
+    {
+      "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p006",
+      "text": "![](images/fb6b2a732dc67dce1f2d96610d7820cfdc22552f8eab1b0a23f5770c2c704a22.jpg)\nFig. 4. - Assessment of bioproduction capacity in evolved strains of the GL-LA lineage. (A) The episomal expression system for alsS and alsD. (B) A simplified illustration of metabolic pathways involved in acetoin production using glycerol and lactate as the carbon source(s). Abbreviations – glyc: glycerol, glyc3p: glycerol 3-phosphate, dhap: glycerone phosphate, g3p: glyceraldehyde 3-phosphate, 13dpg: 1,3-bisphosphate-D-glycerate, 3 pg: 3-phosphoglycerate, 2 pg: 2-phosphoglyc erate, pep: phosphoenolpyruvate, pyr: pyruvate, q8h2: ubiquinol-8, q8: ubiquinone-8, lac\\_\\_L: L-lactate, alac: acetolactate, actn: acetoin, suffix \\_c: cytoplasm, suffix \\_e: extracytoplasmic. (C) Comparison of maximum acetoin specific productivity. (\\*) for P-value less than 0.05, (\\*\\*) less or equal to 0.01, (\\*\\*\\*) less or equal to 0.001, (ns) non-significant. Error bars represent standard deviations in three biological replicates.",
+      "section_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli",
+      "position": 65
+    },
+    {
+      "paragraph_id": "3_discussion_p001",
+      "text": "In our previous works, we extensively characterized the adaptive features of E. coli evolved in glycerol and L-lactate as the sole carbon substrates, with a focus on growth phenotypes (Fong et al., 2005), the genetic basis of adaptation (Conrad et al., 2009; Herring et al., 2006), as well as on transcriptional and metabolic networks (Cheng et al., 2014; Conrad et al., 2010; Utrilla et al., 2016). In this study, we assessed the evolvability of E. coli subjected to a consecutive adaptation regime in the two-carbon substrates glycerol and lactate.",
+      "section_id": "3_discussion",
+      "position": 66
+    },
+    {
+      "paragraph_id": "3_discussion_p002",
+      "text": "Notably, the end-point strains displayed ‘generalist phenotypes’ as seen by the substantial fitness gains in both of the two evolutionary culture conditions regardless of the order of evolution. Further, they fared equally better in the mixed-carbon conditions compared with wild-type and single carbon-adapted strains. While this showcased the applicability of serial ALE in harnessing a metabolically versatile microbe, a previous study suggested that the outcome of adaptation depends heavily on the metabolic similarity between target carbon sources. Adaptive evolution on carbon mixtures containing ‘metabolically similar’ carbon substrates tends to generate a single generalist population that thrives on evolutionary carbon substrates (Sandberg et al., 2017). However, carbon mixtures with a certain degree of metabolic dissimilarity can give rise to subpopulations of specialists, each subsisting on a preferred carbon or metabolic products (Sandberg et al., 2017). Our approach differed from previous multi-carbon ALE experiments in that the populations were allowed to adapt to a single carbon source at a time. This would allow the evasion of fitness trade-offs in carbon specialization (Saxer et al., 2010) or bet-hedging behaviors due to preferential carbon use (Solopova et al., 2014). Thus, it is expected that serial ALE will enable the evolution of a single dominant generalist, instead of co-existing sub-populations.",
+      "section_id": "3_discussion",
+      "position": 67
+    },
+    {
+      "paragraph_id": "3_discussion_p003",
+      "text": "Mutation profiling of the evolving populations revealed a high degree of evolutionary convergence, as indicated by the presence of causal genetic mutants that contributed significantly to the adaptive fitness observed in end-point strains. The key contributors of fitness in seriallyevolved populations were the variants of glpK, ppsA, and rph-pyrE, which was in keeping with previous ALE experiments on glycerol and lactatelimited environments (Cheng et al., 2014; Conrad et al., 2009; Herring et al., 2006; Kang et al., 2019; Kim et al., 2022; Peabody et al., 2017; Phaneuf et al., 2019). The specific strain fitness of single and sequentially engineered mutants was largely akin to that of other variants, as previously reported. Intriguingly, however, the fitness effect of ‘specialist mutants’, including the glpK and ppsA variants, diminished in mixed-carbon conditions, but was rescued upon introduction of the rph-pyrE mutant. While the mechanistic basis of such condition-specific epistatic interactions remains unclear, the functional attribute of the rph-pyrE mutant in alleviating stalled pyrimidine biosynthesis in E. coli (Jensen 1993; Turnbough and Switzer 2008) seems to imply the involvement of nucleotide biosynthesis and transcription as a potential bottleneck for growth under mixed-carbon conditions.",
+      "section_id": "3_discussion",
+      "position": 68
+    },
+    {
+      "paragraph_id": "3_discussion_p004",
+      "text": "Transcriptome profiles of the wild-type and evolved strains in evolutionary and mixed-carbon conditions revealed a striking divergence in evolutionary trajectory at the transcriptome level in a lineagespecific manner, despite apparent parity in fitness and mutation profiles. However, the overall trend of gene expression changes, such as the decrease in DEG counts in the second phase of ALE due to attenuated selection pressure (Supplementary Figs. S2B and C) (Conrad et al., 2010), and the canonical upregulation of biomass and energy generation pathways (Choe et al., 2019; Kim et al., 2022; LaCroix et al., 2015; Seong et al., 2020), remained conserved in both lineages. ICA analysis also revealed the unilateral activation of ‘ALE-specific’ regulators (RpoS and GadW) as well as ‘condition-specific’ regulators (GlpR, LldR, Zur, and Crp-2) across the evolved strains. The magnitude of activation differed, which seemed to reflect altered gene expression in response to adaptive changes in strain phenotype, such as carbon uptake and growth rates.",
+      "section_id": "3_discussion",
+      "position": 69
+    },
+    {
+      "paragraph_id": "3_discussion_p005",
+      "text": "Enhancing the metabolic efficiency of microbes on feedstock carbon is central for bioproduction performance of bacteria. This holds especially true when non-preferential carbon sources, such as glycerol and lactate, are used as feedstock carbon substrates (Fong et al., 2003; Ibarra et al., 2002). Given the emerging applications of alternative carbon sources in the microbial-based production of value-added compounds, inefficient metabolism inherent in industrially-relevant bacteria are actively addressed to streamline a more efficient bioconversion of alternative carbon sources (Elmore et al., 2020; Kim et al., 2022; Seong et al., 2020; Song et al., 2022). The fact that such alternative feedstocks come in the form of mixtures rather than mono-substrates (Elmore et al., 2020), the capacity to utilize multiple substrates are of key importance in bioconversion applications. In this regard, the utility of serial ALE in improving multi-carbon utilization and bioproduction efficiency in E. coli is worth noting. Although it was not demonstrated in current study, the combined use of a serial ALE approach alongside metabolic engineering and synthetic coupling strategies is anticipated to synergistically enhance the optimization of bioproduction performance (Pontrelli et al., 2018; Seong et al., 2020). Together, this demonstrates the potential applicability of serial ALE in harnessing ‘chassis’ strains optimized at valorizing renewable, heterogenous feedstocks.",
+      "section_id": "3_discussion",
+      "position": 70
+    },
+    {
+      "paragraph_id": "4_1_bacterial_strains_and_growth_conditions_p001",
+      "text": "Strains and plasmids used in this study are listed in Supplementary Table S1. E. coli MG1655 wild-type was cultured in M9 minimal medium supplemented with M9 salt (BD Biosciences, San Jose, CA), 2 mM of $\\mathrm { M g S O } _ { 4 } , 0 . 1$ mM of $\\mathrm { C a C l } _ { 2 } .$ Either 0.2% (v/v) of L-lactate (Sigma-Aldrich, St. Louis, MO) or 0.2% (v/v) glycerol (Samchun Chemical, Daejeon, South Korea) was supplemented as the carbon source. Only L-lactate was used in this study, unless stated otherwise. The cells were incubated at $3 0 ~ ^ { \\circ } \\mathrm { C }$ unless stated otherwise. For specific growth rate measurement, ${ } ^ { 8 0 ~ ^ { \\circ } \\mathrm { C } }$ glycerol cell stocks were pre-cultured in 3 mL of M9 minimal media supplemented with either glycerol (0.2% v/v) L-lactate (0.2% v/ v), or M9 mix (glycerol, L-lactate, 0.1 % v/v each), depending on the carbon source tested. Overnight cultures were inoculated in 60 mL of the culture medium in 300 mL Erlenmeyer flasks. All cell cultures were performed under oxic conditions.",
+      "section_id": "4_1_bacterial_strains_and_growth_conditions",
+      "position": 71
+    },
+    {
+      "paragraph_id": "4_2_adaptive_laboratory_evolution_p001",
+      "text": "Two independent lineages of E. coli K-12 MG1655 were adaptively evolved using a two-phase adaptation regime, with each phase differing regarding the carbon source. Each lineage was first evolved from Llactate (LA) to glycerol (LA-GL) or vice versa (GL and GL-LA) for over 1400 to 1600 generations. The cultures, starting from an identical clonal population, were serially propagated in a 60 mL working volume of M9 minimal media in 300 mL Erlenmeyer flasks. The propagation was maintained at $3 0 ~ ^ { \\circ } \\mathrm { C }$ with shaking (200 rpm), which allowed serial transfer to be performed twice daily. Cultures were serially passaged to fresh medium upon reaching mid-exponential growth $( \\mathrm { O D } _ { 6 0 0 \\mathrm { n m } }$ of 0.4–0.6). Passaging was accompanied by a technical decrease in the initial optical densities to compensate for the adaptive increase in growth rates. The initial and final optical densities in each serial passage was used to estimate the doubling time per passage. To transition the end-point strains in the first phase of ALE, GL and LA, into the second phase, their overnight pre-cultures incubated in ‘non-adaptive’ carbon sources (strain GL in M9 L-lactate and LA in M9 glycerol) were transferred to M9 L-lactate and M9 glycerol, respectively.",
+      "section_id": "4_2_adaptive_laboratory_evolution",
+      "position": 72
+    },
+    {
+      "paragraph_id": "4_3_growth_assay_p001",
+      "text": "The growth rate experiments of reconstituted mutants were performed using an Epoch2 or Synergy HT plate reader (BioTek, Winooski, VT) with shaking (807 rpm double orbital) at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 24 h, using the default 48-well configuration with a working volume of 300 $\\mu \\mathrm { L } . \\mathrm { O D } _ { 6 0 0 \\mathrm { n m } }$ was measured at 30-min intervals. The growth rate experiments of wildtype and the evolved strains in non-adaptive carbon sources, including sodium acetate (Sigma-Aldrich), D-xylose (Sigma-Aldrich), and Dglucose (Sigma-Aldrich), as well as in enriched Luria Bertani broth (BD) and Terrific broth (BD) were conducted using the same instrumental settings.",
+      "section_id": "4_3_growth_assay",
+      "position": 73
+    },
+    {
+      "paragraph_id": "4_4_quantification_of_carbon_substrates_and_metabolites_p001",
+      "text": "The changes in substrate and metabolite concentrations were measured using high-performance liquid chromatography. Culture spent media were filtered through a 0.2 μm pore-sized syringe filter. The filtrate was analyzed using a Nexera LC-40 HPLC system with a RID-20 A RI detector (Shimadzu, Kyoto, Japan) and a MetaCarb 87H Organic Acids Column (Agilent, Santa Clara, CA). The column was eluted with 0.007 N $\\mathrm { H } _ { 2 } \\mathrm { S O } _ { 4 }$ at a flow rate of 0.6 mL/min and an oven temperature of $5 0 ~ ^ { \\circ } \\mathrm { C } .$ When mixed-carbon samples were analyzed, the oven temperature was set at 65 ◦C.",
+      "section_id": "4_4_quantification_of_carbon_substrates_and_metabolites",
+      "position": 74
+    },
+    {
+      "paragraph_id": "4_5_whole_genome_re_sequencing_and_data_analysis_p001",
+      "text": "Genomic DNA (gDNA) was isolated using a Wizard Genomic DNA Purification Kit (Promega, Madison, WI), quality-checked and quantified with a Qubit® 2.0 Fluorometer (Invitrogen, Carlsbad, CA) using a Qubit™ dsDNA HS Assay Kit (Invitrogen). The gDNA samples were fragmented using a Covaris S220-focused ultrasonicator (Covaris, Woburn, MA). The NGS library was prepared using a TruSeq DNA PCRfree kit (Illumina, San Diego, CA). The sequencing was performed in the rapid-run mode as a 50-cycle single-ended reaction on the Illumina HiSeq 2500 system. Sequencing data were processed and analyzed on a CLC Genomics Workbench (CLC bio, Aarhus, Denmark). Adapter sequences were trimmed using a Trim Sequence Tool with a quality limit of 0.05. Reads containing more than two ambiguous bases were discarded and the remaining reads were mapped to the reference genome (NCBI accession NC\\_000913.3) with following parameters: mismatch cost: 2, indel cost: 3, length and similarity fractions: 0.9. Variant calling was performed using a Quality-based Variant Detection Tool with the following parameters: neighborhood radius: 5, maximum gap and mismatch counts: 5, minimum neighborhood and central qualities: 30, minimum coverage: 10, minimum variant frequency: 10%, and maximum expected alleles: 4. Non-specific matches were ignored, and bacterial and plant plastid genetic codes were used.",
+      "section_id": "4_5_whole_genome_re_sequencing_and_data_analysis",
+      "position": 75
+    },
+    {
+      "paragraph_id": "4_6_reverse_engineering_of_mutations_p001",
+      "text": "Single and sequential mutants harboring mutations of interest were constructed using a one-step inactivation method as previously described (Datsenko and Wanner 2000). Briefly, the mutant and wild-type gene constructs were amplified from genomic DNA of either wild-type or end-point variant-carrying populations using appropriate primers (Supplementary Table S2). The kanamycin resistance cassette was amplified using pKD13 as the template. DNA containing the mutant sequence and kanamycin cassette was generated using the two PCR amplicons in an overlap extension PCR. Amplified DNA was purified using a PCR purification kit (Qiagen, Hilden, Germany) and introduced into pKD46-containing electrocompetent cells using a MicroPulser (Bio-Rad, Hercules, CA). Kanamycin-resistant recipients were selected on LB agar plates containing 50 μg/mL kanamycin and screened for the genotype using PCR. The PCR-confirmed colonies were transformed with pCP20 to eliminate the kanamycin resistance marker, followed by curing $\\mathsf { a t } 4 2 ^ { \\circ } \\mathrm { C }$ in LB medium. The mutator phenotypes in LA and LA-GL strains, resulting from mutations in mutT and dam, were restored through the introduction of wild-type mutT (8-oxo-dGTP diphosphatase) and dam (DNA adenine methyltransferase) into the lacZ locus of their genomes. The wild-type dam gene was introduced upstream of lacZ:mutT in LA-GL. These two strains with restored mutability were used for acetoin bioproduction.",
+      "section_id": "4_6_reverse_engineering_of_mutations",
+      "position": 76
+    },
+    {
+      "paragraph_id": "4_7_total_rna_extraction_and_ribosomal_rna_depletion_p001",
+      "text": "The cell cultures of wild-type and end-point strains were collected during exponential growth and quenched on ice. Total RNA was extracted from the collected cells using the RNASnap™ protocol for Gram-negative bacteria (Stead et al., 2012). Briefly, cell pellets were resuspended in 100 μL of RNASnap solution (18 mM EDTA, 0.025% SDS, 1% β-mercaptoethanol, and 95% formamide). The mixture was incubated at $9 5 ~ ^ { \\circ } \\mathrm { C }$ for 7 min and centrifuged at $1 6 , 0 0 0 \\times g$ for 5 min. The supernatants were purified using an RNA Clean & Concentrator-5 Kit (Zymo, Irvine, CA), following the manufacturer’s instructions. Ribosomal RNA (rRNA) and genomic DNA contaminants were depleted using the custom ribosomal RNA depletion method (Choe et al., 2021). Briefly, custom-designed oligonucleotide primers complementary to E. coli rRNA were hybridized with target rRNA transcripts in the total RNA pool. RNase H (10 U) was added to specifically degrade the RNA:DNA duplex (anti-rRNA probe hybridized with rRNA transcript), and 12 U DNase I was added to remove gDNA fragments and primer dimers.",
+      "section_id": "4_7_total_rna_extraction_and_ribosomal_rna_depletion",
+      "position": 77
+    },
+    {
+      "paragraph_id": "4_8_transcriptome_sequencing_rna_seq_p001",
+      "text": "RNA-Seq libraries were constructed with 10–100 ng of rRNAdepleted RNA using a TruSeq Stranded mRNA Library Prep Kit (Illumina), according to the manufacturer’s protocol. The resulting RNA-seq libraries were quantified using the Qubit dsDNA HS Assay Kit (Thermo Fisher Scientific) with a Qubit 2.0 fluorometer and quality-checked using a TapeStation 2200 equipped with a High Sensitivity D1000 Screen Tape (Agilent). The library was sequenced using the HiSeq ten X platform with 150 cycles of a pair-ended reaction.",
+      "section_id": "4_8_transcriptome_sequencing_rna_seq",
+      "position": 78
+    },
+    {
+      "paragraph_id": "4_9_data_processing_p001",
+      "text": "RNA-seq data were processed using CLC Genomics Workbench (CLCBio). Raw reads were trimmed using the ‘Trim Sequence Tool’ under ‘NGS Core Tools’, with a quality limit of 0.05. Reads with more than two ambiguous nucleotides were discarded. The trimmed reads were mapped to the E. coli MG1655 reference genome (NC\\_000913.3) using the following parameters: mismatch cost, 2; indel cost, 3; length and similarity fractions, 0.9. The DESeq2 package in R was used to normalize gene expression and determine fold-change values between datasets (Love et al., 2014).",
+      "section_id": "4_9_data_processing",
+      "position": 79
+    },
+    {
+      "paragraph_id": "4_10_imodulon_analysis_of_rna_seq_data_p001",
+      "text": "For independent component analysis (ICA), we integrated the log<sub>10</sub> (TPM) transformed gene expression data to a collection of 278 E. coli expression dataset in PRECISE (Sastry et al., 2019). The RNA-Seq data was deconvolved into iModulon activities using the publicly available codebase (github.com/SBRG/precise-db), using “control\\_\\_wt $\\mathbf { \\nabla } _ { g \\mathrm { l c } } \\mathbf { ^ { \\mathrm { v } } }$ as the baseline control (Sastry et al., 2019). OptICA was iterated 100 times with random seeds and a convergence tolerance of ${ 1 0 } ^ {  { - } 7 }$ . We constrained the number of components in each iteration to the number of components that reconstruct 99% of the variance as calculated by principal component analysis. DBSCAN was used to identify robust independent components. The resulting iModulons were extracted as previously described (Sastry et al., 2019).",
+      "section_id": "4_10_imodulon_analysis_of_rna_seq_data",
+      "position": 80
+    },
+    {
+      "paragraph_id": "4_11_intracellular_camp_assay_p001",
+      "text": "The cell cultures of wild-type and end-point lineages were harvested during the exponential phase of growth. The quantities of cells collected was approximately the same number of cells as 20 mL of culture with an $\\mathrm { O D } _ { 6 0 0 \\mathrm { n m } } = 1 . 0$ . The cell cultures were centrifuged at 4000×g for 10 min. The cell pellets were washed with ice-cold phosphate-buffered saline (PBS; pH 7.2), centrifuged and re-suspended in the Lysis Buffer provide with the cAMP ELISA Colorimetric Kit (Cell Biolabs, San Diego, CA). Samples were incubated at room temperature for 20 min. After centrifugation at 16,000×g for 10 min, the cell lysates were used to assay intracellular cAMP levels using the non-acetylation protocol. Each sample was assayed in duplicates.",
+      "section_id": "4_11_intracellular_camp_assay",
+      "position": 81
+    },
+    {
+      "paragraph_id": "4_12_biolog_phenotype_microarray_p001",
+      "text": "The overnight culture of bacteria incubated in M9 glycerol and lactate carbon mixed medium at $3 0 ^ { \\circ } \\mathrm { C } ,$ , 200 rpm was harvested, washed twice with ice-cold PBS. The washed cell pellet was re-suspended in an IF-0a GN/GP inoculating fluid (Biolog, Hayward, CA), and diluted at the final cell density of $\\mathrm { O D } _ { 6 0 0 \\mathrm { n m } } = 0 .$ .05 in IF-0a GN/GP. The cell suspension was placed in ice until 100 μL was transferred to the Phenotype Microarray plate (PM1 and PM2A, Biolog) in biological triplicates. The changes in respiration rates were measured using an Omnilog instrument at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 48 h. The area under the curve (AUC) in the negative control was used as the baseline to discern false-negative growths. PM wells with AUC above that of the negative control was selected for downstream analysis. Statistical significance was computed using the student’s independent t-test between samples.",
+      "section_id": "4_12_biolog_phenotype_microarray",
+      "position": 82
+    },
+    {
+      "paragraph_id": "4_13_acetoin_production_p001",
+      "text": "E. coli MG1655 wild-type, $\\mathrm { G L , }$ and GL-LA strains were transformed with pTrcHis2A-alsSD designed to express Bacillus subtilis derived alsS (Bsu alsS) and Aeromonas hydrophila derived alsD (Ahy alsD) (Choe et al., 2022). The ampicillin-resistant transformants were inoculated into 60 mL of the M9 glycerol (0.2% v/v glycerol), M9 lactate (0.2 v/v L-lactate), M9 mix (0.1% glycerol and lactate each), 0.2% Casamino Acids (BD Biosciences), and 100 μg/mL of ampicillin, at $3 0 ~ ^ { \\circ } \\mathrm { C }$ with shaking. The expression of alsS and alsD was induced using 10 μM isopropyl β-D-1-thiogalactopyranoside (IPTG) at 2 h post-inoculation. Culture supernatants were sampled at 2 h intervals until reaching plateau in cell density.",
+      "section_id": "4_13_acetoin_production",
+      "position": 83
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p001",
+      "text": "Kangsan Kim: Writing – original draft, Visualization, Investigation, Formal analysis, Data curation. Donghui Choe: Writing – review & editing, Investigation, Data curation. Minjeong Kang: Investigation, Data curation. Sang-Hyeok Cho: Investigation, Data curation. Suhyung Cho: Resources, Funding acquisition. Ki Jun Jeong: Resources. Bernhard Palsson: Writing – review & editing, Methodology, Funding acquisition. Byung-Kwan Cho: Writing – review & editing, Supervision, Methodology, Funding acquisition.",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 84
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p002",
+      "text": "Declaration of competing interest",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 85
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p003",
+      "text": "There are no conflicts to declare.",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 86
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p004",
+      "text": "Data availability",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 87
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p005",
+      "text": "Data will be made available on request.",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 88
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p006",
+      "text": "Acknowledgements",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 89
+    },
+    {
+      "paragraph_id": "credit_authorship_contribution_statement_p007",
+      "text": "This work was supported by the Korea Bio Grand Challenge (2018M3A9H3024759 to B.-K.C.), the Bio and Medical Technology Development Program (2021M3A9I4024308 to B.-K.C.) and the C1 Gas Refinery Program (2018M3D3A1A01055733 to B.-K.C.) through the National Research Foundation of Korea (NRF), funded by the Ministry of Science and ICT; the National Research Foundation of Korea (NRF) grant funded by the Korea government (MSIT) (2021R1A2C1012589 to S.C.); the Novo Nordisk Foundation (NNF) Center for Biosustainability (NNF16CC0021858 to B.P.); and the Korea Research Institute of Biosciences and Biotechnology (KRIBB) Research Initiative Program (KGM5402322).",
+      "section_id": "credit_authorship_contribution_statement",
+      "position": 90
+    },
+    {
+      "paragraph_id": "appendix_a_supplementary_data_p001",
+      "text": "Supplementary data to this article can be found online at https://doi. org/10.1016/j.ymben.2024.04.004.",
+      "section_id": "appendix_a_supplementary_data",
+      "position": 91
+    },
+    {
+      "paragraph_id": "references_p001",
+      "text": "Aguilera, L., Campos, E., Gimenez, R., et al., 2008. Dual role of LldR in regulation of the lldPRD operon, involved in L-lactate metabolism in Escherichia coli. J. Bacteriol. 190, 2997–3005. https://doi.org/10.1128/JB.02013-07.",
+      "section_id": "references",
+      "position": 92
+    },
+    {
+      "paragraph_id": "references_p002",
+      "text": "Applebee, M.K., Joyce, A.R., Conrad, T.M., et al., 2011. Functional and metabolic effects of adaptive glycerol kinase (GLPK) mutants in Escherichia coli. J. Biol. Chem. 286, 23150–23159. https://doi.org/10.1074/jbc.M110.195305.",
+      "section_id": "references",
+      "position": 93
+    },
+    {
+      "paragraph_id": "references_p003",
+      "text": "Barrick, J.E., Deatherage, D.E., Lenski, R.E., 2020. A Test of the Repeatability of Measurements of Relative Fitness in the Long-Term Evolution Experiment with Escherichia coli. Springer International Publishing, Cham. https://doi.org/10.1007/ 978-3-030-39831-6\\_8.",
+      "section_id": "references",
+      "position": 94
+    },
+    {
+      "paragraph_id": "references_p004",
+      "text": "Basan, M., Hui, S., Okano, H., et al., 2015. Overflow metabolism in Escherichia coli results from efficient proteome allocation. Nature 528, 99–104. https://doi.org/10.1038/ nature15765.",
+      "section_id": "references",
+      "position": 95
+    },
+    {
+      "paragraph_id": "references_p005",
+      "text": "Booth, I.R., 2005. Glycerol and methylglyoxal metabolism. EcoSal Plus 1. https://doi. org/10.1128/ecosalplus.3.4.3.",
+      "section_id": "references",
+      "position": 96
+    },
+    {
+      "paragraph_id": "references_p006",
+      "text": "Cheng, K.K., Lee, B.S., Masuda, T., et al., 2014. Global metabolic network reorganization by adaptive mutations allows fast growth of Escherichia coli on glycerol. Nat. Commun. 5, 3233. https://doi.org/10.1038/ncomms4233.",
+      "section_id": "references",
+      "position": 97
+    },
+    {
+      "paragraph_id": "references_p007",
+      "text": "Choe, D., Kim, K., Kang, M., et al., 2022. Synthetic 3’-UTR valves for optimal metabolic flux control in Escherichia coli. Nucleic Acids Res. https://doi.org/10.1093/nar/ gkac206.",
+      "section_id": "references",
+      "position": 98
+    },
+    {
+      "paragraph_id": "references_p008",
+      "text": "Choe, D., Lee, J.H., Yoo, M., et al., 2019. Adaptive laboratory evolution of a genomereduced Escherichia coli. Nat. Commun. 10, 935. https://doi.org/10.1038/s41467- 019-08888-6.",
+      "section_id": "references",
+      "position": 99
+    },
+    {
+      "paragraph_id": "references_p009",
+      "text": "Choe, D., Szubin, R., Poudel, S., et al., 2021. RiboRid: a low cost, advanced, and ultraefficient method to remove ribosomal RNA for bacterial transcriptomics. PLoS Genet. 17, e1009821 https://doi.org/10.1371/journal.pgen.1009821.",
+      "section_id": "references",
+      "position": 100
+    },
+    {
+      "paragraph_id": "references_p010",
+      "text": "Conrad, T.M., Frazier, M., Joyce, A.R., et al., 2010. RNA polymerase mutants found through adaptive evolution reprogram Escherichia coli for optimal growth in minimal media. Proc. Natl. Acad. Sci. U.S.A. 107, 20500–20505. https://doi.org/10.1073/ pnas.0911253107.",
+      "section_id": "references",
+      "position": 101
+    },
+    {
+      "paragraph_id": "references_p011",
+      "text": "Conrad, T.M., Joyce, A.R., Applebee, M.K., et al., 2009. Whole-genome resequencing of Escherichia coli K-12 MG1655 undergoing short-term laboratory evolution in lactate minimal media reveals flexible selection of adaptive mutations. Genome Biol. 10, R118. https://doi.org/10.1186/gb-2009-10-10-r118.",
+      "section_id": "references",
+      "position": 102
+    },
+    {
+      "paragraph_id": "references_p012",
+      "text": "Cui, Z., Wang, Z., Zheng, M., et al., 2022. Advances in biological production of acetoin: a comprehensive overview. Crit. Rev. Biotechnol. 42, 1135–1156. https://doi.org/ 10.1080/07388551.2021.1995319.",
+      "section_id": "references",
+      "position": 103
+    },
+    {
+      "paragraph_id": "references_p013",
+      "text": "Cummings, H.S., Sands, J.F., Foreman, P.C., et al., 1991. Structure and expression of the infA operon encoding translational initiation factor IF1. transcriptional control by growth rate. J. Biol. Chem. 266, 16491–16498. https://doi.org/10.1016/S0021- 9258(18)55327-8.",
+      "section_id": "references",
+      "position": 104
+    },
+    {
+      "paragraph_id": "references_p014",
+      "text": "Datsenko, K.A., Wanner, B.L., 2000. One-step inactivation of chromosomal genes in Escherichia coli K-12 using PCR products. Proc. Natl. Acad. Sci. U.S.A. 97, 6640–6645. https://doi.org/10.1073/pnas.120163297.",
+      "section_id": "references",
+      "position": 105
+    },
+    {
+      "paragraph_id": "references_p015",
+      "text": "Elmore, J.R., Dexter, G.N., Salvachua, D., et al., 2020. Engineered Pseudomonas putida simultaneously catabolizes five major components of corn stover lignocellulose:",
+      "section_id": "references",
+      "position": 106
+    },
+    {
+      "paragraph_id": "references_p016",
+      "text": "glucose, xylose, arabinose, p-coumaric acid, and acetic acid. Metab. Eng. 62, 62–71. https://doi.org/10.1016/j.ymben.2020.08.001.",
+      "section_id": "references",
+      "position": 107
+    },
+    {
+      "paragraph_id": "references_p017",
+      "text": "Eppler, T., Postma, P., Schutz, A., et al., 2002. Glycerol-3-phosphate-induced catabolite repression in Escherichia coli. J. Bacteriol. 184, 3044–3052. https://doi.org/ 10.1128/JB.184.11.3044-3052.2002.",
+      "section_id": "references",
+      "position": 108
+    },
+    {
+      "paragraph_id": "references_p018",
+      "text": "Feese, M., Pettigrew, D.W., Meadow, N.D., et al., 1994. Cation-promoted association of a regulatory and target protein is controlled by protein phosphorylation. Proc. Natl. Acad. Sci. U.S.A. 91, 3544–3548. https://doi.org/10.1073/pnas.91.9.3544.",
+      "section_id": "references",
+      "position": 109
+    },
+    {
+      "paragraph_id": "references_p019",
+      "text": "Fong, S.S., Joyce, A.R., Palsson, B.O., 2005. Parallel adaptive evolution cultures of Escherichia coli lead to convergent growth phenotypes with different gene expression states. Genome Res. 15, 1365–1372. https://doi.org/10.1101/gr.3832305.",
+      "section_id": "references",
+      "position": 110
+    },
+    {
+      "paragraph_id": "references_p020",
+      "text": "Fong, S.S., Marciniak, J.Y., Palsson, B.O., 2003. Description and interpretation of adaptive evolution of Escherichia coli K-12 MG1655 by using a genome-scale in silico metabolic model. J. Bacteriol. 185, 6400–6408. https://doi.org/10.1128 JB.185.21.6400-6408.2003.",
+      "section_id": "references",
+      "position": 111
+    },
+    {
+      "paragraph_id": "references_p021",
+      "text": "Forchhammer, J., Lindahl, L., 1971. Growth rate of polypeptide chains as a function of the cell growth rate in a mutant of Escherichia coli 15. J. Mol. Biol. 55, 563–568. https://doi.org/10.1016/0022-2836(71)90337-8.",
+      "section_id": "references",
+      "position": 112
+    },
+    {
+      "paragraph_id": "references_p022",
+      "text": "Gao, Y., Yurkovich, J.T., Seo, S.W., et al., 2018. Systematic discovery of uncharacterized transcription factors in Escherichia coli K-12 MG1655. Nucleic Acids Res. 46, 10682–10696. https://doi.org/10.1093/nar/gky752.",
+      "section_id": "references",
+      "position": 113
+    },
+    {
+      "paragraph_id": "references_p023",
+      "text": "Gonzalez, R., Murarka, A., Dharmadi, Y., et al., 2008. A new model for the anaerobic fermentation of glycerol in enteric bacteria: trunk and auxiliary pathways in Escherichia coli. Metab. Eng. 10, 234–245. https://doi.org/10.1016/j. ymben.2008.05.001.",
+      "section_id": "references",
+      "position": 114
+    },
+    {
+      "paragraph_id": "references_p024",
+      "text": "Good, B.H., Mcdonald, M.J., Barrick, J.E., et al., 2017. The dynamics of molecular evolution over 60,000 generations. Nature 551, 45–50. https://doi.org/10.1038/ nature24287.",
+      "section_id": "references",
+      "position": 115
+    },
+    {
+      "paragraph_id": "references_p025",
+      "text": "Herring, C.D., Raghunathan, A., Honisch, C., et al., 2006. Comparative genome sequencing of Escherichia coli allows observation of bacterial evolution on a laboratory timescale. Nat. Genet. 38, 1406–1412. https://doi.org/10.1038/ng1906.",
+      "section_id": "references",
+      "position": 116
+    },
+    {
+      "paragraph_id": "references_p026",
+      "text": "Hingley-Wilson, S.M., Ma, N., Hu, Y., et al., 2020. Loss of phenotypic inheritance associated with ydcI mutation leads to increased frequency of small, slow persisters in Escherichia coli. Proc. Natl. Acad. Sci. U.S.A. 117, 4152–4157. https://doi.org 10.1073/pnas.1914741117.",
+      "section_id": "references",
+      "position": 117
+    },
+    {
+      "paragraph_id": "references_p027",
+      "text": "Hua, Q., Joyce, A.R., Palsson, B.O., et al., 2007. Metabolic characterization of Escherichia coli strains adapted to growth on lactate. Appl. Environ. Microbiol. 73, 4639–4647. https://doi.org/10.1128/AEM.00527-07.",
+      "section_id": "references",
+      "position": 118
+    },
+    {
+      "paragraph_id": "references_p028",
+      "text": "Ibarra, R.U., Edwards, J.S., Palsson, B.O., 2002. Escherichia coli K-12 undergoes adaptive evolution to achieve in silico predicted optimal growth. Nature 420, 186–189. https://doi.org/10.1038/nature01149.",
+      "section_id": "references",
+      "position": 119
+    },
+    {
+      "paragraph_id": "references_p029",
+      "text": "Jensen, K.F., 1993. The Escherichia coli K-12 \"wild types\" W3110 and MG1655 have an rph frameshift mutation that leads to pyrimidine starvation due to low pyrE expression levels. J. Bacteriol. 175, 3401–3407. https://doi.org/10.1128/ jb.175.11.3401-3407.1993.",
+      "section_id": "references",
+      "position": 120
+    },
+    {
+      "paragraph_id": "references_p030",
+      "text": "Jin, R.Z., Tang, J.C., Lin, E.C., 1983. Experimental evolution of a novel pathway for glycerol dissimilation in Escherichia coli. J. Mol. Evol. 19, 429–436. https://doi.org 10.1007/BF02102318.",
+      "section_id": "references",
+      "position": 121
+    },
+    {
+      "paragraph_id": "references_p031",
+      "text": "Kang, M., Kim, K., Choe, D., et al., 2019. Inactivation of a mismatch-repair system diversifies genotypic landscape of Escherichia coli during adaptive laboratory evolution. Front. Microbiol. 10, 1845. https://doi.org/10.3389/fmicb.2019.01845.",
+      "section_id": "references",
+      "position": 122
+    },
+    {
+      "paragraph_id": "references_p032",
+      "text": "Kavvas, E.S., Long, C.P., Sastry, A., et al., 2022. Experimental evolution reveals unifying systems-level adaptations but diversity in driving genotypes. mSystems 7, e0016522. https://doi.org/10.1128/msystems.00165-22.",
+      "section_id": "references",
+      "position": 123
+    },
+    {
+      "paragraph_id": "references_p033",
+      "text": "Kim, K., Hou, C.Y., Choe, D., et al., 2022. Adaptive laboratory evolution of Escherichia coli W enhances gamma-aminobutyric acid production using glycerol as the carbon source. Metab. Eng. 69, 59–72. https://doi.org/10.1016/j.ymben.2021.11.004.",
+      "section_id": "references",
+      "position": 124
+    },
+    {
+      "paragraph_id": "references_p034",
+      "text": "Kim, K., Kang, M., Cho, S.H., et al., 2023. Minireview: engineering evolution to reconfigure phenotypic traits in microbes for biotechnological applications. Comput. Struct. Biotechnol. J. 21, 563–573. https://doi.org/10.1016/j.csbj.2022.12.042.",
+      "section_id": "references",
+      "position": 125
+    },
+    {
+      "paragraph_id": "references_p035",
+      "text": "Lacroix, R.A., Sandberg, T.E., O’brien, E.J., et al., 2015. Use of adaptive laboratory evolution to discover key mutations enabling rapid growth of Escherichia coli K-12 MG1655 on glucose minimal medium. Appl. Environ. Microbiol. 81, 17–30. https:// doi.org/10.1128/Aem.02246-14.",
+      "section_id": "references",
+      "position": 126
+    },
+    {
+      "paragraph_id": "references_p036",
+      "text": "Lee, S.Y., Kim, H.U., Chae, T.U., et al., 2019. A comprehensive metabolic map for production of bio-based chemicals. Nat. Catal. 2, 942–944. https://doi.org/10.1038/ s41929-019-0358-8.",
+      "section_id": "references",
+      "position": 127
+    },
+    {
+      "paragraph_id": "references_p037",
+      "text": "Li, Z.J., Jian, J., Wei, X.X., et al., 2010. Microbial production of meso-2,3-butanediol by metabolically engineered Escherichia coli under low oxygen condition. Appl. Microbiol. Biotechnol. 87, 2001–2009. https://doi.org/10.1007/s00253-010-2676- 2.",
+      "section_id": "references",
+      "position": 128
+    },
+    {
+      "paragraph_id": "references_p038",
+      "text": "Love, M.I., Huber, W., Anders, S., 2014. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol. 15, 550. https://doi.org/ 10.1186/s13059-014-0550-8.",
+      "section_id": "references",
+      "position": 129
+    },
+    {
+      "paragraph_id": "references_p039",
+      "text": "Maharjan, R., Mckenzie, C., Yeung, A., et al., 2013. The basis of antagonistic pleiotropy in hfq mutations that have opposite effects on fitness at slow and fast growth rates. Heredity (Edinb) 110, 10–18. https://doi.org/10.1038/hdy.2012.46.",
+      "section_id": "references",
+      "position": 130
+    },
+    {
+      "paragraph_id": "references_p040",
+      "text": "Nakashima, N., Akita, H., Hoshino, T., 2014. Establishment of a novel gene expression method, BICES (biomass-inducible chromosome-based expression system), and its",
+      "section_id": "references",
+      "position": 131
+    },
+    {
+      "paragraph_id": "references_p041",
+      "text": "application to the production of 2,3-butanediol and acetoin. Metab. Eng. 25, 204–214. https://doi.org/10.1016/j.ymben.2014.07.011.",
+      "section_id": "references",
+      "position": 132
+    },
+    {
+      "paragraph_id": "references_p042",
+      "text": "Nielsen, D.R., Yoon, S.H., Yuan, C.J., et al., 2010. Metabolic engineering of acetoin and meso-2, 3-butanediol biosynthesis in E. coli. Biotechnol. J. 5, 274–284. https://doi. org/10.1002/biot.200900279.",
+      "section_id": "references",
+      "position": 133
+    },
+    {
+      "paragraph_id": "references_p043",
+      "text": "Novak, K., Kutscha, R., Pflugl, S., 2020. Microbial upgrading of acetate into 2,3-butanediol and acetoin by E. coli W. Biotechnol. Biofuels 13, 177. https://doi.org/ 10.1186/s13068-020-01816-7.",
+      "section_id": "references",
+      "position": 134
+    },
+    {
+      "paragraph_id": "references_p044",
+      "text": "Pan, Q., Li, Z., Ju, X., et al., 2021. Escherichia coli segments its controls on carbondependent gene expression into global and specific regulations. Microb. Biotechnol. 14, 1084 1106. https://doi.org/10.1111/1751-7915.13776.",
+      "section_id": "references",
+      "position": 135
+    },
+    {
+      "paragraph_id": "references_p045",
+      "text": "Peabody, V.G., Li, H., Kao, K.C., 2017. Sexual recombination and increased mutation rate expedite evolution of Escherichia coli in varied fitness landscapes. Nat. Commun. 8, 2112. https://doi.org/10.1038/s41467-017-02323-4.",
+      "section_id": "references",
+      "position": 136
+    },
+    {
+      "paragraph_id": "references_p046",
+      "text": "Phaneuf, P.V., Gosting, D., Palsson, B.O., et al., 2019. ALEdb 1.0: a database of mutations from adaptive laboratory evolution experimentation. Nucleic Acids Res. 47, D1164–D1171. https://doi.org/10.1093/nar/gky983.",
+      "section_id": "references",
+      "position": 137
+    },
+    {
+      "paragraph_id": "references_p047",
+      "text": "Pontrelli, S., Fricke, R.C.B., Sakurai, S.S.M., et al., 2018. Directed strain evolution restructures metabolism for 1-butanol production in minimal media. Metab. Eng. 49, 153–163. https://doi.org/10.1016/j.ymben.2018.08.004.",
+      "section_id": "references",
+      "position": 138
+    },
+    {
+      "paragraph_id": "references_p048",
+      "text": "Rychel, K., Tan, J., Patel, A., et al., 2022. Lab evolution, transcriptomics, and modeling reveal mechanisms of paraquat tolerance. bioRxiv 2022. https://doi.org/10.1101/ 2022.12.20.521246, 2012.2020.521246.",
+      "section_id": "references",
+      "position": 139
+    },
+    {
+      "paragraph_id": "references_p049",
+      "text": "Sandberg, T.E., Lloyd, C.J., Palsson, B.O., et al., 2017. Laboratory evolution to alternating substrate environments yields distinct phenotypic and genetic adaptive strategies. Appl. Environ. Microbiol. 83 https://doi.org/10.1128/AEM.00410-17.",
+      "section_id": "references",
+      "position": 140
+    },
+    {
+      "paragraph_id": "references_p050",
+      "text": "Sandberg, T.E., Salazar, M.J., Weng, L.L., et al., 2019. The emergence of adaptive laboratory evolution as an efficient tool for biological discovery and industrial biotechnology. Metab. Eng. 56, 1–16. https://doi.org/10.1016/j. ymben.2019.08.004.",
+      "section_id": "references",
+      "position": 141
+    },
+    {
+      "paragraph_id": "references_p051",
+      "text": "Sastry, A.V., Gao, Y., Szubin, R., et al., 2019. The Escherichia coli transcriptome mostly consists of independently regulated modules. Nat. Commun. 10, 5536. https://doi. org/10.1038/s41467-019-13483-w.",
+      "section_id": "references",
+      "position": 142
+    },
+    {
+      "paragraph_id": "references_p052",
+      "text": "Saxer, G., Doebeli, M., Travisano, M., 2010. The repeatability of adaptive radiation during long-term experimental evolution of Escherichia coli in a multiple nutrient environment. PLoS One 5, e14184. https://doi.org/10.1371/journal.pone.0014184.",
+      "section_id": "references",
+      "position": 143
+    },
+    {
+      "paragraph_id": "references_p053",
+      "text": "Seong, W., Han, G.H., Lim, H.S., et al., 2020. Adaptive laboratory evolution of Escherichia coli lacking cellular byproduct formation for enhanced acetate utilization through compensatory ATP consumption. Metab. Eng. 62, 249–259. https://doi.org 10.1016/j.ymben.2020.09.005.",
+      "section_id": "references",
+      "position": 144
+    },
+    {
+      "paragraph_id": "references_p054",
+      "text": "Shen, X., Lin, Y., Jain, R., et al., 2012. Inhibition of acetate accumulation leads to enhanced production of (R,R)-2,3-butanediol from glycerol in Escherichia coli. J. Ind. Microbiol. Biotechnol. 39, 1725–1729. https://doi.org/10.1007/s10295-012- 1171-4.",
+      "section_id": "references",
+      "position": 145
+    },
+    {
+      "paragraph_id": "references_p055",
+      "text": "Silva, F., Queiroz, J.A., Domingues, F.C., 2012. Evaluating metabolic stress and plasmid stability in plasmid DNA production by Escherichia coli. Biotechnol. Adv. 30, 691–708. https://doi.org/10.1016/j.biotechadv.2011.12.005.",
+      "section_id": "references",
+      "position": 146
+    },
+    {
+      "paragraph_id": "references_p056",
+      "text": "Solopova, A., Van Gestel, J., Weissing, F.J., et al., 2014. Bet-hedging during bacterial diauxic shift. Proc. Natl. Acad. Sci. U.S.A. 111, 7427–7432. https://doi.org/ 10.1073/pnas.1320063111.",
+      "section_id": "references",
+      "position": 147
+    },
+    {
+      "paragraph_id": "references_p057",
+      "text": "Song, Y., Bae, J., Jin, S., et al., 2022. Development of highly characterized genetic bioparts for efficient gene expression in CO(2)-fixing Eubacterium limosum. Metab. Eng. 72, 215–226. https://doi.org/10.1016/j.ymben.2022.03.016.",
+      "section_id": "references",
+      "position": 148
+    },
+    {
+      "paragraph_id": "references_p058",
+      "text": "Stead, M.B., Agrawal, A., Bowden, K.E., et al., 2012. RNAsnap: a rapid, quantitative and inexpensive, method for isolating total RNA from bacteria. Nucleic Acids Res. 40, e156. https://doi.org/10.1093/nar/gks680.",
+      "section_id": "references",
+      "position": 149
+    },
+    {
+      "paragraph_id": "references_p059",
+      "text": "Tong, Y.J., Ji, X.J., Shen, M.Q., et al., 2016. Constructing a synthetic constitutive metabolic pathway in Escherichia coli for (R, R)-2,3-butanediol production. Appl. Microbiol. Biotechnol. 100, 637–647. https://doi.org/10.1007/s00253-015-7013-3.",
+      "section_id": "references",
+      "position": 150
+    },
+    {
+      "paragraph_id": "references_p060",
+      "text": "Turnbough Jr., C.L., Switzer, R.L., 2008. Regulation of pyrimidine biosynthetic gene expression in bacteria: repression without repressors. Microbiol. Mol. Biol. Rev. 72, 266–300. https://doi.org/10.1128/MMBR.00001-08.",
+      "section_id": "references",
+      "position": 151
+    },
+    {
+      "paragraph_id": "references_p061",
+      "text": "Utrilla, J., O’brien, E.J., Chen, K., et al., 2016. Global rebalancing of cellular resources by pleiotropic point mutations illustrates a multi-scale mechanism of adaptive evolution. Cell Syst. 2, 260–271. https://doi.org/10.1016/j.cels.2016.04.003.",
+      "section_id": "references",
+      "position": 152
+    },
+    {
+      "paragraph_id": "references_p062",
+      "text": "Wang, L., Spira, B., Zhou, Z., et al., 2010. Divergence involving global regulatory gene mutations in an Escherichia coli population evolving under phosphate limitation. Genome Biol. Evol. 2, 478–487. https://doi.org/10.1093/gbe/evq035.",
+      "section_id": "references",
+      "position": 153
+    },
+    {
+      "paragraph_id": "references_p063",
+      "text": "Wang, X., Xia, K., Yang, X., et al., 2019. Growth strategy of microbes on mixed carbon sources. Nat. Commun. 10, 1279. https://doi.org/10.1038/s41467-019-09261-3.",
+      "section_id": "references",
+      "position": 154
+    },
+    {
+      "paragraph_id": "references_p064",
+      "text": "Waschina, S., D’souza, G., Kost, C., et al., 2016. Metabolic network architecture and carbon source determine metabolite production costs. FEBS J. 283, 2149–2163. https://doi.org/10.1111/febs.13727.",
+      "section_id": "references",
+      "position": 155
+    },
+    {
+      "paragraph_id": "references_p065",
+      "text": "Zhang, L., Liu, Q., Ge, Y., et al., 2016. Biotechnological production of acetoin, a biobased platform chemical, from a lignocellulosic resource by metabolically engineered Enterobacter cloacae. Green Chem. 18, 1560–1570. https://doi.org/ 10.1039/C5GC01638J.",
+      "section_id": "references",
+      "position": 156
+    }
+  ]
+}

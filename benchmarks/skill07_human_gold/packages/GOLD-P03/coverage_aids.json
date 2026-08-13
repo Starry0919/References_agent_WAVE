@@ -1,0 +1,716 @@
+{
+  "paper": "GOLD-P03",
+  "truth_status": "DETERMINISTIC_REVIEW_AID_NOT_GOLD",
+  "unlinked_source_regions": [
+    {
+      "paragraph_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p001",
+      "section": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "fingerprint": "f359b23c8619ee09",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p002",
+      "section": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "fingerprint": "ff12244110d39ef6",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p003",
+      "section": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "fingerprint": "f66bdaac35f4ee83",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "abstract_p001",
+      "section": "abstract",
+      "fingerprint": "5c0a7c7be1608213",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "keywords_p001",
+      "section": "keywords",
+      "fingerprint": "52a9e834baf69e78",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "introduction_p001",
+      "section": "introduction",
+      "fingerprint": "f258bc82b0de265c",
+      "alerts": [
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "introduction_p002",
+      "section": "introduction",
+      "fingerprint": "4876e6af5bf2c2a9",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "introduction_p003",
+      "section": "introduction",
+      "fingerprint": "7f005220e8940f64",
+      "alerts": [
+        "INTERVENTION_CUE",
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "introduction_p004",
+      "section": "introduction",
+      "fingerprint": "a10df3c928f938eb",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "introduction_p005",
+      "section": "introduction",
+      "fingerprint": "3dadf6bfdd886f79",
+      "alerts": [
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "introduction_p006",
+      "section": "introduction",
+      "fingerprint": "3cad359fd28ae5d7",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+      "section": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "fingerprint": "9353a4175401b829",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002",
+      "section": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "fingerprint": "a62c3d112125e4ae",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p001",
+      "section": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "fingerprint": "fced5d9977b324b6",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p004",
+      "section": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "fingerprint": "30646fee0d0923af",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p002",
+      "section": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation",
+      "fingerprint": "f0173a48817bfe1e",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p001",
+      "section": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production",
+      "fingerprint": "aaa9fb2448f45bd7",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p001",
+      "section": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "fingerprint": "5f7f7a336514a3e7",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p002",
+      "section": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "fingerprint": "bc321cf2bcb6f528",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p004",
+      "section": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "fingerprint": "db5bf897d28f195e",
+      "alerts": [
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "discussion_p001",
+      "section": "discussion",
+      "fingerprint": "cc078c2ad6d7de43",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "discussion_p002",
+      "section": "discussion",
+      "fingerprint": "53e6a592c9c66bbe",
+      "alerts": [
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "discussion_p003",
+      "section": "discussion",
+      "fingerprint": "b227fe5d518a11b3",
+      "alerts": [
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "discussion_p004",
+      "section": "discussion",
+      "fingerprint": "87597ebbdc99241a",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "1_strains_plasmids_and_chemicals_p001",
+      "section": "1_strains_plasmids_and_chemicals",
+      "fingerprint": "8f2e9c26f4f85ebc",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "1_strains_plasmids_and_chemicals_p002",
+      "section": "1_strains_plasmids_and_chemicals",
+      "fingerprint": "88a518d4aa488f60",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p001",
+      "section": "2_dna_manipulation",
+      "fingerprint": "d040d6694cb7f8c5",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p002",
+      "section": "2_dna_manipulation",
+      "fingerprint": "e31b464f0d1ebca7",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p003",
+      "section": "2_dna_manipulation",
+      "fingerprint": "bca58d72f9a58f81",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p004",
+      "section": "2_dna_manipulation",
+      "fingerprint": "adbc248b62d1be6b",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p005",
+      "section": "2_dna_manipulation",
+      "fingerprint": "a7df12a6bd4daca7",
+      "alerts": [
+        "INTERVENTION_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p006",
+      "section": "2_dna_manipulation",
+      "fingerprint": "91d7d13f5a92c021",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "5_shake_flasks_fermentation_p003",
+      "section": "5_shake_flasks_fermentation",
+      "fingerprint": "02a3c101625b5d5b",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "6_hplc_analysis_p001",
+      "section": "6_hplc_analysis",
+      "fingerprint": "be33c786e38ce794",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "6_hplc_analysis_p002",
+      "section": "6_hplc_analysis",
+      "fingerprint": "8a0a79b205b9d5f7",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "6_hplc_analysis_p003",
+      "section": "6_hplc_analysis",
+      "fingerprint": "8cfb82a3df74770b",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "supplementary_material_p001",
+      "section": "supplementary_material",
+      "fingerprint": "5d91054228868156",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "acknowledgments_p001",
+      "section": "acknowledgments",
+      "fingerprint": "33ef4d907cb3870c",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p001",
+      "section": "references",
+      "fingerprint": "fbd0bfbfcd1a9b79",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p002",
+      "section": "references",
+      "fingerprint": "3579b145abda3cf3",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p003",
+      "section": "references",
+      "fingerprint": "e4a61ff90bb0d667",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p004",
+      "section": "references",
+      "fingerprint": "df9bb7f016e6b747",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p005",
+      "section": "references",
+      "fingerprint": "5713245ab68281c5",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p006",
+      "section": "references",
+      "fingerprint": "a591e7b2e3e416a9",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p007",
+      "section": "references",
+      "fingerprint": "d017e61dc3deb3bc",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p008",
+      "section": "references",
+      "fingerprint": "19df7821f3474cc6",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p009",
+      "section": "references",
+      "fingerprint": "9e458601c2d2ed3c",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p010",
+      "section": "references",
+      "fingerprint": "3390dc22762be717",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p011",
+      "section": "references",
+      "fingerprint": "bd2547a1d7e7f0f1",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p012",
+      "section": "references",
+      "fingerprint": "22f4572e20e129b8",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p013",
+      "section": "references",
+      "fingerprint": "62858f84fdfc0b3a",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p014",
+      "section": "references",
+      "fingerprint": "2940a74eb1f454b9",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p015",
+      "section": "references",
+      "fingerprint": "0f6cd9bcab2bbd72",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p016",
+      "section": "references",
+      "fingerprint": "f736bdde8e538088",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p017",
+      "section": "references",
+      "fingerprint": "9b5221ac4d0b3ea8",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p018",
+      "section": "references",
+      "fingerprint": "8859867dbfa74b01",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p019",
+      "section": "references",
+      "fingerprint": "803fd78d68c3dccc",
+      "alerts": [
+        "READOUT_CUE"
+      ]
+    },
+    {
+      "paragraph_id": "references_p020",
+      "section": "references",
+      "fingerprint": "166363fcd2ebb106",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p021",
+      "section": "references",
+      "fingerprint": "96b51148f7375fcc",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p022",
+      "section": "references",
+      "fingerprint": "5539a1f76b019d86",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p023",
+      "section": "references",
+      "fingerprint": "009a760164c64cf3",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p024",
+      "section": "references",
+      "fingerprint": "6eedb428fe14aca1",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p025",
+      "section": "references",
+      "fingerprint": "b5fc45e6f13dec27",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p026",
+      "section": "references",
+      "fingerprint": "9b4bcbeab01c316d",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p027",
+      "section": "references",
+      "fingerprint": "ad78a4bf71be7876",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p028",
+      "section": "references",
+      "fingerprint": "4bdf4e6063d1903b",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p029",
+      "section": "references",
+      "fingerprint": "2cd34fdfe7b6e6c2",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p030",
+      "section": "references",
+      "fingerprint": "9688295677363d45",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p031",
+      "section": "references",
+      "fingerprint": "b0e5698d9ee6b728",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p032",
+      "section": "references",
+      "fingerprint": "aa87af03ec9f1bc0",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p033",
+      "section": "references",
+      "fingerprint": "8e43b140ee8cba23",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p034",
+      "section": "references",
+      "fingerprint": "ae4ad67e38737809",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p035",
+      "section": "references",
+      "fingerprint": "5058ac116fb06fb3",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p036",
+      "section": "references",
+      "fingerprint": "09ff038820aa0473",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p037",
+      "section": "references",
+      "fingerprint": "b080ca03d5218a8b",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p038",
+      "section": "references",
+      "fingerprint": "2a53c1dffab91685",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p039",
+      "section": "references",
+      "fingerprint": "6a2d179c77c29570",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p040",
+      "section": "references",
+      "fingerprint": "f1eb9b1e128a7146",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p041",
+      "section": "references",
+      "fingerprint": "af4b3cccd4bf84df",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p042",
+      "section": "references",
+      "fingerprint": "cd9fa478f12d4929",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p044",
+      "section": "references",
+      "fingerprint": "ecb841657ff1e105",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p045",
+      "section": "references",
+      "fingerprint": "75b37690aa567204",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p046",
+      "section": "references",
+      "fingerprint": "93d5d1bdc2085baf",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p047",
+      "section": "references",
+      "fingerprint": "5ae023575d5c8ad7",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p048",
+      "section": "references",
+      "fingerprint": "b9add50c7b12a5ce",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p049",
+      "section": "references",
+      "fingerprint": "8b878ac431a810e5",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p050",
+      "section": "references",
+      "fingerprint": "5e6c4e701fca4a0a",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p053",
+      "section": "references",
+      "fingerprint": "52a250a19a66990e",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p054",
+      "section": "references",
+      "fingerprint": "4b49362aa2f0d059",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p055",
+      "section": "references",
+      "fingerprint": "6629d2742e9f19f3",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p056",
+      "section": "references",
+      "fingerprint": "1363ed951e0d5258",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p057",
+      "section": "references",
+      "fingerprint": "ce50c08966aedea0",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p058",
+      "section": "references",
+      "fingerprint": "87012ba90c7acff2",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p059",
+      "section": "references",
+      "fingerprint": "16d5b44cbc3ab297",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p060",
+      "section": "references",
+      "fingerprint": "d9fb6ae63a4245f5",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p061",
+      "section": "references",
+      "fingerprint": "cc2210c8b068d0dd",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p063",
+      "section": "references",
+      "fingerprint": "6b23c0d5f35d1b11",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p064",
+      "section": "references",
+      "fingerprint": "8323fb44a4489e11",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p065",
+      "section": "references",
+      "fingerprint": "e4ab00350775cf24",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p066",
+      "section": "references",
+      "fingerprint": "99eba391d72db198",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p067",
+      "section": "references",
+      "fingerprint": "5ff31d919ad52331",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p069",
+      "section": "references",
+      "fingerprint": "3e23e8160039594a",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p070",
+      "section": "references",
+      "fingerprint": "df8886355ee4dd81",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p071",
+      "section": "references",
+      "fingerprint": "45854654fa7a75bf",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p072",
+      "section": "references",
+      "fingerprint": "e80642d08c329817",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p073",
+      "section": "references",
+      "fingerprint": "97476bac3955a72e",
+      "alerts": []
+    },
+    {
+      "paragraph_id": "references_p074",
+      "section": "references",
+      "fingerprint": "dfe1c467bedabfb6",
+      "alerts": []
+    }
+  ],
+  "unlinked_figures": [
+    {
+      "figure_id": "Figure 2",
+      "caption": "Engineering the tryptophan-inducible transcriptional factor-based genetic inverter for amplified output.",
+      "related_paragraphs": [
+        "references_p050"
+      ]
+    },
+    {
+      "figure_id": "Figure 4",
+      "caption": "Monitoring tryptophan production using tryptophan-responsive strains. (a) Design of tryptophan-responsive strains TRPactive\\_DSA and TRPactive\\_LAA. #tetR represents the tetR gene with DSA or LAA degradation tags. (b) Tryptophan titer and activated RFP intensity in the TRPactive\\_DSA strain during tryptophan production. (c) Tryptophan titer and activated RFP intensity in the TRPactive\\_LAA strain during tryptophan production. (d) Design of tryptophan-responsive strain TRPdual\\_LAA. (e) Tryptophan titer, activated RFP intensity, and repressed GFP intensity in the TRPdual\\_LAA strain during tryptophan production. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "related_paragraphs": [
+        "references_p068"
+      ]
+    },
+    {
+      "figure_id": "Figure 5",
+      "caption": "Dynamic regulation of tryptophan derivatives production using inverter and bifunctional circuits.",
+      "related_paragraphs": [
+        "references_p075"
+      ]
+    }
+  ],
+  "unlinked_tables": [],
+  "priority_order": [
+    "critical omission/addition",
+    "split/merge/granularity",
+    "object/intervention/trigger/result",
+    "evidence/provenance",
+    "causality/mechanism",
+    "remaining source coverage",
+    "minor fields"
+  ]
+}

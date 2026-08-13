@@ -1,0 +1,809 @@
+{
+  "status": "succeeded",
+  "output": {
+    "clean_markdown_artifact": {
+      "artifact_id": "artifact:68a9ba99fee4ed0605be6104",
+      "media_type": "text/markdown",
+      "sha256": "68a9ba99fee4ed0605be610461f00e32e0fb79bb453695aa23e9fc2cf3ddaebe",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.md"
+    },
+    "clean_json_artifact": {
+      "artifact_id": "artifact:7a9b2c5908069db6ff03fe69",
+      "media_type": "application/json",
+      "sha256": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.json"
+    },
+    "clean_document_artifact": {
+      "document_metadata": {
+        "paper_id": "33428841e8bf4161b3867dac46a695ac_14_jf0c04725",
+        "title": null,
+        "parser": "MinerU",
+        "parser_version": "3.4.4",
+        "cleaner": "skill06_markdown_cleaner",
+        "cleaner_version": "0.3.0",
+        "rule_set_version": "scientific-cleaning-rules/0.3.0",
+        "source_markdown_sha256": "720198d854a65ec78ef4e1a299c80767f228e1b55c4b6330490080614c4e516f",
+        "clean_markdown_sha256": "68a9ba99fee4ed0605be610461f00e32e0fb79bb453695aa23e9fc2cf3ddaebe"
+      },
+      "clean_markdown_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.md",
+      "clean_json_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.json",
+      "structure_map": {
+        "sections": [
+          {
+            "id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production",
+            "title": "Exploring Amino Sugar and Phosphoenolpyruvate Metabolism to Improve Escherichia coli N‑Acetylneuraminic Acid Production",
+            "level": 1,
+            "content": "Qingxiao Pang, Hao Han, Ya Xu, Xiaoqin Liu, Qingsheng Qi,\\* and Qian Wang\\*\n\n![](images/5229bdfde9b599a0374fd8a6bc699afdebaf0d1b7162ce73c4566a03e785c601.jpg)\n\nCite This: J. Agric. Food Chem. 2020, 68, 11758−11764\n\nRead Online\n\nACCESS\n\nMetrics & More\n\nArticle Recommendations\n\n\\*sı Supporting Information\n\nABSTRACT: N-acetyl-D-neuraminic acid (NeuAc) has attracted considerable attention because of its wide-ranging applications. The use of cheap carbon sources such as glucose without the addition of any precursor in microbial NeuAc production has many advantages. In this study, improved NeuAc production was attained through the optimization of amino sugar metabolism pathway kinetics and reservation of a phosphoenolpyruvate (PEP) pool in Escherichia coli. N-acylglucosamine 2-epimerase and Nacetylneuraminate synthase from diferent sources and their best combinations were used to obtain optimized enzyme kinetics and expression intensity, which resulted in a significant increase in NeuAc production. Next, after a design was engineered for enabling the PEP metabolic pathway to retain the PEP pool, the production of NeuAc reached 16.7 g/L, which is the highest NeuAc production rate that has been reported from using glucose as the sole carbon source.\n\nKEYWORDS: N-acetylneuraminic acid, amino sugar metabolism, supply of PEP, expression optimization"
+          },
+          {
+            "id": "introduction",
+            "title": "■ INTRODUCTION",
+            "level": 2,
+            "content": "N-acetyl-D-neuraminic acid (NeuAc) is the most common sialic acid involved in biological, pathological, and immune recognition processes. It participated in the biological process of cell adhesion, cell signaling, glycoprotein stability, bacterial virulence, and tumor metastasis. 1−4 NeuAc is a crucial component of brain gangliosides, can promote brain development,<sup>5,6</sup> and also is an important active substance in a bird’s nest<sup>7,8</sup> since NeuAc has various favorable biological efects such as anti-inflammatory, anti-influenza, antioxidant, skinwhitening, bone-strengthening, and epidermal growth-enhancing efects.<sup>9,10</sup> Therefore, NeuAc can be consumed as a health supplement due to its high nutrition value. In terms of medicinal value, NeuAc can be used to make neuraminidase inhibitors such as zanamivir, a critical prodrug<sup>11</sup> that is widely 12−15 used to treat influenza A and B virus infections.\n\nNeuAc production has been studied for many years through the application of various strategies .<sup>16−29</sup> However, methods such as enzymatic transformation and whole-cell catalysis still use the high-value compounds N-acetylglucosamine (GlcNAc) and pyruvate as substrates, considerably increasing production costs.<sup>26,30</sup> In contrast to enzymatic transformation and wholecell catalysis, there are many advantages for microbial NeuAc fermentation using glucose as the sole carbon source.<sup>31−34</sup> Kang et al. constructed a NeuAc de novo biosynthetic pathway by overexpressing glucosamine-6-phosphate synthase (GlmS\\*), glucosamine-6-phosphate N-acetyltransferase (GNA1), N-acetylglucosamine 2-epimerase, and N-acetylneuraminate lyase (NanA). This indicated the possibility of producing NeuAc from glucose without the addition of any precursor.<sup>30</sup> After the entire NeuAc degradation pathway was blocked and the production of acetate and lactate byproducts was halted, 7.85 g/L NeuAc was obtained. This NeuAc biosynthesis pathway employed the key enzyme N-acetylneuraminate lyase, which catalyzes a reversible reaction from Nacetylmannosamine (ManNAc) and pyruvate to NeuAc and impedes the accumulation of NeuAc. An irreversible Nacetylneuraminate synthase (NeuB) from Escherichia coli K1 was then used to replace NanA, which uses phosphoenolpyruvate and ManNAc as a substrate. The same metabolic pathway produced 2.75 g/L NeuAc in Bacillus subtilis, which has a “generally regarded as safe” status after pathway optimization and expression optimization based on N-terminal rules.<sup>26,35</sup> For further pathway optimization, the random ribosome binding site (RBS) library was screened for E. coli by using a NeuAc biosensor. The biosensor indicated a positive correlation between intracellular NeuAc concentration and cell growth.<sup>36</sup> This high-throughput mutant screening method was used to direct the evolution of NeuB and increase the production of NeuAc to 8.3 g/L after fermentation.<sup>36</sup> The evolved and modified riboswitches with a high threshold and large dynamic range were then obtained and used to further increase NeuAc production. 37\n\nAlthough the use of metabolic engineering strategies and synthetic biology tools for library screening is feasible, the NeuAc titer remains far from being cost-efective for NeuAc production. Because of the complexity of its biosynthetic pathway, NeuAc synthesis still has several bottlenecks, such as the barrier of the amino sugar metabolism and the unbalanced supply of precursor phosphoenolpyruvate (PEP) due to inherent regulatory mechanisms during glycolysis (Figure 1).\n\nSystematically optimizing enzyme kinetic and metabolic flux distribution at the PEP node is critical for holistically improving NeuAc production.\n\n![](images/997d779ce6eeb3feb5ce1b43f88018628cc1bdbb1b0b2ab8850aa4ea350a0e63.jpg)\nFigure 1. NeuAc production route. galP, galactose; H(+) symporter; glk, glucokinase; pgi, glucose-6-phosphate isomerase; glnA, glutamine synthase; glmS, glucosamine-6-phosphate synthase; GNA1, glucosamine-phosphate N-acetyltransferase; age, acetylglucosamine-2-isomerase; neuB, N-acetylneuraminate synthase; ppsA, phosphoenolpyr uvate synthase; pck, pyruvate carboxykinase; pykA and pykF, pyruvate kinase.\n\nIn this study, N-acetylglucosamine 2-epimerase (AGE) and N-acetylneuraminate synthase (NeuB) from diferent sources were combined and evaluated, leading to a 0.5-fold increase in NeuAc production. Optimizing the expression intensity of the two key enzymes led to a 1.04-fold increase in NeuAc production. Finally, by engineering the PEP catabolic pathway, the production of NeuAc increased 1.35-fold and reached 16.7 g/L, which is the highest NeuAc production that has been reported from using glucose as the sole carbon source."
+          },
+          {
+            "id": "materials_and_methods",
+            "title": "■ MATERIALS AND METHODS",
+            "level": 2,
+            "content": "Bacterial Strains, Plasmids, and Media. Bacterial strains and plasmids used in this study are listed in Table S1. E. coli DH5α was used for gene cloning and was propagated in a Luria−Bertani (LB) medium at 37 °C under aeration. A modified terrific broth (MTB) medium (12 g/L tryptone, 24 g/L yeast extract, and 5 g/L NaCl) was used for fermentation. Antibiotics were added when necessary (ampicillin, 100 μg/mL; kanamycin, 25 μg/mL; chloramphenicol, 17 μg/mL; and spectinomycin, 100 μg/mL).\n\nPlasmid Construction and Gene Knockout. Oligonucleotides used in this work are listed in Table S2. A high-fidelity DNA polymerase (Takara, Japan) was used for plasmid construction, and a 2× Taq MasterMix (CWBIO, China) was used for colony polymerase chain reaction (PCR). The Ages and NeuBs used in this experiment were codon-optimized and synthesized, except for NeuB from E. coli K1. For pBa construction, the N-acetylglucosamine-2-isomerase gene from Anabaena sp. CH1 was codon-optimized and synthesized and was used as a template. Primers agea-F and agea-R were used for PCR to obtain the fragment Agea. Using pB-F (a) and pB-R (a) primers and a pB plasmid template,<sup>36</sup> the vector fragment pB (a) was amplified by PCR. The two obtained fragments were assembled using the Gibson method. Colony PCR identification was performed using detection primers. The plasmid with the correct band size was identified by sequencing.\n\nFor pBc plasmid construction, primers NotI-NeuBc-F and SpeI-NeuBc-R were used to perform PCR, and codon-optimized NeuB from Campylobacter jejuni was used as a template to obtain the fragment NeuBc. The fragment NeuBc and pB plasmid were digested using restriction enzymes NotI and SpeI, and then, the digested fragments were recycled and ligated using a T4 DNA ligase. Then, the ligation production was transformed into E. coli DH5α and verified according to the above steps. For pBm plasmid construction, we used the same method as pBc to construct, replacing the primers and templates with the corresponding primers and templates. For pBac and pBam plasmid construction, fragments NeuB and $\\mathrm { N e u B } _ { \\mathrm { m } }$ were ligated into the constructed plasmid pBa, respectively, using the above method. For the RBS substitution, primers containing diferent RBSs were used for reverse PCR, and PCR production was transformed into E. coli DH5α. The same approach as before was used to check the correctness of plasmids.\n\nFor gene knockout, the helper plasmid $\\mathrm { p T K R e d } ^ { 3 8 }$ was first transformed into the target strain by electroporation. Strains harboring pTKRed were cultured and induced by IPTG (2 mM). The corresponding primers and template (PKD3 or PKD4) were used for PCR, and the obtained fragments were recovered and electrotransformed into the strains containing plasmid pTKRed. PCR verification was performed using detection primers to verify correctness.\n\nStrain Cultivation. To perform batch fermentation, a single colony was inoculated into 5 mL of the LB medium containing the appropriate antibiotics and incubated for 12 h at $3 7 ~ ^ { \\circ } \\mathrm { C } .$ The culture was then inoculated into 50 mL of the fresh MTB medium containing 20 $\\mathbf { g } / \\mathrm { L }$ glucose and 200 μM IPTG at an inoculum of 4%. Fermentation was performed at $3 0 ~ ^ { \\circ } \\mathrm { C }$ and 220 rpm, and pH was maintained at approximately 7.0 by adding 30% NH OH throughout the fermentation. Samples were taken at 6 (by day) or 12 h (by night) intervals for analysis. The condition and method of fed fermentation were the same as those of batch fermentation, and glucose was added when its concentration was below 10 $\\mathbf { g } / \\mathrm { I }$\n\nAnalytical Methods. Optical density (OD) was measured at 600 nm using a spectrophotometer (Shimazu, Japan). Fermentation samples were centrifuged at 10,000 rcf for 5 min, and the supernatants were used for extracellular metabolite detection. Glucose, NeuAc, acetate, ethanol, formate, pyruvate, GlcNAc, and ManNAc were quantitatively determined by high-performance liquid chromatography (HPLC) (Shimadzu, Japan) equipped with a refractive index detector (RID-10A) (Shimadzu, Japan) and an Aminex HPX-87H ion exclusion column (Bio-Rad, USA), as described previously.<sup>39</sup> NeuAc levels were additionally determined by a resorcinol-based colorimetric assay. 40"
+          },
+          {
+            "id": "results_and_discussion",
+            "title": "■ RESULTS AND DISCUSSION",
+            "level": 2,
+            "content": "Optimization of Amino Sugar Metabolism. In previous experiments, riboswitches with an increased threshold were used to direct the evolution for the key enzyme AGE, and the highest NeuAc titer has been obtained.<sup>37</sup> However, the directed evolution method can only improve the enzyme activity based on the inherent characteristics of the enzyme, and here, we tried to find and apply the natural high-activity enzymes of AGEs and NeuBs. Furthermore, a more suitable combination of key enzymes may result in better production results. Studies have considered the two steps of catalysis from GlcNAc to NeuAc to be the rate-limiting steps.<sup>36,37</sup> Thus, AGEs and NeuBs were obtained from diferent sources to increase NeuAc production. An AGE from Anabaena sp. CH1 (a), two NeuBs from C. jejuni NCTC 11168 (c), and psychrophilic fish pathogen Moritella viscosa (m) were chosen because they have reported high enzymatic activities.<sup>28,41−43</sup> These enzymes together with AGE from Synechocystis sp. PCC 6803 (s) and NeuB from E. coli K1 (k), which were used in a previous fermentation, were introduced into the NeuAc production pathway (Table S4). The GlmS\\* from E. coli K12 (G) and GNA1 from Saccharomyces cerevisiae $( \\mathbf { g } )$ were cloned into the plasmid pTrc99a under the promoter $\\mathrm { P _ { t r c } }$ together with Age and NeuB.\n\nTo determine the most eficient combination, two AGEs and three NeuBs were combined into six groups to form the NeuAc production plasmids (Table 1). Production plasmids were all transferred into DN5 in which nan operon (nanATEK, NeuAc degradation pathway), nag operon (nagEBAC, GlcNAc degradation pathway), gene $l d \\bar { h } A \\bar { ( }$ (lactic acid production pathway), gene poxB (acetic acid production pathway), and gene ackA (acetic acid production pathway) were deleted from ${ \\bar { E } } .$ coli DH5α (Table S1). Because the optimal temperatures for these enzymes are diferent, batch fermentation was performed at 25, 30, and $3 7 ~ ^ { \\circ } \\mathrm { C } .$ The combination of $\\mathbf { A G E _ { a } }$ and $\\mathrm { N e u B } _ { o }$ which produced the pBac plasmid, yielded 1.9 g/L NeuAc after fermentation at a temperature of $3 \\dot { 0 } ^ { \\circ } \\mathrm { C } ,$ which is 1.5 times the concentration of the NeuAc titer that was produced by DN5/ pB at $3 7 ~ ^ { \\circ } \\mathrm { C }$ (Figure 2A). AGE from Synechocystis sp. PCC\n\nTable 1. Plasmids and Sources of AGE and NeuB\n<table><tr><td>plasmid</td><td>AGE</td><td>NeuB</td><td></td><td>gene source</td></tr><tr><td> $\\mathrm { p B }$ </td><td>AGES</td><td>NeuBk</td><td>AGE</td><td>Synechocystis sp. PCC 6803</td></tr><tr><td>pBa</td><td>AGE</td><td>NeuBk</td><td>AGE</td><td>Anabaena sp. CH1</td></tr><tr><td>pBc</td><td>AGEs</td><td>NeuBc</td><td>NeuBk</td><td>E. coli K1</td></tr><tr><td>pBm</td><td>AGEs</td><td>NeuBm</td><td>NeuB</td><td>C. jejuni NCTC 11168</td></tr><tr><td>pBac</td><td>AGE</td><td>NeuB</td><td>NeuBm</td><td>psychrophilic fish pathogen</td></tr><tr><td>pBam</td><td>AGE</td><td> $\\mathrm { N e u B _ { m } }$ </td><td></td><td>M. viscosa</td></tr></table>\n\nA\n![](images/f2534c37de8efe5e7d9cf67b88e58ba7401ac2abc48228280c48d0b5d13168ea.jpg)\n\nB\n![](images/59588d6f137147073a74006870d0c2def01bf895d0512d3b536f2c647794af91.jpg)\nFigure 2. Batch fermentation of diferent groups and fermentation of optimal combinations. (A) Batch fermentation of diferent groups at 37, 30, and $2 5 ~ ^ { \\circ } \\mathrm { C } .$ (B) Fed fermentation using strain DN5/pBac. Three independent experiments were conducted simultaneously to obtain the error bar.\n\n6803 catalyzed reversible reactions between GlcNAc and ManNAc with a higher afinity to ManNAc $\\left( K _ { \\mathrm { m } } = 1 5 . 6 ~ \\mathrm { m M } \\right)$ compared to GlcNAc $\\left( K _ { \\mathrm { m } } = \\dot { 2 } 5 . 6 ~ \\mathrm { m M } \\right) . ^ { 4 1 }$ This is unfavorable for the reaction going forward from GlcNAc into ManNAc for NeuAc production. Fermentation using plasmid pBac produces more NeuAc than using plasmid pBc at $3 0 ~ ^ { \\circ } \\mathrm { C }$ (Figure 2A). It can be inferred that employing Age from Anabaena sp. CH1 with suficient substrate afinity and higher catalytic activity resulted in high NeuAc production.\n\nWhen the pB plasmid was used for fermentation, as the fermentation temperature decreased, NeuAc production decreased significantly. By contrast, when the pBc plasmid was used for fermentation, as the fermentation temperature decreased, NeuAc production increased significantly. The only diference between the two combinations was NeuB. In the pBc plasmid, NeuB from E. coli K1 was replaced by NeuB from C. jejuni NCTC 11168. Thus, NeuB from C. jejuni NCTC 11168 was more suitable for lower-temperature fermentation. Although the optimal temperature of enzyme $\\mathsf { A G E } _ { \\mathrm { a } }$ is reported in the literature to be $5 0 ^ { ^ { \\circ } } \\mathrm { C } , { } ^ { 4 1 }$ when using the pBac plasmid for fermentation, NeuAc production decreased significantly when the fermentation temperature changed from 30 to $2 5 { } ^ { \\circ } \\dot { \\mathrm { C } } .$ Therefore, the highest yield of NeuAc was obtained at a relatively unfavorable temperature of $3 0 ~ ^ { \\circ } \\mathrm { C } .$ From the results, NeuB was suitable for fermentation at $2 5 { - } 3 0 ~ ^ { \\circ } \\mathrm { C } ;$ the optimal temperature of $\\mathrm { N e u B _ { m } }$ was lower, and the yield was apparent at $2 5 ~ ^ { \\circ } \\mathrm { C }$ . Strain DN5/pBac was used for fermentation. After 72 h, the NeuAc production of NeuAc reached 4.7 g/L (Figure 2B). The use of diferent AGE and NeuB types could improve NeuAc production, which proved that these two enzymes were critical to the production of NeuAc. NeuAc production may have been further increased by enhancing the expression intensity of these two enzymes.\n\nOptimization of Key Enzyme Expression in the NeuAc Synthesis Pathway. To improve the expression intensity of all NeuAc synthetase pathway genes, vectors with diferent copy numbers were used to construct the plasmids p15a-cagg, pCDF-cagg, and pUC-cagg. Furthermore, a strong promoter, $\\mathrm { P _ { T 7 } } ,$ was used for pathway gene expression, and pET-cagg (expression of four genes controlled by $\\mathrm { P } _ { \\mathrm { T 7 } } ) ,$ , pET-acgg (AGE expression controlled by $\\mathbf { P } _ { \\mathrm { T 7 } } ) _ { \\mathrm { 4 } }$ , and p15a-T7p-cam (NeuB expression controlled by $\\mathbf { P } _ { \\mathrm { T 7 } } )$ plasmids were developed. The growth of the strain was severely inhibited after the inducer was added, which led to a significant decrease in NeuAc production (data not shown). This indicated that the strong expression of the pathway genes caused the metabolism to become seriously uncoordinated.\n\nBecause the accumulation of GlcNAc remained very high during fermentation, the expression intensity of AGE and NeuB was considered to eficiently metabolize GlcNAc for NeuAc production. First, diferent RBS intensities of AGE were tested using RBS Calculator 2.0 (https://www. denovodna.com/software/). Among these, four RBSs with a higher initial intensity than the original RBS (ARBS0, 10,146) were selected: ARBS1 (32,837), ARBS2 (51,906), ARBS3 (92,625), and ARBS4 (146,797; Figure 3A and Table S3). The strongest, ARBS4, was 14.5-times stronger than the original RBS. The four RBSs were used to replace the RBS upstream of $\\mathrm { A G E _ { a } }$ in the plasmid pBac and were transferred to DN5 for batch fermentation. After 36 h of fermentation, nearly 20 g/L glucose was consumed. As the intensity of the RBS increased, the production of NeuAc increased significantly. Strains engineered using ARBS2 had the greatest NeuAc accumulation concentration, at ${ 3 . 2 } ~ \\mathrm { g / L } ,$ which was 1.3 g/L higher than that obtained using the original RBS (Figure 3C). As the RBS intensity increased, NeuAc production exhibited no further improvements. The plasmid that contained ARBS2 was named pBac2.\n\nThen, the RBS intensity of NeuB was also optimized. Four intensities of the RBS that were stronger than the original NeuB RBS (NRBS0, 6993) were selected: NRBS1 (12,109), NRBS2 (45,366), NRBS3 (75,452), and NRBS4 (109,625; Figure 3B and Table S3). The strongest NRBS4 was 15.7 times stronger than the original NRBS0. The four RBSs were used to replace the RBS of NeuB in plasmid ${ \\mathrm { p B a c } } 2 ,$ and the plasmids were transferred to DN5 for batch fermentation. After 36 h of fermentation, nearly 20 $\\mathrm { g / L }$ glucose was consumed, and the production process is illustrated in Figure 3D. In general, as the intensity of the RBS increased, the NeuAc production increased. Strains using NRBS3 achieved a maximum production of $3 . 7 \\ \\mathrm { g / L } ,$ which was 0.5 g/L higher than that of the original RBS. As the intensity of the RBS continued to increase, NeuAc production decreased significantly. This may have been due to the low solubility of NeuB from C. jejuni NCTC 11168 in $E .$ coli. The plasmid containing ARBS2 and NRBS3 was named pBacR (Figure S1).\n\nA\n![](images/96665364f2efade4e9408a29b53b85c51f83c2e0a579550222263aaefa55104c.jpg)\nC\n\n![](images/e7b97ab0d5e6fb90c25c2b8ab7a91dd021770b35ff53a556207fd7ad7f8e47d1.jpg)\nB\n\n![](images/d5aaf8b34040dcd243cf0ddf6075143f16e7527d9774694168bb0a51412bd921.jpg)\n\n![](images/8abb46771518876578bdad5c5ff71a35dd3e45ca5213ea44fbab88750b68841f.jpg)\nFigure 3. Optimization of key enzyme expression intensity. (A) Translation initial intensity of the Age RBS. (B) Translation initial intensity of the NeuB RBS. (C) Fermentation results of diferent Age RBS strains. (D) Fermentation results of diferent NeuB RBS strains. The fermentation was carried out with 20 g/L glucose at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 36 h. Three independent experiments were conducted simultaneously to obtain the error bar.\n\nFed fermentation was performed in shake flasks by using the DN5/pBacR strain. After 96 h of fermentation, the production of NeuAc no longer increased at which point 7.1 g/L NeuAc was accumulated (Figure 4). Although more NeuAc was\n\n![](images/3d13177c0e822dd6ce66816894da40e186dea3a65d572cf4264a2757d9ae04fe.jpg)\nFigure 4. Fed fermentation of strain DN5/pBacR in shake flasks. Three independent experiments were conducted simultaneously to obtain the error bar.\n\nproduced, 12.6 g/L GlcNAc and 2.5 g/L ManNAc were accumulated. This indicated that the supply of amino sugar was suficient and that the bottleneck of NeuAc production may have changed to the supply of another PEP.\n\nImprovement of PEP Precursor Supply. Except for the amino sugar metabolism pathway, we tried to provide a suficient supply of another precursor, PEP, to further increase the production of NeuAc. The main metabolic pathways of PEP in E. coli are as follows: the glucose phosphotransferase system (PTS) uses PEP as a substrate, which probably consumes 50% of the PEP. The phosphoenolpyruvate carboxylase pathway consumes PEP to form oxaloacetate, thus replenishing the tricarboxylic acid (TCA) cycle, which consumes 16.2% of the total PEP. In the glycolytic pathway, PEP is converted into pyruvate and generates ATP through pyruvate kinase, which consumes 14.5% of the total PEP. The aromatic compound pathway consumes 3.3% of the total PEP. Finally, PEP is consumed by other pathways that account for 16% of the total pathway (Figure 1 and Figure S2).<sup>44</sup>\n\nTo allow more PEP to flow into the NeuAc synthesis pathway, several genes in metabolic key nodes were knocked out to block PEP consumption (Figure 1). First, the PTS system that consumed the most PEP was selected. Gene ptsG in E. coli is a component of the phosphotransferase system that specifically binds glucose and participates in glucose transport. Second, E. coli converts PEP to pyruvate by using pyruvate kinase. There are two pyruvate kinase genes in the E. coli genome: pykA and pykF. Third, E. coli converts PEP into oxaloacetate by using phosphoenolpyruvate carboxylase (ppc) or phosphoenolpyruvate carboxykinase (pck) through the oxaloacetate replenishment pathway. The last goal was citrate synthase (gltA) that can drive acetyl-CoA into the TCA cycle. The aforementioned six genes were knocked out from the strain DN5 genome, and then, the knocked-out strains with plasmid pBacR were used to feed fermentation in shake flasks. Among them, strains with the pykA, pykF, ptsG, and gltA knockout obtained increased NeuAc production (Figure 5A,B). The pykA-knockout strain produced 9.9 g/L NeuAc, which was the highest yield of all knockout strains (Figure 5A,D). Therefore, this strain was named DN11 and was used for further modification. The knockout of ppc severely reduced the growth of the strain, which indicated that blocking the replenishment of oxaloacetate may have afected amino acid production. The pck catalyzed the reversible reaction, which inclined from oxaloacetate to PEP. Therefore, the knockout of pck reduced the supply of PEP and reduced the production of NeuAc. The knockout of pykF and gltA resulted in the poor growth of strains in the lysogeny broth medium, but when transferred to the more nutritious terrific broth medium, these two strains exhibited excellent growth (Figure 5C). The blocking of these pathways may have resulted in a lack of certain necessary metabolites, and the rich medium provided compounds or exogenous precursors, which improved the strain growth.\n\nA\n![](images/ce7f32adcd2c762f0064c6615057b31022ed3db53d5df79e4f7441ca9dd248c3.jpg)\nB\n\n![](images/8d6f13685741bcb740f9f28dddee711f041c3eae86793e3fe92da8394e593474.jpg)\n\n![](images/93bc44e3960170083acfcdc57a1ac00be8a167a81610b567d652fe701d76dbbf.jpg)\n\nD\n![](images/1bfb052f4a9eec545b4dd7005a86b232329c1ffa88a953838a557dc8b7e9953f.jpg)\nFigure 5. Fermentation results of knockout strains. (A) NeuAc production of knockout strains. (B) GlcNAc and ManNAc production of knockout strains. $\\left( \\mathrm { C } \\right) \\mathrm { O D } _ { 6 0 0 }$ of knockout strains. (D) Fermentation results of strain DN5ΔpykA. Fermentation was performed at $3 0 { } ^ { \\circ } \\bar { \\mathrm { C } }$ and 220 rpm, and pH was maintained at approximately 7.0 by 30% $\\mathrm { N H _ { 4 } O H }$ throughout the fermentation. Samples were taken at 6 or 12 h intervals for analysis. Fermentation was stopped at 120 h. For clarification, a representative curve from three independent experiments was shown with standard diferences (RSD) of less than 10%.\n\nStrain DN11 was used for the following metabolic modification. The knockout of pykF was not tried because both pykA and pykF completely blocked the glycolytic pathway and failed to provide acetyl-CoA, another precursor for GlcNAc-6P catalyzed by GNA1 (Figure 1). Thus, ptsG and gltA were individually used for knocking out DN11. After gltA was knocked out from DN11, NeuAc production decreased significantly and produced only 5.6 g/L NeuAc, which was significantly less productive than DN11. This may have been due to the gltA knockout that was based on pykA greatly limiting the TCA cycle and resulting in a serious shortage of energy supply to the strain. After ptsG was knocked out from DN11, NeuAc production increased significantly to ${ 1 6 . 7 ~ \\mathrm { g / L } } ,$ which was the highest production achieved using glucose as a sole carbon source (Figure 6). The knockout of ptsG changed the glucose transport route from reliance on PEP consumption to ATP consumption, which saved a considerable amount of PEP. To save more PEP, pykA was knocked out (named DN12) to reduce the metabolic flux toward the pyruvate kinase pathway for the NeuAc production to increase significantly. Moreover, some other PEP consumption routes were adopted for engineering but all ended in failure, which indicated that PEP is a very important metabolic node that must be cautiously controlled to prevent disruption of the metabolic balance. A rational design requires to be cautious since mandatory blocking PEP consumption routes may not be appropriate, and the combination of directed evolution on the basis of rational design may make it easier to increase NeuAc production.\n\n![](images/9eca313c685bed128bf614ecd44b3d4824feb95b8c2c3d7dea505142f1e40b97.jpg)\nFigure 6. Fed fermentation result of the DN12 strain. Three independent experiments were conducted simultaneously to obtain the error bar."
+          },
+          {
+            "id": "associated_content",
+            "title": "■ ASSOCIATED CONTENT",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "s_supporting_information",
+            "title": "\\*sı Supporting Information",
+            "level": 2,
+            "content": "The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acs.jafc.0c04725.\n\nListing strains, primers, and RBS sequences and $K _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of Age and NeuB used in this study (Tables S1−S4) and the map of pBacR and the consumption pathway of PEP in E. coli (Figures S1 and S2) (PDF)"
+          },
+          {
+            "id": "author_information",
+            "title": "■ AUTHOR INFORMATION",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "corresponding_authors",
+            "title": "Corresponding Authors",
+            "level": 2,
+            "content": "Qi<sub>ngs</sub>h<sub>eng</sub> Qi − State Key Laboratory ofMicrobial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China; orcid.org/0000- 0001-5693-6797; Email: qiqingsheng@sdu.edu.cn\n\nQi<sub>an</sub> W<sub>ang</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China; orcid.org/0000- 0003-2216-659X; Email: qiqi20011983@gmail.com"
+          },
+          {
+            "id": "authors",
+            "title": "Authors",
+            "level": 2,
+            "content": "Qi<sub>ngx</sub>i<sub>ao</sub> P<sub>ang</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China\n\nH<sub>ao</sub> H<sub>an</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China\n\nY<sub>a</sub> X<sub>u</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China\n\nXi<sub>aoq</sub>i<sub>n</sub> Li<sub>u</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China\n\nComplete contact information is available at:\n\nhttps://pubs.acs.org/10.1021/acs.jafc.0c04725"
+          },
+          {
+            "id": "author_contributions",
+            "title": "Author Contributions",
+            "level": 2,
+            "content": "Q.P., H.H., Y.X., and X.L. performed all the experiments and numerical analysis. Q.W. and Q.Q. conceived the study, analyzed the data, and wrote the manuscript."
+          },
+          {
+            "id": "notes",
+            "title": "Notes",
+            "level": 2,
+            "content": "The authors declare no competing financial interest."
+          },
+          {
+            "id": "acknowledgments",
+            "title": "■ ACKNOWLEDGMENTS",
+            "level": 2,
+            "content": "This manuscript was edited by Wallace Academic Editing. This work was supported by grants from the National Key R&D Program of China (2019YFA0904900), the National Natural Science Foundation of China (31670077, 31730003, and 31670047), the Young Scholars Program of Shandong University, and the State Key Laboratory of Microbial Technology Open Projects Fund (M2019-11)."
+          },
+          {
+            "id": "references",
+            "title": "■ REFERENCES",
+            "level": 2,
+            "content": "(1) Chen, X.; Varki, A. Advances in the Biology and Chemistry of Sialic Acids. ACS Chem. Biol. 2010, 5, 163−176.\n\n(2) Maru, I.; Ohnishi, J.; Ohta, Y.; Tsukada, Y. Why is sialic acid attracting interest now? Complete enzymatic synthesis of sialic acid with N-acylglucosamine 2-epimerase. J. Biosci. Bioeng. 2002, 93, 258− 265.\n\n(3) Schauer, R. Achievements and challenges of sialic acid research. Glycoconjugate J. 2000, 17, 485−499.\n\n(4) Inoue, S.; Kitajima, K. KDN (deaminated neuraminic acid): Dreamful past and exciting future of the newest member of the sialic acid family. Glycoconjugate J. 2006, 23, 277−290.\n\n(5) Wang, B. Sialic Acid Is an Essential Nutrient for Brain Development and Cognition. Annu. Rev. Nutr. 2009, 29, 177−222.\n\n(6) Bruses, J. L.; Rutishauser, U. Roles, regulation, and mechanisḿ of polysialic acid function during neural development. Biochimie 2001, 83, 635−643.\n\n(7) Wong, Z. C. F.; Chan, G. K. L.; Wu, K. Q. Y.; Poon, K. K. M.; Chen, Y.; Dong, T. T. X.; Tsim, K. W. K. Complete digestion of edible bird’s nest releases free N-acetylneuraminic acid and small peptides: an efficient method to improve functional properties. Food Funct. 2018, 9, 5139−5149.\n\n(8) Guo, C. T.; Takahashi, T.; Bukawa, W.; Takahashi, N.; Yagi, H.; Kato, K.; Hidari, K. I. P. J.; Miyamoto, D.; Suzuki, T.; Suzuki, Y. Edible bird’s nest extract inhibits influenza virus infection. Antiviral Res. 2006, 70, 140−146.\n\n(9) Kong, Y. C.; Keung, W. M.; Yip, T. T.; Ko, K. M.; Tsao, S. W.; Ng, M. H. Evidence That Epidermal Growth-Factor Is Present in Swiftlets (Collocalia) Nest. Comp. Biochem. Physiol., Part B: Biochem. Mol. Biol. 1987, 87, 221−226.\n\n(10) Yew, M. Y.; Koh, R. Y.; Chye, S. M.; Othman, I.; Ng, K. Y. Edible bird’s nest ameliorates oxidative stress-induced apoptosis in SH-SY5Y human neuroblastoma cells. BMC Complementary Altern. Med. 2014, 14, 391−412.\n\n(11) Varki, A. Sialic acids in human health and disease. Trends Mol. Med. 2008, 14, 351−360.\n\n(12) Hartmann, M.; Zbiral, E. Structural Variations of N-Acetylneuraminic Acid .23. Synthesis of 2-Deoxy-2h -Sialic Acid Analogs Structurally Varied at C-4. Liebigs Ann. Chem. 1991, 1991, 795−801.\n\n(13) Kawai, N.; Ikematsu, H.; Iwaki, N.; Maeda, T.; Kawashima, T.; Hirotsu, N.; Kashiwagi, S. Comparison of the Effectiveness of Zanamivir and Oseltamivir against Influenza A/H1N1, A/H3N2, and B. Clin. Infect. Dis. 2009, 48, 996−997.\n\n(14) Von Itzstein, M. The war against influenza: discovery and development of sialidase inhibitors. Nat. Rev. Drug Discovery 2007, 6, 967−974.\n\n(15) Honda, T.; Kubo, S.; Masuda, T.; Arai, M.; Kobayashi, Y.; Yamashita, M. Synthesis and in vivo influenza virus-inhibitory effect of ester prodrug of 4-guanidino-7-O-methyl-Neu5Ac2en. Bioorg. Med. Chem. Lett. 2009, 19, 2938−2940.\n\n(16) Cretich, M.; Chiari, M.; Carrea, G. Stereoselective synthesis of (S)-(+)-naproxen catalyzed by carboxyl esterase in a multicompartment electrolyzer. J. Biochem. Biophys. Methods 2001, 48, 247−256.\n\n(17) Hsu, C.-C.; Hong, Z.; Wada, M.; Franke, D.; Wong, C.-H. Directed evolution of D-sialic acid aldolase to L-3-deoxy-manno-2- octulosonic acid (L-KDO) aldolase. Proc. Natl. Acad. Sci. U. S. A. 2005, 102, 9122−9126.\n\n(18) Hu, S.; Chen, J.; Yang, Z.; Shao, L.; Bai, H.; Luo, J.; Jiang, W.; Yang, Y. Coupled bioconversion for preparation of N-acetyl-dneuraminic acid using immobilized N-acetyl-d-glucosamine-2-epimerase and N-acetyl-d-neuraminic acid lyase. Appl. Microbiol. Biotechnol. 2010, 85, 1383−1391.\n\n(19) Rodríguez-Aparicio, L. B.; Ferrero, M. A.; Reglero, A. N-Acetyl-D-Neuraminic Acid Synthesis in Escherichia-Coli K1 Occurs Through Condensation of N-Acetyl-D-Mannosamine And Pyruvate. Biochem. J. 1995, 308, 501−505.\n\n(20) Comb, D. G.; Roseman, S. The sialic acids. I. The structure and enzymatic synthesis of N-acetylneuraminic acid. J. Biol. Chem. 1960, 235, 2529−2537.\n\n(21) Maru, I.; Ohnishi, J.; Ohta, Y.; Tsukada, Y. Simple and largescale production of N-acetylneuraminic acid from N-acetyl-Dglucosamine and pyruvate using N-acyl-D-glucosamine 2-epimerase and N-acetylneuraminate lyase. Carbohydr. Res. 1998, 306, 575−578.\n\n(22) Mahmoudian, M.; Noble, D.; Drake, C. S.; Middleton, R. F.; Montgomery, D. S.; Piercey, J. E.; Ramlakhan, D.; Todd, M.; Dawson, M. J. An efficient process for production of N-acetylneuraminic acid\n\nusing N-acetylneuraminic acid aldolase. Enzyme Microb. Technol. 1997, 20, 393−400.\n\n(23) Kim, M. J.; Hennen, W. J.; Sweers, H. M.; Wong, C. H. Enzymes in Carbohydrate Synthesis N-Acetylneuraminic Acid Aldolase Catalyzed-Reactions And Preparation of N-Acetyl-2-Deoxy-D-Neuraminic Acid-Derivatives. J. Am. Chem. Soc. 1988, 110, 6481− 6486.\n\n(24) Zhao, L.; Tian, R.; Shen, Q.; Liu, Y.; Liu, L.; Li, J.; Du, G. Pathway Engineering of Bacillus subtilis for Enhanced N-Acetylneuraminic Acid Production via Whole-Cell Biocatalysis. Biotechnol. J. 2019, 14, No. e1800682.\n\n(25) Lin, B. X.; Zhang, Z. J.; Liu, W. F.; Dong, Z. Y.; Tao, Y. Enhanced production of N-acetyl-D-neuraminic acid by multiapproach whole-cell biocatalyst. Appl. Microbiol. Biotechnol. 2013, 97, 4775−4784.\n\n(26) Zhang, X.; Liu, Y.; Liu, L.; Wang, M.; Li, J.; Du, G.; Chen, J. Modular pathway engineering of key carbon-precursor supplypathways for improved N-acetylneuraminic acid production in Bacillus subtilis. Biotechnol. Bioeng. 2018, 115, 2217−2231.\n\n(27) Zhu, D. Q.; Wu, J. R.; Zhan, X. B.; Zhu, L.; Jiang, Y. Enhanced N-acetyl-d-neuraminic production from glycerol and N-acetyl-dglucosamine by metabolically engineered Escherichia coli with a twostage pH-shift control strategy. J. Ind. Microbiol. Biotechnol. 2019, 46, 125−132.\n\n(28) Chen, X.; Zhou, J.; Zhang, L.; Pu, Z.; Liu, L.; Shen, W.; Fan, Y. Development of an Escherichia coli-based biocatalytic system for the efficient synthesis of N-acetyl-D-neuraminic acid. Metab. Eng. 2018, 47, 374−382.\n\n(29) Gao, X.; Zhang, F.; Wu, M.; Wu, Z.; Shang, G. Production of N-Acetyl-D-neuraminic Acid by Whole Cells Expressing Bacteroides thetaiotaomicron N-Acetyl-D-glucosamine 2-Epinnerase and Escherichia coli N-Acetyl-D-neuraminic Acid Aldolase. J. Agric. Food Chem. 2019, 67, 6285−6291.\n\n(30) Kang, J.; Gu, P.; Wang, Y.; Li, Y.; Yang, F.; Wang, Q.; Qi, Q. Engineering of an N-acetylneuraminic acid synthetic pathway in Escherichia coli. Metab. Eng. 2012, 14, 623−629.\n\n(31) Tabata, K.; Koizumi, S.; Endo, T.; Ozaki, A. Production of Nacetyl-D-neuraminic acid by coupling bacteria expressing N-acetyl-Dglucosamine 2-epimerase and N-acetyl-D-neuraminic acid synthetase. Enzyme Microb. Technol. 2002, 30, 327−333.\n\n(32) Lee, Y.-C.; Chien, H.-C. R.; Hsu, W.-H. Production of Nacetyl-D-neuraminic acid by recombinant whole cells expressing Anabaena sp. CH1 N-acetyl-D-glucosamine 2-epimerase and Escherichia coli N-acetyl-D-neuraminic acid lyase. J. Biotechnol. 2007, 129, 453−460.\n\n(33) Gao, C.; Xu, X.; Zhang, X.; Che, B.; Ma, C.; Qiu, J.; Tao, F.; Xu, P. Chemoenzymatic Synthesis of N-Acetyl-D-Neuraminic Acid from N-Acetyl-D-Glucosamine by Using the Spore Surface-Displayed N-Acetyl-D-Neuraminic Acid Aldolase. Appl. Environ. Microbiol. 2011, 77, 7080−7083.\n\n(34) Zhou, J.; Chen, X.; Lu, L.; Govender, A.; Yang, H.; Shen, W. Enhanced production of N-acetyl-D-neuraminic acid by whole-cell bio-catalysis of Escherichia coli. J. Mol. Catal. B: Enzym. 2016, 125, 42−48.\n\n(35) Tian, R.; Liu, Y.; Chen, J.; Li, J.; Liu, L.; Du, G.; Chen, J. Synthetic N-terminal coding sequences for fine-tuning gene expression and metabolic engineering in Bacillus subtilis. Metab. Eng. 2019, 55, 131−141.\n\n(36) Yang, P.; Wang, J.; Pang, Q.; Zhang, F.; Wang, J.; Wang, Q.; Qi, Q. Pathway optimization and key enzyme evolution of Nacetylneuraminate biosynthesis using an in vivo aptazyme-based biosensor. Metab. Eng. 2017, 43, 21−28.\n\n(37) Pang, Q.; Han, H.; Liu, X.; Wang, Z.; Liang, Q.; Hou, J.; Qi, Q.; Wang, Q. In vivo evolutionary engineering of riboswitch with highthreshold for N-acetylneuraminic acid production. Metab. Eng. 2020, 59, 36−43.\n\n(38) Kuhlman, T. E.; Cox, E. C. Site-specific chromosomal integration of large synthetic constructs. Nucleic Acids Res. 2010, 38, No. e92.\n\n(39) Li, Y.; Li, M.; Zhang, X.; Yang, P.; Liang, Q.; Qi, Q. A novel whole-phase succinate fermentation strategy with high volumetric productivity in engineered Escherichia coli. Bioresour. Technol. 2013, 149, 333−340.\n\n(40) Hooks, D. O.; Blatchford, P. A.; Rehm, B. H. A. Bioengineering of Bacterial Polymer Inclusions Catalyzing the Synthesis of N-Acetylneuraminic Acid. Appl. Environ. Microbiol. 2013, 79, 3116− 3121.\n\n(41) Lee, Y. C.; Wu, H. M.; Chang, Y. N.; Wang, W. C.; Hsu, W. H. The central cavity from the (alpha/alpha)6 barrel structure of Anabaena sp. CH1 N-acetyl-D-glucosamine 2-epimerase contains two key histidine residues for reversible conversion. J. Mol. Biol. 2007, 367, 895−908.\n\n(42) Sundaram, A. K.; Pitts, L.; Muhammad, K.; Wu, J.; Betenbaugh, M.; Woodard, R. W.; Vann, W. F. Characterization of Nacetylneuraminic acid synthase isoenzyme 1 from Campylobacter jejuni. Biochem. J. 2004, 383, 83−89.\n\n(43) Berg, T. O.; Gurung, M. K.; Altermark, B.; Smalas, A. O.;̊ Ræder, I. L. U. Characterization of the N-acetylneuraminic acid synthase (NeuB) from the psychrophilic fish pathogen Moritella viscosa. Carbohydr. Res. 2015, 402, 133−145.\n\n(44) Valle, F.; Muñoz, E.; Ponce, E.; Flores, N.; Bolivar, F. Basic and applied aspects of metabolic diversity: The phosphoenolpyruvate node. J. Ind. Microbiol. Biotechnol. 1996, 17, 458−462."
+          }
+        ],
+        "paragraphs": [
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p001",
+            "text": "Qingxiao Pang, Hao Han, Ya Xu, Xiaoqin Liu, Qingsheng Qi,\\* and Qian Wang\\*",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p002",
+            "text": "![](images/5229bdfde9b599a0374fd8a6bc699afdebaf0d1b7162ce73c4566a03e785c601.jpg)",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p003",
+            "text": "Cite This: J. Agric. Food Chem. 2020, 68, 11758−11764",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p004",
+            "text": "Read Online",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p005",
+            "text": "ACCESS",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p006",
+            "text": "Metrics & More",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p007",
+            "text": "Article Recommendations",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p008",
+            "text": "\\*sı Supporting Information",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p009",
+            "text": "ABSTRACT: N-acetyl-D-neuraminic acid (NeuAc) has attracted considerable attention because of its wide-ranging applications. The use of cheap carbon sources such as glucose without the addition of any precursor in microbial NeuAc production has many advantages. In this study, improved NeuAc production was attained through the optimization of amino sugar metabolism pathway kinetics and reservation of a phosphoenolpyruvate (PEP) pool in Escherichia coli. N-acylglucosamine 2-epimerase and Nacetylneuraminate synthase from diferent sources and their best combinations were used to obtain optimized enzyme kinetics and expression intensity, which resulted in a significant increase in NeuAc production. Next, after a design was engineered for enabling the PEP metabolic pathway to retain the PEP pool, the production of NeuAc reached 16.7 g/L, which is the highest NeuAc production rate that has been reported from using glucose as the sole carbon source.",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p010",
+            "text": "KEYWORDS: N-acetylneuraminic acid, amino sugar metabolism, supply of PEP, expression optimization",
+            "section": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production"
+          },
+          {
+            "paragraph_id": "introduction_p001",
+            "text": "N-acetyl-D-neuraminic acid (NeuAc) is the most common sialic acid involved in biological, pathological, and immune recognition processes. It participated in the biological process of cell adhesion, cell signaling, glycoprotein stability, bacterial virulence, and tumor metastasis. 1−4 NeuAc is a crucial component of brain gangliosides, can promote brain development,<sup>5,6</sup> and also is an important active substance in a bird’s nest<sup>7,8</sup> since NeuAc has various favorable biological efects such as anti-inflammatory, anti-influenza, antioxidant, skinwhitening, bone-strengthening, and epidermal growth-enhancing efects.<sup>9,10</sup> Therefore, NeuAc can be consumed as a health supplement due to its high nutrition value. In terms of medicinal value, NeuAc can be used to make neuraminidase inhibitors such as zanamivir, a critical prodrug<sup>11</sup> that is widely 12−15 used to treat influenza A and B virus infections.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p002",
+            "text": "NeuAc production has been studied for many years through the application of various strategies .<sup>16−29</sup> However, methods such as enzymatic transformation and whole-cell catalysis still use the high-value compounds N-acetylglucosamine (GlcNAc) and pyruvate as substrates, considerably increasing production costs.<sup>26,30</sup> In contrast to enzymatic transformation and wholecell catalysis, there are many advantages for microbial NeuAc fermentation using glucose as the sole carbon source.<sup>31−34</sup> Kang et al. constructed a NeuAc de novo biosynthetic pathway by overexpressing glucosamine-6-phosphate synthase (GlmS\\*), glucosamine-6-phosphate N-acetyltransferase (GNA1), N-acetylglucosamine 2-epimerase, and N-acetylneuraminate lyase (NanA). This indicated the possibility of producing NeuAc from glucose without the addition of any precursor.<sup>30</sup> After the entire NeuAc degradation pathway was blocked and the production of acetate and lactate byproducts was halted, 7.85 g/L NeuAc was obtained. This NeuAc biosynthesis pathway employed the key enzyme N-acetylneuraminate lyase, which catalyzes a reversible reaction from Nacetylmannosamine (ManNAc) and pyruvate to NeuAc and impedes the accumulation of NeuAc. An irreversible Nacetylneuraminate synthase (NeuB) from Escherichia coli K1 was then used to replace NanA, which uses phosphoenolpyruvate and ManNAc as a substrate. The same metabolic pathway produced 2.75 g/L NeuAc in Bacillus subtilis, which has a “generally regarded as safe” status after pathway optimization and expression optimization based on N-terminal rules.<sup>26,35</sup> For further pathway optimization, the random ribosome binding site (RBS) library was screened for E. coli by using a NeuAc biosensor. The biosensor indicated a positive correlation between intracellular NeuAc concentration and cell growth.<sup>36</sup> This high-throughput mutant screening method was used to direct the evolution of NeuB and increase the production of NeuAc to 8.3 g/L after fermentation.<sup>36</sup> The evolved and modified riboswitches with a high threshold and large dynamic range were then obtained and used to further increase NeuAc production. 37",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p003",
+            "text": "Although the use of metabolic engineering strategies and synthetic biology tools for library screening is feasible, the NeuAc titer remains far from being cost-efective for NeuAc production. Because of the complexity of its biosynthetic pathway, NeuAc synthesis still has several bottlenecks, such as the barrier of the amino sugar metabolism and the unbalanced supply of precursor phosphoenolpyruvate (PEP) due to inherent regulatory mechanisms during glycolysis (Figure 1).",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p004",
+            "text": "Systematically optimizing enzyme kinetic and metabolic flux distribution at the PEP node is critical for holistically improving NeuAc production.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p005",
+            "text": "![](images/997d779ce6eeb3feb5ce1b43f88018628cc1bdbb1b0b2ab8850aa4ea350a0e63.jpg)\nFigure 1. NeuAc production route. galP, galactose; H(+) symporter; glk, glucokinase; pgi, glucose-6-phosphate isomerase; glnA, glutamine synthase; glmS, glucosamine-6-phosphate synthase; GNA1, glucosamine-phosphate N-acetyltransferase; age, acetylglucosamine-2-isomerase; neuB, N-acetylneuraminate synthase; ppsA, phosphoenolpyr uvate synthase; pck, pyruvate carboxykinase; pykA and pykF, pyruvate kinase.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p006",
+            "text": "In this study, N-acetylglucosamine 2-epimerase (AGE) and N-acetylneuraminate synthase (NeuB) from diferent sources were combined and evaluated, leading to a 0.5-fold increase in NeuAc production. Optimizing the expression intensity of the two key enzymes led to a 1.04-fold increase in NeuAc production. Finally, by engineering the PEP catabolic pathway, the production of NeuAc increased 1.35-fold and reached 16.7 g/L, which is the highest NeuAc production that has been reported from using glucose as the sole carbon source.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "text": "Bacterial Strains, Plasmids, and Media. Bacterial strains and plasmids used in this study are listed in Table S1. E. coli DH5α was used for gene cloning and was propagated in a Luria−Bertani (LB) medium at 37 °C under aeration. A modified terrific broth (MTB) medium (12 g/L tryptone, 24 g/L yeast extract, and 5 g/L NaCl) was used for fermentation. Antibiotics were added when necessary (ampicillin, 100 μg/mL; kanamycin, 25 μg/mL; chloramphenicol, 17 μg/mL; and spectinomycin, 100 μg/mL).",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p002",
+            "text": "Plasmid Construction and Gene Knockout. Oligonucleotides used in this work are listed in Table S2. A high-fidelity DNA polymerase (Takara, Japan) was used for plasmid construction, and a 2× Taq MasterMix (CWBIO, China) was used for colony polymerase chain reaction (PCR). The Ages and NeuBs used in this experiment were codon-optimized and synthesized, except for NeuB from E. coli K1. For pBa construction, the N-acetylglucosamine-2-isomerase gene from Anabaena sp. CH1 was codon-optimized and synthesized and was used as a template. Primers agea-F and agea-R were used for PCR to obtain the fragment Agea. Using pB-F (a) and pB-R (a) primers and a pB plasmid template,<sup>36</sup> the vector fragment pB (a) was amplified by PCR. The two obtained fragments were assembled using the Gibson method. Colony PCR identification was performed using detection primers. The plasmid with the correct band size was identified by sequencing.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p003",
+            "text": "For pBc plasmid construction, primers NotI-NeuBc-F and SpeI-NeuBc-R were used to perform PCR, and codon-optimized NeuB from Campylobacter jejuni was used as a template to obtain the fragment NeuBc. The fragment NeuBc and pB plasmid were digested using restriction enzymes NotI and SpeI, and then, the digested fragments were recycled and ligated using a T4 DNA ligase. Then, the ligation production was transformed into E. coli DH5α and verified according to the above steps. For pBm plasmid construction, we used the same method as pBc to construct, replacing the primers and templates with the corresponding primers and templates. For pBac and pBam plasmid construction, fragments NeuB and $\\mathrm { N e u B } _ { \\mathrm { m } }$ were ligated into the constructed plasmid pBa, respectively, using the above method. For the RBS substitution, primers containing diferent RBSs were used for reverse PCR, and PCR production was transformed into E. coli DH5α. The same approach as before was used to check the correctness of plasmids.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "text": "For gene knockout, the helper plasmid $\\mathrm { p T K R e d } ^ { 3 8 }$ was first transformed into the target strain by electroporation. Strains harboring pTKRed were cultured and induced by IPTG (2 mM). The corresponding primers and template (PKD3 or PKD4) were used for PCR, and the obtained fragments were recovered and electrotransformed into the strains containing plasmid pTKRed. PCR verification was performed using detection primers to verify correctness.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p005",
+            "text": "Strain Cultivation. To perform batch fermentation, a single colony was inoculated into 5 mL of the LB medium containing the appropriate antibiotics and incubated for 12 h at $3 7 ~ ^ { \\circ } \\mathrm { C } .$ The culture was then inoculated into 50 mL of the fresh MTB medium containing 20 $\\mathbf { g } / \\mathrm { L }$ glucose and 200 μM IPTG at an inoculum of 4%. Fermentation was performed at $3 0 ~ ^ { \\circ } \\mathrm { C }$ and 220 rpm, and pH was maintained at approximately 7.0 by adding 30% NH OH throughout the fermentation. Samples were taken at 6 (by day) or 12 h (by night) intervals for analysis. The condition and method of fed fermentation were the same as those of batch fermentation, and glucose was added when its concentration was below 10 $\\mathbf { g } / \\mathrm { I }$",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "text": "Analytical Methods. Optical density (OD) was measured at 600 nm using a spectrophotometer (Shimazu, Japan). Fermentation samples were centrifuged at 10,000 rcf for 5 min, and the supernatants were used for extracellular metabolite detection. Glucose, NeuAc, acetate, ethanol, formate, pyruvate, GlcNAc, and ManNAc were quantitatively determined by high-performance liquid chromatography (HPLC) (Shimadzu, Japan) equipped with a refractive index detector (RID-10A) (Shimadzu, Japan) and an Aminex HPX-87H ion exclusion column (Bio-Rad, USA), as described previously.<sup>39</sup> NeuAc levels were additionally determined by a resorcinol-based colorimetric assay. 40",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p001",
+            "text": "Optimization of Amino Sugar Metabolism. In previous experiments, riboswitches with an increased threshold were used to direct the evolution for the key enzyme AGE, and the highest NeuAc titer has been obtained.<sup>37</sup> However, the directed evolution method can only improve the enzyme activity based on the inherent characteristics of the enzyme, and here, we tried to find and apply the natural high-activity enzymes of AGEs and NeuBs. Furthermore, a more suitable combination of key enzymes may result in better production results. Studies have considered the two steps of catalysis from GlcNAc to NeuAc to be the rate-limiting steps.<sup>36,37</sup> Thus, AGEs and NeuBs were obtained from diferent sources to increase NeuAc production. An AGE from Anabaena sp. CH1 (a), two NeuBs from C. jejuni NCTC 11168 (c), and psychrophilic fish pathogen Moritella viscosa (m) were chosen because they have reported high enzymatic activities.<sup>28,41−43</sup> These enzymes together with AGE from Synechocystis sp. PCC 6803 (s) and NeuB from E. coli K1 (k), which were used in a previous fermentation, were introduced into the NeuAc production pathway (Table S4). The GlmS\\* from E. coli K12 (G) and GNA1 from Saccharomyces cerevisiae $( \\mathbf { g } )$ were cloned into the plasmid pTrc99a under the promoter $\\mathrm { P _ { t r c } }$ together with Age and NeuB.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "text": "To determine the most eficient combination, two AGEs and three NeuBs were combined into six groups to form the NeuAc production plasmids (Table 1). Production plasmids were all transferred into DN5 in which nan operon (nanATEK, NeuAc degradation pathway), nag operon (nagEBAC, GlcNAc degradation pathway), gene $l d \\bar { h } A \\bar { ( }$ (lactic acid production pathway), gene poxB (acetic acid production pathway), and gene ackA (acetic acid production pathway) were deleted from ${ \\bar { E } } .$ coli DH5α (Table S1). Because the optimal temperatures for these enzymes are diferent, batch fermentation was performed at 25, 30, and $3 7 ~ ^ { \\circ } \\mathrm { C } .$ The combination of $\\mathbf { A G E _ { a } }$ and $\\mathrm { N e u B } _ { o }$ which produced the pBac plasmid, yielded 1.9 g/L NeuAc after fermentation at a temperature of $3 \\dot { 0 } ^ { \\circ } \\mathrm { C } ,$ which is 1.5 times the concentration of the NeuAc titer that was produced by DN5/ pB at $3 7 ~ ^ { \\circ } \\mathrm { C }$ (Figure 2A). AGE from Synechocystis sp. PCC",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "text": "Table 1. Plasmids and Sources of AGE and NeuB\n<table><tr><td>plasmid</td><td>AGE</td><td>NeuB</td><td></td><td>gene source</td></tr><tr><td> $\\mathrm { p B }$ </td><td>AGES</td><td>NeuBk</td><td>AGE</td><td>Synechocystis sp. PCC 6803</td></tr><tr><td>pBa</td><td>AGE</td><td>NeuBk</td><td>AGE</td><td>Anabaena sp. CH1</td></tr><tr><td>pBc</td><td>AGEs</td><td>NeuBc</td><td>NeuBk</td><td>E. coli K1</td></tr><tr><td>pBm</td><td>AGEs</td><td>NeuBm</td><td>NeuB</td><td>C. jejuni NCTC 11168</td></tr><tr><td>pBac</td><td>AGE</td><td>NeuB</td><td>NeuBm</td><td>psychrophilic fish pathogen</td></tr><tr><td>pBam</td><td>AGE</td><td> $\\mathrm { N e u B _ { m } }$ </td><td></td><td>M. viscosa</td></tr></table>",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p004",
+            "text": "A\n![](images/f2534c37de8efe5e7d9cf67b88e58ba7401ac2abc48228280c48d0b5d13168ea.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p005",
+            "text": "B\n![](images/59588d6f137147073a74006870d0c2def01bf895d0512d3b536f2c647794af91.jpg)\nFigure 2. Batch fermentation of diferent groups and fermentation of optimal combinations. (A) Batch fermentation of diferent groups at 37, 30, and $2 5 ~ ^ { \\circ } \\mathrm { C } .$ (B) Fed fermentation using strain DN5/pBac. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p006",
+            "text": "6803 catalyzed reversible reactions between GlcNAc and ManNAc with a higher afinity to ManNAc $\\left( K _ { \\mathrm { m } } = 1 5 . 6 ~ \\mathrm { m M } \\right)$ compared to GlcNAc $\\left( K _ { \\mathrm { m } } = \\dot { 2 } 5 . 6 ~ \\mathrm { m M } \\right) . ^ { 4 1 }$ This is unfavorable for the reaction going forward from GlcNAc into ManNAc for NeuAc production. Fermentation using plasmid pBac produces more NeuAc than using plasmid pBc at $3 0 ~ ^ { \\circ } \\mathrm { C }$ (Figure 2A). It can be inferred that employing Age from Anabaena sp. CH1 with suficient substrate afinity and higher catalytic activity resulted in high NeuAc production.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p007",
+            "text": "When the pB plasmid was used for fermentation, as the fermentation temperature decreased, NeuAc production decreased significantly. By contrast, when the pBc plasmid was used for fermentation, as the fermentation temperature decreased, NeuAc production increased significantly. The only diference between the two combinations was NeuB. In the pBc plasmid, NeuB from E. coli K1 was replaced by NeuB from C. jejuni NCTC 11168. Thus, NeuB from C. jejuni NCTC 11168 was more suitable for lower-temperature fermentation. Although the optimal temperature of enzyme $\\mathsf { A G E } _ { \\mathrm { a } }$ is reported in the literature to be $5 0 ^ { ^ { \\circ } } \\mathrm { C } , { } ^ { 4 1 }$ when using the pBac plasmid for fermentation, NeuAc production decreased significantly when the fermentation temperature changed from 30 to $2 5 { } ^ { \\circ } \\dot { \\mathrm { C } } .$ Therefore, the highest yield of NeuAc was obtained at a relatively unfavorable temperature of $3 0 ~ ^ { \\circ } \\mathrm { C } .$ From the results, NeuB was suitable for fermentation at $2 5 { - } 3 0 ~ ^ { \\circ } \\mathrm { C } ;$ the optimal temperature of $\\mathrm { N e u B _ { m } }$ was lower, and the yield was apparent at $2 5 ~ ^ { \\circ } \\mathrm { C }$ . Strain DN5/pBac was used for fermentation. After 72 h, the NeuAc production of NeuAc reached 4.7 g/L (Figure 2B). The use of diferent AGE and NeuB types could improve NeuAc production, which proved that these two enzymes were critical to the production of NeuAc. NeuAc production may have been further increased by enhancing the expression intensity of these two enzymes.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p008",
+            "text": "Optimization of Key Enzyme Expression in the NeuAc Synthesis Pathway. To improve the expression intensity of all NeuAc synthetase pathway genes, vectors with diferent copy numbers were used to construct the plasmids p15a-cagg, pCDF-cagg, and pUC-cagg. Furthermore, a strong promoter, $\\mathrm { P _ { T 7 } } ,$ was used for pathway gene expression, and pET-cagg (expression of four genes controlled by $\\mathrm { P } _ { \\mathrm { T 7 } } ) ,$ , pET-acgg (AGE expression controlled by $\\mathbf { P } _ { \\mathrm { T 7 } } ) _ { \\mathrm { 4 } }$ , and p15a-T7p-cam (NeuB expression controlled by $\\mathbf { P } _ { \\mathrm { T 7 } } )$ plasmids were developed. The growth of the strain was severely inhibited after the inducer was added, which led to a significant decrease in NeuAc production (data not shown). This indicated that the strong expression of the pathway genes caused the metabolism to become seriously uncoordinated.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "text": "Because the accumulation of GlcNAc remained very high during fermentation, the expression intensity of AGE and NeuB was considered to eficiently metabolize GlcNAc for NeuAc production. First, diferent RBS intensities of AGE were tested using RBS Calculator 2.0 (https://www. denovodna.com/software/). Among these, four RBSs with a higher initial intensity than the original RBS (ARBS0, 10,146) were selected: ARBS1 (32,837), ARBS2 (51,906), ARBS3 (92,625), and ARBS4 (146,797; Figure 3A and Table S3). The strongest, ARBS4, was 14.5-times stronger than the original RBS. The four RBSs were used to replace the RBS upstream of $\\mathrm { A G E _ { a } }$ in the plasmid pBac and were transferred to DN5 for batch fermentation. After 36 h of fermentation, nearly 20 g/L glucose was consumed. As the intensity of the RBS increased, the production of NeuAc increased significantly. Strains engineered using ARBS2 had the greatest NeuAc accumulation concentration, at ${ 3 . 2 } ~ \\mathrm { g / L } ,$ which was 1.3 g/L higher than that obtained using the original RBS (Figure 3C). As the RBS intensity increased, NeuAc production exhibited no further improvements. The plasmid that contained ARBS2 was named pBac2.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p010",
+            "text": "Then, the RBS intensity of NeuB was also optimized. Four intensities of the RBS that were stronger than the original NeuB RBS (NRBS0, 6993) were selected: NRBS1 (12,109), NRBS2 (45,366), NRBS3 (75,452), and NRBS4 (109,625; Figure 3B and Table S3). The strongest NRBS4 was 15.7 times stronger than the original NRBS0. The four RBSs were used to replace the RBS of NeuB in plasmid ${ \\mathrm { p B a c } } 2 ,$ and the plasmids were transferred to DN5 for batch fermentation. After 36 h of fermentation, nearly 20 $\\mathrm { g / L }$ glucose was consumed, and the production process is illustrated in Figure 3D. In general, as the intensity of the RBS increased, the NeuAc production increased. Strains using NRBS3 achieved a maximum production of $3 . 7 \\ \\mathrm { g / L } ,$ which was 0.5 g/L higher than that of the original RBS. As the intensity of the RBS continued to increase, NeuAc production decreased significantly. This may have been due to the low solubility of NeuB from C. jejuni NCTC 11168 in $E .$ coli. The plasmid containing ARBS2 and NRBS3 was named pBacR (Figure S1).",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p011",
+            "text": "A\n![](images/96665364f2efade4e9408a29b53b85c51f83c2e0a579550222263aaefa55104c.jpg)\nC",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p012",
+            "text": "![](images/e7b97ab0d5e6fb90c25c2b8ab7a91dd021770b35ff53a556207fd7ad7f8e47d1.jpg)\nB",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p013",
+            "text": "![](images/d5aaf8b34040dcd243cf0ddf6075143f16e7527d9774694168bb0a51412bd921.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p014",
+            "text": "![](images/8abb46771518876578bdad5c5ff71a35dd3e45ca5213ea44fbab88750b68841f.jpg)\nFigure 3. Optimization of key enzyme expression intensity. (A) Translation initial intensity of the Age RBS. (B) Translation initial intensity of the NeuB RBS. (C) Fermentation results of diferent Age RBS strains. (D) Fermentation results of diferent NeuB RBS strains. The fermentation was carried out with 20 g/L glucose at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 36 h. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p015",
+            "text": "Fed fermentation was performed in shake flasks by using the DN5/pBacR strain. After 96 h of fermentation, the production of NeuAc no longer increased at which point 7.1 g/L NeuAc was accumulated (Figure 4). Although more NeuAc was",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p016",
+            "text": "![](images/3d13177c0e822dd6ce66816894da40e186dea3a65d572cf4264a2757d9ae04fe.jpg)\nFigure 4. Fed fermentation of strain DN5/pBacR in shake flasks. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p017",
+            "text": "produced, 12.6 g/L GlcNAc and 2.5 g/L ManNAc were accumulated. This indicated that the supply of amino sugar was suficient and that the bottleneck of NeuAc production may have changed to the supply of another PEP.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p018",
+            "text": "Improvement of PEP Precursor Supply. Except for the amino sugar metabolism pathway, we tried to provide a suficient supply of another precursor, PEP, to further increase the production of NeuAc. The main metabolic pathways of PEP in E. coli are as follows: the glucose phosphotransferase system (PTS) uses PEP as a substrate, which probably consumes 50% of the PEP. The phosphoenolpyruvate carboxylase pathway consumes PEP to form oxaloacetate, thus replenishing the tricarboxylic acid (TCA) cycle, which consumes 16.2% of the total PEP. In the glycolytic pathway, PEP is converted into pyruvate and generates ATP through pyruvate kinase, which consumes 14.5% of the total PEP. The aromatic compound pathway consumes 3.3% of the total PEP. Finally, PEP is consumed by other pathways that account for 16% of the total pathway (Figure 1 and Figure S2).<sup>44</sup>",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p019",
+            "text": "To allow more PEP to flow into the NeuAc synthesis pathway, several genes in metabolic key nodes were knocked out to block PEP consumption (Figure 1). First, the PTS system that consumed the most PEP was selected. Gene ptsG in E. coli is a component of the phosphotransferase system that specifically binds glucose and participates in glucose transport. Second, E. coli converts PEP to pyruvate by using pyruvate kinase. There are two pyruvate kinase genes in the E. coli genome: pykA and pykF. Third, E. coli converts PEP into oxaloacetate by using phosphoenolpyruvate carboxylase (ppc) or phosphoenolpyruvate carboxykinase (pck) through the oxaloacetate replenishment pathway. The last goal was citrate synthase (gltA) that can drive acetyl-CoA into the TCA cycle. The aforementioned six genes were knocked out from the strain DN5 genome, and then, the knocked-out strains with plasmid pBacR were used to feed fermentation in shake flasks. Among them, strains with the pykA, pykF, ptsG, and gltA knockout obtained increased NeuAc production (Figure 5A,B). The pykA-knockout strain produced 9.9 g/L NeuAc, which was the highest yield of all knockout strains (Figure 5A,D). Therefore, this strain was named DN11 and was used for further modification. The knockout of ppc severely reduced the growth of the strain, which indicated that blocking the replenishment of oxaloacetate may have afected amino acid production. The pck catalyzed the reversible reaction, which inclined from oxaloacetate to PEP. Therefore, the knockout of pck reduced the supply of PEP and reduced the production of NeuAc. The knockout of pykF and gltA resulted in the poor growth of strains in the lysogeny broth medium, but when transferred to the more nutritious terrific broth medium, these two strains exhibited excellent growth (Figure 5C). The blocking of these pathways may have resulted in a lack of certain necessary metabolites, and the rich medium provided compounds or exogenous precursors, which improved the strain growth.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p020",
+            "text": "A\n![](images/ce7f32adcd2c762f0064c6615057b31022ed3db53d5df79e4f7441ca9dd248c3.jpg)\nB",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p021",
+            "text": "![](images/8d6f13685741bcb740f9f28dddee711f041c3eae86793e3fe92da8394e593474.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p022",
+            "text": "![](images/93bc44e3960170083acfcdc57a1ac00be8a167a81610b567d652fe701d76dbbf.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "text": "D\n![](images/1bfb052f4a9eec545b4dd7005a86b232329c1ffa88a953838a557dc8b7e9953f.jpg)\nFigure 5. Fermentation results of knockout strains. (A) NeuAc production of knockout strains. (B) GlcNAc and ManNAc production of knockout strains. $\\left( \\mathrm { C } \\right) \\mathrm { O D } _ { 6 0 0 }$ of knockout strains. (D) Fermentation results of strain DN5ΔpykA. Fermentation was performed at $3 0 { } ^ { \\circ } \\bar { \\mathrm { C } }$ and 220 rpm, and pH was maintained at approximately 7.0 by 30% $\\mathrm { N H _ { 4 } O H }$ throughout the fermentation. Samples were taken at 6 or 12 h intervals for analysis. Fermentation was stopped at 120 h. For clarification, a representative curve from three independent experiments was shown with standard diferences (RSD) of less than 10%.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p024",
+            "text": "Strain DN11 was used for the following metabolic modification. The knockout of pykF was not tried because both pykA and pykF completely blocked the glycolytic pathway and failed to provide acetyl-CoA, another precursor for GlcNAc-6P catalyzed by GNA1 (Figure 1). Thus, ptsG and gltA were individually used for knocking out DN11. After gltA was knocked out from DN11, NeuAc production decreased significantly and produced only 5.6 g/L NeuAc, which was significantly less productive than DN11. This may have been due to the gltA knockout that was based on pykA greatly limiting the TCA cycle and resulting in a serious shortage of energy supply to the strain. After ptsG was knocked out from DN11, NeuAc production increased significantly to ${ 1 6 . 7 ~ \\mathrm { g / L } } ,$ which was the highest production achieved using glucose as a sole carbon source (Figure 6). The knockout of ptsG changed the glucose transport route from reliance on PEP consumption to ATP consumption, which saved a considerable amount of PEP. To save more PEP, pykA was knocked out (named DN12) to reduce the metabolic flux toward the pyruvate kinase pathway for the NeuAc production to increase significantly. Moreover, some other PEP consumption routes were adopted for engineering but all ended in failure, which indicated that PEP is a very important metabolic node that must be cautiously controlled to prevent disruption of the metabolic balance. A rational design requires to be cautious since mandatory blocking PEP consumption routes may not be appropriate, and the combination of directed evolution on the basis of rational design may make it easier to increase NeuAc production.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p025",
+            "text": "![](images/9eca313c685bed128bf614ecd44b3d4824feb95b8c2c3d7dea505142f1e40b97.jpg)\nFigure 6. Fed fermentation result of the DN12 strain. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "s_supporting_information_p001",
+            "text": "The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acs.jafc.0c04725.",
+            "section": "s_supporting_information"
+          },
+          {
+            "paragraph_id": "s_supporting_information_p002",
+            "text": "Listing strains, primers, and RBS sequences and $K _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of Age and NeuB used in this study (Tables S1−S4) and the map of pBacR and the consumption pathway of PEP in E. coli (Figures S1 and S2) (PDF)",
+            "section": "s_supporting_information"
+          },
+          {
+            "paragraph_id": "corresponding_authors_p001",
+            "text": "Qi<sub>ngs</sub>h<sub>eng</sub> Qi − State Key Laboratory ofMicrobial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China; orcid.org/0000- 0001-5693-6797; Email: qiqingsheng@sdu.edu.cn",
+            "section": "corresponding_authors"
+          },
+          {
+            "paragraph_id": "corresponding_authors_p002",
+            "text": "Qi<sub>an</sub> W<sub>ang</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China; orcid.org/0000- 0003-2216-659X; Email: qiqi20011983@gmail.com",
+            "section": "corresponding_authors"
+          },
+          {
+            "paragraph_id": "authors_p001",
+            "text": "Qi<sub>ngx</sub>i<sub>ao</sub> P<sub>ang</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p002",
+            "text": "H<sub>ao</sub> H<sub>an</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p003",
+            "text": "Y<sub>a</sub> X<sub>u</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p004",
+            "text": "Xi<sub>aoq</sub>i<sub>n</sub> Li<sub>u</sub> − State Key Laboratory of Microbial Technology, National Glycoengineering Research Center Shandong University, Jinan 250100, P. R. China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p005",
+            "text": "Complete contact information is available at:",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p006",
+            "text": "https://pubs.acs.org/10.1021/acs.jafc.0c04725",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "author_contributions_p001",
+            "text": "Q.P., H.H., Y.X., and X.L. performed all the experiments and numerical analysis. Q.W. and Q.Q. conceived the study, analyzed the data, and wrote the manuscript.",
+            "section": "author_contributions"
+          },
+          {
+            "paragraph_id": "notes_p001",
+            "text": "The authors declare no competing financial interest.",
+            "section": "notes"
+          },
+          {
+            "paragraph_id": "acknowledgments_p001",
+            "text": "This manuscript was edited by Wallace Academic Editing. This work was supported by grants from the National Key R&D Program of China (2019YFA0904900), the National Natural Science Foundation of China (31670077, 31730003, and 31670047), the Young Scholars Program of Shandong University, and the State Key Laboratory of Microbial Technology Open Projects Fund (M2019-11).",
+            "section": "acknowledgments"
+          },
+          {
+            "paragraph_id": "references_p001",
+            "text": "(1) Chen, X.; Varki, A. Advances in the Biology and Chemistry of Sialic Acids. ACS Chem. Biol. 2010, 5, 163−176.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p002",
+            "text": "(2) Maru, I.; Ohnishi, J.; Ohta, Y.; Tsukada, Y. Why is sialic acid attracting interest now? Complete enzymatic synthesis of sialic acid with N-acylglucosamine 2-epimerase. J. Biosci. Bioeng. 2002, 93, 258− 265.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p003",
+            "text": "(3) Schauer, R. Achievements and challenges of sialic acid research. Glycoconjugate J. 2000, 17, 485−499.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p004",
+            "text": "(4) Inoue, S.; Kitajima, K. KDN (deaminated neuraminic acid): Dreamful past and exciting future of the newest member of the sialic acid family. Glycoconjugate J. 2006, 23, 277−290.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p005",
+            "text": "(5) Wang, B. Sialic Acid Is an Essential Nutrient for Brain Development and Cognition. Annu. Rev. Nutr. 2009, 29, 177−222.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p006",
+            "text": "(6) Bruses, J. L.; Rutishauser, U. Roles, regulation, and mechanisḿ of polysialic acid function during neural development. Biochimie 2001, 83, 635−643.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p007",
+            "text": "(7) Wong, Z. C. F.; Chan, G. K. L.; Wu, K. Q. Y.; Poon, K. K. M.; Chen, Y.; Dong, T. T. X.; Tsim, K. W. K. Complete digestion of edible bird’s nest releases free N-acetylneuraminic acid and small peptides: an efficient method to improve functional properties. Food Funct. 2018, 9, 5139−5149.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p008",
+            "text": "(8) Guo, C. T.; Takahashi, T.; Bukawa, W.; Takahashi, N.; Yagi, H.; Kato, K.; Hidari, K. I. P. J.; Miyamoto, D.; Suzuki, T.; Suzuki, Y. Edible bird’s nest extract inhibits influenza virus infection. Antiviral Res. 2006, 70, 140−146.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p009",
+            "text": "(9) Kong, Y. C.; Keung, W. M.; Yip, T. T.; Ko, K. M.; Tsao, S. W.; Ng, M. H. Evidence That Epidermal Growth-Factor Is Present in Swiftlets (Collocalia) Nest. Comp. Biochem. Physiol., Part B: Biochem. Mol. Biol. 1987, 87, 221−226.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p010",
+            "text": "(10) Yew, M. Y.; Koh, R. Y.; Chye, S. M.; Othman, I.; Ng, K. Y. Edible bird’s nest ameliorates oxidative stress-induced apoptosis in SH-SY5Y human neuroblastoma cells. BMC Complementary Altern. Med. 2014, 14, 391−412.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p011",
+            "text": "(11) Varki, A. Sialic acids in human health and disease. Trends Mol. Med. 2008, 14, 351−360.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p012",
+            "text": "(12) Hartmann, M.; Zbiral, E. Structural Variations of N-Acetylneuraminic Acid .23. Synthesis of 2-Deoxy-2h -Sialic Acid Analogs Structurally Varied at C-4. Liebigs Ann. Chem. 1991, 1991, 795−801.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p013",
+            "text": "(13) Kawai, N.; Ikematsu, H.; Iwaki, N.; Maeda, T.; Kawashima, T.; Hirotsu, N.; Kashiwagi, S. Comparison of the Effectiveness of Zanamivir and Oseltamivir against Influenza A/H1N1, A/H3N2, and B. Clin. Infect. Dis. 2009, 48, 996−997.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p014",
+            "text": "(14) Von Itzstein, M. The war against influenza: discovery and development of sialidase inhibitors. Nat. Rev. Drug Discovery 2007, 6, 967−974.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p015",
+            "text": "(15) Honda, T.; Kubo, S.; Masuda, T.; Arai, M.; Kobayashi, Y.; Yamashita, M. Synthesis and in vivo influenza virus-inhibitory effect of ester prodrug of 4-guanidino-7-O-methyl-Neu5Ac2en. Bioorg. Med. Chem. Lett. 2009, 19, 2938−2940.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p016",
+            "text": "(16) Cretich, M.; Chiari, M.; Carrea, G. Stereoselective synthesis of (S)-(+)-naproxen catalyzed by carboxyl esterase in a multicompartment electrolyzer. J. Biochem. Biophys. Methods 2001, 48, 247−256.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p017",
+            "text": "(17) Hsu, C.-C.; Hong, Z.; Wada, M.; Franke, D.; Wong, C.-H. Directed evolution of D-sialic acid aldolase to L-3-deoxy-manno-2- octulosonic acid (L-KDO) aldolase. Proc. Natl. Acad. Sci. U. S. A. 2005, 102, 9122−9126.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p018",
+            "text": "(18) Hu, S.; Chen, J.; Yang, Z.; Shao, L.; Bai, H.; Luo, J.; Jiang, W.; Yang, Y. Coupled bioconversion for preparation of N-acetyl-dneuraminic acid using immobilized N-acetyl-d-glucosamine-2-epimerase and N-acetyl-d-neuraminic acid lyase. Appl. Microbiol. Biotechnol. 2010, 85, 1383−1391.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p019",
+            "text": "(19) Rodríguez-Aparicio, L. B.; Ferrero, M. A.; Reglero, A. N-Acetyl-D-Neuraminic Acid Synthesis in Escherichia-Coli K1 Occurs Through Condensation of N-Acetyl-D-Mannosamine And Pyruvate. Biochem. J. 1995, 308, 501−505.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p020",
+            "text": "(20) Comb, D. G.; Roseman, S. The sialic acids. I. The structure and enzymatic synthesis of N-acetylneuraminic acid. J. Biol. Chem. 1960, 235, 2529−2537.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p021",
+            "text": "(21) Maru, I.; Ohnishi, J.; Ohta, Y.; Tsukada, Y. Simple and largescale production of N-acetylneuraminic acid from N-acetyl-Dglucosamine and pyruvate using N-acyl-D-glucosamine 2-epimerase and N-acetylneuraminate lyase. Carbohydr. Res. 1998, 306, 575−578.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p022",
+            "text": "(22) Mahmoudian, M.; Noble, D.; Drake, C. S.; Middleton, R. F.; Montgomery, D. S.; Piercey, J. E.; Ramlakhan, D.; Todd, M.; Dawson, M. J. An efficient process for production of N-acetylneuraminic acid",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p023",
+            "text": "using N-acetylneuraminic acid aldolase. Enzyme Microb. Technol. 1997, 20, 393−400.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p024",
+            "text": "(23) Kim, M. J.; Hennen, W. J.; Sweers, H. M.; Wong, C. H. Enzymes in Carbohydrate Synthesis N-Acetylneuraminic Acid Aldolase Catalyzed-Reactions And Preparation of N-Acetyl-2-Deoxy-D-Neuraminic Acid-Derivatives. J. Am. Chem. Soc. 1988, 110, 6481− 6486.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p025",
+            "text": "(24) Zhao, L.; Tian, R.; Shen, Q.; Liu, Y.; Liu, L.; Li, J.; Du, G. Pathway Engineering of Bacillus subtilis for Enhanced N-Acetylneuraminic Acid Production via Whole-Cell Biocatalysis. Biotechnol. J. 2019, 14, No. e1800682.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p026",
+            "text": "(25) Lin, B. X.; Zhang, Z. J.; Liu, W. F.; Dong, Z. Y.; Tao, Y. Enhanced production of N-acetyl-D-neuraminic acid by multiapproach whole-cell biocatalyst. Appl. Microbiol. Biotechnol. 2013, 97, 4775−4784.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p027",
+            "text": "(26) Zhang, X.; Liu, Y.; Liu, L.; Wang, M.; Li, J.; Du, G.; Chen, J. Modular pathway engineering of key carbon-precursor supplypathways for improved N-acetylneuraminic acid production in Bacillus subtilis. Biotechnol. Bioeng. 2018, 115, 2217−2231.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p028",
+            "text": "(27) Zhu, D. Q.; Wu, J. R.; Zhan, X. B.; Zhu, L.; Jiang, Y. Enhanced N-acetyl-d-neuraminic production from glycerol and N-acetyl-dglucosamine by metabolically engineered Escherichia coli with a twostage pH-shift control strategy. J. Ind. Microbiol. Biotechnol. 2019, 46, 125−132.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p029",
+            "text": "(28) Chen, X.; Zhou, J.; Zhang, L.; Pu, Z.; Liu, L.; Shen, W.; Fan, Y. Development of an Escherichia coli-based biocatalytic system for the efficient synthesis of N-acetyl-D-neuraminic acid. Metab. Eng. 2018, 47, 374−382.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p030",
+            "text": "(29) Gao, X.; Zhang, F.; Wu, M.; Wu, Z.; Shang, G. Production of N-Acetyl-D-neuraminic Acid by Whole Cells Expressing Bacteroides thetaiotaomicron N-Acetyl-D-glucosamine 2-Epinnerase and Escherichia coli N-Acetyl-D-neuraminic Acid Aldolase. J. Agric. Food Chem. 2019, 67, 6285−6291.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p031",
+            "text": "(30) Kang, J.; Gu, P.; Wang, Y.; Li, Y.; Yang, F.; Wang, Q.; Qi, Q. Engineering of an N-acetylneuraminic acid synthetic pathway in Escherichia coli. Metab. Eng. 2012, 14, 623−629.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p032",
+            "text": "(31) Tabata, K.; Koizumi, S.; Endo, T.; Ozaki, A. Production of Nacetyl-D-neuraminic acid by coupling bacteria expressing N-acetyl-Dglucosamine 2-epimerase and N-acetyl-D-neuraminic acid synthetase. Enzyme Microb. Technol. 2002, 30, 327−333.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p033",
+            "text": "(32) Lee, Y.-C.; Chien, H.-C. R.; Hsu, W.-H. Production of Nacetyl-D-neuraminic acid by recombinant whole cells expressing Anabaena sp. CH1 N-acetyl-D-glucosamine 2-epimerase and Escherichia coli N-acetyl-D-neuraminic acid lyase. J. Biotechnol. 2007, 129, 453−460.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p034",
+            "text": "(33) Gao, C.; Xu, X.; Zhang, X.; Che, B.; Ma, C.; Qiu, J.; Tao, F.; Xu, P. Chemoenzymatic Synthesis of N-Acetyl-D-Neuraminic Acid from N-Acetyl-D-Glucosamine by Using the Spore Surface-Displayed N-Acetyl-D-Neuraminic Acid Aldolase. Appl. Environ. Microbiol. 2011, 77, 7080−7083.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p035",
+            "text": "(34) Zhou, J.; Chen, X.; Lu, L.; Govender, A.; Yang, H.; Shen, W. Enhanced production of N-acetyl-D-neuraminic acid by whole-cell bio-catalysis of Escherichia coli. J. Mol. Catal. B: Enzym. 2016, 125, 42−48.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p036",
+            "text": "(35) Tian, R.; Liu, Y.; Chen, J.; Li, J.; Liu, L.; Du, G.; Chen, J. Synthetic N-terminal coding sequences for fine-tuning gene expression and metabolic engineering in Bacillus subtilis. Metab. Eng. 2019, 55, 131−141.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p037",
+            "text": "(36) Yang, P.; Wang, J.; Pang, Q.; Zhang, F.; Wang, J.; Wang, Q.; Qi, Q. Pathway optimization and key enzyme evolution of Nacetylneuraminate biosynthesis using an in vivo aptazyme-based biosensor. Metab. Eng. 2017, 43, 21−28.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p038",
+            "text": "(37) Pang, Q.; Han, H.; Liu, X.; Wang, Z.; Liang, Q.; Hou, J.; Qi, Q.; Wang, Q. In vivo evolutionary engineering of riboswitch with highthreshold for N-acetylneuraminic acid production. Metab. Eng. 2020, 59, 36−43.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p039",
+            "text": "(38) Kuhlman, T. E.; Cox, E. C. Site-specific chromosomal integration of large synthetic constructs. Nucleic Acids Res. 2010, 38, No. e92.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p040",
+            "text": "(39) Li, Y.; Li, M.; Zhang, X.; Yang, P.; Liang, Q.; Qi, Q. A novel whole-phase succinate fermentation strategy with high volumetric productivity in engineered Escherichia coli. Bioresour. Technol. 2013, 149, 333−340.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p041",
+            "text": "(40) Hooks, D. O.; Blatchford, P. A.; Rehm, B. H. A. Bioengineering of Bacterial Polymer Inclusions Catalyzing the Synthesis of N-Acetylneuraminic Acid. Appl. Environ. Microbiol. 2013, 79, 3116− 3121.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p042",
+            "text": "(41) Lee, Y. C.; Wu, H. M.; Chang, Y. N.; Wang, W. C.; Hsu, W. H. The central cavity from the (alpha/alpha)6 barrel structure of Anabaena sp. CH1 N-acetyl-D-glucosamine 2-epimerase contains two key histidine residues for reversible conversion. J. Mol. Biol. 2007, 367, 895−908.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p043",
+            "text": "(42) Sundaram, A. K.; Pitts, L.; Muhammad, K.; Wu, J.; Betenbaugh, M.; Woodard, R. W.; Vann, W. F. Characterization of Nacetylneuraminic acid synthase isoenzyme 1 from Campylobacter jejuni. Biochem. J. 2004, 383, 83−89.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p044",
+            "text": "(43) Berg, T. O.; Gurung, M. K.; Altermark, B.; Smalas, A. O.;̊ Ræder, I. L. U. Characterization of the N-acetylneuraminic acid synthase (NeuB) from the psychrophilic fish pathogen Moritella viscosa. Carbohydr. Res. 2015, 402, 133−145.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p045",
+            "text": "(44) Valle, F.; Muñoz, E.; Ponce, E.; Flores, N.; Bolivar, F. Basic and applied aspects of metabolic diversity: The phosphoenolpyruvate node. J. Ind. Microbiol. Biotechnol. 1996, 17, 458−462.",
+            "section": "references"
+          }
+        ]
+      },
+      "figure_map": {
+        "figures": [
+          {
+            "figure_id": "Figure 1",
+            "caption": "NeuAc production route. galP, galactose; H(+) symporter; glk, glucokinase; pgi, glucose-6-phosphate isomerase; glnA, glutamine synthase; glmS, glucosamine-6-phosphate synthase; GNA1, glucosamine-phosphate N-acetyltransferase; age, acetylglucosamine-2-isomerase; neuB, N-acetylneuraminate synthase; ppsA, phosphoenolpyr uvate synthase; pck, pyruvate carboxykinase; pykA and pykF, pyruvate kinase.",
+            "related_paragraphs": [
+              "introduction_p003",
+              "introduction_p005",
+              "results_and_discussion_p018",
+              "results_and_discussion_p019",
+              "results_and_discussion_p024"
+            ]
+          },
+          {
+            "figure_id": "Figure 2",
+            "caption": "Batch fermentation of diferent groups and fermentation of optimal combinations. (A) Batch fermentation of diferent groups at 37, 30, and $2 5 ~ ^ { \\circ } \\mathrm { C } .$ (B) Fed fermentation using strain DN5/pBac. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "related_paragraphs": [
+              "results_and_discussion_p005"
+            ]
+          },
+          {
+            "figure_id": "Figure 3",
+            "caption": "Optimization of key enzyme expression intensity. (A) Translation initial intensity of the Age RBS. (B) Translation initial intensity of the NeuB RBS. (C) Fermentation results of diferent Age RBS strains. (D) Fermentation results of diferent NeuB RBS strains. The fermentation was carried out with 20 g/L glucose at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 36 h. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "related_paragraphs": [
+              "results_and_discussion_p014"
+            ]
+          },
+          {
+            "figure_id": "Figure 4",
+            "caption": "Fed fermentation of strain DN5/pBacR in shake flasks. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "related_paragraphs": [
+              "results_and_discussion_p015",
+              "results_and_discussion_p016"
+            ]
+          },
+          {
+            "figure_id": "Figure 5",
+            "caption": "Fermentation results of knockout strains. (A) NeuAc production of knockout strains. (B) GlcNAc and ManNAc production of knockout strains. $\\left( \\mathrm { C } \\right) \\mathrm { O D } _ { 6 0 0 }$ of knockout strains. (D) Fermentation results of strain DN5ΔpykA. Fermentation was performed at $3 0 { } ^ { \\circ } \\bar { \\mathrm { C } }$ and 220 rpm, and pH was maintained at approximately 7.0 by 30% $\\mathrm { N H _ { 4 } O H }$ throughout the fermentation. Samples were taken at 6 or 12 h intervals for analysis. Fermentation was stopped at 120 h. For clarification, a representative curve from three independent experiments was shown with standard diferences (RSD) of less than 10%.",
+            "related_paragraphs": [
+              "results_and_discussion_p023"
+            ]
+          },
+          {
+            "figure_id": "Figure 6",
+            "caption": "Fed fermentation result of the DN12 strain. Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "related_paragraphs": [
+              "results_and_discussion_p024",
+              "results_and_discussion_p025"
+            ]
+          }
+        ]
+      },
+      "table_map": {
+        "tables": [
+          {
+            "table_id": "Table 1",
+            "title": "Plasmids and Sources of AGE and NeuB",
+            "content": []
+          }
+        ]
+      },
+      "citation_map": {
+        "citations": []
+      },
+      "modification_log": {
+        "changes": []
+      },
+      "cleaning_quality_report": {
+        "noise_removed": 0,
+        "tables_fixed": 0,
+        "figures_preserved": 6,
+        "tables_preserved": 1,
+        "citations_preserved": true,
+        "sections_preserved": true,
+        "missing_sections": [],
+        "confidence": 1.0
+      }
+    },
+    "cleaning_report": {
+      "noise_removed": 0,
+      "tables_fixed": 0,
+      "figures_preserved": 6,
+      "tables_preserved": 1,
+      "citations_preserved": true,
+      "sections_preserved": true,
+      "missing_sections": [],
+      "confidence": 1.0
+    }
+  },
+  "artifacts": [
+    {
+      "artifact_id": "artifact:68a9ba99fee4ed0605be6104",
+      "media_type": "text/markdown",
+      "sha256": "68a9ba99fee4ed0605be610461f00e32e0fb79bb453695aa23e9fc2cf3ddaebe",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.md"
+    },
+    {
+      "artifact_id": "artifact:7a9b2c5908069db6ff03fe69",
+      "media_type": "application/json",
+      "sha256": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.json"
+    }
+  ],
+  "self_check": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "sections_preserved",
+        "passed": true
+      },
+      {
+        "name": "protected_scientific_values",
+        "passed": true
+      },
+      {
+        "name": "citations_preserved",
+        "passed": true
+      },
+      {
+        "name": "no_new_scientific_text",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_section_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_figure_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_table_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_text_consistency",
+        "passed": true
+      }
+    ],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "changes_count": 0,
+    "noise_removed": 0,
+    "tables_fixed": 0,
+    "paragraphs": 105,
+    "duration_ms": 51.982
+  },
+  "provenance": {
+    "skill_id": "skill06_markdown_cleaner",
+    "skill_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "input_hash": "sha256:f052ca882de9ad022778b87938c20535eaf466738bc5ca9fceda7518fbc330e5",
+    "output_hash": "sha256:aed67bba3e901c81ac446fc2af063efc6ca3ba85bcf9d0fce92a050138f8aab4",
+    "source_artifact_id": "33428841e8bf4161b3867dac46a695ac_14_jf0c04725",
+    "source_sha256": "720198d854a65ec78ef4e1a299c80767f228e1b55c4b6330490080614c4e516f",
+    "cleaned_at": "2026-08-11T04:55:29.892621+00:00",
+    "change_map": []
+  },
+  "review_requests": []
+}

@@ -1,0 +1,619 @@
+{
+  "version": "skill07-annotation-status-v2",
+  "state": "P01_AWAITING_HUMANS",
+  "papers": [
+    {
+      "paper": "GOLD-P01",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P02",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P03",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P04",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P05",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P06",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P07",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P08",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P09",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    },
+    {
+      "paper": "GOLD-P10",
+      "package_valid": true,
+      "source_valid": true,
+      "roles": {
+        "ANNOTATOR_A": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ANNOTATOR_B": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        },
+        "ADJUDICATOR": {
+          "revision": 0,
+          "review_state": "AWAITING_HUMAN_ANNOTATION",
+          "source_coverage": false,
+          "experiments": 0,
+          "claims": 0,
+          "evidence": 0,
+          "complete": false
+        }
+      },
+      "gold_validation": {
+        "valid": false,
+        "blockers": [
+          {
+            "code": "G1_SOURCE_COVERAGE_NOT_CONFIRMED"
+          },
+          {
+            "code": "G6_ADJUDICATION_INCOMPLETE"
+          },
+          {
+            "code": "G7_HISTORY_MISSING"
+          }
+        ],
+        "warnings": [],
+        "gate_summary": {
+          "G0": true,
+          "G1": false,
+          "G2": true,
+          "G3": true,
+          "G4": true,
+          "G5": true,
+          "G6": false,
+          "G7": false
+        }
+      },
+      "freeze_eligible": false
+    }
+  ],
+  "counts": {
+    "packages": 10,
+    "annotator_a_complete": 0,
+    "annotator_b_complete": 0,
+    "adjudicated_complete": 0,
+    "gold_experiments": 0
+  },
+  "wave2_unresolved_traceability": {
+    "imported": 66,
+    "expected": 66
+  },
+  "silver_union_items": 70,
+  "model_calls": 0
+}

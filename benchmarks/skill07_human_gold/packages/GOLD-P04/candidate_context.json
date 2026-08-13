@@ -1,0 +1,921 @@
+{
+  "benchmark_paper_id": "GOLD-P04",
+  "paper_id": "8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9",
+  "candidate_visibility_default": "HIDDEN_BLIND_SOURCE_FIRST",
+  "a_available": true,
+  "g_available": false,
+  "union_candidate_inventory": [
+    {
+      "candidate_id": "GOLD-P04-A-001-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-01",
+        "name": "FC1 construction and growth test on CO2+FA",
+        "objects": [
+          "OBJ-FC1"
+        ],
+        "intervention": "Introduce reconstructed THF cycle, reverse glycine cleavage reaction and CbFdh into DH5α_GTPS",
+        "conditions": "M9 + 4.43 g/L sodium FA; 10% CO2/18% O2/72% N2; 37 °C; 200 r.p.m.; flask",
+        "controls": [
+          "FC2/FC3/FC5 compared in same figure panel (Fig. 1b)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600 growth profile"
+        ],
+        "outcome": "FC1 failed to grow on CO2 and FA alone",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+          "methods_p017"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-002-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-02",
+        "name": "Stepwise construction of FC2, FC3, FC5 and growth tests",
+        "objects": [
+          "OBJ-FC2",
+          "OBJ-FC3",
+          "OBJ-FC5"
+        ],
+        "intervention": "ppsA overexpression + ppsR deletion (FC2); purT deletion (FC3); p100FA2 harbouring A. thaliana fdh_mut (FC5)",
+        "conditions": "as EXP-01",
+        "controls": [
+          "growth with 0.1 g/L glucose supplementation every 24 h (Extended Data Fig. 1b)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u."
+        ],
+        "outcome": "FC5 grew on CO2+FA alone to OD600 0.285 (0.0633 g DCW/L) in 150 h from OD600 0.051; ~2.5 doublings; c.f.u. increased",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "additional_information_p008",
+          "additional_information_p015"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-003-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-03",
+        "name": "13C isotope analysis of FC1 and FC2",
+        "objects": [
+          "OBJ-FC1",
+          "OBJ-FC2"
+        ],
+        "intervention": null,
+        "conditions": "M9 + 0.1 g/L [U-13C]glucose + 4.43 g/L sodium FA; 100-ml baffled flask/30 ml; 37 °C; 200 r.p.m.; 10% CO2 atmosphere; sampling at 120 h",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "12C/13C ratios in proteinogenic amino acids by GC-MS"
+        ],
+        "analysis": "two-tailed Student's t-test",
+        "outcome": "Isotope ratios of Ala, Phe, Tyr, Val, Thr, Asp, Glu, Gly, Ser compared between FC1 and FC2 (Extended Data Fig. 2)",
+        "evidence_paragraphs": [
+          "methods_p020",
+          "additional_information_p012"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-004-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-04",
+        "name": "FC5 substrate-dependency test",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": null,
+        "conditions": "CO2+FA, FA only, CO2 only, without CO2 and FA",
+        "controls": [
+          "substrate-omission groups"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "culture broth imaging at 0/100 h",
+          "c.f.u. profile"
+        ],
+        "outcome": "Growth characterized under each supplementation condition (Extended Data Fig. 3)",
+        "evidence_paragraphs": [
+          "additional_information_p015"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-005-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-05",
+        "name": "13C confirmation of CO2/FA assimilation by FC5",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": null,
+        "conditions": "13C-labelled preculture then CO2+FA only; sampling at 100 h",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "increase of 12C ratios in proteinogenic amino acids"
+        ],
+        "outcome": "CO2 and FA assimilation confirmed (Extended Data Fig. 4)",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "methods_p020",
+          "additional_information_p016"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-006-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-06",
+        "name": "IPTG concentration and aeration optimization of FC5",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": "Vary IPTG (1, 0.1, 0.05 mM) and aeration (flask type/working volume)",
+        "conditions": "as EXP-01 with varied inducer/aeration",
+        "controls": [
+          "mRNA ratios normalized to 1 mM IPTG condition"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "ppsA and gcvT mRNA (rtPCR)"
+        ],
+        "outcome": "Optimized conditions gave OD600 0.533 in 200 h from OD600 0.07; selected IPTG concentration not stated in available text",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "additional_information_p019"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-007-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-07",
+        "name": "Plasmid copy-number tuning (FC7, FC8)",
+        "objects": [
+          "OBJ-FC7",
+          "OBJ-FC8",
+          "OBJ-p184FA",
+          "OBJ-p518FA"
+        ],
+        "intervention": "Replace high-copy plasmid system of FC5 with medium- (FC7) or low-copy (FC8) plasmids",
+        "conditions": "as EXP-01",
+        "controls": [
+          "FC5 growth profile as comparator (Fig. 1d dashed line)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "13C assimilation flux",
+          "FA consumption (HPLC)"
+        ],
+        "outcome": "FC8 OD600 0.607 in 200 h (0.14-fold above FC5); FC7 OD600 0.452; FC8 showed higher CO2/FA assimilation and FA consumption than FC5",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "additional_information_p021"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-008-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-08",
+        "name": "FC8 high-inoculum flask culture (OD600 0.35)",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": null,
+        "conditions": "initial OD600 0.35; 37 °C; flask; CO2+FA",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u.",
+          "microscopy"
+        ],
+        "outcome": "OD600 1.24 (0.343 g DCW/L) in 100 h; cell filamentation observed",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "methods_p012"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-009-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-09",
+        "name": "Cultivation temperature optimization of FC8",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": "Reduce cultivation temperature (30, 32, 33 °C tested; 37 °C reference)",
+        "conditions": "CO2+FA flask cultivation at reduced temperatures",
+        "controls": [
+          "37 °C cultivation; mRNA normalized to 37 °C"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u.",
+          "biomass yield on FA",
+          "cyoA/cyoB/cydA/cydB mRNA",
+          "microscopy",
+          "13C ratios at 0/140/260 h"
+        ],
+        "outcome": "32 °C best: OD600 2.48 (0.687 g DCW/L) in 244 h from OD600 0.31, 0.41 g FA consumed; biomass yield 0.0552±0.0009 vs 0.0365±0.0026 g DCW/g FA (32 vs 37 °C); cyoAB up / cydAB down as intended; filamentation suppressed",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "brief_communication_p006"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-010-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-10",
+        "name": "FC8 low-inoculum flask culture (OD600 0.018)",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": null,
+        "conditions": "initial OD600 0.018; flask; CO2+FA",
+        "controls": [],
+        "replicates": {
+          "n": 2,
+          "type": "independent experiments (duplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "FA concentration",
+          "specific growth rate",
+          "doubling time"
+        ],
+        "outcome": "OD600 3.59 (0.994 g DCW/L) in 791.5 h; 0.94 g FA consumed; 7.64 doublings; growth rate declined over time",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "brief_communication_p012"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P04-A-011-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-11",
+        "name": "FC8 bioreactor fed-batch cultivations",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": "Fed-batch bioreactor cultivation with pH-stat FA feeding",
+        "conditions": "1.3-l Bioflow 110, 500 ml working volume; 32 °C; 500 r.p.m. initial (second run ramped +50 r.p.m. per OD600 up to 750); pH 6.8 via 30 v/v% FA; air:CO2 9:1 at 500 ml/min; initial OD600 ~1",
+        "controls": [],
+        "replicates": {
+          "n": 4,
+          "type": "independent bioreactor cultivations (quadruplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "DCW",
+          "FA consumption"
+        ],
+        "outcome": "Max OD600 7.38 (450 h), 7.88 (412 h), 8.01 (412 h), 11.1 (577 h) across four runs; summarized as OD600 7-11",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "methods_p018",
+          "brief_communication_p012"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    }
+  ],
+  "semantic_alignment": {
+    "paper_id": "8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9",
+    "source": "WAVE1_HISTORICAL_NOT_CONTROLLED_WAVE2",
+    "a_status": "validation_failed",
+    "g_status": "succeeded",
+    "alignment": {
+      "matches": [],
+      "unresolved": [
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 1,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 4,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 7,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 8,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 9,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 10,
+          "reason": "UNMATCHED_LEFT"
+        }
+      ],
+      "unmatched_right": []
+    },
+    "differences": [
+      {
+        "left_index": 0,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 1,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 2,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 3,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 4,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 5,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 6,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 7,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 8,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 9,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 10,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      }
+    ],
+    "counts": {
+      "FORMAT_ONLY": 0,
+      "SEMANTICALLY_EQUIVALENT": 0,
+      "POTENTIALLY_MEANINGFUL": 0,
+      "CRITICAL_SCIENTIFIC_DIFFERENCE": 0,
+      "AMBIGUOUS_REQUIRES_HUMAN": 11
+    },
+    "automated_scientific_truth": false
+  },
+  "review_accelerators": [
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-001",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+        "methods_p017"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-01",
+        "name": "FC1 construction and growth test on CO2+FA",
+        "objects": [
+          "OBJ-FC1"
+        ],
+        "intervention": "Introduce reconstructed THF cycle, reverse glycine cleavage reaction and CbFdh into DH5α_GTPS",
+        "conditions": "M9 + 4.43 g/L sodium FA; 10% CO2/18% O2/72% N2; 37 °C; 200 r.p.m.; flask",
+        "controls": [
+          "FC2/FC3/FC5 compared in same figure panel (Fig. 1b)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600 growth profile"
+        ],
+        "outcome": "FC1 failed to grow on CO2 and FA alone",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+          "methods_p017"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-002",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+        "additional_information_p008",
+        "additional_information_p015"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-02",
+        "name": "Stepwise construction of FC2, FC3, FC5 and growth tests",
+        "objects": [
+          "OBJ-FC2",
+          "OBJ-FC3",
+          "OBJ-FC5"
+        ],
+        "intervention": "ppsA overexpression + ppsR deletion (FC2); purT deletion (FC3); p100FA2 harbouring A. thaliana fdh_mut (FC5)",
+        "conditions": "as EXP-01",
+        "controls": [
+          "growth with 0.1 g/L glucose supplementation every 24 h (Extended Data Fig. 1b)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u."
+        ],
+        "outcome": "FC5 grew on CO2+FA alone to OD600 0.285 (0.0633 g DCW/L) in 150 h from OD600 0.051; ~2.5 doublings; c.f.u. increased",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "additional_information_p008",
+          "additional_information_p015"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-003",
+      "source_evidence": [
+        "methods_p020",
+        "additional_information_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-03",
+        "name": "13C isotope analysis of FC1 and FC2",
+        "objects": [
+          "OBJ-FC1",
+          "OBJ-FC2"
+        ],
+        "intervention": null,
+        "conditions": "M9 + 0.1 g/L [U-13C]glucose + 4.43 g/L sodium FA; 100-ml baffled flask/30 ml; 37 °C; 200 r.p.m.; 10% CO2 atmosphere; sampling at 120 h",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "12C/13C ratios in proteinogenic amino acids by GC-MS"
+        ],
+        "analysis": "two-tailed Student's t-test",
+        "outcome": "Isotope ratios of Ala, Phe, Tyr, Val, Thr, Asp, Glu, Gly, Ser compared between FC1 and FC2 (Extended Data Fig. 2)",
+        "evidence_paragraphs": [
+          "methods_p020",
+          "additional_information_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-004",
+      "source_evidence": [
+        "additional_information_p015"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-04",
+        "name": "FC5 substrate-dependency test",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": null,
+        "conditions": "CO2+FA, FA only, CO2 only, without CO2 and FA",
+        "controls": [
+          "substrate-omission groups"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "culture broth imaging at 0/100 h",
+          "c.f.u. profile"
+        ],
+        "outcome": "Growth characterized under each supplementation condition (Extended Data Fig. 3)",
+        "evidence_paragraphs": [
+          "additional_information_p015"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-005",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+        "methods_p020",
+        "additional_information_p016"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-05",
+        "name": "13C confirmation of CO2/FA assimilation by FC5",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": null,
+        "conditions": "13C-labelled preculture then CO2+FA only; sampling at 100 h",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "increase of 12C ratios in proteinogenic amino acids"
+        ],
+        "outcome": "CO2 and FA assimilation confirmed (Extended Data Fig. 4)",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "methods_p020",
+          "additional_information_p016"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-006",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+        "additional_information_p019"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-06",
+        "name": "IPTG concentration and aeration optimization of FC5",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": "Vary IPTG (1, 0.1, 0.05 mM) and aeration (flask type/working volume)",
+        "conditions": "as EXP-01 with varied inducer/aeration",
+        "controls": [
+          "mRNA ratios normalized to 1 mM IPTG condition"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "ppsA and gcvT mRNA (rtPCR)"
+        ],
+        "outcome": "Optimized conditions gave OD600 0.533 in 200 h from OD600 0.07; selected IPTG concentration not stated in available text",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "additional_information_p019"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-007",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+        "additional_information_p021"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-07",
+        "name": "Plasmid copy-number tuning (FC7, FC8)",
+        "objects": [
+          "OBJ-FC7",
+          "OBJ-FC8",
+          "OBJ-p184FA",
+          "OBJ-p518FA"
+        ],
+        "intervention": "Replace high-copy plasmid system of FC5 with medium- (FC7) or low-copy (FC8) plasmids",
+        "conditions": "as EXP-01",
+        "controls": [
+          "FC5 growth profile as comparator (Fig. 1d dashed line)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "13C assimilation flux",
+          "FA consumption (HPLC)"
+        ],
+        "outcome": "FC8 OD600 0.607 in 200 h (0.14-fold above FC5); FC7 OD600 0.452; FC8 showed higher CO2/FA assimilation and FA consumption than FC5",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "additional_information_p021"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-008",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+        "methods_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-08",
+        "name": "FC8 high-inoculum flask culture (OD600 0.35)",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": null,
+        "conditions": "initial OD600 0.35; 37 °C; flask; CO2+FA",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u.",
+          "microscopy"
+        ],
+        "outcome": "OD600 1.24 (0.343 g DCW/L) in 100 h; cell filamentation observed",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "methods_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-009",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+        "brief_communication_p006"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-09",
+        "name": "Cultivation temperature optimization of FC8",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": "Reduce cultivation temperature (30, 32, 33 °C tested; 37 °C reference)",
+        "conditions": "CO2+FA flask cultivation at reduced temperatures",
+        "controls": [
+          "37 °C cultivation; mRNA normalized to 37 °C"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u.",
+          "biomass yield on FA",
+          "cyoA/cyoB/cydA/cydB mRNA",
+          "microscopy",
+          "13C ratios at 0/140/260 h"
+        ],
+        "outcome": "32 °C best: OD600 2.48 (0.687 g DCW/L) in 244 h from OD600 0.31, 0.41 g FA consumed; biomass yield 0.0552±0.0009 vs 0.0365±0.0026 g DCW/g FA (32 vs 37 °C); cyoAB up / cydAB down as intended; filamentation suppressed",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "brief_communication_p006"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-010",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+        "brief_communication_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-10",
+        "name": "FC8 low-inoculum flask culture (OD600 0.018)",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": null,
+        "conditions": "initial OD600 0.018; flask; CO2+FA",
+        "controls": [],
+        "replicates": {
+          "n": 2,
+          "type": "independent experiments (duplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "FA concentration",
+          "specific growth rate",
+          "doubling time"
+        ],
+        "outcome": "OD600 3.59 (0.994 g DCW/L) in 791.5 h; 0.94 g FA consumed; 7.64 doublings; growth rate declined over time",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "brief_communication_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-011",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+        "methods_p018",
+        "brief_communication_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-11",
+        "name": "FC8 bioreactor fed-batch cultivations",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": "Fed-batch bioreactor cultivation with pH-stat FA feeding",
+        "conditions": "1.3-l Bioflow 110, 500 ml working volume; 32 °C; 500 r.p.m. initial (second run ramped +50 r.p.m. per OD600 up to 750); pH 6.8 via 30 v/v% FA; air:CO2 9:1 at 500 ml/min; initial OD600 ~1",
+        "controls": [],
+        "replicates": {
+          "n": 4,
+          "type": "independent bioreactor cultivations (quadruplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "DCW",
+          "FA consumption"
+        ],
+        "outcome": "Max OD600 7.38 (450 h), 7.88 (412 h), 8.01 (412 h), 11.1 (577 h) across four runs; summarized as OD600 7-11",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "methods_p018",
+          "brief_communication_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    }
+  ],
+  "candidate_items_are_gold": false
+}

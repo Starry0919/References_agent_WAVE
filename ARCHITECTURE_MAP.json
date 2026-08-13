@@ -1,0 +1,75 @@
+{
+  "scope": {
+    "repository": "WAVE_Agent_Platform",
+    "basis": ["source_code", "api_routes", "frontend_routes", "orm_models", "tests", "knowledge_assets", "documentation"],
+    "test_verification": "pytest -q exceeded 60 seconds without a result; test presence is recorded, suite pass is not claimed"
+  },
+  "modules": [
+    {"id":"interaction_api","purpose":"React/legacy UI, HTTP, WebSocket and human-decision entry points","evidence":["harness/server.py","harness/api","frontend/src/router.tsx","frontend/src/registry/modules.ts"],"status":["IMPLEMENTED","WIRED","TESTED","UI_EXPOSED"],"notes":"legacy chat remains at /legacy/chat"},
+    {"id":"runtime_orchestration","purpose":"Free-form agent execution, deterministic workflows, task nodes and cross-module handoffs","evidence":["harness/agent.py","harness/workflow","harness/scientific_runtime","harness/orchestrator"],"status":["IMPLEMENTED","WIRED","TESTED","PARTIAL"]},
+    {"id":"evidence_knowledge","purpose":"Literature acquisition, evidence/provenance/applicability and knowledge objects","evidence":["harness/evidence_intelligence","harness/evidence_retrieval","harness/literature_discovery","harness/literature_verification","harness/paper_extraction","harness/knowledge_distillation","knowledge"],"status":["IMPLEMENTED","WIRED","TESTED","UI_EXPOSED","PARTIAL"]},
+    {"id":"project_memory_dbtl","purpose":"Persistent project ledger, design/experiment/learning state and iterative DBTL","evidence":["harness/projects","harness/memory","harness/designs","harness/constructs","harness/experiments","harness/learning","harness/workflow/iterative_loop.py"],"status":["IMPLEMENTED","WIRED","TESTED","PARTIAL"]},
+    {"id":"diagnosis","purpose":"Competing hypotheses, evidence assessment, model evidence, discriminating tests and decisions","evidence":["harness/diagnosis","harness/api/diagnosis.py","tests/diagnosis"],"status":["IMPLEMENTED","WIRED","TESTED","UI_EXPOSED"]},
+    {"id":"engineering_design","purpose":"Strategy, candidate portfolio, evaluation, Pareto decision, build/test plan and approval","evidence":["harness/engineering_design","harness/api/engineering_design.py","tests/engineering_design"],"status":["IMPLEMENTED","WIRED","TESTED","UI_EXPOSED","PARTIAL"]},
+    {"id":"scientific_evaluation","purpose":"Independent claim/evidence/model review, critique, comparison, meta-review and revision","evidence":["harness/scientific_evaluation","harness/api/scientific_evaluation.py","tests/scientific_evaluation"],"status":["IMPLEMENTED","WIRED","TESTED","PARTIAL"]},
+    {"id":"world_model_virtual_cell","purpose":"Biological entities/state transitions and governed simulation/model updates","evidence":["harness/world_model","harness/virtual_cell","harness/api/world_model.py","harness/api/virtual_cell.py","tests/world_model","tests/virtual_cell"],"status":["IMPLEMENTED","WIRED","TESTED","UI_EXPOSED","PARTIAL"]},
+    {"id":"evaluation_golden_set","purpose":"Consistency metrics, reference scoring and golden-case acceptance","evidence":["harness/evaluation_metrics","harness/golden_set","tests/evaluation_metrics","tests/golden_set"],"status":["IMPLEMENTED","WIRED","TESTED","PARTIAL"]}
+  ],
+  "relationships": [
+    {"from":"interaction_api","to":"runtime_orchestration","type":"invokes_and_observes"},
+    {"from":"runtime_orchestration","to":"evidence_knowledge","type":"acquires_context"},
+    {"from":"runtime_orchestration","to":"diagnosis","type":"dispatches"},
+    {"from":"diagnosis","to":"engineering_design","type":"approved_handoff"},
+    {"from":"engineering_design","to":"scientific_evaluation","type":"submits_candidates"},
+    {"from":"world_model_virtual_cell","to":"diagnosis","type":"provides_model_evidence"},
+    {"from":"world_model_virtual_cell","to":"engineering_design","type":"counterfactual_evaluation"},
+    {"from":"evidence_knowledge","to":"scientific_evaluation","type":"supports_claim_assessment"},
+    {"from":"project_memory_dbtl","to":"diagnosis","type":"provides_context_and_memory"},
+    {"from":"engineering_design","to":"project_memory_dbtl","type":"creates_versioned_design_and_plan"},
+    {"from":"project_memory_dbtl","to":"evidence_knowledge","type":"promotes_or_retracts_claims"},
+    {"from":"evaluation_golden_set","to":"runtime_orchestration","type":"evaluates_outputs"}
+  ],
+  "data_flows": [
+    {"name":"chat","steps":["user_message","SessionStore","run_agent_turn","LLM_tool_loop","tool_result","assistant_message","JSONL_trace","WebSocket_UI"]},
+    {"name":"scientific_decision","steps":["project_and_evidence","runtime_orchestrator","diagnosis","engineering_design","scientific_evaluation","human_gate","approved_output"]},
+    {"name":"dbtl_feedback","steps":["DesignVersion","BuildTestPackage","external_build_test","ExperimentRun","DataAsset","Observation","Hypothesis_or_Failure","KnowledgeClaim_or_Redesign"]},
+    {"name":"model_governance","steps":["BiologicalEntity_StateTransition","SimulationCase","SimulationRun","PredictionResidual","ModelUpdateProposal","HumanDecision"]}
+  ],
+  "implementation_status": {
+    "chat_agent":"IMPLEMENTED_WIRED_TESTED_LEGACY_UI",
+    "workflow_controller":"IMPLEMENTED_WIRED_TESTED",
+    "scientific_runtime":"IMPLEMENTED_WIRED_TESTED_UI_EXPOSED",
+    "unified_orchestrator":"PARTIAL",
+    "project_ledger_memory":"IMPLEMENTED_WIRED_TESTED_PARTIAL_UI",
+    "evidence_intelligence":"IMPLEMENTED_WIRED_TESTED_UI_EXPOSED",
+    "literature_discovery_verification":"PARTIAL",
+    "paper_extraction":"IMPLEMENTED_WIRED_TESTED_UI_EXPOSED",
+    "knowledge_distillation":"PARTIAL",
+    "diagnosis":"IMPLEMENTED_WIRED_TESTED_UI_EXPOSED",
+    "engineering_design":"IMPLEMENTED_WIRED_TESTED_UI_EXPOSED_PARTIAL",
+    "scientific_evaluation":"IMPLEMENTED_WIRED_TESTED_PARTIAL_UI",
+    "experiments_learning":"IMPLEMENTED_WIRED_TESTED_PARTIAL_UI",
+    "world_model":"IMPLEMENTED_WIRED_TESTED_UI_EXPOSED",
+    "virtual_cell":"IMPLEMENTED_WIRED_TESTED_PARTIAL_UI_AND_MODEL_COVERAGE",
+    "metrics_golden_set":"IMPLEMENTED_WIRED_TESTED_PARTIAL_UI",
+    "external_lims_inventory":"DESIGNED_ONLY_OR_EXTERNAL_BOUNDARY"
+  },
+  "candidate_diagrams": [
+    {"title":"WAVE System Context and Runtime Boundaries","why_needed":"Separate external science, providers and experiments from controlled internals","main_question":"What enters, is controlled, and leaves WAVE?","important_nodes":["scientist","UI/API","runtime","external providers","experiments","human gates"],"audience":["new members","leadership"],"priority":"HIGH"},
+    {"title":"Runtime and Orchestration Control Planes","why_needed":"Four control mechanisms coexist","main_question":"Which controller owns each transition?","important_nodes":["agent loop","WorkflowController","Scientific Runtime","Unified Orchestrator","handoffs","checkpoints"],"audience":["backend architects"],"priority":"HIGH"},
+    {"title":"Evidence-to-Decision Scientific Chain","why_needed":"Trace evidence through diagnosis, design and independent review","main_question":"How does evidence affect a scientific decision?","important_nodes":["EvidenceObject","Diagnosis","CandidateDesign","ScientificReview","DDR","KnowledgeClaim"],"audience":["scientists","reviewers"],"priority":"HIGH"},
+    {"title":"Persistent DBTL and Knowledge Feedback","why_needed":"Show cross-day experimental waiting and governed learning","main_question":"How do results update hypotheses, designs and knowledge?","important_nodes":["ProjectEvent","DesignVersion","ExperimentRun","Observation","FailureCase","KnowledgeClaim","redesign"],"audience":["scientists","data engineers"],"priority":"HIGH"},
+    {"title":"Product Surface to Backend Capability Mapping","why_needed":"Backend capability exceeds dedicated UI surface","main_question":"Which page reaches which backend service?","important_nodes":["React routes","API clients","routers","services","capability states"],"audience":["frontend","product"],"priority":"MEDIUM"},
+    {"title":"World Model and Virtual Cell Governance","why_needed":"Separate representation, simulation, residuals and update approval","main_question":"How do biological state and computational models connect?","important_nodes":["BiologicalEntity","StateTransition","SimulationCase","Residual","ModelUpdateProposal"],"audience":["modelers","scientists"],"priority":"MEDIUM"}
+  ],
+  "ambiguities": [
+    "Controller boundaries overlap across workflow, iterative loop, scientific runtime and unified orchestrator",
+    "Multiple persistence mechanisms exist and truth ownership is domain-specific",
+    "DDR, claims, hypotheses, paper objects and world-model entities lack evidence of one unified ontology",
+    "Frontend capability registry marks several wired backend modules as partial or absent at product level",
+    "Build/Test lacks proven LIMS, inventory and automated laboratory integration",
+    "Virtual-cell schemas do not prove all adapters perform real predictive computation",
+    "Current full test-suite pass status is unknown because the audit run timed out",
+    "The current Git worktree contains large uncommitted restructuring"
+  ]
+}

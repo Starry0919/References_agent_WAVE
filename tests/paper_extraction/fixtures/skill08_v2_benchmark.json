@@ -1,0 +1,11 @@
+{
+  "fixture_type": "synthetic",
+  "cases": [
+    {"id": "direct", "claim": "Strain A increased titer to 10 g/L", "evidence": "Strain A increased titer to 10 g/L", "expected": "passed", "critical": true},
+    {"id": "negation", "claim": "Strain A increased titer", "evidence": "Strain A did not increase titer", "expected": "conflicted", "critical": true},
+    {"id": "direction", "claim": "Strain A increased titer", "evidence": "Strain A decreased titer", "expected": "conflicted", "critical": true},
+    {"id": "numeric", "claim": "Titer was 10 g/L", "evidence": "Titer was 9 g/L", "expected": "conflicted", "critical": true},
+    {"id": "condition", "claim": "Growth increased in M9 glucose", "evidence": "Growth increased in LB glycerol", "expected": "unresolved", "critical": true},
+    {"id": "causal", "claim": "Mutation caused higher titer", "evidence": "Mutation was correlated with higher titer", "expected": "conflicted", "critical": true}
+  ]
+}

@@ -1,0 +1,883 @@
+{
+  "status": "succeeded",
+  "output": {
+    "clean_markdown_artifact": {
+      "artifact_id": "artifact:37880077f1d614a153473135",
+      "media_type": "text/markdown",
+      "sha256": "37880077f1d614a1534731353f54518c5460a7336883475ff3b08f56394d7e1b",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.md"
+    },
+    "clean_json_artifact": {
+      "artifact_id": "artifact:10ffcc123741d43306829fbc",
+      "media_type": "application/json",
+      "sha256": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.json"
+    },
+    "clean_document_artifact": {
+      "document_metadata": {
+        "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+        "title": null,
+        "parser": "MinerU",
+        "parser_version": "3.4.4",
+        "cleaner": "skill06_markdown_cleaner",
+        "cleaner_version": "0.3.0",
+        "rule_set_version": "scientific-cleaning-rules/0.3.0",
+        "source_markdown_sha256": "c2c683c5d8fbe79cca0079a920d1d360164a48c1df575a3b8985a38d520d3565",
+        "clean_markdown_sha256": "37880077f1d614a1534731353f54518c5460a7336883475ff3b08f56394d7e1b"
+      },
+      "clean_markdown_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.md",
+      "clean_json_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.json",
+      "structure_map": {
+        "sections": [
+          {
+            "id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion",
+            "title": "Construction of Synthetic Microbial Ecosystems and the Regulation of Population Proportion",
+            "level": 1,
+            "content": "Wei Jiang, Xiaoya Yang, Fei Gu, Xiaomeng Li, Sumeng Wang, Yue Luo, Qingsheng Qi,\\* and Quanfeng Liang\\*\n\n![](images/748b51a41877b3ac4b461c987b9ec73d91c8fa3de7dfe85c8a8d220dfe2b521d.jpg)\n\nCite This: ACS Synth. Biol. 2022, 11, 538−546\n\n![](images/6a4325177fac1698eb4301e4e8a56f254cacf32e583f2b3310bfdffbc5e65611.jpg)\n\nRead Online\n\nACCESS\n\nMetrics & More\n\nABSTRACT: With the development of synthetic biology, the design and application of microbial consortia have received increasing attention. However, the construction of synthetic ecosystems is still hampered by our limited ability to rapidly develop microbial consortia with the required dynamics and functions. By using modular design, we constructed synthetic competitive and symbiotic ecosystems with Escherichia coli. Two ecological relationships were realized by reconfiguring the layout between the communication and efect modules. Furthermore, we designed inducible synthetic ecosystems to regulate subpopulation ratios. With the addition of diferent inducers, a wide range of\n\nArticle Recommendations\n\n\\*sı Supporting Information\n\n![](images/d3e1d002e25565663c359fed8c29ee6e547d5e4e6eff5f96b96eddbc17374fa3.jpg)\n\nstrain ratios between subpopulations was achieved. These inducible synthetic ecosystems enabled a larger volume of population regulation and simplified culture conditions. The synthetic ecosystems we constructed combined both basic and applied functionalities and expanded the toolkit of synthetic biology research.\n\nKEYWORDS: synthetic ecosystems, competition, symbiosis, population proportion regulation, microbial consortia"
+          },
+          {
+            "id": "introduction",
+            "title": "■ INTRODUCTION",
+            "level": 2,
+            "content": "The aim of synthetic biology is to design various complex biological modules, systems, and artificial organisms to generate new functions and behaviors.<sup>1−5</sup> The design of microbial consortia is an emerging frontier in synthetic biology. Microbial consortium is a complex network of interactions and coevolution between individuals and environment.<sup>6</sup> Exploring the roles of ecological interactions is critical to understanding community formation, functioning, and stability. However, such exploration is challenging in natural ecosystems because numerous environmental variables are dificult to control or measure.<sup>7</sup> As a result, synthetic microbial ecosystems have gained much interest because of their low complexity and strong controllability.<sup>7,8</sup> Synthetic microbial ecosystem is a collective term for all rationally designed ecosystems in which two or more defined microbial populations are designed in a well-characterized manner and controlled environment. Synthetic microbial ecosystems can be used to explore fundamental ecological topics, such as exploration of community ecological stability, intervention in community structure, and the prediction of key species.<sup>9,10</sup>\n\nCross-feeding is a commonly used mechanism to construct synthetic mutualistic microbial ecosystems.<sup>10−14</sup> Shou et al. designed a synthetic cooperative ecosystem with the yeast Saccharomyces cerevisiae.<sup>11</sup> In this system, each yeast strain supplied an essential amino acid to the other strain. Hosoda et al. engineered a synthetic obligate mutualistic ecosystem by using two auxotrophic Escherichia coli: an isoleucine auxotroph and a leucine auxotroph.<sup>12</sup> Another widely recognized interaction method among microorganisms is mediated by quorum sensing (QS) systems.<sup>15</sup> The QS system is a population density-dependent communication mechanism that regulates gene expression and coordinates population behavior when populations reach a critical density. Bacteria with a QS system can synthesize signaling molecules homoserine lactone (HSL) also called autoinducers.<sup>16</sup> As an autoinduced communication tool, QS systems, in particular HSL-based QS systems, have been used in the engineering of microbial ecosystems, including symbiotic,<sup>17,18</sup> competitive,<sup>19</sup> and predator−prey ecosystems .<sup>20,21</sup> Hu et al. constructed a synthetic symbiosis microbial ecosystem by using LuxI/R and RhlI/R systems. This ecosystem contained two populations, and each activated the expression of a resistance gene in the other for mutual benefit.<sup>18</sup> Ozgen et al. constructed a competitive ecosystem to explore the role of spatial interference scale in governing ecosystem organization during range expansion.<sup>19</sup> Inspired by naturally occurring predator−\n\n![](images/d516581d0e1ec3c4b57fa92a7b1c0882a7f7494689d99e7f761a7d0dd7ee99c1.jpg)\nFigure 1. Design of synthetic competitive and symbiotic ecosystems. (a) Pattern diagram of strains in the synthetic competitive ecosystem. (b) Pattern diagram of strains in the synthetic symbiotic ecosystem. (c) Design and interaction mechanism for CG and CR. (d) Design and interaction mechanism for SG and SR.\n\nprey interactions, Balagadde et al. constructed a synthetic\npredator−prey ecosystem by programming bidirectional 20\ncommunication.\n\nDespite considerable progress, the construction of synthetic microbial ecosystems is still hampered by our limited ability to rapidly develop ecosystems with the required dynamics and functions. A general modular approach will facilitate various interactions through the recombination or reconfiguration of modules. Furthermore, the uncontrollable characteristics of synthetic ecosystems still limit their applications, for example, the dificulty in the control of the subpopulation proportion.<sup>22</sup> The species composition of a bacterial community is a partial determinant of community’s function. However, few theoretical models have been developed and few synthetic ecosystems have been constructed to experimentally regulate the composition of subpopulations. 23−25 Engineering a bacterial community with a controllable composition presents a unique challenge in terms of linking the genetic circuits that function inside individual cells to the number of each type of population. Kerner et al. programmed a symbiosis ecosystem in E. coli by cross-feeding amino acids. The strain ratios were tuned by regulating the expression of genes related to the export or production of two amino acids.<sup>13</sup> This circuit exhibited metabolic burden, and one of the two strains had a considerable growth advantage; therefore, the strain ratio could not be regulated symmetrically. In some application scenarios, such as in metabolic engineering, symmetrical population proportional adjustment is required. Several ecosystems have been used to alter cell densities by activating the production of toxins or lysis genes.<sup>26,27</sup> Although these systems are designed for dynamic population regulation, they remain unable to be used to control subpopulation ratios.\n\nIn this study, we aimed to establish synthetic ecosystems that can realize diferent ecological interactions through module reconfiguration. QS systems were selected as the communication module for their versatility and simplicity. A toxin−antitoxin system was implemented as the efect module. By reconfiguring the layout between the communication and efect modules, we simulated competitive and symbiotic ecological relationships in synthetic microbial consortia. In both synthetic ecosystems, two independent feedback regulations were implemented in each strain to control the efect modules, which split the positive and negative regulations of growth. In addition, QS systems linked the interspecific communication with population density. Therefore, the two synthetic ecosystems we built had the potential to regulate subpopulation ratios. By transforming the expression of signal molecules from self-induced to inducer-induced, we further attempted to regulate subpopulation ratios and achieved a wide range of strain ratios between the two populations with the addition of diferent inducers. These synthetic microbial ecosystems provide new tools for microbial consortia applications."
+          },
+          {
+            "id": "results_and_discussion",
+            "title": "■ RESULTS AND DISCUSSION",
+            "level": 2,
+            "content": "Design of Synthetic Competitive and Symbiotic Ecosystems. The crosstalk between QS systems often causes the loss of circuit functions.<sup>28,29</sup> Therefore, orthogonal QS systems are necessary to enable noninterference communication between subpopulations. Two completely orthogonal QS systems we established in previous work, the tra\\* and the las systems, were utilized as the communication module to construct synthetic ecosystems.<sup>30</sup> A ccd operon coded toxin− antitoxin system was selected as the efect module. The ccd system consists of two genes, ccdA and ccdB. ccdB encodes the toxic protein CcdB, which inhibits the DNA gyrase and results in cell death. Another gene ccdA encodes the antitoxic protein CcdA, which protects cells from the toxic efects of CcdB.<sup>31</sup>\n\nIn a synthetic competitive ecosystem, we engineered two E. coli strains CG and CR (Figure 1a,c). Green fluorescent protein (GFP) and red fluorescent protein (RFP) were integrated into the genomes of CG and CR, respectively. In CG, the intact tra\\* system self-induced the expression of CcdA, and the partial las system controlled the expression of CcdB. In CR, the intact las system self-induced the expression of CcdA, and the partial tra\\* system controlled the expression of CcdB (Figure 1c). The expression of CcdB in each strain was induced by the HSL produced by the other strains. Specifically, strain CG produced a basal level of 3OC6HSL at low population densities. When suficient signals accumulated in the environment, they bound to receptor TraR(W), and then CcdA and CcdB were activated in CG and CR, respectively. In parallel, strain CR produced 3OC12HSL, resulting in CcdA expression in CR and CcdB expression in CG. This microbial consortium was designed to mutually inhibit growth, so we defined it as synthetic competitive ecosystem (Figure 1a,c). In this system, both strains contained a positive feedback loop and a negative feedback loop. The positive feedback caused self-rescue through the cis-acting HSL activation of antitoxin, and the negative feedback limited population size through the trans-acting HSL activation of toxin (Figure 1a).\n\na\n![](images/d8c0d8963bebb6aab6cf80a78c052ad2be6dff58956b19a23ab63e1cbccb5e41.jpg)\n\nb\n![](images/86c7a71021a00727a963055d795c99dcde9c5afb061e473bce1f5e5c602649ca.jpg)\n\nC\n![](images/ea2b02cb02d2bbb57e6c37112f2a1b89afdb676ffc75b7ed1b33c1d03bffd0fc.jpg)\n\nd\n![](images/5085ac3251d2dc039c3b6ae2e5b717a14a9d9c66b1aee3135c7fbff6978a1566.jpg)\nFigure 2. Characterization of strains CGs and CRs. (a) Characterization of CG01. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (b) Characterization of CG02. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (c) Characterization of CR01. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. (d) Characterization of CR02. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. Data show the means ± SD of three experiments.\n\nIn the synthetic symbiotic ecosystem, strains SG and SR were engineered (Figure 1b,d). GFP and RFP were genome integrated, respectively. An intact las system and tra\\* system regulated the self-induction of CcdB in SG and SR, respectively. A partial tra\\* system and las system controlled the expression of CcdA in SG and SR, respectively (Figure 1d). Expression of CcdA in each strain was induced by HSL produced by the other strain. Specifically, SG produced 3OC12HSL to activate CcdB expression in SG and CcdA expression in SR. Similarly, SR produced 3OC6HSL, resulting in CcdB expression in SR and CcdA expression in SG. Consequently, the two strains exhibited mutually protective behaviors; thus, we defined it as synthetic symbiotic ecosystem (Figure 1b,d). Each strain contained negative feedback causing self-limitation through the cis-acting HSL activation of toxin and positive feedback causing population rescue through the trans-acting HSL activation of antitoxin (Figure 1b).\n\nTwo ecological relationships were constructed by simply reconfiguring the layout between the communication and efect modules. From the perspective of genetic circuit elements, the interchange of the cis-acting and trans-acting activation of the efect module in each strain resulted in the transformation of ecological interaction. In terms of strain interaction, the transition from competition to symbiosis was realized by altering each strain’s aggressive behavior into suicidal behavior. These systems demonstrated that module reconfiguration can be universally implemented to design diferent synthetic ecosystems. In addition, as receptors and promoters of diferent QS systems were expressed in the same cell, the completely orthogonal QS systems were indispensable to the construction of these synthetic ecosystems.\n\nCharacterization of Synthetic Competitive Ecosystem. Several strains of CG and CR were engineered according to the design. The regulation of the expression of key genes was necessary to realize the desired ecological relationship; therefore, diferent ribosome binding sites (RBSs) were used to control HSL synthases, CcdA, and CcdB. This enabled regulation of the synthesis rate of HSLs and the expression of the efect module. Representative strains with the desired characteristics were selected according to their growth under the addition of diferent HSLs. Since dead cells afected the detection of cell density, and it is dificult to distinguish diferent strains through $\\mathrm { O D } _ { 6 0 0 }$ in coculture experiments, we unified an indirect method to monitor strain growth by detecting fluorescence expression. For strain CG, the addition of 3OC6HSL and 3OC12HSL induced the expression of CcdA and CcdB, respectively. When no inducer was added, a basal level of 3OC6HSL was produced and the expression of CcdA was self-induced when density reached a threshold. Two representative strains, CG01 and CG02, were selected according to their characterizations; the results are illustrated in Figure 2a,b. The growth of CG02 was inhibited as compared with that of CG01 when no inducer was added. This growth diference might be due to the diferent expression intensities of EsaI. The RBS of EsaI in CG02 was weaker than that in CG01, which led to reduced activation of CcdA in CG02. When CcdA expression was further activated by a high concentration of 3OC6HSL, CG02 restored the normal growth. When 3OC12HSL was added, the growth of CG01 and CG02 was suppressed.\n\nTwo ideal strains of CR, CR01, and CR02, were selected according to their characterization (Supplementary Tables S1 and S2). RFP expression was monitored along the growth curve by adding 3OC6HSL and 3OC12HSL (Figure 2c,d). When 10 μM 3OC6HSL was added to induce the expression of CcdB, CR01 and CR02 were inhibited to diferent degrees compared to when no inducer was added. The addition of 10 μM 3OC6HSL cannot completely inhibit the growth of CR01, but it reduced growth to a lower level that was subsequently maintained. CR02 was completely inhibited within 12 h. A concentration of 100 nM 3OC6HSL had no inhibitory efect on growth. The addition of 3OC12HSL resulted in no significant diference in growth compared with the groups without an inducer. RFP expression indicated that CR01 had a growth advantage compared with CR02, which might be due to the relatively low expression of CcdB in CR01 (Supplementary Tables S1 and S2). The corresponding cell densities of four representative strains are presented in Supplementary Figure S1. Strains were further cocultured in liquid medium (Supplementary Figure S2). Four combinations were generated through the pair-to-pair coculture of CG and CR. All strains were inhibited to diferent degrees in the coculture system as compared with the single-strain culture. We further identified the dominant strain in each combination by analyzing the subpopulation ratios (Supplementary Figure S3).\n\nTo visualize the interaction of the competitive ecosystem, a coculture on an agar plate was also performed (Figure 3). In each combination, four experiments with diferent spatial distributions between strains were presented. The characterization of single strains was shown in Supplementary Figure S4.\n\nIn Combination 1, strain CR01 exhibited an obvious growth advantage. When CG01 and CR01 were inoculated at the same position, CG01 could hardly grow. When two strains were grown adjacent to each other, CG01 grew only on the side away from CR01. When CR01 was surrounded by CG01, CR01 still dominated the community. The closer is the distance to CR01, the poorer is the growth of CG01. This phenomenon indicates that the interaction between strains in solid medium was closely related to the distance between them, which may be caused by the inability of HSLs to difuse rapidly and evenly in the solid medium. When CR01 grew around CG01, the spread of 3OC12HSL from all directions prevented CG01 from growing. Notably, although CG01 was hardly able to grow in this experiment, all CR01s tended to grow away from the inoculation position of CG01; that is, the fluorescence of the outer side was higher than that of the inner side. This phenomenon indicates that CG01 may have attacked CR01 by producing 3OC6HSL before it was killed.\n\nCombination 2 exhibited results contrary to those of Combination 1. CG01 was dominant in this coculture. Although both strains did not grow when they were inoculated at the same position, a growth advantage was observed in CG01 in the other three experiments. The characterization results of Combination 1 and Combination 2 suggest that CR01 had a growth advantage over CR02, which is consistent with the results observed in the liquid characterization of single strains (Figure 2). In Combination 3, CR01 was the dominant strain, and CG02 was barely able to survive. In Combination 4, the growth of both strains was considerably inhibited.\n\n![](images/b19e49e967f9ea7248ed53930c946125ba7e31104da50021b819a0e3f5885f91.jpg)\nFigure 3. Coculture of CGs and CRs on agar plate. In each combination, the upper left figure shows CG and CR dripped at the same position. The upper right figure shows CG and CR dripped adjacent to each other. The lower left figure shows CR surrounded by CG. The lower right figure shows CG surrounded by CR. (a) Combination 1: coculture of CG01 and CR01. (b) Combination 2: coculture of CG01 and CR02. (c) Combination 3: coculture of CG02 and CR01. (d) Combination 4: coculture of CG02 and CR02. Overnight cultured strains were washed three times, and 5 μL of the strains were dripped on the agar plate individually or in combination. The data shown are from one representative sample of three independent biological replicates.\n\nIn all, CGs and CRs exhibited a competitive relationship. Agar plate coculture results were consistent with the liquid characterization. This system also demonstrated that the dominant strain can be altered in synthetic competitive ecosystem through the regulation of the synthesis rate of HSLs and the expression of the efect module.\n\nCharacterization of Synthetic Symbiotic Ecosystem. In a synthetic symbiotic ecosystem, several SGs and SRs were engineered by altering diferent RBSs for key genes. Strains SG01 and SR01 were selected according to the fluorescence characterization by adding diferent HSLs (Figure 4 and Supplementary Table S1). For SG01, fluorescence was suppressed when no inducer or 3OC12HSL was added. Fluorescence increased with the addition of 3OC6HSL (Figure 4a). For strain SR01, growth was suppressed in the absence of the inducer. The addition of 3OC6HSL further reduced SR01 growth. Substantial growth recovery was observed when 3OC12HSL was added, and the fluorescence increased with the 3OC12HSL concentration (Figure 4b). The cell density characterization of single strains is illustrated in Supplementary Figure S5.\n\nSG01 and SR01 were further cocultured in liquid medium with diferent inoculation ratios (Figure 4c,d). GFP expression indicated that the relative fluorescence intensity of the coculture was significantly higher than that of the single strain SG01. GFP expression also increased with the inoculation ratio of SR01 (Figure 4c). This suggests that more SR01 contributed to the growth of SG01. RFP characterization indicated that the fluorescence of the coculture was higher than that of the single strain SR01 (Figure 4d). When the inoculation ratio of SR01 increased, no obvious growth diferences were observed (Figure 4d). To confirm the stability of the symbiotic ecosystem, a dilution experiment was conducted in the coculture system (Supplementary Figure S6). Strains still exhibited symbiotic characteristics after twice dilution. We also cocultured SG01 or SR01 with the control strains, which cannot produce signals (Supplementary Figure S7). Both SG01 and SR01 were unable to grow when they were cocultured with the control strains. Furthermore, a timecourse population proportion was analyzed for 72 h, and the two strains were demonstrated to stably coexist (Supplementary Figure S8).\n\na\n![](images/b8609ba3306d808a07da7fe2eff4dd69a8dda07a1930d9fb30b44873287b22bd.jpg)\n\nb\n![](images/ea773ce77133875ec9dacc65a069e8aee57f4bb826ded23025c9a7fb148df94b.jpg)\n\nC\n![](images/94b7952ad6ccf042da0b3d87cadc4a129947400e9a22650d425a0bf4d1223d5b.jpg)\n\nd\n![](images/5e9f60e015923664560a517fa0377e6a378a809f529411ff972b8657800043cc.jpg)\nFigure 4. Characterization of SG01 and SR01. (a) Characterization of SG01. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (b) Characterization of SR01. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. (c) GFP expression of the SG01 and SR01 coculture. Green line indicates the single strain SG01. (d) RFP expression of the SG01 and SR01 coculture. Red line indicates the single strain SR01. Data show the means ± SD of three experiments.\n\nSubsequently, we performed coculture characterization by dripping SG01 and SR01 on an agar plate without any inducer (Figure 5). When the two strains were dripped adjacent to each other, SR01 tended to grow toward SG01 (Figure 5a). When two droplets were in contact with each other, SR01 exhibited stronger growth and both strains tended to grow toward each other (Figure 5b). According to the characterization of dripping SR01 around SG01, the growth of SR01 was related to the distance from SG01 (Figure 5c). The growth of single strains on agar plate is illustrated in Supplementary Figure S9.\n\n![](images/0ce48599ceac98d58b2e1529ea58ea48369b37696d405fb864d7eb9aa3f928f7.jpg)\nFigure 5. Coculture of SG01 and SR01 on an agar plate. (a) SG01 and SR01 dripped adjacent to each other. (b) SG01 and SR01 dripped in contact with each other. (c) SG01 surrounded by SR01. Data are from one representative sample of three independent biological replicates.\n\nOverall, a symbiotic relationship between SG01 and SR01 was achieved in diferent culture media. Strains SG01 and SR01 had mutually beneficial efects on the other’s growth.\n\nPopulation Proportion Regulation by Inducible Synthetic Ecosystems. The composition of a bacterial community influences the community’s function. Thus, the regulation of subpopulation ratios has wide applicability. To achieve the regulation of subpopulation proportions, we engineered inducible synthetic ecosystems. QS promoters of HSL synthases were replaced with inducible promoters. In this manner, by changing signal expression from self-induced to inducer-induced, the production of autoinducers could be controlled with the addition of various concentrations of inducers. Therefore, the expression of CcdA and CcdB could be regulated to control subpopulation ratios.\n\na\n![](images/3c80a8b1c36fe3d541ad1f550f8c04cb9842de4c6f17151e93dbdedcd3c75d4f.jpg)\n\n![](images/c1a4395c0f5f3bb921564fa8b658aa62faa0fa9fbe293e0c0a129aa4e01d614f.jpg)\n\nb\n![](images/a9848d040c81c9bd1e33f071afb36200fe568a148671948954085e5dbcec72c9.jpg)\n\n![](images/fa078136c7cf89ea31d0f3627322d89814b167c38befac66b4a567670ed5e5ca.jpg)\n\ne\n![](images/ec685b545d4ad73f6e83d2a57b75d8ccd7480662baedfe557ef361e733636dc1.jpg)\n\n![](images/d269f44c72d7dc8671d4dc96c0012c82d2573f3227f4808429ce175647dc261a.jpg)\n\nAra\n![](images/52d5bb9d7a6bd631612cd4e12c2026dbe6afd80b9f8c995186b1ed980fbca874.jpg)\n\n![](images/a17634f1112dfc98d900f34f2a9fa14c6d0e149cf052446854dc8abf8dff8a07.jpg)\n\nf\n![](images/616c99a24a34a0b9c828bc8e7654f65684a182fb47a492ba5258dd7313910b4e.jpg)\n\n![](images/516b4c1484133f07e71dcdb2e3e9def627532cc70d417fc635728930a8a99ffd.jpg)\naTc\n\nAra\n![](images/d1bde9f49cac147c6464dd468699b0146d982e8bf4190bc9768309712e273fa8.jpg)\n\n![](images/0c32dc66129aba722485c90e1f048233f9820dfad3e8dd724b98935f10bc0108.jpg)\nFigure 6. Design of inducible synthetic ecosystems and the regulation of subpopulation ratios. (a) Pattern diagram of strains in the inducible synthetic competitive ecosystem. (b) Pattern diagram of strains in the inducible synthetic symbiotic ecosystem. (c) Design and interaction mechanism for CGi and CRi. (d) Design and interaction mechanism for SGi and SRi. (e) Regulation of the subpopulation ratio in the inducible synthetic competitive ecosystem. (f) Regulation of the subpopulation ratio in the inducible synthetic symbiotic ecosystem. Events in quadrant Q1 represent strains expressing RFP. Events in quadrant Q3 represent strains expressing GFP. Events in quadrant Q4 are impurities and dead cells. Data are from one representative sample of three independent biological replicates.\n\nWe engineered both inducible competitive and symbiotic ecosystems to regulate subpopulation ratios (Figure 6). In the inducible synthetic competitive ecosystem, the promoter of EsaI was replaced with the promoter induced by L-arabinose (Ara) in CG; this engineered strain was termed CGi. In strain CR, the promoter of LasI was substituted with the promoter induced by anhydrotetracycline (aTc); this engineered strain was termed CRi (Figure 6a, c). When Ara was added, CGi produced 3OC6HSL and activated CcdA expression. 3OC6HSL difused into CRi and activated CcdB expression. When aTc was added, 3OC12HSL produced by LasI induced the expression of CcdA in CRi and CcdB in CGi.\n\nIn an inducible synthetic symbiotic ecosystem, strains SGi and SRi were constructed. In SGi, the promoter induced by aTc was used to regulate LasI expression. In SRi, the promoter of EsaI was substituted with the promoter induced by Ara (Figure 6b,d). When Ara was added, SRi produced 3OC6HSL and induced the expression of CcdB in SRi and CcdA in SGi. When aTc was added, SGi expressed CcdB and SRi expressed CcdA.\n\nFour single strains in the inducible synthetic ecosystems were selected using the same method as in the synthetic competitive and symbiotic ecosystems. The characterization of four strains is illustrated in Supplementary Figure S10. Subpopulation ratios in each inducible synthetic ecosystem were regulated by adding four combinations of inducers (Supplementary Table S5). From Combinations I to IV, the concentration of Ara increased from 0 to 1300 μM, and the concentration of aTc decreased from 1000 ng/mL to 0 ng/mL. With the variation of inducers, the proportion of GFP strains increased and that of the RFP strains decreased.\n\nPopulation regulation in the inducible synthetic competitive ecosystem is displayed in Figure 6e. CGi and CRi were cocultivated in 24-well plate with the same inoculum and diferent combinations of inducers. Samples were analyzed using flow cytometry. The results demonstrated that the proportion of CGi increased from 22.2% to 92.8% and the proportion of CRi decreased from 71.3% to 3.14% when inducers were added from Combination I to IV (Figure 6e). All three independent replicates are displayed in Supplementary Figure S11. These results confirm that the population can be controlled quantitatively using an inducible competitive ecosystem. An inducible symbiotic ecosystem was also used to regulate subpopulation ratios by the same method. The ratio of SGi increased from 12.2% to 84.4%, and the ratio of SRi decreased from 81.1% to 10.4% (Figure 6f). All three independent replicates are displayed in Supplementary Figure S12. The time-course subpopulation ratio variations of the two inducible synthetic ecosystems are presented in Supplementary Figures S13 and S14. In contrast to the competitive ecosystem, the symbiotic ecosystem exhibited a relatively stable character istic.\n\nIn inducible synthetic ecosystems, the positive and negative feedback regulations of bacterial growth are relatively independent. In addition, communication module QS systems are not only necessary to realize an ecological relationship but also crucial to regulate the population. Therefore, we achieved subpopulation ratio regulation with inducible synthetic ecosystems. As a control, we constructed a No QS Control system (Supplementary Figure S15). Two strains, NG and NR, were engineered in this control system. They expressed the toxin−antitoxin system without the QS system. Compared with the synthetic ecosystems, the growth of the NG and NR coculture system was significantly inhibited, which was likely due to the lack of growth bufering by the QS system (Supplementary Figure S16). We also attempted to switch the dominant strain by adding inducers during coculture in the inducible competitive ecosystem and the No QS Control system (Supplementary Figure S17). Results revealed that the inducible competitive ecosystem realized the switchover of the dominant strain, whereas the No QS Control system did not (Supplementary Figure S17). Therefore, the QS system played a key role in population regulation.\n\nIn the inducible synthetic ecosystems, all ratio regulations were achieved in 1.5 mL of culture. Compared with synthetic communities that can regulate population in microfluidic devices, our systems enabled an enlarged regulation volume.<sup>20,26,32,33</sup> Microfluidics allow for a constant supply of nutrients or inducers to maintain a specific cellular physiological state. Restricted conditions of culture, such as the flow rate, are often needed to regulate population in this device.<sup>20,34</sup> Although microfluidics can achieve fine regulation, the restricted culture conditions limit its application. The synthetic ecosystems we designed enable larger population regulation volume and simplified culture conditions. Therefore, they have the potential for application in more research fields, such as metabolic engineering and environmental governance, as well as for use in therapeutic applications.\n\nSynthetic microbial consortia have also emerged as promising engineering tools to manipulate microbiomes, such as those in the rhizosphere and human body. Understanding and controlling complex microbial ecosystems has become a vital mission for microbiome science.<sup>35,36</sup> Looking forward, our engineering strategies need to become more flexible for efective transition from well-controlled laboratory conditions to realistic settings."
+          },
+          {
+            "id": "conclusion",
+            "title": "CONCLUSION",
+            "level": 2,
+            "content": "We designed and constructed synthetic competitive and symbiotic ecosystems through modular reconfiguration. These systems provide fundamental insights into the structure of ecological microbial relationships. On the basis of these synthetic ecosystems, two inducible synthetic ecosystems were developed, which enabled the regulation of subpopulation ratios. These proof-of-concept systems expand the toolkit of synthetic biology and contribute to both basic and applied research."
+          },
+          {
+            "id": "methods",
+            "title": "■ METHODS",
+            "level": 2,
+            "content": "Strains, Plasmids, and Culture Medium. E. coli DH5α was used for plasmid construction. E. coli Top10 was used to construct synthetic ecosystems. Other strains are listed in Supplementary Table S1. All plasmids are listed in Supplementary Table S2. Luria−Bertani (LB) broth (5 g/L yeast extract, 10 g/L tryptone, 10 g/L NaCl) was used for plasmid cloning, and LB agar (LB broth supplemented with 15 g/L agar powder) was used for plasmid construction. To maintain plasmids and screen recombinants, antibiotics (chloramphenicol, 34 μg/mL; kanamycin, 25 μg/mL; and ampicillin, 100 μg/mL) were used. 3OC6HSL (K3255; Sigma), 3OC12HSL (O9139; Sigma), aTc (Cat# 631310; TaKaRa) and Ara (Code 101253904; Sigma) were added as inducers, if required.\n\nIntegration of GFP and RFP into the Genome. GFP and RFP were integrated into the chromosome using the CRIM plasmid method.<sup>37</sup> Helper plasmid pAH69 was transferred into TOP10. Integration synthesis from the helper plasmids was induced at elevated temperature. pHK-GFP and pHK-RFP were electro-transformed into Top10 harbored pAH69 separately (Supplementary Table S2). We selected multicopy clones to enable a higher expression of reporter genes.\n\nCharacterization of Synthetic Ecosystems Strains in the Liquid and Solid Culture Media. In the liquid characterization, single colonies were transferred to 5 mL of LB broth with the appropriate antibiotics and corresponding HSL to ensure normal growth. Following culturing at 220 rpm and 37 °C for 12 h, 2% seeds were washed three times and inoculated in a 24-well microassay plate containing 1.5 mL of LB medium. Various concentrations of inducers were added to the medium according to the purpose of the experiments. A 24-well plate was cultured at 37 °C under vigorous shaking. Cell density and fluorescence were detected along the growth curve using a multi-detection microplate reader (Synergy HT, Biotek, USA).\n\nIn the agar plate characterization, single colonies were transferred to 5 mL of LB broth with appropriate antibiotics and corresponding HSL to ensure normal growth. Following culturing at 220 rpm and $3 7 ~ ^ { \\circ } \\mathrm { C }$ for 12 h, seeds were washed three times, and 5 μL of sample was dripped on the agar plate individually or in combination. The plates were incubated overnight and photographed with a multifunctional gel imager.\n\nCharacterization of Synthetic Ecosystem Using a Flow Cytometer. Strains were cultured in 5 mL of LB with 3OC6HSL or 3OC12HSL. Following culturing at 220 rpm and 37 °C for 12 h, 2% seeds were washed and inoculated into a 24-well microassay plate with 1.5 mL of LB medium and inducers (Supplementary Table S5). A 24-well plate was cultured at $3 7 ^ { \\circ } \\mathrm { C }$ under vigorous shaking for 12 h. Prior to flow cytometry analysis, strains were washed and diluted to OD less than 0.1 with phosphate bufered saline. Forward scatter and side scatter were used to determine microflora. A total of 20 000 events were collected for each sample. Green fluorescence and red fluorescence were detected in the FITC channel and PE-Texas Red channel, respectively."
+          },
+          {
+            "id": "associated_content",
+            "title": "■ ASSOCIATED CONTENT",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "s_supporting_information",
+            "title": "\\*sı Supporting Information",
+            "level": 2,
+            "content": "The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acssynbio.1c00354.\n\nStrains, plasmids, RBSs, and promoters used in this study; inducer combinations; additional figures supporting the text (PDF)"
+          },
+          {
+            "id": "author_information",
+            "title": "■ AUTHOR INFORMATION",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "corresponding_authors",
+            "title": "Corresponding Authors",
+            "level": 2,
+            "content": "Q<sub>uan</sub>f<sub>eng</sub> Li<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China; orcid.org/0000-0002-4289-2508; Phone: +86-532- 58631580; Email: liangquanfeng@sdu.edu.cn\n\nQi<sub>ngs</sub>h<sub>eng</sub> Qi − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China; orcid.org/0000-0001-5693-6797; Email: qiqingsheng@ sdu.edu.cn"
+          },
+          {
+            "id": "authors",
+            "title": "Authors",
+            "level": 2,
+            "content": "W<sub>e</sub>i Ji<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China\n\nXi<sub>aoya</sub> Y<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China\n\nF<sub>e</sub>i G<sub>u</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China\n\nXi<sub>aomeng</sub> Li − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China\n\nS<sub>umeng</sub> W<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China\n\nY<sub>ue</sub> L<sub>uo</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China\n\nComplete contact information is available at: https://pubs.acs.org/10.1021/acssynbio.1c00354"
+          },
+          {
+            "id": "author_contributions",
+            "title": "Author Contributions",
+            "level": 2,
+            "content": "Q.Q. and Q.L. conceived and supervised the project; W.J., X.Y., F.G., X.L., S.W., and Y.L. performed experiments; W.J. analyzed data and wrote the paper."
+          },
+          {
+            "id": "notes",
+            "title": "Notes",
+            "level": 2,
+            "content": "The authors declare no competing financial interest."
+          },
+          {
+            "id": "acknowledgments",
+            "title": "ACKNOWLEDGMENTS",
+            "level": 2,
+            "content": "This work was supported by the National Key Research and Development Program of China (2021YFC2103600), and National Natural Science Foundation of China (31961133014, 31770095, 31971336)."
+          },
+          {
+            "id": "references",
+            "title": "■ REFERENCES",
+            "level": 2,
+            "content": "(1) Song, H.; Ding, M. Z.; Jia, X. Q.; Ma, Q.; Yuan, Y. J. Synthetic microbial consortia: from systematic analysis to construction and applications. Chem. Soc. Rev. 2014, 43, 6954−6981.\n\n(2) Pang, Q.; Han, H.; Liu, X.; Wang, Z.; Liang, Q.; Hou, J.; Qi, Q.; Wang, Q. In vivo evolutionary engineering of riboswitch with highthreshold for N-acetylneuraminic acid production. Metab Eng. 2020, 59, 36−43.\n\n(3) Liang, Q. F.; Qi, Q. S. From a co-production design to an integrated single-cell biorefinery. Biotechnol Adv. 2014, 32, 1328− 1335.\n\n(4) Gu, F.; Jiang, W.; Mu, Y. L.; Huang, H.; Su, T. Y.; Luo, Y.; Liang, Q. F.; Qi, Q. S. Quorum Sensing-Based Dual-Function Switch and Its Application in Solving Two Key Metabolic Engineering Problems. ACS Synth. Biol. 2020, 9, 209−217.\n\n(5) Zhang, J.; Wang, Z. G.; Su, T. Y.; Sun, H. H.; Zhu, Y.; Qi, Q. S.; Wang, Q. Tuning the Binding Affinity of Heme-Responsive Biosensor for Precise and Dynamic Pathway Regulation. Iscience 2020, 23, 101067.\n\n(6) Karkaria, B. D.; Fedorec, A. J. H.; Barnes, C. P. Automated design of synthetic microbial communities. Nat. commun 2021, 12, 672.\n\n(7) De Roy, K.; Marzorati, M.; Van den Abbeele, P.; Van de Wiele, T.; Boon, N. Synthetic microbial ecosystems: an exciting tool to understand and apply microbial communities. Environ. Microbiol. 2014, 16, 1472−1481.\n\n(8) Liu, F.; Mao, J.; Kong, W.; Hua, Q.; Feng, Y.; Bashir, R.; Lu, T. Interaction variability shapes succession of synthetic microbial ecosystems. Nat. commun 2020, 11, 309.\n\n(9) de Vos, M. G. J.; Zagorski, M.; McNally, A.; Bollenbach, T. Interaction networks, ecological stability, and collective antibiotic tolerance in polymicrobial infections. Proc. Natl. Acad. Sci. U. S. A. 2017, 114, 10666−10671.\n\n(10) Ziesack, M.; Gibson, T.; Oliver, J. K. W.; Shumaker, A. M.; Hsu, B. B.; Riglar, D. T.; Giessen, T. W.; DiBenedetto, N. V.; Bry, L.; Way, J. C.; Silver, P. A.; Gerber, G. K. Engineered Interspecies Amino Acid Cross-Feeding Increases Population Evenness in a Synthetic Bacterial Consortium. Msystems 2019, 4, e00352−19.\n\n(11) Shou, W. Y.; Ram, S.; Vilar, J. M. G. Synthetic cooperation in engineered yeast populations. P Natl. Acad. Sci. USA 2007, 104, 1877−1882.\n\n(12) Hosoda, K.; Suzuki, S.; Yamauchi, Y.; Shiroguchi, Y.; Kashiwagi, A.; Ono, N.; Mori, K.; Yomo, T. Cooperative Adaptation to Establishment of a Synthetic Bacterial Mutualism. PLoS One 2011, 6, e17105.\n\n(13) Kerner, A.; Park, J.; Williams, A.; Lin, X. X. N. N. A Programmable Escherichia coli Consortium via Tunable Symbiosis. PLoS One 2012, 7, e34032.\n\n(14) Mee, M. T.; Collins, J. J.; Church, G. M.; Wang, H. H. Syntrophic exchange in synthetic microbial communities. P Natl. Acad. Sci. USA 2014, 111, E2149−E2156.\n\n(15) Stephens, K.; Bentley, W. E. Synthetic Biology for Manipulating Quorum Sensing in Microbial Consortia. Trends Microbiol 2020, 28, 633−643.\n\n(16) Ng, W. L.; Bassler, B. L. Bacterial Quorum-Sensing Network Architectures. Annu. Rev. Genet 2009, 43, 197−222.\n\n(17) Brenner, K.; Karig, D. K.; Weiss, R.; Arnold, F. H. Engineered bidirectional communication mediates a consensus in a microbial biofilm consortium. P Natl. Acad. Sci. USA 2007, 104, 17300−17304.\n\n(18) Hu, B.; Du, J.; Zou, R. Y.; Yuan, Y. J. An Environment-Sensitive Synthetic Microbial Ecosystem. PLoS One 2010, 5, e10619.\n\n(19) Ozgen, V. C.; Kong, W. T.; Blanchard, A. E.; Liu, F.; Lu, T. Spatial interference scale as a determinant of microbial range expansion. Sci. Adv. 2018, 4, eaau0695.\n\n(20) Balagadde, F. K.; Song, H.; Ozaki, J.; Collins, C. H.; Barnet, M.; Arnold, F. H.; Quake, S. R.; You, L. C. A synthetic Escherichia coli predator-prey ecosystem. Mol. Syst. Biol. 2008, 4, 187.\n\n(21) Song, H.; Payne, S.; Gray, M.; You, L. C. Spatiotemporal modulation of biodiversity in a synthetic chemical-mediated ecosystem. Nat. Chem. Biol. 2009, 5, 929−935.\n\n(22) Grandel, N. E.; Reyes Gamas, K.; Bennett, M. R. Control of synthetic microbial consortia in time, space, and composition. Trends Microbiol 2021, 29, 1095−1105.\n\n(23) McCardell, R. D.; Pandey, A.; Murray, R. M. Control of density and composition in an engineered two-member bacterial community. bioRxiv 2019, 632174.\n\n(24) McCardell, R. D.; Huang, S.; Green, L. N.; Murray, R. M. Control of bacterial population density with population feedback and molecular sequestration. bioRxiv 2017, 225045.\n\n(25) Ren, X. Y.; Baetica, A. A.; Swaminathan, A.; Murray, R. M. Population regulation in microbial consortia using dual feedback control. Ieee Decis Contr P 2017, 5341−7.\n\n(26) Scott, S. R.; Din, M. O.; Bittihn, P.; Xiong, L.; Tsimring, L. S.; Hasty, J. A stabilized microbial ecosystem of self-limiting bacteria using synthetic quorum-regulated lysis. Nat. Microbiol. 2017, 2, 17083.\n\n(27) Fedorec, A. J. H.; Karkaria, B. D.; Sulu, M.; Barnes, C. P. Single strain control of microbial consortia. Nat. Commun. 2021, 12, 1977.\n\n(28) Rapp, K. M.; Jenkins, J. P.; Betenbaugh, M. J. Partners for life: building microbial consortia for the future. Curr. Opin Biotech 2020, 66, 292−300.\n\n(29) Xia, P. F.; Ling, H.; Foo, J. L.; Chang, M. W. Synthetic genetic circuits for programmable biological functionalities. Biotechnol Adv. 2019, 37, 107393.\n\n(30) Jiang, W.; He, X. Y.; Luo, Y.; Mu, Y. L.; Gu, F.; Liang, Q. F.; Qi, Q. S. Two Completely Orthogonal Quorum Sensing Systems with Self-Produced Autoinducers Enable Automatic Delayed Cascade Control. ACS Synth. Biol. 2020, 9, 2588−2599.\n\n(31) Bahassi, E. M.; O’Dea, M. H.; Allali, N.; Messens, J.; Gellert, M.; Couturier, M. Interactions of CcdB with DNA gyrase - Inactivation of GyrA, poisoning of the gyrase-DNA complex, and the antidote action of CcdA. J. Biol. Chem. 1999, 274, 10936−10944.\n\n(32) Miano, A.; Liao, M. J.; Hasty, J. Inducible cell-to-cell signaling for tunable dynamics in microbial communities. Nat. Commun. 2020, 11, 1193.\n\n(33) Liao, M. J.; Din, M. O.; Tsinring, L.; Hasty, J. Rock-paperscissors: Engineered population dynamics increase genetic stability. Science 2019, 365, 1045.\n\n(34) Danino, T.; Mondragon-Palomino, O.; Tsimring, L.; Hasty, J. A synchronized quorum of genetic clocks. Nature 2010, 463, 326−330.\n\n(35) Hood, L. Tackling the microbiome. Science 2012, 336, 1209.\n\n(36) Kong, W. T.; Meldgin, D. R.; Collins, J. J.; Lu, T. Designing microbial consortia with defined social interactions. Nat. Chem. Biol. 2018, 14, 821.\n\n(37) Haldimann, A.; Wanner, B. L. Conditional-replication, integration, excision, and retrieval plasmid-host systems for gene structure-function studies of bacteria. J. bacteriol 2001, 183, 6384− 6393."
+          }
+        ],
+        "paragraphs": [
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p001",
+            "text": "Wei Jiang, Xiaoya Yang, Fei Gu, Xiaomeng Li, Sumeng Wang, Yue Luo, Qingsheng Qi,\\* and Quanfeng Liang\\*",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p002",
+            "text": "![](images/748b51a41877b3ac4b461c987b9ec73d91c8fa3de7dfe85c8a8d220dfe2b521d.jpg)",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p003",
+            "text": "Cite This: ACS Synth. Biol. 2022, 11, 538−546",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p004",
+            "text": "![](images/6a4325177fac1698eb4301e4e8a56f254cacf32e583f2b3310bfdffbc5e65611.jpg)",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p005",
+            "text": "Read Online",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p006",
+            "text": "ACCESS",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p007",
+            "text": "Metrics & More",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p008",
+            "text": "ABSTRACT: With the development of synthetic biology, the design and application of microbial consortia have received increasing attention. However, the construction of synthetic ecosystems is still hampered by our limited ability to rapidly develop microbial consortia with the required dynamics and functions. By using modular design, we constructed synthetic competitive and symbiotic ecosystems with Escherichia coli. Two ecological relationships were realized by reconfiguring the layout between the communication and efect modules. Furthermore, we designed inducible synthetic ecosystems to regulate subpopulation ratios. With the addition of diferent inducers, a wide range of",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p009",
+            "text": "Article Recommendations",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p010",
+            "text": "\\*sı Supporting Information",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p011",
+            "text": "![](images/d3e1d002e25565663c359fed8c29ee6e547d5e4e6eff5f96b96eddbc17374fa3.jpg)",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p012",
+            "text": "strain ratios between subpopulations was achieved. These inducible synthetic ecosystems enabled a larger volume of population regulation and simplified culture conditions. The synthetic ecosystems we constructed combined both basic and applied functionalities and expanded the toolkit of synthetic biology research.",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p013",
+            "text": "KEYWORDS: synthetic ecosystems, competition, symbiosis, population proportion regulation, microbial consortia",
+            "section": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion"
+          },
+          {
+            "paragraph_id": "introduction_p001",
+            "text": "The aim of synthetic biology is to design various complex biological modules, systems, and artificial organisms to generate new functions and behaviors.<sup>1−5</sup> The design of microbial consortia is an emerging frontier in synthetic biology. Microbial consortium is a complex network of interactions and coevolution between individuals and environment.<sup>6</sup> Exploring the roles of ecological interactions is critical to understanding community formation, functioning, and stability. However, such exploration is challenging in natural ecosystems because numerous environmental variables are dificult to control or measure.<sup>7</sup> As a result, synthetic microbial ecosystems have gained much interest because of their low complexity and strong controllability.<sup>7,8</sup> Synthetic microbial ecosystem is a collective term for all rationally designed ecosystems in which two or more defined microbial populations are designed in a well-characterized manner and controlled environment. Synthetic microbial ecosystems can be used to explore fundamental ecological topics, such as exploration of community ecological stability, intervention in community structure, and the prediction of key species.<sup>9,10</sup>",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p002",
+            "text": "Cross-feeding is a commonly used mechanism to construct synthetic mutualistic microbial ecosystems.<sup>10−14</sup> Shou et al. designed a synthetic cooperative ecosystem with the yeast Saccharomyces cerevisiae.<sup>11</sup> In this system, each yeast strain supplied an essential amino acid to the other strain. Hosoda et al. engineered a synthetic obligate mutualistic ecosystem by using two auxotrophic Escherichia coli: an isoleucine auxotroph and a leucine auxotroph.<sup>12</sup> Another widely recognized interaction method among microorganisms is mediated by quorum sensing (QS) systems.<sup>15</sup> The QS system is a population density-dependent communication mechanism that regulates gene expression and coordinates population behavior when populations reach a critical density. Bacteria with a QS system can synthesize signaling molecules homoserine lactone (HSL) also called autoinducers.<sup>16</sup> As an autoinduced communication tool, QS systems, in particular HSL-based QS systems, have been used in the engineering of microbial ecosystems, including symbiotic,<sup>17,18</sup> competitive,<sup>19</sup> and predator−prey ecosystems .<sup>20,21</sup> Hu et al. constructed a synthetic symbiosis microbial ecosystem by using LuxI/R and RhlI/R systems. This ecosystem contained two populations, and each activated the expression of a resistance gene in the other for mutual benefit.<sup>18</sup> Ozgen et al. constructed a competitive ecosystem to explore the role of spatial interference scale in governing ecosystem organization during range expansion.<sup>19</sup> Inspired by naturally occurring predator−",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p003",
+            "text": "![](images/d516581d0e1ec3c4b57fa92a7b1c0882a7f7494689d99e7f761a7d0dd7ee99c1.jpg)\nFigure 1. Design of synthetic competitive and symbiotic ecosystems. (a) Pattern diagram of strains in the synthetic competitive ecosystem. (b) Pattern diagram of strains in the synthetic symbiotic ecosystem. (c) Design and interaction mechanism for CG and CR. (d) Design and interaction mechanism for SG and SR.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p004",
+            "text": "prey interactions, Balagadde et al. constructed a synthetic\npredator−prey ecosystem by programming bidirectional 20\ncommunication.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p005",
+            "text": "Despite considerable progress, the construction of synthetic microbial ecosystems is still hampered by our limited ability to rapidly develop ecosystems with the required dynamics and functions. A general modular approach will facilitate various interactions through the recombination or reconfiguration of modules. Furthermore, the uncontrollable characteristics of synthetic ecosystems still limit their applications, for example, the dificulty in the control of the subpopulation proportion.<sup>22</sup> The species composition of a bacterial community is a partial determinant of community’s function. However, few theoretical models have been developed and few synthetic ecosystems have been constructed to experimentally regulate the composition of subpopulations. 23−25 Engineering a bacterial community with a controllable composition presents a unique challenge in terms of linking the genetic circuits that function inside individual cells to the number of each type of population. Kerner et al. programmed a symbiosis ecosystem in E. coli by cross-feeding amino acids. The strain ratios were tuned by regulating the expression of genes related to the export or production of two amino acids.<sup>13</sup> This circuit exhibited metabolic burden, and one of the two strains had a considerable growth advantage; therefore, the strain ratio could not be regulated symmetrically. In some application scenarios, such as in metabolic engineering, symmetrical population proportional adjustment is required. Several ecosystems have been used to alter cell densities by activating the production of toxins or lysis genes.<sup>26,27</sup> Although these systems are designed for dynamic population regulation, they remain unable to be used to control subpopulation ratios.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "introduction_p006",
+            "text": "In this study, we aimed to establish synthetic ecosystems that can realize diferent ecological interactions through module reconfiguration. QS systems were selected as the communication module for their versatility and simplicity. A toxin−antitoxin system was implemented as the efect module. By reconfiguring the layout between the communication and efect modules, we simulated competitive and symbiotic ecological relationships in synthetic microbial consortia. In both synthetic ecosystems, two independent feedback regulations were implemented in each strain to control the efect modules, which split the positive and negative regulations of growth. In addition, QS systems linked the interspecific communication with population density. Therefore, the two synthetic ecosystems we built had the potential to regulate subpopulation ratios. By transforming the expression of signal molecules from self-induced to inducer-induced, we further attempted to regulate subpopulation ratios and achieved a wide range of strain ratios between the two populations with the addition of diferent inducers. These synthetic microbial ecosystems provide new tools for microbial consortia applications.",
+            "section": "introduction"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p001",
+            "text": "Design of Synthetic Competitive and Symbiotic Ecosystems. The crosstalk between QS systems often causes the loss of circuit functions.<sup>28,29</sup> Therefore, orthogonal QS systems are necessary to enable noninterference communication between subpopulations. Two completely orthogonal QS systems we established in previous work, the tra\\* and the las systems, were utilized as the communication module to construct synthetic ecosystems.<sup>30</sup> A ccd operon coded toxin− antitoxin system was selected as the efect module. The ccd system consists of two genes, ccdA and ccdB. ccdB encodes the toxic protein CcdB, which inhibits the DNA gyrase and results in cell death. Another gene ccdA encodes the antitoxic protein CcdA, which protects cells from the toxic efects of CcdB.<sup>31</sup>",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "text": "In a synthetic competitive ecosystem, we engineered two E. coli strains CG and CR (Figure 1a,c). Green fluorescent protein (GFP) and red fluorescent protein (RFP) were integrated into the genomes of CG and CR, respectively. In CG, the intact tra\\* system self-induced the expression of CcdA, and the partial las system controlled the expression of CcdB. In CR, the intact las system self-induced the expression of CcdA, and the partial tra\\* system controlled the expression of CcdB (Figure 1c). The expression of CcdB in each strain was induced by the HSL produced by the other strains. Specifically, strain CG produced a basal level of 3OC6HSL at low population densities. When suficient signals accumulated in the environment, they bound to receptor TraR(W), and then CcdA and CcdB were activated in CG and CR, respectively. In parallel, strain CR produced 3OC12HSL, resulting in CcdA expression in CR and CcdB expression in CG. This microbial consortium was designed to mutually inhibit growth, so we defined it as synthetic competitive ecosystem (Figure 1a,c). In this system, both strains contained a positive feedback loop and a negative feedback loop. The positive feedback caused self-rescue through the cis-acting HSL activation of antitoxin, and the negative feedback limited population size through the trans-acting HSL activation of toxin (Figure 1a).",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "text": "a\n![](images/d8c0d8963bebb6aab6cf80a78c052ad2be6dff58956b19a23ab63e1cbccb5e41.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p004",
+            "text": "b\n![](images/86c7a71021a00727a963055d795c99dcde9c5afb061e473bce1f5e5c602649ca.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p005",
+            "text": "C\n![](images/ea2b02cb02d2bbb57e6c37112f2a1b89afdb676ffc75b7ed1b33c1d03bffd0fc.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p006",
+            "text": "d\n![](images/5085ac3251d2dc039c3b6ae2e5b717a14a9d9c66b1aee3135c7fbff6978a1566.jpg)\nFigure 2. Characterization of strains CGs and CRs. (a) Characterization of CG01. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (b) Characterization of CG02. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (c) Characterization of CR01. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. (d) Characterization of CR02. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. Data show the means ± SD of three experiments.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p007",
+            "text": "In the synthetic symbiotic ecosystem, strains SG and SR were engineered (Figure 1b,d). GFP and RFP were genome integrated, respectively. An intact las system and tra\\* system regulated the self-induction of CcdB in SG and SR, respectively. A partial tra\\* system and las system controlled the expression of CcdA in SG and SR, respectively (Figure 1d). Expression of CcdA in each strain was induced by HSL produced by the other strain. Specifically, SG produced 3OC12HSL to activate CcdB expression in SG and CcdA expression in SR. Similarly, SR produced 3OC6HSL, resulting in CcdB expression in SR and CcdA expression in SG. Consequently, the two strains exhibited mutually protective behaviors; thus, we defined it as synthetic symbiotic ecosystem (Figure 1b,d). Each strain contained negative feedback causing self-limitation through the cis-acting HSL activation of toxin and positive feedback causing population rescue through the trans-acting HSL activation of antitoxin (Figure 1b).",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p008",
+            "text": "Two ecological relationships were constructed by simply reconfiguring the layout between the communication and efect modules. From the perspective of genetic circuit elements, the interchange of the cis-acting and trans-acting activation of the efect module in each strain resulted in the transformation of ecological interaction. In terms of strain interaction, the transition from competition to symbiosis was realized by altering each strain’s aggressive behavior into suicidal behavior. These systems demonstrated that module reconfiguration can be universally implemented to design diferent synthetic ecosystems. In addition, as receptors and promoters of diferent QS systems were expressed in the same cell, the completely orthogonal QS systems were indispensable to the construction of these synthetic ecosystems.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "text": "Characterization of Synthetic Competitive Ecosystem. Several strains of CG and CR were engineered according to the design. The regulation of the expression of key genes was necessary to realize the desired ecological relationship; therefore, diferent ribosome binding sites (RBSs) were used to control HSL synthases, CcdA, and CcdB. This enabled regulation of the synthesis rate of HSLs and the expression of the efect module. Representative strains with the desired characteristics were selected according to their growth under the addition of diferent HSLs. Since dead cells afected the detection of cell density, and it is dificult to distinguish diferent strains through $\\mathrm { O D } _ { 6 0 0 }$ in coculture experiments, we unified an indirect method to monitor strain growth by detecting fluorescence expression. For strain CG, the addition of 3OC6HSL and 3OC12HSL induced the expression of CcdA and CcdB, respectively. When no inducer was added, a basal level of 3OC6HSL was produced and the expression of CcdA was self-induced when density reached a threshold. Two representative strains, CG01 and CG02, were selected according to their characterizations; the results are illustrated in Figure 2a,b. The growth of CG02 was inhibited as compared with that of CG01 when no inducer was added. This growth diference might be due to the diferent expression intensities of EsaI. The RBS of EsaI in CG02 was weaker than that in CG01, which led to reduced activation of CcdA in CG02. When CcdA expression was further activated by a high concentration of 3OC6HSL, CG02 restored the normal growth. When 3OC12HSL was added, the growth of CG01 and CG02 was suppressed.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p010",
+            "text": "Two ideal strains of CR, CR01, and CR02, were selected according to their characterization (Supplementary Tables S1 and S2). RFP expression was monitored along the growth curve by adding 3OC6HSL and 3OC12HSL (Figure 2c,d). When 10 μM 3OC6HSL was added to induce the expression of CcdB, CR01 and CR02 were inhibited to diferent degrees compared to when no inducer was added. The addition of 10 μM 3OC6HSL cannot completely inhibit the growth of CR01, but it reduced growth to a lower level that was subsequently maintained. CR02 was completely inhibited within 12 h. A concentration of 100 nM 3OC6HSL had no inhibitory efect on growth. The addition of 3OC12HSL resulted in no significant diference in growth compared with the groups without an inducer. RFP expression indicated that CR01 had a growth advantage compared with CR02, which might be due to the relatively low expression of CcdB in CR01 (Supplementary Tables S1 and S2). The corresponding cell densities of four representative strains are presented in Supplementary Figure S1. Strains were further cocultured in liquid medium (Supplementary Figure S2). Four combinations were generated through the pair-to-pair coculture of CG and CR. All strains were inhibited to diferent degrees in the coculture system as compared with the single-strain culture. We further identified the dominant strain in each combination by analyzing the subpopulation ratios (Supplementary Figure S3).",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p011",
+            "text": "To visualize the interaction of the competitive ecosystem, a coculture on an agar plate was also performed (Figure 3). In each combination, four experiments with diferent spatial distributions between strains were presented. The characterization of single strains was shown in Supplementary Figure S4.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p012",
+            "text": "In Combination 1, strain CR01 exhibited an obvious growth advantage. When CG01 and CR01 were inoculated at the same position, CG01 could hardly grow. When two strains were grown adjacent to each other, CG01 grew only on the side away from CR01. When CR01 was surrounded by CG01, CR01 still dominated the community. The closer is the distance to CR01, the poorer is the growth of CG01. This phenomenon indicates that the interaction between strains in solid medium was closely related to the distance between them, which may be caused by the inability of HSLs to difuse rapidly and evenly in the solid medium. When CR01 grew around CG01, the spread of 3OC12HSL from all directions prevented CG01 from growing. Notably, although CG01 was hardly able to grow in this experiment, all CR01s tended to grow away from the inoculation position of CG01; that is, the fluorescence of the outer side was higher than that of the inner side. This phenomenon indicates that CG01 may have attacked CR01 by producing 3OC6HSL before it was killed.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p013",
+            "text": "Combination 2 exhibited results contrary to those of Combination 1. CG01 was dominant in this coculture. Although both strains did not grow when they were inoculated at the same position, a growth advantage was observed in CG01 in the other three experiments. The characterization results of Combination 1 and Combination 2 suggest that CR01 had a growth advantage over CR02, which is consistent with the results observed in the liquid characterization of single strains (Figure 2). In Combination 3, CR01 was the dominant strain, and CG02 was barely able to survive. In Combination 4, the growth of both strains was considerably inhibited.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p014",
+            "text": "![](images/b19e49e967f9ea7248ed53930c946125ba7e31104da50021b819a0e3f5885f91.jpg)\nFigure 3. Coculture of CGs and CRs on agar plate. In each combination, the upper left figure shows CG and CR dripped at the same position. The upper right figure shows CG and CR dripped adjacent to each other. The lower left figure shows CR surrounded by CG. The lower right figure shows CG surrounded by CR. (a) Combination 1: coculture of CG01 and CR01. (b) Combination 2: coculture of CG01 and CR02. (c) Combination 3: coculture of CG02 and CR01. (d) Combination 4: coculture of CG02 and CR02. Overnight cultured strains were washed three times, and 5 μL of the strains were dripped on the agar plate individually or in combination. The data shown are from one representative sample of three independent biological replicates.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p015",
+            "text": "In all, CGs and CRs exhibited a competitive relationship. Agar plate coculture results were consistent with the liquid characterization. This system also demonstrated that the dominant strain can be altered in synthetic competitive ecosystem through the regulation of the synthesis rate of HSLs and the expression of the efect module.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p016",
+            "text": "Characterization of Synthetic Symbiotic Ecosystem. In a synthetic symbiotic ecosystem, several SGs and SRs were engineered by altering diferent RBSs for key genes. Strains SG01 and SR01 were selected according to the fluorescence characterization by adding diferent HSLs (Figure 4 and Supplementary Table S1). For SG01, fluorescence was suppressed when no inducer or 3OC12HSL was added. Fluorescence increased with the addition of 3OC6HSL (Figure 4a). For strain SR01, growth was suppressed in the absence of the inducer. The addition of 3OC6HSL further reduced SR01 growth. Substantial growth recovery was observed when 3OC12HSL was added, and the fluorescence increased with the 3OC12HSL concentration (Figure 4b). The cell density characterization of single strains is illustrated in Supplementary Figure S5.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p017",
+            "text": "SG01 and SR01 were further cocultured in liquid medium with diferent inoculation ratios (Figure 4c,d). GFP expression indicated that the relative fluorescence intensity of the coculture was significantly higher than that of the single strain SG01. GFP expression also increased with the inoculation ratio of SR01 (Figure 4c). This suggests that more SR01 contributed to the growth of SG01. RFP characterization indicated that the fluorescence of the coculture was higher than that of the single strain SR01 (Figure 4d). When the inoculation ratio of SR01 increased, no obvious growth diferences were observed (Figure 4d). To confirm the stability of the symbiotic ecosystem, a dilution experiment was conducted in the coculture system (Supplementary Figure S6). Strains still exhibited symbiotic characteristics after twice dilution. We also cocultured SG01 or SR01 with the control strains, which cannot produce signals (Supplementary Figure S7). Both SG01 and SR01 were unable to grow when they were cocultured with the control strains. Furthermore, a timecourse population proportion was analyzed for 72 h, and the two strains were demonstrated to stably coexist (Supplementary Figure S8).",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p018",
+            "text": "a\n![](images/b8609ba3306d808a07da7fe2eff4dd69a8dda07a1930d9fb30b44873287b22bd.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p019",
+            "text": "b\n![](images/ea773ce77133875ec9dacc65a069e8aee57f4bb826ded23025c9a7fb148df94b.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p020",
+            "text": "C\n![](images/94b7952ad6ccf042da0b3d87cadc4a129947400e9a22650d425a0bf4d1223d5b.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p021",
+            "text": "d\n![](images/5e9f60e015923664560a517fa0377e6a378a809f529411ff972b8657800043cc.jpg)\nFigure 4. Characterization of SG01 and SR01. (a) Characterization of SG01. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (b) Characterization of SR01. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. (c) GFP expression of the SG01 and SR01 coculture. Green line indicates the single strain SG01. (d) RFP expression of the SG01 and SR01 coculture. Red line indicates the single strain SR01. Data show the means ± SD of three experiments.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p022",
+            "text": "Subsequently, we performed coculture characterization by dripping SG01 and SR01 on an agar plate without any inducer (Figure 5). When the two strains were dripped adjacent to each other, SR01 tended to grow toward SG01 (Figure 5a). When two droplets were in contact with each other, SR01 exhibited stronger growth and both strains tended to grow toward each other (Figure 5b). According to the characterization of dripping SR01 around SG01, the growth of SR01 was related to the distance from SG01 (Figure 5c). The growth of single strains on agar plate is illustrated in Supplementary Figure S9.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "text": "![](images/0ce48599ceac98d58b2e1529ea58ea48369b37696d405fb864d7eb9aa3f928f7.jpg)\nFigure 5. Coculture of SG01 and SR01 on an agar plate. (a) SG01 and SR01 dripped adjacent to each other. (b) SG01 and SR01 dripped in contact with each other. (c) SG01 surrounded by SR01. Data are from one representative sample of three independent biological replicates.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p024",
+            "text": "Overall, a symbiotic relationship between SG01 and SR01 was achieved in diferent culture media. Strains SG01 and SR01 had mutually beneficial efects on the other’s growth.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p025",
+            "text": "Population Proportion Regulation by Inducible Synthetic Ecosystems. The composition of a bacterial community influences the community’s function. Thus, the regulation of subpopulation ratios has wide applicability. To achieve the regulation of subpopulation proportions, we engineered inducible synthetic ecosystems. QS promoters of HSL synthases were replaced with inducible promoters. In this manner, by changing signal expression from self-induced to inducer-induced, the production of autoinducers could be controlled with the addition of various concentrations of inducers. Therefore, the expression of CcdA and CcdB could be regulated to control subpopulation ratios.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p026",
+            "text": "a\n![](images/3c80a8b1c36fe3d541ad1f550f8c04cb9842de4c6f17151e93dbdedcd3c75d4f.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p027",
+            "text": "![](images/c1a4395c0f5f3bb921564fa8b658aa62faa0fa9fbe293e0c0a129aa4e01d614f.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p028",
+            "text": "b\n![](images/a9848d040c81c9bd1e33f071afb36200fe568a148671948954085e5dbcec72c9.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p029",
+            "text": "![](images/fa078136c7cf89ea31d0f3627322d89814b167c38befac66b4a567670ed5e5ca.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p030",
+            "text": "e\n![](images/ec685b545d4ad73f6e83d2a57b75d8ccd7480662baedfe557ef361e733636dc1.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p031",
+            "text": "![](images/d269f44c72d7dc8671d4dc96c0012c82d2573f3227f4808429ce175647dc261a.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p032",
+            "text": "Ara\n![](images/52d5bb9d7a6bd631612cd4e12c2026dbe6afd80b9f8c995186b1ed980fbca874.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p033",
+            "text": "![](images/a17634f1112dfc98d900f34f2a9fa14c6d0e149cf052446854dc8abf8dff8a07.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p034",
+            "text": "f\n![](images/616c99a24a34a0b9c828bc8e7654f65684a182fb47a492ba5258dd7313910b4e.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p035",
+            "text": "![](images/516b4c1484133f07e71dcdb2e3e9def627532cc70d417fc635728930a8a99ffd.jpg)\naTc",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p036",
+            "text": "Ara\n![](images/d1bde9f49cac147c6464dd468699b0146d982e8bf4190bc9768309712e273fa8.jpg)",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p037",
+            "text": "![](images/0c32dc66129aba722485c90e1f048233f9820dfad3e8dd724b98935f10bc0108.jpg)\nFigure 6. Design of inducible synthetic ecosystems and the regulation of subpopulation ratios. (a) Pattern diagram of strains in the inducible synthetic competitive ecosystem. (b) Pattern diagram of strains in the inducible synthetic symbiotic ecosystem. (c) Design and interaction mechanism for CGi and CRi. (d) Design and interaction mechanism for SGi and SRi. (e) Regulation of the subpopulation ratio in the inducible synthetic competitive ecosystem. (f) Regulation of the subpopulation ratio in the inducible synthetic symbiotic ecosystem. Events in quadrant Q1 represent strains expressing RFP. Events in quadrant Q3 represent strains expressing GFP. Events in quadrant Q4 are impurities and dead cells. Data are from one representative sample of three independent biological replicates.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p038",
+            "text": "We engineered both inducible competitive and symbiotic ecosystems to regulate subpopulation ratios (Figure 6). In the inducible synthetic competitive ecosystem, the promoter of EsaI was replaced with the promoter induced by L-arabinose (Ara) in CG; this engineered strain was termed CGi. In strain CR, the promoter of LasI was substituted with the promoter induced by anhydrotetracycline (aTc); this engineered strain was termed CRi (Figure 6a, c). When Ara was added, CGi produced 3OC6HSL and activated CcdA expression. 3OC6HSL difused into CRi and activated CcdB expression. When aTc was added, 3OC12HSL produced by LasI induced the expression of CcdA in CRi and CcdB in CGi.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p039",
+            "text": "In an inducible synthetic symbiotic ecosystem, strains SGi and SRi were constructed. In SGi, the promoter induced by aTc was used to regulate LasI expression. In SRi, the promoter of EsaI was substituted with the promoter induced by Ara (Figure 6b,d). When Ara was added, SRi produced 3OC6HSL and induced the expression of CcdB in SRi and CcdA in SGi. When aTc was added, SGi expressed CcdB and SRi expressed CcdA.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p040",
+            "text": "Four single strains in the inducible synthetic ecosystems were selected using the same method as in the synthetic competitive and symbiotic ecosystems. The characterization of four strains is illustrated in Supplementary Figure S10. Subpopulation ratios in each inducible synthetic ecosystem were regulated by adding four combinations of inducers (Supplementary Table S5). From Combinations I to IV, the concentration of Ara increased from 0 to 1300 μM, and the concentration of aTc decreased from 1000 ng/mL to 0 ng/mL. With the variation of inducers, the proportion of GFP strains increased and that of the RFP strains decreased.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p041",
+            "text": "Population regulation in the inducible synthetic competitive ecosystem is displayed in Figure 6e. CGi and CRi were cocultivated in 24-well plate with the same inoculum and diferent combinations of inducers. Samples were analyzed using flow cytometry. The results demonstrated that the proportion of CGi increased from 22.2% to 92.8% and the proportion of CRi decreased from 71.3% to 3.14% when inducers were added from Combination I to IV (Figure 6e). All three independent replicates are displayed in Supplementary Figure S11. These results confirm that the population can be controlled quantitatively using an inducible competitive ecosystem. An inducible symbiotic ecosystem was also used to regulate subpopulation ratios by the same method. The ratio of SGi increased from 12.2% to 84.4%, and the ratio of SRi decreased from 81.1% to 10.4% (Figure 6f). All three independent replicates are displayed in Supplementary Figure S12. The time-course subpopulation ratio variations of the two inducible synthetic ecosystems are presented in Supplementary Figures S13 and S14. In contrast to the competitive ecosystem, the symbiotic ecosystem exhibited a relatively stable character istic.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p042",
+            "text": "In inducible synthetic ecosystems, the positive and negative feedback regulations of bacterial growth are relatively independent. In addition, communication module QS systems are not only necessary to realize an ecological relationship but also crucial to regulate the population. Therefore, we achieved subpopulation ratio regulation with inducible synthetic ecosystems. As a control, we constructed a No QS Control system (Supplementary Figure S15). Two strains, NG and NR, were engineered in this control system. They expressed the toxin−antitoxin system without the QS system. Compared with the synthetic ecosystems, the growth of the NG and NR coculture system was significantly inhibited, which was likely due to the lack of growth bufering by the QS system (Supplementary Figure S16). We also attempted to switch the dominant strain by adding inducers during coculture in the inducible competitive ecosystem and the No QS Control system (Supplementary Figure S17). Results revealed that the inducible competitive ecosystem realized the switchover of the dominant strain, whereas the No QS Control system did not (Supplementary Figure S17). Therefore, the QS system played a key role in population regulation.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p043",
+            "text": "In the inducible synthetic ecosystems, all ratio regulations were achieved in 1.5 mL of culture. Compared with synthetic communities that can regulate population in microfluidic devices, our systems enabled an enlarged regulation volume.<sup>20,26,32,33</sup> Microfluidics allow for a constant supply of nutrients or inducers to maintain a specific cellular physiological state. Restricted conditions of culture, such as the flow rate, are often needed to regulate population in this device.<sup>20,34</sup> Although microfluidics can achieve fine regulation, the restricted culture conditions limit its application. The synthetic ecosystems we designed enable larger population regulation volume and simplified culture conditions. Therefore, they have the potential for application in more research fields, such as metabolic engineering and environmental governance, as well as for use in therapeutic applications.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p044",
+            "text": "Synthetic microbial consortia have also emerged as promising engineering tools to manipulate microbiomes, such as those in the rhizosphere and human body. Understanding and controlling complex microbial ecosystems has become a vital mission for microbiome science.<sup>35,36</sup> Looking forward, our engineering strategies need to become more flexible for efective transition from well-controlled laboratory conditions to realistic settings.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "conclusion_p001",
+            "text": "We designed and constructed synthetic competitive and symbiotic ecosystems through modular reconfiguration. These systems provide fundamental insights into the structure of ecological microbial relationships. On the basis of these synthetic ecosystems, two inducible synthetic ecosystems were developed, which enabled the regulation of subpopulation ratios. These proof-of-concept systems expand the toolkit of synthetic biology and contribute to both basic and applied research.",
+            "section": "conclusion"
+          },
+          {
+            "paragraph_id": "methods_p001",
+            "text": "Strains, Plasmids, and Culture Medium. E. coli DH5α was used for plasmid construction. E. coli Top10 was used to construct synthetic ecosystems. Other strains are listed in Supplementary Table S1. All plasmids are listed in Supplementary Table S2. Luria−Bertani (LB) broth (5 g/L yeast extract, 10 g/L tryptone, 10 g/L NaCl) was used for plasmid cloning, and LB agar (LB broth supplemented with 15 g/L agar powder) was used for plasmid construction. To maintain plasmids and screen recombinants, antibiotics (chloramphenicol, 34 μg/mL; kanamycin, 25 μg/mL; and ampicillin, 100 μg/mL) were used. 3OC6HSL (K3255; Sigma), 3OC12HSL (O9139; Sigma), aTc (Cat# 631310; TaKaRa) and Ara (Code 101253904; Sigma) were added as inducers, if required.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p002",
+            "text": "Integration of GFP and RFP into the Genome. GFP and RFP were integrated into the chromosome using the CRIM plasmid method.<sup>37</sup> Helper plasmid pAH69 was transferred into TOP10. Integration synthesis from the helper plasmids was induced at elevated temperature. pHK-GFP and pHK-RFP were electro-transformed into Top10 harbored pAH69 separately (Supplementary Table S2). We selected multicopy clones to enable a higher expression of reporter genes.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p003",
+            "text": "Characterization of Synthetic Ecosystems Strains in the Liquid and Solid Culture Media. In the liquid characterization, single colonies were transferred to 5 mL of LB broth with the appropriate antibiotics and corresponding HSL to ensure normal growth. Following culturing at 220 rpm and 37 °C for 12 h, 2% seeds were washed three times and inoculated in a 24-well microassay plate containing 1.5 mL of LB medium. Various concentrations of inducers were added to the medium according to the purpose of the experiments. A 24-well plate was cultured at 37 °C under vigorous shaking. Cell density and fluorescence were detected along the growth curve using a multi-detection microplate reader (Synergy HT, Biotek, USA).",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p004",
+            "text": "In the agar plate characterization, single colonies were transferred to 5 mL of LB broth with appropriate antibiotics and corresponding HSL to ensure normal growth. Following culturing at 220 rpm and $3 7 ~ ^ { \\circ } \\mathrm { C }$ for 12 h, seeds were washed three times, and 5 μL of sample was dripped on the agar plate individually or in combination. The plates were incubated overnight and photographed with a multifunctional gel imager.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p005",
+            "text": "Characterization of Synthetic Ecosystem Using a Flow Cytometer. Strains were cultured in 5 mL of LB with 3OC6HSL or 3OC12HSL. Following culturing at 220 rpm and 37 °C for 12 h, 2% seeds were washed and inoculated into a 24-well microassay plate with 1.5 mL of LB medium and inducers (Supplementary Table S5). A 24-well plate was cultured at $3 7 ^ { \\circ } \\mathrm { C }$ under vigorous shaking for 12 h. Prior to flow cytometry analysis, strains were washed and diluted to OD less than 0.1 with phosphate bufered saline. Forward scatter and side scatter were used to determine microflora. A total of 20 000 events were collected for each sample. Green fluorescence and red fluorescence were detected in the FITC channel and PE-Texas Red channel, respectively.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "s_supporting_information_p001",
+            "text": "The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acssynbio.1c00354.",
+            "section": "s_supporting_information"
+          },
+          {
+            "paragraph_id": "s_supporting_information_p002",
+            "text": "Strains, plasmids, RBSs, and promoters used in this study; inducer combinations; additional figures supporting the text (PDF)",
+            "section": "s_supporting_information"
+          },
+          {
+            "paragraph_id": "corresponding_authors_p001",
+            "text": "Q<sub>uan</sub>f<sub>eng</sub> Li<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China; orcid.org/0000-0002-4289-2508; Phone: +86-532- 58631580; Email: liangquanfeng@sdu.edu.cn",
+            "section": "corresponding_authors"
+          },
+          {
+            "paragraph_id": "corresponding_authors_p002",
+            "text": "Qi<sub>ngs</sub>h<sub>eng</sub> Qi − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China; orcid.org/0000-0001-5693-6797; Email: qiqingsheng@ sdu.edu.cn",
+            "section": "corresponding_authors"
+          },
+          {
+            "paragraph_id": "authors_p001",
+            "text": "W<sub>e</sub>i Ji<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p002",
+            "text": "Xi<sub>aoya</sub> Y<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p003",
+            "text": "F<sub>e</sub>i G<sub>u</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p004",
+            "text": "Xi<sub>aomeng</sub> Li − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p005",
+            "text": "S<sub>umeng</sub> W<sub>ang</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p006",
+            "text": "Y<sub>ue</sub> L<sub>uo</sub> − State Key Laboratory of Microbial Technology, Shandong University, Qingdao 266000, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p007",
+            "text": "Complete contact information is available at: https://pubs.acs.org/10.1021/acssynbio.1c00354",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "author_contributions_p001",
+            "text": "Q.Q. and Q.L. conceived and supervised the project; W.J., X.Y., F.G., X.L., S.W., and Y.L. performed experiments; W.J. analyzed data and wrote the paper.",
+            "section": "author_contributions"
+          },
+          {
+            "paragraph_id": "notes_p001",
+            "text": "The authors declare no competing financial interest.",
+            "section": "notes"
+          },
+          {
+            "paragraph_id": "acknowledgments_p001",
+            "text": "This work was supported by the National Key Research and Development Program of China (2021YFC2103600), and National Natural Science Foundation of China (31961133014, 31770095, 31971336).",
+            "section": "acknowledgments"
+          },
+          {
+            "paragraph_id": "references_p001",
+            "text": "(1) Song, H.; Ding, M. Z.; Jia, X. Q.; Ma, Q.; Yuan, Y. J. Synthetic microbial consortia: from systematic analysis to construction and applications. Chem. Soc. Rev. 2014, 43, 6954−6981.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p002",
+            "text": "(2) Pang, Q.; Han, H.; Liu, X.; Wang, Z.; Liang, Q.; Hou, J.; Qi, Q.; Wang, Q. In vivo evolutionary engineering of riboswitch with highthreshold for N-acetylneuraminic acid production. Metab Eng. 2020, 59, 36−43.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p003",
+            "text": "(3) Liang, Q. F.; Qi, Q. S. From a co-production design to an integrated single-cell biorefinery. Biotechnol Adv. 2014, 32, 1328− 1335.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p004",
+            "text": "(4) Gu, F.; Jiang, W.; Mu, Y. L.; Huang, H.; Su, T. Y.; Luo, Y.; Liang, Q. F.; Qi, Q. S. Quorum Sensing-Based Dual-Function Switch and Its Application in Solving Two Key Metabolic Engineering Problems. ACS Synth. Biol. 2020, 9, 209−217.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p005",
+            "text": "(5) Zhang, J.; Wang, Z. G.; Su, T. Y.; Sun, H. H.; Zhu, Y.; Qi, Q. S.; Wang, Q. Tuning the Binding Affinity of Heme-Responsive Biosensor for Precise and Dynamic Pathway Regulation. Iscience 2020, 23, 101067.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p006",
+            "text": "(6) Karkaria, B. D.; Fedorec, A. J. H.; Barnes, C. P. Automated design of synthetic microbial communities. Nat. commun 2021, 12, 672.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p007",
+            "text": "(7) De Roy, K.; Marzorati, M.; Van den Abbeele, P.; Van de Wiele, T.; Boon, N. Synthetic microbial ecosystems: an exciting tool to understand and apply microbial communities. Environ. Microbiol. 2014, 16, 1472−1481.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p008",
+            "text": "(8) Liu, F.; Mao, J.; Kong, W.; Hua, Q.; Feng, Y.; Bashir, R.; Lu, T. Interaction variability shapes succession of synthetic microbial ecosystems. Nat. commun 2020, 11, 309.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p009",
+            "text": "(9) de Vos, M. G. J.; Zagorski, M.; McNally, A.; Bollenbach, T. Interaction networks, ecological stability, and collective antibiotic tolerance in polymicrobial infections. Proc. Natl. Acad. Sci. U. S. A. 2017, 114, 10666−10671.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p010",
+            "text": "(10) Ziesack, M.; Gibson, T.; Oliver, J. K. W.; Shumaker, A. M.; Hsu, B. B.; Riglar, D. T.; Giessen, T. W.; DiBenedetto, N. V.; Bry, L.; Way, J. C.; Silver, P. A.; Gerber, G. K. Engineered Interspecies Amino Acid Cross-Feeding Increases Population Evenness in a Synthetic Bacterial Consortium. Msystems 2019, 4, e00352−19.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p011",
+            "text": "(11) Shou, W. Y.; Ram, S.; Vilar, J. M. G. Synthetic cooperation in engineered yeast populations. P Natl. Acad. Sci. USA 2007, 104, 1877−1882.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p012",
+            "text": "(12) Hosoda, K.; Suzuki, S.; Yamauchi, Y.; Shiroguchi, Y.; Kashiwagi, A.; Ono, N.; Mori, K.; Yomo, T. Cooperative Adaptation to Establishment of a Synthetic Bacterial Mutualism. PLoS One 2011, 6, e17105.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p013",
+            "text": "(13) Kerner, A.; Park, J.; Williams, A.; Lin, X. X. N. N. A Programmable Escherichia coli Consortium via Tunable Symbiosis. PLoS One 2012, 7, e34032.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p014",
+            "text": "(14) Mee, M. T.; Collins, J. J.; Church, G. M.; Wang, H. H. Syntrophic exchange in synthetic microbial communities. P Natl. Acad. Sci. USA 2014, 111, E2149−E2156.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p015",
+            "text": "(15) Stephens, K.; Bentley, W. E. Synthetic Biology for Manipulating Quorum Sensing in Microbial Consortia. Trends Microbiol 2020, 28, 633−643.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p016",
+            "text": "(16) Ng, W. L.; Bassler, B. L. Bacterial Quorum-Sensing Network Architectures. Annu. Rev. Genet 2009, 43, 197−222.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p017",
+            "text": "(17) Brenner, K.; Karig, D. K.; Weiss, R.; Arnold, F. H. Engineered bidirectional communication mediates a consensus in a microbial biofilm consortium. P Natl. Acad. Sci. USA 2007, 104, 17300−17304.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p018",
+            "text": "(18) Hu, B.; Du, J.; Zou, R. Y.; Yuan, Y. J. An Environment-Sensitive Synthetic Microbial Ecosystem. PLoS One 2010, 5, e10619.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p019",
+            "text": "(19) Ozgen, V. C.; Kong, W. T.; Blanchard, A. E.; Liu, F.; Lu, T. Spatial interference scale as a determinant of microbial range expansion. Sci. Adv. 2018, 4, eaau0695.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p020",
+            "text": "(20) Balagadde, F. K.; Song, H.; Ozaki, J.; Collins, C. H.; Barnet, M.; Arnold, F. H.; Quake, S. R.; You, L. C. A synthetic Escherichia coli predator-prey ecosystem. Mol. Syst. Biol. 2008, 4, 187.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p021",
+            "text": "(21) Song, H.; Payne, S.; Gray, M.; You, L. C. Spatiotemporal modulation of biodiversity in a synthetic chemical-mediated ecosystem. Nat. Chem. Biol. 2009, 5, 929−935.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p022",
+            "text": "(22) Grandel, N. E.; Reyes Gamas, K.; Bennett, M. R. Control of synthetic microbial consortia in time, space, and composition. Trends Microbiol 2021, 29, 1095−1105.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p023",
+            "text": "(23) McCardell, R. D.; Pandey, A.; Murray, R. M. Control of density and composition in an engineered two-member bacterial community. bioRxiv 2019, 632174.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p024",
+            "text": "(24) McCardell, R. D.; Huang, S.; Green, L. N.; Murray, R. M. Control of bacterial population density with population feedback and molecular sequestration. bioRxiv 2017, 225045.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p025",
+            "text": "(25) Ren, X. Y.; Baetica, A. A.; Swaminathan, A.; Murray, R. M. Population regulation in microbial consortia using dual feedback control. Ieee Decis Contr P 2017, 5341−7.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p026",
+            "text": "(26) Scott, S. R.; Din, M. O.; Bittihn, P.; Xiong, L.; Tsimring, L. S.; Hasty, J. A stabilized microbial ecosystem of self-limiting bacteria using synthetic quorum-regulated lysis. Nat. Microbiol. 2017, 2, 17083.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p027",
+            "text": "(27) Fedorec, A. J. H.; Karkaria, B. D.; Sulu, M.; Barnes, C. P. Single strain control of microbial consortia. Nat. Commun. 2021, 12, 1977.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p028",
+            "text": "(28) Rapp, K. M.; Jenkins, J. P.; Betenbaugh, M. J. Partners for life: building microbial consortia for the future. Curr. Opin Biotech 2020, 66, 292−300.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p029",
+            "text": "(29) Xia, P. F.; Ling, H.; Foo, J. L.; Chang, M. W. Synthetic genetic circuits for programmable biological functionalities. Biotechnol Adv. 2019, 37, 107393.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p030",
+            "text": "(30) Jiang, W.; He, X. Y.; Luo, Y.; Mu, Y. L.; Gu, F.; Liang, Q. F.; Qi, Q. S. Two Completely Orthogonal Quorum Sensing Systems with Self-Produced Autoinducers Enable Automatic Delayed Cascade Control. ACS Synth. Biol. 2020, 9, 2588−2599.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p031",
+            "text": "(31) Bahassi, E. M.; O’Dea, M. H.; Allali, N.; Messens, J.; Gellert, M.; Couturier, M. Interactions of CcdB with DNA gyrase - Inactivation of GyrA, poisoning of the gyrase-DNA complex, and the antidote action of CcdA. J. Biol. Chem. 1999, 274, 10936−10944.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p032",
+            "text": "(32) Miano, A.; Liao, M. J.; Hasty, J. Inducible cell-to-cell signaling for tunable dynamics in microbial communities. Nat. Commun. 2020, 11, 1193.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p033",
+            "text": "(33) Liao, M. J.; Din, M. O.; Tsinring, L.; Hasty, J. Rock-paperscissors: Engineered population dynamics increase genetic stability. Science 2019, 365, 1045.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p034",
+            "text": "(34) Danino, T.; Mondragon-Palomino, O.; Tsimring, L.; Hasty, J. A synchronized quorum of genetic clocks. Nature 2010, 463, 326−330.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p035",
+            "text": "(35) Hood, L. Tackling the microbiome. Science 2012, 336, 1209.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p036",
+            "text": "(36) Kong, W. T.; Meldgin, D. R.; Collins, J. J.; Lu, T. Designing microbial consortia with defined social interactions. Nat. Chem. Biol. 2018, 14, 821.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p037",
+            "text": "(37) Haldimann, A.; Wanner, B. L. Conditional-replication, integration, excision, and retrieval plasmid-host systems for gene structure-function studies of bacteria. J. bacteriol 2001, 183, 6384− 6393.",
+            "section": "references"
+          }
+        ]
+      },
+      "figure_map": {
+        "figures": [
+          {
+            "figure_id": "Figure 1",
+            "caption": "Design of synthetic competitive and symbiotic ecosystems. (a) Pattern diagram of strains in the synthetic competitive ecosystem. (b) Pattern diagram of strains in the synthetic symbiotic ecosystem. (c) Design and interaction mechanism for CG and CR. (d) Design and interaction mechanism for SG and SR.",
+            "related_paragraphs": [
+              "introduction_p003"
+            ]
+          },
+          {
+            "figure_id": "Figure 2",
+            "caption": "Characterization of strains CGs and CRs. (a) Characterization of CG01. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (b) Characterization of CG02. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (c) Characterization of CR01. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. (d) Characterization of CR02. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. Data show the means ± SD of three experiments.",
+            "related_paragraphs": [
+              "results_and_discussion_p006",
+              "results_and_discussion_p013"
+            ]
+          },
+          {
+            "figure_id": "Figure 3",
+            "caption": "Coculture of CGs and CRs on agar plate. In each combination, the upper left figure shows CG and CR dripped at the same position. The upper right figure shows CG and CR dripped adjacent to each other. The lower left figure shows CR surrounded by CG. The lower right figure shows CG surrounded by CR. (a) Combination 1: coculture of CG01 and CR01. (b) Combination 2: coculture of CG01 and CR02. (c) Combination 3: coculture of CG02 and CR01. (d) Combination 4: coculture of CG02 and CR02. Overnight cultured strains were washed three times, and 5 μL of the strains were dripped on the agar plate individually or in combination. The data shown are from one representative sample of three independent biological replicates.",
+            "related_paragraphs": [
+              "results_and_discussion_p011",
+              "results_and_discussion_p014"
+            ]
+          },
+          {
+            "figure_id": "Figure 4",
+            "caption": "Characterization of SG01 and SR01. (a) Characterization of SG01. 3OC6HSL induced CcdA expression; 3OC12HSL induced CcdB expression. (b) Characterization of SR01. 3OC6HSL induced CcdB expression; 3OC12HSL induced CcdA expression. (c) GFP expression of the SG01 and SR01 coculture. Green line indicates the single strain SG01. (d) RFP expression of the SG01 and SR01 coculture. Red line indicates the single strain SR01. Data show the means ± SD of three experiments.",
+            "related_paragraphs": [
+              "results_and_discussion_p016",
+              "results_and_discussion_p021"
+            ]
+          },
+          {
+            "figure_id": "Figure 5",
+            "caption": "Coculture of SG01 and SR01 on an agar plate. (a) SG01 and SR01 dripped adjacent to each other. (b) SG01 and SR01 dripped in contact with each other. (c) SG01 surrounded by SR01. Data are from one representative sample of three independent biological replicates.",
+            "related_paragraphs": [
+              "results_and_discussion_p022",
+              "results_and_discussion_p023"
+            ]
+          },
+          {
+            "figure_id": "Figure 6",
+            "caption": "Design of inducible synthetic ecosystems and the regulation of subpopulation ratios. (a) Pattern diagram of strains in the inducible synthetic competitive ecosystem. (b) Pattern diagram of strains in the inducible synthetic symbiotic ecosystem. (c) Design and interaction mechanism for CGi and CRi. (d) Design and interaction mechanism for SGi and SRi. (e) Regulation of the subpopulation ratio in the inducible synthetic competitive ecosystem. (f) Regulation of the subpopulation ratio in the inducible synthetic symbiotic ecosystem. Events in quadrant Q1 represent strains expressing RFP. Events in quadrant Q3 represent strains expressing GFP. Events in quadrant Q4 are impurities and dead cells. Data are from one representative sample of three independent biological replicates.",
+            "related_paragraphs": [
+              "results_and_discussion_p037",
+              "results_and_discussion_p038"
+            ]
+          }
+        ]
+      },
+      "table_map": {
+        "tables": []
+      },
+      "citation_map": {
+        "citations": []
+      },
+      "modification_log": {
+        "changes": []
+      },
+      "cleaning_quality_report": {
+        "noise_removed": 0,
+        "tables_fixed": 0,
+        "figures_preserved": 6,
+        "tables_preserved": 0,
+        "citations_preserved": true,
+        "sections_preserved": true,
+        "missing_sections": [],
+        "confidence": 1.0
+      }
+    },
+    "cleaning_report": {
+      "noise_removed": 0,
+      "tables_fixed": 0,
+      "figures_preserved": 6,
+      "tables_preserved": 0,
+      "citations_preserved": true,
+      "sections_preserved": true,
+      "missing_sections": [],
+      "confidence": 1.0
+    }
+  },
+  "artifacts": [
+    {
+      "artifact_id": "artifact:37880077f1d614a153473135",
+      "media_type": "text/markdown",
+      "sha256": "37880077f1d614a1534731353f54518c5460a7336883475ff3b08f56394d7e1b",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.md"
+    },
+    {
+      "artifact_id": "artifact:10ffcc123741d43306829fbc",
+      "media_type": "application/json",
+      "sha256": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.json"
+    }
+  ],
+  "self_check": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "sections_preserved",
+        "passed": true
+      },
+      {
+        "name": "protected_scientific_values",
+        "passed": true
+      },
+      {
+        "name": "citations_preserved",
+        "passed": true
+      },
+      {
+        "name": "no_new_scientific_text",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_section_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_figure_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_table_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_text_consistency",
+        "passed": true
+      }
+    ],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "changes_count": 0,
+    "noise_removed": 0,
+    "tables_fixed": 0,
+    "paragraphs": 120,
+    "duration_ms": 75.106
+  },
+  "provenance": {
+    "skill_id": "skill06_markdown_cleaner",
+    "skill_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "input_hash": "sha256:b86f1b3e49bd4e6a0d00c29057e92682c560b0c97cf4ccd48f5a0190237ed466",
+    "output_hash": "sha256:90e11dd62a1626905da53410ea2f6d30e24335feeaaa354b3d7d7042918eb008",
+    "source_artifact_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+    "source_sha256": "c2c683c5d8fbe79cca0079a920d1d360164a48c1df575a3b8985a38d520d3565",
+    "cleaned_at": "2026-08-10T15:27:50.618253+00:00",
+    "change_map": []
+  },
+  "review_requests": []
+}

@@ -1,0 +1,17 @@
+version: skill08_validation_rules_v3
+contract_version: skill08_evidence_contract_v2
+verdicts: [verified, unsupported, unresolved, conflicted]
+dimension_statuses: [passed, failed, unresolved, conflicted, not_applicable]
+verified_requires: [existence, attribution, semantic_support]
+candidate_immutable: true
+candidate_evidence_role: candidate
+verified_evidence_role: verified
+critical_ddr_claims: [design_action, trigger_observation, rationale, implementation, outcome]
+knowledge_admission_rules_version: knowledge_admission_rules_v2
+allow_claim_level_partial: true
+rule_output_role: single_paper_rule_candidate
+forbidden_rule_roles: [verified_rule, approved_rule, general_rule]
+biological_attribution_contract: skill08_biological_attribution_contract_v1
+biological_failure_prevents_verified: true
+ambiguous_coreference: unresolved
+coreference_window: [current_unit, immediately_preceding_same_section_unit]

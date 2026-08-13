@@ -1,0 +1,430 @@
+{
+  "status": "completed_lawful_recovery_pass",
+  "total_attempted": 10,
+  "fulltext_recovered": 5,
+  "identity_verified": 2,
+  "identity_probable_or_insufficient": 3,
+  "annotation_ready_verified": 2,
+  "results": [
+    {
+      "candidate_id": "paper_6edc47062e4719d3",
+      "doi": "10.1007/s10295-011-0978-8",
+      "title": "Development of l-tryptophan production strains by defined genetic modification in Escherichia coli",
+      "state": "not_pdf",
+      "failure_reason": "NOT_PDF",
+      "source_url": null,
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        }
+      ],
+      "identity_verification": null,
+      "local_path": null
+    },
+    {
+      "candidate_id": "paper_b9ea21673e7a2cc4",
+      "doi": "10.1007/s00449-021-02630-7",
+      "title": "Metabolic control analysis of L-tryptophan producing Escherichia coli applying targeted perturbation with shikimate",
+      "state": "acquired",
+      "failure_reason": null,
+      "source_url": "https://link.springer.com/content/pdf/10.1007/s00449-021-02630-7.pdf",
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        },
+        {
+          "source": "download",
+          "url": "https://link.springer.com/content/pdf/10.1007/s00449-021-02630-7.pdf",
+          "status": "downloaded",
+          "bytes": 1809223
+        }
+      ],
+      "identity_verification": {
+        "status": "VERIFIED",
+        "expected_doi": "10.1007/s00449-021-02630-7",
+        "doi_found": true,
+        "title_similarity": 0.214,
+        "first_author_match": true,
+        "venue_match": true,
+        "year_plausible": true,
+        "page_count": 23,
+        "sha256": "7e250d0e1a550109c0516084a62f062aa9b82c58a5a5320a78c2865391d5afb9"
+      },
+      "local_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\literature_verification\\pdfs\\10.1007_s00449-021-02630-7.pdf"
+    },
+    {
+      "candidate_id": "paper_165bc7645631fa6b",
+      "doi": "10.3390/fermentation11050267",
+      "title": "Improvement of L-Tryptophan Production in Escherichia coli Using Biosensor-Based, High-Throughput Screening and Metabolic Engineering",
+      "state": "not_pdf",
+      "failure_reason": "NOT_PDF",
+      "source_url": null,
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        }
+      ],
+      "identity_verification": null,
+      "local_path": null
+    },
+    {
+      "candidate_id": "paper_a0ebd4f4a93e44f9",
+      "doi": "10.1128/jb.91.4.1494-1508.1966",
+      "title": "Distribution and Function of Genes Concerned with Aromatic Biosynthesis in Escherichia coli",
+      "state": "acquired",
+      "failure_reason": null,
+      "source_url": "https://europepmc.org/articles/PMC316068?pdf=render",
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        },
+        {
+          "source": "download",
+          "url": "https://europepmc.org/articles/PMC316068?pdf=render",
+          "status": "downloaded",
+          "bytes": 2093163
+        }
+      ],
+      "identity_verification": {
+        "status": "INSUFFICIENT_METADATA",
+        "expected_doi": "10.1128/jb.91.4.1494-1508.1966",
+        "doi_found": false,
+        "title_similarity": 0.024,
+        "first_author_match": true,
+        "venue_match": false,
+        "year_plausible": true,
+        "page_count": 15,
+        "sha256": "db51b6b8ea6870fa18271221b60ca06854864d19cd1e10672710bfdc18347aed"
+      },
+      "local_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\literature_verification\\pdfs\\10.1128_jb.91.4.1494-1508.1966.pdf"
+    },
+    {
+      "candidate_id": "paper_f315a5bed9777365",
+      "doi": "10.1111/j.1462-2920.2006.01143.x",
+      "title": "Temporal gene‐expression in Escherichia coli K‐12 biofilms",
+      "state": "no_oa_source",
+      "failure_reason": "PAYWALL_OR_NO_LEGAL_FULLTEXT",
+      "source_url": null,
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        }
+      ],
+      "identity_verification": null,
+      "local_path": null
+    },
+    {
+      "candidate_id": "paper_15f725b9020158af",
+      "doi": "10.3390/pr7040213",
+      "title": "Metabolic Engineering and Fermentation Process Strategies for L-Tryptophan Production by Escherichia coli",
+      "state": "not_pdf",
+      "failure_reason": "NOT_PDF",
+      "source_url": null,
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        }
+      ],
+      "identity_verification": null,
+      "local_path": null
+    },
+    {
+      "candidate_id": "paper_2aae905b63be2435",
+      "doi": "10.1007/s10295-018-2106-5",
+      "title": "Metabolic engineering for improving l -tryptophan production in Escherichia coli",
+      "state": "http_error",
+      "failure_reason": "HTTP_ERROR",
+      "source_url": null,
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        }
+      ],
+      "identity_verification": null,
+      "local_path": null
+    },
+    {
+      "candidate_id": "paper_25fccf802fa0782d",
+      "doi": "10.1186/1475-2859-11-30",
+      "title": "One-step of tryptophan attenuator inactivation and promoter swapping to improve the production of L-tryptophan in Escherichia coli",
+      "state": "acquired",
+      "failure_reason": null,
+      "source_url": "https://microbialcellfactories.biomedcentral.com/counter/pdf/10.1186/1475-2859-11-30",
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        },
+        {
+          "source": "download",
+          "url": "https://microbialcellfactories.biomedcentral.com/counter/pdf/10.1186/1475-2859-11-30",
+          "status": "downloaded",
+          "bytes": 774507
+        }
+      ],
+      "identity_verification": {
+        "status": "INSUFFICIENT_METADATA",
+        "expected_doi": "10.1186/1475-2859-11-30",
+        "doi_found": false,
+        "title_similarity": 0.2255,
+        "first_author_match": true,
+        "venue_match": true,
+        "year_plausible": true,
+        "page_count": 9,
+        "sha256": "4b318caedf4011f4157e2da6b3e73faefecaf1f8ab4484ad008e488525fea033"
+      },
+      "local_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\literature_verification\\pdfs\\10.1186_1475-2859-11-30.pdf"
+    },
+    {
+      "candidate_id": "paper_db18be686c5c0f5c",
+      "doi": "10.3390/microorganisms8040519",
+      "title": "Engineering Improves Enzymatic Synthesis of L-Tryptophan by Tryptophan Synthase from Escherichia coli",
+      "state": "acquired",
+      "failure_reason": null,
+      "source_url": "https://europepmc.org/articles/PMC7232222?pdf=render",
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        },
+        {
+          "source": "download",
+          "url": "https://europepmc.org/articles/PMC7232222?pdf=render",
+          "status": "downloaded",
+          "bytes": 3212655
+        }
+      ],
+      "identity_verification": {
+        "status": "VERIFIED",
+        "expected_doi": "10.3390/microorganisms8040519",
+        "doi_found": true,
+        "title_similarity": 0.19,
+        "first_author_match": true,
+        "venue_match": true,
+        "year_plausible": true,
+        "page_count": 11,
+        "sha256": "f6ecf2e418396f5a4ffdb671c05f08876c9c03c2ca5fbf7b0c3eab262d702c9a"
+      },
+      "local_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\literature_verification\\pdfs\\10.3390_microorganisms8040519.pdf"
+    },
+    {
+      "candidate_id": "paper_01e86be84a14eb29",
+      "doi": "10.1128/jb.104.1.177-188.1970",
+      "title": "Formation of Aromatic Amino Acid Pools in Escherichia coli K-12",
+      "state": "acquired",
+      "failure_reason": null,
+      "source_url": "https://europepmc.org/articles/PMC248198?pdf=render",
+      "attempts": [
+        {
+          "source": "ncbi_idconv",
+          "status": "ok"
+        },
+        {
+          "source": "unpaywall",
+          "status": "config_required",
+          "reason": "CONFIG_REQUIRED"
+        },
+        {
+          "source": "openalex",
+          "status": "ok"
+        },
+        {
+          "source": "semantic_scholar",
+          "status": "failed",
+          "reason": "HTTPStatusError"
+        },
+        {
+          "source": "crossref",
+          "status": "ok"
+        },
+        {
+          "source": "download",
+          "url": "https://europepmc.org/articles/PMC248198?pdf=render",
+          "status": "downloaded",
+          "bytes": 1707324
+        }
+      ],
+      "identity_verification": {
+        "status": "INSUFFICIENT_METADATA",
+        "expected_doi": "10.1128/jb.104.1.177-188.1970",
+        "doi_found": false,
+        "title_similarity": 0.0076,
+        "first_author_match": true,
+        "venue_match": false,
+        "year_plausible": true,
+        "page_count": 12,
+        "sha256": "621649d3fe927b1b1770cd248761332ff60bca77b1746bb3a37acbcb0ecee167"
+      },
+      "local_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\literature_verification\\pdfs\\10.1128_jb.104.1.177-188.1970.pdf"
+    }
+  ]
+}

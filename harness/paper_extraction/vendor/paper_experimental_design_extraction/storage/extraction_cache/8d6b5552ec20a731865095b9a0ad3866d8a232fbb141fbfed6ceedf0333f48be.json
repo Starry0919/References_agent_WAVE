@@ -1,0 +1,1146 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Develop phage-resistant Escherichia coli host strains for laboratory and industrial bioprocesses by simultaneous genomic integration of the DNA phosphorothioation-based SspBCDE defense module and mutation of host components essential for phage infection cycles, while preserving growth and recombinant protein production capability.",
+        "status": "reported",
+        "confidence": 0.98,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p002",
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+          "discussion_p024"
+        ],
+        "notes": "Stated in abstract and Introduction ('In this work, we choose the E. coli MG1655, MG1655 (DE3), and W3110 strains... with the objective of constructing E. coli host strains with broad antiphage activities')."
+      },
+      "hypothesis": {
+        "value": "Combining a sequence-independent PT-modification-based restriction barrier (SspBCDE, which is non-toxic to hosts lacking sspABCD) with removal/mutation of phage-essential host factors (FhuA receptor loop 8 for T1/T5/phi80; TrxA processivity factor for T7) will confer broader and stronger phage resistance than either mechanism alone, without impairing cell growth or recombinant protein production.",
+        "status": "inferred",
+        "confidence": 0.75,
+        "extraction_method": "structural_inference",
+        "inference": {
+          "method": "synthesis of explicit design rationale statements across Introduction and Results",
+          "rationale": "Paper states SspBCDE alone did not protect against T5 (results_p001, EOP data) and that 'To achieve a sufficient level of tolerance to phages T5 and T7, the elements in the MG1655-PT strain that are essential to the infection cycle of these phages were modified' (results_p004/p006); Introduction states SspE is non-toxic unlike R-M systems (p005). The combined-strategy hypothesis is implied by the 3-step design and Fig. 5 schematic but is not stated verbatim as a formal hypothesis."
+        },
+        "evidence_ids": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p005",
+          "results_p004",
+          "results_p006",
+          "discussion_p016"
+        ],
+        "notes": "No explicit 'we hypothesize' statement; hypothesis reconstructed from design logic."
+      },
+      "strain": {
+        "value": {
+          "primary_engineered_targets": [
+            {
+              "paper_label": "MG1655-EPR",
+              "normalized": "Escherichia coli K-12 MG1655 with chromosomal int(aslA-glmZ)::sspBCDE (SS9 site), fhuA(Delta552-558 NSEG loop8 replacement), Delta trxA",
+              "role": "engineered"
+            },
+            {
+              "paper_label": "W3110-EPR",
+              "normalized": "Escherichia coli K-12 W3110 with chromosomal sspBCDE integration, fhuA loop8 mutation, Delta trxA",
+              "role": "engineered"
+            },
+            {
+              "paper_label": "MG1655 (DE3)-EPR",
+              "normalized": "Escherichia coli K-12 MG1655(DE3) with chromosomal sspBCDE integration, fhuA loop8 mutation, Delta trxA",
+              "role": "engineered"
+            }
+          ],
+          "intermediate_strains": [
+            {
+              "paper_label": "MG1655 (pWHU3640)",
+              "role": "plasmid-based validation strain"
+            },
+            {
+              "paper_label": "E. coli-PT (MG1655-PT, W3110-PT, MG1655(DE3)-PT)",
+              "role": "intermediate engineered strain (sspBCDE integrated only)"
+            }
+          ],
+          "parental_or_control_strains": [
+            "WT-MG1655",
+            "WT-W3110",
+            "WT-MG1655(DE3)",
+            "MG1655 (pBluescript II SK+ empty vector control)"
+          ],
+          "additional_validation_hosts": [
+            "E. coli K-12 BW25113",
+            "E. coli JM109",
+            "E. coli B OP50",
+            "wild-type E. coli W"
+          ],
+          "cloning_host": "E. coli DH10B (plasmid cloning/maintenance only)",
+          "module_donor": "E. coli 3234/A (source of sspBCDE gene cassette; not an experimental host)"
+        },
+        "status": "reported",
+        "confidence": 0.97,
+        "extraction_method": "full_text_reading",
+        "evidence_ids": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+          "results_p001",
+          "results_p002",
+          "results_p006",
+          "methods_p001",
+          "methods_p003",
+          "methods_p007"
+        ],
+        "notes": "Exact genotype details and full strain/plasmid list deferred to Supplementary Data 2 / Supplementary Table 2, which were not available in the parsed document; MG1655(DE3) is a lysogenized DE3 derivative of MG1655 (standard meaning retained as normalization, paper treats it as distinct parental strain)."
+      },
+      "genotype": {
+        "value": {
+          "MG1655-PT": "int(aslA-glmZ)::sspBCD (two-step double crossover at SS9 via pKOV-Kan vector pWHU6401) plus sspE integrated by lambda-red recombineering (FRT-flanked Kan cassette from pKD13, removed with pCP20); confirmed by genome sequencing",
+          "MG1655-EPR": "MG1655-PT + fhuA(Delta552-558 NSEG) [deletion of residues 552-558 encoding extracellular loop 8, with NESG/NSEG peptide inserted to preserve beta-barrel formation] + Delta trxA; both via pKOV-Kan two-step double-crossover (pWHU6402, pWHU6403)",
+          "W3110-PT / W3110-EPR": "same engineering scheme in W3110 background (Supplementary Fig. 5)",
+          "MG1655(DE3)-PT / MG1655(DE3)-EPR": "same engineering scheme in MG1655(DE3) background (Supplementary Fig. 5)",
+          "plasmids": "pWHU3640 = pBluescript II SK(+) carrying ~8 kb sspBCDE from E. coli 3234/A (BamHI/HindIII, Gibson assembly); pWHU6404 = pET-28a(+) carrying SARS-CoV-2 nsp8 under T7 promoter (NdeI/XhoI); pGEMKT-DAAO = gift from Qiang Li lab, constitutively expressing dao from Trigonopsis variabilis"
+        },
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "methods_p002",
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "methods_p006",
+          "methods_p007",
+          "results_p002",
+          "results_p006",
+          "results_p009",
+          "results_p010",
+          "acknowledgements_p001"
+        ],
+        "notes": "Methods text spells the inserted peptide both as 'NSEG' (heading) and 'NESG' (body) in methods_p006; flagged in conflicts. Final marker-free genotypes verified by genome sequencing per methods_p005; full primer sequences in Supplementary Data 3 (not available)."
+      },
+      "engineering_method": {
+        "value": "Three-step genome engineering strategy: (1) chromosomal integration of the sspBCD cluster at safe site SS9 (aslA-glmZ intergenic region) using pKOV-Kan two-step double-crossover gene replacement; (2) lambda Red-mediated recombineering to integrate sspE adjacent to sspBCD, FRT/Kan marker removal with pCP20 FLP recombinase, plasmid curing at 42 C, verification by colony PCR and genome sequencing; (3) sequential two-step double-crossover mutations deleting FhuA extracellular loop 8 (fhuA Delta552-558 with NESG peptide insertion) and deleting trxA. Prior plasmid-based validation used pWHU3640 (Gibson assembly into pBluescript II SK(+)).",
+        "status": "reported",
+        "confidence": 0.96,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p002",
+          "methods_p002",
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "methods_p006",
+          "methods_p007",
+          "discussion_p024"
+        ],
+        "notes": "Discussion describes this as a '3-step feasible strategy'. Intermediate strain naming: E. coli int(aslA-glmZ)::sspBCD then E. coli-PT then E. coli-EPR."
+      },
+      "experimental_groups": {
+        "value": [
+          {
+            "experiment_id": "EXP1_plasmid_defense_validation",
+            "groups": "MG1655(pWHU3640) vs MG1655(pBluescript II SK+); growth curves with/without phage challenge at MOI 0.05, 0.5, 5; plaque morphology; EOP across hosts MG1655, MG1655(DE3), W3110, BW25113, JM109, OP50, E. coli W"
+          },
+          {
+            "experiment_id": "EXP2_genome_engineered_strains",
+            "groups": "WT vs plasmid-bearing vs -PT vs -EPR for each of MG1655, W3110, MG1655(DE3) backgrounds; plaque assays and EOP comparison"
+          },
+          {
+            "experiment_id": "EXP3_growth_under_phage_challenge",
+            "groups": "MG1655-EPR challenged with EEP, T1, T5, JMPW2, T7, T4 at indicated MOIs; controls: WT-MG1655 and MG1655-EPR untreated, WT-MG1655 at MOI 0.01; phage cocktail growth curves for WT and EPR strains (cocktail added at OD600 0.6)"
+          },
+          {
+            "experiment_id": "EXP4_flask_protein_production",
+            "groups": "DAAO: WT-MG1655(pGEMKT-DAAO), MG1655-EPR(pGEMKT-DAAO), WT-W3110(pGEMKT-DAAO), W3110-EPR(pGEMKT-DAAO), each +/- phage cocktail; nsp8: WT-MG1655(DE3)(pWHU6404) and MG1655(DE3)-EPR(pWHU6404) +/- phage cocktail"
+          },
+          {
+            "experiment_id": "EXP5_fedbatch_fermentation",
+            "groups": "5 L fed-batch of the same strain/plasmid combinations +/- phage cocktail added at start of fermentation"
+          },
+          {
+            "experiment_id": "EXP6_stability",
+            "groups": "three EPR strains serially transferred every 12 h (1:1000) for 47 transfers (~400 generations); sampled every 20 generations for fermentation stability and every 40 generations for plaque-assay resistance"
+          }
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p001",
+          "results_p005",
+          "results_p007",
+          "results_p008",
+          "results_p009",
+          "results_p010",
+          "results_p011",
+          "results_p012",
+          "results_p020",
+          "methods_p019",
+          "discussion_p015"
+        ],
+        "notes": "Group structure reconstructed from Results text plus Fig. 1-4 captions; per-condition sample sizes for EOP in Supplementary Data 1 (not available)."
+      },
+      "controls": {
+        "value": [
+          {
+            "control": "MG1655 transformed with empty vector pBluescript II SK(+)",
+            "type": "negative/baseline control for plasmid-borne sspBCDE (EOP reference)",
+            "evidence": "results_p001"
+          },
+          {
+            "control": "WT-MG1655, WT-W3110, WT-MG1655(DE3) parental strains",
+            "type": "parental controls for PT/EPR engineered strains",
+            "evidence": "results_p012, results_p020"
+          },
+          {
+            "control": "Untreated WT and EPR cultures (no phage) and WT-MG1655 infected at MOI 0.01",
+            "type": "growth-curve controls in phage-challenge experiments",
+            "evidence": "results_p020"
+          },
+          {
+            "control": "SM buffer blank in place of phage cocktail",
+            "type": "phage-cocktail blank control in flask/fed-batch production",
+            "evidence": "methods_p014, methods_p015"
+          },
+          {
+            "control": "DAAO activity assay negative control: crude extract replaced by 75 mM disodium pyrophosphate buffer; pyruvate calibration curve 20-500 uM",
+            "type": "assay negative control and calibration",
+            "evidence": "methods_p017"
+          },
+          {
+            "control": "LB medium as spectrophotometer reference",
+            "type": "instrument blank",
+            "evidence": "methods_p009, methods_p010"
+          }
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p001",
+          "results_p012",
+          "results_p020",
+          "methods_p014",
+          "methods_p015",
+          "methods_p017"
+        ],
+        "notes": "All controls explicitly instantiated in Methods/Fig captions."
+      },
+      "culture_conditions": {
+        "value": {
+          "general": "E. coli cultured in LB at 37 C; lambda phage and hosts cultivated at 37 C to ensure lytic cycle",
+          "growth_curve_microplate": "overnight culture diluted 1:100 into 10 mL LB; phage added at OD600 0.6; 200 uL per well in 96-well plate, 37 C with agitation, 12 h",
+          "shake_flask_growth": "50 mL LB in 250 mL flasks, 1:100 inoculation, phage at OD600 0.6, 37 C with agitation, 14 h",
+          "DAAO_flask_production": "seed from Kan/LB plate, 1:100 into LB 6-8 h, then 40 mL (OD600 2.0) into 2 L baffled flask with 1 L LB at 37 C; phage cocktail at start; 12 h",
+          "nsp8_flask_production": "same inoculation scheme; 0.1 mM IPTG at OD600 0.6-0.8 (Results) / 0.6 (Methods); shift to 28 C; cultivate to 18 h",
+          "fed_batch": "5 L bioreactor, 1.9 L initial medium, 100 mL inoculum (OD600 2.0); pH 7.5 via 5 M NaOH; airflow 4 L/min; agitation 400-600 rpm; feeding solution 200 g/L glycerol + 40 g/L tryptone + 20 g/L yeast extract; Antifoam 204; DAAO fermentation at 37 C for 48 h; nsp8 fermentation induced with 1 mM IPTG at OD600 20 and shifted to 28 C, 48 h total",
+          "stability_assay": "37 C, transfer every 12 h at 1:1000 dilution, 47 transfers (~400 generations)"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "methods_p008",
+          "methods_p009",
+          "methods_p010",
+          "methods_p014",
+          "methods_p015",
+          "methods_p016",
+          "methods_p019",
+          "results_p010",
+          "results_p021"
+        ],
+        "notes": "nsp8 flask induction OD threshold differs between Results (0.6-0.8) and Methods (0.6); IPTG concentration also differs between flask (0.1 mM) and fed-batch (1 mM); see conflicts."
+      },
+      "medium": {
+        "value": {
+          "routine": "LB medium: 10 g/L tryptone, 5 g/L yeast extract, 10 g/L NaCl; LB agar plates additionally 15 g/L agar",
+          "antibiotics": "kanamycin 50 ug/mL, chloramphenicol 36 ug/mL, ampicillin 100 ug/mL as needed; 100 ug/mL ampicillin to maintain pBluescript II SK(+) and pWHU3640",
+          "overlay": "LB broth with 0.6% agar (semisolid overlay)",
+          "fed_batch_initial_medium": "20 g/L tryptone, 14 g/L yeast extract, 10 g/L NaCl, 20 g/L glycerol",
+          "fed_batch_feed": "200 g/L glycerol, 40 g/L tryptone, 20 g/L yeast extract",
+          "phage_buffer": "SM buffer: 2 g/L MgSO4.7H2O, 5.8 g/L NaCl, 50 mL 1 M Tris-HCl pH 7.4"
+        },
+        "status": "reported",
+        "confidence": 0.97,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "methods_p001",
+          "methods_p008",
+          "methods_p009",
+          "methods_p016"
+        ],
+        "notes": "All media compositions explicitly reported in Methods."
+      },
+      "dosage": {
+        "value": {
+          "phage_infection_MOIs": "MOI 0.05, 0.5, 5 (SspBCDE validation, Fig. 1c); up to MOI 10 for EPR growth-curve challenge; cocktail in Fig. 3c: T1/JMPW2/T5/EEP MOI 10, T4/T7 MOI 0.1, lambda MOI 0.5, added at OD600 0.6",
+          "phage_cocktail_flask": "4.0 x 10^9 PFU/L each T4 and T7; 2.0 x 10^10 PFU/L lambda; 4.0 x 10^11 PFU/L each T1, JMPW2, T5, EEP; added at start of cultivation",
+          "phage_cocktail_fedbatch": "5.0 x 10^9 PFU/L each T4 and T7; 2.5 x 10^10 PFU/L lambda; 5.0 x 10^11 PFU/L each T1, JMPW2, T5, EEP; added at start of fermentation",
+          "inducers_and_reagents": "IPTG 0.1 mM (flask nsp8) / 1 mM (fed-batch nsp8); 0.2% arabinose for pKD46 lambda-red induction",
+          "assay_reagents": "DAAO assay: 100 mM D-alanine substrate, 75 mM disodium pyrophosphate buffer pH 8.5, 2 mM DNP, 0.6 N NaOH; pyruvate calibration 20-500 uM"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p001",
+          "results_p020",
+          "methods_p005",
+          "methods_p014",
+          "methods_p015",
+          "methods_p016",
+          "methods_p017"
+        ],
+        "notes": "MOI and PFU/L doses reported per experiment; lambda phage used carries cI mutation ensuring lysis at 37 C."
+      },
+      "time": {
+        "value": {
+          "growth_curve_plate_reader": "12 h, OD600 every 30 min",
+          "shake_flask_growth_curve": "14 h, OD600 every 2 h",
+          "plaque_assay": "12 h at 37 C (spot assay) or overnight (EOP)",
+          "DAAO_flask": "12 h cultivation at 37 C",
+          "nsp8_flask": "18 h post-induction at 28 C",
+          "fed_batch": "48 h total for both DAAO and nsp8 fermentations",
+          "stability": "47 transfers every 12 h, ~400 generations",
+          "plasmid_curing": "overnight at 42 C"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "methods_p005",
+          "methods_p009",
+          "methods_p010",
+          "methods_p011",
+          "methods_p012",
+          "methods_p015",
+          "methods_p016",
+          "methods_p019",
+          "results_p009",
+          "results_p010"
+        ],
+        "notes": "All durations explicitly reported."
+      },
+      "replicates": {
+        "value": {
+          "fig1_b_c_e": "mean +/- SD of three independent experiments",
+          "fig1_d": "experiments repeated at least three times with similar results",
+          "fig2": "representative of three independent experiments; EOP data obtained at least three times",
+          "fig3": "experiments repeated three times; mean +/- SD",
+          "fig4_b_d_flask": "three biological replicates (caption states 'mean of three biological replicates'), one-way ANOVA + Tukey's test",
+          "fig4_e_g_fedbatch": "means of duplicate fermentation profiles",
+          "replicate_type_note": "Fig. 1/2/3 captions say 'independent experiments' (biological_independence likely but not author-specified as biological); Fig. 4 flask explicitly 'biological replicates'; fed-batch 'duplicate' (replicate type unresolved)"
+        },
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p005",
+          "results_p012",
+          "results_p020",
+          "discussion_p015"
+        ],
+        "notes": "Replicate terminology varies by figure; 'duplicate fermentation profiles' for fed-batch likely two runs per condition but replicate independence is unresolved."
+      },
+      "assay": {
+        "value": [
+          "Growth dynamics by OD600 (microplate reader every 30 min; shake-flask spectrophotometer every 2 h)",
+          "Phage spot plaque assay (plaque morphology) and double-layer EOP quantification",
+          "Efficiency of plating (EOP) fold protection relative to empty-vector/parental host",
+          "RT-qPCR of sspE vs sspBCD expression ratio",
+          "DAAO enzyme activity assay (pyruvate-DNP colorimetric, absorbance 445 nm; 1 U = 1 umol D-alanine to pyruvate per min at 25 C)",
+          "SDS-PAGE (15% resolving, 4% stacking) + Bradford assay for soluble nsp8 concentration",
+          "LM-PCR to detect genomic changes after phage exposure",
+          "Colony PCR and genome sequencing to verify integrations/deletions",
+          "Serial-transfer stability assay with periodic plaque assay (every 40 generations) and fermentation check (every 20 generations)"
+        ],
+        "status": "reported",
+        "confidence": 0.96,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "methods_p005",
+          "methods_p009",
+          "methods_p010",
+          "methods_p011",
+          "methods_p012",
+          "methods_p013",
+          "methods_p017",
+          "methods_p018",
+          "methods_p019",
+          "results_p021"
+        ],
+        "notes": "Direct PT-modification chemical quantification (e.g., LC-MS) not described in this paper; PT modification assessed indirectly via defense phenotype."
+      },
+      "instruments": {
+        "value": [
+          "Multiskan GO microplate spectrophotometer with SkanIt Software 6.0 (Thermo Fisher Scientific)",
+          "Ultrospec 3000 spectrophotometer (Pharmacia, Sweden)",
+          "BIOTECH2002 5 L bioreactor (Shanghai Baoxing, China) with DO, temperature, agitation and pH control",
+          "PrimeSTAR Max DNA Polymerase (Takara) for PCR",
+          "TRIzol reagent (Sigma-Aldrich) for RNA extraction",
+          "Bradford protein assay kit (Beyotime); 14-120 kDa Blue Plus protein marker (TransGen)",
+          "0.22 um filters for phage stock sterilization"
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "methods_p001",
+          "methods_p008",
+          "methods_p009",
+          "methods_p010",
+          "methods_p013",
+          "methods_p016",
+          "methods_p018"
+        ],
+        "notes": "No qPCR instrument model reported."
+      },
+      "analysis_methods": {
+        "value": "Fold protection computed as EOP on sspBCDE-containing strain divided by EOP on empty-vector/parent strain; growth-curve comparison of OD600 trajectories; one-way ANOVA followed by Tukey's test for flask production data; DAAO activity from pyruvate calibration curve (20-500 uM, DNP derivatization, A445); soluble nsp8 concentration by Bradford assay with BSA standard after SDS-PAGE confirmation; sspE/sspBCD expression ratio by RT-qPCR; genomic integrity assessed by LM-PCR banding patterns and genome sequencing of integration mutants.",
+        "status": "reported",
+        "confidence": 0.92,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p005",
+          "discussion_p015",
+          "methods_p013",
+          "methods_p017",
+          "methods_p018",
+          "results_p002",
+          "results_p021",
+          "methods_p005"
+        ],
+        "notes": "Statistical treatment only explicitly reported for Fig. 4b-d (ANOVA + Tukey); no statistics described for EOP fold protection."
+      },
+      "outcomes": {
+        "value": {
+          "sspBCDE_plasmid": "Conferred PT modification, no growth defect, up to 10^6-fold EOP protection against most coliphages; T5 insensitive (attributed to two-step DNA injection); effective across MG1655, MG1655(DE3), W3110, BW25113, JM109, OP50 and E. coli W",
+          "PT_strains": "Chromosomal sspBCDE integration gave same growth as plasmid version, slightly higher sspE:sspBCD expression ratio, and at least 10-fold increased protection against T1, T4, EEP and lambda vs plasmid system",
+          "EPR_strains": "Extremely strong resistance to all tested coliphages (plaques barely formed at highest titer); no lysis at MOI 10 for T1/T5/EEP/JMPW2; significant resistance to T4/T7 at MOI 0.1 and lambda at MOI 0.5; growth identical to parents",
+          "protein_production_flask": "Under phage cocktail, MG1655-EPR and W3110-EPR (pGEMKT-DAAO) reached OD600 ~5.3 and 4.8 at 12 h with DAAO activities 2.03 +/- 0.07 and 1.88 +/- 0.10 U/mL (comparable to unchallenged parents); MG1655(DE3)-EPR (pWHU6404) produced ~64 mg/L soluble nsp8 under cocktail challenge",
+          "fed_batch": "MG1655-EPR(pGEMKT-DAAO) maintained 28.53 +/- 2.79 U/mL DAAO with cocktail (vs ~0 for challenged WT; 27.76 +/- 0.75 without); W3110-EPR 28.44 +/- 2.27 U/mL with cocktail; nsp8 expression 1.52/1.58/1.46 g/L for WT-no-phage, EPR-no-phage, EPR-with-phage respectively; DO profiles similar to uninfected parents",
+          "stability": "Phage resistance and production maintained over 47 transfers (~400 generations); no escape phages emerged in 48 h fermentations; no genomic changes detectable by LM-PCR"
+        },
+        "status": "reported",
+        "confidence": 0.94,
+        "extraction_method": "direct_reading",
+        "evidence_ids": [
+          "results_p001",
+          "results_p002",
+          "results_p006",
+          "results_p007",
+          "results_p009",
+          "results_p010",
+          "results_p011",
+          "results_p021",
+          "discussion_p022"
+        ],
+        "notes": "'Strong resistance to all tested phages' is scoped to the 7 coliphages tested (T1, JMPW2, T5, lambda, EEP, T4, T7) and to MOIs/durations examined; authors explicitly decline to generalize to all E. coli backgrounds or other species (discussion_p021). Long-term phage escape evolution tested only via 400-generation host serial transfer and 48 h fermentations; no directed phage-evolution/escape assay."
+      }
+    },
+    "experimental_design_object": {
+      "paper_id": "697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9",
+      "title": "Systematic strategies for developing phage resistant Escherichia coli strains",
+      "experiments": [
+        {
+          "experiment_id": "EXP1_plasmid_sspBCDE_validation",
+          "purpose": "Validate that plasmid-borne SspBCDE from E. coli 3234/A confers DNA PT modification and broad phage protection in laboratory/industrial E. coli hosts without growth cost",
+          "host": "E. coli K-12 MG1655 (primary); extended to MG1655(DE3), W3110, BW25113, JM109, E. coli B OP50, wild-type E. coli W",
+          "intervention": "Transformation with pWHU3640 (pBluescript II SK(+) carrying ~8 kb sspBCDE cassette cloned from E. coli 3234/A genomic DNA via PCR + Gibson assembly)",
+          "conditions": "LB, 37 C, 100 ug/mL ampicillin; phage challenge at MOI 0.05/0.5/5 at OD600 0.6 (growth curves, 12 h) or t=0 per Fig. 1c caption; plaque spot assay 12 h; EOP overnight",
+          "control": "Same hosts with empty vector pBluescript II SK(+); LB blank reference",
+          "replicates": "three independent experiments (mean +/- SD); plaque morphology assay repeated at least three times",
+          "readout": "OD600 growth curves, plaque size/morphology, EOP fold protection",
+          "analysis": "EOP ratio pWHU3640-host / empty-vector-host; descriptive comparison of growth curves",
+          "outcome": "Up to 10^6-fold protection against most tested coliphages; no protection against T5; no growth impairment; protection observed across all 7 host backgrounds",
+          "evidence": [
+            "results_p001",
+            "results_p005",
+            "methods_p002",
+            "methods_p009",
+            "methods_p011",
+            "methods_p012"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass: authors actively cloned the sspBCDE cassette and constructed pWHU3640 transformants. Q2 pass: cloning and host introduction performed in this study (system identified in their earlier work, but this construct and these host introductions are new). Q3 pass: results (broad protection except T5, plus plasmid-system limitations) directly motivated the subsequent genome-integration and host-factor-mutation decisions.",
+            "design_action": "M3",
+            "design_action_rationale": "Introducing a heterologous defense system relieves the host's intrinsic susceptibility to phage DNA replication; closest controlled category is 'derepression of a limiting/relief mechanism' (M3 解除调控) in the sense of adding a defensive barrier, though the vocabulary does not map perfectly to antiphage defense.",
+            "trigger_observation": "The SspABCD-SspE system was recently identified by the group as a PT-modulated defense system with broad antiphage activity and no toxicity to hosts lacking sspABCD, making it a candidate module for host protection (p005); plasmid delivery chosen as the quick evaluation route before genome integration.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Outcome measured directly by EOP, plaque assays and growth curves.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "Choice of module rests on the group's prior published characterization of SspABCD-SspE (ref 30) and its established non-toxicity relative to R-M systems; no new mechanistic derivation in this paper drove the choice.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When engineering phage resistance into phage-sensitive E. coli production hosts, first evaluate the candidate defense module on a plasmid across multiple host backgrounds and a phage panel spanning all three Caudovirales morphological families, because module efficacy is host- and phage-dependent and plasmid delivery allows rapid screening before committing to genome integration.",
+            "alternatives_considered": [
+              "Plasmid-encoded natural antiphage systems previously used in dairy starter strains (CRISPR-Cas, Abi, antisense mRNA, R-M) noted as background approaches with narrow range or postsegregational killing risk",
+              "R-M systems rejected implicitly because REase loss causes host cell death; SspE chosen because it is non-toxic without sspABCD"
+            ],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP2_chromosomal_integration_sspBCDE",
+          "purpose": "Generate stable phage-resistant strain avoiding plasmid incompatibility, instability, copy-number variation and metabolic burden",
+          "host": "E. coli MG1655 (then W3110, MG1655(DE3))",
+          "intervention": "Integration of 5.4 kb sspBCD at safe site SS9 (int(aslA-glmZ)) via pKOV-Kan two-step double crossover (pWHU6401); subsequent lambda-red recombineering integration of 2.6 kb sspE with FRT-Kan marker (pKD46 induced with 0.2% arabinose; pKD13 template), marker excision with pCP20, plasmid curing at 42 C, verification by colony PCR and genome sequencing -> E. coli-PT strains",
+          "conditions": "LB, 37 C; kanamycin 50 ug/mL selection; overnight 42 C curing",
+          "control": "MG1655 parent and MG1655(pWHU3640) for growth and expression comparison",
+          "replicates": "unknown for construction; phenotypic EOP comparisons at least three independent experiments (Fig. 2d)",
+          "readout": "Colony PCR, genome sequencing, growth profile, RT-qPCR sspE:sspBCD ratio, EOP",
+          "analysis": "Comparison of expression ratio and fold protection vs plasmid-borne module",
+          "outcome": "MG1655-PT grows like MG1655(pWHU3640); sspE:sspBCD ratio slightly higher; at least 10-fold increased protection against T1, T4, EEP, lambda vs plasmid system",
+          "evidence": [
+            "results_p002",
+            "methods_p003",
+            "methods_p004",
+            "methods_p005",
+            "results_p012"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass: deliberate chromosomal integration of sspBCDE. Q2 pass: performed in this study. Q3 pass: established the -PT platform from which fhuA/trxA mutations and the three EPR strains were derived, and demonstrated improved protection vs plasmid, confirming genome integration as the strategy backbone.",
+            "design_action": "M3",
+            "design_action_rationale": "Stable genomic installation of the defense barrier to permanently relieve phage susceptibility (defense-module installation; nearest category M3).",
+            "trigger_observation": "Plasmid-encoded defense is limited by plasmid incompatibility, instability, copy-number variability and metabolic burden of plasmid maintenance (results_p002, citing refs 36, 37).",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Integration verified by colony PCR and genome sequencing; protection gain measured by EOP.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "SS9 chosen because published work (ref 40, Bassalo et al.) identified it as an intergenic safe site with high integration efficiency and expression without viability cost; rationale adopted from literature rather than newly derived mechanistically in this paper.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When converting a plasmid-borne defense or pathway module into a stable industrial E. coli host, integrate the module at a characterized intergenic safe site (e.g., SS9) using markerless two-step double-crossover plus lambda-red recombineering, because chromosomal integration removes plasmid-instability and antibiotic-selection burdens while preserving host viability.",
+            "alternatives_considered": [
+              "Continued use of plasmid-borne sspBCDE (rejected due to plasmid incompatibility/instability/copy-number/metabolic burden)"
+            ],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP3_host_factor_mutation_EPR",
+          "purpose": "Achieve tolerance to phages T5 and T7, which evaded or were insufficiently restricted by SspBCDE alone",
+          "host": "E. coli-PT strains (MG1655-PT, W3110-PT, MG1655(DE3)-PT)",
+          "intervention": "Deletion of FhuA extracellular loop 8 (fhuA Delta552-558 with NESG peptide insertion to preserve beta-barrel formation) via pWHU6402 two-step double crossover, followed by trxA deletion via pWHU6403 -> E. coli-EPR strains",
+          "conditions": "LB, 37 C; sequential construction; verification by genome sequencing",
+          "control": "WT, plasmid-bearing and -PT counterparts in each background",
+          "replicates": "plaque assays representative of three independent experiments; EOP data at least three times",
+          "readout": "Plaque assay, EOP, growth curves at MOI up to 10, phage cocktail challenge",
+          "analysis": "Qualitative plaque formation and quantitative EOP/growth-curve comparison across the four genotypes per background",
+          "outcome": "Plaques barely formed on EPR lawns even at highest phage titer; no lysis by T1/T5/EEP/JMPW2 at MOI 10; significant resistance to T4/T7 at MOI 0.1 and lambda at MOI 0.5; identical growth to parents; resistant to 7-phage cocktail",
+          "evidence": [
+            "results_p004",
+            "results_p006",
+            "results_p007",
+            "results_p012",
+            "results_p020",
+            "methods_p006",
+            "methods_p007"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass: targeted genomic deletions of fhuA loop 8 and trxA. Q2 pass: constructed in this study. Q3 pass: produced the final EPR chassis used for all production demonstrations and defined the paper's 3-step strategy.",
+            "design_action": "M5",
+            "design_action_rationale": "Blocking phage infection routes by removing the host receptor determinant (FhuA loop 8 for T1/T5/phi80) and an essential host factor (TrxA processivity factor for T7 DNA polymerase) - functional analogue of removing competing/enabling pathway elements (M5 竞争/旁路通量阻断).",
+            "trigger_observation": "EOP data showed phage T5 was insensitive to SspBCDE defense (results_p001) and T7 remained a threat; known biology: T1/T5/phi80 use FhuA as receptor (ref 41) and T7 uses host TrxA as processivity factor (ref 42).",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Insensitivity of T5 measured by EOP (hard data); receptor/factor roles grounded in cited experimental literature; outcome verified by plaque/EOP/growth assays.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "Choice of fhuA loop 8 and trxA is directly based on published identification of FhuA as the T1/T5/phi80 receptor and TrxA as the T7 polymerase processivity factor; the paper cites these studies rather than deriving the targets de novo. Mechanistic logic (receptor removal blocks adsorption/injection) underlies it, so both tags apply.",
+            "reason_nature_tags": [
+              "机理推断",
+              "文献类比"
+            ],
+            "generalizable_rule": "When a DNA-level defense system leaves specific phages unrestricted in an E. coli production host, layer receptor/essential-host-factor mutations targeting those phages' infection cycle (e.g., delete FhuA loop 8 for FhuA-dependent phages, delete trxA for T7-family polymerase dependence) on top of the defense module, because phages unable to inject or replicate DNA cannot escape through restriction-insensitivity mechanisms.",
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP4_flask_recombinant_protein_under_phage",
+          "purpose": "Test whether EPR strains maintain recombinant protein production under high-titer phage cocktail challenge",
+          "host": "MG1655-EPR and W3110-EPR carrying pGEMKT-DAAO; MG1655(DE3)-EPR carrying pWHU6404",
+          "intervention": "Transformation of production plasmids (constitutive dao from Trigonopsis variabilis; IPTG-inducible T7-driven nsp8) into EPR strains; phage cocktail added at start of cultivation",
+          "conditions": "2 L baffled flasks, 1 L LB, 37 C; DAAO 12 h; nsp8 induced 0.1 mM IPTG at OD600 0.6 then 28 C for 18 h; cocktail: 4.0x10^9 PFU/L T4+T7, 2.0x10^10 PFU/L lambda, 4.0x10^11 PFU/L T1/JMPW2/T5/EEP",
+          "control": "SM-buffer blank (no phage) for each strain/plasmid; WT parents with plasmid +/- cocktail",
+          "replicates": "three biological replicates (Fig. 4b-d)",
+          "readout": "OD600, DAAO activity (U/mL), soluble nsp8 concentration (SDS-PAGE + Bradford)",
+          "analysis": "One-way ANOVA followed by Tukey's test",
+          "outcome": "EPR strains grew robustly and produced DAAO (2.03 +/- 0.07 and 1.88 +/- 0.10 U/mL) and nsp8 (~64 mg/L) under cocktail challenge, comparable to unchallenged parents; WT controls died under cocktail",
+          "evidence": [
+            "results_p008",
+            "results_p009",
+            "results_p010",
+            "discussion_p015",
+            "methods_p014",
+            "methods_p015",
+            "methods_p017",
+            "methods_p018"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fails for the production test itself: no new engineering action is introduced here - already-constructed EPR strains are transformed with standard expression plasmids and benchmarked; it validates the prior engineering decisions without generating a new design choice.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP5_fedbatch_fermentation_under_phage",
+          "purpose": "Assess EPR strain robustness during fed-batch fermentation, the industrial mode most vulnerable to phage attack",
+          "host": "MG1655-EPR(pGEMKT-DAAO), W3110-EPR(pGEMKT-DAAO), MG1655(DE3)-EPR(pWHU6404) with WT counterparts",
+          "intervention": "Fed-batch cultivation in 5 L bioreactor with high-concentration phage cocktail added at start; IPTG (1 mM) induction at OD600 20 with 28 C shift for nsp8",
+          "conditions": "1.9 L initial medium (20 g/L tryptone, 14 g/L yeast extract, 10 g/L NaCl, 20 g/L glycerol); pH 7.5 (5 M NaOH); 4 L/min air; 400-600 rpm; feed 200 g/L glycerol + 40 g/L tryptone + 20 g/L yeast extract; 48 h; cocktail 5.0x10^9 PFU/L T4+T7, 2.5x10^10 PFU/L lambda, 5.0x10^11 PFU/L T1/JMPW2/T5/EEP",
+          "control": "SM-buffer/no-phage fermentation of each strain; WT + cocktail groups",
+          "replicates": "duplicate fermentation profiles (replicate type unresolved)",
+          "readout": "OD600, DO profiles, DAAO activity, nsp8 titer",
+          "analysis": "Profile comparison; mean of duplicates",
+          "outcome": "EPR strains matched unchallenged growth/DO profiles; DAAO 28.53 +/- 2.79 U/mL (MG1655-EPR + cocktail) vs ~0 for challenged WT; nsp8 1.46 +/- 0.09 g/L with cocktail vs 1.52 +/- 0.16 for WT without; no phage escape observed over 48 h",
+          "evidence": [
+            "results_p011",
+            "results_p021",
+            "methods_p016",
+            "discussion_p015",
+            "discussion_p022"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fails: no new genetic or process engineering decision - the fixed EPR chassis and standard fed-batch operation are benchmarked against phage challenge; results confirm the strategy rather than drive a new modification.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP6_serial_transfer_stability",
+          "purpose": "Determine inheritance of phage resistance and fermentation stability of EPR strains over long-term propagation",
+          "host": "All three EPR strains",
+          "intervention": "Serial transfer every 12 h at 1:1000 dilution for 47 transfers (~400 generations) at 37 C; periodic phenotyping",
+          "conditions": "LB, 37 C; sampling every 20 generations (shake-flask fermentation) and every 40 generations (plaque assay)",
+          "control": "none beyond initial-generation baseline (no separate control strain described)",
+          "replicates": "unknown (not stated for this assay)",
+          "readout": "Plaque assay (resistance), shake-flask fermentation performance; LM-PCR for genomic integrity",
+          "analysis": "Qualitative comparison across generations",
+          "outcome": "Resistance and production maintained through ~400 generations; no genomic changes detected by LM-PCR even after phage-cocktail exposure",
+          "evidence": [
+            "methods_p019",
+            "results_p010",
+            "results_p021",
+            "discussion_p022"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fails: serial passaging here is a stability measurement campaign, not a deliberate engineering modification or selection campaign intended to create a new trait; it characterizes the already-built strains.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        }
+      ],
+      "causal_chain": "Plasmid validation (EXP1) identified SspBCDE breadth and the T5 gap -> genome integration (EXP2) removed plasmid liabilities and improved protection -> host-factor mutation (EXP3) closed T5/T7 gaps yielding EPR chassis -> flask (EXP4), fed-batch (EXP5) and 400-generation stability (EXP6) validated industrial applicability.",
+      "phage_panel": {
+        "siphophages": [
+          "T1",
+          "JMPW2",
+          "T5",
+          "lambda (cI mutant, lytic at 37 C)",
+          "EEP"
+        ],
+        "myophages": [
+          "T4"
+        ],
+        "podophages": [
+          "T7"
+        ]
+      }
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p002",
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+          "discussion_p024"
+        ],
+        "extraction_notes": "Objective stated verbatim in Introduction."
+      },
+      "hypothesis": {
+        "source_locations": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p005",
+          "results_p004",
+          "results_p006"
+        ],
+        "extraction_notes": "Inferred; no explicit hypothesis sentence exists."
+      },
+      "strain": {
+        "source_locations": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+          "results_p001",
+          "results_p002",
+          "results_p006",
+          "methods_p001",
+          "methods_p003",
+          "methods_p007"
+        ],
+        "extraction_notes": "Full strain/plasmid/phage lists in Supplementary Data 2 and Supplementary Table 2 (not available); exact genotypes beyond those described in Methods are requires_supplement."
+      },
+      "genotype": {
+        "source_locations": [
+          "methods_p002",
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "methods_p006",
+          "methods_p007",
+          "results_p002"
+        ],
+        "extraction_notes": "Insertion peptide spelled inconsistently ('NSEG' vs 'NESG') in methods_p006; primer sequences in Supplementary Data 3 (not available)."
+      },
+      "engineering_method": {
+        "source_locations": [
+          "results_p002",
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "methods_p006",
+          "methods_p007"
+        ],
+        "extraction_notes": "Methods fully specify the two-step double-crossover and lambda-red workflow."
+      },
+      "experimental_groups": {
+        "source_locations": [
+          "results_p001",
+          "results_p007",
+          "results_p008",
+          "results_p011",
+          "results_p012",
+          "results_p020",
+          "methods_p019",
+          "discussion_p015"
+        ],
+        "extraction_notes": "Groups reconstructed from Results + Fig. 1-4 captions."
+      },
+      "controls": {
+        "source_locations": [
+          "results_p001",
+          "results_p020",
+          "methods_p014",
+          "methods_p015",
+          "methods_p017"
+        ],
+        "extraction_notes": "Controls explicitly instantiated."
+      },
+      "culture_conditions": {
+        "source_locations": [
+          "methods_p009",
+          "methods_p010",
+          "methods_p014",
+          "methods_p015",
+          "methods_p016",
+          "methods_p019"
+        ],
+        "extraction_notes": "See conflicts for OD induction threshold discrepancy between Results and Methods for nsp8 flask culture."
+      },
+      "medium": {
+        "source_locations": [
+          "methods_p001",
+          "methods_p008",
+          "methods_p016"
+        ],
+        "extraction_notes": "Compositions fully reported."
+      },
+      "dosage": {
+        "source_locations": [
+          "results_p001",
+          "results_p020",
+          "methods_p014",
+          "methods_p015",
+          "methods_p016",
+          "methods_p017"
+        ],
+        "extraction_notes": "Flask vs fed-batch cocktail concentrations differ (documented per experiment)."
+      },
+      "time": {
+        "source_locations": [
+          "methods_p005",
+          "methods_p009",
+          "methods_p010",
+          "methods_p011",
+          "methods_p012",
+          "methods_p015",
+          "methods_p016",
+          "methods_p019"
+        ],
+        "extraction_notes": "Durations fully reported."
+      },
+      "replicates": {
+        "source_locations": [
+          "results_p005",
+          "results_p012",
+          "results_p020",
+          "discussion_p015"
+        ],
+        "extraction_notes": "'Three independent experiments' (Fig. 1-3) vs 'three biological replicates' (Fig. 4b-d) vs 'duplicate fermentation profiles' (Fig. 4e-g); replicate type for fed-batch unresolved."
+      },
+      "assay": {
+        "source_locations": [
+          "methods_p005",
+          "methods_p009",
+          "methods_p010",
+          "methods_p011",
+          "methods_p012",
+          "methods_p013",
+          "methods_p017",
+          "methods_p018",
+          "methods_p019"
+        ],
+        "extraction_notes": "All assays described in Methods."
+      },
+      "instruments": {
+        "source_locations": [
+          "methods_p001",
+          "methods_p009",
+          "methods_p010",
+          "methods_p016",
+          "methods_p018"
+        ],
+        "extraction_notes": "Instrument models reported for plate reader, spectrophotometer, bioreactor."
+      },
+      "analysis_methods": {
+        "source_locations": [
+          "results_p005",
+          "discussion_p015",
+          "methods_p013",
+          "methods_p017",
+          "methods_p018"
+        ],
+        "extraction_notes": "Statistics reported only for flask production data (ANOVA + Tukey)."
+      },
+      "outcomes": {
+        "source_locations": [
+          "results_p001",
+          "results_p002",
+          "results_p006",
+          "results_p007",
+          "results_p009",
+          "results_p010",
+          "results_p011",
+          "results_p021",
+          "discussion_p022"
+        ],
+        "extraction_notes": "Quantitative outcomes recorded with scopes; generalization limits acknowledged by authors."
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p002",
+          "results_p001",
+          "methods_p001",
+          "author_contributions_p001"
+        ],
+        "rationale": "Abstract reports new engineered strains and experiments; Results describe original strain construction and assays; Methods detail protocols; author contributions confirm experiments conducted by the authors. Nature Communications original research article."
+      },
+      "engineering_paper_type": {
+        "engineering_paper_type": [
+          "chassis_engineering"
+        ],
+        "engineering_paper_type_rationale": "The paper's main contribution is redesigning E. coli host chassis for robustness (phage resistance) via genomic integration of a defense module plus host-factor deletions; it is not a metabolite-production, biosensor, evolution, or enzyme-variant study. Application demonstrations use recombinant protein production as a readout of chassis quality."
+      },
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "parental",
+          "paper_label": "WT-MG1655",
+          "lineage_or_engineering_context": "K-12 wild-type laboratory strain; lacks endogenous ssp genes; parent of MG1655-PT and MG1655-EPR",
+          "combination_status": "not_applicable",
+          "genotype": "wild type (parental); full genotype in Supplementary Data 2 (not available)",
+          "evidence": [
+            "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+            "results_p001",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly named as chosen host and parental control throughout."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655 (DE3)",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655(DE3)",
+          "role": "parental",
+          "paper_label": "WT-MG1655(DE3)",
+          "lineage_or_engineering_context": "DE3-lysogenized MG1655 derivative carrying T7 RNA polymerase; used as T7-expression host; parent of MG1655(DE3)-PT/EPR",
+          "combination_status": "not_applicable",
+          "genotype": "MG1655 with DE3 lysogen (paper treats as given strain; not constructed here)",
+          "evidence": [
+            "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+            "results_p006",
+            "results_p010"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named in objective; DE3 construct origin not described in this paper (pre-existing strain, background)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "Escherichia coli K-12 W3110",
+          "role": "parental",
+          "paper_label": "WT-W3110",
+          "lineage_or_engineering_context": "K-12 strain widely used industrially; parent of W3110-PT/EPR",
+          "combination_status": "not_applicable",
+          "genotype": "wild type (parental)",
+          "evidence": [
+            "systematic_strategies_for_developing_phage_resistant_escherichia_coli_strains_p006",
+            "results_p001",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly named."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655-PT / W3110-PT / MG1655(DE3)-PT",
+          "paper_strain_normalized": "E. coli int(aslA-glmZ)::sspBCDE in MG1655, W3110, MG1655(DE3) backgrounds",
+          "role": "engineered",
+          "paper_label": "E. coli-PT",
+          "lineage_or_engineering_context": "Intermediate: chromosomal sspBCD at SS9 plus lambda-red-integrated sspE; Kan marker removed via FRT/pCP20; verified by genome sequencing",
+          "combination_status": "demonstrated (sspBCD + sspE integrated combination verified by sequencing)",
+          "genotype": "int(aslA-glmZ)::sspBCDE",
+          "evidence": [
+            "results_p002",
+            "methods_p003",
+            "methods_p004",
+            "methods_p005",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Construction workflow and verification described in Methods; phenotype in Fig. 2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655-EPR / W3110-EPR / MG1655 (DE3)-EPR",
+          "paper_strain_normalized": "E. coli int(aslA-glmZ)::sspBCDE fhuA(Delta552-558 NESG) Delta trxA in MG1655, W3110, MG1655(DE3) backgrounds",
+          "role": "engineered",
+          "paper_label": "EPR strains",
+          "lineage_or_engineering_context": "Final engineered phage-resistant chassis: PT intermediate + FhuA loop-8 deletion (with NESG insertion) + trxA deletion, sequential two-step double crossover",
+          "combination_status": "demonstrated (all three modifications combined in each host and verified; Fig. 2a-c compare WT/plasmid/PT/EPR per background)",
+          "genotype": "int(aslA-glmZ)::sspBCDE, fhuA(Delta552-558 NESG), Delta trxA",
+          "evidence": [
+            "results_p004",
+            "results_p006",
+            "methods_p006",
+            "methods_p007",
+            "results_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.96,
+          "reasoning": "Methods describe sequential construction; combination directly shown per background. Inserted peptide spelled NSEG/NESG inconsistently (see conflicts)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655 (pWHU3640)",
+          "paper_strain_normalized": "E. coli MG1655 carrying pWHU3640 (pBluescript II SK(+)::sspBCDE from E. coli 3234/A)",
+          "role": "engineered",
+          "paper_label": "MG1655 (pWHU3640)",
+          "lineage_or_engineering_context": "Plasmid-based validation strain for SspBCDE defense; also transformed into MG1655(DE3), W3110, BW25113, JM109, OP50, E. coli W",
+          "combination_status": "not_applicable",
+          "genotype": "plasmid pWHU3640 in listed hosts",
+          "evidence": [
+            "results_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Explicit plasmid construction and transformation."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113, JM109, OP50, wild-type E. coli W",
+          "paper_strain_normalized": "E. coli K-12 BW25113; E. coli K-12 JM109; E. coli B OP50; E. coli W (wild isolate)",
+          "role": "host",
+          "paper_label": "as named",
+          "lineage_or_engineering_context": "Additional hosts used only to demonstrate plasmid-borne sspBCDE host breadth (Fig. 1e); no genome engineering performed on them in this study",
+          "combination_status": "not_applicable",
+          "genotype": "as supplied (not modified)",
+          "evidence": [
+            "results_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.93,
+          "reasoning": "Listed explicitly as validation hosts."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH10B",
+          "paper_strain_normalized": "Escherichia coli DH10B",
+          "role": "host",
+          "paper_label": "DH10B",
+          "lineage_or_engineering_context": "Cloning/plasmid maintenance host only; not a phage-resistance experimental subject",
+          "combination_status": "not_applicable",
+          "genotype": "cloning host (full genotype not given)",
+          "evidence": [
+            "methods_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Methods state its role explicitly."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli 3234/A",
+          "paper_strain_normalized": "Escherichia coli 3234/A",
+          "role": "other",
+          "paper_label": "3234/A",
+          "lineage_or_engineering_context": "Donor strain of the sspBCDE gene cassette; source of template genomic DNA only",
+          "combination_status": "not_applicable",
+          "genotype": "carries native sspABCD and unlinked sspE region (sspBCDE cluster cloned)",
+          "evidence": [
+            "results_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named as cassette source; not an experimental host."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system was provided; adaptation analysis not performed. Note the paper's own scope limit: authors state the strategy must be re-tested/adjusted for E. coli strains with other genetic backgrounds and is limited in non-E. coli species by knowledge gaps on phage receptors/host factors (discussion_p021)."
+      },
+      "supplement_dependent_fields": [
+        {
+          "item": "Complete strain/plasmid/phage lists",
+          "blocked_content": "Full genotype annotations, phage provenance details",
+          "available_from_main_text_or_figure": "Names and roles of all principal strains; construction workflow; lambda cI mutation noted",
+          "still_missing": "Supplementary Data 2, Supplementary Table 2"
+        },
+        {
+          "item": "Primer sequences",
+          "blocked_content": "Exact reproduction of all constructs",
+          "available_from_main_text_or_figure": "Primer pair names and fragment sizes",
+          "still_missing": "Supplementary Data 3 sequences"
+        },
+        {
+          "item": "Per-phage EOP values and sample sizes",
+          "blocked_content": "Exact fold-protection numbers per host/phage",
+          "available_from_main_text_or_figure": "Up to 10^6-fold protection; >=10-fold gain of PT over plasmid for T1/T4/EEP/lambda; qualitative plaque results",
+          "still_missing": "Supplementary Data 1 numeric values"
+        },
+        {
+          "item": "RT-qPCR expression ratios",
+          "blocked_content": "Exact sspE:sspBCD ratio values",
+          "available_from_main_text_or_figure": "Direction of difference (slightly higher in MG1655-PT)",
+          "still_missing": "Supplementary Table 1, Supplementary Fig. 3"
+        },
+        {
+          "item": "Supplementary Figs. 1-9",
+          "blocked_content": "Growth curves for plasmid strain, additional host EOP, integration scheme, W3110/DE3 growth curves, strategy overview, stability data, LM-PCR results",
+          "available_from_main_text_or_figure": "Main-text summaries of each result",
+          "still_missing": "Underlying images/data"
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Inserted peptide sequence in fhuA loop-8 deletion construct",
+        "prose_interpretation": "methods_p006 heading reads 'Construction of fhuA(Delta552-558 NSEG)' while the body sentence reads 'The peptide NESG was inserted into the deletion region to prevent structural restrictions in beta-barrel formation' - the four residues are ordered differently (NSEG vs NESG).",
+        "equation_or_figure_interpretation": "No figure resolves the residue order; likely a typographical inconsistency or OCR artifact, but cannot be disambiguated from available text.",
+        "impact": "Exact reconstruction of the fhuA mutant allele requires the intended peptide order; low functional impact expected (same four residues) but sequence-accurate strain rebuilding is blocked pending resolution.",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "OD600 threshold for IPTG induction of nsp8 in flask culture",
+        "prose_interpretation": "Results (results_p010) state induction when OD600 reached 0.6-0.8 with 0.1 mM IPTG.",
+        "equation_or_figure_interpretation": "Methods (methods_p015) state IPTG added when OD600 reached 0.6.",
+        "impact": "Minor procedural discrepancy (0.6 vs 0.6-0.8); exact protocol reproduction should note the range.",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Timing of phage addition in Fig. 1c growth-curve experiment",
+        "prose_interpretation": "Methods (methods_p009) state phages were added when culture OD600 reached 0.6.",
+        "equation_or_figure_interpretation": "Fig. 1c caption (results_p005) states 'Bacteria were infected at t = 0 at MOIs of 5, 0.5 and 0.05'.",
+        "impact": "Different infection timing for the microplate growth-curve assay; reproduction requires choosing one - flag for manual review; possibly two variants of the assay (Fig. 1c vs Fig. 3a).",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Replicate terminology for fed-batch fermentations",
+        "prose_interpretation": "Fig. 4 caption (discussion_p015): 'means of duplicate fermentation profiles' - replicate type (independent fermenter runs vs technical) not defined; flask experiments use 'three biological replicates' while Fig. 1-3 use 'three independent experiments'.",
+        "equation_or_figure_interpretation": "No additional resolution available.",
+        "impact": "Statistical strength of fed-batch conclusions uncertain; replicate classification remains 'unresolved'.",
+        "requires_manual_review": false
+      },
+      {
+        "status": "parser_artifact_warning",
+        "topic": "OCR/extraction artifacts in numeric strings",
+        "prose_interpretation": "Several values contain OCR noise, e.g., '2.0 x 10^10' rendered with stray diacritics in results_p009/methods_p016, '2.03 +/- 0.07' as '$2 . 0 3 \\pm 0 . 0 { \\bar { 7 } }$', and '27.65 +/- 2.89' partially garbled in results_p011.",
+        "equation_or_figure_interpretation": "Values interpreted by context; readings recorded in outcomes field.",
+        "impact": "Low risk of misread digits; recommend verification against Source Data for exact values.",
+        "requires_manual_review": true
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 59098,
+    "output_tokens": 64
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "50ea7ece2e5007d86e2ae866f42cbb47aea1f3761a469dfad8e0e3185e775f5c",
+    "output_hash": "ce507d689613c20acf553c90bb88e688ced0e47e8f1a36a895f7f6cca17bd307",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\8d6b5552ec20a731865095b9a0ad3866d8a232fbb141fbfed6ceedf0333f48be.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

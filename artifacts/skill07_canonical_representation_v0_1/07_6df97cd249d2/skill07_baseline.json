@@ -1,0 +1,1873 @@
+{
+  "status": "succeeded",
+  "model": "kimi-k3",
+  "usage": {
+    "input_tokens": 153468,
+    "output_tokens": 57660
+  },
+  "prompt_chars": 209133,
+  "prompt_build_ms": 55.97819993272424,
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_ms": 188524.3930001743,
+      "error": "Poe Code CLI exited 1: Model: kimi-k3\nWorking directory: D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\extraction-runs\\paper-extraction-u283ztzg\nPermission mode: edit\n\n┌   Poe - spawn poe-agent \n✗ terminated\nTypeError: terminated\n    at Fetch.onAborted (node:internal/deps/undici/undici:13625:53)\n    at Fetch.emit (node:events:509:28)\n    at Fetch.terminate (node:internal/deps/undici/undici:12755:14)\n    at Object.onError (node:internal/deps/undici/undici:13759:38)\n    at Request.onError (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\core\\request.js:303:27)\n    at Object.errorRequest (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\core\\util.js:638:13)\n    at TLSSocket.<anonymous> (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\dispatcher\\client-h1.js:802:12)\n    at TLSSocket.emit (node:events:521:24)\n    at node:net:350:12\n    at TCP.done (node:internal/tls/wrap:674:7)\n│\n■  Error: terminated\n│\n●  See logs at C:\\Users\\Starry\\.poe-code\\logs\\errors.log for more details."
+    },
+    {
+      "attempt": 2,
+      "duration_ms": 653944.3305996247,
+      "error": "Poe Code CLI exited 1: Model: kimi-k3\nWorking directory: D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\extraction-runs\\paper-extraction-pvunwc8b\nPermission mode: edit\n\n┌   Poe - spawn poe-agent \n✗ terminated\nTypeError: terminated\n    at Fetch.onAborted (node:internal/deps/undici/undici:13625:53)\n    at Fetch.emit (node:events:509:28)\n    at Fetch.terminate (node:internal/deps/undici/undici:12755:14)\n    at Object.onError (node:internal/deps/undici/undici:13759:38)\n    at Request.onError (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\core\\request.js:303:27)\n    at Object.errorRequest (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\core\\util.js:638:13)\n    at TLSSocket.<anonymous> (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\dispatcher\\client-h1.js:802:12)\n    at TLSSocket.emit (node:events:521:24)\n    at node:net:350:12\n    at TCP.done (node:internal/tls/wrap:674:7)\n│\n■  Error: terminated\n│\n●  See logs at C:\\Users\\Starry\\.poe-code\\logs\\errors.log for more details."
+    },
+    {
+      "attempt": 3,
+      "duration_ms": 958082.0925002918,
+      "error": null
+    }
+  ],
+  "repairs": [
+    {
+      "repair": 1,
+      "duration_ms": 431239.08860003576,
+      "prompt_chars": 281621,
+      "error": null
+    }
+  ],
+  "normalization_actions": [],
+  "checks": [
+    {
+      "name": "top_level_and_field_schema",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "field_semantic_invariants",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "evidence_role_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "candidate_evidence_anchors_resolve",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "article_type_gate_valid",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "experiment_graph_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "ddr_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "document_coverage_consistent",
+      "passed": true,
+      "required": true
+    }
+  ],
+  "output": {
+    "contract_version": "skill07_semantic_contract_v1",
+    "fields": {
+      "objective": {
+        "value": "Development of an engineered Escherichia coli strain capable of the complete biosynthesis of carminic acid (6) from glucose, by comparing type II and type III PKS machineries for the polyketide backbone, identifying enzymes for the remaining hydroxylation and C-glucosylation steps via biochemical reaction analyses, and enhancing the identified enzymes by in silico homology modeling and docking simulations.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "introduction_p010",
+          "access_p003"
+        ],
+        "notes": "Objective stated in Abstract and Introduction of the current article.",
+        "inference": null
+      },
+      "hypothesis": {
+        "value": "That a complete carminic acid biosynthetic pathway can be reconstituted in E. coli from glucose by combining an optimized type II PKS machinery with heterologous cyclases (ZhuI/ZhuJ) and with a monooxygenase and a C-glucosyltransferase identifiable through biochemical reaction analysis and improvable through structure-guided (homology modeling + docking) mutagenesis.",
+        "status": "inferred",
+        "applicability_status": "applicable",
+        "confidence": 0.55,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "introduction_p010"
+        ],
+        "notes": "The paper does not state an explicit formal hypothesis; this is a bounded inference from the stated objective and the strategy overview. Not a verbatim paper statement.",
+        "inference": {
+          "method": "cross_section_inference",
+          "rationale": "Introduction (introduction_p010) states the study goal and the combined strategies (PKS comparison, biochemical reaction analysis, in silico mutagenesis); the Abstract (access_p003, access_p006) reports the same strategy chain leading to complete biosynthesis. The hypothesis is reconstructed as the implied testable proposition linking these stated elements; no additional external assumptions were added."
+        }
+      },
+      "strain": {
+        "value": [
+          {
+            "label": "E. coli BAP1",
+            "role": "host strain for carminic acid pathway",
+            "description": "BL21(DE3) derivative integrated with Bacillus subtilis phosphopantetheinyl transferase (PPTase; encoded by sfp)"
+          },
+          {
+            "label": "FK strain",
+            "role": "platform strain",
+            "description": "BAP1 harboring pFK (pDS00-antDEFBG-zhuIJ)"
+          },
+          {
+            "label": "CA strain",
+            "role": "carminic acid producing strain",
+            "description": "BAP1 harboring pFK and pCA"
+          },
+          {
+            "label": "CA-ACC strain",
+            "role": "final selected carminic acid producing strain",
+            "description": "CA strain additionally overexpressing C. glutamicum accBCD1"
+          },
+          {
+            "label": "E. coli BL21(DE3)",
+            "role": "host strain for aloesin (8) work",
+            "description": "used with pCDF-RpALS, pRSF-RpALS, pWAS-anti-pabA, pBBR1-zwf, pCDF-GtCGT/pCDF-GtCGTmut/pCDF-RpALS-GtCGTmut"
+          },
+          {
+            "label": "ALS strain",
+            "role": "aloesin producing strain",
+            "description": "BL21(DE3) harboring pRSF-RpALS, pCDF-RpALS-GtCGTmut, pWAS-anti-pabA, and pBBR1-zwf"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p003",
+          "results_and_discussion_p048",
+          "results_and_discussion_p041"
+        ],
+        "notes": "Multiple strains across distinct experiments; document-level projection lists all instance-level strains without merging. pCA plasmid content is not fully specified in the available main text (plasmid construction in Supporting Information).",
+        "inference": null
+      },
+      "genotype": {
+        "value": {
+          "BAP1": "BL21(DE3) derivative with chromosomally integrated sfp (B. subtilis PPTase); reported in main text",
+          "FK": "BAP1 + pFK (antDEFBG from Photorhabdus luminescens and zhuI/zhuJ from Streptomyces sp. R1128 on a single plasmid)",
+          "CA": "BAP1 + pFK + pCA (pCA carries dnrF- and GtCGT-related genes; exact gene versions on pCA not explicitly stated in available text)",
+          "CA-ACC": "CA + accBCD1 (C. glutamicum acetyl-CoA carboxylase complex) overexpression",
+          "ALS": "BL21(DE3) + pRSF-RpALS + pCDF-RpALS-GtCGTmut (GtCGT V93Q/Y193F) + pWAS-anti-pabA (anti-pabA synthetic sRNA) + pBBR1-zwf",
+          "other_constructs": "pDS00-antDEFBG, pCDF-zhuIJ, pET-AaPKS5, pDnrF, pAct-VAVB, pTT7, pHpaBC, pPobA, pCDF-dnrF-GtCGT, pCDF-RpALS, pCDF-GtCGT, pCDF-GtCGTmut"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.65,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p003",
+          "results_and_discussion_p009",
+          "results_and_discussion_p039"
+        ],
+        "notes": "Genotypes are partially reported in the main text; full plasmid construction details, sequences and complete genotypes are in the Supporting Information (requires_supplement). Whether pCA carries the mutant dnrF(P217K) and GtCGT(V93Q/Y193F) alleles is implied by narrative order but not explicitly stated in the available text.",
+        "inference": null
+      },
+      "engineering_method": {
+        "value": [
+          "heterologous plasmid-based expression of type II minimal PKS (antDEFBG) and cyclases (zhuIJ)",
+          "comparison of type II vs type III (AaPKS5) PKS machineries",
+          "plasmid consolidation (two-plasmid to single-plasmid pFK)",
+          "ascorbic acid medium supplementation to prevent product oxidation/polymerization",
+          "overexpression of accBCD1 (acetyl-CoA carboxylase) to increase malonyl-CoA pool",
+          "knockdown of pabA via anti-pabA synthetic sRNA",
+          "overexpression of galU-pgm-ndk to increase UDP-glucose pool and UDP recycling",
+          "biochemical reaction analysis-based enzyme candidate screening (5 monooxygenase candidates; 8 C-glucosyltransferase candidates)",
+          "DcUGT2 truncation and OmpA signal-peptide fusion attempts (failed)",
+          "homology modeling (MODELLER) and docking simulation (PyRosetta; AutoDock Vina)-guided site-directed mutagenesis of DnrF and GtCGT",
+          "chaperone coexpression (dnaKJ-grpE, groES/EL, trigger factor, ClpB)",
+          "gene copy-number increase of RpALS for aloesone production",
+          "pH-stat fed-batch fermentation in a 6.6 L bioreactor"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p009",
+          "results_and_discussion_p023",
+          "results_and_discussion_p052",
+          "results_and_discussion_p053"
+        ],
+        "notes": "Detailed protocols (cloning, transformation, cultivation) are in the Supporting Information and were not available.",
+        "inference": null
+      },
+      "experimental_groups": {
+        "value": [
+          {
+            "experiment": "type II PKS component optimization",
+            "groups": "BAP1 with different combinations of type II PKS components (details in Supplementary Note S1, unavailable); antDEFBG selected"
+          },
+          {
+            "experiment": "type II vs type III comparison",
+            "groups": "BAP1 + pDS00-antDEFBG + pCDF-zhuIJ vs BAP1 + pET-AaPKS5 + pCDF-zhuIJ"
+          },
+          {
+            "experiment": "flavokermesic acid (3) enhancement",
+            "groups": "BAP1 + pFK; pFK + ascorbic acid; pFK + accBCD1 overexpression; pFK + pabA knockdown"
+          },
+          {
+            "experiment": "monooxygenase screening",
+            "groups": "FK strain separately harboring pDnrF, pAct-VAVB, pTT7, pHpaBC, pPobA"
+          },
+          {
+            "experiment": "C-glucosyltransferase screening",
+            "groups": "FK strain with each of 8 CGT candidates (IroB, ZmCGT, FeCGT, MiCGT, OsCGT, GmCGT, GtCGT, AvCGT); FK + GtCGT + galU-pgm-ndk overexpression"
+          },
+          {
+            "experiment": "DnrF mutant screening",
+            "groups": "FK strain with each of 29 DnrF mutants (20 top docking-score + 9 rational-design); wild-type DnrF comparator; double mutant DnrF P217K/M56A"
+          },
+          {
+            "experiment": "GtCGT mutant screening",
+            "groups": "FK strain with each of 34 GtCGT mutants (20 top docking-score + 14 rational-design); wild-type GtCGT comparator; double mutant GtCGT V93Q/Y193F"
+          },
+          {
+            "experiment": "aloesin production",
+            "groups": "BL21(DE3) + pWAS-anti-pabA + pBBR1-zwf + pRSF-RpALS with pCDF-GtCGT, pCDF-GtCGTmut, or pCDF-RpALS-GtCGTmut; RpALS copy-number variants (pCDF-RpALS and/or pRSF-RpALS)"
+          },
+          {
+            "experiment": "flavonoid conversion",
+            "groups": "BL21(DE3) + pCDF-GtCGT vs pCDF-GtCGTmut with exogenous luteolin, apigenin, or naringenin feeding"
+          },
+          {
+            "experiment": "carminic acid (6) production",
+            "groups": "CA strain; CA + accBCD1 OE (CA-ACC); CA + pabA KD; CA + galU-pgm-ndk OE; combinations thereof; CA + chaperone coexpression (dnaKJ-grpE, groES/EL, TF, ClpB); CA-ACC + dnaKJ-grpE"
+          },
+          {
+            "experiment": "fed-batch fermentation",
+            "groups": "CA-ACC strain, two independent pH-stat fed-batch runs in a 6.6 L bioreactor"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.8,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p011",
+          "results_and_discussion_p025",
+          "results_and_discussion_p048"
+        ],
+        "notes": "Groups are instance-scoped; exact group sizes and some combination details depend on figures/SI not fully available.",
+        "inference": null
+      },
+      "controls": {
+        "value": {
+          "figure2_control": "CT denotes the control FK strain (Figure 2a,c)",
+          "mutant_comparators": "strains harboring wild-type DnrF or wild-type GtCGT used as comparators for mutant screening (Figure 3a,c)",
+          "metabolic_engineering_baseline": "base CA strain (22.2 ug/L of 6) as comparator for accBCD1 OE, pabA KD, galU-pgm-ndk OE and chaperone coexpression",
+          "authenticity_standards": "commercially available carminic acid standard and authentic aloesin standard for LC-MS/MS fragmentation comparison; previously published spectra for 1, 2, 3, 4, 5"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.72,
+        "extraction_method": "figure_reading",
+        "evidence_ids": [
+          "results_and_discussion_p007",
+          "results_and_discussion_p052"
+        ],
+        "notes": "Negative/empty-vector controls beyond the FK control strain are not explicitly described in the available main text; may be specified in SI.",
+        "inference": null
+      },
+      "culture_conditions": {
+        "value": {
+          "flask_culture": "flask culture used for strain screening and production comparisons; baffled flasks explicitly mentioned for the initial carminic acid pathway assembly attempt",
+          "fed_batch": "pH-stat fed-batch fermentation of CA-ACC in a 6.6 L bioreactor",
+          "induction": "IPTG induction; induction time point marked by red arrow in Figure 6",
+          "not_reported_in_available_text": "temperature, agitation, aeration, working volume, induction OD, feeding composition/rates, culture duration (Materials and Methods in Supporting Information, not provided)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.55,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p022",
+          "results_and_discussion_p053"
+        ],
+        "notes": "Only partial conditions are in the main text; precise reproduction requires the SI (requires_supplement).",
+        "inference": null
+      },
+      "medium": {
+        "value": {
+          "carbon_source": "glucose (products reported as produced 'from glucose')",
+          "supplements_reported": [
+            "ascorbic acid supplemented to the medium during flavokermesic acid (3) production (concentration not reported in available text)"
+          ],
+          "medium_composition": null
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.45,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p008",
+          "results_and_discussion_p009"
+        ],
+        "notes": "Medium identity and composition are not stated in the available main text; 'media and culture conditions' are in the Supporting Information (requires_supplement). Only glucose as carbon source and ascorbic acid supplementation are reported in the available text.",
+        "inference": null
+      },
+      "dosage": {
+        "value": {
+          "IPTG": "used for induction (fed-batch induction time point shown in Figure 6); concentration and induction cell density not reported in available text",
+          "ascorbic_acid": "supplemented to medium; concentration not reported in available text",
+          "flavonoid_feeding": "luteolin, apigenin and naringenin exogenously fed during flask culture for in vivo conversion assays; concentrations not reported in available text"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.45,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "conclusion_p007",
+          "results_and_discussion_p047"
+        ],
+        "notes": "Qualitative usage reported; all quantitative dosages are in the unavailable SI (requires_supplement). No numeric dosage values were invented.",
+        "inference": null
+      },
+      "time": {
+        "value": null,
+        "status": "unknown",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "not_applicable",
+        "evidence_ids": [],
+        "notes": "Culture durations, induction timing/OD and sampling times are not numerically reported in the available main text (requires_supplement; Figure 6 shows time profiles and an IPTG induction time point but axis values are not available as text). The '~5 days' fed-batch duration in the Conclusion is a forward-looking projection for an industrial-scale run, not a measured value, and is therefore not extracted as an experimental time value.",
+        "inference": null
+      },
+      "replicates": {
+        "value": {
+          "flask_titer_experiments": {
+            "n": 3,
+            "reported_as": "mean +/- SD (n = 3)",
+            "replicate_type": "unknown",
+            "note": "Figure 1c,d; Figure 2a,c; Figure 4a,b; Figure 5a,b captions state n = 3; whether biological or technical replicates is not specified in the available text"
+          },
+          "enzyme_mutant_screens_figure3": {
+            "n": 2,
+            "reported_as": "n = 2",
+            "replicate_type": "unknown"
+          },
+          "steady_state_kinetics_table1": {
+            "n": "three independent experiments",
+            "replicate_type": "independent_culture_replicates",
+            "note": "reported as 'three independent experiments'"
+          },
+          "fed_batch_fermentation": {
+            "n": 2,
+            "replicate_type": "independent_culture_replicates",
+            "note": "two independently performed fed-batch runs (0.65 and 0.61 mg/L of 6)"
+          },
+          "ms_representative_data": {
+            "reported_as": "data are representative of three independent replicates",
+            "replicate_type": "representative_display"
+          }
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.8,
+        "extraction_method": "figure_reading",
+        "evidence_ids": [
+          "introduction_p007",
+          "results_and_discussion_p019",
+          "results_and_discussion_p031"
+        ],
+        "notes": "Replicate taxonomy partially unresolved: n=3 and n=2 are not classified as biological or technical in the available text; statistical analysis details are in the SI.",
+        "inference": null
+      },
+      "assay": {
+        "value": [
+          "LC-MS and LC-MS/MS (extracted ion chromatograms; MS/MS fragmentation pattern comparison; MRM mode for carminic acid)",
+          "LC-HRMS (per Acknowledgments)",
+          "HPLC (listed in Experimental Section pointer; details in SI)",
+          "NMR analysis (for 1, 2, 3, 5)",
+          "SDS-PAGE analysis (expression checks, e.g., Figure S10 referenced)",
+          "in vitro enzyme assays (DnrF conversion of 3 to 4/4'; GtCGT conversion of 3 to 5/5'/5'')",
+          "steady-state kinetic parameter determination (KM, Vmax, Vmax/KM; enzyme concentrations 1 uM for DnrF, 0.1 uM for GtCGT)",
+          "product titer quantification in flask and fed-batch cultures",
+          "dry cell weight (DCW) measurement in fed-batch"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.88,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p003",
+          "results_and_discussion_p011",
+          "results_and_discussion_p029"
+        ],
+        "notes": "Assay parameters (columns, gradients, detection limits) are in the SI.",
+        "inference": null
+      },
+      "instruments": {
+        "value": {
+          "reported": [
+            "6.6 L bioreactor for fed-batch fermentation",
+            "LC-MS/MS, LC-HRMS, LC-MS (MRM) and NMR instrumentation (analyses performed at KBSI Western Seoul Center, Chungnam National University Center for Research Facilities, and KAIST Bio Core Center per Acknowledgments)"
+          ],
+          "not_reported_in_available_text": "specific instrument models, columns and software versions for analytics (SI)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.55,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p053",
+          "acknowledgments_p001"
+        ],
+        "notes": "Instrument identities beyond technique level and facility are not specified in the available text (requires_supplement).",
+        "inference": null
+      },
+      "analysis_methods": {
+        "value": [
+          "two-tailed Student's t-test with Bonferroni correction of significance thresholds (alpha/m)",
+          "CFM-ID 3.0 for MS/MS fragmentation prediction and peak annotation",
+          "MODELLER homology modeling (templates: RdmE, PDB 3IHG, 60.4% identity for DnrF; TcCGT, PDB 6JTD, 35.1% identity for GtCGT)",
+          "PyRosetta docking simulations for mutant prediction",
+          "AutoDock Vina for comparative binding-energy analysis",
+          "steady-state kinetic analysis; Vmax/KM calculated instead of kcat/KM because enzyme preparations were not pure"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "introduction_p007",
+          "results_and_discussion_p020",
+          "results_and_discussion_p023"
+        ],
+        "notes": "Detailed statistical procedure is listed as being in the SI.",
+        "inference": null
+      },
+      "outcomes": {
+        "value": {
+          "flavokermesic_acid_3": "type II system 15.1 mg/L vs type III 4.3 mg/L (P = 4.1e-4); single-plasmid pFK 88.0 mg/L (P = 1.8e-5); + ascorbic acid 154.9 mg/L (P = 4.2e-3); + accBCD1 OE 180.3 mg/L (P = 0.105, NS after Bonferroni)",
+          "kermesic_acid_4": "DnrF gave highest titer among 5 monooxygenase candidates (P = 6.6e-7); DnrF P217K gave 2.2-fold higher 4 titer than wild type; double mutant P217K/M56A decreased 4 titer",
+          "dcII_5": "only GtCGT among 8 CGT candidates converted 3 to 5; galU-pgm-ndk OE increased 5 production 2.3-fold; GtCGT V93Q 2.8-fold, Y193F >2-fold, V93Q/Y193F 5.3-fold higher 5 titer than wild type",
+          "kinetics": "DnrF P217K: KM 43.31 vs 56.75 uM (23.7% reduction, P = 0.012), Vmax/KM +33.4%; GtCGT V93Q/Y193F: KM 5.07 vs 6.30 uM (P = 0.30), Vmax +18.2% (P = 0.048), Vmax/KM +46.8%",
+          "carminic_acid_6": "initial pathway assembly (pDS00-antDEFBG-zhuIJ + pCDF-dnrF-GtCGT) produced no detectable 6; CA strain 22.2 ug/L from glucose; CA-ACC 74.9 ug/L (3.4-fold, P = 2.3e-3); dnaKJ-grpE OE 48.9 ug/L; groES/EL OE 31.3 ug/L; accBCD1 + dnaKJ-grpE 44.4 ug/L (no further increase); fed-batch 0.65 mg/L and 0.61 mg/L in two independent runs (Abstract reports 0.63 +/- 0.02 mg/L); concomitant maximum 3.66 g/L of intermediate 3 in fed-batch; first report of carminic acid production by a metabolically engineered bacterium",
+          "aloesin_8": "aloesone (7) 102.1 mg/L with increased RpALS copy number; GtCGT V93Q/Y193F strain produced 0.060 ug/L of 8 (P = 0.046); ALS strain 0.30 ug/L (P = 0.011); first report of microbial production of 8",
+          "flavonoid_conversion": "GtCGT V93Q/Y193F showed generally decreased conversion efficiency toward flavonoids (luteolin, apigenin, naringenin) relative to wild-type GtCGT"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.88,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p048",
+          "results_and_discussion_p053",
+          "results_and_discussion_p041",
+          "results_and_discussion_p035"
+        ],
+        "notes": "Values as printed in the available text; the aloesin titers (0.060 and 0.30 ug/L) are very low and unit-sensitive - flagged for verification against the original PDF/SI. Several supporting figures/tables (S1-S23, S5-S10) are unavailable.",
+        "inference": null
+      }
+    },
+    "experimental_design_object": {
+      "canonical_note": "Experiment instances below are the canonical truth; the 16 document-level fields are a compatibility projection and do not merge incompatible experiments.",
+      "biological_objects": [
+        {
+          "id": "OBJ-BAP1",
+          "object_type": "host",
+          "paper_label": "E. coli BAP1",
+          "normalized_name": "Escherichia coli BL21(DE3) BAP1",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "genotype_notes": "BL21(DE3) derivative integrated with Bacillus subtilis sfp (PPTase)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p003"
+          ]
+        },
+        {
+          "id": "OBJ-BL21",
+          "object_type": "host",
+          "paper_label": "E. coli BL21(DE3)",
+          "normalized_name": "Escherichia coli BL21(DE3)",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p039"
+          ]
+        },
+        {
+          "id": "OBJ-FK",
+          "object_type": "engineered_strain",
+          "paper_label": "FK strain",
+          "lineage_relationship": "derived_from OBJ-BAP1 via pFK",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p011"
+          ]
+        },
+        {
+          "id": "OBJ-CA",
+          "object_type": "engineered_strain",
+          "paper_label": "CA strain",
+          "lineage_relationship": "derived_from OBJ-BAP1 via pFK + pCA",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p048"
+          ]
+        },
+        {
+          "id": "OBJ-CA-ACC",
+          "object_type": "engineered_strain",
+          "paper_label": "CA-ACC strain",
+          "lineage_relationship": "derived_from OBJ-CA via accBCD1 overexpression",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p048"
+          ]
+        },
+        {
+          "id": "OBJ-ALS",
+          "object_type": "engineered_strain",
+          "paper_label": "ALS strain",
+          "lineage_relationship": "derived_from OBJ-BL21 via pRSF-RpALS + pCDF-RpALS-GtCGTmut + pWAS-anti-pabA + pBBR1-zwf",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p041"
+          ]
+        },
+        {
+          "id": "OBJ-pFK",
+          "object_type": "plasmid",
+          "paper_label": "pFK",
+          "description": "pDS00-antDEFBG with zhuIJ cloned in (single-plasmid antDEFBG + zhuIJ)",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p009"
+          ]
+        },
+        {
+          "id": "OBJ-pCA",
+          "object_type": "plasmid",
+          "paper_label": "pCA",
+          "description": "second plasmid of the CA strain; gene content not fully specified in available text (requires_supplement)",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p048"
+          ]
+        },
+        {
+          "id": "OBJ-DnrF",
+          "object_type": "construct",
+          "paper_label": "DnrF (aklavinone 12-hydroxylase) from Streptomyces peucetius",
+          "variants": [
+            "DnrF P217K",
+            "DnrF M56A",
+            "DnrF P217K/M56A"
+          ],
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p010",
+            "results_and_discussion_p026",
+            "results_and_discussion_p027"
+          ]
+        },
+        {
+          "id": "OBJ-GtCGT",
+          "object_type": "construct",
+          "paper_label": "GtCGT (GtUF6CGT1) from Gentiana triflora",
+          "variants": [
+            "GtCGT V93Q",
+            "GtCGT Y193F",
+            "GtCGT V93Q/Y193F"
+          ],
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p013",
+            "results_and_discussion_p034",
+            "results_and_discussion_p035"
+          ]
+        },
+        {
+          "id": "OBJ-DcUGT2",
+          "object_type": "construct",
+          "paper_label": "DcUGT2 from Dactylopius coccus",
+          "variants": [
+            "Ntr-DcUGT2",
+            "Ctr-DcUGT2",
+            "Ntr-Ctr-DcUGT2",
+            "OmpA-Ntr-DcUGT2",
+            "OmpA-Ntr-Ctr-DcUGT2"
+          ],
+          "description": "all variants failed to produce 5 in E. coli",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p012"
+          ]
+        },
+        {
+          "id": "OBJ-RpALS",
+          "object_type": "construct",
+          "paper_label": "RpALS (aloesone synthase from R. palmatum)",
+          "identity_status": "reported",
+          "evidence_paragraphs": [
+            "results_and_discussion_p039"
+          ]
+        }
+      ],
+      "experiments": [
+        {
+          "experiment_id": "EXP01",
+          "title": "Type II PKS component optimization for octaketide shunt products 1 and 2",
+          "host": "OBJ-BAP1",
+          "intervention": "expression of different type II PKS component combinations (antDEF, antB, antG etc.)",
+          "readout": "titers of 1 and 2 (LC-MS/MS, NMR authenticity)",
+          "outcome": "antDEFBG gave highest 1 and 2 titers (P = 2.1e-3 and 8.2e-4); chosen for further studies",
+          "replicates": "n = 3 (Figure 1c)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p003"
+          ],
+          "dependency": "combination details in Supplementary Note S1 (requires_supplement)"
+        },
+        {
+          "experiment_id": "EXP02",
+          "title": "Type II vs type III PKS comparison for 3 production",
+          "host": "OBJ-BAP1",
+          "intervention": "pDS00-antDEFBG + pCDF-zhuIJ vs pET-AaPKS5 + pCDF-zhuIJ",
+          "readout": "titer of 3 from glucose",
+          "outcome": "type II 15.1 mg/L vs type III 4.3 mg/L (P = 4.1e-4)",
+          "replicates": "n = 3 (Figure 1d)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p004",
+            "results_and_discussion_p008"
+          ]
+        },
+        {
+          "experiment_id": "EXP03",
+          "title": "Enhancement of 3 production",
+          "host": "OBJ-FK",
+          "intervention": "single-plasmid pFK; ascorbic acid supplementation; accBCD1 overexpression; pabA knockdown",
+          "readout": "titer of 3",
+          "outcome": "88.0 -> 154.9 -> 180.3 mg/L (last step P = 0.105, NS)",
+          "replicates": "n = 3 (Figure 1d)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p009"
+          ]
+        },
+        {
+          "experiment_id": "EXP04",
+          "title": "Monooxygenase screening for kermesic acid (4)",
+          "host": "OBJ-FK",
+          "intervention": "separate introduction of pDnrF, pAct-VAVB, pTT7, pHpaBC, pPobA",
+          "control": "FK strain (CT)",
+          "readout": "titer of 4; LC-MS/MS; in vitro enzyme assay",
+          "outcome": "DnrF highest 4 titer (P = 6.6e-7); isomer 4' also identified",
+          "replicates": "n = 3 (Figure 2a)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p010",
+            "results_and_discussion_p011"
+          ]
+        },
+        {
+          "experiment_id": "EXP05",
+          "title": "DcUGT2 functional expression attempts",
+          "host": "OBJ-FK",
+          "intervention": "N-terminal/C-terminal truncations and OmpA signal peptide fusions of DcUGT2",
+          "readout": "production of 5",
+          "outcome": "no 5 produced by any DcUGT2 construct",
+          "replicates": "unknown (not stated in available text)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p012"
+          ]
+        },
+        {
+          "experiment_id": "EXP06",
+          "title": "C-glucosyltransferase screening for dcII (5)",
+          "host": "OBJ-FK",
+          "intervention": "8 CGT candidates (IroB, ZmCGT, FeCGT, MiCGT, OsCGT, GmCGT, GtCGT, AvCGT); galU-pgm-ndk overexpression",
+          "control": "FK strain (CT)",
+          "readout": "titer of 5; LC-MS/MS; NMR; in vitro assay",
+          "outcome": "only GtCGT converted 3 to 5 (major product; isomers 5' and 5'' characterized); galU-pgm-ndk OE increased 5 production 2.3-fold",
+          "replicates": "n = 3 (Figure 2c)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p013",
+            "results_and_discussion_p020",
+            "results_and_discussion_p021"
+          ]
+        },
+        {
+          "experiment_id": "EXP07",
+          "title": "Initial carminic acid (6) assembly attempt",
+          "host": "OBJ-BAP1",
+          "intervention": "pDS00-antDEFBG-zhuIJ + pCDF-dnrF-GtCGT (wild-type dnrF and GtCGT)",
+          "condition": "baffled flask culture",
+          "readout": "production of 6",
+          "outcome": "6 not observed; authors speculated insufficient downstream enzyme activities",
+          "replicates": "unknown",
+          "evidence_paragraphs": [
+            "results_and_discussion_p022"
+          ]
+        },
+        {
+          "experiment_id": "EXP08",
+          "title": "DnrF engineering via homology modeling and docking",
+          "host": "OBJ-FK",
+          "intervention": "29 DnrF mutants (20 top docking-score + 9 rational) screened; kinetics of DnrF vs DnrF P217K",
+          "readout": "titer of 4; steady-state kinetics (enzyme 1 uM)",
+          "outcome": "7 mutants improved 4; P217K best (2.2-fold); P217K/M56A decreased 4; P217K KM reduced 23.7%, Vmax/KM +33.4%",
+          "replicates": "n = 2 (Figure 3a); kinetics: three independent experiments (Table 1)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p025",
+            "results_and_discussion_p026",
+            "results_and_discussion_p027",
+            "results_and_discussion_p029",
+            "results_and_discussion_p032"
+          ]
+        },
+        {
+          "experiment_id": "EXP09",
+          "title": "GtCGT engineering via homology modeling and docking",
+          "host": "OBJ-FK",
+          "intervention": "34 GtCGT mutants (20 top docking-score + 14 rational) screened; kinetics of GtCGT vs GtCGT V93Q/Y193F",
+          "readout": "titer of 5; steady-state kinetics (enzyme 0.1 uM)",
+          "outcome": "6 mutants improved 5; V93Q best single (2.8-fold); V93Q/Y193F 5.3-fold; Vmax/KM +46.8%",
+          "replicates": "n = 2 (Figure 3c); kinetics: three independent experiments (Table 1)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p033",
+            "results_and_discussion_p034",
+            "results_and_discussion_p035",
+            "results_and_discussion_p037"
+          ]
+        },
+        {
+          "experiment_id": "EXP10",
+          "title": "Aloesin (8) production from glucose",
+          "host": "OBJ-BL21",
+          "intervention": "RpALS copy-number increase (pCDF-RpALS, pRSF-RpALS); pCDF-GtCGT vs pCDF-GtCGTmut vs pCDF-RpALS-GtCGTmut",
+          "readout": "titers of 7 and 8; LC-MS/MS authenticity vs standard",
+          "outcome": "7 at 102.1 mg/L; 8 at 0.060 ug/L (GtCGTmut) and 0.30 ug/L (ALS strain); first microbial production of 8",
+          "replicates": "n = 3 (Figure 4a,b)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p039",
+            "results_and_discussion_p041"
+          ]
+        },
+        {
+          "experiment_id": "EXP11",
+          "title": "Flavonoid in vivo conversion assays",
+          "host": "OBJ-BL21",
+          "intervention": "exogenous feeding of luteolin, apigenin, naringenin to strains with pCDF-GtCGT or pCDF-GtCGTmut",
+          "readout": "flavonoid C-glucoside conversion efficiency",
+          "outcome": "GtCGT V93Q/Y193F showed generally decreased flavonoid conversion",
+          "replicates": "unknown in available text (Figure S15, Supplementary Note S4 unavailable)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p047"
+          ],
+          "dependency": "requires_supplement"
+        },
+        {
+          "experiment_id": "EXP12",
+          "title": "Carminic acid (6) production from glucose and metabolic engineering",
+          "host": "OBJ-CA",
+          "intervention": "accBCD1 OE, pabA KD, galU-pgm-ndk OE alone/in combination; chaperone coexpression (dnaKJ-grpE, groES/EL, TF, ClpB)",
+          "readout": "titer of 6; LC-MS/MS (MRM) authenticity vs commercial standard",
+          "outcome": "CA 22.2 ug/L; CA-ACC 74.9 ug/L (3.4-fold, P = 2.3e-3); dnaKJ-grpE 48.9; groES/EL 31.3; accBCD1+dnaKJ-grpE 44.4 (no further increase); CA-ACC selected as final strain",
+          "replicates": "n = 3 (Figure 5a,b)",
+          "evidence_paragraphs": [
+            "results_and_discussion_p048",
+            "results_and_discussion_p052"
+          ]
+        },
+        {
+          "experiment_id": "EXP13",
+          "title": "Fed-batch fermentation of CA-ACC",
+          "host": "OBJ-CA-ACC",
+          "intervention": "pH-stat fed-batch in 6.6 L bioreactor with IPTG induction",
+          "readout": "titers of 6, 3, 4, 5, 1, 2; DCW; time profiles",
+          "outcome": "0.65 mg/L and 0.61 mg/L of 6 in two independent runs; maximum 3.66 g/L of 3 accumulated",
+          "replicates": "two independent fermentation runs",
+          "evidence_paragraphs": [
+            "results_and_discussion_p053",
+            "conclusion_p007"
+          ],
+          "dependency": "fermentation details in SI (requires_supplement)"
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p010",
+            "section": "introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "In this study, we report the development of an engineered Escherichia coli strain that is capable of the complete biosynthesis of 6 from glucose.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "access_p003",
+            "section": "access",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Here we report the complete biosynthesis of carminic acid from glucose in engineered Escherichia coli.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p010",
+            "section": "introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "To biosynthesize the aromatic polyketide backbone of 6, the type II and III PKS machineries were compared. Also, biochemical reaction analyses were performed to identify the enzymes responsible for the later steps in the 6 biosynthetic pathway.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The E. coli BAP1 strain, which is a BL21(DE3) derivative integrated with Bacillus subtilis phosphopantetheinyl transferase (PPTase; encoded by sfp), was used as the host strain.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p048",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "production of 6 from glucose was attempted by constructing the CA strain, which is the BAP1 strain harboring pFK and pCA.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p041",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 4",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "the ALS strain, which is BL21(DE3) harboring pRSF-RpALS, pCDF-RpALS-GtCGTmut, pWAS-anti-pabA, and pBBR1-zwf.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the expression of antDEF (antD encoding KSalpha; antE encoding KSbeta; antF encoding ACP), antB (encoding a PPTase), and antG (encoding a CoA ligase) in E. coli BAP1 resulted in the highest 1 and 2 titers",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": "d",
+            "table": null,
+            "supplement": null,
+            "quote": "one plasmid expression system was tested by cloning zhuIJ into pDS00-antDEFBG to make pFK",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p039",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "an engineered E. coli BL21(DE3) strain harboring pCDF-RpALS, pWAS-antipabA, and pBBR1-zwf, which expresses RpALS ..., anti-pabA synthetic sRNA, and zwf",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "increasing the malonyl-CoA pool was pursued by the overexpression of Corynebacterium glutamicum accBCD1 (encoding acetyl-CoA carboxylase complex) or knockdown of pabA",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Structure-based in silico docking simulations of DnrF and GtCGT with 3 (as their common ligand) were performed to generate the mutant enzymes having enhanced activities.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p052",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "Four diferent E. coli chaperones, DnaK-DnaJ-GrpE, GroES/EL, trigger factor (TF), and ClpB, were also employed to facilitate folding of insoluble heterologous enzymes.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p053",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "fed-batch cultures were carried out to assess the performance of the strain in a 6.6 L bioreactor.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p011",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "Five plasmids (pDnrF, pAct-VAVB, pTT7, pHpaBC, pPobA) each harboring the corresponding gene(s) were separately introduced into the FK strain (BAP1 harboring pFK) and were cultured in flasks.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p025",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "The top 20 mutants ... were selected for experimental analysis. An additional 9 mutants ... generated by rational examination of the predicted DnrF structure were also selected. Each of these 29 mutants was introduced into the FK strain",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p048",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "C. glutamicum accBCD1 overexpression, pabA knockdown, and/or galU-pgm-ndk overexpression were tested alone or in combinations.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p007",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "CT denotes the control FK strain.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p052",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "c",
+            "table": null,
+            "supplement": null,
+            "quote": "The authenticity of 6 was confirmed by an LC-MS/MS analysis and a comparison of the MS/MS fragmentation pattern with that of the commercially available standard chemical",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p022",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "was constructed and cultured in bafled flasks.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p053",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The pH-stat fed-batch fermentation of the CA-ACC strain (for details, see Materials and Methods in the Supporting Information)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p008",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": "d",
+            "table": null,
+            "supplement": null,
+            "quote": "BAP1 harboring the type II PKS system resulted in a significantly higher production of 3 (15.1 mg/L) from glucose",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": "d",
+            "table": null,
+            "supplement": null,
+            "quote": "ascorbic acid was supplemented to the medium, which increased the titer of 3 to 154.9 mg/L",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "conclusion_p007",
+            "section": "conclusion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The red arrow denotes the isopropyl beta-D-1-thiogalactopyranoside (IPTG) induction time point.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p047",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "In vivo conversion assays were performed by exogenously feeding luteolin, apigenin, and naringenin during the flask culture",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "time": {
+        "source_locations": [],
+        "evidence_role": "candidate"
+      },
+      "replicates": {
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p007",
+            "section": "introduction",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Error bars denote mean ± standard deviation (SD; n = 3).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p019",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "(a, c) n = 2.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p031",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 1",
+            "supplement": null,
+            "quote": "Data are means ± standard deviation (SD) of three independent experiments.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The authenticity of 1 and 2 was confirmed by LC-MS/MS (Figure S1a and Table S5) and NMR (Figures S20 and S21 and Table S6) analyses",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p011",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Conversion of 3 into 4 and 4' by DnrF was confirmed by an in vitro enzyme assay (Figure S5).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p029",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 1",
+            "supplement": null,
+            "quote": "the steady-state kinetic parameters of DnrF and DnrF P217K were determined (concentration of enzymes set to 1 uM)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p053",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "fed-batch cultures were carried out to assess the performance of the strain in a 6.6 L bioreactor.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "acknowledgments_p001",
+            "section": "acknowledgments",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Yu Ri Lee at Chungnam National University Center for Research Facilities for LC-HRMS analyses, Dr. Yun-Cheol Na at Korea Basic Science Institute (KBSI), Western Seoul Center, for LC-MS/MS analyses, Ji Won Kim at KAIST Bio Core Center for LC-MS (MRM) analyses, and Jae Hyun Lee at KBSI, Western Seoul Center, for NMR analysis.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p007",
+            "section": "introduction",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "determined by a two-tailed Student's t-test. P value thresholds were adjusted using a Bonferroni correction",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p020",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the predicted MS/MS spectra of possible 5 isomers (generated by CFM-ID 3.0)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "homology modeling was first performed using MODELLER to predict their structures. Next, docking simulations were performed using PyRosetta",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p048",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "A flask culture of the CA strain successfully produced 22.2 ug/L of 6 from glucose ... The CA-ACC strain, which overexpresses accBCD1, produced 74.9 ug/L of 6, corresponding to a 3.4-fold increase",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p053",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "resulted in the production of 0.65 mg/L of 6 ... Another fed-batch fermentation performed independently produced 0.61 mg/L of 6 ... a maximum of 3.66 g/L of 3 was also produced",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p041",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 4",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "The ALS strain could produce 0.30 ug/L of 8 (P = 0.011; Figure 4b). This represents the first report on the microbial production of 8.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p035",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "c",
+            "table": null,
+            "supplement": null,
+            "quote": "Employing the double mutant resulted in a 5.3-fold increase in the titer of 5 in comparison with that obtained with the wild type GtCGT",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "contains_original_experiment": true,
+        "original_experiment_scope": "full_text_body",
+        "classification_evidence": [
+          "access_p003",
+          "access_p006",
+          "introduction_p010",
+          "results_and_discussion_p003",
+          "experimental_section_p001"
+        ],
+        "classification_uncertainty": "None regarding genre; however the Supporting Information (methods, supplementary notes/figures/tables) was not provided, limiting parameter-level extraction."
+      },
+      "document_coverage": {
+        "available_sections": [
+          "title/authors",
+          "abstract (access)",
+          "introduction",
+          "results_and_discussion",
+          "conclusion",
+          "experimental_section (pointer to SI only)",
+          "supporting_information (availability notice only)",
+          "author_information",
+          "notes",
+          "acknowledgments",
+          "references"
+        ],
+        "available_modalities": [
+          "main text paragraphs (163)",
+          "figure captions for Figures 1-6 (text only)",
+          "Table 1 (parsed inline table)",
+          "one misparsed caption labeled 'Figure S16' containing body text"
+        ],
+        "missing_or_unparsed": [
+          "Supporting Information PDF: Materials and Methods, Supplementary Notes S1-S5, Figures S1-S23, Tables S5-S10",
+          "figure images/visuals (captions only)",
+          "Scheme 1 and Scheme 2 images (captions only)",
+          "source data"
+        ],
+        "blocked_fields_or_uses": [
+          "exact medium composition, culture temperature, IPTG/ascorbate/flavonoid concentrations, induction OD, culture durations (fields: medium, dosage, time, culture_conditions)",
+          "plasmid construction details and full genotypes (field: genotype; use: strain reconstruction, library re-synthesis)",
+          "detailed statistical procedure and replicate typing (field: replicates)",
+          "precise reproduction and automated DBTL use blocked; conceptual summary and main-text-reported titers remain usable"
+        ]
+      },
+      "paper_target_strains": [
+        {
+          "paper_label": "E. coli BAP1",
+          "normalized_name": "Escherichia coli BL21(DE3) BAP1",
+          "role": "host",
+          "evidence_paragraph": "results_and_discussion_p003"
+        },
+        {
+          "paper_label": "FK strain",
+          "role": "platform strain (BAP1 + pFK)",
+          "evidence_paragraph": "results_and_discussion_p011"
+        },
+        {
+          "paper_label": "CA strain",
+          "role": "carminic acid producer (BAP1 + pFK + pCA)",
+          "evidence_paragraph": "results_and_discussion_p048"
+        },
+        {
+          "paper_label": "CA-ACC strain",
+          "role": "final carminic acid producer (accBCD1 overexpression)",
+          "evidence_paragraph": "results_and_discussion_p052"
+        },
+        {
+          "paper_label": "E. coli BL21(DE3)",
+          "role": "host for aloesin work",
+          "evidence_paragraph": "results_and_discussion_p039"
+        },
+        {
+          "paper_label": "ALS strain",
+          "role": "aloesin producer",
+          "evidence_paragraph": "results_and_discussion_p041"
+        }
+      ],
+      "user_target_system": {},
+      "variables": {
+        "measured_variables": [
+          "titers of compounds 1-8 (mg/L or ug/L)",
+          "KM, Vmax, Vmax/KM (Table 1)",
+          "dry cell weight (DCW)",
+          "docking scores / binding energies (kcal/mol)",
+          "conversion efficiencies (fold changes)"
+        ],
+        "manipulated_variables": [
+          "PKS machinery type (II vs III)",
+          "plasmid architecture (one vs two plasmids)",
+          "ascorbic acid supplementation",
+          "accBCD1 OE / pabA KD / galU-pgm-ndk OE",
+          "enzyme identity (monooxygenase and CGT candidates)",
+          "enzyme mutations (DnrF, GtCGT)",
+          "chaperone coexpression",
+          "RpALS copy number",
+          "cultivation mode (flask vs fed-batch)"
+        ]
+      },
+      "experiment_workflow": {
+        "sequence": [
+          "EXP01 type II PKS optimization",
+          "EXP02 type II vs III comparison",
+          "EXP03 3 enhancement (pFK, ascorbate, accBCD1)",
+          "EXP04 monooxygenase screen -> DnrF",
+          "EXP05 DcUGT2 attempts (failed)",
+          "EXP06 CGT screen -> GtCGT; galU-pgm-ndk OE",
+          "EXP07 initial 6 assembly (failed)",
+          "EXP08 DnrF engineering -> P217K",
+          "EXP09 GtCGT engineering -> V93Q/Y193F",
+          "EXP10 aloesin production",
+          "EXP11 flavonoid conversion",
+          "EXP12 CA/CA-ACC construction and optimization",
+          "EXP13 fed-batch fermentation"
+        ]
+      },
+      "design_logic": {
+        "ddr_annotations": [
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Active selection and implementation of a specific type II minimal PKS construct (antDEFBG) as the pathway platform; passes Q1 (heterologous expression construct choice), Q2 (tested in this study), Q3 (design choice among alternatives).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Express antDEF, antB and antG (antDEFBG) from Photorhabdus luminescens in E. coli BAP1 (pDS00-antDEFBG) as the type II minimal PKS platform.",
+            "design_action_rationale": "AntDEF was reported (ref 31) to be soluble and functional in E. coli; among tested component combinations antDEFBG gave the highest 1 and 2 titers (P = 2.1e-3 and 8.2e-4).",
+            "trigger_observation": "Prior literature: type II minimal PKSs are mostly insoluble in non-Streptomyces hosts; AntDEF from P. luminescens was reported soluble and functional in E. coli (ref 31). Trigger precedes the action.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: screening_result (in-house comparison of component combinations; details in unavailable Supplementary Note S1) supported by literature_precedent (ref 31).",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "Construct chosen because it gave the highest measured shunt-product titers among the combinations tested in this study.",
+            "reason_nature_tags": [
+              "screening_result",
+              "literature_precedent"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "Other type II PKS component combinations (Supplementary Note S1, unavailable); type III PKSs AaOKS, AaPKS4, AaPKS5 (AaPKS5 retained for head-to-head comparison).",
+            "strategy_categories": [
+              "heterologous_pathway_expression",
+              "enzyme_selection"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Choice of type II over type III PKS machinery for flavokermesic acid (3) production after direct comparison; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Adopt the type II PKS system (AntDEFBG + ZhuIJ) rather than the type III PKS (AaPKS5 + ZhuIJ) for 3 production.",
+            "design_action_rationale": "Type II system produced 15.1 mg/L of 3 vs 4.3 mg/L for type III (P = 4.1e-4).",
+            "trigger_observation": "Both machineries showed similar 1 and 2 production (P = 0.28 and 0.85), prompting the head-to-head 3 comparison.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (Figure 1d, n = 3).",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "Selection based on measured titer difference in this study.",
+            "reason_nature_tags": [
+              "screening_result"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "Type III PKS AaPKS5 (carried through the comparison, then not pursued for 3).",
+            "strategy_categories": [
+              "pathway_platform_selection"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Plasmid architecture redesign from two plasmids to a single plasmid (pFK); Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Clone zhuIJ into pDS00-antDEFBG to generate the single-plasmid system pFK.",
+            "design_action_rationale": "Stated a priori: to reduce the metabolic burden of having two plasmids. Post-hoc, authors suggest colocalization may have increased transient complex formation ('is thought to have').",
+            "trigger_observation": "Recognition that the two-plasmid system imposes metabolic burden (stated before the action).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (88.0 mg/L vs 15.1 mg/L of 3, P = 1.8e-5); the mechanistic explanation (colocalization) is author interpretation, not separately tested.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "The burden-reduction rationale was stated before the experiment; the colocalization mechanism is a post-hoc interpretation and is not treated as validated.",
+            "reason_nature_tags": [
+              "metabolic_burden",
+              "author_interpretation_post_hoc"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "In E. coli BAP1 producing flavokermesic acid (3), consolidating minimal PKS (antDEFBG) and cyclase (zhuIJ) genes onto one plasmid (pFK) increased the 3 titer from 15.1 to 88.0 mg/L relative to the two-plasmid arrangement.",
+              "tested_scope": "E. coli BAP1, flask culture, antDEFBG + zhuIJ, 3 production",
+              "excluded_scope": "other hosts, other gene sets/products, and the causal contribution of colocalization vs burden reduction (not separately tested)"
+            },
+            "alternatives_considered": "Two-plasmid system (pDS00-antDEFBG + pCDF-zhuIJ), retained as comparator.",
+            "strategy_categories": [
+              "plasmid_architecture",
+              "metabolic_burden_reduction"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Medium supplementation decision in response to an observed phenotype; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Supplement ascorbic acid to the medium during 3 production.",
+            "design_action_rationale": "To prevent excess oxidation causing polymerization of 3 into melanin-like compounds (as reported for similar aromatic polyketides, ref 39).",
+            "trigger_observation": "Culture gradually turned from bright red to brownish (Figure S1d), interpreted as possible polymerization of 3. Observation precedes the action.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (titer increased to 154.9 mg/L, P = 4.2e-3); mechanistic basis is literature_analogy (ref 39) plus author interpretation of the color change. Ascorbate concentration not reported in available text.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Action explicitly motivated by an oxidation/polymerization mechanism inferred from the observed color change and prior reports on similar polyketides; the mechanism itself was not independently verified in this paper.",
+            "reason_nature_tags": [
+              "oxidation_prevention",
+              "literature_precedent",
+              "author_interpretation"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "Ascorbic acid supplementation increased the flavokermesic acid (3) titer of E. coli BAP1(pFK) flask cultures from 88.0 to 154.9 mg/L, plausibly by limiting oxidative polymerization of 3.",
+              "tested_scope": "E. coli BAP1(pFK), flask culture, 3 production; dose not reported in available text",
+              "excluded_scope": "other products, hosts, doses; mechanistic confirmation of polymerization inhibition not performed"
+            },
+            "alternatives_considered": null,
+            "strategy_categories": [
+              "medium_optimization",
+              "product_stabilization"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Cofactor/precursor supply engineering to increase malonyl-CoA; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Overexpress Corynebacterium glutamicum accBCD1 (acetyl-CoA carboxylase complex); pabA knockdown tested in parallel.",
+            "design_action_rationale": "To increase the malonyl-CoA pool for enhanced 3 production, as recently reported by the same group (ref 5).",
+            "trigger_observation": "Goal to further enhance 3 production after pFK + ascorbate; prior group report (ref 5) that accBCD1 OE / pabA KD increase malonyl-CoA availability.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: stoichiometric_constraint (malonyl-CoA as precursor) plus literature_precedent (ref 5); measured result 180.3 mg/L but P = 0.105 (NS after Bonferroni), so the titer effect at this step is statistically weak.",
+            "reason_nature": "literature_analogy",
+            "reason_nature_rationale": "Strategy explicitly adopted from the group's previous report (ref 5) with a stoichiometric precursor-supply rationale.",
+            "reason_nature_tags": [
+              "stoichiometric_constraint",
+              "literature_precedent",
+              "weak_statistical_support_at_this_step"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "accBCD1 overexpression to raise the malonyl-CoA pool was associated with increased polyketide titers in E. coli BAP1 (3: 154.9 -> 180.3 mg/L, NS at this step) and in the CA strain background (6: 22.2 -> 74.9 ug/L, P = 2.3e-3).",
+              "tested_scope": "E. coli BAP1-derived strains producing 3 or 6, flask culture",
+              "excluded_scope": "statistical significance not achieved for the 3-enhancement step; other hosts/products untested"
+            },
+            "alternatives_considered": "pabA knockdown (tested as alternative malonyl-CoA strategy).",
+            "strategy_categories": [
+              "precursor_supply_engineering",
+              "cofactor_engineering"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Enzyme discovery by candidate screening (biochemical reaction analysis); Q1-Q3 pass (selection and introduction of candidate enzymes is an engineering action).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Screen five monooxygenase candidates (DnrF, ActVA-ORF5/ActVB, TT7/ATR2, HpaBC, PobA) in the FK strain; select DnrF for 3 -> 4 hydroxylation.",
+            "design_action_rationale": "Candidates selected from different enzyme categories based on literature and chemical databases for reactions similar to the desired hydroxylation; DnrF gave the highest 4 titer (P = 6.6e-7).",
+            "trigger_observation": "Only trace 4 was produced (possibly by inherent E. coli oxygenases) and the responsible monooxygenase had not been reported; conversion efficiency too low for 6 production.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: screening_result (Figure 2a, n = 3) with in vitro confirmation (Figure S5, unavailable).",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "DnrF selected because it showed the highest measured activity among candidates tested in this study.",
+            "reason_nature_tags": [
+              "screening_result",
+              "enzyme_discovery"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "ActVA-ORF5/ActVB, TT7/ATR2, HpaBC, PobA (all tested, lower or no 4 production).",
+            "strategy_categories": [
+              "enzyme_screening",
+              "pathway_completion"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Abandonment of DcUGT2 after failed engineering and subsequent CGT candidate screening; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "After failed DcUGT2 truncation/OmpA-fusion attempts, screen eight CGT candidates (IroB, ZmCGT, FeCGT, MiCGT, OsCGT, GmCGT, GtCGT, AvCGT); select GtCGT for 3 -> 5 C-glucosylation.",
+            "design_action_rationale": "DcUGT2 (native, Ntr, Ctr, Ntr-Ctr, and OmpA-fused variants) produced no 5 in E. coli; among the 8 candidates only GtCGT converted 3 to 5.",
+            "trigger_observation": "No production of 5 by any DcUGT2 construct in the FK strain (negative result precedes the screening decision).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: screening_result (Figure 2c,d, n = 3) with LC-MS/MS, NMR and in vitro assay confirmation.",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "GtCGT selected as the only candidate showing the desired activity in this study's screen.",
+            "reason_nature_tags": [
+              "screening_result",
+              "negative_result_trigger",
+              "enzyme_discovery"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "DcUGT2 and its engineered variants (abandoned after failure); seven other CGT candidates (no 5 produced).",
+            "strategy_categories": [
+              "enzyme_screening",
+              "pathway_completion"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "UDP-glucose supply engineering to support C-glucosylation; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Overexpress galU, pgm and ndk in the FK + GtCGT background.",
+            "design_action_rationale": "C-glucosylation requires a high UDP-glucose pool; overexpression intended to enhance UDP-glucose generation and UDP recycling (ref 60).",
+            "trigger_observation": "Pathway requirement: GtCGT uses UDP-glucose as cosubstrate (stated as rationale before the action).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (2.3-fold increase of 5, Figure 2c) motivated by stoichiometric_constraint and literature_precedent (ref 60).",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Cosubstrate supply rationale stated a priori and supported by literature; effect measured in this study.",
+            "reason_nature_tags": [
+              "stoichiometric_constraint",
+              "cofactor_supply",
+              "literature_precedent"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "galU-pgm-ndk overexpression increased GtCGT-dependent production of 5 by 2.3-fold in the E. coli FK strain background.",
+              "tested_scope": "E. coli FK strain expressing GtCGT, flask culture, 5 production",
+              "excluded_scope": "other CGTs/hosts/products untested; effect size specific to this background"
+            },
+            "alternatives_considered": null,
+            "strategy_categories": [
+              "cofactor_engineering",
+              "precursor_supply_engineering"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Structure-guided enzyme engineering of DnrF; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Generate and screen 29 DnrF mutants predicted by homology modeling (MODELLER, template RdmE PDB 3IHG) and PyRosetta docking plus rational inspection; adopt DnrF P217K.",
+            "design_action_rationale": "Predicted enhanced binding affinity toward 3; P217K gave the highest 4 production (2.2-fold over wild type); double mutant P217K/M56A decreased 4 and was rejected.",
+            "trigger_observation": "Wild-type DnrF activity was insufficient: the initial pathway assembly (EXP07) produced no detectable 6, speculated to be due to insufficient downstream enzyme activities. Trigger precedes mutagenesis.",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type: computational_prediction (docking scores; requires experimental confirmation) combined with experimental_measurement (mutant screen n = 2; kinetics: KM -23.7%, Vmax/KM +33.4%, three independent experiments). The authors note expression was unaffected and attribute improvement to an unknown reason such as higher specific activity.",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "Mutants were computationally predicted but the final selection (P217K) was based on measured 4 titers; the mechanistic explanation remains speculative per the authors.",
+            "reason_nature_tags": [
+              "computational_prediction",
+              "screening_result",
+              "mechanism_unresolved"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "DnrF M56A (second best); DnrF P217K/M56A double mutant (rejected: decreased 4 titer).",
+            "strategy_categories": [
+              "enzyme_engineering",
+              "rational_design"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Structure-guided enzyme engineering of GtCGT including a rationally designed double mutant; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Generate and screen 34 GtCGT mutants; construct and adopt the double mutant GtCGT V93Q/Y193F.",
+            "design_action_rationale": "V93Q (best single, 2.8-fold) combined with Y193F; Y193F predicted to allow a robust hydrogen bond between Gln93 and the C6 hydroxyl of 3, orienting it for C2 C-glucosylation; double mutant gave 5.3-fold higher 5 titer and +46.8% Vmax/KM.",
+            "trigger_observation": "Wild-type GtCGT activity insufficient for 6 production (EXP07 negative result); docking predictions indicated beneficial mutations. Trigger precedes action.",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type: computational_prediction (PyRosetta/AutoDock Vina binding energies; requires experimental confirmation) plus experimental_measurement (5 titer, n = 2; kinetics, three independent experiments). Structural mechanism remains a prediction.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "The double mutant was designed from an explicit structure-based mechanistic hypothesis (hydrogen-bond network orienting the ligand) stated before its construction; kinetics support improved efficiency but the structural mechanism itself was not experimentally verified.",
+            "reason_nature_tags": [
+              "computational_prediction",
+              "structure_based_design",
+              "screening_result"
+            ],
+            "generalizable_rule": {
+              "role": "single_paper_rule_candidate",
+              "rule": "GtCGT V93Q/Y193F shows enhanced C-glucosylation of aromatic polyketides in E. coli: 5.3-fold higher 5 titer from 3 and detectable conversion of aloesone (7) to aloesin (8).",
+              "tested_scope": "E. coli BAP1(FK) and BL21(DE3) backgrounds; substrates 3 and 7; flask culture",
+              "excluded_scope": "flavonoid substrates (luteolin, apigenin, naringenin) showed decreased conversion; other hosts/substrates untested; structural mechanism predicted, not verified"
+            },
+            "alternatives_considered": "GtCGT V93Q and Y193F single mutants (lower activity than the double mutant).",
+            "strategy_categories": [
+              "enzyme_engineering",
+              "rational_design"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Application of the engineered CGT to a second product (aloesin); Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Use GtCGT V93Q/Y193F to convert aloesone (7) to aloesin (8) in engineered BL21(DE3); increase RpALS copy number (ALS strain).",
+            "design_action_rationale": "GtCGT V93Q/Y193F had the highest activity toward 3; the CGT for 7 -> 8 had not been identified; authors sought to test generality on similar C-glucosylation reactions.",
+            "trigger_observation": "Prior result: GtCGT V93Q/Y193F was the best CGT for 3 -> 5 in this study; literature gap: no CGT known for 7 -> 8.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (8 produced at 0.060 ug/L with GtCGTmut, 0.30 ug/L in ALS strain; authenticity by LC-MS/MS vs standard). Titers are very low and flagged for unit verification.",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "The mutant was chosen because it had the highest measured activity in the prior screen; the generality hypothesis is an intra-paper substrate-similarity analogy rather than a reported mechanism.",
+            "reason_nature_tags": [
+              "screening_result",
+              "substrate_analogy",
+              "generality_test"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "Wild-type GtCGT (produced 8 at lower titer).",
+            "strategy_categories": [
+              "pathway_extension",
+              "enzyme_engineering"
+            ]
+          },
+          {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Selection of the final production strain after combinatorial metabolic engineering; Q1-Q3 pass.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": "Select CA-ACC (CA + accBCD1 overexpression) as the final carminic acid production strain.",
+            "design_action_rationale": "CA-ACC gave the highest 6 titer (74.9 ug/L, 3.4-fold over CA, P = 2.3e-3); combining accBCD1 OE with dnaKJ-grpE OE did not further increase the titer (44.4 ug/L).",
+            "trigger_observation": "Measured titers across the tested strategies (accBCD1 OE, pabA KD, galU-pgm-ndk OE, chaperone coexpression) precede the selection.",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: screening_result / experimental_measurement (Figure 5a,b, n = 3).",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "Final strain chosen on measured titers; the expectation that accBCD1 + dnaKJ-grpE would further increase 6 was tested and falsified before selection.",
+            "reason_nature_tags": [
+              "screening_result",
+              "combinatorial_testing"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": "pabA KD; galU-pgm-ndk OE; chaperones dnaKJ-grpE, groES/EL, TF, ClpB; accBCD1 + dnaKJ-grpE combination (all tested, lower or non-additive).",
+            "strategy_categories": [
+              "strain_selection",
+              "precursor_supply_engineering",
+              "protein_folding_engineering"
+            ]
+          },
+          {
+            "decision_type": "validation",
+            "decision_type_rationale": "Fed-batch fermentation of CA-ACC is a scale-up performance assessment of the already-selected final strain; Q1 (process operation) and Q2 pass, but Q3 (a new design choice) does not - it is classified as validation, not an engineering decision.",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": false
+            },
+            "design_action": "pH-stat fed-batch fermentation of CA-ACC in a 6.6 L bioreactor with IPTG induction; two independent runs.",
+            "design_action_rationale": "Stated purpose: to assess the performance of the strain at bioreactor scale.",
+            "trigger_observation": "Selection of CA-ACC as the final strain (precedes fermentation).",
+            "evidence_grading": "hard",
+            "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (0.65 and 0.61 mg/L of 6; 3.66 g/L max of 3). Fermentation parameters are in the unavailable SI.",
+            "reason_nature": "rationale_not_reported",
+            "reason_nature_rationale": "No design rationale beyond performance assessment is reported; mapped to rationale_not_reported because no optimization decision motivated the run.",
+            "reason_nature_tags": [
+              "scale_up",
+              "performance_assessment"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": null,
+            "strategy_categories": [
+              "fermentation_scale_up"
+            ]
+          }
+        ]
+      }
+    },
+    "conflicts": [
+      {
+        "field_path": "figures[5].caption",
+        "conflict_type": "cross_modal",
+        "candidate_values": [
+          "Parsed figure entry labeled 'Figure S16' whose caption text is the chaperone results paragraph (dnaKJ-grpE 48.9 ug/L, groES/EL 31.3 ug/L, CA-ACC selection)",
+          "Expected: an actual Figure S16 caption from the Supporting Information (unavailable)"
+        ],
+        "sources": [
+          "document.figures[5] (figure_id 'Figure S16')",
+          "results_and_discussion_p052 (identical body text)"
+        ],
+        "conflict_reason": "The parsed 'Figure S16' caption duplicates main-text body paragraph content, indicating a parsing/labeling artifact rather than a genuine supplementary figure caption; the true Figure S16 is in the unavailable SI.",
+        "review_action": "Verify figure set against the original PDF and Supporting Information; do not treat the parsed 'Figure S16' entry as supplementary evidence."
+      },
+      {
+        "field_path": "experimental_design_object.experiments[EXP08/EXP09].outcome (Table 1 third column)",
+        "conflict_type": "formula",
+        "candidate_values": [
+          "Third kinetic column is Vmax/KM (min^-1), per footnote b ('Vmax/KM was calculated instead of kcat/KM') and Results text",
+          "Parsed table header shows a garbled label 'V (min^-1)^β'"
+        ],
+        "sources": [
+          "results_and_discussion_p030 (Table 1 content)",
+          "results_and_discussion_p031 (Table 1 footnotes)",
+          "results_and_discussion_p032 / results_and_discussion_p037 (text references to Vmax/KM)"
+        ],
+        "conflict_reason": "OCR/parsing garbled the Table 1 third-column header; text and footnote indicate the metric is Vmax/KM, but the header as parsed is ambiguous.",
+        "review_action": "Confirm the column identity and values against the original Table 1 in the published PDF."
+      },
+      {
+        "field_path": "experimental_design_object.biological_objects[OBJ-GtCGT].variants",
+        "conflict_type": "identity",
+        "candidate_values": [
+          "GtCGT V93Q/Y193F",
+          "OCR variants in captions: 'V93Q/Yi93F', 'Y1i93F', 'V93Q/Y193F with garbled superscripts'"
+        ],
+        "sources": [
+          "results_and_discussion_p035 (body text)",
+          "results_and_discussion_p019 (Figure 3 caption)",
+          "results_and_discussion_p046 (Figure 4 caption)"
+        ],
+        "conflict_reason": "OCR of superscript mutation notation is inconsistent across captions; body text supports V93Q/Y193F.",
+        "review_action": "Verify mutation notation against the original PDF; treat V93Q/Y193F as the normalized form with document_internal basis."
+      },
+      {
+        "field_path": "fields.outcomes.value.carminic_acid_6 (fed-batch titer)",
+        "conflict_type": "numeric",
+        "candidate_values": [
+          "0.63 ± 0.02 mg/L (Abstract)",
+          "0.65 mg/L and 0.61 mg/L (two independent fed-batch runs, Results)"
+        ],
+        "sources": [
+          "access_p006 (abstract)",
+          "results_and_discussion_p053 (results)"
+        ],
+        "conflict_reason": "Abstract reports a single mean ± SD value while Results reports two individual run values; the abstract value is numerically consistent with the mean of the two runs (0.63) but the aggregation is not explicitly stated.",
+        "review_action": "Confirm that 0.63 ± 0.02 mg/L is the mean ± SD of the two reported runs; retain both representations."
+      },
+      {
+        "field_path": "fields.outcomes.value.aloesin_8",
+        "conflict_type": "numeric",
+        "candidate_values": [
+          "0.060 ug/L of 8 for the GtCGT V93Q/Y193F strain (P = 0.046)",
+          "0.30 ug/L of 8 for the ALS strain (P = 0.011)"
+        ],
+        "sources": [
+          "results_and_discussion_p041",
+          "results_and_discussion_p046 (Figure 4 caption)"
+        ],
+        "conflict_reason": "Not a direct contradiction (different strains), but the reported aloesin titers are extremely low (ug/L scale) and unit-sensitive; OCR unit errors cannot be excluded without the original figure.",
+        "review_action": "Verify aloesin titer units and values against Figure 4b in the original PDF before any quantitative reuse."
+      }
+    ]
+  }
+}

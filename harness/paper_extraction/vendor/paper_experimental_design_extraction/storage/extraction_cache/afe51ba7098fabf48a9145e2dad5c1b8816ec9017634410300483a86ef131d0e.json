@@ -1,0 +1,1328 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Test whether E. coli can optimally utilize multiple alternative carbon sources via serial adaptive laboratory evolution (ALE) first in L-lactate then glycerol and vice versa; elucidate the genetic and transcriptomic basis of serial adaptation; and assess serial-ALE strains for acetoin bioproduction under single and mixed-carbon conditions.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "a_b_s_t_r_a_c_t_p001",
+          "1_introduction_p004"
+        ],
+        "notes": "Abstract and Introduction final paragraph state the objective directly."
+      },
+      "hypothesis": {
+        "value": "Serial (sequential single-carbon) ALE across two fitness landscapes yields a single dominant generalist lineage with universal growth advantage on both carbon sources and their mixture, avoiding the fitness trade-offs or specialist subpopulations seen in mixed-carbon ALE, and the resulting rewired physiology improves bioproduction of a value-added product (acetoin).",
+        "status": "inferred",
+        "confidence": 0.7,
+        "extraction_method": "structural_inference",
+        "evidence_ids": [
+          "1_introduction_p004",
+          "3_discussion_p002"
+        ],
+        "inference": {
+          "method": "research_question_plus_discussion_framing",
+          "rationale": "No explicit formal hypothesis statement; inferred from 'To test whether a bacterial strain can optimally utilize multiple carbon sources' (abstract) and Discussion statement that serial ALE is expected to enable evolution of a single dominant generalist instead of co-existing sub-populations."
+        },
+        "notes": "Authors frame expectations but do not label a formal hypothesis."
+      },
+      "strain": {
+        "value": "Escherichia coli K-12 MG1655 wild-type (parental/ancestor); phase-1 evolved strains LA (lactate-adapted) and GL (glycerol-adapted); serial-ALE end-point strains LA-GL and GL-LA; LA and LA-GL derivatives with mutT and dam restored at the lacZ locus (used as acetoin production hosts); reconstructed single/sequential mutants in MG1655 background.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+          "4_1_bacterial_strains_and_growth_conditions_p001",
+          "4_2_adaptive_laboratory_evolution_p001",
+          "4_6_reverse_engineering_of_mutations_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "Strain list and plasmids deferred to Supplementary Table S1 (not available); lineage nomenclature LA/GL/LA-GL/GL-LA defined in Results 2.1. 'wild type' paper label corresponds to standard lab strain MG1655, not a natural isolate."
+      },
+      "genotype": {
+        "value": "Adaptive mutations tracked by WGS: LA lineage - rph-pyrE 69 bp deletion (rph 619del69, E207fs; first fixed by generation 50), hfq (142 A>T), cyaA (reported as 2336 T>G in 2.2 and 2236 T>G in 2.4 - unresolved), ppsA (72 T>G), ydcI (5 A>C); GL lineage - rpoC (3610del9, V1204fs), glpK (694 G>T, G232C); second phase added ppsA (13 G>T, G5R), ydcI (686-7insG, G229fs), hdfR (463 G>T, E155*), glpK (189 A>C); mutator phenotypes of LA and LA-GL attributed to mutT and dam mutations, restored with wild-type mutT and dam at lacZ. rpoC mutant excluded from reverse engineering (essential gene difficulty).",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "direct_text_and_table",
+        "evidence_ids": [
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p003",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p008",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p012",
+          "2_4_fitness_contribution_of_adaptive_mutations_p001",
+          "4_6_reverse_engineering_of_mutations_p001"
+        ],
+        "notes": "Fig. 1D table in extracted markdown has empty frequency cells; exact allele-frequency trajectories require figure rendering/supplement. cyaA nucleotide-change notation inconsistent between sections (see conflicts)."
+      },
+      "engineering_method": {
+        "value": "Two-phase serial adaptive laboratory evolution (serial passage at mid-exponential phase, ~800 generations per carbon source, 1400-1600 generations total); lambda-Red one-step inactivation/recombineering (Datsenko-Wanner) with pKD13 kanamycin cassette, overlap-extension PCR and pCP20 marker excision for reverse engineering of single, sequential and double mutants; restoration of mutT/dam at lacZ locus; episomal heterologous expression of Bacillus subtilis alsS and Aeromonas hydrophila alsD from plasmid pTrcHis2A-alsSD (IPTG-inducible).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "4_2_adaptive_laboratory_evolution_p001",
+          "4_6_reverse_engineering_of_mutations_p001",
+          "4_13_acetoin_production_p001",
+          "2_4_fitness_contribution_of_adaptive_mutations_p001"
+        ],
+        "notes": "pTrcHis2A-alsSD was constructed in a previous study (Choe et al., 2022) - background element, not a design decision of this paper."
+      },
+      "experimental_groups": {
+        "value": "ALE: three independent populations per lineage direction (LA->LA-GL and GL->GL-LA). Phenotyping: WT, LA, GL, LA-GL, GL-LA each in M9 glycerol, M9 lactate, and M9 mix; also acetate, D-xylose, D-glucose, LB, TB. Reverse engineering: 11 single/sequential mutants from LA-GL mutation set and 7 from GL-LA set in WT background, assayed in glycerol, lactate, and mixed conditions; double mutants glpK(694G>T)-rph-pyrE(del) and ppsA(13G>T)-rph-pyrE(del). Transcriptomics: WT and end-point strains in respective evolutionary media and mixed-carbon (10 datasets, 1205 DEGs). Biolog PM1/PM2A respiration profiling. Acetoin production: WT, GL, GL-LA carrying pTrcHis2A-alsSD in M9 glycerol, M9 lactate, M9 mix with casamino acids.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text_and_figure_captions",
+        "evidence_ids": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+          "2_4_fitness_contribution_of_adaptive_mutations_p001",
+          "2_5_co_utilization_of_glycerol_and_lactate_p009",
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p004",
+          "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "Methods 4.2 says 'Two independent lineages' (the two lineage directions), Results 2.1 says 'Three independent populations' were serially passaged - recorded as minor ambiguity, interpreted as 3 populations per direction."
+      },
+      "controls": {
+        "value": "E. coli MG1655 wild-type as ancestral/unevolved comparator in all growth, uptake, transcriptome, cAMP, Biolog and acetoin assays; single-ALE ancestors LA and GL as comparators for serial-ALE end-point strains; negative-control wells (AUC baseline) in Biolog phenotype microarray to discriminate false-negative growth; 'control__wt_glc' sample used as baseline control for iModulon ICA against the PRECISE compendium.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p003",
+          "4_10_imodulon_analysis_of_rna_seq_data_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "No empty-plasmid/no-pathway negative control for acetoin production is reported in the main text."
+      },
+      "culture_conditions": {
+        "value": "30 C, oxic. ALE: 60 mL M9 minimal in 300 mL Erlenmeyer flasks, 200 rpm shaking, serial transfer twice daily at OD600 0.4-0.6 (mid-exponential), initial OD adjusted downward as growth improved. Plate-reader growth assays: 48-well, 300 uL working volume, 807 rpm double orbital, 30 C, 24 h, OD600 every 30 min. Biolog: 30 C, 48 h on OmniLog. Acetoin batch production: 60 mL, 30 C with shaking, 24 h, supernatant sampled every 2 h. Pre-cultures: 3 mL M9 with matched carbon source.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "4_1_bacterial_strains_and_growth_conditions_p001",
+          "4_2_adaptive_laboratory_evolution_p001",
+          "4_3_growth_assay_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "Cell-stock temperature printed as '80 C glycerol cell stocks' - minus sign lost in parsing; physically implies -80 C (see conflicts)."
+      },
+      "medium": {
+        "value": "M9 minimal medium (M9 salts, 2 mM MgSO4, 0.1 mM CaCl2) with either 0.2% (v/v) L-lactate or 0.2% (v/v) glycerol as sole carbon source; M9 mix (0.1% v/v each of glycerol and L-lactate); acetoin production media: M9 glycerol / M9 lactate / M9 mix each supplemented with 0.2% Casamino Acids and 100 ug/mL ampicillin; LB agar with 50 ug/mL kanamycin for recombineering selection; LB for pCP20 curing at 42 C; enriched LB and Terrific Broth for non-adaptive growth profiling; Biolog IF-0a GN/GP inoculating fluid with PM1/PM2A plates.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "4_1_bacterial_strains_and_growth_conditions_p001",
+          "4_3_growth_assay_p001",
+          "4_6_reverse_engineering_of_mutations_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "Only L-lactate (not D/DL mixtures) used unless stated otherwise."
+      },
+      "dosage": {
+        "value": "Carbon sources: 0.2% v/v L-lactate or glycerol (single), 0.1% v/v each (mix); non-adaptive carbons: sodium acetate 0.2% v/v, D-xylose 0.2% w/v, D-glucose 0.2% w/v; kanamycin 50 ug/mL; ampicillin 100 ug/mL; IPTG 10 uM added 2 h post-inoculation; Casamino Acids 0.2%; Biolog inoculum OD600 = 0.05; cAMP assay cell input ~20 mL of OD600 = 1.0 culture.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "4_1_bacterial_strains_and_growth_conditions_p001",
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p004",
+          "4_6_reverse_engineering_of_mutations_p001",
+          "4_11_intracellular_camp_assay_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "Methods 4.13 prints 'M9 lactate (0.2 v/v L-lactate)' with missing % sign (typo)."
+      },
+      "time": {
+        "value": "ALE: ~800 generations phase 1, then 600-800 generations phase 2 (1400-1600 total); WGS sampling every 50 generations; growth assays 24 h with OD600 at 30-min intervals; Biolog respiration 48 h; acetoin batch 24 h with supernatant sampling at 2 h intervals; IPTG induction at 2 h post-inoculation; RNASnap lysis 95 C 7 min; cAMP lysis 20 min at room temperature.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p001",
+          "4_3_growth_assay_p001",
+          "4_7_total_rna_extraction_and_ribosomal_rna_depletion_p001",
+          "4_11_intracellular_camp_assay_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": "ALE duration expressed in generations, not calendar time; per-passage wall time not reported."
+      },
+      "replicates": {
+        "value": "Three independent ALE populations per lineage direction (independent_culture_replicates, biological_independence=likely); growth/fitness assays and SGR/CUR comparisons: biological triplicates (Fig. 1 and Fig. 2 captions, SD error bars); acetoin production: three biological replicates (Fig. 4 caption); Biolog PM: biological triplicates; cAMP ELISA: each sample assayed in duplicates (technical replicates); RNA-seq replicate counts not stated in main text (requires supplement).",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "figure_captions_and_methods",
+        "evidence_ids": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011",
+          "2_5_co_utilization_of_glycerol_and_lactate_p008",
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p006",
+          "4_11_intracellular_camp_assay_p001",
+          "4_12_biolog_phenotype_microarray_p001"
+        ],
+        "notes": "RNA-seq replicate structure and per-mutant growth-assay replicate counts not visible in main text - requires_supplement."
+      },
+      "assay": {
+        "value": "Doubling time per passage from initial/final OD of serial transfers (fitness trajectory); specific growth rate (SGR) from OD600 time series; specific carbon uptake rate (CUR) by HPLC of spent media; whole-genome resequencing for mutation trajectories; reconstructed-mutant fitness assay (percent contribution = mutant SGR relative to end-point strain SGR); RNA-seq transcriptomics with PCA, DEG and iModulon/ICA analysis; intracellular cAMP ELISA (colorimetric, non-acetylation protocol); Biolog PM1/PM2A specific respiration rates (AUC); maximum acetoin specific productivity from HPLC time courses.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "4_2_adaptive_laboratory_evolution_p001",
+          "4_3_growth_assay_p001",
+          "4_4_quantification_of_carbon_substrates_and_metabolites_p001",
+          "4_5_whole_genome_re_sequencing_and_data_analysis_p001",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011",
+          "4_11_intracellular_camp_assay_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "4_13_acetoin_production_p001"
+        ],
+        "notes": ""
+      },
+      "instruments": {
+        "value": "BioTek Epoch2 / Synergy HT plate readers; Shimadzu Nexera LC-40 HPLC with RID-20A RI detector and Agilent MetaCarb 87H column (0.007 N H2SO4, 0.6 mL/min, 50 C or 65 C for mixed-carbon); Covaris S220 ultrasonicator; Qubit 2.0 fluorometer; Illumina HiSeq 2500 (50-cycle SE, WGS) and HiSeq X Ten (150-cycle PE, RNA-seq); TapeStation 2200 with High Sensitivity D1000; Bio-Rad MicroPulser electroporator; Biolog OmniLog.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "4_3_growth_assay_p001",
+          "4_4_quantification_of_carbon_substrates_and_metabolites_p001",
+          "4_5_whole_genome_re_sequencing_and_data_analysis_p001",
+          "4_6_reverse_engineering_of_mutations_p001",
+          "4_8_transcriptome_sequencing_rna_seq_p001",
+          "4_12_biolog_phenotype_microarray_p001"
+        ],
+        "notes": ""
+      },
+      "analysis_methods": {
+        "value": "CLC Genomics Workbench read trimming/mapping to NC_000913.3 (mismatch cost 2, indel cost 3, length/similarity 0.9); Quality-based Variant Detection (min coverage 10, min variant frequency 10%); mutation causality triangulation via recurrence across ALE studies and ALEdb; DESeq2 normalization and fold-change; hierarchical clustering (Euclidean, complete); PCA; OptICA/iModulon analysis against PRECISE 278-dataset compendium (100 iterations, 1e-7 tolerance, DBSCAN robust components); student's independent t-test for Biolog AUC; pairwise significance testing with P<0.05/0.01/0.001 thresholds (full matrix in Table S3).",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p001",
+          "4_5_whole_genome_re_sequencing_and_data_analysis_p001",
+          "4_9_data_processing_p001",
+          "4_10_imodulon_analysis_of_rna_seq_data_p001",
+          "4_12_biolog_phenotype_microarray_p001",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011"
+        ],
+        "notes": "Abstract calls iModulon/ICA 'machine learning analysis'. Statistical test used for SGR/CUR/productivity comparisons not specified in main text (Table S3 in supplement)."
+      },
+      "outcomes": {
+        "value": "Serial-ALE end-point strains (LA-GL, GL-LA) showed generalist phenotype with significantly improved SGR/CUR in both glycerol and lactate and in the mixture without trade-offs on the first carbon (e.g., GL-LA +1.89x SGR, +1.73x CUR vs GL); mixed-carbon growth advantages 1.38-2.15x over WT. Four variants (glpK, ppsA, ydcI, rph-pyrE) accounted for >80% of end-point strain fitness; glpK/ppsA specialist effects vanished in mixed carbon and were rescued/strengthened by rph-pyrE(del) (double mutants: ~2x rph-pyrE single-mutant contribution for glpK pair, >=+8% for ppsA pair). Transcriptomes diverged lineage-specifically despite fitness convergence; RpoS/GadW iModulons decreased in all evolved strains; GlpR/LldR/Zur/Crp-2 activities condition-specific. glpK-mutant strains had up to 38% lower intracellular cAMP. 82 carbons with increased respiration in >=1 evolved strain, 36 concordant across all; evolved strains grew faster on acetate/xylose/glucose but showed fitness deficits in LB/TB. Acetoin: GL-LA specific productivity highest in all conditions; ~3.7x (GL-LA) and 2.9x (GL) vs WT in glycerol; GL-LA 1.3x over GL (glycerol), 1.6x/1.4x over WT/GL in lactate; superior in mixed condition.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text_and_figure_captions",
+        "evidence_ids": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p004",
+          "2_5_co_utilization_of_glycerol_and_lactate_p001",
+          "2_5_co_utilization_of_glycerol_and_lactate_p002",
+          "2_5_co_utilization_of_glycerol_and_lactate_p009",
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p001",
+          "2_7_transcriptomes_reflect_improved_metabolic_efficiency_p003",
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+          "a_b_s_t_r_a_c_t_p001"
+        ],
+        "notes": "Exact SGR/CUR/productivity values, error bars and full statistics reside in Table S3 / Supplementary Figs (requires_supplement); mechanism of rph-pyrE epistasis stated by authors as elusive - interpretation, not validated causality."
+      }
+    },
+    "experimental_design_object": [
+      {
+        "experiment_id": "exp01_serial_two_phase_ALE",
+        "purpose": "Evolve E. coli MG1655 sequentially on two alternative carbon sources to obtain generalist end-point strains and test serial-ALE as a strain-optimization scheme.",
+        "host": "E. coli K-12 MG1655 (clonal ancestral population)",
+        "intervention": "Two-phase serial ALE: phase 1 ~800 generations on M9+lactate (LA) or M9+glycerol (GL); carbon switch at fitness plateau; phase 2 600-800 generations on the other carbon (LA-GL, GL-LA); 60 mL M9 in 300 mL flasks, 30 C, 200 rpm, transfer twice daily at OD600 0.4-0.6.",
+        "conditions": {
+          "medium": "M9 minimal + 0.2% v/v single carbon per phase",
+          "temperature_C": 30,
+          "agitation_rpm": 200,
+          "duration_generations": "1400-1600 total",
+          "selection": "fastest-growing progeny via mid-exponential serial transfer"
+        },
+        "control": "Wild-type MG1655 (fitness baseline); phase-1 ancestors LA/GL as comparators for end-point strains",
+        "replicates": {
+          "type": "independent_culture_replicates",
+          "n": 3,
+          "note": "three independent populations; biological_independence=likely"
+        },
+        "readout": "Doubling time per passage vs cumulative generation; end-point SGR and CUR in each carbon source",
+        "analysis": "Fitness trajectory plateau detection; pairwise significance vs WT (Table S3)",
+        "outcome": "End-point strains LA-GL and GL-LA acquired universal growth advantage on both single and mixed carbon sources without trade-off on the first carbon; GL showed trade-off in lactate (single-ALE specialist).",
+        "evidence": [
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p003",
+          "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p004",
+          "4_2_adaptive_laboratory_evolution_p001"
+        ],
+        "ddr_annotation": {
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate initiation of an ALE/selection campaign; Q2: performed in this study; Q3: produced the chassis later chosen (GL-LA) for bioproduction, changing subsequent design choices.",
+          "design_action": "M11",
+          "design_action_rationale": "Integrated evolution/screening campaign generating strain variants rather than targeting a pre-specified genetic change.",
+          "trigger_observation": "E. coli K-12 exhibits suboptimal fitness on glycerol and lactate, and prior single-carbon ALE studies showed such phenotypes can be reconfigured by evolution; whether sequential adaptation across two landscapes works was seldom explored.",
+          "evidence_grading": "硬",
+          "evidence_grading_rationale": "Outcome measured directly (growth rates, uptake rates, WGS of evolving populations).",
+          "reason_nature": "文献类比",
+          "reason_nature_rationale": "Choice of ALE and the 800-generation timescale explicitly built on prior studies (Ibarra 2002, Kang 2019, Sandberg 2019) rather than a newly derived mechanistic argument; sequential single-carbon design contrasted against prior mixed-carbon ALE (Sandberg 2017).",
+          "reason_nature_tags": [],
+          "generalizable_rule": "When optimizing E. coli for utilization of multiple metabolically related alternative carbon sources (e.g., gluconeogenic glycerol and L-lactate), apply serial single-carbon ALE phases (~800 generations each to fitness plateau) instead of simultaneous mixed-carbon evolution, because sequential adaptation fixed carbon-specialist plus generalist mutations and avoided fitness trade-offs and specialist subpopulation splitting in the tested two-carbon system.",
+          "alternatives_considered": [
+            "Simultaneous mixed-carbon ALE (contrasted with Sandberg et al., 2017; avoided to evade trade-offs/bet-hedging)"
+          ],
+          "strategy_categories": [
+            "evolutionary_optimization"
+          ]
+        }
+      },
+      {
+        "experiment_id": "exp02_wgs_mutation_monitoring",
+        "purpose": "Identify causal adaptive mutations via whole-genome resequencing every 50 generations, using cross-study recurrence and ALEdb as causality priors.",
+        "host": "Evolving populations of GL-LA and LA-GL lineages",
+        "intervention": "None (measurement only)",
+        "conditions": {
+          "sequencing": "Illumina HiSeq 2500, 50-cycle SE, TruSeq DNA PCR-free library",
+          "variant_calling": "min coverage 10, min frequency 10%, CLC Genomics Workbench"
+        },
+        "control": "Reference genome NC_000913.3",
+        "replicates": {
+          "type": "unknown",
+          "note": "population-level sequencing; replicate scheme not stated in main text"
+        },
+        "readout": "Allele-frequency trajectories of mutations",
+        "analysis": "Recurrence-based causality inference with ALEdb",
+        "outcome": "Ordered acquisition of rph-pyrE(del), hfq, cyaA, ppsA, ydcI (LA) and rpoC, glpK (GL); second phase re-acquired ppsA/ydcI/rph-pyrE variants; ppsA(72T>G) and ydcI(5A>C) declined during phase 2 on glycerol.",
+        "evidence": [
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p001",
+          "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002",
+          "2_3_mutation_profiles_in_the_second_phase_of_adaptive_evolution_p001",
+          "4_5_whole_genome_re_sequencing_and_data_analysis_p001"
+        ]
+      },
+      {
+        "experiment_id": "exp03_reverse_engineering_fitness_contribution",
+        "purpose": "Quantify causal contribution of each adaptive mutation by reconstructing single and sequential (temporal-order) mutants in the wild-type background.",
+        "host": "E. coli MG1655 wild-type background",
+        "intervention": "Lambda-Red one-step inactivation (Datsenko-Wanner): overlap-extension PCR of mutant allele + pKD13 kanamycin cassette, electroporation into pKD46 cells, 50 ug/mL kanamycin selection, PCR verification, pCP20 marker excision at 42 C. 11 mutants (LA-GL set) and 7 mutants (GL-LA set); rpoC excluded (essential-gene engineering difficulty).",
+        "conditions": {
+          "readout_assay": "48-well plate reader, 300 uL, 30 C, 24 h, OD600 30-min intervals",
+          "media": [
+            "M9 glycerol",
+            "M9 lactate",
+            "M9 mix"
+          ]
+        },
+        "control": "Wild-type MG1655; end-point strains as reference for percent-contribution calculation",
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3,
+          "note": "biological triplicates per Fig. 1 caption"
+        },
+        "readout": "SGR; percent fitness contribution = mutant SGR relative to end-point strain SGR",
+        "analysis": "Single vs sequential mutant comparison; generalist/specialist classification; epistasis assessment",
+        "outcome": "glpK variants = glycerol specialists (~40% of GL fitness on glycerol); rph-pyrE(del) = generalist (fittest on lactate, 2nd on glycerol); hfq generalist-like but antagonistic in combination; cyaA single mutant poor on lactate; ydcI variants negligible; glpK+ppsA synergy on glycerol (+15%); four-variant combination >80% of end-point fitness.",
+        "evidence": [
+          "2_4_fitness_contribution_of_adaptive_mutations_p001",
+          "2_4_fitness_contribution_of_adaptive_mutations_p002",
+          "2_4_fitness_contribution_of_adaptive_mutations_p003",
+          "4_6_reverse_engineering_of_mutations_p001"
+        ],
+        "ddr_annotation": {
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate point-mutation introduction; Q2: constructed in this study; Q3: results identified key contributors and directly motivated the double-mutant epistasis designs.",
+          "design_action": "M1",
+          "design_action_rationale": "Reverse-genetics reconstruction to resolve which evolved alleles are causal - pathway/causality dissection rather than forward pathway optimization.",
+          "trigger_observation": "WGS revealed recurrent mutations whose individual and combined fitness effects were unknown.",
+          "evidence_grading": "硬",
+          "evidence_grading_rationale": "Fitness of each construct directly measured in plate-reader growth assays.",
+          "reason_nature": "筛选得来",
+          "reason_nature_rationale": "The mutations themselves originated from ALE selection, not rational design; reconstruction tested what evolution had found. rpoC exclusion was a practical constraint, not a design choice.",
+          "reason_nature_tags": [],
+          "generalizable_rule": null,
+          "alternatives_considered": [
+            "rpoC reconstruction (abandoned: technical difficulty of engineering essential genes)"
+          ],
+          "strategy_categories": [
+            "evolutionary_optimization"
+          ]
+        }
+      },
+      {
+        "experiment_id": "exp04_mixed_carbon_epistasis_double_mutants",
+        "purpose": "Test whether rph-pyrE(del) rescues/strengthens specialist mutants (glpK, ppsA) under mixed-carbon conditions.",
+        "host": "E. coli MG1655 background",
+        "intervention": "Construction of double mutants glpK(694G>T)-rph-pyrE(del) and ppsA(13G>T)-rph-pyrE(del) using the same recombineering pipeline.",
+        "conditions": {
+          "media": [
+            "M9 mix (0.1% v/v glycerol + 0.1% v/v L-lactate)"
+          ],
+          "assay": "plate-reader growth, biological triplicates"
+        },
+        "control": "Corresponding single mutants and wild-type in identical mixed-carbon condition",
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3
+        },
+        "readout": "Percent fitness contribution in mixed-carbon condition",
+        "analysis": "Epistasis: double vs single mutant fitness contribution",
+        "outcome": "glpK-rph-pyrE double mutant contribution ~2x the rph-pyrE(del) single mutant; ppsA-rph-pyrE double mutant >=+8%; specialist single mutants showed near-WT contribution in mixed carbon while quadruple mutant gained +47%/+75% over rph-pyrE single and triple mutants.",
+        "evidence": [
+          "2_5_co_utilization_of_glycerol_and_lactate_p002",
+          "2_5_co_utilization_of_glycerol_and_lactate_p009",
+          "2_5_co_utilization_of_glycerol_and_lactate_p008"
+        ],
+        "ddr_annotation": {
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: new mutant combinations constructed; Q2: this study; Q3: confirmed a genotype-level rule (generalist rph-pyrE potentiates specialists) that informs future multi-carbon chassis design.",
+          "design_action": "M11",
+          "design_action_rationale": "Combinatorial genotype assembly and screening to resolve condition-specific epistasis.",
+          "trigger_observation": "Specialist mutants (glpK, ppsA) lost their fitness contribution specifically in the mixed-carbon condition whereas generalist rph-pyrE(del) retained its contribution, suggesting positive epistasis.",
+          "evidence_grading": "硬",
+          "evidence_grading_rationale": "Direct fitness measurements of constructed double mutants.",
+          "reason_nature": "筛选得来",
+          "reason_nature_rationale": "Combination was driven by the empirical single-mutant fitness screen in mixed carbon; the proposed pyrimidine-biosynthesis/transcription-demand mechanism is explicitly stated by the authors as elusive.",
+          "reason_nature_tags": [],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "evolutionary_optimization"
+          ]
+        }
+      },
+      {
+        "experiment_id": "exp05_transcriptomics_rnaseq_imodulon",
+        "purpose": "Characterize global transcriptomic adaptation and condition-specific regulator activities of evolved strains.",
+        "host": "WT and end-point evolved strains",
+        "intervention": "None (measurement only)",
+        "conditions": {
+          "sampling": "exponential phase",
+          "rna_prep": "RNASnap + RNase H custom rRNA depletion + DNase I",
+          "sequencing": "HiSeq X Ten, 150-cycle PE"
+        },
+        "control": "Wild-type in matched media; ICA baseline 'control__wt_glc'; PRECISE 278-dataset compendium",
+        "replicates": {
+          "type": "unknown",
+          "note": "requires_supplement"
+        },
+        "readout": "Gene expression (TPM), DEGs (1205 across 10 datasets), iModulon activities",
+        "analysis": "DESeq2, PCA, hierarchical clustering (Euclidean/complete), OptICA with DBSCAN",
+        "outcome": "Lineage-specific transcriptome divergence despite fitness convergence; larger rewiring in phase 1 than phase 2; lldP/lldD up in lactate-evolved strains; glpK down-regulated in glpK-mutant strains; RpoS/GadW iModulons down in all evolved strains; GlpR/LldR/Zur/Crp-2 condition-specific; translation genes up in mixed carbon.",
+        "evidence": [
+          "2_6_transcriptome_adaptions_in_response_to_serial_adaptive_evolution_p001",
+          "2_8_transcriptomic_response_to_the_mixed_carbon_conditions_p001"
+        ]
+      },
+      {
+        "experiment_id": "exp06_cAMP_ELISA",
+        "purpose": "Verify that glpK missense mutations reduce intracellular cAMP (linking glycerol-3-phosphate build-up to adenylate cyclase repression).",
+        "host": "WT and end-point lineages",
+        "intervention": "None (measurement only)",
+        "conditions": {
+          "harvest": "exponential phase, ~20 mL at OD600=1.0",
+          "kit": "cAMP ELISA Colorimetric Kit (Cell Biolabs), non-acetylation protocol"
+        },
+        "control": "Wild-type cAMP level",
+        "replicates": {
+          "type": "technical_replicates",
+          "n": 2,
+          "note": "each sample assayed in duplicates"
+        },
+        "readout": "Intracellular cAMP concentration",
+        "analysis": "Comparison vs WT",
+        "outcome": "Strains with mutant glpK derivatives had up to 38% lower intracellular cAMP than WT (Supplementary Fig. S4B).",
+        "evidence": [
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p001",
+          "4_11_intracellular_camp_assay_p001"
+        ]
+      },
+      {
+        "experiment_id": "exp07_biolog_phenotype_microarray",
+        "purpose": "Assess breadth of metabolic-capacity gains across diverse carbon sources (specific respiration rates).",
+        "host": "WT and evolved strains",
+        "intervention": "None (measurement only)",
+        "conditions": {
+          "inoculum": "OD600=0.05 in IF-0a GN/GP",
+          "plates": "PM1 and PM2A",
+          "instrument": "OmniLog, 30 C, 48 h"
+        },
+        "control": "Negative-control wells (AUC baseline for false-negative exclusion)",
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3
+        },
+        "readout": "Respiration AUC per carbon source",
+        "analysis": "Student's independent t-test between samples",
+        "outcome": "82 carbons with significantly increased SRR in at least one evolved strain; 36 with concordant increase across all evolved strains (glycolytic intermediates, saccharides, gluconeogenic substrates).",
+        "evidence": [
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p003",
+          "4_12_biolog_phenotype_microarray_p001"
+        ]
+      },
+      {
+        "experiment_id": "exp08_nonadaptive_and_enriched_growth_profiling",
+        "purpose": "Test whether SRR gains translate to growth gains on conventional carbons and whether trade-offs appear in rich media.",
+        "host": "WT, LA, GL, LA-GL, GL-LA",
+        "intervention": "None (measurement only)",
+        "conditions": {
+          "media": [
+            "M9 + acetate 0.2% v/v",
+            "M9 + D-xylose 0.2% w/v",
+            "M9 + D-glucose 0.2% w/v",
+            "LB",
+            "TB"
+          ],
+          "assay": "same plate-reader settings as mutant growth assays"
+        },
+        "control": "Wild-type per medium",
+        "replicates": {
+          "type": "unknown",
+          "note": "not stated for this dataset; Supplementary Fig. S6"
+        },
+        "readout": "Growth rates",
+        "analysis": "Strain comparison per medium",
+        "outcome": "Serial-ALE strains fastest on acetate/xylose/glucose; fitness deficits vs WT in LB/TB (minimal-media evolution trade-off).",
+        "evidence": [
+          "2_7_transcriptomes_changes_reflect_improved_metabolic_efficiency_p004",
+          "4_3_growth_assay_p001"
+        ]
+      },
+      {
+        "experiment_id": "exp09_mutT_dam_restoration",
+        "purpose": "Remove mutator phenotypes from LA and LA-GL before using them as bioproduction hosts.",
+        "host": "LA and LA-GL strains",
+        "intervention": "Introduction of wild-type mutT and dam into the lacZ locus; in LA-GL, dam placed upstream of lacZ::mutT.",
+        "conditions": {
+          "method": "chromosomal insertion at lacZ (same recombineering toolkit context)"
+        },
+        "control": "Unrestored LA/LA-GL",
+        "replicates": {
+          "type": "unknown"
+        },
+        "readout": "Genotype restoration (mutation-rate measurement not reported in main text)",
+        "analysis": "N/A reported",
+        "outcome": "Restored-mutability LA and LA-GL used for acetoin bioproduction.",
+        "evidence": [
+          "4_6_reverse_engineering_of_mutations_p001"
+        ],
+        "ddr_annotation": {
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: targeted chromosomal edit; Q2: performed in this study; Q3: defined the final production-host backgrounds.",
+          "design_action": "M0",
+          "design_action_rationale": "Host-background qualification (intent framing of a stable production chassis) rather than pathway-level flux engineering.",
+          "trigger_observation": "LA and LA-GL carried mutT and dam mutations conferring mutator phenotypes, undesirable for stable bioproduction hosts.",
+          "evidence_grading": "硬",
+          "evidence_grading_rationale": "Edits constructed and genotype-confirmed; mutation-rate reversion itself not quantified in main text.",
+          "reason_nature": "机理推断",
+          "reason_nature_rationale": "Paper explicitly attributes the mutator phenotype to mutT (8-oxo-dGTP diphosphatase) and dam (DNA adenine methyltransferase) defects; restoring wild-type alleles acts on a well-defined DNA-repair mechanism.",
+          "reason_nature_tags": [],
+          "generalizable_rule": "When deploying ALE-derived E. coli lineages as production hosts, check and restore DNA-repair defects (e.g., mutT/dam mutator alleles) before pathway introduction, because mutator backgrounds accumulated during evolution destabilize the production genotype - validated here only for lactate/glycerol-evolved MG1655 lineages used for acetoin production.",
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "evolutionary_optimization"
+          ]
+        }
+      },
+      {
+        "experiment_id": "exp10_acetoin_bioproduction",
+        "purpose": "Assess whether serial-ALE chassis improves acetoin production from single and mixed alternative carbons.",
+        "host": "WT, GL, GL-LA (mutT/dam-restored backgrounds per Methods 4.6)",
+        "intervention": "Transformation with pTrcHis2A-alsSD expressing B. subtilis alsS and A. hydrophila alsD; IPTG induction (10 uM, 2 h post-inoculation); production in M9 glycerol / M9 lactate / M9 mix each + 0.2% Casamino Acids + 100 ug/mL ampicillin, 30 C, 24 h batch, sampling every 2 h.",
+        "conditions": {
+          "carbon_sources": [
+            "glycerol 0.2% v/v",
+            "L-lactate 0.2% v/v",
+            "mix 0.1% v/v each"
+          ],
+          "nitrogen_supplement": "0.2% Casamino Acids",
+          "inducer": "10 uM IPTG"
+        },
+        "control": "Plasmid-bearing WT and single-ALE GL in identical media",
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3,
+          "note": "Fig. 4 caption: three biological replicates"
+        },
+        "readout": "Maximum specific acetoin productivity (HPLC); substrate uptake rates",
+        "analysis": "Pairwise significance (P<0.05/0.01/0.001)",
+        "outcome": "GL-LA highest specific acetoin productivity in all conditions: ~3.7x and 2.9x vs WT in glycerol (GL-LA, GL); GL-LA 1.3x over GL in glycerol; 1.6x/1.4x over WT/GL in lactate; superior in mix; highest productivity when lactate consumption fastest.",
+        "evidence": [
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p001",
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+          "4_13_acetoin_production_p001"
+        ],
+        "ddr_annotation": {
+          "decision_type": "background",
+          "decision_type_rationale": "Q2 fail: the production plasmid pTrcHis2A-alsSD and the alsS/alsD expression design were constructed in a previous study (Choe et al., 2022) and merely reused here; the production test validates the ALE chassis rather than constituting a new pathway-engineering decision.",
+          "design_action": "",
+          "design_action_rationale": "",
+          "trigger_observation": "",
+          "evidence_grading": "",
+          "evidence_grading_rationale": "",
+          "reason_nature": "",
+          "reason_nature_rationale": "",
+          "reason_nature_tags": [],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": []
+        }
+      },
+      {
+        "experiment_id": "exp11_casamino_acids_medium_adaptation",
+        "purpose": "Enable acetoin production with glycerol or lactate as sole carbon substrate despite plasmid-encoded metabolic burden.",
+        "host": "Plasmid-bearing WT, GL, GL-LA",
+        "intervention": "Supplementation of production media with 0.2% Casamino Acids as exogenous nitrogen/amino-acid source.",
+        "conditions": {
+          "media": "M9 + carbon source + 0.2% Casamino Acids + 100 ug/mL ampicillin"
+        },
+        "control": "None reported for the supplementation choice itself",
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3,
+          "note": "inherits exp10 design"
+        },
+        "readout": "Growth and acetoin productivity",
+        "analysis": "Comparison across strains and carbon sources",
+        "outcome": "Condition enabled growth and production on glycerol/lactate as sole carbons; plasmid burden (delayed lag, low density) noted.",
+        "evidence": [
+          "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+          "4_13_acetoin_production_p001"
+        ],
+        "ddr_annotation": {
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate fermentation-medium modification; Q2: this study; Q3: made sole-carbon production feasible, shaping the production-assay design.",
+          "design_action": "M9",
+          "design_action_rationale": "Fermentation/process-level condition adjustment rather than genetic change.",
+          "trigger_observation": "Plasmid-bearing strains showed delayed lag phase and low cell density (plasmid-encoded metabolic burden), and prior acetoin processes used LB or amino-acid-supplemented defined media.",
+          "evidence_grading": "硬",
+          "evidence_grading_rationale": "Resulting growth and productivity measured directly.",
+          "reason_nature": "文献类比",
+          "reason_nature_rationale": "Media choice explicitly benchmarked against prior acetoin production studies (Li 2010; Nielsen 2010; Tong 2016; Nakashima 2014; Novak 2020; Shen 2012) rather than a new mechanistic derivation.",
+          "reason_nature_tags": [],
+          "generalizable_rule": "When producing acetoin in E. coli minimal medium with glycerol or L-lactate as the sole carbon source under plasmid-borne alsSD expression, supplement Casamino Acids (0.2%) as exogenous nitrogen/amino-acid source, because plasmid-encoded metabolic burden limits growth and prior acetoin fermentations relied on enriched or amino-acid-supplemented media.",
+          "alternatives_considered": [
+            "LB broth production",
+            "defined media with exogenous amino acids (both cited from prior work)"
+          ],
+          "strategy_categories": [
+            "precursor_supply_enhancement"
+          ]
+        }
+      }
+    ],
+    "field_metadata": {
+      "objective": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+            "section": "ABSTRACT"
+          },
+          {
+            "paragraph_id": "1_introduction_p004",
+            "section": "1. Introduction"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "hypothesis": {
+        "status": "inferred",
+        "attribution": "model_inference",
+        "source_locations": [
+          {
+            "paragraph_id": "1_introduction_p004",
+            "section": "1. Introduction"
+          },
+          {
+            "paragraph_id": "3_discussion_p002",
+            "section": "3. Discussion"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "strain": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "4_1_bacterial_strains_and_growth_conditions_p001",
+            "section": "4.1"
+          },
+          {
+            "paragraph_id": "4_2_adaptive_laboratory_evolution_p001",
+            "section": "4.2"
+          },
+          {
+            "paragraph_id": "4_6_reverse_engineering_of_mutations_p001",
+            "section": "4.6"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        },
+        "notes": "Full strain/plasmid list in Supplementary Table S1 (unavailable) - strain_reconstruction blocked_pending_supplement."
+      },
+      "genotype": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002",
+            "section": "2.2"
+          },
+          {
+            "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p003",
+            "section": "2.2"
+          },
+          {
+            "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p008",
+            "section": "Fig. 1D table"
+          },
+          {
+            "paragraph_id": "2_4_fitness_contribution_of_adaptive_mutations_p001",
+            "section": "2.4"
+          },
+          {
+            "paragraph_id": "4_6_reverse_engineering_of_mutations_p001",
+            "section": "4.6"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "engineering_method": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_2_adaptive_laboratory_evolution_p001",
+            "section": "4.2"
+          },
+          {
+            "paragraph_id": "4_6_reverse_engineering_of_mutations_p001",
+            "section": "4.6"
+          },
+          {
+            "paragraph_id": "4_13_acetoin_production_p001",
+            "section": "4.13"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "experimental_groups": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "2_4_fitness_contribution_of_adaptive_mutations_p001",
+            "section": "2.4"
+          },
+          {
+            "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p009",
+            "section": "2.5"
+          },
+          {
+            "paragraph_id": "4_13_acetoin_production_p001",
+            "section": "4.13"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "controls": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p003",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "4_10_imodulon_analysis_of_rna_seq_data_p001",
+            "section": "4.10"
+          },
+          {
+            "paragraph_id": "4_12_biolog_phenotype_microarray_p001",
+            "section": "4.12"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "culture_conditions": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_1_bacterial_strains_and_growth_conditions_p001",
+            "section": "4.1"
+          },
+          {
+            "paragraph_id": "4_2_adaptive_laboratory_evolution_p001",
+            "section": "4.2"
+          },
+          {
+            "paragraph_id": "4_3_growth_assay_p001",
+            "section": "4.3"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "medium": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_1_bacterial_strains_and_growth_conditions_p001",
+            "section": "4.1"
+          },
+          {
+            "paragraph_id": "4_13_acetoin_production_p001",
+            "section": "4.13"
+          },
+          {
+            "paragraph_id": "4_6_reverse_engineering_of_mutations_p001",
+            "section": "4.6"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "dosage": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_1_bacterial_strains_and_growth_conditions_p001",
+            "section": "4.1"
+          },
+          {
+            "paragraph_id": "4_13_acetoin_production_p001",
+            "section": "4.13"
+          },
+          {
+            "paragraph_id": "4_6_reverse_engineering_of_mutations_p001",
+            "section": "4.6"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "time": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "4_3_growth_assay_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "4_13_acetoin_production_p001",
+            "section": "4.13"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "replicates": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p011",
+            "section": "Fig. 1 caption"
+          },
+          {
+            "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p008",
+            "section": "Fig. 2 caption"
+          },
+          {
+            "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p006",
+            "section": "Fig. 4 caption"
+          },
+          {
+            "paragraph_id": "4_11_intracellular_camp_assay_p001",
+            "section": "4.11"
+          },
+          {
+            "paragraph_id": "4_12_biolog_phenotype_microarray_p001",
+            "section": "4.12"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        },
+        "notes": "RNA-seq replicate counts not in main text (requires_supplement)."
+      },
+      "assay": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_3_growth_assay_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "4_4_quantification_of_carbon_substrates_and_metabolites_p001",
+            "section": "4.4"
+          },
+          {
+            "paragraph_id": "4_11_intracellular_camp_assay_p001",
+            "section": "4.11"
+          },
+          {
+            "paragraph_id": "4_12_biolog_phenotype_microarray_p001",
+            "section": "4.12"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "instruments": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_3_growth_assay_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "4_4_quantification_of_carbon_substrates_and_metabolites_p001",
+            "section": "4.4"
+          },
+          {
+            "paragraph_id": "4_5_whole_genome_re_sequencing_and_data_analysis_p001",
+            "section": "4.5"
+          },
+          {
+            "paragraph_id": "4_8_transcriptome_sequencing_rna_seq_p001",
+            "section": "4.8"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "analysis_methods": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "4_5_whole_genome_re_sequencing_and_data_analysis_p001",
+            "section": "4.5"
+          },
+          {
+            "paragraph_id": "4_9_data_processing_p001",
+            "section": "4.9"
+          },
+          {
+            "paragraph_id": "4_10_imodulon_analysis_of_rna_seq_data_p001",
+            "section": "4.10"
+          },
+          {
+            "paragraph_id": "4_12_biolog_phenotype_microarray_p001",
+            "section": "4.12"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        }
+      },
+      "outcomes": {
+        "status": "reported",
+        "attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p004",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "2_5_co_utilization_of_glycerol_and_lactate_p009",
+            "section": "2.5"
+          },
+          {
+            "paragraph_id": "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p005",
+            "section": "2.10"
+          },
+          {
+            "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+            "section": "ABSTRACT"
+          }
+        ],
+        "qc": {
+          "evidence_supported": true,
+          "source_attribution_valid": true,
+          "semantic_role_valid": true
+        },
+        "notes": "Exact numeric values, error bars and full pairwise statistics depend on Table S3 / supplementary figures."
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "Original ALE, WGS, RNA-seq, reverse-engineering, ELISA, Biolog and production experiments described in dedicated Methods section (4.1-4.13) with first-person Results; journal article format (Metabolic Engineering); title/abstract report new experiments."
+        ]
+      },
+      "engineering_paper_type": [
+        "evolutionary_engineering",
+        "metabolic_engineering"
+      ],
+      "engineering_paper_type_rationale": "Core contribution is serial ALE (evolutionary optimization) plus reverse engineering of evolved mutations; secondary application is bioproduction (acetoin) testing. Mutations are evolution-derived, not rational designs.",
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli MG1655 wild-type / E. coli K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "parental",
+          "paper_label": "wild-type",
+          "lineage_or_engineering_context": "Standard laboratory K-12 strain; clonal ancestor of all ALE lineages; carries ancestral rph frameshift defect background (Jensen 1993 context)",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type MG1655",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+            "4_1_bacterial_strains_and_growth_conditions_p001",
+            "4_2_adaptive_laboratory_evolution_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Named explicitly in Results 2.1 and Methods 4.1/4.2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "LA",
+          "paper_strain_normalized": "E. coli MG1655 lactate-evolved (phase-1 end-point), mutT/dam mutator background later restored",
+          "role": "engineered",
+          "paper_label": "LA",
+          "lineage_or_engineering_context": "~800 generations on M9 L-lactate; key mutations rph-pyrE(del), hfq(142A>T), cyaA, ppsA(72T>G), ydcI(5A>C)",
+          "combination_status": "demonstrated (population genotype profile)",
+          "genotype": "see fields.genotype",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Defined in Results 2.1/2.2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "GL",
+          "paper_strain_normalized": "E. coli MG1655 glycerol-evolved (phase-1 end-point)",
+          "role": "engineered",
+          "paper_label": "GL",
+          "lineage_or_engineering_context": "~800 generations on M9 glycerol; key mutations rpoC(3610del9), glpK(694G>T)",
+          "combination_status": "demonstrated",
+          "genotype": "see fields.genotype",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p012"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Defined in Results 2.1/2.2."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "LA-GL",
+          "paper_strain_normalized": "E. coli MG1655 serial ALE lactate-then-glycerol end-point (mutT/dam restored for production)",
+          "role": "target",
+          "paper_label": "LA-GL",
+          "lineage_or_engineering_context": "1400-1600 generations total across two carbon landscapes",
+          "combination_status": "demonstrated",
+          "genotype": "LA-phase mutations plus second-phase acquisitions on glycerol",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "4_6_reverse_engineering_of_mutations_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Defined in Results 2.1; mutT/dam restoration in Methods 4.6."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "GL-LA",
+          "paper_strain_normalized": "E. coli MG1655 serial ALE glycerol-then-lactate end-point",
+          "role": "target",
+          "paper_label": "GL-LA",
+          "lineage_or_engineering_context": "1400-1600 generations; chosen as proxy chassis for acetoin bioproduction",
+          "combination_status": "demonstrated",
+          "genotype": "glpK(694G>T), rpoC(3610del9), ppsA(13G>T), ydcI(686-7insG), rph-pyrE(del), hdfR(463G>T) (per Fig. 1D; requires figure/supplement confirmation of final fixed set)",
+          "evidence": [
+            "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p002",
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004",
+            "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p008"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Defined in Results 2.1; bioproduction role in 2.10."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "reconstructed single/sequential mutants and double mutants",
+          "paper_strain_normalized": "MG1655 with individual or combined adaptive alleles (11 LA-GL-set constructs, 7 GL-LA-set constructs, plus glpK-rph-pyrE and ppsA-rph-pyrE double mutants)",
+          "role": "engineered",
+          "paper_label": "reconstituted mutants",
+          "lineage_or_engineering_context": "Built by Datsenko-Wanner recombineering to recapitulate temporal mutation order; rpoC excluded",
+          "combination_status": "demonstrated only for constructs explicitly built (no unverified composite genotypes assumed)",
+          "genotype": "per-construct",
+          "evidence": [
+            "2_4_fitness_contribution_of_adaptive_mutations_p001",
+            "2_5_co_utilization_of_glycerol_and_lactate_p009",
+            "4_6_reverse_engineering_of_mutations_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Methods 4.6 and Results 2.4/2.5."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "WT, GL, GL-LA carrying pTrcHis2A-alsSD",
+          "paper_strain_normalized": "Acetoin production strains",
+          "role": "host",
+          "paper_label": "production strains",
+          "lineage_or_engineering_context": "Plasmid from Choe et al. 2022 (background, previously constructed)",
+          "combination_status": "demonstrated",
+          "genotype": "host genotype + pTrcHis2A-alsSD (Bsu alsS, Ahy alsD), ampicillin resistance",
+          "evidence": [
+            "4_13_acetoin_production_p001",
+            "2_10_serial_ale_enhances_bioconversion_capacity_of_e_coli_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Methods 4.13."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules no K-12 adaptation tool is run by default and no migration analysis is generated."
+      },
+      "supplement_dependencies": [
+        {
+          "item": "Supplementary Table S1 (full strain/plasmid list)",
+          "blocks": [
+            "strain_reconstruction",
+            "exact_reproduction_protocol"
+          ],
+          "available_from_main_text_or_figure": "principal strain identities and genotypes",
+          "still_missing": "complete construct inventory, plasmid details"
+        },
+        {
+          "item": "Supplementary Table S2 (primers)",
+          "blocks": [
+            "strain_reconstruction",
+            "library_resynthesis"
+          ],
+          "available_from_main_text_or_figure": "recombineering strategy",
+          "still_missing": "primer sequences"
+        },
+        {
+          "item": "Table S3 (full pairwise statistics, exact SGR/CUR values)",
+          "blocks": [
+            "exact_reproduction_protocol (numeric verification)"
+          ],
+          "available_from_main_text_or_figure": "fold-changes and significance statements in text",
+          "still_missing": "exact values, error bars, test types"
+        },
+        {
+          "item": "Supplementary Figs. S1-S8",
+          "blocks": [],
+          "available_from_main_text_or_figure": "main-text summaries of these results",
+          "still_missing": "raw trajectories, RNA-seq replicate structure, acetoin time courses"
+        }
+      ],
+      "quality_snapshot": {
+        "field_completeness": "high for main-text methods; supplement-dependent details missing",
+        "strain_identification_quality": "full-text coverage achieved; parental, intermediate, end-point, engineered and host strains all distinguished with raw labels preserved",
+        "reproducibility_risks": [
+          "primer list and full strain table in supplement",
+          "RNA-seq replicate counts unstated in main text",
+          "exact statistics in Table S3",
+          "parser artifacts in numeric strings (see conflicts)"
+        ],
+        "interpretation_risks": [
+          "mechanism of rph-pyrE epistasis explicitly unresolved by authors (author_interpretation, not validated causality)",
+          "Zur iModulon-glycerol uptake correlation lacks mechanism",
+          "'generalist/specialist' labels are fitness-assay-based classifications"
+        ]
+      }
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "cyaA mutation nucleotide change",
+        "prose_interpretation": "Section 2.2 states cyaA (2336 T > G)",
+        "equation_or_figure_interpretation": "Section 2.4 states cyaA (2236 T > G)",
+        "impact": "Exact allele identity uncertain; affects strain reconstruction and genotyping primer design",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "ppsA second-phase allele notation",
+        "prose_interpretation": "Section 2.5 text cites acquisition of 'ppsA (136 > T)' during 2nd phase",
+        "equation_or_figure_interpretation": "Fig. 1D table and Section 2.4/2.5 elsewhere indicate ppsA 13G>T (G5R)",
+        "impact": "'136 > T' is most plausibly a typographical/OCR variant of 13G>T but cannot be silently resolved; exact variant call requires supplement/Fig. 1D source data",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "independent population count",
+        "prose_interpretation": "Results 2.1: 'Three independent populations were serially passaged'",
+        "equation_or_figure_interpretation": "Methods 4.2: 'Two independent lineages ... were adaptively evolved'",
+        "impact": "Lineages (directions) vs populations per direction are different levels; extracted as 3 populations per each of 2 directions, but wording is ambiguous",
+        "requires_manual_review": false
+      },
+      {
+        "status": "parser_artifact",
+        "topic": "cell stock temperature",
+        "prose_interpretation": "Methods 4.1 prints '80 C glycerol cell stocks' with minus sign lost",
+        "equation_or_figure_interpretation": "Physically must be -80 C glycerol stocks",
+        "impact": "None biologically; flagged to prevent a '80 C storage' misread",
+        "requires_manual_review": false
+      },
+      {
+        "status": "parser_artifact",
+        "topic": "lactate concentration unit in Methods 4.13",
+        "prose_interpretation": "'M9 lactate (0.2 v/v L-lactate)' lacks % sign present elsewhere (0.2% v/v)",
+        "equation_or_figure_interpretation": "All other sections consistently use 0.2% (v/v)",
+        "impact": "Treated as 0.2% v/v consistent with the rest of the paper; flagged rather than silently corrected",
+        "requires_manual_review": false
+      },
+      {
+        "status": "parser_artifact",
+        "topic": "Biolog inoculum density",
+        "prose_interpretation": "Methods 4.12 prints 'OD600nm = 0..05' and '30 C, , 200 rpm'",
+        "equation_or_figure_interpretation": "Interpreted as OD600 = 0.05",
+        "impact": "Minor; punctuation artifacts from PDF parsing",
+        "requires_manual_review": false
+      },
+      {
+        "status": "parser_artifact",
+        "topic": "gene name spelling in Fig. 1D table",
+        "prose_interpretation": "Table row labeled 'ydcl'",
+        "equation_or_figure_interpretation": "Main text consistently uses ydcI (letter I)",
+        "impact": "Case/font ambiguity (ydcI vs ydcl); gene is ydcI",
+        "requires_manual_review": false
+      },
+      {
+        "status": "requires_supplement",
+        "topic": "Fig. 1D/E allele-frequency trajectories",
+        "prose_interpretation": "Extracted markdown table cells for generation-resolved frequencies are empty",
+        "equation_or_figure_interpretation": "Figure panels not visually rendered in this payload",
+        "impact": "Exact fixation timing/frequencies of each mutation not recoverable from text alone",
+        "requires_manual_review": true
+      },
+      {
+        "status": "terminology_note",
+        "topic": "'machine learning analysis' in abstract",
+        "prose_interpretation": "Abstract refers to machine learning analysis of regulators",
+        "equation_or_figure_interpretation": "Methods 4.10 specify OptICA independent component analysis with DBSCAN",
+        "impact": "No conflict in substance; abstract phrasing is broader than the specific method",
+        "requires_manual_review": false
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 65671,
+    "output_tokens": 20761
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "d6866e8bff18325cbd2859c9c83928baafe970f6450764a6075a9bff61a08089",
+    "output_hash": "d95a4d3202cfe5cd31c7cdb0e84fb663911a6486c4f139d5e1f8b88f51a6bf2c",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\afe51ba7098fabf48a9145e2dad5c1b8816ec9017634410300483a86ef131d0e.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

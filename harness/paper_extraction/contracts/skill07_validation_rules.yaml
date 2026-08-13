@@ -1,0 +1,78 @@
+version: skill07_validation_rules_v1
+semantic_contract_version: skill07_semantic_contract_v1
+
+critical_checks:
+  - top_level_and_field_schema
+  - field_semantic_invariants
+  - evidence_role_integrity
+  - candidate_evidence_anchors_resolve
+  - article_type_gate_valid
+  - experiment_graph_integrity
+  - experiment_native_and_atomic_claim_integrity
+  - ddr_integrity
+  - document_coverage_consistent
+
+epistemic_validation:
+  statuses: [reported, inferred, unknown]
+  reported:
+    value_required: true
+    candidate_evidence_required: true
+    source_location_required: true
+  inferred:
+    value_required: true
+    method_required: true
+    rationale_required: true
+    supporting_candidate_evidence_required: true
+    source_location_required: true
+  unknown:
+    value_must_be_null: true
+    evidence_must_be_empty: true
+    inference_must_be_null: true
+
+applicability_validation:
+  statuses: [applicable, not_applicable, uncertain]
+  not_applicable:
+    epistemic_status_must_be: unknown
+    value_must_be_null: true
+    evidence_must_be_empty: true
+  applicable:
+    allowed_epistemic_statuses: [reported, inferred, unknown]
+  uncertain:
+    allowed_epistemic_statuses: [unknown]
+
+evidence_validation:
+  skill07_role: candidate
+  skill08_role: verified
+  forbidden_skill07_roles: [verified, approved]
+  forbidden_skill07_keys: [verified_evidence_id, verified_evidence_ids]
+
+ddr_validation:
+  decision_types:
+    engineering: engineering_decision
+    non_decision: [validation, measurement, characterization, background, post_hoc_interpretation]
+  required_true_gates: [q1_intervention, q2_current_study, q3_decisionhood]
+  reason_nature:
+    canonical_values:
+      - mechanistic_inference
+      - literature_analogy
+      - resource_available
+      - screening_derived
+      - evolution_derived
+      - rationale_not_reported
+      - post_hoc_rationalization_uncertain
+    legacy_aliases:
+      机理推断: mechanistic_inference
+      文献类比: literature_analogy
+      现成可得: resource_available
+      筛选得来: screening_derived
+      进化得来: evolution_derived
+      理由未报告: rationale_not_reported
+      事后合理化存疑: post_hoc_rationalization_uncertain
+
+generalizable_rule_validation:
+  role: single_paper_rule_candidate
+  decision_type_must_be: engineering_decision
+  allowed_reason_nature: [mechanistic_inference, literature_analogy]
+  tested_scope_keys: [tested_scope, validated_scope, tested_conditions]
+  excluded_scope_keys: [excluded_scope, excluded_conditions]
+  required_nonempty: [tested_scope, excluded_scope]

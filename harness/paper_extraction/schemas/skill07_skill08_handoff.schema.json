@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wave://paper-extraction/skill07-skill08-handoff/2.0.0",
+  "type": "object",
+  "required": ["handoff_contract_version", "paper_identity", "skill07_source", "candidate_payload", "provenance"],
+  "properties": {
+    "handoff_contract_version": {"const": "skill07_skill08_handoff_v2"},
+    "paper_identity": {"type": "object", "required": ["paper_id", "document_artifact_id", "document_hash"]},
+    "skill07_source": {"type": "object", "required": ["artifact_id", "output_hash", "status", "eligible_for_evidence_verification", "schema_version", "semantic_contract_version", "validation_rules_version", "self_check_passed"]},
+    "candidate_payload": {"type": "object"},
+    "provenance": {"type": "object"}
+  },
+  "additionalProperties": false
+}
+

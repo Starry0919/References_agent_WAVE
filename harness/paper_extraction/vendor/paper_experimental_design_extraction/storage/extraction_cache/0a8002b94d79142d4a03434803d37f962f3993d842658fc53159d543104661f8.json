@@ -1,0 +1,1058 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Design, construct and tune bifunctional (positive- and negative-response) glycolysis-flux biosensors based on the Cra-FBP pair that sense intracellular fructose-1,6-diphosphate (FBP) and dynamically regulate glycolysis flux, then apply them to balance biosynthesis of mevalonate (MVA) and N-acetylglucosamine (GlcNAc) in Escherichia coli.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote_abstract",
+        "evidence_ids": [
+          "EV01"
+        ],
+        "notes": "Abstract explicitly states design/construction of bifunctional glycolysis flux biosensor and application to MVA and GlcNAc."
+      },
+      "hypothesis": {
+        "value": "Because intracellular FBP concentration is linearly related to glycolysis flux (via FBP feedforward activation of pyruvate kinase), a Cra/FBP-based transcriptional biosensor can report flux in vivo and drive autonomous, timely dynamic repression/activation of pathway genes, outperforming static knockout and IPTG-induced CRISPRi control.",
+        "status": "inferred",
+        "confidence": 0.8,
+        "extraction_method": "synthesis_of_introduction_and_results",
+        "inference": {
+          "method": "model_inference_from_authors_framing",
+          "rationale": "Introduction (1_introduction_p003) presents the FBP-flux linear relationship (cited to Kochanowski et al. 2013, a background_citation) as the premise; Results compare dynamic control against permanent pfkA deletion and cite Li et al. 2021 CRISPRi as inferior, implying the tested hypothesis."
+        },
+        "evidence_ids": [
+          "EV02",
+          "EV07"
+        ],
+        "notes": "The FBP-flux linearity premise itself is attributed to prior literature (background_citation), not newly demonstrated by this paper except via the deficiency-strain validation experiment."
+      },
+      "strain": {
+        "value": [
+          "E. coli BW25113 (control/parent for biosensor characterization and deficiency-strain comparison)",
+          "BW-pfkA, BW-ptsG, BW-pykF (single-gene deficiency strains used for biosensor validation)",
+          "BW-Pzwf::P23109 (zwf promoter replaced by P23109; non-regulated MVA control)",
+          "BW-PMT (pfkA promoter replaced by Ppam from pL19), BW-PR (pfkA promoter replaced by Ppar from pL25)",
+          "DN5 (modified DH5alpha, knockout of nag, ackA, poxB, ldhA, nan; constructed in previous studies)",
+          "DN5-IM, DN5-PM (pfkA promoter replaced by Ppam/Ppar), DN5-GM (pBacm), DN5-GAR (pBacar), DN5-IMM (DN5-IM + pBacm), DN5-IMAR (figure caption only)"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_text_and_figure_captions",
+        "evidence_ids": [
+          "EV03",
+          "EV06",
+          "EV10"
+        ],
+        "notes": "Exact strain list/plasmid table expected in Supplementary material, which is not part of the parsed document; DN5-IMAR appears only in Fig. 6 caption."
+      },
+      "genotype": {
+        "value": "Genomic promoter replacements: Pzwf -> P23109; PpfkA -> Ppam (pL19) or Ppar (pL25). Plasmid constructs: pL01-pL10/pL15-pL18 positive-response biosensors, pL19-pL30 negative-response biosensors, pL35 carrying Cra with amino acid mutations at positions 57, 58, 59, 60 under P23102; pBacm (glmS under PM23107 from pL09), pBacar (glmS under PR23107-cra from pL18 plus cra with P23102). DN5 knockout set: nag, ackA, poxB, ldhA, nan (prior work).",
+        "status": "reported",
+        "confidence": 0.75,
+        "extraction_method": "results_text_and_figure_captions",
+        "evidence_ids": [
+          "EV03",
+          "EV04",
+          "EV06"
+        ],
+        "notes": "Precise promoter/Cra-box sequences, TFBS positions, full plasmid maps and verification data are supplement-dependent (blocked_pending_supplement); only functional descriptions are in main text."
+      },
+      "engineering_method": {
+        "value": "Genome promoter replacement (zwf, pfkA loci); construction of plasmid-based Cra/TFBS biosensor circuits; tuning via (1) core promoter strength, (2) TFBS position on promoter, (3) Cra-box sequence affinity, (4) Cra expression level (overexpression), (5) Cra ligand-binding affinity by site mutagenesis (aa 57-60); Hill-function-guided quantitative tuning; dynamic promoter swapping to create FBP-responsive repression of pfkA and activation of glmS.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_text_discussion_and_figure_captions",
+        "evidence_ids": [
+          "EV04",
+          "EV05",
+          "EV08"
+        ],
+        "notes": "Five-axis tuning strategy explicitly enumerated in Discussion (4_discussion_p004)."
+      },
+      "experimental_groups": {
+        "value": [
+          "Biosensor characterization: BW25113 harboring each biosensor plasmid (pL01-pL10, pL15-pL18, pL19-pL30, pL35), dose-response series with extracellular FBP",
+          "Deficiency-strain validation: BW-pfkA, BW-ptsG, BW-pykF vs BW25113, all harboring pL19",
+          "MVA: BW-Pzwf::P23109 (non-regulated), BW-PMT, BW-PR (shake flask; BW-PR also 1-L fermenter)",
+          "GlcNAc: DN5, DN5-PM, DN5-IM, DN5-GM, DN5-GAR, DN5-IMM, DN5-IMAR"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_text_and_figure_captions",
+        "evidence_ids": [
+          "EV03",
+          "EV06",
+          "EV10"
+        ],
+        "notes": "Groups instantiated per experiment; no paper-level pooled design."
+      },
+      "controls": {
+        "value": "BW25113 (fluorescence reference in Fig. 4); CK- (no pL18 plasmid), CK (0 g/L acetate, 0 mM FBP), and 0 mM FBP + 10 g/L acetate baseline in Fig. 2D; non-regulated strain BW-Pzwf::P23109 (MVA control); DN5 (GlcNAc control, 0.46 g/L); static-knockout BW-delta-pfkA EP-bifido strain and IPTG-CRISPRi EP-bifido strain (Li et al. 2021) as prior-art benchmarks.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_text_and_figure_captions",
+        "evidence_ids": [
+          "EV04",
+          "EV06",
+          "EV07"
+        ],
+        "notes": "Controls are experiment-specific and instantiated; prior-art benchmarks are background_citation comparisons, not re-run here."
+      },
+      "culture_conditions": {
+        "value": "Shake-flask fermentation for strain comparison; 1-L fermenter for BW-PR scale-up; glucose as sole carbon source in GlcNAc experiments; biosensor strains cultured 18 h before fluorescence detection; BW-PR reached stationary phase after 12 h; intracellular FBP in BW-PR dropped after 15 h.",
+        "status": "reported",
+        "confidence": 0.5,
+        "extraction_method": "scattered_results_statements",
+        "evidence_ids": [
+          "EV05",
+          "EV06",
+          "EV09"
+        ],
+        "notes": "Methods section is absent from the parsed document: temperature, agitation, inoculum, pH/DO control, feeding strategy and full medium composition are unknown; GlcNAc and MVA culture media not reported in available text (blocked_pending_supplement for exact reproduction)."
+      },
+      "medium": {
+        "value": null,
+        "status": "unknown",
+        "confidence": 0.0,
+        "extraction_method": "full_text_search_negative",
+        "evidence_ids": [],
+        "notes": "No Methods section in parsed document. Only clue: 'glucose was used as the sole carbon source' for GlcNAc biosynthesis context. Medium identity must not be guessed."
+      },
+      "dosage": {
+        "value": "Extracellular FBP added at 0.001-400 mM together with 10 g/L acetate for pL18 dose-response (Fig. 2D); no chemical inducer used for dynamic control (autonomous FBP sensing).",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "figure_caption_Fig2D",
+        "evidence_ids": [
+          "EV04"
+        ],
+        "notes": "Acetate (10 g/L) role: co-supplement enabling extracellular FBP uptake/response characterization; inducer-free regulation is itself a reported design feature."
+      },
+      "time": {
+        "value": "Fluorescence measured at 18 h of culture (Fig. 4); stationary phase after 12 h (BW-PR shake flask); intracellular FBP dropped suddenly after 15 h; fermenter cultivation 120 h.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "results_text_and_figure_captions",
+        "evidence_ids": [
+          "EV05",
+          "EV06"
+        ],
+        "notes": "Sampling schedules for mRNA/FBP time courses not fully specified in available text."
+      },
+      "replicates": {
+        "value": null,
+        "status": "unknown",
+        "confidence": 0.0,
+        "extraction_method": "full_text_search_negative",
+        "evidence_ids": [],
+        "notes": "Replicate counts/types and statistics (n, error bars, tests) are not stated anywhere in the parsed main text; presumably in missing Methods/Supplement. replicate_type unresolved."
+      },
+      "assay": {
+        "value": "Biosensor fluorescence output (dose-response curves); intracellular FBP concentration measurement; pfkA in vivo mRNA level; specific glucose consumption rate; specific growth rate; MVA and GlcNAc titers; acetate/byproduct profiling.",
+        "status": "reported",
+        "confidence": 0.8,
+        "extraction_method": "results_text_and_figure_captions",
+        "evidence_ids": [
+          "EV05",
+          "EV06"
+        ],
+        "notes": "Analytical instruments and protocols (e.g., HPLC, qPCR, fluorometer) not named in available text."
+      },
+      "instruments": {
+        "value": null,
+        "status": "unknown",
+        "confidence": 0.0,
+        "extraction_method": "full_text_search_negative",
+        "evidence_ids": [],
+        "notes": "No instrument names appear in parsed document (Methods absent)."
+      },
+      "analysis_methods": {
+        "value": "Hill function fitting of dose-response curves; derivation of dynamic range and threshold EC50; linear correlation analysis of intracellular FBP vs glucose consumption rate, growth rate and fluorescence; mRNA-level comparison between regulated and non-regulated strains.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "figure_captions_and_results",
+        "evidence_ids": [
+          "EV04",
+          "EV05",
+          "EV08"
+        ],
+        "notes": "'The basis for the lines was Hill function fits' stated in Fig. 2 and Fig. 3 captions."
+      },
+      "outcomes": {
+        "value": "Tuned negative-response biosensor pL19 detects intracellular FBP over ~0-50 mmol/g DCW, covering the reported physiological 0-31 mM/g DCW range; fluorescence of BW-pfkA, BW-ptsG, BW-pykF was 11.32, 7.13, 1.11x BW25113 at 18 h (order BW-pfkA > BW-ptsG > BW-pykF > BW25113). MVA: BW-PR produced 73.31 g/L MVA in shake flask (carbon yield 63.00 mol%, highest shake-flask MVA to date per authors) with <0.1 g/L acetate and no other byproducts; BW-PMT <2.47 g/L acetate; 111.3 g/L MVA after 120 h in 1-L fermenter with no by-products. GlcNAc: DN5-IM 8.65 g/L vs DN5 0.46 g/L; DN5-GM 6.33 and DN5-GAR 7.98 g/L; DN5-IMM 8.63 g/L; simultaneous pfkA repression + glmS activation gave no obvious titer increase over single regulation. Dynamic control outperformed IPTG-CRISPRi benchmark (8.53 g/L, Li et al. 2021; 0.12x of BW-PR).",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_text",
+        "evidence_ids": [
+          "EV05",
+          "EV06",
+          "EV07"
+        ],
+        "notes": "Author claims ('highest to date', 'timely and gradually blocked') are author_interpretation; titer numbers are direct_observations bound to stated strains/conditions."
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "EXP1_positive_response_biosensor_construction_tuning",
+          "purpose": "Create and tune positive-response FBP biosensors (pL01-pL10; refined pL15-pL18) with varied thresholds/dynamic ranges.",
+          "host": "E. coli BW25113 (plasmid-harboring biosensor strains)",
+          "interventions": [
+            {
+              "description": "Promoter-architecture engineering of Cra-regulated promoters (core promoter strength, TFBS position, Cra-box sequence) to build pL01-pL10 and refined pL15-pL18.",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1 yes (de novo promoter circuit construction), Q2 yes (this study), Q3 yes (variants with distinct thresholds enabled later selection of Ppam/PM23107 for applications).",
+                "design_action": "M7",
+                "design_action_rationale": "Construction of metabolite-responsive dynamic regulation components (sensor-regulator).",
+                "trigger_observation": "Few biosensors exist for central glycolytic metabolites; glycolysis flux imbalance (overflow at high flux, poor growth at low flux) lacks autonomous regulation systems.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Dose-response curves measured in vivo and Hill-fitted (Fig. 2A,C,E).",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Design based on stated transcription-regulation equilibrium among FBP, Cra and operator DNA (4_discussion_p004), i.e., explicit mechanistic basis.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When building an FBP/Cra-based glycolysis-flux sensor in E. coli, tune core promoter strength, TFBS position and Cra-box affinity so the sensor threshold and dynamic range span the physiological intracellular FBP range, because sensor output is set by the FBP-Cra-DNA equilibrium. (Validated only for Cra/FBP biosensors in E. coli in this paper.)",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "dynamic_control"
+                ]
+              }
+            },
+            {
+              "description": "Tuning by Cra overexpression and by mutating Cra ligand-binding affinity (positive-response branch, Fig. 2B).",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Deliberate modification of regulator level/affinity to shift sensor response; informs tunability claims.",
+                "design_action": "M7",
+                "design_action_rationale": "Regulator-level tuning of the dynamic control circuit.",
+                "trigger_observation": "Initial promoter variants did not cover desired thresholds/dynamic ranges (implied by need for further tuning axes).",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Resulting sensors characterized by measured dose-response (Fig. 2C,E).",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Affinity/expression-level changes act on the Cra-FBP-DNA equilibrium, as explicitly reasoned in Discussion.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When a TF-based metabolite sensor's threshold is mismatched to the in vivo effector range in E. coli, adjust regulator expression level or ligand-binding affinity of the TF, because both shift the occupancy equilibrium of the operator. (Validated for Cra/FBP in E. coli only.)",
+                "alternatives_considered": [
+                  "Cra-overexpressing plasmid sensors were later excluded from application cases because of Cra's global regulatory impact (4_discussion_p004)."
+                ],
+                "strategy_categories": [
+                  "dynamic_control"
+                ]
+              }
+            }
+          ],
+          "conditions": "Dose-response with extracellular FBP 0.001-400 mM + 10 g/L acetate (pL18, Fig. 2D); other culture conditions unknown (Methods absent).",
+          "controls": "CK- (no pL18 plasmid), CK (0 g/L acetate, 0 mM FBP), 0 (10 g/L acetate, 0 mM FBP).",
+          "replicates": {
+            "value": null,
+            "replicate_type": "unknown"
+          },
+          "readouts": "Fluorescence output; intracellular FBP concentration; Hill-fit dynamic range and EC50.",
+          "analysis": "Hill function fits; kinetic parameter extraction (Fig. 2E).",
+          "outcome": "Series of positive-response biosensors with varied thresholds/dynamic ranges obtained; pL18 used later for glmS activation module.",
+          "evidence_ids": [
+            "EV04",
+            "EV08"
+          ],
+          "source_subject": "current_article",
+          "scope_notes": "Characterization results apply to the specific plasmid/strain pairs tested; exact sequences requires_supplement."
+        },
+        {
+          "experiment_id": "EXP2_negative_response_biosensor_construction_tuning",
+          "purpose": "Create and tune negative-response FBP biosensors (pL19-pL30; pL35 with Cra aa57-60 mutations).",
+          "host": "E. coli BW25113 (plasmid-harboring biosensor strains)",
+          "interventions": [
+            {
+              "description": "Promoter engineering to convert Cra regulation into negative-response output (pL19-pL30); site mutagenesis of Cra at amino acids 57-60 under P23102 (pL35).",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "New circuit construction plus rationally placed TF mutations; pL19/pL25 later selected for pfkA control.",
+                "design_action": "M7",
+                "design_action_rationale": "Negative-response sensor-regulator for dynamic down-regulation.",
+                "trigger_observation": "Need to down-regulate glycolysis (pfkA) autonomously when FBP (flux proxy) is high; positive-response sensors alone cannot repress.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Measured dose-response curves and Hill fits (Fig. 3A,C); pL35 characterized by dose-response (Fig. 3B).",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "TFBS position and TF structural changes alter regulation mode (4_discussion_p006) - mechanistic reasoning given by authors.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When a pathway gene must be repressed at high glycolysis flux in E. coli, place Cra TFBS so that FBP-bound Cra relieves/reorganizes repression to yield negative FBP-response, and tune via Cra ligand-affinity mutations, because regulation sign and dose-response are set by TFBS position and TF-ligand affinity. (Validated for Cra-based circuits in E. coli only.)",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "dynamic_control",
+                  "enzyme_activity_improvement"
+                ]
+              }
+            }
+          ],
+          "conditions": "Dose-response characterization; culture conditions unknown (Methods absent).",
+          "controls": "Not stated for this characterization beyond biosensor series comparison.",
+          "replicates": {
+            "value": null,
+            "replicate_type": "unknown"
+          },
+          "readouts": "Fluorescence; dynamic range; EC50.",
+          "analysis": "Hill function fits (Fig. 3A,C).",
+          "outcome": "Negative-response biosensors pL19-pL30 and pL35 obtained; pL19 (Ppam) and pL25 (Ppar) selected for genome integration at pfkA.",
+          "evidence_ids": [
+            "EV08"
+          ],
+          "source_subject": "current_article",
+          "scope_notes": "Which TFBS architectures map to which pL numbers requires_supplement/figure panel reading."
+        },
+        {
+          "experiment_id": "EXP3_biosensor_validation_in_deficiency_strains",
+          "purpose": "Verify that biosensor output tracks intracellular FBP and glycolysis flux across strains with graded glycolytic defects.",
+          "host": "BW-pfkA, BW-ptsG, BW-pykF and BW25113, each harboring pL19",
+          "interventions": [
+            {
+              "description": "Use of pfkA/ptsG/pykF deficiency backgrounds to generate graded intracellular FBP levels for sensor verification.",
+              "ddr_annotation": {
+                "decision_type": "validation",
+                "decision_type_rationale": "Q1 not passed for this record's purpose: deficiency strains serve as measurement backgrounds to validate the already-built sensor; no new design choice is driven by this record itself (it confirms the detection range covers physiology).",
+                "design_action": "",
+                "design_action_rationale": "",
+                "trigger_observation": "",
+                "evidence_grading": "",
+                "evidence_grading_rationale": "",
+                "reason_nature": "",
+                "reason_nature_rationale": "",
+                "reason_nature_tags": [],
+                "generalizable_rule": null,
+                "alternatives_considered": [],
+                "strategy_categories": []
+              }
+            }
+          ],
+          "conditions": "Fluorescence detected after 18 h culture; other conditions unknown.",
+          "controls": "BW25113 + pL19.",
+          "replicates": {
+            "value": null,
+            "replicate_type": "unknown"
+          },
+          "readouts": "Fluorescence; intracellular FBP; specific glucose consumption rate; specific growth rate.",
+          "analysis": "Linear relationships FBP vs glucose uptake/growth/fluorescence; detection-range comparison vs physiological FBP (0-31 mM/g DCW).",
+          "outcome": "Fluorescence negatively linear with FBP; BW-pfkA, BW-ptsG, BW-pykF fluorescence 11.32, 7.13, 1.11x BW25113 at 18 h; pL19 linear range ~0-50 mmol/g DCW covers physiological range.",
+          "evidence_ids": [
+            "EV05"
+          ],
+          "source_subject": "current_article",
+          "scope_notes": "Unit inconsistency mmol vs mM per g DCW flagged in conflicts; 18 h is a single time point - dynamics within growth not resolved here."
+        },
+        {
+          "experiment_id": "EXP4_dynamic_EP_bifido_MVA_production",
+          "purpose": "Replace static pfkA knockout in the EP-bifido pathway with FBP-responsive dynamic repression to resolve growth/production trade-off and maximize MVA.",
+          "host": "E. coli BW25113-derived EP-bifido background",
+          "interventions": [
+            {
+              "description": "Genomic replacement of the zwf promoter with the stronger P23109 promoter (strain BW-Pzwf::P23109).",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1 yes (promoter replacement this study), Q2 yes (performed here on the EP-bifido background), Q3 yes (creates the base strain onto which dynamic pfkA control is layered).",
+                "design_action": "M2",
+                "design_action_rationale": "Enhancing PP pathway entry (G6P dehydrogenase, Zwf) to supply fructose-6-phosphate and NADPH for the EP-bifido route.",
+                "trigger_observation": "Prior EP-bifido design (Wang et al. 2019) requires sufficient F6P and NADPH supply from the PP pathway; natural glycolysis was previously blocked by permanent pfkA deletion.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Resulting strain phenotypes (growth, glucose uptake, MVA) measured in this study.",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Rationale explicitly stated: stronger zwf promoter enhances PP pathway flux for F6P/NADPH supply (stoichiometric/pathway mechanism).",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When an EP-bifido-type acetyl-CoA/F6P supply pathway in E. coli is limited by PP pathway throughput, up-regulate zwf via a stronger constitutive promoter, because Zwf controls carbon entry into the PP pathway that delivers F6P and NADPH. (Validated for MVA production in this E. coli EP-bifido system.)",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "precursor_supply_enhancement",
+                  "flux_redirection"
+                ]
+              }
+            },
+            {
+              "description": "Genomic replacement of the pfkA promoter with negative-response biosensor promoters Ppam (pL19) or Ppar (pL25), yielding BW-PMT and BW-PR (dynamic EP-bifido pathway).",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1 yes (genomic promoter replacement), Q2 yes (this study), Q3 yes (two thresholds compared; Ppar selected as superior, guiding the final strain).",
+                "design_action": "M7",
+                "design_action_rationale": "Metabolite-responsive dynamic down-regulation of a competing glycolysis step.",
+                "trigger_observation": "Permanent pfkA deletion severely suppressed growth and glucose uptake, capping MVA at 11.02 g/L despite 64.3 mol% yield - a measured growth/production trade-off demanding dynamic instead of static control.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Measured titers, growth, mRNA and FBP time courses for BW-PMT/BW-PR vs non-regulated control.",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Mechanistic logic explicit: sense FBP (flux proxy) to repress pfkA only after growth phase, switching flux into EP-bifido and uncoupling growth from production.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When static knockout of an essential glycolytic step (e.g., pfkA) in E. coli collapses growth and substrate uptake, replace the native promoter with a biosensor promoter negatively responsive to intracellular FBP, because FBP reports glycolytic flux and enables automatic growth-then-production switching. (Validated for MVA via EP-bifido in E. coli; extended to GlcNAc in EXP5.)",
+                "alternatives_considered": [
+                  "IPTG-induced CRISPRi repression of pfkA (Li et al. 2021) - external-inducer strategy; yielded only 8.53 g/L MVA (0.12x of BW-PR) and requires inducer timing; cited as inferior benchmark (background_citation)."
+                ],
+                "strategy_categories": [
+                  "dynamic_control",
+                  "competitive_pathway_removal",
+                  "flux_redirection"
+                ]
+              }
+            },
+            {
+              "description": "Scale-up fermentation of BW-PR in a 1-L fermenter.",
+              "ddr_annotation": {
+                "decision_type": "validation",
+                "decision_type_rationale": "Q3 not passed: fermentation of the already-selected BW-PR evaluates performance at scale without introducing a new design modification.",
+                "design_action": "",
+                "design_action_rationale": "",
+                "trigger_observation": "",
+                "evidence_grading": "",
+                "evidence_grading_rationale": "",
+                "reason_nature": "",
+                "reason_nature_rationale": "",
+                "reason_nature_tags": [],
+                "generalizable_rule": null,
+                "alternatives_considered": [],
+                "strategy_categories": []
+              }
+            }
+          ],
+          "conditions": "Shake flask; 1-L fermenter 120 h; feeding/medium unknown (Methods absent; Supplementary Figs. 6-7 not available).",
+          "controls": "Non-regulated BW-Pzwf::P23109; prior static-knockout BW-delta-pfkA EP-bifido (background_citation benchmark, Wang et al. 2019); IPTG-CRISPRi strain (background_citation benchmark, Li et al. 2021).",
+          "replicates": {
+            "value": null,
+            "replicate_type": "unknown"
+          },
+          "readouts": "MVA titer and carbon yield; growth; glucose uptake; acetate/byproducts; pfkA mRNA; intracellular FBP.",
+          "analysis": "Time-course comparison of growth/production; mRNA and FBP trends as dynamic-control confirmation.",
+          "outcome": "BW-PR: 73.31 g/L MVA, 63.00 mol% carbon yield, <0.1 g/L acetate, stationary phase after 12 h, FBP drop after 15 h; fermenter: 111.3 g/L at 120 h, no by-products. BW-PMT accumulated <2.47 g/L acetate.",
+          "evidence_ids": [
+            "EV06",
+            "EV07"
+          ],
+          "source_subject": "current_article",
+          "scope_notes": "Dynamic-regulation claims supported within tested conditions only; mRNA/FBP confirmation is correlative to promoter replacement (no inducer-timing sweep shown in main text)."
+        },
+        {
+          "experiment_id": "EXP5_dual_regulation_GlcNAc_biosynthesis",
+          "purpose": "Balance glycolysis and GlcNAc biosynthesis at the F6P node by dynamically repressing pfkA and/or activating glmS.",
+          "host": "E. coli DN5 (DH5alpha derivative, delta-nag delta-ackA delta-poxB delta-ldhA delta-nan; constructed in previous studies - background)",
+          "interventions": [
+            {
+              "description": "Genomic replacement of pfkA promoter in DN5 with Ppam (pL19) or Ppar (pL25), yielding DN5-IM and DN5-PM.",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1 yes, Q2 yes, Q3 yes (two promoter strengths compared for this second product context).",
+                "design_action": "M7",
+                "design_action_rationale": "Same dynamic-control strategy transferred to a second pathway context.",
+                "trigger_observation": "Lower glycolysis is a competitive pathway for GlcNAc synthesis from glucose; F6P is the shared precursor, so pfkA must be down-regulated.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Measured GlcNAc titers, growth and glucose consumption for DN5-IM/DN5-PM vs DN5.",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Explicit node-competition mechanism stated for F6P between glycolysis and GlcNAc pathway.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When a product draws fructose-6-phosphate as precursor in glucose-grown E. coli, dynamically repress pfkA with an FBP-negative-response promoter, because this diverts F6P from lower glycolysis to the product while preserving early growth. (Validated for GlcNAc in the DN5 background.)",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "dynamic_control",
+                  "competitive_pathway_removal",
+                  "flux_redirection"
+                ]
+              }
+            },
+            {
+              "description": "Plasmid-based dynamic activation of glmS using positive-response promoters PM23107 (pBacm) and PR23107-cra plus cra/P23102 (pBacar), transformed into DN5 to give DN5-GM and DN5-GAR.",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1 yes, Q2 yes, Q3 yes (two activation architectures compared; FBP-responsiveness of glmS activation verified).",
+                "design_action": "M7",
+                "design_action_rationale": "Metabolite-responsive up-regulation of the product-forming enzyme (F6P aminotransferase).",
+                "trigger_observation": "glmS needs up-regulation for GlcNAc overproduction, but early-stage overexpression may cause bacterial lysis and growth inhibition (Deng et al. 2005), so constitutive strong expression is unsuitable.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Measured GlcNAc titers for DN5-GM (6.33 g/L) and DN5-GAR (7.98 g/L) vs DN5 (0.46 g/L).",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Mechanistic need (F6P aminotransferase flux) combined with explicit literature-based toxicity concern (Deng et al. 2005) motivating timed activation.",
+                "reason_nature_tags": [
+                  "文献类比"
+                ],
+                "generalizable_rule": "When overexpression of a product-pathway enzyme is toxic in early growth (e.g., glmS in E. coli), drive it with a positive-response biosensor promoter activated as FBP accumulates, because induction is delayed until the production phase, avoiding lysis. (Validated for GlcNAc in DN5.)",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "dynamic_control",
+                  "precursor_supply_enhancement"
+                ]
+              }
+            },
+            {
+              "description": "Simultaneous dynamic repression of pfkA and activation of glmS (pBacm or pBacar into DN5-IM), yielding DN5-IMM and DN5-IMAR.",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1 yes, Q2 yes, Q3 yes (tests whether dual control exceeds single regulation - a design-relevant negative/comparative result).",
+                "design_action": "M7",
+                "design_action_rationale": "Layered dual dynamic regulation at one metabolic node.",
+                "trigger_observation": "Hypothesis that combining both arms of node control (repress competitor + activate product path) would further raise GlcNAc titer.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Measured titer DN5-IMM 8.63 g/L vs single-regulation strains; FBP levels measured in DN5/DN5-IM/DN5-GAR/DN5-IMM.",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Push-pull node engineering rationale explicitly described in Fig. 6A narrative.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When single dynamic repression of pfkA already restores most of the achievable F6P-to-GlcNAc flux in E. coli DN5, adding dynamic glmS activation on top gives no obvious further titer gain, because the node flux is already saturated by competitor repression. (Observed only in this DN5/GlcNAc context; do not generalize.)",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "dynamic_control",
+                  "flux_redirection"
+                ]
+              }
+            }
+          ],
+          "conditions": "Glucose as sole carbon source; shake-flask production implied; detailed conditions unknown (Methods absent; Supplementary Fig. 8 unavailable).",
+          "controls": "DN5 (0.46 g/L GlcNAc).",
+          "replicates": {
+            "value": null,
+            "replicate_type": "unknown"
+          },
+          "readouts": "GlcNAc titer; growth; glucose consumption; intracellular FBP.",
+          "analysis": "Titer/growth comparison; FBP-level interpretation per strain.",
+          "outcome": "DN5-IM 8.65 g/L; DN5-GM 6.33; DN5-GAR 7.98; DN5-IMM 8.63 g/L; dual regulation not obviously higher than single; FBP lower in DN5-IM/DN5-IMM, unchanged in DN5-GAR. DN5-IMAR titer not reported in available text.",
+          "evidence_ids": [
+            "EV09",
+            "EV10"
+          ],
+          "source_subject": "current_article",
+          "scope_notes": "Combination constructs (DN5-IMM, DN5-IMAR) are directly demonstrated in Fig. 6; DN5-IMAR outcome missing from parsed text (figure-dependent)."
+        }
+      ],
+      "background_or_prior_work_objects": [
+        {
+          "subject": "EP-bifido pathway with permanent pfkA deletion (BW-delta-pfkA, 64.3 mol% yield, 11.02 g/L MVA)",
+          "source_level": "background_citation",
+          "source_study": "Wang et al. 2019",
+          "note": "Constructed previously; not a design decision of this paper (Q2 fail)."
+        },
+        {
+          "subject": "IPTG-induced CRISPRi suppression of pfkA in EP-bifido strain (8.53 g/L MVA)",
+          "source_level": "background_citation",
+          "source_study": "Li et al. 2021",
+          "note": "Used as comparative benchmark only."
+        },
+        {
+          "subject": "DN5 strain construction (delta-nag delta-ackA delta-poxB delta-ldhA delta-nan from DH5alpha)",
+          "source_level": "background_citation",
+          "source_study": "authors' previous studies",
+          "note": "Explicitly stated as constructed in previous studies; Q2 fail."
+        },
+        {
+          "subject": "Linear FBP-glycolysis flux relationship; FBP feedforward activation of Pyk; early glmS-overexpression lysis",
+          "source_level": "background_citation",
+          "source_study": "Kochanowski et al. 2013; Waygood et al. 1976; Deng et al. 2005",
+          "note": "Premises imported from literature, not re-demonstrated here."
+        }
+      ]
+    },
+    "field_metadata": {
+      "evidence_registry": {
+        "EV01": {
+          "excerpt": "Here, we designed and constructed a bifunctional glycolysis flux biosensor ... applied for fine-tuning glycolysis flux to effectively balance the biosynthesis of two chemicals: mevalonate and N-acetylglucosamine.",
+          "source_locations": [
+            {
+              "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+              "section": "abstract"
+            }
+          ],
+          "evidence_type": "abstract_claim",
+          "confidence": 0.95
+        },
+        "EV02": {
+          "excerpt": "it regulates the lower glycolysis flux through the allosteric activation of pyruvate kinase ... creating linear relationships between the glycolysis flux and FBP pool in Escherichia coli (Kochanowski et al., 2013)",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p003",
+              "section": "introduction"
+            }
+          ],
+          "evidence_type": "background_citation_premise",
+          "confidence": 0.85
+        },
+        "EV03": {
+          "excerpt": "DN5, a modified DH5alpha strain, which knockout the gene nag, ackA, poxB, ldhA and nan, was constructed by our laboratory in previous studies.",
+          "source_locations": [
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p001"
+            }
+          ],
+          "evidence_type": "results_text",
+          "confidence": 0.9
+        },
+        "EV04": {
+          "excerpt": "Fig. 2 ... (A) The promoter architecture and characterization of the constructed positive-response biosensors pL01-pL10. (B) Tuning biosensors through the overexpression of Cra and modifying the metabolite-binding affinity of Cra ... (D) ... (CK-, no plasmid pL18; CK, 0 g/L acetate and 0 mM FBP; ... 0.001-400, 10 g/L acetate and 0.001-400 mM FBP). (E) ... dynamic range and threshold EC50.",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p016",
+              "figure_id": "Fig. 2"
+            }
+          ],
+          "evidence_type": "figure_caption",
+          "confidence": 0.9
+        },
+        "EV05": {
+          "excerpt": "the fluorescence value of BW-pfkA, BW-ptsG, and BW-pykF at 18h were 11.32, 7.13, and 1.11 times higher than that of the control BW25113 ... linear detection range of intracellular FBP with biosensor pL19 is about 0-50 mmol g-1 dry cell weight ... generally 0-31 mM g-1 dry cell weight",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p003"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p012",
+              "figure_id": "Fig. 4"
+            }
+          ],
+          "evidence_type": "results_text_plus_figure_caption",
+          "confidence": 0.85
+        },
+        "EV06": {
+          "excerpt": "The highest MVA production was obtained by strain BW-PR, which produced 73.31 g/L MVA, and the carbon yield reached 63.00 mol% ... a 111.3 g/L MVA was produced after 120 h cultivation and no by-products were produced.",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            },
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p009",
+              "figure_id": "Fig. 5"
+            }
+          ],
+          "evidence_type": "results_text",
+          "confidence": 0.9
+        },
+        "EV07": {
+          "excerpt": "A previous work indicated the IPTG induced CRISPRi suppression on pfkA gene in the EP-bifido strain only yield 8.53 g/L MVA (Li et al., 2021), 0.12 times of the MVA titer in BW-PR (73.31 g/L).",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            }
+          ],
+          "evidence_type": "background_citation_benchmark",
+          "confidence": 0.85
+        },
+        "EV08": {
+          "excerpt": "we tuned the biosensors in the following aspects: (1) the strength of the core promoters ... (2) the position of TFBS ... (3) the affinity of Cra-box ... (4) the expression level of Cra, and (5) the affinity of Cra with small-molecule FBP ... we didn't use those biosensors with overexpression of Cra or its mutants on plasmids for the practical application cases.",
+          "source_locations": [
+            {
+              "paragraph_id": "4_discussion_p004"
+            }
+          ],
+          "evidence_type": "discussion_author_interpretation",
+          "confidence": 0.85
+        },
+        "EV09": {
+          "excerpt": "strain DN5-IM finally produced 8.65 g/L GlcNAc, whereas the control strain DN5 only produced 0.46 g/L ... DN5-GM and DN5-GAR produced 6.33 and 7.98 g/L ... Strain DN5-IMM produced 8.63 g/L ... did not exhibit an obviously higher titer compared with that of pfkA or glmS single regulation.",
+          "source_locations": [
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p001"
+            }
+          ],
+          "evidence_type": "results_text",
+          "confidence": 0.9
+        },
+        "EV10": {
+          "excerpt": "Fig. 6 ... (C-H) The cell growth ... GlcNAc production of engineered E. coli strains DN5, DN5-PM, DN5-IM, DN5-GM, DN5-GAR, DN5-IMM, and DN5-IMAR.",
+          "source_locations": [
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p019",
+              "figure_id": "Fig. 6"
+            }
+          ],
+          "evidence_type": "figure_caption",
+          "confidence": 0.85
+        }
+      },
+      "per_field": {
+        "objective": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "a_b_s_t_r_a_c_t_p001"
+            }
+          ],
+          "notes": "Direct abstract statement."
+        },
+        "hypothesis": {
+          "status": "inferred",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p003"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            }
+          ],
+          "notes": "Synthesized; key premise is literature-cited."
+        },
+        "strain": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            },
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p001"
+            },
+            {
+              "paragraph_id": "1_introduction_p003"
+            }
+          ],
+          "notes": "Strain names from Results and figure captions; no strain table in parsed text."
+        },
+        "genotype": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            },
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p001"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p009"
+            }
+          ],
+          "notes": "Functional genotype descriptions only; sequences requires_supplement."
+        },
+        "engineering_method": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "4_discussion_p004"
+            },
+            {
+              "paragraph_id": "1_introduction_p016"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p009"
+            }
+          ],
+          "notes": "Five tuning axes from Discussion."
+        },
+        "experimental_groups": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p019"
+            },
+            {
+              "paragraph_id": "1_introduction_p003"
+            }
+          ],
+          "notes": "Groups reconstructed from strain lists in text/captions."
+        },
+        "controls": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p016"
+            },
+            {
+              "paragraph_id": "1_introduction_p003"
+            },
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p001"
+            }
+          ],
+          "notes": "Experiment-specific controls instantiated."
+        },
+        "culture_conditions": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p012"
+            }
+          ],
+          "notes": "Partial fragments only; Methods absent from parsed document - temperature/medium/aeration unknown."
+        },
+        "medium": {
+          "status": "unknown",
+          "source_locations": [],
+          "notes": "Not present in parsed text."
+        },
+        "dosage": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p016"
+            }
+          ],
+          "notes": "FBP gradient + acetate from Fig. 2D caption."
+        },
+        "time": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p012"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            }
+          ],
+          "notes": "18 h, 12 h, 15 h, 120 h time points."
+        },
+        "replicates": {
+          "status": "unknown",
+          "source_locations": [],
+          "notes": "No replicate or statistics statements in parsed text."
+        },
+        "assay": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p012"
+            }
+          ],
+          "notes": "Assay types named; protocols not."
+        },
+        "instruments": {
+          "status": "unknown",
+          "source_locations": [],
+          "notes": "Methods absent."
+        },
+        "analysis_methods": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p016"
+            },
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p009"
+            }
+          ],
+          "notes": "Hill fits and EC50/dynamic range from figure captions."
+        },
+        "outcomes": {
+          "status": "reported",
+          "source_locations": [
+            {
+              "paragraph_id": "3_4_dynamic_control_of_glycolysis_flux_for_high_mva_production_p001"
+            },
+            {
+              "paragraph_id": "3_5_dual_regulation_of_glycolysis_flux_and_glcnac_biosynthesis_p001"
+            },
+            {
+              "paragraph_id": "1_introduction_p003"
+            }
+          ],
+          "notes": "Quantitative titers/yields; superlatives are author_interpretation."
+        }
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.9,
+        "evidence": [
+          "Original strain construction and fermentation results in Results sections 3.4/3.5",
+          "Methods section absent from parsed document, so gating relies on abstract/results/figure captions",
+          "Metabolic Engineering journal article, DOI 10.1016/j.ymben.2021.09.011"
+        ],
+        "engineering_paper_type": [
+          "biosensor_platform",
+          "metabolic_engineering",
+          "protein_engineering"
+        ],
+        "engineering_paper_type_rationale": "Core contribution is a tunable metabolite biosensor platform (biosensor_platform) applied to pathway flux control for MVA/GlcNAc (metabolic_engineering); Cra ligand-affinity mutagenesis (aa 57-60) is a supporting protein-engineering element."
+      },
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113",
+          "paper_strain_normalized": "E. coli BW25113",
+          "role": "control",
+          "paper_label": "control BW25113",
+          "lineage_or_engineering_context": "K-12-derived parent for biosensor characterization and deficiency-strain comparison",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type lab strain (as used here)",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV05"
+          ],
+          "reasoning": "Named as control in Results/Fig. 4."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-pfkA / BW-ptsG / BW-pykF",
+          "paper_strain_normalized": "E. coli BW25113 single-gene deficiency strains (pfkA, ptsG, pykF)",
+          "role": "engineered",
+          "paper_label": "deficiency strains",
+          "lineage_or_engineering_context": "Graded glycolytic defects used to validate pL19 sensor response",
+          "combination_status": "single_deletions_only",
+          "genotype": "delta-pfkA / delta-ptsG / delta-pykF (inferred from 'deficiency strains' naming; exact construction not described in parsed text)",
+          "status": "inferred",
+          "confidence": 0.6,
+          "evidence_ids": [
+            "EV05"
+          ],
+          "reasoning": "Text calls them deficiency strains but gives no construction details; knockout genotypes inferred from names and glycolysis context."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-Pzwf::P23109",
+          "paper_strain_normalized": "E. coli BW25113 EP-bifido background with zwf promoter replaced by P23109",
+          "role": "parental",
+          "paper_label": "non-regulated control strain",
+          "lineage_or_engineering_context": "Base strain for dynamic pfkA control; PP pathway enhancement",
+          "combination_status": "demonstrated",
+          "genotype": "Pzwf::P23109",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV06"
+          ],
+          "reasoning": "Explicitly described in 3.4."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW-PMT / BW-PR",
+          "paper_strain_normalized": "BW-Pzwf::P23109 with PpfkA replaced by Ppam (pL19) / Ppar (pL25)",
+          "role": "engineered",
+          "paper_label": "dynamic EP-bifido strains",
+          "lineage_or_engineering_context": "FBP-responsive dynamic repression of pfkA for MVA",
+          "combination_status": "demonstrated",
+          "genotype": "Pzwf::P23109, PpfkA::Ppam or Ppar",
+          "status": "reported",
+          "confidence": 0.95,
+          "evidence_ids": [
+            "EV06"
+          ],
+          "reasoning": "Construction and phenotypes in 3.4 and Fig. 5."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5",
+          "paper_strain_normalized": "E. coli DH5alpha derivative, delta-nag delta-ackA delta-poxB delta-ldhA delta-nan",
+          "role": "parental",
+          "paper_label": "control strain DN5",
+          "lineage_or_engineering_context": "GlcNAc production chassis; constructed in authors' previous studies (background, Q2 fail for this paper)",
+          "combination_status": "demonstrated_in_prior_work",
+          "genotype": "delta-nag delta-ackA delta-poxB delta-ldhA delta-nan",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV03"
+          ],
+          "reasoning": "Explicit statement in 3.5."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5-IM, DN5-PM, DN5-GM, DN5-GAR, DN5-IMM, DN5-IMAR",
+          "paper_strain_normalized": "DN5 derivatives with dynamic pfkA repression and/or dynamic glmS activation (pBacm/pBacar)",
+          "role": "engineered",
+          "paper_label": "dynamic GlcNAc strains",
+          "lineage_or_engineering_context": "FBP-responsive dual regulation at F6P node",
+          "combination_status": "demonstrated",
+          "genotype": "PpfkA::Ppam or Ppar; glmS under PM23107 (pBacm) or PR23107-cra + cra-P23102 (pBacar)",
+          "status": "reported",
+          "confidence": 0.9,
+          "evidence_ids": [
+            "EV09",
+            "EV10"
+          ],
+          "reasoning": "Construction and titers in 3.5/Fig. 6; DN5-IMAR appears in caption without text-reported titer."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; adaptation (skill10/11) not run. Paper's own strains were identified from full text as required."
+      },
+      "unresolved_parameters": [
+        {
+          "raw_text": "linear detection range ... about 0-50 mmol g-1 dry cell weight vs intracellular FBP ... generally 0-31 mM g-1 dry cell weight",
+          "issue": "unit/basis mismatch (mmol vs mM; both per g DCW)",
+          "status": "unresolved",
+          "source_locations": [
+            {
+              "paragraph_id": "1_introduction_p003"
+            }
+          ]
+        },
+        {
+          "raw_text": "Sections 2 (Materials and Methods), 3.1-3.3 (first Results parts)",
+          "issue": "absent from parsed document; medium, temperature, replicates, instruments, strain/plasmid tables unavailable",
+          "status": "blocked_pending_supplement"
+        }
+      ],
+      "skipped_stages": [
+        {
+          "stage": "target_system_adaptation",
+          "reason": "no user target system"
+        },
+        {
+          "stage": "engineering_plan_DRTL",
+          "reason": "no user target system; also Methods/supplement missing blocks exact reproduction"
+        },
+        {
+          "stage": "frontend_view",
+          "reason": "not requested"
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "FBP concentration units",
+        "prose_interpretation": "pL19 detection range ~0-50 mmol/g DCW while physiological E. coli FBP stated as 0-31 mM/g DCW",
+        "equation_or_figure_interpretation": "Fig. 4 / Supplementary Fig. 3C referenced; cannot resolve mmol vs mM and per-DCW basis from parsed text",
+        "impact": "Detection-range coverage claim quantitatively ambiguous; conceptually (range covers physiology) unaffected",
+        "requires_manual_review": true
+      },
+      {
+        "status": "document_structure_anomaly",
+        "topic": "Misplaced content in parsed document",
+        "prose_interpretation": "Section '1. Introduction' paragraph 1_introduction_p003 contains Results text (Fig. 4 validation of pL19 in deficiency strains) and the Fig. 2 caption is embedded under the Introduction section; Results sections 3.1-3.3 and the entire Materials and Methods are missing",
+        "equation_or_figure_interpretation": "Parser (MinerU) artifact; headings vs content misalignment",
+        "impact": "Methods-derived fields (medium, temperature, replicates, instruments, full strain/plasmid tables) are unknown; evidence anchored by paragraph_id may reflect parser mislabeling",
+        "requires_manual_review": true
+      },
+      {
+        "status": "missing_data_in_text",
+        "topic": "DN5-IMAR outcome",
+        "prose_interpretation": "Fig. 6 caption lists DN5-IMAR among strains for growth and GlcNAc production, but the parsed text reports titers only for DN5-IMM (8.63 g/L)",
+        "equation_or_figure_interpretation": "DN5-IMAR titer recoverable only from Fig. 6 image/source data, not from parsed text",
+        "impact": "Dual-regulation comparison incomplete for the pBacar arm",
+        "requires_manual_review": true
+      },
+      {
+        "status": "supplement_dependency",
+        "topic": "Exact sequences, plasmid maps, culture media, Supplementary Figs. 3C/6/7/8",
+        "prose_interpretation": "Main text repeatedly defers quantitative details to Supplementary material (DOI 10.1016/j.ymben.2021.09.011)",
+        "equation_or_figure_interpretation": "Not available in parsed document",
+        "impact": "exact_reproduction_protocol, strain_reconstruction and library_resynthesis are blocked_pending_supplement; conceptual design summary remains allowed",
+        "requires_manual_review": true
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 40056,
+    "output_tokens": 18231
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "fdc2b513e05dfcae3f5d4836d2bc2285a730cf9585bc1a382279fb45616d5480",
+    "output_hash": "0baa379e3871a77e5f48a094241297b5ea57a3c96d437d00b485529788a92f87",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\0a8002b94d79142d4a03434803d37f962f3993d842658fc53159d543104661f8.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

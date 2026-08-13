@@ -1,0 +1,26 @@
+{
+  "task_id": "wave-reference-review-2026-08-12",
+  "user_request": "逐篇提取并比较两份参考论文的实验设计 Agent 架构、检索推理机制、知识表示、证据治理、代谢工程设计与评测方法；识别对现有 WAVE Agent 可迁移的能力、限制和工程优化点。",
+  "target_system": {
+    "organism": "Escherichia coli",
+    "strain": "K-12"
+  },
+  "literature_source": {
+    "type": "upload",
+    "files": [
+      "C:\\Users\\Starry\\AppData\\Local\\Temp\\1-s2.0-S2693125726000233-main (1).pdf",
+      "C:\\Users\\Starry\\AppData\\Local\\Temp\\agent-参考 (1).pdf"
+    ],
+    "doi": []
+  },
+  "requirements": {
+    "target_phenotype": "metabolic engineering design quality, evidence fidelity, and experimentally discriminating recommendations",
+    "engineering_goal": "identify evidence-backed architecture and workflow improvements for the current WAVE Agent",
+    "time_range": "",
+    "quality_requirement": "preserve paper-reported facts, evidence anchors, limitations, transfer assumptions, and human-review state"
+  },
+  "mode": {
+    "automatic": true,
+    "human_review": true
+  }
+}

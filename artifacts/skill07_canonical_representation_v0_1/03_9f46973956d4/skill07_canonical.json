@@ -1,0 +1,1818 @@
+{
+  "status": "succeeded",
+  "model": "kimi-k3",
+  "usage": {
+    "input_tokens": 93555,
+    "output_tokens": 62919
+  },
+  "prompt_chars": 114832,
+  "prompt_build_ms": 73.36359983310103,
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_ms": 462823.1713999994,
+      "error": "Poe Code CLI exited 1: Model: kimi-k3\nWorking directory: D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\extraction-runs\\paper-extraction-zku3ymqa\nPermission mode: edit\n\n┌   Poe - spawn poe-agent \n✗ agent: I'll analyze the document and write the extraction result to ./result.json.\n✗ terminated\nTypeError: terminated\n    at Fetch.onAborted (node:internal/deps/undici/undici:13625:53)\n    at Fetch.emit (node:events:509:28)\n    at Fetch.terminate (node:internal/deps/undici/undici:12755:14)\n    at Object.onError (node:internal/deps/undici/undici:13759:38)\n    at Request.onError (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\core\\request.js:303:27)\n    at Object.errorRequest (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\core\\util.js:638:13)\n    at TLSSocket.<anonymous> (D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\node_modules\\undici\\lib\\dispatcher\\client-h1.js:802:12)\n    at TLSSocket.emit (node:events:521:24)\n    at node:net:350:12\n    at TCP.done (node:internal/tls/wrap:674:7)\n│\n■  Error: terminated\n│\n●  See logs at C:\\Users\\Starry\\.poe-code\\logs\\errors.log for more details."
+    },
+    {
+      "attempt": 2,
+      "duration_ms": 447494.7712002322,
+      "error": null
+    }
+  ],
+  "repairs": [
+    {
+      "repair": 1,
+      "duration_ms": 671010.1312003098,
+      "prompt_chars": 180058,
+      "error": null
+    }
+  ],
+  "normalization_actions": [],
+  "checks": [
+    {
+      "name": "top_level_and_field_schema",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "field_semantic_invariants",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "evidence_role_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "candidate_evidence_anchors_resolve",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "article_type_gate_valid",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "experiment_graph_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "ddr_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "document_coverage_consistent",
+      "passed": true,
+      "required": true
+    }
+  ],
+  "output": {
+    "contract_version": "skill07_semantic_contract_v1",
+    "fields": {
+      "objective": {
+        "value": "Engineer an Escherichia coli strain capable of growing on CO2 and formic acid (FA) alone, reaching a higher cell density than previously reported engineered E. coli strains (which reached up to OD600 of 1).",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p002",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p003",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p015"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "hypothesis": {
+        "value": [
+          {
+            "hypothesis_id": "H1",
+            "statement": "Insufficient gluconeogenesis, simultaneous expression of the purT and ftl genes, and inefficient NADPH supply might be the reasons for the inability of the FC1 strain to grow solely on CO2 and FA.",
+            "scope": "FC1 strain, CO2+FA cultivation",
+            "status": "reported"
+          },
+          {
+            "hypothesis_id": "H2",
+            "statement": "Cell filamentation of FC8 might be due to energy deficiency when growing on CO2 and FA alone; more efficient conversion of reducing power to ATP (via increased Cyo and decreased Cyd expression at lower temperature) could suppress it.",
+            "scope": "FC8 strain, CO2+FA cultivation at 37 vs 32 C",
+            "status": "reported"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008"
+        ],
+        "notes": "Both are author-stated hypotheses formulated before the corresponding engineering actions; they are not verified mechanisms.",
+        "inference": null
+      },
+      "strain": {
+        "value": [
+          {
+            "paper_label": "E. coli DH5a",
+            "role": "cloning host",
+            "normalized_name": "Escherichia coli DH5alpha",
+            "normalization_basis": "document_internal"
+          },
+          {
+            "paper_label": "DH5a_GTPS",
+            "role": "parent_strain/base strain for engineered formatotrophic strains",
+            "genotype_elements": "gcvR, pflB and serA deleted; native promoter of gcvT replaced with trc",
+            "normalized_name": "Escherichia coli DH5alpha_GTPS",
+            "normalization_basis": "document_internal"
+          },
+          {
+            "paper_label": "FC1",
+            "role": "engineered_strain",
+            "lineage": "derived from DH5a_GTPS"
+          },
+          {
+            "paper_label": "FC2",
+            "role": "engineered_strain",
+            "lineage": "derived from FC1"
+          },
+          {
+            "paper_label": "FC3",
+            "role": "engineered_strain",
+            "lineage": "derived from FC2"
+          },
+          {
+            "paper_label": "FC5",
+            "role": "engineered_strain",
+            "lineage": "FC3 harbouring plasmid p100FA2"
+          },
+          {
+            "paper_label": "FC7",
+            "role": "engineered_strain",
+            "lineage": "derived from FC5-lineage with medium-copy-number plasmids"
+          },
+          {
+            "paper_label": "FC8",
+            "role": "engineered_strain (final optimized strain)",
+            "lineage": "derived from FC5-lineage with low-copy-number plasmids"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "methods_p013"
+        ],
+        "notes": "Complete strain list and exact plasmid-strain assignments are stated to be in Supplementary Table 2, which was not provided (dependency=requires_supplement). Whether DH5a_GTPS was constructed in this study or previously is not stated in the available text (Supplementary Note 3 referenced).",
+        "inference": null
+      },
+      "genotype": {
+        "value": [
+          {
+            "strain": "DH5a_GTPS",
+            "genotype": "delta gcvR, delta pflB, delta serA; native promoter of gcvT replaced with trc promoter",
+            "status": "reported"
+          },
+          {
+            "strain": "FC1",
+            "genotype": "DH5a_GTPS + reconstructed tetrahydrofolate (THF) cycle + reverse glycine cleavage reaction + Candida boidinii formate dehydrogenase (CbFdh)",
+            "status": "reported"
+          },
+          {
+            "strain": "FC2",
+            "genotype": "FC1 + ppsA overexpression (native promoter change) + ppsR deletion",
+            "status": "reported"
+          },
+          {
+            "strain": "FC3",
+            "genotype": "FC2 + purT deletion",
+            "status": "reported"
+          },
+          {
+            "strain": "FC5",
+            "genotype": "FC3 harbouring p100FA2, which additionally expresses the Arabidopsis thaliana fdh_mut gene for NADPH generation from FA",
+            "status": "reported"
+          },
+          {
+            "strain": "FC7",
+            "genotype": "FC5-lineage harbouring medium-copy-number plasmids; exact plasmid identity not stated in available text",
+            "status": "reported"
+          },
+          {
+            "strain": "FC8",
+            "genotype": "FC5-lineage harbouring low-copy-number plasmids; exact plasmid identity not stated in available text",
+            "status": "reported"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.78,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "methods_p015"
+        ],
+        "notes": "Full genotypes, plasmid lists and plasmid-to-strain mapping reside in Supplementary Table 2 (not provided; dependency=requires_supplement). Plasmids constructed in this study per Methods: p100FA1 (CbFdh), p100FA2 (FDHatmut added), p184FA (pACYC184 backbone + C1_OPR), p518FA (pJH518 backbone + C1_OPR); which plasmids FC7/FC8 carry is not stated in the available text.",
+        "inference": null
+      },
+      "engineering_method": {
+        "value": [
+          "Introduction of a synthetic CO2 and formic acid assimilation pathway: reconstructed THF cycle, reverse glycine cleavage reaction, and heterologous formate dehydrogenases (Candida boidinii Fdh; Arabidopsis thaliana fdh_mut)",
+          "Gene deletion by homologous recombination (ppsR repressor, purT) with two-round PCR DNA cassettes and colony PCR verification",
+          "Native promoter replacement (ppsA promoter change; gcvT promoter replaced with trc in the parent strain)",
+          "Plasmid construction by Gibson assembly; plasmid copy-number fine-tuning (lower-copy plasmids in FC7/FC8)",
+          "Inducer (IPTG) concentration and aeration condition optimization",
+          "Cultivation temperature optimization (37 to 32 C) to adjust cytochrome bo/bd-I ubiquinol oxidase expression",
+          "Bioreactor fed-batch cultivation with pH-stat FA feeding and agitation ramping"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p002",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "methods_p014",
+          "methods_p015",
+          "methods_p018"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "experimental_groups": {
+        "value": [
+          {
+            "experiment": "EXP1_stepwise_strain_construction",
+            "groups": "FC1, FC2, FC3, FC5 each cultivated solely on CO2 and FA (Fig. 1b); FC1/FC2/FC3 also cultivated with 0.1 g/l glucose supplemented every 24 h (Extended Data Fig. 1b)"
+          },
+          {
+            "experiment": "EXP2_isotope_analysis",
+            "groups": "FC1 and FC2 with [U-13C]glucose labelling; FC5 and FC8 with 13C-labelled FA / [U-13C]glucose preculture then CO2+FA only"
+          },
+          {
+            "experiment": "EXP3_IPTG_aeration_optimization",
+            "groups": "FC5 with IPTG 1, 0.1, 0.05 mM; FC5 under high aeration (300-ml baffled flask, 50 ml), medium aeration (100-ml baffled flask, 30 ml), low aeration (100-ml Erlenmeyer flask, 30 ml)"
+          },
+          {
+            "experiment": "EXP4_plasmid_copy_number",
+            "groups": "FC7 (medium-copy plasmids) and FC8 (low-copy plasmids) vs FC5 reference, on CO2+FA"
+          },
+          {
+            "experiment": "EXP5_high_inoculum_flask",
+            "groups": "FC8, initial OD600 0.35, 37 C"
+          },
+          {
+            "experiment": "EXP6_temperature_optimization",
+            "groups": "FC8 at 30, 32, 33 C (growth monitoring); Cyo/Cyd expression illustrated at 37, 33, 28 C; biomass yield compared at 32 vs 37 C"
+          },
+          {
+            "experiment": "EXP7_low_inoculum_doublings",
+            "groups": "FC8, initial OD600 0.018, flask"
+          },
+          {
+            "experiment": "EXP8_bioreactor",
+            "groups": "FC8 bioreactor cultivations, initial OD600 ~1 (1.02, 1.15, 1.06, 0.91 across four runs)"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "methods_p016",
+          "methods_p017",
+          "methods_p018",
+          "methods_p020",
+          "additional_information_p008",
+          "additional_information_p019",
+          "brief_communication_p006"
+        ],
+        "notes": "Group definitions assembled from main text, Methods and figure captions of the same document; per-instance binding is canonical in experimental_design_object.",
+        "inference": null
+      },
+      "controls": {
+        "value": [
+          "FC5 cultivated without FA, without CO2, and without both CO2 and FA (culture broth images, Extended Data Fig. 3a)",
+          "FC8 at 32 C cultivated with/without FA and with/without CO2 (Extended Data Fig. 7b)",
+          "FC5 growth profile used as reference comparator for FC7/FC8 (Fig. 1d dashed line)",
+          "37 C condition used as reference for 32 C rtPCR mRNA ratios (cyoA, cyoB, cydA, cydB normalized to 37 C values) and for biomass yield comparison",
+          "1 mM IPTG condition used as reference for relative ppsA/gcvT mRNA ratios in IPTG optimization"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.8,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+          "additional_information_p015",
+          "additional_information_p019",
+          "brief_communication_p006"
+        ],
+        "notes": "No isogenic empty-plasmid or parental negative-control strain grown in parallel is explicitly reported in the available text; substrate-omission conditions serve as negative controls.",
+        "inference": null
+      },
+      "culture_conditions": {
+        "value": {
+          "preculture": "10 ml LB + antibiotics, 12 h; then M9 + 5 g/l glucose + 4.43 g/l sodium FA (3 g/l FA equivalent) + antibiotics, 24 h",
+          "flask_CO2_FA": "Initial OD600 0.07 (standard protocol); 200 r.p.m.; 37 C (or 30/32/33 C in temperature experiments); O2/CO2 control orbital shaker (World Science) with 10 mol/mol% CO2, 18 mol/mol% O2, 72 mol/mol% N2; FA maintained at 2-3 g/l by adding 1 M sodium FA or 10 v/v% FA solution; flask formats: 100-ml baffled/30 ml, 300-ml baffled/50 ml, 100-ml Erlenmeyer/30 ml",
+          "bioreactor": "1.3-l Bioflow 110 (New Brunswick Scientific), 500 ml working volume; 32 C; initial agitation 500 r.p.m. (magnetic-drive pitched-blade impeller), increased by 50 r.p.m. per 1 OD600 unit up to 750 r.p.m. in the second cultivation; pH-stat at pH 6.8 using 30 v/v% FA; continuous sparging of air:industrial-grade CO2 at 9:1 volume ratio, 500 ml/min"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p016",
+          "methods_p017",
+          "methods_p018"
+        ],
+        "notes": "Gas composition percentages contain OCR artifacts in the source (e.g. '10 mol/mol% of CO' for CO2); values recorded as printed. Specific experiments deviated from the standard initial OD600 of 0.07 (0.018, 0.31, 0.35, ~1.02); these implemented values are bound to their instances in experimental_design_object.",
+        "inference": null
+      },
+      "medium": {
+        "value": {
+          "LB": "per litre: 10 g tryptone, 5 g yeast extract, 10 g NaCl",
+          "M9_minimal_pH7": "per litre: 6.8 g Na2HPO4·7H2O, 3 g KH2PO4 (OCR-garbled as 'KH PO'), 0.5 g NaCl, 2 g NH4Cl (OCR-garbled as 'NH Cl'), 4.2 g NaHCO3, 0.8 g MgSO4·7H2O, 0.24 g IPTG, 0.05 g EDTA, 0.002 g thiamine·HCl, 5 ml trace metal solution; pH adjusted with 1 M NaOH",
+          "trace_metal_solution": "per litre of 0.5 M HCl: 10 g FeSO4·7H2O, 2 g CaCl2, 2.2 g ZnSO4·7H2O, 0.5 g MnSO4·4H2O, 1 g CuSO4·5H2O, 0.1 g (NH4)6Mo7O24·4H2O, 0.02 g Na2B4O7·10H2O (several formulas OCR-garbled)",
+          "CO2_FA_medium": "M9 minimal medium supplemented with 4.43 g/l sodium formate (3 g/l FA equivalent); no other carbon source"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.7,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p013",
+          "methods_p017"
+        ],
+        "notes": "Several chemical formulas in the M9 and trace-metal composition are OCR-corrupted in the parsed text (missing subscripts, e.g. 'KH PO', 'NH Cl', 'Na B O'); normalized formulas shown here are model readings of garbled text and must be verified against the original PDF before reuse.",
+        "inference": null
+      },
+      "dosage": {
+        "value": {
+          "sodium_formate": "4.43 g/l sodium FA (3 g/l FA equivalent) in M9; FA concentration maintained at 2-3 g/l during flask cultivation by adding 1 M sodium FA or 10 v/v% FA solution",
+          "fed_batch_FA": "30 v/v% FA solution, pH-stat mode at pH 6.8 (bioreactor)",
+          "IPTG_in_M9": "0.24 g/l IPTG in M9 minimal medium; IPTG inducer concentrations tested: 1, 0.1, 0.05 mM",
+          "antibiotics": "100 ug/ml ampicillin or 17 ug/ml chloramphenicol",
+          "isotope_tracers": "0.1 g/l [U-13C]glucose (FC1/FC2 analysis, re-added after 72 h); 5 g/l [U-13C]glucose and 4.43 g/l 13C-labelled sodium FA in FC5/FC8 preculture",
+          "initial_inoculum_OD600": "0.07 (standard), 0.051 (FC5 first growth), 0.06 (FC8), 0.31 (FC8 32 C), 0.35 (FC8 high inoculum), 0.018 (low inoculum), 1.02/1.15/1.06/0.91 (bioreactor runs)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p016",
+          "methods_p017",
+          "methods_p018",
+          "methods_p020",
+          "additional_information_p019",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014"
+        ],
+        "notes": "Dosages are bound to specific process steps (medium composition vs feeding vs induction vs inoculation) and experiment instances; they must not be merged into a single condition set.",
+        "inference": null
+      },
+      "time": {
+        "value": {
+          "preculture": "12 h (LB) then 24 h (M9+glucose+FA)",
+          "FC5_first_growth": "150 h to OD600 0.285",
+          "FC5_optimized": "200 h to OD600 0.533",
+          "FC7_FC8_growth": "200 h (FC8 to 0.607; FC7 to 0.452)",
+          "FC8_high_inoculum": "100 h to OD600 1.24",
+          "FC8_32C": "244 h to OD600 2.48",
+          "FC8_low_inoculum": "791.5 h to OD600 3.59 (7.64 doublings)",
+          "bioreactor_runs": "450 h (to 7.38), 412 h (to 7.88), 412 h (to 8.01), 577 h (to 11.1)",
+          "isotope_sampling": "cell samples collected after 120 h (FC1/FC2) or 100 h (FC5/FC8) of flask cultivation; mRNA samples after 100 h"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "methods_p016",
+          "methods_p020",
+          "methods_p025"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "replicates": {
+        "value": {
+          "triplicate": "n=3 for most experiments (growth profiles, isotope analyses, mRNA, biomass yield, FA consumption), reported as average +/- standard deviation",
+          "duplicate": "n=2 for the low-initial-inoculum flask cultivation (Fig. 2f) and its doubling-time/growth-rate profiles (Extended Data Fig. 8a)",
+          "quadruplicate": "n=4 independent bioreactor cultivations (Fig. 2g shows one run; Extended Data Fig. 8d-f show the other three)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+          "methods_p012",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "brief_communication_p012",
+          "life_sciences_study_design_p002"
+        ],
+        "notes": "Replicate taxonomy: the Reporting Summary describes triplicates as 'a normally employed sample size to ensure biological reproducibility' and bioreactor quadruplicates as independent cultures; treated as independent cultivation replicates, but the paper does not formally classify biological vs technical replicates. Individual data points plotted in graphs were not counted as replicates.",
+        "inference": null
+      },
+      "assay": {
+        "value": [
+          "Cell growth: optical density at 600 nm (OD600)",
+          "Colony-forming units (c.f.u.) by serial dilution and plating on LB agar",
+          "Dry cell weight (DCW) by freeze-drying and microbalance weighing",
+          "FA and glucose concentration by HPLC with refractive index detection",
+          "13C isotope ratios in proteinogenic amino acids by GC-MS of derivatized amino-acid hydrolysates",
+          "mRNA levels of ppsA, gcvT, cyoA, cyoB, cydA, cydB by real-time PCR (ddCt, rrsA reference)",
+          "Cell morphology (filamentation) by microscopy at x1,000"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p019",
+          "methods_p023",
+          "methods_p024",
+          "methods_p025",
+          "methods_p026"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "instruments": {
+        "value": [
+          "Ultrospec 3000 spectrophotometer (Pharmacia Biotech) - OD600",
+          "Waters 1515/2414/2707 HPLC with Metacarb 87H column (MetaChem Technologies) and RI-27 refractive index detector (Shodex) - FA/glucose",
+          "6890 gas chromatograph + '5875 Inert XL' mass spectrometry system (Agilent Technologies) - 13C isotope analysis (as printed; '5875' may be an OCR artifact)",
+          "LightCycler96 (Roche) - real-time PCR",
+          "Nikon OPTIPHOT-2 microscope (Nikon), x1,000 magnification - cell imaging",
+          "1.3-l Bioflow 110 bioreactor (New Brunswick Scientific)",
+          "O2/CO2 control orbital shaker (World Science)",
+          "Flow controller (MKS Instruments) - bioreactor gas sparging",
+          "Microbalance - DCW weighing"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.88,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p017",
+          "methods_p018",
+          "methods_p019",
+          "methods_p024",
+          "methods_p025",
+          "methods_p026"
+        ],
+        "notes": "The MS model string '5875 Inert XL' is recorded verbatim from the parsed text; plausibly an OCR artifact but not altered.",
+        "inference": null
+      },
+      "analysis_methods": {
+        "value": [
+          "13C ratio in proteinogenic amino acids calculated as sum over i of x_i*(n-i)/n, where n = number of carbons in the amino acid and x_i = ratio of amino acid containing i 13C carbons",
+          "mRNA quantification by ddCt method with rrsA as reference gene; rtPCR results analysed with LightCycler96 software (Roche) v1.1.0.1320",
+          "rtPCR primers designed with Primer3 software v0.4.0",
+          "Two-tailed Student's t-test for isotope ratio comparisons of FC1 vs FC2 (Extended Data Fig. 2)",
+          "GC-MS operation and data analysis following the protocol of the authors' previous study (ref. 9)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "methods_p021",
+          "methods_p022",
+          "methods_p025",
+          "methods_p026",
+          "additional_information_p012",
+          "software_and_code_p003"
+        ],
+        "notes": "No normality testing, multiple-comparison correction, or effect-size reporting is described in the available text.",
+        "inference": null
+      },
+      "outcomes": {
+        "value": [
+          "FC1 failed to grow on CO2 and FA alone",
+          "FC5 grew on CO2 and FA alone to OD600 0.285 (0.0633 g DCW/l) in 150 h from initial OD600 0.051, ~2.5 doublings, with increased c.f.u.; 13C analysis confirmed CO2/FA assimilation",
+          "After IPTG and aeration optimization, FC5 grew to OD600 0.533 (from 0.07) in 200 h",
+          "FC8 (low-copy plasmids) grew to OD600 0.607 in 200 h (0.14-fold higher than FC5); FC7 reached 0.452; FC8 showed higher CO2/FA assimilation fluxes and FA consumption than FC5",
+          "FC8 from initial OD600 0.35 grew to OD600 1.24 (0.343 g DCW/l) in 100 h; cells were filamented",
+          "At 32 C, FC8 grew from OD600 0.31 to 2.48 (0.687 g DCW/l) in 244 h, consuming 0.41 g FA; cyoAB/cydAB mRNA changed as intended; filamentation suppressed",
+          "Biomass yields on FA: 0.0552 +/- 0.0009 (32 C) vs 0.0365 +/- 0.0026 (37 C) g DCW/g FA",
+          "Low-inoculum flask (OD600 0.018): FC8 grew to OD600 3.59 (0.994 g DCW/l) in 791.5 h, consuming 0.94 g FA, 7.64 doublings; specific growth rate declined from 0.0105 to 0.0028 h-1; doubling time rose from 65.9 to 250.6 h",
+          "Bioreactor (initial OD600 1.02): max OD600 7.38 (2.044 g DCW/l) in 450 h, consuming 18.2 g FA; three additional independent runs reached 7.88, 8.01 and 11.1 (OD600 7-11 from initial ~1)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014"
+        ],
+        "notes": "The '0.14-fold higher' and '0.87-fold higher' statements are the authors' relative-difference phrasing, recorded as printed. The abstract reports OD600 7.38 in 450 h (the first bioreactor run); later runs reached up to 11.1 - these are distinct runs, not conflicting values.",
+        "inference": null
+      }
+    },
+    "experimental_design_object": {
+      "canonical_truth_note": "Experiment instances and object relations below are canonical; the 16 document-level fields are a compatibility projection only.",
+      "biological_objects": [
+        {
+          "object_id": "OBJ_DH5a",
+          "object_type": "strain",
+          "paper_label": "E. coli DH5a",
+          "role": "cloning host",
+          "identity_status": "reported",
+          "evidence": [
+            "methods_p013"
+          ]
+        },
+        {
+          "object_id": "OBJ_DH5a_GTPS",
+          "object_type": "parent_strain",
+          "paper_label": "E. coli DH5a_GTPS",
+          "genotype": "delta gcvR delta pflB delta serA; PgcvT::trc",
+          "role": "base strain for engineered formatotrophic strain development",
+          "identity_status": "reported",
+          "construction_this_study": "uncertain (Supplementary Note 3 referenced, not provided)",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+            "methods_p013"
+          ]
+        },
+        {
+          "object_id": "OBJ_FC1",
+          "object_type": "engineered_strain",
+          "paper_label": "FC1",
+          "parent": "OBJ_DH5a_GTPS",
+          "intervention": "reconstructed THF cycle + reverse glycine cleavage reaction + Candida boidinii Fdh (CbFdh)",
+          "identity_status": "reported",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004"
+          ]
+        },
+        {
+          "object_id": "OBJ_FC2",
+          "object_type": "engineered_strain",
+          "paper_label": "FC2",
+          "parent": "OBJ_FC1",
+          "intervention": "ppsA overexpression + ppsR deletion",
+          "identity_status": "reported",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "methods_p015"
+          ]
+        },
+        {
+          "object_id": "OBJ_FC3",
+          "object_type": "engineered_strain",
+          "paper_label": "FC3",
+          "parent": "OBJ_FC2",
+          "intervention": "purT deletion",
+          "identity_status": "reported",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "methods_p015"
+          ]
+        },
+        {
+          "object_id": "OBJ_FC5",
+          "object_type": "engineered_strain",
+          "paper_label": "FC5",
+          "parent": "OBJ_FC3",
+          "intervention": "harbouring plasmid p100FA2 (expresses Arabidopsis thaliana fdh_mut in addition to pathway genes)",
+          "identity_status": "reported",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005"
+          ]
+        },
+        {
+          "object_id": "OBJ_FC7",
+          "object_type": "engineered_strain",
+          "paper_label": "FC7",
+          "parent": "OBJ_FC5-lineage",
+          "intervention": "medium-copy-number plasmids replacing higher-copy plasmids",
+          "identity_status": "reported",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007"
+          ]
+        },
+        {
+          "object_id": "OBJ_FC8",
+          "object_type": "engineered_strain",
+          "paper_label": "FC8",
+          "parent": "OBJ_FC5-lineage",
+          "intervention": "low-copy-number plasmids",
+          "role": "final optimized strain",
+          "identity_status": "reported",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007"
+          ]
+        },
+        {
+          "object_id": "OBJ_p100FA1",
+          "object_type": "plasmid",
+          "paper_label": "p100FA1",
+          "construction": "Gibson assembly of p100THF backbone PCR fragment + FDHcbo (C. boidinii gDNA template)",
+          "identity_status": "reported",
+          "evidence": [
+            "methods_p014"
+          ]
+        },
+        {
+          "object_id": "OBJ_p100FA2",
+          "object_type": "plasmid",
+          "paper_label": "p100FA2",
+          "construction": "Gibson assembly adding FDHatmut (synthesized A. thaliana fdh_mut) to p100FA1-derived backbone",
+          "identity_status": "reported",
+          "evidence": [
+            "methods_p014"
+          ]
+        },
+        {
+          "object_id": "OBJ_p184FA",
+          "object_type": "plasmid",
+          "paper_label": "p184FA",
+          "construction": "Gibson assembly of pACYC184 backbone + C1_OPR from p100FA2",
+          "identity_status": "reported",
+          "evidence": [
+            "methods_p014"
+          ]
+        },
+        {
+          "object_id": "OBJ_p518FA",
+          "object_type": "plasmid",
+          "paper_label": "p518FA",
+          "construction": "Gibson assembly of pJH518 backbone + C1_OPR from p100FA2",
+          "identity_status": "reported",
+          "evidence": [
+            "methods_p014"
+          ]
+        }
+      ],
+      "experiment_instances": [
+        {
+          "experiment_id": "EXP1",
+          "name": "Stepwise construction and growth testing of FC1/FC2/FC3/FC5",
+          "objects": [
+            "OBJ_FC1",
+            "OBJ_FC2",
+            "OBJ_FC3",
+            "OBJ_FC5"
+          ],
+          "intervention": "sequential metabolic engineering (THF cycle + rGCV + CbFdh; ppsA overexpression + ppsR deletion; purT deletion; p100FA2 with fdh_mut)",
+          "conditions": "M9 + 4.43 g/l sodium FA, gas 10% CO2/18% O2/72% N2, 200 r.p.m., 37 C; FC1/2/3 also tested with 0.1 g/l glucose every 24 h",
+          "controls": "substrate-omission conditions (Extended Data Fig. 3a for FC5)",
+          "replicates": "n=3",
+          "readouts": [
+            "OD600 growth profiles",
+            "c.f.u."
+          ],
+          "outcomes": "FC1 no growth; FC5 grew to OD600 0.285 in 150 h",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "additional_information_p008",
+            "additional_information_p015"
+          ]
+        },
+        {
+          "experiment_id": "EXP2",
+          "name": "13C isotope analysis of CO2/FA assimilation",
+          "objects": [
+            "OBJ_FC1",
+            "OBJ_FC2",
+            "OBJ_FC5",
+            "OBJ_FC8"
+          ],
+          "intervention": "13C labelling ([U-13C]glucose; 13C-FA) then CO2+FA-only cultivation",
+          "conditions": "flask, 37 C (FC5/FC8 sampling after 100 h; FC1/FC2 after 120 h); FC8 also at 32 C (Extended Data Fig. 7c)",
+          "replicates": "n=3",
+          "readouts": [
+            "13C ratios in proteinogenic amino acids by GC-MS"
+          ],
+          "analysis": "13C ratio formula; two-tailed Student's t-test (FC1 vs FC2)",
+          "outcomes": "increased 13C ratios confirming assimilation of CO2 and FA",
+          "evidence": [
+            "methods_p020",
+            "methods_p021",
+            "methods_p022",
+            "additional_information_p012",
+            "additional_information_p016",
+            "additional_information_p021"
+          ]
+        },
+        {
+          "experiment_id": "EXP3",
+          "name": "IPTG concentration and aeration optimization (FC5)",
+          "objects": [
+            "OBJ_FC5"
+          ],
+          "intervention": "IPTG 1/0.1/0.05 mM; high/medium/low aeration flask formats",
+          "replicates": "n=3",
+          "readouts": [
+            "OD600 growth",
+            "ppsA and gcvT mRNA (rtPCR)"
+          ],
+          "outcomes": "FC5 grew to OD600 0.533 in 200 h under optimized conditions",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+            "additional_information_p019"
+          ]
+        },
+        {
+          "experiment_id": "EXP4",
+          "name": "Plasmid copy-number fine-tuning (FC7/FC8)",
+          "objects": [
+            "OBJ_FC7",
+            "OBJ_FC8",
+            "OBJ_FC5"
+          ],
+          "intervention": "lower-copy-number plasmids (medium for FC7, low for FC8)",
+          "replicates": "n=3",
+          "readouts": [
+            "OD600 growth",
+            "FA consumption",
+            "13C assimilation fluxes"
+          ],
+          "controls": "FC5 reference profile",
+          "outcomes": "FC8 OD600 0.607 in 200 h (>FC5); FC7 0.452 (<FC5); FC8 higher assimilation fluxes and FA consumption",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+            "additional_information_p021"
+          ]
+        },
+        {
+          "experiment_id": "EXP5",
+          "name": "FC8 high-inoculum flask cultivation",
+          "objects": [
+            "OBJ_FC8"
+          ],
+          "conditions": "initial OD600 0.35, 37 C",
+          "replicates": "n=3",
+          "readouts": [
+            "OD600",
+            "c.f.u.",
+            "microscopy"
+          ],
+          "outcomes": "OD600 1.24 (0.343 g DCW/l) in 100 h; cell filamentation observed",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+            "methods_p012"
+          ]
+        },
+        {
+          "experiment_id": "EXP6",
+          "name": "Temperature optimization of FC8",
+          "objects": [
+            "OBJ_FC8"
+          ],
+          "intervention": "cultivation at 30, 32, 33 C (growth) with Cyo/Cyd expression examined at 37/33/28 C",
+          "replicates": "n=3",
+          "readouts": [
+            "OD600",
+            "c.f.u.",
+            "cyoA/cyoB/cydA/cydB mRNA (rtPCR)",
+            "biomass yield on FA",
+            "microscopy"
+          ],
+          "controls": "37 C reference for mRNA ratios and yield",
+          "outcomes": "best growth at 32 C: OD600 2.48 in 244 h from 0.31, 0.41 g FA consumed; yields 0.0552+/-0.0009 (32 C) vs 0.0365+/-0.0026 (37 C) g DCW/g FA; filamentation suppressed",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+            "brief_communication_p006"
+          ]
+        },
+        {
+          "experiment_id": "EXP7",
+          "name": "Low-inoculum flask cultivation (maximum doublings)",
+          "objects": [
+            "OBJ_FC8"
+          ],
+          "conditions": "initial OD600 0.018, flask",
+          "replicates": "n=2",
+          "readouts": [
+            "OD600",
+            "FA concentration",
+            "specific growth rate/doubling time"
+          ],
+          "outcomes": "OD600 3.59 (0.994 g DCW/l) in 791.5 h, 0.94 g FA consumed, 7.64 doublings; growth rate declined over time",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+            "brief_communication_p012"
+          ]
+        },
+        {
+          "experiment_id": "EXP8",
+          "name": "Bioreactor cultivations of FC8",
+          "objects": [
+            "OBJ_FC8"
+          ],
+          "conditions": "1.3-l Bioflow 110, 500 ml, 32 C, 500 r.p.m. initial (ramped to 750 in second run), pH-stat 6.8 with 30 v/v% FA, air:CO2 9:1 at 500 ml/min, initial OD600 ~1",
+          "replicates": "n=4 independent runs",
+          "readouts": [
+            "OD600",
+            "FA concentration/consumption",
+            "DCW"
+          ],
+          "outcomes": "max OD600 7.38 (450 h), 7.88 (412 h), 8.01 (412 h), 11.1 (577 h) across four runs",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+            "methods_p018",
+            "brief_communication_p012"
+          ]
+        }
+      ],
+      "ddr_annotations": [
+        {
+          "ddr_id": "DDR1",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: active introduction of a synthetic CO2/FA assimilation pathway (reconstructed THF cycle, reverse glycine cleavage, CbFdh). Q2 pass: constructed by the current authors (FC1). Q3 pass: an intentional initial pathway design, not a measurement.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Construct FC1 by introducing the reconstructed THF cycle, reverse glycine cleavage reaction and Candida boidinii Fdh into E. coli DH5a_GTPS",
+          "design_action_rationale": "First implementation of the synthetic CO2 and formic acid assimilation pathway in the base strain",
+          "trigger_observation": "Prior engineered E. coli strains showed only limited growth on CO2 and FA (final OD600 up to 1); a strain growing to higher cell density on CO2 and FA alone was needed",
+          "evidence_grading": "soft",
+          "evidence_grading_rationale": "evidence_basis_type=literature_precedent: motivation rests on prior reports (refs 9-11) and pathway design principles, not on new measurements in this study",
+          "reason_nature": "literature_analogy",
+          "reason_nature_rationale": "Pathway design builds on previously reported synthetic one-carbon assimilation routes explicitly cited by the authors",
+          "reason_nature_tags": [
+            "synthetic_pathway_design",
+            "prior_art"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "heterologous_pathway_expression",
+            "one_carbon_assimilation"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p003",
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004"
+          ]
+        },
+        {
+          "ddr_id": "DDR2",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: ppsA overexpression (promoter change) and ppsR deletion are deliberate genome edits. Q2 pass: performed in this study (Methods: homologous recombination on DH5a_GTPS lineage). Q3 pass: chosen design response to a stated hypothesis.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Overexpress ppsA and delete the ppsR repressor in FC1 to yield FC2",
+          "design_action_rationale": "Strengthen gluconeogenesis (PEP supply) in the formatotrophic strain",
+          "trigger_observation": "FC1 failed to grow on CO2 and FA alone; authors hypothesized insufficient gluconeogenesis as one cause (hypothesis stated before the action)",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type=experimental_measurement for the trigger (FC1 no-growth observation); the mechanistic link (insufficient gluconeogenesis) is an untested author hypothesis at decision time",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "Paper states a pre-action mechanistic hypothesis (insufficient gluconeogenesis) but reports no direct measurement of gluconeogenic flux before the edit",
+          "reason_nature_tags": [
+            "gluconeogenesis",
+            "author_hypothesis_preacting"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "gene_deletion",
+            "promoter_engineering",
+            "central_metabolism_reinforcement"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "methods_p015"
+          ]
+        },
+        {
+          "ddr_id": "DDR3",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: purT gene deletion. Q2 pass: performed in this study (Methods). Q3 pass: deliberate design choice addressing the second stated hypothesis.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Delete purT in FC2 to yield FC3",
+          "design_action_rationale": "Remove the alternative PurT-mediated formate assimilation route so that formate is channelled through the intended pathway (authors hypothesized simultaneous purT and ftl expression as a problem)",
+          "trigger_observation": "FC1 (and intermediate FC2) context: hypothesis that simultaneous expression of purT and ftl genes impaired growth on CO2/FA",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type=experimental_measurement for the no-growth phenotype triggering the hypothesis; the purT/ftl interference mechanism itself was not directly measured before the deletion",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "Pre-action author hypothesis about competing purT/ftl expression; no direct flux or expression evidence reported prior to the edit",
+          "reason_nature_tags": [
+            "competing_pathway_removal",
+            "author_hypothesis_preacting"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "gene_deletion",
+            "pathway_flux_channeling"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "methods_p015"
+          ]
+        },
+        {
+          "ddr_id": "DDR4",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: introduction of plasmid p100FA2 expressing A. thaliana fdh_mut. Q2 pass: constructed and tested in this study. Q3 pass: chosen design to address the third stated hypothesis.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Introduce p100FA2 into FC3 (yielding FC5), additionally expressing Arabidopsis thaliana fdh_mut for NADPH generation from FA",
+          "design_action_rationale": "Supply NADPH from formate oxidation to support biosynthesis during autotrophic-formatotrophic growth",
+          "trigger_observation": "Hypothesis that inefficient NADPH supply contributed to the inability to grow on CO2 and FA alone (stated before constructing FC5)",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type=experimental_measurement for the trigger phenotype; NADPH insufficiency itself was not measured before the action (no NADPH assay reported)",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "Pre-action cofactor-supply hypothesis; direct NADPH measurements are not reported in the available text",
+          "reason_nature_tags": [
+            "cofactor_supply",
+            "NADPH",
+            "author_hypothesis_preacting"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "cofactor_engineering",
+            "heterologous_enzyme_expression"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "methods_p014"
+          ]
+        },
+        {
+          "ddr_id": "DDR5",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: deliberate adjustment of inducer concentration and aeration (fermentation condition adjustment). Q2 pass: performed in this study. Q3 pass: empirical condition selection, not a measurement alone.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Optimize IPTG concentration (1, 0.1, 0.05 mM) and aeration condition (high/medium/low flask formats) for FC5",
+          "design_action_rationale": "Tune induction strength and oxygen supply to improve growth on CO2 and FA",
+          "trigger_observation": "FC5 grew only to OD600 0.285 in 150 h under initial conditions",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type=screening_result: conditions were compared experimentally (Extended Data Fig. 5); the choice was empirical",
+          "reason_nature": "screening_derived",
+          "reason_nature_rationale": "The improved condition was identified by experimentally comparing discrete IPTG concentrations and aeration formats; no mechanistic rationale for the chosen levels is reported",
+          "reason_nature_tags": [
+            "empirical_optimization",
+            "induction_tuning",
+            "aeration"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [
+            "IPTG 1 mM and 0.1 mM (tested, inferior to 0.05 mM per growth profiles)",
+            "high and low aeration formats (tested)"
+          ],
+          "strategy_categories": [
+            "process_optimization",
+            "gene_expression_tuning"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+            "additional_information_p019"
+          ]
+        },
+        {
+          "ddr_id": "DDR6",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: reconstruction of pathway plasmids on lower-copy backbones (p184FA, p518FA). Q2 pass: performed in this study. Q3 pass: deliberate expression-level design choice.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Fine-tune plasmid gene expression by using plasmids with lower copy numbers in FC5, yielding FC7 (medium-copy) and FC8 (low-copy)",
+          "design_action_rationale": "Reduce metabolic burden of excessive plasmid gene expression under nutrient-limited CO2/FA conditions",
+          "trigger_observation": "Authors' pre-action reasoning that excessive gene expression might negatively affect cell growth during limited nutrient supply in a medium containing CO2 and FA alone",
+          "evidence_grading": "soft",
+          "evidence_grading_rationale": "evidence_basis_type=author_assertion at decision time (burden hypothesis); post-action measurements showed FC8 (low copy) grew better than FC5 while FC7 (medium copy) grew slightly worse",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "Stated pre-action burden hypothesis; expression levels were not directly quantified before the change, and the copy-number-response relationship is non-monotonic across FC7/FC8",
+          "reason_nature_tags": [
+            "expression_burden",
+            "copy_number_tuning",
+            "author_hypothesis_preacting"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [
+            "medium-copy-number plasmid configuration (FC7) - tested, slightly lower growth than FC5"
+          ],
+          "strategy_categories": [
+            "gene_expression_tuning",
+            "plasmid_copy_number_engineering"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+            "methods_p014"
+          ]
+        },
+        {
+          "ddr_id": "DDR7",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: deliberate change of cultivation temperature (37 to 32 C, with 30/33 C also monitored). Q2 pass: performed in this study. Q3 pass: design choice driven by a stated energy-efficiency rationale.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Reduce FC8 cultivation temperature from 37 C to 32 C",
+          "design_action_rationale": "Lower temperature increases cytochrome bo ubiquinol oxidase (Cyo) expression and decreases cytochrome bd-I (Cyd) expression, improving the efficiency of converting reducing power to ATP",
+          "trigger_observation": "FC8 cells were filamented at 37 C and growth stopped at OD600 1.24; authors hypothesized energy deficiency as the cause of filamentation (observation and hypothesis precede the temperature shift)",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type=experimental_measurement: filamentation was directly observed (Fig. 2b) before the action; after the action, cyoAB/cydAB mRNA changes and improved biomass yield were measured",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "Paper states a pre-action mechanistic hypothesis (energy deficiency; Cyo up / Cyd down at lower temperature improving ATP generation) and provides post-action mRNA and yield measurements consistent with it; the energy-deficiency cause of filamentation itself remains an interpretation",
+          "reason_nature_tags": [
+            "energy_efficiency",
+            "respiratory_chain",
+            "temperature_shift",
+            "filamentation_suppression"
+          ],
+          "generalizable_rule": {
+            "role": "single_paper_rule_candidate",
+            "rule_text": "For E. coli FC8 growing solely on CO2 and formic acid in M9 minimal medium, lowering the cultivation temperature from 37 C to 32 C increased cyoAB relative to cydAB expression, suppressed filamentation, and improved biomass yield on formate (0.0552 vs 0.0365 g DCW/g FA).",
+            "scope": "Formatotrophic E. coli FC8 cultivated on CO2+FA in M9 minimal medium in shake flasks/bioreactor",
+            "evidence_basis": "mechanistic_inference supported by measured mRNA ratios (Extended Data Fig. 7d), biomass yields (Fig. 2e) and growth profiles (Fig. 2d)",
+            "tested_scope": "E. coli FC8; M9 + sodium formate; 10% CO2/18% O2/72% N2 gas; 30-37 C range; flask and 1.3-l bioreactor",
+            "excluded_scope": "Other hosts, other strains, other carbon/energy sources, rich media, temperatures outside 28-37 C, and any causal claim that temperature-mediated Cyo/Cyd changes generally suppress filamentation - not tested in this paper"
+          },
+          "alternatives_considered": [
+            "30 C and 33 C (monitored; 32 C gave the highest growth)"
+          ],
+          "strategy_categories": [
+            "process_optimization",
+            "respiratory_chain_engineering_via_environment"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+            "brief_communication_p006"
+          ]
+        },
+        {
+          "ddr_id": "DDR8",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1 pass: deliberate bioreactor process design (pH-stat FA feeding, high inoculum, agitation ramp, controlled gas sparging). Q2 pass: performed in this study. Q3 pass: process design choices, not mere measurement.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Cultivate FC8 in a 1.3-l bioreactor with high initial inoculum (OD600 ~1), pH-stat feeding of 30 v/v% FA at pH 6.8, 32 C, agitation 500 r.p.m. (ramped to 750 r.p.m. in the second run), and air:CO2 9:1 sparging at 500 ml/min",
+          "design_action_rationale": "Determine the maximum achievable cell density of FC8 on CO2 and FA",
+          "trigger_observation": "Flask cultivations reached only OD600 2.48 (32 C) and 3.59 (low inoculum); the maximum achievable OD600 remained to be determined",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type=experimental_measurement for flask density limits triggering the scale-up; rationale for specific setpoints (pH 6.8, 9:1 gas ratio) is not reported",
+          "reason_nature": "rationale_not_reported",
+          "reason_nature_rationale": "The paper reports the bioreactor setpoints but does not state why pH 6.8, the 9:1 air:CO2 ratio or the agitation ramp were chosen",
+          "reason_nature_tags": [
+            "scale_up",
+            "fed_batch",
+            "setpoint_rationale_absent"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": [],
+          "strategy_categories": [
+            "process_optimization",
+            "fed_batch_cultivation"
+          ],
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+            "methods_p018"
+          ]
+        }
+      ],
+      "non_decision_records": [
+        {
+          "item": "Construction history of base strain DH5a_GTPS (gcvR/pflB/serA deletions, gcvT promoter change)",
+          "classification": "background",
+          "rationale": "Fails Q2: the available text presents DH5a_GTPS as a pre-existing strain (details in Supplementary Note 3, not provided); its construction is not reported as performed in this study",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004"
+          ]
+        },
+        {
+          "item": "13C isotope analysis, c.f.u. counting, rtPCR, microscopy",
+          "classification": "measurement/characterization",
+          "rationale": "Fails Q1: analytical readouts, not engineering actions",
+          "evidence": [
+            "methods_p019",
+            "methods_p020",
+            "methods_p025"
+          ]
+        },
+        {
+          "item": "Suggestion that adaptive laboratory evolution, further metabolic engineering and/or bioreactor optimization could improve the low specific growth rate",
+          "classification": "candidate_suggestion",
+          "rationale": "Future-work statement in the Discussion; not implemented in this study",
+          "evidence": [
+            "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p015"
+          ]
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p002",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We engineered Escherichia coli to grow on CO2 and formic acid alone by introducing the synthetic CO2 and formic acid assimilation pathway...",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p003",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Development of an E. coli strain that can efficiently grow to a higher cell density on CO2 and FA alone is needed for industrial biotechnology applications.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We hypothesized that insufficient gluconeogenesis, simultaneous expression of the purT and ftl genes, and inefficient NADPH supply might be the reasons for the inability of the FC1 strain to grow solely on CO and FA.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We hypothesized that cell filamentation might be due to energy deficiency in the cells when growing on CO and FA alone.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 1",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "strain FC1 was constructed by introducing a reconstructed tetrahydrofolate (THF) cycle, reverse glycine cleavage reaction and Candida boidinii Fdh (CbFdh) into the E. coli DH5a_GTPS strain",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p013",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The E. coli strains and plasmids used in this study are listed in Supplementary Table 2. E. coli DH5a was used as a gene cloning host and base strain for developing the engineered formatotrophic strain.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 1",
+            "panel": "c,d",
+            "table": null,
+            "supplement": null,
+            "quote": "Plasmid gene expression levels were fine-tuned by using plasmids with lower copy numbers in FC5 (Fig. 1c) to yield strains FC7 and FC8... which harboured medium- and low-copy-number plasmids, respectively.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "a strain with the gcvR, pflB and serA genes deleted and the native promoter of gcvT replaced with trc",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "resulting in strains FC2 (ppsA overexpression and ppsR deletion in FC1), FC3 (purT deletion in FC2) and FC5 (FC3 strain harbouring p100FA2, which additionally expresses the Arabidopsis thaliana fdh_mut gene for NADPH generation from FA)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p015",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Deletion of the ppsR repressor gene and native promoter change of the ppsA gene from the genomic DNA of the DH5a_GTPS strain were carried out by following the homologous recombination method.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p014",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the purified DNA fragments of the plasmid backbone and FDHcbo were ligated by a Gibson assembly reaction following the standard protocol",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p015",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Deletion of purT from the genomic DNA of the AKO strain was carried out using a DNA cassette for purT deletion.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p002",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "expressing two formate dehydrogenase genes, fine-tuning metabolic fluxes and optimizing the levels of cytochrome bo and bd-I ubiquinol oxidase",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 1",
+            "panel": "b,d",
+            "table": null,
+            "supplement": null,
+            "quote": "b, The growth profiles of the FC1, 2, 3 and 5 strains solely on CO and FA... d, The growth profiles of the FC7 and 8 strains.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "additional_information_p019",
+            "section": "additional_information",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Extended Data Fig. 5 | Optimization of IPTG concentration and aeration condition. a, Growth profiles of the FC5 strain cultured with different concentrations of isopropyl beta-D-1-thiogalactopyranoside (IPTG) as an inducer... b, Growth profiles of the FC5 strain cultured in different aeration conditions.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "brief_communication_p006",
+            "section": "brief_communication",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Extended Data Fig. 7 | Growth of the FC8 strain solely on CO2 and FA at lower culture temperatures. a, Cell growth profiles of the FC8 strain cultured solely from FA and CO2 at 30 and 33 C.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "additional_information_p015",
+            "section": "additional_information",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Extended Data Fig. 3 | Growth of the FC5 strain using CO2 and FA, FA only, CO2 only, and without CO2 and FA and colony forming unit profile cultured solely on CO2 and FA. a, Images of culture broth of the FC5 strain at 0 and 100 h after cultivation.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "brief_communication_p006",
+            "section": "brief_communication",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Extended Data Fig. 7 | Growth of the FC8 strain solely on CO2 and FA at lower culture temperatures... FA+ and FA- indicate with and without FA supplementation... Relative mRNA ratios were calculated by setting those four mRNA to rrsA ratios as 1, when cells were cultured at 37 C.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p017",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Cells were cultivated at 200 r.p.m. and 37 C in an O2/CO2 control orbital shaker (World Science) having a controlled gas composition of 10 mol/mol% of CO2, 18 mol/mol% of O2 and 72 mol/mol% of N2. The FA concentration was maintained at 2-3 g/l throughout the cultivation",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p018",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The temperature was controlled at 32 C and an initial agitation speed was set at 500 r.p.m... FA was fed by pH-stat mode by automatically controlling the pH at 6.8 using 30 v/v% of FA solution... sparged with a mixture of air and industrial-grade CO2 at a 9:1 volume ratio at a flow rate of 500 ml/min",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p013",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The LB medium contains (per litre) 10 g tryptone, 5 g yeast extract and 10 g NaCl. The M9 minimal medium (pH 7.0) contains (per litre) 6.8 g Na2HPO4·7H2O, 3 g KH2PO4, 0.5 g NaCl, 2 g NH4Cl, 4.2 g NaHCO3...",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p016",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "M9 minimal medium containing 5 g/l glucose, 4.43 g/l sodium FA (3 g/l FA equivalent) and appropriate antibiotics (100 ug/ml ampicillin or 17 ug/ml chloramphenicol)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p018",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "FA was fed by pH-stat mode by automatically controlling the pH at 6.8 using 30 v/v% of FA solution.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "additional_information_p019",
+            "section": "additional_information",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Extended Data Fig. 5 | Optimization of IPTG concentration and aeration condition... when 1 mM of IPTG was supplemented... when 0.1 mM of IPTG was supplemented... when 0.05 mM of IPTG was supplemented",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "time": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 2",
+            "panel": "f",
+            "table": null,
+            "supplement": null,
+            "quote": "FC8 grew to an OD600 of 3.59 (0.994 g DCW l-1) in 791.5 h, consuming 0.94 g FA... showing 7.64 doublings.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 2",
+            "panel": "g",
+            "table": null,
+            "supplement": null,
+            "quote": "FC8 grew to a maximum OD600 of 7.38 (2.044 g DCW l-1) from an initial OD600 of 1.02 in 450 h",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "replicates": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p012",
+            "section": "methods",
+            "page": null,
+            "figure": "Fig. 2",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "average values with error bars representing +/- standard deviations obtained in triplicate experiments (n = 3)... duplicate experiments (n = 2)... bioreactor cultivations were performed in quadruplicate experiments (n = 4)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "life_sciences_study_design_p002",
+            "section": "life_sciences_study_design",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Most experiments were done in triplicates... For bioreactor culture, experiments were performed in quadruplicates... For flask culture presented in Fig. 2f, experiments were performed in duplicates",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p019",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "To measure the number of c.f.u., culture broth was diluted through a serial dilution... To measure DCWs, cell samples (100 ml OD600 of ~1) were collected by centrifugation at 13,000g for 5 min",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p026",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Prepared samples were injected into a high-performance liquid chromatography instrument (Waters 1515/2414/2707)... Cell growth was monitored at 600 nm using an Ultrospec 3000 spectrophotometer",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p026",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "analysed using a 6890 gas chromatograph system (Agilent Technologies) combined with a 5875 Inert XL mass spectrometry system (Agilent Technologies)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p025",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Real-time PCR (rtPCR) was carried out using the LightCycler96 (Roche) RT-PCR machine",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p018",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Bioreactor cultures of the FC8 strain were carried out in a 1.3-l Bioflow 110 bioreactor (New Brunswick Scientific)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p025",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "RNA quantification was performed using a dd cycle threshold (Ct) method with rrsA as a reference gene.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "additional_information_p012",
+            "section": "additional_information",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Extended Data Fig. 2 | Isotope analyses of the FC1 and FC2 strains... P values were calculated by two-tailed Student's t-test",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "methods_p021",
+            "section": "methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "sum over i of x_i (n - i) divided by n",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 1",
+            "panel": "b",
+            "table": null,
+            "supplement": null,
+            "quote": "FC5 grew on CO2 and FA alone... to an OD600 of 0.285 (0.0633 g dry cell weight (DCW) l-1) in 150 h from an initial OD600 of 0.051",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 2",
+            "panel": "d,e",
+            "table": null,
+            "supplement": null,
+            "quote": "The biomass yields on FA were 0.0552 +/- 0.0009 and 0.0365 +/- 0.0026 g DCW g-1 FA when the FC8 strain was cultured at 32 and 37 C, respectively",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+            "section": "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid",
+            "page": null,
+            "figure": "Fig. 2",
+            "panel": "g",
+            "table": null,
+            "supplement": null,
+            "quote": "the FC8 strain was able to grow to an OD600 of 7-11 from the initial OD600 of about 1",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "contains_original_experiment": true,
+        "original_experiment_scope": "full_body",
+        "classification_evidence": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "methods_p013",
+          "methods_p014",
+          "methods_p015",
+          "methods_p016",
+          "methods_p017",
+          "methods_p018",
+          "methods_p019",
+          "methods_p020",
+          "methods_p025",
+          "methods_p026",
+          "author_contributions_p001"
+        ],
+        "classification_uncertainty": "Published as a Brief Communication (short format), but it is original primary research, not a review or protocol. Classification basis: original Methods section (methods_p013 to methods_p026) describing experiments performed by the authors; author_contributions_p001 states 'J.B. and C.H.H. performed experiments and analysed data'; Results paragraphs report newly constructed strains FC1-FC8 with original growth, isotope and bioreactor data (Fig. 1, Fig. 2 and Extended Data Figs. 1-8, captions only)."
+      },
+      "document_coverage": {
+        "available_sections": [
+          "title/abstract/main text (Brief Communication body)",
+          "Methods",
+          "Data availability",
+          "References",
+          "Acknowledgements",
+          "Author contributions",
+          "Competing interests",
+          "Additional information (Extended Data Fig. 1-8 captions)",
+          "Nature Research Reporting Summary (statistics, software, data, life sciences study design)"
+        ],
+        "available_modalities": [
+          "paragraph text (124 paragraphs)",
+          "figure captions for Fig. 1, Fig. 2 and Extended Data Figs. 1-8",
+          "one partially parsed table fragment (brief_communication_p003)"
+        ],
+        "missing_or_unparsed": [
+          "figure images (figure_visual_available=false): all panels readable only via captions",
+          "tables (table_metadata_available=false): Supplementary Tables 1-2 not provided; the FA/CO2 supplementation table fragment in brief_communication_p003 is OCR-garbled and unusable",
+          "Supplementary Information (Supplementary Notes 1-10, Supplementary Tables 1-2, Supplementary Discussion) referenced but not provided",
+          "source data files referenced but not provided",
+          "several chemical formulas and numbers in Methods are OCR-corrupted (e.g. 'KH PO', 'NH Cl', 'Na B O', '5875 Inert XL', gas composition strings)"
+        ],
+        "blocked_fields_or_uses": [
+          "exact strain genotypes, plasmid maps and plasmid-to-strain assignments (require Supplementary Table 2) - blocks strain reconstruction and library resynthesis",
+          "detailed optimization results and metabolite abbreviations (Supplementary Notes 1-10) - blocks precise reproduction of intermediate optimization steps",
+          "raw counts, error values and per-run data (source data) - blocks re-analysis",
+          "conceptual summary and main quantitative outcomes remain available from main text and captions"
+        ]
+      },
+      "paper_target_strains": [
+        {
+          "paper_label": "E. coli DH5a",
+          "role": "cloning host"
+        },
+        {
+          "paper_label": "E. coli DH5a_GTPS",
+          "role": "parent/base strain"
+        },
+        {
+          "paper_label": "FC1",
+          "role": "engineered strain (initial pathway)"
+        },
+        {
+          "paper_label": "FC2",
+          "role": "engineered strain"
+        },
+        {
+          "paper_label": "FC3",
+          "role": "engineered strain"
+        },
+        {
+          "paper_label": "FC5",
+          "role": "engineered strain (first to grow on CO2+FA alone)"
+        },
+        {
+          "paper_label": "FC7",
+          "role": "engineered strain (medium-copy plasmids)"
+        },
+        {
+          "paper_label": "FC8",
+          "role": "final optimized engineered strain"
+        }
+      ],
+      "user_target_system": {},
+      "variables": {
+        "independent": [
+          "strain genotype (FC1/2/3/5/7/8)",
+          "plasmid copy number",
+          "IPTG concentration (1/0.1/0.05 mM)",
+          "aeration format",
+          "cultivation temperature (30/32/33/37 C)",
+          "initial inoculum OD600 (0.018-1.15)",
+          "cultivation scale (flask vs 1.3-l bioreactor)"
+        ],
+        "dependent": [
+          "OD600",
+          "c.f.u.",
+          "DCW",
+          "biomass yield on FA",
+          "FA consumption",
+          "13C ratios in proteinogenic amino acids",
+          "specific growth rate/doubling time",
+          "cyoAB/cydAB/ppsA/gcvT mRNA ratios",
+          "cell filamentation (microscopy)"
+        ],
+        "held_constant_or_controlled": [
+          "M9 minimal medium base composition",
+          "gas composition 10% CO2/18% O2/72% N2 (flask)",
+          "FA maintained 2-3 g/l (flask)",
+          "pH-stat 6.8 (bioreactor)"
+        ]
+      },
+      "experiment_workflow": {
+        "sequence": [
+          "EXP1 stepwise strain construction FC1->FC2->FC3->FC5 with growth tests",
+          "EXP2 13C isotope confirmation of CO2/FA assimilation",
+          "EXP3 IPTG/aeration optimization of FC5",
+          "EXP4 plasmid copy-number tuning -> FC7/FC8",
+          "EXP5 FC8 high-inoculum flask test (filamentation observed)",
+          "EXP6 temperature optimization (32 C selected)",
+          "EXP7 low-inoculum flask (maximum doublings)",
+          "EXP8 bioreactor cultivations (maximum OD600)"
+        ],
+        "design_build_test_learn_note": "The narrative follows iterative design cycles: each strain generation addressed a stated hypothesis from the previous generation's phenotype."
+      },
+      "design_logic": {
+        "overall_strategy": "Introduce a synthetic CO2/formate assimilation pathway into E. coli, then iteratively remove bottlenecks (gluconeogenesis, competing purT route, NADPH supply, expression burden, energy efficiency) and optimize process conditions to maximize cell density on CO2 and FA alone.",
+        "engineering_decision_candidates": [
+          "DDR1",
+          "DDR2",
+          "DDR3",
+          "DDR4",
+          "DDR5",
+          "DDR6",
+          "DDR7",
+          "DDR8"
+        ],
+        "rule_candidates_note": "Only DDR7 carries a non-empty single_paper_rule_candidate; all rules remain unverified candidates subject to later governance stages."
+      }
+    },
+    "conflicts": []
+  }
+}

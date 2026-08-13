@@ -1,0 +1,1152 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Characterize E. coli transcript 3'-ends (T3PEs) genome-wide using Term-Seq plus machine learning to build a tunable collection of 3'-UTR/Rho-independent terminator bioparts, and apply them as synthetic 3'-UTR 'metabolic valves' to optimally balance flux between heterologous product pathways (2,3-butanediol from acetoin; myo-inositol production) and endogenous metabolism in E. coli.",
+        "status": "reported",
+        "confidence": 0.97,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_001",
+          "ev_002"
+        ],
+        "notes": "Two-tier objective: (1) discovery/characterization of terminator bioparts (platform), (2) application to metabolic flux control (engineering demonstration)."
+      },
+      "hypothesis": {
+        "value": "3'-UTR terminator bioparts with graded transcription-termination strengths can modulate gene expression without trans-acting elements and with lower noise than inducible-promoter control, and inserting terminators of graded strength between pathway genes can tune the split of metabolic flux to maximize target-product titer; the optimal flux split differs between host strains.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_001",
+          "ev_003",
+          "ev_004"
+        ],
+        "notes": "Partly stated as authors' framing in Abstract/Introduction; the host-dependent-optimum part is supported by Results (MG1655 vs eMS57 MI experiments)."
+      },
+      "strain": {
+        "value": [
+          {
+            "paper_label": "E. coli K-12 MG1655",
+            "normalized": "Escherichia coli K-12 MG1655",
+            "role": "target|host|parental",
+            "context": "Term-Seq/dRNA-Seq discovery strain; host for pDRA1/pDRA2/pGFP reporter assays, pBDO production, pMI production; reference genome NC_000913.3"
+          },
+          {
+            "paper_label": "genome-reduced E. coli eMS57",
+            "normalized": "Escherichia coli eMS57 (genome-reduced, MG1655 lineage per ref 55)",
+            "role": "engineered|host",
+            "context": "Genome-reduced chassis from prior ALE study (ref 55); used for MI production comparison; ΔpfkA Δzwf derivative also used"
+          },
+          {
+            "paper_label": "MG1655 ΔpfkA Δzwf double-knockout",
+            "normalized": "Escherichia coli MG1655 ΔpfkA Δzwf",
+            "role": "engineered",
+            "context": "Constructed in this study by two sequential lambda-Red recombination steps; host for pMI valve plasmids"
+          },
+          {
+            "paper_label": "eMS57 ΔpfkA Δzwf double-knockout",
+            "normalized": "Escherichia coli eMS57 ΔpfkA Δzwf",
+            "role": "engineered",
+            "context": "Methods: 'E. coli MG1655 or eMS57 ΔpfkA Δzwf double knockout strains harboring the pMI plasmid'"
+          }
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_005",
+          "ev_006",
+          "ev_007"
+        ],
+        "notes": "E. coli BW25113 appears only as comparison data from prior study (ref 14), NOT used experimentally here. 'Wild-type' in Fig 5F legend = MG1655 with unperturbed pfkA/zwf expressing INO1 without valve (conv. sys.)."
+      },
+      "genotype": {
+        "value": "Δzwf (coding sequence replaced by kanamycin cassette from pKD13 via pKD46 lambda recombination; cassette removed via pCP20 flippase) followed by ΔpfkA by the same method; pKD46/pCP20 cured at 42°C. Plasmids: pDRA1 (egfp-T3PE-mrfp1 in BBa_J04450-pSB1C3), pDRA2 (egfp-terminator-mrfp1 in pTrcHis2A, IPTG-inducible lac promoter), pGFP (pDRA2 minus mrfp1), pDRA2 DualP (araC-araBAD cassette added), pBDO (alsS[B. subtilis]-alsD[A. hydrophila]-terminator-bdh[T. brockii, codon-optimized] in pTrcHis2A), pMI (INO1[S. cerevisiae CEN.PK]-terminator-pfkA[E. coli MG1655] in pTrcHis2A).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_006",
+          "ev_008",
+          "ev_009"
+        ],
+        "notes": "Exact terminator sequences, codon-optimized bdh sequence and primer lists deferred to Supplementary Table S1 / Supplementary Data (not available in this payload)."
+      },
+      "engineering_method": {
+        "value": [
+          "Lambda-Red sequential gene knockout (pKD46/pKD13/pCP20, Datsenko-Wanner) to build ΔpfkA Δzwf hosts",
+          "Synthetic 3'-UTR terminator valve: 70-nt T3PE-upstream fragments inserted between genes (XhoI/SpeI for pathway plasmids; In-Fusion for reporter plasmids) to set transcriptional read-through ratio",
+          "Dual fluorescent reporter assay (pDRA1/pDRA2) to parameterize terminator read-through (RFP/GFP)",
+          "Term-Seq + KNN machine-learning classifier for genome-wide T3PE discovery",
+          "First-order mRNA decay mathematical model (Eqs 1-9) to correct fluorescence-based termination strength for differential mRNA decay",
+          "Heterologous pathway expression: alsSD + codon-optimized bdh (2,3-BDO); yeast INO1 + native pfkA (myo-inositol)"
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_006",
+          "ev_008",
+          "ev_009",
+          "ev_010",
+          "ev_011",
+          "ev_012"
+        ],
+        "notes": "Novel element is the terminator-as-valve strategy; reporter/sequencing methods are platform characterization."
+      },
+      "experimental_groups": {
+        "value": [
+          "EXP-1 Term-Seq: MG1655 mid-log cultures, 3 biological replicates",
+          "EXP-2 pDRA1 screen: 150 plasmids (50 RITs + 100 motif-less T3PEs) + pDRA1 empty reference",
+          "EXP-3 pDRA2 IPTG titration: 49 RITs + 2 controls (empty, rrnBT) across IPTG concentrations",
+          "EXP-4 pGFP decay: pGFP plasmids with different 3'-UTR terminators, rifampicin chase (0.5/5/10 min)",
+          "EXP-5 robustness: pDRA2 RITs across 6 conditions (M9 glucose 2 g/L; M9 glycerol 2 g/L; M9 high-glucose 10 g/L; LB; TB; 30°C)",
+          "EXP-6 noise: pDRA2 DualP (lac-GFP / araBAD-RFP dual-promoter reference) vs terminator-biopart system, IPTG (1/10 µM) × L-arabinose (1/10/30 mM)",
+          "EXP-7 BDO valve: MG1655/pBDO with Group A (T3PE-211, rrnBT, 383, 529, 1498), Group B (T3PE-1345, 936, 390, 948), Group C (3 short-half-life RITs) + pBDO empty",
+          "EXP-8 MI valve: MG1655 ΔpfkA Δzwf or eMS57 ΔpfkA Δzwf with 5 pMI valve plasmids; conventional system = MG1655 WT + pTrc-INO1 (no valve)"
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_013",
+          "ev_014",
+          "ev_015",
+          "ev_016",
+          "ev_017",
+          "ev_018",
+          "ev_019",
+          "ev_020"
+        ],
+        "notes": "Groups instantiated per experiment; see experimental_design_object for full binding."
+      },
+      "controls": {
+        "value": [
+          "pDRA1 empty (no terminator) - read-through normalization reference (=1)",
+          "pDRA1/pBDO rrnBT (strong rrnB T1 terminator) - strong-termination reference",
+          "pBDO empty - 'fully induced negative control' (no termination) for BDO titer comparison",
+          "conv. sys. (Fig 5F): MG1655 wild-type (pfkA, zwf unperturbed) + pTrc-INO1, no metabolic valve - conventional-system benchmark",
+          "dRNA-Seq: nuclease-free-water-treated sample as no-5'-polyphosphatase control",
+          "1,000 random genomic positions / 100,000 random positions - computational negative sets for folding energy and RNA-Seq meta-analysis",
+          "qPCR internal reference: rrsA (16S rRNA) for ΔΔCT"
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_021",
+          "ev_022",
+          "ev_023",
+          "ev_024",
+          "ev_025"
+        ],
+        "notes": "Controls are instantiated per assay; no single paper-wide control."
+      },
+      "culture_conditions": {
+        "value": {
+          "reporter_assay": "Overnight MG1655 culture inoculated into 400 µL M9 glucose medium, initial OD600 0.05; IPTG as required; fluorescence read 24 h post-inoculation",
+          "BDO_production": "60 mL M9 high-glucose (10 g/L glucose) + 100 µg/mL ampicillin + 0.1 mM IPTG, initial OD600 0.05, 300 mL Erlenmeyer flask, 37°C, 24 h, aerobic rotary shaker",
+          "MI_production": "60 mL M9 high-glucose (10 g/L glucose) + 100 µg/mL ampicillin + 0.1 mM IPTG, initial OD600 0.05, 300 mL Erlenmeyer flask, 30°C, up to 48 h, aerobic rotary shaker",
+          "decay_assay": "50 mL M9 glucose + 100 µg/mL ampicillin + 1 mM IPTG in 250 mL flask; rifampicin 50 µg/mL added at OD600 0.3; sampling 0.5/5/10 min",
+          "flow_cytometry": "M9 glucose, 24 h, 37°C, aerobic; IPTG 1 or 10 µM; L-arabinose 1/10/30 mM",
+          "orthogonality": "M9 glycerol (2 g/L), M9 high-glucose (10 g/L), LB, TB, and 30°C variants"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_007",
+          "ev_026",
+          "ev_027"
+        ],
+        "notes": "Condition sets bound per experiment; agitation speed (rpm) not stated in parsed text."
+      },
+      "medium": {
+        "value": "M9 minimal (47.75 mM Na2HPO4, 22.04 mM KH2PO4, 8.56 mM NaCl, 18.70 mM NH4Cl, 2 mM MgSO4, 0.1 mM CaCl2) with glucose 2 g/L (normal), glucose 10 g/L (high-glucose), or glycerol 2 g/L; LB broth (BD Biosciences); Terrific Broth (BD Biosciences). Ampicillin 100 µg/mL for plasmid-bearing cultures.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_007"
+        ],
+        "notes": "CaCl2 concentration printed as '0.l mM' in source (OCR artifact) - interpreted as 0.1 mM; flagged in conflicts."
+      },
+      "dosage": {
+        "value": {
+          "IPTG": "0.1 mM (BDO/MI production); 1 or 10 µM (flow cytometry); 1 mM (decay assay); various for reporter titration",
+          "L_arabinose": "1, 10, or 30 mM (DualP flow cytometry)",
+          "ampicillin": "100 µg/mL",
+          "rifampicin": "50 µg/mL (transcription inhibition for decay assay)"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_007",
+          "ev_026",
+          "ev_027"
+        ],
+        "notes": "Exact IPTG concentration series for the pDRA2 titration is in Supplementary Figure S4 / Table S7 (not in parsed text)."
+      },
+      "time": {
+        "value": "Fluorescence read 24 h after inoculation; BDO culture 24 h; MI culture up to 48 h; decay-assay sampling at 0.5, 5, 10 min post-rifampicin; RNA sampling for Term-Seq at mid-log phase; knockout plasmid curing at 42°C (duration not stated).",
+        "status": "reported",
+        "confidence": 0.92,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_007",
+          "ev_021",
+          "ev_027",
+          "ev_028"
+        ],
+        "notes": null
+      },
+      "replicates": {
+        "value": {
+          "term_seq": "3 biological replicates; 1,629 stable T3PEs required support from ≥2 replicates",
+          "pDRA1_fluorescence": "2 biological replicate cultures (Fig 2C error bars)",
+          "pGFP_decay": "2 biological replicates, each technically triplicate qRT-PCR reactions (Fig 3D/E)",
+          "robustness_and_noise": "Fig 4A: 'standard deviation of biological replicates' (n not specified in caption)",
+          "BDO_MI_production": "2 biological replicate cultures (Fig 5C/F error bars)"
+        },
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_029",
+          "ev_022",
+          "ev_030",
+          "ev_031"
+        ],
+        "notes": "Authors use 'biological replicate cultures'; replicate n for Fig 4 not numerically stated in parsed captions."
+      },
+      "assay": {
+        "value": [
+          "Term-Seq (3'-end capture, HiSeq 2500 50-cycle single-end) for T3PE discovery",
+          "Dual-fluorescence reporter read-through assay (RFP/GFP ratio; pDRA1, pDRA2)",
+          "qRT-PCR rifampicin-chase mRNA decay assay (ΔΔCT vs rrsA)",
+          "dRNA-Seq transcript 5'-end mapping (±RNA 5'-polyphosphatase)",
+          "Flow cytometry single-cell noise analysis (extrinsic/intrinsic CV decomposition)",
+          "HPLC-RID quantification of acetoin, 2,3-BDO, myo-inositol",
+          "OD600 growth monitoring (OD-Monitor, non-invasive)"
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_010",
+          "ev_021",
+          "ev_027",
+          "ev_032",
+          "ev_033",
+          "ev_034",
+          "ev_007"
+        ],
+        "notes": null
+      },
+      "instruments": {
+        "value": [
+          "HiSeq 2500 sequencer (Illumina)",
+          "Synergy H1 Microplate Reader (BioTek): GFP ex485/em528 gain 90; RFP ex584/em619 gain 120",
+          "StepOnePlus Real-Time PCR System (Applied Biosystems)",
+          "S3e Cell Sorter (Bio-Rad), ~100,000 events per sample",
+          "HPLC: Waters 2414 RID + 1525 binary pump + 2707 autosampler; Metacarb 87H 7.8×300 mm column (Agilent); 0.007 N H2SO4, 0.6 mL/min, 50°C",
+          "OD-Monitor System ODSensor-S/ODBox-A (Taitec)"
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_010",
+          "ev_021",
+          "ev_027",
+          "ev_033",
+          "ev_034",
+          "ev_007"
+        ],
+        "notes": null
+      },
+      "analysis_methods": {
+        "value": [
+          "CLC Genomics Workbench trimming/mapping (quality limit 0.05; mismatch cost 2, indel cost 3, length fraction 0.9, similarity 0.9) to NC_000913.3",
+          "KNN classifier (scikit-learn) on Term-Seq signal -10 to +11 nt; training set 694 curated/RegulonDB sites (191 pos/503 neg); KNN mean CV accuracy 94.0% chosen over SVM 80.7%",
+          "RNAfold structure/free-energy prediction on 45 nt upstream of T3PE",
+          "First-order mRNA-decay ODE model (Eqs 1-9) deriving termination strength α from read-through and decay rates",
+          "Noise = CV; extrinsic/intrinsic decomposition via scatter rotation along regression slope",
+          "Welch's two-sided t-test (SciPy); significance p<0.01; Pearson R² for cross-condition correlation"
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_011",
+          "ev_012",
+          "ev_035",
+          "ev_029"
+        ],
+        "notes": "Code and KNN classifier deposited (GitHub robinald/ML Term-Seq; accession PRJEB36932)."
+      },
+      "outcomes": {
+        "value": [
+          "1,629 stable T3PEs detected (407 RITs with motif; 1,222 motif-less incl. 413 rRNA/tRNA processing sites; 852 novel: 87 RIT + 765 motif-less)",
+          "pDRA1 read-through across 150 T3PEs ranged 0.004-91.4; rrnBT read-through 0.009 (99.1% termination); RIT mean read-through 0.294; motif-less significantly weaker (Welch p=0.0478)",
+          "Termination strength varies with transcription level; 3'-UTR sequence alters mRNA half-life (3.0-14.8 min), GFP intensity ∝ half-life (max 5-fold); model shows fluorescence-based read-through deviates from true termination by up to 27% (e.g. T3PE-692: measured 0.31 vs modeled 0.91)",
+          "RIT relative strength consistent across media/temperature (high-glucose R²=0.93, fold-change 0.96; LB 1.09; M9 glycerol 0.66; TB 1.84; 30°C 1.34)",
+          "Terminator bioparts: intrinsic noise 4.08-fold lower than dual-promoter system; total noise 4.07-fold lower",
+          "BDO valve: titer increases with read-through (rrnBT 0.126 g/L; empty 0.382 g/L; Group B max 0.513 g/L at T3PE-390, plateau at read-through 2.343); Group C reduced both products; BDO:acetoin ratio logarithmically proportional to read-through",
+          "MI valve: optimum at T3PE-383 (read-through 0.519) → 0.682 g/L MI, 8.92× conventional pTrc-INO1 system, +38% yield; eMS57 ΔpfkA Δzwf optimum shifted to strong rrnBT termination → 0.864 g/L (1.27× MG1655 max), showing host-dependent optimal flux balance"
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "ev_013",
+          "ev_014",
+          "ev_015",
+          "ev_016",
+          "ev_018",
+          "ev_019",
+          "ev_020"
+        ],
+        "notes": "Mechanistic explanations for Group B behavior (post-transcriptional cleavage exposing RBS) and NADH saturation are author interpretation, not causally validated interventions."
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "EXP-1",
+          "purpose": "Genome-wide discovery and classification of transcript 3'-end positions (T3PEs) in E. coli MG1655",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "Term-Seq on mid-log RNA + KNN machine-learning T3PE calling; comparison with prior BW25113/MG1655 datasets",
+          "conditions": "Mid-log phase sampling; RNAsnap extraction; RiboZero depletion; HiSeq 2500 50-cycle SE",
+          "control": "1000 random genomic positions (folding energy); 100,000 random positions (RNA-Seq meta-analysis); prior datasets as cross-validation",
+          "replicates": "3 biological replicates; stable T3PE requires ≥2 replicates",
+          "readout": "1,629 stable T3PEs; classes: 407 RIT, 413 r/tRNA processing, 809 other motif-less; 852 novel",
+          "analysis": "CLC Workbench mapping; KNN classifier; RNAfold; RNA-Seq profile meta-analysis",
+          "outcome": "Multiple 3'-end classes confirmed; motif-less T3PEs largely independent of transcriptional termination",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_013",
+            "ev_010",
+            "ev_011",
+            "ev_029"
+          ]
+        },
+        {
+          "experiment_id": "EXP-2",
+          "purpose": "Quantitative characterization of termination strength of 150 T3PEs via dual reporter",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "pDRA1 plasmids: 70-nt T3PE-upstream fragments cloned between egfp and mrfp1 (50 RITs + 100 motif-less)",
+          "conditions": "M9 glucose, 400 µL, OD600 0.05 start, 24 h",
+          "control": "pDRA1 empty (read-through = 1); pDRA1 rrnBT",
+          "replicates": "2 biological replicate cultures",
+          "readout": "Read-through fraction RFP/GFP, range 0.004-91.4; RIT mean 0.294",
+          "analysis": "Plate-reader fluorescence; Welch t-test RIT vs motif-less (p=0.0478)",
+          "outcome": "Wide tunable termination-strength range; motif-less T3PEs significantly weaker; RNase III / BIME / attenuator cases identified",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_014",
+            "ev_008",
+            "ev_021",
+            "ev_022"
+          ]
+        },
+        {
+          "experiment_id": "EXP-3",
+          "purpose": "Test whether termination strength is invariant across transcription-initiation levels",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "pDRA2 (IPTG-inducible lac promoter driving egfp-terminator-mrfp1), 49 RITs + empty + rrnBT, IPTG titration",
+          "conditions": "M9 glucose; various IPTG concentrations (exact series in Suppl. Fig S4/Table S7)",
+          "control": "empty, rrnBT",
+          "replicates": "biological replicates (n per caption convention = 2)",
+          "readout": "Read-through vs IPTG; termination generally stronger at higher expression",
+          "analysis": "Fluorescence plate reader",
+          "outcome": "Termination strength is expression-level dependent, limiting standardization; attributed by authors to elongation-rate/resource effects (inference)",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_015",
+            "ev_008"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fail: no new engineering action toward a production target; this is a characterization measurement of already-built reporter plasmids across inducer levels.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP-4",
+          "purpose": "Test hypothesis that 3'-UTR T3PE sequence affects mRNA stability, confounding fluorescence-based termination measurement",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "pGFP plasmids (pDRA2 minus mrfp1) with different terminators; rifampicin chase",
+          "conditions": "50 mL M9 glucose + 100 µg/mL amp + 1 mM IPTG; rifampicin 50 µg/mL at OD600 0.3; samples 0.5/5/10 min",
+          "control": "rrsA (16S rRNA) internal qPCR reference; pGFP empty/rrnBT in model validation",
+          "replicates": "2 biological replicates × technical triplicate qRT-PCR",
+          "readout": "mRNA half-lives 3.0-14.8 min; GFP intensity directly proportional to half-life (max 5-fold difference)",
+          "analysis": "ΔΔCT qPCR; first-order decay ODE model (Eqs 1-9)",
+          "outcome": "Differential decay of gfp-only vs gfp-rfp transcripts biases read-through-based termination strength by up to 27% (model); correction framework provided",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_016",
+            "ev_027",
+            "ev_012",
+            "ev_030"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fail: rifampicin chase + qPCR is a measurement of an existing construct property; no new design change toward production was introduced.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP-5",
+          "purpose": "Assess robustness/consistency of RIT termination strength across media and temperature",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "pDRA2 RIT panel assayed in 5 additional conditions",
+          "conditions": "M9 glucose 2 g/L (reference), M9 glycerol 2 g/L, M9 high-glucose 10 g/L, LB, TB, and 30°C",
+          "control": "M9 glucose 37°C reference condition",
+          "replicates": "biological replicates (SD shown; n not numerically stated in parsed caption)",
+          "readout": "Fold-changes vs reference: high-glucose 0.96 (R²=0.93), LB 1.09, M9 glycerol 0.66, TB 1.84, 30°C 1.34",
+          "analysis": "Pearson correlation; mean fold-change",
+          "outcome": "Relative terminator strength ranking is consistent; absolute strength shifts with growth/elongation rate",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_017",
+            "ev_031"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1/Q3 fail: robustness characterization of existing bioparts across conditions; no new engineering action and no new design choice resulted.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP-6",
+          "purpose": "Compare expression noise of terminator-biopart architecture vs conventional dual-promoter regulation",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "pDRA2 DualP (araC-araBAD cassette added to drive RFP independently) as dual-promoter reference vs single-promoter terminator-biopart pDRA2",
+          "conditions": "M9 glucose, 24 h, 37°C; IPTG 1/10 µM; L-arabinose 1/10/30 mM",
+          "control": "dual-promoter system as conventional reference architecture",
+          "replicates": "~100,000 single-cell events per flow-cytometry sample",
+          "readout": "Dual-promoter: η_ext 0.451, η_int 18.4, η_tot 18.4; terminator system: η_int 4.08-fold lower, η_tot 4.07-fold lower, η_ext ~unchanged (1.04×)",
+          "analysis": "CV decomposition via scatter rotation along regression slope",
+          "outcome": "Terminator bioparts give ~4.1-fold lower total noise by removing transcription-initiation/TF sources of intrinsic variation",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_018",
+            "ev_033"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass: authors designed and built the terminator-biopart single-promoter architecture (and the DualP reference) as a low-noise alternative to promoter/RBS-based control. Q2 pass: constructed in this paper. Q3 pass: the noise advantage is a stated design rule supporting use of terminator valves in downstream pathway constructs.",
+            "design_action": "M6",
+            "design_action_rationale": "Choice of regulatory architecture (3'-UTR terminator instead of additional promoter/RBS) to balance expression of multiple genes from one transcript with low noise - an expression-balancing action.",
+            "trigger_observation": "Promoter/5'-UTR control requires precious inducer molecules and introduces noise via trans-acting elements (Introduction); goal of reducing genetic-circuit complexity.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Direct single-cell flow-cytometry noise measurements of both architectures in this study.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper gives an explicit mechanistic rationale: removing trans-acting elements and RNAP/TF initiation events reduces intrinsic noise sources (η_int), consistent with measured decomposition.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When balancing multi-gene expression in E. coli synthetic pathways where inducer cost and expression noise must be minimized, apply a single promoter with 3'-UTR terminator bioparts of graded strength instead of multiple inducible promoters, because terminator control removes trans-acting-element-dependent initiation noise (≈4-fold lower intrinsic noise) while retaining tunable relative expression.",
+            "alternatives_considered": [
+              "conventional dual-promoter (lac + araBAD) system - higher intrinsic noise (η_int 18.4)"
+            ],
+            "strategy_categories": [
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "EXP-7",
+          "purpose": "Demonstrate terminator 'metabolic valve' control of the acetoin → 2,3-BDO branch",
+          "host": "E. coli K-12 MG1655",
+          "intervention": "pBDO plasmids: alsS(B. subtilis)-alsD(A. hydrophila)-[RIT valve]-bdh(T. brockii, codon-optimized); three RIT groups (A: read-through <1, 5 RITs; B: read-through >1, 4 RITs; C: 3 short-half-life RITs) + empty",
+          "conditions": "60 mL M9 high-glucose (10 g/L) + 100 µg/mL amp + 0.1 mM IPTG, OD600 0.05, 300 mL flask, 37°C, 24 h, aerobic",
+          "control": "pBDO empty (fully induced, no termination) as negative control; pBDO rrnBT strong-termination reference",
+          "replicates": "2 biological replicate cultures",
+          "readout": "HPLC titers of acetoin and 2,3-BDO at 24 h: rrnBT 0.126 g/L BDO; empty 0.382 g/L; Group B max 0.513 g/L; plateau at read-through 2.343 (T3PE-390); Group C lowest",
+          "analysis": "BDO:acetoin ratio logarithmically proportional to T3PE read-through (Suppl. Fig S8)",
+          "outcome": "Terminators quantitatively valve flux between acetoin and 2,3-BDO; read-through >1 Group B elements exceed no-terminator expression (attributed by authors to post-transcriptional processing exposing RBS; 5/13 Group B showed stable 5'-ends by dRNA-Seq)",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_019",
+            "ev_009",
+            "ev_023",
+            "ev_034"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass: deliberate insertion of selected RITs between alsSD and bdh to set bdh expression and flux split. Q2 pass: pBDO valve series constructed in this paper. Q3 pass: results established the read-through-to-flux-split relationship used to select valves (and carried into the MI system).",
+            "design_action": "M6",
+            "design_action_rationale": "Balancing relative expression of pathway genes (alsSD vs bdh) via intergenic terminator strength to redistribute flux between two products.",
+            "trigger_observation": "RITs characterized by pDRA1/pDRA2 span a wide quantitative read-through range (0.004-91.4), providing a parts basis for graded downstream-gene control without extra promoters.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Measured extracellular titers (HPLC) across the valve series plus prior measured read-through values; the Group B processing explanation (RBS exposure after cleavage) is supported by dRNA-Seq for 5/13 but remains partly inferential.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "The valve mechanism (partial termination sets transcript ratio of upstream vs downstream cistrons) is mechanistically explicit in the paper; the Group B 'processing exposes RBS' sub-explanation is author interpretation supported by 5'-end mapping of a subset.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When tuning flux split between two consecutive products of a branched heterologous pathway in E. coli (validated for acetoin/2,3-BDO from pyruvate), apply an intercistronic Rho-independent terminator of chosen read-through strength to set downstream-enzyme expression, because the product ratio scales logarithmically with terminator read-through, allowing single-promoter, inducer-free pathway balancing.",
+            "alternatives_considered": [
+              "changing gene order to obtain higher downstream expression - unnecessary because read-through >1 elements exist",
+              "Group C short-half-life terminators - reduced both product titers, rejected for production use"
+            ],
+            "strategy_categories": [
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "EXP-8",
+          "purpose": "Apply terminator valve to balance glycolytic growth flux vs myo-inositol (MI) production in two host backgrounds",
+          "host": "E. coli MG1655 ΔpfkA Δzwf and E. coli eMS57 ΔpfkA Δzwf (genome-reduced)",
+          "intervention": "pMI plasmids: INO1(S. cerevisiae)-[RIT valve]-pfkA(E. coli); 5 valve plasmids tested in ΔpfkA Δzwf hosts; hosts built by sequential lambda-Red knockout (zwf then pfkA)",
+          "conditions": "60 mL M9 high-glucose (10 g/L) + 100 µg/mL amp + 0.1 mM IPTG, OD600 0.05, 300 mL flask, 30°C, up to 48 h, aerobic",
+          "control": "conv. sys.: MG1655 wild-type (pfkA, zwf unperturbed) + pTrc-INO1 without valve",
+          "replicates": "2 biological replicate cultures",
+          "readout": "MG1655 ΔpfkA Δzwf optimum at T3PE-383 (read-through 0.519): 0.682 g/L MI, 8.92× conventional system, +38% yield; eMS57 ΔpfkA Δzwf optimum at strong rrnBT: 0.864 g/L (1.27× MG1655 max); unvalved INO1 overexpression caused severe growth retardation and marginal MI",
+          "analysis": "HPLC MI + glucose consumption; yield g/g; growth curves (OD-Monitor; Suppl. Fig S9/S10)",
+          "outcome": "An intermediate pfkA read-through maximizes MI in MG1655 background; genome-reduced host optimum shifts to strong termination (lower carbon cost of growth); demonstrates host-dependent optimal flux balance findable by valve screening",
+          "source_level": "current_article",
+          "evidence": [
+            "ev_020",
+            "ev_006",
+            "ev_009",
+            "ev_024"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass: knockout of pfkA/zwf plus INO1-valve-pfkA construct is an active engineering intervention coupling growth to production. Q2 pass: double-knockout strain and pMI series constructed in this study (eMS57 chassis itself from prior work - noted). Q3 pass: identified optimum valve per host and established valve-screening as the optimization method.",
+            "design_action": "M5",
+            "design_action_rationale": "Blocking the competing glycolytic route at pfkA (with zwf removed to limit bypass) and reintroducing pfkA under a terminator valve to gate how much carbon re-enters glycolysis vs MI production - competition-node gating with controlled re-supply.",
+            "trigger_observation": "Uncontrolled INO1 overexpression in the ΔpfkA Δzwf background caused severe growth retardation with marginal MI production, showing that hard blocking of glycolysis starves biomass/precursor supply and that a tunable intermediate pfkA level is needed.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Measured MI titers, glucose consumption, yields and growth across 5 valve strengths in both hosts; pfkA is cited as the effective rate-limiting glycolytic enzyme (ref 54).",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Explicit mechanism: production and biomass fluxes are interconnected and constrained by finite cellular resources; gating the rate-limiting glycolytic enzyme at intermediate expression balances resource allocation. Choice of pfkA as the node additionally rests on literature (ref 54).",
+            "reason_nature_tags": [
+              "机理推断",
+              "文献类比"
+            ],
+            "generalizable_rule": "When a heterologous production pathway in E. coli draws on glycolytic carbon and full knockout of the competing glycolytic step (pfkA) causes growth failure, apply a 3'-UTR terminator valve to reintroduce the blocked enzyme at graded expression levels in a ΔpfkA Δzwf background, because an intermediate glycolytic flux balances biomass generation against product flux; the optimal valve strength is host-dependent and must be screened per chassis (validated for myo-inositol production in MG1655 and genome-reduced eMS57 backgrounds).",
+            "alternatives_considered": [
+              "constitutive INO1 overexpression without flux control (conventional pTrc-INO1 system) - severe growth retardation, marginal MI",
+              "complete glycolysis block with no pfkA re-expression - growth failure"
+            ],
+            "strategy_categories": [
+              "flux_redirection",
+              "competitive_pathway_removal"
+            ]
+          }
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "status": "reported",
+        "confidence": 0.97,
+        "source_locations": [
+          {
+            "paragraph_id": "abstract_p001",
+            "section": "ABSTRACT"
+          },
+          {
+            "paragraph_id": "introduction_p004",
+            "section": "INTRODUCTION"
+          }
+        ],
+        "evidence_type": "main_text"
+      },
+      "hypothesis": {
+        "status": "reported",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "abstract_p001",
+            "section": "ABSTRACT"
+          },
+          {
+            "paragraph_id": "introduction_p004",
+            "section": "INTRODUCTION"
+          }
+        ],
+        "evidence_type": "main_text"
+      },
+      "strain": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "abstract_p001",
+            "section": "ABSTRACT"
+          },
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p024",
+            "section": "Figure 5 caption"
+          }
+        ],
+        "evidence_type": "methods_and_figure_caption"
+      },
+      "genotype": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "plasmid_construction_p001",
+            "section": "Plasmid construction"
+          },
+          {
+            "paragraph_id": "plasmid_construction_p002",
+            "section": "Plasmid construction"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "engineering_method": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "plasmid_construction_p002",
+            "section": "Plasmid construction"
+          },
+          {
+            "paragraph_id": "term_seq_data_processing_and_transcript_3_end_detection_using_machine_learning_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "experimental_groups": {
+        "status": "reported",
+        "confidence": 0.93,
+        "source_locations": [
+          {
+            "paragraph_id": "determination_of_transcription_termination_strength_p001",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "the_relationship_between_termination_and_expression_level_p001",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p002",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p026",
+            "section": "RESULTS"
+          }
+        ],
+        "evidence_type": "results"
+      },
+      "controls": {
+        "status": "reported",
+        "confidence": 0.93,
+        "source_locations": [
+          {
+            "paragraph_id": "fluorescence_measurement_and_normalization_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p024",
+            "section": "Figure 5 caption"
+          },
+          {
+            "paragraph_id": "transcript_5_end_mapping_using_differential_rna_seq_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods_and_figure_caption"
+      },
+      "culture_conditions": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "flow_cytometry_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "measurement_of_the_transcript_decay_rate_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "medium": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "dosage": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "flow_cytometry_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "measurement_of_the_transcript_decay_rate_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "time": {
+        "status": "reported",
+        "confidence": 0.92,
+        "source_locations": [
+          {
+            "paragraph_id": "e_coli_strains_media_and_culture_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "fluorescence_measurement_and_normalization_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "measurement_of_the_transcript_decay_rate_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "replicates": {
+        "status": "reported",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "statistical_analyses_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "the_relationship_between_termination_and_expression_level_p009",
+            "section": "Figure 2 caption"
+          },
+          {
+            "paragraph_id": "the_relationship_between_termination_and_expression_level_p021",
+            "section": "Figure 3 caption"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p024",
+            "section": "Figure 5 caption"
+          }
+        ],
+        "evidence_type": "methods_and_figure_captions"
+      },
+      "assay": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "term_seq_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "fluorescence_measurement_and_normalization_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "quantification_of_acetoin_bdo_and_mi_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "flow_cytometry_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "instruments": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "term_seq_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "fluorescence_measurement_and_normalization_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "quantification_of_acetoin_bdo_and_mi_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "flow_cytometry_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "measurement_of_the_transcript_decay_rate_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "analysis_methods": {
+        "status": "reported",
+        "confidence": 0.93,
+        "source_locations": [
+          {
+            "paragraph_id": "term_seq_data_processing_and_transcript_3_end_detection_using_machine_learning_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "mathematical_modeling_of_the_mrna_levels_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "noise_definition_and_data_parameterization_p001",
+            "section": "MATERIALS AND METHODS"
+          },
+          {
+            "paragraph_id": "statistical_analyses_p001",
+            "section": "MATERIALS AND METHODS"
+          }
+        ],
+        "evidence_type": "methods"
+      },
+      "outcomes": {
+        "status": "reported",
+        "confidence": 0.93,
+        "source_locations": [
+          {
+            "paragraph_id": "identification_of_multiple_3_transcript_end_classes_p001",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "determination_of_transcription_termination_strength_p001",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "the_relationship_between_termination_and_expression_level_p010",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "consistency_and_noise_levels_of_transcription_terminator_bioparts_p003",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p002",
+            "section": "RESULTS"
+          },
+          {
+            "paragraph_id": "development_of_metabolic_flux_valves_based_on_terminator_bioparts_p026",
+            "section": "RESULTS"
+          }
+        ],
+        "evidence_type": "results"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "ev_036",
+          "ev_010",
+          "ev_013",
+          "ev_029"
+        ],
+        "rationale": "Original experimental study with full Methods (strain construction, Term-Seq, reporter assays, fermentations) and Results reporting novel data generated by the authors."
+      },
+      "engineering_paper_type": {
+        "engineering_paper_type": [
+          "biosensor_platform",
+          "metabolic_engineering"
+        ],
+        "engineering_paper_type_rationale": "Primary contribution is a characterized regulatory-biopart platform (3'-UTR terminator valves; genetic-regulatory-element platform, treated under biosensor_platform as the closest controlled category) plus its application to metabolic flux control (BDO and MI production), a metabolic_engineering demonstration. Per biosensor_platform guidance, extraction focuses on tuning strategy and application-level decisions rather than each of the 150 screened terminator variants."
+      },
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "K-12 MG1655",
+          "paper_strain_normalized": "Escherichia coli K-12 MG1655",
+          "role": "target",
+          "paper_label": "E. coli K-12 MG1655 / 'wild-type' (Fig 5F conv. sys.)",
+          "lineage_or_engineering_context": "Reference genome NC_000913.3; base host for Term-Seq discovery, all reporter assays, BDO production, and conventional-system MI benchmark",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type K-12 MG1655 (plasmid-bearing variants: pDRA1/pDRA2/pGFP/pBDO/pMI series)",
+          "evidence": [
+            "ev_005",
+            "ev_007"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly named in Abstract, Methods and throughout Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "genome-reduced E. coli eMS57",
+          "paper_strain_normalized": "Escherichia coli eMS57",
+          "role": "host",
+          "paper_label": "genome-reduced E. coli eMS57",
+          "lineage_or_engineering_context": "Genome-reduced chassis derived by adaptive laboratory evolution in prior study (ref 55, Choe et al. 2019) - background element, not constructed here",
+          "combination_status": "not_applicable",
+          "genotype": "genome-reduced MG1655 derivative (exact deleted loci defined in ref 55, not restated here)",
+          "evidence": [
+            "ev_005",
+            "ev_020"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named in Methods and used as second production host in Results; prior origin acknowledged by citation (55)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655 ΔpfkA Δzwf double-knockout strain",
+          "paper_strain_normalized": "Escherichia coli MG1655 ΔpfkA Δzwf",
+          "role": "engineered",
+          "paper_label": "E. coli MG1655 ΔpfkA Δzwf",
+          "lineage_or_engineering_context": "Constructed in this study by two sequential lambda-Red recombination steps (zwf first with pKD13/pKD46, FLP cassette removal via pCP20, then pfkA; curing at 42°C)",
+          "combination_status": "demonstrated",
+          "genotype": "Δzwf ΔpfkA (scarless after FLP excision)",
+          "evidence": [
+            "ev_006"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Construction explicitly described in Methods; combination double knockout directly stated."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "eMS57 ΔpfkA Δzwf double knockout strain",
+          "paper_strain_normalized": "Escherichia coli eMS57 ΔpfkA Δzwf",
+          "role": "engineered",
+          "paper_label": "eMS57 ΔpfkA Δzwf",
+          "lineage_or_engineering_context": "Double-knockout derivative of genome-reduced eMS57 used for pMI valve screening; construction method stated generically ('the same method' as MG1655 knockout)",
+          "combination_status": "demonstrated",
+          "genotype": "Δzwf ΔpfkA in eMS57 background",
+          "evidence": [
+            "ev_007",
+            "ev_020"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Methods explicitly list 'E. coli MG1655 or eMS57 ΔpfkA Δzwf double knockout strains harboring the pMI plasmid'; Results describe valve tests in the genome-reduced strain."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BW25113 (comparison dataset only)",
+          "paper_strain_normalized": "Escherichia coli BW25113",
+          "role": "other",
+          "paper_label": "E. coli BW25113 (ref 14 data)",
+          "lineage_or_engineering_context": "NOT used experimentally in this study; prior Term-Seq dataset from Dar & Sorek (ref 14) used only for cross-validation comparison",
+          "combination_status": "not_applicable",
+          "genotype": "not applicable to current experiments",
+          "evidence": [
+            "ev_037"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Mentioned solely as the strain of a previously reported T3PE dataset; attribution kept as background_citation data, not a current-article experimental strain."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "not_generated",
+        "reason": "No user target system provided in this skill07 call; adaptation is out of scope for this extraction stage. Note: valve strategy is itself E. coli K-12-based."
+      },
+      "subject_attribution": {
+        "current_article": [
+          "Term-Seq of MG1655",
+          "all pDRA1/pDRA2/pGFP/pDRA2 DualP/pBDO/pMI construction and assays",
+          "ΔpfkA Δzwf strain construction",
+          "BDO and MI fermentations",
+          "flow cytometry noise analysis",
+          "mRNA decay modeling"
+        ],
+        "background_citation": [
+          "BW25113 T3PE dataset (ref 14)",
+          "MG1655 3'-end mapping (ref 12)",
+          "eMS57 genome-reduced strain origin (ref 55)",
+          "Term-Seq method (refs 13, 22)",
+          "Datsenko-Wanner knockout method (ref 21)",
+          "noise decomposition framework (ref 29)",
+          "RNA-Seq dataset PRJEB21199 (ref 45)"
+        ],
+        "author_inference": [
+          "Group B read-through >1 explained by post-transcriptional cleavage exposing RBS",
+          "NADH saturation as cause of BDO plateau",
+          "elongation-rate/ppGpp explanations of condition-dependent termination shifts"
+        ],
+        "model_inference": [
+          "CaCl2 '0.l mM' read as 0.1 mM (OCR artifact)"
+        ]
+      },
+      "supplement_dependent_fields": [
+        {
+          "field": "primer sequences",
+          "location": "Supplementary Table S1",
+          "blocking": "strain_reconstruction"
+        },
+        {
+          "field": "model parameters and calculated termination strengths",
+          "location": "Supplementary Tables S2, S3",
+          "blocking": "exact_reproduction_protocol"
+        },
+        {
+          "field": "full 150-T3PE read-through table",
+          "location": "Supplementary Table S5",
+          "blocking": "library_resynthesis"
+        },
+        {
+          "field": "1,629 T3PE list",
+          "location": "Supplementary Table S4",
+          "blocking": "library_resynthesis"
+        },
+        {
+          "field": "codon-optimized bdh sequence",
+          "location": "Supplementary Data",
+          "blocking": "strain_reconstruction"
+        },
+        {
+          "field": "IPTG titration series for pDRA2",
+          "location": "Supplementary Figure S4 / Table S7",
+          "blocking": "exact_reproduction_protocol"
+        },
+        {
+          "field": "cross-condition read-through table",
+          "location": "Supplementary Table S8",
+          "blocking": "exact_reproduction_protocol"
+        }
+      ],
+      "governance_relevance": {
+        "scientific_design_summary": "allowed",
+        "mechanism_summary": "allowed",
+        "exact_reproduction_protocol": "review",
+        "strain_reconstruction": "review",
+        "library_resynthesis": "blocked",
+        "automated_DBTL_plan": "blocked",
+        "note": "Terminators' exact sequences, full T3PE/read-through tables and model parameters reside in unavailable supplements; concept-level design and mechanism summaries are supported by main text. Replicate counts for Fig 4 not numerically stated."
+      }
+    },
+    "conflicts": [
+      {
+        "id": "conflict_001",
+        "status": "source_internal_inconsistency",
+        "topic": "M9 medium CaCl2 concentration",
+        "prose_interpretation": "Methods text reads '0.l mM CaCl2' (OCR/typography artifact; 'l' vs '1').",
+        "equation_or_figure_interpretation": "Not shown elsewhere in parsed text.",
+        "impact": "Minor: exact medium composition for reproduction; interpreted as 0.1 mM pending verification against original PDF.",
+        "requires_manual_review": true
+      },
+      {
+        "id": "conflict_002",
+        "status": "source_internal_inconsistency",
+        "topic": "Noise reduction fold number",
+        "prose_interpretation": "Introduction states '4.1-fold lower noise'; Results state intrinsic noise 4.08-fold lower and total noise 4.07-fold lower.",
+        "equation_or_figure_interpretation": "Fig 4D shows terminator-system noise values; exact per-construct numbers in Supplementary Table S7.",
+        "impact": "Negligible (rounding of 4.07/4.08 to 4.1); recorded as semantic layering, not arithmetic contradiction.",
+        "requires_manual_review": false
+      },
+      {
+        "id": "conflict_003",
+        "status": "source_internal_inconsistency",
+        "topic": "Data availability accession format",
+        "prose_interpretation": "Term-Seq accession printed as 'PR-JEB36932' (hyphenated) whereas RNA-Seq accession is 'PRJEB21199'.",
+        "equation_or_figure_interpretation": "Not applicable.",
+        "impact": "Minor: likely OCR hyphen artifact in PRJEB36932; verify before data retrieval.",
+        "requires_manual_review": true
+      },
+      {
+        "id": "conflict_004",
+        "status": "source_internal_inconsistency",
+        "topic": "Scope of '150 T3PEs' vs group counts",
+        "prose_interpretation": "pDRA1 screen used 150 T3PEs (50 RIT + 100 motif-less); later '13 Group B terminators examined by the pDRA2 assay' while Group B in the pBDO experiment lists only 4 RITs.",
+        "equation_or_figure_interpretation": "Fig 3B (pDRA2 RIT panel) and Fig 5C (pBDO groups) show different subset sizes.",
+        "impact": "Not a contradiction: 13 is the pDRA2-assayed Group-B-like set, 4 is the subset deployed in pBDO; scopes preserved separately. No value merged.",
+        "requires_manual_review": false
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 68107,
+    "output_tokens": 35
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "d690a4ae8038efa2af840dbb4309f747be89eaca76f8faa5a85f5ecf31897a55",
+    "output_hash": "9cd7e7888bcae86e6b9e037c898ebdd59ca9786949fea0e95abe238972700bfe",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\3263832f1438eb466e84edde8fa9b507ca8bcdff3456774619e8362025d3d825.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

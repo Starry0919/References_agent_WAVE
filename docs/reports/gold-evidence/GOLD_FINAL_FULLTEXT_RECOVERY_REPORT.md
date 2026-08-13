@@ -1,0 +1,16 @@
+# Gold Final Fulltext Recovery
+
+- Total: 54
+- Recovered local PDFs: 23
+- Identity VERIFIED: 11
+- Human identity review: 12
+- Annotation-ready: 11
+- Missing: 31
+
+## Coverage by stratum
+
+- LIKELY_ENGINEERING: {'READY': 5, 'FULLTEXT_MISSING': 10, 'IDENTITY_REVIEW': 3}
+- WRONG_PRODUCT_OR_NON_TARGET: {'IDENTITY_REVIEW': 1, 'FULLTEXT_MISSING': 3}
+- REVIEW_OR_NON_ENGINEERING: {'FULLTEXT_MISSING': 8}
+- MECHANISM_BOUNDARY: {'FULLTEXT_MISSING': 7, 'IDENTITY_REVIEW': 5, 'READY': 2}
+- BACKGROUND_EXCLUDE: {'FULLTEXT_MISSING': 3, 'IDENTITY_REVIEW': 3, 'READY': 4}

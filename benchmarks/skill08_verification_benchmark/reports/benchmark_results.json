@@ -1,0 +1,323 @@
+{
+  "metrics": {
+    "cases": 13,
+    "verification_precision": 1.0,
+    "verification_recall": 1.0,
+    "overall_accuracy": 1.0,
+    "attribution_accuracy": 1.0,
+    "false_verified_critical_claims": 0,
+    "unresolved_rate": 0.0,
+    "reasonable_unresolved": 0,
+    "optimizable_unresolved": 0,
+    "error_taxonomy": {}
+  },
+  "cases": [
+    {
+      "case_id": "real_direct_mg1655_ale",
+      "category": "direct_evidence",
+      "critical": true,
+      "paper_id": "04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main/aaa64114e525b916/clean_document.json",
+      "source_anchor": "2_1_serial_adaptive_laboratory_evolution_of_e_coli_p001",
+      "claim": "ALE was employed to serially adapt wild-type E. coli MG1655 on glycerol and L-lactate.",
+      "candidate_evidence": "ALE was employed to serially adapt wild-type E. coli MG1655 on two different carbon sources, glycerol and L-lactate.",
+      "gold_verification": "verified",
+      "gold_reason": "Current-study Results explicitly reports MG1655 ALE on both carbon sources.",
+      "biological_entities": [
+        "MG1655"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "ALE_phase_1",
+        "evidence_experiment_id": "ALE_phase_1",
+        "source_attribution": "current_article"
+      },
+      "predicted": "verified",
+      "error_type": ""
+    },
+    {
+      "case_id": "real_background_ydci",
+      "category": "background_confusion",
+      "critical": true,
+      "paper_id": "04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main/aaa64114e525b916/clean_document.json",
+      "source_anchor": "2_2_mutation_profiles_in_the_first_phase_of_adaptive_evolution_p004",
+      "claim": "The current study demonstrated that YdcI controls cellular persistence.",
+      "candidate_evidence": "Previous studies suggested the involvement of YdcI in cellular persistence.",
+      "gold_verification": "unsupported",
+      "gold_reason": "The sentence attributes the assertion to previous studies.",
+      "biological_entities": [
+        "YdcI"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "ALE_phase_1",
+        "evidence_experiment_id": "background",
+        "source_attribution": "background_citation"
+      },
+      "predicted": "unsupported",
+      "error_type": "experiment attribution error"
+    },
+    {
+      "case_id": "real_strain_lineage_bap1",
+      "category": "strain_lineage",
+      "critical": true,
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/07db8df7471d4db693632f10ccdc2254_13_ja0c12406/96b28b6ff5571d3e/clean_document.json",
+      "source_anchor": "results_and_discussion_p003",
+      "claim": "E. coli BAP1 is a BL21(DE3) derivative used as the host strain.",
+      "candidate_evidence": "The E. coli BAP1 strain, which is a BL21(DE3) derivative integrated with Bacillus subtilis phosphopantetheinyl transferase, was used as the host strain.",
+      "gold_verification": "verified",
+      "gold_reason": "The lineage and host role are explicitly stated.",
+      "biological_entities": [
+        "BAP1",
+        "BL21(DE3)"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "PKS_host_test",
+        "evidence_experiment_id": "PKS_host_test",
+        "source_attribution": "current_article"
+      },
+      "predicted": "verified",
+      "error_type": ""
+    },
+    {
+      "case_id": "real_ycit_deletion_direct",
+      "category": "gene_modification",
+      "critical": true,
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735/f8c2f8cd83d676d3/clean_document.json",
+      "source_anchor": "deciphering_regulatory_roles_of_candidate_transcription_factors_p026",
+      "claim": "Deletion of yciT did not reveal significant growth deficiencies compared with the wild type strain.",
+      "candidate_evidence": "We found that the deletion of the yciT gene did not reveal significant growth deficiencies compared to the wild type strain.",
+      "gold_verification": "verified",
+      "gold_reason": "Current-study comparison explicitly reports the negative result.",
+      "biological_entities": [
+        "yciT deletion strain",
+        "WT"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "yciT_growth",
+        "evidence_experiment_id": "yciT_growth",
+        "source_attribution": "current_article"
+      },
+      "predicted": "verified",
+      "error_type": ""
+    },
+    {
+      "case_id": "real_ycit_operation_conflict",
+      "category": "gene_modification_confusion",
+      "critical": true,
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735/f8c2f8cd83d676d3/clean_document.json",
+      "source_anchor": "deciphering_regulatory_roles_of_candidate_transcription_factors_p026",
+      "claim": "Overexpression of yciT did not reveal significant growth deficiencies.",
+      "candidate_evidence": "The deletion of the yciT gene did not reveal significant growth deficiencies compared to the wild type strain.",
+      "gold_verification": "unsupported",
+      "gold_reason": "Overexpression and deletion are different interventions.",
+      "biological_entities": [
+        "yciT"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "yciT_overexpression",
+        "evidence_experiment_id": "yciT_deletion",
+        "source_attribution": "current_article"
+      },
+      "predicted": "unsupported",
+      "error_type": "experiment attribution error"
+    },
+    {
+      "case_id": "real_negative_direction_ycit",
+      "category": "negative_direction",
+      "critical": true,
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735/f8c2f8cd83d676d3/clean_document.json",
+      "source_anchor": "deciphering_regulatory_roles_of_candidate_transcription_factors_p026",
+      "claim": "Deletion of yciT significantly increased growth compared with wild type.",
+      "candidate_evidence": "The deletion of the yciT gene did not reveal significant growth deficiencies compared to the wild type strain.",
+      "gold_verification": "conflicted",
+      "gold_reason": "The evidence reports no significant deficiency, not a significant increase.",
+      "biological_entities": [
+        "yciT deletion strain",
+        "WT"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "yciT_growth",
+        "evidence_experiment_id": "yciT_growth",
+        "source_attribution": "current_article"
+      },
+      "predicted": "conflicted",
+      "error_type": "direction error"
+    },
+    {
+      "case_id": "real_control_treatment_ybcm",
+      "category": "control_treatment",
+      "critical": true,
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735/f8c2f8cd83d676d3/clean_document.json",
+      "source_anchor": "deciphering_regulatory_roles_of_candidate_transcription_factors_p030",
+      "claim": "The survival rate of the ybcM deletion strain was 8-fold higher than the wild type strain.",
+      "candidate_evidence": "The survival rate of the wild type strain was 8-fold higher than the ybcM deletion strain after 15 min 60 mM H2O2 treatment.",
+      "gold_verification": "unsupported",
+      "gold_reason": "The claim reverses treatment and control.",
+      "biological_entities": [
+        "ybcM deletion strain",
+        "WT"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "ybcM_stress",
+        "evidence_experiment_id": "ybcM_stress",
+        "source_attribution": "current_article"
+      },
+      "predicted": "unsupported",
+      "error_type": "entity error"
+    },
+    {
+      "case_id": "real_numeric_fold_conflict",
+      "category": "numeric_conflict",
+      "critical": true,
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735/f8c2f8cd83d676d3/clean_document.json",
+      "source_anchor": "deciphering_regulatory_roles_of_candidate_transcription_factors_p030",
+      "claim": "Wild type survival was 6-fold higher than the ybcM deletion strain.",
+      "candidate_evidence": "The survival rate of the wild type strain was 8-fold higher than the ybcM deletion strain.",
+      "gold_verification": "conflicted",
+      "gold_reason": "The fold value is 8, not 6.",
+      "biological_entities": [
+        "ybcM deletion strain",
+        "WT"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "ybcM_stress",
+        "evidence_experiment_id": "ybcM_stress",
+        "source_attribution": "current_article"
+      },
+      "predicted": "conflicted",
+      "error_type": "numeric error"
+    },
+    {
+      "case_id": "real_condition_conflict_ycit",
+      "category": "condition_conflict",
+      "critical": true,
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735/f8c2f8cd83d676d3/clean_document.json",
+      "source_anchor": "deciphering_regulatory_roles_of_candidate_transcription_factors_p027",
+      "claim": "Osmotic stress slowed yciT deletion strain growth in LB glucose medium.",
+      "candidate_evidence": "Osmotic stress slowed the growth rate of the yciT deletion strain in M9 minimal medium with sorbitol as the sole carbon source.",
+      "gold_verification": "unsupported",
+      "gold_reason": "The evidence is scoped to a different medium, carbon source, and experiment context.",
+      "biological_entities": [
+        "yciT deletion strain"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "yciT_osmotic_LB",
+        "evidence_experiment_id": "yciT_osmotic_M9",
+        "source_attribution": "current_article"
+      },
+      "predicted": "unsupported",
+      "error_type": "experiment attribution error"
+    },
+    {
+      "case_id": "real_overexpression_fold",
+      "category": "direct_numeric",
+      "critical": true,
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/07db8df7471d4db693632f10ccdc2254_13_ja0c12406/96b28b6ff5571d3e/clean_document.json",
+      "source_anchor": "results_and_discussion_p021",
+      "claim": "Overexpression of galU, pgm, and ndk increased production by 2.3-fold.",
+      "candidate_evidence": "Overexpressions of galU, pgm, and ndk were tested, further increasing production by 2.3-fold.",
+      "gold_verification": "verified",
+      "gold_reason": "Operation, genes, direction and fold change are explicit.",
+      "biological_entities": [
+        "galU",
+        "pgm",
+        "ndk"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "UDP_glucose_engineering",
+        "evidence_experiment_id": "UDP_glucose_engineering",
+        "source_attribution": "current_article"
+      },
+      "predicted": "verified",
+      "error_type": ""
+    },
+    {
+      "case_id": "real_previous_report_bl21",
+      "category": "source_attribution",
+      "critical": true,
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/07db8df7471d4db693632f10ccdc2254_13_ja0c12406/96b28b6ff5571d3e/clean_document.json",
+      "source_anchor": "results_and_discussion_p039",
+      "claim": "The current experiment constructed a BL21(DE3) strain that produced 30.9 mg/L of compound 7.",
+      "candidate_evidence": "We previously reported the construction of an engineered E. coli BL21(DE3) strain. This engineered strain was capable of producing 30.9 mg/L of 7.",
+      "gold_verification": "unsupported",
+      "gold_reason": "The construction and result are explicitly from a previous report.",
+      "biological_entities": [
+        "BL21(DE3)"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "current_study",
+        "evidence_experiment_id": "previous_report",
+        "source_attribution": "background_citation"
+      },
+      "predicted": "unsupported",
+      "error_type": "experiment attribution error"
+    },
+    {
+      "case_id": "real_experiment_mismatch",
+      "category": "cross_experiment",
+      "critical": true,
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/07db8df7471d4db693632f10ccdc2254_13_ja0c12406/96b28b6ff5571d3e/clean_document.json",
+      "source_anchor": "results_and_discussion_p048",
+      "claim": "The UDP-glucose engineering experiment produced 22.2 μg/L carminic acid.",
+      "candidate_evidence": "A flask culture of the CA strain successfully produced 22.2 μg/L of carminic acid from glucose.",
+      "gold_verification": "unsupported",
+      "gold_reason": "The value belongs to the CA strain experiment, not the UDP-glucose experiment.",
+      "biological_entities": [
+        "CA strain"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "UDP_glucose_engineering",
+        "evidence_experiment_id": "CA_strain_fermentation",
+        "source_attribution": "current_article"
+      },
+      "predicted": "unsupported",
+      "error_type": "experiment attribution error"
+    },
+    {
+      "case_id": "real_mechanism_uncertain",
+      "category": "mechanism_vs_observation",
+      "critical": true,
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "document_id": "clean_document.json",
+      "source_path": "harness/paper_extraction/vendor/clean_document_artifacts/07db8df7471d4db693632f10ccdc2254_13_ja0c12406/96b28b6ff5571d3e/clean_document.json",
+      "source_anchor": "results_and_discussion_p009",
+      "claim": "Colocalization of PKS and cyclase genes demonstrated formation of a transient enzyme complex.",
+      "candidate_evidence": "Colocalization of the genes is thought to have increased the chance for formation of a transient complex.",
+      "gold_verification": "conflicted",
+      "gold_reason": "A proposed mechanism does not verify a demonstrated mechanism.",
+      "biological_entities": [
+        "PKS",
+        "cyclase"
+      ],
+      "experiment_context": {
+        "claim_experiment_id": "one_plasmid_PKS",
+        "evidence_experiment_id": "one_plasmid_PKS",
+        "source_attribution": "author_inference"
+      },
+      "predicted": "conflicted",
+      "error_type": "causal strength error"
+    }
+  ]
+}

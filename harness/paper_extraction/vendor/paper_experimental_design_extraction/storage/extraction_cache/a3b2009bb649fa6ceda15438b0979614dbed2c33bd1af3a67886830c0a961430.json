@@ -1,0 +1,1204 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Improve N-acetyl-D-neuraminic acid (NeuAc) production in Escherichia coli from glucose as sole carbon source by (1) optimizing amino sugar metabolism pathway kinetics via screening AGE and NeuB enzymes from different sources and their combinations, (2) optimizing expression intensity of the two key enzymes via RBS engineering, and (3) reserving the phosphoenolpyruvate (PEP) pool by engineering the PEP catabolic pathway (knockout of ptsG, pykA, pykF, ppc, pck, gltA candidates).",
+        "status": "reported",
+        "confidence": 0.97,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p009",
+          "introduction_p006"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "hypothesis": {
+        "value": "NeuAc synthesis is bottlenecked by amino sugar metabolism (the GlcNAc-to-NeuAc steps catalyzed by AGE and NeuB are rate-limiting) and by unbalanced precursor PEP supply due to inherent glycolytic regulation; systematically optimizing enzyme kinetics/expression and metabolic flux distribution at the PEP node should holistically improve NeuAc production.",
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "introduction_p003",
+          "introduction_p004",
+          "results_and_discussion_p001"
+        ],
+        "notes": "Rate-limiting-step attribution for GlcNAc→NeuAc steps is cited by the authors to prior studies (refs 36, 37); PEP bottleneck inference in this study is triggered by observed GlcNAc/ManNAc accumulation.",
+        "inference": null
+      },
+      "strain": {
+        "value": {
+          "cloning_host": "Escherichia coli DH5α",
+          "production_base_strain": "DN5 (E. coli DH5α derivative with nan operon (nanATEK), nag operon (nagEBAC), ldhA, poxB and ackA deleted)",
+          "engineered_production_strains": [
+            "DN5/pB, DN5/pBa, DN5/pBc, DN5/pBm, DN5/pBac, DN5/pBam (enzyme-combination screening)",
+            "DN5/pBac2 (AGE RBS = ARBS2)",
+            "DN5/pBacR (ARBS2 + NRBS3)",
+            "DN5 single-knockout series with pBacR: ΔptsG, ΔpykA, ΔpykF, Δppc, Δpck, ΔgltA",
+            "DN11 = DN5ΔpykA/pBacR",
+            "DN12 = DN11ΔptsG (i.e., DN5ΔpykAΔptsG)/pBacR",
+            "DN11ΔgltA/pBacR (decreased production)"
+          ],
+          "gene_donor_organisms": [
+            "Anabaena sp. CH1 (AGE_a)",
+            "Synechocystis sp. PCC 6803 (AGE_s)",
+            "Campylobacter jejuni NCTC 11168 (NeuB_c)",
+            "Moritella viscosa (NeuB_m)",
+            "Escherichia coli K1 (NeuB_k)",
+            "Escherichia coli K12 (GlmS*)",
+            "Saccharomyces cerevisiae (GNA1)"
+          ]
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "materials_and_methods_p001",
+          "results_and_discussion_p001",
+          "results_and_discussion_p002",
+          "results_and_discussion_p019",
+          "results_and_discussion_p024"
+        ],
+        "notes": "Exact DN5 construction traces to Table S1 (supplement, not provided); DN5 was built from E. coli DH5α per results_and_discussion_p002. Full strain/plasmid genotypes are in Table S1 (requires_supplement).",
+        "inference": null
+      },
+      "genotype": {
+        "value": {
+          "DN5": "E. coli DH5α ΔnanATEK ΔnagEBAC ΔldhA ΔpoxB ΔackA",
+          "DN11": "DN5 ΔpykA",
+          "DN12": "DN5 ΔpykA ΔptsG",
+          "plasmid_pBacR": "pTrc99a-based plasmid carrying GlmS* (E. coli K12), GNA1 (S. cerevisiae), AGE_a (Anabaena sp. CH1) with ARBS2 RBS, NeuB_c (C. jejuni NCTC 11168) with NRBS3 RBS, under Ptrc promoter",
+          "single_knockouts_tested_in_DN5_background": [
+            "ptsG",
+            "pykA",
+            "pykF",
+            "ppc",
+            "pck",
+            "gltA"
+          ]
+        },
+        "status": "reported",
+        "confidence": 0.92,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p002",
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p019",
+          "results_and_discussion_p024"
+        ],
+        "notes": "pBacR exact architecture shown in Figure S1 (supplement); knockout verification by PCR with pTKRed/PKD3/PKD4 method (materials_and_methods_p004).",
+        "inference": null
+      },
+      "engineering_method": {
+        "value": [
+          "Heterologous expression and combinatorial screening of AGE (2 sources) × NeuB (3 sources) enzymes on pTrc99a-based plasmids under Ptrc",
+          "RBS engineering of AGE_a and NeuB_c using RBS Calculator 2.0 (four strengthened RBS variants each; selected ARBS2 and NRBS3)",
+          "Copy-number and strong-promoter (PT7) expression attempts (p15a/pCDF/pUC/pET constructs) — abandoned due to severe growth inhibition",
+          "Gene knockout using pTKRed helper plasmid (lambda Red recombineering) with PKD3/PKD4 templates and IPTG (2 mM) induction; electroporation",
+          "Gibson assembly and restriction-ligation (NotI/SpeI, T4 ligase) cloning; codon optimization and gene synthesis for heterologous enzymes"
+        ],
+        "status": "reported",
+        "confidence": 0.96,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p002",
+          "materials_and_methods_p003",
+          "materials_and_methods_p004",
+          "results_and_discussion_p008",
+          "results_and_discussion_p009",
+          "results_and_discussion_p010"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "experimental_groups": {
+        "value": [
+          "Experiment 1 (enzyme combination): 6 plasmid groups (pB, pBa, pBc, pBm, pBac, pBam) in DN5, batch fermentation at 25, 30, 37 °C (Figure 2A); fed fermentation of DN5/pBac (Figure 2B)",
+          "Experiment 2 (expression intensity): copy-number/PT7 promoter constructs (p15a-cagg, pCDF-cagg, pUC-cagg, pET-cagg, pET-acgg, p15a-T7p-cam) — growth-inhibited groups; AGE RBS variants ARBS1–4 vs original ARBS0 in DN5/pBac (Figure 3C); NeuB RBS variants NRBS1–4 vs NRBS0 in DN5/pBac2 (Figure 3D); fed fermentation of DN5/pBacR (Figure 4)",
+          "Experiment 3 (PEP supply): six single-knockout strains (ΔptsG, ΔpykA, ΔpykF, Δppc, Δpck, ΔgltA in DN5) with pBacR, fed fermentation in shake flasks (Figure 5A–D); then DN11-based second-round knockouts (DN11ΔgltA, DN11ΔptsG=DN12); fed fermentation of DN12 (Figure 6)"
+        ],
+        "status": "reported",
+        "confidence": 0.94,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p002",
+          "results_and_discussion_p008",
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p014",
+          "results_and_discussion_p019",
+          "results_and_discussion_p024"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "controls": {
+        "value": [
+          "DN5/pB (original AGE_s + NeuB_k plasmid) as baseline combination for enzyme-screening comparison",
+          "Original RBS strains (ARBS0 for AGE; NRBS0 for NeuB) as baselines for RBS engineering",
+          "Non-knockout DN5/pBacR as reference for knockout-strain comparisons"
+        ],
+        "status": "inferred",
+        "confidence": 0.68,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p002",
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p019"
+        ],
+        "notes": "The paper does not explicitly designate 'control groups'; baseline-comparison roles are inferred from comparative statements (e.g., pBac titer compared to DN5/pB at 37 °C; RBS variant titers compared to original RBS; knockout titers compared implicitly to DN5/pBacR 7.1 g/L). No empty-vector or wild-type control is reported.",
+        "inference": {
+          "method": "comparative_statement_parsing",
+          "rationale": "Baseline roles deduced from explicit within-text comparisons (1.9 vs 1.5× baseline; 3.2 g/L '1.3 g/L higher than original RBS'; 3.7 g/L '0.5 g/L higher than original RBS'; knockout yields read against prior DN5/pBacR performance)."
+        }
+      },
+      "culture_conditions": {
+        "value": {
+          "seed_culture": "Single colony into 5 mL LB with appropriate antibiotics, 12 h, 37 °C",
+          "batch_fermentation": "50 mL MTB + 20 g/L glucose + 200 μM IPTG, inoculum 4%, 30 °C (enzyme-screening also 25 and 37 °C), 220 rpm, pH ~7.0 maintained with 30% NH4OH, sampling every 6 h (day) or 12 h (night)",
+          "fed_fermentation": "Same as batch; glucose added when below 10 g/L",
+          "vessel": "Shake flasks (fed fermentations stated to be in shake flasks)",
+          "knockout_selection_induction": "pTKRed-harboring strains induced with 2 mM IPTG"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p005",
+          "results_and_discussion_p015",
+          "results_and_discussion_p023",
+          "materials_and_methods_p004"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "medium": {
+        "value": {
+          "cloning": "Luria-Bertani (LB) medium, 37 °C, aeration",
+          "fermentation": "Modified terrific broth (MTB): 12 g/L tryptone, 24 g/L yeast extract, 5 g/L NaCl; plus 20 g/L glucose and 200 μM IPTG at fermentation start",
+          "antibiotics": "ampicillin 100 μg/mL; kanamycin 25 μg/mL; chloramphenicol 17 μg/mL; spectinomycin 100 μg/mL (added when necessary)"
+        },
+        "status": "reported",
+        "confidence": 0.97,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p001",
+          "materials_and_methods_p005"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "dosage": {
+        "value": {
+          "glucose_initial": "20 g/L (batch); feeding when glucose < 10 g/L (fed-batch)",
+          "IPTG_induction": "200 μM (fermentation); 2 mM (pTKRed knockout induction)",
+          "inoculum": "4% (v/v, inferred unit)",
+          "antibiotics": "ampicillin 100 μg/mL; kanamycin 25 μg/mL; chloramphenicol 17 μg/mL; spectinomycin 100 μg/mL"
+        },
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p001",
+          "materials_and_methods_p004",
+          "materials_and_methods_p005"
+        ],
+        "notes": "No chemical inducer doses beyond IPTG; inoculum 4% reported without explicit unit (conventionally v/v).",
+        "inference": null
+      },
+      "time": {
+        "value": {
+          "seed_culture": "12 h",
+          "RBS_screening_batch": "36 h (20 g/L glucose nearly consumed)",
+          "DN5_pBac_fed": "72 h → 4.7 g/L NeuAc",
+          "DN5_pBacR_fed": "96 h → 7.1 g/L NeuAc",
+          "knockout_strain_fermentation": "stopped at 120 h (Figure 5D)",
+          "sampling_intervals": "6 h (day) / 12 h (night)"
+        },
+        "status": "reported",
+        "confidence": 0.94,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "materials_and_methods_p005",
+          "results_and_discussion_p007",
+          "results_and_discussion_p009",
+          "results_and_discussion_p014",
+          "results_and_discussion_p015",
+          "results_and_discussion_p023"
+        ],
+        "notes": "DN12 (Figure 6) exact fermentation duration not stated in text; figure image not readable from text layer.",
+        "inference": null
+      },
+      "replicates": {
+        "value": "Three independent experiments conducted simultaneously to obtain error bars (stated for Figures 2, 3, 4 and 6); Figure 5D shows a representative curve from three independent experiments with RSD < 10%.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "figure_reading",
+        "evidence_ids": [
+          "results_and_discussion_p005",
+          "results_and_discussion_p014",
+          "results_and_discussion_p016",
+          "results_and_discussion_p023",
+          "results_and_discussion_p025"
+        ],
+        "notes": "Authors call them 'independent experiments' (likely independent culture replicates); exact replicate semantics not further defined. For Figure 5A–C, replicate display assumed same caption statement but panel-level n not separately stated.",
+        "inference": null
+      },
+      "assay": {
+        "value": [
+          "OD600 measurement for cell growth",
+          "HPLC quantification of glucose, NeuAc, acetate, ethanol, formate, pyruvate, GlcNAc, ManNAc (extracellular, supernatant after 10,000 rcf 5 min)",
+          "Resorcinol-based colorimetric assay for NeuAc",
+          "Colony PCR and sequencing for plasmid/knockout verification"
+        ],
+        "status": "reported",
+        "confidence": 0.96,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p006",
+          "materials_and_methods_p002",
+          "materials_and_methods_p004"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "instruments": {
+        "value": [
+          "Spectrophotometer (Shimazu [Shimadzu], Japan) for OD600",
+          "HPLC (Shimadzu, Japan) with refractive index detector RID-10A (Shimadzu) and Aminex HPX-87H ion exclusion column (Bio-Rad, USA)",
+          "High-fidelity DNA polymerase (Takara, Japan) and 2× Taq MasterMix (CWBIO, China) for PCR",
+          "Electroporation apparatus for transformation (method stated; instrument model not reported)"
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p006",
+          "materials_and_methods_p002",
+          "materials_and_methods_p004"
+        ],
+        "notes": "Text prints 'Shimazu' for the spectrophotometer — likely OCR/typo for Shimadzu; retained as printed. Electroporation instrument model not specified.",
+        "inference": null
+      },
+      "analysis_methods": {
+        "value": [
+          "RBS Calculator 2.0 (denovodna.com) used to design/select RBS variants by predicted translation initiation intensity",
+          "Comparative fermentation analysis across temperatures (25/30/37 °C) and knockout backgrounds; error bars from three independent experiments; RSD < 10% criterion for representative curves",
+          "Km values from cited literature used to rationalize AGE substrate-affinity differences (author interpretation)"
+        ],
+        "status": "reported",
+        "confidence": 0.88,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p009",
+          "results_and_discussion_p014",
+          "results_and_discussion_p023",
+          "results_and_discussion_p006"
+        ],
+        "notes": "No formal statistical tests (t-test/ANOVA) reported; comparisons appear descriptive with error bars.",
+        "inference": null
+      },
+      "outcomes": {
+        "value": {
+          "enzyme_combination": "pBac (AGE_a Anabaena sp. CH1 + NeuB_c C. jejuni NCTC 11168) gave 1.9 g/L NeuAc at 30 °C, 1.5× the DN5/pB titer at 37 °C; NeuB_c better suited lower temperatures; DN5/pBac fed fermentation reached 4.7 g/L at 72 h",
+          "expression_optimization": "Copy-number/PT7 strong-expression constructs severely inhibited growth and decreased NeuAc (data not shown). AGE RBS ARBS2 → 3.2 g/L (pBac2); NeuB RBS NRBS3 → 3.7 g/L (pBacR); DN5/pBacR fed fermentation reached 7.1 g/L at 96 h with 12.6 g/L GlcNAc and 2.5 g/L ManNAc accumulation",
+          "PEP_engineering": "Single knockouts in DN5/pBacR: ΔpykA highest at 9.9 g/L (strain DN11); Δppc severely reduced growth; Δpck reduced NeuAc; ΔpykF and ΔgltA poor growth in LB but good growth in TB. Second round: DN11ΔgltA dropped to 5.6 g/L; DN11ΔptsG (DN12) reached 16.7 g/L NeuAc — reported as the highest NeuAc production from glucose as sole carbon source",
+          "overall": "Combination screening +0.5-fold, expression optimization +1.04-fold, PEP pathway engineering +1.35-fold relative increases (author summary); final 16.7 g/L"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "introduction_p006",
+          "results_and_discussion_p002",
+          "results_and_discussion_p007",
+          "results_and_discussion_p008",
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p015",
+          "results_and_discussion_p017",
+          "results_and_discussion_p019",
+          "results_and_discussion_p024"
+        ],
+        "notes": "Author mechanistic explanations (e.g., NeuB solubility, energy shortage after gltA knockout) are interpretations ('may have been'), not directly validated observations.",
+        "inference": null
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "EXP1_enzyme_combination_screen",
+          "purpose": "Identify best AGE/NeuB source combination and fermentation temperature for NeuAc production",
+          "host": "E. coli DN5 (DH5α ΔnanATEK ΔnagEBAC ΔldhA ΔpoxB ΔackA)",
+          "intervention": "Six plasmids pB/pBa/pBc/pBm/pBac/pBam combining 2 AGEs (Synechocystis PCC 6803, Anabaena sp. CH1) and 3 NeuBs (E. coli K1, C. jejuni NCTC 11168, M. viscosa) on pTrc99a under Ptrc, together with GlmS* (E. coli K12) and GNA1 (S. cerevisiae)",
+          "conditions": "Batch fermentation, MTB + 20 g/L glucose + 200 μM IPTG, 25/30/37 °C, 220 rpm, pH ~7.0 (30% NH4OH); fed fermentation of best strain DN5/pBac",
+          "control": "DN5/pB baseline combination (inferred baseline role)",
+          "replicates": "Three independent experiments (figure caption)",
+          "readout": "NeuAc titer (HPLC + resorcinol assay), OD600, extracellular metabolites",
+          "analysis": "Comparison across combinations and temperatures",
+          "outcome": "pBac best: 1.9 g/L at 30 °C (1.5× DN5/pB at 37 °C); DN5/pBac fed: 4.7 g/L at 72 h",
+          "evidence": [
+            "results_and_discussion_p001",
+            "results_and_discussion_p002",
+            "results_and_discussion_p005",
+            "results_and_discussion_p007",
+            "materials_and_methods_p005"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (heterologous enzyme combination constructed in this study), Q2 pass (constructed here, though pB plasmid template derives from prior study ref 36 — the six combination plasmids were built in this work), Q3 pass (combination choice drove subsequent RBS and knockout decisions).",
+            "design_action": "M4",
+            "design_action_rationale": "Replacing rate-limiting enzymes with natural high-activity orthologs and screening their combinations = rate-limiting enzyme identification and engineering.",
+            "trigger_observation": "Prior directed evolution could only improve enzymes within inherent characteristics; GlcNAc→NeuAc steps reported as rate-limiting (refs 36,37); existing titers far from cost-effective.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Choice of orthologs based on reported high enzymatic activities (literature-reported measured kinetics); outcomes measured by fermentation titers in this study.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "Enzymes explicitly 'chosen because they have reported high enzymatic activities' (refs 28, 41–43) — selection justified by literature-reported properties rather than new mechanistic analysis in this paper.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When the two terminal steps of an amino-sugar-to-NeuAc pathway are rate-limiting in an E. coli production system, apply screening of natural high-activity AGE and NeuB orthologs and their source combinations, because orthologs differ in substrate affinity and temperature adaptation which jointly determine pathway flux.",
+            "alternatives_considered": [
+              "Directed evolution of AGE via high-threshold riboswitch (used previously, ref 37) — set aside because it can only improve inherent enzyme characteristics"
+            ],
+            "strategy_categories": [
+              "enzyme_activity_improvement"
+            ]
+          }
+        },
+        {
+          "experiment_id": "EXP2a_strong_expression_attempt",
+          "purpose": "Improve expression intensity of all NeuAc pathway genes",
+          "host": "E. coli DN5 derivatives",
+          "intervention": "Vectors of different copy numbers (p15a-cagg, pCDF-cagg, pUC-cagg) and strong PT7 promoter constructs (pET-cagg, pET-acgg, p15a-T7p-cam)",
+          "conditions": "Fermentation with inducer addition (standard MTB/IPTG conditions inferred)",
+          "control": "Ptrc-based expression (implicit)",
+          "replicates": "Not stated (data not shown)",
+          "readout": "Growth, NeuAc production",
+          "analysis": "Qualitative comparison",
+          "outcome": "Growth severely inhibited after induction; NeuAc production significantly decreased (data not shown); strategy abandoned",
+          "evidence": [
+            "results_and_discussion_p008"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (promoter/copy-number engineering action), Q2 pass (constructed in this study), Q3 pass (negative result redirected strategy toward RBS fine-tuning).",
+            "design_action": "M6",
+            "design_action_rationale": "Attempted expression-level adjustment of pathway genes (copy number and strong promoter) = expression balancing.",
+            "trigger_observation": "AGE and NeuB shown critical to NeuAc production; authors hypothesized enhancing expression intensity could further increase production.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Outcome (growth inhibition, decreased production) was experimentally observed, though data not shown.",
+            "reason_nature": "事后合理化存疑",
+            "reason_nature_rationale": "Paper states the conclusion ('strong expression caused metabolism to become seriously uncoordinated') as a post-result interpretation without mechanistic measurement; no explicit a priori mechanistic reason given for choosing PT7 beyond generic 'strong promoter'.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP2b_RBS_tuning_AGE_NeuB",
+          "purpose": "Fine-tune expression intensity of AGE_a and NeuB_c to efficiently metabolize accumulated GlcNAc",
+          "host": "E. coli DN5",
+          "intervention": "RBS substitution upstream of AGE_a in pBac (ARBS1–4, predicted initiation strengths 32,837–146,797 vs ARBS0 10,146) then NeuB_c in pBac2 (NRBS1–4, 12,109–109,625 vs NRBS0 6,993), designed with RBS Calculator 2.0; reverse PCR with RBS-containing primers",
+          "conditions": "Batch fermentation, 20 g/L glucose, 30 °C, 36 h; fed fermentation of DN5/pBacR",
+          "control": "Original RBS strains (ARBS0 / NRBS0) (baseline, inferred role)",
+          "replicates": "Three independent experiments (figure caption)",
+          "readout": "NeuAc titer, glucose consumption, GlcNAc/ManNAc accumulation",
+          "analysis": "Titer vs predicted RBS intensity; selected ARBS2 (3.2 g/L) and NRBS3 (3.7 g/L)",
+          "outcome": "pBacR (ARBS2+NRBS3); fed fermentation 7.1 g/L NeuAc at 96 h; 12.6 g/L GlcNAc + 2.5 g/L ManNAc accumulated, indicating amino sugar supply sufficient and bottleneck shifting to PEP supply",
+          "evidence": [
+            "results_and_discussion_p009",
+            "results_and_discussion_p010",
+            "results_and_discussion_p014",
+            "results_and_discussion_p015",
+            "results_and_discussion_p017",
+            "materials_and_methods_p003"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (RBS engineering performed), Q2 pass (this study), Q3 pass (established pBacR chassis for subsequent PEP engineering; revealed next bottleneck).",
+            "design_action": "M6",
+            "design_action_rationale": "Modulating translation initiation strength of the two key enzymes to balance pathway expression = expression balancing.",
+            "trigger_observation": "GlcNAc accumulation remained very high during fermentation, indicating downstream conversion capacity insufficient; strong PT7 expression caused metabolic discoordination, so moderate tunable tuning was needed.",
+            "evidence_grading": "软",
+            "evidence_grading_rationale": "RBS selection based on RBS Calculator 2.0 predicted translation initiation intensities — predictive tool output; predictions were then confirmed by fermentation, but the design rationale itself rests on prediction (需实测确认, which the authors did perform).",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper gives an explicit mechanistic rationale: high GlcNAc accumulation means AGE/NeuB throughput limits flux, so raising their translation intensity should drain GlcNAc toward NeuAc; non-monotonic response at highest RBS is mechanistically attributed (with hedging 'may') to low NeuB_c solubility.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When an intermediate (GlcNAc) accumulates in an E. coli NeuAc production system, apply moderate RBS-strength tuning of the downstream enzymes (AGE/NeuB) rather than maximal-strength promoters, because balanced translation increase raises pathway throughput while avoiding metabolic burden or solubility limits of heterologous enzymes.",
+            "alternatives_considered": [
+              "Strong PT7 promoter / high-copy vectors — abandoned due to severe growth inhibition"
+            ],
+            "strategy_categories": [
+              "enzyme_activity_improvement",
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "EXP3_PEP_node_knockouts",
+          "purpose": "Reserve PEP pool for NeuAc synthesis by blocking PEP consumption pathways",
+          "host": "E. coli DN5/pBacR, then DN11 (DN5ΔpykA)/pBacR",
+          "intervention": "Knockout of six PEP-node genes (ptsG, pykA, pykF, ppc, pck, gltA) individually from DN5 via pTKRed recombineering; second round: gltA or ptsG knocked out from DN11; pykF double-knockout deliberately not attempted",
+          "conditions": "Fed fermentation in shake flasks, 30 °C, 220 rpm, pH ~7.0 (30% NH4OH), sampling 6/12 h, stopped at 120 h",
+          "control": "DN5/pBacR non-knockout reference (inferred baseline role)",
+          "replicates": "Three independent experiments; Figure 5D representative curve RSD < 10%",
+          "readout": "NeuAc, GlcNAc, ManNAc titers; OD600; growth phenotype in LB vs TB",
+          "analysis": "Titer comparison across knockout strains; growth defect interpretation",
+          "outcome": "ΔpykA best single knockout (9.9 g/L, strain DN11); Δppc severe growth defect; Δpck reduced NeuAc; DN11ΔgltA fell to 5.6 g/L; DN11ΔptsG = DN12 reached 16.7 g/L — highest reported NeuAc production from glucose as sole carbon source",
+          "evidence": [
+            "results_and_discussion_p018",
+            "results_and_discussion_p019",
+            "results_and_discussion_p023",
+            "results_and_discussion_p024",
+            "materials_and_methods_p004"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (genome knockouts performed), Q2 pass (this study), Q3 pass (results selected DN11 and DN12 and defined which PEP routes are safely blockable).",
+            "design_action": "M2",
+            "design_action_rationale": "Blocking competing PEP consumption routes to increase precursor PEP availability for NeuB reaction = precursor and reducing-power supply (precursor supply).",
+            "trigger_observation": "DN5/pBacR fed fermentation accumulated 12.6 g/L GlcNAc and 2.5 g/L ManNAc, indicating amino sugar supply sufficient and the bottleneck had shifted to PEP supply.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Target selection based on literature-reported stoichiometric distribution of PEP consumption (ref 44: PTS ~50%, ppc 16.2%, pyruvate kinase 14.5%, aromatics 3.3%) — chemical-stoichiometric knowledge; outcomes experimentally measured.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper gives explicit mechanism: ptsG knockout reroutes glucose transport from PEP-consuming PTS to ATP-consuming transport, sparing PEP; pykA knockout reduces flux toward pyruvate kinase; gltA double-knockout harms energy supply; pck catalyzes oxaloacetate→PEP direction so its removal lowers PEP supply. These are mechanistic (though partly hedged with 'may') explanations tied to pathway topology.",
+            "reason_nature_tags": [
+              "文献类比"
+            ],
+            "generalizable_rule": "When PEP-dependent product synthesis is bottlenecked by PEP supply in an E. coli glucose-fermentation system, apply stepwise deletion of major PEP-consuming nodes (pyruvate kinase pykA, then PTS component ptsG) while preserving anaplerosis and at least one pyruvate-kinase route, because PTS and pyruvate kinase consume the largest PEP shares, but complete glycolytic or TCA blockage (pykA+pykF, gltA on ΔpykA) collapses precursor/energy supply.",
+            "alternatives_considered": [
+              "pykF knockout on DN11 background — not tried because pykA+pykF would fully block glycolysis and deprive acetyl-CoA supply for GNA1",
+              "ppc knockout — severe growth reduction (oxaloacetate replenishment blocked)",
+              "pck knockout — reduced PEP supply",
+              "gltA knockout on DN11 — NeuAc fell to 5.6 g/L (energy shortage)",
+              "'some other PEP consumption routes were adopted for engineering but all ended in failure' (unspecified)"
+            ],
+            "strategy_categories": [
+              "precursor_supply_enhancement",
+              "competitive_pathway_removal",
+              "flux_redirection"
+            ]
+          }
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "exploring_amino_sugar_and_phosphoenolpyruvate_metabolism_to_improve_escherichia_coli_n_acetylneuraminic_acid_production_p009",
+            "section": "abstract",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "improved NeuAc production was attained through the optimization of amino sugar metabolism pathway kinetics and reservation of a phosphoenolpyruvate (PEP) pool in Escherichia coli",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "introduction_p006",
+            "section": "introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "AGE and NeuB from diferent sources were combined and evaluated... Optimizing the expression intensity of the two key enzymes... by engineering the PEP catabolic pathway, the production of NeuAc increased 1.35-fold and reached 16.7 g/L",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p003",
+            "section": "introduction",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "NeuAc synthesis still has several bottlenecks, such as the barrier of the amino sugar metabolism and the unbalanced supply of precursor phosphoenolpyruvate (PEP) due to inherent regulatory mechanisms during glycolysis",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "introduction_p004",
+            "section": "introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Systematically optimizing enzyme kinetic and metabolic flux distribution at the PEP node is critical for holistically improving NeuAc production.",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": "Table S1",
+            "quote": "Bacterial strains and plasmids used in this study are listed in Table S1. E. coli DH5α was used for gene cloning",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 1",
+            "supplement": "Table S1",
+            "quote": "Production plasmids were all transferred into DN5 in which nan operon (nanATEK...), nag operon (nagEBAC...), gene ldhA (lactic acid production pathway), gene poxB... and gene ackA... were deleted from E. coli DH5α (Table S1)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p024",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After ptsG was knocked out from DN11, NeuAc production increased significantly to 16.7 g/L",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 1",
+            "supplement": "Table S1",
+            "quote": "nan operon (nanATEK, NeuAc degradation pathway), nag operon (nagEBAC, GlcNAc degradation pathway), gene ldhA..., gene poxB..., and gene ackA... were deleted from E. coli DH5α",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p019",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The aforementioned six genes were knocked out from the strain DN5 genome... The pykA-knockout strain produced 9.9 g/L NeuAc... Therefore, this strain was named DN11",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p010",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": "Figure S1",
+            "quote": "The plasmid containing ARBS2 and NRBS3 was named pBacR (Figure S1).",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": "Table S2",
+            "quote": "For gene knockout, the helper plasmid pTKRed was first transformed into the target strain by electroporation... induced by IPTG (2 mM)... template (PKD3 or PKD4)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "A",
+            "table": null,
+            "supplement": "Table S3",
+            "quote": "diferent RBS intensities of AGE were tested using RBS Calculator 2.0",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p002",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The two obtained fragments were assembled using the Gibson method... The Ages and NeuBs used in this experiment were codon-optimized and synthesized",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": "A",
+            "table": "Table 1",
+            "supplement": null,
+            "quote": "two AGEs and three NeuBs were combined into six groups to form the NeuAc production plasmids (Table 1)... batch fermentation was performed at 25, 30, and 37 °C",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p019",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The aforementioned six genes were knocked out from the strain DN5 genome, and then, the knocked-out strains with plasmid pBacR were used to feed fermentation in shake flasks",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": "A",
+            "table": null,
+            "supplement": null,
+            "quote": "yielded 1.9 g/L NeuAc... which is 1.5 times the concentration of the NeuAc titer that was produced by DN5/pB at 37 °C",
+            "source_attribution": "model_inference"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "C",
+            "table": null,
+            "supplement": null,
+            "quote": "at 3.2 g/L, which was 1.3 g/L higher than that obtained using the original RBS",
+            "source_attribution": "model_inference"
+          }
+        ]
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p005",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The culture was then inoculated into 50 mL of the fresh MTB medium containing 20 g/L glucose and 200 μM IPTG at an inoculum of 4%. Fermentation was performed at 30 °C and 220 rpm, and pH was maintained at approximately 7.0 by adding 30% NH4OH",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "A modified terrific broth (MTB) medium (12 g/L tryptone, 24 g/L yeast extract, and 5 g/L NaCl) was used for fermentation. Antibiotics were added when necessary (ampicillin, 100 μg/mL; kanamycin, 25 μg/mL; chloramphenicol, 17 μg/mL; and spectinomycin, 100 μg/mL).",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p005",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "containing 20 g/L glucose and 200 μM IPTG at an inoculum of 4%... glucose was added when its concentration was below 10 g/L",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Strains harboring pTKRed were cultured and induced by IPTG (2 mM)",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "time": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "D",
+            "table": null,
+            "supplement": null,
+            "quote": "Samples were taken at 6 or 12 h intervals for analysis. Fermentation was stopped at 120 h.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p015",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 4",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After 96 h of fermentation, the production of NeuAc no longer increased at which point 7.1 g/L NeuAc was accumulated",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p007",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": "B",
+            "table": null,
+            "supplement": null,
+            "quote": "After 72 h, the NeuAc production of NeuAc reached 4.7 g/L",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "replicates": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p005",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Three independent experiments were conducted simultaneously to obtain the error bar.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "D",
+            "table": null,
+            "supplement": null,
+            "quote": "a representative curve from three independent experiments was shown with standard diferences (RSD) of less than 10%",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Glucose, NeuAc, acetate, ethanol, formate, pyruvate, GlcNAc, and ManNAc were quantitatively determined by high-performance liquid chromatography (HPLC)... NeuAc levels were additionally determined by a resorcinol-based colorimetric assay.",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "section": "materials_and_methods",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "HPLC (Shimadzu, Japan) equipped with a refractive index detector (RID-10A) (Shimadzu, Japan) and an Aminex HPX-87H ion exclusion column (Bio-Rad, USA)... Optical density (OD) was measured at 600 nm using a spectrophotometer (Shimazu, Japan)",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "A",
+            "table": null,
+            "supplement": "Table S3",
+            "quote": "diferent RBS intensities of AGE were tested using RBS Calculator 2.0 (https://www.denovodna.com/software/)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p023",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "representative curve from three independent experiments was shown with standard diferences (RSD) of less than 10%",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p019",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": "A",
+            "table": null,
+            "supplement": null,
+            "quote": "The pykA-knockout strain produced 9.9 g/L NeuAc, which was the highest yield of all knockout strains",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p024",
+            "section": "results_and_discussion",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After ptsG was knocked out from DN11, NeuAc production increased significantly to 16.7 g/L, which was the highest production achieved using glucose as a sole carbon source",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "introduction_p006",
+            "section": "introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "combined and evaluated, leading to a 0.5-fold increase... Optimizing the expression intensity... led to a 1.04-fold increase... engineering the PEP catabolic pathway... increased 1.35-fold and reached 16.7 g/L",
+            "source_attribution": "current_article"
+          }
+        ]
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "Journal article in J. Agric. Food Chem. 2020 (exploring_..._p003)",
+          "Author contributions state 'Q.P., H.H., Y.X., and X.L. performed all the experiments' (author_contributions_p001)",
+          "Methods section reports original strain construction, fermentation and analytical procedures (materials_and_methods_p001–p006)",
+          "Results report new experimental data with figures and error bars (results_and_discussion section)"
+        ],
+        "engineering_paper_type": [
+          "metabolic_engineering"
+        ],
+        "engineering_paper_type_rationale": "Core contributions are enzyme source screening, RBS expression tuning and PEP-node knockouts for titer improvement; biosensor/riboswitch tools cited are from prior studies (refs 36, 37), not developed here."
+      },
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5",
+          "paper_strain_normalized": "E. coli DH5α ΔnanATEK ΔnagEBAC ΔldhA ΔpoxB ΔackA",
+          "role": "parental",
+          "paper_label": "DN5",
+          "lineage_or_engineering_context": "Derived from E. coli DH5α by deleting nan operon, nag operon, ldhA, poxB, ackA; full construction record in Table S1 (supplement)",
+          "combination_status": "demonstrated (single strain with five deletions, directly stated)",
+          "genotype": "ΔnanATEK ΔnagEBAC ΔldhA ΔpoxB ΔackA",
+          "evidence": [
+            "results_and_discussion_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.93,
+          "reasoning": "Explicitly described as deletion derivative of DH5α used as production host."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN11",
+          "paper_strain_normalized": "E. coli DN5 ΔpykA",
+          "role": "engineered",
+          "paper_label": "DN11",
+          "lineage_or_engineering_context": "pykA knockout from DN5; carried plasmid pBacR; best single PEP-node knockout (9.9 g/L NeuAc)",
+          "combination_status": "demonstrated",
+          "genotype": "ΔpykA on DN5 background",
+          "evidence": [
+            "results_and_discussion_p019"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named and characterized in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN12",
+          "paper_strain_normalized": "E. coli DN5 ΔpykA ΔptsG",
+          "role": "engineered",
+          "paper_label": "DN12",
+          "lineage_or_engineering_context": "ptsG knocked out from DN11; final production strain with pBacR reaching 16.7 g/L NeuAc",
+          "combination_status": "demonstrated",
+          "genotype": "ΔpykA ΔptsG on DN5 background",
+          "evidence": [
+            "results_and_discussion_p024",
+            "results_and_discussion_p025"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named DN12 in text; Figure 6 shows its fed fermentation."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH5α",
+          "paper_strain_normalized": "Escherichia coli DH5α",
+          "role": "host",
+          "paper_label": "DH5α",
+          "lineage_or_engineering_context": "Gene cloning host; also the ancestor of DN5",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "materials_and_methods_p001",
+            "results_and_discussion_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Stated in Methods; DN5 deletions 'from E. coli DH5α' in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5 single-knockout series (ΔptsG, ΔpykF, Δppc, Δpck, ΔgltA) and DN11ΔgltA",
+          "paper_strain_normalized": "E. coli DN5 single-gene knockout derivatives; DN11ΔgltA double-knockout derivative",
+          "role": "engineered",
+          "paper_label": "knockout strains",
+          "lineage_or_engineering_context": "Each constructed and tested individually with pBacR; pykF double knockout on DN11 explicitly not attempted; individual deletion strains kept as separate objects (no combination genotypes beyond DN11/DN12/DN11ΔgltA demonstrated)",
+          "combination_status": "not_demonstrated for any multi-knockout combinations other than DN11 (ΔpykA), DN12 (ΔpykAΔptsG) and DN11ΔgltA",
+          "genotype": "single deletions of ptsG, pykF, ppc, pck, gltA respectively on DN5; ΔgltA on DN11",
+          "evidence": [
+            "results_and_discussion_p019",
+            "results_and_discussion_p024"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Paper says the six genes were knocked out individually and strains tested; double knockouts only as explicitly described."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": null,
+      "supplement_dependencies": {
+        "blocked_items": [
+          {
+            "item": "Table S1 (full strain and plasmid list)",
+            "blocks": [
+              "exact strain reconstruction",
+              "complete genotype verification",
+              "plasmid backbone details"
+            ]
+          },
+          {
+            "item": "Table S2 (oligonucleotides)",
+            "blocks": [
+              "exact reproduction protocol",
+              "library/construct resynthesis"
+            ]
+          },
+          {
+            "item": "Table S3 (RBS sequences)",
+            "blocks": [
+              "exact reproduction protocol",
+              "construct resynthesis"
+            ]
+          },
+          {
+            "item": "Table S4 (Kcat/Km of AGE and NeuB)",
+            "blocks": [
+              "enzyme kinetics verification"
+            ]
+          },
+          {
+            "item": "Figure S1 (pBacR map), Figure S2 (PEP consumption pathway)",
+            "blocks": [
+              "exact plasmid architecture confirmation"
+            ]
+          }
+        ],
+        "available_from_main_text_or_figure": "Strain names/roles, knockout targets, fermentation conditions, titers, RBS intensities (numeric), enzyme sources, and qualitative design logic are all in main text/figures.",
+        "governance": {
+          "scientific_design_summary": "allowed",
+          "mechanism_summary": "allowed",
+          "exact_reproduction_protocol": "blocked",
+          "strain_reconstruction": "blocked",
+          "library_resynthesis": "blocked",
+          "automated_DBTL_plan": "review"
+        }
+      },
+      "background_cited_studies": [
+        {
+          "source_study": "Kang et al. 2012 (ref 30)",
+          "study_type": "prior primary research",
+          "materials_or_biological_system": "E. coli NeuAc de novo pathway (GlmS*, GNA1, AGE, NanA)",
+          "outcomes": "7.85 g/L NeuAc after blocking degradation and byproduct pathways",
+          "source_level": "secondary_report_in_introduction",
+          "evidence": [
+            "introduction_p002"
+          ]
+        },
+        {
+          "source_study": "Yang et al. 2017 (ref 36)",
+          "study_type": "prior primary research (same group)",
+          "materials_or_biological_system": "E. coli NeuAc biosensor-directed NeuB evolution; pB plasmid template source",
+          "outcomes": "8.3 g/L NeuAc; pB plasmid reused here as backbone/template",
+          "source_level": "secondary_report_in_introduction",
+          "evidence": [
+            "introduction_p002",
+            "materials_and_methods_p002"
+          ]
+        },
+        {
+          "source_study": "Pang et al. 2020 (ref 37)",
+          "study_type": "prior primary research (same group)",
+          "materials_or_biological_system": "Riboswitch evolution for AGE",
+          "outcomes": "High-threshold riboswitches; prior highest NeuAc titer",
+          "source_level": "secondary_report_in_introduction",
+          "evidence": [
+            "results_and_discussion_p001"
+          ]
+        },
+        {
+          "source_study": "Valle et al. 1996 (ref 44)",
+          "study_type": "review on PEP node",
+          "materials_or_biological_system": "E. coli PEP node flux distribution",
+          "outcomes": "PEP consumption shares: PTS ~50%, ppc 16.2%, pyruvate kinase 14.5%, aromatics 3.3%, other 16%",
+          "source_level": "secondary_report_in_results",
+          "evidence": [
+            "results_and_discussion_p018"
+          ]
+        }
+      ],
+      "unresolved_parameters": [
+        {
+          "raw_text": "NeuB_o",
+          "issue": "results_and_discussion_p002 prints 'AGE_a and NeuB_o' for plasmid pBac; Table 1 is garbled in the text layer (column alignment inconsistent: pBac row shows 'NeuBm / psychrophilic fish pathogen', pBm row shows 'NeuB_m / M. viscosa', pBc row shows 'NeuBc / E. coli K1', pBm row shows 'NeuB / C. jejuni NCTC 11168'). Table 1 cell-to-column mapping cannot be reliably reconstructed from the cleaned text; however body text elsewhere consistently states pBac contains NeuB from C. jejuni NCTC 11168 (e.g., results_and_discussion_p010 on NeuB solubility from C. jejuni in pBacR context). Recorded as unresolved at table level; body-text value (NeuB_c) used for strain descriptions with moderate confidence.",
+          "status": "unresolved"
+        },
+        {
+          "raw_text": "inoculum of 4%",
+          "issue": "Unit basis (v/v) not explicitly stated",
+          "status": "unresolved"
+        }
+      ],
+      "source_internal_inconsistencies": [
+        {
+          "status": "source_internal_inconsistency",
+          "topic": "DN12 genotype naming order in text",
+          "prose_interpretation": "results_and_discussion_p024 says 'After ptsG was knocked out from DN11... To save more PEP, pykA was knocked out (named DN12)' — the second clause reads as if pykA were knocked out after ptsG, contradicting DN11 = ΔpykA established earlier.",
+          "equation_or_figure_interpretation": "Logically DN12 = DN11(ΔpykA) + ΔptsG; the later clause likely refers to the earlier pykA knockout being the complementary change.",
+          "impact": "Minor naming-order ambiguity; final genotype (ΔpykA ΔptsG on DN5) unaffected",
+          "requires_manual_review": true
+        },
+        {
+          "status": "source_internal_inconsistency",
+          "topic": "Table 1 plasmid-to-enzyme mapping",
+          "prose_interpretation": "Body text: pBac = AGE_a (Anabaena sp. CH1) + NeuB from C. jejuni NCTC 11168; pBam contains NeuB_m (M. viscosa); pBc = AGE_s + NeuB_c per construction paragraph... but Table 1 text-layer rows appear shifted (e.g., pBc row shows 'NeuBk / E. coli K1' under NeuB/source columns).",
+          "equation_or_figure_interpretation": "Likely text-extraction column misalignment of the HTML table rather than a true author inconsistency; the paper's own construction Methods (pBc uses NeuBc template from C. jejuni) also conflict with the extracted table row.",
+          "impact": "Exact per-plasmid AGE/NeuB assignment for pBc/pBm relies on Methods and body text, not the extracted table; table requires visual check of the original PDF",
+          "requires_manual_review": true
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "field_path": "experimental_design_object.experiments[0].intervention",
+        "candidates": [
+          {
+            "value": "pBac = AGE_a + NeuB_c (C. jejuni NCTC 11168)",
+            "source": "results_and_discussion_p002 body text; results_and_discussion_p010 ('low solubility of NeuB from C. jejuni NCTC 11168' in pBacR context); materials_and_methods_p003 (pBac built by ligating NeuB fragments into pBa)"
+          },
+          {
+            "value": "Table 1 extracted rows (misaligned: pBac row shows 'NeuBm/psychrophilic fish pathogen', pBc row shows 'NeuBk/E. coli K1')",
+            "source": "results_and_discussion_p003 (Table 1 text extraction)"
+          }
+        ],
+        "reason": "Probable HTML-table column misalignment by the parser; Methods and body text are mutually consistent but disagree with the extracted table rows for some plasmids.",
+        "suggested_review_action": "Visually inspect Table 1 in the original PDF to confirm per-plasmid AGE/NeuB assignments before using pBc/pBm mappings; pBac mapping is corroborated by multiple body-text statements."
+      },
+      {
+        "field_path": "fields.instruments.value[0]",
+        "candidates": [
+          {
+            "value": "Spectrophotometer 'Shimazu, Japan'",
+            "source": "materials_and_methods_p006 (as printed)"
+          },
+          {
+            "value": "Shimadzu (manufacturer consistent with HPLC entry)",
+            "source": "materials_and_methods_p006 (HPLC entry)"
+          }
+        ],
+        "reason": "Likely OCR/typo ('Shimazu' vs 'Shimadzu'); not resolved from available text.",
+        "suggested_review_action": "Check original PDF; low impact on design interpretation."
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 42623,
+    "output_tokens": 15268
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+    "output_hash": "a7cd02ff01213b6876b8b80c132319b3d45c4896d2198d7bda69cc8589cd0224",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "system_prompt_sha256": "aaea6fadeb52064203fe0e47bc7748c8c7da7cf71b66bed93c48430aa43befdc",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\a3b2009bb649fa6ceda15438b0979614dbed2c33bd1af3a67886830c0a961430.json",
+      "key_type": "content_sha256+model+skill_sha256+system_prompt_sha256"
+    }
+  },
+  "review_requests": []
+}

@@ -1,0 +1,22 @@
+{
+  "benchmark_version": "paper_extraction_e2e_v2",
+  "annotation_tier": "silver_infrastructure_only",
+  "experiment_precision": null,
+  "experiment_recall": null,
+  "experiment_f1": null,
+  "biological_object_accuracy": null,
+  "intervention_accuracy": null,
+  "condition_accuracy": null,
+  "measurement_accuracy": null,
+  "critical_hallucination_rate": null,
+  "verification_precision": 1.0,
+  "verification_recall": 1.0,
+  "false_verified_critical_claims": 0,
+  "safety_cases": 13,
+  "ddr_decision_precision": null,
+  "ddr_decision_recall": null,
+  "critical_invalid_knowledge_admission_rate": null,
+  "current_contract_replay": "passed",
+  "release_status": "PARTIAL",
+  "limitation": "No human-adjudicated Experiment, Claim, DDR, or Admission Gold"
+}

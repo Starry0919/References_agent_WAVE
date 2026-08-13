@@ -1,0 +1,1762 @@
+{
+  "version": "skill07_wave2_baseline_manifest_v1",
+  "created_at": "2026-08-12T07:34:20.552068+00:00",
+  "historical_manifest_preserved": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\skill07_baseline_manifest.json",
+  "wave1_drift": {
+    "source_default_model": "claude-sonnet-4.6",
+    "wave1_manifest_model": [
+      "claude-sonnet-4.6"
+    ],
+    "configured_model": "kimi-k3",
+    "resolved_runtime_model": "kimi-k3",
+    "actual_invocation_argument_in_wave1_artifacts": "kimi-k3",
+    "provider_resolved_model": "UNKNOWN",
+    "finding": "Wave1 baseline manifest froze the source default instead of the resolved runtime model; its model/cache identities are invalid for benchmark reuse."
+  },
+  "preflight_status": "PASS",
+  "documents": [
+    {
+      "paper_id": "04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\2_1-s2.0-S1096717624000582-main.pdf",
+      "pdf_hash": "f4cb881c70c1c5ac646d36b4858478fd8bcce4ab923a3dc9c21d67b9c6c1939b",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main\\aaa64114e525b916\\clean_document.json",
+      "clean_document_hash": "d6866e8bff18325cbd2859c9c83928baafe970f6450764a6075a9bff61a08089",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\afe51ba7098fabf48a9145e2dad5c1b8816ec9017634410300483a86ef131d0e.json",
+      "baseline_latency_ms_observed": [
+        446882.444,
+        2217426.619
+      ],
+      "input_size": {
+        "characters": 193747,
+        "bytes": 194189
+      },
+      "input_tokens_if_available": 65671,
+      "output_tokens_if_available": 20761,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main",
+          "source_document_hash": "d6866e8bff18325cbd2859c9c83928baafe970f6450764a6075a9bff61a08089",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "5c299c19dcdc66ef4a04be97f9e8df3e95344b65c954eba2a60166ff1531e170"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "d6866e8bff18325cbd2859c9c83928baafe970f6450764a6075a9bff61a08089",
+        "run_id": "wave2-provenance-1e9b31543809",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "d6866e8bff18325cbd2859c9c83928baafe970f6450764a6075a9bff61a08089",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "96e02bd1a35d3ba7880998b366483025d2eeb76edadaf04e967f50663f8945dc"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "9bdff88f38d746db81b953793f928e4d_2021-祁老师",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\10_2021-祁老师.pdf",
+      "pdf_hash": "7e538b395d23b1a9a6e99c60c2cb9e3beebf3de6c7593e300f895057ccd351e6",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\9bdff88f38d746db81b953793f928e4d_2021-祁老师\\2125cc591a1568a5\\clean_document.json",
+      "clean_document_hash": "fdc2b513e05dfcae3f5d4836d2bc2285a730cf9585bc1a382279fb45616d5480",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\0a8002b94d79142d4a03434803d37f962f3993d842658fc53159d543104661f8.json",
+      "baseline_latency_ms_observed": [
+        46.219,
+        26.083,
+        2406584.919
+      ],
+      "input_size": {
+        "characters": 91782,
+        "bytes": 92028
+      },
+      "input_tokens_if_available": 40056,
+      "output_tokens_if_available": 18231,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "9bdff88f38d746db81b953793f928e4d_2021-祁老师",
+          "source_document_hash": "fdc2b513e05dfcae3f5d4836d2bc2285a730cf9585bc1a382279fb45616d5480",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "afd001c798754565bb8b1e323e9b8a7debde8d0e65e65e1e662306bcfec42ddb"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "fdc2b513e05dfcae3f5d4836d2bc2285a730cf9585bc1a382279fb45616d5480",
+        "run_id": "wave2-provenance-0a798aabfd5c",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "fdc2b513e05dfcae3f5d4836d2bc2285a730cf9585bc1a382279fb45616d5480",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "2ac5f50a56bc754baff76d92c9fe56a01b2fc9a9544dbf0728ed8fa4d35cc48a"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\1_1-s2.0-S1096717621001750-main.pdf",
+      "pdf_hash": "a3211983ab2bf35ed2691bbdb930e725d0636254f75d2d787cb1b07e9b86f956",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main\\2de225fd24380a88\\clean_document.json",
+      "clean_document_hash": "b00a856287b4c35b6e8290b4146228f989fefa62d22dd2a7bfd51705d8dc1584",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\981cf14791d663bb7da87f4526060c6d4e2c6dd1b3359863d07abb10cfe3e162.json",
+      "baseline_latency_ms_observed": [
+        32.796,
+        2757297.326,
+        2445602.624,
+        1404565.509,
+        988136.217
+      ],
+      "input_size": {
+        "characters": 206391,
+        "bytes": 206973
+      },
+      "input_tokens_if_available": 73980,
+      "output_tokens_if_available": 25249,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main",
+          "source_document_hash": "b00a856287b4c35b6e8290b4146228f989fefa62d22dd2a7bfd51705d8dc1584",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "436d1ee3eb126424002dfe3d1e5e24d3cd50a7f9a30e112213ba0db646e8e9b6"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "b00a856287b4c35b6e8290b4146228f989fefa62d22dd2a7bfd51705d8dc1584",
+        "run_id": "wave2-provenance-5cead9291846",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "b00a856287b4c35b6e8290b4146228f989fefa62d22dd2a7bfd51705d8dc1584",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "b2563e16ad9456c723b372cc1f6a2ba8110160b985ae24d35e64c8180673dabd"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "ae4bdbd7884c413cb3e583301872456b_17_sb0c00597",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\17_sb0c00597.pdf",
+      "pdf_hash": "15bb78fae97a5a6fcbbca48733294c429b88dd0ae9dfdb45a68823459cbe356f",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.json",
+      "clean_document_hash": "4c3d1adcd36053260fe7f2632db24637805bd550be17bc8d500e5a269c0bf7a7",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": null,
+      "baseline_latency_ms_observed": [
+        36932581.109
+      ],
+      "input_size": {
+        "characters": 136446,
+        "bytes": 136837
+      },
+      "input_tokens_if_available": null,
+      "output_tokens_if_available": null,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "ae4bdbd7884c413cb3e583301872456b_17_sb0c00597",
+          "source_document_hash": "4c3d1adcd36053260fe7f2632db24637805bd550be17bc8d500e5a269c0bf7a7",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "ce7add0578ec3f03e32d043a8bc7d498d4a2e87cda91a75613816e64957adac2"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "4c3d1adcd36053260fe7f2632db24637805bd550be17bc8d500e5a269c0bf7a7",
+        "run_id": "wave2-provenance-1ec80b195ee5",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "4c3d1adcd36053260fe7f2632db24637805bd550be17bc8d500e5a269c0bf7a7",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "68613aabca57e80668709a4ef403e6b59eecac222999460d8064f3ebe76ce606"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "33428841e8bf4161b3867dac46a695ac_14_jf0c04725",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\14_jf0c04725.pdf",
+      "pdf_hash": "d0e413e2a989cd068b37ef0e68822ae741e4440b59f0f616211ade76b77f5b0a",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.json",
+      "clean_document_hash": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\a3b2009bb649fa6ceda15438b0979614dbed2c33bd1af3a67886830c0a961430.json",
+      "baseline_latency_ms_observed": [
+        323020.919
+      ],
+      "input_size": {
+        "characters": 92956,
+        "bytes": 93258
+      },
+      "input_tokens_if_available": 42623,
+      "output_tokens_if_available": 15268,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "33428841e8bf4161b3867dac46a695ac_14_jf0c04725",
+          "source_document_hash": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "6840a8dfb4182f8c1e873d62f111b00d0d8e94569614eb1d02c1c796b6e7f5e5"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+        "run_id": "wave2-provenance-71326b43cc72",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "e1471adfaa7f73f191afa0901a6779c7e639f09cd8dcd8b2e549ecc0a8887362"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\18_sb1c00354.pdf",
+      "pdf_hash": "df64cfa8633ba05904e8f5eeb8c258583de09fb6b81de2a1c6604951d78c7075",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.json",
+      "clean_document_hash": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\e309ecf312b0b56a8b3cde0ead44e0f808a7ef983e1874bf4cfa1552a53bbacf.json",
+      "baseline_latency_ms_observed": [
+        926146.365
+      ],
+      "input_size": {
+        "characters": 103617,
+        "bytes": 103839
+      },
+      "input_tokens_if_available": 39649,
+      "output_tokens_if_available": 17163,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+          "source_document_hash": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "8c0d6a451a0d0177a8d3e6a06bbfd6e438dde6a430906cb376ee724f4bf5a3ab"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+        "run_id": "wave2-provenance-7a76fa80b0a0",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "30ce0c0a37091184a0e586a20c9a57a3017332feabf136b30057c7bbac6d5f09"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "paper:71ab13883b209e2872f3",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\4_04_2022_曾老师.pdf",
+      "pdf_hash": "a78f7c90c65ecf5ca466a12f65133b30c12492533f68793475429bfa46d4d379",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\paper_71ab13883b209e2872f3\\ddb7b68667935047\\clean_document.json",
+      "clean_document_hash": "a187954054f36c2395797d007d93cd0b07f2281e538beb0a17b0d91f48986c47",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": null,
+      "baseline_latency_ms_observed": [
+        1370331.765,
+        37.625
+      ],
+      "input_size": {
+        "characters": 171154,
+        "bytes": 171454
+      },
+      "input_tokens_if_available": null,
+      "output_tokens_if_available": null,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "paper:71ab13883b209e2872f3",
+          "source_document_hash": "a187954054f36c2395797d007d93cd0b07f2281e538beb0a17b0d91f48986c47",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "72c17c7b97e1b0ca9d88e2e63c2f002c1cb736ccae9f6711c12e5be1d9b48114"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "a187954054f36c2395797d007d93cd0b07f2281e538beb0a17b0d91f48986c47",
+        "run_id": "wave2-provenance-abb036ea9112",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "a187954054f36c2395797d007d93cd0b07f2281e538beb0a17b0d91f48986c47",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "4dd40badccfbf1f62f89f8cc3d67e031caedc19d4c399c077e8b5ce5a9fe6df7"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "fa7c24b1f3cf4dc9b6c0bf70790dbe13_02 曾老师-色氨酸",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\3_02 曾老师-色氨酸.pdf",
+      "pdf_hash": "55d95bd5050d4c51c6bc544f14cb1152e9356a2d3cdb25a31356134809f31af5",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\fa7c24b1f3cf4dc9b6c0bf70790dbe13_02_曾老师-色氨酸\\8ec9771c55ea0bf7\\clean_document.json",
+      "clean_document_hash": "8169d0473bc103610f07da21449cfd5d3f46d4dd06f0d42c0332d86412d789dd",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\6a3d9344bb67b049ce09336b8d494ef7443276c5d28793c6a00cabbe8329fe6f.json",
+      "baseline_latency_ms_observed": [
+        37.962,
+        57.493,
+        254861.44
+      ],
+      "input_size": {
+        "characters": 183328,
+        "bytes": 183718
+      },
+      "input_tokens_if_available": 68769,
+      "output_tokens_if_available": 20652,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "fa7c24b1f3cf4dc9b6c0bf70790dbe13_02 曾老师-色氨酸",
+          "source_document_hash": "8169d0473bc103610f07da21449cfd5d3f46d4dd06f0d42c0332d86412d789dd",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "beefd0abc8d3bdc58e31ad0e9527713baca96a201039266acca0df9bd71f8488"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "8169d0473bc103610f07da21449cfd5d3f46d4dd06f0d42c0332d86412d789dd",
+        "run_id": "wave2-provenance-8c7be5390a91",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "8169d0473bc103610f07da21449cfd5d3f46d4dd06f0d42c0332d86412d789dd",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "d91a3b2b12fa8a88a034a8f7cab1175ae239a8d38e8ed8ba73bac5ae058f6abf"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\6_09_2021_10.1038_s41467-021-25541-3.pdf",
+      "pdf_hash": "d76baeb508f7fadfd753789556bf45ef9ea43972e7e0313b98451bcaa4770d3f",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3\\1b2f7607febbd194\\clean_document.json",
+      "clean_document_hash": "0bea665c87107c5a9dac9db961d9039a67afd57378981abf6d377ea8eefdefa2",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\dbd8693de5ad44e585dc9e8706c7d736874bc10c67f19389da8a2d5db1094408.json",
+      "baseline_latency_ms_observed": [
+        709873.547
+      ],
+      "input_size": {
+        "characters": 141252,
+        "bytes": 141842
+      },
+      "input_tokens_if_available": 51168,
+      "output_tokens_if_available": 14086,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3",
+          "source_document_hash": "0bea665c87107c5a9dac9db961d9039a67afd57378981abf6d377ea8eefdefa2",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "1c7e58790f48114ab1236bc9300968a5eaa8961934197bd58636bff8a24de755"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "0bea665c87107c5a9dac9db961d9039a67afd57378981abf6d377ea8eefdefa2",
+        "run_id": "wave2-provenance-b0548163049a",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "0bea665c87107c5a9dac9db961d9039a67afd57378981abf6d377ea8eefdefa2",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "67859ba182fda5d8beb773f0218bc955ea20331067585e86d2ed2223bb42ce52"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "c7d6c4ca5bad4997b2197020e073bb98_gkac206",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\12_gkac206.pdf",
+      "pdf_hash": "1e36ec0d817e189547e5ed2c0c97c0b7004dbc99295046e07756f2d27527b387",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\c7d6c4ca5bad4997b2197020e073bb98_gkac206\\5e7196eb42fdf640\\clean_document.json",
+      "clean_document_hash": "d690a4ae8038efa2af840dbb4309f747be89eaca76f8faa5a85f5ecf31897a55",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\3263832f1438eb466e84edde8fa9b507ca8bcdff3456774619e8362025d3d825.json",
+      "baseline_latency_ms_observed": [
+        315791.353,
+        70.497
+      ],
+      "input_size": {
+        "characters": 203393,
+        "bytes": 203709
+      },
+      "input_tokens_if_available": 68107,
+      "output_tokens_if_available": 35,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "c7d6c4ca5bad4997b2197020e073bb98_gkac206",
+          "source_document_hash": "d690a4ae8038efa2af840dbb4309f747be89eaca76f8faa5a85f5ecf31897a55",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "d3f87e15e0ca10eb3737b4c23ce645008f5afb95340da58919284a760adb1cea"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "d690a4ae8038efa2af840dbb4309f747be89eaca76f8faa5a85f5ecf31897a55",
+        "run_id": "wave2-provenance-f24e44b1b755",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "d690a4ae8038efa2af840dbb4309f747be89eaca76f8faa5a85f5ecf31897a55",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "6df3e5d4393f004ef5f1339507467b3ebacd3f9cf48cbc5739b97fd5e50526b7"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\11_gkab735.pdf",
+      "pdf_hash": "8956f70a2b73c28e628532f20bde3453fbb06d50de3dc40827f4d14a4d3970e5",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735\\f8c2f8cd83d676d3\\clean_document.json",
+      "clean_document_hash": "53e0c29bdc33cd64994b165348b0d2045101ea3a4246232228d932779e5191f2",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\c6d44049189cc1851b8b749c006660cc1b69faf0a9b856fd807003b6f92f9fd3.json",
+      "baseline_latency_ms_observed": [
+        580716.566
+      ],
+      "input_size": {
+        "characters": 175042,
+        "bytes": 175366
+      },
+      "input_tokens_if_available": 61966,
+      "output_tokens_if_available": 12932,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+          "source_document_hash": "53e0c29bdc33cd64994b165348b0d2045101ea3a4246232228d932779e5191f2",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "7a9022e27d62a5b10de1351be45c199050842426564a4735fde7c1cd2bb81754"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "53e0c29bdc33cd64994b165348b0d2045101ea3a4246232228d932779e5191f2",
+        "run_id": "wave2-provenance-1cb4db5576fb",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "53e0c29bdc33cd64994b165348b0d2045101ea3a4246232228d932779e5191f2",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "fe9f081b5d6b80d823f77cb695fdc0ebf5bd80b54ce2aa6a0d3dfeb4372dbaa7"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\8_12_2021_10.1186_s12934-021-01526-1.pdf",
+      "pdf_hash": "f03c1e36468b9ec5d1566316db7f350bd9ed3947080ecb931b84d87a96e18911",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1\\6399167f747a4f96\\clean_document.json",
+      "clean_document_hash": "bcdd6a335e782df5ca53f3ef5c106194fcd31292d87fb25db81efca64abafe34",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\412f7b2e8367ce051d4d5deb862413b79b4ca479fe1dd6158c0a6a240e2e1ac4.json",
+      "baseline_latency_ms_observed": [
+        850629.867
+      ],
+      "input_size": {
+        "characters": 112585,
+        "bytes": 113039
+      },
+      "input_tokens_if_available": 45814,
+      "output_tokens_if_available": 13099,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1",
+          "source_document_hash": "bcdd6a335e782df5ca53f3ef5c106194fcd31292d87fb25db81efca64abafe34",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "5584d73de64388c1906c1c5df7fa398b1824fd51a48ed8c7252119ba3537c1df"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "bcdd6a335e782df5ca53f3ef5c106194fcd31292d87fb25db81efca64abafe34",
+        "run_id": "wave2-provenance-7bd6d33a0039",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "bcdd6a335e782df5ca53f3ef5c106194fcd31292d87fb25db81efca64abafe34",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "d79b44693df122b7c9f2f35c2c01e095762eec0d1b32a81710219a6839e0f26c"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\16_s41564-020-00793-9.pdf",
+      "pdf_hash": "186beeb59beb8a50c890f41d445ea90e5138b2af9430840c32269095c611146a",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9\\45e2f3d34009f018\\clean_document.json",
+      "clean_document_hash": "df53b3f73cce8ee2e26b4d8f844686549935f8bf0bc451cd652f6b016aec3933",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": null,
+      "baseline_latency_ms_observed": [
+        6506660.674
+      ],
+      "input_size": {
+        "characters": 119133,
+        "bytes": 119705
+      },
+      "input_tokens_if_available": null,
+      "output_tokens_if_available": null,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9",
+          "source_document_hash": "df53b3f73cce8ee2e26b4d8f844686549935f8bf0bc451cd652f6b016aec3933",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "312fb278b7cabc41d2a05d662a554d82c662d402a3c3573300773bf7f09a9eae"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "df53b3f73cce8ee2e26b4d8f844686549935f8bf0bc451cd652f6b016aec3933",
+        "run_id": "wave2-provenance-9f46973956d4",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "df53b3f73cce8ee2e26b4d8f844686549935f8bf0bc451cd652f6b016aec3933",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "ac70be6fe82832d71bc2614c1e6dcf5f4390cba131a894dd68ef63bb0e1335b5"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\5_07_2020_10.1038_s41467-020-20423-6.pdf",
+      "pdf_hash": "ec9b5714c24880c99ebdd62a3f57774d18788831330be8558985ac0e13ce600c",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.json",
+      "clean_document_hash": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\78822174aff4c381b5e2f76176fc6380cf9784dd742dfc7ff76b88ddb2ec902e.json",
+      "baseline_latency_ms_observed": [
+        76.038,
+        1840815.62
+      ],
+      "input_size": {
+        "characters": 148547,
+        "bytes": 148974
+      },
+      "input_tokens_if_available": 55531,
+      "output_tokens_if_available": 23288,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
+          "source_document_hash": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "81035edca58191093159a5e7024fe92ddb00c182399fcd81df7af96aea344015"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+        "run_id": "wave2-provenance-41fbcbcd477d",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "75719b4ce3945a7b96b3fba2da5d3be815ac45e192137842e6c2ff8340f0359b"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\9_15_2025_10.1186_s12934-025-02697-x.pdf",
+      "pdf_hash": "92a072d8f2b6ae544ad594f7891ea065423b514622eb66866c90a9c35647c0d2",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x\\f0b582b19d0cc024\\clean_document.json",
+      "clean_document_hash": "9f78a0c1a9de57e3bd87880e06cfc16396c05a86b7cd6c63f6090ad5d719edaa",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\048742ef511946cfbf54ef9da2b124e54ae648dacbe67b824a765906b9a5b822.json",
+      "baseline_latency_ms_observed": [
+        780517.877
+      ],
+      "input_size": {
+        "characters": 128390,
+        "bytes": 128907
+      },
+      "input_tokens_if_available": 48840,
+      "output_tokens_if_available": 16242,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x",
+          "source_document_hash": "9f78a0c1a9de57e3bd87880e06cfc16396c05a86b7cd6c63f6090ad5d719edaa",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "fc5c3deb7be8b180db7230a5a53522d43d92b9175b6093fa89b387cbde2f3743"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "9f78a0c1a9de57e3bd87880e06cfc16396c05a86b7cd6c63f6090ad5d719edaa",
+        "run_id": "wave2-provenance-042c167d910c",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "9f78a0c1a9de57e3bd87880e06cfc16396c05a86b7cd6c63f6090ad5d719edaa",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "d61d2749d99c467392fff071ca28e266ec614dfd5931c3adfba4641e634da432"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\13_ja0c12406.pdf",
+      "pdf_hash": "f01a3fdc9be356b7b082c40682a8530c394dc3434d3eb406b859d6a31267e767",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\07db8df7471d4db693632f10ccdc2254_13_ja0c12406\\96b28b6ff5571d3e\\clean_document.json",
+      "clean_document_hash": "04039d28ebe1b746b39c0e6a3ee97d06ae25dd7cc8df649cc8d70233674115bd",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\2a2e00c2a8f5c491dd8167661dac436508630571e7094a33ee08b86006a92b82.json",
+      "baseline_latency_ms_observed": [
+        22.505,
+        1097832.385
+      ],
+      "input_size": {
+        "characters": 176690,
+        "bytes": 177191
+      },
+      "input_tokens_if_available": 67037,
+      "output_tokens_if_available": 31567,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+          "source_document_hash": "04039d28ebe1b746b39c0e6a3ee97d06ae25dd7cc8df649cc8d70233674115bd",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "45dd8525125301383cc1e8df7adaf5c98d2b07889e1a7e401bb40c9d9456d0fc"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "04039d28ebe1b746b39c0e6a3ee97d06ae25dd7cc8df649cc8d70233674115bd",
+        "run_id": "wave2-provenance-6df97cd249d2",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "04039d28ebe1b746b39c0e6a3ee97d06ae25dd7cc8df649cc8d70233674115bd",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "d7abde3026e9e4def28950ead2d8232de3d5a4984ff9c0ee072d0034e1d1caa9"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\15_msystems.00353-25.pdf",
+      "pdf_hash": "a741b162b1186186360a90de24e4f712e12c680daf8def15b30842fd8f906aee",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25\\9f994eab97f58cfa\\clean_document.json",
+      "clean_document_hash": "347e36bc3be14dad320970a6729acd543f31d7d7a94530ecfbf82d4c14e57b9c",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\96fa0c679278850bf0beaf1f78118494bc0217fa3d2cc8eccb8a5d7409dac8b5.json",
+      "baseline_latency_ms_observed": [
+        1071603.987,
+        28.592
+      ],
+      "input_size": {
+        "characters": 188795,
+        "bytes": 189278
+      },
+      "input_tokens_if_available": 65778,
+      "output_tokens_if_available": 70,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+          "source_document_hash": "347e36bc3be14dad320970a6729acd543f31d7d7a94530ecfbf82d4c14e57b9c",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "b7851f6bc2d34bb30d88dcde527ff9d2b29029321641f4ff025703cb821b04de"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "347e36bc3be14dad320970a6729acd543f31d7d7a94530ecfbf82d4c14e57b9c",
+        "run_id": "wave2-provenance-5c7a5f4f622d",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "347e36bc3be14dad320970a6729acd543f31d7d7a94530ecfbf82d4c14e57b9c",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "97cdb939cc998fa1935316bd0ed7157734888ea7549de6aa074df3d23dacca42"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "d9993347d2a34601a7e5078766af1f07_19_sb3c00394",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\19_sb3c00394.pdf",
+      "pdf_hash": "469289208b0215f4465e3fe0e22dc19ad28e03d600260144dc0adc3eb36a17d8",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\d9993347d2a34601a7e5078766af1f07_19_sb3c00394\\aa2140991b8feda5\\clean_document.json",
+      "clean_document_hash": "7e67beadc61ded6ba097cf19e96ce9e42be6a9d607c9c58fd2f7696297ca71fb",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\c73ccaeb30fbf115291af14081a8f94983f57b9867328b37cceb6aff1b970afc.json",
+      "baseline_latency_ms_observed": [
+        2088129.191
+      ],
+      "input_size": {
+        "characters": 155806,
+        "bytes": 156291
+      },
+      "input_tokens_if_available": 58930,
+      "output_tokens_if_available": 24033,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "d9993347d2a34601a7e5078766af1f07_19_sb3c00394",
+          "source_document_hash": "7e67beadc61ded6ba097cf19e96ce9e42be6a9d607c9c58fd2f7696297ca71fb",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "58121bd221d4da6fb450ff092d0e5e7c1a95802af77a48fdcb76f0e1bee31564"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "7e67beadc61ded6ba097cf19e96ce9e42be6a9d607c9c58fd2f7696297ca71fb",
+        "run_id": "wave2-provenance-3d542fb03c1b",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "7e67beadc61ded6ba097cf19e96ce9e42be6a9d607c9c58fd2f7696297ca71fb",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "e947e946544e4d30acdc0e04553db81d9d9efa992a6615dddcd11b4fb888f375"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    },
+    {
+      "paper_id": "697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9",
+      "source_pdf": "D:\\Users\\Starry\\Desktop\\agent\\原始论文(已标顺序)_pdfs_19篇\\7_10_2022_10.1038_s41467-022-31934-9.pdf",
+      "pdf_hash": "79a899170a0bafe90ce15bf79c1e124c0ef66dd29a425ef294f1a55494ed274d",
+      "clean_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9\\b3c2105890dcd969\\clean_document.json",
+      "clean_document_hash": "50ea7ece2e5007d86e2ae866f42cbb47aea1f3761a469dfad8e0e3185e775f5c",
+      "clean_document_version": "0.3.0",
+      "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+      "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+      "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+      "validator_version": "3.0.0",
+      "model_provider": "poe_code_cli",
+      "model": "kimi-k3",
+      "model_parameters_if_available": {
+        "immutable_revision": "UNKNOWN",
+        "reasoning_profile": "UNKNOWN"
+      },
+      "baseline_output_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\8d6b5552ec20a731865095b9a0ad3866d8a232fbb141fbfed6ceedf0333f48be.json",
+      "baseline_latency_ms_observed": [
+        313665.919
+      ],
+      "input_size": {
+        "characters": 165471,
+        "bytes": 165958
+      },
+      "input_tokens_if_available": 59098,
+      "output_tokens_if_available": 64,
+      "review_status": "NO_SKILL07_HUMAN_GOLD",
+      "cache_identity": {
+        "components": {
+          "paper_id": "697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9",
+          "source_document_hash": "50ea7ece2e5007d86e2ae866f42cbb47aea1f3761a469dfad8e0e3185e775f5c",
+          "representation_version": "production_clean_document",
+          "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+          "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+          "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+          "validator_version": "3.0.0",
+          "model_provider": "poe_code_cli",
+          "model": "claude-sonnet-4.6",
+          "model_parameters": {
+            "provider_revision": "UNKNOWN"
+          },
+          "candidate_id": "A_BASELINE"
+        },
+        "sha256": "15912f00679fbb2b110f6eca37e8f9c1cee407d325702dc1dee772a9eab3fd06"
+      },
+      "wave1_historical_model": "claude-sonnet-4.6",
+      "provider_resolved_model": "UNKNOWN",
+      "model_revision": "UNKNOWN",
+      "runtime_identity": {
+        "provider": "poe_code_cli",
+        "source_default_model": "claude-sonnet-4.6",
+        "configured_model": "kimi-k3",
+        "resolved_runtime_model": "kimi-k3",
+        "invocation_model_argument": "kimi-k3",
+        "provider_resolved_model": "UNKNOWN",
+        "model_revision": "UNKNOWN",
+        "cli_tool": "poe-code-cli",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "representation_version": "production_clean_document",
+        "candidate_id": "A_BASELINE",
+        "source_document_hash": "50ea7ece2e5007d86e2ae866f42cbb47aea1f3761a469dfad8e0e3185e775f5c",
+        "run_id": "wave2-provenance-5db7049ea7c8",
+        "timestamp": "2026-08-12T07:34:20.552068+00:00",
+        "alias": "kimi-k3",
+        "model_parameters": {
+          "seed": "NOT_AVAILABLE",
+          "temperature": "NOT_AVAILABLE"
+        }
+      },
+      "wave2_cache_identity": {
+        "provider": "poe_code_cli",
+        "model": "kimi-k3",
+        "candidate_id": "A_BASELINE",
+        "representation_version": "production_clean_document",
+        "source_document_hash": "50ea7ece2e5007d86e2ae866f42cbb47aea1f3761a469dfad8e0e3185e775f5c",
+        "prompt_hash": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+        "skill_hash": "a8e95a78bd2ff138145e36b036093fffbd2c4730012fb1cf92b3b4967fd62b3b",
+        "schema_hash": "ab224eb3159ec72f19471932a61b7014adb047efa0ab894bf86af448e08b60c1",
+        "validator_hash": "7cb241864080b8231ea3d77debc62b6fe4b24c2e5041422b8b2467b7c662df7d",
+        "sha256": "827aa8c095a86ceaf16d51747bada7eef9daed43a7118cf53369691ad1d668bf"
+      },
+      "provenance_gate": {
+        "status": "PASS",
+        "mismatches": [],
+        "provider_resolved_model_observability": "UNKNOWN"
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wave://paper-extraction/skill07-output/3.0.0",
+  "title": "Skill07 single-document experimental-design extraction",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "representation_version", "experiment_instances", "atomic_claims", "projection_metadata", "fields", "experimental_design_object", "field_metadata", "extensions", "conflicts"],
+  "properties": {
+    "contract_version": {"const": "skill07_semantic_contract_v1"},
+    "representation_version": {"const": "skill07_experiment_native_v3"},
+    "experiment_instances": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "object"}
+    },
+    "atomic_claims": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "projection_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["derived_projection", "canonical_source", "legacy_compatibility"],
+      "properties": {
+        "derived_projection": {"const": true},
+        "canonical_source": {"const": "experiment_instances"},
+        "legacy_compatibility": {"const": true}
+      }
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective", "hypothesis", "strain", "genotype", "engineering_method",
+        "experimental_groups", "controls", "culture_conditions", "medium", "dosage",
+        "time", "replicates", "assay", "instruments", "analysis_methods", "outcomes"
+      ],
+      "properties": {
+        "objective": {"$ref": "#/$defs/field"},
+        "hypothesis": {"$ref": "#/$defs/field"},
+        "strain": {"$ref": "#/$defs/field"},
+        "genotype": {"$ref": "#/$defs/field"},
+        "engineering_method": {"$ref": "#/$defs/field"},
+        "experimental_groups": {"$ref": "#/$defs/field"},
+        "controls": {"$ref": "#/$defs/field"},
+        "culture_conditions": {"$ref": "#/$defs/field"},
+        "medium": {"$ref": "#/$defs/field"},
+        "dosage": {"$ref": "#/$defs/field"},
+        "time": {"$ref": "#/$defs/field"},
+        "replicates": {"$ref": "#/$defs/field"},
+        "assay": {"$ref": "#/$defs/field"},
+        "instruments": {"$ref": "#/$defs/field"},
+        "analysis_methods": {"$ref": "#/$defs/field"},
+        "outcomes": {"$ref": "#/$defs/field"}
+      }
+    },
+    "experimental_design_object": {"type": "object"},
+    "field_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective", "hypothesis", "strain", "genotype", "engineering_method",
+        "experimental_groups", "controls", "culture_conditions", "medium", "dosage",
+        "time", "replicates", "assay", "instruments", "analysis_methods", "outcomes"
+      ],
+      "properties": {
+        "objective": {"$ref": "#/$defs/fieldMetadata"},
+        "hypothesis": {"$ref": "#/$defs/fieldMetadata"},
+        "strain": {"$ref": "#/$defs/fieldMetadata"},
+        "genotype": {"$ref": "#/$defs/fieldMetadata"},
+        "engineering_method": {"$ref": "#/$defs/fieldMetadata"},
+        "experimental_groups": {"$ref": "#/$defs/fieldMetadata"},
+        "controls": {"$ref": "#/$defs/fieldMetadata"},
+        "culture_conditions": {"$ref": "#/$defs/fieldMetadata"},
+        "medium": {"$ref": "#/$defs/fieldMetadata"},
+        "dosage": {"$ref": "#/$defs/fieldMetadata"},
+        "time": {"$ref": "#/$defs/fieldMetadata"},
+        "replicates": {"$ref": "#/$defs/fieldMetadata"},
+        "assay": {"$ref": "#/$defs/fieldMetadata"},
+        "instruments": {"$ref": "#/$defs/fieldMetadata"},
+        "analysis_methods": {"$ref": "#/$defs/fieldMetadata"},
+        "outcomes": {"$ref": "#/$defs/fieldMetadata"}
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "required": ["article_type_gate", "document_coverage", "paper_target_strains", "user_target_system"],
+      "properties": {
+        "article_type_gate": {"$ref": "#/$defs/articleTypeGate"},
+        "document_coverage": {"type": "object"},
+        "paper_target_strains": {"type": "array"},
+        "user_target_system": {},
+        "variables": {"type": "object"},
+        "experiment_workflow": {"type": "object"},
+        "design_logic": {"type": "object"}
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/conflict"}
+    }
+  },
+  "$defs": {
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "status", "applicability_status", "confidence", "extraction_method", "evidence_ids", "notes", "inference"],
+      "properties": {
+        "value": {},
+        "status": {"enum": ["reported", "inferred", "unknown"]},
+        "applicability_status": {"enum": ["applicable", "not_applicable", "uncertain"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "extraction_method": {
+          "enum": ["direct_quote", "table_reading", "figure_reading", "cross_section_inference", "not_applicable"]
+        },
+        "evidence_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "notes": {"type": ["string", "null"]},
+        "inference": {
+          "anyOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["method", "rationale"],
+              "properties": {
+                "method": {"type": "string", "minLength": 1},
+                "rationale": {"type": "string", "minLength": 1}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "sourceLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paragraph_id", "section", "page", "figure", "panel", "table", "supplement", "quote", "source_attribution"],
+      "properties": {
+        "paragraph_id": {"type": "string", "minLength": 1},
+        "section": {"type": "string"},
+        "page": {"type": ["integer", "string", "null"]},
+        "figure": {"type": ["string", "null"]},
+        "panel": {"type": ["string", "null"]},
+        "table": {"type": ["string", "null"]},
+        "supplement": {"type": ["string", "null"]},
+        "quote": {"type": "string", "minLength": 1},
+        "source_attribution": {
+          "enum": ["current_article", "included_study", "background_citation", "author_inference", "model_inference"]
+        }
+      }
+    },
+    "fieldMetadata": {
+      "type": "object",
+      "required": ["source_locations", "evidence_role"],
+      "properties": {
+        "source_locations": {"type": "array", "items": {"$ref": "#/$defs/sourceLocation"}},
+        "evidence_role": {"const": "candidate"}
+      }
+    },
+    "articleTypeGate": {
+      "type": "object",
+      "required": ["article_type", "contains_original_experiment", "classification_evidence"],
+      "properties": {
+        "article_type": {
+          "enum": ["primary_research", "review_article", "systematic_review", "meta_analysis", "protocol", "methods_paper", "case_report", "perspective", "other"]
+        },
+        "contains_original_experiment": {"type": "boolean"},
+        "original_experiment_scope": {"type": ["string", "null"]},
+        "classification_evidence": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "classification_uncertainty": {"type": ["string", "null"]}
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "required": ["field_path", "conflict_type", "candidate_values", "sources", "conflict_reason", "review_action"],
+      "properties": {
+        "field_path": {"type": "string", "minLength": 1},
+        "conflict_type": {"enum": ["numeric", "formula", "identity", "scope", "method", "cross_modal", "source_attribution", "other"]},
+        "candidate_values": {"type": "array", "minItems": 2},
+        "sources": {"type": "array", "minItems": 2},
+        "conflict_reason": {"type": "string", "minLength": 1},
+        "review_action": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

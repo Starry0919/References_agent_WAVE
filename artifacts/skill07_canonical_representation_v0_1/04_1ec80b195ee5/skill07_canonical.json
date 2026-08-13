@@ -1,0 +1,1771 @@
+{
+  "status": "succeeded",
+  "model": "kimi-k3",
+  "usage": {
+    "input_tokens": 105707,
+    "output_tokens": 57931
+  },
+  "prompt_chars": 123697,
+  "prompt_build_ms": 53.832999896258116,
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_ms": 803475.1800997183,
+      "error": "Poe Code CLI exited 1: Model: kimi-k3\nWorking directory: D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\.poe-code-cli\\.runtime\\extraction-runs\\paper-extraction-8eyrugqm\nPermission mode: edit\n\n┌   Poe - spawn poe-agent \n✗ Internal server error\nError: Internal server error\n    at Stream.iterator (file:///D:/Users/Starry/Desktop/agent/WAVE_Agent_Platform/.poe-code-cli/.runtime/node_modules/openai/core/streaming.mjs:46:35)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async streamChatCompletionChunks (file:///D:/Users/Starry/Desktop/agent/WAVE_Agent_Platform/.poe-code-cli/.runtime/node_modules/poe-code/dist/index.js:42554:20)\n    at async collectModelResponseEvents (file:///D:/Users/Starry/Desktop/agent/WAVE_Agent_Platform/.poe-code-cli/.runtime/node_modules/poe-code/dist/index.js:40738:20)\n    at async runLoop (file:///D:/Users/Starry/Desktop/agent/WAVE_Agent_Platform/.poe-code-cli/.runtime/node_modules/poe-code/dist/index.js:40461:31)\n    at async execute (file:///D:/Users/Starry/Desktop/agent/WAVE_Agent_Platform/.poe-code-cli/.runtime/node_modules/poe-code/dist/index.js:40290:20)\n│\n■  Error: Internal server error\n│\n●  See logs at C:\\Users\\Starry\\.poe-code\\logs\\errors.log for more details."
+    },
+    {
+      "attempt": 2,
+      "duration_ms": 531896.106199827,
+      "error": null
+    }
+  ],
+  "repairs": [
+    {
+      "repair": 1,
+      "duration_ms": 357516.25260012224,
+      "prompt_chars": 194982,
+      "error": null
+    }
+  ],
+  "normalization_actions": [],
+  "checks": [
+    {
+      "name": "top_level_and_field_schema",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "field_semantic_invariants",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "evidence_role_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "candidate_evidence_anchors_resolve",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "article_type_gate_valid",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "experiment_graph_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "ddr_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "document_coverage_consistent",
+      "passed": true,
+      "required": true
+    }
+  ],
+  "output": {
+    "contract_version": "skill07_semantic_contract_v1",
+    "fields": {
+      "objective": {
+        "value": "Design and demonstrate a novel DERA-based synthetic pathway in E. coli that converts formaldehyde (HCHO) and ethanol into 1,3-propanediol (PDO) via three metabolic modules: an ACALD supply module (ethanol to acetaldehyde), a HCHO supply module, and a DERA-based PDO production module (aldol condensation of HCHO and ACALD to 3-HPA, then reduction to PDO).",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "access_p002",
+          "results_and_discussion_p003",
+          "conclusion_p001"
+        ],
+        "notes": "Objective stated in Abstract, Results and Discussion (pathway design) and Conclusion.",
+        "inference": null
+      },
+      "hypothesis": {
+        "value": "Acetaldehyde (ACALD), not pyruvate, is the real HCHO acceptor in C-C bond formation; the authors hypothesized that an aldolase (DERA) can catalyze the aldol condensation of HCHO and ACALD to form 3-hydroxypropionaldehyde (3-HPA), which can then be reduced to PDO, yielding a theoretically 100% carbon-conserving, vitamin B12-independent PDO pathway.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "results_and_discussion_p001",
+          "access_p014"
+        ],
+        "notes": "Stated as an explicit research question in Results and Discussion; theoretical carbon utilization is an author claim, not a measured value.",
+        "inference": null
+      },
+      "strain": {
+        "value": [
+          {
+            "raw": "E. coli BL21(DE3)",
+            "role": "fermentation/bioconversion host",
+            "note": "parent of all engineered production strains"
+          },
+          {
+            "raw": "E. coli Top10",
+            "role": "routine cloning host"
+          },
+          {
+            "raw": "E. coli BL21(DE3) ΔfrmA / BF16 (BF12 ΔfrmA)",
+            "role": "final production strain with frmA knockout"
+          },
+          {
+            "raw": "BF12",
+            "role": "HpADH1-expressing strain (pRSFduet-DERA_TMA-HpADH1-DhaT)"
+          },
+          {
+            "raw": "BF02",
+            "role": "strain without HpADH1 expression used in ethanol/HCHO bioconversion (Figure 6B); Table 4 row mapping is garbled (see conflicts)"
+          },
+          {
+            "raw": "BF17",
+            "role": "methanol-module strain (pRSFduet-DERA_TMA-MDH2-DhaT)"
+          },
+          {
+            "raw": "BP01-BP10, BF01-BF15",
+            "role": "screening/characterization strains listed in Table 4; exact strain-plasmid mapping unreliable in parsed table"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.6,
+        "extraction_method": "table_reading",
+        "evidence_ids": [
+          "materials_and_methods_p001",
+          "materials_and_methods_p008",
+          "a_in_vivo_dera_assay_p016"
+        ],
+        "notes": "Table 4 (Strains and Plasmids) is row-misaligned in the parsed text: several strain descriptions are shifted between rows (e.g., BF01/BF02 entries conflict with Figure 6 caption). Strain-to-construct mapping requires verification against the original PDF. Confidence lowered accordingly.",
+        "inference": null
+      },
+      "genotype": {
+        "value": "Engineered strains are E. coli BL21(DE3) derivatives carrying codon-optimized, synthesized genes on pET-21a(+) or pRSFduet-1 (T7 promoter): DERA (EC 4.1.2.4) from various sources (E. coli K-12, Thermotoga maritima, Geobacillus thermodenitrificans, Staphylococcus epidermidis, Pyrobaculum aerophilum, Shewanella halifaxensis Rd3BB; plus C47M/C47V mutants of DERA_ECO and C65M of DERA_TMA), DhaT (EC 1.1.1.202) from K. pneumoniae DSM 2026, HpADH1 (EC 1.1.1.1) from Hansenula polymorpha, Mdh2 (EC 1.1.1.244) from B. methanolicus MGA3. HpADH1 was linked behind the DERA gene without an SD sequence. Final strain BF16 = BF12 with chromosomal frmA (HCHO dehydrogenase of the frmRAB system) deleted via CRISPR-Cas9.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.65,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p002",
+          "a_in_vivo_dera_assay_p017"
+        ],
+        "notes": "Gene sources and cloning strategy clearly reported in Methods; per-strain plasmid content in Table 4 is partially garbled (see conflicts). Full codon-optimized sequences and primers are in the unavailable Supporting Information (requires_supplement).",
+        "inference": null
+      },
+      "engineering_method": {
+        "value": [
+          "Heterologous gene overexpression on pET-21a(+) and pRSFduet-1 vectors (T7 promoter, IPTG induction)",
+          "Codon optimization and gene synthesis (GenScript)",
+          "Plasmid construction with Mut Express II Fast Mutagenesis Kit V2; sequence verification by Sanger sequencing (Genewiz)",
+          "CRISPR-Cas9 genome editing to delete frmA (pGRB/pRedCas system, N20 and donor ssDNA)",
+          "Enzyme screening (aldolase panel; DERA origins panel)",
+          "Site-directed mutagenesis (DERA_ECO C47M, C47V; DERA_TMA C65M)",
+          "Resting-cell whole-cell bioconversion (batch and fed-batch with interim HCHO addition)",
+          "In vitro module verification with purified enzymes"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p001",
+          "materials_and_methods_p002",
+          "materials_and_methods_p003",
+          "materials_and_methods_p004"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "experimental_groups": {
+        "value": [
+          "EXP1 aldolase screen: E. coli BL21(DE3) coexpressing DhaT with EcKHG, HsKHG, BtKHG, Yfau, PanB, or DERA_ECO, plus a no-aldolase control (Table 1)",
+          "EXP3 DERA comparison: BL21(DE3) coexpressing DhaT with DERA_TMA, DERA_ECO, DERA_GTH, DERA_SEP, or DERA_PAE (Table 2)",
+          "EXP4 in vitro: purified DERA_ECO, DERA_TMA, DERA_ECO C47M, DERA_ECO C47V, DERA_Rd3BB, DERA_TMA C65M; HCHO tolerance test group (0.3 M HCHO, 2 h) vs control group (0 M HCHO)",
+          "EXP5/EXP6 bioconversion: BF02 (no HpADH1) vs BF12 (HpADH1) vs BF16 (HpADH1 + ΔfrmA), ethanol + HCHO (Figure 6)",
+          "EXP7: BF17 (Mdh2) with methanol + ethanol",
+          "EXP9: BF16 fed-batch with ten interim HCHO additions (Figure 8)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.8,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p004",
+          "a_in_vivo_dera_assay_p005",
+          "a_in_vivo_dera_assay_p007",
+          "a_in_vivo_dera_assay_p016"
+        ],
+        "notes": "Groups reconstructed from Results text, Tables 1-2 and Figure captions; strain-level binding for the Table 1 screen is uncertain due to Table 4 misalignment.",
+        "inference": null
+      },
+      "controls": {
+        "value": [
+          "No-aldolase control in the in vivo screen (Table 1, PDO <0.001 mM)",
+          "HCHO tolerance control group: enzymes treated with 0 M HCHO for 2 h (vs 0.3 M test group)",
+          "Strain without HpADH1 expression (BF02, Figure 6B) as comparator for the ACALD supply module",
+          "Parent strain BF12 as comparator for BF16 (ΔfrmA)",
+          "Unlabeled PDO standard for GC-MS labeling analysis (Figure 4B)",
+          "Solution C (3-HPA without DhaT/NADH conversion) as reference for 3-HPA quantification"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.8,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p008",
+          "a_in_vivo_dera_assay_p007",
+          "a_in_vivo_dera_assay_p017",
+          "a_in_vivo_dera_assay_p004"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "culture_conditions": {
+        "value": "Seed cultures: 4 mL LB + 50 μg/mL kanamycin, 37 °C, 8 h; transferred to 50 mL LB at OD600 0.03, 37 °C until OD600 0.7-0.8; induced with 0.2 mM IPTG and grown at 30 °C for 10 h; cells collected and resuspended to OD600 = 50 in 50 mM Na2HPO4 buffer (pH 7.0); bioconversion shaken at 30 °C, 230 rpm in 10 mL tubes with caps closed to limit oxygen. For protein purification: 100 mL LB, 37 °C to OD600 0.8, induction with 0.2 mM IPTG for 8 h at 30 °C (HpADH1 and DhaT: 24 h at 16 °C); harvest at 4 °C, 4000 rpm, 10 min.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p004"
+        ],
+        "notes": "Bioconversion is a resting-cell (non-growing) system at OD600 = 50.",
+        "inference": null
+      },
+      "medium": {
+        "value": "Growth: Luria-Bertani (LB) medium (tryptone 10 g/L, yeast extract 5 g/L, NaCl 10 g/L), solid medium with 1.5% agar; antibiotics kanamycin 50 μg/mL or ampicillin 100 μg/mL. Bioconversion: 50 mM Na2HPO4 buffer (pH 7.0); for ACALD/HCHO bioconversion with 200 mM glucose, 100 mM HCHO, 100 mM ACALD; for ethanol/HCHO bioconversion with 300 mM ethanol and 100 mM HCHO. Enzyme assays: 20 mM Na2HPO4 buffer (pH 7.0).",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p001",
+          "materials_and_methods_p004",
+          "materials_and_methods_p006"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "dosage": {
+        "value": [
+          "IPTG 0.2 mM (induction)",
+          "Batch ACALD/HCHO bioconversion (5 mL): 100 mM HCHO, 100 mM ACALD, 200 mM glucose",
+          "Batch ethanol/HCHO bioconversion (5 mL): 100 mM HCHO, 300 mM ethanol (Figure 6 initial concentrations)",
+          "Fed-batch: initial 100 mM HCHO + 300 mM ethanol; HCHO added in ten interim additions (text: total 100 mM; Figure 8 caption wording differs - see conflicts)",
+          "Preliminary trial: 10 mM HCHO and 10 mM ACALD",
+          "In vitro DERA activity: 20 mM ACALD with 5-200 mM HCHO; Km determination at 1-10 mM HCHO; tolerance pretreatment 300 mM HCHO for 2 h, reaction at 50 mM HCHO + 20 mM ACALD",
+          "3-HPA standard preparation: 1 mg/mL DERA with 20 mM HCHO + 20 mM ACALD"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.8,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "materials_and_methods_p004",
+          "results_and_discussion_p004",
+          "a_in_vivo_dera_assay_p020",
+          "materials_and_methods_p006"
+        ],
+        "notes": "Dosages are bound to distinct experiment instances and must not be merged; fed-batch HCHO total vs per-addition amount is conflicting (see conflicts).",
+        "inference": null
+      },
+      "time": {
+        "value": [
+          "Seed culture 8 h; post-induction growth 10 h (bioconversion cells); purification cultures induced 8 h (HpADH1/DhaT 24 h)",
+          "Preliminary DERA_ECO trial: PDO measured after 2 h",
+          "DERA comparison bioconversion: 12 h",
+          "HCHO tolerance pretreatment: 2 h",
+          "Methanol-module bioconversion (BF17): 42 h",
+          "Fed-batch: PDO 17.35 mM at 24 h; methanol 56.47 mM at 30 h",
+          "3-HPA standard synthesis: 5 h at 30 °C; DhaT conversion 30 min"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "materials_and_methods_p004",
+          "results_and_discussion_p006",
+          "a_in_vivo_dera_assay_p018",
+          "a_in_vivo_dera_assay_p020"
+        ],
+        "notes": "Each time value is bound to its specific experiment instance.",
+        "inference": null
+      },
+      "replicates": {
+        "value": null,
+        "status": "unknown",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "not_applicable",
+        "evidence_ids": [],
+        "notes": "Results report mean ± error values (e.g., 8.20 ± 0.04 mM) but the available text never states replicate number (n) or replicate type (biological/technical/independent). Replicate structure may be defined in the unavailable Supporting Information (requires_supplement). No value guessed.",
+        "inference": null
+      },
+      "assay": {
+        "value": [
+          "PDO and diol byproducts: GC-MS (method as in Wang et al. 2019), including 13C-labeling verification with 13C-HCHO, 13C-ACALD and 13C-ethanol",
+          "HCHO, ACALD, 3-HPA: HPLC with C18 column after derivatization with O-benzylhydroxylamine hydrochloride, UV detection at 215 nm",
+          "Glucose, 3-HP, ethanol, methanol, lactate, formate, acetate: HPLC with Aminex HPX-87H column and RID detector",
+          "DERA activity: monitoring 3-HPA production in aldol condensation at 30 °C",
+          "3-HPA quantification: enzymatic conversion to PDO by DhaT/NADH and GC-MS difference method (solutions A/B/C)",
+          "Protein concentration: BCA protein assay kit"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p010",
+          "materials_and_methods_p006"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "instruments": {
+        "value": [
+          "HPLC with Aminex HPX-87 H Column (300 × 7.8 mm, Bio-Rad), RID detector (35 °C), column 65 °C, 5 mM H2SO4 mobile phase, 0.6 mL/min",
+          "HPLC with C18 column (4.6 × 150 mm, 5 μm, Shimadzu, Japan), UV 215 nm, column 30 °C, gradient 8-80% B over 25 min at 1 mL/min",
+          "GC-MS (instrument model not reported in available text)",
+          "Ni2+-NTA column and 10 kDa ultrafiltration tubes (protein purification)",
+          "Centrifuges (4000 rpm harvest; 12000 rpm lysate clarification)",
+          "Shaking incubator (30 °C, 230 rpm)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "materials_and_methods_p010",
+          "materials_and_methods_p005"
+        ],
+        "notes": "GC-MS instrument model and HPLC system model are not specified in the available text.",
+        "inference": null
+      },
+      "analysis_methods": {
+        "value": [
+          "Km of DERA_TMA for HCHO estimated by measuring activity at low HCHO concentrations (1-10 mM); comparison with literature Km values of HPS and KHB (Table 3)",
+          "3-HPA quantified indirectly: difference between 3-HPA peak areas of solutions B (DhaT/NADH-converted) and C (buffer reference) equals PDO measured by GC-MS",
+          "Isotope-label verification by comparing GC-MS peak ratios around m/z 162.1/163.1 between unlabeled standard and 13C-labeled samples",
+          "Diol byproducts identified by GC-MS spectra (m/z 178.1, 206.1, 221.1) with 13C-ethanol labeling"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.75,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "a_in_vivo_dera_assay_p010",
+          "materials_and_methods_p009",
+          "results_and_discussion_p004"
+        ],
+        "notes": "No statistical tests, significance criteria, error-bar definition, or analysis software are reported in the available text; that component is unknown (possibly in unavailable Supporting Information). The 3-HPA peak diagrams referenced in materials_and_methods_p009 are in Figure S2 of the unavailable Supporting Information (requires_supplement); the quantification principle itself is stated in the main text.",
+        "inference": null
+      },
+      "outcomes": {
+        "value": [
+          "Aldolase screen: DERA_ECO gave 1.021 mM PDO (Table 1); preliminary trial 1.02 ± 0.03 mM (77.6 ± 2.28 mg/L) PDO from 10 mM HCHO + 10 mM ACALD after 2 h; 13C labeling confirmed PDO derives from added HCHO and ACALD",
+          "DERA comparison: DERA_TMA best with 8.20 ± 0.04 mM PDO and 0.082 mol/mol yield after 12 h; DERA_TMA condensation is the module bottleneck; DhaT supports at least 10x DERA_TMA activity without 3-HPA accumulation",
+          "DERA_TMA specific activity 1.27 ± 0.02 U/mg at 10 mM HCHO; Km for HCHO 2.54 ± 0.07 mM, for ACALD <1 mM; after 2 h pretreatment with 0.3 M HCHO, residual activities: DERA_TMA 61%, DERA_ECO wt 50%, DERA_ECO C47V 85%, C47M 99%, Rd3BB 94%; DERA_TMA C65M lost 70% activity; aldol condensation suppressed at high reaction HCHO concentrations",
+          "HpADH1 module: PDO increased from 5.67 ± 0.25 mM (0.43 g/L), 0.057 mol/mol (no HpADH1) to 10.91 ± 0.08 mM (0.83 g/L), 0.11 mol/mol (BF12)",
+          "BF16 (ΔfrmA): 12.75 ± 0.44 mM (0.97 ± 0.03 g/L), 0.128 mol/mol, reduced HCHO consumption vs BF12",
+          "Methanol module (BF17): only 1.05 mM PDO after 42 h with considerable other diols; methanol dehydrogenase activity is the bottleneck",
+          "Diol byproducts identified: 1,3-butanediol, 3,5-dihydroxypentanal (C5), 3,5-dihydroxyhexanal (C6); formed only when HCHO nearly consumed; HCHO above 0.6 mM strongly inhibits ACALD self-condensation and condensation with 3-HPA in vitro",
+          "Fed-batch BF16: PDO 17.35 ± 0.58 mM (1.32 ± 0.04 g/L), 0.096 mol/mol at 24 h, no diol byproducts, no significant ACALD/3-HPA accumulation; 56.47 mM methanol at 30 h and some formate still formed despite ΔfrmA"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "results_and_discussion_p006",
+          "a_in_vivo_dera_assay_p011",
+          "a_in_vivo_dera_assay_p017",
+          "a_in_vivo_dera_assay_p019",
+          "a_in_vivo_dera_assay_p020",
+          "access_p006"
+        ],
+        "notes": "Each outcome is bound to its strain/condition instance; abstract compresses outcomes from different experiments (see conflicts).",
+        "inference": null
+      }
+    },
+    "experimental_design_object": {
+      "biological_objects": [
+        {
+          "paper_label": "E. coli BL21(DE3)",
+          "object_type": "host",
+          "normalized_name": "Escherichia coli BL21(DE3)",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "fermentation/bioconversion host",
+          "evidence": "materials_and_methods_p001"
+        },
+        {
+          "paper_label": "E. coli Top10",
+          "object_type": "host",
+          "normalized_name": "Escherichia coli Top10",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "cloning host",
+          "evidence": "materials_and_methods_p001"
+        },
+        {
+          "paper_label": "E. coli ∆frmA / BF16",
+          "object_type": "engineered_strain",
+          "normalized_name": "E. coli BL21(DE3) ΔfrmA carrying pRSFduet-DERA_TMA-HpADH1-DhaT (BF12 ΔfrmA)",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "lineage": "derived from BF12 by CRISPR-Cas9 frmA deletion",
+          "role": "final PDO production strain",
+          "evidence": "materials_and_methods_p008; materials_and_methods_p011; a_in_vivo_dera_assay_p017"
+        },
+        {
+          "paper_label": "BF12",
+          "object_type": "engineered_strain",
+          "normalized_name": "E. coli BL21(DE3) pRSFduet-DERA_TMA-HpADH1-DhaT",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "lineage": "parent of BF16",
+          "evidence": "materials_and_methods_p008; a_in_vivo_dera_assay_p016"
+        },
+        {
+          "paper_label": "BF02",
+          "object_type": "engineered_strain",
+          "normalized_name": null,
+          "normalization_basis": null,
+          "identity_status": "unknown",
+          "lineage": "uncertain: Table 4 row alignment garbled; Figure 6 caption describes BF02 as the strain without HpADH1 expression",
+          "evidence": "materials_and_methods_p008; a_in_vivo_dera_assay_p016",
+          "resolution_rationale": "conflicting identity between Table 4 (pRSFduet-HsKHG-DhaT) and Figure 6B usage; flagged in conflicts"
+        },
+        {
+          "paper_label": "BF17",
+          "object_type": "engineered_strain",
+          "normalized_name": "E. coli BL21(DE3) pRSFduet-DERA_TMA-MDH2-DhaT",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "methanol-based HCHO supply module strain",
+          "evidence": "materials_and_methods_p011; a_in_vivo_dera_assay_p018"
+        },
+        {
+          "paper_label": "BP01-BP10",
+          "object_type": "engineered_strain",
+          "identity_status": "reported",
+          "role": "DERA expression strains for screening/purification; per-strain plasmid mapping garbled in parsed Table 4",
+          "evidence": "materials_and_methods_p008"
+        },
+        {
+          "paper_label": "DERA_ECO",
+          "object_type": "construct",
+          "normalized_name": "deoxyribose-5-phosphate aldolase from E. coli K-12 (NP_418798.1)",
+          "identity_status": "reported",
+          "evidence": "results_and_discussion_p004; results_and_discussion_p008"
+        },
+        {
+          "paper_label": "DERA_TMA",
+          "object_type": "construct",
+          "normalized_name": "deoxyribose-5-phosphate aldolase from Thermotoga maritima",
+          "identity_status": "reported",
+          "role": "selected aldolase for the pathway",
+          "evidence": "a_in_vivo_dera_assay_p005"
+        },
+        {
+          "paper_label": "DERA_GTH / DERA_SEP / DERA_PAE / Rd3BB",
+          "object_type": "construct",
+          "identity_status": "reported",
+          "role": "alternative DERAs tested (from G. thermodenitrificans, S. epidermidis, P. aerophilum, S. halifaxensis)",
+          "evidence": "a_in_vivo_dera_assay_p005; a_in_vivo_dera_assay_p007"
+        },
+        {
+          "paper_label": "DERA_ECO C47M / C47V; DERA_TMA C65M",
+          "object_type": "construct",
+          "identity_status": "reported",
+          "role": "site-directed mutants tested for aldehyde tolerance",
+          "evidence": "a_in_vivo_dera_assay_p007"
+        },
+        {
+          "paper_label": "DhaT",
+          "object_type": "construct",
+          "normalized_name": "PDO dehydrogenase (EC 1.1.1.202) from Klebsiella pneumoniae DSM 2026",
+          "identity_status": "reported",
+          "role": "3-HPA to PDO reduction",
+          "evidence": "materials_and_methods_p002"
+        },
+        {
+          "paper_label": "HpADH1",
+          "object_type": "construct",
+          "normalized_name": "alcohol dehydrogenase 1 (EC 1.1.1.1) from Hansenula polymorpha",
+          "identity_status": "reported",
+          "role": "ethanol to ACALD oxidation (ACALD supply module)",
+          "evidence": "materials_and_methods_p002; a_in_vivo_dera_assay_p011"
+        },
+        {
+          "paper_label": "Mdh2",
+          "object_type": "construct",
+          "normalized_name": "methanol dehydrogenase (EC 1.1.1.244) from Bacillus methanolicus MGA3",
+          "identity_status": "reported",
+          "role": "methanol to HCHO oxidation (HCHO supply module)",
+          "evidence": "materials_and_methods_p002; a_in_vivo_dera_assay_p018"
+        },
+        {
+          "paper_label": "pET-21a(+) / pRSFduet-1",
+          "object_type": "plasmid",
+          "identity_status": "reported",
+          "role": "expression vectors (AmpR/KanR, T7 promoter)",
+          "evidence": "materials_and_methods_p001"
+        },
+        {
+          "paper_label": "pGRB / pRedCas / pGRB-sg-PfrmA",
+          "object_type": "plasmid",
+          "identity_status": "reported",
+          "role": "CRISPR-Cas9 frmA deletion system",
+          "evidence": "materials_and_methods_p003; materials_and_methods_p011"
+        }
+      ],
+      "experiment_instances": [
+        {
+          "experiment_id": "EXP1",
+          "name": "In vivo aldolase screen for HCHO+ACALD condensation",
+          "objects": [
+            "E. coli BL21(DE3) coexpressing DhaT with EcKHG/HsKHG/BtKHG/Yfau/PanB/DERA_ECO; no-aldolase control"
+          ],
+          "intervention": "heterologous coexpression; addition of HCHO and ACALD",
+          "conditions": "preliminary trial: 10 mM HCHO + 10 mM ACALD, 2 h",
+          "readout": "PDO concentration (Table 1); GC-MS",
+          "outcome": "DERA_ECO 1.021 mM (1.02 ± 0.03 mM, 77.6 ± 2.28 mg/L); control <0.001 mM",
+          "evidence": [
+            "results_and_discussion_p004",
+            "results_and_discussion_p008"
+          ]
+        },
+        {
+          "experiment_id": "EXP2",
+          "name": "13C-labeling verification of PDO origin",
+          "objects": [
+            "DERA-expressing BL21(DE3) with DhaT"
+          ],
+          "intervention": "13C-HCHO or 13C-ACALD as cosubstrate",
+          "readout": "GC-MS peak ratios m/z 162.1/163.1 (Figure 4)",
+          "outcome": "peak ratios match unlabeled standard; PDO synthesis depends on added HCHO and ACALD",
+          "evidence": [
+            "results_and_discussion_p004",
+            "a_in_vivo_dera_assay_p004"
+          ]
+        },
+        {
+          "experiment_id": "EXP3",
+          "name": "Comparison of DERA origins in vivo",
+          "objects": [
+            "BL21(DE3) coexpressing DhaT with DERA_TMA/ECO/GTH/SEP/PAE"
+          ],
+          "intervention": "heterologous coexpression",
+          "conditions": "12 h bioconversion",
+          "readout": "PDO concentration and yield (Table 2)",
+          "outcome": "DERA_TMA highest: 8.20 ± 0.04 mM, 0.082 mol/mol; DERA_TMA is module bottleneck",
+          "evidence": [
+            "results_and_discussion_p006",
+            "a_in_vivo_dera_assay_p005"
+          ]
+        },
+        {
+          "experiment_id": "EXP4",
+          "name": "In vitro DERA characterization (activity, HCHO tolerance, Km)",
+          "objects": [
+            "purified DERA_ECO, DERA_TMA, DERA_ECO C47M, DERA_ECO C47V, DERA_Rd3BB, DERA_TMA C65M"
+          ],
+          "intervention": "enzyme assays at 5-200 mM HCHO (20 mM ACALD); 0.3 M HCHO 2 h pretreatment (test) vs 0 M (control); Km at 1-10 mM HCHO",
+          "conditions": "30 °C, 20 mM Na2HPO4 pH 7.0",
+          "readout": "3-HPA production (specific activity U/mg)",
+          "outcome": "DERA_TMA 1.27 ± 0.02 U/mg at 10 mM HCHO; Km(HCHO) 2.54 ± 0.07 mM; mutants more tolerant to pretreatment but activity drops with reaction HCHO",
+          "evidence": [
+            "a_in_vivo_dera_assay_p007",
+            "a_in_vivo_dera_assay_p009",
+            "a_in_vivo_dera_assay_p010",
+            "materials_and_methods_p006"
+          ]
+        },
+        {
+          "experiment_id": "EXP5",
+          "name": "ACALD supply module from ethanol via HpADH1",
+          "objects": [
+            "BF02 (no HpADH1)",
+            "BF12 (HpADH1)",
+            "purified HpADH1/DERA_TMA/DhaT in vitro"
+          ],
+          "intervention": "HpADH1 expression; whole-cell bioconversion with 300 mM ethanol + 100 mM HCHO; 13C-ethanol verification",
+          "readout": "PDO titer/yield; GC-MS (Figure 6A-C)",
+          "outcome": "5.67 ± 0.25 mM (0.057 mol/mol) without HpADH1 vs 10.91 ± 0.08 mM (0.11 mol/mol) with HpADH1",
+          "evidence": [
+            "a_in_vivo_dera_assay_p011",
+            "a_in_vivo_dera_assay_p016"
+          ],
+          "dependency": "in vitro module verification shown in Figure S1C,D (supplement unavailable)"
+        },
+        {
+          "experiment_id": "EXP6",
+          "name": "frmA knockout effect on PDO production",
+          "objects": [
+            "BF16 (BF12 ΔfrmA)",
+            "parent BF12"
+          ],
+          "intervention": "CRISPR-Cas9 deletion of frmA",
+          "conditions": "batch bioconversion, 100 mM HCHO + 300 mM ethanol",
+          "readout": "PDO titer/yield (Figure 6D)",
+          "outcome": "12.75 ± 0.44 mM (0.97 ± 0.03 g/L), 0.128 mol/mol; reduced HCHO consumption",
+          "evidence": [
+            "a_in_vivo_dera_assay_p012",
+            "a_in_vivo_dera_assay_p017",
+            "materials_and_methods_p003"
+          ]
+        },
+        {
+          "experiment_id": "EXP7",
+          "name": "Methanol-based HCHO supply module",
+          "objects": [
+            "BF17 (Mdh2)"
+          ],
+          "intervention": "Mdh2 expression; whole-cell bioconversion with methanol + ethanol",
+          "conditions": "42 h",
+          "readout": "PDO and diols",
+          "outcome": "only 1.05 mM PDO; considerable other diols; Mdh activity is bottleneck (Figure S1E, supplement unavailable)",
+          "evidence": [
+            "a_in_vivo_dera_assay_p018"
+          ]
+        },
+        {
+          "experiment_id": "EXP8",
+          "name": "Diol byproduct identification and HCHO dependence",
+          "objects": [
+            "bioconversion samples; in vitro DERA_TMA/DhaT system"
+          ],
+          "intervention": "13C-ethanol labeling; in vitro byproduct assay at varied HCHO/ACALD concentrations",
+          "readout": "GC-MS (Figure 7)",
+          "outcome": "1,3-BDO, C5 and C6 diol aldehydes identified; byproducts form only when HCHO nearly consumed; HCHO >0.6 mM strongly inhibits ACALD self-condensation and condensation with 3-HPA",
+          "evidence": [
+            "a_in_vivo_dera_assay_p019",
+            "a_in_vivo_dera_assay_p026"
+          ]
+        },
+        {
+          "experiment_id": "EXP9",
+          "name": "Fed-batch bioconversion with interim HCHO addition",
+          "objects": [
+            "BF16 resting cells, OD600 = 50"
+          ],
+          "intervention": "ten interim HCHO additions to maintain HCHO level",
+          "conditions": "initial 100 mM HCHO + 300 mM ethanol; 30 °C, 230 rpm; 40 mL system (text) / 50 mL tube (Methods) - see conflicts",
+          "readout": "PDO, methanol, formate, byproducts (Figure 8)",
+          "outcome": "17.35 ± 0.58 mM (1.32 ± 0.04 g/L), 0.096 mol/mol at 24 h; no diol byproducts; methanol 56.47 mM at 30 h; some formate still formed",
+          "evidence": [
+            "a_in_vivo_dera_assay_p020",
+            "conclusion_p002",
+            "materials_and_methods_p004"
+          ]
+        }
+      ],
+      "ddr_annotations": [
+        {
+          "ddr_id": "DDR1",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Authors actively designed and implemented a new three-module metabolic pathway using ACALD as the HCHO acceptor; passes Q1 (pathway construction), Q2 (implemented in this study), Q3 (genuine design choice).",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Use acetaldehyde as the aldol acceptor for HCHO via DERA to form 3-HPA, then reduce 3-HPA to PDO via DhaT, assembled as a three-module pathway (ACALD supply, HCHO supply, DERA-based PDO production) in E. coli BL21(DE3).",
+          "design_action_rationale": "Pathway design stated in results_and_discussion_p001/p003 and access_p014; implemented and verified in EXP1/EXP2.",
+          "trigger_observation": "Prior observation (from the authors' previous KHB-based work) that the carboxyl group of pyruvate is not involved in the aldol condensation and is removed in the next step, indicating acetaldehyde is the real HCHO receptor (results_and_discussion_p001). Precedes the design action.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (in vivo PDO formation with 13C verification, Figure 4, Table 1) supporting feasibility; the design premise itself derives from reaction-mechanism analysis of the prior pathway.",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "The choice of ACALD as acceptor is derived from analysis of the KHB reaction mechanism (pyruvate carboxyl not participating), stated before pathway construction.",
+          "reason_nature_tags": [
+            "reaction_mechanism_analysis",
+            "carbon_conservation",
+            "pathway_design"
+          ],
+          "generalizable_rule": {
+            "role": "single_paper_rule_candidate",
+            "statement": "Acetaldehyde can serve as an aldol acceptor for formaldehyde via DERA to form 3-hydroxypropionaldehyde, enabling a theoretically carbon-loss-free route to 1,3-propanediol when combined with a 3-HPA reductase such as DhaT.",
+            "tested_scope": "E. coli BL21(DE3) resting-cell bioconversion coexpressing DERA (DERA_ECO or DERA_TMA) and DhaT with HCHO+ACALD (10-100 mM) or HCHO+ethanol; in vitro with purified enzymes at 30 °C, pH 7.0.",
+            "excluded_scope": "Other hosts, other aldehyde acceptors, other aldolases not tested, growth-coupled fermentation, industrially relevant titers, thermodynamic driving-force limitations (authors note all three reactions are reversible).",
+            "evidence_basis": "mechanistic_inference plus experimental demonstration (Table 1, Figures 4 and 6)"
+          },
+          "alternatives_considered": "Pyruvate-based KHB pathway (prior work, ref 16) has carbon loss via decarboxylation; chemical aldol condensation of HCHO and ACALD requires >250 °C with side reactions (dehydration, oligomerization, polymerization) and was rejected in favor of biocatalysis (results_and_discussion_p002).",
+          "strategy_categories": [
+            "pathway_construction",
+            "carbon_conservation_design",
+            "C1_utilization"
+          ]
+        },
+        {
+          "ddr_id": "DDR2",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Selection of DERA_TMA after a screening campaign; passes Q1 (enzyme choice implemented as expression constructs), Q2 (screen performed in this study), Q3 (active selection among candidates).",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Screen four DERAs from heat-resistant bacteria (plus DERA_ECO) coexpressed with DhaT in E. coli BL21(DE3) and select DERA_TMA from Thermotoga maritima for the PDO production module.",
+          "design_action_rationale": "results_and_discussion_p006: 'we tested four kinds of DERAs from heat-resistant bacteria since it was suggested that heat resistance is related to aldehyde tolerance'; DERA_TMA gave highest PDO (8.20 ± 0.04 mM, Table 2).",
+          "trigger_observation": "DERA_ECO catalyzed the condensation (1.02 mM PDO preliminary trial) but a more efficient DERA was sought; literature suggested heat resistance relates to aldehyde tolerance (ref 34). Precedes the selection.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: screening_result / experimental_measurement (Table 2 in vivo comparison; Figure 5 in vitro activity and tolerance data).",
+          "reason_nature": "screening_derived",
+          "reason_nature_rationale": "Final choice based on measured in vivo PDO titers and in vitro specific activity/HCHO tolerance; the initial candidate pool was motivated by a literature suggestion (heat resistance ~ aldehyde tolerance).",
+          "reason_nature_tags": [
+            "enzyme_screening",
+            "aldehyde_tolerance",
+            "literature_guided_candidate_pool"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": "DERA_ECO, DERA_GTH, DERA_SEP, DERA_PAE tested in vivo (Table 2); DERA_Rd3BB tested in vitro; KHG-type aldolases and Yfau/PanB screened earlier (Table 1) with low or no PDO.",
+          "strategy_categories": [
+            "enzyme_screening_selection"
+          ]
+        },
+        {
+          "ddr_id": "DDR3",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Choice of DhaT from K. pneumoniae DSM 2026 as the 3-HPA reductase; passes Q1/Q2/Q3 but with sparse in-paper rationale.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Coexpress NADH-dependent PDO oxidoreductase DhaT from Klebsiella pneumoniae DSM 2026 to reduce 3-HPA to PDO.",
+          "design_action_rationale": "DhaT used in all coexpression constructs (results_and_discussion_p004, citing ref 32; materials_and_methods_p002).",
+          "trigger_observation": "The designed pathway requires reduction of 3-HPA to PDO (pathway design, access_p014). Precedes enzyme choice.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: literature_precedent (ref 32) for the choice; experimental_measurement in this study shows DhaT supports at least ten times DERA_TMA activity without 3-HPA accumulation (results_and_discussion_p006).",
+          "reason_nature": "literature_analogy",
+          "reason_nature_rationale": "No explicit comparison of reductases is reported; DhaT was adopted from prior literature (dha regulon, ref 32). In-paper rationale is minimal, so no bounded rule candidate is emitted despite the allowed reason nature.",
+          "reason_nature_tags": [
+            "literature_precedent",
+            "redox_cofactor_NADH"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": null,
+          "strategy_categories": [
+            "pathway_construction",
+            "cofactor_balance"
+          ]
+        },
+        {
+          "ddr_id": "DDR4",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Design and implementation of the ACALD supply module; passes Q1 (HpADH1 expression construct), Q2 (this study), Q3 (explicit design choice with stated rationale).",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Generate ACALD in situ from ethanol by expressing alcohol dehydrogenase HpADH1 from Hansenula polymorpha, instead of direct ACALD addition.",
+          "design_action_rationale": "a_in_vivo_dera_assay_p011: direct ACALD addition 'would be too expensive or inconvenient for the operation and harmful for the biocatalyst' and NADH balance is critical; HpADH1 chosen as showing good performance on ethanol to acetaldehyde (refs 39, 40).",
+          "trigger_observation": "Recognized cost/operational/toxicity problems of direct ACALD addition and the need for NADH balance, stated before module construction (a_in_vivo_dera_assay_p011).",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: literature_precedent (refs 39,40) for enzyme choice; experimental_measurement in this study (in vitro module verification Figure S1C,D - supplement unavailable; in vivo improvement 5.67 to 10.91 mM, Figure 6B,C; 13C-ethanol verification Figure 6A).",
+          "reason_nature": "literature_analogy",
+          "reason_nature_rationale": "HpADH1 selected based on reported performance in literature; the in situ ACALD-from-ethanol concept additionally rests on practical and cofactor-balance reasoning stated by the authors.",
+          "reason_nature_tags": [
+            "literature_precedent",
+            "cofactor_balance",
+            "substrate_toxicity_avoidance",
+            "in_situ_intermediate_supply"
+          ],
+          "generalizable_rule": {
+            "role": "single_paper_rule_candidate",
+            "statement": "Expressing HpADH1 to oxidize ethanol can supply acetaldehyde in situ for DERA-based PDO synthesis in E. coli whole-cell bioconversion, avoiding direct acetaldehyde feeding and roughly doubling PDO titer under the tested conditions.",
+            "tested_scope": "E. coli BL21(DE3) resting cells (OD600 = 50) coexpressing DERA_TMA, HpADH1 and DhaT; 300 mM ethanol + 100 mM HCHO; 30 °C, 230 rpm, limited oxygen, batch mode.",
+            "excluded_scope": "Other ADHs (not tested), other hosts, growing-cell fermentation, other alcohol substrates, aerobic/anaerobic regimes other than the tested limited-oxygen setup.",
+            "evidence_basis": "literature_analogy plus experimental measurement (Figure 6; a_in_vivo_dera_assay_p011)"
+          },
+          "alternatives_considered": "Direct ACALD addition (rejected: expensive, inconvenient, harmful to the biocatalyst); other ADHs mentioned as a large pool but not individually compared.",
+          "strategy_categories": [
+            "substrate_supply_module",
+            "cofactor_balance",
+            "pathway_construction"
+          ]
+        },
+        {
+          "ddr_id": "DDR5",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Deletion of the competing endogenous HCHO-consuming pathway; passes Q1 (genome editing), Q2 (performed in this study), Q3 (flux-redirection design choice).",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Delete the frmA gene (encoding HCHO dehydrogenase of the frmRAB system) in E. coli BL21(DE3) using CRISPR-Cas9, yielding strain BF16.",
+          "design_action_rationale": "a_in_vivo_dera_assay_p012/p017; materials_and_methods_p003.",
+          "trigger_observation": "The relatively low PDO yield from ethanol and HCHO is partly caused by conversion of HCHO to formate, as previously reported in the authors' earlier study (a_in_vivo_dera_assay_p012). Stated before the knockout.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (BF16 vs BF12: 12.75 ± 0.44 mM, 0.128 mol/mol vs 10.91 ± 0.08 mM, 0.11 mol/mol; reduced HCHO consumption, Figure 6D).",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "Rationale is a stated metabolic mechanism (frmA encodes HCHO dehydrogenase converting HCHO to formate; removing it redirects HCHO toward PDO) established before the edit.",
+          "reason_nature_tags": [
+            "competing_pathway_knockout",
+            "flux_redirection",
+            "CRISPR_Cas9"
+          ],
+          "generalizable_rule": {
+            "role": "single_paper_rule_candidate",
+            "statement": "Deleting frmA reduces endogenous formaldehyde consumption to formate and increases PDO titer and yield in DERA-based whole-cell bioconversion in E. coli BL21(DE3).",
+            "tested_scope": "Resting-cell batch bioconversion of BF12 vs BF16 with 100 mM HCHO + 300 mM ethanol at 30 °C, OD600 = 50.",
+            "excluded_scope": "Other hosts, other HCHO-assimilation pathways, complete elimination of formate formation (formate was still produced in fed-batch despite ΔfrmA), growth-coupled conditions.",
+            "evidence_basis": "mechanistic_inference plus experimental measurement (Figure 6D; a_in_vivo_dera_assay_p017)"
+          },
+          "alternatives_considered": null,
+          "strategy_categories": [
+            "competing_pathway_knockout",
+            "flux_redirection",
+            "genome_editing"
+          ]
+        },
+        {
+          "ddr_id": "DDR6",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Construction and testing of DERA point mutants for aldehyde tolerance; passes Q1 (site-directed mutagenesis), Q2 (constructed in this study), Q3 (design choice guided by literature mechanism). Outcome did not lead to adoption in the final strain.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Construct and purify DERA_ECO C47M, DERA_ECO C47V and DERA_TMA C65M mutants and test their tolerance toward HCHO.",
+          "design_action_rationale": "a_in_vivo_dera_assay_p007; plasmids listed in Table 4 (materials_and_methods_p011).",
+          "trigger_observation": "Literature: ACALD forms a covalent bond with C47 of DERA_ECO causing irreversible deactivation, and C47M alleviates inactivation (Dick et al. 2016); a C47V mutant from S. halifaxensis retains activity at >400 mM ACALD (Huffman et al. 2019). Cited before mutant testing.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: literature_precedent for the mutation choice; experimental_measurement for outcomes (residual activities after 0.3 M HCHO pretreatment: C47V 85%, C47M 99%, Rd3BB 94% vs DERA_TMA 61%, DERA_ECO wt 50%; DERA_TMA C65M lost 70% activity).",
+          "reason_nature": "literature_analogy",
+          "reason_nature_rationale": "Mutation sites directly adopted from published mechanism studies. Results were mixed (pretreatment tolerance improved but activity still suppressed by reaction HCHO; TMA C65M largely inactive), so no positive rule candidate is emitted.",
+          "reason_nature_tags": [
+            "site_directed_mutagenesis",
+            "enzyme_stability",
+            "literature_precedent",
+            "negative_or_mixed_outcome"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": "Wild-type DERA_ECO and DERA_TMA; DERA_Rd3BB (naturally tolerant variant) tested in parallel.",
+          "strategy_categories": [
+            "protein_engineering",
+            "enzyme_stability_engineering"
+          ]
+        },
+        {
+          "ddr_id": "DDR7",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Process-level design choice to control HCHO concentration; passes Q1 (fed-batch intervention), Q2 (this study), Q3 (deliberate strategy based on prior measurement).",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Perform fed-batch whole-cell bioconversion with ten interim HCHO additions to keep HCHO concentration above approximately 0.6 mM, eliminating diol byproducts.",
+          "design_action_rationale": "a_in_vivo_dera_assay_p019 ('the HCHO concentration was thus kept over 0.6 mM to eliminate the formation of diol byproducts') and a_in_vivo_dera_assay_p020 (fed-batch implementation, Figure 8).",
+          "trigger_observation": "Diol byproducts were found to be generated only when HCHO was nearly completely consumed, and in vitro assays showed HCHO above 0.6 mM strongly inhibits ACALD self-condensation and its condensation with 3-HPA (a_in_vivo_dera_assay_p019, Figure 7F). Measured before the fed-batch design.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (in vitro HCHO-dependence assay Figure 7F; fed-batch outcome: no diol byproducts, PDO 17.35 ± 0.58 mM, 0.096 mol/mol at 24 h).",
+          "reason_nature": "mechanistic_inference",
+          "reason_nature_rationale": "The feeding strategy is directly derived from the measured inhibitory effect of HCHO on the byproduct-forming DERA side reactions; mechanism (competing condensations) characterized in this study before the process change.",
+          "reason_nature_tags": [
+            "byproduct_suppression",
+            "substrate_concentration_control",
+            "fed_batch",
+            "toxicity_vs_byproduct_tradeoff"
+          ],
+          "generalizable_rule": {
+            "role": "single_paper_rule_candidate",
+            "statement": "Maintaining formaldehyde above approximately 0.6 mM suppresses DERA_TMA-catalyzed formation of 1,3-BDO, C5 and C6 diol byproducts and increases PDO titer in whole-cell bioconversion with intermittent HCHO feeding.",
+            "tested_scope": "BF16 resting cells (OD600 = 50), initial 100 mM HCHO + 300 mM ethanol, ten interim HCHO additions, 30 °C, 230 rpm, limited oxygen, 24-30 h.",
+            "excluded_scope": "Continuous feeding strategies, other hosts or enzymes, high-HCHO regimes that suppress the aldol condensation itself (activity drops at high reaction HCHO), methanol/formate side fluxes (methanol reached 56.47 mM at 30 h).",
+            "evidence_basis": "mechanistic_inference plus experimental measurement (Figures 7F and 8)"
+          },
+          "alternatives_considered": "Methanol-based in situ HCHO supply via Mdh2 (EXP7) was attempted as an alternative HCHO supply module but gave only 1.05 mM PDO due to Mdh bottleneck.",
+          "strategy_categories": [
+            "process_optimization",
+            "fed_batch_feeding",
+            "byproduct_suppression"
+          ]
+        },
+        {
+          "ddr_id": "DDR8",
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Implementation of a methanol-based HCHO supply module; passes Q1 (Mdh2 expression), Q2 (this study), Q3 (design choice), although it underperformed.",
+          "decision_gates": {
+            "q1_intervention": true,
+            "q2_current_study": true,
+            "q3_decisionhood": true
+          },
+          "design_action": "Express methanol dehydrogenase Mdh2 (EC 1.1.1.244) from B. methanolicus MGA3 in strain BF17 to oxidize methanol to HCHO as an in situ HCHO supply module.",
+          "design_action_rationale": "a_in_vivo_dera_assay_p018: 'To develop a HCHO supply module, methanol was first used as substrate. We selected a methanol dehydrogenase (Mdh2...)'.",
+          "trigger_observation": "The stated goal of developing a HCHO supply module (modular pathway design, results_and_discussion_p003). No specific prior observation motivating Mdh2 over alternatives is reported.",
+          "evidence_grading": "hard",
+          "evidence_grading_rationale": "evidence_basis_type: experimental_measurement (whole-cell bioconversion gave only 1.05 mM PDO after 42 h; in vitro verification identified Mdh activity as bottleneck, Figure S1E - supplement unavailable).",
+          "reason_nature": "rationale_not_reported",
+          "reason_nature_rationale": "The paper states the selection of Mdh2 but reports no reason for choosing this specific enzyme; rationale therefore coded as not reported.",
+          "reason_nature_tags": [
+            "methanol_utilization",
+            "hcho_supply_module",
+            "bottleneck_identified",
+            "negative_or_mixed_outcome"
+          ],
+          "generalizable_rule": null,
+          "alternatives_considered": null,
+          "strategy_categories": [
+            "substrate_supply_module",
+            "methanol_utilization"
+          ]
+        }
+      ],
+      "replicate_structure_note": "No replicate counts or replicate types are reported anywhere in the available text; error bars are shown without definition. Fields depending on replicate structure remain unknown (requires_supplement possible).",
+      "value_role_note": "Planned vs implemented vs measured values are kept distinct where the text allows; substrate concentrations are implemented values, PDO titers are measured outcomes. No planned-but-unimplemented values were found except the general future-work statements in the Conclusion."
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "access_p002",
+            "section": "ACCESS (Abstract)",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we present a novel synthetic pathway in E. coli to convert HCHO and ethanol into 1,3-propanediol (PDO) using a deoxyribose-5-phosphate aldolase (DERA)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Our systematic approach to engineer E. coli for PDO production using C1 compounds is based on a modular strain design of first an ACALD supply module using ethanol to provide ACALD and NADH, second a HCHO supply module, and finally a DERA-based PDO production module",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "conclusion_p001",
+            "section": "■ CONCLUSION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we designed and demonstrated a DERA-based new metabolic pathway for the biosynthesis of PDO from formaldehyde and ethanol",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p001",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we asked the question whether there is an aldolase that can catalyze the aldol condensation ofHCHO and ACALD, forming thereby 3-HPA, which can then be used for PDO production",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "access_p014",
+            "section": "ACCESS (Introduction)",
+            "page": null,
+            "figure": "Figure 1",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the new pathway has theoretically a 100% utilization of the carbons in the substrates",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "E. coli Top10 was used for routine cloning procedures while E. coli BL21(DE3) with its mutant were used as fermentation host",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p008",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 4",
+            "supplement": null,
+            "quote": "Table 4. Strains and Plasmids Used for This Study",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p016",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "(B) Bioconversion using strain BF02 without HpADH1 expression. (C) Bioconversion using the strain BF12 with the HpADH1 expression. (D) Bioconversion using strain BF16 with the HpADH1 expression and knockout of the gene frmA",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p002",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Genes encoding Deoxyribose-5-phosphate aldolase (DERA, EC 4.1.2.4) from diferent sources, PDO dehydrogenase (DhaT, EC 1.1.1.202) from K. pneumoniae DSM 2026, methanol dehydrogenase (Mdh2, EC 1.1.1.244) from B. methanolicus MGA3 and alcohol dehydrogenase (HpADH1, EC 1.1.1.1) from Hansenula polymorpha were codon-optimized and synthesized",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p002",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the gene encoding HpADH1 was linked behind the gene encoding DERA without SD sequence",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p017",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "BL21(DE3) which encodes a HCHO dehydrogenase of the frmRAB system was successfully deleted using the CRISPR-Cas9 method",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "E. coli vectors pET-21a (+), and pRSFduet-1 were used for gene overexpression",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p002",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "All recombinant plasmids in this study were constructed with Mut Express II Fast Mutagenesis Kit V2",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p003",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "CRISPR-Cas9 method was used to delete the gene frmA of E. coli BL21(DE3), which encodes HCHO dehydrogenase",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The resuspended cells were shaken at $3 0 ^ { \\circ } \\mathrm { C } , 2 3 0$ rpm in 10 mL tubes with the caps closed to limit oxygen availability",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p004",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 1",
+            "supplement": null,
+            "quote": "diferent kinds of aldolases as listed in Table 1 were first screened for HCHO and ACALD condensation. They were coexpressed with DhaT from K. pneumoniae in E. coli BL21(DE3) for PDO synthesis",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p005",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 2",
+            "supplement": null,
+            "quote": "Table 2. Comparison of DERAs from Diferent Origins to Utilize HCHO and ACALD for in Vivo PDO Synthesis in E. coli Coexpressing DERA and DhaT",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p007",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We also treated them with 0.3 M (test group) or 0 M (control group) HCHO for 2 h",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p016",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The initial concentrations of ethanol and HCHO were 300 mM and 100 mM",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p008",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 1",
+            "supplement": null,
+            "quote": "Control",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p007",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "0.3 M (test group) or 0 M (control group) HCHO for 2 h",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p017",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": "D",
+            "table": null,
+            "supplement": null,
+            "quote": "representing significant increases compared with the parent strain BF12",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p004",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 4",
+            "panel": "B",
+            "table": null,
+            "supplement": null,
+            "quote": "(B) Unlabeled PDO standard",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Seed cultures were prepared in 4 mL of LB medium ... and grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ until $\\mathrm { O D } _ { 6 0 0 }$ reached 0.7−0.8. 0.2 mM Isopropyl-β-D-thiogalactopyranoside (IPTG) was added to induce protein expression, and the cultures continued growing at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 10 h",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We made each of the bioconversions reach $\\mathrm { O D } _ { 6 0 0 } = 5 0$",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Luria−Bertani (LB) liquid medium (tryptone 10 g/L, yeast extract 5 $\\mathrm { g / L }$ and NaCl 10 g/L) and solid medium (1.5% agar) with kanamycin (50 μg/mL) or ampicillin (100 μg/mL) were used for cell growth",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "cells were resuspended in 5 mL of 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.0) containing 200 mM of glucose, 100 mM HCHO, and 100 mM ACALD",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "20 mM ACALD, 5−200 mM HCHO and certain amount of pure enzyme in a 20 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.0)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "containing 100 mM HCHO and 300 mM ethanol",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p004",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "in a preliminary trial with 10 mM of HCHO and ACALD added after 2 h",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p020",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 8",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "a total volume of 100 mM HCHO was added in ten times interval",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "enzymes were treated by 300 mM HCHO (test group) or 0 mM HCHO (control group) for 2 h, then the reaction proceeded under 50 mM HCHO and 20 mM ACALD",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "time": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "at $\\bar { 3 7 } ^ { \\circ } \\mathrm { C }$ for 8 h",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p006",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 2",
+            "supplement": null,
+            "quote": "reaching $8 . 2 0 \\pm 0 . 0 4$ mM and 0.082 mol/mol respectively after 12 h of bioconversion",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p018",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After 42 h, PDO reached only 1.05 mM",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p020",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 8",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "increased to $1 7 . 3 5 \\pm 0 . 5 8$ mM $\\left( 1 . 3 2 \\pm 0 . 0 4 \\ : \\mathrm { g / L } \\right)$ with a yield of 0.096 mol/mol at 24 h",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "replicates": {
+        "source_locations": [],
+        "evidence_role": "candidate"
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p010",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Quantification of glucose, 3-HP, ethanol, methanol, lactate, formate and acetate were carried out by high performance liquid chromatography (HPLC) equipped with an Aminex HPX-87 H Column",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p010",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Concentrations of HCHO, ACALD, and 3-HPA were measured by HPLC with a C18 column (4.6 × 150 mm, 5 μm, Shimadzu, Japan) after derivatization",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p010",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "PDO and other diol byproducts were analyzed by GC-MS as described in Wang et al. (2019)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "DERAs’ activities were determined by monitoring the production of 3-HPA in the aldol condensation reaction ofHCHO and ACALD at $3 0 ^ { \\circ } \\mathrm { C }$",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "materials_and_methods_p010",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Aminex HPX-87 H Column (300 × 7.8 mm, Bio-Red) using 5 mM ${ \\mathrm { H } } _ { 2 } { \\mathrm { S O } } _ { 4 }$ as the mobile phase with a flow rate of0.6 mL/min. The column temperature was $6 5 ^ { \\circ } \\mathrm { C }$ with the RID detector temperature $3 5 ~ ^ { \\circ } \\mathrm { C }$",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p005",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The supernatants were purified with $\\mathrm { N i } ^ { 2 + } .$ NTA column and desalted with 10 kDa ultrafiltration tube. The concentrations of the enzymes were quantified by BCA protein assay kit",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p010",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 3",
+            "supplement": null,
+            "quote": "the $K _ { m }$ value of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ for HCHO was estimated by measuring more data under low HCHO concentrations $\\left( 1 { - } 1 0 \\ \\mathrm { m M } \\right)$",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p009",
+            "section": "■ MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the diference between the 3-HPA peak areas of solutions B and C corresponds to the measured concentration of PDO",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p004",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": "Figure 4",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the ratio of the peaks around $m / z 1 6 2 . 1$ and $m / z \\ : 1 6 3 . 1 $ are almost the same in the unlabeled standard sample and the <sup>13</sup>C-labled samples",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p006",
+            "section": "■ RESULTS AND DISCUSSION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 2",
+            "supplement": null,
+            "quote": "The engineered strain with incorporation of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ from Thermotoga maritima gave the highest PDO concentration and yield from HCHO and ACALD, reaching $8 . 2 0 \\pm 0 . 0 4$ mM and 0.082 mol/mol respectively after 12 h of bioconversion",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p011",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The PDO formation was significantly improved from $5 . 6 7 \\pm 0 . 2 5$ mM (0.43 g/L) and 0.057 mol/mol using a strain without HpADH1 expression to 10.91 ± 0.08 mM (0.83 g/L) and 0.11 mol/mol with HpADH1 expression",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p017",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 6",
+            "panel": "D",
+            "table": null,
+            "supplement": null,
+            "quote": "The new mutant strain BF16 had a reduced HCHO consumption, and PDO reached a concentration of $1 2 . 7 5 \\pm 0 . 4 4$ mM $( 0 . 9 7 \\pm 0 . 0 3 \\mathrm { \\ g / L ) }$ and a yield of 0.128 mol/ mol",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p019",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 7",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "It was found that a HCHO concentration above 0.6 mM can strongly inhibit the self-condensation of ACALD and its condensation with 3-HPA",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p020",
+            "section": "A. in vivo DERA assay",
+            "page": null,
+            "figure": "Figure 8",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "no diol byproducts were produced and the production ofPDO was increased to $1 7 . 3 5 \\pm 0 . 5 8$ mM",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "access_p006",
+            "section": "ACCESS (Abstract)",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the concentration and yield of PDO were increased from initially 5.67 mM (0.43 g/L) and 0.057 mol/mol to 17.35 mM (1.32 g/L) and 0.096 mol/mol in bioconversion of ethanol and HCHO with resting E. coli cells",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "contains_original_experiment": true,
+        "original_experiment_scope": "main_body",
+        "classification_evidence": [
+          "access_p002",
+          "access_p006",
+          "materials_and_methods_p001",
+          "results_and_discussion_p004",
+          "a_in_vivo_dera_assay_p005",
+          "conclusion_p001"
+        ],
+        "classification_uncertainty": null
+      },
+      "document_coverage": {
+        "available_sections": [
+          "title/authors",
+          "abstract",
+          "introduction (within ACCESS section)",
+          "results_and_discussion",
+          "a_in_vivo_dera_assay (results continuation with figure captions and Tables 2-3)",
+          "conclusion",
+          "materials_and_methods (including Tables 1-4 inline)",
+          "supporting_information index only",
+          "author_information",
+          "notes",
+          "acknowledgments",
+          "references"
+        ],
+        "available_modalities": {
+          "body_text": true,
+          "figure_captions": true,
+          "figure_visuals": false,
+          "tables": "inline HTML in paragraphs (Tables 1-4); table metadata present",
+          "supplement": false,
+          "source_data_or_code": false
+        },
+        "missing_or_unparsed": [
+          "Figure image content (only captions available; no visual inspection performed)",
+          "Supporting Information PDF (only index: purified enzyme module verification Figures S1/S2, primers Table S3, codon-optimized gene sequences)",
+          "Table 4 rows misaligned in parsed text (strain/plasmid descriptions shifted)",
+          "Page numbers not available in the parsed representation"
+        ],
+        "blocked_fields_or_uses": [
+          "replicate counts/types and statistical methods (not in main text; possibly in SI)",
+          "exact primer/N20 sequences and codon-optimized gene sequences (SI Table S3) - blocks exact construct re-synthesis",
+          "in vitro module verification data (Figure S1) and 3-HPA peak diagrams (Figure S2) - blocks verification of supplement-only claims",
+          "GC-MS instrument model and detailed settings - blocks exact analytical reproduction"
+        ]
+      },
+      "paper_target_strains": [
+        {
+          "raw_identity": "E. coli BL21(DE3)",
+          "normalized_identity": "Escherichia coli BL21(DE3)",
+          "role": "fermentation/bioconversion host",
+          "identity_status": "reported"
+        },
+        {
+          "raw_identity": "E. coli Top10",
+          "normalized_identity": "Escherichia coli Top10",
+          "role": "cloning host",
+          "identity_status": "reported"
+        },
+        {
+          "raw_identity": "BF16 (BF12 ∆frmA)",
+          "normalized_identity": "E. coli BL21(DE3) ΔfrmA pRSFduet-DERA_TMA-HpADH1-DhaT",
+          "role": "final PDO production strain",
+          "identity_status": "reported"
+        },
+        {
+          "raw_identity": "BF12",
+          "normalized_identity": "E. coli BL21(DE3) pRSFduet-DERA_TMA-HpADH1-DhaT",
+          "role": "parent production strain",
+          "identity_status": "reported"
+        },
+        {
+          "raw_identity": "BF17",
+          "normalized_identity": "E. coli BL21(DE3) pRSFduet-DERA_TMA-MDH2-DhaT",
+          "role": "methanol module strain",
+          "identity_status": "reported"
+        },
+        {
+          "raw_identity": "BF02",
+          "normalized_identity": null,
+          "role": "no-HpADH1 comparator (identity disputed, see conflicts)",
+          "identity_status": "unknown"
+        }
+      ],
+      "user_target_system": null,
+      "variables": {
+        "independent": [
+          "aldolase type/origin",
+          "DERA point mutations (C47M/C47V/C65M)",
+          "HpADH1 expression (present/absent)",
+          "frmA genotype (wt/Δ)",
+          "HCHO concentration (in vitro 0-200 mM; feeding strategy)",
+          "cosubstrate regime (ACALD+HCHO vs ethanol+HCHO vs methanol+ethanol)"
+        ],
+        "dependent": [
+          "PDO concentration and yield",
+          "3-HPA formation (DERA activity)",
+          "diol byproduct formation",
+          "HCHO consumption",
+          "methanol and formate formation"
+        ],
+        "controlled": [
+          "host background BL21(DE3)",
+          "OD600 = 50 resting cells",
+          "30 °C, 230 rpm, limited oxygen",
+          "Na2HPO4 buffer pH 7.0"
+        ]
+      },
+      "experiment_workflow": {
+        "order": [
+          "EXP1 aldolase screen",
+          "EXP2 13C verification",
+          "EXP3 DERA origin comparison",
+          "EXP4 in vitro DERA characterization",
+          "EXP5 ACALD supply module (HpADH1)",
+          "EXP6 frmA knockout (BF16)",
+          "EXP7 methanol module (BF17)",
+          "EXP8 byproduct identification",
+          "EXP9 fed-batch with interim HCHO addition"
+        ],
+        "logic": "modular pathway implementation: PDO production module first, then ACALD supply module, then HCHO supply/control module"
+      },
+      "design_logic": {
+        "modules": [
+          "ACALD supply module (ethanol → ACALD via HpADH1)",
+          "HCHO supply module (external HCHO feeding; methanol → HCHO via Mdh2 attempted)",
+          "DERA-based PDO production module (HCHO + ACALD → 3-HPA → PDO via DERA_TMA and DhaT)"
+        ],
+        "ddr_annotations_location": "experimental_design_object.ddr_annotations",
+        "note": "All generalizable_rule entries are single-paper rule candidates only; none are verified or approved engineering rules. Skill08 verification and Skill09 quality scoring were not performed."
+      }
+    },
+    "conflicts": [
+      {
+        "field_path": "fields.strain / experimental_design_object.biological_objects (Table 4 strain-plasmid mapping)",
+        "conflict_type": "identity",
+        "candidate_values": [
+          "BF02 = E. coli BL21(DE3) pRSFduet-HsKHG-DhaT (Table 4 as parsed, materials_and_methods_p008)",
+          "BF02 = strain without HpADH1 expression used for ethanol/HCHO bioconversion (Figure 6 caption, a_in_vivo_dera_assay_p016; text a_in_vivo_dera_assay_p011)"
+        ],
+        "sources": [
+          "materials_and_methods_p008 (Table 4)",
+          "a_in_vivo_dera_assay_p016 (Figure 6 caption)",
+          "a_in_vivo_dera_assay_p011 (Results text)"
+        ],
+        "conflict_reason": "Table 4 rows are misaligned in the parsed text: descriptions are shifted across rows (e.g., BF01 row contains 'HpADH1 from Hansenula polymorpha' together with pRSFduet-BtKHG-DhaT; BF17 row splits across the Plasmids header). The Figure 6 caption assigns BF02 a role inconsistent with the parsed Table 4 description. The true row alignment cannot be resolved from the available representation.",
+        "review_action": "Verify Table 4 row alignment against the original PDF before relying on any BP/BF strain-to-plasmid mapping; do not use parsed Table 4 mappings for strain reconstruction without manual confirmation."
+      },
+      {
+        "field_path": "fields.outcomes (abstract vs results scope)",
+        "conflict_type": "scope",
+        "candidate_values": [
+          "Abstract: deleting frmA and controlling HCHO at about 0.6 mM increased PDO from initially 5.67 mM (0.057 mol/mol) to 17.35 mM (0.096 mol/mol) (access_p006)",
+          "Results: 5.67 mM is the strain without HpADH1 (Figure 6B); 12.75 mM/0.128 mol/mol is BF16 batch (Figure 6D); 17.35 mM/0.096 mol/mol is BF16 fed-batch (Figure 8); HCHO was kept 'over 0.6 mM', not 'about 0.6 mM' (a_in_vivo_dera_assay_p011, p017, p019, p020)"
+        ],
+        "sources": [
+          "access_p006 (Abstract)",
+          "a_in_vivo_dera_assay_p011",
+          "a_in_vivo_dera_assay_p017",
+          "a_in_vivo_dera_assay_p019",
+          "a_in_vivo_dera_assay_p020"
+        ],
+        "conflict_reason": "The abstract compresses three distinct experiments (HpADH1 addition, frmA deletion, fed-batch HCHO control) into a single before/after comparison and states 'about 0.6 mM' where the Results state 'over 0.6 mM'. Instance-level values in the Results are authoritative for binding outcomes to strains and conditions.",
+        "review_action": "Bind outcomes only at experiment-instance level (EXP5/EXP6/EXP9); treat the abstract numbers as a compressed summary, not as one experiment."
+      },
+      {
+        "field_path": "fields.dosage (fed-batch HCHO addition amount)",
+        "conflict_type": "numeric",
+        "candidate_values": [
+          "A total of 100 mM HCHO added in ten interim additions (a_in_vivo_dera_assay_p020)",
+          "100 mM HCHO added in ten times interval (Figure 8 caption, conclusion_p002, readable as 100 mM per addition)"
+        ],
+        "sources": [
+          "a_in_vivo_dera_assay_p020 (Results text)",
+          "conclusion_p002 (Figure 8 caption)"
+        ],
+        "conflict_reason": "The Results text states a total volume/amount of 100 mM HCHO split into ten additions, while the Figure 8 caption wording ('100 mM HCHO were added in ten times interval') can be read as 100 mM per addition. The two readings differ tenfold in total HCHO dose.",
+        "review_action": "Check the original PDF text and Figure 8 axis/annotation to determine whether 100 mM is the total or the per-addition amount."
+      },
+      {
+        "field_path": "experimental_design_object.experiment_instances.EXP9.conditions (fed-batch working volume)",
+        "conflict_type": "numeric",
+        "candidate_values": [
+          "40 mL whole-cell bioconversion system (a_in_vivo_dera_assay_p020)",
+          "Cells resuspended in 50 mL tube of 50 mM Na2HPO4 buffer for fed-batch (materials_and_methods_p004)"
+        ],
+        "sources": [
+          "a_in_vivo_dera_assay_p020 (Results text)",
+          "materials_and_methods_p004 (Methods)"
+        ],
+        "conflict_reason": "Results state a 40 mL bioconversion system while Methods describe resuspension in a 50 mL tube; these may be working volume vs tube capacity, but the available text does not clarify.",
+        "review_action": "Verify fed-batch working volume in the original PDF; treat 40 mL as system volume and 50 mL as tube size only after confirmation."
+      }
+    ]
+  }
+}

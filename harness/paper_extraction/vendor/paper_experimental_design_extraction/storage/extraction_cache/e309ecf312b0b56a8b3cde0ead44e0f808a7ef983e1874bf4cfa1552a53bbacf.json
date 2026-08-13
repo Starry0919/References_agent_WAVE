@@ -1,0 +1,1003 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Establish modular synthetic microbial ecosystems in E. coli that realize different ecological interactions (competition and symbiosis) by reconfiguring the layout between a quorum-sensing communication module and a toxin-antitoxin effect module, and further build inducible synthetic ecosystems (Ara/aTc) to regulate subpopulation ratios over a wide range.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_reading_of_abstract_introduction_and_results",
+        "evidence_ids": [
+          "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p008",
+          "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p012",
+          "introduction_p006",
+          "results_and_discussion_p025"
+        ],
+        "notes": "Author-stated aim; paper_claim level."
+      },
+      "hypothesis": {
+        "value": "Reconfiguring cis- vs trans-acting QS activation of the ccd toxin-antitoxin effect module between two strains can convert interaction topology (competition <-> symbiosis), and replacing self-inducing QS promoters of HSL synthases with inducible promoters enables external, quantitative control of subpopulation ratios.",
+        "status": "inferred",
+        "confidence": 0.85,
+        "extraction_method": "synthesis_of_stated_design_rationale",
+        "evidence_ids": [
+          "introduction_p006",
+          "results_and_discussion_p008",
+          "results_and_discussion_p025"
+        ],
+        "inference": {
+          "method": "author_design_rationale_restatement",
+          "rationale": "Paper states aims and design logic but no explicit single hypothesis sentence; hypothesis reconstructed from 'we aimed to establish...' and the module-reconfiguration rationale."
+        },
+        "notes": "model_inference, not a verbatim paper statement."
+      },
+      "strain": {
+        "value": "Experimental host: E. coli Top10 (TOP10) for all synthetic ecosystems; E. coli DH5a for plasmid construction only. Engineered strains: competitive CG01, CG02 (GFP) and CR01, CR02 (RFP); symbiotic SG01 (GFP), SR01 (RFP); inducible CGi, CRi, SGi, SRi; No QS Control strains NG and NR; unnamed control strains unable to produce signals (Supplementary Figure S7).",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "full_text_strain_search_methods_results_figure_captions",
+        "evidence_ids": [
+          "methods_p001",
+          "methods_p002",
+          "results_and_discussion_p002",
+          "results_and_discussion_p007",
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p016",
+          "results_and_discussion_p038",
+          "results_and_discussion_p039",
+          "results_and_discussion_p042"
+        ],
+        "notes": "Exact genotypes, plasmids, RBSs and promoters are in Supplementary Tables S1-S2 (not provided): requires_supplement. Orthogonal tra* and las QS systems were established in the authors' previous work (ref 30), i.e., pre-existing parts."
+      },
+      "genotype": {
+        "value": "Circuit-level genotype (main text only): CG = intact tra* system self-inducing ccdA + partial las system controlling ccdB + genome-integrated GFP; CR = intact las system self-inducing ccdA + partial tra* system controlling ccdB + genome-integrated RFP; SG = intact las system self-inducing ccdB + partial tra* system controlling ccdA + GFP; SR = intact tra* system self-inducing ccdB + partial las system controlling ccdA + RFP; CGi = CG with EsaI synthase promoter replaced by Ara-inducible promoter; CRi = CR with LasI promoter replaced by aTc-inducible promoter; SGi = SG with aTc-inducible promoter regulating LasI; SRi = SR with EsaI promoter replaced by Ara-inducible promoter; NG/NR = toxin-antitoxin system without QS systems. GFP/RFP integrated via CRIM plasmid method with helper pAH69; multicopy clones selected.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "circuit_description_from_results_and_methods",
+        "evidence_ids": [
+          "results_and_discussion_p002",
+          "results_and_discussion_p007",
+          "results_and_discussion_p038",
+          "results_and_discussion_p039",
+          "results_and_discussion_p042",
+          "methods_p002"
+        ],
+        "notes": "Exact plasmids, RBS strengths and promoter sequences are deferred to Supplementary Tables S1/S2 and are blocked_pending_supplement for strain reconstruction. Text mentions both 'tra* system/TraR(W)' and 'EsaI' for the 3OC6HSL module; see conflicts."
+      },
+      "engineering_method": {
+        "value": "Modular genetic-circuit design: two orthogonal HSL-based QS systems (tra*, las) as communication module; ccd operon toxin-antitoxin (CcdA/CcdB) as effect module; reconfiguration of cis/trans activation layout to switch ecological interaction; RBS engineering of HSL synthases, ccdA and ccdB to tune signal synthesis rate and effect-module expression; replacement of QS promoters of HSL synthases with L-arabinose- or aTc-inducible promoters to build inducible ecosystems; CRIM-based chromosomal integration of GFP/RFP reporters; selection of representative strains by growth/fluorescence characterization.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "methods_and_results_synthesis",
+        "evidence_ids": [
+          "results_and_discussion_p001",
+          "results_and_discussion_p002",
+          "results_and_discussion_p008",
+          "results_and_discussion_p009",
+          "results_and_discussion_p025",
+          "results_and_discussion_p038",
+          "methods_p002"
+        ],
+        "notes": "RBS variant libraries were screened; only selected representative strains are characterized in main text."
+      },
+      "experimental_groups": {
+        "value": [
+          "exp_comp_design: construction of CG and CR strain families (competitive ecosystem).",
+          "exp_comp_liquid: single-strain liquid characterization of CG01, CG02, CR01, CR02 with/without 3OC6HSL or 3OC12HSL.",
+          "exp_comp_coculture_liquid: pairwise CGxCR cocultures, four combinations (CG01/CR01, CG01/CR02, CG02/CR01, CG02/CR02).",
+          "exp_comp_plate: agar-plate coculture of the four CGxCR combinations under four spatial distributions (same position, adjacent, CR surrounded by CG, CG surrounded by CR).",
+          "exp_sym_liquid: single-strain characterization of SG01 and SR01 with/without HSLs; SG01+SR01 coculture at different inoculation ratios; dilution-stability test; coculture with signal-deficient control strains; 72 h time-course coexistence.",
+          "exp_sym_plate: agar-plate coculture of SG01 and SR01 without inducer (adjacent, in contact, SG01 surrounded by SR01).",
+          "exp_inducible: coculture of CGi+CRi and SGi+SRi in 24-well plates with inducer Combinations I-IV; flow-cytometric subpopulation ratio measurement.",
+          "exp_noqs_control: NG+NR coculture (toxin-antitoxin without QS) and dominant-strain switch attempt vs inducible competitive ecosystem."
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_section_experiment_instantiation",
+        "evidence_ids": [
+          "results_and_discussion_p009",
+          "results_and_discussion_p010",
+          "results_and_discussion_p011",
+          "results_and_discussion_p014",
+          "results_and_discussion_p016",
+          "results_and_discussion_p017",
+          "results_and_discussion_p022",
+          "results_and_discussion_p023",
+          "results_and_discussion_p040",
+          "results_and_discussion_p041",
+          "results_and_discussion_p042"
+        ],
+        "notes": "Inducer Combination I-IV exact concentrations are in Supplementary Table S5 (requires_supplement); main text gives only ranges."
+      },
+      "controls": {
+        "value": [
+          "No-inducer groups in single-strain HSL characterization (baseline growth).",
+          "Single-strain monocultures as reference for coculture comparisons (Figure 4c,d green/red lines).",
+          "Signal-deficient control strains cocultured with SG01 or SR01 (both unable to grow; Supplementary Figure S7) - negative control for cross-protection.",
+          "No QS Control system: NG and NR strains expressing toxin-antitoxin without QS; used as control for growth buffering and dominant-strain switch (Supplementary Figures S15-S17).",
+          "Single-strain growth on agar plates (Supplementary Figures S4, S9)."
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "results_text_control_instantiation",
+        "evidence_ids": [
+          "results_and_discussion_p010",
+          "results_and_discussion_p017",
+          "results_and_discussion_p021",
+          "results_and_discussion_p042",
+          "results_and_discussion_p011"
+        ],
+        "notes": "Key quantitative control data reside in supplementary figures not available here."
+      },
+      "culture_conditions": {
+        "value": "Seed culture: single colony into 5 mL LB with appropriate antibiotics and corresponding HSL, 220 rpm, 37 C, 12 h. Liquid characterization: 2% seeds washed 3x, inoculated into 24-well microassay plate with 1.5 mL LB, 37 C, vigorous shaking. Agar plate: 5 uL washed sample dripped individually or in combination, incubated overnight. Flow cytometry: coculture 12 h in 24-well plate before sampling; cells washed and diluted to OD<0.1 in PBS. All ratio regulation performed in 1.5 mL culture volume.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "methods_direct",
+        "evidence_ids": [
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "results_and_discussion_p043"
+        ],
+        "notes": null
+      },
+      "medium": {
+        "value": "Luria-Bertani (LB) broth: 5 g/L yeast extract, 10 g/L tryptone, 10 g/L NaCl; LB agar = LB broth + 15 g/L agar. Antibiotics for plasmid maintenance/screening: chloramphenicol 34 ug/mL, kanamycin 25 ug/mL, ampicillin 100 ug/mL.",
+        "status": "reported",
+        "confidence": 0.98,
+        "extraction_method": "methods_direct",
+        "evidence_ids": [
+          "methods_p001"
+        ],
+        "notes": null
+      },
+      "dosage": {
+        "value": "HSL inducers: 10 uM 3OC6HSL (inhibitory), 100 nM 3OC6HSL (no inhibitory effect on CR strains); 3OC12HSL added at concentrations shown in figures (exact gradient values in figures/supplement). Inducible ecosystems: Ara increased 0 -> 1300 uM and aTc decreased 1000 -> 0 ng/mL across Combinations I-IV (exact per-combination values in Supplementary Table S5). Inoculum: 2% seeds; agar drops 5 uL. Antibiotics as in medium field. Supplier/catalog: 3OC6HSL Sigma K3255; 3OC12HSL Sigma O9139; aTc TaKaRa 631310; Ara Sigma 101253904.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "methods_and_results_direct",
+        "evidence_ids": [
+          "methods_p001",
+          "results_and_discussion_p010",
+          "results_and_discussion_p040",
+          "methods_p003",
+          "methods_p004"
+        ],
+        "notes": "Per-combination inducer concentrations requires_supplement (Table S5); HSL gradient concentrations for Figure 2/4 characterization are only in figure axes (images not machine-readable here)."
+      },
+      "time": {
+        "value": "Seed culture 12 h (37 C, 220 rpm). Flow-cytometry coculture 12 h. CR02 completely inhibited within 12 h under 10 uM 3OC6HSL. Symbiotic stability: population proportion tracked for 72 h; dilution experiment through two dilutions. Agar plates incubated overnight.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "methods_and_results_direct",
+        "evidence_ids": [
+          "methods_p003",
+          "methods_p005",
+          "results_and_discussion_p010",
+          "results_and_discussion_p017",
+          "methods_p004"
+        ],
+        "notes": "Sampling intervals along growth curves not stated in text."
+      },
+      "replicates": {
+        "value": "Figures 2 and 4: means +/- SD of three experiments (replicate type not explicitly defined; likely independent culture replicates). Figures 3, 5, 6: data shown are from one representative sample of three independent biological replicates; all three replicates of flow-cytometry ratio experiments in Supplementary Figures S11/S12.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "figure_captions_and_results",
+        "evidence_ids": [
+          "results_and_discussion_p006",
+          "results_and_discussion_p014",
+          "results_and_discussion_p021",
+          "results_and_discussion_p023",
+          "results_and_discussion_p037",
+          "results_and_discussion_p041"
+        ],
+        "notes": "'Three experiments' (Fig 2/4) replicate_type=unresolved; 'three independent biological replicates' explicitly stated only for Figs 3, 5, 6."
+      },
+      "assay": {
+        "value": "Growth-curve fluorescence monitoring (GFP/RFP) as indirect strain-growth readout in coculture (OD600 cannot distinguish strains and is confounded by dead cells); OD600 cell density; agar-plate fluorescence imaging of spatial coculture patterns; flow cytometry for subpopulation ratios (FSC/SSC gating, 20000 events/sample, FITC channel for GFP, PE-Texas Red channel for RFP; quadrants: Q1=RFP, Q3=GFP, Q4=impurities/dead cells).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "methods_results_figure_caption",
+        "evidence_ids": [
+          "results_and_discussion_p009",
+          "methods_p003",
+          "methods_p004",
+          "methods_p005",
+          "results_and_discussion_p037"
+        ],
+        "notes": null
+      },
+      "instruments": {
+        "value": "Multi-detection microplate reader Synergy HT (BioTek, USA) for cell density and fluorescence; multifunctional gel imager for agar-plate photographs (model not specified); flow cytometer (vendor/model not specified).",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "methods_direct",
+        "evidence_ids": [
+          "methods_p003",
+          "methods_p004",
+          "methods_p005"
+        ],
+        "notes": "Flow cytometer and gel imager models unknown."
+      },
+      "analysis_methods": {
+        "value": "Qualitative comparison of growth/fluorescence curves across inducer conditions; identification of dominant strain via subpopulation ratios; flow-cytometric quadrant quantification of GFP/RFP subpopulations; qualitative spatial-interaction analysis on plates (distance-dependent growth); time-course proportion analysis over 72 h; dominant-strain switch test comparing inducible competitive ecosystem vs No QS Control.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "results_and_methods_synthesis",
+        "evidence_ids": [
+          "results_and_discussion_p010",
+          "results_and_discussion_p012",
+          "results_and_discussion_p017",
+          "results_and_discussion_p037",
+          "results_and_discussion_p041",
+          "results_and_discussion_p042",
+          "methods_p005"
+        ],
+        "notes": "No statistical hypothesis tests reported; only means +/- SD and representative samples (authors_significance_heuristic)."
+      },
+      "outcomes": {
+        "value": "Competitive ecosystem: CGs and CRs mutually inhibited growth; dominant strain tunable via HSL synthesis rate and effect-module expression (CR01 dominant in Combinations 1 and 3, CG01 dominant in Combination 2, both inhibited in Combination 4); distance-dependent interaction on solid medium. Symbiotic ecosystem: SG01 and SR01 mutually promoted growth, coculture fluorescence exceeded single strains, stable coexistence over 72 h and after two dilutions; no growth with signal-deficient control strains. Inducible competitive ecosystem: CGi proportion increased 22.2% -> 92.8% and CRi decreased 71.3% -> 3.14% across inducer Combinations I-IV. Inducible symbiotic ecosystem: SGi increased 12.2% -> 84.4%, SRi decreased 81.1% -> 10.4%; relatively stable dynamics. No QS Control: growth significantly inhibited and dominant-strain switch not achieved, indicating QS is key to population regulation. Regulation achieved in 1.5 mL culture volume with simplified culture conditions vs microfluidic systems.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "results_direct",
+        "evidence_ids": [
+          "results_and_discussion_p012",
+          "results_and_discussion_p013",
+          "results_and_discussion_p015",
+          "results_and_discussion_p017",
+          "results_and_discussion_p024",
+          "results_and_discussion_p041",
+          "results_and_discussion_p042",
+          "results_and_discussion_p043"
+        ],
+        "notes": "Ratio values are direct_observation from Figure 6e,f; mechanistic explanations (e.g., HSL diffusion limitation on plates) are author_interpretation ('may be caused by')."
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "exp01_competitive_ecosystem_design",
+          "purpose": "Construct a synthetic competitive ecosystem by cross-wiring two orthogonal QS systems (tra*, las) to a ccd toxin-antitoxin effect module in two E. coli Top10 strains (CG: GFP; CR: RFP), each carrying a cis-acting positive feedback (self-rescue via antitoxin CcdA) and a trans-acting negative feedback (killing via CcdB induced by partner's HSL).",
+          "host": "Escherichia coli Top10",
+          "intervention": "Genetic circuit construction: intact tra* system self-inducing ccdA + partial las system controlling ccdB in CG; intact las system self-inducing ccdA + partial tra* system controlling ccdB in CR; chromosomal GFP/RFP integration (CRIM method, helper pAH69, pHK-GFP/pHK-RFP, multicopy clones).",
+          "conditions": "LB medium, antibiotics as appropriate, 37 C, 220 rpm seed cultures; characterization in 24-well plates (1.5 mL).",
+          "control": "Single-strain cultures; no-inducer baselines.",
+          "replicates": "three experiments (Fig 2), replicate type unresolved; three independent biological replicates for plate cocultures (Fig 3).",
+          "readout": "GFP/RFP fluorescence growth curves; agar-plate spatial fluorescence patterns.",
+          "analysis": "Qualitative curve comparison; dominant-strain identification via subpopulation ratios.",
+          "outcome": "Mutual growth inhibition achieved; competitive relationship confirmed in liquid and on plates; dominant strain switchable through HSL synthesis rate / effect-module expression tuning.",
+          "evidence": [
+            "results_and_discussion_p001",
+            "results_and_discussion_p002",
+            "results_and_discussion_p009",
+            "results_and_discussion_p015",
+            "methods_p002"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 yes (de novo circuit construction in this paper), Q2 yes (strains CG/CR built here, though orthogonal QS parts pre-existed), Q3 yes (demonstrates that module layout reconfiguration defines ecological relationship, motivating the symbiotic and inducible designs).",
+            "design_action": "M7",
+            "design_action_rationale": "The design installs QS-linked positive/negative feedback regulation of a toxin-antitoxin module to couple interspecific communication to population-density-dependent growth control - a dynamic regulation architecture.",
+            "trigger_observation": "Prior ecosystems lacked a general modular route to distinct ecological interactions; QS crosstalk causes circuit failure, so orthogonal QS systems plus a separable effect module were needed.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Rests on previously measured orthogonality of the tra*/las systems (ref 30, measured) and the characterized CcdB-gyrase/CcdA-antidote mechanism; circuit function verified by growth assays.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper explicitly reasons that cis-acting HSL activation of antitoxin yields self-rescue while trans-acting activation of toxin limits population size, and that swapping aggressive behavior for suicidal behavior converts competition to symbiosis.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When constructing a two-strain E. coli consortium with a defined ecological interaction, reconfigure cis- vs trans-acting QS activation of a shared toxin-antitoxin effect module, because assigning self-HSL to antitoxin and partner-HSL to toxin yields competition whereas the inverse assignment yields symbiosis (validated in E. coli Top10 QS-ccd proof-of-concept consortia).",
+            "alternatives_considered": [
+              "Cross-feeding/auxotrophy approaches (background, refs 10-14) noted to suffer metabolic burden and asymmetric strain ratios (Kerner et al.)",
+              "Toxin/lysis-based density-control ecosystems (refs 26,27) noted as unable to control subpopulation ratios"
+            ],
+            "strategy_categories": [
+              "dynamic_control"
+            ]
+          }
+        },
+        {
+          "experiment_id": "exp02_rbs_tuning_strain_selection",
+          "purpose": "Tune synthesis rate of HSLs and expression of CcdA/CcdB to obtain strains with desired ecological behavior.",
+          "host": "Escherichia coli Top10 (CG/CR and SG/SR strain families)",
+          "intervention": "RBS engineering: different RBSs used to control HSL synthases, ccdA and ccdB; representative strains (CG01, CG02, CR01, CR02, SG01, SR01) selected by growth/fluorescence characterization under added HSLs.",
+          "conditions": "LB, 37 C, 24-well plates, various HSL concentrations.",
+          "control": "No-inducer groups.",
+          "replicates": "three experiments (means +/- SD), replicate type unresolved.",
+          "readout": "Fluorescence and OD600 growth curves.",
+          "analysis": "Comparative growth characterization; selection of representative strains.",
+          "outcome": "CG02 growth defect without inducer attributed to weaker EsaI RBS (reduced CcdA activation), rescued by high 3OC6HSL; CR01 partially inhibited and CR02 completely inhibited within 12 h by 10 uM 3OC6HSL; 100 nM 3OC6HSL had no effect; SG01/SR01 selected for symbiosis.",
+          "evidence": [
+            "results_and_discussion_p009",
+            "results_and_discussion_p010",
+            "results_and_discussion_p016",
+            "results_and_discussion_p006"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 yes (RBS engineering action), Q2 yes (this paper), Q3 yes (selected expression levels determined which strains carried forward and set dominance behavior).",
+            "design_action": "M6",
+            "design_action_rationale": "RBS-strength variation of synthases and effect-module genes is expression balancing of circuit components.",
+            "trigger_observation": "Desired ecological relationships require regulated expression of key genes; un-tuned constructs did not show target behaviors.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Strain behaviors measured directly in growth/fluorescence assays.",
+            "reason_nature": "筛选得来",
+            "reason_nature_rationale": "Paper states representative strains with desired characteristics were selected according to growth under different HSLs; no per-variant mechanistic rationale given. RBS details in Supplementary Tables S1-S2.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "exp03_competitive_characterization_liquid_plate",
+          "purpose": "Validate competitive interaction of selected CG/CR pairs in liquid coculture and spatially on agar plates.",
+          "host": "CG01, CG02, CR01, CR02",
+          "intervention": "Coculture of four pairwise combinations; four spatial distributions on plates (same position, adjacent, CR surrounded by CG, CG surrounded by CR); 5 uL drops.",
+          "conditions": "Liquid: 24-well, 1.5 mL LB, 37 C vigorous shaking. Plate: overnight incubation, gel imager.",
+          "control": "Single-strain characterizations (Supplementary Figures S1, S4).",
+          "replicates": "three independent biological replicates; one representative shown.",
+          "readout": "Fluorescence growth curves; plate fluorescence images.",
+          "analysis": "Dominant-strain identification; distance-dependence assessment.",
+          "outcome": "All strains inhibited in coculture vs monoculture; CR01 dominant in Combinations 1 and 3, CG01 dominant in Combination 2, mutual strong inhibition in Combination 4; interaction strength distance-dependent on plates.",
+          "evidence": [
+            "results_and_discussion_p010",
+            "results_and_discussion_p011",
+            "results_and_discussion_p012",
+            "results_and_discussion_p013",
+            "results_and_discussion_p014",
+            "results_and_discussion_p015"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "No new engineering action; experiment verifies behavior of already-constructed strains (Q1 fails for this record)."
+          }
+        },
+        {
+          "experiment_id": "exp04_symbiotic_ecosystem_design",
+          "purpose": "Construct a synthetic symbiotic ecosystem by inverting the cis/trans activation layout: each strain self-induces its own toxin (negative feedback) and is rescued by the partner's HSL activating its antitoxin (positive feedback).",
+          "host": "Escherichia coli Top10 (SG: GFP; SR: RFP)",
+          "intervention": "Circuit construction: intact las system self-inducing ccdB + partial tra* controlling ccdA in SG; intact tra* self-inducing ccdB + partial las controlling ccdA in SR; RBS tuning; selection of SG01 and SR01.",
+          "conditions": "LB liquid and agar; different inoculation ratios; no-inducer plates.",
+          "control": "Single strains; signal-deficient control strains cocultured with SG01 or SR01.",
+          "replicates": "three experiments (Fig 4); three independent biological replicates (Fig 5).",
+          "readout": "Fluorescence growth curves; plate images.",
+          "analysis": "Coculture vs single-strain fluorescence; dilution stability; 72 h time-course proportion.",
+          "outcome": "Mutual growth promotion: coculture fluorescence exceeded single strains; SG01 growth increased with SR01 inoculation ratio; symbiosis maintained after two dilutions and 72 h; neither strain grew with signal-deficient controls; SR01 grew toward SG01 on plates.",
+          "evidence": [
+            "results_and_discussion_p007",
+            "results_and_discussion_p016",
+            "results_and_discussion_p017",
+            "results_and_discussion_p022",
+            "results_and_discussion_p024"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 yes (new circuit construction), Q2 yes (this paper), Q3 yes (demonstrates layout-reconfiguration generality and provides the symbiotic chassis later made inducible).",
+            "design_action": "M7",
+            "design_action_rationale": "Installs QS-mediated negative self-limitation and trans-acting rescue feedbacks - dynamic regulation of population growth.",
+            "trigger_observation": "The competitive design showed that cis/trans assignment of effect-module activation defines interaction type, predicting that inversion yields mutual protection.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Symbiotic phenotypes measured in growth, dilution, coculture-with-control and 72 h coexistence assays.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper gives explicit mechanistic logic: self-induced toxin causes self-limitation while partner-HSL-induced antitoxin causes population rescue.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When engineering a two-strain E. coli mutualism from a QS-ccd toolkit, assign each strain's own HSL to toxin expression and the partner's HSL to antitoxin expression, because this converts aggression into suicidal behavior that is rescued only by the partner, yielding obligate-like mutual protection (validated for the SG01/SR01 E. coli Top10 pair in LB liquid and agar).",
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "dynamic_control"
+            ]
+          }
+        },
+        {
+          "experiment_id": "exp05_inducible_ecosystem_construction",
+          "purpose": "Enable external, quantitative regulation of subpopulation ratios by converting HSL synthase expression from self-induced to inducer-induced.",
+          "host": "Escherichia coli Top10 (CGi, CRi, SGi, SRi)",
+          "intervention": "Promoter replacement: in CGi, EsaI synthase promoter replaced with L-arabinose-inducible promoter; in CRi, LasI promoter replaced with aTc-inducible promoter; in SGi, aTc-inducible promoter regulating LasI; in SRi, EsaI promoter replaced with Ara-inducible promoter. Strains selected by same characterization method.",
+          "conditions": "24-well plates, 1.5 mL LB, 37 C, 12 h; inducer Combinations I-IV (Ara 0-1300 uM increasing; aTc 1000-0 ng/mL decreasing; exact values in Supplementary Table S5).",
+          "control": "No QS Control system (NG/NR); same-inoculum cocultures across inducer combinations.",
+          "replicates": "three independent biological replicates (representative shown; all replicates in Supplementary Figures S11/S12).",
+          "readout": "Flow cytometry: 20000 events/sample, FITC (GFP) and PE-Texas Red (RFP) channels, FSC/SSC gating; quadrants Q1=RFP, Q3=GFP, Q4=impurities/dead cells.",
+          "analysis": "Subpopulation ratio quantification across inducer gradients; time-course ratio variation (Supplementary Figures S13/S14).",
+          "outcome": "Inducible competitive ecosystem: CGi 22.2% -> 92.8%, CRi 71.3% -> 3.14% from Combination I to IV. Inducible symbiotic ecosystem: SGi 12.2% -> 84.4%, SRi 81.1% -> 10.4%, with relatively stable dynamics. Dominant-strain switch achieved only in the QS-based inducible ecosystem, not in No QS Control.",
+          "evidence": [
+            "results_and_discussion_p025",
+            "results_and_discussion_p038",
+            "results_and_discussion_p039",
+            "results_and_discussion_p040",
+            "results_and_discussion_p041",
+            "results_and_discussion_p042",
+            "results_and_discussion_p037",
+            "methods_p005"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 yes (promoter replacement), Q2 yes (this paper), Q3 yes (created the ratio-regulation capability that is the paper's main applied contribution).",
+            "design_action": "M7",
+            "design_action_rationale": "Replacing QS self-induction of signal synthases with externally inducible promoters converts an autonomous feedback circuit into an externally tunable dynamic control system of population composition.",
+            "trigger_observation": "Self-induced ecosystems couple signal production to population density and therefore do not allow external setting of subpopulation ratios; composition control is needed for community function.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Ratio control measured directly by flow cytometry across four inducer combinations in two ecosystems, with independent replicates.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper states the causal chain explicitly: inducer-controlled synthase expression controls autoinducer production, which controls CcdA/CcdB expression and thereby subpopulation ratios.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When externally tunable subpopulation ratios are needed in a QS-based two-strain E. coli consortium, replace the self-inducing QS promoters of the HSL synthases with orthogonal inducible promoters (Ara/aTc), because inducer dosage then sets signal production, which propagates through the toxin-antitoxin feedbacks to set the steady-state strain ratio (validated in E. coli Top10 competitive and symbiotic ecosystems at 1.5 mL scale).",
+            "alternatives_considered": [
+              "Microfluidic population regulation (refs 20,26,32-34) noted as requiring restricted culture conditions such as controlled flow rate; authors chose batch 1.5 mL inducible circuits instead"
+            ],
+            "strategy_categories": [
+              "dynamic_control"
+            ]
+          }
+        },
+        {
+          "experiment_id": "exp06_reporter_genome_integration",
+          "purpose": "Enable distinguishing the two subpopulations in coculture, where OD600 cannot separate strains and dead cells distort density readings.",
+          "host": "Escherichia coli Top10",
+          "intervention": "Chromosomal integration of GFP and RFP using the CRIM plasmid method: helper plasmid pAH69 into TOP10, integration induced at elevated temperature, electro-transformation of pHK-GFP / pHK-RFP, selection of multicopy clones for higher reporter expression.",
+          "conditions": "Standard LB cloning conditions.",
+          "control": null,
+          "replicates": "unknown",
+          "readout": "GFP/RFP fluorescence.",
+          "analysis": "Fluorescence-based indirect growth monitoring.",
+          "outcome": "Unified indirect fluorescence readout for strain-specific growth in coculture; enabled plate, plate-reader and flow-cytometry discrimination.",
+          "evidence": [
+            "methods_p002",
+            "results_and_discussion_p009"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 yes (chromosomal integration performed here), Q2 yes (strains made here; CRIM method itself is from ref 37), Q3 yes (readout choice enabled all subsequent coculture quantification).",
+            "design_action": "M11",
+            "design_action_rationale": "Reporter integration is measurement/readout infrastructure supporting the screening and characterization pipeline.",
+            "trigger_observation": "Dead cells affect OD600-based density detection and OD600 cannot distinguish the two strains in coculture.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Reporter function demonstrated throughout measured experiments.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "CRIM plasmid method adopted from Haldimann & Wanner (ref 37); paper gives a practical (readout limitation) rather than mechanistic justification.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When monitoring two E. coli subpopulations in coculture, integrate distinguishable fluorescent reporters into the chromosome (e.g., CRIM method) and use fluorescence rather than OD600 as the growth readout, because OD600 cannot resolve strains and is biased by dead cells (validated in LB liquid and agar cocultures of QS-ccd ecosystems).",
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "exp07_noqs_control_system",
+          "purpose": "Test whether the QS communication module is necessary for population regulation.",
+          "host": "Escherichia coli Top10 (NG, NR)",
+          "intervention": "Construction of No QS Control strains expressing the toxin-antitoxin system without QS systems; coculture and dominant-strain switch attempt with inducers.",
+          "conditions": "Same coculture conditions as inducible ecosystems (Supplementary Figures S15-S17).",
+          "control": "Inducible competitive ecosystem as the QS-containing comparator.",
+          "replicates": "unknown (supplementary figures).",
+          "readout": "Growth and subpopulation dominance (supplementary).",
+          "analysis": "Comparison of growth and switchability vs QS-containing ecosystem.",
+          "outcome": "NG/NR coculture growth significantly inhibited (attributed by authors to lack of QS growth buffering); dominant-strain switchover not achieved, unlike the inducible competitive ecosystem.",
+          "evidence": [
+            "results_and_discussion_p042"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "NG/NR construction serves as a negative control to validate QS necessity; although it is a new construct, it introduces no design strategy for future choices beyond confirming the existing design (classified as control/validation record; Q3 fails)."
+          }
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "attribution": "current_article",
+        "evidence_type": "paper_claim",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p006",
+            "section": "introduction",
+            "excerpt": "In this study, we aimed to establish synthetic ecosystems that can realize diferent ecological interactions through module reconfiguration."
+          },
+          {
+            "paragraph_id": "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p008",
+            "section": "abstract",
+            "excerpt": "By using modular design, we constructed synthetic competitive and symbiotic ecosystems with Escherichia coli."
+          }
+        ]
+      },
+      "hypothesis": {
+        "attribution": "model_inference",
+        "evidence_type": "inferred_from_design_rationale",
+        "confidence": 0.85,
+        "source_locations": [
+          {
+            "paragraph_id": "introduction_p006",
+            "section": "introduction",
+            "excerpt": "By reconfiguring the layout between the communication and efect modules, we simulated competitive and symbiotic ecological relationships"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p025",
+            "section": "results_and_discussion",
+            "excerpt": "by changing signal expression from self-induced to inducer-induced, the production of autoinducers could be controlled"
+          }
+        ]
+      },
+      "strain": {
+        "attribution": "current_article",
+        "evidence_type": "methods_and_results_direct",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p001",
+            "section": "methods",
+            "excerpt": "E. coli DH5a was used for plasmid construction. E. coli Top10 was used to construct synthetic ecosystems."
+          },
+          {
+            "paragraph_id": "results_and_discussion_p042",
+            "section": "results_and_discussion",
+            "excerpt": "Two strains, NG and NR, were engineered in this control system."
+          }
+        ]
+      },
+      "genotype": {
+        "attribution": "current_article",
+        "evidence_type": "results_circuit_description",
+        "confidence": 0.85,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "section": "results_and_discussion",
+            "excerpt": "In CG, the intact tra* system self-induced the expression of CcdA, and the partial las system controlled the expression of CcdB."
+          },
+          {
+            "paragraph_id": "results_and_discussion_p038",
+            "section": "results_and_discussion",
+            "excerpt": "the promoter of EsaI was replaced with the promoter induced by L-arabinose (Ara) in CG; this engineered strain was termed CGi"
+          },
+          {
+            "paragraph_id": "methods_p002",
+            "section": "methods",
+            "excerpt": "GFP and RFP were integrated into the chromosome using the CRIM plasmid method."
+          }
+        ]
+      },
+      "engineering_method": {
+        "attribution": "current_article",
+        "evidence_type": "methods_and_results_direct",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p001",
+            "section": "results_and_discussion",
+            "excerpt": "Two completely orthogonal QS systems we established in previous work, the tra* and the las systems, were utilized as the communication module"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "excerpt": "diferent ribosome binding sites (RBSs) were used to control HSL synthases, CcdA, and CcdB"
+          }
+        ]
+      },
+      "experimental_groups": {
+        "attribution": "current_article",
+        "evidence_type": "results_direct",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p014",
+            "section": "results_and_discussion",
+            "excerpt": "(a) Combination 1: coculture of CG01 and CR01..."
+          },
+          {
+            "paragraph_id": "results_and_discussion_p040",
+            "section": "results_and_discussion",
+            "excerpt": "Subpopulation ratios in each inducible synthetic ecosystem were regulated by adding four combinations of inducers"
+          }
+        ]
+      },
+      "controls": {
+        "attribution": "current_article",
+        "evidence_type": "results_direct",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p017",
+            "section": "results_and_discussion",
+            "excerpt": "We also cocultured SG01 or SR01 with the control strains, which cannot produce signals"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p042",
+            "section": "results_and_discussion",
+            "excerpt": "As a control, we constructed a No QS Control system"
+          }
+        ]
+      },
+      "culture_conditions": {
+        "attribution": "current_article",
+        "evidence_type": "methods_direct",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p003",
+            "section": "methods",
+            "excerpt": "Following culturing at 220 rpm and 37 C for 12 h, 2% seeds were washed three times and inoculated in a 24-well microassay plate containing 1.5 mL of LB medium."
+          }
+        ]
+      },
+      "medium": {
+        "attribution": "current_article",
+        "evidence_type": "methods_direct",
+        "confidence": 0.98,
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p001",
+            "section": "methods",
+            "excerpt": "Luria-Bertani (LB) broth (5 g/L yeast extract, 10 g/L tryptone, 10 g/L NaCl)... chloramphenicol, 34 ug/mL; kanamycin, 25 ug/mL; and ampicillin, 100 ug/mL"
+          }
+        ]
+      },
+      "dosage": {
+        "attribution": "current_article",
+        "evidence_type": "methods_and_results_direct",
+        "confidence": 0.85,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p010",
+            "section": "results_and_discussion",
+            "excerpt": "When 10 uM 3OC6HSL was added... A concentration of 100 nM 3OC6HSL had no inhibitory efect"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p040",
+            "section": "results_and_discussion",
+            "excerpt": "the concentration of Ara increased from 0 to 1300 uM, and the concentration of aTc decreased from 1000 ng/mL to 0 ng/mL"
+          }
+        ]
+      },
+      "time": {
+        "attribution": "current_article",
+        "evidence_type": "methods_and_results_direct",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p010",
+            "section": "results_and_discussion",
+            "excerpt": "CR02 was completely inhibited within 12 h"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p017",
+            "section": "results_and_discussion",
+            "excerpt": "a timecourse population proportion was analyzed for 72 h"
+          },
+          {
+            "paragraph_id": "methods_p005",
+            "section": "methods",
+            "excerpt": "cultured at 37 C under vigorous shaking for 12 h"
+          }
+        ]
+      },
+      "replicates": {
+        "attribution": "current_article",
+        "evidence_type": "figure_caption",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p006",
+            "section": "results_and_discussion",
+            "excerpt": "Data show the means +/- SD of three experiments."
+          },
+          {
+            "paragraph_id": "results_and_discussion_p014",
+            "section": "results_and_discussion",
+            "excerpt": "one representative sample of three independent biological replicates"
+          }
+        ]
+      },
+      "assay": {
+        "attribution": "current_article",
+        "evidence_type": "methods_direct",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p005",
+            "section": "methods",
+            "excerpt": "A total of 20 000 events were collected for each sample. Green fluorescence and red fluorescence were detected in the FITC channel and PE-Texas Red channel"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p009",
+            "section": "results_and_discussion",
+            "excerpt": "we unified an indirect method to monitor strain growth by detecting fluorescence expression"
+          }
+        ]
+      },
+      "instruments": {
+        "attribution": "current_article",
+        "evidence_type": "methods_direct",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p003",
+            "section": "methods",
+            "excerpt": "multi-detection microplate reader (Synergy HT, Biotek, USA)"
+          },
+          {
+            "paragraph_id": "methods_p004",
+            "section": "methods",
+            "excerpt": "photographed with a multifunctional gel imager"
+          }
+        ]
+      },
+      "analysis_methods": {
+        "attribution": "current_article",
+        "evidence_type": "results_and_caption",
+        "confidence": 0.85,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p037",
+            "section": "results_and_discussion",
+            "excerpt": "Events in quadrant Q1 represent strains expressing RFP. Events in quadrant Q3 represent strains expressing GFP."
+          },
+          {
+            "paragraph_id": "results_and_discussion_p010",
+            "section": "results_and_discussion",
+            "excerpt": "We further identified the dominant strain in each combination by analyzing the subpopulation ratios"
+          }
+        ]
+      },
+      "outcomes": {
+        "attribution": "current_article",
+        "evidence_type": "results_direct_observation",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "results_and_discussion_p041",
+            "section": "results_and_discussion",
+            "excerpt": "the proportion of CGi increased from 22.2% to 92.8% and the proportion of CRi decreased from 71.3% to 3.14%"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p042",
+            "section": "results_and_discussion",
+            "excerpt": "the inducible competitive ecosystem realized the switchover of the dominant strain, whereas the No QS Control system did not"
+          }
+        ]
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.97,
+        "evidence": [
+          "construction_of_synthetic_microbial_ecosystems_and_the_regulation_of_population_proportion_p008",
+          "methods_p001",
+          "results_and_discussion_p002",
+          "author_contributions_p001"
+        ]
+      },
+      "engineering_paper_type": [
+        "biosensor_platform"
+      ],
+      "engineering_paper_type_rationale": "Core contribution is QS-based genetic communication/regulation circuits (communication + effect modules, feedbacks, inducible control of population composition); no pathway flux, evolution, or protein-variant engineering. Many RBS variants were screened but are evidence details, not independent engineering decisions.",
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli Top10",
+          "paper_strain_normalized": "Escherichia coli TOP10",
+          "role": "host",
+          "paper_label": "Top10",
+          "lineage_or_engineering_context": "Host for all synthetic ecosystems; helper plasmid pAH69 for CRIM integration",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type-label host; exact genotype not stated in main text",
+          "evidence": [
+            "methods_p001",
+            "methods_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in Methods as ecosystem construction host."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH5a",
+          "paper_strain_normalized": "Escherichia coli DH5alpha",
+          "role": "other",
+          "paper_label": "DH5a",
+          "lineage_or_engineering_context": "Plasmid construction (cloning) host only",
+          "combination_status": "not_applicable",
+          "genotype": "not stated",
+          "evidence": [
+            "methods_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in Methods."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CG01, CG02",
+          "paper_strain_normalized": "E. coli TOP10 CG01 / CG02",
+          "role": "engineered",
+          "paper_label": "CG",
+          "lineage_or_engineering_context": "Competitive ecosystem GFP strain; intact tra* -> ccdA, partial las -> ccdB; differ in EsaI RBS strength",
+          "combination_status": "not_applicable",
+          "genotype": "circuit-level in main text; plasmids/RBS in Supplementary Tables S1-S2 (requires_supplement)",
+          "evidence": [
+            "results_and_discussion_p002",
+            "results_and_discussion_p009",
+            "results_and_discussion_p006"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named representative strains with characterization in Figure 2a,b."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CR01, CR02",
+          "paper_strain_normalized": "E. coli TOP10 CR01 / CR02",
+          "role": "engineered",
+          "paper_label": "CR",
+          "lineage_or_engineering_context": "Competitive ecosystem RFP strain; intact las -> ccdA, partial tra* -> ccdB; CR01 lower CcdB expression gives growth advantage",
+          "combination_status": "not_applicable",
+          "genotype": "circuit-level in main text; details requires_supplement",
+          "evidence": [
+            "results_and_discussion_p002",
+            "results_and_discussion_p010"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named representative strains, Figure 2c,d."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "SG01, SR01",
+          "paper_strain_normalized": "E. coli TOP10 SG01 / SR01",
+          "role": "engineered",
+          "paper_label": "SG/SR",
+          "lineage_or_engineering_context": "Symbiotic ecosystem; self-induced ccdB, partner-HSL-induced ccdA; GFP in SG01, RFP in SR01",
+          "combination_status": "not_applicable",
+          "genotype": "circuit-level in main text; details requires_supplement",
+          "evidence": [
+            "results_and_discussion_p007",
+            "results_and_discussion_p016"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named representative strains, Figure 4."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "CGi, CRi, SGi, SRi",
+          "paper_strain_normalized": "E. coli TOP10 inducible variants",
+          "role": "engineered",
+          "paper_label": "CGi/CRi/SGi/SRi",
+          "lineage_or_engineering_context": "Inducible ecosystems: Ara-inducible promoter driving EsaI (CGi, SRi), aTc-inducible promoter driving LasI (CRi, SGi)",
+          "combination_status": "not_applicable",
+          "genotype": "promoter swaps described; exact promoters in supplement",
+          "evidence": [
+            "results_and_discussion_p038",
+            "results_and_discussion_p039"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Construction described in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "NG, NR",
+          "paper_strain_normalized": "E. coli TOP10 NG / NR",
+          "role": "control",
+          "paper_label": "No QS Control",
+          "lineage_or_engineering_context": "Express toxin-antitoxin system without QS systems",
+          "combination_status": "not_applicable",
+          "genotype": "not detailed in main text (Supplementary Figure S15)",
+          "evidence": [
+            "results_and_discussion_p042"
+          ],
+          "status": "reported",
+          "confidence": 0.85,
+          "reasoning": "Explicitly constructed as control system."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "control strains which cannot produce signals",
+          "paper_strain_normalized": "unknown (signal-deficient E. coli controls)",
+          "role": "control",
+          "paper_label": "control strains",
+          "lineage_or_engineering_context": "Coculture controls for symbiosis; cannot produce HSL signals",
+          "combination_status": "not_applicable",
+          "genotype": "unknown; identity requires_supplement",
+          "evidence": [
+            "results_and_discussion_p017"
+          ],
+          "status": "reported",
+          "confidence": 0.7,
+          "reasoning": "Functionally described but not named in main text."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules no adaptation (including K-12) is performed."
+      },
+      "unresolved_parameters": [
+        {
+          "item": "replicate type of 'three experiments' in Figures 2 and 4",
+          "status": "unresolved",
+          "note": "Caption gives means +/- SD of three experiments without defining biological vs technical; treated as replicate_type=unresolved, likely independent cultures."
+        },
+        {
+          "item": "HSL concentration gradients used in Figure 2/4 single-strain characterization",
+          "status": "requires_supplement_or_figure_reading",
+          "note": "Only 10 uM and 100 nM 3OC6HSL values stated in text; full gradients are on figure axes not machine-readable here."
+        },
+        {
+          "item": "Flow cytometer and gel imager models",
+          "status": "unknown"
+        }
+      ],
+      "supplement_blocked_fields": [
+        {
+          "blocked_content": "Exact strain genotypes, plasmids, RBSs, promoters (Supplementary Tables S1, S2)",
+          "blocks": [
+            "strain_reconstruction",
+            "library_resynthesis",
+            "exact_reproduction_protocol"
+          ],
+          "available_from_main_text_or_figure": "Circuit topology, module assignments, representative strain names, qualitative behaviors",
+          "still_missing": "Sequences, RBS strengths, plasmid maps, full strain list"
+        },
+        {
+          "blocked_content": "Inducer Combination I-IV exact concentrations (Supplementary Table S5)",
+          "blocks": [
+            "exact_reproduction_protocol",
+            "automated_DBTL_plan"
+          ],
+          "available_from_main_text_or_figure": "Ara 0->1300 uM increasing, aTc 1000->0 ng/mL decreasing across I-IV",
+          "still_missing": "Per-combination concentrations"
+        },
+        {
+          "blocked_content": "Quantitative control/coculture data (Supplementary Figures S1-S17)",
+          "blocks": [
+            "exact_reproduction_protocol"
+          ],
+          "available_from_main_text_or_figure": "Main-text statements of qualitative outcomes (e.g., no growth with signal-deficient controls, No QS Control phenotypes)",
+          "still_missing": "Raw values, error bars, statistics"
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Naming of the 3OC6HSL-producing QS module",
+        "prose_interpretation": "Design section states the communication modules are the 'tra*' and 'las' systems, with 3OC6HSL binding receptor TraR(W) (results_and_discussion_p001, p002).",
+        "equation_or_figure_interpretation": "Characterization and inducible-design sections attribute 3OC6HSL synthesis to 'EsaI' and replace the 'promoter of EsaI' (results_and_discussion_p009, p038, p039), a synthase name associated with the esa system rather than tra.",
+        "impact": "Exact identity of the synthase/receptor pair used for the 3OC6HSL channel is ambiguous from the main text; plasmid table (Supplementary Table S2) needed to resolve; does not change extracted circuit logic.",
+        "requires_manual_review": true
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 39649,
+    "output_tokens": 17163
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+    "output_hash": "d5a9ac0d845b74fc7450e3552348dca1e591ce6a57a3bf8b5056756c59dc94eb",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\e309ecf312b0b56a8b3cde0ead44e0f808a7ef983e1874bf4cfa1552a53bbacf.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

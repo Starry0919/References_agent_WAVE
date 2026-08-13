@@ -1,0 +1,37 @@
+{
+  "status": "HOLD_FOR_GOLD",
+  "hard_gates": {
+    "contracts_compatible": true,
+    "legal_bounded_acquisition": true,
+    "production_parser_available": true,
+    "canonical_adapter_tested": true,
+    "verifier_safety_tests_pass": true,
+    "human_gold_complete": false,
+    "identity_calibrated": false,
+    "judge_calibrated": false,
+    "regressions_clear": true,
+    "shadow_no_ddr_write": true
+  },
+  "blockers": [
+    "human_gold_complete",
+    "identity_calibrated",
+    "judge_calibrated"
+  ],
+  "risk_hierarchy": [
+    "FALSE_DIRECT_ADMISSION",
+    "FALSE_PDF_IDENTITY_ACCEPTANCE",
+    "FALSE_SUPPORTING_ADMISSION",
+    "MISSED_BORDERLINE_PAPER"
+  ],
+  "warnings": [
+    "Exact same-paper MinerU artifacts were unavailable for the five acquired PDFs; production MinerU remains primary based on existing contract/runtime, not a fabricated comparison."
+  ],
+  "recommended_next_action": "Complete dual annotation/adjudication and run calibration before production admission.",
+  "metrics": {
+    "gold_v2_total": 54,
+    "annotation_ready_fulltext": 5,
+    "same_pdf_samples": 5,
+    "opendataloader_install": "2.5.0 isolated",
+    "targeted_tests": "236 passed"
+  }
+}

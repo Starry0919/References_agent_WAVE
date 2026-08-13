@@ -1,0 +1,725 @@
+{
+  "benchmark_version": "skill07_canonical_representation_benchmark_v0.1",
+  "representation_version": "skill07_canonical_document_v0.1",
+  "quality_constraint": "Quality(Canonical Representation) >= Quality(Current Baseline)",
+  "model": "kimi-k3",
+  "production_pipeline_modified": false,
+  "documents": [
+    {
+      "index": 1,
+      "paper_id": "9bdff88f38d746db81b953793f928e4d_2021-祁老师",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\9bdff88f38d746db81b953793f928e4d_2021-祁老师\\2125cc591a1568a5\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\01_0a798aabfd5c\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\01_0a798aabfd5c\\transformation_report.json",
+      "original_size": {
+        "characters": 91782,
+        "bytes": 92028,
+        "estimated_tokens_chars_div_4": 22945.5
+      },
+      "canonical_size": {
+        "characters": 70128,
+        "bytes": 70260,
+        "estimated_tokens_chars_div_4": 17532.0
+      },
+      "reduction": {
+        "characters_fraction": 0.23592861345361837,
+        "bytes_fraction": 0.23653670621984613
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "ef65654d34d00a95abe11470a28a0fffe4efc26e8512aa78b7a1fe6e1d9a3ca2",
+        "canonical_sha256": "a1494fe0dc8a2e14006fd264ede0d0796da640eef71e7fa87973bc6970041b52",
+        "restored_sha256": "ef65654d34d00a95abe11470a28a0fffe4efc26e8512aa78b7a1fe6e1d9a3ca2",
+        "exact_roundtrip": true,
+        "section_count": 14,
+        "paragraph_count": 112,
+        "matched_sections": 14,
+        "fallback_sections": 0,
+        "residual_characters": 196,
+        "original_characters": 91782,
+        "canonical_characters": 70128,
+        "original_bytes": 92028,
+        "canonical_bytes": 70260,
+        "character_reduction_fraction": 0.23592861345361837,
+        "byte_reduction_fraction": 0.23653670621984613
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 2,
+      "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\02_7a76fa80b0a0\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\02_7a76fa80b0a0\\transformation_report.json",
+      "original_size": {
+        "characters": 103617,
+        "bytes": 103839,
+        "estimated_tokens_chars_div_4": 25904.25
+      },
+      "canonical_size": {
+        "characters": 75216,
+        "bytes": 75335,
+        "estimated_tokens_chars_div_4": 18804.0
+      },
+      "reduction": {
+        "characters_fraction": 0.2740959495063552,
+        "bytes_fraction": 0.27450187309199814
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "24f4c0f7c7d4961d84bb3ab5dbc0bfd414b23bf887314cd09443acb9143c65e7",
+        "canonical_sha256": "6b1ab8f1dceaa7df4cd3a7139bb796cd68ecd2b6dbef4aa3232783df47edeedc",
+        "restored_sha256": "24f4c0f7c7d4961d84bb3ab5dbc0bfd414b23bf887314cd09443acb9143c65e7",
+        "exact_roundtrip": true,
+        "section_count": 14,
+        "paragraph_count": 120,
+        "matched_sections": 14,
+        "fallback_sections": 0,
+        "residual_characters": 216,
+        "original_characters": 103617,
+        "canonical_characters": 75216,
+        "original_bytes": 103839,
+        "canonical_bytes": 75335,
+        "character_reduction_fraction": 0.2740959495063552,
+        "byte_reduction_fraction": 0.27450187309199814
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 3,
+      "paper_id": "8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9\\45e2f3d34009f018\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\03_9f46973956d4\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\03_9f46973956d4\\transformation_report.json",
+      "original_size": {
+        "characters": 119133,
+        "bytes": 119705,
+        "estimated_tokens_chars_div_4": 29783.25
+      },
+      "canonical_size": {
+        "characters": 82388,
+        "bytes": 82678,
+        "estimated_tokens_chars_div_4": 20597.0
+      },
+      "reduction": {
+        "characters_fraction": 0.3084367891348325,
+        "bytes_fraction": 0.30931874190718855
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "4dc18b8c1cb5dfb4bd245ae5dfb6a2f50a281a638ddcd72d5e7b6fa4e4cf074f",
+        "canonical_sha256": "3199521c2e23c73f000b14cda7c759afc6f84781f8d9cc01a407897801382e31",
+        "restored_sha256": "4dc18b8c1cb5dfb4bd245ae5dfb6a2f50a281a638ddcd72d5e7b6fa4e4cf074f",
+        "exact_roundtrip": true,
+        "section_count": 17,
+        "paragraph_count": 124,
+        "matched_sections": 17,
+        "fallback_sections": 0,
+        "residual_characters": 215,
+        "original_characters": 119133,
+        "canonical_characters": 82388,
+        "original_bytes": 119705,
+        "canonical_bytes": 82678,
+        "character_reduction_fraction": 0.3084367891348325,
+        "byte_reduction_fraction": 0.30931874190718855
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 4,
+      "paper_id": "ae4bdbd7884c413cb3e583301872456b_17_sb0c00597",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\04_1ec80b195ee5\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\04_1ec80b195ee5\\transformation_report.json",
+      "original_size": {
+        "characters": 136446,
+        "bytes": 136837,
+        "estimated_tokens_chars_div_4": 34111.5
+      },
+      "canonical_size": {
+        "characters": 91254,
+        "bytes": 91460,
+        "estimated_tokens_chars_div_4": 22813.5
+      },
+      "reduction": {
+        "characters_fraction": 0.3312079503979596,
+        "bytes_fraction": 0.33161352558153134
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "50e8851247f43c24094568199669c124345057c0de1ec17b89d61efd7eee93b8",
+        "canonical_sha256": "f76be27d74578b4076435456d79cdc07f0d8a8f7a3046aa24231e3c51b8803c9",
+        "restored_sha256": "50e8851247f43c24094568199669c124345057c0de1ec17b89d61efd7eee93b8",
+        "exact_roundtrip": true,
+        "section_count": 14,
+        "paragraph_count": 120,
+        "matched_sections": 14,
+        "fallback_sections": 0,
+        "residual_characters": 216,
+        "original_characters": 136446,
+        "canonical_characters": 91254,
+        "original_bytes": 136837,
+        "canonical_bytes": 91460,
+        "character_reduction_fraction": 0.3312079503979596,
+        "byte_reduction_fraction": 0.33161352558153134
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 5,
+      "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\05_41fbcbcd477d\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\05_41fbcbcd477d\\transformation_report.json",
+      "original_size": {
+        "characters": 148547,
+        "bytes": 148974,
+        "estimated_tokens_chars_div_4": 37136.75
+      },
+      "canonical_size": {
+        "characters": 97718,
+        "bytes": 97934,
+        "estimated_tokens_chars_div_4": 24429.5
+      },
+      "reduction": {
+        "characters_fraction": 0.3421745306199385,
+        "bytes_fraction": 0.34261011988669166
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "09014bc7a2f23118b84139f07cee8efe8e4cb514bfd421504f62f0dd0a70e684",
+        "canonical_sha256": "adac8a5bf71c26a67b9b11c40d577f1c6bea21ac6ee25e19e25afe74d1c472ef",
+        "restored_sha256": "09014bc7a2f23118b84139f07cee8efe8e4cb514bfd421504f62f0dd0a70e684",
+        "exact_roundtrip": true,
+        "section_count": 11,
+        "paragraph_count": 131,
+        "matched_sections": 11,
+        "fallback_sections": 0,
+        "residual_characters": 242,
+        "original_characters": 148547,
+        "canonical_characters": 97718,
+        "original_bytes": 148974,
+        "canonical_bytes": 97934,
+        "character_reduction_fraction": 0.3421745306199385,
+        "byte_reduction_fraction": 0.34261011988669166
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 6,
+      "paper_id": "paper:71ab13883b209e2872f3",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\paper_71ab13883b209e2872f3\\ddb7b68667935047\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\06_abb036ea9112\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\06_abb036ea9112\\transformation_report.json",
+      "original_size": {
+        "characters": 171154,
+        "bytes": 171454,
+        "estimated_tokens_chars_div_4": 42788.5
+      },
+      "canonical_size": {
+        "characters": 114560,
+        "bytes": 114710,
+        "estimated_tokens_chars_div_4": 28640.0
+      },
+      "reduction": {
+        "characters_fraction": 0.3306612758100892,
+        "bytes_fraction": 0.3309575746264304
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "c8fbe7230fcd27e86727a66d60f363c9d022c7f750841a5fd7f6b560b8dc6386",
+        "canonical_sha256": "9eff0ce24a79bfa9c663aef15547175b2f2bbc7ad80afc5939923750be3b24ad",
+        "restored_sha256": "c8fbe7230fcd27e86727a66d60f363c9d022c7f750841a5fd7f6b560b8dc6386",
+        "exact_roundtrip": true,
+        "section_count": 23,
+        "paragraph_count": 133,
+        "matched_sections": 23,
+        "fallback_sections": 0,
+        "residual_characters": 224,
+        "original_characters": 171154,
+        "canonical_characters": 114560,
+        "original_bytes": 171454,
+        "canonical_bytes": 114710,
+        "character_reduction_fraction": 0.3306612758100892,
+        "byte_reduction_fraction": 0.3309575746264304
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 7,
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\07db8df7471d4db693632f10ccdc2254_13_ja0c12406\\96b28b6ff5571d3e\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\07_6df97cd249d2\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\07_6df97cd249d2\\transformation_report.json",
+      "original_size": {
+        "characters": 176690,
+        "bytes": 177191,
+        "estimated_tokens_chars_div_4": 44172.5
+      },
+      "canonical_size": {
+        "characters": 118070,
+        "bytes": 118343,
+        "estimated_tokens_chars_div_4": 29517.5
+      },
+      "reduction": {
+        "characters_fraction": 0.3317675024053427,
+        "bytes_fraction": 0.332116191002929
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "d7aad1f5f3bbac540ea1eef4d9434486e89dbbf300d7f8a441a2cb6019213ed9",
+        "canonical_sha256": "99d1d41e0ca6faddba978d72c0eed4f27c420ca95d59664ab4e1daa1d94d6579",
+        "restored_sha256": "d7aad1f5f3bbac540ea1eef4d9434486e89dbbf300d7f8a441a2cb6019213ed9",
+        "exact_roundtrip": true,
+        "section_count": 14,
+        "paragraph_count": 163,
+        "matched_sections": 14,
+        "fallback_sections": 0,
+        "residual_characters": 302,
+        "original_characters": 176690,
+        "canonical_characters": 118070,
+        "original_bytes": 177191,
+        "canonical_bytes": 118343,
+        "character_reduction_fraction": 0.3317675024053427,
+        "byte_reduction_fraction": 0.332116191002929
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 8,
+      "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25\\9f994eab97f58cfa\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\08_5c7a5f4f622d\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\08_5c7a5f4f622d\\transformation_report.json",
+      "original_size": {
+        "characters": 188795,
+        "bytes": 189278,
+        "estimated_tokens_chars_div_4": 47198.75
+      },
+      "canonical_size": {
+        "characters": 140936,
+        "bytes": 141182,
+        "estimated_tokens_chars_div_4": 35234.0
+      },
+      "reduction": {
+        "characters_fraction": 0.25349717948038875,
+        "bytes_fraction": 0.2541024313443717
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "1969fbaed0794ff7d50e5bba969b2400f054ddf65731effedecf590c4733f9ee",
+        "canonical_sha256": "b18550f20046ba83b51a7455271e5308d8ac1f5379fd2b179cadd8d7d651b3d3",
+        "restored_sha256": "1969fbaed0794ff7d50e5bba969b2400f054ddf65731effedecf590c4733f9ee",
+        "exact_roundtrip": true,
+        "section_count": 26,
+        "paragraph_count": 191,
+        "matched_sections": 26,
+        "fallback_sections": 0,
+        "residual_characters": 335,
+        "original_characters": 188795,
+        "canonical_characters": 140936,
+        "original_bytes": 189278,
+        "canonical_bytes": 141182,
+        "character_reduction_fraction": 0.25349717948038875,
+        "byte_reduction_fraction": 0.2541024313443717
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 9,
+      "paper_id": "367036c3954648ea9e1691a9df36ace0_04_2022_曾老师",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\367036c3954648ea9e1691a9df36ace0_04_2022_曾老师\\c503579430b5b197\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\09_d8f63db6c931\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\09_d8f63db6c931\\transformation_report.json",
+      "original_size": {
+        "characters": 202256,
+        "bytes": 202921,
+        "estimated_tokens_chars_div_4": 50564.0
+      },
+      "canonical_size": {
+        "characters": 127981,
+        "bytes": 128328,
+        "estimated_tokens_chars_div_4": 31995.25
+      },
+      "reduction": {
+        "characters_fraction": 0.3672326160904992,
+        "bytes_fraction": 0.36759625667131546
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "0e56d6d24c559232b834c87e512168edb4fa19bee94deebef7202821db9af6d8",
+        "canonical_sha256": "8101199ab99827d207c067695d359dedc5ba9f6e0328ad6226d1503f4011f243",
+        "restored_sha256": "0e56d6d24c559232b834c87e512168edb4fa19bee94deebef7202821db9af6d8",
+        "exact_roundtrip": true,
+        "section_count": 11,
+        "paragraph_count": 152,
+        "matched_sections": 11,
+        "fallback_sections": 0,
+        "residual_characters": 282,
+        "original_characters": 202256,
+        "canonical_characters": 127981,
+        "original_bytes": 202921,
+        "canonical_bytes": 128328,
+        "character_reduction_fraction": 0.3672326160904992,
+        "byte_reduction_fraction": 0.36759625667131546
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    },
+    {
+      "index": 10,
+      "paper_id": "6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main",
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main\\2de225fd24380a88\\clean_document.json",
+      "canonical_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\10_5cead9291846\\canonical_document_v0.1.json",
+      "transformation_report_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\artifacts\\skill07_canonical_representation_v0_1\\10_5cead9291846\\transformation_report.json",
+      "original_size": {
+        "characters": 206391,
+        "bytes": 206973,
+        "estimated_tokens_chars_div_4": 51597.75
+      },
+      "canonical_size": {
+        "characters": 140858,
+        "bytes": 141163,
+        "estimated_tokens_chars_div_4": 35214.5
+      },
+      "reduction": {
+        "characters_fraction": 0.3175186902529664,
+        "bytes_fraction": 0.3179641789025621
+      },
+      "transformation": {
+        "representation_version": "skill07_canonical_document_v0.1",
+        "source_sha256": "52e9ed6e07b442ca7795e8188c695178a5d32a24cb2b278cde6a71c860096ef3",
+        "canonical_sha256": "f46d05e28aa11b383cc6f41c811369008f20a2fc198780968add092648240be0",
+        "restored_sha256": "52e9ed6e07b442ca7795e8188c695178a5d32a24cb2b278cde6a71c860096ef3",
+        "exact_roundtrip": true,
+        "section_count": 29,
+        "paragraph_count": 164,
+        "matched_sections": 29,
+        "fallback_sections": 0,
+        "residual_characters": 272,
+        "original_characters": 206391,
+        "canonical_characters": 140858,
+        "original_bytes": 206973,
+        "canonical_bytes": 141163,
+        "character_reduction_fraction": 0.3175186902529664,
+        "byte_reduction_fraction": 0.3179641789025621
+      },
+      "information_checks": {
+        "exact_roundtrip": true,
+        "paragraph_recall": 1.0,
+        "section_recall": 1.0,
+        "figure_recall": 1.0,
+        "table_recall": 1.0,
+        "citation_recall": 1.0,
+        "paragraph_content_exact": true,
+        "section_content_exact": true,
+        "figures_exact": true,
+        "tables_exact": true,
+        "citations_exact": true,
+        "residual_coverage": 1.0
+      },
+      "extraction_comparison": {
+        "baseline_status": "not_run",
+        "canonical_status": "not_run",
+        "baseline_metrics": {
+          "available": false
+        },
+        "canonical_metrics": {
+          "available": false
+        },
+        "human_scientific_review": "NOT_PERFORMED"
+      }
+    }
+  ],
+  "original_size": {
+    "characters": {
+      "n": 10,
+      "min": 91782,
+      "median": 159850.5,
+      "p95": 204530.25,
+      "max": 206391
+    },
+    "bytes": {
+      "n": 10,
+      "min": 92028,
+      "median": 160214.0,
+      "p95": 205149.6,
+      "max": 206973
+    }
+  },
+  "canonical_size": {
+    "characters": {
+      "n": 10,
+      "min": 70128,
+      "median": 106139.0,
+      "p95": 140900.9,
+      "max": 140936
+    },
+    "bytes": {
+      "n": 10,
+      "min": 70260,
+      "median": 106322.0,
+      "p95": 141173.45,
+      "max": 141182
+    }
+  },
+  "reduction": {
+    "characters_fraction": {
+      "n": 10,
+      "min": 0.23592861345361837,
+      "median": 0.3240899830315278,
+      "p95": 0.3559564776287469,
+      "max": 0.3672326160904992
+    },
+    "estimated_tokens_method": "characters / 4; provider-independent heuristic, not billed-token telemetry"
+  },
+  "information_checks": {
+    "all_documents_exact_roundtrip": true,
+    "documents_passed": 10,
+    "documents_total": 10
+  },
+  "extraction_comparison": {
+    "requested": false,
+    "paired_successes": 0,
+    "pairs_total": 10,
+    "human_scientific_review": "NOT_PERFORMED"
+  },
+  "quality_metrics": {
+    "automated": [
+      "validator status",
+      "experiment count and ID overlap",
+      "biological-object overlap",
+      "evidence-anchor resolution and overlap",
+      "known core fields",
+      "reasoning-field overlap"
+    ],
+    "not_automatable_from_structure_alone": [
+      "scientific correctness",
+      "unsupported claims",
+      "wrong attribution",
+      "silent omissions",
+      "experiment grouping correctness",
+      "rationale quality",
+      "hallucination"
+    ]
+  },
+  "recommendation": "NEEDS MORE BENCHMARK",
+  "recommendation_reasons": [
+    "At least ten successful same-model paired extractions are required before quality equivalence can be judged."
+  ]
+}

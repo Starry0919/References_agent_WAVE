@@ -1,0 +1,920 @@
+{
+  "status": "succeeded",
+  "output": {
+    "clean_markdown_artifact": {
+      "artifact_id": "artifact:f75278a7026724f108cfc5a5",
+      "media_type": "text/markdown",
+      "sha256": "f75278a7026724f108cfc5a54cbdd867457f9516734a1349a184bb91f3f0cde7",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.md"
+    },
+    "clean_json_artifact": {
+      "artifact_id": "artifact:4c3d1adcd36053260fe7f263",
+      "media_type": "application/json",
+      "sha256": "4c3d1adcd36053260fe7f2632db24637805bd550be17bc8d500e5a269c0bf7a7",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.json"
+    },
+    "clean_document_artifact": {
+      "document_metadata": {
+        "paper_id": "ae4bdbd7884c413cb3e583301872456b_17_sb0c00597",
+        "title": null,
+        "parser": "MinerU",
+        "parser_version": "3.4.4",
+        "cleaner": "skill06_markdown_cleaner",
+        "cleaner_version": "0.3.0",
+        "rule_set_version": "scientific-cleaning-rules/0.3.0",
+        "source_markdown_sha256": "7049894e138b22cde7397548d19dd6b3ec597048d11f860eb8a98310ff9a8cf4",
+        "clean_markdown_sha256": "f75278a7026724f108cfc5a54cbdd867457f9516734a1349a184bb91f3f0cde7"
+      },
+      "clean_markdown_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.md",
+      "clean_json_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.json",
+      "structure_map": {
+        "sections": [
+          {
+            "id": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli",
+            "title": "An Aldolase-Based New Pathway for Bioconversion of Formaldehyde and Ethanol into 1,3-Propanediol in Escherichia coli",
+            "level": 1,
+            "content": "Hao Meng, Chuang Wang, Qipeng Yuan, Jie Ren,\\* and An-Ping Zeng\\*\n\n![](images/98981b7415b19305d868c778a37a1046322a66605217bb1acdedff903e11996a.jpg)\n\nCite This: ACS Synth. Biol. 2021, 10, 799−809\n\nRead Online"
+          },
+          {
+            "id": "access",
+            "title": "ACCESS",
+            "level": 2,
+            "content": "Metrics & More\n\nABSTRACT: Formaldehyde (HCHO) is a reactive one-carbon compound that is interesting for biosynthesis. The assimilation of HCHO depends on the catalysis of aldolase. Here, we present a novel synthetic pathway in E. coli to convert HCHO and ethanol into 1,3-propanediol (PDO) using a deoxyribose-5-phosphate aldolase (DERA). DERA condenses HCHO and acetaldehyde to form 3-hydroxypropionaldehyde, the direct precursor of PDO formation. This new pathway opens up the possibility to synthesize\n\nArticle Recommendations\n\n\\*sı Supporting Information\n\n![](images/1a7b1c3511512261f51d199f049c5b8658128b0630582b019268800025203dc0.jpg)\n\nan appealing C3 compound from a C1 compound and a C2 compound without carbon loss in contrast to all the other known PDO synthetic pathways where typically 30−50% of the carbons are lost as $\\mathrm { C O } _ { 2 }$ and other byproducts. The pathway is successfully demonstrated by elaborating three metabolic modules. First, DERA from Thermotoga maritima was found to be eficient for the aldol condensation and PDO production module. For the module of acetaldehyde supply from ethanol, an alcohol dehydrogenase from Hansenula polymorpha was selected. For the HCHO supply module, the control of HCHO concentration and its utilization were shown to be important for achieving the assimilation of HCHO in recombinant E. coli cells. By deleting the gene frmA for endogenous conversion of HCHO to formate and controlling HCHO at a level of about 0.6 mM, the concentration and yield of PDO were increased from initially 5.67 mM (0.43 g/L) and 0.057 mol/mol to 17.35 mM (1.32 g/L) and 0.096 mol/mol in bioconversion of ethanol and HCHO with resting E. coli cells. Further engineering of DERA and the HCHO supply module is necessary to realize the potential of this promising metabolic pathway.\n\nKEYWORDS: one-carbon metabolism, formaldehyde, ethanol, deoxyribose-5-phosphate aldolase, 1,3-propanediol\n\nF <sup>ormaldehyde</sup> <sup>(HCHO)</sup> <sup>receives</sup> <sup>increasing</sup> <sup>interest</sup> <sup>as</sup> <sup>a</sup> reactive intermediate in the use of one-carbon (C1) compounds for biosynthesis. It can be converted from promising C1 feedstocks for sustainable bioproduction such as methane, methanol, and formate or generated from CO and biomass conversion.<sup>1−6</sup> There are three major natural pathways for HCHO assimilation: the ribulose monophosphate (RuMP) pathway; the serine pathway; and the Calvin−Benson−Bassham (CBB) cycle.<sup>7−9</sup> The RuMP pathway is regarded as the most eficient one in terms of ATP consumption and biomass yield. Recently, engineering of the RuMP pathway has attracted much attention to convert methanol for cell growth and value-added chemicals in heterotrophic organisms.<sup>10−12</sup> I n the RuMP pathway, HCHO is reacted with ribulose 5- phosphate (Ru5P) to give arabino-3-hexulose-6-phosphate (Hu6P) under the catalysis of 3-hexulose-6-phosphate synthase (HPS); the latter is further isomerized to fructose 6-phosphate (F6P) by the enzyme 6-phospho-3-hexuloisomerase (PHI), and then metabolized in the pentose phosphate cycle to regenerate Ru5P or in central metabolic pathways to provide biomass precursors. However, this pathway is limited by the eficiency of ribulose 5-phosphate (Ru5P) regeneration.<sup>6</sup> Wang at al. (2019)<sup>16</sup> reported to use pyruvate as a HCHO acceptor catalyzed by 2-keto-4-hydroxybutyrate aldolase (KHB);<sup>13−16</sup> they further developed this reaction into a new 1,3-propanediol (PDO) biosynthesis pathway.<sup>16</sup>\n\nPDO is an important chemical compound with many applications in polymer, cosmetic, food, and pharmaceutical industries.<sup>17−20</sup> The commercially utilized biosynthetic pathways to produce PDO are all based on glycerol either as the direct substrate in natural microorganisms or as an intermediate of glucose bioconversion in recombinant microbes (Figure 1). The latter typically needs to add vitamin ${ \\bf B } _ { 1 2 }$ into the culture medium.<sup>21</sup> Recently, several glycerol and thus vitamin ${ \\bf B } _ { 1 2 }$ independent pathways for PDO biosynthesis have been proposed.<sup>16,19,22,23</sup> One of the pathways is via homoserine and its further conversion to 4-hydroxy-2-ketobutyrate. After decarboxylation and reduction, 4-hydroxy-2-ketobutyrate is converted to PDO. Another pathway relies on a two-stepreduction based metabolic platform producing C3−C5 diols from amino acids.<sup>23</sup> These pathways do not utilize expensive vitamin ${ \\bf B } _ { 1 2 }$ as a cofactor, but both of them need to pay a large amount of NADPH and ATP.\n\n![](images/5e38010539434ae7615ec7d6ca4c899ca75b0096524cac2a0551ad43350d45c2.jpg)\n\n![](images/34a4680f531196ffa7f2e9b89ee2116a5e7bde7dc2930cdfd3841300aeec159b.jpg)\n\nFigure 1. A new aldolase (DERA) based C1 pathway for PDO production proposed in this work in comparison with other major routes of PDO biosynthesis. The reactions and enzymes involved in the proposed new pathway are highlighted in green. The “classic” glycerol-based pathway is highlighted in violet; the pathway based on malonate semialdehyde in dark yellow; the pathway based on homoserine and via 2-keto-4-hydroxybutyrate light yellow; and the pathway via condensation of pyruvate and formaldehyde in gray. Abbreviations for metabolites: PEP = phosphoenolpyruvate; DHAP = dihydroxyacetone phosphate; $\\mathrm { G } 3 \\mathrm { P } = \\mathrm { g } \\mathrm { l } $ ycerol-3-phosphate; Ac-CoA = acetyl-coenzyme A; 3-HP = 3-hydroxypropionic acid; $3 { \\mathrm { - H P A } } = 3 { \\mathrm { - } }$ hydroxypropionaldehyde; $\\bar { \\mathrm { P D O } } = 1 { , } 3$ -propanediol. Abbreviations for enzymes: HpADH1 = alcohol dehydrogenase 1 ofHansenula polymorpha; KHB = 2-keto-4-hydroxybutyrate aldolase; KDC = branched-chain alpha-keto acid decarboxylase; DERA = deoxyribose-5-phosphate aldolase; DhaT = NADH-dependent PDO oxidoreductase.\n![](images/4f34695ad7ea8f036e74d47529b64613a58a8a164e963d56f01404bdb473f88f.jpg)\nFigure 2. Reaction mechanisms of two diferent aldolase-based incorporation of aldehyde for the formation of 3-hydroxypropionic acid, the direct precursor of PDO biosynthesis. (A) Aldol condensation of HCHO and pyruvate to generate 2-keto-4-hydroxybutyrate, which is then decarboxylated to generate 3-HPA.<sup>16</sup> (B) Direct aldol condensation to generate 3-HPA studied in this work.\n\nAldolases are powerful in synthetic biology because they can form new C−C bonds between a variety of aldehydes and ketones. They are widely used in the synthesis of long chain and complex carbon skeleton compounds. Wang et al. $( 2 0 1 9 ) ^ { 1 6 }$ obtained 4-hydroxy-2-ketobutyrate by an aldol condensation of pyruvate and HCHO. Methanol was used as a cosubstrate to supply NADH and to avoid ATP consumption in carboxylic reduction.\n\nHerein, we find not only pyruvate, but also acetaldehyde (ACALD) can be used as a new aldol acceptor for HCHO assimilation catalyzed by deoxyribose-5-phosphate aldolase (DERA, EC 4.1.2.4). 3-Hydroxypropionaldehyde (3-HPA) is formed via the aldol condensation of HCHO and ACALD, which can further convert into PDO. On the basis of this, a new and vitamin ${ \\bf B } _ { 1 2 }$ independent PDO biosynthesis pathway is constructed, which is composed of three major enzymatic reactions: first, the oxidation of ethanol to ACALD; second, the aldol condensation ofHCHO and ACALD to $3 { \\mathrm { - H P A } } ;$ and third, the reduction of 3-HPA to PDO. Compared to other major PDO synthetic pathways in which typically 30−50% of the carbons in the substrates are lost as CO and other byproducts, the new pathway has theoretically a 100% utilization of the carbons in the substrates (Figure 1).<sup>16,19−21,23−26</sup>"
+          },
+          {
+            "id": "results_and_discussion",
+            "title": "■ RESULTS AND DISCUSSION",
+            "level": 2,
+            "content": "Principle and Pathway Design of an Aldolase-Based New PDO Biosynthesis Route. In the previous work, aldolase was used to utilize HCHO and pyruvate for PDO production. 16 We noticed that the carboxyl group of pyruvate is not directly involved in the aldol condensation and is actually removed at the next step. It indicated that acetaldehyde (ACALD) is the real HCHO receptor in the C−C bond formation reaction (Figure 2). Therefore, we asked the question whether there is an aldolase that can catalyze the aldol condensation ofHCHO and ACALD, forming thereby 3-HPA, which can then be used for PDO production.\n\nChemical aldol condensation of HCHO and ACALD was reported in literature.<sup>27,28</sup> However, the reaction temperature was very high (above 250 °C), which can lead to serious side reactions such as dehydration, oligomerization, and polymerization. Biocatalysis can principally take place at environmental temperature and with high selectivity, and therefore overcomes these problems. A key issue here is to find a proper enzyme and integrate it into the metabolic pathway for PDO synthesis.\n\nOur systematic approach to engineer E. coli for PDO production using C1 compounds is based on a modular strain design of first an ACALD supply module using ethanol to provide ACALD and NADH, second a HCHO supply module, and finally a DERA-based PDO production module to convert ACALD and HCHO to PDO (Figure 3). For the implementation of this pathway, we first developed the last module (aldol condensation), which is the key part of the proposed pathway.\n\nEstablishment of an Aldolase-Based PDO Production Module. To construct an aldolase-based PDO production module, diferent kinds of aldolases as listed in Table 1<sup>16,29−31</sup> were first screened for HCHO and ACALD condensation. They were coexpressed with DhaT from K. pneumoniae<sup>32</sup> in E. coli BL21(DE3) for PDO synthesis. An acetaldehyde-dependent deoxyribose-5-phosphate aldolase from E. coli K-12 (DERA ) turned out to well catalyze the condensation of HCHO and $\\mathrm { A C A L D . } ^ { 3 3 } 1 . 0 2 \\pm 0 . 0 3$ mM $( 7 7 . 6 \\pm 2 . 2 8 ~ \\mathrm { m g / L } )$ PDO were formed in a preliminary trial with 10 mM of HCHO and ACALD added after 2 h. To prove that the added HCHO and ACALD were condensed into the synthesis of PDO, we used <sup>13</sup>C-HCHO or <sup>13</sup>C-ACALD as cosubstrate for carrying out the biosynthesis. As shown in Figure 4 the ratio of the peaks around $m / z 1 6 2 . 1$ and $m / z \\ : 1 6 3 . 1 $ are almost the same in the unlabeled standard sample and the <sup>13</sup>C-labled samples. It confirmed that the synthesis of PDO totally depends on HCHO and ACALD added.\n\n![](images/2c2f2bdd1289f6c93f5832cd7a5360e788073f0382407f9d6a58e81693577bce.jpg)\nFigure 3. DERA-based C1 new metabolic pathway for PDO production proposed in this work, which is divided into three modules for its implementation: ACALD supply module, HCHO supply module, and DERA-based PDO production module.\n\nIn order to select a more eficient DERA for PDO production, we tested four kinds ofDERAs from heat-resistant bacteria since it was suggested that heat resistance is related to aldehyde tolerance.<sup>34</sup> We examined them by coexpressing them individually with DhaT in E. coli BL21(DE3). The results are summarized in Table 2. The engineered strain with incorporation of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ from Thermotoga maritima gave the highest PDO concentration and yield from HCHO and ACALD, reaching $8 . 2 0 \\pm 0 . 0 4$ mM and 0.082 mol/mol respectively after 12 h of bioconversion. But the $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ -catalyzed condensation ofHCHO and ACALD is still the bottleneck ofthis module as shown by the results using purified $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ and DhaT in demonstration of this module (Figure S1B). The results revealed that DhaT could support at least ten times of the activity of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ without accumulation of 3-HPA.\n\nDERAs Stability and Tolerance toward Aldehyde. DERAs can be used to catalyze the aldol condensation of HCHO and ACALD into 3-HPA, but their activity might be limited by their poor stability toward high aldehyde concentrations.<sup>35</sup> Sakuraba et al. (2007) showed that at a concentration of300 mM ACALD, DERA completely lost its activity within 2 h, whereas $\\mathrm { { D E R A } _ { T M A } }$ still maintained 46% activity after $2 0 \\mathrm { h } . ^ { 3 6 }$ Dick et al. (2016) found that 3-hydroxybutanal (3-HB) can form a covalent bond with the residue C47 in $\\mathrm { D E R A _ { E C O } } ,$ leading to an irreversible deactivation. Mutation of this residue (i.e., C47M) can alleviate the inactivation by ACALD.<sup>34</sup> Hufman et al. (2019) also showed that a C47V mutant of DERA from\n\nTable 1. Performances of Aldolases Tested for HCHO and ACALD Condensation to Form PDO in Vivo\n<table><tr><td>enzyme name</td><td>natural receptor</td><td>natural donor</td><td>source</td><td>NCBI No.</td><td>PDO conc. (mM)</td></tr><tr><td>EcKHG</td><td>pyruvate</td><td>D-glyceraldehyde 3-phosphate</td><td>E. coli</td><td> $\\mathrm { N P \\ } _ { - } 4 1 6 3 6 4 . 1$ </td><td>0.038</td></tr><tr><td>HsKHG</td><td>pyruvate</td><td>glyoxylate</td><td>H. sapiens</td><td> $\\mathrm { N P \\_ } 6 1 2 4 2 2 . 2$ </td><td>&lt;0.001</td></tr><tr><td>BtKHG</td><td>pyruvate</td><td>glyoxylate</td><td>B. taurus</td><td> $\\mathrm { N P \\ } \\underline { { 0 0 1 0 6 8 7 0 5 . 1 } }$ </td><td>&lt;0.001</td></tr><tr><td>Yfau</td><td>pyruvate</td><td>lactaldehyde</td><td>E. coli</td><td> $\\mathrm { N P \\_ 4 l } 6 7 4 8 . 1$ </td><td>0.011</td></tr><tr><td>PanB</td><td>3-methyl-2-oxobutanoate</td><td> $5 , 1 0 \\mathrm { - C H } _ { 2 } \\mathrm { - T H F }$ </td><td>E. coli</td><td> $\\mathrm { N P \\_ } 4 1 4 6 7 6 . 1$ </td><td>&lt;0.001</td></tr><tr><td> $\\mathrm { D E R A _ { E C O } }$ </td><td>acetaldehyde</td><td>D-glyceraldehyde 3-phosphate</td><td>E. coli</td><td> $\\mathrm { N P \\_ 4 1 8 7 9 8 . 1 }$ </td><td>1.021</td></tr><tr><td>Control</td><td>一</td><td></td><td>一</td><td>一</td><td>&lt;0.001</td></tr></table>"
+          },
+          {
+            "id": "a_in_vivo_dera_assay",
+            "title": "A. in vivo DERA assay",
+            "level": 2,
+            "content": "![](images/b122f58fcb695683301670935088748619e9d9b34ede5b4ae44b982bb7af949d.jpg)\n\nB.\n![](images/a0d6251879f955eebe344f8b59f51c4e8f93bc888f12aaaae76d032493e68660.jpg)\n\nC.\n![](images/9e069ec6b50a16edd5dcd54515cc0cfabf971e87e84d9ea51f67a2bea0709abe.jpg)\n\nD.\n![](images/d9f0372f57ccbc209461b1d7a87f5d3620b9b704725ec267fb19d1482d04691f.jpg)\nFigure 4. Verification ofPDO synthesis from HCHO and ACALD using GC-MS labeling analysis (13C-carbon is indicated by the symbol \\*). (A) The in vivo assay principle. (B) Unlabeled PDO standard. (C) Results from culture using $^ { 1 3 } \\mathrm { C - H C } \\dot { \\mathrm { H } } \\mathrm { O }$ as cosubstrate. (D) Results from culture using $^ { 1 3 } \\mathrm { C } \\mathrm { . }$ $\\mathrm { C H } _ { 3 } \\mathrm { C H O }$ as cosubstrate.\n\nTable 2. Comparison of DERAs from Diferent Origins to Utilize HCHO and ACALD for in Vivo PDO Synthesis in E. coli Coexpressing DERA and DhaT\n<table><tr><td>enzyme name</td><td>PDO conc. (mM)</td><td>origins</td></tr><tr><td> $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ </td><td> $8 . 2 0 \\pm 0 . 0 4$ </td><td>Thermotoga maritima</td></tr><tr><td> $\\mathrm { D E R A _ { E C O } }$ </td><td> $3 . 8 3 \\pm 0 . 0 1$ </td><td>E. coli K-12</td></tr><tr><td> $\\mathrm { D E R A } _ { \\mathrm { G T H } }$ </td><td> $2 . 3 0 \\pm 0 . 0 8$ </td><td>Geobacillus thermodenitrificans</td></tr><tr><td> $\\mathrm { D E R A } _ { \\mathrm { S E P } }$ </td><td> $1 . 2 2 \\pm 0 . 0 3$ </td><td>Staphylococcus epidermidis</td></tr><tr><td> $\\mathrm { D E R A } _ { \\mathrm { P A E } }$ </td><td> $0 . 1 7 \\pm 0 . 0 4$ </td><td>Pyrobaculum aerophilum</td></tr></table>\n\nShewanella halifaxensis $\\left( \\mathrm { D E R A } _ { \\mathrm { R d 3 B B } } \\right)$ can retain a high activity at an ACALD concentration >400 mM.<sup>37</sup>\n\nAlthough the stability toward ACALD was well resolved, DERAs have not been studied regarding their tolerance toward HCHO. Here, we purified five DERAs including $\\mathrm { D E R A _ { E C O } } ,$ $\\mathrm { D E R A _ { T M A } , \\ D E R A _ { E C O \\ C 4 7 M } , \\ D E R A _ { E C O \\ C 4 7 V } , }$ and $\\mathrm { D E R A } _ { \\mathrm { R d 3 B B } }$ to test their tolerance toward HCHO. The mutant DERA<sub>TMA C65M</sub> which corresponds to the C47 mutation of $\\mathrm { D E R A _ { E C O } }$ was also tested, but it lost 70% ofits activity. All ofthem can tolerate high concentrations ofACALD as mentioned in the above literature. To examine their tolerance toward HCHO, we have compared DERAs under diferent HCHO concentrations (5−200 mM) (Figure 5). It is found that $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ has the highest activity for the aldol condensation of HCHO and ACALD into 3-HPA, reaching $1 . 2 7 \\pm 0 . 0 2 \\mathrm { ~ U } / \\mathrm { m g }$ at a HCHO concentration of 10 mM. We also treated them with 0.3 M (test group) or 0 M (control group) HCHO for 2 h, and compared them for their ability to generate 3-HPA respectively. The results showed that native DERAs from E. coli $\\left( \\mathrm { D E R A } _ { \\mathrm { E C O ~ w t } } \\right)$ and Thermotoga maritima $\\left( \\mathrm { D E R A } _ { \\mathrm { T M A } } \\right)$ are more sensitive to HCHO than the mutants with mutation at the residue C47 of E. coli $\\mathrm { \\left( D E R A _ { E C O \\ C 4 7 M } \\right. }$ and $\\mathrm { D E R A _ { E C O \\ C 4 7 V } ) }$ and a mutant from S. halifaxensis $\\left( \\mathrm { D E R A } _ { \\mathrm { R d 3 B B } } \\right)$ $\\mathrm { D E R A _ { T M A } }$ and $\\mathrm { D E R A _ { E C O } }$ wt remained merely 61% and 50% of the original activities after 2 h treatment with 0.3 M HCHO, compared to 85%, 99%, and 94% for $\\mathrm { D E R A } _ { \\mathrm { E C O ~ C 4 7 V } } ,$ $\\mathrm { D E R A _ { E C O \\ C 4 7 M } , }$ and DERA , respectively. Interestingly, although the C47 mutants can keep their activity after treatment with 0.3 M HCHO for 2 h, their activities continuously dropped with the reaction concentrations of HCHO increasing from 0.02 to 0.2 M (Figure 5) without treatment. This reveals that the aldol condensation was severely suppressed at high HCHO concentrations although DERAs can tolerate a quite high HCHO concentration.\n\n![](images/a11bb7ff85bae6d3ec58298a63c64c6afc8506f5931ca8c2e1af560bf88745ed.jpg)\nFigure 5. Specific activities of DERAs at diferent HCHO concentrations $( 5 { - } 2 0 0 ~ \\mathrm { m M } ) ;$ the reaction concentration of ACALD was 20 mM. ECO = $\\mathrm { D E R A _ { E C O } }$ from E. coli K-12; $\\mathrm { T M A } = \\mathrm { D E R A } _ { \\mathrm { T M A } }$ from Thermotoga maritima; Rd3BB is from Shewanella halifaxensis.<sup>37</sup>\n\nTable 3. Comparison of Kinetic Parameters of HCHO-Condensing Aldolases\n<table><tr><td>substrates</td><td>enzyme</td><td> $K _ { m } \\left( \\mathrm { m M } \\right)$ </td><td>reference</td><td>substrates</td><td>enzyme</td><td> $K _ { m } \\left( \\mathbf { m } \\mathbf { M } \\right)$ </td><td>reference</td></tr><tr><td>formaldehyde</td><td>HPS</td><td>0.15</td><td>38</td><td>formaldehyde</td><td>HPS</td><td>0.15</td><td>38</td></tr><tr><td>ribulose-5-phosphate</td><td></td><td>0.7</td><td>38</td><td>ribulose-5-phosphate</td><td></td><td>0.7</td><td>38</td></tr><tr><td>formaldehyde</td><td>KHB</td><td>&gt;500</td><td>16</td><td>formaldehyde</td><td>KHB</td><td>&gt;500</td><td>16</td></tr><tr><td>pyruvate</td><td></td><td>&lt;5</td><td>16</td><td>pyruvate</td><td></td><td>&lt;5</td><td>16</td></tr><tr><td>formaldehyde</td><td> $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ </td><td> $2 . 5 4 \\pm 0 . 0 7$ </td><td>this study</td><td>formaldehyde</td><td> $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ </td><td> $2 . 5 4 \\pm 0 . 0 7$ </td><td>this study</td></tr><tr><td>acetaldehyde</td><td></td><td>&lt;1</td><td>this study</td><td></td><td></td><td></td><td></td></tr></table>\n\nConsidering both the specific activity and the tolerance toward HCHO, $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ turned out to be the most promising one for aldol condensation of HCHO and ACALD. We therefore focused on this enzyme in further study. First, the $K _ { m }$ value of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ for HCHO was estimated by measuring more data under low HCHO concentrations $\\left( 1 { - } 1 0 \\ \\mathrm { m M } \\right)$ . The $K _ { m }$ value of $\\mathbf { \\Delta } _ { \\mathrm { D E R A _ { T M A } } } ^ { \\mathrm { ^ { * } m e a t } }$ for HCHO is higher than that of HPS for the condensation of HCHO and ribulose-5-phosphate, but lower (by nearly 200 times) than that of KHB for the condensation of HCHO and pyruvate (Table 3). A low $K _ { m }$ value for HCHO is desired for DERA-based metabolic engineering of cells to keep both a high eficiency of aldol condensation and an adequate cell growth.\n\nImplementation of an ACALD Supply Module for DERA-Based PDO Production. Having selected a promising DERA enzyme, several other issues should be addressed for developing an eficient DERA-based PDO production. First of all, a supply or production module of ACALD should be developed. A direct addition ofACALD would be too expensive or inconvenient for the operation and harmful for the biocatalyst. In such a case the balance of reducing power (NADH) is also a critical issue. To avoid the direct use of ACALD and at the same time to achieve a NADH balance, we proposed to generate ACALD from ethanol as outlined in Figures 1 and 2. For this purpose, a suitable alcohol dehydrogenase (ADH) should be selected. Among the large number of ADHs, we chose the ADH from Hansenula polymorpha (HpADH1, EC 1.1.1.1) which showed good performance on converting ethanol to acetaldehyde.<sup>39,40</sup> PDO production with this new module was demonstrated in vitro using purified proteins, showing that HpADH1 can provide enough ACALD for the PDO formation (Figures S1C,D). We used $^ { \\mathrm { { \\sc ~ \\ y ~ } } _ { 1 3 } } \\mathrm { { C } }$ -ethanol and HCHO as cosubstrates to verify the PDO production from such an ACALD supply module (Figure 6A). Using E. coli carrying $\\mathrm { { D E R A } _ { T M A } }$ and DhaT, ethanol and HCHO were successfully converted to PDO in a whole-cell bioconversion (Figure 6B). The PDO formation was significantly improved from $5 . 6 7 \\pm 0 . 2 5$ mM (0.43 g/L) and 0.057 mol/mol using a strain without HpADH1 expression to 10.91 ± 0.08 mM (0.83 g/L) and 0.11 mol/mol with HpADH1 expression (Figure 6C).\n\nDeleting Competing HCHO-Consuming Pathway to Redirect Flux toward PDO Production. The relatively low yield of PDO from ethanol and HCHO is among others caused by the conversion ofHCHO to formate as previously reported in our study for the condensation of HCHO and pyruvate.<sup>16</sup> To avoid HCHO conversion to formate, the frmA gene of E. coli\n\nA.\n![](images/39faf53deb15cacf43fe2dcaea975a8e2586b0335363919f809a776f3ba950ce.jpg)\n\nB.\n![](images/a3ee81763362a4eb7357ed0ec9b20b076a6809ead2857008a0643687e23e1a06.jpg)\n\nC.\n![](images/9ca21947a1c14aa9303d34e3e88b88732097c40bacc3e98ec80d92d8921d3298.jpg)\n\nD.\n![](images/175f0cbcdc6f097e8e32a175128467de59460fae709034fae9108af360993720.jpg)\nFigure 6. Batch bioconversion results for PDO production using ethanol and HCHO as cosubstrates. (A) Verification using GC-MS measurement to show PDO formation (13C-carbon indicated by \\*) from HCHO and $^ { 1 3 } \\mathrm { C } .$ -ethanol. (B) Bioconversion using strain BF02 without HpADH1 expression. (C) Bioconversion using the strain BF12 with the HpADH1 expression. (D) Bioconversion using strain BF16 with the HpADH1 expression and knockout of the gene frmA. The initial concentrations of ethanol and HCHO were 300 mM and 100 mM.\n\nBL21(DE3) which encodes a HCHO dehydrogenase of the frmRAB system was successfully deleted using the CRISPR-Cas9 method.<sup>41</sup> The new mutant strain BF16 had a reduced HCHO consumption, and PDO reached a concentration of $1 2 . 7 5 \\pm 0 . 4 4$ mM $( 0 . 9 7 \\pm 0 . 0 3 \\mathrm { \\ g / L ) }$ and a yield of 0.128 mol/ mol (Figure 6D), representing significant increases compared with the parent strain BF12.\n\nMethanol as Substrate for HCHO. To develop a HCHO supply module, methanol was first used as substrate. We selected a methanol dehydrogenase (Mdh2, EC 1.1.1.244) to catalyze the oxidation of methanol to HCHO and expressed it in the BF17 strain. Whole-cell bioconversion using methanol and ethanol as cosubstrates was carried out with this strain. After 42 h, PDO reached only 1.05 mM with considerable amounts of other diols. This pathway was also demonstrated in vitro using purified proteins. The results showed that the activity of methanol dehydrogenase is the bottleneck (Figure S1E).\n\nIdenti<sup>fi</sup>cation of Diol Byproducts. Nemr et al. (2018) showed that $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ also has a high activity toward selfpolymerization of $\\mathrm { A \\bar { C } A L D . ^ { 3 6 , 4 2 } }$ We hypothesize that $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ may also catalyze the condensation of ACALD with other aldehydes such as 3-HPA which is a key intermediate of the proposed PDO biosynthesis pathway. Indeed, several diols were formed in the bioconversion system using HCHO and ethanol as the substrates (Figure 7A). $^ { 1 3 } \\mathrm { C } .$ -ethanol was used as substrate to confirm the diol byproducts in batch bioconversion. As shown in Figure 7B−D, the GC-MS spectra ofsamples showed that the byproducts include 1,3-butanediol (1,3-BDO) (m/z 178.1), 3,5- dihydroxypentanal $\\left( m / z 2 0 6 . 1 \\right)$ , and 3,5-dihydroxyhexanal (m/ $z 2 \\dot { 2 } 1 . 1 )$ . The possible synthetic routes of them are inferred as follows: two molecules of ACALD are condensed into 3- hydroxybutyraldehyde, which is further reduced to $^ { 1 , 3 \\cdot }$ -BDO by DhaT; ACALD and 3-HPA are condensed to form $^ { 3 , 5 \\mathrm { - } }$ dihydroxypentanal, a C5 diol aldehyde; ACALD and 3- hydroxybutyraldehyde were condensed to form $^ { 3 , 5 \\cdot }$ -dihydroxyhexanal, a C6 diol aldehyde (Figure 7E). It seems that DhaT did not prefer the C6 and C5 aldehydes, since the corresponding alcohols were not found in the MS spectra. Interestingly, the diol byproducts were found to be generated only when HCHO was nearly completely consumed. We further examined the relationship ofHCHO concentration and diol byproducts production in vitro. It was found that a HCHO concentration above 0.6 mM can strongly inhibit the self-condensation of ACALD and its condensation with 3-HPA (Figure 7F). In the following bioconversion experiments the HCHO concentration was thus kept over 0.6 mM to eliminate the formation ofdiol byproducts.\n\nEliminating Diol Byproducts and Increasing the Production in Fed-Batch Bioconversion. In order to increase the yield of PDO and eliminate the diol byproducts, we performed fed-batch bioconversion to maintain the amount ofHCHO above a certain level (Figure 8). In a 40 mL whole-cell bioconversion system, a total volume of 100 mM HCHO was added in ten times interval as shown in Figure 8. As expected, no diol byproducts were produced and the production ofPDO was increased to $1 7 . 3 5 \\pm 0 . 5 8$ mM $\\left( 1 . 3 2 \\pm 0 . 0 4 \\ : \\mathrm { g / L } \\right)$ with a yield of 0.096 mol/mol at 24 h compared to 12.75 mM and 0.128 mol/ mol in the batch bioconversion without significant accumulations of ACALD and 3-HPA (Figure 6D). Surprisingly, in addition to PDO, a major part of the HCHO was converted to methanol (56.47 mM at 30 h) and obviously some HCHO was converted to formate despite the knockout of the frmA gene. Concerning the generation of methanol, it is obviously because of expression of HpADH1 that speeds up the conversion of HCHO to methanol. There may be some unclear reasons for the massive consumption of HCHO at the beginning (1 h) because HpADH1 was not expressed well and the activity toward HCHO is not high (0.83 U in vitro).\n\nA.\n![](images/f1ccd68215b924fb75b54b18f64863f113a5db95a1f3723bf4b7c52fe802924b.jpg)\n\nB.\n![](images/58bc2c11676f1cfb840139156986f331946f615d1f48a9dacef538342a06ef6b.jpg)\n\nC.\n![](images/c1770f316bc7fef9416b76d6d4607dc9a406f5700002f8575749d47b2f3df9df.jpg)\n\nD.\n![](images/c9bb63b16637792a0b6d2d93dcb7a3e2950342c65e8adb1c83f5872393b9bd0d.jpg)\n\nE.\n![](images/30d2ce23ffa7dc8e088d6e4b53871098ecbff11b90ed7919425f756c7c1aa0d9.jpg)\nF.\n\n![](images/f4cf3063f9d063493e3c514e016fa0daf18921714b76db13e5bbe2f014ad1792.jpg)\nFigure 7. Formation ofcondensation diol byproducts and their verification. (A) The GC-MS graph for the formation ofdiols. (B−D) GC-MS spectra (with $^ { 1 3 } \\mathrm { C } .$ -carbon indicated by \\*) of1,3-BDO, C5 diol, C6 diol, and phenylboronic acid, respectively. (E) Proposed biosynthetic routes ofthe diferent diols. (F) The determination of byproduct production at diferent concentrations of HCHO and ACALD in vitro."
+          },
+          {
+            "id": "conclusion",
+            "title": "■ CONCLUSION",
+            "level": 2,
+            "content": "In this work, we designed and demonstrated a DERA-based new metabolic pathway for the biosynthesis of PDO from formaldehyde and ethanol. Three metabolic modules were elaborated: a DERA-based PDO production module, an ACALD supply module and a HCHO supply module. This new pathway opens up the possibility to synthesize an appealing C3 compound from a C1 and a C2 compound without carbon loss in theory. This work has enriched the application of C1 compounds by using ACALD as a new HCHO acceptor in biocatalysis. Compared the KHB-based pathway,<sup>16</sup> DERA shows a higher afinity for HCHO than KHB. It should be mentioned that the afinity to HCHO and activity of the most appealing enzyme $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ applied here are still quite limited. Protein engineering of this enzyme and systems metabolic engineering work for host strain should be very meaningful for the direct use of C1 compounds for value-added products production in synthetic biology. Furthermore, the maintenance ofa certain level ofintracellular HCHO is important to avoid the self-polymerization of ACALD and the formation of other diol byproducts. In this context, it is also worth mentioning that the three reactions of the proposed pathway are all reversible. Although the standard Gibbs free energy for the aldol condensation of HCHO and ACALD is estimated to be negative (about −3.702 kJ/mol) and the reaction is thus thermodynamically feasible, driving force or equilibrium of the pathway may represent a critical issue in further consideration. The flux and yield of the pathway toward formation of PDO could be enhanced by following a pushing and polling approach as demonstrated in literature for other synthetic metabolic pathways, namely, increasing the upstream flux and drawing fast the downstream flux.\n\n![](images/d9271f8250f3f45240cc4c822c4f406b7d335a964e67587faea1f6a733fbcffc.jpg)\nFigure 8. PDO production in whole-cell bioconversion with the strain BF16 using HCHO and ethanol as cosubstrates with interim addition of HCHO. The initial concentrations ofHCHO and ethanol were 100 and 300 mM, respectively; 100 mM HCHO were added in ten times interval."
+          },
+          {
+            "id": "materials_and_methods",
+            "title": "■ MATERIALS AND METHODS",
+            "level": 2,
+            "content": "Strains and Plasmids. Strains and plasmids used in this study are listed in Table 4. E. coli Top10 was used for routine cloning procedures while E. coli BL21(DE3) with its mutant were used as fermentation host. E. coli vectors pET-21a (+), and pRSFduet-1 were used for gene overexpression. Luria−Bertani (LB) liquid medium (tryptone 10 g/L, yeast extract 5 $\\mathrm { g / L }$ and NaCl 10 g/L) and solid medium (1.5% agar) with kanamycin (50 μg/mL) or ampicillin (100 μg/mL) were used for cell growth. All the chemicals were obtained from commercial sources.\n\nGenes encoding Deoxyribose-5-phosphate aldolase (DERA, EC 4.1.2.4) from diferent sources, PDO dehydrogenase (DhaT, EC 1.1.1.202) from K. pneumoniae DSM 2026, methanol dehydrogenase (Mdh2, EC 1.1.1.244) from B. methanolicus MGA3 and alcohol dehydrogenase (HpADH1, EC 1.1.1.1) from Hansenula polymorpha were codon-optimized and synthesized by GenScript Inc. on vector pET21a (+) or pRSFduet-1 as listed in Table 4. All recombinant plasmids in this study were constructed with Mut Express II Fast Mutagenesis Kit V2 (Vazyme Biotech $\\mathrm { C o . , L t d . } )$ and sequencing by Genewiz Inc. to verify the sequence. In particular, the gene encoding HpADH1 was linked behind the gene encoding DERA without SD sequence.\n\nCRISPR-Cas9 method was used to delete the gene frmA of E. coli BL21(DE3), which encodes HCHO dehydrogenase.<sup>41</sup> All primers and donor ssDNA were ordered from Genewiz Inc. The primers and the N20 sequence used in this study are listed in Supporting Information Table S3.\n\nCultivation Conditions and Whole-Cell Bioconversion. Seed cultures were prepared in 4 mL of LB medium (containing 10 g/L of tryptone, 5 g/L of yeast extract and 10 g/L of NaCl) and supplemented with 50 $\\mu \\mathrm { g / m L }$ kanamycin at $\\bar { 3 7 } ^ { \\circ } \\mathrm { C }$ for 8 h, then transferred into 50 mL LB medium to $\\mathrm { O D } _ { 6 0 0 }$ at 0.03, supplemented with 50 μg/mL kanamycin and grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ until $\\mathrm { O D } _ { 6 0 0 }$ reached 0.7−0.8. 0.2 mM Isopropyl-β-D-thiogalactopyranoside (IPTG) was added to induce protein expression, and the cultures continued growing at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 10 h. The cells were then collected. For the batch bioconversion ofACALD and HCHO to PDO, cells were resuspended in 5 mL of 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.0) containing 200 mM of glucose, 100 mM HCHO, and 100 mM ACALD. For the batch bioconversion of ethanol and HCHO to PDO, cells were resuspended in 5 mL of 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { \\cdot }$ bufer (pH 7.0) containing 100 mM HCHO and 300 mM ethanol. For the fedbatch bioconversion of ethanol and HCHO to PDO, cells were resuspended in 50 mL tube of50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { \\angle }$ bufer (pH 7.0) containing 100 mM HCHO and 300 mM ethanol. We made each of the bioconversions reach $\\mathrm { O D } _ { 6 0 0 } = 5 0$ . The resuspended cells were shaken at $3 0 ^ { \\circ } \\mathrm { C } , 2 3 0$ rpm in 10 mL tubes with the caps closed to limit oxygen availability.\n\nProtein Overexpression and Purification. The recombinant cells were grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ in 100 mL LB-medium supplemented with 50 μg/mL kanamycin or 100 μg/mL ampicillin until the $\\mathrm { O D } _ { 6 0 0 }$ reached 0.8, then induced by adding 0.2 mM IPTG for an additional 8 h at $3 0 ~ ^ { \\circ } \\mathrm { C }$ . For the overexpression of HpADH1 and DhaT, they were induced by adding 0.2 mM IPTG for 24 h at $1 6 ^ { \\circ } \\mathrm { C } .$ . Under 4 ${ } ^ { \\circ } \\mathrm { C } ,$ cells were harvested by centrifugation at 4000 rpm for 10 min and resuspended in 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.5). The resuspended cells were disrupted by sonication and centrifuged at 12 000 rpm for 1 h. The supernatants were purified with $\\mathrm { N i } ^ { 2 + } .$ NTA column and desalted with 10 kDa ultrafiltration tube. The concentrations of the enzymes were quantified by BCA protein assay kit (Beijing Solarbio Science & Technology $\\mathrm { C o . , }$ Ltd.).\n\nEnzyme Assay. DERAs’ activities were determined by monitoring the production of 3-HPA in the aldol condensation reaction ofHCHO and ACALD at $3 0 ^ { \\circ } \\mathrm { C }$ . For the comparison of DERAs’ activity under diferent concentrations of HCHO, the reaction system in 2 mL EP tube is 20 mM ACALD, 5−200 mM HCHO and certain amount of pure enzyme in a 20 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.0). For the determination of HCHO tolerance, enzymes were treated by 300 mM HCHO (test group) or 0 mM HCHO (control group) for 2 h, then the reaction proceeded under 50 mM HCHO and 20 mM ACALD with equal amounts of enzyme.\n\nPreparation of 3-HPA and Its Quantification. Since 3- HPA is not commercially available, it was synthesized as a solution with known concentration as a kind of “standard” for analysis. The method is as follows. One mg/mL DERA was mixed with 20 mM HCHO and 20 mM ACALD. The mixture was kept for $5 \\mathrm { h } , \\mathrm { a t } 3 0 ^ { \\circ } \\mathrm { C }$ for the formation of 3-HPA. After the reaction was complete, a 10 kDa ultrafiltration tube was used to remove DERA, resulting in a solution containing 3-HPA (defined as solution A). A portion of the solution A was mixed with 20 mM NADH and DhaT; after a reaction time of30 min, a 10 kDa ultrafiltration tube was used to remove the enzyme\n\nTable 4. Strains and Plasmids Used for This Study\n<table><tr><td>strain or plasmid</td><td>description</td><td>source</td></tr><tr><td colspan=\"3\">Strains</td></tr><tr><td>E. coli Top10</td><td>used for cloning</td><td>laboratory stock</td></tr><tr><td>E. coli BL21</td><td>used for fermentation</td><td>laboratory stock</td></tr><tr><td>(DE3) E. coli ∆frmA</td><td>E. coli BL21(DE3) ∆frmA</td><td>this study</td></tr><tr><td>BP01</td><td>E. coli BL21(DE3) harboring pRSFduet-  $\\mathrm { D E R A _ { E C O } }$  from E. coli K-12</td><td>this study</td></tr><tr><td>BP02</td><td>E. coli BL21(DE3) harboring pRSFduet-Dhat this study from K. pneumoniae DSM 2026</td><td></td></tr><tr><td>BP03</td><td>E. coli BL21(DE3) harboring pet21a-  $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$  from Thermotoga maritima</td><td>this study</td></tr><tr><td>BP04</td><td>E. coli BL21(DE3) harboring pet21a-  $\\mathrm { D E R A } _ { \\mathrm { G T H } }$  from Geobacillus thermodenitrificans</td><td>this study</td></tr><tr><td>BP05</td><td> $E . \\ c o l i \\ \\mathrm { B L } 2 1 \\left( \\mathrm { D E } 3 \\right)$  harboring pet21a-</td><td>this study</td></tr><tr><td>BP06</td><td> $\\mathrm { D E R A } _ { \\mathrm { S E P } }$  from Staphylococcus epidermidis E. coli BL21(DE3) harboring pet21a-</td><td>this study</td></tr><tr><td>BP07</td><td> $\\mathrm { D E R A } _ { \\mathrm { P A E } }$  from Pyrobaculum aerophilum E. coli BL21(DE3) harboring pet21a-Rd3BB</td><td>this study</td></tr><tr><td>BP08</td><td>E. coli BL21(DE3) harboring pet21a-</td><td>this study</td></tr><tr><td>BP09</td><td> $\\mathrm { D E R A } _ { \\mathrm { E C O } \\textrm { C } 4 7 \\mathrm { M } }$   $E . \\ c o l i \\ \\mathrm { B L } 2 1 \\left( \\mathrm { D E } 3 \\right)$  harboring pet21a-</td><td>this study</td></tr><tr><td>BP10</td><td>DERAECO C47V E. coli BL21(DE3) harboring pet21a-</td><td>this study</td></tr><tr><td>BF01</td><td>HpADH1 from Hansenula polymorpha E. coli BL21(DE3) pRSFduet-BtKHG-DhaT</td><td>this study</td></tr><tr><td>BF02</td><td>E. coli BL21(DE3) pRSFduet-HsKHG-DhaT</td><td>this study</td></tr><tr><td>BF03</td><td> $E . \\ c o l i \\ \\mathrm { B L 2 1 { \\left( D E 3 \\right) } \\ p R S F d u e t { \\mathrm { - } \\mathrm { E c K H G - D h a T } } }$ </td><td>this study</td></tr><tr><td>BF04</td><td>E. coli BL21(DE3) pRSFduet-Yfau-DhaT</td><td>this study</td></tr><tr><td>BF05</td><td> $E . \\ c o l i \\ B L 2 1 \\big ( \\mathrm { D E 3 } \\big ) \\ p R S F \\mathrm { d u e t \\mathrm { - } P a n B \\mathrm { - } D h a T }$ </td><td>this study</td></tr><tr><td>BF06</td><td>E. coli BL21(DE3)  $\\mathtt { p R S F d u e t - D E R A _ { E C O } - }$  DhaT</td><td>this study</td></tr><tr><td>BF07</td><td>E. coli BL21(DE3)  $\\mathsf { p R S F d u e t  – D E R A } _ { \\mathrm { T M A } ^ { - } }$ </td><td>this study</td></tr><tr><td>BF08</td><td>DhaT E. coli BL21(DE3)  $\\mathsf { p R S F d u e t  – D E R A } _ { \\mathrm { G T H } ^ { - } }$ </td><td>this study</td></tr><tr><td>BF09</td><td>DhaT  $E . \\ c o l i \\ \\mathrm { B L 2 1 ( D E 3 ) \\ p R S F d u e t { \\mathrm { - D E R A } } _ { \\mathrm { S E P } } \\mathrm { - D h a T } }$ </td><td>this study</td></tr><tr><td>BF10</td><td>E. coli BL21(DE3) pRSFduet-DERAPAE-</td><td>this study</td></tr><tr><td>BF11</td><td>DhaT  $\\begin{array} { r l } { E . ~ c o l i ~ { \\mathrm { B L 2 1 } } { \\mathrm { ( D E 3 ) } } ~ { \\mathrm { p R S F d u e t } } { \\mathrm { . D E R A } } _ { \\mathrm { E C O } ^ { - } } } & { { } } \\\\ { { \\mathrm { H p A D H 1 . D h a T } } } \\end{array}$ </td><td>this study</td></tr><tr><td>BF12</td><td> $\\begin{array} { r l } { E . ~ c o l i ~ { \\mathrm { B L 2 1 } } { \\mathrm { ( D E 3 ) } } ~ { \\mathrm { p R S F d u e t  – D E R A } } _ { \\mathrm { T M A } ^ { - } } } & { { } } \\\\ { ~ { \\mathrm { H p A D H 1  – D h a T } } } \\end{array}$ </td><td>this study</td></tr><tr><td>BF13</td><td> $\\begin{array} { r l } { E . ~ c o l i ~ { \\mathrm { B L } } 2 1 { \\left( { \\mathrm { D E } } 3 \\right) } ~ { \\mathrm { p R S F d u e t - R d } } 3 { \\mathrm { B B } } \\mathrm { - } } & { } \\\\ { ~ { \\mathrm { H p A D H 1 - D h a T } } } \\end{array}$ </td><td>this study</td></tr></table>\n\nDhaT, resulting in a solution containing PDO and little 3-HPA (defined as solution B). For comparison, we then took the same amount of solution A and mix it with a bufer solution equal to the volume ofNADH and DhaT solution as used in the previous step (defined as solution C). PDO can be accurately measured by GC-MS. The measured PDO comes from the converted 3- HPA. Thus, the diference between the 3-HPA peak areas of solutions B and C corresponds to the measured concentration of PDO (Figure S2).\n\nAnalytical Methods. Quantification of glucose, 3-HP, ethanol, methanol, lactate, formate and acetate were carried out by high performance liquid chromatography (HPLC) equipped with an Aminex HPX-87 H Column (300 × 7.8 mm, Bio-Red) using 5 mM ${ \\mathrm { H } } _ { 2 } { \\mathrm { S O } } _ { 4 }$ as the mobile phase with a flow rate of0.6 mL/min. The column temperature was $6 5 ^ { \\circ } \\mathrm { C }$ with the RID detector temperature $3 5 ~ ^ { \\circ } \\mathrm { C } .$ Concentrations of HCHO, ACALD, and 3-HPA were measured by HPLC with a C18 column (4.6 × 150 mm, 5 μm, Shimadzu, Japan) after derivatization as follows:<sup>31</sup> 40 $\\mu \\mathrm { L }$ supernatant or reaction solution mixed with a solution of O-benzylhydroxylamine hydrochloride (80 $\\mu \\mathrm { L }$ of a 0.13 mM stock solution in pyridine:methanol:water 33:15:2). After being incubated at 30 $^ \\circ \\mathrm { C }$ for 10 min, samples were diluted in methanol (800 μL) and centrifuged. The mobile phase system used was mobile phase (A): 0.1% (v/v) trifluoroacetic acid (TFA) in $\\mathrm { H } _ { 2 } \\mathrm { O } ,$ and mobile phase (B): 0.095% (v/v) TFA in $\\mathrm { C H } _ { 3 } \\mathrm { C N } ,$ gradient elution from 8 to 80% B over 25 min with flow rate 1 mL/min, UV detection at 215 nm, and column temperature at $3 0 ^ { \\circ } C . ^ { 3 1 }$ PDO and other diol byproducts were analyzed by GC-MS as described in Wang et al. (2019).<sup>16</sup>\n\n<table><tr><td>strain or plasmid</td><td>description</td><td>source</td></tr><tr><td>BF14</td><td>E. coli BL21(DE3) pRSFduet  $\\mathbf { \\cdot D E R A _ { E C O \\ C 4 7 M ^ { - } } }$ </td><td>this study</td></tr><tr><td>BF15</td><td>HpADH1-DhaT E. coli BL21(DE3)  $\\mathrm { p R S F d u e t  – D E R A _ { E C O \\ C 4 7 V } } ^ { }$ </td><td>this study</td></tr><tr><td>BF16</td><td>HpADH1-DhaT BF12 ∆frmA</td><td>this study</td></tr><tr><td>BF17</td><td>E. coli BL21(DE3) pRSFduet-DERATMA-</td><td>this study</td></tr><tr><td>Plasmids</td><td>MDH2-DhaT</td><td></td></tr><tr><td>pGRB</td><td>AmpR, harboring empty sgRNA</td><td>laboratory stock</td></tr><tr><td> $\\mathrm { \\ p R e d C a s }$ </td><td> ${ \\mathrm { S p c } } ^ { \\mathrm { R } } ,$  Red recombination system, Cas9 expressing system, plasmid curing system</td><td>laboratory stock</td></tr><tr><td> $\\mathsf { P } _ { \\mathrm { f r m A } } ^ { \\mathrm { G R B - s g - } }$ </td><td> $\\mathrm { A m p ^ { R } } ,$  harboring empty sgRNA</td><td>this study</td></tr><tr><td> $\\stackrel { \\mathrm { p E T } } { ( \\mathrm { P } ) } ^ { 2 1 \\mathrm { a } ( + ) }$ </td><td>E. coli expression vector,  $\\mathrm { A m p } ^ { \\mathrm { R } } ,$  T7 promoter</td><td>laboratory stock</td></tr><tr><td> $\\mathrm { P } { - } \\mathrm { T }$ </td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { T M A } }$ </td><td>this study</td></tr><tr><td>P-G</td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { G T H } }$ </td><td>this study</td></tr><tr><td>P-S</td><td> $\\mathrm { c o n t a i n i n g \\ D E R A _ { S E P } }$ </td><td>this study</td></tr><tr><td>P-A</td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { P A E } }$ </td><td>this study</td></tr><tr><td>P-R</td><td>containing Rd3BB</td><td>this study</td></tr><tr><td>P-H</td><td>containing HpADH1</td><td>this study</td></tr><tr><td> $\\mathsf { P } _ { ( \\mathrm { R } ) } ^ { \\mathrm { R S F d u e t - 1 } }$ </td><td>E. coli expression vector,  ${ \\mathrm { K a n a } } ^ { \\mathrm { R } } ,$  T7 promoter</td><td>laboratory stock</td></tr><tr><td>R-E</td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { E C O } }$ </td><td>this study</td></tr><tr><td>R-D</td><td>containing DhaT</td><td>this study</td></tr><tr><td>R-BD</td><td>containing BtKHG and DhaT</td><td>this study</td></tr><tr><td>R-HD</td><td>containing HsKHG and DhaT</td><td>this study</td></tr><tr><td>R-KD</td><td>containing EcKHG and DhaT</td><td>this study</td></tr><tr><td>R-YD</td><td>containing Yfau and DhaT</td><td>this study</td></tr><tr><td>R-PD</td><td>containing PanB and DhaT</td><td>this study</td></tr><tr><td>R-ED</td><td>containing DERAECo and DhaT</td><td>this study</td></tr><tr><td>R-TD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { T M A } \\ a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-GD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { \\mathrm { G T H } } \\ a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-SD</td><td>containing DERAsEp and DhaT</td><td>this study</td></tr><tr><td>R-AD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { P A E } \\ a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-EHD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { E C O } , H p A D H 1 , a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-THD</td><td>containing DERATMA, HpADH1, and DhaT</td><td>this study</td></tr><tr><td> $\\mathrm { R } { \\cdot } \\mathrm { E } _ { \\mathrm { C } 4 7 \\mathrm { V } } \\mathrm { H D }$ </td><td> $\\operatorname { c o n t a i n i n g \\ D E R A _ { E C O \\ C 4 7 \\mathrm { V } } , \\ H p A D H 1 , \\ a n d }$  DhaT</td><td>this study</td></tr><tr><td> $\\mathrm { R - E _ { C 4 7 M } H D }$ </td><td> $\\mathbf { \\Lambda } _ { \\mathrm { c o n t a i n i n g ~ D E R A _ { E C O \\ C 4 7 M } , ~ H p A D H 1 , ~ a n d } } ^ { \\mathrm { c o n t a i n i n g ~ D E R A _ { E C O \\ C 4 7 M } , ~ H p A D H 1 , ~ a n d } }$  DhaT</td><td>this study</td></tr><tr><td>R-RHD</td><td>containing  $\\mathrm { D E R A } _ { \\mathrm { R D 3 B B } } , \\mathrm { H p A D H 1 } ,$  and DhaT</td><td>this study</td></tr><tr><td>R-TMD</td><td>containing  $\\mathrm { D E R A } _ { \\mathrm { T M A } } , \\mathrm { M D H } 2 ,$  and DhaT</td><td>this study</td></tr></table>"
+          },
+          {
+            "id": "associated_content",
+            "title": "■ ASSOCIATED CONTENT",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "s_supporting_information",
+            "title": "\\*sı Supporting Information",
+            "level": 2,
+            "content": "The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acssynbio.0c00597.\n\nPurified enzymes and their use for the verification of separate modules and entire pathway; 3-HPA peak diagrams; Primers used in this study; Gene sequences after codon optimization (PDF)"
+          },
+          {
+            "id": "author_information",
+            "title": "■ AUTHOR INFORMATION",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "corresponding_authors",
+            "title": "Corresponding Authors",
+            "level": 2,
+            "content": "Ji<sub>e</sub> R<sub>en</sub> − Beijing Advanced Innovation Center for Soft Matter Science and Engineering, Beijing University of Chemical Technology, 100029 Beijing, China; State Key Laboratoryfor Biology of Plant Diseases and Insect Pests/Key Laboratory of Control of Biological Hazard Factors (Plant Origin) for Agriproduct Quality and Safety, Ministry ofAgriculture, Institute of Plant Protection, Chinese Academy ofAgricultural Sciences, Beijing 100081, China; orcid.org/0000-0001- 9424-1531; Phone: +86-8210-5929; Email: renjie@ mail.buct.edu.cn\n\nA<sub>n</sub> Pi<sub>ng</sub> Z<sub>eng</sub> − Beijing Advanced Innovation Centerfor Soft Matter Science and Engineering, Beijing University ofChemical Technology, 100029 Beijing, China; Institute ofBioprocess and Biosystems Engineering, Hamburg University of Technology, D-21073 Hamburg, Germany; orcid.org/0000-0001- 9768-7096; Phone: +49-40-42878-4183; Email: aze@ tuhh.de; Fax: +49-40-42878-2909"
+          },
+          {
+            "id": "authors",
+            "title": "Authors",
+            "level": 2,
+            "content": "H<sub>ao</sub> M<sub>eng</sub> − Beijing Advanced Innovation Centerfor Soft Matter Science and Engineering, Beijing University ofChemical Technology, 100029 Beijing, China\n\nCh<sub>uang</sub> W<sub>ang</sub> − Beijing Advanced Innovation Centerfor Soft Matter Science and Engineering, Beijing University ofChemical Technology, 100029 Beijing, China\n\nQi<sub>peng</sub> Y<sub>uan</sub> − State Key Laboratory of Chemical Resource Engineering, Beijing University of Chemical Technology, 100029 Beijing, China\n\nComplete contact information is available at:\n\nhttps://pubs.acs.org/10.1021/acssynbio.0c00597"
+          },
+          {
+            "id": "notes",
+            "title": "Notes",
+            "level": 2,
+            "content": "The authors declare no competing financial interest."
+          },
+          {
+            "id": "acknowledgments",
+            "title": "■ ACKNOWLEDGMENTS",
+            "level": 2,
+            "content": "This work is financially supported by the Beijing Advanced Innovation Center for Soft Matter Science and Engineering."
+          },
+          {
+            "id": "references",
+            "title": "■ REFERENCES",
+            "level": 2,
+            "content": "(1) Zhang, W. M., Song, M., Yang, Q., Dai, Z. X., Zhang, S. J., Xin, F. X., Dong, W. L., Ma, J. F., and Jiang, M. (2018) Current advance in bioconversion of methanol to chemicals. Biotechnol. Biofuels 11, 260.\n\n(2) Whitaker, W. B., Sandoval, N. R., Bennett, R. K., Fast, A. G., and Papoutsakis, E. T. (2015) Synthetic methylotrophy: Engineering the production of biofuels and chemicals based on the biology of aerobic methanol utilization. Curr. Opin. Biotechnol. 33, 165−175.\n\n(3) Pieja, A. J., Morse, M. C., and Cal, A. J. (2017) Methane to bioproducts: The future ofthe bioeconomy? Curr. Opin. Chem. Biol. 41, 123−131.\n\n(4) Hwang, I. Y., Nguyen, A. D., Nguyen, T. T., Nguyen, L. T., Lee, O. K., and Lee, E. Y. (2018) Biological conversion ofmethane to chemicals\n\nand fuels: Technical challenges and issues. Appl. Microbiol. Biotechnol. 102, 3071−3080.\n\n(5) Hadjipaschalis, I., Poullikkas, A., and Efthimiou, V. (2009) Overview of current and future energy storage technologies for electric power applications. Renewable Sustainable Energy Rev. 13, 1513−1522.\n\n(6) He, H., Edlich-Muth, C., Lindner, S. N., and Bar-Even, A. (2018) Ribulose Monophosphate Shunt Provides Nearly All Biomass and Energy Required for Growth of E. coli. ACS Synth. Biol. 7, 1601−1611.\n\n(7) Zhang, W. M., Zhang, T., Wu, S. H., Wu, M. K., Xin, F. X., Dong, W. L., Ma, J. F., Zhang, M., and Jiang, M. (2017) Guidance for engineering ofsynthetic methylotrophy based on methanol metabolism in methylotrophy. RSC Adv. 7, 4083−4091.\n\n(8) Whitaker, W. B., Jones, J. A., Bennett, R. K., Gonzalez, J. E., Vernacchio, V. R., Collins, S. M., Palmer, M. A., Schmidt, S., Antoniewicz, M. R., Koffas, M. A., and Papoutsakis, E. T. (2017) Engineering the Biological Conversion of Methanol to Specialty Chemicals in Escherichia coli. Metab. Eng. 39, 49−59.\n\n(9) Müller, J. E. N., Meyer, F., Litsanov, B., Kiefer, P., Potthoff, E., Heux, S., Quax, W. J., Wendisch, V. F., Brautaset, T., Portais, J. C., and Vorholt, J. A. (2015) Engineering Escherichia coli for methanol conversion. Metab. Eng. 28, 190−201.\n\n(10) Bennett, R. K., Steinberg, L. M., Chen, W., and Papoutsakis, E. T. (2018) Engineering the bioconversion of methane and methanol to fuels and chemicals in native and synthetic methylotrophs. Curr. Opin. Biotechnol. 50, 81−93.\n\n(11) Antoniewicz, M. R. (2019) Synthetic methylotrophy: Strategies to assimilate methanol for growth and chemicals production. Curr. Opin. Biotechnol. 59, 165−174.\n\n(12) Chen, C. T., Chen, F. Y. H., Bogorad, I. W., Wu, T. Y., Zhang, R., Lee, A. S., and Liao, J. C. (2018) Synthetic methanol auxotrophy of Escherichia coli for methanol-dependent growth and production. Metab. Eng. 49, 257−266.\n\n(13) Hift, H., and Mahler, H. R. (1952) The enzymatic condensation of pyruvate and formaldehyde. J. Biol. Chem. 198, 901−914.\n\n(14) Lane, R. S., Shapley, A., and Dekker, E. E. (1971) 2-Keto-4- Hydroxybutyrate Aldolase. Identification as 2-Keto-4-Hydroxyglutarate Aldolase, Catalytic Properties, and Role in the Mammalian Metabolism of L-Homoserine. Biochemistry 10, 1353−1364.\n\n(15) Nishihara, H., and Dekker, E. E. (1972) Purification, substrate specificity and binding, -decarboxylase activity, and other properties of Escherichia coli 2-keto-4-hydroxyglutarate aldolase. J. Biol. Chem. 247, 5079−5087.\n\n(16) Wang, C., Ren, J., Zhou, L. B., Li, Z. D., Chen, L., and Zeng, A. P. (2019) An Aldolase-Catalyzed New Metabolic Pathway for the Assimilation of Formaldehyde and Methanol To Synthesize 2-Keto-4-hydroxybutyrate and 1,3-Propanediol in Escherichia coli. ACS Synth. Biol. 8, 2483−2493.\n\n(17) Saxena, R. K., Anand, P., Saran, S., and Isar, J. (2009) Microbial production of 1,3-propanediol: Recent developments and emerging opportunities. Biotechnol. Adv. 27, 895−913.\n\n(18) Zeng, A. P. (2019) New bioproduction systems for chemicals and fuels: Needs and new development. Biotechnol. Adv. 37, 508−518.\n\n(19) Zhang, Y. J., Ma, C. W., Dischert, W., Soucaille, P., and Zeng, A. P. (2019) Engineering of Phosphoserine Aminotransferase Increases the Conversion of L-Homoserine to 4-Hydroxy-2-ketobutyrate in a Glycerol-Independent Pathway of 1,3-Propanediol Production from Glucose. Biotechnol. J. 14, e1900003.\n\n(20) Zeng, A. P., and Sabra, W. (2011) Microbial production of diols as platform chemicals: Recent progresses. Curr. Opin. Biotechnol. 22, 749−757.\n\n(21) Tong, I. T., Liao, H. H., and Cameron, D. C. (1991) 1,3- Propanediol production by Escherichia coli expressing genes from the Klebsiella pneumoniae dha regulon. Appl. Environ. Microbiol. 57, 3541− 3546.\n\n(22) Chen, Z., Geng, F., and Zeng, A. P. (2015) Protein design and engineering of a de novo pathway for microbial production of 1,3- propanediol from glucose. Biotechnol. J. 10, 284−289.\n\n(23) Wang, J., Li, C. Y., Zou, Y. S., and Yan, Y. J. (2020) Bacterial synthesis of C3-C5 diols via extending amino acid catabolism. Proc. Natl. Acad. Sci. U. S. A. 117, 19159−19167.\n\n(24) Utesch, T., Sabra, W., Prescher, C., Baur, J., Arbter, P., and Zeng, A. P. (2019) Enhanced electron transfer of different mediators for strictly opposite shifting of metabolism in Clostridium pasteurianum grown on glycerol in a new electrochemical bioreactor. Biotechnol. Bioeng. 116, 1627−1643.\n\n(25) Nakamura, C. E., and Whited, G. M. (2003) Metabolic engineering for the microbial production of 1,3-propanediol. Curr. Opin. Biotechnol. 14, 454−459.\n\n(26) Xu, Y. Y., Meng, H., Ren, J., and Zeng, A. P. (2020) Formaldehyde formation in the glycine cleavage system and its use for an aldolase-based biosynthesis of 1,3-prodanediol. J. Biol. Eng. 14, 15.\n\n(27) Cobzaru, C., Oprea, S., Dumitriu, E., and Hulea, V. (2008) Gas phase aldol condensation of lower aldehydes over clinoptilolite rich natural zeolites. Appl. Catal., A 351, 253−258.\n\n(28) Saito, S., and Yamamoto, H. (1999) Directed Aldol Condensation. Chem. - Eur. J. 5, 1959−1962.\n\n(29) Bouzon, M., Perret, A., Loreau, O., Delmas, V., Perchat, N., Weissenbach, J., Taran, F., and Marliere, P. (2017) A Synthetic̀ Alternative to Canonical One-Carbon Metabolism. ACS Synth. Biol. 6, 1520−1533.\n\n(30) Valentin-Hansen, P., Boetius, F., Hammer-Jespersen, K., and Svendsen, I. (1982) The Primary Structure of Escherichia coli K12 2- Deoxyribose 5-Phosphate Aldolase. Eur. J. Biochem. 125, 561−566.\n\n(31) Hernandez, K., Bujons, J., Joglar, J., Charnock, S. J., de Maria, P. D., Fessner, W. D., and Clapes, P. (2017) Combining Aldolases and Transaminases for the Synthesis of 2-Amino-4-hydroxybutanoic Acid. ACS Catal. 7, 1707−1711.\n\n(32) Tong, I. T., Liao, H. H., and Cameron, D. C. (1991) 1,3- Propanediol Production by Escherichia coli Expressing Genes from the Klebsiella pneumoniae dha Regulon. Appl. Environ. Microbiol. 57, 3541− 3546.\n\n(33) Voutilainen, S., Heinonen, H., Andberg, M., Jokinen, E., Maaheimo, H., Paakkonen, J., Hakulinen, N., Rouvinen, J., Lahdesmaki, H., Kaski, S., Rousu, J., Penttila, M., and Koivula, A. (2020) Substrate specificity of 2-deoxy-D-ribose 5-phosphate aldolase (DERA) assessed by different protein engineering and machine learning methods. Appl. Microbiol. Biotechnol. 104, 10515−10529.\n\n(34) Dick, M., Hartmann, R., Weiergräber, O. H., Bisterfeld, C., Classen, T., Schwarten, M., Neudecker, P., Willbold, D., and Pietruszka, J. (2016) Mechanism-based inhibition of an aldolase at high concentrations of its natural substrate acetaldehyde: Structural insights and protective strategies. Chem. Sci. 7, 4492−4502.\n\n(35) Jennewein, S., Schürmann, M., Wolberg, M., Hilker, I., Luiten, R., Wubbolts, M., and Mink, D. (2006) Directed evolution of an industrial biocatalyst: 2-deoxy-D-ribose 5-phosphate aldolase. Biotechnol. J. 1, 537−548.\n\n(36) Sakuraba, H., Yoneda, K., Yoshihara, K., Satoh, K., Kawakami, R., Uto, Y., Tsuge, H., Takahashi, K., Hori, H., and Ohshima, T. (2007) Sequential Aldol Condensation Catalyzed by Hyperthermophilic 2- Deoxy-D-ribose-5-Phosphate Aldolase. Appl. Environ. Microbiol. 73, 7427−7434.\n\n(37) Huffman, M. A., Fryskowska, A., Alvizo, O., Borra-Garske, M., Campos, K. R., Canada, K. A., Devine, P. N., Duan, D., Forstater, J. H., Grosser, S. T., Halsey, H. M., Hughes, G. J., Jo, J., Joyce, L. A., Kolev, J. N., Liang, J., Maloney, K. M., Mann, B. M., Marshall, N. M., McLaughlin, M., Moore, J. C., Murphy, G. S., Nawrat, C. C., Nazor, J., Novick, S., Patel, N. R., Rodriguez-Granillo, A., Robaire, S. A., Sherer, E. C., Truppo, M. D., Whittaker, A. M., Verma, D., Xiao, L., Xu, Y., and Yang, H. (2019) Design of an in vitro biocatalytic cascade for the manufacture of islatravir. Science 366, 1255−1259.\n\n(38) Arfman, N., Bystrykh, L., Govorukhina, N. I., and Dijkhuizen, L. (1990) 3-Hexulose-6-phosphate Synthase from Thermotolerant Methylotroph Bacillus C1. Methods Enzymol. 188, 391−397.\n\n(39) Suwannarangsee, S., Kim, S., Kim, O. C., Oh, D. B., Seo, J. W., Kim, C. H., Rhee, S. K., Kang, H. A., Chulalaksananukul, W., and Kwon,\n\nO. (2012) Characterization of alcohol dehydrogenase 3 of the thermotolerant methylotrophic yeast Hansenula polymorpha. Appl. Microbiol. Biotechnol. 96, 697−709.\n\n(40) Suwannarangsee, S., Oh, D. B., Seo,J. W., Kim, C. H., Rhee, S. K., Kang, H. A., Chulalaksananukul, W., and Kwon, O. (2010) Characterization of alcohol dehydrogenase 1 of the thermotolerant methylotrophic yeast Hansenula polymorpha. Appl. Microbiol. Biotechnol. 88, 497−507.\n\n(41) Li, Y. F., Lin, Z. Q., Huang, C., Zhang, Y., Wang, Z. W., Tang, Y.J., Chen, T., and Zhao, X. M. (2015) Metabolic engineering ofEscherichia coli using CRISPR-Cas9 meditated genome editing. Metab. Eng. 31, 13−21.\n\n(42) Nemr, K., Muller, J. E. N., Joo, J. C., Gawand, P., Choudhary, R., Mendonca, B., Lu, S. Y., Yu, X. Y., Yakunin, A. F., and Mahadevan, R. (2018) Engineering a short, aldolase-based pathway for (R)-1,3- butanediol production in Escherichia coli. Metab. Eng. 48, 13−24."
+          }
+        ],
+        "paragraphs": [
+          {
+            "paragraph_id": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli_p001",
+            "text": "Hao Meng, Chuang Wang, Qipeng Yuan, Jie Ren,\\* and An-Ping Zeng\\*",
+            "section": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli"
+          },
+          {
+            "paragraph_id": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli_p002",
+            "text": "![](images/98981b7415b19305d868c778a37a1046322a66605217bb1acdedff903e11996a.jpg)",
+            "section": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli"
+          },
+          {
+            "paragraph_id": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli_p003",
+            "text": "Cite This: ACS Synth. Biol. 2021, 10, 799−809",
+            "section": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli"
+          },
+          {
+            "paragraph_id": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli_p004",
+            "text": "Read Online",
+            "section": "an_aldolase_based_new_pathway_for_bioconversion_of_formaldehyde_and_ethanol_into_1_3_propanediol_in_escherichia_coli"
+          },
+          {
+            "paragraph_id": "access_p001",
+            "text": "Metrics & More",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p002",
+            "text": "ABSTRACT: Formaldehyde (HCHO) is a reactive one-carbon compound that is interesting for biosynthesis. The assimilation of HCHO depends on the catalysis of aldolase. Here, we present a novel synthetic pathway in E. coli to convert HCHO and ethanol into 1,3-propanediol (PDO) using a deoxyribose-5-phosphate aldolase (DERA). DERA condenses HCHO and acetaldehyde to form 3-hydroxypropionaldehyde, the direct precursor of PDO formation. This new pathway opens up the possibility to synthesize",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p003",
+            "text": "Article Recommendations",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p004",
+            "text": "\\*sı Supporting Information",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p005",
+            "text": "![](images/1a7b1c3511512261f51d199f049c5b8658128b0630582b019268800025203dc0.jpg)",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p006",
+            "text": "an appealing C3 compound from a C1 compound and a C2 compound without carbon loss in contrast to all the other known PDO synthetic pathways where typically 30−50% of the carbons are lost as $\\mathrm { C O } _ { 2 }$ and other byproducts. The pathway is successfully demonstrated by elaborating three metabolic modules. First, DERA from Thermotoga maritima was found to be eficient for the aldol condensation and PDO production module. For the module of acetaldehyde supply from ethanol, an alcohol dehydrogenase from Hansenula polymorpha was selected. For the HCHO supply module, the control of HCHO concentration and its utilization were shown to be important for achieving the assimilation of HCHO in recombinant E. coli cells. By deleting the gene frmA for endogenous conversion of HCHO to formate and controlling HCHO at a level of about 0.6 mM, the concentration and yield of PDO were increased from initially 5.67 mM (0.43 g/L) and 0.057 mol/mol to 17.35 mM (1.32 g/L) and 0.096 mol/mol in bioconversion of ethanol and HCHO with resting E. coli cells. Further engineering of DERA and the HCHO supply module is necessary to realize the potential of this promising metabolic pathway.",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p007",
+            "text": "KEYWORDS: one-carbon metabolism, formaldehyde, ethanol, deoxyribose-5-phosphate aldolase, 1,3-propanediol",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p008",
+            "text": "F <sup>ormaldehyde</sup> <sup>(HCHO)</sup> <sup>receives</sup> <sup>increasing</sup> <sup>interest</sup> <sup>as</sup> <sup>a</sup> reactive intermediate in the use of one-carbon (C1) compounds for biosynthesis. It can be converted from promising C1 feedstocks for sustainable bioproduction such as methane, methanol, and formate or generated from CO and biomass conversion.<sup>1−6</sup> There are three major natural pathways for HCHO assimilation: the ribulose monophosphate (RuMP) pathway; the serine pathway; and the Calvin−Benson−Bassham (CBB) cycle.<sup>7−9</sup> The RuMP pathway is regarded as the most eficient one in terms of ATP consumption and biomass yield. Recently, engineering of the RuMP pathway has attracted much attention to convert methanol for cell growth and value-added chemicals in heterotrophic organisms.<sup>10−12</sup> I n the RuMP pathway, HCHO is reacted with ribulose 5- phosphate (Ru5P) to give arabino-3-hexulose-6-phosphate (Hu6P) under the catalysis of 3-hexulose-6-phosphate synthase (HPS); the latter is further isomerized to fructose 6-phosphate (F6P) by the enzyme 6-phospho-3-hexuloisomerase (PHI), and then metabolized in the pentose phosphate cycle to regenerate Ru5P or in central metabolic pathways to provide biomass precursors. However, this pathway is limited by the eficiency of ribulose 5-phosphate (Ru5P) regeneration.<sup>6</sup> Wang at al. (2019)<sup>16</sup> reported to use pyruvate as a HCHO acceptor catalyzed by 2-keto-4-hydroxybutyrate aldolase (KHB);<sup>13−16</sup> they further developed this reaction into a new 1,3-propanediol (PDO) biosynthesis pathway.<sup>16</sup>",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p009",
+            "text": "PDO is an important chemical compound with many applications in polymer, cosmetic, food, and pharmaceutical industries.<sup>17−20</sup> The commercially utilized biosynthetic pathways to produce PDO are all based on glycerol either as the direct substrate in natural microorganisms or as an intermediate of glucose bioconversion in recombinant microbes (Figure 1). The latter typically needs to add vitamin ${ \\bf B } _ { 1 2 }$ into the culture medium.<sup>21</sup> Recently, several glycerol and thus vitamin ${ \\bf B } _ { 1 2 }$ independent pathways for PDO biosynthesis have been proposed.<sup>16,19,22,23</sup> One of the pathways is via homoserine and its further conversion to 4-hydroxy-2-ketobutyrate. After decarboxylation and reduction, 4-hydroxy-2-ketobutyrate is converted to PDO. Another pathway relies on a two-stepreduction based metabolic platform producing C3−C5 diols from amino acids.<sup>23</sup> These pathways do not utilize expensive vitamin ${ \\bf B } _ { 1 2 }$ as a cofactor, but both of them need to pay a large amount of NADPH and ATP.",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p010",
+            "text": "![](images/5e38010539434ae7615ec7d6ca4c899ca75b0096524cac2a0551ad43350d45c2.jpg)",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p011",
+            "text": "![](images/34a4680f531196ffa7f2e9b89ee2116a5e7bde7dc2930cdfd3841300aeec159b.jpg)",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p012",
+            "text": "Figure 1. A new aldolase (DERA) based C1 pathway for PDO production proposed in this work in comparison with other major routes of PDO biosynthesis. The reactions and enzymes involved in the proposed new pathway are highlighted in green. The “classic” glycerol-based pathway is highlighted in violet; the pathway based on malonate semialdehyde in dark yellow; the pathway based on homoserine and via 2-keto-4-hydroxybutyrate light yellow; and the pathway via condensation of pyruvate and formaldehyde in gray. Abbreviations for metabolites: PEP = phosphoenolpyruvate; DHAP = dihydroxyacetone phosphate; $\\mathrm { G } 3 \\mathrm { P } = \\mathrm { g } \\mathrm { l } $ ycerol-3-phosphate; Ac-CoA = acetyl-coenzyme A; 3-HP = 3-hydroxypropionic acid; $3 { \\mathrm { - H P A } } = 3 { \\mathrm { - } }$ hydroxypropionaldehyde; $\\bar { \\mathrm { P D O } } = 1 { , } 3$ -propanediol. Abbreviations for enzymes: HpADH1 = alcohol dehydrogenase 1 ofHansenula polymorpha; KHB = 2-keto-4-hydroxybutyrate aldolase; KDC = branched-chain alpha-keto acid decarboxylase; DERA = deoxyribose-5-phosphate aldolase; DhaT = NADH-dependent PDO oxidoreductase.\n![](images/4f34695ad7ea8f036e74d47529b64613a58a8a164e963d56f01404bdb473f88f.jpg)\nFigure 2. Reaction mechanisms of two diferent aldolase-based incorporation of aldehyde for the formation of 3-hydroxypropionic acid, the direct precursor of PDO biosynthesis. (A) Aldol condensation of HCHO and pyruvate to generate 2-keto-4-hydroxybutyrate, which is then decarboxylated to generate 3-HPA.<sup>16</sup> (B) Direct aldol condensation to generate 3-HPA studied in this work.",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p013",
+            "text": "Aldolases are powerful in synthetic biology because they can form new C−C bonds between a variety of aldehydes and ketones. They are widely used in the synthesis of long chain and complex carbon skeleton compounds. Wang et al. $( 2 0 1 9 ) ^ { 1 6 }$ obtained 4-hydroxy-2-ketobutyrate by an aldol condensation of pyruvate and HCHO. Methanol was used as a cosubstrate to supply NADH and to avoid ATP consumption in carboxylic reduction.",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "access_p014",
+            "text": "Herein, we find not only pyruvate, but also acetaldehyde (ACALD) can be used as a new aldol acceptor for HCHO assimilation catalyzed by deoxyribose-5-phosphate aldolase (DERA, EC 4.1.2.4). 3-Hydroxypropionaldehyde (3-HPA) is formed via the aldol condensation of HCHO and ACALD, which can further convert into PDO. On the basis of this, a new and vitamin ${ \\bf B } _ { 1 2 }$ independent PDO biosynthesis pathway is constructed, which is composed of three major enzymatic reactions: first, the oxidation of ethanol to ACALD; second, the aldol condensation ofHCHO and ACALD to $3 { \\mathrm { - H P A } } ;$ and third, the reduction of 3-HPA to PDO. Compared to other major PDO synthetic pathways in which typically 30−50% of the carbons in the substrates are lost as CO and other byproducts, the new pathway has theoretically a 100% utilization of the carbons in the substrates (Figure 1).<sup>16,19−21,23−26</sup>",
+            "section": "access"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p001",
+            "text": "Principle and Pathway Design of an Aldolase-Based New PDO Biosynthesis Route. In the previous work, aldolase was used to utilize HCHO and pyruvate for PDO production. 16 We noticed that the carboxyl group of pyruvate is not directly involved in the aldol condensation and is actually removed at the next step. It indicated that acetaldehyde (ACALD) is the real HCHO receptor in the C−C bond formation reaction (Figure 2). Therefore, we asked the question whether there is an aldolase that can catalyze the aldol condensation ofHCHO and ACALD, forming thereby 3-HPA, which can then be used for PDO production.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p002",
+            "text": "Chemical aldol condensation of HCHO and ACALD was reported in literature.<sup>27,28</sup> However, the reaction temperature was very high (above 250 °C), which can lead to serious side reactions such as dehydration, oligomerization, and polymerization. Biocatalysis can principally take place at environmental temperature and with high selectivity, and therefore overcomes these problems. A key issue here is to find a proper enzyme and integrate it into the metabolic pathway for PDO synthesis.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p003",
+            "text": "Our systematic approach to engineer E. coli for PDO production using C1 compounds is based on a modular strain design of first an ACALD supply module using ethanol to provide ACALD and NADH, second a HCHO supply module, and finally a DERA-based PDO production module to convert ACALD and HCHO to PDO (Figure 3). For the implementation of this pathway, we first developed the last module (aldol condensation), which is the key part of the proposed pathway.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p004",
+            "text": "Establishment of an Aldolase-Based PDO Production Module. To construct an aldolase-based PDO production module, diferent kinds of aldolases as listed in Table 1<sup>16,29−31</sup> were first screened for HCHO and ACALD condensation. They were coexpressed with DhaT from K. pneumoniae<sup>32</sup> in E. coli BL21(DE3) for PDO synthesis. An acetaldehyde-dependent deoxyribose-5-phosphate aldolase from E. coli K-12 (DERA ) turned out to well catalyze the condensation of HCHO and $\\mathrm { A C A L D . } ^ { 3 3 } 1 . 0 2 \\pm 0 . 0 3$ mM $( 7 7 . 6 \\pm 2 . 2 8 ~ \\mathrm { m g / L } )$ PDO were formed in a preliminary trial with 10 mM of HCHO and ACALD added after 2 h. To prove that the added HCHO and ACALD were condensed into the synthesis of PDO, we used <sup>13</sup>C-HCHO or <sup>13</sup>C-ACALD as cosubstrate for carrying out the biosynthesis. As shown in Figure 4 the ratio of the peaks around $m / z 1 6 2 . 1$ and $m / z \\ : 1 6 3 . 1 $ are almost the same in the unlabeled standard sample and the <sup>13</sup>C-labled samples. It confirmed that the synthesis of PDO totally depends on HCHO and ACALD added.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p005",
+            "text": "![](images/2c2f2bdd1289f6c93f5832cd7a5360e788073f0382407f9d6a58e81693577bce.jpg)\nFigure 3. DERA-based C1 new metabolic pathway for PDO production proposed in this work, which is divided into three modules for its implementation: ACALD supply module, HCHO supply module, and DERA-based PDO production module.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p006",
+            "text": "In order to select a more eficient DERA for PDO production, we tested four kinds ofDERAs from heat-resistant bacteria since it was suggested that heat resistance is related to aldehyde tolerance.<sup>34</sup> We examined them by coexpressing them individually with DhaT in E. coli BL21(DE3). The results are summarized in Table 2. The engineered strain with incorporation of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ from Thermotoga maritima gave the highest PDO concentration and yield from HCHO and ACALD, reaching $8 . 2 0 \\pm 0 . 0 4$ mM and 0.082 mol/mol respectively after 12 h of bioconversion. But the $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ -catalyzed condensation ofHCHO and ACALD is still the bottleneck ofthis module as shown by the results using purified $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ and DhaT in demonstration of this module (Figure S1B). The results revealed that DhaT could support at least ten times of the activity of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ without accumulation of 3-HPA.",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p007",
+            "text": "DERAs Stability and Tolerance toward Aldehyde. DERAs can be used to catalyze the aldol condensation of HCHO and ACALD into 3-HPA, but their activity might be limited by their poor stability toward high aldehyde concentrations.<sup>35</sup> Sakuraba et al. (2007) showed that at a concentration of300 mM ACALD, DERA completely lost its activity within 2 h, whereas $\\mathrm { { D E R A } _ { T M A } }$ still maintained 46% activity after $2 0 \\mathrm { h } . ^ { 3 6 }$ Dick et al. (2016) found that 3-hydroxybutanal (3-HB) can form a covalent bond with the residue C47 in $\\mathrm { D E R A _ { E C O } } ,$ leading to an irreversible deactivation. Mutation of this residue (i.e., C47M) can alleviate the inactivation by ACALD.<sup>34</sup> Hufman et al. (2019) also showed that a C47V mutant of DERA from",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "results_and_discussion_p008",
+            "text": "Table 1. Performances of Aldolases Tested for HCHO and ACALD Condensation to Form PDO in Vivo\n<table><tr><td>enzyme name</td><td>natural receptor</td><td>natural donor</td><td>source</td><td>NCBI No.</td><td>PDO conc. (mM)</td></tr><tr><td>EcKHG</td><td>pyruvate</td><td>D-glyceraldehyde 3-phosphate</td><td>E. coli</td><td> $\\mathrm { N P \\ } _ { - } 4 1 6 3 6 4 . 1$ </td><td>0.038</td></tr><tr><td>HsKHG</td><td>pyruvate</td><td>glyoxylate</td><td>H. sapiens</td><td> $\\mathrm { N P \\_ } 6 1 2 4 2 2 . 2$ </td><td>&lt;0.001</td></tr><tr><td>BtKHG</td><td>pyruvate</td><td>glyoxylate</td><td>B. taurus</td><td> $\\mathrm { N P \\ } \\underline { { 0 0 1 0 6 8 7 0 5 . 1 } }$ </td><td>&lt;0.001</td></tr><tr><td>Yfau</td><td>pyruvate</td><td>lactaldehyde</td><td>E. coli</td><td> $\\mathrm { N P \\_ 4 l } 6 7 4 8 . 1$ </td><td>0.011</td></tr><tr><td>PanB</td><td>3-methyl-2-oxobutanoate</td><td> $5 , 1 0 \\mathrm { - C H } _ { 2 } \\mathrm { - T H F }$ </td><td>E. coli</td><td> $\\mathrm { N P \\_ } 4 1 4 6 7 6 . 1$ </td><td>&lt;0.001</td></tr><tr><td> $\\mathrm { D E R A _ { E C O } }$ </td><td>acetaldehyde</td><td>D-glyceraldehyde 3-phosphate</td><td>E. coli</td><td> $\\mathrm { N P \\_ 4 1 8 7 9 8 . 1 }$ </td><td>1.021</td></tr><tr><td>Control</td><td>一</td><td></td><td>一</td><td>一</td><td>&lt;0.001</td></tr></table>",
+            "section": "results_and_discussion"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p001",
+            "text": "![](images/b122f58fcb695683301670935088748619e9d9b34ede5b4ae44b982bb7af949d.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p002",
+            "text": "B.\n![](images/a0d6251879f955eebe344f8b59f51c4e8f93bc888f12aaaae76d032493e68660.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p003",
+            "text": "C.\n![](images/9e069ec6b50a16edd5dcd54515cc0cfabf971e87e84d9ea51f67a2bea0709abe.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p004",
+            "text": "D.\n![](images/d9f0372f57ccbc209461b1d7a87f5d3620b9b704725ec267fb19d1482d04691f.jpg)\nFigure 4. Verification ofPDO synthesis from HCHO and ACALD using GC-MS labeling analysis (13C-carbon is indicated by the symbol \\*). (A) The in vivo assay principle. (B) Unlabeled PDO standard. (C) Results from culture using $^ { 1 3 } \\mathrm { C - H C } \\dot { \\mathrm { H } } \\mathrm { O }$ as cosubstrate. (D) Results from culture using $^ { 1 3 } \\mathrm { C } \\mathrm { . }$ $\\mathrm { C H } _ { 3 } \\mathrm { C H O }$ as cosubstrate.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p005",
+            "text": "Table 2. Comparison of DERAs from Diferent Origins to Utilize HCHO and ACALD for in Vivo PDO Synthesis in E. coli Coexpressing DERA and DhaT\n<table><tr><td>enzyme name</td><td>PDO conc. (mM)</td><td>origins</td></tr><tr><td> $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ </td><td> $8 . 2 0 \\pm 0 . 0 4$ </td><td>Thermotoga maritima</td></tr><tr><td> $\\mathrm { D E R A _ { E C O } }$ </td><td> $3 . 8 3 \\pm 0 . 0 1$ </td><td>E. coli K-12</td></tr><tr><td> $\\mathrm { D E R A } _ { \\mathrm { G T H } }$ </td><td> $2 . 3 0 \\pm 0 . 0 8$ </td><td>Geobacillus thermodenitrificans</td></tr><tr><td> $\\mathrm { D E R A } _ { \\mathrm { S E P } }$ </td><td> $1 . 2 2 \\pm 0 . 0 3$ </td><td>Staphylococcus epidermidis</td></tr><tr><td> $\\mathrm { D E R A } _ { \\mathrm { P A E } }$ </td><td> $0 . 1 7 \\pm 0 . 0 4$ </td><td>Pyrobaculum aerophilum</td></tr></table>",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p006",
+            "text": "Shewanella halifaxensis $\\left( \\mathrm { D E R A } _ { \\mathrm { R d 3 B B } } \\right)$ can retain a high activity at an ACALD concentration >400 mM.<sup>37</sup>",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p007",
+            "text": "Although the stability toward ACALD was well resolved, DERAs have not been studied regarding their tolerance toward HCHO. Here, we purified five DERAs including $\\mathrm { D E R A _ { E C O } } ,$ $\\mathrm { D E R A _ { T M A } , \\ D E R A _ { E C O \\ C 4 7 M } , \\ D E R A _ { E C O \\ C 4 7 V } , }$ and $\\mathrm { D E R A } _ { \\mathrm { R d 3 B B } }$ to test their tolerance toward HCHO. The mutant DERA<sub>TMA C65M</sub> which corresponds to the C47 mutation of $\\mathrm { D E R A _ { E C O } }$ was also tested, but it lost 70% ofits activity. All ofthem can tolerate high concentrations ofACALD as mentioned in the above literature. To examine their tolerance toward HCHO, we have compared DERAs under diferent HCHO concentrations (5−200 mM) (Figure 5). It is found that $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ has the highest activity for the aldol condensation of HCHO and ACALD into 3-HPA, reaching $1 . 2 7 \\pm 0 . 0 2 \\mathrm { ~ U } / \\mathrm { m g }$ at a HCHO concentration of 10 mM. We also treated them with 0.3 M (test group) or 0 M (control group) HCHO for 2 h, and compared them for their ability to generate 3-HPA respectively. The results showed that native DERAs from E. coli $\\left( \\mathrm { D E R A } _ { \\mathrm { E C O ~ w t } } \\right)$ and Thermotoga maritima $\\left( \\mathrm { D E R A } _ { \\mathrm { T M A } } \\right)$ are more sensitive to HCHO than the mutants with mutation at the residue C47 of E. coli $\\mathrm { \\left( D E R A _ { E C O \\ C 4 7 M } \\right. }$ and $\\mathrm { D E R A _ { E C O \\ C 4 7 V } ) }$ and a mutant from S. halifaxensis $\\left( \\mathrm { D E R A } _ { \\mathrm { R d 3 B B } } \\right)$ $\\mathrm { D E R A _ { T M A } }$ and $\\mathrm { D E R A _ { E C O } }$ wt remained merely 61% and 50% of the original activities after 2 h treatment with 0.3 M HCHO, compared to 85%, 99%, and 94% for $\\mathrm { D E R A } _ { \\mathrm { E C O ~ C 4 7 V } } ,$ $\\mathrm { D E R A _ { E C O \\ C 4 7 M } , }$ and DERA , respectively. Interestingly, although the C47 mutants can keep their activity after treatment with 0.3 M HCHO for 2 h, their activities continuously dropped with the reaction concentrations of HCHO increasing from 0.02 to 0.2 M (Figure 5) without treatment. This reveals that the aldol condensation was severely suppressed at high HCHO concentrations although DERAs can tolerate a quite high HCHO concentration.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p008",
+            "text": "![](images/a11bb7ff85bae6d3ec58298a63c64c6afc8506f5931ca8c2e1af560bf88745ed.jpg)\nFigure 5. Specific activities of DERAs at diferent HCHO concentrations $( 5 { - } 2 0 0 ~ \\mathrm { m M } ) ;$ the reaction concentration of ACALD was 20 mM. ECO = $\\mathrm { D E R A _ { E C O } }$ from E. coli K-12; $\\mathrm { T M A } = \\mathrm { D E R A } _ { \\mathrm { T M A } }$ from Thermotoga maritima; Rd3BB is from Shewanella halifaxensis.<sup>37</sup>",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p009",
+            "text": "Table 3. Comparison of Kinetic Parameters of HCHO-Condensing Aldolases\n<table><tr><td>substrates</td><td>enzyme</td><td> $K _ { m } \\left( \\mathrm { m M } \\right)$ </td><td>reference</td><td>substrates</td><td>enzyme</td><td> $K _ { m } \\left( \\mathbf { m } \\mathbf { M } \\right)$ </td><td>reference</td></tr><tr><td>formaldehyde</td><td>HPS</td><td>0.15</td><td>38</td><td>formaldehyde</td><td>HPS</td><td>0.15</td><td>38</td></tr><tr><td>ribulose-5-phosphate</td><td></td><td>0.7</td><td>38</td><td>ribulose-5-phosphate</td><td></td><td>0.7</td><td>38</td></tr><tr><td>formaldehyde</td><td>KHB</td><td>&gt;500</td><td>16</td><td>formaldehyde</td><td>KHB</td><td>&gt;500</td><td>16</td></tr><tr><td>pyruvate</td><td></td><td>&lt;5</td><td>16</td><td>pyruvate</td><td></td><td>&lt;5</td><td>16</td></tr><tr><td>formaldehyde</td><td> $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ </td><td> $2 . 5 4 \\pm 0 . 0 7$ </td><td>this study</td><td>formaldehyde</td><td> $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ </td><td> $2 . 5 4 \\pm 0 . 0 7$ </td><td>this study</td></tr><tr><td>acetaldehyde</td><td></td><td>&lt;1</td><td>this study</td><td></td><td></td><td></td><td></td></tr></table>",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p010",
+            "text": "Considering both the specific activity and the tolerance toward HCHO, $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ turned out to be the most promising one for aldol condensation of HCHO and ACALD. We therefore focused on this enzyme in further study. First, the $K _ { m }$ value of $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ for HCHO was estimated by measuring more data under low HCHO concentrations $\\left( 1 { - } 1 0 \\ \\mathrm { m M } \\right)$ . The $K _ { m }$ value of $\\mathbf { \\Delta } _ { \\mathrm { D E R A _ { T M A } } } ^ { \\mathrm { ^ { * } m e a t } }$ for HCHO is higher than that of HPS for the condensation of HCHO and ribulose-5-phosphate, but lower (by nearly 200 times) than that of KHB for the condensation of HCHO and pyruvate (Table 3). A low $K _ { m }$ value for HCHO is desired for DERA-based metabolic engineering of cells to keep both a high eficiency of aldol condensation and an adequate cell growth.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p011",
+            "text": "Implementation of an ACALD Supply Module for DERA-Based PDO Production. Having selected a promising DERA enzyme, several other issues should be addressed for developing an eficient DERA-based PDO production. First of all, a supply or production module of ACALD should be developed. A direct addition ofACALD would be too expensive or inconvenient for the operation and harmful for the biocatalyst. In such a case the balance of reducing power (NADH) is also a critical issue. To avoid the direct use of ACALD and at the same time to achieve a NADH balance, we proposed to generate ACALD from ethanol as outlined in Figures 1 and 2. For this purpose, a suitable alcohol dehydrogenase (ADH) should be selected. Among the large number of ADHs, we chose the ADH from Hansenula polymorpha (HpADH1, EC 1.1.1.1) which showed good performance on converting ethanol to acetaldehyde.<sup>39,40</sup> PDO production with this new module was demonstrated in vitro using purified proteins, showing that HpADH1 can provide enough ACALD for the PDO formation (Figures S1C,D). We used $^ { \\mathrm { { \\sc ~ \\ y ~ } } _ { 1 3 } } \\mathrm { { C } }$ -ethanol and HCHO as cosubstrates to verify the PDO production from such an ACALD supply module (Figure 6A). Using E. coli carrying $\\mathrm { { D E R A } _ { T M A } }$ and DhaT, ethanol and HCHO were successfully converted to PDO in a whole-cell bioconversion (Figure 6B). The PDO formation was significantly improved from $5 . 6 7 \\pm 0 . 2 5$ mM (0.43 g/L) and 0.057 mol/mol using a strain without HpADH1 expression to 10.91 ± 0.08 mM (0.83 g/L) and 0.11 mol/mol with HpADH1 expression (Figure 6C).",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p012",
+            "text": "Deleting Competing HCHO-Consuming Pathway to Redirect Flux toward PDO Production. The relatively low yield of PDO from ethanol and HCHO is among others caused by the conversion ofHCHO to formate as previously reported in our study for the condensation of HCHO and pyruvate.<sup>16</sup> To avoid HCHO conversion to formate, the frmA gene of E. coli",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p013",
+            "text": "A.\n![](images/39faf53deb15cacf43fe2dcaea975a8e2586b0335363919f809a776f3ba950ce.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p014",
+            "text": "B.\n![](images/a3ee81763362a4eb7357ed0ec9b20b076a6809ead2857008a0643687e23e1a06.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p015",
+            "text": "C.\n![](images/9ca21947a1c14aa9303d34e3e88b88732097c40bacc3e98ec80d92d8921d3298.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p016",
+            "text": "D.\n![](images/175f0cbcdc6f097e8e32a175128467de59460fae709034fae9108af360993720.jpg)\nFigure 6. Batch bioconversion results for PDO production using ethanol and HCHO as cosubstrates. (A) Verification using GC-MS measurement to show PDO formation (13C-carbon indicated by \\*) from HCHO and $^ { 1 3 } \\mathrm { C } .$ -ethanol. (B) Bioconversion using strain BF02 without HpADH1 expression. (C) Bioconversion using the strain BF12 with the HpADH1 expression. (D) Bioconversion using strain BF16 with the HpADH1 expression and knockout of the gene frmA. The initial concentrations of ethanol and HCHO were 300 mM and 100 mM.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p017",
+            "text": "BL21(DE3) which encodes a HCHO dehydrogenase of the frmRAB system was successfully deleted using the CRISPR-Cas9 method.<sup>41</sup> The new mutant strain BF16 had a reduced HCHO consumption, and PDO reached a concentration of $1 2 . 7 5 \\pm 0 . 4 4$ mM $( 0 . 9 7 \\pm 0 . 0 3 \\mathrm { \\ g / L ) }$ and a yield of 0.128 mol/ mol (Figure 6D), representing significant increases compared with the parent strain BF12.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p018",
+            "text": "Methanol as Substrate for HCHO. To develop a HCHO supply module, methanol was first used as substrate. We selected a methanol dehydrogenase (Mdh2, EC 1.1.1.244) to catalyze the oxidation of methanol to HCHO and expressed it in the BF17 strain. Whole-cell bioconversion using methanol and ethanol as cosubstrates was carried out with this strain. After 42 h, PDO reached only 1.05 mM with considerable amounts of other diols. This pathway was also demonstrated in vitro using purified proteins. The results showed that the activity of methanol dehydrogenase is the bottleneck (Figure S1E).",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p019",
+            "text": "Identi<sup>fi</sup>cation of Diol Byproducts. Nemr et al. (2018) showed that $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ also has a high activity toward selfpolymerization of $\\mathrm { A \\bar { C } A L D . ^ { 3 6 , 4 2 } }$ We hypothesize that $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ may also catalyze the condensation of ACALD with other aldehydes such as 3-HPA which is a key intermediate of the proposed PDO biosynthesis pathway. Indeed, several diols were formed in the bioconversion system using HCHO and ethanol as the substrates (Figure 7A). $^ { 1 3 } \\mathrm { C } .$ -ethanol was used as substrate to confirm the diol byproducts in batch bioconversion. As shown in Figure 7B−D, the GC-MS spectra ofsamples showed that the byproducts include 1,3-butanediol (1,3-BDO) (m/z 178.1), 3,5- dihydroxypentanal $\\left( m / z 2 0 6 . 1 \\right)$ , and 3,5-dihydroxyhexanal (m/ $z 2 \\dot { 2 } 1 . 1 )$ . The possible synthetic routes of them are inferred as follows: two molecules of ACALD are condensed into 3- hydroxybutyraldehyde, which is further reduced to $^ { 1 , 3 \\cdot }$ -BDO by DhaT; ACALD and 3-HPA are condensed to form $^ { 3 , 5 \\mathrm { - } }$ dihydroxypentanal, a C5 diol aldehyde; ACALD and 3- hydroxybutyraldehyde were condensed to form $^ { 3 , 5 \\cdot }$ -dihydroxyhexanal, a C6 diol aldehyde (Figure 7E). It seems that DhaT did not prefer the C6 and C5 aldehydes, since the corresponding alcohols were not found in the MS spectra. Interestingly, the diol byproducts were found to be generated only when HCHO was nearly completely consumed. We further examined the relationship ofHCHO concentration and diol byproducts production in vitro. It was found that a HCHO concentration above 0.6 mM can strongly inhibit the self-condensation of ACALD and its condensation with 3-HPA (Figure 7F). In the following bioconversion experiments the HCHO concentration was thus kept over 0.6 mM to eliminate the formation ofdiol byproducts.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p020",
+            "text": "Eliminating Diol Byproducts and Increasing the Production in Fed-Batch Bioconversion. In order to increase the yield of PDO and eliminate the diol byproducts, we performed fed-batch bioconversion to maintain the amount ofHCHO above a certain level (Figure 8). In a 40 mL whole-cell bioconversion system, a total volume of 100 mM HCHO was added in ten times interval as shown in Figure 8. As expected, no diol byproducts were produced and the production ofPDO was increased to $1 7 . 3 5 \\pm 0 . 5 8$ mM $\\left( 1 . 3 2 \\pm 0 . 0 4 \\ : \\mathrm { g / L } \\right)$ with a yield of 0.096 mol/mol at 24 h compared to 12.75 mM and 0.128 mol/ mol in the batch bioconversion without significant accumulations of ACALD and 3-HPA (Figure 6D). Surprisingly, in addition to PDO, a major part of the HCHO was converted to methanol (56.47 mM at 30 h) and obviously some HCHO was converted to formate despite the knockout of the frmA gene. Concerning the generation of methanol, it is obviously because of expression of HpADH1 that speeds up the conversion of HCHO to methanol. There may be some unclear reasons for the massive consumption of HCHO at the beginning (1 h) because HpADH1 was not expressed well and the activity toward HCHO is not high (0.83 U in vitro).",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p021",
+            "text": "A.\n![](images/f1ccd68215b924fb75b54b18f64863f113a5db95a1f3723bf4b7c52fe802924b.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p022",
+            "text": "B.\n![](images/58bc2c11676f1cfb840139156986f331946f615d1f48a9dacef538342a06ef6b.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p023",
+            "text": "C.\n![](images/c1770f316bc7fef9416b76d6d4607dc9a406f5700002f8575749d47b2f3df9df.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p024",
+            "text": "D.\n![](images/c9bb63b16637792a0b6d2d93dcb7a3e2950342c65e8adb1c83f5872393b9bd0d.jpg)",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p025",
+            "text": "E.\n![](images/30d2ce23ffa7dc8e088d6e4b53871098ecbff11b90ed7919425f756c7c1aa0d9.jpg)\nF.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "a_in_vivo_dera_assay_p026",
+            "text": "![](images/f4cf3063f9d063493e3c514e016fa0daf18921714b76db13e5bbe2f014ad1792.jpg)\nFigure 7. Formation ofcondensation diol byproducts and their verification. (A) The GC-MS graph for the formation ofdiols. (B−D) GC-MS spectra (with $^ { 1 3 } \\mathrm { C } .$ -carbon indicated by \\*) of1,3-BDO, C5 diol, C6 diol, and phenylboronic acid, respectively. (E) Proposed biosynthetic routes ofthe diferent diols. (F) The determination of byproduct production at diferent concentrations of HCHO and ACALD in vitro.",
+            "section": "a_in_vivo_dera_assay"
+          },
+          {
+            "paragraph_id": "conclusion_p001",
+            "text": "In this work, we designed and demonstrated a DERA-based new metabolic pathway for the biosynthesis of PDO from formaldehyde and ethanol. Three metabolic modules were elaborated: a DERA-based PDO production module, an ACALD supply module and a HCHO supply module. This new pathway opens up the possibility to synthesize an appealing C3 compound from a C1 and a C2 compound without carbon loss in theory. This work has enriched the application of C1 compounds by using ACALD as a new HCHO acceptor in biocatalysis. Compared the KHB-based pathway,<sup>16</sup> DERA shows a higher afinity for HCHO than KHB. It should be mentioned that the afinity to HCHO and activity of the most appealing enzyme $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$ applied here are still quite limited. Protein engineering of this enzyme and systems metabolic engineering work for host strain should be very meaningful for the direct use of C1 compounds for value-added products production in synthetic biology. Furthermore, the maintenance ofa certain level ofintracellular HCHO is important to avoid the self-polymerization of ACALD and the formation of other diol byproducts. In this context, it is also worth mentioning that the three reactions of the proposed pathway are all reversible. Although the standard Gibbs free energy for the aldol condensation of HCHO and ACALD is estimated to be negative (about −3.702 kJ/mol) and the reaction is thus thermodynamically feasible, driving force or equilibrium of the pathway may represent a critical issue in further consideration. The flux and yield of the pathway toward formation of PDO could be enhanced by following a pushing and polling approach as demonstrated in literature for other synthetic metabolic pathways, namely, increasing the upstream flux and drawing fast the downstream flux.",
+            "section": "conclusion"
+          },
+          {
+            "paragraph_id": "conclusion_p002",
+            "text": "![](images/d9271f8250f3f45240cc4c822c4f406b7d335a964e67587faea1f6a733fbcffc.jpg)\nFigure 8. PDO production in whole-cell bioconversion with the strain BF16 using HCHO and ethanol as cosubstrates with interim addition of HCHO. The initial concentrations ofHCHO and ethanol were 100 and 300 mM, respectively; 100 mM HCHO were added in ten times interval.",
+            "section": "conclusion"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p001",
+            "text": "Strains and Plasmids. Strains and plasmids used in this study are listed in Table 4. E. coli Top10 was used for routine cloning procedures while E. coli BL21(DE3) with its mutant were used as fermentation host. E. coli vectors pET-21a (+), and pRSFduet-1 were used for gene overexpression. Luria−Bertani (LB) liquid medium (tryptone 10 g/L, yeast extract 5 $\\mathrm { g / L }$ and NaCl 10 g/L) and solid medium (1.5% agar) with kanamycin (50 μg/mL) or ampicillin (100 μg/mL) were used for cell growth. All the chemicals were obtained from commercial sources.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p002",
+            "text": "Genes encoding Deoxyribose-5-phosphate aldolase (DERA, EC 4.1.2.4) from diferent sources, PDO dehydrogenase (DhaT, EC 1.1.1.202) from K. pneumoniae DSM 2026, methanol dehydrogenase (Mdh2, EC 1.1.1.244) from B. methanolicus MGA3 and alcohol dehydrogenase (HpADH1, EC 1.1.1.1) from Hansenula polymorpha were codon-optimized and synthesized by GenScript Inc. on vector pET21a (+) or pRSFduet-1 as listed in Table 4. All recombinant plasmids in this study were constructed with Mut Express II Fast Mutagenesis Kit V2 (Vazyme Biotech $\\mathrm { C o . , L t d . } )$ and sequencing by Genewiz Inc. to verify the sequence. In particular, the gene encoding HpADH1 was linked behind the gene encoding DERA without SD sequence.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p003",
+            "text": "CRISPR-Cas9 method was used to delete the gene frmA of E. coli BL21(DE3), which encodes HCHO dehydrogenase.<sup>41</sup> All primers and donor ssDNA were ordered from Genewiz Inc. The primers and the N20 sequence used in this study are listed in Supporting Information Table S3.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p004",
+            "text": "Cultivation Conditions and Whole-Cell Bioconversion. Seed cultures were prepared in 4 mL of LB medium (containing 10 g/L of tryptone, 5 g/L of yeast extract and 10 g/L of NaCl) and supplemented with 50 $\\mu \\mathrm { g / m L }$ kanamycin at $\\bar { 3 7 } ^ { \\circ } \\mathrm { C }$ for 8 h, then transferred into 50 mL LB medium to $\\mathrm { O D } _ { 6 0 0 }$ at 0.03, supplemented with 50 μg/mL kanamycin and grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ until $\\mathrm { O D } _ { 6 0 0 }$ reached 0.7−0.8. 0.2 mM Isopropyl-β-D-thiogalactopyranoside (IPTG) was added to induce protein expression, and the cultures continued growing at $3 0 ~ ^ { \\circ } \\mathrm { C }$ for 10 h. The cells were then collected. For the batch bioconversion ofACALD and HCHO to PDO, cells were resuspended in 5 mL of 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.0) containing 200 mM of glucose, 100 mM HCHO, and 100 mM ACALD. For the batch bioconversion of ethanol and HCHO to PDO, cells were resuspended in 5 mL of 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { \\cdot }$ bufer (pH 7.0) containing 100 mM HCHO and 300 mM ethanol. For the fedbatch bioconversion of ethanol and HCHO to PDO, cells were resuspended in 50 mL tube of50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { \\angle }$ bufer (pH 7.0) containing 100 mM HCHO and 300 mM ethanol. We made each of the bioconversions reach $\\mathrm { O D } _ { 6 0 0 } = 5 0$ . The resuspended cells were shaken at $3 0 ^ { \\circ } \\mathrm { C } , 2 3 0$ rpm in 10 mL tubes with the caps closed to limit oxygen availability.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p005",
+            "text": "Protein Overexpression and Purification. The recombinant cells were grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ in 100 mL LB-medium supplemented with 50 μg/mL kanamycin or 100 μg/mL ampicillin until the $\\mathrm { O D } _ { 6 0 0 }$ reached 0.8, then induced by adding 0.2 mM IPTG for an additional 8 h at $3 0 ~ ^ { \\circ } \\mathrm { C }$ . For the overexpression of HpADH1 and DhaT, they were induced by adding 0.2 mM IPTG for 24 h at $1 6 ^ { \\circ } \\mathrm { C } .$ . Under 4 ${ } ^ { \\circ } \\mathrm { C } ,$ cells were harvested by centrifugation at 4000 rpm for 10 min and resuspended in 50 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.5). The resuspended cells were disrupted by sonication and centrifuged at 12 000 rpm for 1 h. The supernatants were purified with $\\mathrm { N i } ^ { 2 + } .$ NTA column and desalted with 10 kDa ultrafiltration tube. The concentrations of the enzymes were quantified by BCA protein assay kit (Beijing Solarbio Science & Technology $\\mathrm { C o . , }$ Ltd.).",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p006",
+            "text": "Enzyme Assay. DERAs’ activities were determined by monitoring the production of 3-HPA in the aldol condensation reaction ofHCHO and ACALD at $3 0 ^ { \\circ } \\mathrm { C }$ . For the comparison of DERAs’ activity under diferent concentrations of HCHO, the reaction system in 2 mL EP tube is 20 mM ACALD, 5−200 mM HCHO and certain amount of pure enzyme in a 20 mM ${ \\mathrm { N a } } _ { 2 } { \\mathrm { H P O } } _ { 4 }$ bufer (pH 7.0). For the determination of HCHO tolerance, enzymes were treated by 300 mM HCHO (test group) or 0 mM HCHO (control group) for 2 h, then the reaction proceeded under 50 mM HCHO and 20 mM ACALD with equal amounts of enzyme.",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p007",
+            "text": "Preparation of 3-HPA and Its Quantification. Since 3- HPA is not commercially available, it was synthesized as a solution with known concentration as a kind of “standard” for analysis. The method is as follows. One mg/mL DERA was mixed with 20 mM HCHO and 20 mM ACALD. The mixture was kept for $5 \\mathrm { h } , \\mathrm { a t } 3 0 ^ { \\circ } \\mathrm { C }$ for the formation of 3-HPA. After the reaction was complete, a 10 kDa ultrafiltration tube was used to remove DERA, resulting in a solution containing 3-HPA (defined as solution A). A portion of the solution A was mixed with 20 mM NADH and DhaT; after a reaction time of30 min, a 10 kDa ultrafiltration tube was used to remove the enzyme",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p008",
+            "text": "Table 4. Strains and Plasmids Used for This Study\n<table><tr><td>strain or plasmid</td><td>description</td><td>source</td></tr><tr><td colspan=\"3\">Strains</td></tr><tr><td>E. coli Top10</td><td>used for cloning</td><td>laboratory stock</td></tr><tr><td>E. coli BL21</td><td>used for fermentation</td><td>laboratory stock</td></tr><tr><td>(DE3) E. coli ∆frmA</td><td>E. coli BL21(DE3) ∆frmA</td><td>this study</td></tr><tr><td>BP01</td><td>E. coli BL21(DE3) harboring pRSFduet-  $\\mathrm { D E R A _ { E C O } }$  from E. coli K-12</td><td>this study</td></tr><tr><td>BP02</td><td>E. coli BL21(DE3) harboring pRSFduet-Dhat this study from K. pneumoniae DSM 2026</td><td></td></tr><tr><td>BP03</td><td>E. coli BL21(DE3) harboring pet21a-  $\\mathrm { { D E R A } _ { \\mathrm { { T M A } } } }$  from Thermotoga maritima</td><td>this study</td></tr><tr><td>BP04</td><td>E. coli BL21(DE3) harboring pet21a-  $\\mathrm { D E R A } _ { \\mathrm { G T H } }$  from Geobacillus thermodenitrificans</td><td>this study</td></tr><tr><td>BP05</td><td> $E . \\ c o l i \\ \\mathrm { B L } 2 1 \\left( \\mathrm { D E } 3 \\right)$  harboring pet21a-</td><td>this study</td></tr><tr><td>BP06</td><td> $\\mathrm { D E R A } _ { \\mathrm { S E P } }$  from Staphylococcus epidermidis E. coli BL21(DE3) harboring pet21a-</td><td>this study</td></tr><tr><td>BP07</td><td> $\\mathrm { D E R A } _ { \\mathrm { P A E } }$  from Pyrobaculum aerophilum E. coli BL21(DE3) harboring pet21a-Rd3BB</td><td>this study</td></tr><tr><td>BP08</td><td>E. coli BL21(DE3) harboring pet21a-</td><td>this study</td></tr><tr><td>BP09</td><td> $\\mathrm { D E R A } _ { \\mathrm { E C O } \\textrm { C } 4 7 \\mathrm { M } }$   $E . \\ c o l i \\ \\mathrm { B L } 2 1 \\left( \\mathrm { D E } 3 \\right)$  harboring pet21a-</td><td>this study</td></tr><tr><td>BP10</td><td>DERAECO C47V E. coli BL21(DE3) harboring pet21a-</td><td>this study</td></tr><tr><td>BF01</td><td>HpADH1 from Hansenula polymorpha E. coli BL21(DE3) pRSFduet-BtKHG-DhaT</td><td>this study</td></tr><tr><td>BF02</td><td>E. coli BL21(DE3) pRSFduet-HsKHG-DhaT</td><td>this study</td></tr><tr><td>BF03</td><td> $E . \\ c o l i \\ \\mathrm { B L 2 1 { \\left( D E 3 \\right) } \\ p R S F d u e t { \\mathrm { - } \\mathrm { E c K H G - D h a T } } }$ </td><td>this study</td></tr><tr><td>BF04</td><td>E. coli BL21(DE3) pRSFduet-Yfau-DhaT</td><td>this study</td></tr><tr><td>BF05</td><td> $E . \\ c o l i \\ B L 2 1 \\big ( \\mathrm { D E 3 } \\big ) \\ p R S F \\mathrm { d u e t \\mathrm { - } P a n B \\mathrm { - } D h a T }$ </td><td>this study</td></tr><tr><td>BF06</td><td>E. coli BL21(DE3)  $\\mathtt { p R S F d u e t - D E R A _ { E C O } - }$  DhaT</td><td>this study</td></tr><tr><td>BF07</td><td>E. coli BL21(DE3)  $\\mathsf { p R S F d u e t  – D E R A } _ { \\mathrm { T M A } ^ { - } }$ </td><td>this study</td></tr><tr><td>BF08</td><td>DhaT E. coli BL21(DE3)  $\\mathsf { p R S F d u e t  – D E R A } _ { \\mathrm { G T H } ^ { - } }$ </td><td>this study</td></tr><tr><td>BF09</td><td>DhaT  $E . \\ c o l i \\ \\mathrm { B L 2 1 ( D E 3 ) \\ p R S F d u e t { \\mathrm { - D E R A } } _ { \\mathrm { S E P } } \\mathrm { - D h a T } }$ </td><td>this study</td></tr><tr><td>BF10</td><td>E. coli BL21(DE3) pRSFduet-DERAPAE-</td><td>this study</td></tr><tr><td>BF11</td><td>DhaT  $\\begin{array} { r l } { E . ~ c o l i ~ { \\mathrm { B L 2 1 } } { \\mathrm { ( D E 3 ) } } ~ { \\mathrm { p R S F d u e t } } { \\mathrm { . D E R A } } _ { \\mathrm { E C O } ^ { - } } } & { { } } \\\\ { { \\mathrm { H p A D H 1 . D h a T } } } \\end{array}$ </td><td>this study</td></tr><tr><td>BF12</td><td> $\\begin{array} { r l } { E . ~ c o l i ~ { \\mathrm { B L 2 1 } } { \\mathrm { ( D E 3 ) } } ~ { \\mathrm { p R S F d u e t  – D E R A } } _ { \\mathrm { T M A } ^ { - } } } & { { } } \\\\ { ~ { \\mathrm { H p A D H 1  – D h a T } } } \\end{array}$ </td><td>this study</td></tr><tr><td>BF13</td><td> $\\begin{array} { r l } { E . ~ c o l i ~ { \\mathrm { B L } } 2 1 { \\left( { \\mathrm { D E } } 3 \\right) } ~ { \\mathrm { p R S F d u e t - R d } } 3 { \\mathrm { B B } } \\mathrm { - } } & { } \\\\ { ~ { \\mathrm { H p A D H 1 - D h a T } } } \\end{array}$ </td><td>this study</td></tr></table>",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p009",
+            "text": "DhaT, resulting in a solution containing PDO and little 3-HPA (defined as solution B). For comparison, we then took the same amount of solution A and mix it with a bufer solution equal to the volume ofNADH and DhaT solution as used in the previous step (defined as solution C). PDO can be accurately measured by GC-MS. The measured PDO comes from the converted 3- HPA. Thus, the diference between the 3-HPA peak areas of solutions B and C corresponds to the measured concentration of PDO (Figure S2).",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p010",
+            "text": "Analytical Methods. Quantification of glucose, 3-HP, ethanol, methanol, lactate, formate and acetate were carried out by high performance liquid chromatography (HPLC) equipped with an Aminex HPX-87 H Column (300 × 7.8 mm, Bio-Red) using 5 mM ${ \\mathrm { H } } _ { 2 } { \\mathrm { S O } } _ { 4 }$ as the mobile phase with a flow rate of0.6 mL/min. The column temperature was $6 5 ^ { \\circ } \\mathrm { C }$ with the RID detector temperature $3 5 ~ ^ { \\circ } \\mathrm { C } .$ Concentrations of HCHO, ACALD, and 3-HPA were measured by HPLC with a C18 column (4.6 × 150 mm, 5 μm, Shimadzu, Japan) after derivatization as follows:<sup>31</sup> 40 $\\mu \\mathrm { L }$ supernatant or reaction solution mixed with a solution of O-benzylhydroxylamine hydrochloride (80 $\\mu \\mathrm { L }$ of a 0.13 mM stock solution in pyridine:methanol:water 33:15:2). After being incubated at 30 $^ \\circ \\mathrm { C }$ for 10 min, samples were diluted in methanol (800 μL) and centrifuged. The mobile phase system used was mobile phase (A): 0.1% (v/v) trifluoroacetic acid (TFA) in $\\mathrm { H } _ { 2 } \\mathrm { O } ,$ and mobile phase (B): 0.095% (v/v) TFA in $\\mathrm { C H } _ { 3 } \\mathrm { C N } ,$ gradient elution from 8 to 80% B over 25 min with flow rate 1 mL/min, UV detection at 215 nm, and column temperature at $3 0 ^ { \\circ } C . ^ { 3 1 }$ PDO and other diol byproducts were analyzed by GC-MS as described in Wang et al. (2019).<sup>16</sup>",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "materials_and_methods_p011",
+            "text": "<table><tr><td>strain or plasmid</td><td>description</td><td>source</td></tr><tr><td>BF14</td><td>E. coli BL21(DE3) pRSFduet  $\\mathbf { \\cdot D E R A _ { E C O \\ C 4 7 M ^ { - } } }$ </td><td>this study</td></tr><tr><td>BF15</td><td>HpADH1-DhaT E. coli BL21(DE3)  $\\mathrm { p R S F d u e t  – D E R A _ { E C O \\ C 4 7 V } } ^ { }$ </td><td>this study</td></tr><tr><td>BF16</td><td>HpADH1-DhaT BF12 ∆frmA</td><td>this study</td></tr><tr><td>BF17</td><td>E. coli BL21(DE3) pRSFduet-DERATMA-</td><td>this study</td></tr><tr><td>Plasmids</td><td>MDH2-DhaT</td><td></td></tr><tr><td>pGRB</td><td>AmpR, harboring empty sgRNA</td><td>laboratory stock</td></tr><tr><td> $\\mathrm { \\ p R e d C a s }$ </td><td> ${ \\mathrm { S p c } } ^ { \\mathrm { R } } ,$  Red recombination system, Cas9 expressing system, plasmid curing system</td><td>laboratory stock</td></tr><tr><td> $\\mathsf { P } _ { \\mathrm { f r m A } } ^ { \\mathrm { G R B - s g - } }$ </td><td> $\\mathrm { A m p ^ { R } } ,$  harboring empty sgRNA</td><td>this study</td></tr><tr><td> $\\stackrel { \\mathrm { p E T } } { ( \\mathrm { P } ) } ^ { 2 1 \\mathrm { a } ( + ) }$ </td><td>E. coli expression vector,  $\\mathrm { A m p } ^ { \\mathrm { R } } ,$  T7 promoter</td><td>laboratory stock</td></tr><tr><td> $\\mathrm { P } { - } \\mathrm { T }$ </td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { T M A } }$ </td><td>this study</td></tr><tr><td>P-G</td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { G T H } }$ </td><td>this study</td></tr><tr><td>P-S</td><td> $\\mathrm { c o n t a i n i n g \\ D E R A _ { S E P } }$ </td><td>this study</td></tr><tr><td>P-A</td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { P A E } }$ </td><td>this study</td></tr><tr><td>P-R</td><td>containing Rd3BB</td><td>this study</td></tr><tr><td>P-H</td><td>containing HpADH1</td><td>this study</td></tr><tr><td> $\\mathsf { P } _ { ( \\mathrm { R } ) } ^ { \\mathrm { R S F d u e t - 1 } }$ </td><td>E. coli expression vector,  ${ \\mathrm { K a n a } } ^ { \\mathrm { R } } ,$  T7 promoter</td><td>laboratory stock</td></tr><tr><td>R-E</td><td> $\\mathrm { c o n t a i n i n g ~ D E R A _ { E C O } }$ </td><td>this study</td></tr><tr><td>R-D</td><td>containing DhaT</td><td>this study</td></tr><tr><td>R-BD</td><td>containing BtKHG and DhaT</td><td>this study</td></tr><tr><td>R-HD</td><td>containing HsKHG and DhaT</td><td>this study</td></tr><tr><td>R-KD</td><td>containing EcKHG and DhaT</td><td>this study</td></tr><tr><td>R-YD</td><td>containing Yfau and DhaT</td><td>this study</td></tr><tr><td>R-PD</td><td>containing PanB and DhaT</td><td>this study</td></tr><tr><td>R-ED</td><td>containing DERAECo and DhaT</td><td>this study</td></tr><tr><td>R-TD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { T M A } \\ a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-GD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { \\mathrm { G T H } } \\ a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-SD</td><td>containing DERAsEp and DhaT</td><td>this study</td></tr><tr><td>R-AD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { P A E } \\ a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-EHD</td><td> $\\mathrm { \\ c o n t a i n i n g \\ D E R A _ { E C O } , H p A D H 1 , a n d \\ D h a T }$ </td><td>this study</td></tr><tr><td>R-THD</td><td>containing DERATMA, HpADH1, and DhaT</td><td>this study</td></tr><tr><td> $\\mathrm { R } { \\cdot } \\mathrm { E } _ { \\mathrm { C } 4 7 \\mathrm { V } } \\mathrm { H D }$ </td><td> $\\operatorname { c o n t a i n i n g \\ D E R A _ { E C O \\ C 4 7 \\mathrm { V } } , \\ H p A D H 1 , \\ a n d }$  DhaT</td><td>this study</td></tr><tr><td> $\\mathrm { R - E _ { C 4 7 M } H D }$ </td><td> $\\mathbf { \\Lambda } _ { \\mathrm { c o n t a i n i n g ~ D E R A _ { E C O \\ C 4 7 M } , ~ H p A D H 1 , ~ a n d } } ^ { \\mathrm { c o n t a i n i n g ~ D E R A _ { E C O \\ C 4 7 M } , ~ H p A D H 1 , ~ a n d } }$  DhaT</td><td>this study</td></tr><tr><td>R-RHD</td><td>containing  $\\mathrm { D E R A } _ { \\mathrm { R D 3 B B } } , \\mathrm { H p A D H 1 } ,$  and DhaT</td><td>this study</td></tr><tr><td>R-TMD</td><td>containing  $\\mathrm { D E R A } _ { \\mathrm { T M A } } , \\mathrm { M D H } 2 ,$  and DhaT</td><td>this study</td></tr></table>",
+            "section": "materials_and_methods"
+          },
+          {
+            "paragraph_id": "s_supporting_information_p001",
+            "text": "The Supporting Information is available free of charge at https://pubs.acs.org/doi/10.1021/acssynbio.0c00597.",
+            "section": "s_supporting_information"
+          },
+          {
+            "paragraph_id": "s_supporting_information_p002",
+            "text": "Purified enzymes and their use for the verification of separate modules and entire pathway; 3-HPA peak diagrams; Primers used in this study; Gene sequences after codon optimization (PDF)",
+            "section": "s_supporting_information"
+          },
+          {
+            "paragraph_id": "corresponding_authors_p001",
+            "text": "Ji<sub>e</sub> R<sub>en</sub> − Beijing Advanced Innovation Center for Soft Matter Science and Engineering, Beijing University of Chemical Technology, 100029 Beijing, China; State Key Laboratoryfor Biology of Plant Diseases and Insect Pests/Key Laboratory of Control of Biological Hazard Factors (Plant Origin) for Agriproduct Quality and Safety, Ministry ofAgriculture, Institute of Plant Protection, Chinese Academy ofAgricultural Sciences, Beijing 100081, China; orcid.org/0000-0001- 9424-1531; Phone: +86-8210-5929; Email: renjie@ mail.buct.edu.cn",
+            "section": "corresponding_authors"
+          },
+          {
+            "paragraph_id": "corresponding_authors_p002",
+            "text": "A<sub>n</sub> Pi<sub>ng</sub> Z<sub>eng</sub> − Beijing Advanced Innovation Centerfor Soft Matter Science and Engineering, Beijing University ofChemical Technology, 100029 Beijing, China; Institute ofBioprocess and Biosystems Engineering, Hamburg University of Technology, D-21073 Hamburg, Germany; orcid.org/0000-0001- 9768-7096; Phone: +49-40-42878-4183; Email: aze@ tuhh.de; Fax: +49-40-42878-2909",
+            "section": "corresponding_authors"
+          },
+          {
+            "paragraph_id": "authors_p001",
+            "text": "H<sub>ao</sub> M<sub>eng</sub> − Beijing Advanced Innovation Centerfor Soft Matter Science and Engineering, Beijing University ofChemical Technology, 100029 Beijing, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p002",
+            "text": "Ch<sub>uang</sub> W<sub>ang</sub> − Beijing Advanced Innovation Centerfor Soft Matter Science and Engineering, Beijing University ofChemical Technology, 100029 Beijing, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p003",
+            "text": "Qi<sub>peng</sub> Y<sub>uan</sub> − State Key Laboratory of Chemical Resource Engineering, Beijing University of Chemical Technology, 100029 Beijing, China",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p004",
+            "text": "Complete contact information is available at:",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "authors_p005",
+            "text": "https://pubs.acs.org/10.1021/acssynbio.0c00597",
+            "section": "authors"
+          },
+          {
+            "paragraph_id": "notes_p001",
+            "text": "The authors declare no competing financial interest.",
+            "section": "notes"
+          },
+          {
+            "paragraph_id": "acknowledgments_p001",
+            "text": "This work is financially supported by the Beijing Advanced Innovation Center for Soft Matter Science and Engineering.",
+            "section": "acknowledgments"
+          },
+          {
+            "paragraph_id": "references_p001",
+            "text": "(1) Zhang, W. M., Song, M., Yang, Q., Dai, Z. X., Zhang, S. J., Xin, F. X., Dong, W. L., Ma, J. F., and Jiang, M. (2018) Current advance in bioconversion of methanol to chemicals. Biotechnol. Biofuels 11, 260.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p002",
+            "text": "(2) Whitaker, W. B., Sandoval, N. R., Bennett, R. K., Fast, A. G., and Papoutsakis, E. T. (2015) Synthetic methylotrophy: Engineering the production of biofuels and chemicals based on the biology of aerobic methanol utilization. Curr. Opin. Biotechnol. 33, 165−175.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p003",
+            "text": "(3) Pieja, A. J., Morse, M. C., and Cal, A. J. (2017) Methane to bioproducts: The future ofthe bioeconomy? Curr. Opin. Chem. Biol. 41, 123−131.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p004",
+            "text": "(4) Hwang, I. Y., Nguyen, A. D., Nguyen, T. T., Nguyen, L. T., Lee, O. K., and Lee, E. Y. (2018) Biological conversion ofmethane to chemicals",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p005",
+            "text": "and fuels: Technical challenges and issues. Appl. Microbiol. Biotechnol. 102, 3071−3080.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p006",
+            "text": "(5) Hadjipaschalis, I., Poullikkas, A., and Efthimiou, V. (2009) Overview of current and future energy storage technologies for electric power applications. Renewable Sustainable Energy Rev. 13, 1513−1522.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p007",
+            "text": "(6) He, H., Edlich-Muth, C., Lindner, S. N., and Bar-Even, A. (2018) Ribulose Monophosphate Shunt Provides Nearly All Biomass and Energy Required for Growth of E. coli. ACS Synth. Biol. 7, 1601−1611.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p008",
+            "text": "(7) Zhang, W. M., Zhang, T., Wu, S. H., Wu, M. K., Xin, F. X., Dong, W. L., Ma, J. F., Zhang, M., and Jiang, M. (2017) Guidance for engineering ofsynthetic methylotrophy based on methanol metabolism in methylotrophy. RSC Adv. 7, 4083−4091.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p009",
+            "text": "(8) Whitaker, W. B., Jones, J. A., Bennett, R. K., Gonzalez, J. E., Vernacchio, V. R., Collins, S. M., Palmer, M. A., Schmidt, S., Antoniewicz, M. R., Koffas, M. A., and Papoutsakis, E. T. (2017) Engineering the Biological Conversion of Methanol to Specialty Chemicals in Escherichia coli. Metab. Eng. 39, 49−59.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p010",
+            "text": "(9) Müller, J. E. N., Meyer, F., Litsanov, B., Kiefer, P., Potthoff, E., Heux, S., Quax, W. J., Wendisch, V. F., Brautaset, T., Portais, J. C., and Vorholt, J. A. (2015) Engineering Escherichia coli for methanol conversion. Metab. Eng. 28, 190−201.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p011",
+            "text": "(10) Bennett, R. K., Steinberg, L. M., Chen, W., and Papoutsakis, E. T. (2018) Engineering the bioconversion of methane and methanol to fuels and chemicals in native and synthetic methylotrophs. Curr. Opin. Biotechnol. 50, 81−93.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p012",
+            "text": "(11) Antoniewicz, M. R. (2019) Synthetic methylotrophy: Strategies to assimilate methanol for growth and chemicals production. Curr. Opin. Biotechnol. 59, 165−174.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p013",
+            "text": "(12) Chen, C. T., Chen, F. Y. H., Bogorad, I. W., Wu, T. Y., Zhang, R., Lee, A. S., and Liao, J. C. (2018) Synthetic methanol auxotrophy of Escherichia coli for methanol-dependent growth and production. Metab. Eng. 49, 257−266.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p014",
+            "text": "(13) Hift, H., and Mahler, H. R. (1952) The enzymatic condensation of pyruvate and formaldehyde. J. Biol. Chem. 198, 901−914.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p015",
+            "text": "(14) Lane, R. S., Shapley, A., and Dekker, E. E. (1971) 2-Keto-4- Hydroxybutyrate Aldolase. Identification as 2-Keto-4-Hydroxyglutarate Aldolase, Catalytic Properties, and Role in the Mammalian Metabolism of L-Homoserine. Biochemistry 10, 1353−1364.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p016",
+            "text": "(15) Nishihara, H., and Dekker, E. E. (1972) Purification, substrate specificity and binding, -decarboxylase activity, and other properties of Escherichia coli 2-keto-4-hydroxyglutarate aldolase. J. Biol. Chem. 247, 5079−5087.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p017",
+            "text": "(16) Wang, C., Ren, J., Zhou, L. B., Li, Z. D., Chen, L., and Zeng, A. P. (2019) An Aldolase-Catalyzed New Metabolic Pathway for the Assimilation of Formaldehyde and Methanol To Synthesize 2-Keto-4-hydroxybutyrate and 1,3-Propanediol in Escherichia coli. ACS Synth. Biol. 8, 2483−2493.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p018",
+            "text": "(17) Saxena, R. K., Anand, P., Saran, S., and Isar, J. (2009) Microbial production of 1,3-propanediol: Recent developments and emerging opportunities. Biotechnol. Adv. 27, 895−913.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p019",
+            "text": "(18) Zeng, A. P. (2019) New bioproduction systems for chemicals and fuels: Needs and new development. Biotechnol. Adv. 37, 508−518.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p020",
+            "text": "(19) Zhang, Y. J., Ma, C. W., Dischert, W., Soucaille, P., and Zeng, A. P. (2019) Engineering of Phosphoserine Aminotransferase Increases the Conversion of L-Homoserine to 4-Hydroxy-2-ketobutyrate in a Glycerol-Independent Pathway of 1,3-Propanediol Production from Glucose. Biotechnol. J. 14, e1900003.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p021",
+            "text": "(20) Zeng, A. P., and Sabra, W. (2011) Microbial production of diols as platform chemicals: Recent progresses. Curr. Opin. Biotechnol. 22, 749−757.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p022",
+            "text": "(21) Tong, I. T., Liao, H. H., and Cameron, D. C. (1991) 1,3- Propanediol production by Escherichia coli expressing genes from the Klebsiella pneumoniae dha regulon. Appl. Environ. Microbiol. 57, 3541− 3546.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p023",
+            "text": "(22) Chen, Z., Geng, F., and Zeng, A. P. (2015) Protein design and engineering of a de novo pathway for microbial production of 1,3- propanediol from glucose. Biotechnol. J. 10, 284−289.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p024",
+            "text": "(23) Wang, J., Li, C. Y., Zou, Y. S., and Yan, Y. J. (2020) Bacterial synthesis of C3-C5 diols via extending amino acid catabolism. Proc. Natl. Acad. Sci. U. S. A. 117, 19159−19167.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p025",
+            "text": "(24) Utesch, T., Sabra, W., Prescher, C., Baur, J., Arbter, P., and Zeng, A. P. (2019) Enhanced electron transfer of different mediators for strictly opposite shifting of metabolism in Clostridium pasteurianum grown on glycerol in a new electrochemical bioreactor. Biotechnol. Bioeng. 116, 1627−1643.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p026",
+            "text": "(25) Nakamura, C. E., and Whited, G. M. (2003) Metabolic engineering for the microbial production of 1,3-propanediol. Curr. Opin. Biotechnol. 14, 454−459.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p027",
+            "text": "(26) Xu, Y. Y., Meng, H., Ren, J., and Zeng, A. P. (2020) Formaldehyde formation in the glycine cleavage system and its use for an aldolase-based biosynthesis of 1,3-prodanediol. J. Biol. Eng. 14, 15.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p028",
+            "text": "(27) Cobzaru, C., Oprea, S., Dumitriu, E., and Hulea, V. (2008) Gas phase aldol condensation of lower aldehydes over clinoptilolite rich natural zeolites. Appl. Catal., A 351, 253−258.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p029",
+            "text": "(28) Saito, S., and Yamamoto, H. (1999) Directed Aldol Condensation. Chem. - Eur. J. 5, 1959−1962.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p030",
+            "text": "(29) Bouzon, M., Perret, A., Loreau, O., Delmas, V., Perchat, N., Weissenbach, J., Taran, F., and Marliere, P. (2017) A Synthetic̀ Alternative to Canonical One-Carbon Metabolism. ACS Synth. Biol. 6, 1520−1533.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p031",
+            "text": "(30) Valentin-Hansen, P., Boetius, F., Hammer-Jespersen, K., and Svendsen, I. (1982) The Primary Structure of Escherichia coli K12 2- Deoxyribose 5-Phosphate Aldolase. Eur. J. Biochem. 125, 561−566.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p032",
+            "text": "(31) Hernandez, K., Bujons, J., Joglar, J., Charnock, S. J., de Maria, P. D., Fessner, W. D., and Clapes, P. (2017) Combining Aldolases and Transaminases for the Synthesis of 2-Amino-4-hydroxybutanoic Acid. ACS Catal. 7, 1707−1711.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p033",
+            "text": "(32) Tong, I. T., Liao, H. H., and Cameron, D. C. (1991) 1,3- Propanediol Production by Escherichia coli Expressing Genes from the Klebsiella pneumoniae dha Regulon. Appl. Environ. Microbiol. 57, 3541− 3546.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p034",
+            "text": "(33) Voutilainen, S., Heinonen, H., Andberg, M., Jokinen, E., Maaheimo, H., Paakkonen, J., Hakulinen, N., Rouvinen, J., Lahdesmaki, H., Kaski, S., Rousu, J., Penttila, M., and Koivula, A. (2020) Substrate specificity of 2-deoxy-D-ribose 5-phosphate aldolase (DERA) assessed by different protein engineering and machine learning methods. Appl. Microbiol. Biotechnol. 104, 10515−10529.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p035",
+            "text": "(34) Dick, M., Hartmann, R., Weiergräber, O. H., Bisterfeld, C., Classen, T., Schwarten, M., Neudecker, P., Willbold, D., and Pietruszka, J. (2016) Mechanism-based inhibition of an aldolase at high concentrations of its natural substrate acetaldehyde: Structural insights and protective strategies. Chem. Sci. 7, 4492−4502.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p036",
+            "text": "(35) Jennewein, S., Schürmann, M., Wolberg, M., Hilker, I., Luiten, R., Wubbolts, M., and Mink, D. (2006) Directed evolution of an industrial biocatalyst: 2-deoxy-D-ribose 5-phosphate aldolase. Biotechnol. J. 1, 537−548.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p037",
+            "text": "(36) Sakuraba, H., Yoneda, K., Yoshihara, K., Satoh, K., Kawakami, R., Uto, Y., Tsuge, H., Takahashi, K., Hori, H., and Ohshima, T. (2007) Sequential Aldol Condensation Catalyzed by Hyperthermophilic 2- Deoxy-D-ribose-5-Phosphate Aldolase. Appl. Environ. Microbiol. 73, 7427−7434.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p038",
+            "text": "(37) Huffman, M. A., Fryskowska, A., Alvizo, O., Borra-Garske, M., Campos, K. R., Canada, K. A., Devine, P. N., Duan, D., Forstater, J. H., Grosser, S. T., Halsey, H. M., Hughes, G. J., Jo, J., Joyce, L. A., Kolev, J. N., Liang, J., Maloney, K. M., Mann, B. M., Marshall, N. M., McLaughlin, M., Moore, J. C., Murphy, G. S., Nawrat, C. C., Nazor, J., Novick, S., Patel, N. R., Rodriguez-Granillo, A., Robaire, S. A., Sherer, E. C., Truppo, M. D., Whittaker, A. M., Verma, D., Xiao, L., Xu, Y., and Yang, H. (2019) Design of an in vitro biocatalytic cascade for the manufacture of islatravir. Science 366, 1255−1259.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p039",
+            "text": "(38) Arfman, N., Bystrykh, L., Govorukhina, N. I., and Dijkhuizen, L. (1990) 3-Hexulose-6-phosphate Synthase from Thermotolerant Methylotroph Bacillus C1. Methods Enzymol. 188, 391−397.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p040",
+            "text": "(39) Suwannarangsee, S., Kim, S., Kim, O. C., Oh, D. B., Seo, J. W., Kim, C. H., Rhee, S. K., Kang, H. A., Chulalaksananukul, W., and Kwon,",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p041",
+            "text": "O. (2012) Characterization of alcohol dehydrogenase 3 of the thermotolerant methylotrophic yeast Hansenula polymorpha. Appl. Microbiol. Biotechnol. 96, 697−709.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p042",
+            "text": "(40) Suwannarangsee, S., Oh, D. B., Seo,J. W., Kim, C. H., Rhee, S. K., Kang, H. A., Chulalaksananukul, W., and Kwon, O. (2010) Characterization of alcohol dehydrogenase 1 of the thermotolerant methylotrophic yeast Hansenula polymorpha. Appl. Microbiol. Biotechnol. 88, 497−507.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p043",
+            "text": "(41) Li, Y. F., Lin, Z. Q., Huang, C., Zhang, Y., Wang, Z. W., Tang, Y.J., Chen, T., and Zhao, X. M. (2015) Metabolic engineering ofEscherichia coli using CRISPR-Cas9 meditated genome editing. Metab. Eng. 31, 13−21.",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p044",
+            "text": "(42) Nemr, K., Muller, J. E. N., Joo, J. C., Gawand, P., Choudhary, R., Mendonca, B., Lu, S. Y., Yu, X. Y., Yakunin, A. F., and Mahadevan, R. (2018) Engineering a short, aldolase-based pathway for (R)-1,3- butanediol production in Escherichia coli. Metab. Eng. 48, 13−24.",
+            "section": "references"
+          }
+        ]
+      },
+      "figure_map": {
+        "figures": [
+          {
+            "figure_id": "Figure 1",
+            "caption": "A new aldolase (DERA) based C1 pathway for PDO production proposed in this work in comparison with other major routes of PDO biosynthesis. The reactions and enzymes involved in the proposed new pathway are highlighted in green. The “classic” glycerol-based pathway is highlighted in violet; the pathway based on malonate semialdehyde in dark yellow; the pathway based on homoserine and via 2-keto-4-hydroxybutyrate light yellow; and the pathway via condensation of pyruvate and formaldehyde in gray. Abbreviations for metabolites: PEP = phosphoenolpyruvate; DHAP = dihydroxyacetone phosphate; $\\mathrm { G } 3 \\mathrm { P } = \\mathrm { g } \\mathrm { l } $ ycerol-3-phosphate; Ac-CoA = acetyl-coenzyme A; 3-HP = 3-hydroxypropionic acid; $3 { \\mathrm { - H P A } } = 3 { \\mathrm { - } }$ hydroxypropionaldehyde; $\\bar { \\mathrm { P D O } } = 1 { , } 3$ -propanediol. Abbreviations for enzymes: HpADH1 = alcohol dehydrogenase 1 ofHansenula polymorpha; KHB = 2-keto-4-hydroxybutyrate aldolase; KDC = branched-chain alpha-keto acid decarboxylase; DERA = deoxyribose-5-phosphate aldolase; DhaT = NADH-dependent PDO oxidoreductase.",
+            "related_paragraphs": [
+              "access_p009",
+              "access_p012",
+              "access_p014"
+            ]
+          },
+          {
+            "figure_id": "Figure 2",
+            "caption": "Reaction mechanisms of two diferent aldolase-based incorporation of aldehyde for the formation of 3-hydroxypropionic acid, the direct precursor of PDO biosynthesis. (A) Aldol condensation of HCHO and pyruvate to generate 2-keto-4-hydroxybutyrate, which is then decarboxylated to generate 3-HPA.<sup>16</sup> (B) Direct aldol condensation to generate 3-HPA studied in this work.",
+            "related_paragraphs": [
+              "access_p012",
+              "results_and_discussion_p001"
+            ]
+          },
+          {
+            "figure_id": "Figure 3",
+            "caption": "DERA-based C1 new metabolic pathway for PDO production proposed in this work, which is divided into three modules for its implementation: ACALD supply module, HCHO supply module, and DERA-based PDO production module.",
+            "related_paragraphs": [
+              "results_and_discussion_p003",
+              "results_and_discussion_p005"
+            ]
+          },
+          {
+            "figure_id": "Figure 4",
+            "caption": "Verification ofPDO synthesis from HCHO and ACALD using GC-MS labeling analysis (13C-carbon is indicated by the symbol \\*). (A) The in vivo assay principle. (B) Unlabeled PDO standard. (C) Results from culture using $^ { 1 3 } \\mathrm { C - H C } \\dot { \\mathrm { H } } \\mathrm { O }$ as cosubstrate. (D) Results from culture using $^ { 1 3 } \\mathrm { C } \\mathrm { . }$ $\\mathrm { C H } _ { 3 } \\mathrm { C H O }$ as cosubstrate.",
+            "related_paragraphs": [
+              "results_and_discussion_p004",
+              "a_in_vivo_dera_assay_p004"
+            ]
+          },
+          {
+            "figure_id": "Figure 5",
+            "caption": "Specific activities of DERAs at diferent HCHO concentrations $( 5 { - } 2 0 0 ~ \\mathrm { m M } ) ;$ the reaction concentration of ACALD was 20 mM. ECO = $\\mathrm { D E R A _ { E C O } }$ from E. coli K-12; $\\mathrm { T M A } = \\mathrm { D E R A } _ { \\mathrm { T M A } }$ from Thermotoga maritima; Rd3BB is from Shewanella halifaxensis.<sup>37</sup>",
+            "related_paragraphs": [
+              "a_in_vivo_dera_assay_p007",
+              "a_in_vivo_dera_assay_p008"
+            ]
+          },
+          {
+            "figure_id": "Figure 6",
+            "caption": "Batch bioconversion results for PDO production using ethanol and HCHO as cosubstrates. (A) Verification using GC-MS measurement to show PDO formation (13C-carbon indicated by \\*) from HCHO and $^ { 1 3 } \\mathrm { C } .$ -ethanol. (B) Bioconversion using strain BF02 without HpADH1 expression. (C) Bioconversion using the strain BF12 with the HpADH1 expression. (D) Bioconversion using strain BF16 with the HpADH1 expression and knockout of the gene frmA. The initial concentrations of ethanol and HCHO were 300 mM and 100 mM.",
+            "related_paragraphs": [
+              "a_in_vivo_dera_assay_p016"
+            ]
+          },
+          {
+            "figure_id": "Figure 7",
+            "caption": "Formation ofcondensation diol byproducts and their verification. (A) The GC-MS graph for the formation ofdiols. (B−D) GC-MS spectra (with $^ { 1 3 } \\mathrm { C } .$ -carbon indicated by \\*) of1,3-BDO, C5 diol, C6 diol, and phenylboronic acid, respectively. (E) Proposed biosynthetic routes ofthe diferent diols. (F) The determination of byproduct production at diferent concentrations of HCHO and ACALD in vitro.",
+            "related_paragraphs": [
+              "a_in_vivo_dera_assay_p026"
+            ]
+          },
+          {
+            "figure_id": "Figure 8",
+            "caption": "PDO production in whole-cell bioconversion with the strain BF16 using HCHO and ethanol as cosubstrates with interim addition of HCHO. The initial concentrations ofHCHO and ethanol were 100 and 300 mM, respectively; 100 mM HCHO were added in ten times interval.",
+            "related_paragraphs": [
+              "a_in_vivo_dera_assay_p020",
+              "conclusion_p002"
+            ]
+          }
+        ]
+      },
+      "table_map": {
+        "tables": [
+          {
+            "table_id": "Table 1",
+            "title": "Performances of Aldolases Tested for HCHO and ACALD Condensation to Form PDO in Vivo",
+            "content": []
+          },
+          {
+            "table_id": "Table 2",
+            "title": "Comparison of DERAs from Diferent Origins to Utilize HCHO and ACALD for in Vivo PDO Synthesis in E. coli Coexpressing DERA and DhaT",
+            "content": []
+          },
+          {
+            "table_id": "Table 3",
+            "title": "Comparison of Kinetic Parameters of HCHO-Condensing Aldolases",
+            "content": []
+          },
+          {
+            "table_id": "Table 4",
+            "title": "Strains and Plasmids Used for This Study",
+            "content": []
+          }
+        ]
+      },
+      "citation_map": {
+        "citations": []
+      },
+      "modification_log": {
+        "changes": []
+      },
+      "cleaning_quality_report": {
+        "noise_removed": 0,
+        "tables_fixed": 0,
+        "figures_preserved": 8,
+        "tables_preserved": 4,
+        "citations_preserved": true,
+        "sections_preserved": true,
+        "missing_sections": [],
+        "confidence": 1.0
+      }
+    },
+    "cleaning_report": {
+      "noise_removed": 0,
+      "tables_fixed": 0,
+      "figures_preserved": 8,
+      "tables_preserved": 4,
+      "citations_preserved": true,
+      "sections_preserved": true,
+      "missing_sections": [],
+      "confidence": 1.0
+    }
+  },
+  "artifacts": [
+    {
+      "artifact_id": "artifact:f75278a7026724f108cfc5a5",
+      "media_type": "text/markdown",
+      "sha256": "f75278a7026724f108cfc5a54cbdd867457f9516734a1349a184bb91f3f0cde7",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.md"
+    },
+    {
+      "artifact_id": "artifact:4c3d1adcd36053260fe7f263",
+      "media_type": "application/json",
+      "sha256": "4c3d1adcd36053260fe7f2632db24637805bd550be17bc8d500e5a269c0bf7a7",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.json"
+    }
+  ],
+  "self_check": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "sections_preserved",
+        "passed": true
+      },
+      {
+        "name": "protected_scientific_values",
+        "passed": true
+      },
+      {
+        "name": "citations_preserved",
+        "passed": true
+      },
+      {
+        "name": "no_new_scientific_text",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_section_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_figure_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_table_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_text_consistency",
+        "passed": true
+      }
+    ],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "changes_count": 0,
+    "noise_removed": 0,
+    "tables_fixed": 0,
+    "paragraphs": 120,
+    "duration_ms": 79.837
+  },
+  "provenance": {
+    "skill_id": "skill06_markdown_cleaner",
+    "skill_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "input_hash": "sha256:3aa77e8b4de4d17167ba766927f912d32cd16f7008e65c40e436bd42fe70fdb9",
+    "output_hash": "sha256:97a58e2e7d59c199cf476a26db57b2c207fa9612a265ef460d6a49ba5031581c",
+    "source_artifact_id": "ae4bdbd7884c413cb3e583301872456b_17_sb0c00597",
+    "source_sha256": "7049894e138b22cde7397548d19dd6b3ec597048d11f860eb8a98310ff9a8cf4",
+    "cleaned_at": "2026-08-10T15:27:38.996015+00:00",
+    "change_map": []
+  },
+  "review_requests": []
+}

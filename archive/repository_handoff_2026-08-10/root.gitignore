@@ -1,0 +1,100 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+.venv_*/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# Node.js
+node_modules/
+frontend/dist/
+
+# macOS
+__MACOSX/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test & cache
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Claude
+.claude/
+
+# Output & results
+output/
+*.db
+runs/
+workflow_runs/
+
+# Large result files
+full13_*.json
+
+# Runtime states
+demo_state/
+full13_*_state/
+
+# Logs
+*.log
+*.jsonl
+
+# Nested git backup
+.git-backup/
+
+# vEcoli is an external repository (CovertLab/vEcoli)
+agent/vEcoli/
+
+# Document artifacts (generated outputs)
+**/document_artifacts/
+**/clean_document_artifacts/
+
+# Reference files (PDFs and large zips)
+reference/**/*.pdf
+reference/**/*.zip
+reference/tmp/
+
+# Prompt artifacts (paper PDFs and large zips)
+prompt/**/*.pdf
+prompt/Overall/JH/*.zip
+prompt/Overall/JH/**/*.zip
+
+# Large model files
+agent/agent-harness/agent-harness/knowledge/models/*.xml
+
+# Vendor logs
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/logs/
+
+# Paper artifacts PDFs
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/paper_artifacts/**/*.pdf
+
+# Cache directories
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/paper_experimental_design_extraction/storage/extraction_cache/
+agent/agent-harness/agent-harness/harness/paper_extraction/vendor/paper_experimental_design_extraction/storage/pipeline_cache/
+
+# Backup / duplicate directories
+agent/agent-harness/agent-harness - 副本/
+
+# Frontend submodule
+prompt/小组件_模块/论文实验设计思路的抽取/frontend/
+poe-api.env
+Poe-Code-correlation/poe-api.env

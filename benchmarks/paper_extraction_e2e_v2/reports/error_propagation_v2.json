@@ -1,0 +1,1 @@
+{"status":"PARTIAL","gold_root_causes":"NOT_ESTIMABLE","deterministic_failures":[{"failure_id":"E2E-BENCH-002","stage":"BENCHMARK_EVALUATOR","severity":"P1","root_cause":"obsolete Skill08 stage-key mapping","downstream_consequences":["E1/E2/E3 completion undercounted"],"fixed":true}],"replay_blockers":{},"policy":"earliest causal failure is counted once"}

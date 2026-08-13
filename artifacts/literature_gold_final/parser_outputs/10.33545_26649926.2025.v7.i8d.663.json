@@ -1,0 +1,1723 @@
+{
+  "file name" : "10.33545_26649926.2025.v7.i8d.663.pdf",
+  "number of pages" : 4,
+  "author" : "Lorena Guimaraes",
+  "title" : "Metabolic engineering of Escherichia coli for enhanced production of L-tryptophan",
+  "creation date" : "D:20260424154724+05'30'",
+  "modification date" : "D:20260424154724+05'30'",
+  "kids" : [ {
+    "type" : "caption",
+    "pdfua_tag" : "Caption",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 170.48, 776.976, 423.79, 784.158 ],
+    "linked content id" : 17,
+    "font" : "Times New Roman,Bold",
+    "font size" : 7.98,
+    "text color" : "[0.0]",
+    "content" : "International Journal of Biology Sciences 2025; 7(8): 307-310"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 17,
+    "page number" : 1,
+    "bounding box" : [ 41.88, 676.92, 553.02, 776.82 ],
+    "alt_source" : "missing"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 8,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 178.1, 622.3, 552.404, 655.098 ],
+    "heading level" : 1,
+    "font" : "Times New Roman,Bold",
+    "font size" : 16.02,
+    "text color" : "[0.0]",
+    "content" : "Metabolic engineering of Escherichia coli for enhanced production of L-tryptophan"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 9,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 178.04, 590.308, 275.036, 601.108 ],
+    "heading level" : 2,
+    "font" : "Times New Roman,Bold",
+    "font size" : 12.0,
+    "text color" : "[0.0]",
+    "content" : "Lorena Guimaraes"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 10,
+    "page number" : 1,
+    "bounding box" : [ 178.04, 565.216, 434.192, 574.354 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0, 0.0, 1.0]",
+    "content" : "DOI: https://www.doi.org/10.33545/26649926.2025.v7.i8d.663"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 12,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 178.04, 541.306, 211.502, 549.406 ],
+    "heading level" : 4,
+    "font" : "Times New Roman,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Abstract"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 13,
+    "page number" : 1,
+    "bounding box" : [ 178.04, 377.138, 552.496, 539.272 ],
+    "font" : "Times New Roman",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Imagine a fermentation tank producing pharmaceutical-grade L-tryptophan from glucose in under 48 hours—without the yield-capping feedback loops that normally throttle output. This research engineered Escherichia coli K-12 through a sequential gene-editing strategy to relieve allosteric regulation and redirect carbon flux toward the tryptophan branch of the shikimate pathway. Work was carried out at the Instituto de Ciências Biológicas do Pantanal, Corumbá, Brazil, between March 2022 and June 2024. Four engineering steps were applied cumulatively: (1) deletion of the trpR repressor; (2) introduction of a feedback-resistant aroG mutant (aroG*-S180F); (3) overexpression of the entire trpEDCBA operon under a tac promoter; and (4) overexpression of a feedback-insensitive serA mutant (serA*-H344A) to boost serine supply, the amino donor in the final tryptophan synthase reaction. The fully engineered strain (TRP-04) produced 5.83 ± 0.41 g/L L-tryptophan in 48-hour fed-batch fermentation using minimal glucose medium—a 72.9-fold increase over the wild-type parent strain (0.08 g/L). Metabolic flux analysis confirmed a 3.4-fold increase in carbon flow through the pentose phosphate pathway and a 17.9-fold increase through the tryptophan branch. No significant growth penalty was observed (doubling time 38.2 vs. 36.7 min for wild-type). These results demonstrate that combinatorial deregulation of the shikimate and serine biosynthesis pathways can yield industrially relevant tryptophan titers in a simple E. coli chassis."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 14,
+    "page number" : 1,
+    "bounding box" : [ 178.04, 334.958, 552.436, 363.686 ],
+    "font" : "Times New Roman",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Keywords: Metabolic engineering, Escherichia coli, L-tryptophan, shikimate pathway, feedback deregulation, aroG mutant, fed-batch fermentation, carbon flux, serine biosynthesis, amino acid production"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 15,
+    "page number" : 1,
+    "bounding box" : [ 178.04, 50.916, 552.551, 322.214 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Introduction Picture a mid-sized pharmaceutical company that needs 500 kg of L-tryptophan per month for dietary supplement formulation. The options are chemical synthesis—expensive, racemic, and solvent-heavy—or microbial fermentation, which is greener but capped by the bacterium's own regulatory logic [1]. E. coli naturally produces just enough tryptophan for its own protein synthesis and shuts down the pathway the moment intracellular concentrations rise. Breaking this self-imposed ceiling is the central challenge of tryptophan metabolic engineering. L-tryptophan is one of the nine essential amino acids in human nutrition and serves as the biosynthetic precursor for serotonin, melatonin, and niacin [2]. Global market demand exceeded 41,000 tonnes in 2022, driven by animal feed, food supplements, and pharmaceutical applications. Microbial production using engineered E. coli or Corynebacterium glutamicum now accounts for the majority of commercial supply, but titers in academic-scale reports typically range from 1 to 15 g/L—well below the 40-50 g/L achieved for L-lysine or L-glutamate [3]. The bottleneck lies in at least three layers of regulation: transcriptional repression by TrpR, allosteric feedback inhibition of 3-deoxy-D-arabino-heptulosonate-7-phosphate (DAHP) synthase (AroG) by phenylalanine, and limited supply of L-serine, which donates its side chain in the final tryptophan synthase reaction [4]. Previous efforts have addressed one or two of these constraints, but a systematic, stepwise approach that quantifies the marginal gain of each modification in the same genetic background has rarely been reported. This research built a series of cumulative E. coli mutants at the Instituto de Ciências Biológicas do Pantanal, Corumbá, Brazil, and measured tryptophan titer, growth fitness, and intracellular flux redistribution at each step."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 21,
+    "page number" : 2,
+    "bounding box" : [ 42.54, 775.176, 138.1, 795.714 ],
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Material and Methods Material"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "page number" : 2,
+    "bounding box" : [ 42.54, 637.156, 286.017, 772.794 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "E. coli K-12 MG1655 (ATCC 47076) was the parental strain. Gene deletions were performed using the Lambda Red recombineering system with pKD46 [5]. Feedbackresistant aroG (S180F) and serA (H344A) alleles were synthesized by GenScript (Piscataway, NJ, USA) and cloned into pTrc99A under the tac promoter. The trpEDCBA operon was amplified from K-12 genomic DNA and cloned into pACYCDuet-1 (Novagen/Merck, Darmstadt, Germany). Isopropyl β-D-1thiogalactopyranoside (IPTG), antibiotics, and all fermentation-grade chemicals were purchased from SigmaAldrich (St. Louis, MO, USA) [6]."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 23,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 42.54, 614.176, 227.9, 623.194 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Instrumentation and Analytical Equipment"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 24,
+    "page number" : 2,
+    "bounding box" : [ 42.54, 510.676, 286.017, 611.734 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Fed-batch fermentations were carried out in a 5-L BioFlo 320 bioreactor (Eppendorf, Hamburg, Germany) equipped with dissolved oxygen, pH, and temperature probes. Ltryptophan was quantified by HPLC (Shimadzu LC-20AD) fitted with a C18 reverse-phase column (Agilent Zorbax SBC18, 4.6 × 250 mm, 5 µm) and a UV detector set at 280 nm. Glucose and organic acid concentrations were measured by HPLC with a Bio-Rad Aminex HPX-87H column and refractive index detection. Intracellular metabolite extraction"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 25,
+    "page number" : 2,
+    "bounding box" : [ 308.96, 775.176, 552.434, 795.774 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "for flux analysis used a cold methanol quenching protocol adapted from Wittmann [7]."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 26,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 308.96, 752.196, 346.204, 761.214 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Methods"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "page number" : 2,
+    "bounding box" : [ 308.96, 533.715, 552.441, 749.754 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Strain construction proceeded in four steps, each confirmed by colony PCR and Sanger sequencing. Step 1: trpR deletion (strain TRP-01). Step 2: chromosomal integration of aroG*-S180F at the araBAD locus (TRP-02). Step 3: transformation with pACYCDuet-trpEDCBA (TRP-03). Step 4: transformation with pTrc99A-serA*-H344A (TRP04). Fed-batch fermentations used M9 minimal medium supplemented with 20 g/L initial glucose, 2 g/L yeast extract, and trace metals. Temperature was maintained at 37 °C, pH at 7.0 (automatic NH₄OH addition), and dissolved oxygen above 30% saturation by cascade aeration and agitation. Glucose was fed at a rate maintaining residual concentration between 1 and 5 g/L. IPTG (0.5 mM) was added at OD₆₀₀ = 8. Samples were taken every 4 hours for 48 hours. All experiments were performed in biological triplicate [8]. Metabolic flux analysis used the OpenFLUX software with a stoichiometric model of central carbon metabolism; ¹³C-labeling experiments with [1-¹³C]glucose confirmed flux ratios at the glucose-6-phosphate node [9]."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 28,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 308.96, 510.676, 340.132, 519.694 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Results"
+  }, {
+    "type" : "caption",
+    "pdfua_tag" : "Caption",
+    "id" : 29,
+    "page number" : 2,
+    "bounding box" : [ 93.9, 488.918, 501.103, 497.126 ],
+    "linked content id" : 30,
+    "font" : "Times New Roman",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Table 1: L-Tryptophan titer and growth parameters across engineered strains (48-h Fed-Batch, Mean±SD, n = 3)"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 30,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 110.52, 417.32, 484.48, 482.96 ],
+    "number of rows" : 6,
+    "number of columns" : 5,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 111.0, 471.86, 220.52, 482.48 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 1,
+          "page number" : 2,
+          "bounding box" : [ 153.62, 472.226, 177.623, 480.326 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Strain"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 220.52, 471.86, 275.42, 482.48 ],
+        "row number" : 1,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 2,
+          "page number" : 2,
+          "bounding box" : [ 229.82, 472.226, 266.09, 480.326 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Trp (g/L)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 275.42, 471.86, 346.94, 482.48 ],
+        "row number" : 1,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 3,
+          "page number" : 2,
+          "bounding box" : [ 284.42, 472.226, 337.925, 480.326 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Yield (g/g glc)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 346.94, 471.86, 425.5, 482.48 ],
+        "row number" : 1,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 4,
+          "page number" : 2,
+          "bounding box" : [ 356.84, 472.226, 415.592, 480.326 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Doubling (min)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 425.5, 471.86, 484.0, 482.48 ],
+        "row number" : 1,
+        "column number" : 5,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 5,
+          "page number" : 2,
+          "bounding box" : [ 432.94, 472.133, 476.86, 482.1 ],
+          "font" : "TimesNewRoman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Final OD₆₀₀"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 111.0, 461.0, 220.52, 471.86 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 6,
+          "page number" : 2,
+          "bounding box" : [ 145.28, 461.498, 185.981, 469.652 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "K-12 (WT)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 220.52, 461.0, 275.42, 471.86 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 7,
+          "page number" : 2,
+          "bounding box" : [ 227.48, 461.498, 268.421, 469.652 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.08 ± 0.02"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 275.42, 461.0, 346.94, 471.86 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 8,
+          "page number" : 2,
+          "bounding box" : [ 301.04, 461.498, 321.308, 469.652 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.002"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 346.94, 461.0, 425.5, 471.86 ],
+        "row number" : 2,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 9,
+          "page number" : 2,
+          "bounding box" : [ 368.02, 461.498, 404.461, 469.652 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "36.7 ± 1.1"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 425.5, 461.0, 484.0, 471.86 ],
+        "row number" : 2,
+        "column number" : 5,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 10,
+          "page number" : 2,
+          "bounding box" : [ 436.66, 461.498, 473.101, 469.652 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "14.2 ± 0.8"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 111.0, 450.14, 220.52, 461.0 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 11,
+          "page number" : 2,
+          "bounding box" : [ 136.34, 450.638, 194.891, 460.62 ],
+          "font" : "TimesNewRoman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TRP-01 (ΔtrpR)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 220.52, 450.14, 275.42, 461.0 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 12,
+          "page number" : 2,
+          "bounding box" : [ 227.48, 450.638, 268.421, 458.792 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.31 ± 0.05"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 275.42, 450.14, 346.94, 461.0 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 13,
+          "page number" : 2,
+          "bounding box" : [ 301.04, 450.638, 321.308, 458.792 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.007"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 346.94, 450.14, 425.5, 461.0 ],
+        "row number" : 3,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 14,
+          "page number" : 2,
+          "bounding box" : [ 368.02, 450.638, 404.461, 458.792 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "37.1 ± 1.3"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 425.5, 450.14, 484.0, 461.0 ],
+        "row number" : 3,
+        "column number" : 5,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 15,
+          "page number" : 2,
+          "bounding box" : [ 436.66, 450.638, 473.101, 458.792 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "13.8 ± 0.9"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 111.0, 439.28, 220.52, 450.14 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 16,
+          "page number" : 2,
+          "bounding box" : [ 133.46, 439.778, 197.762, 447.932 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TRP-02 (+aroG*)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 220.52, 439.28, 275.42, 450.14 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 17,
+          "page number" : 2,
+          "bounding box" : [ 227.48, 439.778, 268.421, 447.932 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "1.24 ± 0.14"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 275.42, 439.28, 346.94, 450.14 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 18,
+          "page number" : 2,
+          "bounding box" : [ 301.04, 439.778, 321.308, 447.932 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.028"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 346.94, 439.28, 425.5, 450.14 ],
+        "row number" : 4,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 19,
+          "page number" : 2,
+          "bounding box" : [ 368.02, 439.778, 404.461, 447.932 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "37.4 ± 0.9"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 425.5, 439.28, 484.0, 450.14 ],
+        "row number" : 4,
+        "column number" : 5,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 20,
+          "page number" : 2,
+          "bounding box" : [ 436.66, 439.778, 473.101, 447.932 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "13.5 ± 0.7"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 111.0, 428.48, 220.52, 439.28 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 21,
+          "page number" : 2,
+          "bounding box" : [ 124.46, 428.918, 206.78, 437.072 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TRP-03 (+trpEDCBA)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 220.52, 428.48, 275.42, 439.28 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 22,
+          "page number" : 2,
+          "bounding box" : [ 227.48, 428.918, 268.421, 437.072 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "3.67 ± 0.28"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 275.42, 428.48, 346.94, 439.28 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 23,
+          "page number" : 2,
+          "bounding box" : [ 301.04, 428.918, 321.308, 437.072 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.074"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 346.94, 428.48, 425.5, 439.28 ],
+        "row number" : 5,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 24,
+          "page number" : 2,
+          "bounding box" : [ 368.02, 428.918, 404.461, 437.072 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "37.9 ± 1.2"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 425.5, 428.48, 484.0, 439.28 ],
+        "row number" : 5,
+        "column number" : 5,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 25,
+          "page number" : 2,
+          "bounding box" : [ 436.66, 428.918, 473.101, 437.072 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "12.9 ± 1.1"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 111.0, 417.8, 220.52, 428.48 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 26,
+          "page number" : 2,
+          "bounding box" : [ 134.0, 418.058, 197.276, 426.212 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TRP-04 (+serA*)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 220.52, 417.8, 275.42, 428.48 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 27,
+          "page number" : 2,
+          "bounding box" : [ 227.48, 418.058, 268.421, 426.212 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "5.83 ± 0.41"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 275.42, 417.8, 346.94, 428.48 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 28,
+          "page number" : 2,
+          "bounding box" : [ 301.04, 418.058, 321.308, 426.212 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.108"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 346.94, 417.8, 425.5, 428.48 ],
+        "row number" : 6,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 29,
+          "page number" : 2,
+          "bounding box" : [ 368.02, 418.058, 404.461, 426.212 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "38.2 ± 1.4"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 425.5, 417.8, 484.0, 428.48 ],
+        "row number" : 6,
+        "column number" : 5,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 30,
+          "page number" : 2,
+          "bounding box" : [ 436.66, 418.058, 473.101, 426.212 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "12.6 ± 0.9"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 31,
+    "page number" : 2,
+    "bounding box" : [ 42.54, 359.996, 286.066, 403.574 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Each engineering step produced a measurable increase in tryptophan titer (Table 1). The largest single gain came from overexpressing the trpEDCBA operon (TRP-02 → TRP-03: +2.43 g/L), while boosting serine supply added another 2.16"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 32,
+    "page number" : 2,
+    "bounding box" : [ 308.96, 371.456, 552.373, 405.609 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "g/L (TRP-03 → TRP-04). Doubling times remained within 4% of wild-type across all strains, indicating no major growth penalty."
+  }, {
+    "type" : "text block",
+    "id" : 34,
+    "page number" : 2,
+    "bounding box" : [ 126.24, 98.58, 469.86, 347.16 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 31,
+      "page number" : 2,
+      "bounding box" : [ 126.48, 98.82, 469.62, 346.92 ],
+      "alt_source" : "missing"
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 33,
+    "page number" : 2,
+    "bounding box" : [ 44.58, 72.498, 550.378, 91.086 ],
+    "font" : "Times New Roman",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Fig 1: L-tryptophan titers across wild-type and four cumulative engineered strains after 48-hour fed-batch fermentation. Error bars represent standard deviation (n = 3). Each successive modification produced a significant increase (p<0.01)."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 37,
+    "level" : "Subtitle",
+    "page number" : 3,
+    "bounding box" : [ 42.54, 786.696, 147.311, 795.714 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Performance Evaluation"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 38,
+    "page number" : 3,
+    "bounding box" : [ 42.54, 706.156, 286.017, 784.254 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "The overall yield of TRP-04 (0.108 g tryptophan per g glucose) represents 26.3% of the theoretical maximum (0.411 g/g, calculated from the stoichiometric equation: 1 glucose → 0.411 tryptophan + CO₂ + H₂O under optimal pathway flux). Volumetric productivity reached 0.121 g/L/h, comparable to recent reports using C. glutamicum (0.090.18 g/L/h) but below the highest published E. coli values of"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 39,
+    "level" : "2",
+    "page number" : 3,
+    "bounding box" : [ 42.54, 625.696, 286.019, 703.774 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "next list id" : 58,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 42.54, 625.696, 286.019, 703.774 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "0.20-0.25 g/L/h achieved with more complex regulatory rewiring [10]. Carbon balance analysis showed that 38.7% of consumed glucose was directed through the pentose phosphate pathway in TRP-04 versus 18.3% in wild-type, consistent with the increased demand for erythrose-4phosphate and phosphoenolpyruvate—the two precursors feeding into the shikimate pathway.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "caption",
+    "pdfua_tag" : "Caption",
+    "id" : 40,
+    "page number" : 3,
+    "bounding box" : [ 312.02, 777.558, 549.313, 796.146 ],
+    "linked content id" : 41,
+    "font" : "Times New Roman",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Table 2: Metabolic Flux Redistribution in TRP-04 vs. Wild-Type (% of Glucose Uptake Rate)"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 41,
+    "level" : "3",
+    "page number" : 3,
+    "bounding box" : [ 308.06, 695.14, 553.3, 771.6 ],
+    "number of rows" : 7,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 760.5, 431.08, 771.12 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 1,
+          "page number" : 3,
+          "bounding box" : [ 341.84, 760.926, 397.577, 769.026 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Pathway Node"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 760.5, 498.64, 771.12 ],
+        "row number" : 1,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 2,
+          "page number" : 3,
+          "bounding box" : [ 435.46, 760.926, 494.173, 769.026 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Wild-Type (%)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 760.5, 552.82, 771.12 ],
+        "row number" : 1,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 3,
+          "page number" : 3,
+          "bounding box" : [ 502.18, 760.926, 549.388, 769.026 ],
+          "font" : "Times New Roman,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TRP-04 (%)"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 749.64, 431.08, 760.5 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 4,
+          "page number" : 3,
+          "bounding box" : [ 316.1, 750.153, 423.353, 760.12 ],
+          "font" : "TimesNewRoman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Glycolysis (PEP → pyruvate)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 749.64, 498.64, 760.5 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 5,
+          "page number" : 3,
+          "bounding box" : [ 457.0, 750.138, 472.768, 758.292 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "82.4"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 749.64, 552.82, 760.5 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 6,
+          "page number" : 3,
+          "bounding box" : [ 517.96, 750.138, 533.728, 758.292 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "61.3"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 738.84, 431.08, 749.64 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 7,
+          "page number" : 3,
+          "bounding box" : [ 320.0, 739.278, 419.45, 747.432 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Pentose phosphate pathway"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 738.84, 498.64, 749.64 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 8,
+          "page number" : 3,
+          "bounding box" : [ 457.0, 739.278, 472.768, 747.432 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "18.3"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 738.84, 552.82, 749.64 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 9,
+          "page number" : 3,
+          "bounding box" : [ 517.96, 739.278, 533.728, 747.432 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "38.7"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 727.96, 431.08, 738.84 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 10,
+          "page number" : 3,
+          "bounding box" : [ 324.74, 728.398, 414.596, 736.552 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Shikimate entry (DAHP)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 727.96, 498.64, 738.84 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 11,
+          "page number" : 3,
+          "bounding box" : [ 459.22, 728.398, 470.488, 736.552 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "4.2"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 727.96, 552.82, 738.84 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 12,
+          "page number" : 3,
+          "bounding box" : [ 517.96, 728.398, 533.728, 736.552 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "21.6"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 717.1, 431.08, 727.96 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 13,
+          "page number" : 3,
+          "bounding box" : [ 335.36, 717.538, 404.104, 725.692 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Tryptophan branch"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 717.1, 498.64, 727.96 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 14,
+          "page number" : 3,
+          "bounding box" : [ 459.22, 717.538, 470.488, 725.692 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0.8"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 717.1, 552.82, 727.96 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 15,
+          "page number" : 3,
+          "bounding box" : [ 517.96, 717.538, 533.728, 725.692 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "14.3"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 706.24, 431.08, 717.1 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 16,
+          "page number" : 3,
+          "bounding box" : [ 350.12, 706.738, 389.36, 714.892 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TCA cycle"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 706.24, 498.64, 717.1 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 17,
+          "page number" : 3,
+          "bounding box" : [ 457.0, 706.738, 472.768, 714.892 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "72.1"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 706.24, 552.82, 717.1 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 18,
+          "page number" : 3,
+          "bounding box" : [ 517.96, 706.738, 533.728, 714.892 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "51.4"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 7,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 308.54, 695.62, 431.08, 706.24 ],
+        "row number" : 7,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 19,
+          "page number" : 3,
+          "bounding box" : [ 334.88, 695.878, 404.567, 704.032 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Serine biosynthesis"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 431.08, 695.62, 498.64, 706.24 ],
+        "row number" : 7,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 20,
+          "page number" : 3,
+          "bounding box" : [ 459.22, 695.878, 470.488, 704.032 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "8.4"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 3,
+        "bounding box" : [ 498.64, 695.62, 552.82, 706.24 ],
+        "row number" : 7,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 21,
+          "page number" : 3,
+          "bounding box" : [ 517.96, 695.878, 533.728, 704.032 ],
+          "font" : "Times New Roman",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "19.8"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 42,
+    "page number" : 3,
+    "bounding box" : [ 308.96, 614.776, 552.436, 681.334 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Flux through the tryptophan branch rose 17.9-fold in TRP04 relative to wild-type (Table 2). The TCA cycle flux decreased correspondingly, reflecting diversion of phosphoenolpyruvate away from pyruvate kinase toward the shikimate pathway. Serine biosynthesis flux doubled, driven by the overexpressed feedback-resistant serA*."
+  }, {
+    "type" : "text block",
+    "id" : 48,
+    "page number" : 3,
+    "bounding box" : [ 132.78, 352.56, 463.68, 601.32 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 22,
+      "page number" : 3,
+      "bounding box" : [ 133.02, 352.8, 463.44, 601.08 ],
+      "alt_source" : "missing"
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 43,
+    "page number" : 3,
+    "bounding box" : [ 48.3, 315.458, 546.688, 344.366 ],
+    "font" : "Times New Roman",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Fig 2: Bubble chart comparing metabolic flux distribution between wild-type (diamonds) and the fully engineered TRP-04 strain (circles). Bubble size reflects the fold change at each pathway node. The largest flux increases occurred in the pentose phosphate pathway and tryptophan branch."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 44,
+    "page number" : 3,
+    "bounding box" : [ 42.54, 62.376, 286.053, 301.394 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Discussion The 72.9-fold improvement in tryptophan titer—from 0.08 to 5.83 g/L—demonstrates the cumulative benefit of addressing multiple regulatory bottlenecks within a single genetic background. Deleting trpR alone gave a modest 3.9fold gain, consistent with the fact that transcriptional derepression increases enzyme levels but doesn't remove the allosteric chokepoint at DAHP synthase [11]. Adding the feedback-resistant aroG* allele produced the second-largest single jump by uncapping the first committed step of the shikimate pathway. The decision to boost serine supply—often overlooked in tryptophan engineering—proved highly effective, adding 2.16 g/L. Serine serves as the amino group donor in the tryptophan synthase (TrpB) reaction, and its intracellular pool is normally limiting under high tryptophan flux because the same precursor (3-phosphoglycerate) also feeds glycolysis [12]. The feedback-insensitive serA* variant sustained serine availability without requiring external supplementation. A limitation of this work is the reliance on IPTG-inducible"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 45,
+    "page number" : 3,
+    "bounding box" : [ 308.96, 188.856, 552.438, 301.454 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "plasmid expression for two of the four modifications. Plasmid instability during extended industrial fermentations could erode titer over time [13]. Chromosomal integration of all cassettes and replacement of IPTG with constitutive or autoinducible promoters would be practical next steps. The 26.3% theoretical yield also suggests remaining room for improvement—strategies such as deleting competing aromatic amino acid branches (pheA, tyrA) or engineering the PTS glucose uptake system to increase PEP availability could push titers higher [14]."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 46,
+    "level" : "Subtitle",
+    "page number" : 3,
+    "bounding box" : [ 308.96, 165.876, 356.806, 174.894 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Conclusion"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 47,
+    "page number" : 3,
+    "bounding box" : [ 308.96, 62.376, 552.454, 165.469 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Stepwise metabolic engineering of E. coli K-12—combining trpR deletion, feedback-resistant DAHP synthase, operon overexpression, and enhanced serine supply—produced 5.83 g/L L-tryptophan in 48-hour fed-batch culture with negligible growth penalty. Each modification contributed a measurable, additive gain, and metabolic flux analysis confirmed redirection of carbon through the pentose phosphate and shikimate pathways. The final strain achieves roughly one-quarter of the theoretical yield, leaving clear"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 51,
+    "page number" : 4,
+    "bounding box" : [ 42.54, 763.716, 285.856, 795.774 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "targets for further optimization. These results provide a modular engineering blueprint applicable to other aromatic amino acid production platforms."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 52,
+    "page number" : 4,
+    "bounding box" : [ 42.54, 706.156, 285.844, 749.694 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Acknowledgements Funding Sources This research was supported by internal funds from the Instituto de Ciências Biológicas do Pantanal."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 53,
+    "level" : "Subtitle",
+    "page number" : 4,
+    "bounding box" : [ 42.54, 683.176, 132.83, 692.194 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Institutional Support"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 54,
+    "page number" : 4,
+    "bounding box" : [ 42.54, 648.676, 285.937, 680.734 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "The author thanks the Department of Bioprocess Engineering for bioreactor facility access and HPLC analytical support."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 59,
+    "level" : "2",
+    "page number" : 4,
+    "bounding box" : [ 308.96, 683.176, 552.444, 795.774 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 3,
+    "previous list id" : 58,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 308.96, 752.196, 552.439, 795.774 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "14. Rodriguez A, Martínez JA, Flores N, et al. Engineering Escherichia coli to overproduce aromatic amino acids and derived compounds. Microb Cell Fact. 2014;13:126.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 308.96, 717.676, 552.381, 749.754 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "15. Berry A. Improving production of aromatic compounds in Escherichia coli by metabolic engineering. Trends Biotechnol. 1996;14(7):250-256.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 308.96, 683.176, 552.444, 715.234 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "16. Niu H, Li R, Liang Q, et al. Metabolic engineering for improving L-tryptophan production in Escherichia coli. J Ind Microbiol Biotechnol. 2019;46(1):55-65.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 55,
+    "level" : "Subtitle",
+    "page number" : 4,
+    "bounding box" : [ 42.54, 625.696, 235.345, 634.714 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "Contributions Not Qualifying for Authorship"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 56,
+    "page number" : 4,
+    "bounding box" : [ 42.54, 591.196, 285.941, 623.254 ],
+    "font" : "Times New Roman",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "The author acknowledges Dr. Rafael Mendes for assistance with ¹³C-labeling flux analysis and Ms. Camila Ferreira for fermentation sampling logistics."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 57,
+    "level" : "Subtitle",
+    "page number" : 4,
+    "bounding box" : [ 42.54, 568.216, 89.213, 577.234 ],
+    "heading level" : 3,
+    "font" : "Times New Roman,Bold",
+    "font size" : 10.02,
+    "text color" : "[0.0]",
+    "content" : "References"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 58,
+    "level" : "2",
+    "page number" : 4,
+    "bounding box" : [ 42.54, 62.196, 286.048, 565.774 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 13,
+    "previous list id" : 39,
+    "next list id" : 59,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 545.176, 285.89, 565.774 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "1. Ikeda M. Amino acid production processes. Adv Biochem Eng Biotechnol. 2003;79:1-35.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 499.216, 285.957, 542.794 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "2. Richard DM, Dawes MA, Mathias CW, et al. LTryptophan: basic metabolic functions, behavioral research and therapeutic indications. Int J Tryptophan Res. 2009;2:45-60.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 453.175, 285.966, 496.754 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "3. Becker J, Wittmann C. Systems and synthetic metabolic engineering for amino acid production—the heartbeat of industrial strain development. Curr Opin Biotechnol. 2012;23(5):718-726.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 407.156, 286.018, 450.734 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "4. Ikeda M, Katsumata R. Metabolic engineering to produce tyrosine or phenylalanine in a tryptophanproducing Corynebacterium glutamicum strain. Appl Environ Microbiol. 1992;58(3):781-785.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 361.196, 286.024, 404.774 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "5. Datsenko KA, Wanner BL. One-step inactivation of chromosomal genes in Escherichia coli K-12 using PCR products. Proc Natl Acad Sci USA. 2000;97(12):6640-6645.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 315.176, 286.048, 358.754 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "6. Amann E, Ochs B, Abel KJ. Tightly regulated tac promoter vectors useful for the expression of unfused and fused proteins in Escherichia coli. Gene. 1988;69(2):301-315.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 292.196, 285.97, 312.794 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "7. Wittmann C. Fluxome analysis using GC-MS. Microb Cell Fact. 2007;6:6.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 246.155, 285.93, 289.754 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "8. Tribe DE, Pittard J. Hyperproduction of tryptophan by Escherichia coli: genetic manipulation of the pathways leading to tryptophan formation. Appl Environ Microbiol. 1979;38(2):181-190.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 211.656, 286.015, 243.774 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "9. Quek LE, Wittmann C, Nielsen LK, Krömer JO. OpenFLUX: efficient modelling software for ¹³C-based metabolic flux analysis. Microb Cell Fact. 2009;8:25.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 165.696, 286.005, 209.274 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "10. Gu P, Yang F, Kang J, et al. One-step of tryptophan attenuator inactivation and promoter swapping to improve the production of L-tryptophan in Escherichia coli. Microb Cell Fact. 2012;11:87.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 131.196, 286.017, 163.254 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "11. Yanofsky C. RNA-based regulation of genes of tryptophan synthesis and degradation, in bacteria. RNA. 2007;13(8):1141-1154.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 85.176, 286.017, 128.754 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "12. Mundhada H, Schneider K, Christensen HB, Nielsen AT. Engineering of high yield production of L-serine in Escherichia coli. Biotechnol Bioeng. 2016;113(4):807816.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 42.54, 62.196, 285.784, 82.794 ],
+      "font" : "Times New Roman",
+      "font size" : 10.02,
+      "text color" : "[0.0]",
+      "content" : "13. Friehs K. Plasmid copy number and plasmid stability. Adv Biochem Eng Biotechnol. 2004;86:47-82.",
+      "kids" : [ ]
+    } ]
+  } ]
+}

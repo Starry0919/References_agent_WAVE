@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill08_biological_attribution.schema.json",
+  "title": "Skill08 biological attribution result",
+  "type": "object",
+  "required": ["paper_match", "experiment_match", "biological_object_match", "intervention_match", "control_relationship_match", "confidence", "status"],
+  "properties": {
+    "paper_match": {"enum": ["passed", "failed", "unresolved"]},
+    "experiment_match": {"enum": ["passed", "failed", "unresolved"]},
+    "biological_object_match": {"enum": ["passed", "failed", "unresolved"]},
+    "intervention_match": {"enum": ["passed", "failed", "unresolved"]},
+    "control_relationship_match": {"enum": ["passed", "failed", "unresolved"]},
+    "confidence": {"enum": ["high", "medium", "low"]},
+    "status": {"enum": ["passed", "failed", "unresolved"]},
+    "reasons": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

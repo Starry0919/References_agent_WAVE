@@ -1,0 +1,10 @@
+version: skill07_skill08_handoff_rules_v2
+contract_version: skill07_skill08_handoff_v2
+success_statuses: [succeeded, succeeded_with_warnings]
+required_skill07_contract: skill07_semantic_contract_v1
+require_eligible: true
+require_self_check_passed: true
+require_document_hash_match: true
+identity_join: [paper_id, document_artifact_id, document_hash]
+positional_fallback: false
+

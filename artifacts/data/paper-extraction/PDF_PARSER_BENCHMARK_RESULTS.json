@@ -1,0 +1,147 @@
+{
+  "benchmark_version": "parser-comparison/1.1",
+  "sample_count": 5,
+  "rows": [
+    {
+      "pdf": "10.1007_s00449-021-02630-7.pdf",
+      "parser": "pypdf_current_fallback",
+      "status": "succeeded",
+      "runtime_seconds": 3.24,
+      "pages": 23,
+      "characters": 105517,
+      "empty_page_rate": 0.0,
+      "sections": 1,
+      "anchors": 24,
+      "tables": 0,
+      "figures": 0,
+      "doi_recoverable": true,
+      "intervention_hits": 3,
+      "measured_hits": 0,
+      "judge": "MECHANISTIC_SUPPORT"
+    },
+    {
+      "pdf": "10.1007_s00449-021-02630-7.pdf",
+      "parser": "opendataloader_pdf",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY: pip installation exceeded 2x 304s and package remained unavailable"
+    },
+    {
+      "pdf": "10.1007_s00449-021-02630-7.pdf",
+      "parser": "megaparse",
+      "status": "BENCHMARK_NOT_RUN: package absent; requires Poppler/Tesseract and remote multimodal API for vision path"
+    },
+    {
+      "pdf": "10.1128_jb.104.1.177-188.1970.pdf",
+      "parser": "pypdf_current_fallback",
+      "status": "succeeded",
+      "runtime_seconds": 0.358,
+      "pages": 12,
+      "characters": 43855,
+      "empty_page_rate": 0.0,
+      "sections": 1,
+      "anchors": 12,
+      "tables": 0,
+      "figures": 0,
+      "doi_recoverable": false,
+      "intervention_hits": 0,
+      "measured_hits": 0,
+      "judge": "BACKGROUND"
+    },
+    {
+      "pdf": "10.1128_jb.104.1.177-188.1970.pdf",
+      "parser": "opendataloader_pdf",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY: pip installation exceeded 2x 304s and package remained unavailable"
+    },
+    {
+      "pdf": "10.1128_jb.104.1.177-188.1970.pdf",
+      "parser": "megaparse",
+      "status": "BENCHMARK_NOT_RUN: package absent; requires Poppler/Tesseract and remote multimodal API for vision path"
+    },
+    {
+      "pdf": "10.1128_jb.91.4.1494-1508.1966.pdf",
+      "parser": "pypdf_current_fallback",
+      "status": "succeeded",
+      "runtime_seconds": 0.435,
+      "pages": 15,
+      "characters": 50131,
+      "empty_page_rate": 0.0,
+      "sections": 1,
+      "anchors": 15,
+      "tables": 0,
+      "figures": 0,
+      "doi_recoverable": false,
+      "intervention_hits": 0,
+      "measured_hits": 0,
+      "judge": "BACKGROUND"
+    },
+    {
+      "pdf": "10.1128_jb.91.4.1494-1508.1966.pdf",
+      "parser": "opendataloader_pdf",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY: pip installation exceeded 2x 304s and package remained unavailable"
+    },
+    {
+      "pdf": "10.1128_jb.91.4.1494-1508.1966.pdf",
+      "parser": "megaparse",
+      "status": "BENCHMARK_NOT_RUN: package absent; requires Poppler/Tesseract and remote multimodal API for vision path"
+    },
+    {
+      "pdf": "10.1186_1475-2859-11-30.pdf",
+      "parser": "pypdf_current_fallback",
+      "status": "succeeded",
+      "runtime_seconds": 0.279,
+      "pages": 9,
+      "characters": 38136,
+      "empty_page_rate": 0.0,
+      "sections": 1,
+      "anchors": 9,
+      "tables": 0,
+      "figures": 0,
+      "doi_recoverable": true,
+      "intervention_hits": 30,
+      "measured_hits": 0,
+      "judge": "MECHANISTIC_SUPPORT"
+    },
+    {
+      "pdf": "10.1186_1475-2859-11-30.pdf",
+      "parser": "opendataloader_pdf",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY: pip installation exceeded 2x 304s and package remained unavailable"
+    },
+    {
+      "pdf": "10.1186_1475-2859-11-30.pdf",
+      "parser": "megaparse",
+      "status": "BENCHMARK_NOT_RUN: package absent; requires Poppler/Tesseract and remote multimodal API for vision path"
+    },
+    {
+      "pdf": "10.3390_microorganisms8040519.pdf",
+      "parser": "pypdf_current_fallback",
+      "status": "succeeded",
+      "runtime_seconds": 0.716,
+      "pages": 11,
+      "characters": 47541,
+      "empty_page_rate": 0.0,
+      "sections": 1,
+      "anchors": 48,
+      "tables": 0,
+      "figures": 0,
+      "doi_recoverable": true,
+      "intervention_hits": 0,
+      "measured_hits": 0,
+      "judge": "MECHANISTIC_SUPPORT"
+    },
+    {
+      "pdf": "10.3390_microorganisms8040519.pdf",
+      "parser": "opendataloader_pdf",
+      "status": "BLOCKED_EXTERNAL_DEPENDENCY: pip installation exceeded 2x 304s and package remained unavailable"
+    },
+    {
+      "pdf": "10.3390_microorganisms8040519.pdf",
+      "parser": "megaparse",
+      "status": "BENCHMARK_NOT_RUN: package absent; requires Poppler/Tesseract and remote multimodal API for vision path"
+    }
+  ],
+  "decision": {
+    "mineru": "PRIMARY_UNCHANGED",
+    "pypdf": "FALLBACK",
+    "opendataloader_pdf": "BENCHMARK_ONLY_PENDING_INSTALL",
+    "megaparse": "STUDY_ONLY"
+  }
+}

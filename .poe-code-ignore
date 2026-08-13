@@ -1,0 +1,9 @@
+# Local Poe Code web UI state. These files can become large and must not be
+# uploaded as workspace context; the web backend handles conversation state.
+.memory/
+.workspace/
+
+# Local caches and generated runtime state.
+.pytest_cache/
+__pycache__/
+*.pyc

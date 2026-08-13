@@ -1,0 +1,1696 @@
+{
+  "document_metadata": {
+    "paper_id": "ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1",
+    "title": null,
+    "parser": "MinerU",
+    "parser_version": "3.4.4",
+    "cleaner": "skill06_markdown_cleaner",
+    "cleaner_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "source_markdown_sha256": "8376621bfd3fb53d8c8299dd48005f0c94aad3add382574a04ce4d1dce9159f9",
+    "clean_markdown_sha256": "16c5ffa71c4e88165ff5541fcf05fa3f11a3e7bda063c6f99f48e7c1e0623c23"
+  },
+  "figures": [
+    {
+      "figure_id": "Fig. 1",
+      "caption": "The fermentation results of EP-bifido strains with modified zwf promoter replaced by diferent strength synthetic promoters. a The characterization of the strength of a series of synthetic promoters and zwf promoter. The fluorescence/OD of strains was detected at 16 h. MVA titre and molar conversion rate (b), cell growth (c) and glucose consumption (d) during 72 h fermentation",
+      "related_paragraphs": [
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p006"
+      ]
+    },
+    {
+      "figure_id": "Fig. 2",
+      "caption": "NADH, NADPH and ATP level and its derivations. a NADPH generation. b NADPH derivations of BW25113, BW-P BF, BW-P08 BF. c NADH generation. d NADH derivations of BW25113 and BW-P10 BF. d ATP generation. e ATP derivations. G6PDH, Glucose-6-phoshpate dehydrogenase; ICDH, Isolate dehydrogenase; GAPDH, Glyceraldehyde-3-phosphate dehydrogenase; ME, Malate enzyme; MDH, Malate dehydrogenase; PDH, Pyruate dehydrogenase; KDH, α-Ketoglutarate dehydrogenase; SDH, Succinate dehydrogenase; IDH, Isolate dehydrogenase",
+      "related_paragraphs": [
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p001",
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p004",
+        "discussion_p003"
+      ]
+    },
+    {
+      "figure_id": "Fig. 3",
+      "caption": "Schematic diagram of CRISPRi on pfkA suppression. a Schematic diagram of pfkA transform. b Abridged general view of metabolic flux change after CRISPRi regulation. The red arrow indicated decreased metabolic flux, the green arrow indicated increased metabolic flux",
+      "related_paragraphs": [
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p001",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p008"
+      ]
+    },
+    {
+      "figure_id": "Fig. 4",
+      "caption": "Fermentation of CRISPRi-regulated EP-bifido strains. a Glucose consumption of CRISPRi-regulated EP-bifido strains. b ${ } ^ { 1 } \\mathrm { O D } _ { 6 0 0 } \\mathrm { o f }$ CRISPRi-regulated EP-bifido strains. c MVA accumulation of CRISPRi-regulated EP-bifido strains. d MVA titre and yield of CRISPRi-regulated EP-bifido strains",
+      "related_paragraphs": [
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003",
+        "discussion_p002"
+      ]
+    },
+    {
+      "figure_id": "Fig. 5",
+      "caption": "Metabolic flux diagram of zwf-strengthened EP-bifido strains. The metabolic flux shown for strains from top to bottom are BW-P10 BF, BW-P08 BF, BW-P BF",
+      "related_paragraphs": [
+        "discussion_p003",
+        "discussion_p008"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "Table 1",
+      "title": "Strains and plasmids",
+      "content": []
+    },
+    {
+      "table_id": "Table 2",
+      "title": "Relative strength of Promoters",
+      "content": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "citation_0001",
+      "text": "[1]",
+      "target_reference": [
+        "1"
+      ],
+      "char_offset": 2294
+    },
+    {
+      "citation_id": "citation_0002",
+      "text": "[2, 3]",
+      "target_reference": [
+        "2",
+        "3"
+      ],
+      "char_offset": 2640
+    },
+    {
+      "citation_id": "citation_0003",
+      "text": "[4]",
+      "target_reference": [
+        "4"
+      ],
+      "char_offset": 2681
+    },
+    {
+      "citation_id": "citation_0004",
+      "text": "[5]",
+      "target_reference": [
+        "5"
+      ],
+      "char_offset": 2727
+    },
+    {
+      "citation_id": "citation_0005",
+      "text": "[6]",
+      "target_reference": [
+        "6"
+      ],
+      "char_offset": 2852
+    },
+    {
+      "citation_id": "citation_0006",
+      "text": "[7]",
+      "target_reference": [
+        "7"
+      ],
+      "char_offset": 3377
+    },
+    {
+      "citation_id": "citation_0007",
+      "text": "[8]",
+      "target_reference": [
+        "8"
+      ],
+      "char_offset": 3386
+    },
+    {
+      "citation_id": "citation_0008",
+      "text": "[9]",
+      "target_reference": [
+        "9"
+      ],
+      "char_offset": 3395
+    },
+    {
+      "citation_id": "citation_0009",
+      "text": "[10]",
+      "target_reference": [
+        "10"
+      ],
+      "char_offset": 3404
+    },
+    {
+      "citation_id": "citation_0010",
+      "text": "[11, 12]",
+      "target_reference": [
+        "11",
+        "12"
+      ],
+      "char_offset": 3573
+    },
+    {
+      "citation_id": "citation_0011",
+      "text": "[13]",
+      "target_reference": [
+        "13"
+      ],
+      "char_offset": 4728
+    },
+    {
+      "citation_id": "citation_0012",
+      "text": "[13]",
+      "target_reference": [
+        "13"
+      ],
+      "char_offset": 5276
+    },
+    {
+      "citation_id": "citation_0013",
+      "text": "[19]",
+      "target_reference": [
+        "19"
+      ],
+      "char_offset": 5829
+    },
+    {
+      "citation_id": "citation_0014",
+      "text": "[26, 27]",
+      "target_reference": [
+        "26",
+        "27"
+      ],
+      "char_offset": 13666
+    },
+    {
+      "citation_id": "citation_0015",
+      "text": "[28]",
+      "target_reference": [
+        "28"
+      ],
+      "char_offset": 14288
+    },
+    {
+      "citation_id": "citation_0016",
+      "text": "[29, 30]",
+      "target_reference": [
+        "29",
+        "30"
+      ],
+      "char_offset": 19898
+    },
+    {
+      "citation_id": "citation_0017",
+      "text": "[31, 32]",
+      "target_reference": [
+        "31",
+        "32"
+      ],
+      "char_offset": 20845
+    },
+    {
+      "citation_id": "citation_0018",
+      "text": "[13]",
+      "target_reference": [
+        "13"
+      ],
+      "char_offset": 24623
+    },
+    {
+      "citation_id": "citation_0019",
+      "text": "[13]",
+      "target_reference": [
+        "13"
+      ],
+      "char_offset": 26872
+    },
+    {
+      "citation_id": "citation_0020",
+      "text": "[13]",
+      "target_reference": [
+        "13"
+      ],
+      "char_offset": 29392
+    },
+    {
+      "citation_id": "citation_0021",
+      "text": "[13]",
+      "target_reference": [
+        "13"
+      ],
+      "char_offset": 29552
+    },
+    {
+      "citation_id": "citation_0022",
+      "text": "[34]",
+      "target_reference": [
+        "34"
+      ],
+      "char_offset": 29676
+    },
+    {
+      "citation_id": "citation_0023",
+      "text": "[35]",
+      "target_reference": [
+        "35"
+      ],
+      "char_offset": 29885
+    },
+    {
+      "citation_id": "citation_0024",
+      "text": "[35]",
+      "target_reference": [
+        "35"
+      ],
+      "char_offset": 30022
+    },
+    {
+      "citation_id": "citation_0025",
+      "text": "[30]",
+      "target_reference": [
+        "30"
+      ],
+      "char_offset": 36942
+    },
+    {
+      "citation_id": "citation_0026",
+      "text": "[33]",
+      "target_reference": [
+        "33"
+      ],
+      "char_offset": 37162
+    }
+  ],
+  "cleaning_metadata": {
+    "cleaning_history": []
+  },
+  "canonical_representation": {
+    "version": "skill07_canonical_document_v0.1",
+    "source_sha256": "4129a4e2c8d0a581b6046ab4217fcc1aa562efc56280df1280d204e57fa740df",
+    "text_source_of_truth": "paragraphs[].text",
+    "section_content_policy": "ordered paragraph references plus position-aware residual_content",
+    "reversible": true
+  },
+  "sections": [
+    {
+      "title": "Fine tuning the glycolytic flux ratio Cha of EP‑bifido pathway for mevalonate production by enhancing glucose‑6‑phosphate dehydrogenase (Zwf) and CRISPRi suppressing 6‑phosphofructose kinase (PfkA) in Escherichia coli",
+      "level": 1,
+      "section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "position": 0,
+      "parent_section_id": null,
+      "paragraph_ids": [
+        "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli_p001",
+        "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Abstract",
+      "level": 2,
+      "section_id": "abstract",
+      "position": 1,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "abstract_p001",
+        "abstract_p002",
+        "abstract_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Background",
+      "level": 2,
+      "section_id": "background",
+      "position": 2,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "background_p001",
+        "background_p002",
+        "background_p003",
+        "background_p004",
+        "background_p005",
+        "background_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Results",
+      "level": 2,
+      "section_id": "results",
+      "position": 3,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Enhancement of PPP flux by increasing the expression of zwf in diferent degrees",
+      "level": 2,
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 4,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p001",
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p002",
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p003",
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p004",
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p005",
+        "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "<sup>13</sup>C‑Metabolic flux analysis of changes in central carbon metabolism flux and energy metabolism",
+      "level": 2,
+      "section_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism",
+      "position": 5,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p001",
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p002",
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p003",
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p004",
+        "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p005"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Down regulation of EMP pathway flux by targeting pfkA using CRISPRi system",
+      "level": 2,
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 6,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p001",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p002",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p004",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p005",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p006",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p007",
+        "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p008"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Discussion",
+      "level": 2,
+      "section_id": "discussion",
+      "position": 7,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "discussion_p001",
+        "discussion_p002",
+        "discussion_p003",
+        "discussion_p004",
+        "discussion_p005",
+        "discussion_p006",
+        "discussion_p007",
+        "discussion_p008",
+        "discussion_p009"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Conclusion",
+      "level": 2,
+      "section_id": "conclusion",
+      "position": 8,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "conclusion_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Materials and methods",
+      "level": 2,
+      "section_id": "materials_and_methods",
+      "position": 9,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Media and culture",
+      "level": 2,
+      "section_id": "media_and_culture",
+      "position": 10,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "media_and_culture_p001",
+        "media_and_culture_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Strains and plasmids",
+      "level": 2,
+      "section_id": "strains_and_plasmids",
+      "position": 11,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "strains_and_plasmids_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Plasmid construction for MVA production",
+      "level": 2,
+      "section_id": "plasmid_construction_for_mva_production",
+      "position": 12,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "plasmid_construction_for_mva_production_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Construction of CRISPRi suppression system",
+      "level": 2,
+      "section_id": "construction_of_crispri_suppression_system",
+      "position": 13,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "construction_of_crispri_suppression_system_p001",
+        "construction_of_crispri_suppression_system_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Promoter replacement on E. coli genome",
+      "level": 2,
+      "section_id": "promoter_replacement_on_e_coli_genome",
+      "position": 14,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "promoter_replacement_on_e_coli_genome_p001",
+        "promoter_replacement_on_e_coli_genome_p002",
+        "promoter_replacement_on_e_coli_genome_p003",
+        "promoter_replacement_on_e_coli_genome_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Measurement of extracellular metabolites",
+      "level": 2,
+      "section_id": "measurement_of_extracellular_metabolites",
+      "position": 15,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "measurement_of_extracellular_metabolites_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "<sup>13</sup>C‑MFA",
+      "level": 2,
+      "section_id": "sup_13_sup_c_mfa",
+      "position": 16,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "sup_13_sup_c_mfa_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Supplementary Information",
+      "level": 2,
+      "section_id": "supplementary_information",
+      "position": 17,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "supplementary_information_p001",
+        "supplementary_information_p002",
+        "supplementary_information_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Acknowledgements",
+      "level": 2,
+      "section_id": "acknowledgements",
+      "position": 18,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "acknowledgements_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Authors’ contributions",
+      "level": 2,
+      "section_id": "authors_contributions",
+      "position": 19,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "authors_contributions_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Funding",
+      "level": 2,
+      "section_id": "funding",
+      "position": 20,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "funding_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Ethics approval and consent to participate",
+      "level": 2,
+      "section_id": "ethics_approval_and_consent_to_participate",
+      "position": 21,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "ethics_approval_and_consent_to_participate_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Consent for publication",
+      "level": 2,
+      "section_id": "consent_for_publication",
+      "position": 22,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "consent_for_publication_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Competing interests",
+      "level": 2,
+      "section_id": "competing_interests",
+      "position": 23,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "competing_interests_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Author details",
+      "level": 2,
+      "section_id": "author_details",
+      "position": 24,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "author_details_p001",
+        "author_details_p002",
+        "author_details_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "References",
+      "level": 2,
+      "section_id": "references",
+      "position": 25,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "references_p001",
+        "references_p002",
+        "references_p003",
+        "references_p004",
+        "references_p005",
+        "references_p006",
+        "references_p007",
+        "references_p008",
+        "references_p009",
+        "references_p010",
+        "references_p011",
+        "references_p012",
+        "references_p013",
+        "references_p014",
+        "references_p015",
+        "references_p016",
+        "references_p017",
+        "references_p018",
+        "references_p019",
+        "references_p020",
+        "references_p021",
+        "references_p022",
+        "references_p023",
+        "references_p024",
+        "references_p025",
+        "references_p026",
+        "references_p027",
+        "references_p028",
+        "references_p029",
+        "references_p030",
+        "references_p031",
+        "references_p032",
+        "references_p033",
+        "references_p034",
+        "references_p035"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 11,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 12,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 13,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 14,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 15,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 16,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 17,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 18,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 19,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 20,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 21,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 22,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 23,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 24,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 25,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 26,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 27,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 28,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 29,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 30,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 31,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 32,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 33,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 34,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Publisher’s Note",
+      "level": 2,
+      "section_id": "publisher_s_note",
+      "position": 26,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "publisher_s_note_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Ready to submit your research? Choose BMC and benefit from",
+      "level": 2,
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 27,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "ready_to_submit_your_research_choose_bmc_and_benefit_from_p001",
+        "ready_to_submit_your_research_choose_bmc_and_benefit_from_p002",
+        "ready_to_submit_your_research_choose_bmc_and_benefit_from_p003",
+        "ready_to_submit_your_research_choose_bmc_and_benefit_from_p004",
+        "ready_to_submit_your_research_choose_bmc_and_benefit_from_p005",
+        "ready_to_submit_your_research_choose_bmc_and_benefit_from_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "At BMC, research is always in progress.",
+      "level": 2,
+      "section_id": "at_bmc_research_is_always_in_progress",
+      "position": 28,
+      "parent_section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "paragraph_ids": [
+        "at_bmc_research_is_always_in_progress_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    }
+  ],
+  "paragraphs": [
+    {
+      "paragraph_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli_p001",
+      "text": "![](images/44d9b7d47e77792dc0c5eeab5723d62c691c94645d7b8eff828e3d3fc5489a19.jpg)",
+      "section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "position": 0
+    },
+    {
+      "paragraph_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli_p002",
+      "text": "Ying Li<sup>1†</sup>, He Xian<sup>3†</sup>, Ya Xu<sup>1</sup>, Yuan Zhu<sup>1</sup>, Zhijie Sun<sup>2\\*</sup>, Qian Wang<sup>1\\*</sup> and Qingsheng Qi<sup>1</sup>",
+      "section_id": "fine_tuning_the_glycolytic_flux_ratio_cha_of_ep_bifido_pathway_for_mevalonate_production_by_enhancing_glucose_6_phosphate_dehydrogenase_zwf_and_crispri_suppressing_6_phosphofructose_kinase_pfka_in_escherichia_coli",
+      "position": 1
+    },
+    {
+      "paragraph_id": "abstract_p001",
+      "text": "Background: Natural glycolysis encounters the decarboxylation of glucose partial oxidation product pyruvate into acetyl-CoA, where one-third of the carbon is lost at ${ \\mathsf { C O } } _ { 2 } .$ We previously constructed a carbon saving pathway, EP-bifido pathway by combining Embden-Meyerhof-Parnas Pathway, Pentose Phosphate Pathway and “bifid shunt”, to generate high yield acetyl-CoA from glucose. However, the carbon conversion rate and reducing power of this pathway was not optimal, the flux ratio of EMP pathway and pentose phosphate pathway (PPP) needs to be precisely and dynamically adjusted to improve the production of mevalonate (MVA).",
+      "section_id": "abstract",
+      "position": 2
+    },
+    {
+      "paragraph_id": "abstract_p002",
+      "text": "Result: Here, we finely tuned the glycolytic flux ratio in two ways. First, we enhanced PPP flux for NADPH supply by replacing the promoter of zwf on the genome with a set of diferent strength promoters. Compared with the previous EP-bifido strains, the zwf-modified strains showed obvious diferences in NADPH, NADH, and ATP synthesis levels. Among them, strain BP10BF accumulated 11.2 g/L of MVA after 72 h of fermentation and the molar conversion rate from glucose reached 62.2%. Second, pfkA was finely down-regulated by the clustered regularly interspaced short palindromic repeats interference (CRISPRi) system. The MVA yield of the regulated strain BiB1F was 8.53 g/L, and the conversion rate from glucose reached 68.7%.",
+      "section_id": "abstract",
+      "position": 3
+    },
+    {
+      "paragraph_id": "abstract_p003",
+      "text": "Conclusion: This is the highest MVA conversion rate reported in shaken flask fermentation. The CRISPRi and promoter fine-tuning provided an efective strategy for metabolic flux redistribution in many metabolic pathways and promotes the chemicals production.",
+      "section_id": "abstract",
+      "position": 4
+    },
+    {
+      "paragraph_id": "background_p001",
+      "text": "It is an important challenge in metabolic engineering to reasonably allocate metabolic flux to achieve high yields of target products [1]. Traditional metabolic engineering methods modify and optimize an organism for production of chemicals by decreasing flow through competing pathways and introducing heterogeneous production pathways. As such, metabolic rewiring designs are necessary to increase flux towards essential metabolites, for example, overexpressing native pathways [2, 3], inhibition of competing pathways [4], increasing Coenzyme A (CoA) availability [5], and construction of pyruvate dehydrogenase bypass. Many strategies have been applied to improve production of chemicals [6].",
+      "section_id": "background",
+      "position": 5
+    },
+    {
+      "paragraph_id": "background_p002",
+      "text": "A new strategy is to decrease the generation of harmful byproducts such as $\\mathrm { C O } _ { 2 }$ or increase the reuse of byproducts by constructing artificial synthetic pathways. With the rapid development of synthetic biology and molecular biotechnology, scientists have made great eforts to maximize microbial chemical yields focusing on enhancing the eficiency of $\\mathrm { C O } _ { 2 }$ fixation and decreasing $\\mathrm { C O } _ { 2 }$ emission. Many unnatural pathways have been constructed, such as CETCH [7], MCG [8], NOG [9], MOG [10], and so on. These pathways provide a variety of new ideas to use $\\mathrm { C O } _ { 2 }$ or one-carbon chemicals as carbon sources, and rewire metabolic pathways [11, 12].",
+      "section_id": "background",
+      "position": 6
+    },
+    {
+      "paragraph_id": "background_p003",
+      "text": "In natural glycolysis, a variety of carbon sources are metabolized through the Embden-Meyerhof-Parnas (EMP) pathway, which synthesizes C3 (pyruvate) and C2 (acetyl-CoA) metabolites. Acetyl-CoA is a precursor of almost all biosynthesis and energy metabolism pathways. It is normally produced via pyruvate decarboxylation, in which one-third of the carbon is lost as $\\mathrm { C O } _ { 2 } .$ To improve carbon conversion eficiency, Xu et  al. constructed the “EP-bifido pathway” in E. coli by introducing fxpk (encoding bifunctional phosphoketolase) and fbp (encoding fructose-1,6-bisphosphatase) to break down fructose 6-phosphate (F6P) into the theoretical maximum amount of acetyl-CoA from glucose. The edd gene in the Entner-Doudorof (ED) pathway and the key enzyme-encoding gene pfkA (phosphofructose kinase A) in the EMP pathway were knocked out to save more F6P to break down into C2 metabolites; attenuate the flow of pyruvate to acetyl-CoA; and shift carbon flux from the EMP pathway to the pentose phosphate pathway (PPP) which supplies more NADPH. The EP-bifido pathway achieved high carbon yield of mevalonate (MVA) with 64.3 mol% [13], which is the highest MVA yield that have been reported.",
+      "section_id": "background",
+      "position": 7
+    },
+    {
+      "paragraph_id": "background_p004",
+      "text": "PPP is an important energy metabolism pathway in all organisms. Increase of the dehydrogenase reactions of the PPP is efective in increasing the yield of NADPHdependent products [14–18]. $^ { 1 3 } \\dot { C }$ metabolic flux analysis revealed that a MVA producing strain with EP-bifido pathway provided insuficient NADPH from oxidative PPP. In the EP-bifido pathway, the theoretical optimal carbon split between the EMP pathway and PPP in the EP-bifido route for MVA production is 1:6 [13]; thus the resulting maximum carbon MVA theoretical conversion rate of the EP-bifido pathway is 86% (mol/mol). In our previously constructed EP-bifido pathway, the detected carbon split ratio was 0.43:0.57, in which the PPP split ratio was too low. This carbon flux distribution needs to be further optimized.",
+      "section_id": "background",
+      "position": 8
+    },
+    {
+      "paragraph_id": "background_p005",
+      "text": "In addition, the disruption of pfkA in the EP-bifido strain caused severe growth defect of the cells. This significantly limited the application of this synthetic pathway. Many reports have demonstrated this limitation of pfkA deficiency [19]. Metabolic engineering is usually static by blocking a competing pathway or introducing heterogeneous pathways permanently and continuously [20–22]. Sometimes this has a detrimental efect, for example in the early growth period carbon sources would ideally be dedicated to building biomass. Implementing flexible regulation would be valuable in engineering projects by rebalancing synthetic pathways to respond to the growth phase or the buildup of precursor metabolites [23–25].",
+      "section_id": "background",
+      "position": 9
+    },
+    {
+      "paragraph_id": "background_p006",
+      "text": "Therefore, the artificial pathway must be optimized to be robust and the reducing power should be balanced. To overcome these challenges, here, we designed and constructed fine-tuned EP-bifido Escherichia coli strains and enhanced PPP by replacing promoter of zwf on the genome to a series of diferent strength promoters, and suppressing the expression of $p f k A$ using the clustered regularly interspaced short palindromic repeats interference (CRISPRi) system. After CRISPRi was applied, we obtained a titer of 8.53  g/L MVA and a yield of 68.7% (mol/mol). This is the highest MVA yield reported in shaken flask fermentation.",
+      "section_id": "background",
+      "position": 10
+    },
+    {
+      "paragraph_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p001",
+      "text": "First, to further optimize the flux ratio of EP-bifido pathway, we aimed to enhance the expression of the first key gene of the PPP, zwf, by replacing its promoter with relative stronger promoters. We selected five constitutive promoters with diferent strengths from the Anderson promoter library. The theoretical strength of each promoter is shown in Table  2. We compared the actual expression strength of these five synthetic promoters with the original zwf promoter by placing a gfp gene downstream of the promoters and cultivated the engineered strains for fluorescence intensity detection. The fluorescence $/ \\mathrm { O D } _ { 6 0 0 }$ of detected at 16  h is shown in Fig. 1a. The strength of the promoters was relatively consistent with that stated by the Anderson promoter library. The strength of promoters BBa-J23100 and BBa-J23104 was relatively strong, and BBa-J23100 was the strongest. The strength of the original (native) zwf promoter is between that of BBa-J23108 and BBa-J23114, and is relatively weak.",
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 11
+    },
+    {
+      "paragraph_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p002",
+      "text": "To detect the efect of PPP enhancement on MVA production, plasmids pBSA (expressing three enzymes catalysis acetyl-CoA to mevalonate) and pFF (carrying fbp and fxpk gene) were transformed into the five zwf-enhanced strains and cultivated with the control strain BW-P/pBSA pFF (abbreviated to BW-P BF). Strain BW-P10 BF showed almost the same growth and glucose consumption as the others, while the conversion rate of MVA was far higher than that in the control strain due to less byproducts generation. Promoters BBa-J23100 and BBa-J23108 resulted in the highest yield of MVA, 64.3% (mol/mol) and 62.3% (mol/mol) respectively, although the strength of the promoters did not show a perfectly positive correlation with the MVA yield. This proved that enhancing expression of gene zwf was efective for increasing the PPP flux.",
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 12
+    },
+    {
+      "paragraph_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p003",
+      "text": "![](images/8a9a91255a58300225d16f42d3f305a4e30f9e5aba608064485a288f04c25ad2.jpg)",
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 13
+    },
+    {
+      "paragraph_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p004",
+      "text": "![](images/b1aa8aee0408a07580722bcb23e30d883b4df5b1cb20e70541d40bd71ce780de.jpg)",
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 14
+    },
+    {
+      "paragraph_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p005",
+      "text": "![](images/e77282d388e7ee84af4f1248f55af47c13d2d39d76723394944bc2d4d8f4e6e5.jpg)",
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 15
+    },
+    {
+      "paragraph_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees_p006",
+      "text": "![](images/fda7888f40635eb8739bd82badc862838fa94d63e2f1e69dfc05edf269d7eff2.jpg)\nFig. 1 The fermentation results of EP-bifido strains with modified zwf promoter replaced by diferent strength synthetic promoters. a The characterization of the strength of a series of synthetic promoters and zwf promoter. The fluorescence/OD of strains was detected at 16 h. MVA titre and molar conversion rate (b), cell growth (c) and glucose consumption (d) during 72 h fermentation",
+      "section_id": "enhancement_of_ppp_flux_by_increasing_the_expression_of_zwf_in_diferent_degrees",
+      "position": 16
+    },
+    {
+      "paragraph_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p001",
+      "text": "Strains BW-P10 BF and BW-P08 BF and control strain BW-P BF were chosen for metabolic flux analysis. With the zwf promoter replaced, the normalized data showed that the carbon flux through the oxidative part of the PPP was significantly increased, and the carbon flux through the TCA cycle was decreased, which was consistent with our expectations (Fig. 2). More carbon flux moved towards the EP-bifido pathway  (see  Additional file 2). The two zwf-expression-enhanced strains showed a large diference in TCA cycle flux, which may explain the growth diference between these strains (Fig. 1c).",
+      "section_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism",
+      "position": 17
+    },
+    {
+      "paragraph_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p002",
+      "text": "In addition, the ATP, NADPH, and NADH synthesis capacity and glucose consumption of the three strains were compared based on the <sup>13</sup>C-MFA data. After the EP-bifido pathway and the MVA synthetic pathway were introduced, the NADPH content and yield of the strain were significantly improved. pfkA deficiency shunted carbon flux to the PPP and the expression level of zwf was increased. Comparison of the zwf-expression-enhanced strains showed that overexpression of zwf enhanced NADPH synthesis, and the NADPH level was positively correlated with the promoter strength. Taking strains BW25113, BW-P BF, and BW-P10 BF as examples, the introduction of the EP-bifido pathway and overexpression of zwf changed the main source of NADPH: The main NADPH generating pathway shifted from isocitrate dehydrogenase in the TCA cycle to glucose-6-phosphate dehydrogenase in the PPP. This further proved that we have redirected part of the carbon flux of the EMP pathway to the PPP.",
+      "section_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism",
+      "position": 18
+    },
+    {
+      "paragraph_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p003",
+      "text": "In addition, the production of NADH also changed significantly, as shown in Fig.  2c, d. Through zwf enhancement, the total amount and the yield of NADH decreased significantly. The NADH was produced distinctly in strain BW-P10 BF compared with wild-type strain BW25113: In strain BW25113, five dehydrogenases were the main source of NADH [glyceraldehyde-3-phosphate dehydrogenase (GAPDH), pyruvate dehydrogenase (PDH), malate dehydrogenase, α-ketoglutarate dehydrogenase, and succinate dehydrogenase]; in strain BW-P10 BF, NADH was mainly formed via GAPDH and PDH.",
+      "section_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism",
+      "position": 19
+    },
+    {
+      "paragraph_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p004",
+      "text": "![](images/cc636f523baf28187ad9b3039306efca8c7d62ff8f3b81cc626d297a7afe0cd5.jpg)\nFig. 2 NADH, NADPH and ATP level and its derivations. a NADPH generation. b NADPH derivations of BW25113, BW-P BF, BW-P08 BF. c NADH generation. d NADH derivations of BW25113 and BW-P10 BF. d ATP generation. e ATP derivations. G6PDH, Glucose-6-phoshpate dehydrogenase; ICDH, Isolate dehydrogenase; GAPDH, Glyceraldehyde-3-phosphate dehydrogenase; ME, Malate enzyme; MDH, Malate dehydrogenase; PDH, Pyruate dehydrogenase; KDH, α-Ketoglutarate dehydrogenase; SDH, Succinate dehydrogenase; IDH, Isolate dehydrogenase",
+      "section_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism",
+      "position": 20
+    },
+    {
+      "paragraph_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism_p005",
+      "text": "The EP-bifido pathway and MVA synthetic pathway expression increased the ATP yield from glucose, but the total amount of ATP decreased (Fig.  2e). The pfkA deficiency greatly impaired the EMP pathway and thereby blocked the three steps of substrate level phosphorylation absorption (glycerate-1, 3-diphosphate, phosphoenolpyruvate kinase, and succinyl CoA synthetase). This can also be verified from the origin ratio of ATP (Fig. 2f). Enhancing zwf expression resulted in increased ATP production and yield in strain BW-P08 BF compared with BW-P BF.",
+      "section_id": "sup_13_sup_c_metabolic_flux_analysis_of_changes_in_central_carbon_metabolism_flux_and_energy_metabolism",
+      "position": 21
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p001",
+      "text": "To further rationally use the carbon source, we tried to suppress pfkA in a time-controlled way through exogenous induction and inhibition using CRISPRi system (Fig.  3). The CRISPRi gene regulation system requires only two components, dCas9 protein and a gRNA, to achieve regulation of the transcription level of any gene in the genome. The degree of suppression of gene expression can be controlled by adjusting the binding position and expression amount of the gRNA. Thus CRISPRi is widely used in the field of metabolic engineering and had shown a relatively good inhibition efect [26, 27].",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 22
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p002",
+      "text": "![](images/86c2a3e83912f84f0288c0085f2e6fcd400d02033312e4e3f44bdd102e8907cf.jpg)",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 23
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p003",
+      "text": "To avoid the growth inhibition that may be caused by dCas9 from the CRISPRi gene regulation system, we selected a relatively low strength promoter, BBa-J23134, to promote dcas9. In order to obtain a diferent repression range, three diferent sgRNAs targeting the promoter or coding region of pfkA were designed. sgRNA1 were designed on the promoter region of pfkA, sgRNA2 and sgRNA3 targeted the coding chain of pfkA, at the region of 100  bp and 200  bp downstream of the initial codon, which may cause diferent repression efect [28]. After dcas9 and the sgRNAs were incorporated into pFF and pBSA respectively, six CRISPRi-regulated strains were generated. The fermentation results showed that the introduction of CRISPRi significantly inhibited the growth of cells and the glucose consumption was also reduced compared with that of the control strain BW25113 zwf-23100 pFF pBSA (abbreviated to BBF). This may be caused by the toxicity or leaky expression of dCas9. The CRISPRi-regulated strains were induced at 12  h by adding IPTG. The fermentation results showed that the three inhibitory sites we selected had diferent inhibitory efects (Fig.  4). sgRNA1 showed a better inhibition efect. Although strain BW25113 pFF-dCas9 pBSA-sgRNA1 produced only 8.53  g/L MVA, its MVA conversion rate reached 68.7%, which exceeded the previous best MVA conversion rate. Four control strains were also constructed to confirm the efect of the CRIS-PRi system on cell growth. Strains BW25113 zwf-23100 pBSA-sgRNA1 pFF, BW25113 zwf-23100 pBSA pFFdCas9, BW25113 zwf-23100 pBSA-sgRNA1-dCas9 pFF and BW25113 zwf-23100 pBSA pFF, were abbreviated to BB1F, BBFd, BB1dF, and BBF, respectively. The results proved that CRISPRi can restrain cell growth efectively in these engineered strains (Additional file 1: Figure S1). The inhibitory efect of sgRNA1 on\\_pfkA is suitable for enhancing MVA fermentation in the EP-bifido system (Fig.  4). In the CRISPRi-regulated strains, we hardly detected any acetic acid, ethanol, or other byproducts during the fermentation process, which was in line with our expectations. The timely inhibition of pfkA reduces the flux of glycolysis, so there was no excessive carbon source overflow.",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 24
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p004",
+      "text": "b\n![](images/f24bda499ec866f883064be196b1d01e3ebd46f309a94c4af82e43c20d08b791.jpg)",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 25
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p005",
+      "text": "![](images/aa11f2c09feca739da927fdd42bbccd8d948c2d967ade782f2aa4b46fa55140a.jpg)",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 26
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p006",
+      "text": "![](images/a744c56c512ea894ee4ce8f583cc7400b7d39caa6c4fcd6e75ec8921a6058fa4.jpg)",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 27
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p007",
+      "text": "![](images/4749410b8ab6b1db1c42b8d8976de2990a64103fc192199d1117fb5e51be4f28.jpg)",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 28
+    },
+    {
+      "paragraph_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system_p008",
+      "text": "![](images/c54f441efc41cb87ac40def96c8ccf32cee95121c1993c3566a59bfef48ed86e.jpg)\nFig. 3 Schematic diagram of CRISPRi on pfkA suppression. a Schematic diagram of pfkA transform. b Abridged general view of metabolic flux change after CRISPRi regulation. The red arrow indicated decreased metabolic flux, the green arrow indicated increased metabolic flux",
+      "section_id": "down_regulation_of_emp_pathway_flux_by_targeting_pfka_using_crispri_system",
+      "position": 29
+    },
+    {
+      "paragraph_id": "discussion_p001",
+      "text": "Global warming is mainly due to excess $\\mathrm { C O } _ { 2 }$ emission; it is urgently necessary to find sustainable solutions to address this issue. Moreover, this wasted carbon may have a major impact on the overall economy of biobased products derived from fermentable carbon sources. Scientists have explored the possibility of using microbial systems to optimize carbon conservation during metabolic processes. The pyruvate decarboxylation step of glycolysis releases $\\mathrm { C O } _ { 2 }$ into the environment, resulting in 33% loss of carbon yield; this carbon loss has now been challenged by many scientists. We previously constructed an EP-bifido pathway in E. coli to reduce $\\mathrm { C O } _ { 2 }$ emissions and successfully applied it to produce a series of acetyl-CoA-derived compounds such as PHB, MVA and fatty acids. However, in the EP-bifido pathway, metabolic flux distribution between EMP and PPP has great optimization potential for maximum generation of NADPH; in addition, the pfkA knockout severely blocked EMP pathway and limited the growth of the engineered strains.",
+      "section_id": "discussion",
+      "position": 30
+    },
+    {
+      "paragraph_id": "discussion_p002",
+      "text": "![](images/eab64a40c98f613e5ba05aa6d380a48266e890013b29bc6b0f4885d0db00e33a.jpg)\nFig. 4 Fermentation of CRISPRi-regulated EP-bifido strains. a Glucose consumption of CRISPRi-regulated EP-bifido strains. b ${ } ^ { 1 } \\mathrm { O D } _ { 6 0 0 } \\mathrm { o f }$ CRISPRi-regulated EP-bifido strains. c MVA accumulation of CRISPRi-regulated EP-bifido strains. d MVA titre and yield of CRISPRi-regulated EP-bifido strains",
+      "section_id": "discussion",
+      "position": 31
+    },
+    {
+      "paragraph_id": "discussion_p003",
+      "text": "Here, our fine-tuning strategy to improve NADPH availability was to enhance the expression of zwf by replacing its promoter; we used five promoters with different strengths. The engineered strains BW-P08 BF and BW-P10 BF produced higher MVA titers than the control strain BW-P BF, 9.12 and 11.2 g/L, respectively. The MVA production by these strains did not show an obvious positive correlation with the zwf promoter strength. Since the MVA yield did not represent the flux distribution between the EMP pathway and the PPP, <sup>13</sup>C-MFA was performed to detect the metabolic flux distribution in strains BW-P08 BF and BW-P10 BF (which had high MVA titers) and the control strain BW-P BF. The flux ratio between the PPP and the EMP pathway in strains BW-P08 BF and BW-P10 BF was much higher than that in strain BW-P BF (Fig. 5), indicating an improved shunt to the PPP. Also, enhanced zwf expression increased the total amount and molar yield of NADPH (Fig.  2). The NADPH-generating pathway shifted from isocitrate dehydrogenase in the TCA cycle to glucose-6-phosphate dehydrogenase in the PPP, further proving that carbon flux was redirected from the EMP pathway to the PPP. The NADH level also showed a decreased TCA cycle activity. In terms of the ATP level, enhancement of zwf expression increased the ratio of substrate level phosphorylation (Fig.  2) and reduced the energy supply ratio of pyruvate kinase. Thus, we identified the metabolic flux distribution following the fine-tuning of central metabolic nodes, which helps us to understand the impact on metabolism.",
+      "section_id": "discussion",
+      "position": 32
+    },
+    {
+      "paragraph_id": "discussion_p004",
+      "text": "In dynamic regulation of metabolic pathways, the CRISPRi system has recently been used to improve flux through diferent pathways [29, 30]. One benefit of using the CRISPRi system over promoter replacement methods is that it does not require genome editing of the target gene, which remains a challenge. The introduction of the CRISPRi system is achieved by adding an inducer at a certain time to start the CRISPRi system. Here, we used it to adjust the inhibition level of pfkA, so as to achieve timely adjustment of EMP pathway/PPP flux. To reduce the growth inhibition caused by pfkA knockout, considering that the strain itself already harbors two plasmids and the CRISPRi system, we integrated dcas9 and the sgRNA onto the two plasmids respectively. After introduction of the CRISPRi system, cell growth and sugar consumption of the engineered strains were significantly decreased. The introduction of dCas9 may also have an inhibitory efect on bacterial growth. The relevant limitation of the CRISPRi system is therefore the toxicity of dCas9 expression in certain hosts [31, 32] that would afect the growth of pathway-expressing cells that typically already sufer from growth defects. The three targeting sites played a role in fine-tuning of pfkA and sgRNA1 showed the best inhibition efect. The MVA yield of strain BW25113 pFF-dCas9 pBSA-sgRNA1 was only 8.53  g/L, its yield reached 68.7%, exceeding the previous best conversion rate. sgRNA2 and sgRNA3 targeted the coding chain of pfkA at the region of 100 bp and 200 bp downstream of the initial codon, while sgRNA1 were designed on the 100 bp upstream of the promoter region of pfkA. The design of sgRNA1 can block the binding of RNA polymerase due to the steric hindrance of dcas9; the design of sgRNA2 and sgRNA3 can prevent the elongation of RNA polymerase. The actual inhibitory efects of three sgRNAs on the transcription of pfkA were not revealed, however, the strategy of CRISPRi modulation can achieve a broadly gene regulating range through designing various CRISPRi target sites.",
+      "section_id": "discussion",
+      "position": 33
+    },
+    {
+      "paragraph_id": "discussion_p005",
+      "text": "![](images/d13c2fddfe883cbc2d7407e2a3ca1bbb18d5bfe6afe56ba8485c0d89ea3424b5.jpg)",
+      "section_id": "discussion",
+      "position": 34
+    },
+    {
+      "paragraph_id": "discussion_p006",
+      "text": "![](images/9fe8bcdf7e5a67fb4792b4cb262c22bbcef018346bcc114567f1aaea8923ac1d.jpg)",
+      "section_id": "discussion",
+      "position": 35
+    },
+    {
+      "paragraph_id": "discussion_p007",
+      "text": "![](images/776f84eeb5fa0dbe4507fcfd946ada1e72896b981449d65dfed4ece85a9ab206.jpg)",
+      "section_id": "discussion",
+      "position": 36
+    },
+    {
+      "paragraph_id": "discussion_p008",
+      "text": "![](images/c86a30668c77b63ed16e3595574f7e3d18ea976b62c2f55a6c6c673654d9e290.jpg)\nFig. 5 Metabolic flux diagram of zwf-strengthened EP-bifido strains. The metabolic flux shown for strains from top to bottom are BW-P10 BF, BW-P08 BF, BW-P BF",
+      "section_id": "discussion",
+      "position": 37
+    },
+    {
+      "paragraph_id": "discussion_p009",
+      "text": "The more relevant limitation of the CRISPRi system is the toxicity of dCas9 expression that would afect cell growth. Except for the CRISPRi system, gene repression at the transcriptional level usually combines multiple known promoter systems to construct the inverter to down-regulate genes. Moreover, at post-transcriptional and post-translational level, tools to down-regulate mRNA levels include anti-sense RNA (asRNA) and RNA interference (RNAi). These control methods that function at the post-transcriptional and post-translational levels are useful alternatives. In the future, there must be more convenient methods to down-regulate genes autonomously and dynamically.",
+      "section_id": "discussion",
+      "position": 38
+    },
+    {
+      "paragraph_id": "conclusion_p001",
+      "text": "This study showed glycolytic flux ratio fine-tuning strategies applying in an artificial carbon saving pathway for eficient MVA production. The strategies presented in this work serve as a guide to metabolic engineering projects requiring acetyl-CoA as a metabolic precursor.",
+      "section_id": "conclusion",
+      "position": 39
+    },
+    {
+      "paragraph_id": "media_and_culture_p001",
+      "text": "For plasmid preparation, E. coli strains were cultured at $3 7 ~ ^ { \\circ } \\mathrm { C }$ on a rotary shaker (220 rpm) in test tubes containing 5  mL Luria–Bertani (LB) medium. For MVA production, 50-mL shake flask cultures were started by 2% inoculation from the 5-mL LB culture. The 50-mL cultures contained M9 minimal medium with 0.2% yeast extract containing 20 g/Lglucose and shaken at $3 7 ~ ^ { \\circ } \\mathrm { C }$ in a rotary shaker (120  rpm) for 48  h. Overnight cultures were shaken at $3 7 ^ { \\circ } \\mathrm { C }$ in a rotary shaker (220 rpm). Antibiotics were added as follows: ampicillin (Amp) 100 μg/mL, spectinomycin (Spc) 50 μg/mL and chloromycetin (Cm) 25  μg/mL. For promoter integration and replacement procedure, strains were cultivated in SOB medium.",
+      "section_id": "media_and_culture",
+      "position": 40
+    },
+    {
+      "paragraph_id": "media_and_culture_p002",
+      "text": "LB medium contains (g/L): tryptone(10), yeast extract(5) and NaCl(10). M9 medium contains (g/L): $\\mathrm { N a _ { 2 } H P O _ { 4 } { \\cdot } 1 2 H _ { 2 } O }$ (15.138), $\\mathrm { K H _ { 2 } P O _ { 4 } } \\ ( 3 ) .$ , NaCl (0.5) and $\\mathrm { N H _ { 4 } C l \\ ( 1 ) }$ . SOB medium contains (g/L): tryptone (20), yeast extract (5) and NaCl (5).",
+      "section_id": "media_and_culture",
+      "position": 41
+    },
+    {
+      "paragraph_id": "strains_and_plasmids_p001",
+      "text": "All E. coli strains and plasmids used are listed in Table 1. Strain BW-P was used as the starting strain for further genetic manipulation [13]. All primers used for molecular manipulations are listed in Additional file 1: Table S1. All promoter used for genetic manipulation are listed in Table 2.",
+      "section_id": "strains_and_plasmids",
+      "position": 42
+    },
+    {
+      "paragraph_id": "plasmid_construction_for_mva_production_p001",
+      "text": "To replace the original tac promoter of pBSA plasmid, five promoters BBa-J 23119, BBa-J 23100, BBa-J 23102, BBa-J 23104, BBa-J 23118 was designed into primers to construct plasmids pBSA-23119, pBSA-23100, pBSA-23102, pBSA-23104, pBSA-23118. Two primers were designed in the opposite direction. Five PCR amplicons were obtained using the original plasmid as the template with primier pcr-23119-F/R, pcr-23100-F/R, pcr-23102- F/R, pcr-23104-F/R, pcr-23118-F/R. DpnI was added to the PCR system in 37 °C for 1 h to remove the methylated template. A mixture of 50 μL was transformed into competent cells using chemical transformation. Colony PCR was performed by picking monoclonal from resistance plate to eliminate false positives and template interference. Finally, the five plasmids were transformed into the BW-P 23100 strain with the plasmid pFF.",
+      "section_id": "plasmid_construction_for_mva_production",
+      "position": 43
+    },
+    {
+      "paragraph_id": "construction_of_crispri_suppression_system_p001",
+      "text": "To select the CRISPRi inhibition site, three diferent sgR-NAs was designed by targeting pfkA promoter sequence, 100  bp downstream of the promoter sequence, and 200  bp downstream of the initiation codon. dcas9 and sgRNAs were assembled into pFF and pBSA plasmids respectively downstream of an IPTG-induced promoter. Primer dCas9FF-F/R, dCas9-F/R were used to amplify dCas9 sequence. Primer sgRNA-F1, sgRNA1-R and sgRNA-F2, sgRNA1-R were used to amplify sgRNA1 sequence by PCR. The two amplified sequences were overlapped from homology arms. Sequences sgRNA2 and sgRNA3 were amplified as above. All constructed plasmids were electro-transformed into E. coli strains. To accomplished the timely control of pfkA by CRISPRi system, cells was induced by 200 μM IPTG after 12 h of fermentation.",
+      "section_id": "construction_of_crispri_suppression_system",
+      "position": 44
+    },
+    {
+      "paragraph_id": "construction_of_crispri_suppression_system_p002",
+      "text": "Table 1 Strains and plasmids\n<table><tr><td>Strain and plasmids</td><td>Relevant properties</td><td>Sources</td></tr><tr><td>Strains</td><td></td><td></td></tr><tr><td>E. coli BW25113</td><td>F- ∆(araD-araB)567, ∆lacZ4787(::rrnB-3), λ-, rph-1, ∆(rhaD-rhaB)568, hsdR514</td><td>Lab stock</td></tr><tr><td>BW-P</td><td>BW25113 derivative, ∆pfkA::FRT</td><td>[13]</td></tr><tr><td>BW-P 23100-zwf</td><td>BW-P derived, zwf promoter:: BBa-J 23100, CmR</td><td>This study</td></tr><tr><td>BW-P 23104-zwf</td><td>BW-P derived, zwf promoter:: BBa-J 23104, CmR</td><td>This study</td></tr><tr><td>BW-P 23105-zwf</td><td>BW-P derived, zwf promoter:: BBa-J 23105, CmR</td><td>This study</td></tr><tr><td>BW-P 23108-zwf</td><td>BW-P derived, zwf promoter:: BBa-J 23108, CmR</td><td>This study</td></tr><tr><td>BW-P 23114-zwf</td><td>BW-P derived, zwf promoter:: BBa-J 23114, CmR</td><td>This study</td></tr><tr><td>BW-P10 BF</td><td>BW-P 23100-zwf carrying pBSA pFF</td><td>This study</td></tr><tr><td>BW-P04 BF</td><td>BW-P 23104-zwf carrying pBSA pFF</td><td>This study</td></tr><tr><td>BW-P 05 BF</td><td>BW-P 23105-zwf carrying pBSA pFF</td><td>This study</td></tr><tr><td>BW-P 08 BF</td><td>BW-P 23108-zwf carrying pBSA pFF</td><td>This study</td></tr><tr><td>BW-P 14 BF</td><td>BW-P 23114-zwf carrying pBSA pFF</td><td>This study</td></tr><tr><td>BPB10F</td><td>BW-P 23100-zwf carrying pBSA-23100 pBSA</td><td>This study</td></tr><tr><td>BPB02F</td><td>BW-P 23100-zwf carrying pBSA-23102 pBSA</td><td>This study</td></tr><tr><td>BPB04F</td><td>BW-P 23100-zwf carrying pBSA-23104 pBSA</td><td>This study</td></tr><tr><td>BPB18F</td><td>BW-P 23100-zwf carrying pBSA-23118 pBSA</td><td>This study</td></tr><tr><td>BPB19F</td><td>BW-P 23100-zwf carrying pBSA-23119 pBSA</td><td>This study</td></tr><tr><td>BW2511323100-zwf</td><td>BW25113 derived, zwf promoter:: BBa-J 23100</td><td>This study</td></tr><tr><td>BiBF1</td><td>BW25113 23100-zwf carrying pBSA-dCas9 pFF-sgRNA1</td><td>This study</td></tr><tr><td>BiBF2</td><td>BW25113 23100-zwf carrying pBSA-dCas9 pFF-sgRNA2</td><td>This study</td></tr><tr><td>BiBF3</td><td>BW25113 23100-zwf carrying pBSA-dCas9 pFF-sgRNA3</td><td>This study</td></tr><tr><td>BiB1F</td><td>BW25113 23100-zwf carrying pBSA-sgRNA1 pFF- dCas9</td><td>This study</td></tr><tr><td>BiB2F</td><td>BW25113 23100-zwf carrying pBSA-sgRNA2 pFF- dCas9</td><td>This study</td></tr><tr><td>BiB3F</td><td>BW25113 23100-zwf carrying pBSA-sgRNA3 pFF- dCas9</td><td>This study</td></tr><tr><td>BB1F</td><td>BW25113 23100-zwf carrying pBSA-sgRNA1 pFF</td><td>This study</td></tr><tr><td>BBFd</td><td>BW25113 23100-zwf carrying pBSA pFF- dCas9</td><td>This study</td></tr><tr><td>BiBd1F</td><td>BW25113 23100-zwf carrying pBSA-sgRNA1-dCas9 pFF</td><td>This study</td></tr><tr><td>pFF</td><td>pCDFduet, with fxpk from B. Adolescentis, and fbp gene from E. coli, AmpR</td><td>[13]</td></tr><tr><td>pBSA</td><td>pTrc99a with atoB from E. coli, mvaS and mvaA from L. casei. tac promoter,  $\\mathsf { A m p } ^ { \\mathsf { R } }$ </td><td>[13]</td></tr><tr><td>pTKRED</td><td>ParaBAD promoter containing plasmid,  $\\mathsf { S p e } ^ { \\mathsf { R } }$ </td><td>[34]</td></tr><tr><td>pCP20</td><td>Helper plasmid expressing FLP recombinase, ts-  ${ \\mathrm { \\cdot r e p } } , { \\mathsf { A m p } } ^ { \\mathsf { R } } , { \\mathsf { C m } } ^ { \\mathsf { R } }$ </td><td>[35]</td></tr><tr><td>pKD3</td><td>Template plasmid with  $\\mathsf { C m } ^ { \\mathsf { R } }$  gene and FLP recognition target</td><td>[35]</td></tr><tr><td>P23100-GFP</td><td>pTrc99a with BBa-J 23100 promoter and green fluorescent protein sequence,  $\\mathsf { A m p } ^ { \\mathsf { R } }$ </td><td>This study</td></tr><tr><td>P23104-GFP</td><td>pTrc99a with BBa-J 23104 promoter and green fluorescent protein sequence,  $\\mathsf { A m p } ^ { \\mathsf { R } }$ </td><td>This study</td></tr><tr><td>P23105-GFP</td><td>pTrc99a with BBa-J 23105 promoter and green fluorescent protein sequence,  $\\mathsf { A m p } ^ { \\mathsf { R } }$ </td><td>This study</td></tr><tr><td>P23108-GFP</td><td>pTrc99a with BBa-J 23108 promoter and green fluorescent protein sequence,  $\\mathsf { A m p } ^ { \\mathsf { R } }$ </td><td>This study</td></tr><tr><td>P23114-GFP</td><td>pTrc99a with BBa-J 23114 promoter and green fluorescent protein sequence,  $\\mathsf { A m p } ^ { \\mathsf { R } }$ </td><td>This study</td></tr><tr><td>Pzwf-GFP</td><td>pTrc99a with zwf promoter from E. coli BW25113 and green fluorescent protein sequence, AmpR</td><td>This study</td></tr><tr><td>pBSA-23119</td><td>pBSA with BBa-J 23119 promoter</td><td>This study</td></tr><tr><td>PBSA-23100</td><td>pBSA with BBa-J 23100 promoter</td><td>This study</td></tr><tr><td>PBSA-23102</td><td>pBSA with BBa-J 23102 promoter</td><td>This study</td></tr><tr><td>PBSA-23104</td><td>pBSA with BBa-J 23104 promoter</td><td>This study</td></tr><tr><td>PBSA-23118</td><td>pBSA with BBa-J 23118 promoter</td><td>This study</td></tr><tr><td>pFF-sgRNA1</td><td>pFF containing pfkA sgRNA1,  $\\mathsf { S p c } ^ { \\mathsf { R } }$ </td><td>This study</td></tr><tr><td>pFF-sgRNA2</td><td>pFF containing pfkA sgRNA2, SpcR</td><td>This study</td></tr><tr><td>pFF-sgRNA3</td><td>pFF containing pfkA sgRNA3, SpcR</td><td>This study</td></tr><tr><td>pBSA-dCas9</td><td>pBSA containing Cas9 array, AmpR</td><td>This study</td></tr><tr><td>pBSA-sgRNA1</td><td>pBSA containing pfkA sgRNA1, AmpR</td><td>This study</td></tr><tr><td>pBSA-sgRNA2</td><td>pBSA containing pfkA sgRNA2, AmpR</td><td>This study</td></tr><tr><td>pBSA-sgRNA3</td><td>pBSA containing pfkA sgRNA3, AmpR</td><td>This study</td></tr><tr><td>pFF-dCas9</td><td>pFF containing Cas9 array, AmpR</td><td>This study</td></tr><tr><td>pFF-sgRNA1-dCas9</td><td>pFF containing Cas9 array and pfkA sgRNA1, AmpR</td><td>This study</td></tr><tr><td>pBSA-23102-sgRNA1</td><td>pBSA-23102 containing pfkA sgRNA1, AmpR</td><td>This study</td></tr></table>",
+      "section_id": "construction_of_crispri_suppression_system",
+      "position": 45
+    },
+    {
+      "paragraph_id": "promoter_replacement_on_e_coli_genome_p001",
+      "text": "Promoter for replacing the promoter of zwf gene were selected from the Anderson promoter library (http:// parts.igem.org/Promoters/Catalog/Anderson). Promoter replacement primers homoarm-F and homoarmcm-R were designed using homology arms at about 300–500  bp at both ends of the target gene promoter, and plasmid pKD3 or pKD4 was used as a template to obtain recombinant fragments with kan or Cm resistance by using PKD3-cm-F/R or PKD4-cm-F/R. Three amplified sequences were overlapped from homology arms and resistance tag. All five replacing sequences were amplified as above.",
+      "section_id": "promoter_replacement_on_e_coli_genome",
+      "position": 46
+    },
+    {
+      "paragraph_id": "promoter_replacement_on_e_coli_genome_p002",
+      "text": "The Red homologous recombination method was employed for gene integration. The pTKRED complementary plasmid was transformed into the target strain. The electrotransfection were performed by growing BW-P in 5  mL LB medium at $3 0 ~ ^ { \\circ } \\mathrm { C }$ and shaking at 220  rpm for 12  h. 5-mL shake flask cultures using SOB broth were started with a 1% inoculation from the overnight culture. Isopropyl-β-D-thiogalactopyranoside (IPTG) was added to a final concentration of 0.5  mM to induce λ-prophage (bet, gam, and exo) gene expression. Cells were then incubated at 30  °C and shaking at 220  rpm until reaching an $\\mathrm { O D } _ { 6 0 0 }$ of 0.5 to 0.6. Cell were collected (2 mL), pelleted, and washed three times with cold sterile water to make them electrocompetent. ssDNA mixture (1  μM) was added to electrocompetent cells and electroporated at 2.5  kV. Add 1  mL LB liquid medium and cultivate for 1 h. After centrifuged, the collected bacteria were plated onto plates containing 25ug/ ml kan or 18ug/ml spc for overnight incubation at $3 7 ^ { \\circ } \\mathrm { C } .$ Transformed strains were selected by their kanR phenotype and were verified by PCR.",
+      "section_id": "promoter_replacement_on_e_coli_genome",
+      "position": 47
+    },
+    {
+      "paragraph_id": "promoter_replacement_on_e_coli_genome_p003",
+      "text": "Table 2 Relative strength of Promoters\n<table><tr><td rowspan=1 colspan=2>Promoter                                             Relativestrength</td></tr><tr><td rowspan=1 colspan=1>BBa-J23119</td><td rowspan=1 colspan=1>一</td></tr><tr><td rowspan=1 colspan=1>BBa-J23100</td><td rowspan=1 colspan=1>1.0</td></tr><tr><td rowspan=1 colspan=1>BBa-J23102</td><td rowspan=1 colspan=1>0.86</td></tr><tr><td rowspan=1 colspan=1>BBa-J23104</td><td rowspan=1 colspan=1>0.72</td></tr><tr><td rowspan=1 colspan=1>BBa-J23105</td><td rowspan=1 colspan=1>0.51</td></tr><tr><td rowspan=1 colspan=2>BBa-J23108                                            0.24</td></tr><tr><td rowspan=1 colspan=2>BBa-J23134                                            0.18</td></tr><tr><td rowspan=1 colspan=2>BBa-J23114                                            0.1</td></tr></table>",
+      "section_id": "promoter_replacement_on_e_coli_genome",
+      "position": 48
+    },
+    {
+      "paragraph_id": "promoter_replacement_on_e_coli_genome_p004",
+      "text": "‘–’ The promoter strength of BBa-J23119 was not detected",
+      "section_id": "promoter_replacement_on_e_coli_genome",
+      "position": 49
+    },
+    {
+      "paragraph_id": "measurement_of_extracellular_metabolites_p001",
+      "text": "A spectrophotometer was used to measure the optical density at 600  nm $\\mathrm { ( O D _ { 6 0 0 } ) }$ of the bacterial culture. For extracellular metabolite analysis, 1  mL of culture was centrifuged at 12,000g for 2  min. The supernatant was filtered through a 0.22-μm syringe filter for high-performance liquid chromatography analysis. Glucose, MVA, acetate, and pyruvate were measured on an ion exchange column (HPX-87H; Bio-Rad Labs) with a diferential refractive index detector (Shimadzu RID-10A). A 0.5- mL/min mobile phase using a 5 mM $\\mathrm { H } _ { 2 } \\mathrm { S O } _ { 4 }$ solution was applied to the column. The column was operated at $6 5 ^ { \\circ } \\mathrm { C } .$",
+      "section_id": "measurement_of_extracellular_metabolites",
+      "position": 50
+    },
+    {
+      "paragraph_id": "sup_13_sup_c_mfa_p001",
+      "text": "To investigate if the carbon flux was really redistributed to the newly constructed EP-bifido pathway, 13C-MFA was performed using 100% $1 - ^ { 1 3 } \\mathrm { C } _ { 1 }$ glucose as the feeding substrate was added to a concentration of 10 g/L. Cells at the exponential growth phase were harvested by centrifugation at 7000 g for 5 min at $4 ^ { \\circ } C .$ The cell pellet was then washed twice with chemical defined medium and hydrolyzed in 6  M HCl for 24  h at $1 2 0 ~ ^ { \\circ } \\mathrm { C }$ (Schwender et  al. 2006). The resulting proteinogenic acids were derivatized with N-(tert-butyldimethylsilyl)-N-methyl-trifluoroacetamide containing tert-butyldimethylchlorosilane in acetonitrile at $1 0 5 ^ { \\circ } \\mathrm { C }$ for 1 h, and then analyzed by a GC–MS [Agilent 7890 A GC and 5975 C Mass Selective Detector (Agilent Technologies, Santa Clara, USA)] equipped with a DB-1column (Agilent Technologies). The data obtained from GC–MS were corrected by reduction of the natural abundance ratio of C, H, O, N, and Si isotopes [30]. Metabolic fluxes were estimated by minimizing the residual sum of squares between experimentally measured and model predicted <sup>13</sup>C-enrichment using <sup>13</sup>C-Flux software obtained from Dr. Wiechert [33].",
+      "section_id": "sup_13_sup_c_mfa",
+      "position": 51
+    },
+    {
+      "paragraph_id": "supplementary_information_p001",
+      "text": "The online version contains supplementary material available at https://doi.\norg/10.1186/s12934-021-01526-1.",
+      "section_id": "supplementary_information",
+      "position": 52
+    },
+    {
+      "paragraph_id": "supplementary_information_p002",
+      "text": "Additional file 1: Figure S1. Fermentation of a series of CRISPRi-control strains. Table S1 Primers used in this study",
+      "section_id": "supplementary_information",
+      "position": 53
+    },
+    {
+      "paragraph_id": "supplementary_information_p003",
+      "text": "Additional file 2. MFA simulated result.",
+      "section_id": "supplementary_information",
+      "position": 54
+    },
+    {
+      "paragraph_id": "acknowledgements_p001",
+      "text": "We thank James Allen, PhD, from Liwen Bianji, Edanz Editing China (www.\nliwenbianji.cn/ac), for editing the English text of a draft of this manuscript.",
+      "section_id": "acknowledgements",
+      "position": 55
+    },
+    {
+      "paragraph_id": "authors_contributions_p001",
+      "text": "WQ and QQS designed the work. LY, XH and XY performed the experiments. SZJ and LY analyzed the <sup>13</sup>C-MFA data. QQS encouraged this project. WQ and LY wrote the manuscript. All authors read and approved the final manuscript.",
+      "section_id": "authors_contributions",
+      "position": 56
+    },
+    {
+      "paragraph_id": "funding_p001",
+      "text": "This work was supported by grants from the National Key R&D Program of China (2019YFA0904900), the National Natural Science Foundation of China (31730003, 31670047 and 31670077), Young Scholars Program of Shandong University, the State Key Laboratory of Microbial Technology Open Projects Fund (M2019-11) and Guangdong Provincial Natural Science Foundation of China (no. 2018A030307013).",
+      "section_id": "funding",
+      "position": 57
+    },
+    {
+      "paragraph_id": "ethics_approval_and_consent_to_participate_p001",
+      "text": "Not applicable.",
+      "section_id": "ethics_approval_and_consent_to_participate",
+      "position": 58
+    },
+    {
+      "paragraph_id": "consent_for_publication_p001",
+      "text": "Not applicable.",
+      "section_id": "consent_for_publication",
+      "position": 59
+    },
+    {
+      "paragraph_id": "competing_interests_p001",
+      "text": "The authors declare that they have no competing interests.",
+      "section_id": "competing_interests",
+      "position": 60
+    },
+    {
+      "paragraph_id": "author_details_p001",
+      "text": "<sup>1</sup> National Glycoengineering Research Center, State Key Laboratory of Microbial Technology, Shandong University, 72 Binhai Dadao, Qingdao 266237, People’s Republic of China. <sup>2</sup> Marine Biology Institute, Shantou University, Shantou 515063, People’s Republic of China. <sup>3</sup> School of Chemistry and Molecular Biosciences, Faculty of Science, The University of Queensland, St Lucia, Australia.",
+      "section_id": "author_details",
+      "position": 61
+    },
+    {
+      "paragraph_id": "author_details_p002",
+      "text": "Received: 25 July 2020 Accepted: 22 January 2021",
+      "section_id": "author_details",
+      "position": 62
+    },
+    {
+      "paragraph_id": "author_details_p003",
+      "text": "Published online: 02 February 2021",
+      "section_id": "author_details",
+      "position": 63
+    },
+    {
+      "paragraph_id": "references_p001",
+      "text": "1. Keasling JD. Manufacturing molecules through metabolic engineering Science. 2010;330:1355–8.",
+      "section_id": "references",
+      "position": 64
+    },
+    {
+      "paragraph_id": "references_p002",
+      "text": "2. Xu P, Ranganathan S, Fowler ZL, Maranas CD, Kofas MA. Genome-scale metabolic network modeling results in minimal interventions that cooperatively force carbon flux towards malonyl-CoA. Metab Eng. 2011;13:578–87.",
+      "section_id": "references",
+      "position": 65
+    },
+    {
+      "paragraph_id": "references_p003",
+      "text": "3. Hirokawa Y, Kubo T, Soma Y, Saruta F, Hanai T. Enhancement of acetyl-CoA flux for photosynthetic chemical production by pyruvate dehydrogenase complex overexpression in Synechococcus elongatus PCC 7942. Metab Eng. 2020;57:23–30.",
+      "section_id": "references",
+      "position": 66
+    },
+    {
+      "paragraph_id": "references_p004",
+      "text": "4. Centeno-Leija S, Huerta-Beristain G, Giles-Gomez M, Bolivar F, Gosset G, Martinez A. Improving poly-3-hydroxybutyrate production in Escherichia coli by combining the increase in the NADPH pool and acetyl-CoA availability. Antonie Van Leeuwenhoek. 2014;105:687–96",
+      "section_id": "references",
+      "position": 67
+    },
+    {
+      "paragraph_id": "references_p005",
+      "text": "5. Ogata Y, Chohnan S. Prokaryotic type III pantothenate kinase enhances coenzyme A biosynthesis in Escherichia coli. J Gen Appl Microbiol. 2015;61:266–9.",
+      "section_id": "references",
+      "position": 68
+    },
+    {
+      "paragraph_id": "references_p006",
+      "text": "6. Ku JT, Chen AY, Lan EI. Metabolic engineering design strategies for increasing Acetyl-CoA Flux. Metabolites. 2020;10:166.",
+      "section_id": "references",
+      "position": 69
+    },
+    {
+      "paragraph_id": "references_p007",
+      "text": "7. Schwander T, Schada von Borzyskowski L, Burgener S, Cortina NS, Erb TJ. A synthetic pathway for the fixation of carbon dioxide in vitro. Science. 2016;354:900–4.",
+      "section_id": "references",
+      "position": 70
+    },
+    {
+      "paragraph_id": "references_p008",
+      "text": "8. Yu H, Li X, Duchoud F, Chuang DS, Liao JC. Augmenting the Calvin-Benson-Bassham cycle by a synthetic malyl-CoA-glycerate carbon fixation pathway. Nat Commun. 2008;2018:9.",
+      "section_id": "references",
+      "position": 71
+    },
+    {
+      "paragraph_id": "references_p009",
+      "text": "9. Bogorad IW, Lin TS, Liao JC. Synthetic non-oxidative glycolysis enables complete carbon conservation. Nature. 2013;502:693–7.",
+      "section_id": "references",
+      "position": 72
+    },
+    {
+      "paragraph_id": "references_p010",
+      "text": "10. Bar-Even A, Noor E, Lewis NE, Milo R. Design and analysis of synthetic carbon fixation pathways. Proc Natl Acad Sci USA. 2010;107:8889–94.",
+      "section_id": "references",
+      "position": 73
+    },
+    {
+      "paragraph_id": "references_p011",
+      "text": "11. Hu G, Li Y, Ye C, Liu L, Chen X. Engineering microorganisms for enhanced CO sequestration. Trends Biotechnol. 2019;37:532–47.",
+      "section_id": "references",
+      "position": 74
+    },
+    {
+      "paragraph_id": "references_p012",
+      "text": "12. Francois JM, Lachaux C, Morin N. Synthetic biology applied to carbon conservative and carbon dioxide recycling pathways. Front Bioeng Biotechnol. 2019;7:446.",
+      "section_id": "references",
+      "position": 75
+    },
+    {
+      "paragraph_id": "references_p013",
+      "text": "13. Wang Q, Xu J, Sun Z, Luan Y, Li Y, Wang J, Liang Q, Qi Q. Engineering an in vivo EP-bifido pathway in Escherichia coli for high-yield acetyl-CoA generation with low CO emission. Metab Eng. 2019;51:79–87.",
+      "section_id": "references",
+      "position": 76
+    },
+    {
+      "paragraph_id": "references_p014",
+      "text": "14. Siedler S, Lindner SN, Bringer S, Wendisch VF, Bott M. Reductive wholecell biotransformation with Corynebacterium glutamicum: improvement of NADPH generation from glucose by a cyclized pentose phosphate pathway using pfkA and gapA deletion mutants. Appl Microbiol Biotechnol. 2013;97:143–52.",
+      "section_id": "references",
+      "position": 77
+    },
+    {
+      "paragraph_id": "references_p015",
+      "text": "15. Chin JW, Cirino PC. Improved NADPH supply for xylitol production by engineered Escherichia coli with glycolytic mutations. Biotechnol Prog. 2011;27:333–41.",
+      "section_id": "references",
+      "position": 78
+    },
+    {
+      "paragraph_id": "references_p016",
+      "text": "16. Chemler JA, Fowler ZL, McHugh KP, Kofas MA. Improving NADPH avail ability for natural product biosynthesis in Escherichia coli by metabolic engineering. Metab Eng. 2010;12:96–104.",
+      "section_id": "references",
+      "position": 79
+    },
+    {
+      "paragraph_id": "references_p017",
+      "text": "17. Sundara Sekar B, Seol E, Park S. Co-production of hydrogen and ethanol from glucose in Escherichia coli by activation of pentose-phosphate pathway through deletion of phosphoglucose isomerase (pgi) and overexpression of glucose-6-phosphate dehydrogenase (zwf) and 6-phosphogluconate dehydrogenase (gnd). Biotechnol Biofuels. 2017;10:85.",
+      "section_id": "references",
+      "position": 80
+    },
+    {
+      "paragraph_id": "references_p018",
+      "text": "18. Kwon D-H, Kim M-D, Lee T-H, Oh Y-J, Ryu Y-W, Seo J-H. Elevation of glucose 6-phosphate dehydrogenase activity increases xylitol production in recombinant Saccharomyces cerevisiae. J Mol Catal B Enzym. 2006;43:86–9.",
+      "section_id": "references",
+      "position": 81
+    },
+    {
+      "paragraph_id": "references_p019",
+      "text": "19. Hollinshead WD, Rodriguez S, Martin HG, Wang G, Baidoo EE, Sale KL, Keasling JD, Mukhopadhyay A, Tang YJ. Examining Escherichia coli glycolytic pathways, catabolite repression, and metabolite channeling using Deltapfk mutants. Biotechnol Biofuels. 2016;9:212.",
+      "section_id": "references",
+      "position": 82
+    },
+    {
+      "paragraph_id": "references_p020",
+      "text": "20. Schellenberger J, Que R, Fleming RM, Thiele I, Orth JD, Feist AM, Zielinski DC, Bordbar A, Lewis NE, Rahmanian S, et al. Quantitative prediction of cellular metabolism with constraint-based models: the COBRA Toolbox v2.0. Nat Protoc. 2011;6:1290–307.",
+      "section_id": "references",
+      "position": 83
+    },
+    {
+      "paragraph_id": "references_p021",
+      "text": "21. Zhang YX, Perry K, Vinci VA, Powell K, Stemmer WP, del Cardayre SB. Genome shufling leads to rapid phenotypic improvement in bacteria. Nature. 2002;415:644–6.",
+      "section_id": "references",
+      "position": 84
+    },
+    {
+      "paragraph_id": "references_p022",
+      "text": "22. Price ND, Reed JL, Palsson BO. Genome-scale models of microbial cells: evaluating the consequences of constraints. Nat Rev Microbiol. 2004;2:886–97.",
+      "section_id": "references",
+      "position": 85
+    },
+    {
+      "paragraph_id": "references_p023",
+      "text": "23. Farmer WR, Liao JC. Improving lycopene production in Escherichia coli by engineering metabolic control. Nat Biotechnol. 2000;18:533–7.",
+      "section_id": "references",
+      "position": 86
+    },
+    {
+      "paragraph_id": "references_p024",
+      "text": "24. Zhang F, Carothers JM, Keasling JD. Design of a dynamic sensor-regulator system for production of chemicals and fuels derived from fatty acids. Nat Biotechnol. 2012;30:354–9.",
+      "section_id": "references",
+      "position": 87
+    },
+    {
+      "paragraph_id": "references_p025",
+      "text": "25. Xu P, Li L, Zhang F, Stephanopoulos G, Kofas M. Improving fatty acids production by engineering dynamic pathway regulation and metabolic control. Proc Natl Acad Sci USA. 2014;111:11299–304.",
+      "section_id": "references",
+      "position": 88
+    },
+    {
+      "paragraph_id": "references_p026",
+      "text": "26. Cho S, Shin J, Cho BK. Applications of CRISPR/Cas system to bacterial metabolic engineering. Int J Mol Sci. 2018;19:1089.",
+      "section_id": "references",
+      "position": 89
+    },
+    {
+      "paragraph_id": "references_p027",
+      "text": "27. Larson MH, Gilbert LA, Wang X, Lim WA, Weissman JS, Qi LS. CRISPR interference (CRISPRi) for sequence-specific control of gene expression. Nat Protoc. 2013;8:2180–96.",
+      "section_id": "references",
+      "position": 90
+    },
+    {
+      "paragraph_id": "references_p028",
+      "text": "28. Bikard D, Jiang W, Samai P, Hochschild A, Zhang F, Marrafini LA. Programmable repression and activation of bacterial gene expression using an engineered CRISPR-Cas system. Nucleic Acids Res. 2013;41:7429–37.",
+      "section_id": "references",
+      "position": 91
+    },
+    {
+      "paragraph_id": "references_p029",
+      "text": "29. Kim S, Hahn J-S. Eficient production of 2,3-butanediol in Saccharomyces cerevisiae by eliminating ethanol and glycerol production and redox rebalancing. Metab Eng. 2015;31:94–101.",
+      "section_id": "references",
+      "position": 92
+    },
+    {
+      "paragraph_id": "references_p030",
+      "text": "30. Gordon GC, Korosh TC, Cameron JC, Markley AL, Begemann MB, Pfleger BF. CRISPR interference as a titratable, trans-acting regulatory tool for metabolic engineering in the cyanobacterium Synechococcus sp. strain PCC 7002. Metab Eng. 2016;38:170–9.",
+      "section_id": "references",
+      "position": 93
+    },
+    {
+      "paragraph_id": "references_p031",
+      "text": "31. Rock JM, Hopkins FF, Chavez A, Diallo M, Chase MR, Gerrick ER, Pritchard JR, Church GM, Rubin EJ, Sassetti CM, et al. Programmable transcriptional repression in mycobacteria using an orthogonal CRISPR interference platform. Nat Microbiol. 2017;2:1–9.",
+      "section_id": "references",
+      "position": 94
+    },
+    {
+      "paragraph_id": "references_p032",
+      "text": "32. Nielsen AAK, Voigt CA. Multi-input CRISPR/Cas genetic circuits that interface host regulatory networks. Mol Syst Biol. 2014;10:763.",
+      "section_id": "references",
+      "position": 95
+    },
+    {
+      "paragraph_id": "references_p033",
+      "text": "33. Weitzel M, Noh K, Dalman T, Niedenfuhr S, Stute B, Wiechert W. 13CFLUX2–high-performance software suite for (13)C-metabolic flux analysis. Bioinformatics. 2013;29:143–5.",
+      "section_id": "references",
+      "position": 96
+    },
+    {
+      "paragraph_id": "references_p034",
+      "text": "34. Kuhlman TE, Cox EC. Site-specific chromosomal integration of large synthetic constructs. Nucleic Acids Res. 2010;38:e92.",
+      "section_id": "references",
+      "position": 97
+    },
+    {
+      "paragraph_id": "references_p035",
+      "text": "35. Datsenko KA, Wanner BL. One-step inactivation of chromosomal genes in Escherichia coli K-12 using PCR products. Proc Natl Acad Sci USA. 2000;97:6640–5.",
+      "section_id": "references",
+      "position": 98
+    },
+    {
+      "paragraph_id": "publisher_s_note_p001",
+      "text": "Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional afiliations.",
+      "section_id": "publisher_s_note",
+      "position": 99
+    },
+    {
+      "paragraph_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from_p001",
+      "text": "• fast, convenient online submission",
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 100
+    },
+    {
+      "paragraph_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from_p002",
+      "text": "• thorough peer review by experienced researchers in your field",
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 101
+    },
+    {
+      "paragraph_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from_p003",
+      "text": "• rapid publication on acceptance",
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 102
+    },
+    {
+      "paragraph_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from_p004",
+      "text": "• support for research data, including large and complex data types",
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 103
+    },
+    {
+      "paragraph_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from_p005",
+      "text": "• gold Open Access which fosters wider collaboration and increased citations",
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 104
+    },
+    {
+      "paragraph_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from_p006",
+      "text": "• maximum visibility for your research: over 100M website views per year",
+      "section_id": "ready_to_submit_your_research_choose_bmc_and_benefit_from",
+      "position": 105
+    },
+    {
+      "paragraph_id": "at_bmc_research_is_always_in_progress_p001",
+      "text": "Learn more biomedcentral.com/submissions",
+      "section_id": "at_bmc_research_is_always_in_progress",
+      "position": 106
+    }
+  ]
+}

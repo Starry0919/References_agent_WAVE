@@ -1,0 +1,58 @@
+{
+  "version": "skill07_optimization_wave2_v1",
+  "production_behavior_changed": false,
+  "provenance_gate": "PASS",
+  "actual_runtime": {
+    "provider": "poe_code_cli",
+    "source_default_model": "claude-sonnet-4.6",
+    "configured_model": "kimi-k3",
+    "resolved_runtime_model": "kimi-k3",
+    "invocation_argument": "kimi-k3",
+    "provider_resolved_model": "UNKNOWN",
+    "revision": "UNKNOWN"
+  },
+  "wave1_provenance_correct": false,
+  "semantic_alignment": {
+    "historical_pairs": 5,
+    "counts": {
+      "FORMAT_ONLY": 0,
+      "SEMANTICALLY_EQUIVALENT": 0,
+      "POTENTIALLY_MEANINGFUL": 0,
+      "CRITICAL_SCIENTIFIC_DIFFERENCE": 19,
+      "AMBIGUOUS_REQUIRES_HUMAN": 47
+    }
+  },
+  "gold": {
+    "independent_gold_established": false,
+    "core_papers": 10,
+    "status": "AWAITING_HUMAN_ADJUDICATION"
+  },
+  "pilot": {
+    "status": "NOT_RUN_AWAITING_HUMAN_GOLD",
+    "new_model_calls": 0
+  },
+  "primary_benchmark": {
+    "status": "NOT_RUN_AWAITING_HUMAN_GOLD",
+    "planned_runs": 60,
+    "completed_runs": 0
+  },
+  "concurrency": {
+    "c1": "NOT_MEASURED",
+    "c2": "NOT_MEASURED",
+    "c4": "NOT_MEASURED"
+  },
+  "quality_vs_gold": {
+    "A_BASELINE": "AWAITING_HUMAN",
+    "G_SAFE_COMBINED": "AWAITING_HUMAN",
+    "critical_g_regression": "UNKNOWN"
+  },
+  "performance": {
+    "g_token_change": "NOT_MEASURED_WAVE2",
+    "first_pass_latency_change": "NOT_MEASURED",
+    "repair_rate_cost_change": "NOT_MEASURED",
+    "total_latency_change": "NOT_MEASURED"
+  },
+  "final_decision": "HOLD",
+  "decision_reason": "Independent Skill07 human gold/adjudication is absent. Stop rule E forbids inventing it; expensive repetitions and throughput escalation would not resolve the scientific quality veto.",
+  "historical_wave1_evidence_reused_not_promoted": true
+}

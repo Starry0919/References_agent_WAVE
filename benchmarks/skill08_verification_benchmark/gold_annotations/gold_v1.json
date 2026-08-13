@@ -1,0 +1,7 @@
+{
+  "gold_schema_version": "skill08_benchmark_gold_v1",
+  "annotation_policy": "Gold labels assess whether the supplied current-paper evidence supports the claim; scientific plausibility outside the evidence is irrelevant.",
+  "labels": ["verified", "unsupported", "unresolved", "conflicted"],
+  "annotator": "repository-evidence manual audit",
+  "case_file": "../cases/real_paper_cases.json"
+}

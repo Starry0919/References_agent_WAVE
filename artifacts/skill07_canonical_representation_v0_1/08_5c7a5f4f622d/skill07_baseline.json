@@ -1,0 +1,1915 @@
+{
+  "status": "succeeded",
+  "model": "kimi-k3",
+  "usage": {
+    "input_tokens": 150715,
+    "output_tokens": 59085
+  },
+  "prompt_chars": 221238,
+  "prompt_build_ms": 184.38690016046166,
+  "attempts": [
+    {
+      "attempt": 1,
+      "duration_ms": 478813.74919973314,
+      "error": null
+    }
+  ],
+  "repairs": [
+    {
+      "repair": 1,
+      "duration_ms": 417395.64639981836,
+      "prompt_chars": 295521,
+      "error": null
+    }
+  ],
+  "normalization_actions": [],
+  "checks": [
+    {
+      "name": "top_level_and_field_schema",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "field_semantic_invariants",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "evidence_role_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "candidate_evidence_anchors_resolve",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "article_type_gate_valid",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "experiment_graph_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "ddr_integrity",
+      "passed": true,
+      "required": true
+    },
+    {
+      "name": "document_coverage_consistent",
+      "passed": true,
+      "required": true
+    }
+  ],
+  "output": {
+    "contract_version": "skill07_semantic_contract_v1",
+    "fields": {
+      "objective": {
+        "value": "Determine the genome-wide fitness effect of each Escherichia coli gene under sub-lethal gentamicin exposure using a high-resolution CRISPRi screening library, compare fitness changes with anaerobic conditions (under which gentamicin is ineffective), and identify regulatory mechanisms of gentamicin defense, including the role of the two-component response regulator CpxR.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p003",
+          "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p015"
+        ],
+        "notes": "Objective stated in Abstract and Introduction; no engineering/production objective is reported.",
+        "inference": null
+      },
+      "hypothesis": {
+        "value": "Implicit, not explicitly stated: genome-wide CRISPRi fitness profiling of E. coli under gentamicin, contrasted with anaerobic conditions where gentamicin fails to enter cells, will reveal genes and regulators whose knockdown alters gentamicin sensitivity via respiration and membrane potential.",
+        "status": "inferred",
+        "applicability_status": "applicable",
+        "confidence": 0.5,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p015"
+        ],
+        "notes": "The paper states aims and rationale but no formal hypothesis; value is a bounded inference from the Introduction.",
+        "inference": {
+          "method": "cross_section_inference",
+          "rationale": "Introduction states that gentamicin is ineffective anaerobically because it fails to enter E. coli without oxygen, that understanding this may shed light on resistance mechanisms, and that the authors therefore examined fitness changes under gentamicin and anaerobic conditions using a high-resolution CRISPRi library; the implicit hypothesis is reconstructed only from these explicit statements."
+        }
+      },
+      "strain": {
+        "value": [
+          {
+            "raw": "E. coli K-12 MG1655",
+            "normalized": "Escherichia coli K-12 MG1655",
+            "role": "host for CRISPRi library screening, RNA-seq, and ChIP-Seq (carrying pdCas9 for screening)"
+          },
+          {
+            "raw": "E. coli Lucigen's Endura competent cells",
+            "normalized": "Escherichia coli Endura (Lucigen)",
+            "role": "initial sgRNA library plasmid propagation host (note: Results text and FIG 1 caption label this host as 'E. coli DH5α'; see conflicts)"
+          },
+          {
+            "raw": "E. coli K-12 BW25113",
+            "normalized": "Escherichia coli K-12 BW25113",
+            "role": "wild-type control for knockout growth and membrane potential assays"
+          },
+          {
+            "raw": "KEIO collection single knockout strains (fre, ubiX, ubiC, hemX, bhsA, cpxA, cpxR, arcA, arcB)",
+            "normalized": "E. coli BW25113 single-gene in-frame deletions (Keio collection)",
+            "role": "validation strains for growth defects under gentamicin"
+          },
+          {
+            "raw": "BW25113ΔcpxR",
+            "normalized": "E. coli BW25113 ΔcpxR",
+            "role": "membrane potential comparison strain"
+          },
+          {
+            "raw": "E. coli K-12 MG1655 with c-myc tag at C-terminus of cpxR",
+            "normalized": "E. coli MG1655 cpxR::c-myc (C-terminal)",
+            "role": "ChIP-Seq strain"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.88,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "cells_and_plasmids_p001",
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002"
+        ],
+        "notes": "Strain identities from Methods 'Cells and plasmids', Results and FIG 1 caption. Library propagation host identity conflicts between Methods (Endura) and Results/FIG 1 (DH5α); recorded in conflicts, not silently resolved. BW25113ΔcpxR is plausibly the KEIO ΔcpxR strain but this identity is inferred, not stated.",
+        "inference": null
+      },
+      "genotype": {
+        "value": {
+          "screening_host": "E. coli K-12 MG1655 carrying pdCas9 plasmid (Addgene #46569) plus sgRNA library plasmids derived from pgRNA-bacteria (Addgene #44251; original spacer targets mrfp); library comprises 39,591 designed 20-nt spacers targeting PAM (NGG) sites every ~100 bp across all coding sequences (RefSeq NC_000913.3); 39,574 sgRNAs confirmed in initial library (99.96% coverage)",
+          "chip_strain": "C-terminal c-myc epitope tag fused to chromosomal cpxR in MG1655 (method of ref 65)",
+          "knockout_strains": "KEIO in-frame single-gene deletions: Δfre, ΔubiX, ΔubiC, ΔhemX, ΔbhsA, ΔcpxA, ΔcpxR, ΔarcA, ΔarcB in BW25113 background",
+          "full_genotype_dependency": "Complete plasmid maps, spacer sequences and primer sequences are in Tables S1/S8 (supplement not provided)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "cells_and_plasmids_p001",
+          "sgrna_library_design_and_construction_p001"
+        ],
+        "notes": "Exact spacer sequences, plasmid sequences and primers blocked by missing supplement (Tables S1, S8).",
+        "inference": null
+      },
+      "engineering_method": {
+        "value": [
+          "Genome-scale CRISPR interference (CRISPRi) with dCas9-mediated gene knockdown using a pooled high-resolution sgRNA library (100-bp tiling of all CDS)",
+          "sgRNA library cloning: extension PCR of double-stranded oligo pool, inverse PCR of pgRNA-bacteria backbone, DpnI template removal, NEBuilder HiFi (Gibson) assembly, electroporation (Gene Pulser II) into Endura cells, then plasmid pool electroporation into MG1655+pdCas9",
+          "Pooled fitness screening under LB, LB + 1 µg/mL gentamicin, and anaerobic LB, followed by sgRNA amplicon next-generation sequencing and enrichment-ratio analysis",
+          "Validation: growth profiling of KEIO single-gene knockouts under gentamicin; antibiotic disk diffusion assay",
+          "RNA-seq transcriptomics with iModulon projection; ChIP-Seq of c-myc-tagged CpxR; DiOC2 flow-cytometric membrane potential assay"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+          "sgrna_library_design_and_construction_p003",
+          "sgrna_library_preparation_for_crispri_screening_p001"
+        ],
+        "notes": "CRISPRi library construction described as a modified version of a previously described method (ref 68); sgRNA design approach follows ref 66.",
+        "inference": null
+      },
+      "experimental_groups": {
+        "value": [
+          {
+            "experiment": "EXP2_CRISPRi_screen",
+            "groups": [
+              "MG1655+pdCas9+sgRNA library in LB (aerobic, untreated)",
+              "same library in LB + gentamicin 1 µg/mL (aerobic)",
+              "same library in anaerobic LB"
+            ]
+          },
+          {
+            "experiment": "EXP3_RNAseq",
+            "groups": [
+              "MG1655 in LB",
+              "MG1655 in LB + 1 µg/mL gentamicin",
+              "MG1655 in anaerobic LB"
+            ],
+            "replicates": "triplicate"
+          },
+          {
+            "experiment": "EXP4_knockout_growth",
+            "groups": [
+              "BW25113 wild type",
+              "Δfre, ΔubiX, ΔubiC, ΔhemX, ΔbhsA (cofactor/OMP genes, FIG 4C)",
+              "ΔarcA, ΔarcB, ΔcpxA, ΔcpxR (regulator genes, FIG 5B)"
+            ],
+            "condition": "gentamicin 1 µg/mL"
+          },
+          {
+            "experiment": "EXP5_ChIPseq",
+            "groups": [
+              "MG1655 cpxR::c-myc in LB",
+              "anaerobic LB",
+              "LB + gentamicin"
+            ]
+          },
+          {
+            "experiment": "EXP6_membrane_potential",
+            "groups": [
+              "BW25113 and BW25113ΔcpxR under aerobic LB, anaerobic LB, 5 µM CCCP, 1 µg/mL gentamicin"
+            ]
+          },
+          {
+            "experiment": "EXP7_disk_diffusion",
+            "groups": [
+              "cells on LB agar with gentamicin disks 0, 0.1, 1, 2.5, 10 µM; aerobic and anaerobic plates"
+            ]
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.88,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "sgrna_library_preparation_for_crispri_screening_p002",
+          "rna_sequencing_rna_seq_and_analysis_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p022",
+          "membrane_potential_assay_p001"
+        ],
+        "notes": "Groups consolidated from Methods subsections and figure captions; per-group sample sizes for EXP2/EXP5 not stated in main text.",
+        "inference": null
+      },
+      "controls": {
+        "value": [
+          {
+            "control": "Initial sgRNA plasmid library propagated without dCas9 co-expression",
+            "purpose": "baseline for enrichment ratio (ER) calculation in CRISPRi screen"
+          },
+          {
+            "control": "LB medium without gentamicin (aerobic)",
+            "purpose": "reference condition for ER fold change, RNA-seq centering, and ChIP-Seq"
+          },
+          {
+            "control": "E. coli K-12 BW25113 wild type",
+            "purpose": "reference for KEIO knockout growth and membrane potential assays"
+          },
+          {
+            "control": "Normal mouse IgG (2 µL; Santa Cruz sc-2025)",
+            "purpose": "negative control for ChIP immunoprecipitation"
+          },
+          {
+            "control": "CCCP 5 µM (proton-gradient uncoupler)",
+            "purpose": "uncoupling/depolarization control in membrane potential assay"
+          },
+          {
+            "control": "0 µM gentamicin disk",
+            "purpose": "no-drug control in disk diffusion assay"
+          }
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.88,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+          "chromatin_immunoprecipitation_chip_sequencing_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029",
+          "cells_and_plasmids_p001"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "culture_conditions": {
+        "value": {
+          "library_transformation_plates": "LB agar (25 cm × 25 cm plates) with ampicillin 100 µg/mL (library construction) or chloramphenicol 35 µg/mL + ampicillin 100 µg/mL (screening library into MG1655+pdCas9), pre-warmed to 30°C, incubated 14 h at 30°C",
+          "aerobic_screen": "preculture in 50 mL LB + chloramphenicol + ampicillin to OD600 1.0; inoculation at OD600 0.05 into fresh LB ± gentamicin 1 µg/mL maintaining both antibiotics; 37°C, 250 rpm shaking; harvested at OD600 1.68 (LB) or 1.8 (LB + gentamicin)",
+          "anaerobic_screen": "LB stored in nitrogen-filled chamber after autoclaving; 60 mL LB in bottles sealed with butyl rubber stoppers, N2 headspace at 100 kPa; inoculation by syringe at OD600 0.05; 37°C with shaking for 9 h to OD600 0.6",
+          "membrane_potential_culture": "37°C in LB to OD600 1.0 (aerobic) or 0.6 (anaerobic); optional 5 µM CCCP or 1 µg/mL gentamicin; diluted to 1×10^6 cells/mL in filtered PBS",
+          "disk_diffusion": "LB agar plates at 37°C; 16 h aerobic, 24 h anaerobic (anaerobic chamber/incubator)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "sgrna_library_preparation_for_crispri_screening_p002",
+          "sgrna_library_preparation_for_crispri_screening_p003",
+          "sgrna_library_preparation_for_crispri_screening_p001",
+          "antibiotic_disk_difusion_assay_p001"
+        ],
+        "notes": "Temperatures are bound to distinct steps: 30°C = transformation plate incubation; 37°C = screening/assay cultures; 4°C = centrifugation/IP incubations; 65°C/55°C/37°C = ChIP reverse-crosslinking and digestion steps. They are not interchangeable.",
+        "inference": null
+      },
+      "medium": {
+        "value": "LB (Luria-Bertani) liquid medium and LB agar throughout; antibiotic selection with ampicillin 100 µg/mL and/or chloramphenicol 35 µg/mL for plasmid-bearing steps; PBS used for cell washing/resuspension; no defined/minimal medium used.",
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.92,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "sgrna_library_preparation_for_crispri_screening_p002",
+          "sgrna_library_preparation_for_crispri_screening_p001"
+        ],
+        "notes": "Glycerol mentioned only as cryo-storage additive for library aliquots (−80°C), not as a medium carbon source.",
+        "inference": null
+      },
+      "dosage": {
+        "value": {
+          "gentamicin_screening_and_assays": "1 µg/mL, described as sub-lethal, selected from a dose-response curve (Fig. S1; supplement not provided); also cited literature basis for inducing resistance/stress responses including biofilm formation (ref 17)",
+          "cccp": "5 µM carbonyl cyanide 3-chlorophenylhydrazone (membrane potential uncoupling control)",
+          "disk_diffusion": "gentamicin disks at 0, 0.1, 1, 2.5, 10 µM (unit as printed in source)",
+          "selection_antibiotics": "ampicillin 100 µg/mL; chloramphenicol 35 µg/mL",
+          "other_reagents": "1% formaldehyde (ChIP crosslinking); 2.5 M glycine 2 mL (quench)"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+          "membrane_potential_assay_p001",
+          "antibiotic_disk_difusion_assay_p001"
+        ],
+        "notes": "The underlying dose-response data (Fig. S1) are in the unavailable supplement; the 1 µg/mL value itself is stated in main text and Methods. Disk 'µM' unit is reported verbatim and not reinterpreted.",
+        "inference": null
+      },
+      "time": {
+        "value": {
+          "transformation_plate_incubation": "14 h at 30°C",
+          "aerobic_screen_growth": "endpoint defined by OD600 (1.68 in LB; 1.8 in LB + gentamicin); clock duration not reported in available text",
+          "anaerobic_screen_growth": "9 h at 37°C to OD600 0.6",
+          "disk_diffusion_incubation": "16 h (aerobic) / 24 h (anaerobic) at 37°C",
+          "chip_key_steps": "crosslinking 30 min at room temperature; lysis 30 min at 37°C; IP overnight at 4°C; bead binding 6 h at 4°C; reverse crosslinking overnight at 65°C; RNase A 2 h at 37°C; proteinase K 2 h at 55°C",
+          "membrane_potential_staining": "30 min DiOC2 treatment"
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.82,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "sgrna_library_preparation_for_crispri_screening_p001",
+          "sgrna_library_preparation_for_crispri_screening_p003",
+          "antibiotic_disk_difusion_assay_p001"
+        ],
+        "notes": "Aerobic screen duration is reported only as OD endpoints; absolute time unknown. Growth-curve timing for knockout assays is not stated in main text (microplate reader monitoring; details possibly in supplement).",
+        "inference": null
+      },
+      "replicates": {
+        "value": {
+          "rna_seq": {
+            "n": 3,
+            "type": "biological_replicates",
+            "basis": "'The experiment was conducted in triplicate'"
+          },
+          "knockout_growth_fig4c": {
+            "n": 3,
+            "type": "biological_replicates",
+            "basis": "FIG 4C caption: error bars indicate SD of three biological replicates"
+          },
+          "chip_seq": {
+            "n": ">=2",
+            "type": "independent_events_confirmed",
+            "basis": "'Peaks detected in two or more replicates were considered binding events'; exact replicate count not stated"
+          },
+          "crispri_screen": {
+            "n": null,
+            "type": "unknown",
+            "basis": "replicate count for the pooled screen is not stated in the available main text; may be defined in unavailable supplement (Tables S2/S3, Fig. S1)"
+          },
+          "membrane_potential_flow": {
+            "n": 100000,
+            "type": "cells_or_fields_sampled",
+            "basis": "100,000 events collected per sample; not biological replicates"
+          },
+          "library_coverage": {
+            "initial_plasmid_library": "~8×10^6 colonies = 200× coverage of 39,591 sgRNAs",
+            "screening_library": "~2×10^6 colonies = 50× coverage",
+            "type": "recovered_colonies_or_clones"
+          }
+        },
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.62,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "rna_sequencing_rna_seq_and_analysis_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+          "chromatin_immunoprecipitation_chip_sequencing_p001",
+          "membrane_potential_assay_p001"
+        ],
+        "notes": "Replicate taxonomy applied: colony counts and flow-cytometry events are NOT biological replicates. CRISPRi screen replicate structure remains unknown (dependency: requires_supplement).",
+        "inference": null
+      },
+      "assay": {
+        "value": [
+          "sgRNA abundance by amplicon next-generation sequencing (Illumina HiSeq 2500, single-end 150 bp) after 18–20-cycle TruSeq-based PCR; fitness quantified as enrichment ratio (ER)",
+          "Growth profiling by OD600 on Synergy H1 microplate reader (knockout strains ± gentamicin)",
+          "RNA-seq (HiSeq 2500, 50 bp reads) for differential expression and iModulon activity",
+          "ChIP-Seq of CpxR-c-myc (anti-c-Myc 9E10; HiSeq 2500, 50-cycle single-end) for genome-wide binding",
+          "Membrane potential by BacLight/DiOC2 staining and flow cytometry (S3e Cell Sorter, 488 nm laser, FL1 526/48 and FL2 593/40, 100,000 events)",
+          "Antibiotic disk diffusion (halo observation) under aerobic and anaerobic conditions"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "sgrna_library_sequencing_p001",
+          "cells_and_plasmids_p001",
+          "membrane_potential_assay_p001",
+          "chromatin_immunoprecipitation_chip_sequencing_p001"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "instruments": {
+        "value": [
+          "Illumina HiSeq 2500 (sgRNA amplicon, RNA-seq, ChIP-Seq)",
+          "Synergy H1 microplate reader (BioTek) — growth profiles",
+          "S3e Cell Sorter (Bio-Rad) — flow cytometry",
+          "Qubit 2.0 fluorometer (Invitrogen) and Qubit 4.0 fluorometer (Thermo Fisher) — library quantification",
+          "TapeStation 4150 with high-sensitivity D1000 ScreenTape (Agilent) — ChIP library QC",
+          "Gene Pulser II Electroporation System (Bio-Rad) — transformations",
+          "Sonic Dismembrator Model 500 (Fisher Scientific) — ChIP chromatin fragmentation",
+          "real-time PCR with SYBR Green — monitoring of sequencing-library amplification (instrument not specified)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "sgrna_library_sequencing_p001",
+          "cells_and_plasmids_p001",
+          "membrane_potential_assay_p001",
+          "chromatin_immunoprecipitation_chip_sequencing_p001"
+        ],
+        "notes": null,
+        "inference": null
+      },
+      "analysis_methods": {
+        "value": [
+          "Enrichment ratio (ER): per-sgRNA ratio of abundance with dCas9 co-expression vs initial pool; per-gene ER = median of normalized sgRNA ratios across targeted positions; ER<1 detrimental, ER=1 neutral, ER>1 beneficial",
+          "Pearson correlation coefficient (r = 0.93 between gentamicin and anaerobic ER ratios) and PCA on ER values",
+          "COG functional categorization of genes with >1.5-fold ER change",
+          "sgRNA design: BLASTN exclusion of multi-aligned candidates; in-house Python script selecting first match per 100-nt window",
+          "RNA-seq: CLC Genomics Workbench mapping to NC_000913.3 (length/similarity 0.9); DESeq2 normalization; DEGs = >2.0-fold change and Padj < 0.001; iModulon projection of log2 expression (LB-centered) onto P1K iModulon structure via pymodulon",
+          "ChIP-Seq: CLC mapping (0.9/0.9); MACS2 peak calling with default settings; peaks in ≥2 replicates = binding events; DOOR2.0 operon annotation",
+          "Knockout growth comparison: Welch's t-test, significance threshold P < 0.1 (as printed in FIG 4C caption)",
+          "FlowJo v10.2 for flow-cytometry analysis"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001",
+          "rna_sequencing_rna_seq_and_analysis_p002",
+          "chromatin_immunoprecipitation_chip_sequencing_p001"
+        ],
+        "notes": "Welch's t-test threshold of P < 0.1 is reported verbatim from the FIG 4C caption and not corrected.",
+        "inference": null
+      },
+      "outcomes": {
+        "value": [
+          "Initial library contained 39,574 of 39,591 designed sgRNAs (99.96% coverage)",
+          "Under gentamicin, ERs decreased for many ribosomal protein genes, ribosome-associated proteins (e.g., rbfA 5.0-fold, yqjD 4.7-fold) and rRNA-modifying enzymes (e.g., rsmD 4.1-fold, rlmB 4.0-fold), indicating increased essentiality",
+          "Toxin-antitoxin systems (ghoST, relBE, yafNO, mazEF, higBA) showed >2-fold ER reductions; antitoxin knockdowns (e.g., ghoS 9.8-fold, relB 7.0-fold) caused stronger fitness defects than toxin knockdowns; no polar effects observed",
+          "OMP/assembly genes showed decreased ER (ompA 3.8-fold, bamE 2.6-fold, nlpE 1.8-fold) except bhsA, which showed the highest ER increase (reverse fold change 3.8); multiple efflux pump genes (tolC, acrA, mdtB/E, macA/B, emrK, mdtI, mdtK, etc.) showed 1.5–2.6-fold ER decreases",
+          "Gene-level fitness changes under gentamicin strongly correlated with anaerobic conditions (Pearson r = 0.93); E. coli was completely resistant to gentamicin anaerobically (Fig. S2, supplement unavailable)",
+          "Knockdown of riboflavin/quinone/heme cofactor biosynthesis genes increased ER under both gentamicin and anaerobic conditions (e.g., fre 67.0-/73.8-fold; ubiD 30.4-/45.6-fold; hemX 4.7-/6.6-fold)",
+          "KEIO deletions Δfre, ΔubiX, ΔubiC, ΔhemX were less sensitive to gentamicin than wild type; ΔbhsA conferred complete gentamicin resistance (FIG 4C)",
+          "ΔarcA, ΔarcB and ΔcpxR significantly increased gentamicin sensitivity; ΔcpxA had little effect (FIG 5B)",
+          "CpxR bound 933 genomic positions under gentamicin vs 51 anaerobic and 13 in LB; 929 of 2,348 gentamicin-induced DEGs were directly associated with CpxR binding; CpxR bound regulatory regions of nuo, cyo, cyd respiratory complexes and arcA",
+          "CpxR mediated repression of nuo/cyo/cyd respiratory systems and collapse of membrane potential under gentamicin; the collapse was absent in BW25113ΔcpxR (FIG 6C)"
+        ],
+        "status": "reported",
+        "applicability_status": "applicable",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+          "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p003",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027"
+        ],
+        "notes": "Outcomes are direct observations as reported in Results and figure captions. Mechanistic statements (e.g., CpxR limiting gentamicin influx via membrane depolarization) are author interpretations, recorded as claims in experimental_design_object, not as verified causality. Per-gene ER values depend on Table S3 (unavailable).",
+        "inference": null
+      }
+    },
+    "experimental_design_object": {
+      "canonical_truth_note": "Experiment instances below are the canonical representation; the 16 document-level fields are a compatibility projection and do not merge incompatible instances.",
+      "biological_objects": [
+        {
+          "object_id": "OBJ_MG1655",
+          "paper_label": "E. coli K-12 MG1655",
+          "object_type": "host/strain",
+          "normalized_name": "Escherichia coli K-12 MG1655",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "CRISPRi screening host (with pdCas9), RNA-seq, ChIP-Seq background",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003"
+          ]
+        },
+        {
+          "object_id": "OBJ_ENDURA",
+          "paper_label": "E. coli Lucigen's Endura competent cells",
+          "object_type": "host/strain",
+          "normalized_name": "Escherichia coli Endura (Lucigen)",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "initial library plasmid propagation without dCas9",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "sgrna_library_design_and_construction_p003"
+          ],
+          "note": "Results text and FIG 1 caption call this host 'E. coli DH5α'; identity conflict recorded in conflicts array."
+        },
+        {
+          "object_id": "OBJ_BW25113",
+          "paper_label": "E. coli K-12 BW25113",
+          "object_type": "control_strain",
+          "normalized_name": "Escherichia coli K-12 BW25113",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "wild-type control",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "membrane_potential_assay_p001"
+          ]
+        },
+        {
+          "object_id": "OBJ_KEIO_PANEL",
+          "paper_label": "single knockout strains from the KEIO collection (fre, ubiX, ubiC, hemX, bhsA, cpxA, cpxR, arcA, arcB)",
+          "object_type": "engineered_strain panel (library)",
+          "normalized_name": "BW25113 in-frame single-gene deletions (Keio collection, ref 58)",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "validation strains; constructed by ref 58, not by current authors",
+          "lineage_relationship": "derived from BW25113",
+          "evidence": [
+            "cells_and_plasmids_p001"
+          ]
+        },
+        {
+          "object_id": "OBJ_BW_dCPXR",
+          "paper_label": "BW25113ΔcpxR",
+          "object_type": "engineered_strain",
+          "normalized_name": "E. coli BW25113 ΔcpxR",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "membrane potential comparison",
+          "lineage_relationship": "derived from BW25113; identity with KEIO ΔcpxR inferred but not stated",
+          "evidence": [
+            "membrane_potential_assay_p001"
+          ]
+        },
+        {
+          "object_id": "OBJ_MG1655_CPXR_MYC",
+          "paper_label": "c-myc tag added to the C-terminus of cpxR in E. coli K-12 MG1655",
+          "object_type": "engineered_strain",
+          "normalized_name": "MG1655 cpxR::c-myc",
+          "normalization_basis": "document_internal",
+          "identity_status": "reported",
+          "role": "ChIP-Seq strain; tagging method from ref 65",
+          "evidence": [
+            "cells_and_plasmids_p001"
+          ]
+        },
+        {
+          "object_id": "OBJ_PDCAS9",
+          "paper_label": "pdCas9 plasmid (Addgene, cat. #46569)",
+          "object_type": "plasmid",
+          "identity_status": "reported",
+          "role": "dCas9 expression",
+          "evidence": [
+            "cells_and_plasmids_p001"
+          ]
+        },
+        {
+          "object_id": "OBJ_PGRNA",
+          "paper_label": "pgRNA-bacteria plasmid (Addgene, cat. #44251) targeting mrfp",
+          "object_type": "plasmid",
+          "identity_status": "reported",
+          "role": "sgRNA expression template/backbone",
+          "evidence": [
+            "cells_and_plasmids_p001",
+            "sgrna_library_design_and_construction_p002"
+          ]
+        },
+        {
+          "object_id": "OBJ_SGRNA_LIBRARY",
+          "paper_label": "sgRNA library targeting 39,591 positions",
+          "object_type": "library/construct pool",
+          "identity_status": "reported",
+          "role": "pooled CRISPRi knockdown library; 20-nt spacers, 100-bp CDS tiling, BLASTN-filtered; 39,574 sgRNAs confirmed (99.96%)",
+          "evidence": [
+            "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+            "sgrna_library_design_and_construction_p001"
+          ]
+        }
+      ],
+      "experiments": [
+        {
+          "experiment_id": "EXP1_library_design_construction",
+          "parent_experiment_id": null,
+          "purpose": "Design and construct high-resolution genome-scale CRISPRi sgRNA library",
+          "objects": [
+            "OBJ_SGRNA_LIBRARY",
+            "OBJ_PGRNA",
+            "OBJ_ENDURA"
+          ],
+          "intervention": "In silico sgRNA design (23-mers at NGG PAMs, 100-nt CDS windows, BLASTN off-target filtering, fixed 'A' upstream of spacer); oligo pool synthesis (CustomArray); extension PCR; Gibson/NEBuilder HiFi assembly into pgRNA backbone (40 ng insert : 100 ng backbone, 40 µL); electroporation into Endura; plating on 87 LB-agar+ampicillin plates",
+          "conditions": "LB agar 25 cm × 25 cm, ampicillin 100 µg/mL; pooled colonies cultured in liquid LB to OD 1.0",
+          "controls": [],
+          "replicates": {
+            "type": "recovered_colonies_or_clones",
+            "n": "~0.8×10^7 colonies (200× coverage)"
+          },
+          "readouts": "Amplicon sequencing of plasmid pool (HiSeq 2500, SE 150 bp); library composition QC",
+          "analysis": "sgRNA representation counting vs designed pool",
+          "outcomes": "39,574/39,591 sgRNAs detected (99.96% coverage)",
+          "evidence_paragraphs": [
+            "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+            "sgrna_library_design_and_construction_p001",
+            "sgrna_library_design_and_construction_p002",
+            "sgrna_library_design_and_construction_p003",
+            "sgrna_library_sequencing_p001"
+          ],
+          "tested_scope": "E. coli MG1655 CDS (RefSeq NC_000913.3); LB condition for library amplification",
+          "unsupported_extensions": [
+            "per-spacer sequences (Table S1 unavailable)",
+            "off-target rates not measured"
+          ]
+        },
+        {
+          "experiment_id": "EXP2_crispri_pooled_screen",
+          "parent_experiment_id": "EXP1_library_design_construction",
+          "purpose": "Genome-wide gene fitness under gentamicin and anaerobic conditions",
+          "objects": [
+            "OBJ_MG1655",
+            "OBJ_PDCAS9",
+            "OBJ_SGRNA_LIBRARY"
+          ],
+          "intervention": "Electroporation of 100 ng library plasmids into MG1655+pdCas9; pooled growth under three conditions with dCas9-mediated knockdown",
+          "conditions": {
+            "aerobic_LB": "37°C, 250 rpm, to OD600 1.68",
+            "aerobic_LB_gentamicin": "1 µg/mL gentamicin, to OD600 1.8",
+            "anaerobic_LB": "N2 headspace 100 kPa, 37°C, 9 h, to OD600 0.6",
+            "inoculum": "OD600 0.05",
+            "selection": "chloramphenicol 35 µg/mL + ampicillin 100 µg/mL"
+          },
+          "controls": [
+            "initial plasmid library without dCas9 co-expression (ER baseline)",
+            "LB untreated condition"
+          ],
+          "replicates": {
+            "type": "unknown",
+            "n": null,
+            "dependency": "requires_supplement"
+          },
+          "readouts": "sgRNA abundance by amplicon NGS (HiSeq 2500, SE 150 bp)",
+          "analysis": "ER per gene = median of normalized sgRNA ratios; Pearson correlation; PCA; COG categorization (>1.5-fold ER change)",
+          "outcomes": "Gene-level fitness maps for LB, gentamicin, anaerobic; gentamicin vs anaerobic ER correlation r = 0.93; condition-specific ER changes for ribosomal, TA, OMP, efflux, cofactor-biosynthesis genes",
+          "evidence_paragraphs": [
+            "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+            "sgrna_library_preparation_for_crispri_screening_p001",
+            "sgrna_library_preparation_for_crispri_screening_p002",
+            "sgrna_library_preparation_for_crispri_screening_p003",
+            "sgrna_library_sequencing_p001",
+            "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+          ],
+          "tested_scope": "E. coli MG1655, LB, gentamicin 1 µg/mL, anaerobiosis as defined",
+          "unsupported_extensions": [
+            "screen replicate count",
+            "per-gene ER tables (Table S3)",
+            "dose-response data (Fig. S1)",
+            "anaerobic resistance curve (Fig. S2)"
+          ]
+        },
+        {
+          "experiment_id": "EXP3_rnaseq_imodulon",
+          "parent_experiment_id": null,
+          "purpose": "Transcriptomic changes under gentamicin and anaerobic conditions; iModulon activities of ArcA/CpxR regulons",
+          "objects": [
+            "OBJ_MG1655"
+          ],
+          "intervention": "Culture in LB, LB + 1 µg/mL gentamicin, anaerobic LB (same protocol as screen); RNAsnap RNA extraction; Ribo-Zero rRNA depletion; TruSeq Stranded mRNA library",
+          "conditions": "as EXP2; triplicate",
+          "controls": [
+            "LB aerobic reference for centering",
+            "P1K public transcriptome compendium as iModulon reference (external data, background_citation)"
+          ],
+          "replicates": {
+            "type": "biological_replicates",
+            "n": 3
+          },
+          "readouts": "RNA-seq, HiSeq 2500, 50 bp reads",
+          "analysis": "CLC mapping (0.9/0.9); DESeq2; DEG >2.0-fold, Padj<0.001; iModulon projection (pymodulon, P1K)",
+          "outcomes": "2,348 gentamicin-induced DEGs; specific regulation of ArcA and CpxR iModulons; CpxR iModulon activity under gentamicin exceeding ethanol-stress reference; ArcA activity suppressed under gentamicin",
+          "evidence_paragraphs": [
+            "rna_sequencing_rna_seq_and_analysis_p001",
+            "rna_sequencing_rna_seq_and_analysis_p002",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p001",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005"
+          ],
+          "tested_scope": "MG1655, three conditions",
+          "unsupported_extensions": [
+            "normalized expression table (Table S4)",
+            "iModulon activity matrix (Tables S5/S6)"
+          ]
+        },
+        {
+          "experiment_id": "EXP4_knockout_validation",
+          "parent_experiment_id": null,
+          "purpose": "Validate screen-implicated genes by growth of single-gene knockouts under gentamicin",
+          "objects": [
+            "OBJ_KEIO_PANEL",
+            "OBJ_BW25113"
+          ],
+          "intervention": "Growth profiling of KEIO deletion strains vs wild type under gentamicin 1 µg/mL (strains constructed by ref 58, used here)",
+          "conditions": "LB + gentamicin 1 µg/mL; microplate monitoring",
+          "controls": [
+            "BW25113 wild type"
+          ],
+          "replicates": {
+            "type": "biological_replicates",
+            "n": 3,
+            "scope": "FIG 4C cofactor-gene panel; replicate count for FIG 5B not separately stated"
+          },
+          "readouts": "OD600 growth rate (Synergy H1)",
+          "analysis": "SD error bars; Welch's t-test, P < 0.1",
+          "outcomes": "Δfre, ΔubiX, ΔubiC, ΔhemX less sensitive; ΔbhsA completely resistant; ΔarcA/ΔarcB/ΔcpxR more sensitive; ΔcpxA little effect",
+          "evidence_paragraphs": [
+            "cells_and_plasmids_p001",
+            "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+            "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+          ],
+          "tested_scope": "listed nine deletions, gentamicin 1 µg/mL, LB",
+          "unsupported_extensions": [
+            "exact growth-rate values and per-strain statistics (figure visual and source data unavailable)"
+          ]
+        },
+        {
+          "experiment_id": "EXP5_cpxr_chipseq",
+          "parent_experiment_id": null,
+          "purpose": "Genome-wide CpxR binding under LB, anaerobic, and gentamicin conditions",
+          "objects": [
+            "OBJ_MG1655_CPXR_MYC"
+          ],
+          "intervention": "Chromosomal c-myc C-terminal tagging of cpxR (method of ref 65); ChIP with anti-c-Myc 9E10; sequencing",
+          "conditions": "25 mL cultures; 1% formaldehyde crosslinking 30 min RT; sonication 10×20 s; IP overnight 4°C",
+          "controls": [
+            "normal mouse IgG negative control"
+          ],
+          "replicates": {
+            "type": "independent_events_confirmed",
+            "n": ">=2 (peaks in two or more replicates counted as binding events)"
+          },
+          "readouts": "ChIP-Seq, HiSeq 2500, 50-cycle single-end",
+          "analysis": "CLC mapping; MACS2 default; DOOR2.0 operons",
+          "outcomes": "933 binding positions under gentamicin vs 51 (anaerobic) and 13 (LB); CpxR regulon estimated at 1,611 genes; binding at nuo/cyo/cyd regulatory regions and arcA",
+          "evidence_paragraphs": [
+            "chromatin_immunoprecipitation_chip_sequencing_p001",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+            "cells_and_plasmids_p001"
+          ],
+          "tested_scope": "CpxR-c-myc in MG1655; three conditions",
+          "unsupported_extensions": [
+            "peak lists (Table S7)",
+            "exact replicate count"
+          ]
+        },
+        {
+          "experiment_id": "EXP6_membrane_potential",
+          "parent_experiment_id": null,
+          "purpose": "Test CpxR dependence of membrane-potential collapse under gentamicin",
+          "objects": [
+            "OBJ_BW25113",
+            "OBJ_BW_dCPXR"
+          ],
+          "intervention": "DiOC2 staining after exposure to aerobic LB, anaerobic LB, CCCP 5 µM, or gentamicin 1 µg/mL",
+          "conditions": "cultures to OD600 1.0 (aerobic) / 0.6 (anaerobic); 1×10^6 cells/mL in filtered PBS; 30 min staining",
+          "controls": [
+            "CCCP uncoupling control",
+            "wild-type vs ΔcpxR comparison"
+          ],
+          "replicates": {
+            "type": "cells_or_fields_sampled",
+            "n": "100,000 events/sample; biological replicate count not stated"
+          },
+          "readouts": "Flow cytometry green/red fluorescence (S3e, 488 nm, FL1/FL2)",
+          "analysis": "FlowJo v10.2; median membrane potential of populations",
+          "outcomes": "Gentamicin-triggered membrane-potential collapse present in wild type, absent in ΔcpxR",
+          "evidence_paragraphs": [
+            "membrane_potential_assay_p001",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029"
+          ],
+          "tested_scope": "BW25113 background; specified conditions",
+          "unsupported_extensions": [
+            "histogram numeric values beyond figure medians (figure visual unavailable)"
+          ]
+        },
+        {
+          "experiment_id": "EXP7_disk_diffusion",
+          "parent_experiment_id": null,
+          "purpose": "Qualitative gentamicin susceptibility under aerobic vs anaerobic conditions",
+          "objects": [
+            "OBJ_MG1655 or related test cells (text says 'Cells'; exact strain binding ambiguous)"
+          ],
+          "intervention": "Gentamicin disks 0, 0.1, 1, 2.5, 10 µM on LB agar",
+          "conditions": "37°C; 16 h aerobic / 24 h anaerobic; anaerobic chamber and incubator",
+          "controls": [
+            "0 µM disk"
+          ],
+          "replicates": {
+            "type": "unknown",
+            "n": null
+          },
+          "readouts": "Halo presence/absence",
+          "analysis": "qualitative observation",
+          "outcomes": "Anaerobic complete resistance to gentamicin reported (Fig. S2; supplement unavailable)",
+          "evidence_paragraphs": [
+            "antibiotic_disk_difusion_assay_p001",
+            "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+          ],
+          "tested_scope": "disk doses as listed",
+          "unsupported_extensions": [
+            "Fig. S2 image/data",
+            "strain identity for this assay not explicitly bound in Methods text"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "claim": "Gentamicin-induced fitness changes resemble those under anaerobic conditions",
+          "claim_type": "direct_observation",
+          "source_attribution": "current_article",
+          "support": "Pearson r = 0.93 on ER values; PCA",
+          "evidence": [
+            "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+          ]
+        },
+        {
+          "claim": "CpxR is a key/global regulator of the gentamicin response, repressing respiratory complexes and mediating membrane depolarization that may limit gentamicin influx",
+          "claim_type": "author_interpretation",
+          "source_attribution": "current_article",
+          "support": "ChIP-Seq binding + RNA-seq + knockout sensitivity + flow cytometry; causal chain to uptake limitation is explicitly hedged ('could potentially play a role')",
+          "evidence": [
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+            "discussion_p005"
+          ]
+        },
+        {
+          "claim": "Both ArcA and CpxR are required for gentamicin resistance",
+          "claim_type": "causally_validated",
+          "source_attribution": "current_article",
+          "support": "Deletion of arcA, arcB or cpxR significantly increased gentamicin sensitivity vs wild type (intervention + comparator)",
+          "evidence": [
+            "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+          ],
+          "caveat": "statistical threshold for FIG 5B not stated in available text; FIG 4C used P < 0.1 Welch's t-test"
+        },
+        {
+          "claim": "CpxR-mediated antibiotic response could be widespread among gram-negative bacteria",
+          "claim_type": "paper_claim",
+          "source_attribution": "current_article",
+          "support": "speculation supported by background citations 60–64, not tested here",
+          "evidence": [
+            "discussion_p005"
+          ]
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p003",
+            "section": "Abstract",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We employed CRISPR interference screening to investigate the fitness efect of each gene in Escherichia coli exposed to gentamicin, aiming to understand the cellular defense mechanisms.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p015",
+            "section": "Introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Using a high-resolution CRISPRi library, we identified gentamicin-sensitive genes on a genome-wide scale and explored their roles in resistance.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p015",
+            "section": "Introduction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Understanding the lack of function in anaerobic environments may shed light on the mechanisms underlying antibiotic resistance. Therefore, we also examined the fitness changes of E. coli under anaerobic conditions to gain further insight into resistance mechanisms against gentamicin.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "For library construction, E. coli Lucigen's Endura competent cells (Lucigen, WI, USA) were used, while E. coli K-12 MG1655 was employed for CRISPRi library screening.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we used single knockout strains from the KEIO collection (58), including fre, ubiX, ubiC, hemX, bhsA, cpxA, cpxR, arcA, and arcB, with E. coli K-12 BW25113 as the wild-type control.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002",
+            "section": "Results: Genome-wide gene fitness analysis using CRISPRi library screening",
+            "page": null,
+            "figure": "FIG 1",
+            "panel": "A",
+            "table": null,
+            "supplement": null,
+            "quote": "The sgRNA library plasmids were first transformed into E. coli DH5a to create an initial plasmid library.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The pdCas9 plasmid (Addgene, cat. #46569) and the pgRNA-bacteria plasmid (Addgene, cat. #44251) targeting mrfp were used for the expression of dCas9 and sgRNA, respectively.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_design_and_construction_p001",
+            "section": "Materials and Methods: sgRNA library design and construction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "This resulted in a pool of 39,591 double-stranded oligos, each consisting of a 20 nt spacer sequence targeting the genome",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "For ChIP-Seq, a c-myc tag was added to the C-terminus of cpxR in E. coli K-12 MG1655 as previously described (65).",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+            "section": "Results: Genome-wide gene fitness analysis using CRISPRi library screening",
+            "page": null,
+            "figure": "FIG 1",
+            "panel": "A",
+            "table": null,
+            "supplement": null,
+            "quote": "we designed a high-resolution genome-scale CRISPRi library targeting the protospacer adjacent motif (PAM) sequences at intervals of 100 bp across all coding sequences (CDS)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_design_and_construction_p003",
+            "section": "Materials and Methods: sgRNA library design and construction",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "40 ng of amplified sgRNA library products (200 bp) was assembled into 100 ng of plasmid backbone (2,435 bp) in a 40 µL reaction using the NEBuilder HiFi DNA Assembly Kit",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p001",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we transformed the sgRNA library plasmids (100 ng) into E. coli K-12 MG1655 competent cells that already contained the pdCas9 plasmid by electroporation.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p002",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "these cells were inoculated into fresh LB media at an initial OD600 of 0.05, with and without gentamicin (1 µg/mL), while maintaining chloramphenicol and ampicillin.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "rna_sequencing_rna_seq_and_analysis_p001",
+            "section": "Materials and Methods: RNA sequencing (RNA-Seq) and analysis",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "E. coli K-12 MG1655 was cultured in LB, LB with 1 µg/mL gentamicin, and LB under anaerobic conditions, following the CRISPRi screening protocol.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p022",
+            "section": "Results: Regulation of respiratory complexes by CpxR and ArcA",
+            "page": null,
+            "figure": "FIG 5",
+            "panel": "B",
+            "table": null,
+            "supplement": null,
+            "quote": "Growth profiles of arcA, arcB, cpxA, and cpxR knockout strains under gentamicin treatment (1 µg/mL).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "membrane_potential_assay_p001",
+            "section": "Materials and Methods: Membrane potential assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "E. coli K-12 BW25113 and BW25113ΔcpxR strains were cultured at 37°C until OD600 reached 1.0 for aerobic conditions and 0.6 for anaerobic conditions in LB media.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+            "section": "Results: Genome-wide gene fitness analysis using CRISPRi library screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we calculated the enrichment ratio (ER) by comparing the abundance of sgRNAs with dCas9 co-expression to that in the initial pool (without dCas9).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "chromatin_immunoprecipitation_chip_sequencing_p001",
+            "section": "Materials and Methods: Chromatin immunoprecipitation (ChIP) sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "2 µL of normal mouse IgG (Cat. sc-2025; Santa Cruz Biotechnology) as a negative control.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029",
+            "section": "Results: Regulation of respiratory complexes by CpxR and ArcA",
+            "page": null,
+            "figure": "FIG 6",
+            "panel": "C",
+            "table": null,
+            "supplement": null,
+            "quote": "CCCP, which dissipates the proton gradient, is used as an uncoupling control.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "with E. coli K-12 BW25113 as the wild-type control.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p002",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Aerobic cultures were grown at 37°C with shaking at 250 rpm until the OD600 reached 1.68 in LB and 1.8 in LB with gentamicin (Fig. S1A).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p003",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "60 mL of LB was transferred into bottles sealed with butyl rubber stoppers, and nitrogen gas was added to the headspace at a pressure of 100 kPa.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p001",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After 14 h of incubation at 30°C, approximately 2.0 × 10^6 colonies were obtained from 24 plates.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "antibiotic_disk_difusion_assay_p001",
+            "section": "Materials and Methods: Antibiotic disk difusion assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After 16 h of incubation for aerobic cultures and 24 h for anaerobic cultures, the presence of a halo around the disk was observed.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p002",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the CRISPRi library cells were precultured in 50 mL LB with chloramphenicol and ampicillin until the optical density at 600 nm (OD600) reached 1.0.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p001",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "spread on LB plates pre-warmed to 30°C, containing both chloramphenicol (35 µg/mL) and ampicillin (100 µg/mL)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+            "section": "Results: Genome-wide gene fitness analysis using CRISPRi library screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Based on the dose-response curve (Fig. S1), gentamicin was used at a sub-lethal concentration of 1 µg/mL, which has been reported to induce resistance and stress responses, including biofilm formation in E. coli (17).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "membrane_potential_assay_p001",
+            "section": "Materials and Methods: Membrane potential assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "If required, 5 µM carbonyl cyanide 3-chlorophenylhydrazone (CCCP) or 1 µg/mL gentamicin was added.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "antibiotic_disk_difusion_assay_p001",
+            "section": "Materials and Methods: Antibiotic disk difusion assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "disks containing 0, 0.1, 1, 2.5, and 10 µM gentamicin were placed on the agar.",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "time": {
+        "source_locations": [
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p001",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After 14 h of incubation at 30°C",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p003",
+            "section": "Materials and Methods: sgRNA library preparation for CRISPRi screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The cultures were grown with shaking at 37°C for 9 h until the OD600 reached 0.6 (Fig. S1B).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "antibiotic_disk_difusion_assay_p001",
+            "section": "Materials and Methods: Antibiotic disk difusion assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After 16 h of incubation for aerobic cultures and 24 h for anaerobic cultures",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "replicates": {
+        "source_locations": [
+          {
+            "paragraph_id": "rna_sequencing_rna_seq_and_analysis_p001",
+            "section": "Materials and Methods: RNA sequencing (RNA-Seq) and analysis",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The experiment was conducted in triplicate.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+            "section": "Results: Similar fitness changes in anaerobiosis and gentamicin treatment",
+            "page": null,
+            "figure": "FIG 4",
+            "panel": "C",
+            "table": null,
+            "supplement": null,
+            "quote": "Error bars indicate the standard deviation (SD) of three biological replicates.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "chromatin_immunoprecipitation_chip_sequencing_p001",
+            "section": "Materials and Methods: Chromatin immunoprecipitation (ChIP) sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Peaks detected in two or more replicates were considered binding events.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "membrane_potential_assay_p001",
+            "section": "Materials and Methods: Membrane potential assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "A total of 100,000 events were collected and analyzed using FlowJo software v10.2",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "sgrna_library_sequencing_p001",
+            "section": "Materials and Methods: sgRNA library sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "sequenced to single-end mode on an Illumina HiSeq 2500 system, with a read length of 150 bp",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Growth profiles were monitored using a Synergy H1 microplate reader (BioTek, VT, USA).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "membrane_potential_assay_p001",
+            "section": "Materials and Methods: Membrane potential assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Membrane potential was assessed using the BacLight Bacterial Membrane Potential Kit (Thermo Fisher Scientific) with the carbocyanine dye DiOC2",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "chromatin_immunoprecipitation_chip_sequencing_p001",
+            "section": "Materials and Methods: Chromatin immunoprecipitation (ChIP) sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "A 700 µL aliquot of the sample was used for immunoprecipitation with 15 µL of anti-c-Myc mouse IgG (9E10)",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "sgrna_library_sequencing_p001",
+            "section": "Materials and Methods: sgRNA library sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The purified libraries were quantified using a Qubit 2.0 fluorometer (Invitrogen) and sequenced to single-end mode on an Illumina HiSeq 2500 system",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "cells_and_plasmids_p001",
+            "section": "Materials and Methods: Cells and plasmids",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Growth profiles were monitored using a Synergy H1 microplate reader (BioTek, VT, USA).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "membrane_potential_assay_p001",
+            "section": "Materials and Methods: Membrane potential assay",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "cells were analyzed with an S3e Cell Sorter (Bio-Rad) using a 488 nm laser.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "chromatin_immunoprecipitation_chip_sequencing_p001",
+            "section": "Materials and Methods: Chromatin immunoprecipitation (ChIP) sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Library quality was assessed using a TapeStation 4150 (Agilent, CA, USA) with a high-sensitivity D1000 ScreenTape (Agilent).",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002",
+            "section": "Results: Genome-wide gene fitness analysis using CRISPRi library screening",
+            "page": null,
+            "figure": "FIG 1",
+            "panel": "B",
+            "table": null,
+            "supplement": null,
+            "quote": "The enrichment ratio (ER) for each gene was defined as the median of the normalized sgRNA ratios across the positions targeted in the gene.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001",
+            "section": "Results: Similar fitness changes in anaerobiosis and gentamicin treatment",
+            "page": null,
+            "figure": "FIG 3",
+            "panel": "A",
+            "table": null,
+            "supplement": null,
+            "quote": "Pearson correlation coeficient (r) analysis revealed a strong correlation between the ER ratio of genes under anaerobic conditions and gentamicin treatment (r = 0.93)",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "rna_sequencing_rna_seq_and_analysis_p002",
+            "section": "Materials and Methods: RNA sequencing (RNA-Seq) and analysis",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Genes with more than a 2.0-fold change in expression and a Padj value <0.001 were considered diferentially expressed genes (DEG).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "chromatin_immunoprecipitation_chip_sequencing_p001",
+            "section": "Materials and Methods: Chromatin immunoprecipitation (ChIP) sequencing",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Binding peaks were identified using MACS2 software with default settings (72).",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+            "section": "Results: Genome-wide gene fitness analysis using CRISPRi library screening",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "We confirmed that the initial library included 39,574 sgRNAs, representing 99.96% coverage (Table S1).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p003",
+            "section": "Results: Fitness changes of toxin-antitoxin systems in response to gentamicin",
+            "page": null,
+            "figure": "FIG 2",
+            "panel": "B",
+            "table": null,
+            "supplement": null,
+            "quote": "While ghoT showed a 1.5-fold decrease in ER under gentamicin, ghoS showed a dramatic 9.8-fold decrease",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+            "section": "Results: Similar fitness changes in anaerobiosis and gentamicin treatment",
+            "page": null,
+            "figure": "FIG 4",
+            "panel": "C",
+            "table": null,
+            "supplement": null,
+            "quote": "Deletion of bhsA, encoding a stress-resistant outer membrane protein that increases hydrophobicity (44), conferred complete gentamicin resistance (Fig. 4C).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003",
+            "section": "Results: Regulation of respiratory complexes by CpxR and ArcA",
+            "page": null,
+            "figure": "FIG 5",
+            "panel": "B",
+            "table": null,
+            "supplement": null,
+            "quote": "Deletion of arcA, arcB, or cpxR significantly increased sensitivity to gentamicin, whereas cpxA deletion had little efect (Fig. 5B).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+            "section": "Results: Regulation of respiratory complexes by CpxR and ArcA",
+            "page": null,
+            "figure": "FIG 5",
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Under gentamicin, CpxR bound to 933 positions in the genome, compared to just 51 under anaerobic conditions and 13 in LB control (Table S7).",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+            "section": "Results: Regulation of respiratory complexes by CpxR and ArcA",
+            "page": null,
+            "figure": "FIG 6",
+            "panel": "C",
+            "table": null,
+            "supplement": null,
+            "quote": "Flow cytometry analysis revealed that CpxR mediated the collapse of membrane potential in response to gentamicin, as this collapse was absent in the cpxR knockout strain (Fig. 6C).",
+            "source_attribution": "current_article"
+          }
+        ],
+        "evidence_role": "candidate"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "contains_original_experiment": true,
+        "original_experiment_scope": "full_study",
+        "classification_evidence": [
+          "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p003",
+          "cells_and_plasmids_p001",
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+          "data_availability_p001"
+        ],
+        "classification_uncertainty": null
+      },
+      "document_coverage": {
+        "available_sections": [
+          "Title/Abstract/Importance/Keywords",
+          "Introduction",
+          "Results (4 subsections)",
+          "Discussion",
+          "Materials and Methods (7 subsections)",
+          "Acknowledgments",
+          "Author affiliations/ORCIDs/Contributions",
+          "Funding",
+          "Data availability",
+          "Additional files listing",
+          "References"
+        ],
+        "available_modalities": [
+          "full main text (191 paragraphs)",
+          "figure captions for FIG 1–6",
+          "table titles only for Tables S1–S8 (no table content)",
+          "funding table"
+        ],
+        "missing_or_unparsed": [
+          "figure images/visuals not available (figure_visual_available=false); only captions and in-text mentions extracted",
+          "supplement not provided: Fig. S1 (dose-response and growth curves), Fig. S2 (anaerobic gentamicin resistance), Fig. S3 (COG categorization), Tables S1–S8 (sgRNA library, counts, ERs, expression, iModulon activities, ChIP peaks, primers)"
+        ],
+        "blocked_fields_or_uses": [
+          "exact sgRNA spacer sequences and library resynthesis (Table S1) — blocks library reconstruction",
+          "per-gene ER values and normalized counts (Tables S2/S3) — blocks quantitative re-analysis",
+          "dose-response rationale data (Fig. S1) — blocks verification of 1 µg/mL selection",
+          "CRISPRi screen replicate structure — likely in supplement; recorded unknown",
+          "primer sequences (Table S8) — blocks exact protocol reproduction",
+          "figure-derived numeric values beyond those stated in text/captions (e.g., exact growth rates, histogram medians)"
+        ],
+        "note": "Main-text and caption-supported facts are retained despite missing supplement; only supplement-dependent precision is marked blocked."
+      },
+      "paper_target_strains": [
+        {
+          "raw": "E. coli K-12 MG1655",
+          "normalized": "Escherichia coli K-12 MG1655",
+          "role": "primary study strain (CRISPRi screen, RNA-seq, ChIP-Seq)"
+        },
+        {
+          "raw": "E. coli K-12 BW25113",
+          "normalized": "Escherichia coli K-12 BW25113",
+          "role": "wild-type control and KEIO knockout background"
+        },
+        {
+          "raw": "E. coli Lucigen's Endura competent cells",
+          "normalized": "Escherichia coli Endura",
+          "role": "library construction host (conflicts with 'DH5α' label in Results/FIG 1)"
+        }
+      ],
+      "user_target_system": {},
+      "variables": {
+        "gentamicin_concentration_ug_ml": {
+          "value": 1,
+          "scope": [
+            "EXP2",
+            "EXP3",
+            "EXP4",
+            "EXP5",
+            "EXP6"
+          ],
+          "value_role": "implemented",
+          "source": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003"
+        },
+        "library_size_designed": {
+          "value": 39591,
+          "scope": [
+            "EXP1"
+          ],
+          "value_role": "implemented"
+        },
+        "library_size_confirmed": {
+          "value": 39574,
+          "scope": [
+            "EXP1"
+          ],
+          "value_role": "measured"
+        },
+        "library_coverage_initial": {
+          "value": "200x",
+          "scope": [
+            "EXP1"
+          ],
+          "value_role": "measured"
+        },
+        "library_coverage_screening": {
+          "value": "50x",
+          "scope": [
+            "EXP2"
+          ],
+          "value_role": "measured"
+        },
+        "aerobic_endpoint_od600": {
+          "value": {
+            "LB": 1.68,
+            "LB_gentamicin": 1.8
+          },
+          "scope": [
+            "EXP2"
+          ],
+          "value_role": "implemented"
+        },
+        "anaerobic_endpoint_od600": {
+          "value": 0.6,
+          "duration_h": 9,
+          "scope": [
+            "EXP2"
+          ],
+          "value_role": "implemented"
+        },
+        "er_fold_change_threshold": {
+          "value": 1.5,
+          "scope": [
+            "EXP2 gene-level analyses"
+          ],
+          "value_role": "implemented"
+        },
+        "deg_criteria": {
+          "value": "fold change > 2.0 and Padj < 0.001",
+          "scope": [
+            "EXP3"
+          ],
+          "value_role": "implemented"
+        }
+      },
+      "experiment_workflow": {
+        "stages": [
+          "EXP1: in silico sgRNA design → oligo synthesis → Gibson assembly → Endura transformation → plasmid pool → QC amplicon sequencing",
+          "EXP2: library into MG1655+pdCas9 → pooled culture (LB / LB+Gm / anaerobic) → harvest → amplicon NGS → ER analysis",
+          "EXP3: RNA-seq (triplicate, 3 conditions) → DESeq2 → iModulon projection",
+          "EXP4: KEIO knockout growth validation under gentamicin",
+          "EXP5: CpxR-c-myc ChIP-Seq (3 conditions) → MACS2",
+          "EXP6: DiOC2 flow cytometry membrane potential (BW25113 vs ΔcpxR)",
+          "EXP7: disk diffusion aerobic/anaerobic"
+        ],
+        "design_then_verify_note": "Library design choices (EXP1) precede screening (EXP2); knockout, ChIP and membrane-potential experiments are downstream validation/measurement stages, not new engineering designs."
+      },
+      "design_logic": {
+        "ddr_annotations": [
+          {
+            "ddr_id": "DDR1",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Authors actively designed and constructed a high-resolution sgRNA library tiling all CDS at 100-bp intervals (Q1: explicit design action; Q2: implemented in this study; Q3: an active design choice among library-design alternatives, not a measurement).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": {
+              "action_code": null,
+              "description": "Designed 39,591-sgRNA genome-scale library targeting NGG PAMs every 100 bp across all E. coli MG1655 CDS; synthesized as oligo pool; cloned via extension PCR + Gibson/NEBuilder HiFi into pgRNA-bacteria backbone."
+            },
+            "design_action_rationale": "Stated before the action: 'CRISPRi eficiency can vary depending on the genomic structure or interactions between the dCas9 complex and DNA... To overcome this, we designed a high-resolution genome-scale CRISPRi library' (genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001).",
+            "trigger_observation": "Known position-dependent variability of CRISPRi efficiency and difficulty of ensuring consistent efficiency across environmental conditions (author-asserted, no citation at that sentence).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=author_assertion for the variability rationale; the resulting library's 99.96% coverage is experimental_measurement but does not comparatively test the tiling choice against alternatives.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Rationale invokes a mechanism (position-dependent dCas9-DNA interaction efficiency) stated prior to the design; however it is asserted without citation, so confidence in the mechanism attribution is moderate.",
+            "reason_nature_tags": [
+              "position_dependent_crispri_efficiency",
+              "genome_tiling",
+              "library_design"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [
+              "Conventional designs targeting a single or a few positions per gene (mentioned as existing practice the authors chose to exceed); no explicit comparison experiment performed."
+            ],
+            "strategy_categories": []
+          },
+          {
+            "ddr_id": "DDR2",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Selection of sub-lethal gentamicin concentration 1 µg/mL for the screen (Q1: explicit condition-design choice; Q2: chosen in this study; Q3: design parameter selection, not a readout).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": {
+              "action_code": null,
+              "description": "Used gentamicin at sub-lethal 1 µg/mL for screening, RNA-seq, knockout growth, ChIP-Seq and membrane-potential assays."
+            },
+            "design_action_rationale": "Chosen based on the authors' dose-response curve (Fig. S1) and literature reporting that this concentration induces resistance and stress responses including biofilm formation (ref 17).",
+            "trigger_observation": "Dose-response curve of MG1655 library under gentamicin (Fig. S1; supplement not provided) — temporally prior to the screen.",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=experimental_measurement (own dose-response) but the underlying data are in the unavailable supplement, plus literature_precedent (ref 17); cannot be independently checked here.",
+            "reason_nature": "screening_derived",
+            "reason_nature_rationale": "Concentration derived from the authors' own dose-response measurement prior to screening; literature citation is supportive context.",
+            "reason_nature_tags": [
+              "dose_selection",
+              "sub_lethal_stress"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          },
+          {
+            "ddr_id": "DDR3",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "BLASTN-based exclusion of multi-aligned sgRNA candidates (Q1: explicit design-filtering action; Q2: done in this study; Q3: design choice affecting library composition).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": {
+              "action_code": null,
+              "description": "Excluded multiple-aligned sgRNAs from candidates via BLASTN analysis against the reference genome to avoid off-target binding."
+            },
+            "design_action_rationale": "Stated in Methods: exclusion was performed 'to avoid of-target binding'.",
+            "trigger_observation": "Anticipated off-target binding of multi-mapping sgRNAs (design-stage consideration, stated before construction).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=author_assertion/computational_prediction (sequence alignment); off-target rates were not experimentally measured in this paper.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Rationale is the mechanism that multi-mapping spacers cause off-target repression; stated as design motivation, not separately validated here.",
+            "reason_nature_tags": [
+              "off_target_filtering",
+              "specificity"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          },
+          {
+            "ddr_id": "DDR4",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Fixing the nucleotide upstream of each spacer to 'A' (Q1: explicit sequence-design choice; Q2: done in this study; Q3: design decision about library sequence context).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": {
+              "action_code": null,
+              "description": "Set the nucleotide upstream of the 20-nt spacer sequence to 'A' in every oligo."
+            },
+            "design_action_rationale": "Stated: 'To minimize the deviation in transcription activity due to the transcription start nucleotide.'",
+            "trigger_observation": "Anticipated transcription-start-nucleotide-dependent variability in sgRNA transcription (design-stage consideration).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=author_assertion; no citation and no comparative test of alternative nucleotides in this paper.",
+            "reason_nature": "mechanistic_inference",
+            "reason_nature_rationale": "Mechanistic claim about transcription initiation nucleotide effects, author-asserted without citation; kept as mechanistic_inference with low evidentiary weight.",
+            "reason_nature_tags": [
+              "transcription_start_nucleotide",
+              "library_sequence_design"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          },
+          {
+            "ddr_id": "DDR5",
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Construction of chromosomal C-terminal c-myc-tagged CpxR in MG1655 (Q1: genome-engineering action; Q2: performed by the authors in this study; Q3: design choice to enable CpxR immunoprecipitation; decisionhood is measurement-enabling but involves an engineered construct).",
+            "decision_gates": {
+              "q1_intervention": true,
+              "q2_current_study": true,
+              "q3_decisionhood": true
+            },
+            "design_action": {
+              "action_code": null,
+              "description": "Added a c-myc tag to the C-terminus of chromosomal cpxR in E. coli K-12 MG1655 for ChIP-Seq."
+            },
+            "design_action_rationale": "Stated purpose: 'For ChIP-Seq'; tagging method adopted from ref 65 (PCR-based tandem epitope tagging).",
+            "trigger_observation": "Need to map genome-wide CpxR binding under gentamicin after iModulon analysis implicated CpxR (EXP3/EXP5 logic order as presented in Results).",
+            "evidence_grading": "soft",
+            "evidence_grading_rationale": "evidence_basis_type=literature_precedent for the tagging method (ref 65); tag functionality for CpxR not independently validated in this paper.",
+            "reason_nature": "literature_analogy",
+            "reason_nature_rationale": "Method explicitly adopted 'as previously described (65)'; rationale is precedent-based rather than mechanistic.",
+            "reason_nature_tags": [
+              "epitope_tagging",
+              "chip_enabling_construct"
+            ],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        ],
+        "non_decision_records": [
+          {
+            "item": "Use of KEIO collection knockout strains for growth validation",
+            "classification": "validation",
+            "gate_outcome": "Q2 fail for construction (strains built by ref 58); use here is a validation experiment, not an engineering decision"
+          },
+          {
+            "item": "RNA-seq, ChIP-Seq, flow cytometry, disk diffusion measurements",
+            "classification": "measurement/characterization",
+            "gate_outcome": "Q1 fail: readout generation, no engineered design choice on the biological system"
+          },
+          {
+            "item": "Choice to compare anaerobic vs gentamicin conditions",
+            "classification": "experimental_design_choice",
+            "gate_outcome": "condition comparison motivated by literature (ref 16); recorded as study design context, not a DDR"
+          },
+          {
+            "item": "Statements that CpxR-mediated depolarization limits gentamicin influx",
+            "classification": "post_hoc_interpretation",
+            "gate_outcome": "author interpretation of results ('could potentially play a role'); not a design action"
+          }
+        ],
+        "rule_candidate_note": "All generalizable_rule fields are null: no decision in this paper was comparatively tested against alternative designs, so no single-paper rule candidate met the evidence bar; this does not assert the design choices are wrong."
+      }
+    },
+    "conflicts": [
+      {
+        "field_path": "strain.library_construction_host",
+        "conflict_type": "identity",
+        "candidate_values": [
+          "E. coli Lucigen's Endura competent cells (Methods)",
+          "E. coli DH5α (Results text and FIG 1A caption)"
+        ],
+        "sources": [
+          "cells_and_plasmids_p001 (Materials and Methods)",
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001 (Results) and genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002 (FIG 1 caption)"
+        ],
+        "conflict_reason": "Methods names the library-construction host as Endura competent cells, whereas the Results narrative and FIG 1 caption name E. coli DH5α for the same initial plasmid library transformation step; these are not identical strain identities and cannot be reconciled from the available text.",
+        "review_action": "Check the original published PDF/supplement or contact authors; do not silently prefer one source. Until resolved, treat the library-construction host identity as contested; downstream genotype reconstruction is unaffected (host used only for plasmid propagation without dCas9)."
+      },
+      {
+        "field_path": "outcomes.er_fold_changes.ompA_vs_bhsA",
+        "conflict_type": "numeric",
+        "candidate_values": [
+          "ompA: 3.8-fold ER decrease under gentamicin",
+          "bhsA: 3.8-fold ER increase under gentamicin (reverse fold change 3.8)"
+        ],
+        "sources": [
+          "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p001 (Results text)",
+          "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p003 (FIG 2 caption) and similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012 (Results text)"
+        ],
+        "conflict_reason": "The identical magnitude 3.8 is reported for two different genes with opposite ER directions in the same figure context; both may be correct, but the coincidence cannot be verified without the figure visual or Table S3, and a transcription error cannot be excluded.",
+        "review_action": "Verify against FIG 2C source data / Table S3 (supplement) before using either value quantitatively."
+      }
+    ]
+  }
+}

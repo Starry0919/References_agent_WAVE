@@ -1,0 +1,951 @@
+{
+  "status": "succeeded",
+  "output": {
+    "clean_markdown_artifact": {
+      "artifact_id": "artifact:a4449b4a9e9b1a720bc364fb",
+      "media_type": "text/markdown",
+      "sha256": "a4449b4a9e9b1a720bc364fbdead26a6158342bbf058c10cfffd0e397cbc2568",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.md"
+    },
+    "clean_json_artifact": {
+      "artifact_id": "artifact:e8dde97cc034817739839ae2",
+      "media_type": "application/json",
+      "sha256": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.json"
+    },
+    "clean_document_artifact": {
+      "document_metadata": {
+        "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
+        "title": null,
+        "parser": "MinerU",
+        "parser_version": "3.4.4",
+        "cleaner": "skill06_markdown_cleaner",
+        "cleaner_version": "0.3.0",
+        "rule_set_version": "scientific-cleaning-rules/0.3.0",
+        "source_markdown_sha256": "6983576cde4114a8dd91ca1e7b8590228df7b3dcc90fee0045ab958b3d875c82",
+        "clean_markdown_sha256": "a4449b4a9e9b1a720bc364fbdead26a6158342bbf058c10cfffd0e397cbc2568"
+      },
+      "clean_markdown_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.md",
+      "clean_json_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.json",
+      "structure_map": {
+        "sections": [
+          {
+            "id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis",
+            "title": "Microbial production of multiple short-chain primary amines via retrobiosynthesis",
+            "level": 1,
+            "content": "Dong In Kim<sup>1,2,5</sup>, Tong Un Chae <sup>1,2,5</sup>, Hyun Uk Kim <sup>2,3,4,5</sup>, Woo Dae Jang <sup>1,2</sup> & Sang Yup Lee <sup>1,2,4✉</sup>\n\nBio-based production of many chemicals is not yet possible due to the unknown biosynthetic pathways. Here, we report a strategy combining retrobiosynthesis and precursor selection step to design biosynthetic pathways for multiple short-chain primary amines (SCPAs) that have a wide range of applications in chemical industries. Using direct precursors of 15 target SCPAs determined by the above strategy, Streptomyces viridifaciens vlmD encoding valine decarboxylase is examined as a proof-of-concept promiscuous enzyme both in vitro and in vivo for generating SCPAs from their precursors. Escherichia coli expressing the heterologous vlmD produces 10 SCPAs by feeding their direct precursors. Furthermore, metabolically engineered E. coli strains are developed to produce representative SCPAs from glucose, including the one producing 10.67 g L<sup>−1</sup> of iso-butylamine by fed-batch culture. This study presents the strategy of systematically designing biosynthetic pathways for the production of a group of related chemicals as demonstrated by multiple SCPAs as examples.\n\nM<sup>icrobial</sup> <sup>production</sup> <sup>of</sup> <sup>industrial</sup> <sup>chemicals</sup> <sup>has</sup> <sup>garnered</sup>much attention as a solution to replace existing petro- much attention as a solution to replace existing petrochemical processes that have caused various environmental problems. To date, the scope of chemicals that are producible using microorganisms continues to expand through advances in systems metabolic engineering<sup>1,2</sup>. Development of a general strategy that allows the construction of a platform strain capable of producing a group of related chemicals can be an efficient approach to expand the portfolio of bio-based products. Such microbial platform strains producing alcohols<sup>3,4</sup>, carboxylic acids<sup>4,5</sup>, esters<sup>6</sup>, and lactams<sup>7,8</sup> have been constructed. In all these studies, promiscuous enzymes that could convert a wide range of substrates into their structurally related chemicals were employed.\n\nShort-chain primary amines (SCPAs) have an alkyl or aryl group in place of a hydrogen atom in ammonia with carbon chain lengths ranging from C1 to C7<sup>9–11</sup> (Supplementary Table 1). SCPAs have a wide range of applications in chemical industries, for example, as a precursor of pharmaceuticals (e.g., antidiabetic and antihypertensive drugs), agrochemicals (e.g., herbicides, fungicides, and insecticides), solvents, and vulcanization accelerators for rubber and plasticizers (Supplementary Table 1). The market size of SCPAs was estimated to be more than 4 trillion US dollars in 2014 (https://www.marketsandmarkets.com/Market-Reports/alkylamines-market-726.html). At present, SCPAs are most commonly produced by dehydrating appropriate alcohols with ammonia using a catalyst under a harsh condition<sup>12</sup>. To the best of our knowledge, despite their industrial importance, biological production of SCPAs has not yet been reported. Only some long-chain primary amines were produced via enzymatic conversions in vitro<sup>13,14</sup>. Thus, it will be of great interest to develop platform microbial strains capable of producing SCPAs from renewable resources.\n\nMicrobial production of multiple SCPAs requires careful examination of metabolic pathways, and could be aided by retrobiosynthesis. Retrobiosynthesis allows a systematic design of a biosynthetic pathway by using a set of biochemical reaction rules that describe chemical transformation patterns between substrate and product molecules at an atomic level<sup>15</sup>. An input molecule (i.e., a target chemical) can be back-transformed to a series of intermediate molecules (metabolites), ultimately toward a precursor metabolite; it can be a single step or multiple steps although the former is obviously preferred. Despite the great potential of retrobiosynthesis in systems metabolic engineering, reports on its experimental applications have been rather limited to only a few, including the assimilation of formaldehyde<sup>16</sup>, and the production of 1,4-butanediol<sup>17</sup>, pinocembrin<sup>18</sup> and 5-aminolevulinic acid<sup>19</sup>.\n\nHere, we report the development of platform Escherichia coli strains for the production of various SCPAs. On the basis of their industrial values, we aim at producing 15 different SCPAs, including methylamine, ethylamine, n-propylamine, iso-propylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine, tertbutylamine, n-amylamine, iso-amylamine, 2-methylbutylamine, cyclopentylamine, cyclohexylamine, aniline, and benzylamine, which cover alkyl and aryl amines (Fig. 1a and Supplementary Table 1). We implement retrobiosynthesis (Fig. 1b) and a subsequent precursor selection step (Fig. 1c, d) to design biosynthetic pathways for these SCPAs. We further demonstrate that additional metabolic engineering of E. coli strains allows the enhanced production of representative SCPAs from glucose, including isobutylamine and ethylamine."
+          },
+          {
+            "id": "results",
+            "title": "Results",
+            "level": 2,
+            "content": "Designing biosynthetic pathways of SCPAs. First, potential biosynthetic pathways of SCPAs were designed using a computational retrobiosynthesis tool we previously developed<sup>20</sup> using a set of reaction rules newly updated in this study (“Methods” and Supplementary Data 1). Retrosynthesis analysis, as a result, showed that all 15 different SCPAs might be produced by a single enzymatic conversion from their corresponding direct precursors (Fig. 1b and Supplementary Data 2). For each SCPA, 4 to 21 precursors were predicted, and could be classified, based on their structures, as amino alcohols, amino acids, various forms of SCPAs, alkyl-CoA, and hydrocarbons. These multiple precursors predicted for the possible biosynthesis of each SCPA were sequentially narrowed down for efficient metabolic engineering experiments. For conveninence, this procedure of narrowing down precursors will be referred to as the precursor selection step (Fig. 1c, d).\n\nAmong the multiple precursors of each SCPA predicted, those classified as amino acids were selected as potential precursors (Fig. 1c and Supplementary Data 2); here, amino acids considered include both proteinogenic and nonproteinogenic amino acids. Because amino acid metabolic pathways are well characterized, and can be efficiently engineered to carry high fluxes<sup>21,22</sup>, it was hypothesized that amino acids would serve as ideal precursors of SCPAs. In contrast, metabolic pathways for the biosynthesis of amino alcohols, SCPAs and alkyl-CoA remain poorly characterized, which makes experimental metabolic engineering relatively more difficult. Hydrocarbons were also excluded although their pathways are well known because it was considered more challenging to microbially produce short-chain hydrocarbons<sup>23,24</sup> than amino acids.\n\nAccording to the retrobiosynthesis predictions, all these amino acid precursors appeared to be convertible by an enzyme with the third-level EC number of 4.1.1.-, which corresponds to the reaction rule #51 (Supplementary Data 1 and 2). Enzymes with the EC number 4.1.1.- are decarboxylases. Since decarboxylation is known to be an irreversible reaction<sup>25</sup>, this reaction was expected to serve as a good driving force for strong metabolic fluxes toward SCPA production; previous studies producing nbutanol<sup>26</sup> and biodiesel<sup>27</sup> showed that irreversible reactions contributed to strong metabolic fluxes toward target chemicals. Among various enzymes having the EC number of 4.1.1.-, valine decarboxylase encoded by the vlmD gene from Streptomyces viridifaciens was selected as a proof-of-concept promiscuous enzyme for the production of SCPAs. Valine decarboxylase was previously reported to convert L-valine, L-leucine and L-isoleucine to three different SCPAs, iso-butylamine, iso-amylamine and 2- methylbutylamine, respectively<sup>28</sup> (Fig. 2). Of course, other enzymes having EC number of 4.1.1.- can also be examined. It was hypothesized that valine decarboxylase, if it is promiscuous enough, might be able to convert other amino acid precursors into the corresponding SCPAs of our interest.\n\nAmong the 4 to 21 direct precursors predicted for the 15 different SCPAs via retrosynthesis, 1 to 5 direct precursors belonged to a group of amino acids. A single amino acid precursor was further selected for each target SCPA for metabolic engineering experiments by comparing relative positions of the functional groups (i.e., amine and carboxyl groups) in the selected amino acid precursors with L-valine, L-leucine, and L-isoleucine of the VlmD (Figs. 1d, 2); the relative position of a functional group refers to the distance between a functional group and a reaction center carbon atom that is subject to chemical transformation. The rationale behind this criterion is that the feasibility of a chemical reaction is affected by the changes in electron configuration caused by different relative positions of a functional group with respect to a reaction center carbon atom<sup>29</sup>. Furthermore, the relative positions of functional groups play important roles in the binding of a substrate in the active site of an enzyme<sup>30</sup>. As a result, the best amino acid precursor for each of 13 SCPAs was identified (Fig. 2). For tert-butylamine and aniline, there were no potentially good amino acid precursors because they did not have functional groups in the same positions as the three VlmD substrates (Fig. 2). Thus, these two SCPAs were no longer considered for production in this study.\n\n![](images/b98fbf341fb3903fca3a98a34bfe5c7b44655e4dd2d8584dbaee4a5936279735.jpg)\nFig. 1 Overall workflow for the microbial production of 15 short-chain primary amines (SCPAs). The workflow implemented in this study largely consists of the following steps: (a) target chemical selection; (b) prediction of precursors and relevant third-level EC numbers for the generation of these precursors; (c) selection of precursors having a suitable molecular type; (d) selection of precursors having a consistent relative position of functional groups; (e) in vitro production using purified enzyme VlmD; (f) in vivo production via feeding of direct precursors; and (g) de novo production from glucose. Amine, carboxylic, hydroxy and CoA groups are presented with yellow, green, blue, and pink circles, respectively. In (c) and (d), these two steps are collectively referred to as the precursor selection step where precursors that meet the selection criteria are presented with a check mark.\n\nIn vitro production of SCPAs. To validate the results of the retrobiosynthesis and precursor selection step for the production of 13 different SCPAs from their direct amino acid precursors by VlmD, in vitro enzyme assays were first performed using the purified His -tagged VlmD (Fig. 1e and Supplementary Fig. 1). VlmD showed in vitro activities on 12 precursors by successfully converting them to their corresponding SCPAs (Fig. 3); one that did not show in vitro activity was the conversion of glycine to methylamine. Also, VlmD consistently showed activities toward L-valine, L-leucine, and L-isoleucine as in the previous $\\mathrm { s t u d y } ^ { 2 8 } .$ Among various substrates, VlmD showed relatively high activity toward L-2-aminobutyrate, L-norvaline, L-valine, L-isovaline, Lisoleucine, and 1-aminocyclohexanecarboxylic acid, all showing near or more than 80% conversion to their respective SCPAs: npropylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine, 2-methylbutylamine and cyclopentylamine, respectively (Fig. 3). The SCPAs produced from the in vitro enzyme assay reactions were further confirmed by liquid chromatography-mass spectrometry (LC-MS) analysis (Supplementary Fig. 2).\n\n![](images/77680a4c79df00c15b256e800a7cd1ffb5998bd324cabed459790060fc3de17e.jpg)\nFig. 2 Relative position of functional groups in the predicted amino acid precursors of 12 SCPAs in comparison with the previously reported substrates of VlmD. Amine and carboxylic groups in the amino acid precursors predicted using retrobiosynthesis for each SCPA are presented with yellow and green circles, respectively, in a dotted black box. Reaction center carbon atoms that are subject to chemical transformations are marked with asterisks. Precursors having the same relative position of functional groups, compared with the previously reported VlmD substrates<sup>28</sup> in dotted blue boxes, are presented with a check mark.\n\nIn vivo production of SCPAs by feeding direct precursors. To develop platform E. coli strains capable of producing 12 different SCPAs in vivo, E. coli PA01 was constructed by transforming E. coli WL3110 with the plasmid pTac15-vlmD<sup>opt</sup> harboring the codonoptimized S. viridifaciens vlmD gene (Figs. 1f, 4 and Supplementary Table 2). By individually feeding $2 { \\bf g } { \\bf L } ^ { - 1 }$ of the 12 corresponding precursors, the PA01 strain produced 10 SCPAs in vivo (Fig. 5): $\\mathsf { 7 6 . 2 8 \\ m g L ^ { - 1 } }$ of ethylamine, $8 7 3 . 3 1 \\mathrm { m g L ^ { - 1 } }$ of n-propylamine, $3 3 7 . 5 7 \\mathrm { \\ m g { L ^ { - 1 } } }$ of iso-propylamine, $9 7 9 . 1 \\check { 7 } \\mathrm { m g L ^ { - 1 } }$ of n-butylamine, $1 2 8 9 . 1 8 \\mathrm { \\ m g { L ^ { - 1 } } }$ of iso-butylamine, $9 3 6 . 7 0 \\mathrm { m g L ^ { - 1 } }$ of (R)-sec-butylamine, 1052.36 mg L<sup>−1</sup> of iso-amylamine, $1 0 1 5 . 7 5 \\mathrm { m g L ^ { - 1 } }$ of 2-methylbutylamine, $2 6 4 . 0 3 \\mathrm { m g L ^ { - 1 } } ^ { \\cdot }$ of cyclopentylamine, and $1 0 5 . 8 2 \\mathrm { \\dot { m g } L ^ { - 1 } }$ of cyclohexylamine. However, n-amylamine and benzylamine were not produced in vivo, which required L-norleucine and L-2-phenylglycine as precursors, respectively; concentrations of L-norleucine and L-2-phenylglycine in the medium after the cultivation marginally decreased to 1.92 and $1 . 8 2 \\mathrm { g L } ^ { - 1 }$ , respectively, from the initial feeding concentration of $2 { \\bf g } { \\bf L } ^ { - 1 }$ (Supplementary Fig. 3), suggesting that these two precursors were poorly utilized by E. coli. Both n-amylamine and benzylamine should be producible if their corresponding precursors are successfully transported into the cell, or overproduced from other carbon sources because VlmD was shown to be active on these precursors according to the in vitro enzyme assays (Fig. 3).\n\na\n![](images/10b0cccc92da79d31387fa48c396701271cf12c19cede3a2c76e9cb97bff8156.jpg)\n\nb\n![](images/bfe2498cda3bf4e5e806c6b0345291d498690d6ec8d0cc2c9d0506087d6eb059.jpg)\n\n![](images/43e52747e98e6931e6da57f0d0c34da6251f994b6e225de43dbbeb8b441e1efd.jpg)\nd\n\nC\n![](images/6d679634aa2deeca227bcde93970712b45cf2b5b7ef3cf862d447c9b5428b02e.jpg)\n\n![](images/5dab084b347db5ca12808e09798be88f5884754a2fb911d0f933903abed726f5.jpg)\n\n![](images/0afaf744d8aea461850764d607af5e31a5c54c59bb55e20a773b0c60602dca2f.jpg)\n\ne\n![](images/387a2bf2e23435568d60cfde198f76e28ec277363f6ba237178c43bb0dedd722.jpg)\n\n![](images/3361415a500777c4cb15097420c5d53c76db7eb16fd62ca2f79951c0738e43b2.jpg)\n\n![](images/69c45328d1186f0e6b9def77e62455ef915e204ee9ff91c4f30fee776d611794.jpg)\n\n![](images/03cdb5c2911ea3031023ceee78900f28eee22c3afbbb80530a3bee7b00efc85f.jpg)\n\n![](images/dfc1b2f7c77e687e8655741abcfc5d19db6f10d23dd5e3c038590d7c531474de.jpg)\n\n![](images/a662e113da2a50f2718ec670a4868b72b3df19ab927188ad9ed183e25a521788.jpg)\n\ng\n![](images/4ed8e90b85eb23083ead0033cb31c3d4436232a18515c15fd06cc338578d4de7.jpg)\n\nh\n![](images/f7692fd41bc47a66fae9b4ca802cef024760fcf3277d136d1e0fa11c1f8f0d09.jpg)\n\n![](images/d75db9225fa559f1f4a7fd9cc3166fdc73b953a1c1628b86c3bad7e2ba3b8850.jpg)\n\n![](images/457959eaf7b6bb4f125be14d7618e75ecf0af391e23fc512c68baba91a4d6246.jpg)\n\n![](images/c741d50097e2cde213a428f7d6cb7cc6b73f4a2fd69f5eff61517e173715d459.jpg)\n\n![](images/d498ea093826a2a83a45ae45022149b78a17d8c6910b1b5f30c9ffe11a0b4552.jpg)\n\n![](images/0c456badd23a77da75ce52a3982498a9b6e2cd7b44b4869ff3d6a367ffe78b97.jpg)\n\nk\n![](images/9b41f2a1f1d29ffff25e4f33502c7afb734597d9f77b54a971de8955b5f42b5e.jpg)\n\n![](images/6f4577974d61c7f491b019ef1a62f3552f0b4c590b9725b481c8eb93d91409d4.jpg)\n\n一\n![](images/acab9237176d76b2b57f8a179e3c3e555780bd110aa5ef61427af98d1b106da8.jpg)\n\n![](images/d7598ddb1ce9c2ae5971f6efe73f47c382a5d5bcdeaf86ec4cdfa19c64f014b9.jpg)\n\n![](images/f00aaa450a4dba48a2d11d983146e8da19b519f750329bd6b8d4075ee3e6f77a.jpg)\nFig. 3 In vitro enzyme assay of VlmD producing 12 SCPAs. High-performance liquid chromatography (HPLC) chromatograms of in vitro enzyme assays conducted using VlmD, which converted: (a) L-alanine to ethylamine; (b) L-2-aminobutyrate to n-propylamine; (c) 2-aminoisobutyrate to iso-propylamine; (d) L-norvaline to n-butylamine; (e) L-valine to iso-butylamine; (f) L-isovaline to (R)-sec-butylamine; (g) L-norleucine to n-amylamine; (h) L-leucine to isoamylamine; (i) L-isoleucine to 2-methylbutylamine; (j) 1-aminocyclopetanecarboxylic acid to cyclopentylamine; (k) 1-aminocyclohexanecarboxylic acid to cyclohexylamine; and (l) L-2-phenylglycine to benzylamine. Black and red lines in the left graph for each SCPA indicate chromatograms from in vitro enzyme assays without VlmD (control) and with VlmD, respectively. Green bar graphs indicate percentage (%) of amino acid precursors converted to their corresponding SCPAs by the VlmD after two hours of enzymatic reaction at $3 7 ^ { \\circ } \\mathsf { C } .$ Experiments were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.\n\nDe novo production of SCPAs from a renewable carbon source. Having confirmed the possibility of microbial production of SCPAs, we next constructed engineered strains for the production of SCPAs from glucose as a sole carbon source and without the external feeding of the corresponding amino acid precursors (Fig. 1g). We selected ethylamine, iso-butylamine and iso-amylamine as proof-of-concept target SCPAs for the de novo production. First, for the de novo biosynthesis of ethylamine from glucose, alanine dehydrogenase, which converts pyruvate to Lalanine, was introduced to E. coli PA01 by overexpressing the Geobacillus stearothermophilus alaD gene<sup>31</sup>, which was also codon-optimized for the heterologous expression in E. coli. The resulting E. coli EA01 strain simultaneously overexpressing the codon-optimized vlmD and alaD genes was able to produce 2.89 mg $\\mathrm { L } ^ { - 1 }$ of ethylamine from glucose (Fig. 6a and Supplementary Table 2). It should be noted that the EA01 strain secreted 22.78 mg L<sup>−1</sup> of L-alanine as a byproduct, which was greater than the titer of ethylamine (Fig. 6a). This incomplete conversion seems to have been caused by the insufficient activity of VlmD toward Lalanine, which did not convert all the L-alanine molecules toward ethylamine. Even after employing an engineered VlmD having higher activity for this reaction, it will be important to balance the metabolic fluxes between the generation of a precursor (e.g., Lalanine) and the conversion of a precursor into its product (e.g., ethylamine).\n\nFor the production of iso-butylamine from glucose, the E. coli iBA01 strain was constructed by transforming the L-valine-overproducing E. coli Val (pKBRilvBNCED) strain<sup>21</sup>, which we previously developed, with pTac15-vlmD<sup>opt</sup> for the additional expression of the codon-optimized vlmD gene. The resulting iBA01 strain produced 1155.74 mg $\\mathrm { L } ^ { - 1 }$ of iso-butylamine from glucose (Fig. 6b and Supplementary Table 2). In contrast to the EA01 strain, the iBA01 strain did not produce L-valine as a byproduct (Fig. 6b); the production titer of iso-butylamine (1155.74 mg L<sup>−1</sup>; equivalent to 15.80 mM) obtained with the iBA01 strain was even greater than that of L-valine (524.91 mg L<sup>−1</sup>; equivalent to 4.48 mM) obtained with the NC02 strain, a control strain which is the Val (pKBRilvBNCED) strain harboring an empty plasmid without the vlmD gene (Fig. 6b and Supplementary Table 2). This observation suggests that VlmD has a strong driving force toward the isobutylamine production. However, a critical bioprocess problem that needs to be addressed for this strain is that the Val strain is auxotrophic to L-isoluecine, L-leucine, and D-pantothenate because the corresponding biosynthetic genes, ilvA, leuA and panB, respectively, were deleted to remove the competing pathways during the course of strain optimization<sup>21</sup>; we tackle this problem below.\n\n![](images/d90c99b0b9622ab6f102b98df4e6922cf80eacc5c5583cc833f2e85df745eb64.jpg)\nFig. 4 Biosynthetic reactions constructed in E. coli for the in vivo production of 12 SCPAs. These 12 SCPAs were the ones shown to be produced by VlmD in vitro (dotted boxes). Amine and carboxylic groups shown in each dotted box are presented with yellow and green circles, respectively. Reaction center carbon atoms that are subject to chemical transformations are marked with asterisks. Glycolysis is indicated with a red background, which leads to the biosynthesis of 12 amino acid precursors. Multiple reactions are presented with two or more arrows.\n\n![](images/e7ca3dbea2edb5fa9995956d5adf590da8bbffee00048be2a9e00f564384ec25.jpg)\nFig. 5 In vivo production of 12 SCPAs via feeding of their direct precursors. Production titers of 12 SCPAs from E. coli expressing the codon-optimized Streptomyces viridifaciens vlmD (PA01 strain) are presented where direct precursors of the SCPAs were individually provided in the medium. All the experiments for the production of each SCPA were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.\n\nFinally, for the production of iso-amylamine from glucose, leuABCD genes, all involved in the L-leucine biosynthesis, were additionally overexpressed in the iBA01 strain to increase the precursor, L-leucine, resulting in the iAA01 strain. The iAA01 strain produced 93.23 mg L<sup>−1</sup> of iso-amylamine from glucose (Fig. 6c and Supplementary Table 2). Along with isoamylamine, 991.23 and 759.89 mg L<sup>−1</sup> of L-leucine and isobutylamine, respectively, were produced as byproducts (Fig. 6c and Supplementary Fig. 4). Production of L-leucine was likely attributed to the suboptimal conversion of L-leucine to isoamylamine by VlmD. Meanwhile, accumulation of iso-butylamine was due to the preferred activity of VlmD toward L-valine, which might have been generated from 2-ketoisovalerate, despite the overexpression of the leuABCD genes. Indeed, the NC03 strain, a L-leucine-producing strain without the vlmD gene, produced $8 9 2 . 6 7 \\mathrm { m g L ^ { - 1 } }$ of L-valine as a byproduct (Supplementary Fig. 4). Taken together, the successful de novo production of three representative SCPAs suggests that it will also be possible to biosynthesize other SCPAs using the platform E. coli strains from renewable resources through additional relevant metabolic engineering. A next challenge is to overcome the problems that were identified from the de novo production studies, including the iBA01 strain’s auxotrophies and the suboptimal activity of VlmD toward L-alanine in the EA01 strain.\n\na\n![](images/90b5f58b1b7a4bd6b5ddccfe3e879dd911ebbef7d8a95717fabd88d20bff2efb.jpg)\n\n![](images/3f88b6f0395e9751b5e2ae38b56a3d2f3e44ba826950396b613d022b5b04a511.jpg)\n\nb\n![](images/9d7cae67c9fbfe44d92a066622c052f9039ef12762f0f7ac9a120bfb92ba8b7a.jpg)\n\n![](images/92096ff36f38d0a5cda50d3c54483b9a755ee2d52cdb4a70f57410a89d03b377.jpg)\n\n![](images/7a55ab8e2efd6edc6689e76e093853399f211318c8357fba8a5e4f53c9857c20.jpg)\n\n![](images/2e5f6ccc7df78062594d71c0f48181cf1883429e37023040723f658f06af6214.jpg)\n\nFig. 6 De novo production of three SCPAs from glucose as a sole carbon source. Ethylamine, iso-butylamine, and iso-amylamine were produced from glucose through additional engineering of E. coli (Supplementary Table 2): (a) ethylamine from the NC01 (control) and EA01 strains; (b) iso-butylamine from the NC02 (control) and iBA01 strains; and (c) iso-amylamine from the NC03 (control) and iAA01 strains. The concentrations of amino acid precursors and their corresponding SCPAs are presented with gray and green bars, respectively. Amino acid precursors for the gray bars in (a, b, and c) correspond to L-alanine, L-valine, and L-leucine, respectively. Overexpressed genes are indicated with corresponding gene names. Amplified reactions are shown with thick arrows. Presented genes encode the following enzymes: alaD, alanine dehydrogenase; ilvB, acetohydroxy acid synthase I large subunit; ilvC, ketol-acid reductoisomerase; ilvD, dihydroxy-acid dehydratase; ilvE, branched-chain-amino-acid aminotransferase; ilvN, acetohydroxy acid synthase I small subunit; leuA, 2-isopropylmalate synthase; leuB, 3-isopropylmalate dehydrogenase; leuC, 3-isopropylmalate dehydratase large subunit; leuD, 3- isopropylmalate dehydratase small subunit; and vlmD, valine decarboxylase. The alaD<sup>opt</sup> and vlmD<sup>opt</sup> genes indicate codon-optimized alaD and vlmD genes, respectively. All the experiments for the SCPA productions were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.\n\na\n![](images/4b749d6fe007db8e95abd1cf6b4bd7def50e618ce18510a184e548f6d7859798.jpg)\n\nb\n![](images/09d0844dd0d6f8244cb9bd85dc36eff45e925638e45a071d439224f5b18e0d41.jpg)\nFig. 7 Fed-batch fermentations for the enhanced production of iso-butylamine. a Fermentation profile of the iBA01 strain, which was cultured in the NM3 medium that includes L-isoleucine, L-leucine, and D-pantothenate. b Fermentation profile of the iBA02 strain, which was cultured in the same NM3 medium as the iBA01 strain, but without L-isoleucine, L-leucine, and D-pantothenate. Another fed-batch fermentation profile of the iBA02 strain, which was conducted for the reproducibility, is available in Supplementary Fig. 5. Cell density $( \\mathrm { O D } _ { 6 0 0 } )$ , glucose concentration, and iso-butylamine concentration are presented with black, gray, and green circles, respectively. Source data are provided as a Source Data file.\n\nEnhanced production of iso-butylamine. Because the iBA01 strain showed efficient iso-butylamine production without forming L-valine as a byproduct in flask cultivation (Fig. 6a), this strain was subjected to fed-batch fermentation using NM3 medium (see Methods for details). As a result, $8 . 6 3 \\mathrm { g L ^ { - 1 } }$ of isobutylamine was produced with a productivity of $0 . \\dot { 2 } 1 \\mathrm { g } \\mathrm { L } ^ { - 1 } \\mathrm { h } ^ { - 1 }$ and a yield of $0 . { \\dot { 0 } } 6 2 { \\mathrm { g } } { \\mathrm { g } } ^ { - 1 }$ (Fig. 7a). This production titer corresponds to 6.50-fold increase, compared to the titer of $1 . 1 5 \\mathrm { g L } ^ { - 1 }$ obtained in flask culture.\n\nAs noted above, however, the iBA01 strain is auxotrophic for Lisoluecine, L-leucine, and D-pantothenate, which poses a problem in industrial fermentation. To solve this problem, instead of knocking out the ilvA, leuA, and panB genes as in Val (pKBRilvBNCED) strain<sup>21</sup>, we knocked down the expression of these three genes by employing synthetic small regulatory RNAs (sRNAs)<sup>32</sup>. As a result, the E. coli iBA02 strain was constructed by transforming the pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuA-panB into the WLGBH (pKBRilvBNCED) strain (Supplementary Table 2). The WLGBH strain is a parental strain of the Val strain, having the intact ilvA, leuA, and panB genes. Fed-batch fermentation of the iBA02 strain showed the maximum $\\mathrm { O D } _ { 6 0 0 }$ of 60.5 without the supplementation of L-isoluecine, L-leucine, and D-pantothenate (Fig. 7b); this value is 59.6% higher than the maximum cell density $( \\mathrm { O D } _ { 6 0 0 }$ of 37.9) obtained with the iBA01 strain with Lisoluecine, L-leucine, and D-pantothenate supplementation. More importantly, the iBA02 strain was able to produce $1 0 . 6 7 \\mathrm { g L ^ { - 1 } }$ of iso-butylamine with a productivity of $0 . 3 6 { \\dot { \\bf g } } \\mathrm { L } ^ { - 1 } \\mathrm { h } ^ { - 1 }$ , without the amino acid and vitamin supplementation, although the yield was slightly decreased to $0 . 0 5 7 \\bar { \\bf g } \\bar { \\bf g } ^ { - 1 }$ (Fig. 7b). These proof-of-concept experiments suggest that the SCPA-producing platform strain can be further metabolically engineered to overproduce SCPAs of interest.\n\nEnzyme engineering for the enhanced production of ethylamine. Among the 12 different SCPAs successfully produced in vitro, VlmD showed relatively low efficiencies in converting Lalanine, 2-aminoisobutyrate, L-norleucine, and L-2-phenylalanine (Fig. 3). To see if this problem can be solved, rational protein engineering of VlmD was conducted to improve its activity toward L-alanine as a proof-of-concept target. L-Alanine was chosen because VlmD showed the lowest in vitro L-alanine conversion efficiency, while the resulting product ethylamine is one of the most widely used ${ \\mathrm { S C P A s } } ^ { 1 2 }$ (Fig. 3). VlmD was first subjected to the homology modeling and docking simulations. Because a 3D crystal structure of VlmD was not available, a homology model of VlmD was generated using glutamic acid decarboxylase (GAD67) from Homo sapiens (PDB ID: 2OKJ)<sup>33</sup> (Methods). Since VlmD requires pyridoxal 5<sup>′</sup>-phosphate (PLP) as a cofactor to catalyze the decarboxylation reaction, PLP-L-alanine was considered in the docking simulation (Fig. 8a). The binding mode of PLP-L-alanine in the homology model of VlmD was observed to be similar to the co-crystal structure of GAD67, which involves the binding of an original ligand PLP-γ- aminobutyric acid (PLP-GABA) (Supplementary Fig. 6); the similar binding modes indicate that residues in the active site of GAD67, which interact with PLP-GABA, can also be considered for the homology model of VlmD. Six residues in the active site of the VlmD homology model appeared to be interacting with L-alanine of PLP-L-alanine. Thus, these six residues were selected as target residues for mutations. For their candidate substitutes, amino acids having molecular sizes greater than the corresponding native six target residues were considered because L-alanine is smaller than the preferred substrates (i.e., L-valine, L-leucine, and L-isoleucine) of VlmD<sup>28</sup>. Having larger residues in the active site will reduce the active site volume, thereby increasing the chance of interaction between the active site and L-alanine of the incoming ligand (Fig. 8a). As detailed in “Methods”, the following 12 single mutations were suggested for the six target residues: V94I, V94L, V114I, V114L, T397A, T397V, W399L, S431T, S431V, S431L, D515K, and D515N.\n\n![](images/1a26051d777d8bbd882bf7d0b66b682e95b352c9789cf58ebce5c6ae99899ee8.jpg)\n\n![](images/23c215a5ddeb2bd288fa022bbe7f8a4c356ef59a69e9583ae5ab17519deb7163.jpg)\nFig. 8 Protein engineering of VlmD for the enhanced production of ethylamine. a Binding model of PLP- -alanine in the homology model of VlmD. The homology model was generated using glutamate decarboxylase from Homo sapiens as a template. Potential six target residues for enzyme engineering are shown in cyan. b The concentrations of ethylamine produced by flask cultures of the EA01 strain and its derivative strains having one of the 12 different VlmD variants (Supplementary Table 2). Experiments were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.\n\nTo examine the effects of VlmD variants on ethylamine production, 12 engineered E. coli strains were constructed by overexpressing each vlmD variant and the alaD gene, both codonoptimized, in the WL3110 strain (Supplementary Table 2). Flask cultivation of the 12 resulting engineered strains showed that the EA01-V94I strain equipped with the V94I mutant of VlmD produced 5.69 mg L<sup>−1</sup> of ethylamine from glucose. Although still low, this titer is 96.9% higher than that (2.89 mg L<sup>−1</sup>) obtained with the EA01 strain harboring the native VlmD (Fig. 8b). This result suggests that the activity of VlmD toward other substrates, especially those with a poor conversion, can also be improved via rational protein engineering for the enhanced SCPA production."
+          },
+          {
+            "id": "discussion",
+            "title": "Discussion",
+            "level": 2,
+            "content": "In this study, we developed the platform E. coli strains for the biobased production of diverse SCPAs. The application of the combined retrobiosynthesis and precursor selection step allowed the identification of the best direct precursor for each SCPA to be produced and also the third-level EC numbers of candidate enzymes catalyzing the reaction of interest. After confirming the successful in vitro conversion of the direct precursors to SCPAs and in vivo SCPA production by the precursor feeding, the platform E. coli strains were further engineered to produce the direct amino acid precursors from glucose for the de novo production of SCPAs. These engineered E. coli strains expressing the heterologous valine decarboxylase gene (vlmD) were able to produce three proof-of-concept SCPAs from glucose, demonstrating the possibility of bio-based production of diverse SCPAs from renewable resources. To the best of our knowledge, this is the first study on the bio-based production of SCPAs.\n\nFurther metabolic engineering was performed to increase the precursor supply and the key enzyme activity (e.g., VlmD in this study) toward the enhanced production of iso-butylamine and ethylamine as examples, respectively. In the case of isobutylamine, gene knockdowns via synthetic sRNA technology for the removal of auxotrophies together with fermentation optimization indeed further increased the titer and productivity. Systems metabolic engineering strategies established for amino acids<sup>21,22</sup> will be useful to further boost the production of SCPAs. For ethylamine, the enzymatic activity of VlmD was enhanced by rational protein engineering that involved the implementation of homology modeling and docking simulation. Expressing a VlmD mutant (V94I) suggested from this strategy led to the improved ethylamine production. Although developing a strategy combining retrobiosynthesis and precursor selection step to design biosynthetic pathways was the main objective of this study, the results of the proof-of-concept metabolic and enzyme engineering studies described above suggest that the production of SCPAs can be further enhanced by additional engineering together with fermentation optimization.\n\nTaken together, we developed a strategy combining retrobiosynthesis for the identification of possible precursor metabolites and the best promiscuous enzyme (or at least enzyme candiates), the precursor selection step to determine the best precursor molecules (i.e., based on molecular type and relative position of functional groups) with the best enzyme identified, confirmation of in vitro and in vivo activities, and construction of metabolically engineered strains for the de novo production of SCPAs from glucose. This strategy will be useful for the production of other chemicals, especially a group of related chemicals."
+          },
+          {
+            "id": "methods",
+            "title": "Methods",
+            "level": 2,
+            "content": "Retrobiosynthesis for producing multiple SCPAs. A previously developed inhouse computational retrobiosynthesis tool<sup>20</sup> was used to generate all possible precursors of target SCPAs. To run this tool, 84 reaction rules were constructed by manually extracting meaningful chemical transformation patterns on the basis of the third-level enzyme commission (EC) numbers from all the biochemical reactions available at the KEGG database<sup>34</sup>. These reaction rules are described in SMiles ARbitrary Target Specification (SMARTS), a chemical language describing structural patterns of molecules (Supplementary Data 1). While our in-house tool was used in this study, retrobiosynthesis using these updated reaction rules men tioned above can also be conducted using the popular ChemAxon Reactor<sup>35</sup> (JChem 19.9.0, 2019; http://www.chemaxon.com/) to generate precursors of a given target chemical. ChemAxon Reactor takes a set of reaction rules and a target\n\nchemical as inputs, which are presented in SMARTS and simplified molecularinput line-entry system (SMILES), respectively. The predicted precursors were exported in the SMILES format. In this study, all possible precursors of the target 15 SCPAs were generated using the in-house retrobiosynthesis tool products by using the 84 reaction rules.\n\nPrecursor selection step. The molecular types of the retrobiosynthesis-generated precursors were first examined by retrieving information in the ‘MeSH Tree’ of each precursor available at PubChem<sup>36</sup>. This information was accessed via Pub-ChemPy (v1.0.4). Upon selection of the precursors having the molecular type of amino acid, the relative position of their functional groups was examined next, in comparison with the previously reported substrates (i.e., L-valine, L-leucine, and L-isoleucine) of VlmD. Reaction decoder tool (RDT) $( \\mathbf { v } 1 . 5 . 1 ) ^ { 3 7 }$ was used for this purpose. These two steps are implemented in our source code at https://bitbucket. org/kaistsystemsbiology/retro-precursor-selection.\n\nEnzyme purification and in vitro enzyme assay. E. coli BL21(DE3) harboring pET-his -vlmD<sup>opt</sup> was cultured for the overexpression of N-terminus His -tagged VlmD in 200 mL of LB medium at 37 °C. The expression of his -tagged and codonoptimized vlmD gene was induced by adding 1 mM of isopropyl $3 \\mathrm { - } \\mathrm { D - } 1 \\mathrm { - }$ thiogalactopyranoside (IPTG) after 3 h. Cells were collected after additional 5 h of cultivation by centrifugation at 2090 × g for 10 min. Harvested cells were suspended in 50 mL of equilibrium buffer that consists of 50 mM $\\mathrm { N a } _ { 3 } \\mathrm { P O } _ { 4 }$ and 300 mM NaCl (pH 7.0 by HCl). The cells were disrupted using ultrasonic homogenizer (VCX-600; Sonics and Materials Inc., Newtown, CT) with a titanium probe 40 T (Sonics and Materials Inc.). Cell debris was separated by centrifugation at 15,044 × g and 4 °C for 10 min, and the resulting supernatants were loaded onto Talon metal affinity resin (Clontech, Mountain View, CA). Equilibrium buffer supplemented with 7.5 mM of imidazole (10 mL) was subsequently flown to wash the resin. As a next step, equilibrium buffer supplemented with 150 mM of imidazole (5 mL) was flown through the resin to elute His -tagged VlmD. Finally, the buffer solution of the eluted protein was changed to 50 mM potassium phosphate buffer (pH 7.5) by using Amicon Ultra-15 Centricon (Millipore, Beilerica, MA) with a pore size of 10 kDa. The concentration of the purified VlmD was measured by the Bio-Rad Protein Assay Kit (Bio-Rad, Hercules, CA) using bovine serum albumin (BSA) as a standard. For the in vitro enzyme assay, 50 mM potassium phosphate buffer (pH 7.5) was used, and supplemented with 1 mM of an amino acid precursor (i.e., glycine, L-alanine, L-2-aminobutyric acid, 2-aminoisobutyric acid, L-norvaline, L valine, L-isovaline, L-norleucine, L-leucine, L-isoleucine, 1- aminocyclopentanecarboxylic acid, 1-aminocyclohexanecarboxylic acid, and L-2- phenylglycine), 0.1 mM of PLP, and 150 μg $\\dot { \\mathrm { m L ^ { - 1 } } }$ of the purified His -tagged VlmD. The enzymatic reaction was carried out for 2 h at $3 7 ^ { \\circ } \\mathrm { C } .$ All the in vitro enzyme assays were conducted in triplicates.\n\nConstruction of bacterial strains and plasmids. All bacterial strains and plasmids used in this study are listed in Supplementary Table 2. E. coli NEB 10-beta (New England Biolabs, Ipswich, MA) strain was used for gene cloning experiments. E. coli WL3110 strain<sup>21</sup>, which is a lacI knockout mutant of E. coli W3110, was used as a host strain for the production of SCPAs. All the DNA manipulations were performed using standard procedures<sup>38</sup>. Cells were grown in Luria-Bertani (LB) broth or on LB plates (1.5%, w/v, agar) for the construction of plasmids and strains. When needed, antibiotics were added to the medium at the following concentrations: kanamycin (Km), 25 μg mL<sup>−1</sup>; and ampicillin (Ap), 50 μg mL<sup>−1</sup>.\n\nAll the primers used in this study were synthesized at Genotech (Daejeon, Korea), and are listed in Supplementary Table 3. The codon-optimized S. viridifaciens vlmD gene was synthesized at Genscript (Piscataway, NJ), and the codon-optimized G. stearothermophilus alaD gene was synthesized at Cosmogenetech (Seoul, Korea). DNA sequences of the codon-optimized genes are shown in Supplementary Table 4. Plasmid pKBRilvBNCED was obtained from the previous study<sup>21</sup>. The codon-optimized vlmD gene from S. viridifaciens was amplified by PCR using the primers vlmD\\_F1 and vlmD\\_R1. The amplified gene fragment was inserted into pTac15K at the EcoRI and KpnI sites to construct pTac15-vlmD<sup>opt</sup>. To construct pET-his -vlmD<sup>opt</sup>, the codon-optimized vlmD gene was amplified by PCR using the primers vlmD\\_F2 and vlmD\\_R2, and the resulting fragment was inserted into pET-22b(+) at the NdeI and EcoRI sites. To construct pTac15-vlmD<sup>opt</sup>-alaD<sup>opt</sup>, the codon-optimized G. stearothermophilus alaD gene was amplified using the primers alaD\\_F1 and alaD\\_R1. The amplified gene fragment was inserted into pTac15-vlmD<sup>opt</sup> at KpnI and PstI sites. To construct pTac15-alaD<sup>opt</sup>, the codon-optimized G. stearothermophilus alaD gene was amplified using the primers alaD\\_F2 and alaD\\_R2, and the amplified gene fragment was inserted into pTac15K at the EcoRI site. The leuABCD gene fragment was generated by two sequential PCRs. The first PCR was conducted using the primers leuABCD\\_F1 and leuABCD\\_R1 with gDNA of E. coli W3110 as a template. The resulting amplified fragment was used as a template for the next PCR using the primers leuABCD\\_F2 and leuABCD\\_R2. This fragment was inserted into pTac15-vlmD<sup>opt</sup> at its PstI site to generate pTac15-vlmD<sup>opt</sup>-pTac-leuABCD. Plasmid pTac15-leuABCD was constructed by site-directed mutagenesis of pTac15-vlmD<sup>opt</sup>-pTac-leuABCD using inv\\_F1 and inv\\_R1 as primers.\n\nThe plasmids expressing synthetic sRNAs were constructed using Gibson assembly<sup>39</sup> as follows. The DNA fragment of plasmid backbone was prepared by inverse PCR with inv\\_F2 and inv\\_R2 primers using the plasmid pTac15-vlmD<sup>opt</sup> as a template. The DNA fragment of anti-ilvA expression cassette was prepared by PCR with anti-ilvA\\_F and anti-ilvA\\_R primers using the previously constructed plasmid<sup>32</sup> pWAS-anti-ilvA as a template. The DNA fragments of plasmid backbone and anti-ilvA expression cassette were ligated by Gibson assembly to construct pTac15-vlmD<sup>opt</sup>-anti-ilvA. Similiarly, pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuA was constructed by Gibson assembly of the DNA fragments of plasmid backbone (generated by inverse PCR with inv\\_F3 and inv\\_R3 primers using pTac15- vlmDopt-anti-ilvA as a template) and anti-leuA expression cassette (generated by PCR with anti-leuA\\_F and anti-leuA\\_R primers using the previously constructed plasmid<sup>32</sup> pWAS-anti-leuA as a template). Lastly, pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuApanB was constructed by Gibson assembly of the DNA fragment of plasmid backbone (generated by inverse PCR with inv\\_F4 and inv\\_R4 primers using pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuA as a template) and anti-panB expression cassette (generated by PCR with anti-panB\\_F and anti-panB\\_R primers using the previously constructed plasmid<sup>32</sup> pWAS-anti-panB as a template). Lastly, the plasmids pTac15-vlmD<sup>opt</sup>-XYZ-alaD<sup>opt</sup> (X and Z represents original and replaced amino acid, respectively, in Y<sup>th</sup> residue of VlmD) were constructed by site-directed mutagenesis of pTac15-vlmD<sup>opt</sup>-alaD<sup>opt</sup> using XYZ\\_F and XY\\_R as primers. For an example, pTac15-vlmD<sup>opt</sup>-V94I-alaD<sup>opt</sup> was constructed by site-directed mutagenesis of pTac15-vlmD<sup>opt</sup>-alaD<sup>opt</sup> using V94I\\_F and V94\\_R as primers.\n\nCultivation condition. The PA01 strain, E. coli WL3110 expressing the S. viridifaciens vlmD gene, was cultured in the MR medium (pH 7.0) supplemented with $1 0 \\mathrm { { \\dot { g } L ^ { - 1 } } }$ of glucose and $2 { \\bf g } { \\bf L } ^ { - 1 }$ of one of the 12 different amino acid precursors mentioned above. The EA01 strain producing ethylamine was cultured in the MR medium (pH 7.0) supplemented with 20 $\\mathrm { g L } ^ { - 1 }$ of glucose. The MR medium (pH 7.0) contains (per liter): 6.67 $\\mathrm { \\Delta g K H _ { 2 } P O _ { 4 } , 4 \\bar { g } }$ (NH ) HPO , 0.8 g $\\mathrm { M g S O _ { 4 } { \\cdot } 7 H _ { 2 } O , 0 . 8 ~ g }$ citric acid, and 5 mL trace metal solution<sup>40</sup>. The trace metal solution contains (per liter of 0.5 M HCl): 10 g FeSO ·7H O, 2 g CaCl , 2.2 g ZnSO ·7H O, 0.5 g MnSO ·4H O, 1 g CuSO ·5H O, 0.1 g $( \\mathrm { N \\bar { H } _ { 4 } } ) _ { 6 } \\mathrm { M o _ { 7 } O _ { 2 4 } \\cdot ^ { - 4 } H _ { 2 } O } ,$ and 0.02 g $\\mathrm { N a } _ { 2 } \\mathrm { B } _ { 4 } \\mathrm { O } _ { 7 } { \\cdot } 1 0 \\mathrm { H } _ { 2 } \\mathrm { O } .$ Stock solutions containing glucose, $\\mathrm { M g S O _ { 4 } { \\cdot } 7 H _ { 2 } O , }$ and one of the 12 different amino acid precursors were sterilized separately, and added to the MR medium later, before cell cultivation. Seed cultures were grown in a 25 mL test tube containing 10 mL of LB medium at $3 7 ^ { \\circ } \\mathrm { C } .$ After 8 h of cultivation, 1.5 mL of the seed culture was transferred to a 300 mL baffled flask containing 50 mL of culture medium, then cultivated at 37 °C and 200 rpm in a shaking incubator. The PA01 strain was cultured for 36 h, and the EA01 strain was cultured for 48 h. After cultivation, supernatants were collected for further analyses.\n\nThe iBA01 strain producing iso-butylamine was cultured in the NM2 medium previously reported<sup>21</sup>. The iAA01 strain producing iso-amlyamine was cultured in the NM2 medium without L-leucine. The NM2 medium contains per liter: 50 g glucose, $3 0 \\mathrm { g \\ C a C O _ { 3 } , 1 2 . 5 g \\ ( N H _ { 4 } ) _ { 2 } S O _ { 4 } , 4 . 0 g \\ K H _ { 2 } P O _ { 4 } , 2 . 0 g \\ M g S O _ { 4 } \\cdot 7 H _ { 2 } O , 2 g \\ L a O _ { 4 } , 2 . 0 g \\ L a O _ { 4 } , 2 . 0 g \\ L a O _ { 4 } \\cdot 7 H _ { 2 } O , }$ yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.425 mg sodium Dpantothenate, and 5 mL trace metal solution. Seed cultures were prepared in the same manner as described above. After 8 h of cultivation, 1.5 mL of the seed culture was transferred to a 300 mL baffled flask containing 50 mL of culture medium, then cultivated for 48 h at 30 °C and 200 rpm in a shaking incubator. All the flask cultures were repeated three times.\n\nFed-batch fermentation of the iBA01 strain was performed in a 6.6 L bioreactor (Bioflo 3000; New Brunswick Scientific Co., Edison, NJ) containing 2 L of NM3 medium. The NM3 medium contains per liter: 20 g glucose, 20 g $\\mathrm { ( N H _ { 4 } ) _ { 2 } S O _ { 4 } } , 2 \\mathrm { g }$ KH PO , 0.4 g MgSO ·7H O, 1.6 g NaCl, 5 g yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.362 mg sodium D-pantothenate, and 5 mL trace metal solution. Seed cultures were prepared by transferring 0.5 mL of culture broth (grown in 10 mL LB medium at $3 7 ^ { \\circ } \\mathrm { C } )$ into a 250 mL Erlenmeyer flask containing 50 mL LB medium, and cultured for 7 h at $3 0 ^ { \\circ } \\mathrm { C }$ in a shaking incubator at 200 rpm. The seed culture (200 mL)was inoculated to a bioreactor. Fermentation was performed at $3 0 ^ { \\circ } \\mathrm { C } ,$ and the culture pH was adjusted to 7.0 by adding 28% (v/v) ammonia solution. Air was constantly flowed at 2 L min<sup>−1</sup>. The dissolved oxygen (DO) level was kept at 40% of air saturation by automatically controlling the agitation speed from 200 to 1000 rpm and by supplying pure oxygen when the maximum agitation speed of 1000 rpm was reached. Feeding solution contained 400 $\\mathrm { g } \\mathrm { L } ^ { - 1 }$ of glucose, 2 $0 \\mathrm { g L } ^ { - 1 }$ of KH PO , 2.1 g L<sup>−1</sup> of L-isoleucine, $2 . 1 \\mathrm { g } \\mathrm { L } ^ { - 1 }$ of L-leucine, and 3.62 $\\mathrm { m g L ^ { - 1 } }$ of sodium D-pantothenate. A total of 100 mL of the feeding solution was manually added when residual glucose concentration was less than $3 \\mathrm { g } \\mathrm { L } ^ { - 1 }$ . Fed-batch fermentation of the iBA02 strain was performed in the same condition as the iBA01 strain except that L-isoleucine, L-leucine, and sodium D-pantothenate were excluded in the medium and feeding solution.\n\nAnalytical procedures. Cell growth was monitored by measuring the optical density at 600 nm $\\mathrm { ( O D _ { 6 0 0 } ) }$ using Ultrospec 3000 spectrophotometer (Amersham Biosciences, Uppsala, Sweden). Glucose concentration was determined using the glucose analyzer (model 2700 STAT; Yellow Springs Instrument, Yellow Springs, OH). Concentrations of the 13 SCPAs (i.e., methylamine, ethylamine, n-propylamine, iso-propylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine n-amylamine, iso-amylamine, 2-methylbutylamine, cyclopentylamine, cyclohexylamine, and benzylamine) were measured using high-performance liquid chromatography (1100 Series HPLC; Agilent Technologies, Santa Clara, CA). Automatic precolumn derivatizations of the 13 SCPAs were performed by using o-phthaldialdehyde (OPA; Sigma, St. Louis, MO) in HPLC. The OPA derivatization reagent was prepared as follows<sup>41,42</sup>. The OPA reagent was prepared by dissolving 0.20 g of OPA in 9.0 mL of methanol, followed by adding 1.0 mL of 0.40 M (pH 9.0) borate buffer and 160 μL of 2-mercaptoethanol (a reducing reagent). All the culture broth samples, standard chemicals, OPA reagent, and borate buffer were filtered through a 0.2 μm PVDF syringe filter (FUTECS, Daejeon, Korea). For the derivatization, 1 μL of the sample was mixed with 5 μL of 0.40 M (pH 9.0) borate buffer. Following the addition of 1 μL of the OPA reagent, the mixture was injected into HPLC equipped with the Eclipse plus C18 column (4.6 × 150 mm; Agilent Technologies) operated at 25 °C. The mobile phase consists of solvent A (1.4 g L<sup>−1</sup> of Na HPO , 3.8 g L<sup>−1</sup> of Na B O ·10H O, and 8 mg L<sup>−1</sup> of NaN ; adjusted to pH 7.2 with HCl) and solvent B (45% acetonitrile, 45% methanol, and 10% H O, in vol%), and was flown at 1.2 mL min<sup>−1</sup>. The following gradients were applied: 0–0.5 min, 100% solvent A; 0.5–18 min, a linear gradient of B from 0 to 57%; 18–26 min, a linear gradient of solvent B from 57 to 100%; 26–29 min, 100% solvent B; 29-30 min, a linear gradient of solvent B from 100 to 0% (all in vol%). The derivatized SCPAs were detected by a variable wavelength detector (G1314A; Agilent Technologies) at 230 nm. The raw data were collected using Agilent ChemStation 4.03, and analyzed using Microsoft Excel 2013 (15.0.5111.1000) and OriginPro 2019.\n\nFor mass spectral analysis of the SCPAs, samples were derivatized with AccQ-Tag Ultra Derivatization Kit (Waters, Milford, MA) according to the manufacturer’s protocol. Briefly, 10 μL of either in vitro assay sample or standard SCPA solution (100 mg L<sup>−1</sup>) was mixed with 70 μL of AccQ-Tag Ultra borate buffer and 20 μL of AccQ-Tag reagent dissolved in 1.0 mL of AccQ-Tag Ultra reagent diluent. The derivatization reaction was carried out for 10 min at 55 °C. The derivatized samples or standard SCPA solutions were analyzed using HPLC (1100 Series HPLC; Agilent Technologies) connected with MS (LC/MSD VL; Agilent Technologies). The XBridge C18 column (5 μm, 4.6 × 150 mm; Waters) was used. The mobile phase comprises solvent C (50 mM ammonium acetate, adjusting pH to 9.3 by 28% NH OH solution) and solvent D (acetonitrile). The mobile phase was flown at 0.4 mL min<sup>−1</sup>. The following gradients were applied: 0- 1 min, 90% C; 1–10 min, a linear gradient of D from 10 to 70%; 10–20 min, a linear gradient of D from 70 to 90%; 20–30 min, 90% D (all in vol%). The eluent was directed to MS using ESI positive ion mode under the following conditions: 100 V fragmentor, 12.0 L min<sup>−1</sup> drying gas flow, 350 °C drying gas temperature, 30 psig nebulizer pressure, and 3.0 kV capillary voltage. The scanned mass range was 50–500 m/z.\n\nHomology modeling and docking simulation of VlmD. To obtain a homology model of VlmD, the native VlmD protein sequence was used as an input for the template-based modeling using SWISS-MODEL<sup>43</sup>. A homology model of VlmD was generated using GAD67 from Homo sapiens (PDB ID: 2OKJ)<sup>33</sup>. GAD67 was used as a template because it showed the greatest sequence identity (19.76%) with VlmD among proteins that use PLP as a cofactor. The PLP-L-alanine was subsequently docked into the active site of the resulting homology model of VlmD using AutoDock Vina (v1.1.2)<sup>44</sup>. Six target residues in the active site of the VlmD homology model were manually selected for mutations, which appeared to be interacting with L-alanine of PLP-L-alanine. To find candidate substitute residues for the six target residues, 250 homologous protein sequences were retrieved by aligning VlmD with protein sequences in the database of nonredundant protein sequences (nr) using BLASTP (v2.10.1). As a result, a total of 12 candidate substitute residues were identified from the homologous protein sequences detected. The six target residues from the active site of the VlmD homology model were experimentally modified to one of these 12 candidate substitute residues."
+          },
+          {
+            "id": "data_availability",
+            "title": "Data availability",
+            "level": 2,
+            "content": "The data supporting the findings of this study are available within the article and its Supplementary Information and Supplementary Data. Additional data are available from the corresponding author upon reasonable request. The protein sequence of valine decarboxylase (VlmD) is available at UniProt-Q84F32 (https://www.uniprot.org/uniprot/ Q84F32). The crystal structure of glutamic acid decarboxylase (GAD67) is available at PDB-2OKJ (http://www.rcsb.org/structure/2OKJ). Source data are provided with this paper. The engineered strains developed in this study can only be provided for noncommercial purposes as they are in commercial interest, and a patent is filed (Korean Patent Application No. 10-2020-0042756). Source data are provided with this paper."
+          },
+          {
+            "id": "code_availability",
+            "title": "Code availability",
+            "level": 2,
+            "content": "Source code for the single-step retrobiosynthesis (Fig. 1b) and selection of precursors having a suitable molecular type (Fig. 1c) is available at https://bitbucket.org/ kaistsystemsbiology/retro-precursor-selection.\n\nReceived: 16 July 2020; Accepted: 27 November 2020; Published online: 08 January 2021"
+          },
+          {
+            "id": "references",
+            "title": "References",
+            "level": 2,
+            "content": "1. Lee, S. Y. et al. A comprehensive metabolic map for production of bio-based chemicals. Nat. Catal. 2, 18–33 (2019).\n\n2. Jullesson, D., David, F., Pfleger, B. & Nielsen, J. Impact of synthetic biology and metabolic engineering on industrial production of fine chemicals. Biotechnol. Adv. 33, 1395–1402 (2015).\n\n3. Atsumi, S., Hanai, T. & Liao, J. C. Non-fermentative pathways for synthesis of branched-chain higher alcohols as biofuels. Nature 451, 86–89 (2008).\n\n4. Dellomonaco, C., Clomburg, J. M., Miller, E. N. & Gonzalez, R. Engineered reversal of the β-oxidation cycle for the synthesis of fuels and chemicals. Nature 476, 355–359 (2011).\n\n5. Cheong, S., Clomburg, J. M. & Gonzalez, R. Energy- and carbon-efficient synthesis of functionalized small molecules in bacteria using nondecarboxylative Claisen condensation reactions. Nat. Biotechnol. 34, 556–561 (2016).\n\n6. Rodriguez, G. M., Tashiro, Y. & Atsumi, S. Expanding ester biosynthesis in Escherichia coli. Nat. Chem. Biol. 10, 259–265 (2014).\n\n7. Chae, T. U., Ko, Y. S., Hwang, K. S. & Lee, S. Y. Metabolic engineering of Escherichia coli for the production of four-, five- and six-carbon lactams. Metab. Eng. 41, 82–91 (2017).\n\n8. Zhang, J. et al. Application of an acyl-CoA ligase from Streptomyces aizunensis for lactam biosynthesis. ACS Synth. Biol. 6, 884–890 (2017).\n\n9. Gross, T., Seayad, A. M., Ahmad, M. & Beller, M. Synthesis of primary amines: First homogeneously catalyzed reductive amination with ammonia. Org. Lett. 4, 2055–2058 (2002).\n\n10. Gunanathan, C. & Milstein, D. Selective synthesis of primary amines directly from alcohols and ammonia. Angew. Chem. Int. Ed. 47, 8661–8664 (2008).\n\n11. Koszelewski, D., Tauber, K., Faber, K. & Kroutil, W. ω-Transaminases for the synthesis of non-racemic α-chiral primary amines. Trends Biotechnol. 28, 324–332 (2010).\n\n12. Peter, R., Karsten, E., Erhard, H., Roland, R. & Hartmut, H. in Amines, Aliphatic. Ullmann’s Encylopedia of Industrial Chemistry (ed. Barbara, E.) 1–50 (Wiley-VCH, Weinheim, 2015).\n\n13. Pickl, M., Fuchs, M., Glueck, S. M. & Faber, K. Amination of ω-functionalized aliphatic primary alcohols by a biocatalytic oxidation-transamination cascade. ChemCatChem 7, 3121–3124 (2015).\n\n14. Citoler, J., Derrington, S. R., Galman, J. L., Bevinakatti, H. & Turner, N. J. A biocatalytic cascade for the conversion of fatty acids to fatty amines. Green. Chem. 21, 4932–4935 (2019).\n\n15. Hadadi, N. & Hatzimanikatis, V. Design of computational retrobiosynthesis tools for the design of de novo synthetic pathways. Curr. Opin. Chem. Biol. 28, 99–104 (2015).\n\n16. Yang, X. et al. Systematic design and in vitro validation of novel one-carbon assimilation pathways. Metab. Eng. 56, 142–153 (2019).\n\n17. Yim, H. et al. Metabolic engineering of Escherichia coli for direct production of 1,4-butanediol. Nat. Chem. Biol. 7, 445–452 (2011).\n\n18. Feher, T. et al. Validation of RetroPath, a computer-aided design tool for metabolic pathway engineering. Biotechnol. J. 9, 1446–1457 (2014).\n\n19. Ren, J. et al. An unnatural pathway for efficient 5-aminolevulinic acid biosynthesis with glycine from glyoxylate based on retrobiosynthetic design. ACS Synth. Biol. 7, 2750–2757 (2018).\n\n20. Cho, A., Yun, H., Park, J. H., Lee, S. Y. & Park, S. Prediction of novel synthetic pathways for the production of desired chemicals. BMC Syst. Biol. 4, 35 (2010).\n\n21. Park, J. H., Lee, K. H., Kim, T. Y. & Lee, S. Y. Metabolic engineering of Escherichia coli for the production of L-valine based on transcriptome analysis and in silico gene knockout simulation. Proc. Natl Acad. Sci. USA 104, 7797–7802 (2007).\n\n22. Wendisch, V. F. Metabolic engineering advances and prospects for amino acid production. Metab. Eng., in-press (2019).\n\n23. Choi, Y. J. & Lee, S. Y. Microbial production of short-chain alkanes. Nature 502, 571–574 (2013).\n\n24. Sheppard, M. J., Kunjapur, A. M. & Prather, K. L. J. Modular and selective biosynthesis of gasoline-range alkanes. Metab. Eng. 33, 28–40 (2016).\n\n25. McMurry, J. & Begley, T. P. The Organic Chemistry of Biological Pathways (Roberts and Company Publishers, 2005).\n\n26. Bond-Watts, B. B., Bellerose, R. J. & Chang, M. C. Y. Enzyme mechanism as a kinetic control element for designing synthetic biofuel pathways. Nat. Chem. Biol. 7, 222–227 (2011).\n\n27. Huo, Y. X. et al. Conversion of proteins into biofuels by engineering nitrogen flux. Nat. Biotechnol. 29, 346–351 (2011).\n\n28. Garg, R. P., Ma, Y., Hoyt, J. C. & Parry, R. J. Molecular characterization and analysis of the biosynthetic gene cluster for the azoxy antibiotic valanimycin. Mol. Microbiol 46, 505–517 (2002).\n\n29. Fukui, K. Role of frontier orbitals in chemical-reactions. Science 218, 747–754 (1982).\n\nThis work was supported by the Technology Development Program to Solve Climate Changes on Systems Metabolic Engineering for Biorefineries from the Ministry of Science and ICT through the National Research Foundation (NRF) of Korea (NRF-2012M1A2A2026556 and NRF-2012M1A2A2026557).\n\n30. Gohlke, H. & Klebe, G. Approaches to the description and prediction of the binding affinity of small-molecule ligands to macromolecular receptors. Angew. Chem. Int. Ed. 41, 2645–2676 (2002).\n\n31. Zhang, X., Jantama, K., Moore, J. C., Shanmugam, K. T. & Ingram, L. O. Production of L-alanine by metabolically engineered Escherichia coli. Appl. Microbiol. Biotechnol. 77, 355–366 (2007).\n\n32. Na, D. et al. Metabolic engineering of Escherichia coli using synthetic small regulatory RNAs. Nat. Biotechnol. 31, 170–174 (2013).\n\n33. Fenalti, G. et al. GABA production by glutamic acid decarboxylase is regulated by a dynamic catalytic loop. Nat. Struct. Mol. Biol. 14, 280–286 (2007).\n\n34. Kanehisa, M., Furumichi, M., Tanabe, M., Sato, Y. & Morishima, K. KEGG: new perspectives on genomes, pathways, diseases and drugs. Nucleic Acids Res. 45, D353–D361 (2017)\n\n35. Pirok, G. et al. Making “real” molecules in virtual space. J. Chem. Inf. Model 46, 563–568 (2006).\n\n36. Kim, S. et al. PubChem 2019 update: improved access to chemical data. Nucleic Acids Res. 47, D1102–D1109 (2019).\n\n37. Rahman, S. A. et al. Reaction Decoder Tool (RDT): extracting features from chemical reactions. Bioinformatics 32, 2065–2066 (2016).\n\n38. Sambrook, J. & Russell, D. W. Molecular Cloning: A Laboratory Manual 3rd edn (Cold Spring Harbor Lab Press, 2001).\n\n39. Gibson, D. G. et al. Enzymatic assembly of DNA molecules up to several hundred kilobases. Nat. Methods 6, 343–345 (2009).\n\n40. Lee, Y. & Lee, S. Y. Enhanced production of poly(3-hydroxybutyrate) by filamentation-suppressed recombinant Escherichia coli in a defined medium. J. Environ. Polym. Degr. 4, 131–134 (1996).\n\n41. Önal, A. A review: Current analytical methods for the determination of biogenic amines in foods. Food Chem. 103, 1475–1486 (2007).\n\n42. Yildirim, H. K., Uren, A. & Yucel, U. Evaluation of biogenic amines in organic and non-organic wines by HPLC OPA derivatization. Food Technol. Biotechnol. 45, 62–68 (2007).\n\n43. Waterhouse, A. et al. SWISS-MODEL: homology modelling of protein structures and complexes. Nucleic Acids Res. 46, W296–W303 (2018).\n\n44. Trott, O. & Olson, A. J. AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading. J. Comput. Chem. 31, 455–461 (2010)"
+          },
+          {
+            "id": "acknowledgements",
+            "title": "Acknowledgements",
+            "level": 2,
+            "content": ""
+          },
+          {
+            "id": "author_contributions",
+            "title": "Author contributions",
+            "level": 2,
+            "content": "S.Y.L. conceived the project. D.I.K. and T.U.C. performed experiments. D.I.K., H.U.K., and W.D.J. performed computational analyses. D.I.K., T.U.C., H.U.K., W.D.J., and S.Y.L. analyzed data. D.I.K., T.U.C., H.U.K., and S.Y.L. wrote the manuscript."
+          },
+          {
+            "id": "competing_interests",
+            "title": "Competing interests",
+            "level": 2,
+            "content": "The authors (D.I.K., T.U.C., and S.Y.L.) declare competing financial interests because the strains described in this paper are of commercial interest, and a patent is filed (Korean Patent Application No. 10-2020-0042756). All the authors (D.I.K., T.U.C., H.U.K., W.D.J., and S.Y.L.) declare no non-financial competing interests."
+          },
+          {
+            "id": "additional_information",
+            "title": "Additional information",
+            "level": 2,
+            "content": "Supplementary information is available for this paper at https://doi.org/10.1038/s41467- 020-20423-6.\n\nCorrespondence and requests for materials should be addressed to S.Y.L\n\nPeer review information Nature Communications thanks Nicholas Turner and the other anonymous reviewers for their contribution to the peer review of this work. Peer reviewer reports are available.\n\nReprints and permission information is available at http://www.nature.com/reprints\n\nPublisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.\n\n![](images/8c937c907dd7ac97c255049a938972643d34c1c6cd89e325505c730e121331b2.jpg)\n\ncc Open Access This article is licensed under a Creative Commons BY Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit http://creativecommons.org/ licenses/by/4.0/."
+          }
+        ],
+        "paragraphs": [
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p001",
+            "text": "Dong In Kim<sup>1,2,5</sup>, Tong Un Chae <sup>1,2,5</sup>, Hyun Uk Kim <sup>2,3,4,5</sup>, Woo Dae Jang <sup>1,2</sup> & Sang Yup Lee <sup>1,2,4✉</sup>",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis"
+          },
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p002",
+            "text": "Bio-based production of many chemicals is not yet possible due to the unknown biosynthetic pathways. Here, we report a strategy combining retrobiosynthesis and precursor selection step to design biosynthetic pathways for multiple short-chain primary amines (SCPAs) that have a wide range of applications in chemical industries. Using direct precursors of 15 target SCPAs determined by the above strategy, Streptomyces viridifaciens vlmD encoding valine decarboxylase is examined as a proof-of-concept promiscuous enzyme both in vitro and in vivo for generating SCPAs from their precursors. Escherichia coli expressing the heterologous vlmD produces 10 SCPAs by feeding their direct precursors. Furthermore, metabolically engineered E. coli strains are developed to produce representative SCPAs from glucose, including the one producing 10.67 g L<sup>−1</sup> of iso-butylamine by fed-batch culture. This study presents the strategy of systematically designing biosynthetic pathways for the production of a group of related chemicals as demonstrated by multiple SCPAs as examples.",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis"
+          },
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p003",
+            "text": "M<sup>icrobial</sup> <sup>production</sup> <sup>of</sup> <sup>industrial</sup> <sup>chemicals</sup> <sup>has</sup> <sup>garnered</sup>much attention as a solution to replace existing petro- much attention as a solution to replace existing petrochemical processes that have caused various environmental problems. To date, the scope of chemicals that are producible using microorganisms continues to expand through advances in systems metabolic engineering<sup>1,2</sup>. Development of a general strategy that allows the construction of a platform strain capable of producing a group of related chemicals can be an efficient approach to expand the portfolio of bio-based products. Such microbial platform strains producing alcohols<sup>3,4</sup>, carboxylic acids<sup>4,5</sup>, esters<sup>6</sup>, and lactams<sup>7,8</sup> have been constructed. In all these studies, promiscuous enzymes that could convert a wide range of substrates into their structurally related chemicals were employed.",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis"
+          },
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p004",
+            "text": "Short-chain primary amines (SCPAs) have an alkyl or aryl group in place of a hydrogen atom in ammonia with carbon chain lengths ranging from C1 to C7<sup>9–11</sup> (Supplementary Table 1). SCPAs have a wide range of applications in chemical industries, for example, as a precursor of pharmaceuticals (e.g., antidiabetic and antihypertensive drugs), agrochemicals (e.g., herbicides, fungicides, and insecticides), solvents, and vulcanization accelerators for rubber and plasticizers (Supplementary Table 1). The market size of SCPAs was estimated to be more than 4 trillion US dollars in 2014 (https://www.marketsandmarkets.com/Market-Reports/alkylamines-market-726.html). At present, SCPAs are most commonly produced by dehydrating appropriate alcohols with ammonia using a catalyst under a harsh condition<sup>12</sup>. To the best of our knowledge, despite their industrial importance, biological production of SCPAs has not yet been reported. Only some long-chain primary amines were produced via enzymatic conversions in vitro<sup>13,14</sup>. Thus, it will be of great interest to develop platform microbial strains capable of producing SCPAs from renewable resources.",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis"
+          },
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p005",
+            "text": "Microbial production of multiple SCPAs requires careful examination of metabolic pathways, and could be aided by retrobiosynthesis. Retrobiosynthesis allows a systematic design of a biosynthetic pathway by using a set of biochemical reaction rules that describe chemical transformation patterns between substrate and product molecules at an atomic level<sup>15</sup>. An input molecule (i.e., a target chemical) can be back-transformed to a series of intermediate molecules (metabolites), ultimately toward a precursor metabolite; it can be a single step or multiple steps although the former is obviously preferred. Despite the great potential of retrobiosynthesis in systems metabolic engineering, reports on its experimental applications have been rather limited to only a few, including the assimilation of formaldehyde<sup>16</sup>, and the production of 1,4-butanediol<sup>17</sup>, pinocembrin<sup>18</sup> and 5-aminolevulinic acid<sup>19</sup>.",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis"
+          },
+          {
+            "paragraph_id": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis_p006",
+            "text": "Here, we report the development of platform Escherichia coli strains for the production of various SCPAs. On the basis of their industrial values, we aim at producing 15 different SCPAs, including methylamine, ethylamine, n-propylamine, iso-propylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine, tertbutylamine, n-amylamine, iso-amylamine, 2-methylbutylamine, cyclopentylamine, cyclohexylamine, aniline, and benzylamine, which cover alkyl and aryl amines (Fig. 1a and Supplementary Table 1). We implement retrobiosynthesis (Fig. 1b) and a subsequent precursor selection step (Fig. 1c, d) to design biosynthetic pathways for these SCPAs. We further demonstrate that additional metabolic engineering of E. coli strains allows the enhanced production of representative SCPAs from glucose, including isobutylamine and ethylamine.",
+            "section": "microbial_production_of_multiple_short_chain_primary_amines_via_retrobiosynthesis"
+          },
+          {
+            "paragraph_id": "results_p001",
+            "text": "Designing biosynthetic pathways of SCPAs. First, potential biosynthetic pathways of SCPAs were designed using a computational retrobiosynthesis tool we previously developed<sup>20</sup> using a set of reaction rules newly updated in this study (“Methods” and Supplementary Data 1). Retrosynthesis analysis, as a result, showed that all 15 different SCPAs might be produced by a single enzymatic conversion from their corresponding direct precursors (Fig. 1b and Supplementary Data 2). For each SCPA, 4 to 21 precursors were predicted, and could be classified, based on their structures, as amino alcohols, amino acids, various forms of SCPAs, alkyl-CoA, and hydrocarbons. These multiple precursors predicted for the possible biosynthesis of each SCPA were sequentially narrowed down for efficient metabolic engineering experiments. For conveninence, this procedure of narrowing down precursors will be referred to as the precursor selection step (Fig. 1c, d).",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p002",
+            "text": "Among the multiple precursors of each SCPA predicted, those classified as amino acids were selected as potential precursors (Fig. 1c and Supplementary Data 2); here, amino acids considered include both proteinogenic and nonproteinogenic amino acids. Because amino acid metabolic pathways are well characterized, and can be efficiently engineered to carry high fluxes<sup>21,22</sup>, it was hypothesized that amino acids would serve as ideal precursors of SCPAs. In contrast, metabolic pathways for the biosynthesis of amino alcohols, SCPAs and alkyl-CoA remain poorly characterized, which makes experimental metabolic engineering relatively more difficult. Hydrocarbons were also excluded although their pathways are well known because it was considered more challenging to microbially produce short-chain hydrocarbons<sup>23,24</sup> than amino acids.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p003",
+            "text": "According to the retrobiosynthesis predictions, all these amino acid precursors appeared to be convertible by an enzyme with the third-level EC number of 4.1.1.-, which corresponds to the reaction rule #51 (Supplementary Data 1 and 2). Enzymes with the EC number 4.1.1.- are decarboxylases. Since decarboxylation is known to be an irreversible reaction<sup>25</sup>, this reaction was expected to serve as a good driving force for strong metabolic fluxes toward SCPA production; previous studies producing nbutanol<sup>26</sup> and biodiesel<sup>27</sup> showed that irreversible reactions contributed to strong metabolic fluxes toward target chemicals. Among various enzymes having the EC number of 4.1.1.-, valine decarboxylase encoded by the vlmD gene from Streptomyces viridifaciens was selected as a proof-of-concept promiscuous enzyme for the production of SCPAs. Valine decarboxylase was previously reported to convert L-valine, L-leucine and L-isoleucine to three different SCPAs, iso-butylamine, iso-amylamine and 2- methylbutylamine, respectively<sup>28</sup> (Fig. 2). Of course, other enzymes having EC number of 4.1.1.- can also be examined. It was hypothesized that valine decarboxylase, if it is promiscuous enough, might be able to convert other amino acid precursors into the corresponding SCPAs of our interest.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p004",
+            "text": "Among the 4 to 21 direct precursors predicted for the 15 different SCPAs via retrosynthesis, 1 to 5 direct precursors belonged to a group of amino acids. A single amino acid precursor was further selected for each target SCPA for metabolic engineering experiments by comparing relative positions of the functional groups (i.e., amine and carboxyl groups) in the selected amino acid precursors with L-valine, L-leucine, and L-isoleucine of the VlmD (Figs. 1d, 2); the relative position of a functional group refers to the distance between a functional group and a reaction center carbon atom that is subject to chemical transformation. The rationale behind this criterion is that the feasibility of a chemical reaction is affected by the changes in electron configuration caused by different relative positions of a functional group with respect to a reaction center carbon atom<sup>29</sup>. Furthermore, the relative positions of functional groups play important roles in the binding of a substrate in the active site of an enzyme<sup>30</sup>. As a result, the best amino acid precursor for each of 13 SCPAs was identified (Fig. 2). For tert-butylamine and aniline, there were no potentially good amino acid precursors because they did not have functional groups in the same positions as the three VlmD substrates (Fig. 2). Thus, these two SCPAs were no longer considered for production in this study.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p005",
+            "text": "![](images/b98fbf341fb3903fca3a98a34bfe5c7b44655e4dd2d8584dbaee4a5936279735.jpg)\nFig. 1 Overall workflow for the microbial production of 15 short-chain primary amines (SCPAs). The workflow implemented in this study largely consists of the following steps: (a) target chemical selection; (b) prediction of precursors and relevant third-level EC numbers for the generation of these precursors; (c) selection of precursors having a suitable molecular type; (d) selection of precursors having a consistent relative position of functional groups; (e) in vitro production using purified enzyme VlmD; (f) in vivo production via feeding of direct precursors; and (g) de novo production from glucose. Amine, carboxylic, hydroxy and CoA groups are presented with yellow, green, blue, and pink circles, respectively. In (c) and (d), these two steps are collectively referred to as the precursor selection step where precursors that meet the selection criteria are presented with a check mark.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p006",
+            "text": "In vitro production of SCPAs. To validate the results of the retrobiosynthesis and precursor selection step for the production of 13 different SCPAs from their direct amino acid precursors by VlmD, in vitro enzyme assays were first performed using the purified His -tagged VlmD (Fig. 1e and Supplementary Fig. 1). VlmD showed in vitro activities on 12 precursors by successfully converting them to their corresponding SCPAs (Fig. 3); one that did not show in vitro activity was the conversion of glycine to methylamine. Also, VlmD consistently showed activities toward L-valine, L-leucine, and L-isoleucine as in the previous $\\mathrm { s t u d y } ^ { 2 8 } .$ Among various substrates, VlmD showed relatively high activity toward L-2-aminobutyrate, L-norvaline, L-valine, L-isovaline, Lisoleucine, and 1-aminocyclohexanecarboxylic acid, all showing near or more than 80% conversion to their respective SCPAs: npropylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine, 2-methylbutylamine and cyclopentylamine, respectively (Fig. 3). The SCPAs produced from the in vitro enzyme assay reactions were further confirmed by liquid chromatography-mass spectrometry (LC-MS) analysis (Supplementary Fig. 2).",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p007",
+            "text": "![](images/77680a4c79df00c15b256e800a7cd1ffb5998bd324cabed459790060fc3de17e.jpg)\nFig. 2 Relative position of functional groups in the predicted amino acid precursors of 12 SCPAs in comparison with the previously reported substrates of VlmD. Amine and carboxylic groups in the amino acid precursors predicted using retrobiosynthesis for each SCPA are presented with yellow and green circles, respectively, in a dotted black box. Reaction center carbon atoms that are subject to chemical transformations are marked with asterisks. Precursors having the same relative position of functional groups, compared with the previously reported VlmD substrates<sup>28</sup> in dotted blue boxes, are presented with a check mark.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p008",
+            "text": "In vivo production of SCPAs by feeding direct precursors. To develop platform E. coli strains capable of producing 12 different SCPAs in vivo, E. coli PA01 was constructed by transforming E. coli WL3110 with the plasmid pTac15-vlmD<sup>opt</sup> harboring the codonoptimized S. viridifaciens vlmD gene (Figs. 1f, 4 and Supplementary Table 2). By individually feeding $2 { \\bf g } { \\bf L } ^ { - 1 }$ of the 12 corresponding precursors, the PA01 strain produced 10 SCPAs in vivo (Fig. 5): $\\mathsf { 7 6 . 2 8 \\ m g L ^ { - 1 } }$ of ethylamine, $8 7 3 . 3 1 \\mathrm { m g L ^ { - 1 } }$ of n-propylamine, $3 3 7 . 5 7 \\mathrm { \\ m g { L ^ { - 1 } } }$ of iso-propylamine, $9 7 9 . 1 \\check { 7 } \\mathrm { m g L ^ { - 1 } }$ of n-butylamine, $1 2 8 9 . 1 8 \\mathrm { \\ m g { L ^ { - 1 } } }$ of iso-butylamine, $9 3 6 . 7 0 \\mathrm { m g L ^ { - 1 } }$ of (R)-sec-butylamine, 1052.36 mg L<sup>−1</sup> of iso-amylamine, $1 0 1 5 . 7 5 \\mathrm { m g L ^ { - 1 } }$ of 2-methylbutylamine, $2 6 4 . 0 3 \\mathrm { m g L ^ { - 1 } } ^ { \\cdot }$ of cyclopentylamine, and $1 0 5 . 8 2 \\mathrm { \\dot { m g } L ^ { - 1 } }$ of cyclohexylamine. However, n-amylamine and benzylamine were not produced in vivo, which required L-norleucine and L-2-phenylglycine as precursors, respectively; concentrations of L-norleucine and L-2-phenylglycine in the medium after the cultivation marginally decreased to 1.92 and $1 . 8 2 \\mathrm { g L } ^ { - 1 }$ , respectively, from the initial feeding concentration of $2 { \\bf g } { \\bf L } ^ { - 1 }$ (Supplementary Fig. 3), suggesting that these two precursors were poorly utilized by E. coli. Both n-amylamine and benzylamine should be producible if their corresponding precursors are successfully transported into the cell, or overproduced from other carbon sources because VlmD was shown to be active on these precursors according to the in vitro enzyme assays (Fig. 3).",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p009",
+            "text": "a\n![](images/10b0cccc92da79d31387fa48c396701271cf12c19cede3a2c76e9cb97bff8156.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p010",
+            "text": "b\n![](images/bfe2498cda3bf4e5e806c6b0345291d498690d6ec8d0cc2c9d0506087d6eb059.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p011",
+            "text": "![](images/43e52747e98e6931e6da57f0d0c34da6251f994b6e225de43dbbeb8b441e1efd.jpg)\nd",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p012",
+            "text": "C\n![](images/6d679634aa2deeca227bcde93970712b45cf2b5b7ef3cf862d447c9b5428b02e.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p013",
+            "text": "![](images/5dab084b347db5ca12808e09798be88f5884754a2fb911d0f933903abed726f5.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p014",
+            "text": "![](images/0afaf744d8aea461850764d607af5e31a5c54c59bb55e20a773b0c60602dca2f.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p015",
+            "text": "e\n![](images/387a2bf2e23435568d60cfde198f76e28ec277363f6ba237178c43bb0dedd722.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p016",
+            "text": "![](images/3361415a500777c4cb15097420c5d53c76db7eb16fd62ca2f79951c0738e43b2.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p017",
+            "text": "![](images/69c45328d1186f0e6b9def77e62455ef915e204ee9ff91c4f30fee776d611794.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p018",
+            "text": "![](images/03cdb5c2911ea3031023ceee78900f28eee22c3afbbb80530a3bee7b00efc85f.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p019",
+            "text": "![](images/dfc1b2f7c77e687e8655741abcfc5d19db6f10d23dd5e3c038590d7c531474de.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p020",
+            "text": "![](images/a662e113da2a50f2718ec670a4868b72b3df19ab927188ad9ed183e25a521788.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p021",
+            "text": "g\n![](images/4ed8e90b85eb23083ead0033cb31c3d4436232a18515c15fd06cc338578d4de7.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p022",
+            "text": "h\n![](images/f7692fd41bc47a66fae9b4ca802cef024760fcf3277d136d1e0fa11c1f8f0d09.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p023",
+            "text": "![](images/d75db9225fa559f1f4a7fd9cc3166fdc73b953a1c1628b86c3bad7e2ba3b8850.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p024",
+            "text": "![](images/457959eaf7b6bb4f125be14d7618e75ecf0af391e23fc512c68baba91a4d6246.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p025",
+            "text": "![](images/c741d50097e2cde213a428f7d6cb7cc6b73f4a2fd69f5eff61517e173715d459.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p026",
+            "text": "![](images/d498ea093826a2a83a45ae45022149b78a17d8c6910b1b5f30c9ffe11a0b4552.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p027",
+            "text": "![](images/0c456badd23a77da75ce52a3982498a9b6e2cd7b44b4869ff3d6a367ffe78b97.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p028",
+            "text": "k\n![](images/9b41f2a1f1d29ffff25e4f33502c7afb734597d9f77b54a971de8955b5f42b5e.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p029",
+            "text": "![](images/6f4577974d61c7f491b019ef1a62f3552f0b4c590b9725b481c8eb93d91409d4.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p030",
+            "text": "一\n![](images/acab9237176d76b2b57f8a179e3c3e555780bd110aa5ef61427af98d1b106da8.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p031",
+            "text": "![](images/d7598ddb1ce9c2ae5971f6efe73f47c382a5d5bcdeaf86ec4cdfa19c64f014b9.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p032",
+            "text": "![](images/f00aaa450a4dba48a2d11d983146e8da19b519f750329bd6b8d4075ee3e6f77a.jpg)\nFig. 3 In vitro enzyme assay of VlmD producing 12 SCPAs. High-performance liquid chromatography (HPLC) chromatograms of in vitro enzyme assays conducted using VlmD, which converted: (a) L-alanine to ethylamine; (b) L-2-aminobutyrate to n-propylamine; (c) 2-aminoisobutyrate to iso-propylamine; (d) L-norvaline to n-butylamine; (e) L-valine to iso-butylamine; (f) L-isovaline to (R)-sec-butylamine; (g) L-norleucine to n-amylamine; (h) L-leucine to isoamylamine; (i) L-isoleucine to 2-methylbutylamine; (j) 1-aminocyclopetanecarboxylic acid to cyclopentylamine; (k) 1-aminocyclohexanecarboxylic acid to cyclohexylamine; and (l) L-2-phenylglycine to benzylamine. Black and red lines in the left graph for each SCPA indicate chromatograms from in vitro enzyme assays without VlmD (control) and with VlmD, respectively. Green bar graphs indicate percentage (%) of amino acid precursors converted to their corresponding SCPAs by the VlmD after two hours of enzymatic reaction at $3 7 ^ { \\circ } \\mathsf { C } .$ Experiments were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p033",
+            "text": "De novo production of SCPAs from a renewable carbon source. Having confirmed the possibility of microbial production of SCPAs, we next constructed engineered strains for the production of SCPAs from glucose as a sole carbon source and without the external feeding of the corresponding amino acid precursors (Fig. 1g). We selected ethylamine, iso-butylamine and iso-amylamine as proof-of-concept target SCPAs for the de novo production. First, for the de novo biosynthesis of ethylamine from glucose, alanine dehydrogenase, which converts pyruvate to Lalanine, was introduced to E. coli PA01 by overexpressing the Geobacillus stearothermophilus alaD gene<sup>31</sup>, which was also codon-optimized for the heterologous expression in E. coli. The resulting E. coli EA01 strain simultaneously overexpressing the codon-optimized vlmD and alaD genes was able to produce 2.89 mg $\\mathrm { L } ^ { - 1 }$ of ethylamine from glucose (Fig. 6a and Supplementary Table 2). It should be noted that the EA01 strain secreted 22.78 mg L<sup>−1</sup> of L-alanine as a byproduct, which was greater than the titer of ethylamine (Fig. 6a). This incomplete conversion seems to have been caused by the insufficient activity of VlmD toward Lalanine, which did not convert all the L-alanine molecules toward ethylamine. Even after employing an engineered VlmD having higher activity for this reaction, it will be important to balance the metabolic fluxes between the generation of a precursor (e.g., Lalanine) and the conversion of a precursor into its product (e.g., ethylamine).",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p034",
+            "text": "For the production of iso-butylamine from glucose, the E. coli iBA01 strain was constructed by transforming the L-valine-overproducing E. coli Val (pKBRilvBNCED) strain<sup>21</sup>, which we previously developed, with pTac15-vlmD<sup>opt</sup> for the additional expression of the codon-optimized vlmD gene. The resulting iBA01 strain produced 1155.74 mg $\\mathrm { L } ^ { - 1 }$ of iso-butylamine from glucose (Fig. 6b and Supplementary Table 2). In contrast to the EA01 strain, the iBA01 strain did not produce L-valine as a byproduct (Fig. 6b); the production titer of iso-butylamine (1155.74 mg L<sup>−1</sup>; equivalent to 15.80 mM) obtained with the iBA01 strain was even greater than that of L-valine (524.91 mg L<sup>−1</sup>; equivalent to 4.48 mM) obtained with the NC02 strain, a control strain which is the Val (pKBRilvBNCED) strain harboring an empty plasmid without the vlmD gene (Fig. 6b and Supplementary Table 2). This observation suggests that VlmD has a strong driving force toward the isobutylamine production. However, a critical bioprocess problem that needs to be addressed for this strain is that the Val strain is auxotrophic to L-isoluecine, L-leucine, and D-pantothenate because the corresponding biosynthetic genes, ilvA, leuA and panB, respectively, were deleted to remove the competing pathways during the course of strain optimization<sup>21</sup>; we tackle this problem below.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p035",
+            "text": "![](images/d90c99b0b9622ab6f102b98df4e6922cf80eacc5c5583cc833f2e85df745eb64.jpg)\nFig. 4 Biosynthetic reactions constructed in E. coli for the in vivo production of 12 SCPAs. These 12 SCPAs were the ones shown to be produced by VlmD in vitro (dotted boxes). Amine and carboxylic groups shown in each dotted box are presented with yellow and green circles, respectively. Reaction center carbon atoms that are subject to chemical transformations are marked with asterisks. Glycolysis is indicated with a red background, which leads to the biosynthesis of 12 amino acid precursors. Multiple reactions are presented with two or more arrows.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p036",
+            "text": "![](images/e7ca3dbea2edb5fa9995956d5adf590da8bbffee00048be2a9e00f564384ec25.jpg)\nFig. 5 In vivo production of 12 SCPAs via feeding of their direct precursors. Production titers of 12 SCPAs from E. coli expressing the codon-optimized Streptomyces viridifaciens vlmD (PA01 strain) are presented where direct precursors of the SCPAs were individually provided in the medium. All the experiments for the production of each SCPA were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p037",
+            "text": "Finally, for the production of iso-amylamine from glucose, leuABCD genes, all involved in the L-leucine biosynthesis, were additionally overexpressed in the iBA01 strain to increase the precursor, L-leucine, resulting in the iAA01 strain. The iAA01 strain produced 93.23 mg L<sup>−1</sup> of iso-amylamine from glucose (Fig. 6c and Supplementary Table 2). Along with isoamylamine, 991.23 and 759.89 mg L<sup>−1</sup> of L-leucine and isobutylamine, respectively, were produced as byproducts (Fig. 6c and Supplementary Fig. 4). Production of L-leucine was likely attributed to the suboptimal conversion of L-leucine to isoamylamine by VlmD. Meanwhile, accumulation of iso-butylamine was due to the preferred activity of VlmD toward L-valine, which might have been generated from 2-ketoisovalerate, despite the overexpression of the leuABCD genes. Indeed, the NC03 strain, a L-leucine-producing strain without the vlmD gene, produced $8 9 2 . 6 7 \\mathrm { m g L ^ { - 1 } }$ of L-valine as a byproduct (Supplementary Fig. 4). Taken together, the successful de novo production of three representative SCPAs suggests that it will also be possible to biosynthesize other SCPAs using the platform E. coli strains from renewable resources through additional relevant metabolic engineering. A next challenge is to overcome the problems that were identified from the de novo production studies, including the iBA01 strain’s auxotrophies and the suboptimal activity of VlmD toward L-alanine in the EA01 strain.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p038",
+            "text": "a\n![](images/90b5f58b1b7a4bd6b5ddccfe3e879dd911ebbef7d8a95717fabd88d20bff2efb.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p039",
+            "text": "![](images/3f88b6f0395e9751b5e2ae38b56a3d2f3e44ba826950396b613d022b5b04a511.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p040",
+            "text": "b\n![](images/9d7cae67c9fbfe44d92a066622c052f9039ef12762f0f7ac9a120bfb92ba8b7a.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p041",
+            "text": "![](images/92096ff36f38d0a5cda50d3c54483b9a755ee2d52cdb4a70f57410a89d03b377.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p042",
+            "text": "![](images/7a55ab8e2efd6edc6689e76e093853399f211318c8357fba8a5e4f53c9857c20.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p043",
+            "text": "![](images/2e5f6ccc7df78062594d71c0f48181cf1883429e37023040723f658f06af6214.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p044",
+            "text": "Fig. 6 De novo production of three SCPAs from glucose as a sole carbon source. Ethylamine, iso-butylamine, and iso-amylamine were produced from glucose through additional engineering of E. coli (Supplementary Table 2): (a) ethylamine from the NC01 (control) and EA01 strains; (b) iso-butylamine from the NC02 (control) and iBA01 strains; and (c) iso-amylamine from the NC03 (control) and iAA01 strains. The concentrations of amino acid precursors and their corresponding SCPAs are presented with gray and green bars, respectively. Amino acid precursors for the gray bars in (a, b, and c) correspond to L-alanine, L-valine, and L-leucine, respectively. Overexpressed genes are indicated with corresponding gene names. Amplified reactions are shown with thick arrows. Presented genes encode the following enzymes: alaD, alanine dehydrogenase; ilvB, acetohydroxy acid synthase I large subunit; ilvC, ketol-acid reductoisomerase; ilvD, dihydroxy-acid dehydratase; ilvE, branched-chain-amino-acid aminotransferase; ilvN, acetohydroxy acid synthase I small subunit; leuA, 2-isopropylmalate synthase; leuB, 3-isopropylmalate dehydrogenase; leuC, 3-isopropylmalate dehydratase large subunit; leuD, 3- isopropylmalate dehydratase small subunit; and vlmD, valine decarboxylase. The alaD<sup>opt</sup> and vlmD<sup>opt</sup> genes indicate codon-optimized alaD and vlmD genes, respectively. All the experiments for the SCPA productions were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p045",
+            "text": "a\n![](images/4b749d6fe007db8e95abd1cf6b4bd7def50e618ce18510a184e548f6d7859798.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p046",
+            "text": "b\n![](images/09d0844dd0d6f8244cb9bd85dc36eff45e925638e45a071d439224f5b18e0d41.jpg)\nFig. 7 Fed-batch fermentations for the enhanced production of iso-butylamine. a Fermentation profile of the iBA01 strain, which was cultured in the NM3 medium that includes L-isoleucine, L-leucine, and D-pantothenate. b Fermentation profile of the iBA02 strain, which was cultured in the same NM3 medium as the iBA01 strain, but without L-isoleucine, L-leucine, and D-pantothenate. Another fed-batch fermentation profile of the iBA02 strain, which was conducted for the reproducibility, is available in Supplementary Fig. 5. Cell density $( \\mathrm { O D } _ { 6 0 0 } )$ , glucose concentration, and iso-butylamine concentration are presented with black, gray, and green circles, respectively. Source data are provided as a Source Data file.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p047",
+            "text": "Enhanced production of iso-butylamine. Because the iBA01 strain showed efficient iso-butylamine production without forming L-valine as a byproduct in flask cultivation (Fig. 6a), this strain was subjected to fed-batch fermentation using NM3 medium (see Methods for details). As a result, $8 . 6 3 \\mathrm { g L ^ { - 1 } }$ of isobutylamine was produced with a productivity of $0 . \\dot { 2 } 1 \\mathrm { g } \\mathrm { L } ^ { - 1 } \\mathrm { h } ^ { - 1 }$ and a yield of $0 . { \\dot { 0 } } 6 2 { \\mathrm { g } } { \\mathrm { g } } ^ { - 1 }$ (Fig. 7a). This production titer corresponds to 6.50-fold increase, compared to the titer of $1 . 1 5 \\mathrm { g L } ^ { - 1 }$ obtained in flask culture.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p048",
+            "text": "As noted above, however, the iBA01 strain is auxotrophic for Lisoluecine, L-leucine, and D-pantothenate, which poses a problem in industrial fermentation. To solve this problem, instead of knocking out the ilvA, leuA, and panB genes as in Val (pKBRilvBNCED) strain<sup>21</sup>, we knocked down the expression of these three genes by employing synthetic small regulatory RNAs (sRNAs)<sup>32</sup>. As a result, the E. coli iBA02 strain was constructed by transforming the pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuA-panB into the WLGBH (pKBRilvBNCED) strain (Supplementary Table 2). The WLGBH strain is a parental strain of the Val strain, having the intact ilvA, leuA, and panB genes. Fed-batch fermentation of the iBA02 strain showed the maximum $\\mathrm { O D } _ { 6 0 0 }$ of 60.5 without the supplementation of L-isoluecine, L-leucine, and D-pantothenate (Fig. 7b); this value is 59.6% higher than the maximum cell density $( \\mathrm { O D } _ { 6 0 0 }$ of 37.9) obtained with the iBA01 strain with Lisoluecine, L-leucine, and D-pantothenate supplementation. More importantly, the iBA02 strain was able to produce $1 0 . 6 7 \\mathrm { g L ^ { - 1 } }$ of iso-butylamine with a productivity of $0 . 3 6 { \\dot { \\bf g } } \\mathrm { L } ^ { - 1 } \\mathrm { h } ^ { - 1 }$ , without the amino acid and vitamin supplementation, although the yield was slightly decreased to $0 . 0 5 7 \\bar { \\bf g } \\bar { \\bf g } ^ { - 1 }$ (Fig. 7b). These proof-of-concept experiments suggest that the SCPA-producing platform strain can be further metabolically engineered to overproduce SCPAs of interest.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p049",
+            "text": "Enzyme engineering for the enhanced production of ethylamine. Among the 12 different SCPAs successfully produced in vitro, VlmD showed relatively low efficiencies in converting Lalanine, 2-aminoisobutyrate, L-norleucine, and L-2-phenylalanine (Fig. 3). To see if this problem can be solved, rational protein engineering of VlmD was conducted to improve its activity toward L-alanine as a proof-of-concept target. L-Alanine was chosen because VlmD showed the lowest in vitro L-alanine conversion efficiency, while the resulting product ethylamine is one of the most widely used ${ \\mathrm { S C P A s } } ^ { 1 2 }$ (Fig. 3). VlmD was first subjected to the homology modeling and docking simulations. Because a 3D crystal structure of VlmD was not available, a homology model of VlmD was generated using glutamic acid decarboxylase (GAD67) from Homo sapiens (PDB ID: 2OKJ)<sup>33</sup> (Methods). Since VlmD requires pyridoxal 5<sup>′</sup>-phosphate (PLP) as a cofactor to catalyze the decarboxylation reaction, PLP-L-alanine was considered in the docking simulation (Fig. 8a). The binding mode of PLP-L-alanine in the homology model of VlmD was observed to be similar to the co-crystal structure of GAD67, which involves the binding of an original ligand PLP-γ- aminobutyric acid (PLP-GABA) (Supplementary Fig. 6); the similar binding modes indicate that residues in the active site of GAD67, which interact with PLP-GABA, can also be considered for the homology model of VlmD. Six residues in the active site of the VlmD homology model appeared to be interacting with L-alanine of PLP-L-alanine. Thus, these six residues were selected as target residues for mutations. For their candidate substitutes, amino acids having molecular sizes greater than the corresponding native six target residues were considered because L-alanine is smaller than the preferred substrates (i.e., L-valine, L-leucine, and L-isoleucine) of VlmD<sup>28</sup>. Having larger residues in the active site will reduce the active site volume, thereby increasing the chance of interaction between the active site and L-alanine of the incoming ligand (Fig. 8a). As detailed in “Methods”, the following 12 single mutations were suggested for the six target residues: V94I, V94L, V114I, V114L, T397A, T397V, W399L, S431T, S431V, S431L, D515K, and D515N.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p050",
+            "text": "![](images/1a26051d777d8bbd882bf7d0b66b682e95b352c9789cf58ebce5c6ae99899ee8.jpg)",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p051",
+            "text": "![](images/23c215a5ddeb2bd288fa022bbe7f8a4c356ef59a69e9583ae5ab17519deb7163.jpg)\nFig. 8 Protein engineering of VlmD for the enhanced production of ethylamine. a Binding model of PLP- -alanine in the homology model of VlmD. The homology model was generated using glutamate decarboxylase from Homo sapiens as a template. Potential six target residues for enzyme engineering are shown in cyan. b The concentrations of ethylamine produced by flask cultures of the EA01 strain and its derivative strains having one of the 12 different VlmD variants (Supplementary Table 2). Experiments were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p052",
+            "text": "To examine the effects of VlmD variants on ethylamine production, 12 engineered E. coli strains were constructed by overexpressing each vlmD variant and the alaD gene, both codonoptimized, in the WL3110 strain (Supplementary Table 2). Flask cultivation of the 12 resulting engineered strains showed that the EA01-V94I strain equipped with the V94I mutant of VlmD produced 5.69 mg L<sup>−1</sup> of ethylamine from glucose. Although still low, this titer is 96.9% higher than that (2.89 mg L<sup>−1</sup>) obtained with the EA01 strain harboring the native VlmD (Fig. 8b). This result suggests that the activity of VlmD toward other substrates, especially those with a poor conversion, can also be improved via rational protein engineering for the enhanced SCPA production.",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "discussion_p001",
+            "text": "In this study, we developed the platform E. coli strains for the biobased production of diverse SCPAs. The application of the combined retrobiosynthesis and precursor selection step allowed the identification of the best direct precursor for each SCPA to be produced and also the third-level EC numbers of candidate enzymes catalyzing the reaction of interest. After confirming the successful in vitro conversion of the direct precursors to SCPAs and in vivo SCPA production by the precursor feeding, the platform E. coli strains were further engineered to produce the direct amino acid precursors from glucose for the de novo production of SCPAs. These engineered E. coli strains expressing the heterologous valine decarboxylase gene (vlmD) were able to produce three proof-of-concept SCPAs from glucose, demonstrating the possibility of bio-based production of diverse SCPAs from renewable resources. To the best of our knowledge, this is the first study on the bio-based production of SCPAs.",
+            "section": "discussion"
+          },
+          {
+            "paragraph_id": "discussion_p002",
+            "text": "Further metabolic engineering was performed to increase the precursor supply and the key enzyme activity (e.g., VlmD in this study) toward the enhanced production of iso-butylamine and ethylamine as examples, respectively. In the case of isobutylamine, gene knockdowns via synthetic sRNA technology for the removal of auxotrophies together with fermentation optimization indeed further increased the titer and productivity. Systems metabolic engineering strategies established for amino acids<sup>21,22</sup> will be useful to further boost the production of SCPAs. For ethylamine, the enzymatic activity of VlmD was enhanced by rational protein engineering that involved the implementation of homology modeling and docking simulation. Expressing a VlmD mutant (V94I) suggested from this strategy led to the improved ethylamine production. Although developing a strategy combining retrobiosynthesis and precursor selection step to design biosynthetic pathways was the main objective of this study, the results of the proof-of-concept metabolic and enzyme engineering studies described above suggest that the production of SCPAs can be further enhanced by additional engineering together with fermentation optimization.",
+            "section": "discussion"
+          },
+          {
+            "paragraph_id": "discussion_p003",
+            "text": "Taken together, we developed a strategy combining retrobiosynthesis for the identification of possible precursor metabolites and the best promiscuous enzyme (or at least enzyme candiates), the precursor selection step to determine the best precursor molecules (i.e., based on molecular type and relative position of functional groups) with the best enzyme identified, confirmation of in vitro and in vivo activities, and construction of metabolically engineered strains for the de novo production of SCPAs from glucose. This strategy will be useful for the production of other chemicals, especially a group of related chemicals.",
+            "section": "discussion"
+          },
+          {
+            "paragraph_id": "methods_p001",
+            "text": "Retrobiosynthesis for producing multiple SCPAs. A previously developed inhouse computational retrobiosynthesis tool<sup>20</sup> was used to generate all possible precursors of target SCPAs. To run this tool, 84 reaction rules were constructed by manually extracting meaningful chemical transformation patterns on the basis of the third-level enzyme commission (EC) numbers from all the biochemical reactions available at the KEGG database<sup>34</sup>. These reaction rules are described in SMiles ARbitrary Target Specification (SMARTS), a chemical language describing structural patterns of molecules (Supplementary Data 1). While our in-house tool was used in this study, retrobiosynthesis using these updated reaction rules men tioned above can also be conducted using the popular ChemAxon Reactor<sup>35</sup> (JChem 19.9.0, 2019; http://www.chemaxon.com/) to generate precursors of a given target chemical. ChemAxon Reactor takes a set of reaction rules and a target",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p002",
+            "text": "chemical as inputs, which are presented in SMARTS and simplified molecularinput line-entry system (SMILES), respectively. The predicted precursors were exported in the SMILES format. In this study, all possible precursors of the target 15 SCPAs were generated using the in-house retrobiosynthesis tool products by using the 84 reaction rules.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p003",
+            "text": "Precursor selection step. The molecular types of the retrobiosynthesis-generated precursors were first examined by retrieving information in the ‘MeSH Tree’ of each precursor available at PubChem<sup>36</sup>. This information was accessed via Pub-ChemPy (v1.0.4). Upon selection of the precursors having the molecular type of amino acid, the relative position of their functional groups was examined next, in comparison with the previously reported substrates (i.e., L-valine, L-leucine, and L-isoleucine) of VlmD. Reaction decoder tool (RDT) $( \\mathbf { v } 1 . 5 . 1 ) ^ { 3 7 }$ was used for this purpose. These two steps are implemented in our source code at https://bitbucket. org/kaistsystemsbiology/retro-precursor-selection.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p004",
+            "text": "Enzyme purification and in vitro enzyme assay. E. coli BL21(DE3) harboring pET-his -vlmD<sup>opt</sup> was cultured for the overexpression of N-terminus His -tagged VlmD in 200 mL of LB medium at 37 °C. The expression of his -tagged and codonoptimized vlmD gene was induced by adding 1 mM of isopropyl $3 \\mathrm { - } \\mathrm { D - } 1 \\mathrm { - }$ thiogalactopyranoside (IPTG) after 3 h. Cells were collected after additional 5 h of cultivation by centrifugation at 2090 × g for 10 min. Harvested cells were suspended in 50 mL of equilibrium buffer that consists of 50 mM $\\mathrm { N a } _ { 3 } \\mathrm { P O } _ { 4 }$ and 300 mM NaCl (pH 7.0 by HCl). The cells were disrupted using ultrasonic homogenizer (VCX-600; Sonics and Materials Inc., Newtown, CT) with a titanium probe 40 T (Sonics and Materials Inc.). Cell debris was separated by centrifugation at 15,044 × g and 4 °C for 10 min, and the resulting supernatants were loaded onto Talon metal affinity resin (Clontech, Mountain View, CA). Equilibrium buffer supplemented with 7.5 mM of imidazole (10 mL) was subsequently flown to wash the resin. As a next step, equilibrium buffer supplemented with 150 mM of imidazole (5 mL) was flown through the resin to elute His -tagged VlmD. Finally, the buffer solution of the eluted protein was changed to 50 mM potassium phosphate buffer (pH 7.5) by using Amicon Ultra-15 Centricon (Millipore, Beilerica, MA) with a pore size of 10 kDa. The concentration of the purified VlmD was measured by the Bio-Rad Protein Assay Kit (Bio-Rad, Hercules, CA) using bovine serum albumin (BSA) as a standard. For the in vitro enzyme assay, 50 mM potassium phosphate buffer (pH 7.5) was used, and supplemented with 1 mM of an amino acid precursor (i.e., glycine, L-alanine, L-2-aminobutyric acid, 2-aminoisobutyric acid, L-norvaline, L valine, L-isovaline, L-norleucine, L-leucine, L-isoleucine, 1- aminocyclopentanecarboxylic acid, 1-aminocyclohexanecarboxylic acid, and L-2- phenylglycine), 0.1 mM of PLP, and 150 μg $\\dot { \\mathrm { m L ^ { - 1 } } }$ of the purified His -tagged VlmD. The enzymatic reaction was carried out for 2 h at $3 7 ^ { \\circ } \\mathrm { C } .$ All the in vitro enzyme assays were conducted in triplicates.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p005",
+            "text": "Construction of bacterial strains and plasmids. All bacterial strains and plasmids used in this study are listed in Supplementary Table 2. E. coli NEB 10-beta (New England Biolabs, Ipswich, MA) strain was used for gene cloning experiments. E. coli WL3110 strain<sup>21</sup>, which is a lacI knockout mutant of E. coli W3110, was used as a host strain for the production of SCPAs. All the DNA manipulations were performed using standard procedures<sup>38</sup>. Cells were grown in Luria-Bertani (LB) broth or on LB plates (1.5%, w/v, agar) for the construction of plasmids and strains. When needed, antibiotics were added to the medium at the following concentrations: kanamycin (Km), 25 μg mL<sup>−1</sup>; and ampicillin (Ap), 50 μg mL<sup>−1</sup>.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p006",
+            "text": "All the primers used in this study were synthesized at Genotech (Daejeon, Korea), and are listed in Supplementary Table 3. The codon-optimized S. viridifaciens vlmD gene was synthesized at Genscript (Piscataway, NJ), and the codon-optimized G. stearothermophilus alaD gene was synthesized at Cosmogenetech (Seoul, Korea). DNA sequences of the codon-optimized genes are shown in Supplementary Table 4. Plasmid pKBRilvBNCED was obtained from the previous study<sup>21</sup>. The codon-optimized vlmD gene from S. viridifaciens was amplified by PCR using the primers vlmD\\_F1 and vlmD\\_R1. The amplified gene fragment was inserted into pTac15K at the EcoRI and KpnI sites to construct pTac15-vlmD<sup>opt</sup>. To construct pET-his -vlmD<sup>opt</sup>, the codon-optimized vlmD gene was amplified by PCR using the primers vlmD\\_F2 and vlmD\\_R2, and the resulting fragment was inserted into pET-22b(+) at the NdeI and EcoRI sites. To construct pTac15-vlmD<sup>opt</sup>-alaD<sup>opt</sup>, the codon-optimized G. stearothermophilus alaD gene was amplified using the primers alaD\\_F1 and alaD\\_R1. The amplified gene fragment was inserted into pTac15-vlmD<sup>opt</sup> at KpnI and PstI sites. To construct pTac15-alaD<sup>opt</sup>, the codon-optimized G. stearothermophilus alaD gene was amplified using the primers alaD\\_F2 and alaD\\_R2, and the amplified gene fragment was inserted into pTac15K at the EcoRI site. The leuABCD gene fragment was generated by two sequential PCRs. The first PCR was conducted using the primers leuABCD\\_F1 and leuABCD\\_R1 with gDNA of E. coli W3110 as a template. The resulting amplified fragment was used as a template for the next PCR using the primers leuABCD\\_F2 and leuABCD\\_R2. This fragment was inserted into pTac15-vlmD<sup>opt</sup> at its PstI site to generate pTac15-vlmD<sup>opt</sup>-pTac-leuABCD. Plasmid pTac15-leuABCD was constructed by site-directed mutagenesis of pTac15-vlmD<sup>opt</sup>-pTac-leuABCD using inv\\_F1 and inv\\_R1 as primers.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p007",
+            "text": "The plasmids expressing synthetic sRNAs were constructed using Gibson assembly<sup>39</sup> as follows. The DNA fragment of plasmid backbone was prepared by inverse PCR with inv\\_F2 and inv\\_R2 primers using the plasmid pTac15-vlmD<sup>opt</sup> as a template. The DNA fragment of anti-ilvA expression cassette was prepared by PCR with anti-ilvA\\_F and anti-ilvA\\_R primers using the previously constructed plasmid<sup>32</sup> pWAS-anti-ilvA as a template. The DNA fragments of plasmid backbone and anti-ilvA expression cassette were ligated by Gibson assembly to construct pTac15-vlmD<sup>opt</sup>-anti-ilvA. Similiarly, pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuA was constructed by Gibson assembly of the DNA fragments of plasmid backbone (generated by inverse PCR with inv\\_F3 and inv\\_R3 primers using pTac15- vlmDopt-anti-ilvA as a template) and anti-leuA expression cassette (generated by PCR with anti-leuA\\_F and anti-leuA\\_R primers using the previously constructed plasmid<sup>32</sup> pWAS-anti-leuA as a template). Lastly, pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuApanB was constructed by Gibson assembly of the DNA fragment of plasmid backbone (generated by inverse PCR with inv\\_F4 and inv\\_R4 primers using pTac15-vlmD<sup>opt</sup>-anti-ilvA-leuA as a template) and anti-panB expression cassette (generated by PCR with anti-panB\\_F and anti-panB\\_R primers using the previously constructed plasmid<sup>32</sup> pWAS-anti-panB as a template). Lastly, the plasmids pTac15-vlmD<sup>opt</sup>-XYZ-alaD<sup>opt</sup> (X and Z represents original and replaced amino acid, respectively, in Y<sup>th</sup> residue of VlmD) were constructed by site-directed mutagenesis of pTac15-vlmD<sup>opt</sup>-alaD<sup>opt</sup> using XYZ\\_F and XY\\_R as primers. For an example, pTac15-vlmD<sup>opt</sup>-V94I-alaD<sup>opt</sup> was constructed by site-directed mutagenesis of pTac15-vlmD<sup>opt</sup>-alaD<sup>opt</sup> using V94I\\_F and V94\\_R as primers.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p008",
+            "text": "Cultivation condition. The PA01 strain, E. coli WL3110 expressing the S. viridifaciens vlmD gene, was cultured in the MR medium (pH 7.0) supplemented with $1 0 \\mathrm { { \\dot { g } L ^ { - 1 } } }$ of glucose and $2 { \\bf g } { \\bf L } ^ { - 1 }$ of one of the 12 different amino acid precursors mentioned above. The EA01 strain producing ethylamine was cultured in the MR medium (pH 7.0) supplemented with 20 $\\mathrm { g L } ^ { - 1 }$ of glucose. The MR medium (pH 7.0) contains (per liter): 6.67 $\\mathrm { \\Delta g K H _ { 2 } P O _ { 4 } , 4 \\bar { g } }$ (NH ) HPO , 0.8 g $\\mathrm { M g S O _ { 4 } { \\cdot } 7 H _ { 2 } O , 0 . 8 ~ g }$ citric acid, and 5 mL trace metal solution<sup>40</sup>. The trace metal solution contains (per liter of 0.5 M HCl): 10 g FeSO ·7H O, 2 g CaCl , 2.2 g ZnSO ·7H O, 0.5 g MnSO ·4H O, 1 g CuSO ·5H O, 0.1 g $( \\mathrm { N \\bar { H } _ { 4 } } ) _ { 6 } \\mathrm { M o _ { 7 } O _ { 2 4 } \\cdot ^ { - 4 } H _ { 2 } O } ,$ and 0.02 g $\\mathrm { N a } _ { 2 } \\mathrm { B } _ { 4 } \\mathrm { O } _ { 7 } { \\cdot } 1 0 \\mathrm { H } _ { 2 } \\mathrm { O } .$ Stock solutions containing glucose, $\\mathrm { M g S O _ { 4 } { \\cdot } 7 H _ { 2 } O , }$ and one of the 12 different amino acid precursors were sterilized separately, and added to the MR medium later, before cell cultivation. Seed cultures were grown in a 25 mL test tube containing 10 mL of LB medium at $3 7 ^ { \\circ } \\mathrm { C } .$ After 8 h of cultivation, 1.5 mL of the seed culture was transferred to a 300 mL baffled flask containing 50 mL of culture medium, then cultivated at 37 °C and 200 rpm in a shaking incubator. The PA01 strain was cultured for 36 h, and the EA01 strain was cultured for 48 h. After cultivation, supernatants were collected for further analyses.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p009",
+            "text": "The iBA01 strain producing iso-butylamine was cultured in the NM2 medium previously reported<sup>21</sup>. The iAA01 strain producing iso-amlyamine was cultured in the NM2 medium without L-leucine. The NM2 medium contains per liter: 50 g glucose, $3 0 \\mathrm { g \\ C a C O _ { 3 } , 1 2 . 5 g \\ ( N H _ { 4 } ) _ { 2 } S O _ { 4 } , 4 . 0 g \\ K H _ { 2 } P O _ { 4 } , 2 . 0 g \\ M g S O _ { 4 } \\cdot 7 H _ { 2 } O , 2 g \\ L a O _ { 4 } , 2 . 0 g \\ L a O _ { 4 } , 2 . 0 g \\ L a O _ { 4 } \\cdot 7 H _ { 2 } O , }$ yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.425 mg sodium Dpantothenate, and 5 mL trace metal solution. Seed cultures were prepared in the same manner as described above. After 8 h of cultivation, 1.5 mL of the seed culture was transferred to a 300 mL baffled flask containing 50 mL of culture medium, then cultivated for 48 h at 30 °C and 200 rpm in a shaking incubator. All the flask cultures were repeated three times.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p010",
+            "text": "Fed-batch fermentation of the iBA01 strain was performed in a 6.6 L bioreactor (Bioflo 3000; New Brunswick Scientific Co., Edison, NJ) containing 2 L of NM3 medium. The NM3 medium contains per liter: 20 g glucose, 20 g $\\mathrm { ( N H _ { 4 } ) _ { 2 } S O _ { 4 } } , 2 \\mathrm { g }$ KH PO , 0.4 g MgSO ·7H O, 1.6 g NaCl, 5 g yeast extract, 0.262 g L-isoleucine, 0.262 g L-leucine, 0.362 mg sodium D-pantothenate, and 5 mL trace metal solution. Seed cultures were prepared by transferring 0.5 mL of culture broth (grown in 10 mL LB medium at $3 7 ^ { \\circ } \\mathrm { C } )$ into a 250 mL Erlenmeyer flask containing 50 mL LB medium, and cultured for 7 h at $3 0 ^ { \\circ } \\mathrm { C }$ in a shaking incubator at 200 rpm. The seed culture (200 mL)was inoculated to a bioreactor. Fermentation was performed at $3 0 ^ { \\circ } \\mathrm { C } ,$ and the culture pH was adjusted to 7.0 by adding 28% (v/v) ammonia solution. Air was constantly flowed at 2 L min<sup>−1</sup>. The dissolved oxygen (DO) level was kept at 40% of air saturation by automatically controlling the agitation speed from 200 to 1000 rpm and by supplying pure oxygen when the maximum agitation speed of 1000 rpm was reached. Feeding solution contained 400 $\\mathrm { g } \\mathrm { L } ^ { - 1 }$ of glucose, 2 $0 \\mathrm { g L } ^ { - 1 }$ of KH PO , 2.1 g L<sup>−1</sup> of L-isoleucine, $2 . 1 \\mathrm { g } \\mathrm { L } ^ { - 1 }$ of L-leucine, and 3.62 $\\mathrm { m g L ^ { - 1 } }$ of sodium D-pantothenate. A total of 100 mL of the feeding solution was manually added when residual glucose concentration was less than $3 \\mathrm { g } \\mathrm { L } ^ { - 1 }$ . Fed-batch fermentation of the iBA02 strain was performed in the same condition as the iBA01 strain except that L-isoleucine, L-leucine, and sodium D-pantothenate were excluded in the medium and feeding solution.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p011",
+            "text": "Analytical procedures. Cell growth was monitored by measuring the optical density at 600 nm $\\mathrm { ( O D _ { 6 0 0 } ) }$ using Ultrospec 3000 spectrophotometer (Amersham Biosciences, Uppsala, Sweden). Glucose concentration was determined using the glucose analyzer (model 2700 STAT; Yellow Springs Instrument, Yellow Springs, OH). Concentrations of the 13 SCPAs (i.e., methylamine, ethylamine, n-propylamine, iso-propylamine, n-butylamine, iso-butylamine, (R)-sec-butylamine n-amylamine, iso-amylamine, 2-methylbutylamine, cyclopentylamine, cyclohexylamine, and benzylamine) were measured using high-performance liquid chromatography (1100 Series HPLC; Agilent Technologies, Santa Clara, CA). Automatic precolumn derivatizations of the 13 SCPAs were performed by using o-phthaldialdehyde (OPA; Sigma, St. Louis, MO) in HPLC. The OPA derivatization reagent was prepared as follows<sup>41,42</sup>. The OPA reagent was prepared by dissolving 0.20 g of OPA in 9.0 mL of methanol, followed by adding 1.0 mL of 0.40 M (pH 9.0) borate buffer and 160 μL of 2-mercaptoethanol (a reducing reagent). All the culture broth samples, standard chemicals, OPA reagent, and borate buffer were filtered through a 0.2 μm PVDF syringe filter (FUTECS, Daejeon, Korea). For the derivatization, 1 μL of the sample was mixed with 5 μL of 0.40 M (pH 9.0) borate buffer. Following the addition of 1 μL of the OPA reagent, the mixture was injected into HPLC equipped with the Eclipse plus C18 column (4.6 × 150 mm; Agilent Technologies) operated at 25 °C. The mobile phase consists of solvent A (1.4 g L<sup>−1</sup> of Na HPO , 3.8 g L<sup>−1</sup> of Na B O ·10H O, and 8 mg L<sup>−1</sup> of NaN ; adjusted to pH 7.2 with HCl) and solvent B (45% acetonitrile, 45% methanol, and 10% H O, in vol%), and was flown at 1.2 mL min<sup>−1</sup>. The following gradients were applied: 0–0.5 min, 100% solvent A; 0.5–18 min, a linear gradient of B from 0 to 57%; 18–26 min, a linear gradient of solvent B from 57 to 100%; 26–29 min, 100% solvent B; 29-30 min, a linear gradient of solvent B from 100 to 0% (all in vol%). The derivatized SCPAs were detected by a variable wavelength detector (G1314A; Agilent Technologies) at 230 nm. The raw data were collected using Agilent ChemStation 4.03, and analyzed using Microsoft Excel 2013 (15.0.5111.1000) and OriginPro 2019.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p012",
+            "text": "For mass spectral analysis of the SCPAs, samples were derivatized with AccQ-Tag Ultra Derivatization Kit (Waters, Milford, MA) according to the manufacturer’s protocol. Briefly, 10 μL of either in vitro assay sample or standard SCPA solution (100 mg L<sup>−1</sup>) was mixed with 70 μL of AccQ-Tag Ultra borate buffer and 20 μL of AccQ-Tag reagent dissolved in 1.0 mL of AccQ-Tag Ultra reagent diluent. The derivatization reaction was carried out for 10 min at 55 °C. The derivatized samples or standard SCPA solutions were analyzed using HPLC (1100 Series HPLC; Agilent Technologies) connected with MS (LC/MSD VL; Agilent Technologies). The XBridge C18 column (5 μm, 4.6 × 150 mm; Waters) was used. The mobile phase comprises solvent C (50 mM ammonium acetate, adjusting pH to 9.3 by 28% NH OH solution) and solvent D (acetonitrile). The mobile phase was flown at 0.4 mL min<sup>−1</sup>. The following gradients were applied: 0- 1 min, 90% C; 1–10 min, a linear gradient of D from 10 to 70%; 10–20 min, a linear gradient of D from 70 to 90%; 20–30 min, 90% D (all in vol%). The eluent was directed to MS using ESI positive ion mode under the following conditions: 100 V fragmentor, 12.0 L min<sup>−1</sup> drying gas flow, 350 °C drying gas temperature, 30 psig nebulizer pressure, and 3.0 kV capillary voltage. The scanned mass range was 50–500 m/z.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p013",
+            "text": "Homology modeling and docking simulation of VlmD. To obtain a homology model of VlmD, the native VlmD protein sequence was used as an input for the template-based modeling using SWISS-MODEL<sup>43</sup>. A homology model of VlmD was generated using GAD67 from Homo sapiens (PDB ID: 2OKJ)<sup>33</sup>. GAD67 was used as a template because it showed the greatest sequence identity (19.76%) with VlmD among proteins that use PLP as a cofactor. The PLP-L-alanine was subsequently docked into the active site of the resulting homology model of VlmD using AutoDock Vina (v1.1.2)<sup>44</sup>. Six target residues in the active site of the VlmD homology model were manually selected for mutations, which appeared to be interacting with L-alanine of PLP-L-alanine. To find candidate substitute residues for the six target residues, 250 homologous protein sequences were retrieved by aligning VlmD with protein sequences in the database of nonredundant protein sequences (nr) using BLASTP (v2.10.1). As a result, a total of 12 candidate substitute residues were identified from the homologous protein sequences detected. The six target residues from the active site of the VlmD homology model were experimentally modified to one of these 12 candidate substitute residues.",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "data_availability_p001",
+            "text": "The data supporting the findings of this study are available within the article and its Supplementary Information and Supplementary Data. Additional data are available from the corresponding author upon reasonable request. The protein sequence of valine decarboxylase (VlmD) is available at UniProt-Q84F32 (https://www.uniprot.org/uniprot/ Q84F32). The crystal structure of glutamic acid decarboxylase (GAD67) is available at PDB-2OKJ (http://www.rcsb.org/structure/2OKJ). Source data are provided with this paper. The engineered strains developed in this study can only be provided for noncommercial purposes as they are in commercial interest, and a patent is filed (Korean Patent Application No. 10-2020-0042756). Source data are provided with this paper.",
+            "section": "data_availability"
+          },
+          {
+            "paragraph_id": "code_availability_p001",
+            "text": "Source code for the single-step retrobiosynthesis (Fig. 1b) and selection of precursors having a suitable molecular type (Fig. 1c) is available at https://bitbucket.org/ kaistsystemsbiology/retro-precursor-selection.",
+            "section": "code_availability"
+          },
+          {
+            "paragraph_id": "code_availability_p002",
+            "text": "Received: 16 July 2020; Accepted: 27 November 2020; Published online: 08 January 2021",
+            "section": "code_availability"
+          },
+          {
+            "paragraph_id": "references_p001",
+            "text": "1. Lee, S. Y. et al. A comprehensive metabolic map for production of bio-based chemicals. Nat. Catal. 2, 18–33 (2019).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p002",
+            "text": "2. Jullesson, D., David, F., Pfleger, B. & Nielsen, J. Impact of synthetic biology and metabolic engineering on industrial production of fine chemicals. Biotechnol. Adv. 33, 1395–1402 (2015).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p003",
+            "text": "3. Atsumi, S., Hanai, T. & Liao, J. C. Non-fermentative pathways for synthesis of branched-chain higher alcohols as biofuels. Nature 451, 86–89 (2008).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p004",
+            "text": "4. Dellomonaco, C., Clomburg, J. M., Miller, E. N. & Gonzalez, R. Engineered reversal of the β-oxidation cycle for the synthesis of fuels and chemicals. Nature 476, 355–359 (2011).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p005",
+            "text": "5. Cheong, S., Clomburg, J. M. & Gonzalez, R. Energy- and carbon-efficient synthesis of functionalized small molecules in bacteria using nondecarboxylative Claisen condensation reactions. Nat. Biotechnol. 34, 556–561 (2016).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p006",
+            "text": "6. Rodriguez, G. M., Tashiro, Y. & Atsumi, S. Expanding ester biosynthesis in Escherichia coli. Nat. Chem. Biol. 10, 259–265 (2014).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p007",
+            "text": "7. Chae, T. U., Ko, Y. S., Hwang, K. S. & Lee, S. Y. Metabolic engineering of Escherichia coli for the production of four-, five- and six-carbon lactams. Metab. Eng. 41, 82–91 (2017).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p008",
+            "text": "8. Zhang, J. et al. Application of an acyl-CoA ligase from Streptomyces aizunensis for lactam biosynthesis. ACS Synth. Biol. 6, 884–890 (2017).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p009",
+            "text": "9. Gross, T., Seayad, A. M., Ahmad, M. & Beller, M. Synthesis of primary amines: First homogeneously catalyzed reductive amination with ammonia. Org. Lett. 4, 2055–2058 (2002).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p010",
+            "text": "10. Gunanathan, C. & Milstein, D. Selective synthesis of primary amines directly from alcohols and ammonia. Angew. Chem. Int. Ed. 47, 8661–8664 (2008).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p011",
+            "text": "11. Koszelewski, D., Tauber, K., Faber, K. & Kroutil, W. ω-Transaminases for the synthesis of non-racemic α-chiral primary amines. Trends Biotechnol. 28, 324–332 (2010).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p012",
+            "text": "12. Peter, R., Karsten, E., Erhard, H., Roland, R. & Hartmut, H. in Amines, Aliphatic. Ullmann’s Encylopedia of Industrial Chemistry (ed. Barbara, E.) 1–50 (Wiley-VCH, Weinheim, 2015).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p013",
+            "text": "13. Pickl, M., Fuchs, M., Glueck, S. M. & Faber, K. Amination of ω-functionalized aliphatic primary alcohols by a biocatalytic oxidation-transamination cascade. ChemCatChem 7, 3121–3124 (2015).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p014",
+            "text": "14. Citoler, J., Derrington, S. R., Galman, J. L., Bevinakatti, H. & Turner, N. J. A biocatalytic cascade for the conversion of fatty acids to fatty amines. Green. Chem. 21, 4932–4935 (2019).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p015",
+            "text": "15. Hadadi, N. & Hatzimanikatis, V. Design of computational retrobiosynthesis tools for the design of de novo synthetic pathways. Curr. Opin. Chem. Biol. 28, 99–104 (2015).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p016",
+            "text": "16. Yang, X. et al. Systematic design and in vitro validation of novel one-carbon assimilation pathways. Metab. Eng. 56, 142–153 (2019).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p017",
+            "text": "17. Yim, H. et al. Metabolic engineering of Escherichia coli for direct production of 1,4-butanediol. Nat. Chem. Biol. 7, 445–452 (2011).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p018",
+            "text": "18. Feher, T. et al. Validation of RetroPath, a computer-aided design tool for metabolic pathway engineering. Biotechnol. J. 9, 1446–1457 (2014).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p019",
+            "text": "19. Ren, J. et al. An unnatural pathway for efficient 5-aminolevulinic acid biosynthesis with glycine from glyoxylate based on retrobiosynthetic design. ACS Synth. Biol. 7, 2750–2757 (2018).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p020",
+            "text": "20. Cho, A., Yun, H., Park, J. H., Lee, S. Y. & Park, S. Prediction of novel synthetic pathways for the production of desired chemicals. BMC Syst. Biol. 4, 35 (2010).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p021",
+            "text": "21. Park, J. H., Lee, K. H., Kim, T. Y. & Lee, S. Y. Metabolic engineering of Escherichia coli for the production of L-valine based on transcriptome analysis and in silico gene knockout simulation. Proc. Natl Acad. Sci. USA 104, 7797–7802 (2007).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p022",
+            "text": "22. Wendisch, V. F. Metabolic engineering advances and prospects for amino acid production. Metab. Eng., in-press (2019).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p023",
+            "text": "23. Choi, Y. J. & Lee, S. Y. Microbial production of short-chain alkanes. Nature 502, 571–574 (2013).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p024",
+            "text": "24. Sheppard, M. J., Kunjapur, A. M. & Prather, K. L. J. Modular and selective biosynthesis of gasoline-range alkanes. Metab. Eng. 33, 28–40 (2016).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p025",
+            "text": "25. McMurry, J. & Begley, T. P. The Organic Chemistry of Biological Pathways (Roberts and Company Publishers, 2005).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p026",
+            "text": "26. Bond-Watts, B. B., Bellerose, R. J. & Chang, M. C. Y. Enzyme mechanism as a kinetic control element for designing synthetic biofuel pathways. Nat. Chem. Biol. 7, 222–227 (2011).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p027",
+            "text": "27. Huo, Y. X. et al. Conversion of proteins into biofuels by engineering nitrogen flux. Nat. Biotechnol. 29, 346–351 (2011).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p028",
+            "text": "28. Garg, R. P., Ma, Y., Hoyt, J. C. & Parry, R. J. Molecular characterization and analysis of the biosynthetic gene cluster for the azoxy antibiotic valanimycin. Mol. Microbiol 46, 505–517 (2002).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p029",
+            "text": "29. Fukui, K. Role of frontier orbitals in chemical-reactions. Science 218, 747–754 (1982).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p030",
+            "text": "This work was supported by the Technology Development Program to Solve Climate Changes on Systems Metabolic Engineering for Biorefineries from the Ministry of Science and ICT through the National Research Foundation (NRF) of Korea (NRF-2012M1A2A2026556 and NRF-2012M1A2A2026557).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p031",
+            "text": "30. Gohlke, H. & Klebe, G. Approaches to the description and prediction of the binding affinity of small-molecule ligands to macromolecular receptors. Angew. Chem. Int. Ed. 41, 2645–2676 (2002).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p032",
+            "text": "31. Zhang, X., Jantama, K., Moore, J. C., Shanmugam, K. T. & Ingram, L. O. Production of L-alanine by metabolically engineered Escherichia coli. Appl. Microbiol. Biotechnol. 77, 355–366 (2007).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p033",
+            "text": "32. Na, D. et al. Metabolic engineering of Escherichia coli using synthetic small regulatory RNAs. Nat. Biotechnol. 31, 170–174 (2013).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p034",
+            "text": "33. Fenalti, G. et al. GABA production by glutamic acid decarboxylase is regulated by a dynamic catalytic loop. Nat. Struct. Mol. Biol. 14, 280–286 (2007).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p035",
+            "text": "34. Kanehisa, M., Furumichi, M., Tanabe, M., Sato, Y. & Morishima, K. KEGG: new perspectives on genomes, pathways, diseases and drugs. Nucleic Acids Res. 45, D353–D361 (2017)",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p036",
+            "text": "35. Pirok, G. et al. Making “real” molecules in virtual space. J. Chem. Inf. Model 46, 563–568 (2006).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p037",
+            "text": "36. Kim, S. et al. PubChem 2019 update: improved access to chemical data. Nucleic Acids Res. 47, D1102–D1109 (2019).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p038",
+            "text": "37. Rahman, S. A. et al. Reaction Decoder Tool (RDT): extracting features from chemical reactions. Bioinformatics 32, 2065–2066 (2016).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p039",
+            "text": "38. Sambrook, J. & Russell, D. W. Molecular Cloning: A Laboratory Manual 3rd edn (Cold Spring Harbor Lab Press, 2001).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p040",
+            "text": "39. Gibson, D. G. et al. Enzymatic assembly of DNA molecules up to several hundred kilobases. Nat. Methods 6, 343–345 (2009).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p041",
+            "text": "40. Lee, Y. & Lee, S. Y. Enhanced production of poly(3-hydroxybutyrate) by filamentation-suppressed recombinant Escherichia coli in a defined medium. J. Environ. Polym. Degr. 4, 131–134 (1996).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p042",
+            "text": "41. Önal, A. A review: Current analytical methods for the determination of biogenic amines in foods. Food Chem. 103, 1475–1486 (2007).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p043",
+            "text": "42. Yildirim, H. K., Uren, A. & Yucel, U. Evaluation of biogenic amines in organic and non-organic wines by HPLC OPA derivatization. Food Technol. Biotechnol. 45, 62–68 (2007).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p044",
+            "text": "43. Waterhouse, A. et al. SWISS-MODEL: homology modelling of protein structures and complexes. Nucleic Acids Res. 46, W296–W303 (2018).",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "references_p045",
+            "text": "44. Trott, O. & Olson, A. J. AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading. J. Comput. Chem. 31, 455–461 (2010)",
+            "section": "references"
+          },
+          {
+            "paragraph_id": "author_contributions_p001",
+            "text": "S.Y.L. conceived the project. D.I.K. and T.U.C. performed experiments. D.I.K., H.U.K., and W.D.J. performed computational analyses. D.I.K., T.U.C., H.U.K., W.D.J., and S.Y.L. analyzed data. D.I.K., T.U.C., H.U.K., and S.Y.L. wrote the manuscript.",
+            "section": "author_contributions"
+          },
+          {
+            "paragraph_id": "competing_interests_p001",
+            "text": "The authors (D.I.K., T.U.C., and S.Y.L.) declare competing financial interests because the strains described in this paper are of commercial interest, and a patent is filed (Korean Patent Application No. 10-2020-0042756). All the authors (D.I.K., T.U.C., H.U.K., W.D.J., and S.Y.L.) declare no non-financial competing interests.",
+            "section": "competing_interests"
+          },
+          {
+            "paragraph_id": "additional_information_p001",
+            "text": "Supplementary information is available for this paper at https://doi.org/10.1038/s41467- 020-20423-6.",
+            "section": "additional_information"
+          },
+          {
+            "paragraph_id": "additional_information_p002",
+            "text": "Correspondence and requests for materials should be addressed to S.Y.L",
+            "section": "additional_information"
+          },
+          {
+            "paragraph_id": "additional_information_p003",
+            "text": "Peer review information Nature Communications thanks Nicholas Turner and the other anonymous reviewers for their contribution to the peer review of this work. Peer reviewer reports are available.",
+            "section": "additional_information"
+          },
+          {
+            "paragraph_id": "additional_information_p004",
+            "text": "Reprints and permission information is available at http://www.nature.com/reprints",
+            "section": "additional_information"
+          },
+          {
+            "paragraph_id": "additional_information_p005",
+            "text": "Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.",
+            "section": "additional_information"
+          },
+          {
+            "paragraph_id": "additional_information_p006",
+            "text": "![](images/8c937c907dd7ac97c255049a938972643d34c1c6cd89e325505c730e121331b2.jpg)",
+            "section": "additional_information"
+          },
+          {
+            "paragraph_id": "additional_information_p007",
+            "text": "cc Open Access This article is licensed under a Creative Commons BY Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit http://creativecommons.org/ licenses/by/4.0/.",
+            "section": "additional_information"
+          }
+        ]
+      },
+      "figure_map": {
+        "figures": [
+          {
+            "figure_id": "Fig. 1",
+            "caption": "Overall workflow for the microbial production of 15 short-chain primary amines (SCPAs). The workflow implemented in this study largely consists of the following steps: (a) target chemical selection; (b) prediction of precursors and relevant third-level EC numbers for the generation of these precursors; (c) selection of precursors having a suitable molecular type; (d) selection of precursors having a consistent relative position of functional groups; (e) in vitro production using purified enzyme VlmD; (f) in vivo production via feeding of direct precursors; and (g) de novo production from glucose. Amine, carboxylic, hydroxy and CoA groups are presented with yellow, green, blue, and pink circles, respectively. In (c) and (d), these two steps are collectively referred to as the precursor selection step where precursors that meet the selection criteria are presented with a check mark.",
+            "related_paragraphs": [
+              "results_p005",
+              "results_p006"
+            ]
+          },
+          {
+            "figure_id": "Fig. 2",
+            "caption": "Relative position of functional groups in the predicted amino acid precursors of 12 SCPAs in comparison with the previously reported substrates of VlmD. Amine and carboxylic groups in the amino acid precursors predicted using retrobiosynthesis for each SCPA are presented with yellow and green circles, respectively, in a dotted black box. Reaction center carbon atoms that are subject to chemical transformations are marked with asterisks. Precursors having the same relative position of functional groups, compared with the previously reported VlmD substrates<sup>28</sup> in dotted blue boxes, are presented with a check mark.",
+            "related_paragraphs": [
+              "results_p003",
+              "results_p004",
+              "results_p006",
+              "results_p007"
+            ]
+          },
+          {
+            "figure_id": "Fig. 3",
+            "caption": "In vitro enzyme assay of VlmD producing 12 SCPAs. High-performance liquid chromatography (HPLC) chromatograms of in vitro enzyme assays conducted using VlmD, which converted: (a) L-alanine to ethylamine; (b) L-2-aminobutyrate to n-propylamine; (c) 2-aminoisobutyrate to iso-propylamine; (d) L-norvaline to n-butylamine; (e) L-valine to iso-butylamine; (f) L-isovaline to (R)-sec-butylamine; (g) L-norleucine to n-amylamine; (h) L-leucine to isoamylamine; (i) L-isoleucine to 2-methylbutylamine; (j) 1-aminocyclopetanecarboxylic acid to cyclopentylamine; (k) 1-aminocyclohexanecarboxylic acid to cyclohexylamine; and (l) L-2-phenylglycine to benzylamine. Black and red lines in the left graph for each SCPA indicate chromatograms from in vitro enzyme assays without VlmD (control) and with VlmD, respectively. Green bar graphs indicate percentage (%) of amino acid precursors converted to their corresponding SCPAs by the VlmD after two hours of enzymatic reaction at $3 7 ^ { \\circ } \\mathsf { C } .$ Experiments were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "related_paragraphs": [
+              "results_p006",
+              "results_p008",
+              "results_p032",
+              "results_p049"
+            ]
+          },
+          {
+            "figure_id": "Fig. 4",
+            "caption": "Biosynthetic reactions constructed in E. coli for the in vivo production of 12 SCPAs. These 12 SCPAs were the ones shown to be produced by VlmD in vitro (dotted boxes). Amine and carboxylic groups shown in each dotted box are presented with yellow and green circles, respectively. Reaction center carbon atoms that are subject to chemical transformations are marked with asterisks. Glycolysis is indicated with a red background, which leads to the biosynthesis of 12 amino acid precursors. Multiple reactions are presented with two or more arrows.",
+            "related_paragraphs": [
+              "results_p035",
+              "results_p037"
+            ]
+          },
+          {
+            "figure_id": "Fig. 5",
+            "caption": "In vivo production of 12 SCPAs via feeding of their direct precursors. Production titers of 12 SCPAs from E. coli expressing the codon-optimized Streptomyces viridifaciens vlmD (PA01 strain) are presented where direct precursors of the SCPAs were individually provided in the medium. All the experiments for the production of each SCPA were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "related_paragraphs": [
+              "results_p008",
+              "results_p036",
+              "results_p046"
+            ]
+          },
+          {
+            "figure_id": "Fig. 6",
+            "caption": "De novo production of three SCPAs from glucose as a sole carbon source. Ethylamine, iso-butylamine, and iso-amylamine were produced from glucose through additional engineering of E. coli (Supplementary Table 2): (a) ethylamine from the NC01 (control) and EA01 strains; (b) iso-butylamine from the NC02 (control) and iBA01 strains; and (c) iso-amylamine from the NC03 (control) and iAA01 strains. The concentrations of amino acid precursors and their corresponding SCPAs are presented with gray and green bars, respectively. Amino acid precursors for the gray bars in (a, b, and c) correspond to L-alanine, L-valine, and L-leucine, respectively. Overexpressed genes are indicated with corresponding gene names. Amplified reactions are shown with thick arrows. Presented genes encode the following enzymes: alaD, alanine dehydrogenase; ilvB, acetohydroxy acid synthase I large subunit; ilvC, ketol-acid reductoisomerase; ilvD, dihydroxy-acid dehydratase; ilvE, branched-chain-amino-acid aminotransferase; ilvN, acetohydroxy acid synthase I small subunit; leuA, 2-isopropylmalate synthase; leuB, 3-isopropylmalate dehydrogenase; leuC, 3-isopropylmalate dehydratase large subunit; leuD, 3- isopropylmalate dehydratase small subunit; and vlmD, valine decarboxylase. The alaD<sup>opt</sup> and vlmD<sup>opt</sup> genes indicate codon-optimized alaD and vlmD genes, respectively. All the experiments for the SCPA productions were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "related_paragraphs": [
+              "results_p044",
+              "results_p049"
+            ]
+          },
+          {
+            "figure_id": "Fig. 7",
+            "caption": "Fed-batch fermentations for the enhanced production of iso-butylamine. a Fermentation profile of the iBA01 strain, which was cultured in the NM3 medium that includes L-isoleucine, L-leucine, and D-pantothenate. b Fermentation profile of the iBA02 strain, which was cultured in the same NM3 medium as the iBA01 strain, but without L-isoleucine, L-leucine, and D-pantothenate. Another fed-batch fermentation profile of the iBA02 strain, which was conducted for the reproducibility, is available in Supplementary Fig. 5. Cell density $( \\mathrm { O D } _ { 6 0 0 } )$ , glucose concentration, and iso-butylamine concentration are presented with black, gray, and green circles, respectively. Source data are provided as a Source Data file.",
+            "related_paragraphs": [
+              "results_p046"
+            ]
+          },
+          {
+            "figure_id": "Fig. 8",
+            "caption": "Protein engineering of VlmD for the enhanced production of ethylamine. a Binding model of PLP- -alanine in the homology model of VlmD. The homology model was generated using glutamate decarboxylase from Homo sapiens as a template. Potential six target residues for enzyme engineering are shown in cyan. b The concentrations of ethylamine produced by flask cultures of the EA01 strain and its derivative strains having one of the 12 different VlmD variants (Supplementary Table 2). Experiments were conducted in triplicates. Data are presented as mean values ± s.d. Source data are provided as a Source Data file.",
+            "related_paragraphs": [
+              "results_p051"
+            ]
+          }
+        ]
+      },
+      "table_map": {
+        "tables": []
+      },
+      "citation_map": {
+        "citations": []
+      },
+      "modification_log": {
+        "changes": [
+          {
+            "change_id": "change_0001",
+            "type": "remove_header_footer",
+            "location": "line:311",
+            "original": "© The Author(s) 2021",
+            "cleaned": "",
+            "reason": "repeated page-boundary artifact"
+          }
+        ]
+      },
+      "cleaning_quality_report": {
+        "noise_removed": 1,
+        "tables_fixed": 0,
+        "figures_preserved": 8,
+        "tables_preserved": 0,
+        "citations_preserved": true,
+        "sections_preserved": true,
+        "missing_sections": [],
+        "confidence": 1.0
+      }
+    },
+    "cleaning_report": {
+      "noise_removed": 1,
+      "tables_fixed": 0,
+      "figures_preserved": 8,
+      "tables_preserved": 0,
+      "citations_preserved": true,
+      "sections_preserved": true,
+      "missing_sections": [],
+      "confidence": 1.0
+    }
+  },
+  "artifacts": [
+    {
+      "artifact_id": "artifact:a4449b4a9e9b1a720bc364fb",
+      "media_type": "text/markdown",
+      "sha256": "a4449b4a9e9b1a720bc364fbdead26a6158342bbf058c10cfffd0e397cbc2568",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.md"
+    },
+    {
+      "artifact_id": "artifact:e8dde97cc034817739839ae2",
+      "media_type": "application/json",
+      "sha256": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+      "version": "1",
+      "source": "skill06_markdown_cleaner",
+      "uri": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.json"
+    }
+  ],
+  "self_check": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "sections_preserved",
+        "passed": true
+      },
+      {
+        "name": "protected_scientific_values",
+        "passed": true
+      },
+      {
+        "name": "citations_preserved",
+        "passed": true
+      },
+      {
+        "name": "no_new_scientific_text",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_section_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_figure_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_table_count",
+        "passed": true
+      },
+      {
+        "name": "markdown_json_text_consistency",
+        "passed": true
+      }
+    ],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "changes_count": 1,
+    "noise_removed": 1,
+    "tables_fixed": 0,
+    "paragraphs": 131,
+    "duration_ms": 105.097
+  },
+  "provenance": {
+    "skill_id": "skill06_markdown_cleaner",
+    "skill_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "input_hash": "sha256:568be581cae095d63436c8665052c32d08f4acd690839927a81278d7b1152317",
+    "output_hash": "sha256:477caa114f8e4f8920200131dd57d77d9c02b3033de39841d318adad0c4dd8f3",
+    "source_artifact_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
+    "source_sha256": "6983576cde4114a8dd91ca1e7b8590228df7b3dcc90fee0045ab958b3d875c82",
+    "cleaned_at": "2026-08-10T06:25:42.850287+00:00",
+    "change_map": [
+      "change_0001"
+    ]
+  },
+  "review_requests": []
+}

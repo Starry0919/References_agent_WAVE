@@ -1,0 +1,87 @@
+{
+  "benchmark_version": "paper_extraction_e2e_v1",
+  "annotation_tier": "silver",
+  "development": {
+    "papers": 10,
+    "claims": 160,
+    "skill07_supported_claim_precision_silver": 0.08176100628930817,
+    "skill07_experiment_recall": null,
+    "skill07_recall_reason": "not estimable without independent ExperimentInstance truth",
+    "E1_accuracy_silver": 1.0,
+    "E2_accuracy_silver": 0.65625,
+    "E3_accuracy_silver": 0.10625,
+    "verification_precision_silver": 0.08176100628930817,
+    "verification_recall": null,
+    "false_verified_critical_claims": 0,
+    "unresolved_rate": 0.3375,
+    "ddr_decision_precision": null,
+    "ddr_decision_recall": null,
+    "knowledge_invalid_admission_rate": null,
+    "knowledge_admission_reason": "historical caches stop at Skill07; production admission was not replayed without current compatible handoff artifacts",
+    "knowledge_valid_retention": 0.08125,
+    "provenance_traceability": 1.0,
+    "cross_paper_contamination": 0
+  },
+  "holdout": {
+    "papers": 5,
+    "claims": 80,
+    "skill07_supported_claim_precision_silver": 0.039473684210526314,
+    "skill07_experiment_recall": null,
+    "skill07_recall_reason": "not estimable without independent ExperimentInstance truth",
+    "E1_accuracy_silver": 0.7875,
+    "E2_accuracy_silver": 0.55,
+    "E3_accuracy_silver": 0.0375,
+    "verification_precision_silver": 0.039473684210526314,
+    "verification_recall": null,
+    "false_verified_critical_claims": 0,
+    "unresolved_rate": 0.4125,
+    "ddr_decision_precision": null,
+    "ddr_decision_recall": null,
+    "knowledge_invalid_admission_rate": null,
+    "knowledge_admission_reason": "historical caches stop at Skill07; production admission was not replayed without current compatible handoff artifacts",
+    "knowledge_valid_retention": 0.0375,
+    "provenance_traceability": 1.0,
+    "cross_paper_contamination": 0
+  },
+  "combined": {
+    "papers": 15,
+    "claims": 240,
+    "skill07_supported_claim_precision_silver": 0.06808510638297872,
+    "skill07_experiment_recall": null,
+    "skill07_recall_reason": "not estimable without independent ExperimentInstance truth",
+    "E1_accuracy_silver": 0.9291666666666667,
+    "E2_accuracy_silver": 0.6208333333333333,
+    "E3_accuracy_silver": 0.08333333333333333,
+    "verification_precision_silver": 0.06808510638297872,
+    "verification_recall": null,
+    "false_verified_critical_claims": 0,
+    "unresolved_rate": 0.3625,
+    "ddr_decision_precision": null,
+    "ddr_decision_recall": null,
+    "knowledge_invalid_admission_rate": null,
+    "knowledge_admission_reason": "historical caches stop at Skill07; production admission was not replayed without current compatible handoff artifacts",
+    "knowledge_valid_retention": 0.06666666666666667,
+    "provenance_traceability": 1.0,
+    "cross_paper_contamination": 0
+  },
+  "generalization_gap": {
+    "supported_claim_precision": 0.04228732207878186
+  },
+  "error_propagation": {
+    "EVIDENCE_ANCHOR": 17,
+    "SKILL08_E2": 74,
+    "SKILL08_E3": 133,
+    "UNKNOWN/REVIEW": 5
+  },
+  "performance": {
+    "total_runtime_s": 4.089,
+    "paper_runtime_ms_median": 240.57,
+    "peak_memory_mb": 7.868,
+    "llm_calls": 0,
+    "cache_hits": 15
+  },
+  "release_gate": {
+    "status": "PARTIAL",
+    "reason": "human Gold and human-adjudicated holdout/DDR truth are unavailable"
+  }
+}

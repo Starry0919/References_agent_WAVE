@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wave://benchmark/skill08-gold/1.0.0",
+  "type": "object",
+  "required": ["paper_id", "document_id", "claim", "candidate_evidence", "gold_verification", "gold_reason", "biological_entities", "experiment_context"],
+  "properties": {
+    "paper_id": {"type": "string", "minLength": 1}, "document_id": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1}, "candidate_evidence": {"type": "string", "minLength": 1},
+    "gold_verification": {"enum": ["verified", "unsupported", "unresolved", "conflicted"]},
+    "gold_reason": {"type": "string", "minLength": 1}, "biological_entities": {"type": "array"},
+    "experiment_context": {"type": "object", "required": ["claim_experiment_id", "evidence_experiment_id", "source_attribution"]}
+  }
+}

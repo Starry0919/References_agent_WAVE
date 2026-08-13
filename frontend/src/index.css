@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .action { @apply inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium shadow-sm transition hover:border-teal-500 hover:text-teal-800 disabled:cursor-not-allowed disabled:opacity-45; }
+  .primary { @apply inline-flex items-center gap-1.5 rounded-md bg-teal-700 px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-teal-800 disabled:opacity-45; }
+  .secondary { @apply rounded-md border border-slate-300 px-3 py-2 text-sm font-medium hover:bg-slate-50; }
+  .icon { @apply inline-flex items-center justify-center rounded-md border border-slate-300 p-2 hover:border-teal-500 hover:text-teal-800 disabled:opacity-45; }
+}
+
+[data-capture="true"] [data-capture-sticky] { position: static !important; }
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-surface-sunken text-ink font-sans antialiased;
+    font-size: 14px;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.DEFAULT");
+    outline-offset: 1px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded border border-border bg-surface;
+  }
+  .label-caps {
+    @apply text-[11px] font-medium uppercase tracking-wide text-ink-faint;
+  }
+}

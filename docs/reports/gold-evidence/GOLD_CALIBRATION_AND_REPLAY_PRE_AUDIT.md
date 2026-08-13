@@ -1,0 +1,3 @@
+# Gold calibration and replay pre-audit
+
+The repository has ten source-first Gold packages with isolated `ANNOTATOR_A`, `ANNOTATOR_B`, and `ADJUDICATOR` drafts, optimistic revision locking, append-only audit actions and immutable release verification. All drafts are currently `UNANNOTATED`; no human or sealed Gold exists. V1 freezes ten Development and five Holdout paper identities. Twenty clean-document assets exist, and the replay target is exactly the fifteen manifest papers. Skill08 exposes `existence_status`, `attribution_status`, and `semantic_support_status`; DDR and admission remain conservative. Baseline: paper-extraction 203 passed; frontend build passed with one unrelated CommandCenter assertion failure; 743 backend tests previously timed out at 300 seconds.

@@ -1,0 +1,36 @@
+{
+  "skill_id": "skill08_evidence_binding",
+  "version": "2.0.0",
+  "implementation": "independent_evidence_verification_v2",
+  "input": {
+    "type": "object",
+    "required": ["handoff", "clean_document_artifact"],
+    "properties": {
+      "handoff": {"$ref": "../../../schemas/skill07_skill08_handoff.schema.json"},
+      "clean_document_artifact": {"type": "object"}
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["contract_version", "candidate_payload", "field_verifications", "ddr_verifications", "verified_evidence", "knowledge_admission"],
+    "properties": {
+      "contract_version": {"const": "skill08_evidence_contract_v2"},
+      "candidate_payload": {"type": "object"},
+      "field_verifications": {"type": "object"},
+      "ddr_verifications": {"type": "array"},
+      "verified_evidence": {"type": "array"},
+      "knowledge_admission": {"type": "object"},
+      "literature_experiment": {"$ref": "../../framework/unified-schema.json#/$defs/literatureExperiment"},
+      "evidence_linked_design": {"type": "object"},
+      "evidence_map": {"type": "object"},
+      "coverage": {"type": "object"},
+      "conflicts": {"type": "array", "items": {"type": "object"}}
+    }
+  },
+  "status": ["succeeded", "succeeded_with_warnings", "needs_review", "retryable_failure", "terminal_failure", "cancelled"],
+  "error_codes": ["EDX-EVD-001", "EDX-EVD-002", "EDX-EVD-003", "EDX-VAL-002", "EDX-SYS-002"],
+  "local_error_codes": ["EVID001", "EVID002", "EVID003", "EVID004", "EVID005"],
+  "retry_policy": {"max_attempts": 3},
+  "provenance_requirements": ["paper_id", "artifact_id", "artifact_sha256", "locator", "quote_sha256", "extraction"],
+  "human_review": {"supported": true, "triggers": ["conflicting_evidence", "invalid_locator", "reported_without_evidence", "quote_insufficient"]}
+}

@@ -1,0 +1,1106 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Develop a CRISPRi-based multi-gene combinatorial repression system in Escherichia coli that uses three orthogonal low-leakage inducible promoters (PlacO1, PLtetO-1, ParaBAD) to express three sgRNAs from a single plasmid (p3gRNA-LTA), so that all repression combinations of three target genes can be assessed by adding different inducer combinations instead of constructing numerous sgRNA plasmids; demonstrate utility by optimizing NeuAc biosynthesis via repression of PEP-consuming genes (pta, ptsI, pykA).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_abstract_background_and_results",
+        "evidence_ids": [
+          "abstract_p002",
+          "background_p005"
+        ],
+        "notes": "Primary goal is a methods/platform contribution (combinatorial repression system) demonstrated with a metabolic engineering application (NeuAc)."
+      },
+      "hypothesis": {
+        "value": "Orthogonal low-leakage inducible promoters driving independent sgRNAs, combined with sgRNA handle mutations that reduce dCas9 affinity, will eliminate leaky repression and enable rigorous combinatorial multi-gene repression by inducer addition; reducing PEP consumption (via pta/ptsI/pykA repression) will increase NeuAc accumulation because the DN5/pB3 strain accumulates ManNAc while PEP does not, suggesting PEP is limiting.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "manual_reading",
+        "evidence_ids": [
+          "background_p005",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+          "discussion_p007"
+        ],
+        "notes": "The PEP-limitation hypothesis is stated from observed ManNAc accumulation without PEP accumulation; the handle-mutation hypothesis is attributed to prior literature (Reis et al., ref 28) plus the authors' hypothesis."
+      },
+      "strain": {
+        "value": [
+          {
+            "paper_label": "E. coli DH5α",
+            "normalized": "Escherichia coli DH5α",
+            "role": "cloning host",
+            "evidence": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paper_label": "E. coli BW25113",
+            "normalized": "Escherichia coli BW25113",
+            "role": "system characterization host",
+            "evidence": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paper_label": "E. coli MG1655",
+            "normalized": "Escherichia coli MG1655 (K-12)",
+            "role": "system characterization host",
+            "evidence": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paper_label": "MG1655RFP",
+            "normalized": "E. coli MG1655 with ΔlacI, ΔgusR, constitutive promoters replacing native lacZ and gusA promoters, and genomically integrated constitutively expressed rfp",
+            "role": "engineered reporter strain for combinatorial repression characterization",
+            "evidence": "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          },
+          {
+            "paper_label": "DN5",
+            "normalized": "E. coli DH5α-derived strain with nanATEK (nan operon), nagEBAC (nag operon), ldhA, poxB and ackA deleted",
+            "role": "NeuAc fermentation chassis (constructed in prior work, ref 29)",
+            "evidence": "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          },
+          {
+            "paper_label": "DN5/pB3",
+            "normalized": "DN5 carrying plasmid pB3 (neuB, slr1975, GNA1, feedback-resistant glmS)",
+            "role": "NeuAc production strain / host for combinatorial repression of pta, ptsI, pykA",
+            "evidence": "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          }
+        ],
+        "status": "reported",
+        "confidence": 0.92,
+        "extraction_method": "manual_reading_of_methods_and_results",
+        "evidence_ids": [
+          "bacterial_strains_plasmids_and_media_p001",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+        ],
+        "notes": "DN5 and pB3 were constructed in previous studies (refs 29, 30) and are background materials here. Full strain/plasmid list is in Table S1, which is in the unavailable supplement (requires_supplement for complete list and exact genotypes)."
+      },
+      "genotype": {
+        "value": "DN5: ΔnanATEK, ΔnagEBAC, ΔldhA, ΔpoxB, ΔackA in E. coli DH5α background (constructed previously, ref 29). MG1655RFP: ΔlacI, ΔgusR, native lacZ and gusA promoters replaced by constitutive promoters, rfp integrated into genome for constitutive expression. Plasmids: p3gRNA-LTA (three-sgRNA expression plasmid with BbsI, BsaI, SapI type IIS sites between PlacO1/PLtetO-1/ParaBAD promoters and sgRNA handle sequences; optimized version uses handle mutant #3 under PlacO1 and mutant #5 under PLtetO-1 and ParaBAD); pdCas9-3TFs (dCas9 plus transcription factors lacIAM, tetR, araC); pB3 (neuB, slr1975, GNA1, feedback-resistant glmS).",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "manual_reading",
+        "evidence_ids": [
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+          "construction_of_the_combinatorial_repression_system_p001",
+          "construction_of_the_combinatorial_repression_system_p003",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p003"
+        ],
+        "notes": "Exact spacer sequences (Table S3), handle mutant sequences (Table S6) and full plasmid details (Table S1) are in the supplement, not available here: requires_supplement. MG1655RFP construction details (integration method/locus) not given in main text."
+      },
+      "engineering_method": {
+        "value": "CRISPR interference (CRISPRi, dCas9) with three orthogonal inducible promoters (PlacO1, PLtetO-1, ParaBAD) each expressing one sgRNA; sgRNA handle sequence mutants (#3 for PlacO1, #5 for PLtetO-1 and ParaBAD) to reduce leaky repression by lowering dCas9 affinity; a modified one-step sequential Golden Gate Assembly method (Type IIS enzymes BbsI, BsaI, SapI; T4 DNA ligase + T4 PNK; 37°C 5 min / 25°C 15 min, ten cycles per round, with sequential addition of fragments in the same reaction mixture) for rapid three-sgRNA insertion into p3gRNA-LTA; Gibson assembly for general plasmid construction; genome engineering of MG1655 (lacI/gusR knockout, promoter replacement, rfp integration) for the reporter strain.",
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "manual_reading",
+        "evidence_ids": [
+          "plasmid_construction_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002",
+          "construction_of_the_combinatorial_repression_system_p001",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p003",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+        ],
+        "notes": "The method used for MG1655RFP genome edits (knockout/integration technique) is not described in the main text."
+      },
+      "experimental_groups": {
+        "value": [
+          "Promoter screen: 8 candidate inducible promoters (PlacO1, PLtetO-1, ParaBAD, PrhaBAD, PCymRC, PLuxB, PsalTTC, PCin) expressing mKate, each with and without its corresponding inducer (Fig. 2A).",
+          "Orthogonality test: 4 low-leakage promoters (PlacO1, PLtetO-1, ParaBAD, PrhaBAD) × 4 inducers cross-design with mKate reporter (Fig. 2B).",
+          "Glucose interference: PrhaBAD induction by Rha with 10 g/L glucose present (Figure S2).",
+          "Leakiness/repression: sgRNA targeting rfp expressed from each of the three promoters, ± inducer (Fig. 4A-C).",
+          "sgRNA handle mutant screen: 7 handle mutants (#1-#7) expressing lacZ1-targeting sgRNA from each of the three promoters, ± inducer (Fig. 4D).",
+          "Target-site position: 3 sgRNAs each targeting lacZ and gusA from ParaBAD, ± inducer (Figures S4, S5).",
+          "Spacer length: 17, 22, 24, 27 bp spacers targeting lacZ1 site (Figure S6).",
+          "System characterization: MG1655RFP with p3gRNA-LTA (gusA-, rfp-, lacZ-targeting sgRNAs) under all inducer-combination conditions (Fig. 5).",
+          "NeuAc application: DN5/pB3 with p3gRNA-LTA carrying sgRNAs targeting pta, ptsI, pykA, under all 8 inducer on/off combinations (single: pta, ptsI, pykA; double: pta/ptsI, pta/pykA, ptsI/pykA; triple: pta/ptsI/pykA; plus no-inducer control) in 48 h shake-flask fermentation (Fig. 6B, Fig. 7)."
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "manual_reading_of_results_and_figure_captions",
+        "evidence_ids": [
+          "screening_of_inducible_promoters_p001",
+          "screening_of_inducible_promoters_p004",
+          "screening_of_inducible_promoters_p005",
+          "screening_of_inducible_promoters_p006",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p001",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p002",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p004",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p009",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p002"
+        ],
+        "notes": "Inducer-condition detail per fluorescence experiment is in Table S4 (supplement, unavailable)."
+      },
+      "controls": {
+        "value": [
+          "rfp repression assays: strain constitutively expressing fluorescent protein without CRISPRi (Fig. 4A caption).",
+          "Promoter screen: same promoter constructs without inducer (baseline leakage measurement, Fig. 2A red circles).",
+          "System characterization (Fig. 5): strains without sgRNA targeting any genes; control enzyme activity/fluorescence normalized to 1.",
+          "NeuAc fermentation (Fig. 6B): strains without sgRNA targeting any genes as control; titers also expressed relative to 'wildtype' (= no-repression control, 100%).",
+          "Fermentation by-product detection (Fig. 7): no-inducer condition as baseline."
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "manual_reading_of_figure_captions_and_results",
+        "evidence_ids": [
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p008",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p005",
+          "screening_of_inducible_promoters_p002"
+        ],
+        "notes": "The term 'wildtype' in the NeuAc results text refers to the no-repression control strain (DN5/pB3 with non-targeting plasmid), not a natural wild type; per Fig. 6 caption the control is 'strains without sgRNA targeting any genes'."
+      },
+      "culture_conditions": {
+        "value": {
+          "cloning_and_characterization": "LB medium, 37°C, aeration (DH5α, BW25113, MG1655).",
+          "fluorescence_detection": "Overnight cultures diluted 2% into 2 mL LB in 24-well plates; 37°C with high-speed shaking in BioTek microplate reader; OD600 and fluorescence every 15 min for 18 h.",
+          "enzyme_assays": "Overnight cultures diluted 2% into 24-well plates (2 mL LB/well), induced per design, 18 h at 37°C and 400 rpm.",
+          "neuac_fermentation": "Single colony into 5 mL LB + ampicillin, overnight 37°C; transferred to 50 mL LB + ampicillin at 2% inoculum for 12 h; inoculated into 50 mL fresh MTB + ampicillin + 30 g/L glucose at 4% inoculum; grown to OD600 0.4-0.6 at 30°C, 220 rpm; then 200 µM IPTG added; sampling every 6-12 h; pH maintained ~7.0 with 30% NH4OH; terminated at 48 h.",
+          "antibiotics": "ampicillin 100 µg/mL, kanamycin 25 µg/mL, chloramphenicol 17 µg/mL, or spectinomycin 100 µg/mL as needed; Golden Gate transformants selected on LB agar with 25 µg/mL spectinomycin, overnight 37°C."
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_methods",
+        "evidence_ids": [
+          "bacterial_strains_plasmids_and_media_p001",
+          "fluorescence_intensity_detection_p001",
+          "galactosidase_and_glucuronidase_assay_p003",
+          "batch_fermentation_of_neuac_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p003"
+        ],
+        "notes": "In the combinatorial NeuAc experiment, inducer combinations were added when the strain was transferred to the shake flask (Fig. 6 caption); the batch fermentation method separately states 200 µM IPTG was added at OD600 0.4-0.6 — the relationship between the generic IPTG step and the per-combination inducer addition (aTc/Ara timing) is not fully specified in the main text."
+      },
+      "medium": {
+        "value": {
+          "LB": "Luria-Bertani medium for cloning and system characterization.",
+          "MTB": "Modified terrific broth: 12 g/L tryptone, 24 g/L yeast extract, 5 g/L NaCl; for NeuAc fermentation, supplemented with 30 g/L glucose and ampicillin."
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_methods",
+        "evidence_ids": [
+          "bacterial_strains_plasmids_and_media_p001",
+          "batch_fermentation_of_neuac_p001"
+        ],
+        "notes": "LB composition not given (standard). No defined medium used."
+      },
+      "dosage": {
+        "value": {
+          "inducers_characterization": "0.5 mM IPTG, 4.3 µM anhydrotetracycline (aTc), 13.3 mM arabinose (Ara), 121.8 µM L-rhamnose monohydrate (Rha), 100 µM cumic acid (Cuma), 10 µM 3-oxohexanoyl-homoserine lactone (OC6), 100 µM sodium salicylate (Sal), 10 µM 3-hydroxytetradecanoyl-homoserine lactone (OHC14).",
+          "fermentation_inducer": "200 µM IPTG added at OD600 0.4-0.6 for fermentation.",
+          "antibiotics": "ampicillin 100 µg/mL; kanamycin 25 µg/mL; chloramphenicol 17 µg/mL; spectinomycin 100 µg/mL; 25 µg/mL spectinomycin on selection plates.",
+          "golden_gate_reaction": "20 µL reaction: 0.5 µL sgRNA fragment, 1 µg vector, 1 µL Type IIS endonuclease, 0.5 µL T4 DNA ligase, 0.5 µL T4 PNK, 2 µL T4 ligase buffer; subsequent rounds add 1 µL fragment, 1 µL enzyme, 0.5 µL ligase, 0.5 µL PNK, 2 µL buffer, 16 µL ddH2O.",
+          "assay_reagents": "Permeabilization solution 120 µL per 30 µL culture; β-galactosidase: 100 µL lysate + 600 µL substrate (1 mg/mL ONPG), stopped with 700 µL 1 M Na2CO3; β-glucuronidase: 50 µL lysate + 200 µL gus buffer + 20 µL 4-NPG stock, stopped with 200 µL 200 mM Na2CO3.",
+          "glucose": "30 g/L glucose in MTB fermentation; 10 g/L glucose used in the PrhaBAD interference test."
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_methods_and_figure_captions",
+        "evidence_ids": [
+          "screening_of_inducible_promoters_p004",
+          "batch_fermentation_of_neuac_p001",
+          "bacterial_strains_plasmids_and_media_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p003",
+          "galactosidase_and_glucuronidase_assay_p003",
+          "screening_of_inducible_promoters_p006"
+        ],
+        "notes": "Inducer doses used in the NeuAc combinatorial fermentation beyond IPTG (i.e., aTc and Ara concentrations) are not stated in the main text; presumably the same as characterization doses, but this is not reported — requires_supplement or manual review."
+      },
+      "time": {
+        "value": {
+          "fluorescence_detection": "OD600 and fluorescence measured every 15 min for 18 h.",
+          "enzyme_assays": "18 h incubation at 37°C, 400 rpm after induction; 30 min permeabilization at 30°C.",
+          "fermentation": "5 mL LB overnight; 50 mL LB 12 h; MTB fermentation 48 h with sampling every 6-12 h.",
+          "golden_gate": "37°C 5 min / 25°C 15 min, ten cycles per assembly round; selection plates incubated overnight at 37°C."
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_methods",
+        "evidence_ids": [
+          "fluorescence_intensity_detection_p001",
+          "galactosidase_and_glucuronidase_assay_p003",
+          "batch_fermentation_of_neuac_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002"
+        ],
+        "notes": "Timepoints at which fluorescence values (Fig. 2/4 endpoint values) were extracted within the 18 h window are not specified in the main text."
+      },
+      "replicates": {
+        "value": "Fig. 5 and Fig. 6 captions state: 'Data are expressed as means (± s.d.) from three independent experiments'. Replicate counts for Fig. 2, Fig. 4, Fig. 7 and supplementary figures are not stated in the main text.",
+        "status": "reported",
+        "confidence": 0.75,
+        "extraction_method": "manual_reading_of_figure_captions",
+        "evidence_ids": [
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p005"
+        ],
+        "notes": "'three independent experiments' is interpreted as independent culture/biological replicates (likely biological_independence=likely) but the paper does not explicitly define the replicate type; replicate information for promoter screen, handle-mutant screen and by-product panels is unknown (requires_supplement or Methods clarification)."
+      },
+      "assay": {
+        "value": [
+          "mKate/rfp fluorescence: excitation 590 nm, emission 640 nm, with OD600 normalization, in a microplate reader.",
+          "β-galactosidase (lacZ) activity: ONPG hydrolysis, absorbance at 420 nm (Miller-type assay adapted from OpenWetWare).",
+          "β-glucuronidase (gusA) activity: 4-NPG hydrolysis, p-nitrophenol quantified at 405 nm.",
+          "OD600 growth measurement.",
+          "Extracellular metabolite quantification (glucose, NeuAc, acetate, ethanol, formate, pyruvate, GlcNAc, ManNAc) by HPLC.",
+          "Glucose additionally measured with a biosensor analyzer.",
+          "Sanger sequencing of colonies to confirm sgRNA fragment insertion."
+        ],
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_methods",
+        "evidence_ids": [
+          "fluorescence_intensity_detection_p001",
+          "galactosidase_and_glucuronidase_assay_p001",
+          "galactosidase_and_glucuronidase_assay_p002",
+          "galactosidase_and_glucuronidase_assay_p003",
+          "analytical_methods_p001",
+          "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p003"
+        ],
+        "notes": null
+      },
+      "instruments": {
+        "value": "BioTek microplate reader (fluorescence/OD600 kinetics); Shimadzu ('Shimazu', Japan) spectrophotometer for OD600; Biosensor Analyzer (Jinan, China) for glucose; HPLC (Shimadzu, Japan) with refractive index detector RID-10A (Shimadzu) and Aminex HPX-87H ion exclusion column (Bio-Rad, USA); mobile phase 5 mM sulfuric acid at 1 mL/min.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_methods",
+        "evidence_ids": [
+          "fluorescence_intensity_detection_p001",
+          "analytical_methods_p001"
+        ],
+        "notes": "HPLC column temperature and injection volume not reported in main text."
+      },
+      "analysis_methods": {
+        "value": "Endpoint/kinetic fluorescence normalized by OD600; enzyme activity calculated from colorimetric rates under substrate-excess conditions; HPLC quantification of metabolites; data expressed as means ± s.d.; NeuAc titers expressed both as g/L and as percentage of the no-repression control; qualitative orthogonality assessment (each inducer activates only its cognate promoter). No formal statistical test (e.g., t-test/ANOVA) is reported in the main text.",
+        "status": "reported",
+        "confidence": 0.8,
+        "extraction_method": "manual_reading",
+        "evidence_ids": [
+          "galactosidase_and_glucuronidase_assay_p001",
+          "analytical_methods_p001",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p005",
+          "screening_of_inducible_promoters_p005"
+        ],
+        "notes": "Absence of stated statistical hypothesis tests limits assessment of significance; 'significant' claims in text are not backed by named tests in the main text."
+      },
+      "outcomes": {
+        "value": [
+          "Promoter screen: PrhaBAD, ParaBAD, PLtetO-1, PlacO1 showed minimal leakage (RFU 27, 31, 40, 48 uninduced) with 176.3-, 107.8-, 43.3-, 7.4-fold induction; PrhaBAD was later excluded because 10 g/L glucose abolished Rha induction; final system uses PlacO1, PLtetO-1, ParaBAD (orthogonality confirmed; expression 354-4,760 RFU).",
+          "One-step three-sgRNA Golden Gate assembly: thousands of transformants in a single transformation; 5 of 7 sequenced clones carried all three sgRNAs; 2 carried only the first two.",
+          "Leaky repression: uninduced sgRNA expression caused 21.8% (PlacO1), 74.9% (PLtetO-1), 37.5% (ParaBAD) rfp reduction; induced repression reached 83.7%, 88.1%, 89.6%.",
+          "Handle mutants: mutant #3 (with PlacO1) and mutant #5 (with PLtetO-1 and ParaBAD) minimized leakage while retaining 84.5%/83% lacZ repression upon induction; Discussion states handle #5 reduced leakage inhibition of PLtetO-1/ParaBAD from 90% to 20%.",
+          "Target position effect: sgRNAs closer to the start codon repress more strongly (lacZ1, gusA1 most effective); spacer lengths 17-27 bp had no significant effect on repression (70.4-79.4%).",
+          "System characterization (MG1655RFP): without inducers only PLtetO-1 caused slight RFP decrease (22.2%); single inducer addition reduced gusA activity 48.3% (IPTG), RFP 74% (aTc), lacZ activity 32.4% (Ara); with additional inducers, repression persisted (gusA 46.5-69.5%, RFP 43.8-72.1%, lacZ 41.3-45.3%).",
+          "NeuAc application: single repression of pta, ptsI, pykA gave 126.5%, 240.8%, 144.2% of control titer; double repressions pta/ptsI 121.2%, pta/pykA 81.6%, ptsI/pykA 203.7%; triple 176%. Highest titer was ptsI single repression (2.62 g/L, ~2.4-fold vs control); ptsI/pykA 2.22 g/L; triple 1.91 g/L. Multi-gene repression was NOT superior to ptsI single repression. OD600 showed no significant changes. ptsI repression increased GlcNAc +83.2% and ManNAc +63.2%, decreased pyruvate 68%; pykA repression increased GlcNAc +11.2%, decreased pyruvate 30.9%; pta repression slightly increased pyruvate and increased acetate.",
+          "Baseline DN5/pB3 NeuAc titer (prior work, ref 30): 1.62 g/L at 48 h with ManNAc accumulation."
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "manual_reading_of_results_discussion_and_figure_captions",
+        "evidence_ids": [
+          "screening_of_inducible_promoters_p002",
+          "screening_of_inducible_promoters_p005",
+          "screening_of_inducible_promoters_p006",
+          "construction_of_the_combinatorial_repression_system_p002",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p001",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p003",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p004",
+          "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p009",
+          "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p002",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p006",
+          "optimization_of_the_biosynthesis_pathway_of_neuac_p007",
+          "discussion_p007",
+          "abstract_p002"
+        ],
+        "notes": "The 2.4-fold increase in the abstract corresponds to the ptsI single-repression condition (240.8%, 2.62 g/L), which the abstract loosely calls 'optimal combinatorial inhibition of pta, ptsI, and pykA' — a mild internal wording tension (see conflicts). DN5/pB3 baseline 1.62 g/L is from prior work (ref 30), attribution: background_citation for the titer value, though the same strain is reused here."
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "EXP1_promoter_screen",
+          "purpose": "Identify inducible promoters with high induced expression and low background leakage for sgRNA expression.",
+          "host": "E. coli BW25113 or MG1655 (characterization hosts; exact host for this screen not specified per-experiment in main text)",
+          "intervention": "Expression of mKate reporter from 8 candidate inducible promoters (PlacO1, PLtetO-1, ParaBAD, PrhaBAD, PCymRC, PLuxB, PsalTTC, PCin), each ± its inducer.",
+          "conditions": "LB, 24-well plates, 2 mL, 37°C, high-speed shaking, 18 h; inducer doses per Fig. 2 caption (0.5 mM IPTG, 4.3 µM aTc, 13.3 mM Ara, 121.8 µM Rha, 100 µM Cuma, 10 µM OC6, 100 µM Sal, 10 µM OHC14).",
+          "control": "Same promoter constructs without inducer (uninduced baseline).",
+          "replicates": "unknown (not stated in main text)",
+          "readout": "mKate fluorescence (ex 590/em 640) and OD600 every 15 min for 18 h.",
+          "analysis": "Induced vs uninduced fluorescence intensities; fold-change calculation.",
+          "outcome": "PrhaBAD, ParaBAD, PLtetO-1, PlacO1 selected for low leakage; PrhaBAD later excluded due to glucose repression of induction (10 g/L glucose).",
+          "evidence": [
+            "screening_of_inducible_promoters_p001",
+            "screening_of_inducible_promoters_p002",
+            "screening_of_inducible_promoters_p004",
+            "screening_of_inducible_promoters_p006"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (deliberate selection and adoption of specific promoters as system components), Q2 pass (characterization performed in this study), Q3 pass (selection determined the final system composition and excluded PrhaBAD for glucose-based fermentations).",
+            "design_action": "M7",
+            "design_action_rationale": "Building an inducer-controlled regulation layer (orthogonal inducible promoters) to dynamically control target gene expression; closest category is M7 动态调控.",
+            "trigger_observation": "Eight candidate promoters showed varying induced intensity and leakage; high-leakage promoters would cause undesired repression because sgRNA is functional immediately upon transcription.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Direct experimental fluorescence measurements of all eight promoters with and without inducers.",
+            "reason_nature": "筛选得来",
+            "reason_nature_rationale": "The three final promoters were chosen from an empirical screen of eight candidates based on measured leakage/orthogonality, not from a stated mechanistic prediction; PrhaBAD exclusion was driven by the measured glucose effect.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [
+              "PrhaBAD: highest induction fold (176.3x) and low leakage, but Rha induction was abolished by 10 g/L glucose, so excluded for glucose-based fermentation.",
+              "PLuxB, PCin, PsalTTC, PCymRC: high induced expression but significant background leakage, excluded."
+            ],
+            "strategy_categories": [
+              "dynamic_control"
+            ]
+          }
+        },
+        {
+          "experiment_id": "EXP2_one_step_golden_gate",
+          "purpose": "Enable rapid construction of a three-sgRNA expression plasmid (p3gRNA-LTA) without building separate plasmids per combination.",
+          "host": "E. coli DH5α (cloning)",
+          "intervention": "Modified one-step sequential Golden Gate Assembly: three sgRNA insertion sites flanked by paired Type IIS sites (BbsI, BsaI, SapI) between promoters and handle sequences; annealed oligo spacers sequentially ligated in one reaction mixture (10 cycles of 37°C 5 min / 25°C 15 min per round).",
+          "conditions": "20 µL reaction with defined enzyme/reagent amounts; transformants selected on LB + 25 µg/mL spectinomycin, overnight 37°C.",
+          "control": "not_applicable (method development; no experimental control group)",
+          "replicates": "Single transformation yielding thousands of colonies; 7 clones randomly picked for sequencing.",
+          "readout": "Colony count; Sanger sequencing of 7 clones.",
+          "analysis": "Fraction of sequenced clones containing all three sgRNAs.",
+          "outcome": "5/7 clones contained all three sgRNAs; 2/7 contained only the first two (last one omitted).",
+          "evidence": [
+            "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p001",
+            "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002",
+            "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p003",
+            "construction_of_the_combinatorial_repression_system_p001",
+            "construction_of_the_combinatorial_repression_system_p002"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (new assembly method designed and implemented), Q2 pass (developed here), Q3 pass (this method is the enabling step for all subsequent spacer swapping).",
+            "design_action": "M11",
+            "design_action_rationale": "Method enabling rapid construction/screening of sgRNA combinations — an integrated construction-and-screening enabling tool.",
+            "trigger_observation": "Conventional combinatorial CRISPRi requires constructing a large number of sgRNA plasmids (e.g., 7 plasmids for all combinations of 3 genes; 25 for 4 genes), which is labor-intensive.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Assembly success directly verified by sequencing of 7 clones.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "Explicitly described as a modification of the published Golden Gate Assembly method (Engler et al., ref 22), adapted to sequential one-pot ligation of three spacers.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When constructing multi-sgRNA CRISPRi plasmids for combinatorial repression in E. coli, apply a one-pot sequential Golden Gate strategy with distinct Type IIS sites (BbsI/BsaI/SapI) per insertion site, because it yields correct three-spacer assemblies in a single transformation (5/7 verified clones) without intermediate purification.",
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "EXP3_leaky_repression_and_handle_mutants",
+          "purpose": "Quantify leaky repression of the three promoters when driving sgRNA and mitigate it by mutating the sgRNA handle sequence to reduce dCas9 affinity.",
+          "host": "E. coli characterization host (BW25113/MG1655; exact per-assay host not specified in main text)",
+          "intervention": "sgRNA targeting rfp expressed from each of the three promoters ± inducer; then seven sgRNA handle mutants (#1-#7, selected from Reis et al. ref 28 set) screened with lacZ1 spacer targeting lacZ from each promoter.",
+          "conditions": "LB, 24-well plates, 18 h, 37°C; inducers 0.5 mM IPTG / 4.3 µM aTc / 13.3 mM Ara.",
+          "control": "Strain constitutively expressing fluorescent protein without CRISPRi (Fig. 4A); uninduced cultures as leakage baseline.",
+          "replicates": "unknown in main text",
+          "readout": "rfp fluorescence; lacZ β-galactosidase activity (ONPG, A420).",
+          "analysis": "Percent fluorescence/activity reduction relative to control, ± inducer.",
+          "outcome": "Leakage of 21.8%/74.9%/37.5% (PlacO1/PLtetO-1/ParaBAD) on rfp; handle mutant #3 chosen for PlacO1 (84.5% induced repression, near-intact uninduced lacZ), mutant #5 for PLtetO-1 and ParaBAD (balance of low leakage and repression; leakage inhibition reduced from ~90% to ~20% per Discussion).",
+          "evidence": [
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p001",
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p002",
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p003",
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p008",
+            "discussion_p007"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (deliberate handle-sequence mutation adopted into the final p3gRNA-LTA), Q2 pass (screen performed here), Q3 pass (mutant choice defined the final system configuration).",
+            "design_action": "M7",
+            "design_action_rationale": "Tuning the dynamic regulation layer (reducing leaky CRISPRi repression) — component engineering within the control system.",
+            "trigger_observation": "Uninduced sgRNA expression from all three promoters caused substantial reporter repression (up to 74.9%), which would confound combinatorial repression.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Experimentally measured lacZ activity for each handle mutant ± inducer (Fig. 4D).",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "The paper explicitly states that handle mutations with different repression intensities and reduced dCas9 affinity were reported by Reis et al. [28], and the authors hypothesized these would reduce leakage; a mechanistic rationale (lower dCas9 affinity reduces repression at basal sgRNA levels) is also given in the Discussion, so both tags apply.",
+            "reason_nature_tags": [
+              "机理推断",
+              "文献类比"
+            ],
+            "generalizable_rule": "When inducible-promoter-driven CRISPRi in E. coli shows unacceptable leaky repression, apply sgRNA handle mutations that modestly reduce dCas9 affinity, because basal-level sgRNA then falls below the functional threshold while induced levels retain strong repression (validated for lacZ/rfp reporters and three promoters in this study).",
+            "alternatives_considered": [
+              "crRNA mismatch strategy, decoy crRNA binding sites, and feedback control of crRNA expression (Van Hove et al., ref 42) — cited as prior approaches; the handle-mutation route was chosen because it requires only inserting a 20 bp targeting sequence with no additional design."
+            ],
+            "strategy_categories": [
+              "dynamic_control"
+            ]
+          }
+        },
+        {
+          "experiment_id": "EXP4_target_site_and_spacer_length",
+          "purpose": "Assess how sgRNA targeting position and spacer length affect repression.",
+          "host": "E. coli characterization host",
+          "intervention": "Three sgRNAs each targeting lacZ and gusA expressed from ParaBAD; four spacer lengths (17, 22, 24, 27 bp) targeting the lacZ1 site.",
+          "conditions": "LB, 18 h induction, 37°C.",
+          "control": "Uninduced cultures.",
+          "replicates": "unknown in main text",
+          "readout": "lacZ/gusA enzyme activity.",
+          "analysis": "Percent repression per target site / spacer length.",
+          "outcome": "Sites closer to the start codon repress more strongly (lacZ1, gusA1 best); 17-27 bp spacer length had no significant effect (70.4-79.4% repression).",
+          "evidence": [
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p004",
+            "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p009"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fail/Q3 fail: a characterization of design parameters (target position, spacer length) without a new engineering modification adopted as a system change; it validates design heuristics for sgRNA choice rather than constituting a new build decision."
+          }
+        },
+        {
+          "experiment_id": "EXP5_system_characterization_MG1655RFP",
+          "purpose": "Characterize the optimized combinatorial repression system on three independent reporter genes in one strain.",
+          "host": "E. coli MG1655RFP (ΔlacI, ΔgusR, constitutive lacZ and gusA promoters, genomically integrated constitutive rfp)",
+          "intervention": "p3gRNA-LTA carrying sgRNAs targeting gusA (PlacO1), rfp (PLtetO-1), lacZ (ParaBAD); all inducer combinations applied.",
+          "conditions": "LB, 24-well plates, 18 h, 37°C; single and combined inducers.",
+          "control": "Strains without sgRNA targeting any genes; control values normalized to 1.",
+          "replicates": "three independent experiments (means ± s.d.); replicate type beyond 'independent experiments' not further defined",
+          "readout": "gusA activity, RFP fluorescence, lacZ activity.",
+          "analysis": "Percent inhibition under each inducer combination relative to control.",
+          "outcome": "Independent and combinatorial repression achieved; residual cross-condition repression ranged 41.3-74%; only PLtetO-1 showed slight leak (22.2% RFP decrease uninduced).",
+          "evidence": [
+            "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+            "characterization_of_the_multi_gene_combinatorial_repression_system_p002"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q3 fail: this experiment validates the already-constructed optimized system without introducing a new modification or strategy change; MG1655RFP construction itself is a tool-building step but is used here as the assay chassis. No new design choice resulted."
+          }
+        },
+        {
+          "experiment_id": "EXP6_neuac_combinatorial_repression",
+          "purpose": "Apply the combinatorial repression system to optimize NeuAc biosynthesis by repressing PEP-consuming genes.",
+          "host": "E. coli DN5/pB3 (DN5: ΔnanATEK ΔnagEBAC ΔldhA ΔpoxB ΔackA in DH5α background, from prior work ref 29; pB3 carries neuB, slr1975, GNA1, feedback-resistant glmS)",
+          "intervention": "CRISPRi repression of pta, ptsI, pykA via p3gRNA-LTA (PlacO1→sgRNA-pta, PLtetO-1→sgRNA-ptsI, ParaBAD→sgRNA-pykA); all 7 on/off inducer combinations plus no-inducer control, set by inducer addition rather than separate plasmids.",
+          "conditions": "Shake-flask batch fermentation: MTB + 30 g/L glucose + ampicillin, 30°C, 220 rpm, 48 h, pH ~7.0 maintained with 30% NH4OH; inducers added at transfer to shake flask; 200 µM IPTG at OD600 0.4-0.6 (generic fermentation protocol).",
+          "control": "Strain without sgRNA targeting any genes (titers expressed as % of this control).",
+          "replicates": "three independent experiments (means ± s.d.)",
+          "readout": "NeuAc titer (HPLC), OD600, by-products (glucose, acetate, ethanol, formate, pyruvate, GlcNAc, ManNAc).",
+          "analysis": "Titers as g/L and % of control; by-product concentration changes.",
+          "outcome": "ptsI single repression gave the highest titer (2.62 g/L, 240.8% of control ≈ 2.4-fold); ptsI/pykA 2.22 g/L; triple repression 1.91 g/L; pta/pykA decreased titer (81.6%). Combinatorial repression was not superior to ptsI single repression. ptsI repression raised GlcNAc (+83.2%) and ManNAc (+63.2%) and lowered pyruvate (−68%); no significant OD600 change.",
+          "evidence": [
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p002",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p005",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p006",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p007"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 pass (deliberate CRISPRi repression of three PEP-consuming genes), Q2 pass (this repression experiment is new in this study, although the DN5/pB3 chassis itself is background from refs 29-30), Q3 pass (the comparison across combinations identified ptsI single repression as optimal and revealed that more repression is not better, informing future flux-tuning strategy).",
+            "design_action": "M5",
+            "design_action_rationale": "Blocking competing PEP-consumption pathways (pyruvate kinase pykA, PTS ptsI, phosphotransacetylase pta) to redirect PEP flux toward NeuAc synthesis — competitive/bypass flux blocking.",
+            "trigger_observation": "DN5/pB3 accumulated large amounts of ManNAc (direct NeuAc precursor) while PEP showed no obvious accumulation, suggesting PEP supply was limiting relative to ManNAc.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Trigger is the measured metabolite accumulation profile of DN5/pB3 (ManNAc accumulation, no PEP accumulation), and the intervention outcome was measured by HPLC titers.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "The paper explicitly reasons from precursor imbalance (ManNAc accumulates, PEP does not) to a mechanistic hypothesis that PEP consumption limits NeuAc synthesis, and selects the three genes as the main PEP-depleting routes (acetyl-CoA via pyruvate, PTS energy coupling).",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When a NeuAc-producing E. coli chassis accumulates the ManNAc branch precursor but not PEP, apply CRISPRi repression of PEP-consuming genes (ptsI, pykA, pta) — with ptsI repression as the priority single target — because redirecting PEP away from the PTS and pyruvate increases precursor supply for NeuAc (validated for NeuAc production in E. coli DN5 background).",
+            "alternatives_considered": [
+              "Full combinatorial repression of all three genes was tested but abandoned as optimal: triple repression (1.91 g/L) and pta/pykA (81.6%) underperformed ptsI single repression (2.62 g/L), showing stronger/wider repression is not necessarily better."
+            ],
+            "strategy_categories": [
+              "competitive_pathway_removal",
+              "flux_redirection",
+              "precursor_supply_enhancement",
+              "dynamic_control"
+            ]
+          }
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "abstract_p002"
+          },
+          {
+            "paragraph_id": "background_p005"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "hypothesis": {
+        "status": "reported",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "background_p005"
+          },
+          {
+            "paragraph_id": "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p002"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          },
+          {
+            "paragraph_id": "discussion_p007"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "strain": {
+        "status": "reported",
+        "confidence": 0.92,
+        "source_locations": [
+          {
+            "paragraph_id": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          }
+        ],
+        "source_level": "current_article",
+        "caveats": "Complete strain/plasmid list in Table S1 (supplement unavailable); DN5/pB3 constructed in prior studies (refs 29, 30)."
+      },
+      "genotype": {
+        "status": "reported",
+        "confidence": 0.85,
+        "source_locations": [
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          },
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          },
+          {
+            "paragraph_id": "construction_of_the_combinatorial_repression_system_p003"
+          }
+        ],
+        "source_level": "current_article",
+        "caveats": "Exact spacer and handle-mutant sequences in Tables S3/S6 (supplement unavailable)."
+      },
+      "engineering_method": {
+        "status": "reported",
+        "confidence": 0.93,
+        "source_locations": [
+          {
+            "paragraph_id": "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p001"
+          },
+          {
+            "paragraph_id": "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002"
+          },
+          {
+            "paragraph_id": "construction_of_the_combinatorial_repression_system_p001"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "experimental_groups": {
+        "status": "reported",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "screening_of_inducible_promoters_p001"
+          },
+          {
+            "paragraph_id": "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p002"
+          },
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p002"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "controls": {
+        "status": "reported",
+        "confidence": 0.9,
+        "source_locations": [
+          {
+            "paragraph_id": "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p008"
+          },
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p002"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p005"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "culture_conditions": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paragraph_id": "fluorescence_intensity_detection_p001"
+          },
+          {
+            "paragraph_id": "galactosidase_and_glucuronidase_assay_p003"
+          },
+          {
+            "paragraph_id": "batch_fermentation_of_neuac_p001"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "medium": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paragraph_id": "batch_fermentation_of_neuac_p001"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "dosage": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "screening_of_inducible_promoters_p004"
+          },
+          {
+            "paragraph_id": "batch_fermentation_of_neuac_p001"
+          },
+          {
+            "paragraph_id": "bacterial_strains_plasmids_and_media_p001"
+          },
+          {
+            "paragraph_id": "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "time": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "fluorescence_intensity_detection_p001"
+          },
+          {
+            "paragraph_id": "batch_fermentation_of_neuac_p001"
+          },
+          {
+            "paragraph_id": "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p002"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "replicates": {
+        "status": "reported",
+        "confidence": 0.75,
+        "source_locations": [
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p002"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p005"
+          }
+        ],
+        "source_level": "current_article",
+        "caveats": "Replicate counts only stated for Fig. 5 and Fig. 6 ('three independent experiments'); replicate type not explicitly defined; other figures' replicates unknown."
+      },
+      "assay": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "fluorescence_intensity_detection_p001"
+          },
+          {
+            "paragraph_id": "galactosidase_and_glucuronidase_assay_p001"
+          },
+          {
+            "paragraph_id": "galactosidase_and_glucuronidase_assay_p003"
+          },
+          {
+            "paragraph_id": "analytical_methods_p001"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "instruments": {
+        "status": "reported",
+        "confidence": 0.95,
+        "source_locations": [
+          {
+            "paragraph_id": "fluorescence_intensity_detection_p001"
+          },
+          {
+            "paragraph_id": "analytical_methods_p001"
+          }
+        ],
+        "source_level": "current_article"
+      },
+      "analysis_methods": {
+        "status": "reported",
+        "confidence": 0.8,
+        "source_locations": [
+          {
+            "paragraph_id": "galactosidase_and_glucuronidase_assay_p001"
+          },
+          {
+            "paragraph_id": "analytical_methods_p001"
+          },
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p002"
+          }
+        ],
+        "source_level": "current_article",
+        "caveats": "No formal statistical hypothesis tests reported in main text."
+      },
+      "outcomes": {
+        "status": "reported",
+        "confidence": 0.93,
+        "source_locations": [
+          {
+            "paragraph_id": "screening_of_inducible_promoters_p002"
+          },
+          {
+            "paragraph_id": "construction_of_the_combinatorial_repression_system_p002"
+          },
+          {
+            "paragraph_id": "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p001"
+          },
+          {
+            "paragraph_id": "reduction_of_leaky_repression_using_mutated_sgrna_handle_sequences_p003"
+          },
+          {
+            "paragraph_id": "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p002"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p006"
+          },
+          {
+            "paragraph_id": "optimization_of_the_biosynthesis_pathway_of_neuac_p007"
+          }
+        ],
+        "source_level": "current_article"
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.95,
+        "evidence": [
+          "Original Methods sections with specific protocols (plasmid construction, Golden Gate, fluorescence detection, enzyme assays, fermentation, HPLC): methods sections bacterial_strains_plasmids_and_media through analytical_methods",
+          "Results report new experiments performed by the authors (screening_of_inducible_promoters_p001, construction_of_the_combinatorial_repression_system_p002, optimization_of_the_biosynthesis_pathway_of_neuac_p002)",
+          "Author contributions state Y.Z., Y.X.M. and Y.B.Y. performed the experiments (author_contributions_p001)",
+          "Journal article structure (Background/Methods/Results/Discussion) in Microbial Cell Factories, DOI 10.1186/s12934-025-02697-x"
+        ],
+        "notes": "Also has a methods/platform-paper character (tool development + demonstration), but it reports original experiments, so primary_experiment_schema applies."
+      },
+      "engineering_paper_type": [
+        "biosensor_platform",
+        "metabolic_engineering"
+      ],
+      "engineering_paper_type_rationale": "The main contribution is a tunable genetic regulation platform (orthogonal inducible promoters + CRISPRi + handle engineering = dynamic control/regulatory platform, closest to biosensor_platform/genetic-circuit category); the NeuAc application is metabolic engineering (flux redirection, competing-pathway repression). Per the skill's guidance, promoter/handle variant screens are treated as supporting evidence detail, not separate engineering decisions.",
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli DH5α",
+          "paper_strain_normalized": "Escherichia coli DH5α",
+          "role": "host",
+          "paper_label": "E. coli DH5α",
+          "lineage_or_engineering_context": "Cloning host; also the parental background of the DN5 production strain.",
+          "combination_status": "not_applicable",
+          "genotype": "not detailed in main text (Table S1)",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001",
+            "the_one_step_ligation_method_according_to_the_golden_gate_assembly_p003",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly stated as cloning host in Methods."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli BW25113",
+          "paper_strain_normalized": "Escherichia coli BW25113 (K-12 derivative)",
+          "role": "other",
+          "paper_label": "BW25113",
+          "lineage_or_engineering_context": "System characterization host.",
+          "combination_status": "not_applicable",
+          "genotype": "not detailed in main text (Table S1)",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Methods state BW25113 and MG1655 were used for system characterization."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli MG1655",
+          "paper_strain_normalized": "Escherichia coli MG1655 (K-12 wild type)",
+          "role": "parental",
+          "paper_label": "MG1655",
+          "lineage_or_engineering_context": "System characterization host and parent of the MG1655RFP reporter strain.",
+          "combination_status": "not_applicable",
+          "genotype": "standard K-12 wild type (not further detailed in main text)",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001",
+            "characterization_of_the_multi_gene_combinatorial_repression_system_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Named in Methods; MG1655RFP is explicitly derived from it."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli MG1655RFP",
+          "paper_strain_normalized": "E. coli MG1655 ΔlacI ΔgusR, PlacZ→constitutive, PgusA→constitutive, genome-integrated constitutive rfp",
+          "role": "engineered",
+          "paper_label": "MG1655RFP",
+          "lineage_or_engineering_context": "Constructed in this study by knocking out lacI and gusR, replacing lacZ/gusA promoters with constitutive promoters, and integrating rfp into the genome; used to characterize the combinatorial repression system.",
+          "combination_status": "demonstrated (single constructed strain with combined modifications)",
+          "genotype": "ΔlacI, ΔgusR, constitutive lacZ promoter, constitutive gusA promoter, chromosomal rfp (constitutive)",
+          "evidence": [
+            "characterization_of_the_multi_gene_combinatorial_repression_system_p001",
+            "characterization_of_the_multi_gene_combinatorial_repression_system_p002"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Construction described in Results; exact integration locus/method not in main text."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5 (E. coli DH5α engineering strain)",
+          "paper_strain_normalized": "E. coli DH5α ΔnanATEK ΔnagEBAC ΔldhA ΔpoxB ΔackA",
+          "role": "engineered",
+          "paper_label": "DN5",
+          "lineage_or_engineering_context": "NeuAc production chassis; constructed in previous work (ref 29, Kang et al. 2012) — background material for this study, not built here.",
+          "combination_status": "demonstrated_in_prior_work",
+          "genotype": "Δnan operon (nanATEK), Δnag operon (nagEBAC), ΔldhA, ΔpoxB, ΔackA",
+          "evidence": [
+            "bacterial_strains_plasmids_and_media_p001",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.92,
+          "reasoning": "Explicitly described with deletions and prior-construction attribution in Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "DN5/pB3",
+          "paper_strain_normalized": "E. coli DN5 carrying plasmid pB3 (neuB, slr1975, GNA1, feedback-resistant glmS)",
+          "role": "target",
+          "paper_label": "DN5/pB3",
+          "lineage_or_engineering_context": "Fermentation/production strain used as the host for the combinatorial CRISPRi repression of pta, ptsI, pykA; pB3 plasmid transfer reported previously (ref 30).",
+          "combination_status": "demonstrated_in_prior_work (chassis+plasmid); CRISPRi repression combinations applied in this study",
+          "genotype": "DN5 genotype + pB3 [neuB, slr1975 (GlcNAc 2-epimerase), GNA1, glmS (feedback resistant)]",
+          "evidence": [
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p001",
+            "optimization_of_the_biosynthesis_pathway_of_neuac_p005"
+          ],
+          "status": "reported",
+          "confidence": 0.92,
+          "reasoning": "Strain explicitly stated as used for fermentation; this is the main production target strain of the application experiment."
+        }
+      ],
+      "user_target_system": {
+        "status": "unknown",
+        "value": null,
+        "notes": "No user target system was provided in the request; adaptation analysis (Skill10) not performed."
+      },
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "user_target_system not provided; per skill instructions, adaptation is only generated when a target system is explicit. Note the paper's own characterization hosts already include E. coli K-12 strains (MG1655, BW25113)."
+      },
+      "unresolved_parameters": [
+        {
+          "raw_text": "200 µM IPTG was added for fermentation",
+          "issue": "The generic batch-fermentation protocol adds only IPTG at OD600 0.4-0.6, but the combinatorial experiment (Fig. 6 caption) says different inducer combinations (which include aTc and Ara) were added when transferred to the shake flask; timing and concentrations of aTc/Ara in fermentation are not specified in the main text.",
+          "status": "unresolved",
+          "source_location": "batch_fermentation_of_neuac_p001 vs optimization_of_the_biosynthesis_pathway_of_neuac_p005"
+        },
+        {
+          "raw_text": "replicate cultures for Figs. 2, 4, 7",
+          "issue": "Replicate numbers/types for the promoter screen, handle-mutant screen and by-product panels are not stated in the main text.",
+          "status": "unresolved",
+          "source_location": "screening_of_inducible_promoters / reduction_of_leaky_repression / discussion sections"
+        },
+        {
+          "raw_text": "Table S4 inducer experimental design",
+          "issue": "Per-condition inducer layout for fluorescence experiments is in the supplement, unavailable here.",
+          "status": "requires_supplement",
+          "source_location": "fluorescence_intensity_detection_p001"
+        }
+      ],
+      "supplement_dependent_fields": [
+        {
+          "field": "strain/genotype full lists",
+          "supplement_item": "Table S1 (strains and plasmids)",
+          "blocked_uses": [
+            "strain_reconstruction",
+            "exact_reproduction_protocol"
+          ]
+        },
+        {
+          "field": "primer sequences",
+          "supplement_item": "Table S2",
+          "blocked_uses": [
+            "strain_reconstruction",
+            "library_resynthesis"
+          ]
+        },
+        {
+          "field": "sgRNA spacer sequences",
+          "supplement_item": "Table S3",
+          "blocked_uses": [
+            "library_resynthesis",
+            "strain_reconstruction"
+          ]
+        },
+        {
+          "field": "inducer layout per experiment",
+          "supplement_item": "Table S4",
+          "blocked_uses": [
+            "exact_reproduction_protocol"
+          ]
+        },
+        {
+          "field": "candidate promoter list details",
+          "supplement_item": "Table S5",
+          "blocked_uses": [
+            "exact_reproduction_protocol"
+          ]
+        },
+        {
+          "field": "sgRNA handle mutant sequences",
+          "supplement_item": "Table S6",
+          "blocked_uses": [
+            "library_resynthesis",
+            "strain_reconstruction"
+          ]
+        },
+        {
+          "field": "Supporting data figures",
+          "supplement_item": "Figures S1-S8",
+          "blocked_uses": [
+            "exact_reproduction_protocol"
+          ]
+        }
+      ],
+      "background_citations_used": [
+        {
+          "ref": "29 (Kang et al. 2012)",
+          "used_for": "DN5 strain construction (prior work by the same group)",
+          "note": "DN5 genotype is reported here but the strain was built in ref 29."
+        },
+        {
+          "ref": "30 (Yang et al. 2017)",
+          "used_for": "DN5/pB3 baseline NeuAc titer 1.62 g/L at 48 h",
+          "note": "Baseline titer value is attributed to prior work."
+        },
+        {
+          "ref": "28 (Reis et al. 2019)",
+          "used_for": "Source of the seven sgRNA handle mutants screened here",
+          "note": "Mutants originate from ref 28; their screening in this CRISPRi context is new in this study."
+        },
+        {
+          "ref": "22 (Engler et al. 2008)",
+          "used_for": "Golden Gate Assembly basis of the modified one-step method"
+        },
+        {
+          "ref": "21 (Gibson et al. 2009)",
+          "used_for": "Gibson assembly for general plasmid construction"
+        },
+        {
+          "ref": "23 (Zhang & Bremer 1995)",
+          "used_for": "Principle that ONPG hydrolysis rate is proportional to β-galactosidase concentration"
+        },
+        {
+          "ref": "24 (Li et al. 2013)",
+          "used_for": "HPLC method reference"
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Best NeuAc condition framing (abstract vs Results)",
+        "prose_interpretation": "Abstract states 'the optimal combinatorial inhibition of the pta, ptsI, and pykA genes resulted in a 2.4-fold increase in NeuAc yield compared to the control' (abstract_p002).",
+        "equation_or_figure_interpretation": "Results show the highest titer (2.62 g/L, 240.8% of control) was achieved by repressing ptsI ALONE; triple repression gave only 176%, and the text explicitly states 'We did not find that the combination of multi-gene repression was superior to ptsI single-gene repression' (optimization_of_the_biosynthesis_pathway_of_neuac_p002, _p006; Fig. 6B).",
+        "impact": "The abstract's wording implies the triple/combinatorial repression was optimal, whereas the data show single-gene ptsI repression was best; downstream users should rely on the Results/Fig. 6 data.",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Inducer addition protocol for combinatorial fermentation",
+        "prose_interpretation": "Batch fermentation method adds 200 µM IPTG at OD600 0.4-0.6 (batch_fermentation_of_neuac_p001).",
+        "equation_or_figure_interpretation": "Fig. 6 caption states different combinations of inducers were added when the strain was transferred to the shake flask (optimization_of_the_biosynthesis_pathway_of_neuac_p005).",
+        "impact": "Timing and composition of inducer addition (transfer-time vs mid-exponential; whether aTc/Ara were co-added with IPTG) cannot be unambiguously reconstructed from the main text; exact reproduction requires clarification or supplement.",
+        "requires_manual_review": true
+      },
+      {
+        "status": "minor_terminology_note",
+        "topic": "Use of 'wildtype' for the NeuAc control",
+        "prose_interpretation": "Results express titers as percentage of 'the wildtype' (optimization_of_the_biosynthesis_pathway_of_neuac_p002).",
+        "equation_or_figure_interpretation": "Fig. 6 caption defines the control as 'strains without sgRNA targeting any genes', i.e., the engineered DN5/pB3 host carrying the plasmid without targeting spacers — not a natural wild type.",
+        "impact": "Terminology only; extraction records the control as a non-targeting-plasmid control in the DN5/pB3 background.",
+        "requires_manual_review": false
+      },
+      {
+        "status": "minor_terminology_note",
+        "topic": "pykA annotation",
+        "prose_interpretation": "Text describes pykA as 'encoding pyruvate carboxykinase' (optimization_of_the_biosynthesis_pathway_of_neuac_p002).",
+        "equation_or_figure_interpretation": "In standard E. coli nomenclature pykA encodes pyruvate kinase II; the paper's own pathway logic (PEP→pyruvate conversion) is consistent with pyruvate kinase activity.",
+        "impact": "Likely an author wording error; gene identity (pykA) is unambiguous, so extraction retains pykA as the target with the paper's functional role (PEP to pyruvate conversion).",
+        "requires_manual_review": false
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 48840,
+    "output_tokens": 16242
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "9f78a0c1a9de57e3bd87880e06cfc16396c05a86b7cd6c63f6090ad5d719edaa",
+    "output_hash": "5d18fc0f4e56c9c5739c615f94b310f505da19d9ab8ad53f1ac8348bba9d3169",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\048742ef511946cfbf54ef9da2b124e54ae648dacbe67b824a765906b9a5b822.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

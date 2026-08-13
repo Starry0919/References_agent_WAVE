@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wave://paper-extraction/experiment-native/3.0.0",
+  "type": "object",
+  "required": ["experiment_id", "biological_objects", "interventions", "conditions", "controls", "measurements", "outcomes", "evidence_links", "migration_generated", "review_required"],
+  "properties": {
+    "experiment_id": {"type": "string", "minLength": 1},
+    "biological_objects": {"type": "array", "items": {"type": "object"}},
+    "interventions": {"type": "array", "items": {"type": "object"}},
+    "conditions": {"type": "array", "items": {"type": "object"}},
+    "controls": {"type": "array", "items": {"type": "object"}},
+    "measurements": {"type": "array", "items": {"type": "object"}},
+    "outcomes": {"type": "array", "items": {"type": "object"}},
+    "evidence_links": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "migration_generated": {"type": "boolean"},
+    "review_required": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

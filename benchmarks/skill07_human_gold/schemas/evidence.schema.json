@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill07-gold-evidence-v1",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "benchmark_paper_id",
+    "paper_id",
+    "source_document_id",
+    "source_attribution",
+    "anchor_text_or_fingerprint",
+    "quote_or_excerpt",
+    "evidence_scope",
+    "supports_claim_ids",
+    "support_type",
+    "support_strength",
+    "directness",
+    "resolution",
+    "availability",
+    "provenance",
+    "review_state",
+    "annotation_tier"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^GOLD-P\\d{2}-E\\d{3}-V\\d{3}$"
+    },
+    "benchmark_paper_id": {
+      "type": "string"
+    },
+    "paper_id": {
+      "type": "string"
+    },
+    "source_document_id": {
+      "type": "string"
+    },
+    "source_attribution": {
+      "type": "string"
+    },
+    "section": {},
+    "paragraph_id": {},
+    "page": {},
+    "figure": {},
+    "panel": {},
+    "table": {},
+    "supplement": {},
+    "other_locator": {},
+    "anchor_text_or_fingerprint": {
+      "type": "string"
+    },
+    "quote_or_excerpt": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "evidence_scope": {
+      "enum": [
+        "TEXT_DIRECT",
+        "FIGURE",
+        "FIGURE_CAPTION",
+        "TABLE",
+        "METHODS",
+        "RESULTS",
+        "SUPPLEMENT",
+        "MULTI_ANCHOR"
+      ]
+    },
+    "supports_claim_ids": {
+      "type": "array"
+    },
+    "support_type": {
+      "type": "string"
+    },
+    "support_strength": {
+      "enum": [
+        "DIRECT",
+        "SUPPORTING_CONTEXT",
+        "INDIRECT",
+        "INSUFFICIENT"
+      ]
+    },
+    "directness": {
+      "type": "string"
+    },
+    "resolution": {
+      "type": "string"
+    },
+    "availability": {
+      "enum": [
+        "AVAILABLE",
+        "UNAVAILABLE",
+        "UNKNOWN"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "annotation_tier": {
+      "enum": [
+        "HUMAN_DRAFT",
+        "HUMAN_REVIEWED",
+        "ADJUDICATED_GOLD",
+        "FROZEN_GOLD"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

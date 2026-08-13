@@ -1,0 +1,1241 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Establish a general biosynthetic platform for producing structurally diverse C3-C5 diols (especially branched-chain 1,n-diols) in E. coli by combining an oxidative pathway (amino-acid hydroxylase) with a reductive pathway (deaminase -> decarboxylase -> aldehyde reductase) for formation of the two hydroxyl groups, and demonstrate the route by synthesizing 10 diols and optimizing IPDO production.",
+        "status": "reported",
+        "confidence": 0.98,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "biosynthesizing_structurally_diverse_diols_via_a_general_route_combining_oxidative_and_reductive_formations_of_oh_groups_p002",
+          "biosynthesizing_structurally_diverse_diols_via_a_general_route_combining_oxidative_and_reductive_formations_of_oh_groups_p006",
+          "results_p001"
+        ],
+        "notes": "Subject = current_article. Six of ten diols (IPDO, 2-M-1,3-BDO, 2-M-1,4-BDO, MPO, 2-E-1,3-PDO, 1,4-PTD) claimed as first biological synthesis (paper_claim level, 'To our knowledge' qualifier in results_p014)."
+      },
+      "hypothesis": {
+        "value": "Combining an oxidative hydroxyl-group formation (alpha-KG-coupled amino-acid hydroxylation, strongly exergonic, no extra NAD(P)H/ATP) with a reductive hydroxyl-group formation (deamination/decarboxylation/reduction) in a thermodynamically favorable reaction order overcomes the thermodynamic and energetic drawbacks of exclusively reductive diol pathways; reaction order (hydroxylation first) and hydroxylase catalytic efficiency determine pathway performance.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p001",
+          "biosynthesizing_structurally_diverse_diols_via_a_general_route_combining_oxidative_and_reductive_formations_of_oh_groups_p005",
+          "discussion_p004"
+        ],
+        "notes": "Thermodynamic rationale (Delta_rG -100 to -120 kcal/mol for hydroxylation step) is author interpretation supported by group-contribution calculations (Fig. 4); FBA theoretical yield 0.628 mol IPDO/mol glucose is model output, not measured."
+      },
+      "strain": {
+        "value": "Production/expression host: Escherichia coli BL21(DE3) (strains DL01-DL08, DL01-R12, DL01-R34, DL01-R4, IP01-IP11). Cloning host: E. coli Top10. Directed-evolution selection host: E. coli BL21 ΔsucAΔaceAΔputA (DE3)(pLysS), paper label Δ3A (gift from B. Bühler group, ref 35). Enzyme gene donor strains (not experimental hosts): Methylobacillus flagellatus KT (mfl), Proteus vulgaris (aad_vul), Lactobacillus lactis (kdc), E. coli W3110 (yqhD, leuA^fbrBCD), Pantoea ananatis AJ13355 (hilA, hilB), Streptomyces DSM 40835 (griE), Agrobacterium vitis (avi), Bordetella petrii (bpe), Bacillus thuringiensis (ido), Gluconobacter oxydans (gox), Zymomonas mobilis (pdc), Saccharomyces cerevisiae (thi3), Bacillus subtilis (alsS).",
+        "status": "reported",
+        "confidence": 0.97,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p001",
+          "results_p005",
+          "results_p033"
+        ],
+        "notes": "Exact strain/plasmid genotype list deferred to Supplementary Data 1 (requires_supplement for full plasmid inventory). 'wild type' (MFL_wt) refers to unmutated MFL enzyme, not a strain."
+      },
+      "genotype": {
+        "value": "DL01: BL21(DE3) + pET28a-mfl + pZA-aad_vul-kdc-yqhD (pZA-aky). DL02/DL03: hilA or hilB replacing mfl plus aad_vul, kdc, yqhD. DL04: griE replacing mfl. DL05-DL08: avi or bpe combined with pdc or kdc plus yqhD (1,3-PDO pathway, endogenous ilvA used as deaminase). DL01-R12: pZA-aky only. DL01-R34: pZA-ky (kdc+yqhD) + pET-mfl. DL01-R4: pET-mfl only. IP01 (=DL01), IP02 (pdc), IP03 (thi3), IP04 (avi), IP05 (ido), IP06 (gox), IP07 (bpe). IP08: IP01 + p15AS-leuA^fbrBCD (J23119 promoter). IP09: IP08 + alsS (B. subtilis) + ilvCD (E. coli). IP10: IP09 + tyrB (E. coli). IP11: IP10 with MFL_wt replaced by MFL_m1 (H138Q). Δ3A: BL21 ΔsucA ΔaceA ΔputA (DE3)(pLysS).",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p005",
+          "results_p006",
+          "results_p016",
+          "results_p018",
+          "results_p019",
+          "results_p027",
+          "results_p028",
+          "results_p043",
+          "results_p029",
+          "methods_p001"
+        ],
+        "notes": "Genotypes assembled from Results text and Fig. 5a table; complete plasmid maps/primers in Supplementary Data 1/2 (not available in provided text). Δ3A triple-knockout genotype explicitly reported; it is an engineered auxotroph, not a natural wild type."
+      },
+      "engineering_method": {
+        "value": "Heterologous pathway assembly (In-Fusion cloning into pET28a/pZA/p15AS plasmids, co-transformation); enzyme mining/screening across species (5 C-4 hydroxylases, 3 alpha-keto decarboxylases); overexpression of precursor-supply genes (leuA^fbrBCD, alsS, ilvCD, tyrB); directed evolution of MFL by error-prone PCR (library capacity 5000-6000; second library with 2-3 mutation sites) screened via growth-coupled selection in succinate-auxotrophic Δ3A strain; homology modeling (Modeller 9.25, template MpDO PDB 3PL0) and docking (Autodock 4.2.6); FBA with iY75_1357 model (COPASI).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p003",
+          "methods_p004",
+          "results_p027",
+          "results_p033",
+          "results_p040",
+          "methods_p014",
+          "methods_p020",
+          "methods_p021"
+        ],
+        "notes": "EP-PCR used MnCl2 0.1 mM / MgCl2 3.0 mM with Taq polymerase; note methods_p004 lists '5-10 ng genome of E. coli MG1655 DNA' as PCR template, which conflicts with the stated goal of mutating mfl (see conflicts)."
+      },
+      "experimental_groups": {
+        "value": [
+          "Diol panel strains DL01 (+25 mM valine/leucine/norvaline/norleucine), DL02, DL03 (+25 mM isoleucine), DL04 (+25 mM leucine/norvaline/norleucine), DL05-DL08 (+25 mM threonine) - Fig. 2b-e",
+          "Reaction-order strains DL01-R12 (+5 mM 4OH-Leu), DL01-R34 (+5 mM KIC), DL01-R4 (+5 mM isopentanol) - Fig. 3b",
+          "Enzyme-screening strains IP01-IP07 with/without 25 mM leucine - Fig. 5b",
+          "Precursor-supply strains IP08, IP09, IP10 (no leucine supplementation) - Fig. 5c,d",
+          "MFL mutant strains (MFL_m1, MFL_m2 enzyme assays; IP11 vs IP10 fermentation) - Fig. 6c,e,f",
+          "Δ3A growth-coupling validation: Δ3A+pET-mfl vs Δ3A+pET28a - Fig. 6b, Suppl. Fig. 18"
+        ],
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p005",
+          "results_p016",
+          "results_p018",
+          "results_p019",
+          "results_p027",
+          "results_p028",
+          "results_p033",
+          "results_p043"
+        ],
+        "notes": "Each strain x substrate combination constitutes a distinct experimental instance; no unified paper-level experiment exists."
+      },
+      "controls": {
+        "value": "Δ3A carrying empty pET28a as negative control for growth-coupled screening (Fig. 6b, Suppl. Fig. 18). Strain IP10 served as reference/control strain for IP11 comparison (Fig. 6e,f). IP01 (DL01) served as baseline for enzyme-screening comparisons IP02-IP07. No-enzyme/no-substrate controls for in vitro enzyme assays not explicitly described in main text.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p033",
+          "results_p043",
+          "results_p027"
+        ],
+        "notes": "Empty-vector control for production strains (e.g., BL21(DE3) with empty plasmids) not reported in main text; may exist in supplement (requires_supplement)."
+      },
+      "culture_conditions": {
+        "value": "Shake-flask fermentation: preculture 5 mL LB overnight; 10 mL modified FM-II medium; induce with 1 mM IPTG at OD600 0.4-0.6; 37 °C, 200 rpm, 48 h. Directed-evolution selection: M9 medium + 4 g/L yeast (extract), 0.2 g/L leucine, 0.2 g/L alpha-KG, 0.1 mM IPTG, plates 48 h; initial OD 0.05 for growth curves. IP11 batch fermentation: shake flask, sampled to 96 h (samples every 12 h for amino acids).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p002",
+          "results_p033",
+          "results_p040",
+          "results_p041",
+          "results_p039",
+          "results_p043"
+        ],
+        "notes": "OD induction window differs between fermentation (0.4-0.6) and protein-purification protocol (0.5); both in Methods. 'yeast' in M9 enrichment presumably yeast extract - wording kept as reported."
+      },
+      "medium": {
+        "value": "Modified FM-II: 30 g/L glucose, 0.5 g/L MgSO4·7H2O, 3 g/L KH2PO4, 12 g/L K2HPO4, 4 g/L (NH4)2SO4, 1 g/L yeast extract, 2 g/L monosodium citrate, 1 mg/L thiamine, 100 µg/L biotin, 10 mL/L US^Fe trace element solution, 0.2 g/L FeSO4·7H2O. LB for precultures/cloning. M9 + 4 g/L yeast, 0.2 g/L leucine, 0.2 g/L alpha-KG, 0.1 mM IPTG for selection.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p002",
+          "results_p033",
+          "results_p040"
+        ],
+        "notes": "Chemical formulas partially garbled by PDF parsing (e.g., 'MgSO ·7H O'); values normalized to standard hydrates - flagged as OCR-level normalization."
+      },
+      "dosage": {
+        "value": "Amino-acid substrates: 25 mM (valine, leucine, norvaline, norleucine, isoleucine, threonine) for diol production; 5 mM precursors (4OH-Leu, KIC, isopentanol) for reaction-order tests; 0.2 g/L leucine and 0.2 g/L alpha-KG in selection medium; 1 mM IPTG (fermentation), 0.1 mM IPTG (selection). In vitro assays: 10 µM hydroxylase, 5 mM leucine/KIC, 5 mM ascorbate, 5 mM alpha-KG; KDC 0.1 µM / YqhD 0.3 µM with 5 mM amino-acid substrate; 50 mg/L kanamycin for cloning selection.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p005",
+          "results_p016",
+          "results_p018",
+          "results_p019",
+          "results_p040",
+          "results_p041",
+          "methods_p007",
+          "methods_p008",
+          "methods_p003"
+        ],
+        "notes": "Dosages are substrate/inducer concentrations, not drug doses."
+      },
+      "time": {
+        "value": "48 h cultivation for diol titer measurements (DL and IP strains); 96 h time-course for IP11/IP11-vs-IP10 fermentation with sampling every 12 h; 60 h growth observation in initial Δ3A M9 test (Suppl. Fig. 18); in vitro enzyme assays 1 h (30 °C, hydroxylase) or 0.5 h (37 °C, KDC/YqhD); EP-PCR 35 cycles.",
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p002",
+          "results_p005",
+          "results_p043",
+          "results_p039",
+          "results_p033",
+          "methods_p007",
+          "methods_p008",
+          "methods_p004"
+        ],
+        "notes": null
+      },
+      "replicates": {
+        "value": "Three biologically independent experiments (mean ± s.d.) explicitly stated for Fig. 2b-e, Fig. 3b, Fig. 5b-d, Fig. 6c,e,f. Directed-evolution screen: 18 large colonies picked from library (capacity 5000-6000), 2 improved mutants; second library: 10 colonies picked, 5 with >100% improvement - colony counts are recovered_clones, not biological replicates.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p012",
+          "results_p022",
+          "results_p032",
+          "results_p039",
+          "results_p040",
+          "results_p041",
+          "discussion_p006"
+        ],
+        "notes": "Replicate type stated as 'biologically independent experiments' in figure captions; per-readout independence structure not detailed beyond captions. Exact n for Suppl. Fig. 18/20/24 not visible in main text."
+      },
+      "assay": {
+        "value": "Diol quantification: GC-FID after phenylboronic-acid derivatization, external standard calibration; identity confirmation by GC-MS vs purchased standards. Amino acids (Leu, Ile, Val): HPLC-FLD after AccQ-Fluor derivatization. Hydroxylase activity: succinate formation kit (R-Biopharm). KDC/YqhD activity: NADH decrease at 340 nm. Threonine deaminase on 4-OH-threonine: in vitro conversion assay (Suppl. Fig. 14). Growth: OD600. FBA (COPASI, iY75_1357_IPDO). Homology modeling (Modeller 9.25) and docking (Autodock 4.2.6, PyMOL 1.8).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p007",
+          "methods_p008",
+          "methods_p009",
+          "methods_p010",
+          "methods_p011",
+          "methods_p012",
+          "methods_p014",
+          "methods_p020",
+          "methods_p021",
+          "results_p016"
+        ],
+        "notes": "GC column identity partially lost in parsing (methods_p010 begins mid-sentence '(30 m × 0.25 mm × 0.25 µm)')."
+      },
+      "instruments": {
+        "value": "Varian 3900 GC with FID; Agilent 7890B GC + MSD 5977 MS (DB-5ms UI column, Gerstel CIS injector); Ultimate 3000 HPLC with FLD 3100 and Kinetex C18 column; FastPrep homogenizer (MP Biomedicals); His SpinTrap columns (GE Healthcare); Amicon Ultra 0.5 mL filters. Software: GraphPad Prism 8, COPASI, Modeller 9.25, Autodock 4.2.6, PyMOL 1.8.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p010",
+          "methods_p011",
+          "methods_p012",
+          "methods_p006",
+          "methods_p022",
+          "methods_p014",
+          "methods_p020",
+          "methods_p021"
+        ],
+        "notes": null
+      },
+      "analysis_methods": {
+        "value": "External-standard GC quantification; GC-MS spectral and retention-time matching to standards; statistics in GraphPad Prism 8 (specific tests not stated in main text); constraint-based FBA (glucose uptake 15 mmol/g/DCW); BLAST homology search (31.2% identity to MpDO); DOPE-score model selection; sequence alignment for mutation identification.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "methods_p010",
+          "methods_p011",
+          "methods_p022",
+          "methods_p019",
+          "results_p042",
+          "methods_p020"
+        ],
+        "notes": "Fold-change claims (1.9-fold, 1.6-fold, etc.) reported without stated significance tests; 'significant' used qualitatively in text."
+      },
+      "outcomes": {
+        "value": "10 C3-C5 diols produced (titers 48 h): MPO 18.5 mg/L (from valine), IPDO 230.5 mg/L (leucine), 1,3-BDO 8.7 mg/L (norvaline), 1,3-PTD 4.2 mg/L (norleucine) via DL01; 2-E-1,3-PDO 145.2 mg/L (DL02) and 2-M-1,3-BDO 12.1 mg/L (DL03) from isoleucine; 2-M-1,4-BDO 276.4 mg/L, 1,4-BDO 7.8 mg/L, 1,4-PTD 11.9 mg/L via DL04; 1,3-PDO 6.7 mg/L (DL06) and 29.1 mg/L (DL08); DL05/DL07 (PDC) produced no 1,3-PDO. Reaction order: R1 (374.1 mg/L IPDO from 5 mM 4OH-Leu) >> R3 (19.2 mg/L from 5 mM KIC); R2, R4, R5, R6 excluded. Precursor engineering: IP08 20.5, IP09 55.7, IP10 77.6 mg/L IPDO without leucine feeding; valine byproduct 7.08 mg/L (IP09) reduced to 5.43 mg/L (IP10). Directed evolution: MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; IP11 reached 0.31 g/L IPDO (1.3-2.0x IP10 over 24-96 h). Second library: MFL_Hm1 (D57V/K235E) 2.5-fold WT. FBA theoretical IPDO yield 0.628 mol/mol glucose.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_text",
+        "evidence_ids": [
+          "results_p005",
+          "results_p006",
+          "results_p016",
+          "results_p018",
+          "results_p019",
+          "results_p023",
+          "results_p028",
+          "results_p041",
+          "results_p043",
+          "results_p025",
+          "discussion_p006"
+        ],
+        "notes": "All titers are direct observations from shake-flask cultures; fold improvements of mutant enzymes measured in vitro. Claim 'six diols not biologically synthesized before' is authors' novelty claim ('To our knowledge'). Mechanistic explanation for DL05/DL07 failure (PDC inhibition) is explicitly speculative ('One possible interpretation')."
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "exp01_platform_pathway_diol_panel",
+          "purpose": "Demonstrate in vivo function of the 4-enzyme platform pathway (hydroxylase/deaminase/decarboxylase/reductase) for 10 diols from 6 amino-acid substrates",
+          "host": "E. coli BL21(DE3)",
+          "intervention": "Co-expression of MFL (pET28a) + AADvul/KDC/YqhD (pZA-aky) = DL01; variants DL02 (hilA), DL03 (hilB), DL04 (griE), DL05-DL08 (avi/bpe x pdc/kdc for 1,3-PDO)",
+          "conditions": "FM-II + 25 mM respective amino acid, 37 °C, 200 rpm, 48 h, 1 mM IPTG induction at OD 0.4-0.6",
+          "control": "Not explicitly reported in main text (requires_supplement)",
+          "replicates": "three biologically independent experiments (Fig. 2 caption)",
+          "readout": "GC-FID diol titer; GC-MS identity confirmation",
+          "analysis": "external standard calibration; mean ± s.d.",
+          "outcome": "9 of 10 target diols produced from BCAA/threonine substrates (titers 4.2-276.4 mg/L); DL05/DL07 with PDC produced no 1,3-PDO",
+          "evidence": [
+            "results_p005",
+            "results_p006",
+            "results_p012",
+            "results_p016"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "DL01 pathway assembly",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: authors designed and assembled a novel heterologous 4-enzyme cascade (new engineering action, done in this paper, establishing the platform on which all later optimization depends).",
+                "design_action": "M1",
+                "design_action_rationale": "Pathway parsing/design: assembling hydroxylase->deaminase->decarboxylase->reductase route from amino acids to diols.",
+                "trigger_observation": "Prior diol pathways rely exclusively on reductive OH formation requiring extra ATP and 4 NAD(P)H with low driving force (Delta_rG ~ -5 to -1 kcal/mol) and toxic aldehyde intermediates; oxidative hydroxylation coupled to alpha-KG->succinate is strongly exergonic (-100 to -120 kcal/mol).",
+                "evidence_grading": "软",
+                "evidence_grading_rationale": "The thermodynamic driving-force argument is based on group-contribution estimates and literature values (predictive, requires experimental confirmation); the in vivo function itself was then experimentally verified (hard) in this same step.",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Paper explicitly gives a thermodynamic mechanism: coupling hydroxylation to alpha-KG oxidation provides large driving force, avoids ATP/NAD(P)H burden, and deamination+decarboxylation push the final reduction; intermediates' toxicity considerations also stated.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When designing synthetic pathways to diols (or molecules with multiple hydroxyl groups) in E. coli, apply a mixed oxidative+reductive OH-formation strategy ordered hydroxylation>deamination>decarboxylation>reduction, because alpha-KG-coupled oxidative hydroxylation supplies a large thermodynamic driving force without extra ATP/NAD(P)H while downstream deamination/decarboxylation pull the thermodynamically weaker final reduction.",
+                "alternatives_considered": [
+                  "Purely reductive pathways (as in prior 1,4-BDO/1,3-BDO routes) - rejected due to ATP cost, low driving force, and aldehyde toxicity"
+                ],
+                "strategy_categories": [
+                  "flux_redirection"
+                ]
+              }
+            },
+            {
+              "name": "Hydroxylase selection per substrate (MFL/GriE/HilA/HilB/AVI/BPE)",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: deliberate choice of position-selective hydroxylases to determine which carbon is hydroxylated, thereby defining product structure.",
+                "design_action": "M4",
+                "design_action_rationale": "Rate-limiting/key enzyme selection: hydroxylase identity sets hydroxylation position (C-4 vs C-5) and thus diol structure.",
+                "trigger_observation": "Literature-reported position selectivity of hydroxylases from different species (C-4: MFL/AVI/IDO/GOX/BPE; C-5: GriE; isoleucine C4-1/C4-2: HilA/HilB).",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Subsequent titers confirmed in vivo function; selection rationale itself rests on literature-characterized substrate spectra (previously measured).",
+                "reason_nature": "文献类比",
+                "reason_nature_rationale": "Choices explicitly based on prior characterizations (refs 15, 17, 24); GriE additionally chosen for broad substrate spectrum and available crystal structure.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When producing position-defined diols from amino acids in E. coli, apply hydroxylase selection by reported regioselectivity (C-4 vs C-5 vs substrate-specific), because hydroxylase choice alone determines the carbon position of the oxidative OH group and hence product identity from the same amino-acid precursor.",
+                "alternatives_considered": [
+                  "AVIDO and IDO as C-5 hydroxylases - rejected for narrower substrate spectra than GriE"
+                ],
+                "strategy_categories": [
+                  "enzyme_activity_improvement"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp02_13pdo_threonine_pathway",
+          "purpose": "Produce 1,3-PDO by extending threonine catabolism (threonine hydroxylase AVI/BPE + endogenous IlvA deaminase + KDC/PDC + YqhD)",
+          "host": "E. coli BL21(DE3)",
+          "intervention": "First iteration: AVI or BPE assembled with KDC or PDC relying on endogenous IlvA (4 strains); second iteration: overexpression of hydroxylase + decarboxylase + YqhD to enforce hydroxylation-first order (DL05-DL08)",
+          "conditions": "FM-II + 25 mM threonine, 48 h shake flask",
+          "control": "Comparison among the four enzyme combinations; no empty-vector control reported",
+          "replicates": "three biologically independent experiments",
+          "readout": "GC-FID 1,3-PDO titer; in vitro threonine-deaminase assay on 4-hydroxy-threonine (Suppl. Fig. 14)",
+          "analysis": "titer comparison; in vitro activity confirmation",
+          "outcome": "First iteration: no 1,3-PDO from any of 4 strains. After overexpression: DL06 6.7 mg/L, DL08 29.1 mg/L (KDC); DL05/DL07 (PDC) still zero.",
+          "evidence": [
+            "results_p015",
+            "results_p016"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "Overexpression to enforce hydroxylation-first order in 1,3-PDO pathway",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: failure of first construct set triggered a new construct design (overexpression of AVI/BPE + KDC/PDC + YqhD) that changed pathway outcome and informed the reaction-order principle used later.",
+                "design_action": "M6",
+                "design_action_rationale": "Expression balancing to resolve kinetic mismatch between competing enzymes.",
+                "trigger_observation": "All four initial strains produced zero 1,3-PDO; authors attribute this to endogenous IlvA outcompeting hydroxylases for threonine because IlvA kcat is ~16,000-fold higher than AVI/BPE.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Zero-titer observation is measured; the kcat comparison draws on reported kinetic parameters (measured in cited studies).",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Paper gives explicit kinetic-competition mechanism (IlvA vs hydroxylase kcat mismatch, ~16,000-fold) as the reason for overexpressing the hydroxylase so hydroxylation precedes deamination.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When a pathway intermediate is also substrate of a much faster endogenous enzyme (here threonine vs IlvA in E. coli 1,3-PDO production), apply overexpression of the desired first-step enzyme so the intended reaction precedes the competing native reaction, because otherwise the native high-kcat enzyme drains the substrate before the heterologous step can act.",
+                "alternatives_considered": [
+                  "Knocking down IlvA - not attempted in this study"
+                ],
+                "strategy_categories": [
+                  "enzyme_activity_improvement",
+                  "flux_redirection"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp03_reaction_order_determination",
+          "purpose": "Determine which of six possible reaction orders (R1-R6) operate for IPDO production from leucine",
+          "host": "E. coli BL21(DE3)",
+          "intervention": "Partial-pathway strains DL01-R12 (pZA-aky), DL01-R34 (pZA-ky + pET-mfl), DL01-R4 (pET-mfl) fed with pathway intermediates (5 mM 4OH-Leu, KIC, isopentanol); in vitro activity assays of KDC/YqhD/MFL on candidate intermediates",
+          "conditions": "FM-II + 5 mM precursor, 48 h; in vitro assays per Methods",
+          "control": "Strain x precursor combinations act as mutual route tests; in vitro absence-of-enzyme conditions (Suppl. Fig. 16)",
+          "replicates": "three biologically independent experiments (Fig. 3b)",
+          "readout": "IPDO titer (GC); in vitro enzyme activities",
+          "analysis": "route feasibility inferred from titer + in vitro activity/absence of activity",
+          "outcome": "R1 functional (374.1 mg/L from 4OH-Leu), R3 functional but weaker (19.2 mg/L from KIC); R2, R4, R5, R6 excluded by lack of enzyme activity on required intermediates; both routes co-exist from leucine with R1 dominant",
+          "evidence": [
+            "results_p018",
+            "results_p019",
+            "results_p022",
+            "results_p023"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "Intermediate-feeding route dissection",
+              "ddr_annotation": {
+                "decision_type": "validation",
+                "decision_type_rationale": "Q1 fails: intermediate feeding of partial-pathway strains and in vitro activity assays are diagnostic measurements to map which reaction orders function; they validate/characterize the already-designed pathway rather than introduce a new engineering change toward the production goal."
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp04_thermodynamic_analysis",
+          "purpose": "Compare thermodynamic profiles of R1 vs R3 and conceptualize an ideal pathway driving-force profile",
+          "host": "not_applicable (computational)",
+          "intervention": "Group-contribution estimation of standard Gibbs free energies; schematic profile comparison (Fig. 4)",
+          "conditions": "in silico",
+          "control": "not_applicable",
+          "replicates": "not_applicable",
+          "readout": "Delta_rG profiles",
+          "analysis": "qualitative comparison of driving-force curves",
+          "outcome": "R1 shows a stronger initial exergonic step and a more harmonized profile, consistent with its higher in vivo flux",
+          "evidence": [
+            "results_p024",
+            "results_p025",
+            "results_p026",
+            "discussion_p004"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "Thermodynamic profile comparison",
+              "ddr_annotation": {
+                "decision_type": "post_hoc_interpretation",
+                "decision_type_rationale": "Q1 fails: thermodynamic calculation is an analytical/modeling readout used to rationalize the already-observed superiority of R1; it did not itself constitute an engineering intervention, though it supports the pathway-design rationale."
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp05_enzyme_mining_screen",
+          "purpose": "Identify best hydroxylase and alpha-keto decarboxylase for IPDO production (Route 1)",
+          "host": "E. coli BL21(DE3)",
+          "intervention": "Strains IP01-IP07 swapping decarboxylase (KDC/PDC/THI3) or hydroxylase (MFL/AVI/IDO/GOX/BPE); codon-optimized synthesized genes",
+          "conditions": "FM-II ± 25 mM leucine, 48 h",
+          "control": "IP01 (=DL01) as baseline strain",
+          "replicates": "three biologically independent experiments",
+          "readout": "IPDO titer",
+          "analysis": "titer comparison; selection also considering literature Km (MFL < BPE on leucine)",
+          "outcome": "KDC best decarboxylase (PDC: -71.9%, THI3: -95% approx. vs IP01 with leucine); MFL and BPE best hydroxylases (IP07 220.3 mg/L); IP01 retained for further work due to lower Km of MFL",
+          "evidence": [
+            "results_p027",
+            "results_p029",
+            "results_p032",
+            "discussion_p008"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "Enzyme mining/screening campaign",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: systematic enzyme-variant swapping is an active engineering action whose screen outcome selected the chassis for all subsequent optimization.",
+                "design_action": "M11",
+                "design_action_rationale": "Integrated screening of enzyme variants to identify the best-performing pathway configuration.",
+                "trigger_observation": "Platform demonstrated with initial enzyme set, but hydroxylase catalytic efficiency identified as determinant of titers (GriE substrate-efficiency vs titer correlation) and MFL activity known to be poor.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Screening readout is measured in vivo titers across strains.",
+                "reason_nature": "筛选得来",
+                "reason_nature_rationale": "Best enzyme combination was determined empirically by comparative screening; paper notes in vitro Kcat/Km did not correlate with in vivo titers, so the choice rests on screening results plus literature Km tie-breaker, not on a predictive mechanism.",
+                "reason_nature_tags": [],
+                "generalizable_rule": null,
+                "alternatives_considered": [
+                  "PDC and THI3 decarboxylases - rejected for much lower IPDO titers",
+                  "AVI, IDO, GOX hydroxylases - rejected for lower titers",
+                  "BPE - comparable titer but rejected for follow-up because of higher Km on leucine"
+                ],
+                "strategy_categories": [
+                  "enzyme_activity_improvement",
+                  "evolutionary_optimization"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp06_precursor_supply_engineering",
+          "purpose": "Enhance endogenous leucine/KIC supply for IPDO production from glucose without leucine feeding",
+          "host": "E. coli BL21(DE3)",
+          "intervention": "IP08: overexpress leuA^fbrBCD (E. coli W3110) on p15AS under J23119; IP09: + alsS (B. subtilis) and ilvCD (E. coli); IP10: + tyrB (E. coli)",
+          "conditions": "FM-II without leucine supplementation, 48 h",
+          "control": "IP01 baseline (15.3 mg/L without leucine)",
+          "replicates": "three biologically independent experiments",
+          "readout": "IPDO titer; extracellular leucine and valine concentrations (HPLC)",
+          "analysis": "titer and amino-acid byproduct comparison across strain lineage",
+          "outcome": "IP08 20.5 mg/L (leucine 0.22 mg/L); IP09 55.7 mg/L but valine byproduct 7.08 mg/L (3.04-fold IP08); IP10 77.6 mg/L (1.62-fold IP09) with valine reduced to 5.43 mg/L and leucine 0.35 mg/L",
+          "evidence": [
+            "results_p028",
+            "results_p032"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "IP08 leuA^fbrBCD overexpression",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: new overexpression construct built to relieve leucine-supply limitation identified in exp05.",
+                "design_action": "M2",
+                "design_action_rationale": "Precursor supply enhancement: feedback-resistant leucine operon boosts endogenous leucine pool.",
+                "trigger_observation": "IP01 titer rose from 15.3 to 230.5 mg/L when 25 mM leucine was supplemented, showing native leucine supply limits IPDO production from glucose.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Trigger and outcome are measured titers and amino-acid concentrations.",
+                "reason_nature": "文献类比",
+                "reason_nature_rationale": "Use of feedback-resistant leuA^fbrBCD follows established 2-keto-acid-based pathway practice (ref 32); the feedback-resistance mechanism is known but the choice is presented as adopting an established tool rather than deriving from this paper's own mechanistic finding.",
+                "reason_nature_tags": [
+                  "机理推断",
+                  "文献类比"
+                ],
+                "generalizable_rule": "When amino-acid-derived product synthesis in E. coli is limited by endogenous amino-acid supply (shown by large titer gain upon feeding), apply overexpression of the feedback-resistant biosynthetic operon (e.g., leuA^fbrBCD), because relieving feedback inhibition increases the precursor pool without chemical feeding.",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "precursor_supply_enhancement"
+                ]
+              }
+            },
+            {
+              "name": "IP09 alsS + ilvCD overexpression",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: new construct pushing pyruvate->KIC flux; produced next lineage strain and revealed valine-shunt problem driving IP10 design.",
+                "design_action": "M2",
+                "design_action_rationale": "Precursor supply: acetolactate synthase + ketol-acid reductoisomerase/DAD enhance flux from pyruvate to KIC, the direct leucine precursor.",
+                "trigger_observation": "Leucine supply still limiting after leuA^fbrBCD (broth leucine only 0.22 mg/L); KIC is the direct leucine precursor.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Measured titers (55.7 mg/L) and valine byproduct measurements.",
+                "reason_nature": "文献类比",
+                "reason_nature_rationale": "AlsS from B. subtilis explicitly adopted because a previous study (ref 33, Atsumi et al.) used it to increase cytoplasmic KIC supply.",
+                "reason_nature_tags": [],
+                "generalizable_rule": "When the amino-acid precursor pool is still limiting after operon overexpression in E. coli keto-acid-derived product pathways, apply alsS + ilvCD overexpression to enhance pyruvate-to-keto-acid flux, because this increases cytosolic supply of the direct keto-acid precursor (validated for KIC in the IPDO system).",
+                "alternatives_considered": [],
+                "strategy_categories": [
+                  "precursor_supply_enhancement",
+                  "flux_redirection"
+                ]
+              }
+            },
+            {
+              "name": "IP10 tyrB overexpression",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: targeted overexpression to redirect KIC flux away from valine; outcome confirmed reduced byproduct and higher titer.",
+                "design_action": "M5",
+                "design_action_rationale": "Blocking competing flux: TyrB converts KIC selectively to leucine while unable to aminate KIV to valine, channeling flux toward product precursor and away from byproduct.",
+                "trigger_observation": "IP09 accumulated 7.08 mg/L valine (3.04-fold IP08) because KIC/KIV are shared precursors of leucine and valine, so enhanced KIC supply was partially shunted to valine.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Byproduct and titer changes are measured; TyrB substrate specificity is literature-documented (ref 34).",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Paper gives explicit enzyme-specificity mechanism: TyrB promiscuously converts KIC->leucine but cannot convert KIV->valine, so its overexpression preferentially drains KIC toward leucine (also referencing ref 34).",
+                "reason_nature_tags": [
+                  "机理推断",
+                  "文献类比"
+                ],
+                "generalizable_rule": "When enhancing keto-acid precursor supply in E. coli creates byproduct flux into a parallel amino-acid pathway (KIC/KIV -> leucine/valine in IPDO production), apply overexpression of an aminotransferase selective for the desired keto-acid (TyrB: KIC but not KIV), because its substrate specificity redirects flux toward the product precursor while starving the byproduct branch.",
+                "alternatives_considered": [
+                  "Dynamic regulation of IlvE - proposed as future work, not implemented"
+                ],
+                "strategy_categories": [
+                  "flux_redirection",
+                  "competitive_pathway_removal"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp07_directed_evolution_mfl",
+          "purpose": "Improve catalytic activity of rate-limiting hydroxylase MFL via random mutagenesis and growth-coupled selection",
+          "host": "E. coli Δ3A (BL21 ΔsucAΔaceAΔputA (DE3)(pLysS)) selection host; BL21(DE3) for enzyme characterization and production",
+          "intervention": "EP-PCR random mutagenesis of mfl (library 5000-6000; second library biased toward 2-3 mutations); growth-coupled selection in succinate auxotroph; replacement of MFL_wt by MFL_m1 in IP10 -> IP11",
+          "conditions": "Selection: M9 + 4 g/L yeast, 0.2 g/L leucine, 0.2 g/L alpha-KG, 0.1 mM IPTG, 48 h plates; in vitro assay 30 °C 1 h; IP11 shake-flask fermentation 96 h",
+          "control": "Δ3A + empty pET28a (growth control); MFL_wt (activity baseline); IP10 (fermentation control strain)",
+          "replicates": "three biologically independent experiments for activity/fermentation data; 18 colonies picked in screen 1, 10 in screen 2 (recovered clones)",
+          "readout": "Colony size; in vitro hydroxylase activity (succinate formation) on leucine and KIC; IPDO titer and OD time course; extracellular Leu/Val",
+          "analysis": "fold-change vs WT; sequence alignment; homology modeling (Modeller, MpDO/3PL0 template) + docking",
+          "outcome": "MFL_m1 (H138Q) 1.9-fold and MFL_m2 (S98G) 1.5-fold WT activity on leucine; KIC promiscuous activity also improved (1.8-/1.3-fold); second library: MFL_Hm1 (D57V/K235E) 2.5-fold; IP11 produced 0.31 g/L IPDO, 1.3-2.0x IP10 over 24-96 h; valine byproduct persisted",
+          "evidence": [
+            "results_p033",
+            "results_p039",
+            "results_p040",
+            "results_p041",
+            "results_p042",
+            "results_p043",
+            "discussion_p006"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "Growth-coupled directed evolution of MFL",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: initiation of an evolution/screening campaign is an engineering action; selected mutants fed directly into production-strain improvement (IP11).",
+                "design_action": "M4",
+                "design_action_rationale": "Rate-limiting enzyme engineering: hydroxylation identified as rate-limiting step, so MFL activity was improved by directed evolution.",
+                "trigger_observation": "Hydroxylation is the rate-limiting step (R1 dominance traced to low MFL activity on KIC; literature reports MFL activity far from technically useful).",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Mutant improvements are measured in vitro activities and in vivo titers.",
+                "reason_nature": "筛选得来",
+                "reason_nature_rationale": "Beneficial mutations arose from random EP-PCR mutagenesis and growth-coupled screening, not from rational design; the structural explanations (H138 helix, S98 loop plasticity) are post hoc modeling hypotheses explicitly flagged as needing verification.",
+                "reason_nature_tags": [],
+                "generalizable_rule": null,
+                "alternatives_considered": [
+                  "Rational design - deferred because no MFL crystal structure exists; CASTing proposed as future work"
+                ],
+                "strategy_categories": [
+                  "enzyme_activity_improvement",
+                  "evolutionary_optimization"
+                ]
+              }
+            },
+            {
+              "name": "Growth-coupling selection system design (Δ3A auxotroph)",
+              "ddr_annotation": {
+                "decision_type": "engineering_decision",
+                "decision_type_rationale": "Q1-Q3 pass: medium/selection setup was actively optimized in this study (yeast enrichment, exponential-phase induction) after initial poor growth, changing screening feasibility.",
+                "design_action": "M11",
+                "design_action_rationale": "Integrated screening: coupling hydroxylase activity to succinate-auxotroph growth enables colony-size selection.",
+                "trigger_observation": "Leucine hydroxylation by MFL is stoichiometrically coupled to alpha-KG->succinate oxidation, so succinate prototrophy reports hydroxylase activity; initial M9 selection conditions gave poor growth and small growth differential.",
+                "evidence_grading": "硬",
+                "evidence_grading_rationale": "Growth curves (Fig. 6b, Suppl. Fig. 18) measured; auxotroph strain itself was a gift/background (ref 35) but its optimization as selection tool was done here.",
+                "reason_nature": "机理推断",
+                "reason_nature_rationale": "Selection principle rests on explicit reaction stoichiometry: hydroxylation consumes alpha-KG and releases succinate, restoring growth of ΔsucAΔaceAΔputA auxotroph (concept from ref 35, adapted and optimized here).",
+                "reason_nature_tags": [
+                  "机理推断",
+                  "文献类比"
+                ],
+                "generalizable_rule": "When evolving Fe(II)/alpha-KG-dependent amino-acid hydroxylases in E. coli, apply growth-coupled selection in a succinate auxotroph (ΔsucAΔaceAΔputA) with enriched M9 and exponential-phase induction, because hydroxylation stoichiometrically co-produces succinate, linking enzyme activity to growth rate.",
+                "alternatives_considered": [
+                  "Plain M9 with lag-phase IPTG - rejected due to poor growth and heavy IPTG burden"
+                ],
+                "strategy_categories": [
+                  "evolutionary_optimization"
+                ]
+              }
+            },
+            {
+              "name": "Homology modeling and docking of MFL mutants",
+              "ddr_annotation": {
+                "decision_type": "post_hoc_interpretation",
+                "decision_type_rationale": "Q1 fails: modeling/docking interpret mutant structure-function post hoc; authors themselves caution the loop models are unreliable (31.2% identity) and mutation effects need experimental verification; it drove no new construct in this paper."
+              }
+            }
+          ]
+        },
+        {
+          "experiment_id": "exp08_fba_theoretical_yield",
+          "purpose": "Estimate theoretical IPDO yield from glucose",
+          "host": "not_applicable (in silico, E. coli K-12 W3110 model iY75_1357)",
+          "intervention": "Model expansion with 4 IPDO pathway reactions (iY75_1357_IPDO); constraint-based FBA",
+          "conditions": "glucose uptake 15 mmol/g/DCW; O2/N/P/S unconstrained",
+          "control": "not_applicable",
+          "replicates": "not_applicable",
+          "readout": "predicted theoretical yield",
+          "analysis": "COPASI FBA",
+          "outcome": "theoretical IPDO yield 0.628 mol/mol glucose",
+          "evidence": [
+            "results_p025",
+            "methods_p014",
+            "methods_p015",
+            "methods_p016",
+            "methods_p017",
+            "methods_p018",
+            "methods_p019"
+          ],
+          "subject": "current_article",
+          "interventions_ddr": [
+            {
+              "name": "FBA yield estimation",
+              "ddr_annotation": {
+                "decision_type": "validation",
+                "decision_type_rationale": "Q1 fails: FBA is a computational assessment supporting pathway attractiveness (high theoretical yield), not an engineering intervention."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "biosynthesizing_structurally_diverse_diols_via_a_general_route_combining_oxidative_and_reductive_formations_of_oh_groups_p002",
+            "section": "title_abstract"
+          },
+          {
+            "paragraph_id": "biosynthesizing_structurally_diverse_diols_via_a_general_route_combining_oxidative_and_reductive_formations_of_oh_groups_p006",
+            "section": "introduction"
+          }
+        ],
+        "confidence": 0.98
+      },
+      "hypothesis": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p001",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "discussion_p004",
+            "section": "discussion"
+          }
+        ],
+        "confidence": 0.95
+      },
+      "strain": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p001",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "results_p033",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.97,
+        "notes": "Full strain/plasmid list in Supplementary Data 1 - requires_supplement for completeness"
+      },
+      "genotype": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p005",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p028",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p029",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p043",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.9
+      },
+      "engineering_method": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p003",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p004",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "results_p027",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p033",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.95
+      },
+      "experimental_groups": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p005",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p016",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p018",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p027",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.93
+      },
+      "controls": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p033",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p043",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.85,
+        "notes": "Empty-vector production control not visible in main text"
+      },
+      "culture_conditions": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p002",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "results_p040",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.95
+      },
+      "medium": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p002",
+            "section": "methods"
+          }
+        ],
+        "confidence": 0.95,
+        "notes": "Salt hydrate formulas OCR-garbled; normalized"
+      },
+      "dosage": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p005",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p018",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "methods_p007",
+            "section": "methods"
+          }
+        ],
+        "confidence": 0.95
+      },
+      "time": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p002",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "results_p043",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.93
+      },
+      "replicates": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p012",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p032",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p039",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.9
+      },
+      "assay": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p007",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p009",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p012",
+            "section": "methods"
+          }
+        ],
+        "confidence": 0.95
+      },
+      "instruments": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p010",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p011",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p012",
+            "section": "methods"
+          }
+        ],
+        "confidence": 0.95
+      },
+      "analysis_methods": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "methods_p022",
+            "section": "methods"
+          },
+          {
+            "paragraph_id": "methods_p019",
+            "section": "methods"
+          }
+        ],
+        "confidence": 0.9,
+        "notes": "Specific statistical tests not stated in main text"
+      },
+      "outcomes": {
+        "status": "reported",
+        "evidence_supported": true,
+        "source_attribution": "current_article",
+        "source_locations": [
+          {
+            "paragraph_id": "results_p005",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p016",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p028",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p041",
+            "section": "results"
+          },
+          {
+            "paragraph_id": "results_p043",
+            "section": "results"
+          }
+        ],
+        "confidence": 0.95
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "Original strain construction, cultivation, enzyme assays, directed evolution and modeling reported as own work (Results; Methods)",
+          "Nature Communications research article format with Methods, Data availability, Reporting Summary (additional_information_p001)",
+          "Received/Accepted dates present (data_availability_p002)"
+        ]
+      },
+      "engineering_paper_type": [
+        "metabolic_engineering",
+        "protein_engineering"
+      ],
+      "engineering_paper_type_rationale": "Core contributions are pathway design + precursor-supply/flux metabolic engineering in E. coli; a second major contribution is directed evolution (protein engineering) of hydroxylase MFL. Not a biosensor, ALE, or chassis-redesign paper.",
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BL21(DE3)",
+          "paper_strain_normalized": "Escherichia coli BL21(DE3)",
+          "role": "host",
+          "paper_label": "BL21(DE3)",
+          "lineage_or_engineering_context": "Expression and production host for all DL/IP strains and protein purification",
+          "combination_status": "not_applicable",
+          "genotype": "wild-type lab strain background; pathway plasmids pET28a/pZA/p15AS variants",
+          "evidence": [
+            "methods_p001",
+            "results_p005"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Explicitly stated in Methods as expression host and in Results as host of DL01 etc."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Top10",
+          "paper_strain_normalized": "Escherichia coli Top10",
+          "role": "other",
+          "paper_label": "Top10",
+          "lineage_or_engineering_context": "Cloning host for plasmid construction and EP-PCR library",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "methods_p001",
+            "methods_p003",
+            "methods_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.98,
+          "reasoning": "Stated in Methods for gene cloning."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "E. coli BL21 ΔsucAΔaceAΔputA (DE3)(pLysS)",
+          "paper_strain_normalized": "Escherichia coli BL21(DE3)(pLysS) ΔsucA ΔaceA ΔputA",
+          "role": "engineered",
+          "paper_label": "Δ3A",
+          "lineage_or_engineering_context": "Succinate-auxotrophic selection strain; gift from B. Bühler group (ref 35, Theodosiou et al.) - constructed previously, used here as screening tool",
+          "combination_status": "demonstrated_as_received",
+          "genotype": "ΔsucA ΔaceA ΔputA, pLysS",
+          "evidence": [
+            "methods_p001",
+            "results_p033"
+          ],
+          "status": "reported",
+          "confidence": 0.97,
+          "reasoning": "Full genotype given in Methods; engineered auxotroph, not a natural wild type; its construction is background (Q2 fails for DDR purposes) but its optimization as selection tool was done in this paper."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "Escherichia coli W3110 (K-12 derivative)",
+          "role": "other",
+          "paper_label": "W3110",
+          "lineage_or_engineering_context": "Gene donor for yqhD and leuA^fbrBCD; also the reference strain of the iY75_1357 FBA model; not used as experimental wet-lab host",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "results_p005",
+            "results_p028",
+            "methods_p014"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Mentioned as gene source and FBA model strain; distinguished from actual experimental host BL21(DE3)."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "MG1655",
+          "paper_strain_normalized": "Escherichia coli MG1655 (K-12)",
+          "role": "other",
+          "paper_label": "MG1655",
+          "lineage_or_engineering_context": "Listed as template DNA source in EP-PCR protocol (methods_p004) - likely a template-copying inconsistency since the mutagenesis target is mfl (see conflicts)",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "methods_p004"
+          ],
+          "status": "reported",
+          "confidence": 0.8,
+          "reasoning": "Only occurrence is the EP-PCR component list; role is template DNA, not an experimental host."
+        },
+        {
+          "paper_organism": "multiple (enzyme donor species)",
+          "paper_strain_raw": "Methylobacillus flagellatus KT; Proteus vulgaris; Lactobacillus lactis; Pantoea ananatis AJ13355; Streptomyces DSM 40835; Agrobacterium vitis; Bordetella petrii; Bacillus thuringiensis; Gluconobacter oxydans; Zymomonas mobilis; Saccharomyces cerevisiae; Bacillus subtilis",
+          "paper_strain_normalized": "gene-donor organisms, not experimental hosts",
+          "role": "other",
+          "paper_label": "enzyme origins",
+          "lineage_or_engineering_context": "Sources of heterologous enzymes (hydroxylases, deaminase, decarboxylases, alsS); genes synthesized with optimized codons",
+          "combination_status": "not_applicable",
+          "genotype": "",
+          "evidence": [
+            "results_p005",
+            "results_p006",
+            "results_p016",
+            "results_p027",
+            "methods_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Recorded to avoid conflating donor species with experimental strains."
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per skill rules, stop at evidence-bound extraction and do not default to K-12 adaptation."
+      },
+      "supplement_dependent_fields": [
+        {
+          "field": "full plasmid/primer lists and exact construct sequences",
+          "blocked_item": "Supplementary Data 1/2",
+          "available_from_main_text_or_figure": "enzyme assignments per strain (Fig. 5a table, Results text) and vector names",
+          "still_missing": "primer sequences, exact plasmid maps, cloning junctions",
+          "usage_blocked": "library_resynthesis, strain_reconstruction"
+        },
+        {
+          "field": "reaction schemes of individual diol syntheses",
+          "blocked_item": "Supplementary Figures 1-2",
+          "available_from_main_text_or_figure": "general 4-step scheme (Fig. 1b,c) and substrate-product table (Fig. 2a)",
+          "still_missing": "per-diol intermediate structures",
+          "usage_blocked": "exact_reproduction_protocol (partial)"
+        },
+        {
+          "field": "GC-MS chromatograms/spectra per diol",
+          "blocked_item": "Supplementary Figures 3-13",
+          "available_from_main_text_or_figure": "titers in text and Fig. 2",
+          "still_missing": "raw spectra, retention times per product",
+          "usage_blocked": "exact_reproduction_protocol (analytics verification)"
+        },
+        {
+          "field": "in vitro activity data underlying route exclusion",
+          "blocked_item": "Supplementary Figure 16",
+          "available_from_main_text_or_figure": "qualitative in vivo route tests (Fig. 3b)",
+          "still_missing": "quantitative in vitro activities of KDC/YqhD/MFL on intermediates",
+          "usage_blocked": "mechanism_summary (partial)"
+        },
+        {
+          "field": "mutant library sequencing details and full mutant activity panel",
+          "blocked_item": "Supplementary Figures 19, 20, 23, 24",
+          "available_from_main_text_or_figure": "2/18 and 5/10 improved-mutant counts, key substitutions (H138Q, S98G, D57V/K235E)",
+          "still_missing": "all mutant sequences and activities",
+          "usage_blocked": "library_resynthesis"
+        }
+      ],
+      "unresolved_parameters": [
+        {
+          "raw_text": "yeast (4 g/L added to M9)",
+          "issue": "Presumably yeast extract but stated as 'yeast'; not disambiguated in text",
+          "source_location": "results_p033, results_p040"
+        },
+        {
+          "raw_text": "0.2 g/L α-KG in selection medium",
+          "issue": "alpha-KG is co-substrate; whether also used as growth supplement semantics is clear from context (selection), retained as reported",
+          "source_location": "results_p040"
+        },
+        {
+          "raw_text": "US^Fe trace element solution",
+          "issue": "Composition given only via citation ref 53",
+          "source_location": "methods_p002"
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "EP-PCR template DNA",
+        "prose_interpretation": "Goal is random mutagenesis of mfl ('EP-PCR was applied to construct a random MFL mutant library', results_p033).",
+        "equation_or_figure_interpretation": "Methods component list specifies '5-10 ng genome of E. coli MG1655 DNA' as PCR template (methods_p004), which would not amplify mfl (an M. flagellatus gene).",
+        "impact": "Exact reproduction of the mutagenesis protocol is ambiguous (likely a Methods wording error or template copy-over); library construction itself is not in doubt.",
+        "requires_manual_review": true
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "MFL mutant nomenclature",
+        "prose_interpretation": "Mutant labels appear as MFL_m1/MFL_ml (lowercase L) inconsistently (results_p041, results_p042, results_p043, discussion_p006); presumed same mutant MFL_m1 (H138Q).",
+        "equation_or_figure_interpretation": "Fig. 6 caption uses MFL_m1 and MFL_m2.",
+        "impact": "Minor nomenclature ambiguity; does not change reported values.",
+        "requires_manual_review": false
+      },
+      {
+        "status": "narrative_tension_not_arithmetic",
+        "topic": "1,3-PDO pathway description order",
+        "prose_interpretation": "results_p016 describes four initial strains failing, then an overexpression redesign yielding DL06/DL08 success; strain numbering (DL05-DL08) suggests constructs were made in one batch while results imply two design iterations.",
+        "equation_or_figure_interpretation": "Fig. 2e shows titers for DL05-DL08 only.",
+        "impact": "Exact strain genealogy (whether first-round strains were distinct from DL05-DL08 or the same strains re-tested) is unclear from main text.",
+        "requires_manual_review": true
+      },
+      {
+        "status": "cross_reference_mismatch",
+        "topic": "MFL activity on KIC figure pointer",
+        "prose_interpretation": "results_p019 says MFL activity on KIC is shown 'below in Fig. 5c' and discussion_p004 cites 'Fig. 5c' for low MFL activity on KIC; actual KIC activity data appear in Fig. 6c.",
+        "equation_or_figure_interpretation": "Fig. 6c shows activities of MFL and mutants towards leucine and KIC.",
+        "impact": "Figure cross-reference error in text; evidence itself exists (Fig. 6c).",
+        "requires_manual_review": false
+      },
+      {
+        "status": "quantitative_tension",
+        "topic": "MFL_m1 improvement magnitude",
+        "prose_interpretation": "Results report MFL_m1 reaching 1.9-fold of wild type (results_p041); Discussion states 88% improved catalytic capability (discussion_p006) - numerically consistent (~1.88x) but reported in different formats.",
+        "equation_or_figure_interpretation": "Fig. 6c source data would disambiguate.",
+        "impact": "No contradiction; noted for exact-value reporting.",
+        "requires_manual_review": false
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 68364,
+    "output_tokens": 16136
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "7fe68dc778b9eb3122b5b9492f389b30a3378518b6e8983260080808809b2d68",
+    "output_hash": "a032a1408ca100c885d0f85bdb87027de56f9c8d78ecfcf5d42e6ca698577099",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\da06461dddf07355bcf87a356d31262572787933ed1a1eddd864791f80b506d9.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

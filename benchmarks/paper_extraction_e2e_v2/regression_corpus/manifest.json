@@ -1,0 +1,12 @@
+{
+  "inherited": ["../paper_extraction_e2e_v1/regression_corpus/E2E-BENCH-001.json"],
+  "cases": ["E2E-BENCH-002.json"],
+  "v3_tests": [
+    "additive migration",
+    "experiment foreign key",
+    "atomic scalar relation",
+    "atomic knowledge admission",
+    "Gold finalization gate",
+    "current-contract real-document replay"
+  ]
+}

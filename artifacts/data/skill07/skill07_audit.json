@@ -1,0 +1,569 @@
+{
+  "audit_version": "1.0.0",
+  "audit_date": "2026-08-12",
+  "scope": "Skill07 experimental design extraction performance and quality",
+  "quality_constraint": "Extraction Quality(new) >= Extraction Quality(current baseline)",
+  "production_logic_modified": false,
+  "baseline": {
+    "deployed_model": "kimi-k3",
+    "code_fallback_model": "claude-sonnet-4.6",
+    "model_revision": "UNKNOWN",
+    "provider_immutable_revision_available": false,
+    "historical_samples_are_controlled_benchmark": false
+  },
+  "architecture": {
+    "entry": "harness/api/paper_extraction.py::submit_task",
+    "orchestration": "harness/paper_extraction/service.py::submit_run -> WorkflowEngine",
+    "input_handoff": "Skill06 clean_document_artifact -> per-paper Skill07 executor",
+    "executor": "harness/paper_extraction/opus_extractor.py::make_executor",
+    "flow": [
+      "load clean JSON",
+      "InputDocumentGate",
+      "content-addressed cache lookup",
+      "prompt construction",
+      "process-wide model semaphore",
+      "Poe Code CLI subprocess",
+      "kimi-k3 primary extraction",
+      "JSON parse",
+      "safe additive normalization",
+      "schema and semantic validation",
+      "optional full-document repair",
+      "cache and provenance",
+      "Skill08 independent evidence binding"
+    ],
+    "application_level_llm_calls": [
+      "primary_extraction",
+      "transport_retry_of_primary",
+      "optional_validation_repair"
+    ],
+    "other_skill07_llm_call": null,
+    "downstream": [
+      "skill08_evidence_binding",
+      "skill09_quality_evaluation",
+      "optional later DDR conversion outside Skill07"
+    ],
+    "current_input_shape": {
+      "format": "clean JSON object loaded from clean_json_path, not PDF and not standalone Markdown",
+      "top_level_keys_observed_in_all_20_documents": [
+        "document_metadata",
+        "sections",
+        "paragraphs",
+        "figures",
+        "tables",
+        "citations",
+        "cleaning_metadata"
+      ],
+      "documents_measured": 20,
+      "figures_metadata_nonempty_documents": 20,
+      "figure_visual_available_documents": 0,
+      "tables_nonempty_documents": 9,
+      "citations_nonempty_documents": 3,
+      "dedicated_supplements_key_documents": 0
+    }
+  },
+  "latency": {
+    "historical_cold_success": {
+      "n": 16,
+      "median_ms": 754570.1875,
+      "p95_ms": 1982257.94475,
+      "max_ms": 2406584.919,
+      "aggregate_share_of_logged_stage_time_pct": 93.7485,
+      "controlled": false
+    },
+    "historical_cache_hit": {
+      "n": 5,
+      "median_ms": 46.219,
+      "controlled": false
+    },
+    "local_microbenchmark": {
+      "source_json_parse": {
+        "n": 20,
+        "median_ms": 0.421,
+        "p95_ms": 0.873
+      },
+      "prompt_build": {
+        "n": 20,
+        "median_ms": 36.502,
+        "p95_ms": 55.409
+      },
+      "prompt_json_serialize": {
+        "n": 20,
+        "median_ms": 0.721,
+        "p95_ms": 1.382
+      },
+      "output_json_parse": {
+        "n": 17,
+        "median_ms": 0.198,
+        "p95_ms": 0.409
+      },
+      "safe_normalize": {
+        "n": 17,
+        "median_ms": 0.668,
+        "p95_ms": 1.414
+      },
+      "deterministic_validation": {
+        "n": 17,
+        "median_ms": 19.615,
+        "p95_ms": 26.192
+      },
+      "cache_json_write_to_temp": {
+        "n": 17,
+        "median_ms": 1.502,
+        "p95_ms": 2.66
+      }
+    },
+    "unknown_components": [
+      "API/CLI process startup",
+      "local model semaphore wait",
+      "provider queue wait",
+      "time to first token",
+      "model inference and generation",
+      "output transfer duration"
+    ],
+    "repair_observation": {
+      "successful_cache_records": 17,
+      "schema_repair_attempts_nonzero": 0,
+      "repair_latency": "UNKNOWN"
+    },
+    "instrumentation_required": [
+      "source_load_ms",
+      "cache_lookup_ms and hit",
+      "prompt_build_ms",
+      "prompt_chars_by_component",
+      "prompt_serialize_ms",
+      "local_semaphore_wait_ms",
+      "cli_spawn_ms",
+      "cli_time_to_first_byte_ms",
+      "cli_total_ms",
+      "provider_queue_ms when exposed",
+      "input and output tokens",
+      "attempt number and retry category",
+      "parse and validation timing",
+      "repair class, prompt size and duration",
+      "cache_write_ms"
+    ]
+  },
+  "token": {
+    "current_prompt_character_measurement": {
+      "documents": 20,
+      "total_chars": {
+        "min": 124720,
+        "median": 193576,
+        "p95": 236480.85,
+        "max": 239328
+      },
+      "components_at_median": [
+        {
+          "name": "document",
+          "chars": 160636.5,
+          "share_pct": 83.0
+        },
+        {
+          "name": "skill_instructions_json_encoded",
+          "chars": 11335,
+          "share_pct": 5.86
+        },
+        {
+          "name": "output_schema_compact_json",
+          "chars": 6039,
+          "share_pct": 3.12
+        },
+        {
+          "name": "semantic_contract_json_encoded",
+          "chars": 5908,
+          "share_pct": 3.05
+        },
+        {
+          "name": "system_prompt",
+          "chars": 4643,
+          "share_pct": 2.4
+        },
+        {
+          "name": "extra_constraints_context_manifest_and_json_keys",
+          "chars": 4461,
+          "share_pct": 2.3
+        },
+        {
+          "name": "cli_wrapper",
+          "chars": 554,
+          "share_pct": 0.29
+        }
+      ],
+      "largest_source": "full clean-document JSON"
+    },
+    "historical_usage_telemetry": {
+      "records": 17,
+      "input_tokens": {
+        "median": 59098,
+        "p95": 69811.2,
+        "max": 73980
+      },
+      "credible_output_tokens": {
+        "n": 14,
+        "median": 17697,
+        "p95": 27460.3,
+        "max": 31567
+      },
+      "output_telemetry_anomalies": 3,
+      "warning": "Historical token records span older prompt/cache versions. Current prompt was measured in characters because current controlled provider token telemetry is unavailable."
+    },
+    "document_duplication": {
+      "documents_checked": 20,
+      "paragraph_text_exactly_present_in_corresponding_section_content_pct": 100.0,
+      "paragraphs_median_share_of_document_json_pct": 51.85,
+      "sections_median_share_of_document_json_pct": 44.09,
+      "candidate_remove_duplicated_section_content_prompt_reduction_pct": {
+        "median": 36.416,
+        "min": 30.654,
+        "max": 39.475
+      },
+      "production_status": "BENCHMARK_REQUIRED",
+      "safety_condition": "Preserve section metadata, all paragraphs, figure/table/supplement artifacts, and any non-paragraph residual fragments."
+    },
+    "repair_prompt": {
+      "mapped_samples": 17,
+      "primary_json_chars_median": 193209,
+      "repair_json_chars_median": 243507,
+      "candidate_output_chars_median": 53151,
+      "repair_vs_primary_median_pct": 128.063
+    }
+  },
+  "llm_calls": [
+    {
+      "call": "primary_extraction",
+      "purpose": "Reconstruct experimental design, biological objects, claims, candidate evidence anchors and engineering-decision candidates",
+      "need_llm": true,
+      "capability": "L3 scientific reasoning",
+      "full_context_current_baseline": true,
+      "optimization": "Retain as baseline; prototype lossless document representation and high-recall routing only behind Golden Benchmark"
+    },
+    {
+      "call": "transport_retry",
+      "purpose": "Repeat primary after CLI/network failure",
+      "need_llm": "YES when no durable result exists",
+      "capability": "same as primary",
+      "full_context_current_baseline": true,
+      "optimization": "Classify transient failures, persist attempts, recover durable result before retrying"
+    },
+    {
+      "call": "validation_repair",
+      "purpose": "Repair candidate output that fails deterministic validation",
+      "need_llm": "SOMETIMES",
+      "capability": "L0 for parse/derived errors; L2/L3 for scientific errors",
+      "full_context_current_baseline": true,
+      "optimization": "Local parse repair, local derived-field repair, benchmark-gated targeted repair, full-context fallback for scientific ambiguity"
+    }
+  ],
+  "context_evidence_observation": {
+    "basis": "Broad recursive locator traversal across 17 historical successful extraction cache outputs",
+    "limitations": [
+      "Occurrences can repeat the same anchor",
+      "Historical output versions differ",
+      "Section labels are not always classifiable",
+      "This is not a gold evidence-recall benchmark"
+    ],
+    "resolved_paragraph_anchor_occurrences": 1562,
+    "by_section": {
+      "results": 548,
+      "methods": 301,
+      "discussion": 39,
+      "introduction": 30,
+      "abstract": 10,
+      "supplement_labeled": 7,
+      "other_or_unclassified_section": 627
+    },
+    "unresolved_or_noncanonical_locator_occurrences": 117,
+    "conclusion": "Methods-only is unsafe; important evidence is distributed across Results, Methods, Introduction, Discussion, figures/tables and Supplement."
+  },
+  "prompt_audit": {
+    "keep_in_prompt": [
+      "fact versus inference and speculation boundaries",
+      "source attribution",
+      "experiment-instance-first grouping",
+      "object, parameter and scope binding",
+      "cross-section trigger-action-result timing",
+      "anti-fabrication constraints",
+      "Q1/Q2/Q3 decision discipline",
+      "candidate evidence and Skill08 boundary"
+    ],
+    "move_to_python": [
+      "JSON parsing",
+      "required keys and types",
+      "enum membership",
+      "deterministic empty-value invariants",
+      "anchor existence",
+      "hashes and provenance",
+      "stable IDs and aliases",
+      "pure formatting repair"
+    ],
+    "shared": [
+      "schema-aware generation plus deterministic validation",
+      "epistemic-state generation plus invariant checks",
+      "rule eligibility generation plus hard gate",
+      "candidate anchor selection plus independent Skill08 verification"
+    ],
+    "duplication_observed": true,
+    "maximum_fixed_non_document_share_pct": 17.0,
+    "recommendation": "Create clause-to-validator traceability and benchmark each deduplication; do not remove scientific invariants wholesale."
+  },
+  "cache_audit": {
+    "included": [
+      "clean document content",
+      "model alias",
+      "Skill bytes",
+      "System Prompt bytes",
+      "Schema bytes",
+      "semantic contract bytes",
+      "validation rules bytes",
+      "runtime contract version",
+      "validator version"
+    ],
+    "missing_or_weak": [
+      "explicit paper identity",
+      "prompt-builder source or strategy version",
+      "provider identity",
+      "immutable model revision",
+      "inference/decoding profile",
+      "context routing strategy version",
+      "repair strategy version"
+    ],
+    "wrong_reuse_risks": [
+      "Prompt requirements change without related version bump",
+      "Provider changes behind the same model name",
+      "Mutable model alias is upgraded in place",
+      "Provider inference defaults change"
+    ],
+    "positive_findings": [
+      "Schema, Skill, System Prompt, semantic contract and validation rules content changes invalidate cache",
+      "Only successful usable results are cached",
+      "Failed results are retried rather than cached"
+    ]
+  },
+  "optimization_candidates": [
+    {
+      "proposal": "Fine-grained telemetry",
+      "speed_benefit": "No direct speedup; enables evidence-based optimization",
+      "quality_risk": "LOW",
+      "recommendation": "P0"
+    },
+    {
+      "proposal": "Strengthen content cache identity",
+      "speed_benefit": "Preserves approximately 12.58 min to 46 ms repeat-path benefit without stale reuse",
+      "quality_risk": "LOW",
+      "recommendation": "P0"
+    },
+    {
+      "proposal": "Local JSON and derived-field repair",
+      "speed_benefit": "Avoids unnecessary full primary retries",
+      "quality_risk": "LOW",
+      "recommendation": "P0"
+    },
+    {
+      "proposal": "Transient retry classification and durable-result recovery",
+      "speed_benefit": "Can prevent worst-case repeated full calls",
+      "quality_risk": "LOW",
+      "recommendation": "P0"
+    },
+    {
+      "proposal": "Lossless document representation deduplication",
+      "speed_benefit": "Median prompt character reduction candidate 36.42%; latency relation UNKNOWN",
+      "quality_risk": "LOW_MEDIUM",
+      "recommendation": "P1_GOLDEN_BENCHMARK"
+    },
+    {
+      "proposal": "Prompt clause deduplication",
+      "speed_benefit": "Bounded because all fixed non-document content is approximately 17%",
+      "quality_risk": "MEDIUM",
+      "recommendation": "P1_ABLATION"
+    },
+    {
+      "proposal": "Targeted field repair",
+      "speed_benefit": "Potentially avoids a repair prompt that is 128.06% of primary",
+      "quality_risk": "MEDIUM_HIGH",
+      "recommendation": "P1_WITH_FULL_CONTEXT_FALLBACK"
+    },
+    {
+      "proposal": "High-recall section routing",
+      "speed_benefit": "Potentially significant but unmeasured",
+      "quality_risk": "HIGH",
+      "recommendation": "P1_SHADOW_PROTOTYPE"
+    },
+    {
+      "proposal": "Model cascade",
+      "speed_benefit": "E[T] = T_fast + (1-pass_rate)*T_baseline + T_validation",
+      "quality_risk": "HIGH",
+      "recommendation": "P1_P2_BENCHMARK_ONLY"
+    },
+    {
+      "proposal": "Anchor-preserving Map-Reduce",
+      "speed_benefit": "Potential parallelism; total token and call count may increase",
+      "quality_risk": "HIGH",
+      "recommendation": "P2_RESEARCH_ONLY"
+    }
+  ],
+  "quality_risks": [
+    {
+      "risk": "Methods-only loses triggers, outcomes, revisions and interpretation boundaries",
+      "severity": "CRITICAL",
+      "production_action": "REJECT"
+    },
+    {
+      "risk": "Ignoring figures, tables or Supplement removes formal evidence",
+      "severity": "CRITICAL",
+      "production_action": "REJECT"
+    },
+    {
+      "risk": "Model replacement without paired Golden Benchmark",
+      "severity": "CRITICAL",
+      "production_action": "REJECT"
+    },
+    {
+      "risk": "Schema pass or model self-confidence accepts silent omission/hallucination",
+      "severity": "HIGH",
+      "production_action": "REQUIRE_EXTERNAL_QUALITY_GATE"
+    },
+    {
+      "risk": "Section routing fragments cross-section causal chains",
+      "severity": "HIGH",
+      "production_action": "SHADOW_ONLY_UNTIL_BENCHMARK"
+    },
+    {
+      "risk": "Map-Reduce duplicates experiments or drifts object identity",
+      "severity": "HIGH",
+      "production_action": "P2_RESEARCH"
+    },
+    {
+      "risk": "Current baseline lacks actual figure visuals and independent Supplement artifacts",
+      "severity": "HIGH",
+      "production_action": "TRACK_AS_QUALITY_COVERAGE_GAP"
+    },
+    {
+      "risk": "Noncanonical nested locators may escape current field-level anchor validation",
+      "severity": "MEDIUM_HIGH",
+      "production_action": "ADD_TO_GOLDEN_AUDIT"
+    }
+  ],
+  "benchmark_plan": {
+    "corpus": {
+      "total_papers": 50,
+      "nested_subsets": [10, 30, 50],
+      "coverage": [
+        "long papers",
+        "short papers",
+        "complex experimental designs",
+        "Supplement-rich papers",
+        "multi-experiment and multi-strain papers",
+        "incomplete or dispersed Methods",
+        "figure/table dense papers",
+        "review, methods, protocol and primary research genres",
+        "OCR and section-label degradation",
+        "negative rule-candidate samples"
+      ]
+    },
+    "phase_10": {
+      "purpose": "Fast paired experiment and obvious-regression rejection",
+      "requirements": [
+        "freeze source, clean artifact, baseline output and provenance",
+        "dual annotation of experiments, objects, fields, evidence and DDR",
+        "blind paired review",
+        "at least two runs per variant"
+      ]
+    },
+    "phase_30": {
+      "purpose": "Stability, variance, fallback and repair-rate estimation",
+      "requirements": [
+        "broader complexity and document quality",
+        "paired blind review",
+        "repeat runs for nondeterminism",
+        "measure routing/cascade pass rate and false accepts",
+        "per-paper regression analysis"
+      ]
+    },
+    "phase_50": {
+      "purpose": "Production simulation",
+      "requirements": [
+        "separate cold and warm cache runs",
+        "configured concurrency and provider-load test",
+        "tail latency and failure isolation",
+        "complete token/call/repair/evidence/reviewer telemetry",
+        "release-blocking quality gate"
+      ]
+    },
+    "quality_metrics": [
+      "weighted field and experiment completeness",
+      "evidence existence correctness",
+      "evidence attribution correctness",
+      "evidence semantic-support correctness",
+      "evidence coverage",
+      "experiment grouping and object binding",
+      "design action quality",
+      "trigger quality",
+      "rationale quality",
+      "alternatives quality",
+      "implementation quality",
+      "result quality",
+      "bounded rule-candidate quality",
+      "hallucination rate",
+      "human reviewer acceptance"
+    ],
+    "hard_gates": [
+      "No increase in critical hallucination",
+      "No increase in wrong attribution",
+      "No degradation in critical evidence recall",
+      "No Skill07 claim of Skill08 verification",
+      "No critical experiment split/merge regression",
+      "No missing required Supplement evidence when supplied",
+      "Quality point estimates must not be below baseline",
+      "Confidence intervals crossing negative quality delta produce HOLD, not PASS"
+    ]
+  },
+  "recommended_v2": {
+    "status": "DESIGN_ONLY",
+    "components": [
+      "lossless canonical content store with one copy of text",
+      "section hierarchy and residual-fragment preservation",
+      "real figure/table/Supplement artifact support",
+      "versioned full and experimental context strategies",
+      "immutable provider/model/inference profile",
+      "L3 primary extraction",
+      "tiered repair classifier",
+      "deterministic validator",
+      "Skill08 independent evidence binding",
+      "Skill09 quality gate",
+      "full-context fallback",
+      "versioned cache and complete telemetry"
+    ]
+  },
+  "roadmap": {
+    "P0": [
+      "instrumentation",
+      "frozen Kimi-K3 baseline",
+      "cache identity hardening",
+      "attempt and repair telemetry",
+      "local parse/derived repair",
+      "10-paper gold set"
+    ],
+    "P1": [
+      "lossless document deduplication benchmark",
+      "prompt clause ablation",
+      "targeted repair with full fallback",
+      "high-recall routing shadow run",
+      "direct API/structured output/model cascade paired benchmark"
+    ],
+    "P2": [
+      "real figure and Supplement pipeline",
+      "anchor-preserving Map-Reduce research",
+      "provider-independent model evaluation",
+      "continuous 50-paper release benchmark and drift monitoring"
+    ]
+  },
+  "explicitly_rejected": [
+    "Methods-only extraction",
+    "lossy full-text truncation",
+    "ignoring figure legends, tables or Supplement",
+    "model replacement without Golden Benchmark",
+    "using Schema pass or model self-confidence as the sole cascade acceptance gate",
+    "turning experimental-design reasoning into summarization",
+    "removing scientific output fields to reduce token cost"
+  ]
+}

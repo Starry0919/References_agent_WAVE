@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wave://paper-extraction/atomic-claim/3.0.0",
+  "type": "object",
+  "required": ["claim_id", "experiment_id", "subject", "predicate", "object", "value", "unit", "epistemic_status", "evidence_bundle", "migration_generated", "review_required"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "experiment_id": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "minLength": 1},
+    "predicate": {"type": "string", "minLength": 1},
+    "object": {"type": "string", "minLength": 1},
+    "value": {"type": ["number", "string", "null"]},
+    "unit": {"type": ["string", "null"]},
+    "epistemic_status": {"enum": ["reported", "inferred", "unknown"]},
+    "evidence_bundle": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+    "migration_generated": {"type": "boolean"},
+    "review_required": {"type": "boolean"}
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["source_type", "section", "locator", "quote", "source_attribution", "evidence_role"],
+      "properties": {
+        "source_type": {"enum": ["main_text", "figure", "table", "supplement", "unresolved"]},
+        "section": {"type": "string"},
+        "locator": {"type": "string", "minLength": 1},
+        "quote": {"type": "string"},
+        "source_attribution": {"enum": ["current_article", "included_study", "background_citation", "author_inference", "model_inference", "unknown"]},
+        "evidence_role": {"const": "candidate"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

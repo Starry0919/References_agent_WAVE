@@ -1,0 +1,2345 @@
+[
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "RESEARCH"
+                    }
+                ]
+            },
+            "bbox": [
+                95,
+                113,
+                221,
+                132
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Open Access"
+                    }
+                ]
+            },
+            "bbox": [
+                773,
+                114,
+                902,
+                133
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "One-step of tryptophan attenuator inactivation and promoter swapping to improve the production of L-tryptophan in Escherichia coli"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                90,
+                151,
+                857,
+                249
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Pengfei Gu, Fan Yang, Junhua Kang, Qian Wang and Qingsheng Qi"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                258,
+                581,
+                277
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                100,
+                307,
+                174,
+                324
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Background: L-tryptophan is an aromatic amino acid widely used in the food, chemical and pharmaceutical industries. In Escherichia coli, L-tryptophan is synthesized from phosphoenolpyruvate and erythrose 4-phosphate by enzymes in the shikimate pathway and L-tryptophan branch pathway, while L-serine and phosphoribosylpyrophosphate are also involved in L-tryptophan synthesis. In order to construct a microbial strain for efficient L-tryptophan production from glucose, we developed a one step tryptophan attenuator inactivation and promoter swapping strategy for metabolic flux optimization after a base strain was obtained by overexpressing the tktA, mutated trpE and aroG genes and inactivating a series of competitive steps."
+                    }
+                ]
+            },
+            "bbox": [
+                97,
+                329,
+                897,
+                438
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Results: The engineered E. coli GPT1002 with tryptophan attenuator inactivation and tryptophan operon promoter substitution exhibited 1.67 ~ 9.29 times higher transcription of tryptophan operon genes than the control GPT1001. In addition, this strain accumulated 1.70 g l<sup>-1</sup> L-tryptophan after 36 h batch cultivation in 300-mL shake flask. Bioreactor fermentation experiments showed that GPT1002 could produce 10.15 g l<sup>-1</sup> L-tryptophan in 48 h."
+                    }
+                ]
+            },
+            "bbox": [
+                99,
+                438,
+                897,
+                501
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Conclusions: The one step inactivating and promoter swapping is an efficient method for metabolic engineering. This method can also be applied in other bacteria."
+                    }
+                ]
+            },
+            "bbox": [
+                99,
+                503,
+                890,
+                535
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Background"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                561,
+                189,
+                576
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "L-tryptophan is an essential aromatic amino acid for humans and animals which can be used as food additive, infusion liquids, pellagra treatment, sleep induction and nutritional therapy [1,2]. Since the chemical synthesis of L-tryptophan has many disadvantages such as nonrenewable toxic raw materials and racemic mixtures of products, microbial fermentation of L-tryptophan has become attractive alternative. E coli, a widely used production host that possesses clear genetic background, convenient metabolic engineering tools and fast growth in cheap media, has attracted many attentions for the production of L-tryptophan and other aromatic compounds [3-7]."
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                577,
+                492,
+                773
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The biosynthesis of the L-tryptophan in E coli begins with the condensation of phosphoenolpyruvate (PEP) and erythrose 4-phosphate (E4P) to form 3-deoxy-Darabino-heptulosonate-7-phosphate (DAHP), and then proceeds to chorismate, a key intermediate product leading to the formation of L-tryptophan, L-tyrosine, and L-phenylalanine (Figure 1). In the L-tryptophan branch pathway, L-serine and phosphoribosylpyrophosphate (PRPP) are needed as well. Since the biosynthesis of L-tryptophan from glucose involves a long metabolic pathway, there are several regulatory circuits which influence the accumulation of L-tryptophan such as transcriptional repression, attenuation, feedback inhibition and so on [1,8]. Among these regulatory circuits, tryptophan attenuator is critical due to its sensitivity to the in vivo L-tryptophan level [9]. Therefore, removing or inactivating the tryptophan attenuator was supposed to be an effective method for elevating the L-tryptophan accumulation. Herry et al. identified a mutation in the tryptophan attenuator sequence from a hyperproducing strain of Corynebacterium glutamicum and proved its contribution to the deregulation of the tryptophan operon [10]. However, little attention had been focused on tryptophan attenuator to improve L-tryptophan production in E li."
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                773,
+                490,
+                819
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                561,
+                909,
+                865
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30 http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                39,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "QQO MICROBIAL CELL OOO FACTORIES"
+                    }
+                ]
+            },
+            "bbox": [
+                677,
+                40,
+                907,
+                92
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Correspondence: qiqingsheng@sdu.edu.cn"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                837,
+                322,
+                849
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "State Key Laboratory of Microbial Technology, National Glycoengineering Research Center, Shandong University, Jinan 250100, People’s Republic of China"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                848,
+                473,
+                883
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "BioMed Central"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                894,
+                282,
+                924
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "© 2012 Gu et al; licensee BioMed Central Ltd. This is an Open Access article distributed under the terms of the Creative Commons Attribution License (http://creativecommons.org/licenses/by/2.0), which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited."
+                    }
+                ]
+            },
+            "bbox": [
+                294,
+                892,
+                905,
+                926
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/154cceb3c2a70809823e097d6d7760bc560623dd13defa25b00302d2113430e1.jpg"
+                },
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Figure 1 The strategies for constructing the L-tryptophan producing strain GPT1002. The shaded boxes represent genetic modification, and the gray bars indicate the genes that were deleted. Dotted lines indicate feedback inhibition. The black X indicates that the inhibition is removed. The thick black arrows indicate the increased flux or activity by directly overexpressing the corresponding genes in plasmids. Glc glucose, G6P glucose-6-phosphate, E4P erythrose-4-phosphate, PEP phosphoenolpyruvate, DAHP 3-deoxy-D-arabino-heptulosonate, CHA chorismate, ANTA anthranilate, L-Phe L-phenylalanine, L-Tyr L-tyrosine, L-Trp L-tryptophan, tktA transketolase, aroG 3-deoxy-D-arabinoheptulosonate-7-phosphate synthase (phenylalanine repressible), trpE component I of anthranilate synthase, trpR trp operon repressor, tnaA tryptophanase, ptsG glucose-specific PTS enzyme IIBC components, manXYZ mannose-specific PTS enzyme IIABCD components, galP D-galactose transporter, PP pathway pentose phosphate pathway."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                208,
+                114,
+                788,
+                311
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                89,
+                456,
+                489,
+                486
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Otherwise, the transcription and expression of tryptophan operon is pivotal to obtain high L-tryptophan accumulation as well [6]. Promoter swapping allowed researchers to replace a wild type promoter with the one that has been designed for a increased or controlled transcription strength while retaining the natural genetic context of a gene or an operon in the genome [11]. Consequently, by promoter swapping and engineering, the targeted metabolites can be elevated. For example, to maximize the threonine production, Lee at al. created an L-threonine producing strain by replaced three different chromosomal promoters. After replaced the native promoter of the ppc gene with trc promoter in the chromosome, the engineered strain showed a higher PPC flux than the wild type, and therefore resulting 27.7% increased threonine production [12]. In another study, Alper et al. found a correlation between promoter strength and lycopene production. By introducing a promoter library that was created by error-prone PCR into E coli to replace native promoter of phosphoenolpyruvate carboxylase or deoxy-xylulose-phosphate synthase, they identified a suitable promoter for lycopene production [13]."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                486,
+                492,
+                833
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this study, we first constructed a basic L-tryptophan-synthetic strain by inactivation of the trpR, tnaA and ptsG, expressing in plasmids the feedback resistant aroG, trpE "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\stackrel { \\cdot } { a r o } G ^ { F R }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "t r p E ^ { F R }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "respectively), and tktA genes in wild E coli K-12 W3110. Then, we inactivated the tryptophan attenuator and replacing the original trp promoter of tryptophan operon with a novel promoter cluster consisted of five core-tac-promoters aligned in tandem (5CPtacs promoter cluster) in one step. The resulting strain GPT1002 showed higher transcription of tryptophan operon genes and more L-tryptophan accumulation than the parent strain."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                832,
+                490,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                456,
+                909,
+                548
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Results and discussion"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                561,
+                690,
+                576
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Construction of the basic L-tryptophan-synthetic E. Coli GPT1001"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                576,
+                889,
+                606
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The overall strategies for constructing L-tryptophan production strain are shown in Figure 1. To generate an E coli that overproduces and excretes L-tryptophan, the following manipulation was done: First, trpR gene, which encodes a tryptophan transcriptional repressor, was knocked out to eliminate transcription regulation of the genes in L-tryptophan pathway [6,14]. Knockout of this gene slightly improved the tryptophan accumulation (Table 1). Second, trpE and aroG, encoding component I of anthranilate synthase and DAHP synthase, respectively, were cloned into the low-copy-number vector pCL1920 and were expressed in the E coli (ΔtrpR). Since the expression of wild type trpE and aroG are feedback inhibited by L-tryptophan and L-phenylalanine, respectively, site-directed mutations of trpE (Met293Thr) and aroG (Pro150Leu) were performed in our study to remove the feedback inhibition [15,16]. The resulting recombinant E coli (ΔtrpR) harboring the overexpressed and mutated trpE and aroG can produce "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "0 . 7 4 \\dot { \\mathrm { ~ g ~ l ~ } } ^ { 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Ltryptophan in batch cultivation, which is 6000 fold higher than the wild type E coli (Table 1)."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                606,
+                909,
+                926
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30 http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                40,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 2 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/a79eb4931488fe0e7a6e93b87bb0c90705586f39fc8efb580d56925188785932.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 1 Development of L-tryptophan producing E. coli strains"
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "L-tryptophan titer in mg l<sup>-1</sup> reported was the final production obtained when glucose had been completely consumed in 50 mL fermentative medium containing 20 g l<sup>-1</sup> glucose, shaken at 250 rpm and 37°C."
+                    },
+                    {
+                        "type": "text",
+                        "content": "<sup>a</sup> E coli GPT1001"
+                    }
+                ],
+                "html": "<table><tr><td>Strain</td><td>L-tryptophan (mg I1)</td></tr><tr><td>W3110</td><td> $0 . 1 2 \\pm \\ : 0 . 0 1$ </td></tr><tr><td>W3110 (∆trpR::FRT)</td><td> $0 . 1 4 \\pm \\ : 0 . 0 2$ </td></tr><tr><td> $\\mathsf { W 3 1 1 0 } ( \\Delta t r p R . . \\mathsf { F R } \\mathsf { T } ) / \\mathsf { p C l } . 1 9 2 0 \\ – t r p E ^ { F R }$ </td><td> $6 4 . 4 6 \\pm 2 . 1 7$ </td></tr><tr><td> $\\mathsf { W 3 } 1 1 0 \\ ( \\Delta t r p R . . \\mathsf { F R } \\mathsf { T } ) / \\mathsf { p C l } 1 9 2 0 - t r p E ^ { F R } - a r o G ^ { F R }$ </td><td> $7 3 6 . 8 3 \\pm 3 . 9 8$ </td></tr><tr><td>W3110 (∆trpR::FRT)/pTAT</td><td> $1 0 1 8 . 9 8 \\pm 1 . 8 9$ </td></tr><tr><td>W3110 (∆trpR::FRT, ∆tnaA::FRT)/pTAT</td><td> $1 1 8 8 . 2 0 \\pm 2 . 5 6$ </td></tr><tr><td>W3110 (∆trpR::FRT, ∆tnaA::FRT, ∆ptsG::FRT)/pTATa</td><td> $1 2 0 8 . 8 2 \\pm 1 . 3 3$ </td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                87,
+                137,
+                489,
+                263
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Alleviating the feedback repression of the product increased the expression of the key enzymes in the tryptophan biosynthesis pathway, while provision of more precursors would enable the enhanced metabolic flux. tktA gene, encoding a transketolase in pentose phosphate pathway, and overexpression of this gene in E coli was proved to supply more E4P, a precursor of Ltryptophan [17]. Otherwise, carbon flux distribution analysis at the node in wild E li indicated that phosphoenolpyruvate:carbohydrate phosphotransferase system (PTS) is the largest consumer of PEP, while the relative carbon flux directed to aromatic amino acid biosynthesis is only around 1.5% of the PTS consumed [18]. Therefore we knocked out ptsG, which encodes the IIBC component of glucose-specific PTS system, to provide more PEP. In our base strain, we performed modification of the host to increase the levels of precursors PEP and E4P, while PRPP and Lserine are also building blocks for L-tryptophan. Therefore, increasing the availability of L-serine by amplification of the deregulation serA gene [19] and PRPP by overexpresssion of prs and ywlF genes involved in the biosynthetic pathway of PRPP from ribulose-5-phosphate [20] should be useful for high L-tryptophan accumulation. Finally, we knocked out the gene tnaA, which encodes a tryptophanase that catalyzes the reaction of L-tryptophan back into indole [3]. The resulting L-tryptophan-synthetic strain was named GPT100. Then we transformed plasmid pTAT into E coli GPT100 and constructed strain GPT1001. This strain was able to produce "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 . 3 \\ \\mathrm { g \\ l ^ { - 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "L-tryptophan in batch cultivation and was therefore used as base strain for further experiment."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                335,
+                492,
+                819
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "One-step L-tryptophan attenuator inactivation and promoter swapping"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                87,
+                833,
+                442,
+                863
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The expression of tryptophan biosynthesis operon was negatively regulated by the attenuator downstream of the promoter operator site until tryptophan starvation is severe. However, simply removal of the attenuator probably cannot reach a sufficient expression of the tryptophan operon genes [21]. Therefore it is essential to improve the expression of genes in tryptophan operon at the same time of inactivating the attenuator."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                863,
+                492,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                108,
+                909,
+                170
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Therefore we developed a one step attenuator inactivation and promoter swapping method (Figure 2). First, we constructed a recombinant plasmid pKMT, which contains the kan gene from pKD4 and 5CPtacs promoter cluster from p5TG. Previous work of our laboratory verified the transcription strength can be enhanced by increasing the tandem repeats of the core tac promoter and reached almost the maximum if the tandem repetitive number was five [22]. At the both side of kan gene, FRT sites were added. Then using this plasmid as template, the integration cassette was constructed employing PCR by adding at upstream of 5CPtacs promoter cluster and downstream of kan gene the 39 bp homologous sequences for Red recombination. Finally, by electroporating the fragments into cells of base strain E coli GPT100, the engineered E coli GPT101 that contains the inactivated attenuator and swapped promoter was obtained. Among twenty-four recombinants that were detected, only one positive clone was found. The positive clone was transformed with plasmid pTAT, resulting strain E coli GPT1002."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                168,
+                910,
+                488
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Characterization of tryptophan operon transcription in E. Coli GPT1002"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                504,
+                500,
+                902,
+                530
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To investigate the effect of the tryptophan attenuator inactivation and promoter replacement, the transcription of five tryptophan operon genes in the strains GPT1002 and GPT1001 was compared employing RT-PCR (Figure 3A). Compared to that of the control strain GPT1001, the transcription of five tryptophan operon genes in GPT1002 was up-regulated from "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 . 6 7 \\pm 0 . 0 4 \\mathrm { { \\ t o \\ 9 . 2 1 \\pm } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "0.13 times. Among that, the first gene "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "t r p E ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "direct downstream of the 5CPtacs promoter cluster was significantly up-regulated by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "9 . 2 1 \\pm 0 . 1 3"
+                    },
+                    {
+                        "type": "text",
+                        "content": "times. Nevertheless, other four genes in the tryptophan operon were only about two times up-regulated. A recent publication also reported the differential expression of the genes in the same operon [23]. They found that the gene expression in the operon has linear relationship with the transcription distance. They even created a general model of operon translation to elucidate this phenomenon. However, in our study, we found that trpD, trpC, trpB, and trpA genes with different transcription distance in the operon had similar transcription level. The differences between our and their experiment is that we use the natural operon. Natural operon has some specific regulatory mechanisms, while synthetic operons used in their experiments lacked those mRNA-specific, regulatory mechanisms commonly found in native operons [23]. In native tryptophan operon, besides trp promoter we had swapped by 5CPtacs promoter cluster, there was an internal low efficiency promoter trp p2 located within trpD gene providing a bypass function advantageous to the cell under conditions of severe nutritional deprivation [24-27]. However, the regulation mechanism of promoter trp p2 is still unknown, which may influence the transcription of tryptophan operon and lead our novel results."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                530,
+                910,
+                926
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                39,
+                346,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                52,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 3 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/22ab306949ad44cc98a53b2d4eefda00e22683a51004c536e87af06bc97b65f6.jpg"
+                },
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Figure 2 Outline of plasmid pKMT construction and promoter swapping."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                94,
+                110,
+                904,
+                820
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                853,
+                492,
+                916
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                853,
+                909,
+                915
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30 http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                40,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 4 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/57a3b4c5bdca9edf0626bac943a9a823be4ff3bca14b6228dc86bbfd4dc30f84.jpg"
+                },
+                "content": "",
+                "chart_caption": [],
+                "chart_footnote": []
+            },
+            "bbox": [
+                211,
+                116,
+                499,
+                272
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/ace0298ef1c11c7ba5ffb1720a4b3b3081c7d87f909a98384c88389bc7dedc01.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Figure 3 RT-PCR analysis of constructed E. coli. (A) Relative gene expression of E. coli GPT1002 to the control GPT1001. (B) Relative gene expression of E. coli GPT101 to the control GPT100. gapA transcripts was selected as standard and each measurements were repeated three times. The error bars indicate standard deviations."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                500,
+                116,
+                791,
+                273
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In addition, the transcription level of the aroG gene in the strain GPT1002 was also significantly upregulated by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "9 . 2 9 \\pm 0 . 3 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": "fold. In order to determine whether the different expression levels of trpE and aroG on the plasmid pTAT lead to this phenomenon, we analyzed the expression of trpE, aroG and trpD in the strain GPT101 and GPT100, the parent strains of GPT1002 and GPT1001 without the recombinant plasmid pTAT, respectively (Figure 3B). The relative transcription of three genes in both GPT101 and GPT100 were similar to the strain harboring pTAT, and therefore excluded the impact of plasmid pTAT. Since AroG protein is critical of controlling the carbon flow into aromatic amino acid biosynthesis pathway [28,29], more experiments such as metabolic flux analysis should be helpful to find out the reason of high aroG transcription."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                350,
+                492,
+                593
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Production of L-tryptophan by E. Coli GPT1002"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                606,
+                416,
+                621
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To explore the effect of attenuator inactivation and promoter swapping on L-tryptophan production, we performed batch cultivation of the engineered strain GPT1002 and the control GPT1001 in the medium supplemented with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "2 0 \\mathrm { ~ g ~ l ~ } ^ { - 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "glucose (Figure 4). Strain GPT1001 and GPT1002 showed a similar glucose consumption rate, but GPT1002 grew a little faster than the control, indicated by the optical density 600 nm (OD600) at 36 h, 15.2 vs 13.2. This implied that the genetic modification of the L-tryptophan operon may improved the glucose utilization efficiency. After 36 h cultivation, GPT1002 accumulated "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 . 7 0 \\mathrm { ~ g ~ l ~ } ^ { - 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "L-tryptophan, 30.8% higher than that of the control strain GPT1001."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                621,
+                492,
+                833
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To evaluate the L-tryptophan production potential of E coli strain GPT1002 under controlled conditions, we performed bioreactor fermentations under indicated cultivation condition (Figure 5). Strain GPT1002 showed a long lag growth phase of about 20 h. During this period, the L-tryptophan also accumulated at low level. This long lag growth phase may be due to the metabolic burden generated by 5CPtacs promoter cluster swapping and plasmid pTAT. After 20 h, the cell growth entered the exponential phase. Simultaneously, the production of L-tryptophan began to increase rapidly. The maximum OD600 was 53, while, the maximum L-tryptophan accumulation reached "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 0 . 1 5 ~ \\mathrm { ~ g ~ } ~ \\mathrm { l } ^ { - 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "at 48 h. Since GPT1002 is a genetically well-defined strain, of which the development is directly related to L-tryptophan biosynthesis, it can be easily improved by means of omics method or adapted evolution, as a lot of large-scale analytical techniques such as transcriptome and proteome analysis in this regard can be help [12,30]."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                833,
+                492,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                350,
+                909,
+                547
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Through promoter swapping, a wild type promoter could be replaced with the one that has been designed for increased or controlled transcription strength [31,32]. However, a normal strong promoter is sometimes not sufficient for downstream gene expression. Recently, we developed a promoter cluster, by which the core tac promoter region was arranged repetitively in tandem. This method can improve the expression of desired genes without increasing the copy number of the gene. When the repetition number was 5, the transcription strength increased almost 4 fold [22]. In this study, the 5CPtacs promoter cluster was swapped into the upstream region of tryptophan operon, which resulted in an ideal result. Besides E coli, this promoter swapping method can also be applied in many other bacteria and other regions of the chromosome. Nevertheless, the choice of swapping region in the chromosome is very important. When the swapping region contains indispensable gene or essential regulation elements, the swapping should be careful."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                547,
+                909,
+                609
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/0f96f349c0a387f23cc9834afd9b4f791d79bbe4e630cebc0010b4bb0393c16a.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Figure 4 Batch cultivation of E. coli GPT1001 and GPT1002 in 300-mL shake flasks. For E. coli GPT1001, (filled square) growth curves; (filled circle) glucose consumption; (filled triangle) Ltryptophan yield. For E. coli GPT1002, (open square) growth curves; (open circle) glucose consumption; (open triangle) L-tryptophan yield. The error bars represent standard deviations from three replicate fermentations."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                514,
+                629,
+                897,
+                823
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30 http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                40,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 5 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/d89c66afa5e0525fc35d7260ac314b6bfda9e6d7cb1e79fd641772f7cadd88b9.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Figure 5 Fed-batch fermentation of GPT1002 in 5-L fermentator. (Filled square) growth curves; (filled circle) glucose consumption; (filled triangle) L-tryptophan yield. The error bars represent standard deviations from three measurements."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                97,
+                112,
+                480,
+                308
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                395,
+                492,
+                639
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                651,
+                191,
+                667
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We developed a method for one step inactivating the tryptophan attenuator and promoter swapping. The engineered E coli GPT1002 showed strong transcription capability and L-tryptophan accumulation. The L-tryptophan production of GPT1002 can be further improved through strain improvement and fermentation process optimization. The one step gene inactivating and promoter swapping is an efficient method for metabolic engineering and can also be applied in other bacteria."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                667,
+                492,
+                805
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Methods"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                817,
+                166,
+                832
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Bacterial strains and plasmids construction"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                833,
+                388,
+                848
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "All strains, plasmids and oligonucleotides used in this study were listed in Table 2 and Table 3. E coli K-12 W3110 was selected for engineering of the basic L-tryptophan-synthetic strain. E li strain DH5a was used as the host of recombinant DNA manipulation. Plasmid pCL1920 [33] was used to construct pTAT. Site-directed mutation of trpE (Met293Thr) and aroG (Pro150Leu) encoding component I of anthranilate synthase and 3- deoxy-D-arabino-heptulosonate-7-phosphate synthase respectively were performed by Easy Mutagenesis System from TransGene Biotech (Beijing, China) according to the manufacturer. Successful mutations were verified by sequencing in the BioSune Company (Shanghai, China). The trpE<sup>FR</sup>, aroG<sup>FR</sup>, and tktA fragments were amplified by PCR using trpE<sup>FR</sup>-F and trpE<sup>FR</sup>-R, aroG<sup>FR</sup>- F and aroG<sup>FR</sup>-R, and tktA-F and tktA-R as the primers respectively. Then the three genes were digested with HindIII/PstI, PstI/BamHI, and BamHI/SacI (Fermentas) separately and ligated into cloning vector pCL1920 by T4 ligase (New England Biolabs, USA) in turn, obtaining the recombinant plasmid pTAT."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                847,
+                492,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                108,
+                909,
+                350
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Plasmid pBluescript SK<sup>-</sup> was served for constructing recombinant vector pKMT. The kan gene and the 5CPtacs promoter cluster were obtained with the kan-F and kan-R, and Mtac-F and Mtac-R as the primers and the plasmids pKD4 and p5TG as the templates separately using the TransTaq DNA Polymerase High Fidelity from TransGene Biotech (Beijing, China). Next, the PCR products were digested with BamHI/EcoRI and EcoRI/SacI respectively, and then ligated into the vector pBluscript SK<sup>-</sup> and constructed the plasmid pKMT."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                349,
+                910,
+                503
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Gene inactivation"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                515,
+                635,
+                530
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Three genes trpR, tnaA, and ptsG, which encoded trp operon repressor, tryptophanase, and glucose-specific PTS enzyme IIBC components respectively, were inactivated in turn using the one-step inactivation method [34]. Primers trpR-F and trp-R, tnaA-F and tnaA-R, and ptsG-F and ptsG-R, template plasmids pKD3 for ptsG and pKD4 for trpR and tnaA were used to obtain the linearized DNA flanked by FLP recognition target sites and homologous sequences for genes deletion. The PCR was performed in an automated thermocycler (Bio-Rad, Hercules, CA, USA), and then PCR products were gelpurified and digested with DpnI. Electroporation was done according to the manufacturer’s instructions by using 25 ml of cells and 10-100 ng of PCR product to transform resistance gene cassette into the cells expressing the Red recombinase before. Shocked cells were added to 1 ml SOC cultures, incubated 1 h at 37°C, and one-half was spread onto agar to select chlorampenicol resistant or kanamycin resistant transformants. Positive clones on the plates were verified by PCR using the primers trpRtest-F and trpRtest-R, tnaAtest-F and tnaAtest-R, and ptsGtest-F and ptsGtest-R separately. The chlorampenicol or kanamycin cassette was removed with the helper plasmid pCP20. The final strain E coli K-12 W3110 with three mutations (ΔtrpR ΔtnaA ΔptsG) was named GPT100."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                530,
+                910,
+                925
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30 http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                40,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 6 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/27b0edd604afb9d999a12cfc54650abe50845438ae2be3f6a332638e10f3ba72.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 2 Strains and plasmids used in this study"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Strains</td><td>Genotype</td><td>Reference</td></tr><tr><td>W3110</td><td>F, λ, rph-1, IN (rrnD, rrnE)</td><td>Lab stock</td></tr><tr><td>DH5α</td><td>F, endA1, hsdR17 (rk, mk+), supE44, thi-I, λ, recA1, gyrA96, ∆lacU169 (Φ80lacZ ∆M15)</td><td>Lab stock</td></tr><tr><td>GPT100</td><td>W3110 ∆trpR::FRT, ∆tnaA::FRT, ∆ptsG::FRT</td><td>This study</td></tr><tr><td>GPT101</td><td>GPT100 with tryptophan attenuator deletion and trp promoter swapping by 5CPtacs promoter cluster</td><td>This study</td></tr><tr><td>GPT1001</td><td>GPT100 containing pTAT</td><td>This study</td></tr><tr><td>GPT1002</td><td>GPT101 containing pTAT</td><td>This study</td></tr><tr><td>Plasmids</td><td>Genotype</td><td>Reference</td></tr><tr><td>pBluescript SK</td><td> $\\mathsf { A p } ^ { \\mathsf { R } }$ </td><td>Lab stock</td></tr><tr><td>pCL1920</td><td> $\\mathsf { S p c } ^ { \\mathsf { R } }$ </td><td>[33]</td></tr><tr><td>pTAT</td><td>pCL1920 containing aroGFR,  $t r p { E } ^ { F R } ,$  and tktA</td><td>This study</td></tr><tr><td>pKD4</td><td>bla, FRT-cat-FRT</td><td>[34]</td></tr><tr><td>pKD3</td><td>bla, FRT-kan-FRT</td><td>[34]</td></tr><tr><td>pKD46</td><td>bla, helper plasmid</td><td>[34]</td></tr><tr><td>pCP20</td><td>bla and cat, helper plasmid</td><td>[35]</td></tr><tr><td>p5TG</td><td>pCL1920 containing 5CPtacs promoter cluster and gfp</td><td>[22]</td></tr><tr><td>pKMT</td><td>pBluescript SK, containing kan and 5CPtacs promoter cluster</td><td>This study</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                89,
+                123,
+                907,
+                388
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "One-step of L-tryptophan attenuator inactivation and promoter swapping"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                408,
+                458,
+                437
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The DNA fragment for next promoter replacement was amplified using plasmid pKMT as the template with the primers Trp-F and Trp-R and the fragment containing kan gene and 5CPtacs promoter cluster was transformed into GPT100 by electroporation, incubated for 1 hours at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "3 7 ^ { \\circ } \\mathrm { C } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and spread onto agar to select kanamycin resistant transformants. The strategy of plasmid pKMT construction and promoter swapping were listed in Figure 2. The positive clones were verified by PCR using the primers trptest-F and trptest-R, and named GPT101. Then we transformed the plasmid pTAT into GPT101 and the GPT100 respectively, and resulting to the recombinant strain GPT1002 and control strain GPT1001 for next experiments."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                437,
+                492,
+                649
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Quantitative real-time reverse transcription (RT)-PCR analysis"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                663,
+                452,
+                693
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Samples for mRNA preparation were cultivated 6 h after the addition of 0.1 mM IPTG if necessary. Total cellular RNA was extracted by the RNA simple Total RNA Kit (TIANGEN, Beijing, China) as described by the manufacturer. The quantity and purity of RNA were determined by spectrophotometrically at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { A } _ { 2 6 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { A } _ { 2 8 0 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The reverse transcription was performed using primers Random 6 mers and Oligo dT by the PrimeScript RT reagent Kit (TaKaRa, China) according to the manufacturer. RT- PCR was performed with SYBR Premix Ex TaqII (TaKaRa, China) followed the protocol of the Real-Time PCR Detection Systems (Bio-Rad, Hercules, CA, USA). The RT-PCR measurement was repeated three times for each sample. The trpE, trpD, trpC, trpB, trpA, aroG genes transcripts primers were listed in"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                693,
+                492,
+                921
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 3 and gapA encoding D-glyceraldehyde-3-phosphate dehydrogenase transcript selected as internal standard was amplified with gapART-F and gapART-R."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                406,
+                907,
+                455
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Growth conditions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                467,
+                640,
+                482
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Strains for cloning and inoculums were grown in Luria-Bertani media (1% tryptone, 0.5% yeast extract and 1% NaCl) at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "3 7 ^ { \\circ } \\mathrm { C }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "for 8-12 h supplemented with the appropriate antibiotic (ampicillin "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( 1 0 0 \\mathrm { \\ m g \\ l ^ { - 1 } } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "chloramphenicol (17 mg "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "1 ^ { - 1 } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", kanamycin (25 "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\operatorname* { m g } \\mathrm { l } ^ { - 1 } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "spectinomycin "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( 5 0 \\mathrm { ~ m g ~ l ^ { - 1 } } ) )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "when necessary. For fermentation, the seed medium contained (per liter) glucose (20 g), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { M g S O _ { 4 } { \\cdot } 7 H _ { 2 } O } \\ ( 5 \\ \\mathrm { g } )"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { K H } _ { 2 } \\mathrm { P O } _ { 4 } \\ ( 1 . 5 \\ \\mathrm { g } )"
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\left( \\mathrm { N H _ { 4 } } \\right) _ { 2 } \\mathrm { S O _ { 4 } } \\left( 1 0 \\mathrm { ~ g } \\right)"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", yeast extract (15 g), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { F e S O _ { 4 } { \\cdot } 7 H _ { 2 } O }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(15 mg), sodium citrate dehydrate (0.5 g), Vitamin "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { B _ { 1 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(100 mg). The fermentative medium contained (per liter) glucose (20 g), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { M g S O _ { 4 } { \\cdot } 7 H _ { 2 } O }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(5 g), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { K H _ { 2 } P O _ { 4 } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(2 g), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { ( N H _ { 4 } ) _ { 2 } S O _ { 4 } \\ ( 4 \\ g ) }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", yeast extract (1 g), "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { F e S O _ { 4 } { \\cdot } 7 H _ { 2 } O }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "(100 mg), sodium citrate dehydrate (2 g). A single clone was pre-cultured in 5 ml Luria-Bertani medium at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "3 7 ^ { \\circ } \\mathrm { C }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and on a rotary shaker at 200 rpm overnight. 1 ml overnight cells were inoculated into 50 ml seed medium and cultured for 8-12 hours, and then 10% (v/v) seed cultures for batch cultivation were incubated into 50 mL fermentation medium at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "3 7 ^ { \\circ } \\mathrm { C }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "with the initial glucose concentration 20 "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\textrm { g l } ^ { - 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Isopropyl b-D-1-thiogalactopyranoside (IPTG) was added at the final concentration of 0.2 mM. For fed-batch fermentation, a stirred 5-l glass vessel with the BioFlo310 modular fermentor system (New Brunswick Scientific, Edison, NJ, USA) was used. The inoculum ratio was 10% (v/v). When glucose concentration in the medium was below 10 "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\textrm { g l } ^ { \\overline { { - 1 } } }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", feeding solution containing 500 g "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\mathrm { l } } ^ { - 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "glucose was supplied to the medium. The culture temperature was "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "3 7 ^ { \\circ } C ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and the pH was controlled at 6.8 with "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\mathrm { N H } _ { 3 } { \\cdot } \\mathrm { H } _ { 2 } \\mathrm { O }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The dissolved oxygen concentration was kept at 30% via changing fermentor agitation speed and aeration rate."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                481,
+                909,
+                921
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                40,
+                344,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                52,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 7 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/3c3212c0383e469de880cef7007ef6f314b1873635e68135de8c22df7cbbacf4.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 3 Primers used in this study"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Primers</td><td>Nucleotide sequence</td></tr><tr><td>trpR-F</td><td>5′-GGACGTCGTTACTGATCCGCACGTTTATGATATGCTATCGTGTAGGCTGGAGCTGCTTC-3′</td></tr><tr><td>trpR-R</td><td>5′-ACGGGTATTTGTAGGACGGATAAGGCGTTCACGCCGCATATGGGAATTAGCCATGGTCC-3</td></tr><tr><td>tnaA-F</td><td>5′-CAGATCAACGGCTGTACCGTGCGTAACGTCTATATCAAAGTGTAGGCTGGAGCTGCTTC-3</td></tr><tr><td>tnaA-R</td><td>5′-TGTTTACCGGTTTTCGGATCGCGGCCTAACAGGAAAGAGATGGGAATTAGCCATGGTCC-3′</td></tr><tr><td>ptsG-F</td><td>5′-ACGTAAAAAAAGCACCCATACTCAGGAGCACTCTCAATTGTGTAGGCTGGAGCTGCTTC-3</td></tr><tr><td>ptsG-R</td><td>5′-AGCCATCTGGCTGCCTTAGTCTCCCCAACGTCTTACGGAATGGGAATTAGCCATGGTCC-3′</td></tr><tr><td>kan-F</td><td>5′-ATAGGATCCGTGTAGGCTGGAGCTGCTTC-3</td></tr><tr><td>kan-R</td><td> $\\mathsf { S ^ { \\prime } - G G G S A A I I C A T G G A A I I A G C C A T G G I C C 3 ^ { \\prime } }$ </td></tr><tr><td>Mtac-F</td><td> $\\mathsf { S ^ { \\prime } \\mathrm { - G G G \\underline { { G } } A A } I I C I \\mid I G A C A A I I A A I C A T C A } \\mathsf { G } G \\mathsf { G } C \\mathsf { I } C G \\mathsf { I } A \\mathsf { T } A \\mathsf { - 3 ^ { \\prime } }$ </td></tr><tr><td>Mtac-R</td><td>5′-GGGGTCGACATGCATCTAGTATTTCTCCTCTTTAATGGAT-3′</td></tr><tr><td>trp-F</td><td>5′-GTGCAGGTCGTAAATCACTGCATAATTCGTGTCGCTCAAGTGTAGGCTGGAGCTGCTTC-3′</td></tr><tr><td>trp-R</td><td>5′-GCAGGTTAGCAGTTCGAGAGTCGGTTTTIGTGTTTGCATATGCATCTAGTATTTCTCCT-3</td></tr><tr><td>trp test-F</td><td> $5 ^ { \\prime } - \\mathsf { G C } \\bot \\Pi \\mathsf { A C C G C C A G A A T G A T G A A T G A - 3 ^ { \\prime } }$ </td></tr><tr><td>trp test-R</td><td> $\\mathsf { S ^ { \\prime } - G C A G C A C G G C A G I \\bot G G I G A H I G 3 ^ { \\prime } }$ </td></tr><tr><td>trpRtest-F</td><td> $\\mathsf { S ^ { \\prime } - G T G C T G G C T I A T G A C G C T I A C T A C C G C T A T - 3 ^ { \\prime } }$ </td></tr><tr><td>trpRtest-R</td><td> ${ 5 ^ { \\prime } } \\mathrm { - } C \\mathsf { G } C \\mathsf { T } \\mathsf { G } A \\mathsf { G } \\mathsf { T } C \\mathsf { C } \\mathsf { G } \\mathsf { I } \\mathsf { I } \\mathsf { I } \\mathsf { I } C \\mathsf { A } \\mathsf { T } A \\mathsf { A } \\mathsf { I } \\mathsf { G } C \\mathsf { G } \\mathsf { I } \\mathsf { G } \\mathsf { I } A \\mathsf { - } 3 ^ { \\prime }$ </td></tr><tr><td>tnaAtest-F</td><td> $\\mathsf { S ^ { \\prime } - T A T C A A T A C A C C A T T C C G A C T C A C C - 3 ^ { \\prime } }$ </td></tr><tr><td>tnaAtest-R</td><td> $\\mathsf { S ^ { \\prime } - G T G A A G I \\mathsf { G A C G C A A T A C I } | | I C G G I | } - 3 ^ { \\prime }$ </td></tr><tr><td>ptsGtest-F</td><td> ${ } 5 ^ { \\prime } { - } C C T G T A C A C G G C G A G G C T C T { - } 3 ^ { \\prime }$ </td></tr><tr><td>ptsGtest-R</td><td> $\\mathsf { S ^ { \\prime } - A A T A A C A C C I G T A A A A A G G C A G C C 3 ^ { \\prime } }$ </td></tr><tr><td> $\\mathrm { { t r p E } } ^ { \\mathsf { F R } } - \\mathsf { F }$ </td><td>5′-GCCAAGCTTAAGGAGATATAATGCAAACACAAAAACCGAC-3′</td></tr><tr><td> $\\mathrm { \\ t r { p E } ^ { F R } - R }$ </td><td>5′-ATTAACTGCAGTCAGAAAGTCTCCTGTGCATGATGCG-3′</td></tr><tr><td> $\\mathsf { a r o G } ^ { \\mathsf { F R } } \\mathsf { \\Pi } _ { - \\mathsf { F } }$ </td><td>5′-GGGGCCTGCAGAAGGAGATATAATGAATTATCAGAACGACG-3′</td></tr><tr><td> $\\mathsf { a r o G } ^ { \\mathsf { F R } } \\mathsf { \\Pi } _ { - \\mathsf { R } }$ </td><td>5′-TTATTGGATCCTTACCCGCGACGCGCTTTTACTGCATT-3</td></tr><tr><td>tktA-F</td><td>5′-GGCGGATCCAAGGAGATATAATGTCCTCACGTAAAGAG-3′</td></tr><tr><td>tktA-R</td><td>5′-CGTGAGCTCTTACAGCAGTTCTTTTGCTTTCGCAACAACG-3′</td></tr><tr><td>Primers for RT-PCR</td><td></td></tr><tr><td>trpERT-F</td><td>5′-CACAATCCAGGCACTTTCCG-3′</td></tr><tr><td>trpERT-R</td><td>5′-GGCGTCTTCATCCAGCAGTG-3′</td></tr><tr><td>trpDRT-F</td><td>5′-GTGCTGATGCTTTCTCCTGG-3′</td></tr><tr><td>trpDRT-R</td><td>5′-CCTGATGTCCGAGGCAAATG-3′</td></tr><tr><td>trpCRT-F</td><td>5′-CAGACAAGGCGATTTGGGTA-3′</td></tr><tr><td>trpCRT-R</td><td>5′-TTGACGGCGACGCTTTCTTG-3′</td></tr><tr><td>trpBRT-F</td><td>5′-GGCAGGCGTTGCTGGCGAAG-3</td></tr><tr><td>trpBRT-R</td><td>5′-GTTAGGCGACTGGCGTTCAA-3′</td></tr><tr><td>trpART-F</td><td>5′-TCTGTTTGCCCAGTTGAAGG-3′</td></tr><tr><td>trpART-R</td><td>5′-GGGATACCTAACTCCAGCG-3′</td></tr><tr><td>aroGRT-F</td><td>5′-TGGGCTGGAAAGGGCTGATT-3′</td></tr><tr><td>aroGRT-R</td><td>5′-GAGAAACTCACCTGCCGCTG-3′</td></tr><tr><td>gapART-F</td><td>5′-AACTGAATGGCAAACTGACTGGTA-3′</td></tr><tr><td>gapART-R</td><td>5′-TTTCATTTCGCCTTCAGCAGC-3′</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                87,
+                123,
+                905,
+                764
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                781,
+                490,
+                846
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Analytical methods"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                857,
+                228,
+                872
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cell growth was monitored by OD600 with a spectrophotometer (Shimazu, Japan). Glucose was quantitatively analyzed by high-performance liquid chromatography (HPLC; Shimazu, Japan) equipped with a column of Aminex HPX-87H Ion Exclusion particles (300 mm × 7.8 mm, Bio-Rad, Hercules, CA, USA). Samples were centrifuged at 12 000 rpm for 5 min and then filtrated with a 0.22 μm aqueous membrane. The mobile phase was 5 mM sulfuric acid (in Milli-Q water) with the flow of 0.6 ml "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\operatorname* { m i n } ^ { - 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the column was maintained at "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "6 5 \\mathrm { ^ \\circ C } ."
+                    },
+                    {
+                        "type": "text",
+                        "content": "L-tryptophan was determined by the method of fluorometric determination [36]."
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                872,
+                492,
+                920
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                781,
+                910,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                40,
+                346,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                52,
+                405,
+                66
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 8 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgements"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                110,
+                203,
+                122
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This work was financially supported by a grant from the National Natural Science Foundation of China (31070092) and a grant of the National Basic Research Program of China (2011CB707405)."
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                122,
+                477,
+                156
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Authors’ contributions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                167,
+                220,
+                179
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "PG carried out most of the experiments and wrote the manuscript. PG and FY carried out the RT-PCR experiments. PG, FY and QW constructed the plasmids and strains. PG, FY and JK performed batch cultivation and bioreactor fermentation. QQ conceived of the study, participated in its design, and drafted the manuscript. All authors read and approved the final manuscript."
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                179,
+                485,
+                247
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Competing interests"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                92,
+                258,
+                208,
+                268
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no competing interests."
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                269,
+                401,
+                281
+            ]
+        },
+        {
+            "type": "index",
+            "content": {
+                "list_type": "text_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "Received: 19 December 2011 Accepted: 2 March 2012"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "Published: 2 March 2012"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                291,
+                388,
+                313
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                329,
+                156,
+                340
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "1. Bongaerts J, Kramer M, Muller U, Raeven L, Wubbolts M: Metabolic engineering for microbial production of aromatic amino acids and derived compounds. Metab Eng 2001, 3:289-300."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "2. Gosset G: Production of aromatic compounds in bacteria. Curr Opin Biotechnol 2009, 20:651-658."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "3. Aiba S, Tsunekawa H, Imanaka T: New approach to tryptophan production by Escherichia coli: genetic manipulation of composite plasmids in vitro. Appl Environ Microbiol 1982, 43:289-297."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "4. Tribe DE, Pittard J: Hyperproduction of tryptophan by Escherichia coli: genetic manipulation of the pathways leading to tryptophan formation. Appl Environ Microbiol 1979, 38:181-190."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "5. Chan E, Tsai H, Chen S, Mou D: Amplification of the tryptophan operon gene in Escherichia coli chromosome to increase L-tryptophan biosynthesis. Applied Microbiology and Biotechnology 1993, 40:301-305."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "6. Berry A: Improving production of aromatic compounds in Escherichia coli by metabolic engineering. Trends Biotechnol 1996, 14:250-256."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "7. Flores N, Xiao J, Berry A, Bolivar F, Valle F: Pathway engineering for the production of aromatic compounds in Escherichia coli. Nat Biotechnol 1996, 14:620-623."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "8. Ikeda M: Towards bacterial strains overproducing L-tryptophan and other aromatics by metabolic engineering. Appl Microbiol Biotechnol 2006, 69:615-626."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "9. Henkin TM, Yanofsky C: Regulation by transcription attenuation in bacteria: how RNA provides instructions for transcription termination/ antitermination decisions. Bioessays 2002, 24:700-707."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "10. Herry DM, Dunican LK: Cloning of the trp gene cluster from a tryptophan-hyperproducing strain of Corynebacterium glutamicum: identification of a mutation in the trp leader sequence. Appl Environ Microbiol 1993, 59:791-799"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "11. McCleary WR: Application of promoter swapping techniques to control expression of chromosomal genes. Appl Microbiol Biotechnol 2009, 84:641-648."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "12. Lee KH, Park JH, Kim TY, Kim HU, Lee SY: Systems metabolic engineering of E h i hi li for L-threonine production. Mol Syst Biol 2007, 3:149."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "13. Alper H, Fischer C, Nevoigt E, Stephanopoulos G: Tuning genetic control through promoter engineering. Proceedings of the National Academy of Sciences of the United States of America 2005, 102:12678."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "14. Gunsalus RP, Yanofsky C: Nucleotide sequence and expression of Escherichia coli trpR, the structural gene for the trp aporepressor. Proceedings of the National Academy of Sciences of the United States of America 1980, 77:7117."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "15. Hu C, Jiang P, Xu J, Wu Y, Huang W: Mutation analysis of the feedback inhibition site of phenylalanine-sensitive 3-deoxy-D-arabinoheptulosonate 7-phosphate synthase of Escherichia coli. J Basic Microbiol 2003, 43:399-406."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "16. Spraggon G, Kim C, Nguyen-Huu X, Yee MC, Yanofsky C, Mills SE: The structures of anthranilate synthase of Serratia marcescens crystallized in the presence of (i) its substrates, chorismate and glutamine, and a product, glutamate, and (ii) its end-product inhibitor, L-tryptophan. Proc Natl Acad Sci USA 2001, 98:6021-6026."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "17. Liao JC, Hou SY, Chao YP: Pathway analysis, engineering, and physiological considerations for redirecting central metabolism. Biotechnol Bioeng 1996, 52:129-140."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "18. Flores S, Gosset G, Flores N, de Graaf AA, Bolivar F: Analysis of carbon metabolism in Escherichia coli strains with an inactive phosphotransferase system by <sup>13</sup>C labeling and NMR spectroscopy. Metab Eng 2002, 4:124-137."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "19. Ikeda M, Nakanishi K, Kino K, Katsumata R: Fermentative production of tryptophan by a stable recombinant strain of Cor nebacteri m glutamicum with a modified serine-biosynthetic pathway. Biosci Biotechnol Biochem 1994, 58:674-678."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "20. Shi S, Chen T, Zhang Z, Chen X, Zhao X: Transcriptome analysis guided metabolic engineering of Bacillus subtilis for riboflavin production. Metab Eng 2009, 11:243-252."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "21. Koh BT, Tan RB, Yap MG: Genetically structured mathematical modeling of trp attenuator mechanism. Biotechnol Bioeng 1998, 58:502-509."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "22. Li M, Wang J, Geng Y, Li Y, Wang Q, Liang Q, Qi Q: A strategy of gene overexpression based on tandem repetitive promoters in Escherichia coli. Microb Cell Fact 2012, 11:19."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "23. Lim HN, Lee Y, Hussein R: Fundamental relationship between operon organization and gene expression. Proceedings of the National Academy of Sciences 2011, 108:10626."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "24. Horowitz H, Platt T: Identification of trp p2, an internal promoter in the tryptophan operon of Escherichia coli. J Mol Biol 1982, 156:257-267."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "25. Jackson EN, Yanofsky C: Internal promoter of the tryptophan operon of Escherichia coli is located in a structural gene. J Mol Biol 1972, 69:307-313."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "26. Morse DE, Yanofsky C: The internal low-efficiency promoter of the tryptophan operon of Escherichia coli. J Mol Biol 1968, 38:447-451."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "27. Horowitz H, Platt T: Initiation in vivo at the internal trp p2 promoter of E h i hi li. Journal of Biological Chemistry 1983, 258:7890."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "28. Kikuchi Y, Tsujimoto K, Kurahashi O: Mutational analysis of the feedback sites of phenylalanine-sensitive 3-deoxy-D-arabino-heptulosonate-7- phosphate synthase of Escherichia coli. Appl Environ Microbiol 1997, 63:761-762."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "29. Brown KD, Somerville RL: Repression of aromatic amino acid biosynthesis in Escherichia coli K-12. J Bacteriol 1971, 108:386-399."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "30. Park JH, Lee KH, Kim TY, Lee SY: Metabolic engineering of Escherichia coli for the production of L-valine based on transcriptome analysis and in silico gene knockout simulation. Proc Natl Acad Sci USA 2007, 104:7797-7802."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "31. Lemuth K, Steuer K, Albermann C: Engineering of a plasmid-free Escherichia coli strain for improved in vivo biosynthesis of astaxanthin. Microb Cell Fact 2011, 10:29."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "32. Yuan LZ, Rouviere PE, Larossa RA, Suh W: Chromosomal promoter replacement of the isoprenoid pathway for enhancing carotenoid production in E coli. Metab Eng 2006, 8:79-90."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "33. Lerner CG, Inouye M: Low copy number plasmids for regulated low-leve expression of cloned genes in Escherichia coli with blue/white insert screening capability. Nucleic acids research 1990, 18:4631."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "34. Datsenko KA, Wanner BL: One-step inactivation of chromosomal genes in Escherichia coli K-12 using PCR products. Proc Natl Acad Sci USA 2000, 97:6640-6645."
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "35. Cherepanov PP, Wackernagel W: Gene disruption in Escherichia coli: TcR and KmR cassettes with the option of Flp-catalyzed excision of the antibiotic-resistance determinant. Gene 1995, 158:9-14"
+                            }
+                        ]
+                    },
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "36. Iizuka H, Yajima T: Fluorometric determination of L-tryptophan with methoxyacetaldehyde. Biol Pharm Bull 1993, 16:103-106."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                341,
+                457,
+                374
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "doi:10.1186/1475-2859-11-30 Cite this article as: Gu et al.: One-step of tryptophan attenuator inactivation and promoter swapping to improve the production of Ltryptophan in Escherichia coli. Microbial Cell Factories 2012 11:30."
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                762,
+                884,
+                808
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Gu et al. Microbial Cell Factories 2012, 11:30 http://www.microbialcellfactories.com/content/11/1/30"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                40,
+                405,
+                65
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 9 of 9"
+                    }
+                ]
+            },
+            "bbox": [
+                835,
+                40,
+                907,
+                52
+            ]
+        }
+    ]
+]

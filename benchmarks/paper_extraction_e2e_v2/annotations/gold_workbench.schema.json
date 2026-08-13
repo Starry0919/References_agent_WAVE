@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper_extraction_gold_workbench_v2",
+  "type": "object",
+  "required": ["annotation_tier", "annotation_source", "annotator_status", "review_status", "adjudication_status", "papers"],
+  "properties": {
+    "annotation_tier": {"enum": ["silver", "gold"]},
+    "annotation_source": {"type": "string", "minLength": 1},
+    "annotator_status": {"enum": ["AI_ASSISTED", "HUMAN_REVIEWER"]},
+    "review_status": {"enum": ["PENDING", "IN_REVIEW", "HUMAN_REVIEWED"]},
+    "adjudication_status": {"enum": ["PENDING", "NEEDS_ADJUDICATION", "ADJUDICATED"]},
+    "papers": {"type": "array", "items": {"$ref": "#/$defs/paper"}}
+  },
+  "$defs": {
+    "paper": {
+      "type": "object",
+      "required": ["paper_id", "experiments", "atomic_claims", "ddr_annotations", "knowledge_admissions"],
+      "properties": {
+        "paper_id": {"type": "string"},
+        "experiments": {"type": "array", "items": {"type": "object", "required": ["experiment_id", "correct", "biological_object_correct", "intervention_correct", "condition_correct", "measurement_correct", "outcome_correct"]}},
+        "atomic_claims": {"type": "array", "items": {"type": "object", "required": ["claim_id", "correct", "evidence_support", "contradiction", "unresolved_reason"]}},
+        "ddr_annotations": {"type": "array", "items": {"type": "object", "required": ["candidate_ref", "decisionhood", "Q1", "Q2", "Q3", "trigger_correct", "rationale_correct", "rule_candidate_eligible"]}},
+        "knowledge_admissions": {"type": "array", "items": {"type": "object", "required": ["candidate_ref", "gold_admission_status", "reason", "critical"], "properties": {"gold_admission_status": {"enum": ["allowed", "partial", "blocked"]}}}}
+      }
+    }
+  }
+}

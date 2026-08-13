@@ -1,0 +1,211 @@
+{
+  "levels": [
+    {
+      "jobs": 100,
+      "stage_records": 900,
+      "status": "COMPLETED",
+      "wall_s": 0.05424269987270236,
+      "admission_s": 0.04010780015960336,
+      "jobs_per_s": 1843.5660510019156,
+      "scheduler_persistence_overhead_ms_per_job": 0.5424269987270236,
+      "peak_python_memory_mb": 0.26793384552001953,
+      "disk_mb": 0.569549560546875,
+      "metrics": {
+        "batch_id": "batch_96fbaeb1dcd85761b0148c795d25d2da",
+        "elapsed_s": 0.026395,
+        "queue_depth": {
+          "SUCCEEDED": 100
+        },
+        "stages": {
+          "metadata": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "download": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "mineru": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "skill07": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "validation": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "ddr": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "frontend": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "persistence": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          }
+        },
+        "cache_hit_rate": 0,
+        "mineru_peak_workers": 0
+      },
+      "model_calls": 0,
+      "mode": "LEVEL_0_DETERMINISTIC_BULK_STATE"
+    },
+    {
+      "jobs": 500,
+      "stage_records": 4500,
+      "status": "COMPLETED",
+      "wall_s": 0.11611019959673285,
+      "admission_s": 0.07116569997742772,
+      "jobs_per_s": 4306.253901350361,
+      "scheduler_persistence_overhead_ms_per_job": 0.2322203991934657,
+      "peak_python_memory_mb": 1.117081642150879,
+      "disk_mb": 2.1565780639648438,
+      "metrics": {
+        "batch_id": "batch_8a13ee3285c652579a4e634080e19bd6",
+        "elapsed_s": 0.087051,
+        "queue_depth": {
+          "SUCCEEDED": 500
+        },
+        "stages": {
+          "metadata": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "download": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "mineru": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "skill07": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "validation": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "ddr": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "frontend": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "persistence": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          }
+        },
+        "cache_hit_rate": 0,
+        "mineru_peak_workers": 0
+      },
+      "model_calls": 0,
+      "mode": "LEVEL_0_DETERMINISTIC_BULK_STATE"
+    },
+    {
+      "jobs": 1000,
+      "stage_records": 9000,
+      "status": "COMPLETED",
+      "wall_s": 0.253583500161767,
+      "admission_s": 0.12976570008322597,
+      "jobs_per_s": 3943.474237724757,
+      "scheduler_persistence_overhead_ms_per_job": 0.253583500161767,
+      "peak_python_memory_mb": 2.171360969543457,
+      "disk_mb": 7.9104156494140625,
+      "metrics": {
+        "batch_id": "batch_9dc6085a3985580f866d9d25ee228719",
+        "elapsed_s": 0.22118,
+        "queue_depth": {
+          "SUCCEEDED": 1000
+        },
+        "stages": {
+          "metadata": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "download": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "mineru": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "cleaning": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "skill07": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "validation": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "ddr": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "frontend": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          },
+          "persistence": {
+            "count": 0,
+            "p50_ms": null,
+            "p95_ms": null
+          }
+        },
+        "cache_hit_rate": 0,
+        "mineru_peak_workers": 0
+      },
+      "model_calls": 0,
+      "mode": "LEVEL_0_DETERMINISTIC_BULK_STATE"
+    }
+  ]
+}

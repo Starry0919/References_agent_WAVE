@@ -1,0 +1,3189 @@
+{
+  "version": "skill07_gold_review_v1",
+  "independent_gold_established": false,
+  "review_state": "AWAITING_HUMAN_ADJUDICATION",
+  "instruction": "Reviewer must create stable gold experiment IDs GOLD-Pxx-Eyyy from source evidence; A/G IDs are references only.",
+  "required_fields": [
+    "gold_experiment_id",
+    "biological_object",
+    "intervention/design_action",
+    "trigger",
+    "condition",
+    "implementation",
+    "result",
+    "rationale",
+    "supported_alternatives",
+    "evidence_anchors",
+    "supported_rule/scope",
+    "critical_provenance",
+    "known_ambiguity",
+    "reviewer_decision",
+    "reviewer_notes"
+  ],
+  "papers": [
+    {
+      "benchmark_paper_id": "GOLD-P01",
+      "paper_id": "6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [
+        {
+          "left_id": "EXP10_medium_optimization",
+          "right_id": "EXP10-medium-optimization",
+          "alignment_method": "NORMALIZED_ID",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "object",
+            "intervention",
+            "condition",
+            "readout",
+            "result",
+            "evidence"
+          ]
+        },
+        {
+          "left_id": "EXP11_GABA_timecourse",
+          "right_id": "EXP11-GABA-timecourse",
+          "alignment_method": "NORMALIZED_ID",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "object",
+            "condition",
+            "readout",
+            "result",
+            "evidence"
+          ]
+        },
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 1,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 4,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 7,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 8,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 11,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "right_id": "EXP1-ALE",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP2-WGS",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP3-reverse-engineering-fitness",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP4-GlpK-kinetics",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP5-cAMP",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP6-RNAseq",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP7-qPCR",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP8-acetate",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP9-GABA-minimal",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP12-knockout-campaign",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        }
+      ],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main\\2de225fd24380a88\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P02",
+      "paper_id": "ae4bdbd7884c413cb3e583301872456b_17_sb0c00597",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 1,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 4,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 7,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 8,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 9,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        }
+      ],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ae4bdbd7884c413cb3e583301872456b_17_sb0c00597\\97d087c257f2bfa1\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P03",
+      "paper_id": "paper:71ab13883b209e2872f3",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 1,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 4,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 7,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 8,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 9,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 10,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        }
+      ],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\paper_71ab13883b209e2872f3\\ddb7b68667935047\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P04",
+      "paper_id": "8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 1,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 4,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 7,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 8,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 9,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 10,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        }
+      ],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\8eda54dbbce846d9a1eed4ab48f4138a_16_s41564-020-00793-9\\45e2f3d34009f018\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P05",
+      "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [
+        {
+          "left_id": "EXP2_crispri_pooled_screen",
+          "right_id": "EXP2_crispri_pooled_screen",
+          "alignment_method": "NORMALIZED_ID",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "object",
+            "intervention",
+            "condition",
+            "readout",
+            "result"
+          ]
+        },
+        {
+          "left_id": "EXP5_cpxr_chipseq",
+          "right_id": "EXP5_cpxr_chip_seq",
+          "alignment_method": "NORMALIZED_ID",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "intervention",
+            "condition",
+            "readout",
+            "result",
+            "evidence"
+          ]
+        },
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT",
+          "class": "AMBIGUOUS_REQUIRES_HUMAN"
+        },
+        {
+          "right_id": "EXP1_sgrna_library_design_construction",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP3_knockout_growth_validation",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP4_rna_seq_imodulon",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP6_disk_diffusion",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        },
+        {
+          "right_id": "EXP7_membrane_potential_flow_cytometry",
+          "class": "CRITICAL_SCIENTIFIC_DIFFERENCE",
+          "changed_dimensions": [
+            "experiment_added_or_omitted"
+          ]
+        }
+      ],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25\\9f994eab97f58cfa\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P06",
+      "paper_id": "9bdff88f38d746db81b953793f928e4d_2021-祁老师",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\9bdff88f38d746db81b953793f928e4d_2021-祁老师\\2125cc591a1568a5\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P07",
+      "paper_id": "c7d6c4ca5bad4997b2197020e073bb98_gkac206",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\c7d6c4ca5bad4997b2197020e073bb98_gkac206\\5e7196eb42fdf640\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P08",
+      "paper_id": "fa7c24b1f3cf4dc9b6c0bf70790dbe13_02 曾老师-色氨酸",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\fa7c24b1f3cf4dc9b6c0bf70790dbe13_02_曾老师-色氨酸\\8ec9771c55ea0bf7\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P09",
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735\\f8c2f8cd83d676d3\\clean_document.json"
+    },
+    {
+      "benchmark_paper_id": "GOLD-P10",
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "review_state": "AWAITING_HUMAN_ADJUDICATION",
+      "gold_experiments": [],
+      "known_ambiguity": [],
+      "source_clean_document": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\07db8df7471d4db693632f10ccdc2254_13_ja0c12406\\96b28b6ff5571d3e\\clean_document.json"
+    }
+  ],
+  "review_items": [
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-001",
+      "source_evidence": [
+        "1_introduction_p003",
+        "4_2_ale_and_strain_isolation_p001",
+        "4_2_ale_and_strain_isolation_p003"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP01_ALE",
+        "title": "Adaptive laboratory evolution of E. coli W under glycerol limitation",
+        "objects": [
+          "OBJ_WT"
+        ],
+        "intervention": "serial batch cultivation in 50 mL M9 glycerol (0.2% v/v) medium, 250 mL flask, 37 degC with agitation, transfer every 12 h, initial OD600 stepwise 0.0008 -> 0.0004 -> 0.00016, ~1300 generations (Eq. 1)",
+        "controls": "parental strain as pre-ALE reference",
+        "replicates": "unknown (Fig. 1 caption missing; number of parallel lineages not stated in available text)",
+        "readouts": "estimated doubling time over generations (Fig. 1B), specific growth rate (Fig. 1C), glycerol consumption rate (Fig. 1D)",
+        "analysis": "Eq. (1) generation calculation",
+        "outcomes": "single clone CY02 isolated; growth rate 0.67 +/- 0.03 -> 0.94 +/- 0.01 /hr (~40% increase); increased glycerol consumption rate; negligible fitness change on glucose",
+        "value_roles": {
+          "ale_generations": "implemented",
+          "growth_rates": "measured"
+        },
+        "evidence_paragraphs": [
+          "1_introduction_p003",
+          "4_2_ale_and_strain_isolation_p001",
+          "4_2_ale_and_strain_isolation_p003"
+        ],
+        "notes": "Results text for this experiment is embedded in paragraph 1_introduction_p003 due to a parser section-misattribution; Fig. 1 caption absent."
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-002",
+      "source_evidence": [
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p003",
+        "4_3_whole_genome_resequencing_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP02_WGS",
+        "title": "Whole-genome resequencing and causal-mutation nomination",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_CY02",
+          "ALE end-point population"
+        ],
+        "intervention": "none (measurement)",
+        "readouts": "mutation calls vs NC_017635.1 after parental background subtraction",
+        "analysis": "shared-mutation focus between population and CY02 (Table 1, Fig. S1)",
+        "outcomes": "93 (population) / 89 (CY02) total mutations; 30 / 28 new; shared notable: glpK T235M, crp R209H, ptsP Pro174fs, rsfS Gln6*, mglC Asn4fs",
+        "evidence_paragraphs": [
+          "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+          "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p003",
+          "4_3_whole_genome_resequencing_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-003",
+      "source_evidence": [
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p004",
+        "4_5_glycerol_and_acetate_quantification_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP03_reverse_engineering_fitness",
+        "title": "Reverse engineering of glpK^m/crp^m and fitness/GUR characterization",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_glpKm",
+          "OBJ_crpm",
+          "OBJ_dbl",
+          "OBJ_CY02"
+        ],
+        "intervention": "lambda-Red recombinase-mediated introduction of glpK T235M and crp R209H singly and in combination into parental W",
+        "conditions": "M9 minimal glycerol medium; exponential growth",
+        "controls": "parental E. coli W",
+        "replicates": "biological duplicates (Fig. 2 caption)",
+        "readouts": "specific growth rate (Fig. 2A), specific glycerol uptake rate (Fig. 2B, Cedex)",
+        "analysis": "independent t-test",
+        "outcomes": "growth: glpK^m 1.45-fold (p<0.022), double 1.56-fold (p=0.037), CY02 1.63-fold (p=0.009), crp^m n.s.; GUR: 1.78/1.70/1.60-fold for glpK^m strains, crp^m n.s.",
+        "evidence_paragraphs": [
+          "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p004",
+          "4_5_glycerol_and_acetate_quantification_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-004",
+      "source_evidence": [
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p002",
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p003",
+        "4_6_glpk_expression_and_purification_p001",
+        "4_7_glpk_kinetic_assays_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP04_GlpK_kinetics",
+        "title": "GlpK^w vs GlpK T235M expression, purification and enzyme kinetics",
+        "objects": [
+          "OBJ_BL21",
+          "OBJ_plasmids"
+        ],
+        "intervention": "cloning of WT/mutant glpK into pET28a(+) (N-terminal 6xHis), overexpression in BL21(DE3), Ni-NTA purification",
+        "conditions": "assay at 25 degC, pH 7.0, 200 uL reaction, 0.5 ug/mL enzyme; FBP 0-10 mM for allostery",
+        "controls": "wild-type GlpK from parental strain",
+        "replicates": "six replicates (WT enzyme), five replicates (mutant enzyme) per Fig. 2D caption; replicate type unspecified",
+        "readouts": "V0/Vmax, specific activity vs FBP; Vmax, Km_gly, kcat, kcat/Km, FBP K0.5 (Table 2)",
+        "analysis": "SigmaPlot 12 curve fitting; Eq. (4) allosteric fit",
+        "outcomes": "catalytic activity unchanged; mutant insensitive to FBP (K0.5 >10,000 uM vs 0.386 mM WT per text)",
+        "evidence_paragraphs": [
+          "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p002",
+          "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p003",
+          "4_6_glpk_expression_and_purification_p001",
+          "4_7_glpk_kinetic_assays_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-005",
+      "source_evidence": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p007",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p008",
+        "4_8_intracellular_camp_assay_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP05_cAMP",
+        "title": "Intracellular cAMP measurement",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_glpKm",
+          "OBJ_crpm",
+          "OBJ_dbl",
+          "OBJ_CY02"
+        ],
+        "intervention": "none (measurement on engineered strains)",
+        "conditions": "exponential phase harvest; ice-cold 65% ethanol extraction",
+        "controls": "wild-type",
+        "replicates": "biological triplicates x technical duplicates",
+        "readouts": "intracellular cAMP (ELISA kit, Invitrogen)",
+        "analysis": "one-way ANOVA with Tukey's post hoc",
+        "outcomes": "glpK^m-harboring strains ~2% of WT; CY02 ~20% of WT; crp^m 36% of WT; all P<0.001",
+        "evidence_paragraphs": [
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p007",
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p008",
+          "4_8_intracellular_camp_assay_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-006",
+      "source_evidence": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p009",
+        "4_12_quantitative_pcr_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP06_qPCR",
+        "title": "RT-qPCR of glpK expression",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_glpKm",
+          "OBJ_crpm",
+          "OBJ_dbl",
+          "OBJ_CY02"
+        ],
+        "conditions": "M9 glycerol, log phase",
+        "controls": "wild-type; normalization to rrsA or ihfB",
+        "replicates": "2 biological x 3 technical",
+        "readouts": "relative glpK mRNA abundance (Fig. S4, unavailable)",
+        "analysis": "StepOne Software v2.3; standard-curve primer efficiency",
+        "outcomes": "glpK^m-harboring strains 3-6% of WT; crp^m ~22%; double mutant < half of glpK^m",
+        "evidence_paragraphs": [
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p009",
+          "4_12_quantitative_pcr_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-007",
+      "source_evidence": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p010",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p011",
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p001",
+        "4_10_rna_seq_p001",
+        "4_11_data_processing_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP07_RNAseq",
+        "title": "RNA-seq transcriptome comparison WT vs CY02",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_CY02"
+        ],
+        "conditions": "M9 minimal + 2 g/L glycerol; harvest OD600 0.4-0.5",
+        "controls": "wild-type reference",
+        "replicates": "biological triplicates",
+        "readouts": "gene expression; DEGs; CRP regulon enrichment",
+        "analysis": "CLC Genomics Workbench trimming/mapping; DESeq2 (FC>2, adj P<0.01)",
+        "outcomes": "640 DEGs (149 up / 491 down); 181 CRP-regulated DEGs; 148/157 positively regulated CRP genes downregulated; lower glycolysis up, TCA/respiration down, pta/ackA up, acs down",
+        "evidence_paragraphs": [
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p010",
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p011",
+          "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p001",
+          "4_10_rna_seq_p001",
+          "4_11_data_processing_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-008",
+      "source_evidence": [
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p002",
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p003",
+        "4_5_glycerol_and_acetate_quantification_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP08_acetate",
+        "title": "Acetate secretion rate measurement",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_glpKm",
+          "OBJ_crpm",
+          "OBJ_dbl",
+          "OBJ_CY02"
+        ],
+        "conditions": "exponential growth in M9 glycerol",
+        "controls": "wild-type",
+        "replicates": "biological duplicates",
+        "readouts": "acetate secretion rate (Cedex; Eq. 3)",
+        "analysis": "one-way ANOVA with Tukey's post hoc",
+        "outcomes": "WT below accurate determination; CY02 and glpK^m-harboring mutants elevated; crp^m not determinable",
+        "evidence_paragraphs": [
+          "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p002",
+          "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p003",
+          "4_5_glycerol_and_acetate_quantification_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-009",
+      "source_evidence": [
+        "2_6_gaba_production_in_e_coli_w_p001",
+        "2_6_gaba_production_in_e_coli_w_p002",
+        "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p002"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP09_GABA_M9",
+        "title": "GABA production in M9 glycerol minimal medium",
+        "objects": [
+          "OBJ_WT_mtGAD",
+          "OBJ_CY02"
+        ],
+        "conditions": "50 mL M9 glycerol (0.2% v/v) + 50 mg/L yeast extract, 250 mL flasks, biological triplicates",
+        "controls": "wild-type mtGAD strain",
+        "readouts": "final GABA concentration (HPLC-UV, Primesep 100, 215 nm)",
+        "outcomes": "0.06 +/- 0.01 g/L for both WT and CY02 (negligible difference)",
+        "evidence_paragraphs": [
+          "2_6_gaba_production_in_e_coli_w_p001",
+          "2_6_gaba_production_in_e_coli_w_p002",
+          "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p002"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-010",
+      "source_evidence": [
+        "2_6_gaba_production_in_e_coli_w_p004",
+        "4_1_bacterial_strains_culture_conditions_and_primers_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP10_medium_optimization",
+        "title": "Medium and glycerol-concentration optimization for GABA production",
+        "objects": [
+          "OBJ_WT",
+          "OBJ_glpKm",
+          "OBJ_crpm",
+          "OBJ_dbl",
+          "OBJ_CY02"
+        ],
+        "intervention": "switch to amino acid-rich LB + glycerol; glycerol concentration screen using growth rate as proxy (Fig. S7, plate reader)",
+        "conditions": "LB + 2% (v/v) glycerol selected; stationary-phase GABA measurement",
+        "controls": "wild-type",
+        "readouts": "specific growth rate (proxy screen); final GABA concentration",
+        "outcomes": "highest growth at 2% glycerol; stationary GABA: WT 0.05, crp^m 0.06, glpK^m 0.07, double 0.07, CY02 0.17 g/L",
+        "evidence_paragraphs": [
+          "2_6_gaba_production_in_e_coli_w_p004",
+          "4_1_bacterial_strains_culture_conditions_and_primers_p001"
+        ],
+        "notes": "Fig. S7 data unavailable; proxy assumption (growth-coupled GABA production) is an author assumption, not validated causality."
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-011",
+      "source_evidence": [
+        "2_6_gaba_production_in_e_coli_w_p005",
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p004",
+        "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP11_GABA_timecourse",
+        "title": "Time-course GABA production WT vs CY02 in LB + 2% glycerol",
+        "objects": [
+          "OBJ_WT_mtGAD",
+          "OBJ_CY02"
+        ],
+        "conditions": "50 mL LB + 2% (v/v) glycerol, 250 mL flasks, 37 degC, 200 rpm, over 24 h, biological triplicates",
+        "controls": "wild-type",
+        "readouts": "growth, glycerol consumption (HPLC-RID), GABA (dansyl chloride HPLC-UV 286 nm)",
+        "outcomes": "WT max 0.15 +/- 0.01 g/L, 0.03 +/- 0.01 g/L/hr; CY02 0.39 +/- 0.03 g/L, 0.08 +/- 0.01 g/L/hr (~2.6-fold); glycerol consumption similar",
+        "evidence_paragraphs": [
+          "2_6_gaba_production_in_e_coli_w_p005",
+          "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p004",
+          "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-A-012",
+      "source_evidence": [
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p001",
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002",
+        "3_discussion_p009",
+        "3_discussion_p010",
+        "4_4_construction_of_mutant_strains_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP12_knockouts",
+        "title": "Targeted knockout of metabolic sinks (ackA, mgsA, gabT) in CY02 and WT backgrounds",
+        "objects": [
+          "OBJ_CY02_KO_set",
+          "OBJ_WT_KO_set",
+          "OBJ_CY02",
+          "OBJ_WT_mtGAD"
+        ],
+        "intervention": "lambda-Red KanR replacement and pCP20 marker excision to delete ackA, mgsA, gabT singly, in double combinations, and as triple knockout",
+        "conditions": "LB + 2% (v/v) glycerol, flask batch, biological triplicates",
+        "controls": "respective non-knockout parent (CY02; wild-type lacZ:mtGAD)",
+        "readouts": "growth, glycerol consumption, GABA titer/productivity (Fig. 6, Fig. S8, Table 3)",
+        "outcomes": "single KOs lower than comparator; doubles 0.46/0.45/0.37 g/L; CY02_TKO 0.59 +/- 0.04 g/L and 0.13 +/- 0.02 g/L/hr (1.5-/1.6-fold over CY02; 3.9-/4.3-fold over WT); benefit of double/triple KOs absent in WT background; ΔackA strains prolonged lag phase",
+        "evidence_paragraphs": [
+          "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p001",
+          "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002",
+          "3_discussion_p009",
+          "3_discussion_p010",
+          "4_4_construction_of_mutant_strains_p001"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-001",
+      "source_evidence": [
+        "4_2_ale_and_strain_isolation_p001",
+        "1_introduction_p003"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP1-ALE",
+        "objects": [
+          "OBJ-W",
+          "OBJ-CY02"
+        ],
+        "intervention": "serial batch ALE under glycerol limitation",
+        "conditions": "M9 + 0.2% (v/v) glycerol, 50 mL/250 mL flask, 37 °C, agitation, transfer every 12 h, initial OD600 0.0008 -> 0.0004 -> 0.00016 (implemented design values)",
+        "replicates": "parallel lineage count unknown",
+        "readout": "growth rate (OD600), glycerol consumption",
+        "outcome": "CY02 growth 0.94 ± 0.01 /hr vs WT 0.67 ± 0.03 /hr; ~1300 generations",
+        "evidence_paragraphs": [
+          "4_2_ale_and_strain_isolation_p001",
+          "1_introduction_p003"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-002",
+      "source_evidence": [
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+        "4_3_whole_genome_resequencing_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP2-WGS",
+        "objects": [
+          "OBJ-W",
+          "end-point population",
+          "OBJ-CY02"
+        ],
+        "intervention": "whole-genome resequencing (measurement)",
+        "readout": "MiSeq 50-cycle SE; mutations vs NC_017635.1 after parental background subtraction",
+        "outcome": "93 (population) / 89 (CY02) total; 30 / 28 new; shared mutations in rsfS, mglC, ptsP, crp, glpK (Table 1)",
+        "evidence_paragraphs": [
+          "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+          "4_3_whole_genome_resequencing_p001"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-003",
+      "source_evidence": [
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+        "4_4_construction_of_mutant_strains_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP3-reverse-engineering-fitness",
+        "objects": [
+          "OBJ-W",
+          "OBJ-glpKm",
+          "OBJ-crpm",
+          "OBJ-dm",
+          "OBJ-CY02"
+        ],
+        "intervention": "lambda-Red reverse engineering of point mutations (validation of causality, not a production design decision)",
+        "readout": "specific growth rate, glycerol uptake rate (Cedex), biological duplicates",
+        "outcome": "glpK^m 1.45-fold growth / 1.78-fold GUR; crp^m not significant; CY02 1.63-fold / 1.60-fold",
+        "evidence_paragraphs": [
+          "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+          "4_4_construction_of_mutant_strains_p001"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-004",
+      "source_evidence": [
+        "4_6_glpk_expression_and_purification_p001",
+        "4_7_glpk_kinetic_assays_p001",
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p003"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP4-GlpK-kinetics",
+        "objects": [
+          "OBJ-pET28a-glpK",
+          "OBJ-BL21"
+        ],
+        "intervention": "heterologous overexpression and Ni-NTA purification of GlpK^w and GlpK^m",
+        "readout": "coupled enzyme assay, A340, 25 °C pH 7.0; FBP 0-10 mM; n=6 (WT) / n=5 (CY02) for SA",
+        "outcome": "catalytic activity unchanged; FBP inhibition lost in T235M (K0.5 > 10,000 μM vs 386 μM)",
+        "evidence_paragraphs": [
+          "4_6_glpk_expression_and_purification_p001",
+          "4_7_glpk_kinetic_assays_p001",
+          "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p003"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-005",
+      "source_evidence": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p008",
+        "4_8_intracellular_camp_assay_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP5-cAMP",
+        "objects": [
+          "OBJ-W",
+          "OBJ-glpKm",
+          "OBJ-crpm",
+          "OBJ-dm",
+          "OBJ-CY02"
+        ],
+        "readout": "intracellular cAMP ELISA, exponential phase; biological triplicates x technical duplicates; one-way ANOVA + Tukey",
+        "outcome": "cAMP ~2% of WT in glpK^m strains; CY02 ~20%; crp^m 36%",
+        "evidence_paragraphs": [
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p008",
+          "4_8_intracellular_camp_assay_p001"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-006",
+      "source_evidence": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p010",
+        "4_10_rna_seq_p001",
+        "4_11_data_processing_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP6-RNAseq",
+        "objects": [
+          "OBJ-W",
+          "OBJ-CY02"
+        ],
+        "readout": "RNA-seq (HiSeq 50-cycle SE), M9 + 2 g/L glycerol, OD600 0.4-0.5, biological triplicates, DESeq2 (FC>2, adjP<0.01)",
+        "outcome": "640 DEGs (149 up / 491 down); 181 CRP regulons; 148/157 positively regulated CRP genes downregulated",
+        "evidence_paragraphs": [
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p010",
+          "4_10_rna_seq_p001",
+          "4_11_data_processing_p001"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-007",
+      "source_evidence": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p009",
+        "4_12_quantitative_pcr_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP7-qPCR",
+        "objects": [
+          "OBJ-W",
+          "OBJ-CY02",
+          "mutants"
+        ],
+        "readout": "RT-qPCR glpK, rrsA/ihfB normalization, 2 biological x 3 technical",
+        "outcome": "glpK expression 3-6% of WT in glpK^m backgrounds; ~22% in crp^m; double mutant < half of glpK^m",
+        "evidence_paragraphs": [
+          "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p009",
+          "4_12_quantitative_pcr_p001"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-008",
+      "source_evidence": [
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p003",
+        "4_5_glycerol_and_acetate_quantification_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP8-acetate",
+        "objects": [
+          "OBJ-W",
+          "OBJ-glpKm",
+          "OBJ-crpm",
+          "OBJ-dm",
+          "OBJ-CY02"
+        ],
+        "readout": "acetate secretion rate (Cedex), exponential phase, biological duplicates",
+        "outcome": "overflow in CY02 and glpK^m-harboring mutants; ND in WT and crp^m (detection-limit bound, not absolute zero)",
+        "evidence_paragraphs": [
+          "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p003",
+          "4_5_glycerol_and_acetate_quantification_p001"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-009",
+      "source_evidence": [
+        "2_6_gaba_production_in_e_coli_w_p002",
+        "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p002"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP9-GABA-minimal",
+        "objects": [
+          "OBJ-W lacZ:mtGAD",
+          "OBJ-CY02 (mtGAD)"
+        ],
+        "readout": "GABA titer in M9 + 0.2% glycerol + 50 mg/L yeast extract (HPLC-UV 215 nm, Primesep 100)",
+        "outcome": "no difference (0.06 ± 0.01 g/L both)",
+        "evidence_paragraphs": [
+          "2_6_gaba_production_in_e_coli_w_p002",
+          "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p002"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-010",
+      "source_evidence": [
+        "2_6_gaba_production_in_e_coli_w_p004"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP10-medium-optimization",
+        "objects": [
+          "OBJ-W",
+          "OBJ-glpKm",
+          "OBJ-crpm",
+          "OBJ-dm",
+          "OBJ-CY02"
+        ],
+        "intervention": "switch to LB + 2% (v/v) glycerol; glycerol concentration screened by growth-rate proxy (Fig. S7, supplement unavailable)",
+        "readout": "stationary-phase GABA (dansyl-HPLC-UV 286 nm)",
+        "outcome": "CY02 0.17 ± 0.01 g/L, highest among strains",
+        "evidence_paragraphs": [
+          "2_6_gaba_production_in_e_coli_w_p004"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-011",
+      "source_evidence": [
+        "2_6_gaba_production_in_e_coli_w_p005"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP11-GABA-timecourse",
+        "objects": [
+          "OBJ-W",
+          "OBJ-CY02"
+        ],
+        "readout": "24 h time-course growth, glycerol, GABA in LB + 2% glycerol; biological triplicates",
+        "outcome": "WT 0.15 ± 0.01 g/L, 0.03 ± 0.01 g/L/hr; CY02 0.39 ± 0.03 g/L, 0.08 ± 0.01 g/L/hr",
+        "evidence_paragraphs": [
+          "2_6_gaba_production_in_e_coli_w_p005"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P01",
+      "item_id": "GOLD-P01-G-012",
+      "source_evidence": [
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002",
+        "3_discussion_p010"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP12-knockout-campaign",
+        "objects": [
+          "OBJ-CY02-KOs",
+          "OBJ-WT-mtGAD-KOs"
+        ],
+        "intervention": "lambda-Red deletion of ackA, mgsA, gabT singly and in combination",
+        "readout": "growth, glycerol, GABA in LB + 2% glycerol; biological triplicates",
+        "outcome": "CY02_TKO 0.59 ± 0.04 g/L and 0.13 ± 0.02 g/L/hr (Table 3); benefit absent in WT background",
+        "evidence_paragraphs": [
+          "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002",
+          "3_discussion_p010"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-001",
+      "source_evidence": [
+        "results_and_discussion_p004",
+        "results_and_discussion_p008"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP1",
+        "name": "Aldolase screen for HCHO+ACALD condensation (PDO production module)",
+        "objects": [
+          "BF01-BF06 (KHG/Yfau/PanB/DERA_ECO + DhaT coexpression)"
+        ],
+        "intervention": "coexpression of candidate aldolases with DhaT in E. coli BL21(DE3)",
+        "conditions": "10 mM HCHO + 10 mM ACALD, 2 h preliminary trial",
+        "controls": [
+          "Control strain, PDO <0.001 mM (Table 1)"
+        ],
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "PDO concentration (GC-MS)"
+        ],
+        "outcomes": [
+          "DERA_ECO 1.02 ± 0.03 mM PDO; other aldolases ≤0.038 mM"
+        ],
+        "evidence_paragraphs": [
+          "results_and_discussion_p004",
+          "results_and_discussion_p008"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-002",
+      "source_evidence": [
+        "results_and_discussion_p004",
+        "a_in_vivo_dera_assay_p004"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP2",
+        "name": "13C labeling verification of PDO carbon origin",
+        "objects": [
+          "DERA_ECO/DhaT strain"
+        ],
+        "intervention": "biosynthesis with 13C-HCHO or 13C-ACALD as cosubstrate",
+        "controls": [
+          "unlabeled PDO standard"
+        ],
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "GC-MS m/z 162.1/163.1 peak ratios"
+        ],
+        "outcomes": [
+          "peak ratios essentially identical between unlabeled standard and labeled samples; authors conclude PDO synthesis depends on added HCHO and ACALD"
+        ],
+        "evidence_paragraphs": [
+          "results_and_discussion_p004",
+          "a_in_vivo_dera_assay_p004"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-003",
+      "source_evidence": [
+        "results_and_discussion_p006",
+        "a_in_vivo_dera_assay_p005"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP3",
+        "name": "Comparison of DERAs from different origins in vivo",
+        "objects": [
+          "BF07-BF10-type strains coexpressing DERA variants with DhaT"
+        ],
+        "intervention": "coexpression of DERA_TMA/ECO/GTH/SEP/PAE with DhaT",
+        "conditions": "12 h bioconversion with HCHO and ACALD",
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "PDO concentration and yield"
+        ],
+        "outcomes": [
+          "DERA_TMA highest: 8.20 ± 0.04 mM, 0.082 mol/mol"
+        ],
+        "evidence_paragraphs": [
+          "results_and_discussion_p006",
+          "a_in_vivo_dera_assay_p005"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-004",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p007",
+        "materials_and_methods_p006"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP4",
+        "name": "In vitro DERA activity and HCHO tolerance",
+        "objects": [
+          "purified DERA_ECO, DERA_TMA, DERA_ECO C47M/C47V, DERA_Rd3BB, DERA_TMA C65M"
+        ],
+        "intervention": "enzyme assay at 5-200 mM HCHO / 20 mM ACALD; 0.3 M HCHO 2 h pre-treatment vs 0 M control",
+        "controls": [
+          "0 mM HCHO treatment group"
+        ],
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "3-HPA formation (specific activity, U/mg)"
+        ],
+        "outcomes": [
+          "DERA_TMA 1.27 ± 0.02 U/mg at 10 mM HCHO; mutants retain 85-99% activity after 0.3 M HCHO vs 50-61% for wild types"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p007",
+          "materials_and_methods_p006"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-005",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p009",
+        "a_in_vivo_dera_assay_p010"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP5",
+        "name": "Km determination of DERA_TMA for HCHO",
+        "objects": [
+          "purified DERA_TMA"
+        ],
+        "intervention": "activity measurements at 1-10 mM HCHO",
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "Km estimate"
+        ],
+        "outcomes": [
+          "Km(HCHO) = 2.54 ± 0.07 mM; Km(ACALD) < 1 mM (Table 3)"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p009",
+          "a_in_vivo_dera_assay_p010"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-006",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p011",
+        "a_in_vivo_dera_assay_p016",
+        "materials_and_methods_p004"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP6",
+        "name": "ACALD supply module: batch bioconversion ethanol + HCHO",
+        "objects": [
+          "strain without HpADH1 (captioned BF02)",
+          "BF12"
+        ],
+        "intervention": "HpADH1 coexpression to oxidize ethanol to ACALD",
+        "conditions": "5 mL, 50 mM Na2HPO4 pH 7.0, 300 mM ethanol, 100 mM HCHO, OD600 = 50, 30 °C, 230 rpm, capped 10 mL tubes",
+        "controls": [
+          "strain without HpADH1 expression"
+        ],
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "PDO (GC-MS), 13C-ethanol labeling"
+        ],
+        "outcomes": [
+          "5.67 ± 0.25 mM (0.057 mol/mol) without HpADH1 vs 10.91 ± 0.08 mM (0.11 mol/mol) with HpADH1"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p011",
+          "a_in_vivo_dera_assay_p016",
+          "materials_and_methods_p004"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-007",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p012",
+        "a_in_vivo_dera_assay_p017",
+        "materials_and_methods_p003"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP7",
+        "name": "frmA knockout batch bioconversion",
+        "objects": [
+          "BF16"
+        ],
+        "intervention": "CRISPR-Cas9 deletion of frmA",
+        "conditions": "as EXP6",
+        "controls": [
+          "parent strain BF12"
+        ],
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "PDO concentration and yield, HCHO consumption"
+        ],
+        "outcomes": [
+          "12.75 ± 0.44 mM (0.97 ± 0.03 g/L), 0.128 mol/mol; reduced HCHO consumption"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p012",
+          "a_in_vivo_dera_assay_p017",
+          "materials_and_methods_p003"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-008",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p018"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP8",
+        "name": "Methanol-based HCHO supply module",
+        "objects": [
+          "BF17 (Mdh2)"
+        ],
+        "intervention": "Mdh2 expression to oxidize methanol to HCHO",
+        "conditions": "whole-cell bioconversion with methanol and ethanol",
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "PDO, diol byproducts"
+        ],
+        "outcomes": [
+          "only 1.05 mM PDO after 42 h; Mdh activity is bottleneck (Figure S1E, unavailable)"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p018"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-009",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p019",
+        "a_in_vivo_dera_assay_p026"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP9",
+        "name": "Diol byproduct identification and HCHO-dependence",
+        "objects": [
+          "bioconversion samples",
+          "in vitro enzyme system"
+        ],
+        "intervention": "13C-ethanol labeling; in vitro byproduct assay at varied HCHO/ACALD concentrations",
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "GC-MS spectra (m/z 178.1, 206.1, 221.1)"
+        ],
+        "outcomes": [
+          "1,3-BDO, C5 and C6 diol aldehydes identified; byproducts form only when HCHO nearly depleted; >0.6 mM HCHO strongly inhibits ACALD self-/cross-condensation in vitro"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p019",
+          "a_in_vivo_dera_assay_p026"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P02",
+      "item_id": "GOLD-P02-A-010",
+      "source_evidence": [
+        "a_in_vivo_dera_assay_p020",
+        "conclusion_p002",
+        "materials_and_methods_p004"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP10",
+        "name": "Fed-batch bioconversion with interim HCHO addition",
+        "objects": [
+          "BF16"
+        ],
+        "intervention": "fed-batch addition of 100 mM HCHO in ten interval additions to keep HCHO >0.6 mM",
+        "conditions": "40 mL whole-cell system (Results) / 50 mL tube (Methods), initial 100 mM HCHO + 300 mM ethanol",
+        "replicates": {
+          "status": "unknown"
+        },
+        "readouts": [
+          "PDO, methanol, formate, ACALD, 3-HPA over time"
+        ],
+        "outcomes": [
+          "17.35 ± 0.58 mM (1.32 ± 0.04 g/L) PDO, 0.096 mol/mol at 24 h; no diol byproducts; methanol 56.47 mM at 30 h; some formate still formed"
+        ],
+        "evidence_paragraphs": [
+          "a_in_vivo_dera_assay_p020",
+          "conclusion_p002",
+          "materials_and_methods_p004"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-001",
+      "source_evidence": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+        "3_fluorescence_assays_p001",
+        "references_p043"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-01",
+        "name": "Inverter_V1 construction and proof-of-concept characterization",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV1"
+        ],
+        "intervention": "three-plasmid inverter assembly and transformation",
+        "conditions": {
+          "medium": "M9-2Y",
+          "tryptophan_gradient_mg_L": [
+            0,
+            31.5,
+            125,
+            500
+          ],
+          "temperature_C": 37,
+          "shaking_rpm": 270,
+          "duration_h": 24
+        },
+        "controls": [],
+        "replicates": {
+          "biological_replicates": 3,
+          "basis": "three independent colonies"
+        },
+        "readouts": [
+          "RFP fluorescence (a.u.)",
+          "OD600"
+        ],
+        "analysis": "mean +/- SD",
+        "outcome": "No significant RFP activation across tryptophan gradient (Figure 1e)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+          "3_fluorescence_assays_p001",
+          "references_p043"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-002",
+      "source_evidence": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-02",
+        "name": "Component troubleshooting of the two repression systems",
+        "objects": [
+          "OBJ-XG1"
+        ],
+        "intervention": "separate characterization of PtrpO1(G3C)-Plpp0.03-TrpR1(V58K) (tryptophan 0-125 mg/L) and PLlacO1-TetR/PtetO1-GFP tunability (IPTG 0-50 uM); then TetR degradation-tag variants",
+        "conditions": {
+          "dependency": "Figures S1a-S1c in supplement (not provided)"
+        },
+        "controls": [
+          "previously developed PtrpO1(G3C)-PLlacO1-TrpR1(V58K) system"
+        ],
+        "replicates": {
+          "status": "unknown_in_available_text"
+        },
+        "readouts": [
+          "GFP/RFP fluorescence"
+        ],
+        "outcome": "TrpR1 system responded to 0-125 mg/L tryptophan; PtetO1-TetR showed extreme repression at low IPTG without dose dependence; TetR_LAA variant restored dose-dependent repression (0-50 uM IPTG)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-003",
+      "source_evidence": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003",
+        "references_p043"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-03",
+        "name": "Characterization of degradation-tag inverter variants V1.1/V1.2",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV11-12"
+        ],
+        "intervention": "tetR_DSA / tetR_LAA introduced into Inverter_V1",
+        "conditions": {
+          "tryptophan_gradient_mg_L": [
+            0,
+            500
+          ],
+          "assay": "fluorescence, 24 h"
+        },
+        "controls": [
+          "Inverter_V1"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence"
+        ],
+        "outcome": "V1.1: 3.2-fold range (40.8+/-7.8 to 129.6+/-53.0 a.u.); V1.2: 14.7-fold range, leaky 45.8+/-4.7 a.u., max 672.6+/-142.2 a.u.",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003",
+          "references_p043"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-004",
+      "source_evidence": [
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+        "references_p051"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-04",
+        "name": "RBS engineering to reduce TetR abundance",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV-RBS"
+        ],
+        "intervention": "random mutagenesis of RBS positions 6-9 of PtrpO1(G3C); screening of repression-system variants; selected RBS(G7T)/(A8G)/(G9C) built into inverters",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "wildtype RBS"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence",
+          "leaky expression"
+        ],
+        "outcome": "All RBS variants kept repression efficiency with lower leakiness (Figure S2); Inverter_V1.2.1 reached 2208+/-5.0 a.u., 5-fold over 440+/-21.1 a.u. baseline; V1.1.1 showed 7.38-fold dynamic range",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+          "references_p051"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-005",
+      "source_evidence": [
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+        "references_p051",
+        "references_p052"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-05",
+        "name": "PtetO1 promoter and RBS engineering",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV-PTET"
+        ],
+        "intervention": "random mutations in -10 region of PtetO1 and its RBS; variants introduced into Inverter_V1.1.1/V1.2.1",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "wildtype PtetO1"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence"
+        ],
+        "outcome": "PtetO1-RBS(A2C) highest (2.21-fold over wildtype); V1.2.1e max 2316.3+/-75.5 a.u. (4.8-fold); V1.1.1e max 1485.1+/-48.5 a.u. (6.8-fold)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+          "references_p051",
+          "references_p052"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-006",
+      "source_evidence": [
+        "4_optimization_of_genetic_inverter_configurations_p001",
+        "4_optimization_of_genetic_inverter_configurations_p002",
+        "4_optimization_of_genetic_inverter_configurations_p003"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-06",
+        "name": "Host engineering and simplified-configuration inverters (XG2/XG3)",
+        "objects": [
+          "OBJ-XG2",
+          "OBJ-XG3",
+          "OBJ-INV2"
+        ],
+        "intervention": "ubiC deletion; chromosomal Plpp0.03-TrpR(V58K)-T1 integration; two-plasmid inverter transfer",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "XG1 with two-plasmid constitutive repression system (repression test)",
+          "Inverter_V1.1.1 three-plasmid in XG1 (activation test)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "GFP repression efficiency",
+          "RFP fluorescence"
+        ],
+        "outcome": "XG3 repression efficiency 96.67% vs 73.07% control (Figure S3); Inverter_V2.1.1 10.7-fold range (leaky 380.8+/-56.1 a.u.); V2.1.1e 14.2-fold/5316.5+/-241.4; V2.2.1e 3.4-fold/5649.1+/-273.9; V2.1.1f 13.2-fold/2696.8+/-92.8; V2.2.1f 3.3-fold/2558.1+/-67.6",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "4_optimization_of_genetic_inverter_configurations_p001",
+          "4_optimization_of_genetic_inverter_configurations_p002",
+          "4_optimization_of_genetic_inverter_configurations_p003"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-007",
+      "source_evidence": [
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+        "4_cell_imaging_p001",
+        "references_p062"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-07",
+        "name": "Bifunctional circuit characterization (population and single-cell)",
+        "objects": [
+          "OBJ-XG3",
+          "OBJ-DUAL"
+        ],
+        "intervention": "addition of PtrpO1(G3C)-GFP repression module to Inverter_V2.1.1/V2.2.1",
+        "conditions": {
+          "tryptophan_gradient": true,
+          "imaging": "1% low-melting agarose immobilization, light-sheet microscopy, 50 ms exposure"
+        },
+        "controls": [
+          "mono-functional circuits (Figure 3a, S3)"
+        ],
+        "replicates": {
+          "biological_replicates": 3,
+          "imaging_replicates": "unknown"
+        },
+        "readouts": [
+          "RFP and GFP fluorescence (population)",
+          "single-cell dual-color imaging"
+        ],
+        "outcome": "RFP up and GFP down with increasing tryptophan; no inter-module interference at single-cell level; Dual_V2.1.1 lower leaky expression than Dual_V2.2.1",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+          "4_cell_imaging_p001",
+          "references_p062"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-008",
+      "source_evidence": [
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004",
+        "references_p068"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-08",
+        "name": "Tryptophan production monitoring in fermentation",
+        "objects": [
+          "OBJ-TRP"
+        ],
+        "intervention": "PLlacO1-trpE_fbrG addition and RFP_ASV reporter; IPTG induction",
+        "conditions": {
+          "medium": "M9-2Y shake flask",
+          "IPTG_mM": 0.5,
+          "temperature_C": 30,
+          "duration_h": 48
+        },
+        "controls": [],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "tryptophan titer (HPLC)",
+          "normalized RFP intensity",
+          "GFP intensity (TRPdual_LAA)",
+          "OD600"
+        ],
+        "outcome": "RFP tracked tryptophan accumulation; full activation at 42 h; TRPdual_LAA bifunctionality from 30 h with GFP slightly increasing then repressed",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004",
+          "references_p068"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-009",
+      "source_evidence": [
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003",
+        "5_shake_flasks_fermentation_p001",
+        "references_p075"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-09",
+        "name": "Dynamic up-regulation of tryptamine production",
+        "objects": [
+          "OBJ-TM"
+        ],
+        "intervention": "CrTDC under low (PtetO1-RBS(A8G)) or high (PtetO1-RBS(A2C)) dynamic promoters in TRPactive_DSA",
+        "conditions": {
+          "seed": "400 uL into 20 mL M9-2Y, 125 mL flask",
+          "IPTG_mM": 0.5,
+          "temperature_C": 30,
+          "duration_h": 48
+        },
+        "controls": [
+          "TM_Control (Plpp0.5-CrTDC; strength comparable to fully activated PtetO1-RBS(A2C), Figure S6a)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "tryptamine titer (HPLC, 276 nm)",
+          "residual tryptophan (Figure S7a)"
+        ],
+        "outcome": "TM_Low highest titer 36.9+/-2.8 mg/L at 48 h, 2.0-fold over TM_Control; experimental groups had residual tryptophan",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+          "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003",
+          "5_shake_flasks_fermentation_p001",
+          "references_p075"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-010",
+      "source_evidence": [
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+        "5_shake_flasks_fermentation_p002",
+        "references_p075"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-10",
+        "name": "Dynamic up-regulation of violacein production",
+        "objects": [
+          "OBJ-VIO"
+        ],
+        "intervention": "vioAC and vioEBD operons under high/low dynamic promoter combinations in TRPactive_LAA",
+        "conditions": {
+          "seed": "1 mL into 20 mL M9-2Y; 37 C 3.5 h then 0.5 mM IPTG; 30 C 48 h"
+        },
+        "controls": [
+          "Vio_0.5 (constitutive Plpp0.5 operons)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "violacein titer (HPLC, 570 nm)",
+          "residual tryptophan (Figure S7b)"
+        ],
+        "outcome": "Vio_LH and Vio_HH exceeded control by 4.5-fold and 5.7-fold at 48 h; high-level dynamic vioAC up-regulation most beneficial",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+          "5_shake_flasks_fermentation_p002",
+          "references_p075"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-011",
+      "source_evidence": [
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006",
+        "references_p075"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-11",
+        "name": "Bifunctional regulation of violacein production",
+        "objects": [
+          "OBJ-VIO"
+        ],
+        "intervention": "PtrpO1(G3C)-plsB repression operon added to Vio_HH (Viodual_HH)",
+        "conditions": {
+          "same_as": "EXP-10"
+        },
+        "controls": [
+          "Vio_HH-0.5 (single up-regulation, constitutive Plpp0.5-plsB)",
+          "Vio_0.5 (unregulated)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "violacein titer",
+          "tryptophan consumption (Figure S7c)"
+        ],
+        "outcome": "Viodual_HH 10.5+/-0.6 mg/L; 7.4-fold over Vio_0.5 (1.4+/-0.1 mg/L) and 1.3-fold over Vio_HH-0.5 (8.0+/-0.4 mg/L)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006",
+          "references_p075"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-001",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+        "methods_p017"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-01",
+        "name": "FC1 construction and growth test on CO2+FA",
+        "objects": [
+          "OBJ-FC1"
+        ],
+        "intervention": "Introduce reconstructed THF cycle, reverse glycine cleavage reaction and CbFdh into DH5α_GTPS",
+        "conditions": "M9 + 4.43 g/L sodium FA; 10% CO2/18% O2/72% N2; 37 °C; 200 r.p.m.; flask",
+        "controls": [
+          "FC2/FC3/FC5 compared in same figure panel (Fig. 1b)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600 growth profile"
+        ],
+        "outcome": "FC1 failed to grow on CO2 and FA alone",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p004",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p012",
+          "methods_p017"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-002",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+        "additional_information_p008",
+        "additional_information_p015"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-02",
+        "name": "Stepwise construction of FC2, FC3, FC5 and growth tests",
+        "objects": [
+          "OBJ-FC2",
+          "OBJ-FC3",
+          "OBJ-FC5"
+        ],
+        "intervention": "ppsA overexpression + ppsR deletion (FC2); purT deletion (FC3); p100FA2 harbouring A. thaliana fdh_mut (FC5)",
+        "conditions": "as EXP-01",
+        "controls": [
+          "growth with 0.1 g/L glucose supplementation every 24 h (Extended Data Fig. 1b)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u."
+        ],
+        "outcome": "FC5 grew on CO2+FA alone to OD600 0.285 (0.0633 g DCW/L) in 150 h from OD600 0.051; ~2.5 doublings; c.f.u. increased",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p005",
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "additional_information_p008",
+          "additional_information_p015"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-003",
+      "source_evidence": [
+        "methods_p020",
+        "additional_information_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-03",
+        "name": "13C isotope analysis of FC1 and FC2",
+        "objects": [
+          "OBJ-FC1",
+          "OBJ-FC2"
+        ],
+        "intervention": null,
+        "conditions": "M9 + 0.1 g/L [U-13C]glucose + 4.43 g/L sodium FA; 100-ml baffled flask/30 ml; 37 °C; 200 r.p.m.; 10% CO2 atmosphere; sampling at 120 h",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "12C/13C ratios in proteinogenic amino acids by GC-MS"
+        ],
+        "analysis": "two-tailed Student's t-test",
+        "outcome": "Isotope ratios of Ala, Phe, Tyr, Val, Thr, Asp, Glu, Gly, Ser compared between FC1 and FC2 (Extended Data Fig. 2)",
+        "evidence_paragraphs": [
+          "methods_p020",
+          "additional_information_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-004",
+      "source_evidence": [
+        "additional_information_p015"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-04",
+        "name": "FC5 substrate-dependency test",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": null,
+        "conditions": "CO2+FA, FA only, CO2 only, without CO2 and FA",
+        "controls": [
+          "substrate-omission groups"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "culture broth imaging at 0/100 h",
+          "c.f.u. profile"
+        ],
+        "outcome": "Growth characterized under each supplementation condition (Extended Data Fig. 3)",
+        "evidence_paragraphs": [
+          "additional_information_p015"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-005",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+        "methods_p020",
+        "additional_information_p016"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-05",
+        "name": "13C confirmation of CO2/FA assimilation by FC5",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": null,
+        "conditions": "13C-labelled preculture then CO2+FA only; sampling at 100 h",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "increase of 12C ratios in proteinogenic amino acids"
+        ],
+        "outcome": "CO2 and FA assimilation confirmed (Extended Data Fig. 4)",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "methods_p020",
+          "additional_information_p016"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-006",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+        "additional_information_p019"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-06",
+        "name": "IPTG concentration and aeration optimization of FC5",
+        "objects": [
+          "OBJ-FC5"
+        ],
+        "intervention": "Vary IPTG (1, 0.1, 0.05 mM) and aeration (flask type/working volume)",
+        "conditions": "as EXP-01 with varied inducer/aeration",
+        "controls": [
+          "mRNA ratios normalized to 1 mM IPTG condition"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "ppsA and gcvT mRNA (rtPCR)"
+        ],
+        "outcome": "Optimized conditions gave OD600 0.533 in 200 h from OD600 0.07; selected IPTG concentration not stated in available text",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p006",
+          "additional_information_p019"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-007",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+        "additional_information_p021"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-07",
+        "name": "Plasmid copy-number tuning (FC7, FC8)",
+        "objects": [
+          "OBJ-FC7",
+          "OBJ-FC8",
+          "OBJ-p184FA",
+          "OBJ-p518FA"
+        ],
+        "intervention": "Replace high-copy plasmid system of FC5 with medium- (FC7) or low-copy (FC8) plasmids",
+        "conditions": "as EXP-01",
+        "controls": [
+          "FC5 growth profile as comparator (Fig. 1d dashed line)"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "13C assimilation flux",
+          "FA consumption (HPLC)"
+        ],
+        "outcome": "FC8 OD600 0.607 in 200 h (0.14-fold above FC5); FC7 OD600 0.452; FC8 showed higher CO2/FA assimilation and FA consumption than FC5",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "additional_information_p021"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-008",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+        "methods_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-08",
+        "name": "FC8 high-inoculum flask culture (OD600 0.35)",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": null,
+        "conditions": "initial OD600 0.35; 37 °C; flask; CO2+FA",
+        "controls": [],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u.",
+          "microscopy"
+        ],
+        "outcome": "OD600 1.24 (0.343 g DCW/L) in 100 h; cell filamentation observed",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p007",
+          "methods_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-009",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+        "brief_communication_p006"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-09",
+        "name": "Cultivation temperature optimization of FC8",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": "Reduce cultivation temperature (30, 32, 33 °C tested; 37 °C reference)",
+        "conditions": "CO2+FA flask cultivation at reduced temperatures",
+        "controls": [
+          "37 °C cultivation; mRNA normalized to 37 °C"
+        ],
+        "replicates": {
+          "n": 3,
+          "type": "independent experiments (triplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "c.f.u.",
+          "biomass yield on FA",
+          "cyoA/cyoB/cydA/cydB mRNA",
+          "microscopy",
+          "13C ratios at 0/140/260 h"
+        ],
+        "outcome": "32 °C best: OD600 2.48 (0.687 g DCW/L) in 244 h from OD600 0.31, 0.41 g FA consumed; biomass yield 0.0552±0.0009 vs 0.0365±0.0026 g DCW/g FA (32 vs 37 °C); cyoAB up / cydAB down as intended; filamentation suppressed",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p008",
+          "brief_communication_p006"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-010",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+        "brief_communication_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-10",
+        "name": "FC8 low-inoculum flask culture (OD600 0.018)",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": null,
+        "conditions": "initial OD600 0.018; flask; CO2+FA",
+        "controls": [],
+        "replicates": {
+          "n": 2,
+          "type": "independent experiments (duplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "FA concentration",
+          "specific growth rate",
+          "doubling time"
+        ],
+        "outcome": "OD600 3.59 (0.994 g DCW/L) in 791.5 h; 0.94 g FA consumed; 7.64 doublings; growth rate declined over time",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p013",
+          "brief_communication_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P04",
+      "item_id": "GOLD-P04-A-011",
+      "source_evidence": [
+        "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+        "methods_p018",
+        "brief_communication_p012"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-11",
+        "name": "FC8 bioreactor fed-batch cultivations",
+        "objects": [
+          "OBJ-FC8"
+        ],
+        "intervention": "Fed-batch bioreactor cultivation with pH-stat FA feeding",
+        "conditions": "1.3-l Bioflow 110, 500 ml working volume; 32 °C; 500 r.p.m. initial (second run ramped +50 r.p.m. per OD600 up to 750); pH 6.8 via 30 v/v% FA; air:CO2 9:1 at 500 ml/min; initial OD600 ~1",
+        "controls": [],
+        "replicates": {
+          "n": 4,
+          "type": "independent bioreactor cultivations (quadruplicate)"
+        },
+        "readouts": [
+          "OD600",
+          "DCW",
+          "FA consumption"
+        ],
+        "outcome": "Max OD600 7.38 (450 h), 7.88 (412 h), 8.01 (412 h), 11.1 (577 h) across four runs; summarized as OD600 7-11",
+        "evidence_paragraphs": [
+          "escherichia_coli_is_engineered_to_grow_on_mathsf_c_o_2_and_formic_acid_p014",
+          "methods_p018",
+          "brief_communication_p012"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-001",
+      "source_evidence": [
+        "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+        "sgrna_library_design_and_construction_p001",
+        "sgrna_library_design_and_construction_p002",
+        "sgrna_library_design_and_construction_p003",
+        "sgrna_library_sequencing_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP1_library_design_construction",
+        "parent_experiment_id": null,
+        "purpose": "Design and construct high-resolution genome-scale CRISPRi sgRNA library",
+        "objects": [
+          "OBJ_SGRNA_LIBRARY",
+          "OBJ_PGRNA",
+          "OBJ_ENDURA"
+        ],
+        "intervention": "In silico sgRNA design (23-mers at NGG PAMs, 100-nt CDS windows, BLASTN off-target filtering, fixed 'A' upstream of spacer); oligo pool synthesis (CustomArray); extension PCR; Gibson/NEBuilder HiFi assembly into pgRNA backbone (40 ng insert : 100 ng backbone, 40 µL); electroporation into Endura; plating on 87 LB-agar+ampicillin plates",
+        "conditions": "LB agar 25 cm × 25 cm, ampicillin 100 µg/mL; pooled colonies cultured in liquid LB to OD 1.0",
+        "controls": [],
+        "replicates": {
+          "type": "recovered_colonies_or_clones",
+          "n": "~0.8×10^7 colonies (200× coverage)"
+        },
+        "readouts": "Amplicon sequencing of plasmid pool (HiSeq 2500, SE 150 bp); library composition QC",
+        "analysis": "sgRNA representation counting vs designed pool",
+        "outcomes": "39,574/39,591 sgRNAs detected (99.96% coverage)",
+        "evidence_paragraphs": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+          "sgrna_library_design_and_construction_p001",
+          "sgrna_library_design_and_construction_p002",
+          "sgrna_library_design_and_construction_p003",
+          "sgrna_library_sequencing_p001"
+        ],
+        "tested_scope": "E. coli MG1655 CDS (RefSeq NC_000913.3); LB condition for library amplification",
+        "unsupported_extensions": [
+          "per-spacer sequences (Table S1 unavailable)",
+          "off-target rates not measured"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-002",
+      "source_evidence": [
+        "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+        "sgrna_library_preparation_for_crispri_screening_p001",
+        "sgrna_library_preparation_for_crispri_screening_p002",
+        "sgrna_library_preparation_for_crispri_screening_p003",
+        "sgrna_library_sequencing_p001",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP2_crispri_pooled_screen",
+        "parent_experiment_id": "EXP1_library_design_construction",
+        "purpose": "Genome-wide gene fitness under gentamicin and anaerobic conditions",
+        "objects": [
+          "OBJ_MG1655",
+          "OBJ_PDCAS9",
+          "OBJ_SGRNA_LIBRARY"
+        ],
+        "intervention": "Electroporation of 100 ng library plasmids into MG1655+pdCas9; pooled growth under three conditions with dCas9-mediated knockdown",
+        "conditions": {
+          "aerobic_LB": "37°C, 250 rpm, to OD600 1.68",
+          "aerobic_LB_gentamicin": "1 µg/mL gentamicin, to OD600 1.8",
+          "anaerobic_LB": "N2 headspace 100 kPa, 37°C, 9 h, to OD600 0.6",
+          "inoculum": "OD600 0.05",
+          "selection": "chloramphenicol 35 µg/mL + ampicillin 100 µg/mL"
+        },
+        "controls": [
+          "initial plasmid library without dCas9 co-expression (ER baseline)",
+          "LB untreated condition"
+        ],
+        "replicates": {
+          "type": "unknown",
+          "n": null,
+          "dependency": "requires_supplement"
+        },
+        "readouts": "sgRNA abundance by amplicon NGS (HiSeq 2500, SE 150 bp)",
+        "analysis": "ER per gene = median of normalized sgRNA ratios; Pearson correlation; PCA; COG categorization (>1.5-fold ER change)",
+        "outcomes": "Gene-level fitness maps for LB, gentamicin, anaerobic; gentamicin vs anaerobic ER correlation r = 0.93; condition-specific ER changes for ribosomal, TA, OMP, efflux, cofactor-biosynthesis genes",
+        "evidence_paragraphs": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+          "sgrna_library_preparation_for_crispri_screening_p001",
+          "sgrna_library_preparation_for_crispri_screening_p002",
+          "sgrna_library_preparation_for_crispri_screening_p003",
+          "sgrna_library_sequencing_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+        ],
+        "tested_scope": "E. coli MG1655, LB, gentamicin 1 µg/mL, anaerobiosis as defined",
+        "unsupported_extensions": [
+          "screen replicate count",
+          "per-gene ER tables (Table S3)",
+          "dose-response data (Fig. S1)",
+          "anaerobic resistance curve (Fig. S2)"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-003",
+      "source_evidence": [
+        "rna_sequencing_rna_seq_and_analysis_p001",
+        "rna_sequencing_rna_seq_and_analysis_p002",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p001",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP3_rnaseq_imodulon",
+        "parent_experiment_id": null,
+        "purpose": "Transcriptomic changes under gentamicin and anaerobic conditions; iModulon activities of ArcA/CpxR regulons",
+        "objects": [
+          "OBJ_MG1655"
+        ],
+        "intervention": "Culture in LB, LB + 1 µg/mL gentamicin, anaerobic LB (same protocol as screen); RNAsnap RNA extraction; Ribo-Zero rRNA depletion; TruSeq Stranded mRNA library",
+        "conditions": "as EXP2; triplicate",
+        "controls": [
+          "LB aerobic reference for centering",
+          "P1K public transcriptome compendium as iModulon reference (external data, background_citation)"
+        ],
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3
+        },
+        "readouts": "RNA-seq, HiSeq 2500, 50 bp reads",
+        "analysis": "CLC mapping (0.9/0.9); DESeq2; DEG >2.0-fold, Padj<0.001; iModulon projection (pymodulon, P1K)",
+        "outcomes": "2,348 gentamicin-induced DEGs; specific regulation of ArcA and CpxR iModulons; CpxR iModulon activity under gentamicin exceeding ethanol-stress reference; ArcA activity suppressed under gentamicin",
+        "evidence_paragraphs": [
+          "rna_sequencing_rna_seq_and_analysis_p001",
+          "rna_sequencing_rna_seq_and_analysis_p002",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005"
+        ],
+        "tested_scope": "MG1655, three conditions",
+        "unsupported_extensions": [
+          "normalized expression table (Table S4)",
+          "iModulon activity matrix (Tables S5/S6)"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-004",
+      "source_evidence": [
+        "cells_and_plasmids_p001",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP4_knockout_validation",
+        "parent_experiment_id": null,
+        "purpose": "Validate screen-implicated genes by growth of single-gene knockouts under gentamicin",
+        "objects": [
+          "OBJ_KEIO_PANEL",
+          "OBJ_BW25113"
+        ],
+        "intervention": "Growth profiling of KEIO deletion strains vs wild type under gentamicin 1 µg/mL (strains constructed by ref 58, used here)",
+        "conditions": "LB + gentamicin 1 µg/mL; microplate monitoring",
+        "controls": [
+          "BW25113 wild type"
+        ],
+        "replicates": {
+          "type": "biological_replicates",
+          "n": 3,
+          "scope": "FIG 4C cofactor-gene panel; replicate count for FIG 5B not separately stated"
+        },
+        "readouts": "OD600 growth rate (Synergy H1)",
+        "analysis": "SD error bars; Welch's t-test, P < 0.1",
+        "outcomes": "Δfre, ΔubiX, ΔubiC, ΔhemX less sensitive; ΔbhsA completely resistant; ΔarcA/ΔarcB/ΔcpxR more sensitive; ΔcpxA little effect",
+        "evidence_paragraphs": [
+          "cells_and_plasmids_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+        ],
+        "tested_scope": "listed nine deletions, gentamicin 1 µg/mL, LB",
+        "unsupported_extensions": [
+          "exact growth-rate values and per-strain statistics (figure visual and source data unavailable)"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-005",
+      "source_evidence": [
+        "chromatin_immunoprecipitation_chip_sequencing_p001",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+        "cells_and_plasmids_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP5_cpxr_chipseq",
+        "parent_experiment_id": null,
+        "purpose": "Genome-wide CpxR binding under LB, anaerobic, and gentamicin conditions",
+        "objects": [
+          "OBJ_MG1655_CPXR_MYC"
+        ],
+        "intervention": "Chromosomal c-myc C-terminal tagging of cpxR (method of ref 65); ChIP with anti-c-Myc 9E10; sequencing",
+        "conditions": "25 mL cultures; 1% formaldehyde crosslinking 30 min RT; sonication 10×20 s; IP overnight 4°C",
+        "controls": [
+          "normal mouse IgG negative control"
+        ],
+        "replicates": {
+          "type": "independent_events_confirmed",
+          "n": ">=2 (peaks in two or more replicates counted as binding events)"
+        },
+        "readouts": "ChIP-Seq, HiSeq 2500, 50-cycle single-end",
+        "analysis": "CLC mapping; MACS2 default; DOOR2.0 operons",
+        "outcomes": "933 binding positions under gentamicin vs 51 (anaerobic) and 13 (LB); CpxR regulon estimated at 1,611 genes; binding at nuo/cyo/cyd regulatory regions and arcA",
+        "evidence_paragraphs": [
+          "chromatin_immunoprecipitation_chip_sequencing_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+          "cells_and_plasmids_p001"
+        ],
+        "tested_scope": "CpxR-c-myc in MG1655; three conditions",
+        "unsupported_extensions": [
+          "peak lists (Table S7)",
+          "exact replicate count"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-006",
+      "source_evidence": [
+        "membrane_potential_assay_p001",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP6_membrane_potential",
+        "parent_experiment_id": null,
+        "purpose": "Test CpxR dependence of membrane-potential collapse under gentamicin",
+        "objects": [
+          "OBJ_BW25113",
+          "OBJ_BW_dCPXR"
+        ],
+        "intervention": "DiOC2 staining after exposure to aerobic LB, anaerobic LB, CCCP 5 µM, or gentamicin 1 µg/mL",
+        "conditions": "cultures to OD600 1.0 (aerobic) / 0.6 (anaerobic); 1×10^6 cells/mL in filtered PBS; 30 min staining",
+        "controls": [
+          "CCCP uncoupling control",
+          "wild-type vs ΔcpxR comparison"
+        ],
+        "replicates": {
+          "type": "cells_or_fields_sampled",
+          "n": "100,000 events/sample; biological replicate count not stated"
+        },
+        "readouts": "Flow cytometry green/red fluorescence (S3e, 488 nm, FL1/FL2)",
+        "analysis": "FlowJo v10.2; median membrane potential of populations",
+        "outcomes": "Gentamicin-triggered membrane-potential collapse present in wild type, absent in ΔcpxR",
+        "evidence_paragraphs": [
+          "membrane_potential_assay_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029"
+        ],
+        "tested_scope": "BW25113 background; specified conditions",
+        "unsupported_extensions": [
+          "histogram numeric values beyond figure medians (figure visual unavailable)"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-A-007",
+      "source_evidence": [
+        "antibiotic_disk_difusion_assay_p001",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP7_disk_diffusion",
+        "parent_experiment_id": null,
+        "purpose": "Qualitative gentamicin susceptibility under aerobic vs anaerobic conditions",
+        "objects": [
+          "OBJ_MG1655 or related test cells (text says 'Cells'; exact strain binding ambiguous)"
+        ],
+        "intervention": "Gentamicin disks 0, 0.1, 1, 2.5, 10 µM on LB agar",
+        "conditions": "37°C; 16 h aerobic / 24 h anaerobic; anaerobic chamber and incubator",
+        "controls": [
+          "0 µM disk"
+        ],
+        "replicates": {
+          "type": "unknown",
+          "n": null
+        },
+        "readouts": "Halo presence/absence",
+        "analysis": "qualitative observation",
+        "outcomes": "Anaerobic complete resistance to gentamicin reported (Fig. S2; supplement unavailable)",
+        "evidence_paragraphs": [
+          "antibiotic_disk_difusion_assay_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+        ],
+        "tested_scope": "disk doses as listed",
+        "unsupported_extensions": [
+          "Fig. S2 image/data",
+          "strain identity for this assay not explicitly bound in Methods text"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-001",
+      "source_evidence": [
+        "sgrna_library_design_and_construction_p001",
+        "sgrna_library_design_and_construction_p002",
+        "sgrna_library_design_and_construction_p003",
+        "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP1_sgrna_library_design_construction",
+        "title": "Design and construction of high-resolution genome-wide sgRNA library",
+        "source_attribution": "current_article",
+        "parent_experiment_id": null,
+        "objects": [
+          "OBJ_SGRNA_LIB",
+          "OBJ_PGRNA",
+          "OBJ_CLONING_HOST"
+        ],
+        "intervention": "In silico sgRNA design; oligo pool synthesis; extension PCR of pool; inverse PCR of pgRNA-bacteria backbone; DpnI treatment; NEBuilder HiFi assembly (40 ng sgRNA product [200 bp] + 100 ng backbone [2,435 bp], 40 µL); electroporation into Endura/DH5a; selection on 87 LB agar plates (25 cm x 25 cm) with ampicillin 100 µg/mL",
+        "conditions": "Colonies pooled, cultured in liquid LB to OD 1.0; plasmids extracted (PureYield Midiprep); gel-purified; stored at -80°C in glycerol at 100 µg/mL aliquots",
+        "controls": [],
+        "replicates": {
+          "replicate_type": "recovered_colonies_or_clones",
+          "n": "0.8 x 10^7 colonies (200x coverage of designed sgRNAs)",
+          "note": "colony count is coverage, not biological replication"
+        },
+        "readouts": [
+          "Amplicon sequencing of initial plasmid pool"
+        ],
+        "analysis": [
+          "Library coverage: 39,574/39,591 sgRNAs detected = 99.96% (Table S1, unavailable)"
+        ],
+        "outcomes": [
+          "Initial plasmid library with 99.96% design coverage"
+        ],
+        "value_roles": {
+          "0.8 x 10^7 colonies": "implemented_measured",
+          "39,591 spacers": "design_value"
+        },
+        "evidence_paragraphs": [
+          "sgrna_library_design_and_construction_p001",
+          "sgrna_library_design_and_construction_p002",
+          "sgrna_library_design_and_construction_p003",
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001"
+        ],
+        "tested_scope": "E. coli K-12 MG1655 genome (NC_000913.3) CDS tiling",
+        "unsupported_extensions": [
+          "Per-spacer sequences and counts require Table S1/S2 (unavailable)"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-002",
+      "source_evidence": [
+        "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+        "sgrna_library_preparation_for_crispri_screening_p001",
+        "sgrna_library_preparation_for_crispri_screening_p002",
+        "sgrna_library_preparation_for_crispri_screening_p003",
+        "sgrna_library_sequencing_p001",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP2_crispri_pooled_screen",
+        "title": "Pooled CRISPRi fitness screening under LB, gentamicin, and anaerobic conditions",
+        "source_attribution": "current_article",
+        "parent_experiment_id": "EXP1_sgrna_library_design_construction",
+        "objects": [
+          "OBJ_MG1655_DCAS9_LIB"
+        ],
+        "intervention": "Transformation of 100 ng sgRNA library plasmids into MG1655+pdCas9 by electroporation; pooled growth under three conditions: LB, LB + gentamicin 1 µg/mL, anaerobic LB",
+        "conditions": "Selection on pre-warmed 30°C LB plates with chloramphenicol 35 µg/mL + ampicillin 100 µg/mL, 14 h, ~2.0 x 10^6 colonies from 24 plates (50x coverage); liquid preculture to OD600 1.0; inoculation at OD600 0.05; aerobic 37°C 250 rpm to OD600 1.68 (LB) / 1.8 (Gm); anaerobic: N2-chamber LB, 60 mL, 100 kPa N2 headspace, 37°C shaking 9 h to OD600 0.6",
+        "controls": [
+          "Initial plasmid pool without dCas9 co-expression (ER baseline)",
+          "Untreated LB condition"
+        ],
+        "replicates": {
+          "replicate_type": "unknown",
+          "n": null,
+          "note": "Screen replicate count not stated in available main text; possible supplement dependency"
+        },
+        "readouts": [
+          "sgRNA abundance by amplicon sequencing: TruSeq-based indexed amplification (18-20 cycles, SYBR Green monitored), Illumina HiSeq 2500 single-end 150 bp"
+        ],
+        "analysis": [
+          "ER = normalized sgRNA abundance with dCas9 vs initial pool; gene ER = median across targeting sgRNAs",
+          "Pearson correlation and PCA across conditions",
+          "COG categorization of >1.5-fold ER-change genes"
+        ],
+        "outcomes": [
+          "Gene fitness effects per condition; gentamicin vs anaerobic ER correlation r = 0.93",
+          "ER decreases for ribosomal/TA/OMP/efflux genes under gentamicin; ER increases for riboflavin/quinone/heme biosynthesis genes under both stresses"
+        ],
+        "value_roles": {
+          "1 µg/mL gentamicin": "implemented_design_value",
+          "OD600 endpoints": "implemented_measured"
+        },
+        "evidence_paragraphs": [
+          "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+          "sgrna_library_preparation_for_crispri_screening_p001",
+          "sgrna_library_preparation_for_crispri_screening_p002",
+          "sgrna_library_preparation_for_crispri_screening_p003",
+          "sgrna_library_sequencing_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+        ],
+        "tested_scope": "Pooled MG1655 library; LB, 1 µg/mL gentamicin, anaerobic LB",
+        "unsupported_extensions": [
+          "Per-sgRNA and per-gene numeric ER tables require Tables S2/S3 (unavailable)",
+          "Dose-response rationale data in Fig. S1 (unavailable)"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-003",
+      "source_evidence": [
+        "cells_and_plasmids_p001",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP3_knockout_growth_validation",
+        "title": "Growth profiling of KEIO single-knockout strains under gentamicin",
+        "source_attribution": "current_article (strains themselves from background_citation ref 58)",
+        "parent_experiment_id": null,
+        "objects": [
+          "OBJ_KEIO_KO_SET",
+          "OBJ_BW25113"
+        ],
+        "intervention": "None applied by current authors to create the strains (pre-existing KEIO collection); intervention is gentamicin exposure during growth profiling",
+        "conditions": "Growth under gentamicin (1 µg/mL for arcA/arcB/cpxA/cpxR panel per Fig. 5B); monitored with Synergy H1 microplate reader",
+        "controls": [
+          "BW25113 wild type"
+        ],
+        "replicates": {
+          "replicate_type": "biological_replicates",
+          "n": 3,
+          "note": "Fig. 4C caption: SD of three biological replicates"
+        },
+        "readouts": [
+          "Growth rate / growth profiles"
+        ],
+        "analysis": [
+          "Welch's t-test, threshold P < 0.1 as printed in Fig. 4C caption"
+        ],
+        "outcomes": [
+          "fre, ubiX, ubiC, hemX deletions less sensitive to gentamicin; bhsA deletion conferred complete resistance; arcA, arcB, cpxR deletions significantly increased sensitivity; cpxA deletion had little effect"
+        ],
+        "classification": "validation/measurement, not an engineering decision (fails Q3)",
+        "evidence_paragraphs": [
+          "cells_and_plasmids_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003"
+        ],
+        "tested_scope": "Nine single-gene deletions in BW25113 background under gentamicin",
+        "unsupported_extensions": [
+          "Exact growth-rate values require Fig. 4C/5B source data (unavailable)"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-004",
+      "source_evidence": [
+        "rna_sequencing_rna_seq_and_analysis_p001",
+        "rna_sequencing_rna_seq_and_analysis_p002",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p025"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP4_rna_seq_imodulon",
+        "title": "RNA-seq transcriptomics with iModulon projection",
+        "source_attribution": "current_article",
+        "parent_experiment_id": null,
+        "objects": [
+          "OBJ_MG1655"
+        ],
+        "intervention": "Culture in LB, LB + gentamicin 1 µg/mL, or anaerobic LB following the CRISPRi screening protocol",
+        "conditions": "Triplicate; total RNA by RNAsnap; rRNA removal with Ribo-Zero; TruSeq Stranded mRNA library; HiSeq 2500, 50 bp reads",
+        "controls": [
+          "LB aerobic condition as centering reference"
+        ],
+        "replicates": {
+          "replicate_type": "biological_replicates",
+          "n": 3,
+          "note": "'The experiment was conducted in triplicate.'"
+        },
+        "readouts": [
+          "Transcriptome-wide expression"
+        ],
+        "analysis": [
+          "CLC Genomics Workbench mapping (0.9/0.9) to NC_000913.3",
+          "DESeq2 normalization; DEG: >2.0-fold, adjusted P < 0.001",
+          "iModulon projection onto P1K structure via pymodulon; comparison with P1K public data"
+        ],
+        "outcomes": [
+          "2,348 DEGs under gentamicin; ArcA iModulon activity near P1K ΔarcA level under gentamicin; CpxR iModulon activity exceeding ethanol-stress level; repression of nuo/sdh/cyo/cyd expression under anaerobic and gentamicin conditions; appCBX (Cyt bd-II) up under anaerobic"
+        ],
+        "evidence_paragraphs": [
+          "rna_sequencing_rna_seq_and_analysis_p001",
+          "rna_sequencing_rna_seq_and_analysis_p002",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p025"
+        ],
+        "tested_scope": "MG1655, three conditions, triplicate",
+        "unsupported_extensions": [
+          "Normalized expression and iModulon matrices in Tables S4-S6 (unavailable)"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-005",
+      "source_evidence": [
+        "chromatin_immunoprecipitation_chip_sequencing_p001",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP5_cpxr_chip_seq",
+        "title": "Genome-wide CpxR binding by ChIP-Seq",
+        "source_attribution": "current_article",
+        "parent_experiment_id": null,
+        "objects": [
+          "OBJ_MG1655_CPXR_MYC"
+        ],
+        "intervention": "C-terminal c-myc tagging of chromosomal cpxR (method of ref 65); ChIP under LB, gentamicin, anaerobic conditions",
+        "conditions": "25 mL cultures; 1% formaldehyde cross-linking 30 min RT; 2.5 M glycine quench; sonication 10 x 20 s (Sonic Dismembrator 500); 200-400 bp fragments; anti-c-Myc 9E10 (sc-40) IP overnight 4°C; Dynabeads Pan Mouse IgG 6 h; reverse cross-link 65°C overnight; NEXTflex ChIP-Seq library; HiSeq 2500 50-cycle single-end",
+        "controls": [
+          "Normal mouse IgG (sc-2025) negative control"
+        ],
+        "replicates": {
+          "replicate_type": "unknown_independence",
+          "n": ">=2",
+          "note": "Binding events = peaks detected in two or more replicates; exact replicate count not stated"
+        },
+        "readouts": [
+          "CpxR binding peaks"
+        ],
+        "analysis": [
+          "CLC mapping (0.9/0.9)",
+          "MACS2 default peak calling",
+          "Operon annotation via DOOR2.0"
+        ],
+        "outcomes": [
+          "CpxR bound 933 positions under gentamicin vs 51 (anaerobic) and 13 (LB); 1,611 genes modulated; binding at regulatory regions of nuoABCEFGHIJKLMN, cyoABCD, cydABXH, arcA, degP, cpxP, rpoE, rpoH"
+        ],
+        "evidence_paragraphs": [
+          "chromatin_immunoprecipitation_chip_sequencing_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023"
+        ],
+        "tested_scope": "c-myc-CpxR MG1655 under three conditions",
+        "unsupported_extensions": [
+          "Peak lists in Table S7 (unavailable)"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-006",
+      "source_evidence": [
+        "antibiotic_disk_difusion_assay_p001",
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP6_disk_diffusion",
+        "title": "Antibiotic disk diffusion assay",
+        "source_attribution": "current_article",
+        "parent_experiment_id": null,
+        "objects": [
+          "OBJ_MG1655 (implied; strain not explicitly restated in this Methods paragraph)"
+        ],
+        "intervention": "Gentamicin disks 0, 0.1, 1, 2.5, 10 µM on LB agar; aerobic and anaerobic incubation",
+        "conditions": "37°C; 16 h aerobic / 24 h anaerobic; anaerobic plates prepared in anaerobic chamber",
+        "controls": [
+          "0 µM disk"
+        ],
+        "replicates": {
+          "replicate_type": "unknown",
+          "n": null,
+          "note": "Not stated"
+        },
+        "readouts": [
+          "Presence of halo around disk"
+        ],
+        "analysis": [
+          "Qualitative halo observation"
+        ],
+        "outcomes": [
+          "E. coli completely resistant to gentamicin under anaerobic conditions (Fig. S2, unavailable)"
+        ],
+        "evidence_paragraphs": [
+          "antibiotic_disk_difusion_assay_p001",
+          "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001"
+        ],
+        "tested_scope": "Disk diffusion on LB agar, aerobic vs anaerobic",
+        "unsupported_extensions": [
+          "Fig. S2 halo data unavailable; strain identity for this assay not explicitly restated"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P05",
+      "item_id": "GOLD-P05-G-007",
+      "source_evidence": [
+        "membrane_potential_assay_p001",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029"
+      ],
+      "a_interpretation": "SEE_PAIRED_ITEM",
+      "g_interpretation": {
+        "experiment_id": "EXP7_membrane_potential_flow_cytometry",
+        "title": "Membrane potential measurement by DiOC2 flow cytometry",
+        "source_attribution": "current_article",
+        "parent_experiment_id": null,
+        "objects": [
+          "OBJ_BW25113",
+          "BW25113 ΔcpxR (member of OBJ_KEIO_KO_SET)"
+        ],
+        "intervention": "Exposure to gentamicin 1 µg/mL or CCCP 5 µM; aerobic vs anaerobic culture",
+        "conditions": "37°C LB to OD600 1.0 (aerobic) / 0.6 (anaerobic); dilution to 1 x 10^6 cells/mL in filtered PBS; DiOC2 staining 30 min (BacLight kit)",
+        "controls": [
+          "CCCP uncoupling control",
+          "Wild-type vs ΔcpxR comparison"
+        ],
+        "replicates": {
+          "replicate_type": "cells_or_events_sampled",
+          "n": "100,000 events per sample at 2,000 events/s, FSC threshold 335",
+          "note": "Event counts are not biological replicates; biological replicate count not stated"
+        },
+        "readouts": [
+          "Green (FL1 526/48) to red (FL2 593/40) fluorescence shift of DiOC2 on S3e Cell Sorter (488 nm)"
+        ],
+        "analysis": [
+          "FlowJo v10.2; median membrane potential of populations reported in Fig. 6C"
+        ],
+        "outcomes": [
+          "CpxR-mediated collapse of membrane potential under gentamicin; collapse absent in cpxR knockout"
+        ],
+        "evidence_paragraphs": [
+          "membrane_potential_assay_p001",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+          "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029"
+        ],
+        "tested_scope": "BW25113 and ΔcpxR under aerobic, anaerobic, CCCP, gentamicin",
+        "unsupported_extensions": [
+          "Numeric median potentials only in Fig. 6C plot (visual unavailable)"
+        ]
+      },
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    }
+  ]
+}

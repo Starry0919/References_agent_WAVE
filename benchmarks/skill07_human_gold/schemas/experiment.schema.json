@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill07-gold-experiment-v1",
+  "type": "object",
+  "required": [
+    "gold_experiment_id",
+    "benchmark_paper_id",
+    "paper_id",
+    "annotation_tier",
+    "review_state",
+    "experiment_title",
+    "experiment_role",
+    "experiment_granularity",
+    "biological_objects",
+    "intervention_or_design_action",
+    "trigger",
+    "conditions",
+    "implementation",
+    "controls",
+    "replicates",
+    "readouts",
+    "analysis",
+    "results",
+    "rationale",
+    "supported_alternatives",
+    "supported_rule",
+    "rule_scope",
+    "atomic_claim_ids",
+    "evidence_ids",
+    "critical_provenance",
+    "known_ambiguities",
+    "annotator_notes",
+    "created_by",
+    "created_at",
+    "updated_at",
+    "schema_version"
+  ],
+  "properties": {
+    "gold_experiment_id": {
+      "type": "string",
+      "pattern": "^GOLD-P\\d{2}-E\\d{3}$"
+    },
+    "benchmark_paper_id": {
+      "type": "string",
+      "pattern": "^GOLD-P\\d{2}$"
+    },
+    "paper_id": {
+      "type": "string"
+    },
+    "annotation_tier": {
+      "enum": [
+        "HUMAN_DRAFT",
+        "HUMAN_REVIEWED",
+        "ADJUDICATED_GOLD",
+        "FROZEN_GOLD"
+      ]
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "experiment_title": {
+      "type": "string"
+    },
+    "experiment_role": {
+      "enum": [
+        "ENGINEERING_INTERVENTION",
+        "SCREENING",
+        "SELECTION",
+        "EVOLUTION",
+        "MEASUREMENT",
+        "CHARACTERIZATION",
+        "MECHANISTIC_VALIDATION",
+        "CAUSAL_VALIDATION",
+        "OPTIMIZATION",
+        "COMPARATIVE_VALIDATION",
+        "PRODUCTION_VALIDATION",
+        "OTHER",
+        "UNCERTAIN"
+      ]
+    },
+    "experiment_granularity": {
+      "enum": [
+        "ATOMIC_EXPERIMENT",
+        "EXPERIMENT_SERIES",
+        "CAMPAIGN",
+        "SUBEXPERIMENT",
+        "UNCERTAIN"
+      ]
+    },
+    "parent_experiment_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "iteration_or_stage": {},
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "relation",
+          "target_id"
+        ],
+        "properties": {
+          "relation": {
+            "enum": [
+              "PART_OF",
+              "PRECEDES",
+              "FOLLOWS",
+              "ITERATION_OF",
+              "VALIDATES",
+              "MOTIVATES",
+              "COMPARES_WITH"
+            ]
+          },
+          "target_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "biological_objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "object_id",
+          "object_type",
+          "name",
+          "experimental_role"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string"
+          },
+          "object_type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "strain_or_host": {},
+          "genotype": {},
+          "construct": {},
+          "parent_object": {},
+          "experimental_role": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "intervention_or_design_action": {},
+    "trigger": {},
+    "conditions": {
+      "type": "array"
+    },
+    "implementation": {},
+    "controls": {
+      "type": "array"
+    },
+    "replicates": {
+      "type": "object"
+    },
+    "readouts": {
+      "type": "array"
+    },
+    "analysis": {
+      "type": "array"
+    },
+    "results": {
+      "type": "array"
+    },
+    "rationale": {},
+    "supported_alternatives": {
+      "type": "array"
+    },
+    "supported_rule": {},
+    "rule_scope": {},
+    "atomic_claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "critical_provenance": {
+      "type": "array"
+    },
+    "known_ambiguities": {
+      "type": "array"
+    },
+    "annotator_notes": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "origin_flags": {
+      "type": "array"
+    },
+    "candidate_model_ids": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

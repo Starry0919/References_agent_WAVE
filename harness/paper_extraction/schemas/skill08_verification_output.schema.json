@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wave://paper-extraction/skill08-verification-output/2.0.0",
+  "type": "object",
+  "required": ["contract_version", "candidate_payload", "field_verifications", "ddr_verifications", "verified_evidence", "knowledge_admission"],
+  "properties": {
+    "contract_version": {"const": "skill08_evidence_contract_v2"},
+    "candidate_payload": {"type": "object"},
+    "field_verifications": {"type": "object"},
+    "claim_verifications": {"type": "object"},
+    "ddr_verifications": {"type": "array"},
+    "verified_evidence": {"type": "array"},
+    "knowledge_admission": {"type": "object"}
+  }
+}

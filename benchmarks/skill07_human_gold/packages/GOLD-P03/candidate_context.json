@@ -1,0 +1,1025 @@
+{
+  "benchmark_paper_id": "GOLD-P03",
+  "paper_id": "paper:71ab13883b209e2872f3",
+  "candidate_visibility_default": "HIDDEN_BLIND_SOURCE_FIRST",
+  "a_available": true,
+  "g_available": false,
+  "union_candidate_inventory": [
+    {
+      "candidate_id": "GOLD-P03-A-001-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-01",
+        "name": "Inverter_V1 construction and proof-of-concept characterization",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV1"
+        ],
+        "intervention": "three-plasmid inverter assembly and transformation",
+        "conditions": {
+          "medium": "M9-2Y",
+          "tryptophan_gradient_mg_L": [
+            0,
+            31.5,
+            125,
+            500
+          ],
+          "temperature_C": 37,
+          "shaking_rpm": 270,
+          "duration_h": 24
+        },
+        "controls": [],
+        "replicates": {
+          "biological_replicates": 3,
+          "basis": "three independent colonies"
+        },
+        "readouts": [
+          "RFP fluorescence (a.u.)",
+          "OD600"
+        ],
+        "analysis": "mean +/- SD",
+        "outcome": "No significant RFP activation across tryptophan gradient (Figure 1e)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+          "3_fluorescence_assays_p001",
+          "references_p043"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-002-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-02",
+        "name": "Component troubleshooting of the two repression systems",
+        "objects": [
+          "OBJ-XG1"
+        ],
+        "intervention": "separate characterization of PtrpO1(G3C)-Plpp0.03-TrpR1(V58K) (tryptophan 0-125 mg/L) and PLlacO1-TetR/PtetO1-GFP tunability (IPTG 0-50 uM); then TetR degradation-tag variants",
+        "conditions": {
+          "dependency": "Figures S1a-S1c in supplement (not provided)"
+        },
+        "controls": [
+          "previously developed PtrpO1(G3C)-PLlacO1-TrpR1(V58K) system"
+        ],
+        "replicates": {
+          "status": "unknown_in_available_text"
+        },
+        "readouts": [
+          "GFP/RFP fluorescence"
+        ],
+        "outcome": "TrpR1 system responded to 0-125 mg/L tryptophan; PtetO1-TetR showed extreme repression at low IPTG without dose dependence; TetR_LAA variant restored dose-dependent repression (0-50 uM IPTG)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-003-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-03",
+        "name": "Characterization of degradation-tag inverter variants V1.1/V1.2",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV11-12"
+        ],
+        "intervention": "tetR_DSA / tetR_LAA introduced into Inverter_V1",
+        "conditions": {
+          "tryptophan_gradient_mg_L": [
+            0,
+            500
+          ],
+          "assay": "fluorescence, 24 h"
+        },
+        "controls": [
+          "Inverter_V1"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence"
+        ],
+        "outcome": "V1.1: 3.2-fold range (40.8+/-7.8 to 129.6+/-53.0 a.u.); V1.2: 14.7-fold range, leaky 45.8+/-4.7 a.u., max 672.6+/-142.2 a.u.",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003",
+          "references_p043"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-004-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-04",
+        "name": "RBS engineering to reduce TetR abundance",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV-RBS"
+        ],
+        "intervention": "random mutagenesis of RBS positions 6-9 of PtrpO1(G3C); screening of repression-system variants; selected RBS(G7T)/(A8G)/(G9C) built into inverters",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "wildtype RBS"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence",
+          "leaky expression"
+        ],
+        "outcome": "All RBS variants kept repression efficiency with lower leakiness (Figure S2); Inverter_V1.2.1 reached 2208+/-5.0 a.u., 5-fold over 440+/-21.1 a.u. baseline; V1.1.1 showed 7.38-fold dynamic range",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+          "references_p051"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-005-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-05",
+        "name": "PtetO1 promoter and RBS engineering",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV-PTET"
+        ],
+        "intervention": "random mutations in -10 region of PtetO1 and its RBS; variants introduced into Inverter_V1.1.1/V1.2.1",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "wildtype PtetO1"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence"
+        ],
+        "outcome": "PtetO1-RBS(A2C) highest (2.21-fold over wildtype); V1.2.1e max 2316.3+/-75.5 a.u. (4.8-fold); V1.1.1e max 1485.1+/-48.5 a.u. (6.8-fold)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+          "references_p051",
+          "references_p052"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-006-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-06",
+        "name": "Host engineering and simplified-configuration inverters (XG2/XG3)",
+        "objects": [
+          "OBJ-XG2",
+          "OBJ-XG3",
+          "OBJ-INV2"
+        ],
+        "intervention": "ubiC deletion; chromosomal Plpp0.03-TrpR(V58K)-T1 integration; two-plasmid inverter transfer",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "XG1 with two-plasmid constitutive repression system (repression test)",
+          "Inverter_V1.1.1 three-plasmid in XG1 (activation test)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "GFP repression efficiency",
+          "RFP fluorescence"
+        ],
+        "outcome": "XG3 repression efficiency 96.67% vs 73.07% control (Figure S3); Inverter_V2.1.1 10.7-fold range (leaky 380.8+/-56.1 a.u.); V2.1.1e 14.2-fold/5316.5+/-241.4; V2.2.1e 3.4-fold/5649.1+/-273.9; V2.1.1f 13.2-fold/2696.8+/-92.8; V2.2.1f 3.3-fold/2558.1+/-67.6",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "4_optimization_of_genetic_inverter_configurations_p001",
+          "4_optimization_of_genetic_inverter_configurations_p002",
+          "4_optimization_of_genetic_inverter_configurations_p003"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-007-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-07",
+        "name": "Bifunctional circuit characterization (population and single-cell)",
+        "objects": [
+          "OBJ-XG3",
+          "OBJ-DUAL"
+        ],
+        "intervention": "addition of PtrpO1(G3C)-GFP repression module to Inverter_V2.1.1/V2.2.1",
+        "conditions": {
+          "tryptophan_gradient": true,
+          "imaging": "1% low-melting agarose immobilization, light-sheet microscopy, 50 ms exposure"
+        },
+        "controls": [
+          "mono-functional circuits (Figure 3a, S3)"
+        ],
+        "replicates": {
+          "biological_replicates": 3,
+          "imaging_replicates": "unknown"
+        },
+        "readouts": [
+          "RFP and GFP fluorescence (population)",
+          "single-cell dual-color imaging"
+        ],
+        "outcome": "RFP up and GFP down with increasing tryptophan; no inter-module interference at single-cell level; Dual_V2.1.1 lower leaky expression than Dual_V2.2.1",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+          "4_cell_imaging_p001",
+          "references_p062"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-008-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-08",
+        "name": "Tryptophan production monitoring in fermentation",
+        "objects": [
+          "OBJ-TRP"
+        ],
+        "intervention": "PLlacO1-trpE_fbrG addition and RFP_ASV reporter; IPTG induction",
+        "conditions": {
+          "medium": "M9-2Y shake flask",
+          "IPTG_mM": 0.5,
+          "temperature_C": 30,
+          "duration_h": 48
+        },
+        "controls": [],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "tryptophan titer (HPLC)",
+          "normalized RFP intensity",
+          "GFP intensity (TRPdual_LAA)",
+          "OD600"
+        ],
+        "outcome": "RFP tracked tryptophan accumulation; full activation at 42 h; TRPdual_LAA bifunctionality from 30 h with GFP slightly increasing then repressed",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004",
+          "references_p068"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-009-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-09",
+        "name": "Dynamic up-regulation of tryptamine production",
+        "objects": [
+          "OBJ-TM"
+        ],
+        "intervention": "CrTDC under low (PtetO1-RBS(A8G)) or high (PtetO1-RBS(A2C)) dynamic promoters in TRPactive_DSA",
+        "conditions": {
+          "seed": "400 uL into 20 mL M9-2Y, 125 mL flask",
+          "IPTG_mM": 0.5,
+          "temperature_C": 30,
+          "duration_h": 48
+        },
+        "controls": [
+          "TM_Control (Plpp0.5-CrTDC; strength comparable to fully activated PtetO1-RBS(A2C), Figure S6a)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "tryptamine titer (HPLC, 276 nm)",
+          "residual tryptophan (Figure S7a)"
+        ],
+        "outcome": "TM_Low highest titer 36.9+/-2.8 mg/L at 48 h, 2.0-fold over TM_Control; experimental groups had residual tryptophan",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+          "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003",
+          "5_shake_flasks_fermentation_p001",
+          "references_p075"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-010-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-10",
+        "name": "Dynamic up-regulation of violacein production",
+        "objects": [
+          "OBJ-VIO"
+        ],
+        "intervention": "vioAC and vioEBD operons under high/low dynamic promoter combinations in TRPactive_LAA",
+        "conditions": {
+          "seed": "1 mL into 20 mL M9-2Y; 37 C 3.5 h then 0.5 mM IPTG; 30 C 48 h"
+        },
+        "controls": [
+          "Vio_0.5 (constitutive Plpp0.5 operons)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "violacein titer (HPLC, 570 nm)",
+          "residual tryptophan (Figure S7b)"
+        ],
+        "outcome": "Vio_LH and Vio_HH exceeded control by 4.5-fold and 5.7-fold at 48 h; high-level dynamic vioAC up-regulation most beneficial",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+          "5_shake_flasks_fermentation_p002",
+          "references_p075"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    },
+    {
+      "candidate_id": "GOLD-P03-A-011-A_ONLY",
+      "origin_flags": [
+        "A_ONLY",
+        "SILVER_CANDIDATE"
+      ],
+      "candidate": {
+        "experiment_id": "EXP-11",
+        "name": "Bifunctional regulation of violacein production",
+        "objects": [
+          "OBJ-VIO"
+        ],
+        "intervention": "PtrpO1(G3C)-plsB repression operon added to Vio_HH (Viodual_HH)",
+        "conditions": {
+          "same_as": "EXP-10"
+        },
+        "controls": [
+          "Vio_HH-0.5 (single up-regulation, constitutive Plpp0.5-plsB)",
+          "Vio_0.5 (unregulated)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "violacein titer",
+          "tryptophan consumption (Figure S7c)"
+        ],
+        "outcome": "Viodual_HH 10.5+/-0.6 mg/L; 7.4-fold over Vio_0.5 (1.4+/-0.1 mg/L) and 1.3-fold over Vio_HH-0.5 (8.0+/-0.4 mg/L)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006",
+          "references_p075"
+        ]
+      },
+      "truth_status": "UNREVIEWED"
+    }
+  ],
+  "semantic_alignment": {
+    "paper_id": "paper:71ab13883b209e2872f3",
+    "source": "WAVE1_HISTORICAL_NOT_CONTROLLED_WAVE2",
+    "a_status": "validation_failed",
+    "g_status": "succeeded",
+    "alignment": {
+      "matches": [],
+      "unresolved": [
+        {
+          "left_index": 0,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 1,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 2,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 3,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 4,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 5,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 6,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 7,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 8,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 9,
+          "reason": "UNMATCHED_LEFT"
+        },
+        {
+          "left_index": 10,
+          "reason": "UNMATCHED_LEFT"
+        }
+      ],
+      "unmatched_right": []
+    },
+    "differences": [
+      {
+        "left_index": 0,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 1,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 2,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 3,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 4,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 5,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 6,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 7,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 8,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 9,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      },
+      {
+        "left_index": 10,
+        "reason": "UNMATCHED_LEFT",
+        "class": "AMBIGUOUS_REQUIRES_HUMAN"
+      }
+    ],
+    "counts": {
+      "FORMAT_ONLY": 0,
+      "SEMANTICALLY_EQUIVALENT": 0,
+      "POTENTIALLY_MEANINGFUL": 0,
+      "CRITICAL_SCIENTIFIC_DIFFERENCE": 0,
+      "AMBIGUOUS_REQUIRES_HUMAN": 11
+    },
+    "automated_scientific_truth": false
+  },
+  "review_accelerators": [
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-001",
+      "source_evidence": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+        "3_fluorescence_assays_p001",
+        "references_p043"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-01",
+        "name": "Inverter_V1 construction and proof-of-concept characterization",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV1"
+        ],
+        "intervention": "three-plasmid inverter assembly and transformation",
+        "conditions": {
+          "medium": "M9-2Y",
+          "tryptophan_gradient_mg_L": [
+            0,
+            31.5,
+            125,
+            500
+          ],
+          "temperature_C": 37,
+          "shaking_rpm": 270,
+          "duration_h": 24
+        },
+        "controls": [],
+        "replicates": {
+          "biological_replicates": 3,
+          "basis": "three independent colonies"
+        },
+        "readouts": [
+          "RFP fluorescence (a.u.)",
+          "OD600"
+        ],
+        "analysis": "mean +/- SD",
+        "outcome": "No significant RFP activation across tryptophan gradient (Figure 1e)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+          "3_fluorescence_assays_p001",
+          "references_p043"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-002",
+      "source_evidence": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-02",
+        "name": "Component troubleshooting of the two repression systems",
+        "objects": [
+          "OBJ-XG1"
+        ],
+        "intervention": "separate characterization of PtrpO1(G3C)-Plpp0.03-TrpR1(V58K) (tryptophan 0-125 mg/L) and PLlacO1-TetR/PtetO1-GFP tunability (IPTG 0-50 uM); then TetR degradation-tag variants",
+        "conditions": {
+          "dependency": "Figures S1a-S1c in supplement (not provided)"
+        },
+        "controls": [
+          "previously developed PtrpO1(G3C)-PLlacO1-TrpR1(V58K) system"
+        ],
+        "replicates": {
+          "status": "unknown_in_available_text"
+        },
+        "readouts": [
+          "GFP/RFP fluorescence"
+        ],
+        "outcome": "TrpR1 system responded to 0-125 mg/L tryptophan; PtetO1-TetR showed extreme repression at low IPTG without dose dependence; TetR_LAA variant restored dose-dependent repression (0-50 uM IPTG)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-003",
+      "source_evidence": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003",
+        "references_p043"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-03",
+        "name": "Characterization of degradation-tag inverter variants V1.1/V1.2",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV11-12"
+        ],
+        "intervention": "tetR_DSA / tetR_LAA introduced into Inverter_V1",
+        "conditions": {
+          "tryptophan_gradient_mg_L": [
+            0,
+            500
+          ],
+          "assay": "fluorescence, 24 h"
+        },
+        "controls": [
+          "Inverter_V1"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence"
+        ],
+        "outcome": "V1.1: 3.2-fold range (40.8+/-7.8 to 129.6+/-53.0 a.u.); V1.2: 14.7-fold range, leaky 45.8+/-4.7 a.u., max 672.6+/-142.2 a.u.",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003",
+          "references_p043"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-004",
+      "source_evidence": [
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+        "references_p051"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-04",
+        "name": "RBS engineering to reduce TetR abundance",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV-RBS"
+        ],
+        "intervention": "random mutagenesis of RBS positions 6-9 of PtrpO1(G3C); screening of repression-system variants; selected RBS(G7T)/(A8G)/(G9C) built into inverters",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "wildtype RBS"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence",
+          "leaky expression"
+        ],
+        "outcome": "All RBS variants kept repression efficiency with lower leakiness (Figure S2); Inverter_V1.2.1 reached 2208+/-5.0 a.u., 5-fold over 440+/-21.1 a.u. baseline; V1.1.1 showed 7.38-fold dynamic range",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+          "references_p051"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-005",
+      "source_evidence": [
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+        "references_p051",
+        "references_p052"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-05",
+        "name": "PtetO1 promoter and RBS engineering",
+        "objects": [
+          "OBJ-XG1",
+          "OBJ-INV-PTET"
+        ],
+        "intervention": "random mutations in -10 region of PtetO1 and its RBS; variants introduced into Inverter_V1.1.1/V1.2.1",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "wildtype PtetO1"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "RFP fluorescence"
+        ],
+        "outcome": "PtetO1-RBS(A2C) highest (2.21-fold over wildtype); V1.2.1e max 2316.3+/-75.5 a.u. (4.8-fold); V1.1.1e max 1485.1+/-48.5 a.u. (6.8-fold)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+          "references_p051",
+          "references_p052"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-006",
+      "source_evidence": [
+        "4_optimization_of_genetic_inverter_configurations_p001",
+        "4_optimization_of_genetic_inverter_configurations_p002",
+        "4_optimization_of_genetic_inverter_configurations_p003"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-06",
+        "name": "Host engineering and simplified-configuration inverters (XG2/XG3)",
+        "objects": [
+          "OBJ-XG2",
+          "OBJ-XG3",
+          "OBJ-INV2"
+        ],
+        "intervention": "ubiC deletion; chromosomal Plpp0.03-TrpR(V58K)-T1 integration; two-plasmid inverter transfer",
+        "conditions": {
+          "tryptophan_gradient": true
+        },
+        "controls": [
+          "XG1 with two-plasmid constitutive repression system (repression test)",
+          "Inverter_V1.1.1 three-plasmid in XG1 (activation test)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "GFP repression efficiency",
+          "RFP fluorescence"
+        ],
+        "outcome": "XG3 repression efficiency 96.67% vs 73.07% control (Figure S3); Inverter_V2.1.1 10.7-fold range (leaky 380.8+/-56.1 a.u.); V2.1.1e 14.2-fold/5316.5+/-241.4; V2.2.1e 3.4-fold/5649.1+/-273.9; V2.1.1f 13.2-fold/2696.8+/-92.8; V2.2.1f 3.3-fold/2558.1+/-67.6",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "4_optimization_of_genetic_inverter_configurations_p001",
+          "4_optimization_of_genetic_inverter_configurations_p002",
+          "4_optimization_of_genetic_inverter_configurations_p003"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-007",
+      "source_evidence": [
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+        "4_cell_imaging_p001",
+        "references_p062"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-07",
+        "name": "Bifunctional circuit characterization (population and single-cell)",
+        "objects": [
+          "OBJ-XG3",
+          "OBJ-DUAL"
+        ],
+        "intervention": "addition of PtrpO1(G3C)-GFP repression module to Inverter_V2.1.1/V2.2.1",
+        "conditions": {
+          "tryptophan_gradient": true,
+          "imaging": "1% low-melting agarose immobilization, light-sheet microscopy, 50 ms exposure"
+        },
+        "controls": [
+          "mono-functional circuits (Figure 3a, S3)"
+        ],
+        "replicates": {
+          "biological_replicates": 3,
+          "imaging_replicates": "unknown"
+        },
+        "readouts": [
+          "RFP and GFP fluorescence (population)",
+          "single-cell dual-color imaging"
+        ],
+        "outcome": "RFP up and GFP down with increasing tryptophan; no inter-module interference at single-cell level; Dual_V2.1.1 lower leaky expression than Dual_V2.2.1",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+          "4_cell_imaging_p001",
+          "references_p062"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-008",
+      "source_evidence": [
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004",
+        "references_p068"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-08",
+        "name": "Tryptophan production monitoring in fermentation",
+        "objects": [
+          "OBJ-TRP"
+        ],
+        "intervention": "PLlacO1-trpE_fbrG addition and RFP_ASV reporter; IPTG induction",
+        "conditions": {
+          "medium": "M9-2Y shake flask",
+          "IPTG_mM": 0.5,
+          "temperature_C": 30,
+          "duration_h": 48
+        },
+        "controls": [],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "tryptophan titer (HPLC)",
+          "normalized RFP intensity",
+          "GFP intensity (TRPdual_LAA)",
+          "OD600"
+        ],
+        "outcome": "RFP tracked tryptophan accumulation; full activation at 42 h; TRPdual_LAA bifunctionality from 30 h with GFP slightly increasing then repressed",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+          "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004",
+          "references_p068"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-009",
+      "source_evidence": [
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003",
+        "5_shake_flasks_fermentation_p001",
+        "references_p075"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-09",
+        "name": "Dynamic up-regulation of tryptamine production",
+        "objects": [
+          "OBJ-TM"
+        ],
+        "intervention": "CrTDC under low (PtetO1-RBS(A8G)) or high (PtetO1-RBS(A2C)) dynamic promoters in TRPactive_DSA",
+        "conditions": {
+          "seed": "400 uL into 20 mL M9-2Y, 125 mL flask",
+          "IPTG_mM": 0.5,
+          "temperature_C": 30,
+          "duration_h": 48
+        },
+        "controls": [
+          "TM_Control (Plpp0.5-CrTDC; strength comparable to fully activated PtetO1-RBS(A2C), Figure S6a)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "tryptamine titer (HPLC, 276 nm)",
+          "residual tryptophan (Figure S7a)"
+        ],
+        "outcome": "TM_Low highest titer 36.9+/-2.8 mg/L at 48 h, 2.0-fold over TM_Control; experimental groups had residual tryptophan",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+          "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003",
+          "5_shake_flasks_fermentation_p001",
+          "references_p075"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-010",
+      "source_evidence": [
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+        "5_shake_flasks_fermentation_p002",
+        "references_p075"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-10",
+        "name": "Dynamic up-regulation of violacein production",
+        "objects": [
+          "OBJ-VIO"
+        ],
+        "intervention": "vioAC and vioEBD operons under high/low dynamic promoter combinations in TRPactive_LAA",
+        "conditions": {
+          "seed": "1 mL into 20 mL M9-2Y; 37 C 3.5 h then 0.5 mM IPTG; 30 C 48 h"
+        },
+        "controls": [
+          "Vio_0.5 (constitutive Plpp0.5 operons)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "violacein titer (HPLC, 570 nm)",
+          "residual tryptophan (Figure S7b)"
+        ],
+        "outcome": "Vio_LH and Vio_HH exceeded control by 4.5-fold and 5.7-fold at 48 h; high-level dynamic vioAC up-regulation most beneficial",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+          "5_shake_flasks_fermentation_p002",
+          "references_p075"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    },
+    {
+      "priority": "HIGH",
+      "paper_benchmark_id": "GOLD-P03",
+      "item_id": "GOLD-P03-A-011",
+      "source_evidence": [
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006",
+        "references_p075"
+      ],
+      "a_interpretation": {
+        "experiment_id": "EXP-11",
+        "name": "Bifunctional regulation of violacein production",
+        "objects": [
+          "OBJ-VIO"
+        ],
+        "intervention": "PtrpO1(G3C)-plsB repression operon added to Vio_HH (Viodual_HH)",
+        "conditions": {
+          "same_as": "EXP-10"
+        },
+        "controls": [
+          "Vio_HH-0.5 (single up-regulation, constitutive Plpp0.5-plsB)",
+          "Vio_0.5 (unregulated)"
+        ],
+        "replicates": {
+          "biological_replicates": 3
+        },
+        "readouts": [
+          "violacein titer",
+          "tryptophan consumption (Figure S7c)"
+        ],
+        "outcome": "Viodual_HH 10.5+/-0.6 mg/L; 7.4-fold over Vio_0.5 (1.4+/-0.1 mg/L) and 1.3-fold over Vio_HH-0.5 (8.0+/-0.4 mg/L)",
+        "value_role": "implemented_and_measured",
+        "evidence_paragraphs": [
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+          "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006",
+          "references_p075"
+        ]
+      },
+      "g_interpretation": "SEE_PAIRED_ITEM",
+      "comparator_alignment": "SEE_ALIGNMENT_REPORT",
+      "human_choice": "AWAITING_HUMAN_ADJUDICATION"
+    }
+  ],
+  "candidate_items_are_gold": false
+}

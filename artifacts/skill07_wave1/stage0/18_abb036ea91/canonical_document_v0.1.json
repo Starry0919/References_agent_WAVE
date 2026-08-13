@@ -1,0 +1,1711 @@
+{
+  "document_metadata": {
+    "paper_id": "paper:71ab13883b209e2872f3",
+    "title": null,
+    "parser": "MinerU",
+    "parser_version": "3.4.4",
+    "cleaner": "skill06_markdown_cleaner",
+    "cleaner_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "source_markdown_sha256": "79cb0eeba62926b2e863092fc2ccbfda21043f8b2eda4abf62a7d1a95962f862",
+    "clean_markdown_sha256": "7f21d5e4a16253d3231281d741f2a6fff3fcaf39e5d8ac74cb3d95d895256334"
+  },
+  "figures": [
+    {
+      "figure_id": "Figure 1",
+      "caption": "Design and characterization of tryptophan-inducible transcriptional factor-based genetic inverter.",
+      "related_paragraphs": [
+        "references_p042"
+      ]
+    },
+    {
+      "figure_id": "Figure 2",
+      "caption": "Engineering the tryptophan-inducible transcriptional factor-based genetic inverter for amplified output.",
+      "related_paragraphs": [
+        "references_p050"
+      ]
+    },
+    {
+      "figure_id": "Figure 3",
+      "caption": "Characterization of optimized inverter and bifunctional circuits.",
+      "related_paragraphs": [
+        "references_p061"
+      ]
+    },
+    {
+      "figure_id": "Figure 4",
+      "caption": "Monitoring tryptophan production using tryptophan-responsive strains. (a) Design of tryptophan-responsive strains TRPactive\\_DSA and TRPactive\\_LAA. #tetR represents the tetR gene with DSA or LAA degradation tags. (b) Tryptophan titer and activated RFP intensity in the TRPactive\\_DSA strain during tryptophan production. (c) Tryptophan titer and activated RFP intensity in the TRPactive\\_LAA strain during tryptophan production. (d) Design of tryptophan-responsive strain TRPdual\\_LAA. (e) Tryptophan titer, activated RFP intensity, and repressed GFP intensity in the TRPdual\\_LAA strain during tryptophan production. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "related_paragraphs": [
+        "references_p068"
+      ]
+    },
+    {
+      "figure_id": "Figure 5",
+      "caption": "Dynamic regulation of tryptophan derivatives production using inverter and bifunctional circuits.",
+      "related_paragraphs": [
+        "references_p075"
+      ]
+    }
+  ],
+  "tables": [],
+  "citations": [],
+  "cleaning_metadata": {
+    "cleaning_history": []
+  },
+  "canonical_representation": {
+    "version": "skill07_canonical_document_v0.1",
+    "source_sha256": "c8fbe7230fcd27e86727a66d60f363c9d022c7f750841a5fd7f6b560b8dc6386",
+    "text_source_of_truth": "paragraphs[].text",
+    "section_content_policy": "ordered paragraph references plus position-aware residual_content",
+    "reversible": true
+  },
+  "sections": [
+    {
+      "title": "Architecting a Transcriptional Repressor-based Genetic Inverter for Tryptophan Derived Pathway Regulation in Escherichia coli",
+      "level": 1,
+      "section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "position": 0,
+      "parent_section_id": null,
+      "paragraph_ids": [
+        "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p001",
+        "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p002",
+        "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Abstract",
+      "level": 2,
+      "section_id": "abstract",
+      "position": 1,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "abstract_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Keywords",
+      "level": 2,
+      "section_id": "keywords",
+      "position": 2,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "keywords_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Introduction",
+      "level": 2,
+      "section_id": "introduction",
+      "position": 3,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "introduction_p001",
+        "introduction_p002",
+        "introduction_p003",
+        "introduction_p004",
+        "introduction_p005",
+        "introduction_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Results",
+      "level": 2,
+      "section_id": "results",
+      "position": 4,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "1. Design of the Tryptophan-inducible TrpR-TetR Genetic Inverter",
+      "level": 2,
+      "section_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 5,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+        "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2. Construction and Characterization of the Tryptophan-inducible TrpR-TetR Genetic Inverter",
+      "level": 2,
+      "section_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 6,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002",
+        "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "3. Exploring and Fine-tuning Key Genetic Elements of Genetic Inverter for Amplified Activation Outputs",
+      "level": 2,
+      "section_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "position": 7,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p001",
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+        "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4. Optimization of Genetic Inverter Configurations",
+      "level": 2,
+      "section_id": "4_optimization_of_genetic_inverter_configurations",
+      "position": 8,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "4_optimization_of_genetic_inverter_configurations_p001",
+        "4_optimization_of_genetic_inverter_configurations_p002",
+        "4_optimization_of_genetic_inverter_configurations_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "5. Characterization of Bifunctional Circuits and Monitoring of Tryptophan Production in Fermentation",
+      "level": 2,
+      "section_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation",
+      "position": 9,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p002",
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+        "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "6. Applying Tryptophan-responsive Strain TRPactive\\_DSA for Dynamic Up-regulation of Tryptamine Production",
+      "level": 2,
+      "section_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production",
+      "position": 10,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p001",
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+        "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "7. Applying Tryptophan-responsive Strain TRPdual\\_LAA for Bifunctional Regulation of Violacein Production",
+      "level": 2,
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 11,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p001",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p002",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p004",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+        "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Discussion",
+      "level": 2,
+      "section_id": "discussion",
+      "position": 12,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "discussion_p001",
+        "discussion_p002",
+        "discussion_p003",
+        "discussion_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Materials and methods",
+      "level": 2,
+      "section_id": "materials_and_methods",
+      "position": 13,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "1. Strains, plasmids, and chemicals",
+      "level": 2,
+      "section_id": "1_strains_plasmids_and_chemicals",
+      "position": 14,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "1_strains_plasmids_and_chemicals_p001",
+        "1_strains_plasmids_and_chemicals_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2. DNA manipulation",
+      "level": 2,
+      "section_id": "2_dna_manipulation",
+      "position": 15,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "2_dna_manipulation_p001",
+        "2_dna_manipulation_p002",
+        "2_dna_manipulation_p003",
+        "2_dna_manipulation_p004",
+        "2_dna_manipulation_p005",
+        "2_dna_manipulation_p006"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "3. Fluorescence assays",
+      "level": 2,
+      "section_id": "3_fluorescence_assays",
+      "position": 16,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "3_fluorescence_assays_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4. Cell imaging",
+      "level": 2,
+      "section_id": "4_cell_imaging",
+      "position": 17,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "4_cell_imaging_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "5. Shake flasks fermentation",
+      "level": 2,
+      "section_id": "5_shake_flasks_fermentation",
+      "position": 18,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "5_shake_flasks_fermentation_p001",
+        "5_shake_flasks_fermentation_p002",
+        "5_shake_flasks_fermentation_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "6. HPLC analysis",
+      "level": 2,
+      "section_id": "6_hplc_analysis",
+      "position": 19,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "6_hplc_analysis_p001",
+        "6_hplc_analysis_p002",
+        "6_hplc_analysis_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Supplementary Material",
+      "level": 2,
+      "section_id": "supplementary_material",
+      "position": 20,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "supplementary_material_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Acknowledgments",
+      "level": 2,
+      "section_id": "acknowledgments",
+      "position": 21,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "acknowledgments_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "References",
+      "level": 2,
+      "section_id": "references",
+      "position": 22,
+      "parent_section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "paragraph_ids": [
+        "references_p001",
+        "references_p002",
+        "references_p003",
+        "references_p004",
+        "references_p005",
+        "references_p006",
+        "references_p007",
+        "references_p008",
+        "references_p009",
+        "references_p010",
+        "references_p011",
+        "references_p012",
+        "references_p013",
+        "references_p014",
+        "references_p015",
+        "references_p016",
+        "references_p017",
+        "references_p018",
+        "references_p019",
+        "references_p020",
+        "references_p021",
+        "references_p022",
+        "references_p023",
+        "references_p024",
+        "references_p025",
+        "references_p026",
+        "references_p027",
+        "references_p028",
+        "references_p029",
+        "references_p030",
+        "references_p031",
+        "references_p032",
+        "references_p033",
+        "references_p034",
+        "references_p035",
+        "references_p036",
+        "references_p037",
+        "references_p038",
+        "references_p039",
+        "references_p040",
+        "references_p041",
+        "references_p042",
+        "references_p043",
+        "references_p044",
+        "references_p045",
+        "references_p046",
+        "references_p047",
+        "references_p048",
+        "references_p049",
+        "references_p050",
+        "references_p051",
+        "references_p052",
+        "references_p053",
+        "references_p054",
+        "references_p055",
+        "references_p056",
+        "references_p057",
+        "references_p058",
+        "references_p059",
+        "references_p060",
+        "references_p061",
+        "references_p062",
+        "references_p063",
+        "references_p064",
+        "references_p065",
+        "references_p066",
+        "references_p067",
+        "references_p068",
+        "references_p069",
+        "references_p070",
+        "references_p071",
+        "references_p072",
+        "references_p073",
+        "references_p074",
+        "references_p075"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 11,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 12,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 13,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 14,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 15,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 16,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 17,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 18,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 19,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 20,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 21,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 22,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 23,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 24,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 25,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 26,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 27,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 28,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 29,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 30,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 31,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 32,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 33,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 34,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 35,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 36,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 37,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 38,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 39,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 40,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 41,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 42,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 43,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 44,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 45,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 46,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 47,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 48,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 49,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 50,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 51,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 52,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 53,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 54,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 55,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 56,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 57,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 58,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 59,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 60,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 61,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 62,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 63,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 64,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 65,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 66,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 67,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 68,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 69,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 70,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 71,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 72,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 73,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 74,
+          "content": "\n\n"
+        }
+      ]
+    }
+  ],
+  "paragraphs": [
+    {
+      "paragraph_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p001",
+      "text": "Xinyu Gong<sup>1</sup>, Yuxi Teng<sup>1</sup>, Jianli Zhang<sup>1</sup>, Qi Gan<sup>1</sup>, Ming Song<sup>2</sup>, Ameen Alaraj<sup>1</sup>, Peter Kner<sup>2</sup>, Yajun Yan<sup>1,\\*</sup>",
+      "section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "position": 0
+    },
+    {
+      "paragraph_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p002",
+      "text": "<sup>1.</sup>School of Chemical, Materials and Biomedical Engineering, College of Engineering, The University of Georgia, Athens, GA 30602, USA.",
+      "section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "position": 1
+    },
+    {
+      "paragraph_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli_p003",
+      "text": "<sup>2.</sup>School of Electrical and Computer Engineering, College of Engineering, The University of Georgia, Athens, GA 30602, USA.",
+      "section_id": "architecting_a_transcriptional_repressor_based_genetic_inverter_for_tryptophan_derived_pathway_regulation_in_escherichia_coli",
+      "position": 2
+    },
+    {
+      "paragraph_id": "abstract_p001",
+      "text": "Efficient microbial cell factories require intricate and precise metabolic regulations for optimized production, which can be significantly aided by implementing regulatory genetic circuits with versatile functions. However, constructing functionally diverse genetic circuits in host strains is challenging. Especially, functional diversification based on transcriptional repressors has been rarely explored due to the difficulty in inverting their repression properties. To address this, we proposed a design logic to create transcriptional repressor-based genetic inverters for functional enrichment. As proof of concept, a tryptophan-inducible genetic inverter was constructed by integrating two sets of transcriptional repressors, Ptr<sub>p</sub>O1-TrpR1 and PtetO1-TetR. In this genetic inverter, the repression of TetR towards PtetO1 could be alleviated by the tryptophan-TrpR1 complex in the presence of tryptophan, leading to the activated output. Subsequently, we optimized the dynamic performance of the inverter and constructed tryptophan-triggered dynamic activation systems. Further coupling of the original repression function of Ptr<sub>p</sub>O1-TrpR1 with inverter variants realized the tryptophan-triggered bifunctional regulation system. Finally, the dynamic regulation systems enabled tryptophan production monitoring. These systems also remarkably increased the titers of the tryptophan derivatives tryptamine and violacein by 2.0-fold and 7.4-fold, respectively. The successful design and application of the genetic inverter enhanced the applicability of transcriptional repressors.",
+      "section_id": "abstract",
+      "position": 3
+    },
+    {
+      "paragraph_id": "keywords_p001",
+      "text": "TrpR; TetR; Transcriptional Repressor; Genetic Inverter; Dynamic Regulation; Tryptamine; Violacein",
+      "section_id": "keywords",
+      "position": 4
+    },
+    {
+      "paragraph_id": "introduction_p001",
+      "text": "Microbial cell factories are engineered to harbor biosynthetic pathways for the efficient production of desired compounds (Cho et al., 2022; Gustavsson and Lee, 2016). However, overexpression of crucial synthetic genes and the deletion of competing pathways often lead to impaired cell growth and imbalanced carbon flow, resulting in low production yield (Fang et al., 2020; Prelich, 2012). Implementing regulatory genetic circuits is an effective alternative to precisely modulating cell metabolism and relieving the detrimental effects of pathway modifications, enhancing the productivity of microbial cell factories (Jiang et al., 2022). One strategy is establishing regulatory circuits based on transcriptional factors (TFs). Microorganisms possess TFs, a type of regulatory protein, to balance the varying intracellular metabolisms and adapt to the changing extracellular environments during cell growth (Schallmey et al., 2014). TFs have been well-explored due to their unique signalresponsive properties, diverse regulatory mechanisms, and wide distributions among species. Both intracellular and extracellular signals, such as metabolites, temperature, and pH, can act as signals to trigger TFs and initiate the regulation at the transcriptional level (Kim et al., 2020; Lu et al., 2024; Pham et al., 2022). Inspired by the inducible capabilities, various signal-responsive TFs-based biosensors have been generated as genetic tools for the detection of metal ions or pollutants (Özyurt et al., 2019), the dynamic regulation of microbial metabolic networks (Zou et al., 2024), and the high-throughput screening of functional variants (Kaczmarek and Prather, 2021), among other applications.",
+      "section_id": "introduction",
+      "position": 5
+    },
+    {
+      "paragraph_id": "introduction_p002",
+      "text": "The diverse mechanisms of TFs represent a unique opportunity for biosensor development (Teng et al., 2022). TFs can be categorized into three subclasses according to their final output: transcriptional activators, transcriptional repressors, and bifunctional TFs (Deng et al., 2022). Bifunctional TFs hold great potential for intricate metabolic regulations due to their diverse functions. For example, the cAMP receptor in Ecoli, CRP (Kolb et al., 1993), is a complex regulatory protein involved in global regulation networks with activation and repression functions. The CRP-cAMP complex recognizes DNA binding boxes with a 5’ TGTGA 3’ motif, leading to up- or down-regulation of target genes by interfering with RNA polymerase binding in different phases (Kolb et al., 1993). In comparison, transcriptional activators and transcriptional repressors are mono-functional regulators, and expanded functions are required to achieve precise metabolic regulation and efficient microbial production. Transcriptional activators are well-studied TFs and exhibit an activated or enhanced output after responding to the signal, which has been proven to be easily manipulated due to their straightforward activation mechanisms. For instance, the <sub>p</sub>BAD-AraC is a well-known activation system (Soisson et al., 1997), in which the presence of the L-arabinose-AraC complex disrupts the DNA looping and enables the activated transcription of the downstream gene under the control of the $P _ { B A D }$ promoter (Soisson et al., 1997). Moreover, transcriptional activators not only work independently",
+      "section_id": "introduction",
+      "position": 6
+    },
+    {
+      "paragraph_id": "introduction_p003",
+      "text": "but also can be coupled with CRISPR interference (CRISPRi) as a functionally inverted system with expanded repression function for metabolic engineering applications. To construct a transcriptional activator-based genetic inverter, sgRNA can be directly controlled by the transcriptional activator to achieve repression property. Wang et al. engineered a 3-hydroxybutyrate (3HB) responsive activator HpdR and established a tunable CRISPRi system by expressing variable-length sgRNAs after $P _ { h p d H }$ promoter in a CRISPR dCas9- integrated strain. Thus they effectively screened the accA repression target for improved 1,3-BDO yield and ultimately achieved a production of 22.66 g/L in a 1-L fermenter (Wang et al., 2021).",
+      "section_id": "introduction",
+      "position": 7
+    },
+    {
+      "paragraph_id": "introduction_p004",
+      "text": "Conversely, transcriptional repressors present a repressed or attenuated output after receiving the signal. For instance, the well-characterized transcriptional repressor, TrpR (Arvidson et al., 1986), shows aporepressor properties upon interacting with tryptophan. When tryptophan combines with the TrpR dimers, the transcription under the control of the promoter is gradually inhibited as tryptophan levels increase (Arvidson et al., 1986). However, applications of transcriptional repressors are limited by their repression mechanisms. First, gene overexpression strategies are often given priority over gene repression in regulating microbial production (Hirasawa and Shimizu, 2016). Besides, leaky expression of the repressors is quite common, which would cause compromised repression efficacy in regulating cellular metabolism and lead to false positives during high-throughput screening. Therefore, it is crucial to engineer transcriptional repressors for improved applicability and expanded functions, especially given the finite TFs-based biosensors for specific metabolites.",
+      "section_id": "introduction",
+      "position": 8
+    },
+    {
+      "paragraph_id": "introduction_p005",
+      "text": "Functionally flipped transcriptional repressor-based genetic inverters are underexplored, as assembling genetic elements for expanded circuit functions and amplified output signals is challenging. In this study, we established a tryptophan-inducible transcriptional repressorbased genetic inverter in Escherichia coli (E coli) and successfully attained the activation function. The inverter employed a tryptophan-inducible Ptr<sub>p</sub>O1-TrpR1 repression system and a PtetO1-TetR repression system (Ellefson et al., 2018; Lutz and Bujard, 1997). We began by detailing the design logic and constructing the initial Inverter\\_V1 that showed insignificant expression and inconspicuous activation. To ensure a significant activation output, we assessed the effector response range of each repressor system to enhance compatibility between them. The engineered Inverter\\_V1.1 and Inverter\\_V1.2 showed improved expression levels with 3.2-fold and 14.7-fold activation, respectively. Subsequently, we optimized the inverter by manipulating key genetic elements, resulting in variants with improved dynamic performance and activation strengths. The selected inverter variants were further integrated into a tryptophan-producing strain to establish tryptophan-triggered dynamic activation systems. We also coupled the inherent repression function of Ptr<sub>p</sub>O1-TrpR1 with the inverter to create tryptophan-triggered bifunctional regulation systems and characterized them by simultaneously measuring repressed GFP and activated RFP output at both the cell population and single-cell levels. Finally, the tryptophan-triggered regulation systems were successfully applied to monitor tryptophan production and dynamic regulation of tryptophan derivative production. The dynamic upregulation of the tryptamine pathway and bifunctional regulation of the violacein pathway enhanced production titers by 2.0-fold and 7.4-fold, respectively. Our results demonstrate",
+      "section_id": "introduction",
+      "position": 9
+    },
+    {
+      "paragraph_id": "introduction_p006",
+      "text": "the functionality and efficiency of the tryptophan-inducible genetic inverter and its derived regulation systems in coordinating heterologous pathway expression and highlight the advantages of employing regulatory genetic circuits in microbial production.",
+      "section_id": "introduction",
+      "position": 10
+    },
+    {
+      "paragraph_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+      "text": "To engineer complex cell metabolism, versatile regulatory functions are commonly desired. The single repression functionality of transcriptional repressors often impedes their application in many scenarios. Herein, we proposed a universal design logic for transcriptional repressor-based genetic inverters to broaden their functionality (Figure 1a and 1b). Our design incorporated two transcriptional repressors for the inverter construction. Specifically, transcriptional repressor 1 is ligand-inducible and responsible for detecting inducers and controlling the expression of transcriptional repressor 2. Transcriptional repressor 2 executes the repression function directly by regulator-operator interaction and performs the inverted signal output. In the absence of the inducer, transcriptional repressor 2 is constantly expressed and maintains tight repression towards the output signal (Figure 1a). Upon addition of the inducer, the complex of transcriptional repressor 1 and inducer would repress the expression of transcriptional repressor 2. This would alleviate the repression imposed by transcriptional repressor 2 to its corresponding promoter, consequently causing activation output (Figure 1b).",
+      "section_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 11
+    },
+    {
+      "paragraph_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002",
+      "text": "As proof of concept, we selected tryptophan-inducible Ptr<sub>p</sub>O1-TrpR1 and PtetO1-TetR repressors to develop the proposed inverter. In the Ptr<sub>p</sub>O1-TrpR1 repression system, the TrpR1-tryptophan complex binds to the Ptr<sub>p</sub>O1 promoter upon tryptophan addition and represses the expression of the downstream gene (Gong et al., 2022). In the PtetO1-TetR repression system, TetR binds to the PtetO1 promoter and directly inhibits the downstream gene expression (Lutz and Bujard, 1997). In our designed inverter, TrpR1 is designated as the transcriptional repressor 1, which is responsible for detecting tryptophan and controlling the expression of TetR. TetR serves as the transcriptional repressor 2 to invert the final output. In the absence of tryptophan, TetR would express constantly and repress the promoter due to the lack of repression of the TrpR1-tryptophan complex, and the genetic inverter shows no activation output (Figure 1c). In the presence of tryptophan, the TrpR1-tryptophan complex suppresses TetR expression and alleviates the repression of TetR towards the PtetO1 promoter. This ultimately results in tryptophan-inducible activation output (Figure 1d).",
+      "section_id": "1_design_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 12
+    },
+    {
+      "paragraph_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p001",
+      "text": "To construct the inverter, we selected the Ptr<sub>p</sub>O1-TrpR1 repressor variant Ptr<sub>p</sub>O1(G3C)- TrpR1(V58K) based on its low leaky expression and high repression efficacy when induced by tryptophan in our previous study (Gong et al., 2022). First, the regulator protein TrpR1(V58K) was constitutively expressed in the low-copy number plasmid under the control of the Pl<sub>pp</sub>0<sub>.</sub>03 constitutive promoter. Next, the corresponding promoter was placed in the medium-copy number plasmid to control TetR expression for the incorporation of the PtetO1-TetR repression system. Finally, PtetO1 promotercontrolled RFP was constructed in the high-copy number plasmid as reporter plasmid for activation output. The assembly of the genetic elements resulted in the tryptophan-inducible Inverter\\_V1 (Figure 1c and 1d). Next, Inverter\\_V1 was characterized in strain XG1 (E<sub>.</sub> BW25113 F’ ) for proof-of-concept. Unfortunately, no significant RFP activation was observed after adding a gradient concentration of tryptophan in fluorescence assays (Figure 1e). We deduced that the two transcriptional repressors inside Inverter\\_V1 did not coordinate well by such assembly.",
+      "section_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 13
+    },
+    {
+      "paragraph_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p002",
+      "text": "To troubleshoot Inverter\\_V1, we investigated the two repression systems separately by fluorescence assays. Firstly, we tested the tryptophan-inducible repression property of the constitutively expressed Ptr<sub>p</sub>O1(G3C)-Pl<sub>pp</sub>0<sub>.</sub>03-TrpR1(V58K) system. The results showed that the constitutively expressed repression system could respond to tryptophan as the concertation changed from 0 to 125 mg/L (Figure S1a) and even exhibited better repression efficacy compared with our previously developed Ptr<sub>p</sub>O1(G3C)-PLlacO1-TrpR1(V58K) system (Gong et al., 2022). We then evaluated the tunability of the PtetO1-TetR repression system by using a well-established IPTG-inducible PLlacO1 promoter to control the expression of TetR and using the PtetO1 promoter to control the reporter GFP (Figure S1b). Ideally, higher IPTG induction would increase TetR levels, leading to stronger repression of GFP in a dose-dependent manner. However, our results indicated extreme repression at low IPTG concentrations (Figure S1b). The expected dose-dependent response was not observed. We inferred that the stable and strong binding affinity between TetR and the PtetO1 promoter caused stringent repression, which led to the dysfunction of Inverter\\_V1. To solve this problem, we introduced two protein degradation tags DAS and LAA (McGinness et al., 2006), and attached them to TetR to form PtetO1-TetR repression system variants. With different protein degradation rates, we hypothesized that the variants would lead to reduced TetR protein stability and relieve the stringent repression. After characterizing -TetR repression system variants in strain XG1, we observed the dose-dependent repression manner when TetR expression was induced by 0 to 50 μM IPTG among two groups (Figure S1c). Especially, the repression system with TetR\\_LAA showed higher GFP intensity upon induction of $1 0 \\mu \\mathrm { M I P T G } ,$ indicating a faster degradation rate of the LAA tag. This result suggested that the stringent repression of TetR was sufficiently relieved by attaching the LAA degradation tag. With degradation tags, the PtetO1-TetR system can gradually downregulate the gene expression controlled by the PtetO1 promoter instead of stringent repression. The strategy could be potentially used to solve the Inverter\\_V1 dysfunction.",
+      "section_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 14
+    },
+    {
+      "paragraph_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter_p003",
+      "text": "Next, we introduced TetR\\_DAS and TetR\\_LAA into Inverter\\_V1, yielding inverter variants Inverter\\_V1.1 and Inverter\\_V1.2, and evaluated their activation functions in fluorescence assays. As shown in Figure 1e, both variants exhibited improved RFP outputs compared to Inverter\\_V1 upon 0 to 500 mg/L tryptophan induction. Remarkably, Inverter\\_V1.2 demonstrated a 14.7-fold dynamic range with minimal leaky expression (45.8±4.7 a.u.) and a high expression level (672.6±142.2 a.u.). While Inverter\\_V1.1 exhibited a 3.2-fold dynamic range with a lower expression level ranging from 40.8±7.8 a.u. to 129.6±53.0 a.u. The results indicated that introducing degradation tags significantly improved inverter performance and solved the dysfunction. Furthermore, characterizing the inverter validated the feasibility of our design. However, the expression levels of the inverter variants were inadequate to regulate practical pathways efficiently. Further engineering efforts were required to enhance their activation performance.",
+      "section_id": "2_construction_and_characterization_of_the_tryptophan_inducible_trpr_tetr_genetic_inverter",
+      "position": 15
+    },
+    {
+      "paragraph_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p001",
+      "text": "Given the low expression level of our inverter variants, we identified two potential factors that contributed to the results. On the one hand, the leaky expression of Ptr<sub>p</sub>O1(G3C)- -TrpR1(V58K) repression system led to excessive TetR accumulation. This subsequently caused continuous tight repression towards the PtetO1 promoter, thereby resulting in the low activation output. On the other hand, the weak PtetO1 promoter strength directly resulted in the low activation output. To address these issues, we optimized the inverter variants by reducing TetR abundance and improving the PtetO1 promoter strength for enhanced activation output.",
+      "section_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "position": 16
+    },
+    {
+      "paragraph_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p002",
+      "text": "TetR abundance was regarded as one crucial tunable element. We endeavored to mitigate TetR accumulation by reducing the leaky expression of Ptr<sub>p</sub>O1(G3C)-Pl<sub>pp</sub>003- TrpR1(V58K) repression system. Then, a series of low-strength ribosome binding sites (RBS) were generated by randomly mutating the loci 6, 7, 8, and 9 (refer to the iGEM library (http://parts.igem.org/Part:BBa\\_K1676100)) of the wildtype RBS individually for lower Ptr<sub>p</sub>O1(G3C) promoter strength (Figure 2b). Next, we introduced these RBS variants into the Ptr<sub>p</sub>O1(G3C)-Pl<sub>pp</sub>0<sub>.</sub>03-TrpR1(V58K) repression system, resulting in a series of repression system variants for fluorescence assays. All variants maintained similar repression efficiency but showed lower leakiness than the wild type (Figure S2). As the RBS strength decreased, the repression system variants exhibited lower leaky expression. According to the reduced varying levels of leakiness, we selected RBS variants RBS(G7T), RBS(A8G), and RBS(G9C) for inverter optimization (Figure 2a). Inverter variants were designated based on their RBS modifications: those with RBS(G7T) as Inverter\\_V1.1.1 and Inverter\\_V1.2.1; those with RBS(A8G) as Inverter\\_V1.1.2 and Inverter\\_V1.2.2; and those with RBS(G9C) as Inverter\\_V1.1.3 and Inverter\\_V1.2.3. Upon induction with tryptophan, the inverter variants demonstrated a spectrum of activation strengths, ranging from low to high dynamic levels (Figure 2c). The inverter variant with the low-strength RBS showed a higher activation strength. Notably, Inverter\\_V1.2.1 generated by introducing the loweststrength RBS(G7T) to Inverter\\_V1.2, exhibited the most enhanced activation output of 2208±5.0 a.u., representing a 5-fold increase from the baseline of 440±21.1 a.u. (Figure 2c). This variant could potentially serve as high-expression-level activation circuits in pathway regulation. Additionally, a low-expression-level Inverter\\_V1.1.1 variant with a 7.38-fold dynamic range was selected to enrich the diversity of the inverter repository for broader applicability. The results demonstrated that reduced TetR abundance had a positive effect on amplifying activation outputs.",
+      "section_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "position": 17
+    },
+    {
+      "paragraph_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p003",
+      "text": "The PtetO1 promoter strength was considered as the other crucial tunable element to further amplify the activation outputs. To validate this, we introduced random mutations in the −10 region of the PtetO1 promoter and its RBS region to enhance the gene expression level. We evaluated the relative RFP expression levels of the mutant promoters compared to the wildtype PtetO1 promoter (Figure 2e). The PtetO1-RBS(A2C) promoter variant exhibited the highest RFP expression, with a 2.21-fold increase over the wildtype. Additionally, RFP expression controlled by PtetO1(N4–2) and PtetO1(N6–8) promoter variants exhibited a 1.7-fold and 1.8-fold increase, respectively. The findings showed great potential for enhancing the inverter activation outputs. To diversify the activation performances of the inverter, all obtained PtetO1 promoter variants with distinct strengths were introduced into Inverter\\_V1.1.1 and Inverter\\_V1.2.1 (Figure 2d). Inverter \\_V1.1.1 with PtetO1 variants were designated as Inverter \\_V1.1.1a-g, and Inverter \\_V1.2.1 with variants were designated as Inverter \\_V1.2.1a-g. We characterized the inverter variants with gradient tryptophan in strain XG1. The activation strength of these variants is closely correlated with the strength of PtetO1 promoter variants (Figure 2f, and 2g). As the PtetO1 promoter strength increased, the activation output of inverter variants enhanced. Notably, Inverter\\_V1.2.1e reached the highest RFP expression (2316.3±75.5 a.u.) with moderate leaky expression (483.8±22.6 a.u.) among Inverter\\_V1.2.1 variants and showed a 4.8-fold dynamic range (Figure 2g). Inverter\\_V1.1.1e reached the highest RFP expression (1485.1±48.5 a.u.) with low leaky expression (218.6±40.5 a.u.) among Inverter\\_V1.1.1 variants and showed a 6.8-fold dynamic range (Figure 2f).",
+      "section_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "position": 18
+    },
+    {
+      "paragraph_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs_p004",
+      "text": "In summary, we successfully amplified the inverter outputs by reducing the TetR abundance and engineering the PtetO1 promoter and its RBS. The resulting inverter variants showed diverse activation strength, which holds great promise for biosynthesis pathway regulation. According to the results, Inverter\\_V1.1.1e and Inverter\\_V1.2.1e with high-activated RFP output are high-level activation circuits. Additionally, Inverter\\_V1.1.1f and Inverter\\_V1.2.1f with relatively lower activated RFP output are applicable as low-level activation circuits (Figure 2f and 2g). The diverse performance of inverter variants would allow us to customize pathway regulation strategies to fine-tune the regulation levels in different scenarios for maximized productivity.",
+      "section_id": "3_exploring_and_fine_tuning_key_genetic_elements_of_genetic_inverter_for_amplified_activation_outputs",
+      "position": 19
+    },
+    {
+      "paragraph_id": "4_optimization_of_genetic_inverter_configurations_p001",
+      "text": "To implement genetic circuits, one problem is the supply of inducers in the host strain and the other problem is the recruitment of multiple plasmids to deliver the necessary components. Our tryptophan-inducible genetic inverter comprised three plasmids and two transcriptional repressors, which might lead to the above problems in further applications. To address the issues, firstly, the ubiC gene, which catalyzes the conversion of chorismate to 4-hydroxybenzoate and bypasses the tryptophan pathway, was deleted to direct more carbon flux towards tryptophan formation, resulting in the tryptophan-producing strain XG2. Then, the regulatory protein TrpR1(V58K) was integrated into the chromosome of strain XG2 to reduce the number of plasmids, yielding the engineered strain XG3.",
+      "section_id": "4_optimization_of_genetic_inverter_configurations",
+      "position": 20
+    },
+    {
+      "paragraph_id": "4_optimization_of_genetic_inverter_configurations_p002",
+      "text": "To evaluate the functionality of the TrpR(V58K) integrated strain XG3, we investigated the repression and activation functions, respectively. We introduced a simple reporter plasmid (pCS-Ptr<sub>p</sub>O1(G3C)-GFP) into strain XG3 to validate the repression function. As a control, we tested the constitutively expressed Ptr<sub>p</sub>O1(G3C)-Pl<sub>pp</sub>0<sub>.</sub>03-TrpR1(V58K) system with all genetic elements in two plasmids in strain XG1. Upon induction of tryptophan, the repression within strain XG3 was strong and low-leaky and showed better repression",
+      "section_id": "4_optimization_of_genetic_inverter_configurations",
+      "position": 21
+    },
+    {
+      "paragraph_id": "4_optimization_of_genetic_inverter_configurations_p003",
+      "text": "efficiency (96.67%) than that of the control group (73.07%) (Figure S3). Based on this result, we hypothesized that the low leaky expression would improve the activation function of the inverter. Next, to test the activation function, we transferred two necessity plasmids of Inverter\\_V1.1.1 into the TrpR(V58K) integrated strain XG3 to form Inverter\\_V2.1.1. The control group employed Inverter\\_V1.1.1 harboring three plasmids in strain XG1. In the addition of gradient tryptophan, Inverter\\_V2.1.1 showed a notably improved 10.7-fold dynamic range with low leaky expression (380.8±56.1 a.u.) compared to Inverter\\_V1.1.1 (Figure 3a). The results indicated the efficiency of TrpR(V58K) integrated strain XG3 in performing both repression and activation functions under simplified plasmid configurations. Subsequently, to expand the diversity of the inverter repository, we introduced two necessity plasmids of Inverter1.1.1e&f and Inverter\\_V1.2.1e&f into strain XG3, yielding strain Inverter\\_V2.1.1e&f and Inverter\\_V2.2.1e&f with low- or high-level expression. These optimized inverter variants exhibited significantly enhanced activation strengths than the previous version (Figure 3b and 3c). As expected, Inverter\\_V2.1.1e and Inverter\\_V2.2.1e expressed in high levels with 14.2-fold and 3.4-fold dynamic ranges and reached the highest RFP expression of 5316.5±241.4 a.u. and 5649.1±273.9 a.u., respectively. Meanwhile, Inverter\\_V2.1.1f and Inverter\\_V2.2.1f expressed in low levels with 13.2-fold and 3.3- fold dynamic ranges and reached the highest RFP expression of 2696.8±92.8 a.u. and 2558.1±67.6 a.u., respectively. To summarize, the performance of optimized inverters underscores the necessity of reorganizing inverter configurations. Additionally, based on the results, we proposed that the inverter could be further engineered as a bifunctional regulation circuit for expanded functionalities with repression and activation simultaneously.",
+      "section_id": "4_optimization_of_genetic_inverter_configurations",
+      "position": 22
+    },
+    {
+      "paragraph_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p001",
+      "text": "To establish the bifunctional circuits, we integrated the original repression function of -TrpR1(V58K) into Inverter\\_V2.1.1 and Inverter\\_V2.2.1, resulting in strains Dual\\_V2.1.1 and Dual\\_V2.2.1. The repression module was constructed by introducing an additional Ptr<sub>p</sub>O1(G3C) promoter-controlled GFP operon (Figure 3d). As the tryptophan concentrations increased, we observed a substantial enhancement in RFP expression and a significant decrease in GFP expression in strains Dual\\_V2.1.1 and Dual\\_V2.2.1 (Figure 3e and 3g). They demonstrated low-leaky dynamic activation and high-efficacy dynamic repression curves that aligned with the performance of mono-functional circuits (Figure 3a and S3). Although Dual\\_V2.1.1 and Dual\\_V2.2.1 had similar bifunctional performance, Dual\\_V2.1.1 showed lower leaky expression than Dual\\_V2.2.1 in the dynamic activation module. However, the culture medium in the test tube showed the orange color at the tryptophan concentration of 31.5 mg/L. We were concerned about the crosstalk between the activation and repression modules, which would lead to interference between RFP and GFP expression. To ensure that each cell performed its functions accurately, we observed the fluorescence of single cells under the microscope. Remarkably, at the low tryptophan concentration, individual cells stably exhibited strong green fluorescence and weak red fluorescence (Figure 3f and 3h). As the tryptophan concentration increased, individual cells gradually showed strong red fluorescence and weak green fluorescence. Overall, the color and intensity of single-cell fluorescence shifted as the tryptophan concentration fluctuated. No interference was observed between the activation module and the repression module.",
+      "section_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation",
+      "position": 23
+    },
+    {
+      "paragraph_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p002",
+      "text": "Through these experiments, we successfully characterized our bifunctional regulation circuits in engineered strain XG3.",
+      "section_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation",
+      "position": 24
+    },
+    {
+      "paragraph_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p003",
+      "text": "Utilizing biosensors to monitor metabolite production can estimate its formation during fermentation without analytical methods (Rogers and Church, 2016; Rogers et al., 2015). To implement the inverter for tryptophan production monitoring, we introduced an additional -controlled $t r p E ^ { f b r } G$ operon in the medium-copy plasmid to boost tryptophan generation. Next, we introduced an ASV degradation tag (McGinness et al., 2006) to the reporter gene of Inverter\\_V2.1.1 and Inverter\\_V2.2.1 to alleviate RFP accumulation, resulting in strains TRPactive\\_DSA and TRPactive\\_LAA (Figure 4a). RFP expression was an indicator of tryptophan production. During the early fermentation, tryptophan production increased steadily, resulting in a concurrent rise in RFP expression within both strains (Figure 4b and 4c). At 42 h, when cell growth entered the stationary phase (Figure S4a and S4b), our tryptophan-responsive strains were fully activated and exhibited the highest normalized RFP fluorescence intensity (Figure 4b and 4c). In the later fermentation, tryptophan production slowed, and RFP expression fluctuated slightly but maintained high expression levels. Compared to TRPactive\\_DSA, TRPactive\\_LAA exhibited a higher normalized RFP fluorescence intensity when fully activated by tryptophan. The results indicated that these two strains could serve as tryptophan-triggered activation systems.",
+      "section_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation",
+      "position": 25
+    },
+    {
+      "paragraph_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation_p004",
+      "text": "Next, to test the performance of the bifunctional circuit in fermentation, we introduced additional PLlacO1-controlled $t r p E ^ { f b r } G$ operon and ASV degradation tag attached RFP into Dual\\_V2.2.1, yielding tryptophan-responsive strain TRPdual\\_LAA (Figure 4d). During the log phase of cell growth, the strain exhibited dramatically increased RFP expression as tryptophan formed and slightly increased GFP expression (Figure 4e and S4c). At 30 h, TRPdual\\_LAA began exhibiting its bifunctionalities with continuously enhanced RFP expression and attenuated GFP expression (Figure 4e). In the stationary phase of cell growth, the strain exhibited RFP activation and GFP repression simultaneously as tryptophan continuously accumulated (Figure 4e and S4c). Interestingly, the expression of the repression target (GFP) was slightly increased first and then repressed as tryptophan accumulation instead of being fully repressed all the time. This repression pattern is useful for gene targets that need initial overexpression but not sustained high expression throughout the entire fermentation process. In other words, the gene within the repression module would overexpress during the cell growth phase to support cellular metabolisms and then be repressed during the cell production phase, potentially conserving cell resources for the desired product formation. The results indicated that strain TRPdual\\_LAA could be utilized to construct a tryptophan-triggered bifunctional regulation system.",
+      "section_id": "5_characterization_of_bifunctional_circuits_and_monitoring_of_tryptophan_production_in_fermentation",
+      "position": 26
+    },
+    {
+      "paragraph_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p001",
+      "text": "Metabolite-responsive genetic circuits can be leveraged for dynamic regulation to enhance microbial production. This approach enables autonomous control of metabolic flux, allowing optimized cellular resource allocation (Jiang et al., 2022). Our tryptophan-responsive strain TRPactive\\_DSA can monitor tryptophan production (Figure 4a), which could be used to develop tryptophan-triggered dynamic activation systems. By substituting the reporter gene (RFP) with a tryptophan derivative synthase or other genes of interest, the system could facilitate two-stage dynamic regulation for efficient production of tryptophan derivatives. In the initial stage, low tryptophan concentration will not trigger heterologous synthase expression to high levels and cell resources will be assigned to endogenous pathway. When tryptophan accumulates sufficiently to fully activate the circuit, heterologous synthase expression will constantly increase to a high level, catalyzing the conversion of tryptophan into the desired end product. The expression of heterologous synthase changes as the tryptophan concentration fluctuates.",
+      "section_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production",
+      "position": 27
+    },
+    {
+      "paragraph_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p002",
+      "text": "To evaluate the tryptophan-triggered dynamic activation system, we used the tryptamine biosynthetic pathway as proof of concept. Given the structural similarities between tryptophan and tryptamine, we first tested the specificity of the TRPactive\\_DSA strain towards these two compounds. The fluorescence assay results showed that TRPactive\\_DSA significantly responded only to tryptophan (Figure S5). To demonstrate the efficiency of the dynamic activation system in pathway regulation, we introduced low- and high-level promoters PtetO1-RBS(A2C) and PtetO1-RBS(A8G) into TRPactive\\_DSA and replaced the reporter gene RFP with the tryptophan decarboxylase from Catharanthus roseus (CrTDC) (Wang et al., 2020), resulting in the tryptamine production strains TM\\_Low and TM\\_High, respectively (Figure 5a). In the experimental groups, CrTDC expression was dynamically activated at low or high levels. To compare static and dynamic regulation strategies, we employed TM\\_Control as the control strain that overexpressed CrTDC by the constitutive promoter Pl<sub>pp</sub>0<sub>.</sub>5 (Figure 5a). As a control, the promoter strength of Pl<sub>pp</sub>0<sub>.</sub>5 was comparable to the fully activated high-level PtetO1-RBS(A2C) promoter (Figure S6a).",
+      "section_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production",
+      "position": 28
+    },
+    {
+      "paragraph_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production_p003",
+      "text": "The fermentation results revealed that tryptamine production in dynamic activation groups surpassed the control (Figure 5b). Notably, at 48 h, the low-level dynamic activation strain TM\\_Low achieved the highest tryptamine titer of $3 6 . 9 \\pm 2 . 8 ~ \\mathrm { m g / L }$ , representing a 2-fold increase compared to the control group TM\\_Control. This demonstrated that the low-level dynamic activation of CrTDC provided the greatest benefit for tryptamine production within our dynamic activation system. Interestingly, while the control group consumed all tryptophan, the experimental groups had residual tryptophan remaining (Figure S7a). We inferred that the residual tryptophan triggered the dynamic activation system. Then, the system redirected the carbon flux towards tryptamine production, leading to higher tryptamine titers than the control group. These results proved the feasibility of our dynamic activation system for regulating tryptophan derivative production.",
+      "section_id": "6_applying_tryptophan_responsive_strain_trpactive_dsa_for_dynamic_up_regulation_of_tryptamine_production",
+      "position": 29
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p001",
+      "text": "The biosynthesis of valuable plant natural products and secondary metabolites always requires multiple genes or gene clusters to construct the desired biosynthetic pathways (Zhang et al., 2023). However, these complex biosynthesis pathways often contain ratelimiting steps or impose additional metabolic burdens on the host strains, leading to low productivity. Consequently, metabolic regulation (including static and dynamic regulation) is an important factor in establishing efficient microbial cell factories (Hartline et al., 2021; Otero-Muras and Carbonell, 2021). Our bifunctional tryptophan-responsive strain",
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 30
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p002",
+      "text": "TRPdual\\_LAA can serve as a dynamic regulation strategy for developing a tryptophantriggered bifunctional regulation system. This system would simultaneously perform dynamic up- and down-regulation for modulating the complex biosynthetic pathways.",
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 31
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p003",
+      "text": "As a proof of concept, we introduced the violacein production pathway (Cress et al., 2016), encoded by five heterologous genes, vioA, vioB, vioC, vioD, and vioE, for bifunctional regulation. These five genes were organized and constructed into two separate operons and . Firstly, we tested the up-regulation strategy for violacein production. Two violacein synthetic operons, controlled by PtetO1-RBS(A2C) or PtetO1-RBS(A8G) promoters were transfered into strain TRPactive\\_LAA, generating violacein production strains Vio $\\underline { { \\mathrm { H H } } } , \\mathrm { V i o ~ \\underline { { H L } } , \\mathrm { V i o ~ \\underline { { L L } } , } }$ and Vio\\_LH (Figure 5c). In Vio\\_HH, both operons and  were under high dynamic expression from -RBS(A2C). In Vio\\_LH, vioEBD was under low dynamic expression from PtetO1-RBS(A8G), while vioAC was under high dynamic expression from PtetO1-RBS(A2C). Other strains followed a similar naming convention. The control group constitutively overexpressed the two operons using the Pl<sub>pp</sub>0 5 constitutive promoter, resulting in strain Vio\\_0.5. The strength of the promoter was comparable to the fully activated high-level -RBS(A2C) promoter (Figure S6b). At 48 h, violacein production in the dynamic up-regulation groups Vio\\_LH and Vio\\_HH exceeded the control group by 4.5-fold and 5.7-fold, respectively (Figure 5d). The results indicated that high-level dynamic up-regulation of the vioAC operon was more beneficial to violacein production. Although the control group Vio\\_0.5 exhibited less residual tryptophan than the dynamic control groups (Figure S7b), it still cannot achieve a higher violacein titer. This suggested that the dynamic regulation approach enabled more efficient cellular resource utilization and carbon flux distribution.",
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 32
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p004",
+      "text": "Next, we further incorporated the dynamic down-regulation strategy for bifunctional regulation of violacein production. Given the repression pattern of our tryptophan-triggered bifunctional regulation system (Figure 4e), the expression level of the repression target would initially increase and then gradually decrease during fermentation. Therefore, the choice of the repression target was critical. Since violacein is a hydrophobic bis-indole pigment, it accumulates in the cell membrane compartment after formation. For optimized violacein production, membrane engineering strategies have been employed to increase membrane area by boosting the membrane synthetic pathway, or to add extra intracellular reservoirs by generating lip droplets through improved triacylglycerol accumulation (Ma et al., 2019; Wu et al., 2017; Yang et al., 2021). A previous study demonstrated that overexpression of <sub>p</sub>lsB, a crucial gene in the membrane synthetic pathway, improved deoxyviolacein production and altered the morphology of the E<sub>.</sub> coli cell membrane (Yang et al., 2021). Considering the similar chemical property of deoxyviolacein and violacein, <sub>p</sub>lsB was selected as our dynamic down-regulation target. We expected that the regulation system would initially direct carbon flux for cell membrane buildup and cell growth, followed by a shift towards violacein generation.",
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 33
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p005",
+      "text": "We then constructed an additional repression operon harboring the Ptr<sub>p</sub>O1(G3C) promotercontrolled <sub>p</sub>lsB gene in strain Vio\\_HH, resulting in violacein production strain Viodual\\_HH with bifunctional regulation (Figure 5e). As a control, we used the Vio\\_HH-0.5 strain with single up-regulation and constitutively expressed <sub>p</sub>lsB gene by using the Pl<sub>pp</sub>0<sub>.</sub>5",
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 34
+    },
+    {
+      "paragraph_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production_p006",
+      "text": "promoter. The strength of the Pl<sub>pp</sub>0<sub>.</sub>5 promoter was slightly higher than the Ptr<sub>p</sub>O1(G3C) promoter (Figure S6c), making it suitable for the control group configuration. After 48 h of fermentation, the strain Viodual\\_HH with up-regulated violacein synthetic operons and down-regulated <sub>p</sub>lsB gene further promoted violacein production, yielding 10.5±0.6 mg/L violacein. This titer was 7.4 folds higher than that of the unregulated control strain (Vio\\_0.5, 1.4±0.1 mg/L) and 1.3 folds higher than the single up-regulation control strain (Vio\\_HH-0.5, 8.0±0.4 mg/L) (Figure 5f). Additionally, the strain Viodual\\_HH consumed more tryptophan than the strain Vio\\_HH-0.5 (Figure S7c), indicating a more efficient utilization of the carbon flux. Overall, these fermentation results demonstrated the effectiveness of our bifunctional regulation system in controlling complex tryptophan-derived pathways.",
+      "section_id": "7_applying_tryptophan_responsive_strain_trpdual_laa_for_bifunctional_regulation_of_violacein_production",
+      "position": 35
+    },
+    {
+      "paragraph_id": "discussion_p001",
+      "text": "Transcriptional factor-based biosensors have been widely established, characterized, and implemented as useful tools for dynamic regulation (Choi et al., 2019). Nevertheless, the applications of transcriptional repressor-based biosensors are often limited by their inherent repression functions. To address this issue, this study introduced a design logic to construct transcriptional repressor-based inverters for expanded functionalities and broader applications. This approach integrated two transcriptional repressors to achieve activation outputs. As proof of concept, a tryptophan-inducible genetic inverter was constructed by assembling PtrpO1(G3C)-TrpR1(V58K) and PtetO1-TetR repression systems. However, after assembling the necessary genetic elements in plasmids, the initial Inverter\\_V1 did not show obvious activation output. To achieve robust activation output, we engineered the genetic elements of the inverter by introducing degradation tags, RBS engineering, and promoter engineering. Remarkably, the Inverter\\_V1.2.1e variant achieved the highest RFP expression level among all variants with moderate leaky expression. Subsequently, we made two crucial modifications to the host strain to better leverage the inverters, including the deletion of tryptophan bypass and the genomic integration of a portion of the inverter. First, we deleted the ubiC gene to increase tryptophan production. Second, we integrated the TrpR1(V58K) regulatory protein directly into the chromosome, reducing the number of plasmids required for the inverter. These manipulations and optimizations enhanced the dynamic performance of the inverter, generating improved variants suitable for diverse applications.",
+      "section_id": "discussion",
+      "position": 36
+    },
+    {
+      "paragraph_id": "discussion_p002",
+      "text": "We first developed dynamic activation systems to evaluate the inverter applications by directly adopting the optimized inverter variants. The systems enabled tryptophan production monitoring and dynamic up-regulation of tryptamine production. Interestingly, the fermentation results showed that the highest tryptamine titer was achieved by strain with low-level dynamic regulation of tryptamine synthase, rather than high-level dynamic regulation. This suggested that the high-level dynamic regulation strategy did not improve productivity when enzyme activity was robust. Instead, the optimal outcome was achieved by implementing the most suitable dynamic regulation pattern, which directed carbon flux and cellular resources in a way that yielded the highest product titer. These results highlighted the importance of expanding the inverter repository and customizing dynamic regulation systems to adapt to different scenarios.",
+      "section_id": "discussion",
+      "position": 37
+    },
+    {
+      "paragraph_id": "discussion_p003",
+      "text": "Moreover, we developed a bifunctional regulation system by employing a bifunctional circuit that combined the original repression function of PtrpO1(G3C)-TrpR1(V58K) with the activation function of the inverter. To demonstrate its application for complex pathway regulation, we selected the violacein pathway as a case study. A previous study identified plsB as an overexpression target to enhance deoxyviolacein production by changing cell morphology (Yang et al., 2021). Herein, we dynamically expressed the plsB gene. Based on the activation and repression patterns observed in the bifunctional circuit, we downregulated the plsB gene and up-regulated the violacein synthetic genes. This regulation strategy first enabled the expansion of cell storage capability, and then redirected carbon flux towards violacein production, thereby optimizing the utilization of cellular resources. Finally, this bifunctional regulation system achieved a 7.4-fold increase in violacein titer.",
+      "section_id": "discussion",
+      "position": 38
+    },
+    {
+      "paragraph_id": "discussion_p004",
+      "text": "In this study, we successfully constructed a tryptophan-inducible transcriptional repressorbased genetic inverter with exceptional properties and wide-ranging applications. Genetic circuit engineering plays a vital role in improving the inverter performance, encompassing efforts to enhance dynamic range and optimize the expression level. The utilization of optimized inverter variants enabled the dynamic regulation of tryptophan derivatives, resulting in enhanced production titers. In conclusion, our research demonstrated the feasibility and promise of constructing transcription repressor-based inverters. Herein, we only utilized two specific transcriptional repressors as the proof-of-concept. Moving forward, more qualified transcriptional repressors could be applied to our design. This would generate a more diverse repository of transcriptional repressor-based genetic inverters, further broadening the applications of these repressors in metabolic engineering.",
+      "section_id": "discussion",
+      "position": 39
+    },
+    {
+      "paragraph_id": "1_strains_plasmids_and_chemicals_p001",
+      "text": "All strains and plasmids used in this study are listed in Table S1. E coli XL1-Blue (Stratagene, La Jolla, CA) was employed for plasmid construction and storage. To construct the strain XG1 for preliminary inverter characterizations, the tnaA and tr<sub>p</sub>R genes were knocked out from the chromosome of E<sub>.</sub> coliBW25113(F ). Strain XG2 was then generated by further knocking out the ubiC gene from the chromosome of XG1 to generate more tryptophan. Gene knockouts were performed using the standard P1 phage transduction protocol (Thomason et al., 2007). The host strain XG3 was created by inserting the -controlled TrpR(V58K)-T1 cassette around 100 bp downstream of the  gene in the XG2 chromosome using λ red recombination. This strain was employed for testing optimized inverter variants with simplified plasmid configurations, tryptophan production monitoring, and dynamic regulation of tryptophan derivatives production. The plasmid vectors utilized for inverter and pathway construction included the high-copy pZE12-luc, the high-copy pHA-MCS, the medium-copy pCS27 and the medium-copy pMK-MCS, and the low-copy pSA74. Additionally, pKD46 was used for λ red recombination (Gerlach et al., 2007) and pCP20 was used for curing the kanamycin resistance marker during λ red recombination and gene knockouts (Cherepanov and Wackernagel, 1995).",
+      "section_id": "1_strains_plasmids_and_chemicals",
+      "position": 40
+    },
+    {
+      "paragraph_id": "1_strains_plasmids_and_chemicals_p002",
+      "text": "Luria-Bertani (LB) medium, composed of 10 g/L tryptone, 5 g/L yeast extract, and 10 g/L NaCl, was used for E<sub>.</sub> coli seed culture preparation. Tube test and shake flask fermentation experiments were conducted using M9–2Y medium, which was prepared by supplementing M9 minimal medium (6 g/L Na<sub>2</sub>HPO<sub>4</sub>, 0.5 g/L NaCl, 3 g/L ${ \\mathrm { K H } } _ { 2 } { \\mathrm { P O } } _ { 4 } ,$ 1 g/L $\\mathrm { N H } _ { 4 } \\mathrm { C l } ,$ , 1 mM $\\mathrm { M g S O } _ { 4 } , 0 . 1$ mM CaCl<sub>2</sub>) with 2 g/L yeast extract and 20 g/L glycerol. Antibiotics, including ampicillin (A), kanamycin (K), and chloramphenicol (Cl), were added to the medium as needed to the final concentrations of 100 μg/mL A, 50 μg/mL K, and 34 μg/mL Cl, respectively. Additionally, 0.5 mM isopropyl β-D-1-thiogalactopyranoside (IPTG) was used for the induction of PLlacO1 promoter. All standard chemicals, such as glycerol, tryptophan, tryptamine, violacein, IPTG, ampicillin, kanamycin, and chloramphenicol, were purchased from Sigma-Aldrich (St. Louis, MO) unless otherwise specified. Molecular biology reagents, including Phusion High-Fidelity DNA polymerase, restriction enzymes, and Quick Ligation Kits, were obtained from New England Biolabs (Beverly, MA, USA). Zyppy Plasmid Miniprep Kit, Zymoclean Gel DNA Recovery Kit, and DNA Clean & Concentrator-5 Kit were purchased from Zymo Research (Irvine, CA, USA).",
+      "section_id": "1_strains_plasmids_and_chemicals",
+      "position": 41
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p001",
+      "text": "To construct pSA-PL<sub>pp</sub>0<sub>.</sub>03-trpR1(V58K), the trpR1(V58K) gene with Pl<sub>pp</sub>0<sub>.</sub>03 promoter was amplified from our previously reported plasmid pSA-PLlacO1-TrpR1\\_V58K (Gong et al., 2022) and inserted between the XhoI/XbaI sites of pSA74. The pCS-Ptr<sub>p</sub>O1(G3C)- tetR plasmid was generated by amplifying the tetR gene from pJKR-H-tetR (Rogers et al., 2015) and inserting it between the KpnI/BamHI sites of pCS-Ptr<sub>p</sub>O1(G3C)-GFP. To construct pZE-PtetO1-RFP, the luc gene in pZE-luc was first substituted with rfp between the KpnI/XbaI sites, yielding pZE-PLlacO1-RFP. Then, the PtetO1 promoter DNA fragment (amplified from pJKR-H-tetR) was inserted between the AatII/EcoRI sites of pZE-PLlacO1- RFP to generate pZE-PtetO1-RFP. These three plasmids, pSA-PL<sub>pp</sub>0<sub>.</sub>03-trpR1(V58K), pCS-Ptr<sub>p</sub>O1(G3C)-tetR, and pZE-PtetO1-RFP, comprised the initial Inverter\\_V1.",
+      "section_id": "2_dna_manipulation",
+      "position": 42
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p002",
+      "text": "For the PtetO1-TetR repression system, pCS-PLlacO1-tetR was constructed by inserting tetR (amplified from pJKR-H-tetR) between the KpnI/BamHI sites of pCS27 and pZE--GFP was built by replacing rfp of pZE- -RFP with egfp. Variants of the -TetR repression system were then created by attaching the DSA or LAA protein degradation tags (McGinness et al., 2006) to tetR. The sequences of the degradation tags were introduced to primers. The amplified DNA fragments tetR\\_DSA and tetR\\_LAA were inserted between the KpnI/BamHI sites of pCS27.",
+      "section_id": "2_dna_manipulation",
+      "position": 43
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p003",
+      "text": "To construct low leaky Ptr<sub>p</sub>O1(G3C)-Pl<sub>pp</sub>0<sub>.</sub>03-TrpR1(V58K) repression system variants, primers with random mutations in the RBS region (position 6–9) were used to amplify the mutated RBS and egfp gene. The amplified DNA fragments were then inserted between the EcoRI/BamHI sites of pCS-Ptr<sub>p</sub>O1(G3C)-GFP, yielding plasmids pCS-Ptr<sub>p</sub>O1(G3C)- RBS(G6C/G7T/A8G/A8T/G9C)-GFP. Next, the RBS variants RBS(G7T), RBS(A8G), and RBS(G9C) were used for inverter optimization by substituting the egfp gene with tetR\\_DSA or tetR\\_LAA between the KpnI/BamHI sites of pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T/A8G/G9C)- GFP, yielding plasmids pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T/A8G/G9C)-tetR\\_DSA/tetR\\_LAA. To further amplify activation outputs of the inverter, primers with random mutations in the promoter or RBS region of pZE-PtetO1-RFP were used to construct plasmids pZE-PtetO1- (N4–2/N4–14/N6–8/N6–15)-RFP or pZE-PtetO1-RBS(A2C/G6C/A8G)-RFP.",
+      "section_id": "2_dna_manipulation",
+      "position": 44
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p004",
+      "text": "To construct the plasmid with repression target of the bifunctional circuit, an additional -controlled egfp operon was inserted between the AatII/XhoI sites of pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T)-tetR\\_DSA/tetR\\_LAA, yielding plasmids pCS-Ptr<sub>p</sub>O1(G3C)- RBS(G7T)-tetR\\_DSA/tetR\\_LAA-Ptr<sub>p</sub>O1(G3C)-GFP. To boost tryptophan production in the host strain, an additional PLlacO1-controlled $t r p E ^ { f b r } G$ operon was inserted between the SpeI/SacI sites of pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T)-tetR\\_DSA/tetR\\_LAA, yielding plasmids pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T)-tetR\\_DSA/tetR\\_LAA-PLlacO1-trpE<sup>fbr</sup>G. To enable tryptophan monitoring, an additional Ptr<sub>p</sub>O1(G3C)-controlled egfp operon was inserted between the AatII/XhoI sites of pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T)-tetR\\_DSA/ tetR\\_LAA-PLlacO1-trpE<sup>fbr</sup>G, yielding plasmids pCS-Ptr<sub>p</sub>O1(G3C)-RBS(G7T)-tetR\\_DSA/ tetR\\_LAA-PLlacO1-trpE<sup>fbr</sup>G-Ptr<sub>p</sub>O1(G3C)-GFP. For tryptophan production monitoring, pZE-PtetO1-RFP\\_ASV was constructed by inserting rfp\\_ASV DNA fragment between the KpnI/BamHI sites to relieve RFP accumulation. To enable tryptamine production, the tryptophan decarboxylase from Catharanthus roseus (CrTDC) was amplified from plasmid pTY4 (Wang et al., 2020) and inserted between the KpnI/BamHI sites of pHA-PtetO1-RBS(A8G)-RFP, pHA-PtetO1-RBS(A2C)-RFP, and pHA-Pl<sub>pp</sub>0<sub>.</sub>5-GFP, yielding plasmids pHA-PtetO1-RBS(A8G)-CrTDC, pHA-PtetO1-RBS(A2C)-CrTDC, and pHA-Pl<sub>pp</sub>0<sub>.</sub>5-CrTDC, respectively.",
+      "section_id": "2_dna_manipulation",
+      "position": 45
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p005",
+      "text": "For violacein production, the pHA-PtetO1-MCS plasmid was first constructed by substituting the PLlacO1 promoter of pHA-MCS with the PtetO1 promoter between the AatII/EcoRI sites. Violacein synthetic genes, vioA, vioB vioC, vioD, and vioE, were separately amplified from pETM6-G6-vioABE-4A6-vioC-3A2-vioD (Cress et al., 2016). Then, the amplified vioA and vioC DNA fragments were inserted between the KpnI/ NdeI and NdeI/MluI sites of pHA-PtetO1-MCS, yielding plasmid pHA-PtetO1-vioAC. Similarly, the amplified vioE, vioB, and vioD DNA fragments were inserted between the KpnI/NdeI, NdeI/HindIII, and HindIII/BamHI sites of pHA-PtetO1-MCS, generating plasmid pHA-PtetO1-vioEBD. Next, the amplified PtetO1-RBS(A8G/A2C)-vioAC-T1 and -RBS(A8G/A2C)- -T1 DNA fragments were inserted between the XhoI/ AvrII sites of pHA-MCS, yielding plasmids pHA-PtetO1-RBS(A8G/A2C)-vioAC and pHA--RBS(A8G/A2C)-vioEBD. The amplified -T1 and -T1 DNA fragments were inserted between the KpnI/AvrII sites of pHA-Pl<sub>pp</sub>0<sub>.</sub>5-GFP, yielding plasmids pHA--vioAC and pHA- -vioEBD. To construct the complete violacein production plasmids, the amplified PtetO1-RBS(A8G/A2C)-vioAC-T1 or Pl<sub>pp</sub>0<sub>.</sub>5-vioAC-T1 fragments were inserted between the SpeI/SacI sites of pHA-PtetO1-RBS(A8G/A2C)-vioEBD or pHA--vioEBD, respectively, yielding plasmids pHA- -RBS(A8G/A2C)-vioEBD--RBS(A8G/A2C)-vioAC or pHA- -vioEBD- -vioAC.",
+      "section_id": "2_dna_manipulation",
+      "position": 46
+    },
+    {
+      "paragraph_id": "2_dna_manipulation_p006",
+      "text": "Finally, to create plasmids with the repression target, the <sub>p</sub>lsB gene was first amplified from the E<sub>.</sub> coli chromosome and inserted between the KpnI/NdeI sites of pMK-MCS, yielding plasmid pMK-plsB. The amplified plsB-T1 DNA fragment was then inserted between the KpnI/AvrII sites of pCS-Ptr<sub>p</sub>O1(G3C)-GFP or pHA-Pl<sub>pp</sub>0<sub>.</sub>5-GFP, generating plasmids pCS-Ptr<sub>p</sub>O1(G3C)-plsB and pHA-Pl<sub>pp</sub>0<sub>.</sub>5-plsB. The amplified Ptr<sub>p</sub>O1(G3C)-plsB-T1 and -plsB-T1 DNA fragments were subsequently inserted between the AatII/XhoI sites of pCS-Ptr<sub>p</sub>O1(G3C)\\_RBS(G7T)-tetR\\_LAA-PLlacO1-trpE<sup>fbr</sup>G, yielding the final plasmids pCS-Ptr<sub>p</sub>O1(G3C)\\_RBS(G7T)-tetR\\_LAA-PLlacO1-trpE<sup>fbr</sup>G-Ptr<sub>p</sub>O1(G3C)-plsB and pCS-\\_RBS(G7T)-tetR\\_LAA- -trpE<sup>fbr</sup>G- -plsB, respectively.",
+      "section_id": "2_dna_manipulation",
+      "position": 47
+    },
+    {
+      "paragraph_id": "3_fluorescence_assays_p001",
+      "text": "To evaluate the fluorescence outputs of the initial inverter variants, the corresponding plasmids were transferred into strain XG1. For the test of optimized inverter variants with simplified configurations, the corresponding plasmids were transferred into strain XG3. Three independent colonies of each testing group were randomly selected and inoculated into test tubes with 3 mL of fresh LB medium with appropriate antibiotics to prepare seed cultures. After overnight cultivation (10–12 h) at $3 7 ~ ^ { \\circ } \\mathrm { C }$ at $2 7 0 \\mathrm { r p m } ,$ , the seed cultures were transferred into test tubes with 3 mL of fresh M9–2Y medium with gradient tryptophan (0, 31.5, 125, 500 mg/L) and appropriate antibiotics with an inoculation ratio of 1% (30 μL). The new cultures were then placed at $3 7 ~ ^ { \\circ } \\mathrm { C }$ at 270 rpm. After 24 h of cultivation, samples were taken from the cultures, diluted 10 folds, and subjected to cell density (OD600) measurements and red or green fluorescence intensities using a 96-well plate reader (Synergy HT, BioTek). Red and green fluorescence intensities were measured in arbitrary units (a.u.). All experiments were performed in triplicates, and the data were presented as the averages and standard deviations (n=3).",
+      "section_id": "3_fluorescence_assays",
+      "position": 48
+    },
+    {
+      "paragraph_id": "4_cell_imaging_p001",
+      "text": "The E<sub>.</sub> coli imaging for Dual\\_V2.1.1 and Dual\\_V2.2.1 was performed using a custombuilt light-sheet microscope (Song et al., 2024). This microscope incorporated a 16x/0.8 NA water-immersion detection objective from Nikon (N16XLWD-PF). eGFP fluorescence excitation was achieved with a 488 nm laser, operating at a power density of $1 . 5 \\mathrm { W } / \\mathrm { c m } ^ { 2 } .$ Similarly, RFP fluorescence was excited using a 561 nm laser, also set to a power density of $1 . 5 \\mathrm { W } / \\mathrm { c m } ^ { 2 } .$ . The light sheet’s full-width at half maximum (FWHM) at the beam waist measured 6.7 μm. An exposure time of 50 ms was maintained during imaging. The resultant volumetric images were of dimensions $2 7 6 . 4 8 \\times 2 7 6 . 4 8 \\times 5 ~ { \\mu \\mathrm { m } } 3$ , corresponding to a resolution of $2 0 4 8 \\times 2 0 4 8 \\times 1 7$ pixels or $0 . 3 1 3 \\times 0 . 3 1 3 \\times 1 . 6 4$ μm3 per pixel. For the preparation of the samples, E<sub>.</sub> coli cells (XG3 with Dual\\_V2.1.1 and Dual\\_V2.2.1) were immobilized in a 1% low melting point agarose solution (Sigma) mixed with 1% PBS (Gibco). The samples were then placed within a petri dish to ensure stability during the imaging process.",
+      "section_id": "4_cell_imaging",
+      "position": 49
+    },
+    {
+      "paragraph_id": "5_shake_flasks_fermentation_p001",
+      "text": "To explore the performance of inverter variants in dynamic up-regulation of tryptamine, the relevant plasmids were transformed into strain XG3. Three colonies of the transformed strains were picked from LB plates and inoculated into 3 mL of LB medium, which were then grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ at 270 rpm for 8–10 hours. Then, 400 μl of each seed culture was transferred to 20 mL of fresh M9–2Y medium in 125 mL shake flasks (Chemglass Life Sciences LLC). IPTG was added to the cultures at the final concentration of 0.5 mM to induce the expression of PLlacO1-controlled $\\mathrm { t r p E ^ { f b r } G }$ operon. The cultures were then grown at $3 0 ~ ^ { \\circ } \\mathrm { C }$ at 270 rpm for 48 h.",
+      "section_id": "5_shake_flasks_fermentation",
+      "position": 50
+    },
+    {
+      "paragraph_id": "5_shake_flasks_fermentation_p002",
+      "text": "To explore the performance of inverter variants and bifunctional circuits in the dynamic regulation of violacein, the relevant plasmids were transformed into strain XG3. Three colonies of the transformed strains were picked from LB plates and inoculated into 3 mL of LB medium overnight at $3 7 ^ { \\circ } \\mathrm { C }$ at 270 rpm for 10–12 h. Then 1 mL of each seed culture was transferred to 20 mL of fresh M9–2Y medium in 125 mL shake flasks (Chemglass Life Sciences LLC) and grown at $3 7 ~ ^ { \\circ } \\mathrm { C }$ for 3.5 h. IPTG was added with the final concentration of 0.5 mM to induce the expression of PLlacO1-controlled $\\mathrm { t r p E ^ { f b r } G }$ operon after 3.5 h, then the cultures were incubated at $3 0 ~ ^ { \\circ } \\mathrm { C }$ at 270 rpm for 48 h.",
+      "section_id": "5_shake_flasks_fermentation",
+      "position": 51
+    },
+    {
+      "paragraph_id": "5_shake_flasks_fermentation_p003",
+      "text": "Samples were collected from the shake flask cultures at 24 h and 48 h for determination of optical density (OD600) and HPLC analysis of the products. The OD600 measurements were performed using a 96-well plate reader (Synergy HT, BioTek), with pure water as the blank. The tryptophan, tryptamine, and violacein titers were analyzed by HPLC (Agilent Technologies). All experiments were performed in triplicates, and the data were presented as the averages and standard deviations (n=3).",
+      "section_id": "5_shake_flasks_fermentation",
+      "position": 52
+    },
+    {
+      "paragraph_id": "6_hplc_analysis_p001",
+      "text": "Collected fermentation samples $( 5 0 0 ~ \\mu \\mathrm { L } )$ were diluted with 500 μL methanol and incubated at $5 5 ~ ^ { \\circ } \\mathrm { C }$ for 10 min. The samples were then centrifuged at 12,000 rpm for 10 min, and the supernatants were filtered through 0.22 μm syringe filters before HPLC analysis. The concentrations of tryptophan, tryptamine, and violacein were quantitatively analyzed by using the Agilent HPLC 1260 Infinity II system equipped with a 1260 Infinity II Diode Array Detector WR and a reverse-phase ZORBAX SB-C18 column.",
+      "section_id": "6_hplc_analysis",
+      "position": 53
+    },
+    {
+      "paragraph_id": "6_hplc_analysis_p002",
+      "text": "For tryptophan and tryptamine quantification, the injection volume was 5 μL per sample. The mobile phase consisted of 0.1% trifluoroacetic acid $\\mathbf { \\Pi } ( \\mathbf { v } / \\mathbf { v } )$ as solvent A and 100% methanol as solvent B. The flow rate of the mobile phase was 1 mL/min. The gradient elution was as follows: 5%−40% solvent B for 15 min, 40%−5% solvent B for 1 min, and 5% solvent B for an additional 4 min. The column temperature was set at $2 5 ~ ^ { \\circ } \\mathrm { C } .$ . Tryptophan and tryptamine were detected at 276 nm with retention times of 13.8 min and 12.9 min, respectively. Standard curves were prepared using gradient concentrations of tryptophan and tryptamine solutions in methanol.",
+      "section_id": "6_hplc_analysis",
+      "position": 54
+    },
+    {
+      "paragraph_id": "6_hplc_analysis_p003",
+      "text": "For violacein quantification, the injection volume was also 5 μL per sample. The mobile phase and flow rate were the same as above. The gradient elution was as follows: 5%−80% solvent B for 10 min, 80% solvent B for 4 min, 80%−5% solvent B for 4 min, and 5% solvent B for an additional 2 min. The column temperature was set at $2 5 ~ ^ { \\circ } \\mathrm { C } .$ . Violacein was detected at 570 nm with a retention time of 12.2 min. A standard curve was generated using gradient concentrations of violacein solution in methanol.",
+      "section_id": "6_hplc_analysis",
+      "position": 55
+    },
+    {
+      "paragraph_id": "supplementary_material_p001",
+      "text": "Refer to Web version on PubMed Central for supplementary material.",
+      "section_id": "supplementary_material",
+      "position": 56
+    },
+    {
+      "paragraph_id": "acknowledgments_p001",
+      "text": "This work was supported by the National Institute of General Medical Sciences of the National Institutes of Health under award number R35GM128620. We also acknowledge the support from the College of Engineering, The University of Georgia, Athens, Georgia, United States. Additionally, we thank Dr. Haoran Zhang and his student Lei Zhuang from The State University of New Jersey for kindly providing the plasmid pTY4 harboring tryptophan decarboxylase from Catharanthus roseus (CrTDC).",
+      "section_id": "acknowledgments",
+      "position": 57
+    },
+    {
+      "paragraph_id": "references_p001",
+      "text": "Arvidson D, Bruce C, Gunsalus R, 1986. Interaction of the Escherichia coli trp aporepressor with its ligand, L-tryptophan. J. Biol. Chem 261, 238–243. 10.1016/S0021-9258(17)42460-4. [PubMed: 3079755]",
+      "section_id": "references",
+      "position": 58
+    },
+    {
+      "paragraph_id": "references_p002",
+      "text": "Cherepanov PP, Wackernagel W, 1995. Gene disruption in Escherichia coli: TcR and KmR cassettes with the option of Flp-catalyzed excision of the antibiotic-resistance determinant. Gene. 158, 9–14. 10.1016/0378-1119(95)00193-A. [PubMed: 7789817]",
+      "section_id": "references",
+      "position": 59
+    },
+    {
+      "paragraph_id": "references_p003",
+      "text": "Cho JS, Kim GB, Eun H, Moon CW, Lee SY, 2022. Designing microbial cell factories for the production of chemicals. JACS Au. 2, 1781–1799. 10.1021/jacsau.2c00344. [PubMed: 36032533]",
+      "section_id": "references",
+      "position": 60
+    },
+    {
+      "paragraph_id": "references_p004",
+      "text": "Cress BF, Jones JA, Kim DC, Leitz QD, Englaender JA, Collins SM, Linhardt RJ, Koffas MA, 2016. Rapid generation of CRISPR/dCas9-regulated, orthogonally repressible hybrid T7-lac promoters for modular, tuneable control of metabolic pathway fluxes in Escherichia coli. Nucleic Acids Res. 44, 4472–4485. 10.1093/nar/gkw231. [PubMed: 27079979]",
+      "section_id": "references",
+      "position": 61
+    },
+    {
+      "paragraph_id": "references_p005",
+      "text": "Deng C, Wu Y, Lv X, Li J, Liu Y, Du G, Chen J, Liu L, 2022. Refactoring transcription factors for metabolic engineering. Biotechnol. Adv 57, 107935. 10.1016/j.biotechadv.2022.107935. [PubMed: 35271945]",
+      "section_id": "references",
+      "position": 62
+    },
+    {
+      "paragraph_id": "references_p006",
+      "text": "Ellefson JW, Ledbetter MP, Ellington AD, 2018. Directed evolution of a synthetic phylogeny of programmable Trp repressors. Nat. Chem. Biol 14, 361–367. 10.1038/s41589-018-0006-7. [PubMed: 29483643]",
+      "section_id": "references",
+      "position": 63
+    },
+    {
+      "paragraph_id": "references_p007",
+      "text": "Fang Y, Wang J, Ma W, Yang J, Zhang H, Zhao L, Chen S, Zhang S, Hu X, Li Y, 2020. Rebalancing microbial carbon distribution for L-threonine maximization using a thermal switch system. Metab. Eng 61, 33–46. 10.1016/j.ymben.2020.01.009. [PubMed: 32371091]",
+      "section_id": "references",
+      "position": 64
+    },
+    {
+      "paragraph_id": "references_p008",
+      "text": "Gerlach RG, lzer SU, ckel D, Hensel M, 2007. Rapid engineering of bacterial reporter gene fusions by using Red recombination. Appl Environ Microbiol. 73, 4234–4242. 10.1128/AEM.00509-07. [PubMed: 17513596]",
+      "section_id": "references",
+      "position": 65
+    },
+    {
+      "paragraph_id": "references_p009",
+      "text": "Gong X, Zhang R, Wang J, Yan Y, 2022. Engineering of a TrpR-based biosensor for altered dynamic range and ligand preference. ACS Synth Biol. 11, 2175–2183. 10.1021/acssynbio.2c00134. [PubMed: 35594503]",
+      "section_id": "references",
+      "position": 66
+    },
+    {
+      "paragraph_id": "references_p010",
+      "text": "Gustavsson M, Lee SY, 2016. Prospects of microbial cell factories developed through systems metabolic engineering. Microb. Biotechnol 9, 610–617. 10.1111/1751-7915.12385. [PubMed: 27435545]",
+      "section_id": "references",
+      "position": 67
+    },
+    {
+      "paragraph_id": "references_p011",
+      "text": "Hartline CJ, Schmitz AC, Han Y, Zhang F, 2021. Dynamic control in metabolic engineering: Theories, tools, and applications. Metab. Eng 63, 126–140. 10.1016/j.ymben.2020.08.015. [PubMed: 32927059]",
+      "section_id": "references",
+      "position": 68
+    },
+    {
+      "paragraph_id": "references_p012",
+      "text": "Hirasawa T, Shimizu H, 2016. Recent advances in amino acid production by microbial cells. Curr. Opin. Biotechnol 42, 133–146. 10.1016/j.copbio.2016.04.017. [PubMed: 27151315]",
+      "section_id": "references",
+      "position": 69
+    },
+    {
+      "paragraph_id": "references_p013",
+      "text": "Jiang T, Li C, Zou Y, Zhang J, Gan Q, Yan Y, 2022. Establishing an Autonomous Cascaded Artificial Dynamic (AutoCAD) regulation system for improved pathway performance. Metab. Eng 74, 1–10. 10.1016/j.ymben.2022.08.009. [PubMed: 36041638]",
+      "section_id": "references",
+      "position": 70
+    },
+    {
+      "paragraph_id": "references_p014",
+      "text": "Kaczmarek JA, Prather KL, 2021. Effective use of biosensors for high-throughput library screening for metabolite production. J Ind Microbiol Biotechnol. 48, kuab049. 10.1093/jimb/kuab049. [PubMed: 34347108]",
+      "section_id": "references",
+      "position": 71
+    },
+    {
+      "paragraph_id": "references_p015",
+      "text": "Kim NM, Sinnott RW, Sandoval NR, 2020. Transcription factor-based biosensors and inducible systems in non-model bacteria: current progress and future directions. Curr. Opin. Biotechnol 64, 39–46. 10.1016/j.copbio.2019.09.009. [PubMed: 31669680]",
+      "section_id": "references",
+      "position": 72
+    },
+    {
+      "paragraph_id": "references_p016",
+      "text": "Kolb A, Busby S, Buc H, Garges S, Adhya S, 1993. Transcriptional regulation by cAMP and its receptor protein. Annu. Rev. Biochem 62, 749–797. 10.1146/annurev.bi.62.070193.003533. [PubMed: 8394684]",
+      "section_id": "references",
+      "position": 73
+    },
+    {
+      "paragraph_id": "references_p017",
+      "text": "Lu M, Sha Y, Kumar V, Xu Z, Zhai R, Jin M, 2024. Transcription factor-based biosensor: A molecular-guided approach for advanced biofuel synthesis. Biotechnol. Adv, 108339. 10.1016 j.biotechadv.2024.108339. [PubMed: 38508427]",
+      "section_id": "references",
+      "position": 74
+    },
+    {
+      "paragraph_id": "references_p018",
+      "text": "Lutz R, Bujard H, 1997. Independent and tight regulation of transcriptional units in Escherichia coli via the LacR/O, the TetR/O and AraC/I1-I2 regulatory elements. Nucleic Acids Res. 25, 1203– 1210. 10.1093/nar/25.6.1203. [PubMed: 9092630]",
+      "section_id": "references",
+      "position": 75
+    },
+    {
+      "paragraph_id": "references_p019",
+      "text": "Ma T, Shi B, Ye Z, Li X, Liu M, Chen Y, Xia J, Nielsen J, Deng Z, Liu T, 2019. Lipid engineering combined with systematic metabolic engineering of Saccharomyces cerevisiae for high-yield production of lycopene. Metab. Eng 52, 134–142. 10.1016/j.ymben.2018.11.009. [PubMed: 30471360]",
+      "section_id": "references",
+      "position": 76
+    },
+    {
+      "paragraph_id": "references_p020",
+      "text": "McGinness KE, Baker TA, Sauer RT, 2006. Engineering controllable protein degradation. Mol. Cell 22, 701–707. 10.1016/j.molcel.2006.04.027. [PubMed: 16762842]",
+      "section_id": "references",
+      "position": 77
+    },
+    {
+      "paragraph_id": "references_p021",
+      "text": "Otero-Muras I, Carbonell P, 2021. Automated engineering of synthetic metabolic pathways for efficient biomanufacturing. Metab. Eng 63, 61–80. 10.1016/j.ymben.2020.11.012. [PubMed: 33316374]",
+      "section_id": "references",
+      "position": 78
+    },
+    {
+      "paragraph_id": "references_p022",
+      "text": "Özyurt C, Üstükarcı H, Evran S, Telefoncu A, 2019. MerR-fluorescent protein chimera biosensor for fast and sensitive detection of Hg2+ in drinking water. Biotechnol Appl Biochem. 66, 731–737. 10.1002/bab.1805. [PubMed: 31411759]",
+      "section_id": "references",
+      "position": 79
+    },
+    {
+      "paragraph_id": "references_p023",
+      "text": "Pham C, Stogios PJ, Savchenko A, Mahadevan R, 2022. Advances in engineering and optimization of transcription factor-based biosensors for plug-and-play small molecule detection. Curr. Opin. Biotechnol 76, 102753. 10.1016/j.copbio.2022.102753. [PubMed: 35872379]",
+      "section_id": "references",
+      "position": 80
+    },
+    {
+      "paragraph_id": "references_p024",
+      "text": "Prelich G, 2012. Gene overexpression: uses, mechanisms, and interpretation. Genetics. 190, 841–854. 10.1534/genetics.111.136911. [PubMed: 22419077]",
+      "section_id": "references",
+      "position": 81
+    },
+    {
+      "paragraph_id": "references_p025",
+      "text": "Rogers JK, Church GM, 2016. Genetically encoded sensors enable real-time observation of metabolite production. Proc Natl Acad Sci U S A. 113, 2388–2393. 10.1073/pnas.1600375113. [PubMed: 26858408]",
+      "section_id": "references",
+      "position": 82
+    },
+    {
+      "paragraph_id": "references_p026",
+      "text": "Rogers JK, Guzman CD, Taylor ND, Raman S, Anderson K, Church GM, 2015. Synthetic biosensors for precise gene control and real-time monitoring of metabolites. Nucleic Acids Res. 43, 7648– 7660. 10.1093/nar/gkv616. [PubMed: 26152303]",
+      "section_id": "references",
+      "position": 83
+    },
+    {
+      "paragraph_id": "references_p027",
+      "text": "Schallmey M, Frunzke J, Eggeling L, Marienhagen J, 2014. Looking for the pick of the bunch: high-throughput screening of producing microorganisms with biosensors. Curr. Opin. Biotechnol 26, 148–154. 10.1016/j.copbio.2014.01.005. [PubMed: 24480185]",
+      "section_id": "references",
+      "position": 84
+    },
+    {
+      "paragraph_id": "references_p028",
+      "text": "Soisson SM, MacDougall-Shackleton B, Schleif R, Wolberger C, 1997. Structural basis for ligand-regulated oligomerization of AraC. Science. 276, 421–425. 10.1126/science.276.5311.421. [PubMed: 9103202]",
+      "section_id": "references",
+      "position": 85
+    },
+    {
+      "paragraph_id": "references_p029",
+      "text": "Song M, Liu Y, Wu H-F, Zeltner N, Kner PA, Three-dimensional multi-directional lightsheet microscopy with structured illumination. Three-Dimensional and Multidimensional Microscopy: Image Acquisition and Processing XXXI, Vol. 12848. SPIE, 2024, pp. 41–47. 10.1117/12.3000528.",
+      "section_id": "references",
+      "position": 86
+    },
+    {
+      "paragraph_id": "references_p030",
+      "text": "Teng Y, Zhang J, Jiang T, Zou Y, Gong X, Yan Y, 2022. Biosensor-enabled pathway optimization in metabolic engineering. Curr. Opin. Biotechnol 75, 102696. 10.1016/j.copbio.2022.102696. [PubMed: 35158314]",
+      "section_id": "references",
+      "position": 87
+    },
+    {
+      "paragraph_id": "references_p031",
+      "text": "Thomason LC, Costantino N, Court DL, 2007. E. coli genome manipulation by P1 transduction. Curr. Protoc. Mol. Biol 79, 1.17. 1–1.17. 8. 10.1002/0471142727.mb0117s79.",
+      "section_id": "references",
+      "position": 88
+    },
+    {
+      "paragraph_id": "references_p032",
+      "text": "Wang J, Zhang R, Zhang J, Gong X, Jiang T, Sun X, Shen X, Wang J, Yuan Q, Yan Y, 2021. Tunable hybrid carbon metabolism coordination for the carbon-efficient biosynthesis of 1, 3-butanediol in Escherichia coli. Green Chem. 23, 8694–8706. 10.1039/D1GC02867G.",
+      "section_id": "references",
+      "position": 89
+    },
+    {
+      "paragraph_id": "references_p033",
+      "text": "Wang X, Policarpio L, Prajapati D, Li Z, Zhang H, 2020. Developing E. coli-E. coli co-cultures to overcome barriers of heterologous tryptamine biosynthesis. Metab Eng Commun. 10, e00110. 10.1016/j.mec.2019.e00110. [PubMed: 31853442]",
+      "section_id": "references",
+      "position": 90
+    },
+    {
+      "paragraph_id": "references_p034",
+      "text": "Wu T, Ye L, Zhao D, Li S, Li Q, Zhang B, Bi C, Zhang X, 2017. Membrane engineering-a novel strategy to enhance the production and accumulation of β-carotene in Escherichia coli. Metab. Eng 43, 85–91. 10.1016/j.ymben.2017.07.001. [PubMed: 28688931]",
+      "section_id": "references",
+      "position": 91
+    },
+    {
+      "paragraph_id": "references_p035",
+      "text": "Yang D, Park SY, Lee SY, 2021. Production of rainbow colorants by metabolically engineered Escherichia coli. Adv Sci (Weinh). 8, 2100743. 10.1002/advs.202100743. [PubMed: 34032018]",
+      "section_id": "references",
+      "position": 92
+    },
+    {
+      "paragraph_id": "references_p036",
+      "text": "Zhang J, Gong X, Gan Q, Yan Y, 2023. Application of Metabolite-Responsive Biosensors for Plant Natural Products Biosynthesis. Biosensors. 13, 633. 10.3390/bios13060633. [PubMed: 37366998]",
+      "section_id": "references",
+      "position": 93
+    },
+    {
+      "paragraph_id": "references_p037",
+      "text": "Zou Y, Zhang J, Wang J, Gong X, Jiang T, Yan Y, 2024. A self-regulated network for dynamically balancing multiple precursors in complex biosynthetic pathways. Metab. Eng 82, 69–78. 10.1016/ j.ymben.2024.02.001. [PubMed: 38316239]",
+      "section_id": "references",
+      "position": 94
+    },
+    {
+      "paragraph_id": "references_p038",
+      "text": "a\n![](images/3636a482b186bf6491da177bf3347cde6ad78a88231ea0b11e35579fe8470417.jpg)",
+      "section_id": "references",
+      "position": 95
+    },
+    {
+      "paragraph_id": "references_p039",
+      "text": "![](images/5696a54ada51e612881da653ca31b6bbb2c1c199d00761803b909f174708c02c.jpg)",
+      "section_id": "references",
+      "position": 96
+    },
+    {
+      "paragraph_id": "references_p040",
+      "text": "b\n![](images/ed0eb66117ba3bc63eb2657a9030bbc5c5c04ad3e6a525f4231bc425664b73c6.jpg)",
+      "section_id": "references",
+      "position": 97
+    },
+    {
+      "paragraph_id": "references_p041",
+      "text": "d\n![](images/8903417d571883adb9fdfc670cdf933972887dcd5d3cc04be0cce0cc9e24a242.jpg)",
+      "section_id": "references",
+      "position": 98
+    },
+    {
+      "paragraph_id": "references_p042",
+      "text": "e\n![](images/45182a4f633768ca9d767e79952faaa02f4fc724c0985045edf9b84f05854605.jpg)\nFigure 1. Design and characterization of tryptophan-inducible transcriptional factor-based genetic inverter.",
+      "section_id": "references",
+      "position": 99
+    },
+    {
+      "paragraph_id": "references_p043",
+      "text": "(a,b) Design logic of the transcriptional factor-based genetic inverter. (a) Without an inducer, Transcriptional factor 1 does not repress the expression of Transcriptional factor 2. Therefore, the output gene expression is repressed by Transcriptional factor 2 and the inverter is not activated. (b) Upon addition of the inducer, the complex of Transcriptional factor 1 and ligand represses the expression of Transcriptional factor 2, thereby the inverter is activated. (c,d) Mechanism of tryptophan-inducible transcriptional factor-based genetic inverter. (c) In the absence of tryptophan, TetR is constantly expressed and represses the PtetO1 promoter, resulting in no RFP output. (d) In the presence of tryptophan, the TrpR1(V58K)-tryptophan complex represses the expression of TetR by repressing the promoter. Consequently, the repression of  caused by TetR is relieved, leading to RFP output. (e) Characterization of Inverter\\_V1, Inverter\\_V1.1 (with DSA degradation tag), and Inverter\\_V1.2 (with LAA degradation tag) in response to tryptophan gradient. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "section_id": "references",
+      "position": 100
+    },
+    {
+      "paragraph_id": "references_p044",
+      "text": "a\n![](images/38ab47fc6fd9e65b3d7027b8dc3ea44e41c0335b85b446438d52c33d3a584794.jpg)\nC",
+      "section_id": "references",
+      "position": 101
+    },
+    {
+      "paragraph_id": "references_p045",
+      "text": "b\n![](images/3f7e628e599b947dffbb5b605fcafdcf67cc561764d72d156861226918c00129.jpg)",
+      "section_id": "references",
+      "position": 102
+    },
+    {
+      "paragraph_id": "references_p046",
+      "text": "![](images/e27073dc4ce9487e1260d33d75d8be6ae38642085e5ca0f3d2940b16c048b27f.jpg)\ne",
+      "section_id": "references",
+      "position": 103
+    },
+    {
+      "paragraph_id": "references_p047",
+      "text": "![](images/ce2e4f9209af29448e143c83d85a884d7cc421af76f228d1e88b8126f82d35ca.jpg)",
+      "section_id": "references",
+      "position": 104
+    },
+    {
+      "paragraph_id": "references_p048",
+      "text": "![](images/7e75c36552371887e35c02c7f61d6a95da0a1be7869ae7e8ddc3714cedd42a83.jpg)",
+      "section_id": "references",
+      "position": 105
+    },
+    {
+      "paragraph_id": "references_p049",
+      "text": "f\n![](images/efaae5dcb3f49d469cca0d0d98b460f241ef85b47e5132fca81ff6f49d3a6566.jpg)",
+      "section_id": "references",
+      "position": 106
+    },
+    {
+      "paragraph_id": "references_p050",
+      "text": "g\n![](images/61a61031b69ed75330d3d9aaac99d5183713e589d2c1c9004596387be31fed1e.jpg)\nFigure 2. Engineering the tryptophan-inducible transcriptional factor-based genetic inverter for amplified output.",
+      "section_id": "references",
+      "position": 107
+    },
+    {
+      "paragraph_id": "references_p051",
+      "text": "(a) Engineering the genetic inverter by reducing TetR abundance. The red dashed circle indicates the identified key genetic element. #tetR represents the tetR gene with DSA or LAA degradation tags. (b) Comparison of the strength of Ptr<sub>p</sub>O1(G3C) promoter variants. Random mutations were introduced in positions 6–9 of the RBS region. (c) Dynamic performance of inverter variants Inverter\\_V1.1.1–3 and Inverter\\_V1.2.1–3 in response to a tryptophan gradient. (d) Engineering the genetic inverter by improving PtetO1 promoter strength. The red dashed circle indicates the identified key genetic elements. #tetR represents the tetR gene with DSA or LAA degradation tags. (e) Relative RFP intensity of PtetO1 promoter variants. Random mutations were introduced either in the promoter region or the RBS region. (f) Dynamic performance of Inverter\\_V1.1.1a-g in response to",
+      "section_id": "references",
+      "position": 108
+    },
+    {
+      "paragraph_id": "references_p052",
+      "text": "a tryptophan gradient. (g) Dynamic performance of Inverter\\_V1.2.1a-g in response to a tryptophan gradient. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "section_id": "references",
+      "position": 109
+    },
+    {
+      "paragraph_id": "references_p053",
+      "text": "![](images/0467cb4230725ca926cf98436d978ddfe961f310a064a09300df4c088b69cec6.jpg)",
+      "section_id": "references",
+      "position": 110
+    },
+    {
+      "paragraph_id": "references_p054",
+      "text": "![](images/a1abedf664005136b33bf7353f16417eded9fd7f33bf37304bfceb4ce4d5c593.jpg)",
+      "section_id": "references",
+      "position": 111
+    },
+    {
+      "paragraph_id": "references_p055",
+      "text": "![](images/b429e40985f9c049aef61e9acfdb8a1f8f4e470fc7ffa15635c97b3dfdadcd94.jpg)",
+      "section_id": "references",
+      "position": 112
+    },
+    {
+      "paragraph_id": "references_p056",
+      "text": "![](images/f056fbccf72ccb21514cdcc5b7fa4d76acf7a91bbb56ae8fa8173a51b0362c4a.jpg)\nd",
+      "section_id": "references",
+      "position": 113
+    },
+    {
+      "paragraph_id": "references_p057",
+      "text": "![](images/caa6f24c19d2f293837d8f035d15594fd855598991c37a40b6feb5f3118872e1.jpg)",
+      "section_id": "references",
+      "position": 114
+    },
+    {
+      "paragraph_id": "references_p058",
+      "text": "e\n![](images/ad2dfde6278bc32250cece243baf8dd3492e845b5e69c521388914e1e7dc936e.jpg)",
+      "section_id": "references",
+      "position": 115
+    },
+    {
+      "paragraph_id": "references_p059",
+      "text": "g\n![](images/0cd6f681804b9f34b613b8cbf7b85211b8176a983979d1aa0c3f3644fd21cbdc.jpg)",
+      "section_id": "references",
+      "position": 116
+    },
+    {
+      "paragraph_id": "references_p060",
+      "text": "![](images/1490df490de28c7e5b6cded8765eb08d9dd2b40d350ffa093bbbbe3dd62e3cbb.jpg)",
+      "section_id": "references",
+      "position": 117
+    },
+    {
+      "paragraph_id": "references_p061",
+      "text": "![](images/922ee946a1f5e63a71ef8b84129cb4574b9af01e077ccd21ec4b3746ff4a9e25.jpg)\nFigure 3. Characterization of optimized inverter and bifunctional circuits.",
+      "section_id": "references",
+      "position": 118
+    },
+    {
+      "paragraph_id": "references_p062",
+      "text": "(a) Right panel: Design of the optimized inverter circuit. Left panel: Dynamic performance of Inverter\\_V2.1.1 in response to a tryptophan gradient. (b) Dynamic performance of optimized inverter variants Inverter\\_V2.1.1e and Inverter\\_V2.1.1f in response to a tryptophan gradient. (c) Dynamic performance of optimized inverter variants Inverter\\_V2.2.1e and Inverter\\_V2.2.1f in response to a tryptophan gradient. (d) Design of the bifunctional circuit. #tetR represents the tetR gene with DSA or LAA degradation tags. (e) Characterization of Dual\\_V2.1.1 bifunctional circuit by fluorescence assays. (f) Characterization of Dual\\_V2.1.1 bifunctional circuit by cell imaging. (g) Characterization of Dual\\_V2.2.1 bifunctional circuit by fluorescence assays. (h) Characterization of Dual\\_V2.2.1 bifunctional circuit by cell imaging. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "section_id": "references",
+      "position": 119
+    },
+    {
+      "paragraph_id": "references_p063",
+      "text": "C",
+      "section_id": "references",
+      "position": 120
+    },
+    {
+      "paragraph_id": "references_p064",
+      "text": "![](images/12a8ed2ce0a83f3418023a15b0af8afa514c6b1d72390b10747b5c3a16fa162f.jpg)",
+      "section_id": "references",
+      "position": 121
+    },
+    {
+      "paragraph_id": "references_p065",
+      "text": "b\n![](images/900302c07b37ce5d48c46b1faeb27eee30e0e1a50823df25d34aa9c8f65d4f2c.jpg)",
+      "section_id": "references",
+      "position": 122
+    },
+    {
+      "paragraph_id": "references_p066",
+      "text": "![](images/faa7d0368516b911e594eefbf3620ba61a8f39f76f389ad9c6f7203a676ed31e.jpg)",
+      "section_id": "references",
+      "position": 123
+    },
+    {
+      "paragraph_id": "references_p067",
+      "text": "![](images/35a185f5480b9ab40ba8a109bec1eca21ee4e627e928b4b7629ec8f8761641a0.jpg)",
+      "section_id": "references",
+      "position": 124
+    },
+    {
+      "paragraph_id": "references_p068",
+      "text": "![](images/7ae929e72ce7f9c978ca8d802f2f761fd5c78b1d6d1b6b13fc4fe3c6708874f6.jpg)\nFigure 4. Monitoring tryptophan production using tryptophan-responsive strains. (a) Design of tryptophan-responsive strains TRPactive\\_DSA and TRPactive\\_LAA. #tetR represents the tetR gene with DSA or LAA degradation tags. (b) Tryptophan titer and activated RFP intensity in the TRPactive\\_DSA strain during tryptophan production. (c) Tryptophan titer and activated RFP intensity in the TRPactive\\_LAA strain during tryptophan production. (d) Design of tryptophan-responsive strain TRPdual\\_LAA. (e) Tryptophan titer, activated RFP intensity, and repressed GFP intensity in the TRPdual\\_LAA strain during tryptophan production. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "section_id": "references",
+      "position": 125
+    },
+    {
+      "paragraph_id": "references_p069",
+      "text": "b",
+      "section_id": "references",
+      "position": 126
+    },
+    {
+      "paragraph_id": "references_p070",
+      "text": "d\n![](images/551f8b4ac3e21623440e4d38911851389d15699fa3e4e9c796d3bcf2d07f76c4.jpg)",
+      "section_id": "references",
+      "position": 127
+    },
+    {
+      "paragraph_id": "references_p071",
+      "text": "![](images/7353c159faba670181e393b81aa1a151ddc6c755c7d761659133102b02a5c9b2.jpg)",
+      "section_id": "references",
+      "position": 128
+    },
+    {
+      "paragraph_id": "references_p072",
+      "text": "![](images/1c6b46b36dad0570a1ff5e81dd60d0fa845b71894930eb917727c756894dc420.jpg)",
+      "section_id": "references",
+      "position": 129
+    },
+    {
+      "paragraph_id": "references_p073",
+      "text": "![](images/ff98b12af63d32925f302cc7a1d6c1be9786413586850653150d8f0db7ea50bd.jpg)",
+      "section_id": "references",
+      "position": 130
+    },
+    {
+      "paragraph_id": "references_p074",
+      "text": "![](images/5a570d35f1cc55ea6ebc2aed17197b53af071c8256c4c31784834e36ef185734.jpg)",
+      "section_id": "references",
+      "position": 131
+    },
+    {
+      "paragraph_id": "references_p075",
+      "text": "![](images/f03a6ef764e574f67782fad871263e6a0e865d8d484016d970731d7f4d2d94d4.jpg)\nFigure 5. Dynamic regulation of tryptophan derivatives production using inverter and bifunctional circuits.\n(a) Utilization of the TRPactive\\_DSA dynamic activation system for tryptamine production. (b) Tryptamine titer obtained using the dynamic activation strategy. (c) Utilization of the TRPactive\\_LAA dynamic activation system for violacein production. (d) Violacein titer obtained using the dynamic activation strategy. (e) Utilization of the TRPdual\\_LAA bifunctional regulation system for violacein production. (f) Violacein titer obtained using the bifunctional regulation strategy. All experimental data were collected from three independent biological replicates (n=3). The standard deviations were presented as error bars.",
+      "section_id": "references",
+      "position": 132
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "benchmark": "paper_extraction_production_hardening",
+  "corpus_size": 15,
+  "production_model": "claude-sonnet-4.6",
+  "cache_key_type": "content_sha256+model+skill_sha256+system_prompt_sha256+schema_sha256+semantic_contract_sha256+validation_rules_sha256+runtime_contract_version+validator_version",
+  "skill_sha256": "c77d4e07b2237427d49135281e00115583824e49e43b238d54f863349f61f626",
+  "system_prompt_sha256": "be902953f247c302b71ac950ae522e6d295804f58572c2b6e8b94e3df26fc666",
+  "schema_sha256": "e664bdefa6a0276032e5481715e8f8221f646e4af9c7e4b7cc61873432d1c665",
+  "semantic_contract_sha256": "698e00102d327c7dd5d637a3e0294a6a91f918a8b2a57d438e65e1bcbe48eee7",
+  "validation_rules_sha256": "8f930a1155128f61917dc2ddf45c4c667cbccdbb2682feff7ec266e86604ad82",
+  "papers": [
+    {
+      "paper_id": "04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main",
+      "split": "development",
+      "document_id": "aaa64114e525b916",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\04e8e744b0a5476e9278b4e5bc957fa7_1-s2.0-S1096717624000582-main\\aaa64114e525b916\\clean_document.json",
+      "sha256": "d6866e8bff18325cbd2859c9c83928baafe970f6450764a6075a9bff61a08089",
+      "bytes": 199983,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "07db8df7471d4db693632f10ccdc2254_13_ja0c12406",
+      "split": "development",
+      "document_id": "96b28b6ff5571d3e",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\07db8df7471d4db693632f10ccdc2254_13_ja0c12406\\96b28b6ff5571d3e\\clean_document.json",
+      "sha256": "04039d28ebe1b746b39c0e6a3ee97d06ae25dd7cc8df649cc8d70233674115bd",
+      "bytes": 182647,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735",
+      "split": "development",
+      "document_id": "f8c2f8cd83d676d3",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\0f67e4e6e3d54232a2bf5532bb6526c4_11_gkab735\\f8c2f8cd83d676d3\\clean_document.json",
+      "sha256": "53e0c29bdc33cd64994b165348b0d2045101ea3a4246232228d932779e5191f2",
+      "bytes": 180986,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354",
+      "split": "development",
+      "document_id": "cd1fe7691a2ec46e",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\1690bd8a7a65462c9cdd3fe1fcbc49c9_18_sb1c00354\\cd1fe7691a2ec46e\\clean_document.json",
+      "sha256": "10ffcc123741d43306829fbcb2827759ba44c46c620cae1afcbbd541ec6eb026",
+      "bytes": 108055,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "33428841e8bf4161b3867dac46a695ac_14_jf0c04725",
+      "split": "development",
+      "document_id": "8704249db52151ea",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\33428841e8bf4161b3867dac46a695ac_14_jf0c04725\\8704249db52151ea\\clean_document.json",
+      "sha256": "7a9b2c5908069db6ff03fe6985f26deeb910dd132c9cfe80ba48a741eaa29086",
+      "bytes": 97060,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "367036c3954648ea9e1691a9df36ace0_04_2022_曾老师",
+      "split": "development",
+      "document_id": "c503579430b5b197",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\367036c3954648ea9e1691a9df36ace0_04_2022_曾老师\\c503579430b5b197\\clean_document.json",
+      "sha256": "7fe68dc778b9eb3122b5b9492f389b30a3378518b6e8983260080808809b2d68",
+      "bytes": 207999,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6",
+      "split": "development",
+      "document_id": "b2e123b860e25485",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\627bff6f60a449e7b77fd1f889cd1f82_07_2020_10.1038_s41467-020-20423-6\\b2e123b860e25485\\clean_document.json",
+      "sha256": "e8dde97cc034817739839ae2b75490b4f5ef0798f5ee83a1e8da49eb9c650aa7",
+      "bytes": 153600,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9",
+      "split": "development",
+      "document_id": "b3c2105890dcd969",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\697297efb4bf41329a74312294cdf8d7_10_2022_10.1038_s41467-022-31934-9\\b3c2105890dcd969\\clean_document.json",
+      "sha256": "50ea7ece2e5007d86e2ae866f42cbb47aea1f3761a469dfad8e0e3185e775f5c",
+      "bytes": 171182,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main",
+      "split": "development",
+      "document_id": "2de225fd24380a88",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main\\2de225fd24380a88\\clean_document.json",
+      "sha256": "b00a856287b4c35b6e8290b4146228f989fefa62d22dd2a7bfd51705d8dc1584",
+      "bytes": 212879,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3",
+      "split": "development",
+      "document_id": "1b2f7607febbd194",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\80b1ba3a6b294bf3aba96cb814251dfa_09_2021_10.1038_s41467-021-25541-3\\1b2f7607febbd194\\clean_document.json",
+      "sha256": "0bea665c87107c5a9dac9db961d9039a67afd57378981abf6d377ea8eefdefa2",
+      "bytes": 145654,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "9bdff88f38d746db81b953793f928e4d_2021-祁老师",
+      "split": "holdout",
+      "document_id": "2125cc591a1568a5",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\9bdff88f38d746db81b953793f928e4d_2021-祁老师\\2125cc591a1568a5\\clean_document.json",
+      "sha256": "fdc2b513e05dfcae3f5d4836d2bc2285a730cf9585bc1a382279fb45616d5480",
+      "bytes": 95952,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1",
+      "split": "holdout",
+      "document_id": "6399167f747a4f96",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\ad518a14803d490b95869cc78bebd062_12_2021_10.1186_s12934-021-01526-1\\6399167f747a4f96\\clean_document.json",
+      "sha256": "bcdd6a335e782df5ca53f3ef5c106194fcd31292d87fb25db81efca64abafe34",
+      "bytes": 118761,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+      "split": "holdout",
+      "document_id": "9f994eab97f58cfa",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25\\9f994eab97f58cfa\\clean_document.json",
+      "sha256": "347e36bc3be14dad320970a6729acd543f31d7d7a94530ecfbf82d4c14e57b9c",
+      "bytes": 196146,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x",
+      "split": "holdout",
+      "document_id": "f0b582b19d0cc024",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\c3691097e8174772aca0448aca860617_9_15_2025_10.1186_s12934-025-02697-x\\f0b582b19d0cc024\\clean_document.json",
+      "sha256": "9f78a0c1a9de57e3bd87880e06cfc16396c05a86b7cd6c63f6090ad5d719edaa",
+      "bytes": 134939,
+      "supplement_available": false
+    },
+    {
+      "paper_id": "c7d6c4ca5bad4997b2197020e073bb98_gkac206",
+      "split": "holdout",
+      "document_id": "5e7196eb42fdf640",
+      "source_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\c7d6c4ca5bad4997b2197020e073bb98_gkac206\\5e7196eb42fdf640\\clean_document.json",
+      "sha256": "d690a4ae8038efa2af840dbb4309f747be89eaca76f8faa5a85f5ecf31897a55",
+      "bytes": 209891,
+      "supplement_available": false
+    }
+  ]
+}

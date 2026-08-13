@@ -1,0 +1,12 @@
+{
+  "failure_id": "E2E-BENCH-001",
+  "paper_id": "multiple historical cache artifacts",
+  "pipeline_stage": "BENCHMARK_EVALUATOR",
+  "input_excerpt": "legacy field_metadata may be an array and evidence locations may be strings",
+  "expected": {"behavior": "normalize legacy shapes and continue"},
+  "actual_before_fix": {"behavior": "AttributeError"},
+  "root_cause": "evaluator assumed only the newest dictionary metadata shape",
+  "severity": "P1",
+  "fixed_by": "type-guard metadata and normalize string locators",
+  "regression_test": "test_e2e_benchmark_governance_sources_and_splits"
+}

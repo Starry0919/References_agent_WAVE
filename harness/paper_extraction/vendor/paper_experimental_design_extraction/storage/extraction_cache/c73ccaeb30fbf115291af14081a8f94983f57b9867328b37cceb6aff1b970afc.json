@@ -1,0 +1,1350 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Design, evaluate (in silico) and implement novel non-natural biosynthetic routes for isopentyldiol (IPDO) production in Escherichia coli; compare a RetroPath RL-computationally designed route (route B) with the previously published route A and two intuitively designed routes (C from alpha,beta-DHIV; D from mevalonate) regarding theoretical yield, thermodynamics (MDF), energy cost, number of non-native steps and enzyme/intermediate penalties, and test their in vivo IPDO production.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "design_evaluation_and_implementation_of_synthetic_isopentyldiol_pathways_in_escherichia_coli_p009",
+          "1_introduction_p002",
+          "1_introduction_p006",
+          "2_results_p022"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "hypothesis": {
+        "value": "A priori in silico evaluation (FBA theoretical yield + MDF thermodynamic driving force + energy cost + enzyme/intermediate penalties) can predict the relative feasibility of alternative non-natural IPDO pathways; the route with the most favorable profile (route B) is more likely to function in vivo than intuitively designed routes C and D.",
+        "status": "inferred",
+        "confidence": 0.8,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "design_evaluation_and_implementation_of_synthetic_isopentyldiol_pathways_in_escherichia_coli_p012",
+          "1_introduction_p006",
+          "2_results_p022",
+          "4_discussion_p002"
+        ],
+        "notes": "The paper does not state an explicit hypothesis sentence; this is reconstructed from the stated purpose of comparing in silico predictions with implementation results.",
+        "inference": {
+          "method": "cross_section_inference",
+          "rationale": "Abstract, Introduction final paragraph and Results 2.1/4 jointly state that the study tests whether in silico criteria (FBA, MDF) predict pathway implementability; no single sentence declares a formal hypothesis."
+        }
+      },
+      "strain": {
+        "value": {
+          "implementation_host": "Escherichia coli BL21(DE3) (routes B, C, D implementation; protein expression; whole-cell catalysis)",
+          "chassis_for_route_B_final": "Escherichia coli W3110 with chromosomally integrated sfp under artificial promoter J23105 (strains IPB05, IPB06, IPB07, IPB08)",
+          "cloning_host": "Escherichia coli Top10",
+          "recombinant_strains": [
+            "IPB01 (BL21(DE3) + pCDF-car-sfp)",
+            "IPB02 (BL21(DE3) + pCDF-car-sfp + pET-gre)",
+            "IPB03 (BL21(DE3) + pET22b-SnHPD)",
+            "IPB04 (BL21(DE3) + pET22b-AaHPD)",
+            "IPB05 (W3110 chr::J23105-sfp + pTrc-car)",
+            "IPB06 (IPB05 with pTrc-cgh replacing pTrc-car)",
+            "IPB07 (IPB06 + p15-leu-acd)",
+            "IPB08 (IPB06 + empty p15AS; negative control; also written once as IPC08)",
+            "IPC01 (BL21(DE3) + pCDF-car-sfp + pCOLA-yqhD-dhaB)",
+            "IPC02 (system-engineered IPC01, details in Figure S3)",
+            "IPD01 (BL21(DE3) + pCDF-car-sfp + pCOLA-af)"
+          ]
+        },
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+          "5_materials_and_methods_p020"
+        ],
+        "notes": "Complete strain/plasmid list is in Table S1 (Supporting Information), which was not available; exact genotypes of IPC02 and full strain construction details are blocked_pending_supplement.",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "genotype": {
+        "value": {
+          "heterologous_genes": "car (CAR, Nocardia iowensis, codon-synthesized), sfp (Bacillus subtilis), GRE2 (Saccharomyces cerevisiae S288c), SnHPD (Streptomyces noursei DSM 40635), AaHPD (Allokutzneria albata DSM 44149), yqhD (E. coli), dhaB/GDHt (Klebsiella pneumoniae), ado (Prochlorococcus marinus), fdx (Synechocystis sp. 6803), fnr (E. coli), leuAfbrBCD (feedback-resistant leucine operon, E. coli), alsS (B. subtilis), ilvCD (E. coli); route A genes MFL (Methylobacillus flagellatus KT), AAD (Proteus vulgaris), KDC (Lactobacillus lactis) referenced from prior work",
+          "plasmids": "pCDF-car-sfp (pCDFDuet, T7), pET-gre (pET28a-GRE2), pET22b-SnHPD, pET22b-AaHPD, pTrc-car (pTrc99a-car), pTrc-cgh (pTrc99a-car-GRE2-AaHPD), p15-leu-acd (p15AS-leuAfbrBCD-alsS-ilvCD), pCOLA-yqhD-dhaB (pCOLADuet), pCOLA-af (pCOLADuet-ado-fdx-fnr)",
+          "chromosomal_modification": "sfp integrated into E. coli W3110 chromosome driven by artificial promoter J23105 (IPB05)",
+          "car_mutants": "Structure-guided CAR mutants including N227A (2.28-fold wild-type activity on MVA in vitro); full mutant list in Figure S4/S5 (supplement unavailable)"
+        },
+        "status": "reported",
+        "confidence": 0.8,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013"
+        ],
+        "notes": "IPC02 genotype described only as 'system metabolic engineering modification ... (Figure S3)'; CAR/GDHt/ADO mutant identities beyond N227A are in Figures S4/S5; all supplement-dependent.",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "engineering_method": {
+        "value": [
+          "computational retrosynthesis pathway design (RetroPath RL)",
+          "in silico pathway evaluation by FBA (iY75_1357) and MDF (equilibrator)",
+          "heterologous gene expression on Duet/pTrc/p15AS plasmids",
+          "chromosomal integration of sfp under artificial promoter J23105",
+          "precursor supply enhancement by overexpressing leuAfbrBCD, alsS, ilvCD",
+          "system metabolic engineering of IPC01 to increase alpha,beta-DHIV flux and block BCAA pathways (details in Figure S3)",
+          "structure-guided rational protein engineering / computational saturation mutagenesis and virtual screening of CAR (and rational design of GDHt and ADO)",
+          "In-Fusion HD cloning for plasmid construction",
+          "whole-cell catalysis for alpha-KIC to 3-OH-IV conversion",
+          "in vitro multi-enzyme cascade verification"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p008",
+          "5_materials_and_methods_p009",
+          "5_materials_and_methods_p017",
+          "5_materials_and_methods_p003",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013",
+          "5_materials_and_methods_p020"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "experimental_groups": {
+        "value": [
+          "Route B stepwise verification: purified CAR activity assay; in vitro cascade (CAR + YqhD or GRE2) with 0 or 20 mM 3-OH-IV; IPB02 in vivo with/without 50 mM 3-OH-IV; whole-cell catalysis IPB03 (SnHPD) vs IPB04 (AaHPD) sampled at 6 and 24 h; IPB06 (no precursor enhancement); IPB07 (+p15-leu-acd) from glucose",
+          "Route C: in vitro CAR activity on alpha,beta-DHIV; IPC01 in vivo (48 h); IPC02 in vivo; in vitro two-step cascade with 25 mM alpha,beta-DHIV (CAR 1 h, then YqhD+DhaB 3 h)",
+          "Route D: in vitro CAR activity on MVA; IPD01 in vivo with glucose + MVA cosubstrates (48 h); CAR-mutant route-D strains in vivo",
+          "In silico comparison group: routes A, B, C, D evaluated by FBA and MDF"
+        ],
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "cross_section_inference",
+        "evidence_ids": [
+          "2_results_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p005",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p011",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013"
+        ],
+        "notes": "Groups are reconstructed from Results narrative; no explicit group table in main text (Table S1 unavailable).",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "controls": {
+        "value": [
+          "Benzoic acid (BA), native CAR substrate, as positive control in CAR activity assays (Figures 3a, 4a)",
+          "E. coli BL21(DE3) without HPD as negative control in whole-cell catalysis (Table 2): no alpha-KIC to 3-OH-IV conversion detected",
+          "IPB08 (IPB06 + empty p15AS vector) as negative control for IPB07 glucose fermentation: no IPDO produced",
+          "Reaction without 3-OH-IV as negative control in in vitro cascade and in IPB02 in vivo assay: no IPDO detected",
+          "IPDO calibration standard (100 mg/L) and IPDO standard MS spectrum; 100 mg/L 1,3-PDO as internal standard for derivatization efficiency"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p005",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p006",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+          "2_results_p019"
+        ],
+        "notes": "Negative-control strain is named IPC08 once and IPB08 once in the same paragraph (see conflicts).",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "culture_conditions": {
+        "value": {
+          "seed_culture": "LB medium, overnight (37 C, 220 rpm for enzyme expression; shake-flask fermentation seeds grown overnight)",
+          "fermentation": "FM-II medium, inoculation 1:100 (v/v) or initial OD600 0.1 (IPB02 experiment), 0.1 mM IPTG induction at OD600 0.4-0.6, then 30 C, 200 rpm, 48 h",
+          "enzyme_expression": "50 mL LB in 300 mL shake flasks, 37 C 220 rpm to OD600 0.4-0.6, 0.1 mM IPTG, then 30 C 220 rpm for 12-16 h",
+          "whole_cell_catalysis": "cells resuspended in 5 mL 0.1 M Tris buffer pH 6.5 with 33 mM alpha-KIC, 3 mM FeSO4, 1 mM DTT, 5 mM ascorbate; 30 C, 220 rpm, 100 mL baffled shake flask; sampled at 6 and 24 h",
+          "in_vitro_cascade": "HEPES buffer pH 7.5, 30 C, 6 h"
+        },
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p002",
+          "5_materials_and_methods_p018",
+          "5_materials_and_methods_p020",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "medium": {
+        "value": {
+          "LB": "5 g/L yeast extract, 10 g/L tryptone, 10 g/L NaCl",
+          "FM-II": "30 g/L glucose, 0.5 g/L MgSO4-7H2O, 3 g/L KH2PO4, 12 g/L K2HPO4, 4 g/L (NH4)2SO4, 1 g/L yeast extract, 2 g/L monosodium citrate, 0.1 g/L FeSO4-7H2O, pH 7.0",
+          "selection": "LB agar + 50 mg/L kanamycin for pET28a construction screening"
+        },
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p002",
+          "5_materials_and_methods_p007"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "dosage": {
+        "value": {
+          "IPTG": "0.1 mM at OD600 0.4-0.6",
+          "3-OH-IV_supplementation_in_vivo": "50 mM (IPB02)",
+          "in_vitro_cascade": "0 or 20 mM 3-OH-IV, 10 mM NADPH, 2 mM ATP, 10 mM Mg2+, 400 ug CAR, 200 ug YqhD or GRE2",
+          "CAR_activity_assay": "80 mM HEPES pH 7.5, 10 mM MgCl2, 0.25 mM NADPH, 1 mM ATP, 5 mM carboxylic acid substrate, 100 ug purified CAR in 0.2 mL",
+          "whole_cell_catalysis": "33 mM alpha-KIC, 3 mM FeSO4, 1 mM DTT, 5 mM ascorbate",
+          "route_C_in_vitro": "25 mM alpha,beta-DHIV",
+          "FBA_constraint": "glucose uptake rate 15 mmol/g/DCW"
+        },
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p002",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+          "5_materials_and_methods_p019",
+          "5_materials_and_methods_p020",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p011",
+          "5_materials_and_methods_p016"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "time": {
+        "value": {
+          "shake_flask_fermentation": "48 h after induction (30 C, 200 rpm)",
+          "enzyme_expression": "12-16 h post-induction",
+          "in_vitro_cascade_route_B": "6 h at 30 C",
+          "whole_cell_catalysis": "sampling at 6 and 24 h",
+          "route_C_in_vitro": "CAR reaction 1 h, then + YqhD/DhaB for 3 h",
+          "route_C_D_in_vivo": "cultivation 48 h before GC analysis",
+          "CAR_activity_assay": "5-15 min reaction at 30 C"
+        },
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p002",
+          "5_materials_and_methods_p018",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+          "5_materials_and_methods_p020",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p011",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+          "5_materials_and_methods_p019"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "replicates": {
+        "value": null,
+        "status": "unknown",
+        "confidence": 0.0,
+        "extraction_method": "not_applicable",
+        "evidence_ids": [],
+        "notes": "No statement of biological or technical replicate numbers, error bars, or statistical spread was found anywhere in the available full text or figure captions.",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "assay": {
+        "value": [
+          "CAR activity assay: NADPH disappearance monitored at 340 nm (HEPES pH 7.5, 30 C)",
+          "IPDO quantification by GC-FID after derivatization with phenylboronic acid (5 mg/mL in 2,2-dimethoxypropane), 1,3-PDO internal standard",
+          "IPDO identity confirmation by GC-MS (retention time + mass spectrum vs IPDO standard)",
+          "Bradford protein quantification (BSA standard)",
+          "colony PCR + Sanger sequencing for plasmid verification"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p019",
+          "5_materials_and_methods_p021",
+          "5_materials_and_methods_p022",
+          "5_materials_and_methods_p023",
+          "5_materials_and_methods_p018",
+          "5_materials_and_methods_p007"
+        ],
+        "notes": "GC detection limit for IPDO stated as <1 mg/L (3_implementation p012).",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "instruments": {
+        "value": [
+          "Varian 3900 GC with flame ionization detector, Phenomenex HP-5 capillary column (30 m x 0.25 mm x 0.25 um)",
+          "Agilent 7890B GC with DB-5 ms UI column coupled to Agilent MSD 5977 mass spectrometer, Gerstel CIS injector",
+          "FastPrep 24 homogenizer (MP Biomedicals)",
+          "His SpinTrap column (GE Healthcare)",
+          "Amicon Ultra-0.5 centrifugal filter (10K MWCO)",
+          "spectrophotometer for 340 nm NADPH assay (model not specified)"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p022",
+          "5_materials_and_methods_p023",
+          "5_materials_and_methods_p018"
+        ],
+        "notes": null,
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "analysis_methods": {
+        "value": [
+          "Retrosynthesis pathway prediction: RetroPath RL (similarity cutoff 0.5, width 10, depth 7, max rollout 10, reaction rule radius 2/4/8/16, biological pathway scoring; E. coli metabolite database as sinks; second round with similarity 0.1 and random scoring)",
+          "FBA on genome-scale model iY75_1357 (E. coli K-12 W3110) with route-specific submodels iY75_1357_IPDO_A/B/C/D, glucose uptake 15 mmol/g/DCW",
+          "Thermodynamic analysis: component contribution method for DrG'0; MDF via equilibrator-api and equilibrator-pathway with defined metabolite concentration boundaries",
+          "Computational saturation mutagenesis / virtual screening of CAR based on its crystal structure (binding pocket and adjacent loop)",
+          "GC/GC-MS data analysis by retention time and spectral comparison to standards"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "5_materials_and_methods_p008",
+          "5_materials_and_methods_p009",
+          "5_materials_and_methods_p016",
+          "5_materials_and_methods_p017",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013",
+          "5_materials_and_methods_p023"
+        ],
+        "notes": "No statistical tests (t-test/ANOVA/p-values) are reported anywhere in the available text.",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      },
+      "outcomes": {
+        "value": {
+          "in_silico": "Theoretical yields (mol/mol glucose): A 0.628, B 0.667, C 0.827, D 0.667. MDF (kJ/mol): A 31.54, B 31.54, C 6.96, D 38.37; after removing the shared PDDH-catalyzed bottleneck: A 84.67, B 74.93. Route B judged best overall (fewest non-native steps, no condition-dependent/uncharacterized enzymes).",
+          "CAR_activity": "CAR on 3-OH-IV 0.045 vs 0.511 umol/min/mg on BA; on alpha,beta-DHIV 0.093 umol/min/mg; mutant N227A 2.28-fold of wild type on MVA (in vitro)",
+          "route_B_in_vitro": "187.2 mg/L (YqhD) and 200.0 mg/L (GRE2) IPDO from 20 mM 3-OH-IV",
+          "route_B_in_vivo": "IPB02: 480.0 mg/L IPDO with 50 mM 3-OH-IV; none without. IPB06: no IPDO from glucose. IPB07: 2.2 mg/L IPDO from glucose in shake flask; control IPB08: none",
+          "whole_cell": "3-OH-IV from alpha-KIC: IPB03 (SnHPD) 914.3 mg/L at 6 h; IPB04 (AaHPD) 1294.7 mg/L at 6 h and 2119.2 mg/L at 24 h; subsequent in vitro conversion yielded up to 416 mg/L IPDO (Table 2)",
+          "routes_C_D": "No IPDO detected in vivo (IPC01, IPC02, IPD01, CAR-mutant route-D strains) or in route C in vitro cascade; attributed by authors to poor thermodynamic driving force and poor CAR kinetics on alpha,beta-DHIV/MVA; GC detection limit <1 mg/L"
+        },
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "direct_quote",
+        "evidence_ids": [
+          "1_introduction_p007",
+          "2_results_p004",
+          "2_results_p012",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p005",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p011",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013"
+        ],
+        "notes": "Table 1 in the parsed text has merged/garbled cells (see conflicts); values here follow the Results prose where available.",
+        "inference": {
+          "method": null,
+          "rationale": null
+        }
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "E1_insilico_design_evaluation",
+          "purpose": "Design candidate IPDO pathways (RetroPath RL) and rank routes A-D by FBA theoretical yield, MDF thermodynamics, ATP/NADPH cost, non-native steps and enzyme/intermediate penalties",
+          "host": "in silico (E. coli K-12 W3110 model iY75_1357)",
+          "intervention": "computational pathway design and evaluation",
+          "conditions": "glucose uptake 15 mmol/g/DCW; MDF concentration boundaries per Methods 5.5",
+          "control": "route A (previously published) as reference route",
+          "replicates": "unknown",
+          "readout": "theoretical yield, MDF, bottleneck reactions, energy cost",
+          "analysis": "FBA; MDF (equilibrator); component contribution method",
+          "outcome": "Route B ranked highest overall priority; route C highest yield but lowest MDF; route D highest MDF but all upstream reactions rate-limiting",
+          "evidence": [
+            "2_results_p001",
+            "2_results_p004",
+            "2_results_p012",
+            "1_introduction_p007",
+            "5_materials_and_methods_p008",
+            "5_materials_and_methods_p016",
+            "5_materials_and_methods_p017"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate design action (selection of route B for implementation). Q2: performed in this paper. Q3: determined which pathway was implemented and shaped all subsequent experiments.",
+          "ddr_annotation": {
+            "design_action": "M1",
+            "design_action_rationale": "Pathway-level design choice: select and implement the RetroPath RL-predicted route B (HPD -> CAR -> ADH from alpha-KIC) over intuitive routes C and D.",
+            "trigger_observation": "Previously reported route A reached only 310 mg/L IPDO, far from practical requirement; in silico comparison showed route B has fewest non-native steps, high thermodynamic driving force (after removing the shared PDDH bottleneck, MDF 74.93 kJ/mol), low energy cost, and no condition-dependent or poorly characterized enzymes.",
+            "evidence_grading": "软",
+            "evidence_grading_rationale": "The decision was driven by predictive tool outputs (RetroPath RL, FBA, MDF); these are computational predictions requiring experimental confirmation, which the authors then performed. Route A's 310 mg/L titer is hard prior data but from a previous study.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "The paper explicitly articulates mechanistic grounds: thermodynamic driving force topology (oxidative + reductive hydroxyl formation), carbon loss via decarboxylation, ATP/NADPH burden, and enzyme substrate-affinity penalties.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When designing a non-natural pathway for IPDO (short-chain diol) production in E. coli, prioritize candidate routes that combine oxidative and reductive hydroxyl-group formation, maximize MDF while inspecting thermodynamic topology (not only the single MDF number), and minimize non-native steps and cofactor/ATP cost, because thermodynamic driving force and energy burden determine in vivo feasibility; validated only for IPDO routes in E. coli.",
+            "alternatives_considered": [
+              "Route C (from alpha,beta-DHIV): highest theoretical yield but lowest MDF (6.96 kJ/mol), GDHt requires vitamin B12; implemented but produced no IPDO",
+              "Route D (from mevalonate): highest MDF but driven by one highly exergonic ADO step with all upstream reactions rate-limiting; ADO mechanism controversial; implemented but produced no IPDO",
+              "Second RetroPath RL route via ethyl 3-hydroxyisovalerate hydrolysis: rejected because the precursor is not a natural E. coli metabolite"
+            ],
+            "strategy_categories": [
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E2_CAR_expression_activity",
+          "purpose": "Express and purify functional CAR and verify its activity on 3-OH-IV (route B step 2)",
+          "host": "E. coli BL21(DE3), strain IPB01 (pCDF-car-sfp)",
+          "intervention": "coexpression of car (N. iowensis) with sfp (B. subtilis) on pCDFDuet under T7 promoter",
+          "conditions": "enzyme expression per Methods 5.6; activity assay 80 mM HEPES pH 7.5, 10 mM MgCl2, 0.25 mM NADPH, 1 mM ATP, 5 mM substrate, 100 ug CAR, 30 C",
+          "control": "benzoic acid (native substrate) positive control",
+          "replicates": "unknown",
+          "readout": "NADPH consumption at 340 nm",
+          "analysis": "specific activity umol/min/mg",
+          "outcome": "CAR active on 3-OH-IV (0.045 umol/min/mg) but >10-fold lower than on BA (0.511); CAR+Sfp coexpression crucial for activity (Table S3, supplement unavailable)",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+            "5_materials_and_methods_p019"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate construct design (car+sfp coexpression cassette). Q2: constructed in this paper. Q3: the active CAR/Sfp module was reused in all downstream route implementations (IPB02, IPC01, IPD01, IPB05-07).",
+          "ddr_annotation": {
+            "design_action": "M6",
+            "design_action_rationale": "Coexpression of the phosphopantetheinyl transferase Sfp with CAR to obtain fully functional enzyme (expression/activation balancing).",
+            "trigger_observation": "CAR apoenzyme requires post-translational phosphopantetheinylation of a conserved serine to be active; authors cite prior report that Sfp from B. subtilis performs this modification (ref 22) and observed that coexpression is crucial for CAR activity (Table S3).",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Text states measured activity comparison (Table S3) showing coexpression enhances CAR activity; however the underlying table is in the unavailable supplement, so direct numbers could not be verified.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "The paper explicitly states the Sfp requirement 'has been reported' (Finnigan et al., ref 22) and adopted it based on that literature.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When expressing a carboxylic acid reductase (CAR) in E. coli for pathway implementation, coexpress a 4'-phosphopantetheinyl transferase such as Sfp, because CAR requires post-translational phosphopantetheinylation of its conserved serine to be catalytically functional.",
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "enzyme_activity_improvement"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E3_invitro_cascade_3OHIV",
+          "purpose": "Verify IPDO production from 3-OH-IV in vitro with purified CAR + YqhD (E. coli) or GRE2 (S. cerevisiae S288c)",
+          "host": "in vitro (purified enzymes)",
+          "intervention": "multi-enzyme cascade reaction",
+          "conditions": "HEPES pH 7.5, 0/20 mM 3-OH-IV, 10 mM NADPH, 2 mM ATP, 10 mM Mg2+, 400 ug CAR, 200 ug YqhD or GRE2, 30 C, 6 h",
+          "control": "reaction without 3-OH-IV",
+          "replicates": "unknown",
+          "readout": "IPDO titer (GC)",
+          "analysis": "GC quantification",
+          "outcome": "187.2 mg/L (YqhD) and 200.0 mg/L (GRE2) IPDO; none without substrate; GRE2 slightly better than YqhD",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p002",
+            "2_results_p019"
+          ],
+          "decision_type": "validation",
+          "decision_type_rationale": "Q1 fails as an engineering decision: this is a feasibility measurement of an already-designed step; it introduces no new design action, though its result (GRE2 >= YqhD) informed the later choice of GRE2 for in vivo constructs."
+        },
+        {
+          "experiment_id": "E4_invivo_IPB02_from_3OHIV",
+          "purpose": "Verify in vivo IPDO production from supplemented 3-OH-IV",
+          "host": "E. coli BL21(DE3), strain IPB02 (pCDF-car-sfp + pET-gre)",
+          "intervention": "two-plasmid heterologous expression of car, sfp, GRE2",
+          "conditions": "LB overnight seed; 10 mL FM-II, initial OD 0.1, +/- 50 mM 3-OH-IV, 0.1 mM IPTG at OD600 0.4-0.6, 30 C 200 rpm",
+          "control": "same strain without 3-OH-IV supplementation",
+          "replicates": "unknown",
+          "readout": "IPDO titer (GC)",
+          "analysis": "GC",
+          "outcome": "480.0 mg/L IPDO with 50 mM 3-OH-IV; none without",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+            "2_results_p019"
+          ],
+          "decision_type": "validation",
+          "decision_type_rationale": "Q3 fails: validates the downstream half of route B in vivo but introduces no new engineering action beyond the constructs already designed; it confirms feasibility before pathway completion."
+        },
+        {
+          "experiment_id": "E5_HPD_homolog_screening",
+          "purpose": "Identify a functional alpha-ketoisocaproate dioxygenase for alpha-KIC to 3-OH-IV conversion (route B step 1)",
+          "host": "E. coli BL21(DE3), strains IPB03 (pET22b-SnHPD) and IPB04 (pET22b-AaHPD)",
+          "intervention": "heterologous expression of two HPD homologs (S. noursei DSM 40635; A. albata DSM 44149) and whole-cell catalysis comparison",
+          "conditions": "LB + 0.1 mM IPTG overnight; cells resuspended in 0.1 M Tris pH 6.5 + 33 mM alpha-KIC + 3 mM FeSO4 + 1 mM DTT + 5 mM ascorbate; 30 C, 220 rpm; sampling 6 and 24 h; product then converted to IPDO in vitro",
+          "control": "E. coli BL21(DE3) without HPD (negative control, Table 2)",
+          "replicates": "unknown",
+          "readout": "3-OH-IV produced; subsequent IPDO from in vitro cascade",
+          "analysis": "GC",
+          "outcome": "No conversion in negative control; AaHPD (IPB04) gave higher 3-OH-IV than SnHPD (IPB03) at both 6 h (1294.7 vs 914.3 mg/L) and 24 h (2119.2 vs 1812.1 mg/L); AaHPD selected",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p004",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p005",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p006",
+            "5_materials_and_methods_p020"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate choice between two candidate enzymes. Q2: performed here. Q3: AaHPD was carried into the final route-B strain (pTrc-cgh).",
+          "ddr_annotation": {
+            "design_action": "M4",
+            "design_action_rationale": "Rate-limiting enzyme identification/engineering via homolog comparison: select the more active HPD for the alpha-KIC to 3-OH-IV step.",
+            "trigger_observation": "Route B requires an HPD active on alpha-KIC; two homologs were available as candidates and their activities differed.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Whole-cell catalysis measurements (Table 2) directly compare 3-OH-IV titers for both homologs at two time points.",
+            "reason_nature": "筛选得来",
+            "reason_nature_rationale": "AaHPD was chosen because it empirically showed higher activity; the paper gives no mechanistic reason why AaHPD outperforms SnHPD.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [
+              "SnHPD from S. noursei: lower activity, not carried forward"
+            ],
+            "strategy_categories": [
+              "enzyme_activity_improvement"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E6_IPB05_car_sfp_balancing",
+          "purpose": "Improve CAR activity in the production host by optimizing CAR:Sfp expression ratio",
+          "host": "E. coli W3110 with chromosomal J23105-sfp + pTrc-car (strain IPB05)",
+          "intervention": "chromosomal integration of sfp under artificial constitutive promoter J23105; car overexpressed from pTrc99a",
+          "conditions": "standard enzyme expression conditions; CAR activity compared across hosts/configurations (Table S3, supplement unavailable)",
+          "control": "other CAR/Sfp expression configurations (details in Table S3)",
+          "replicates": "unknown",
+          "readout": "CAR activity",
+          "analysis": "activity assay (Table S3)",
+          "outcome": "IPB05 showed highest CAR activity and was chosen as route B verification chassis",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate expression-configuration engineering (chromosomal integration + plasmid). Q2: constructed in this paper. Q3: IPB05 became the chassis for IPB06/IPB07.",
+          "ddr_annotation": {
+            "design_action": "M6",
+            "design_action_rationale": "Expression balancing of CAR and its activating enzyme Sfp across chromosome (J23105-driven sfp) and plasmid (pTrc-car) to maximize functional CAR.",
+            "trigger_observation": "CAR activity depended on the CAR:Sfp expression ratio; the initial pCDFDuet coexpression (IPB01) was suboptimal for the production host context.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Based on measured CAR activities across configurations (Table S3); however Table S3 is in the unavailable supplement, so the comparison cannot be independently verified from the main text.",
+            "reason_nature": "文献类比",
+            "reason_nature_rationale": "The need for Sfp-mediated activation and its tuning follows the cited literature (ref 22); the specific J23105/pTrc configuration choice is empirical optimization without a stated mechanistic model.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When a CAR-dependent pathway is moved to a production host, tune the expression ratio of CAR to its phosphopantetheinyl transferase (e.g., chromosomal constitutive sfp plus plasmid-borne car), because CAR activity is limited by the balance of apo-CAR and its activating enzyme; validated only for CAR/Sfp in E. coli W3110/BL21(DE3).",
+            "alternatives_considered": [
+              "Alternative CAR/Sfp expression configurations listed in Table S3 (supplement unavailable)"
+            ],
+            "strategy_categories": [
+              "enzyme_activity_improvement"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E7_routeB_from_glucose_IPB06_IPB07",
+          "purpose": "Achieve de novo IPDO production from glucose via route B",
+          "host": "E. coli W3110 chr::J23105-sfp; IPB06 (pTrc-cgh), IPB07 (IPB06 + p15-leu-acd), IPB08 (IPB06 + empty p15AS, negative control)",
+          "intervention": "pTrc-cgh (car+GRE2+AaHPD) pathway plasmid; then overexpression of leuAfbrBCD (E. coli), alsS (B. subtilis) and ilvCD (E. coli) on p15AS to enhance alpha-KIC supply",
+          "conditions": "FM-II medium, 0.1 mM IPTG at OD600 0.4-0.6, 30 C, 200 rpm, 48 h, shake flask",
+          "control": "IPB08 empty-vector negative control",
+          "replicates": "unknown",
+          "readout": "IPDO titer (GC and GC-MS confirmation with standard and 1,3-PDO internal standard)",
+          "analysis": "GC-FID; GC-MS identity confirmation",
+          "outcome": "IPB06: no IPDO detected. IPB07: 2.2 mg/L IPDO from glucose. IPB08: no IPDO.",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+            "2_results_p019",
+            "5_materials_and_methods_p002"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate precursor-supply engineering (leuAfbrBCD/alsS/ilvCD overexpression). Q2: constructed in this paper. Q3: converted a non-producing strain into a producing one, establishing route B in vivo.",
+          "ddr_annotation": {
+            "design_action": "M2",
+            "design_action_rationale": "Precursor and flux supply enhancement: overexpress the feedback-resistant leucine operon and upstream BCAA-pathway genes to raise the alpha-KIC pool feeding route B.",
+            "trigger_observation": "IPB06 carrying the complete route B produced no detectable IPDO from glucose; authors hypothesized that the supply of the precursor alpha-KIC is insufficient (consistent with efficient competing conversion of alpha-KIC to leucine by endogenous IlvE).",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Measured outcome: IPB07 produced 2.2 mg/L IPDO while the empty-vector control IPB08 produced none (GC + GC-MS verified).",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "The intervention directly follows a stated mechanistic hypothesis (precursor alpha-KIC limitation), later reinforced in the Discussion by kinetic comparison of IlvE (Km 0.08 mM, kcat 24.7 s-1) versus HPD (Km 0.32 mM, kcat 6.5 min-1) competing for alpha-KIC.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When an alpha-KIC-diverting heterologous pathway in E. coli yields no detectable product despite functional pathway enzymes, enhance precursor supply by overexpressing the feedback-resistant leucine biosynthesis operon (leuAfbrBCD) together with alsS and ilvCD, because the endogenous high-efficiency transaminase IlvE drains the alpha-KIC pool toward leucine; validated only at proof-of-concept level (2.2 mg/L IPDO) in E. coli W3110.",
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "precursor_supply_enhancement",
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E8_routeC_implementation",
+          "purpose": "Implement route C (alpha,beta-DHIV -> IPDO via CAR, PDDH/YqhD, GDHt) in vitro and in vivo",
+          "host": "E. coli BL21(DE3), strains IPC01 (pCDF-car-sfp + pCOLA-yqhD-dhaB) and IPC02 (system-engineered IPC01)",
+          "intervention": "heterologous expression of car, sfp, yqhD, dhaB (GDHt from Klebsiella); then system metabolic engineering to increase alpha,beta-DHIV flux and block BCAA pathways (Figure S3, supplement unavailable)",
+          "conditions": "in vivo: FM-II, 48 h cultivation; in vitro: 25 mM alpha,beta-DHIV, CAR 1 h then YqhD+DhaB 3 h",
+          "control": "BA positive control for CAR activity",
+          "replicates": "unknown",
+          "readout": "IPDO (GC); CAR activity on alpha,beta-DHIV (0.093 umol/min/mg)",
+          "analysis": "GC; enzyme assay",
+          "outcome": "CAR active on alpha,beta-DHIV in vitro but <half of BA activity; no IPDO from IPC01, IPC02, or the in vitro cascade",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p010",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p011"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate engineering (pathway construction; precursor enhancement + competing-pathway blocking in IPC02). Q2: performed here. Q3: represents a strategy choice (precursor supply + competition removal), even though it failed.",
+          "ddr_annotation": {
+            "design_action": "M2",
+            "design_action_rationale": "Precursor supply enhancement combined with competitive-pathway removal: increase flux through the alpha,beta-DHIV biosynthesis pathway and block branched-chain amino acid pathways draining it.",
+            "trigger_observation": "IPC01 carrying route C produced no detectable IPDO after 48 h; alpha,beta-DHIV is efficiently consumed by endogenous IlvD, and CAR shows low affinity/activity toward alpha,beta-DHIV.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Negative GC results are direct measurements; however the specific genetic modifications of IPC02 are only in Figure S3 (supplement unavailable), so the intervention content cannot be fully verified.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "The stated logic (raise precursor flux, block competing BCAA consumption) is mechanistic, but the intervention failed to yield IPDO, so the mechanism-to-outcome link is not validated.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "precursor_supply_enhancement",
+              "competitive_pathway_removal"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E9_routeD_implementation",
+          "purpose": "Implement route D (MVA -> IPDO via CAR and ADO) in E. coli",
+          "host": "E. coli BL21(DE3), strain IPD01 (pCDF-car-sfp + pCOLA-af: ado from Prochlorococcus marinus, fdx from Synechocystis sp. 6803, fnr from E. coli)",
+          "intervention": "heterologous expression of car, sfp, ado, fdx, fnr (fdx/fnr to supply NADPH for ADO); glucose + MVA cosubstrate cultivation",
+          "conditions": "FM-II medium, glucose + MVA cosubstrates, 48 h",
+          "control": "BA positive control for CAR activity on MVA (in vitro)",
+          "replicates": "unknown",
+          "readout": "IPDO (GC)",
+          "analysis": "GC",
+          "outcome": "CAR active on MVA in vitro; IPD01 produced no detectable IPDO even with MVA supplementation (GC detection limit <1 mg/L)",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p010"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate pathway construction including an NADPH-supply module (fdx/fnr) for ADO. Q2: performed here. Q3: tests the route D strategy; failure motivated subsequent enzyme engineering.",
+          "ddr_annotation": {
+            "design_action": "M1",
+            "design_action_rationale": "Pathway implementation with cofactor supply design: assemble route D including a ferredoxin/ferredoxin-NADP+ reductase module to feed NADPH to ADO.",
+            "trigger_observation": "Route D was the in silico-designed alternative using pyruvate/MVA as precursor; ADO requires reducing equivalents, motivating fdx/fnr coexpression.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Negative in vivo GC result is a direct measurement; the design rationale for fdx/fnr is stated in text.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "The fdx/fnr module follows an explicit mechanistic requirement (NADPH supply for the ADO-catalyzed reaction); the overall route choice, however, relied partly on predictive MDF analysis.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E10_CAR_GDHt_ADO_protein_engineering",
+          "purpose": "Improve CAR activity on alpha,beta-DHIV and MVA (and GDHt/ADO activities) to rescue routes C and D",
+          "host": "in vitro (purified CAR mutants) and E. coli route-D strains",
+          "intervention": "computational saturation mutagenesis/virtual screening and structure-guided rational design of CAR (binding pocket and adjacent loop residues); rational protein design of GDHt and ADO (Figures S4, S5)",
+          "conditions": "in vitro CAR activity assay on MVA; mutants introduced into route D in place of wild-type CAR",
+          "control": "wild-type CAR",
+          "replicates": "unknown",
+          "readout": "relative CAR activity on MVA; in vivo IPDO",
+          "analysis": "enzyme assay; GC",
+          "outcome": "Most CAR mutants showed increased activity on MVA; best mutant N227A reached 2.28-fold of wild type in vitro; no CAR, GDHt or ADO mutant enabled IPDO production in vivo",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p010"
+          ],
+          "decision_type": "engineering_decision",
+          "decision_type_rationale": "Q1: deliberate enzyme engineering. Q2: performed here. Q3: mutants were deployed into route D strains, a new design iteration (which nonetheless failed in vivo).",
+          "ddr_annotation": {
+            "design_action": "M4",
+            "design_action_rationale": "Rate-limiting enzyme engineering: structure-guided mutation of CAR binding-pocket and loop residues to improve activity on non-native substrates MVA and alpha,beta-DHIV.",
+            "trigger_observation": "CAR showed poor catalytic activity on alpha,beta-DHIV (0.093 umol/min/mg) and MVA relative to its native substrate BA, identified as a key reason for routes C/D failure; CAR's known substrate-preference rule (second functional group at least three carbons from carboxylate) explains the poor fit.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "In vitro mutant activities were measured (Figure 4b; N227A 2.28-fold); the preceding virtual screening is predictive (soft) but was confirmed by in vitro assays. In vivo rescue failed.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Mutagenesis targeted the binding pocket and adjacent loop based on the CAR crystal structure, an explicit structure-mechanism-guided rationale.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When CAR shows poor activity on a non-native carboxylic acid substrate, apply structure-guided saturation mutagenesis of binding-pocket and adjacent loop residues, because these positions shape substrate accommodation; validated only in vitro for MVA (N227A, 2.28-fold) and did not rescue in vivo IPDO production, so transfer to in vivo pathway contexts is unproven.",
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "enzyme_activity_improvement"
+            ]
+          }
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "source_locations": [
+          {
+            "paragraph_id": "design_evaluation_and_implementation_of_synthetic_isopentyldiol_pathways_in_escherichia_coli_p009",
+            "section": "Abstract",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we computationally designed a novel non-natural IPDO synthesis pathway (route B) using RetroPath RL ... We compared this new pathway with route A and two other intuitively designed routes",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "1_introduction_p006",
+            "section": "1. INTRODUCTION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "all three artificial biosynthetic routes were separately introduced into the Escherichia coli BL21-(DE3) strain, and their performances on IPDO production were analyzed and compared with the in silico prediction results",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "hypothesis": {
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p022",
+            "section": "2. RESULTS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we conducted the implementation of all three newly proposed IPDO biosynthetic routes in E. coli so as to explore the efectiveness of the methods and criteria used in this study for a priori in silico estimation of the thermodynamic feasibility",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "strain": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p001",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table S1 (supplement, unavailable)",
+            "supplement": "Table S1",
+            "quote": "Strains and plasmids used in this work are given in Table S1. E. coli Top10 was used for gene cloning and E. coli BL21(DE3) for protein expression.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The strain IPB05, which was constructed by integrating Sfp into the chromosome of E. coli W3110 driven by an artificial promoter J23105",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "genotype": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p001",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "Genes encoding alpha-ketoisocaproate dioxygenase, that is, SnHPD from Streptomyces noursei (DSM 40635) and AaHPD from Allokutzneria albata (DSM 44149), and methylglyoxal reductase GRE2 from S. cerevisiae (strain S288c)...",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we overexpressed the leucine operon (leuAfbrBCD) from E. coli, alsS from B. subtilis, and ilvCD genes from E. coli on the p15AS vector to obtain the plasmid p15-leu-acd",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "engineering_method": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p008",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "we performed a retrosynthesis analysis of IPDO using the software Retropath RL",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p013",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": "Figure 4",
+            "panel": "b",
+            "table": null,
+            "supplement": "Figures S4, S5",
+            "quote": "Computational saturation mutagenesis/virtual screening was conducted to predict CAR mutants with higher activities on MVA.",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "experimental_groups": {
+        "source_locations": [
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "d-f",
+            "table": null,
+            "supplement": null,
+            "quote": "transformed p15-leu-acd into IPB06 to generate strain IPB07. Strain IPC08 obtained by transforming the empty p15AS vector into IPB06 was also constructed as the negative control.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p009",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the plasmids pCDF-car-sfp and pCOLAyqhD-dhaB were cotransformed into E. coli BL21(DE3) to generate a recombinant strain named IPC01",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "controls": {
+        "source_locations": [
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "a",
+            "table": null,
+            "supplement": null,
+            "quote": "benzoic acid (BA), the native substrate of CAR, was used as the positive control",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p006",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": "Table 2",
+            "supplement": null,
+            "quote": "in the negative control using the E. coli BL21(DE3) strain, no conversion of alpha-KIC to 3-OH-IV could be detected",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "culture_conditions": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p002",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "After OD600 reached 0.4-0.6, 0.1 mM IPTG was added to induce protein expression, and the cultivation was carried out at 30 C and 200 rpm for 48 h.",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "medium": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p002",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "FM-II medium containing 30 g/L glucose, 0.5 g/L MgSO4-7H2O, 3 g/L KH2PO4, 12 g/L K2HPO4, 4 g/L (NH4)2SO4, 1 g/L yeast extract, 2 g/L monosodium citrate, and 0.1 g/L FeSO4-7H2O, pH 7.0",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "dosage": {
+        "source_locations": [
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p003",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "c",
+            "table": null,
+            "supplement": null,
+            "quote": "inoculated into 10 mL of FM-II medium with an initial OD of 0.1 with or without the addition of 50 mM 3-OH-IV",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "5_materials_and_methods_p020",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "resuspended in 5 mL of 0.1 M Tris-bufer (pH 6.5) containing 33 mM alpha-KIC, 3 mM FeSO4, 1 mM DTT, and 5 mM ascorbate",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "time": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p002",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the cultivation was carried out at 30 C and 200 rpm for 48 h",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p011",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "the first reaction catalyzed by CAR was conducted for 1 h, and then YqhD and DhaB were added into the reaction system to continue the reactions for 3 h",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "replicates": {
+        "source_locations": []
+      },
+      "assay": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p019",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The enzyme activity was measured by monitoring the disappearance of NADPH via the absorbance at 340 nm.",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "5_materials_and_methods_p021",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "50 uL of the filtered culture supernatant was mixed with 100 uL of acetonitrile and 50 uL of a derivatization reagent (comprising 5 mg/mL phenylboronic acid dissolved in 2,2-dimethoxypropane)",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "instruments": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p022",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "using a Varian 3900 GC instrument equipped with a flame ionization detector",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "5_materials_and_methods_p023",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "using an Agilent 7890B gas chromatograph equipped with an Agilent DB-5 ms UI nonpolar capillary column ... coupled to an Agilent MSD 5977 mass spectrometer",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "analysis_methods": {
+        "source_locations": [
+          {
+            "paragraph_id": "5_materials_and_methods_p009",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "calculated using FBA and the genome-scale metabolic model iY75_1357 for E. coli str. K-12 substr. W3110",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "5_materials_and_methods_p017",
+            "section": "5. MATERIALS AND METHODS",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "The MDF analysis was performed using the Python packages equilibrator-api and equilibrator pathway.",
+            "source_attribution": "current_article"
+          }
+        ]
+      },
+      "outcomes": {
+        "source_locations": [
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": "Figure 3",
+            "panel": "d-f",
+            "table": null,
+            "supplement": null,
+            "quote": "strain IPB07 produced 2.2 mg/L IPDO in a shake flask culture, while no IPDO was produced by the control strain IPB08",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p012",
+            "section": "3. IMPLEMENTATION",
+            "page": null,
+            "figure": null,
+            "panel": null,
+            "table": null,
+            "supplement": null,
+            "quote": "IPD01 did not generate IPDO after 48 h of cultivation even in the presence of MVA",
+            "source_attribution": "current_article"
+          },
+          {
+            "paragraph_id": "2_results_p012",
+            "section": "2. RESULTS",
+            "page": null,
+            "figure": "Figure 2",
+            "panel": null,
+            "table": "Table 1",
+            "supplement": null,
+            "quote": "Route D with an MDF value of 38.37 kJ/mol seems to be thermodynamically most favorable ... Route C gives the lowest MDF value (6.96 kJ/mol)",
+            "source_attribution": "current_article"
+          }
+        ]
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.95,
+        "evidence": [
+          "design_evaluation_and_implementation_of_synthetic_isopentyldiol_pathways_in_escherichia_coli_p009",
+          "5_materials_and_methods_p001",
+          "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008"
+        ],
+        "rationale": "Original experimental study with own Methods, strain construction, in vitro/in vivo experiments and analytical data; ACS Synth. Biol. research article format. Route A and the 310 mg/L prior titer are attributed to the authors' previous work (ref 7), not to this article."
+      },
+      "engineering_paper_type": [
+        "metabolic_engineering",
+        "protein_engineering"
+      ],
+      "engineering_paper_type_rationale": "Core contribution is pathway design/implementation and precursor-supply engineering for IPDO production (metabolic engineering); a secondary contribution is structure-guided mutagenesis of CAR, GDHt and ADO (protein engineering).",
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "BL21(DE3)",
+          "paper_strain_normalized": "Escherichia coli BL21(DE3)",
+          "role": "host",
+          "paper_label": "E. coli BL21(DE3)",
+          "lineage_or_engineering_context": "Protein expression host; implementation host for routes B (IPB01-04), C (IPC01-02) and D (IPD01); whole-cell catalysis; negative control in Table 2",
+          "combination_status": "demonstrated",
+          "genotype": "see plasmids per strain (pCDF-car-sfp, pET-gre, pET22b-SnHPD/AaHPD, pCOLA-yqhD-dhaB, pCOLA-af)",
+          "evidence": [
+            "5_materials_and_methods_p001",
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicitly named in Methods and throughout Results."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "Escherichia coli W3110 (K-12 substrain)",
+          "role": "engineered",
+          "paper_label": "E. coli W3110",
+          "lineage_or_engineering_context": "Chassis for final route-B production strains IPB05-IPB08; sfp integrated into chromosome under J23105 promoter; FBA model iY75_1357 is also a W3110 model",
+          "combination_status": "demonstrated",
+          "genotype": "chr::J23105-sfp; + pTrc-car (IPB05), pTrc-cgh (IPB06), pTrc-cgh + p15-leu-acd (IPB07), pTrc-cgh + empty p15AS (IPB08)",
+          "evidence": [
+            "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008",
+            "5_materials_and_methods_p009"
+          ],
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Explicitly stated for IPB05 construction."
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Top10",
+          "paper_strain_normalized": "Escherichia coli Top10",
+          "role": "other",
+          "paper_label": "E. coli Top10",
+          "lineage_or_engineering_context": "Gene cloning host only",
+          "combination_status": "not_applicable",
+          "genotype": "not reported",
+          "evidence": [
+            "5_materials_and_methods_p001"
+          ],
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Methods 5.1."
+        }
+      ],
+      "user_target_system": null,
+      "user_target_system_note": "No user target system was provided in this extraction request; target_system_adaptation is skipped per skill rules.",
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "user_target_system not provided"
+      },
+      "unresolved_parameters": [
+        {
+          "raw_text": "PDDH",
+          "issue": "PDDH is named as the enzyme catalyzing the final aldehyde-reduction step in routes A/B and two steps in route C (Table 1 note, Results 2.1), but Figure 1 abbreviations define ADH, not PDDH, and the implemented constructs use YqhD/GRE2; the identity of PDDH is never defined in the available text.",
+          "status": "unresolved"
+        },
+        {
+          "raw_text": "Table 1 numeric cells",
+          "issue": "Parsed Table 1 has merged/garbled cells (e.g., '0.628 0.667' in one cell; NAD(P)H/ATP row '2 2 0 1'; non-native steps '4 3 / 1 4 / 1 5'); per-route values for NAD(P)H, ATP and non-native steps cannot be reliably assigned from the parse.",
+          "status": "unresolved"
+        }
+      ],
+      "supplement_dependencies": [
+        {
+          "item": "Table S1 (strains and plasmids)",
+          "blocks": [
+            "complete genotype verification",
+            "strain_reconstruction"
+          ]
+        },
+        {
+          "item": "Table S2 (primers)",
+          "blocks": [
+            "exact_reproduction_protocol",
+            "library_resynthesis"
+          ]
+        },
+        {
+          "item": "Table S3 (CAR activity across expression hosts)",
+          "blocks": [
+            "verification of CAR/Sfp balancing claim (E6)"
+          ]
+        },
+        {
+          "item": "Figure S3 (system metabolic engineering of IPC02)",
+          "blocks": [
+            "IPC02 genotype",
+            "exact reproduction of route C engineering"
+          ]
+        },
+        {
+          "item": "Figures S4, S5 (rational design of CAR, GDHt, ADO)",
+          "blocks": [
+            "full mutant identities beyond N227A",
+            "library_resynthesis"
+          ]
+        }
+      ],
+      "governance_by_use": {
+        "scientific_design_summary": "allowed",
+        "mechanism_summary": "allowed",
+        "exact_reproduction_protocol": "blocked",
+        "strain_reconstruction": "blocked",
+        "library_resynthesis": "blocked",
+        "automated_DBTL_plan": "blocked",
+        "blocking_reasons": "Supporting Information (Tables S1-S3, Figures S1-S5) not available; replicate numbers and statistical methods absent from main text; Table 1 parse garbled."
+      }
+    },
+    "conflicts": [
+      {
+        "field_path": "fields.controls / experimental_design_object.experiments[E7].control",
+        "topic": "Negative-control strain name for the route-B glucose fermentation",
+        "candidates": [
+          {
+            "value": "IPC08",
+            "source": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p008: 'Strain IPC08 obtained by transforming the empty p15AS vector into IPB06 was also constructed as the negative control.'"
+          },
+          {
+            "value": "IPB08",
+            "source": "same paragraph, next sentence: 'no IPDO was produced by the control strain IPB08'"
+          }
+        ],
+        "conflict_reason": "source_internal_inconsistency: the same control strain is named IPC08 and IPB08 in consecutive sentences; the IPC prefix is otherwise reserved for route-C strains, suggesting a typo, but this cannot be resolved from the text.",
+        "requires_manual_review": true,
+        "suggested_action": "Check the original PDF/SI Table S1 for the correct strain name."
+      },
+      {
+        "field_path": "fields.outcomes.in_silico (energy efficiency)",
+        "topic": "ATP/NADPH cost attribution to routes B, C, D",
+        "candidates": [
+          {
+            "value": "Routes B and C have equal energy efficiency (2 NAD(P)H + 1 ATP per IPDO from pyruvate)",
+            "source": "2_results_p011, sentence 3"
+          },
+          {
+            "value": "Route C has the lowest energy efficiency (4 NAD(P)H + 1 ATP per IPDO)",
+            "source": "2_results_p011, sentence 4"
+          }
+        ],
+        "conflict_reason": "source_internal_inconsistency: route C is assigned both 2 and 4 NAD(P)H within the same paragraph; likely the intended statement was 'routes B and D exhibit equal energy efficiencies', but this cannot be confirmed from the text.",
+        "requires_manual_review": true,
+        "suggested_action": "Verify against original PDF Table 1 and Figure S2."
+      },
+      {
+        "field_path": "fields.outcomes.in_silico (thermodynamics ranking)",
+        "topic": "Which route has the highest thermodynamic driving force",
+        "candidates": [
+          {
+            "value": "Route B exhibits the highest thermodynamic driving force",
+            "source": "Abstract, design_evaluation_and_implementation_of_synthetic_isopentyldiol_pathways_in_escherichia_coli_p009"
+          },
+          {
+            "value": "Route D has the highest MDF (38.37 kJ/mol); routes A and B are lower (31.54), rising to 84.67 (A) and 74.93 (B) only after removing the shared PDDH bottleneck",
+            "source": "2_results_p012 and Table 1"
+          }
+        ],
+        "conflict_reason": "Abstract-level claim vs Results-level data: the abstract's 'highest thermodynamic driving force' for route B holds only under the modified metric (MDF after removing the common bottleneck reaction), not for the raw MDF values.",
+        "requires_manual_review": true,
+        "suggested_action": "Treat abstract wording as a paper_claim qualified by the bottleneck-removal analysis; use Results values for any quantitative reuse."
+      },
+      {
+        "field_path": "fields.genotype / outcomes (HPD naming)",
+        "topic": "Spelling of the A. albata HPD",
+        "candidates": [
+          {
+            "value": "AaHPD",
+            "source": "5_materials_and_methods_p001, 5_materials_and_methods_p020, Table 2"
+          },
+          {
+            "value": "AhHPD",
+            "source": "3_implementation_of_the_designed_ipdo_biosynthesis_routes_in_e_coli_p006 (twice)"
+          }
+        ],
+        "conflict_reason": "source_internal_inconsistency: 'AhHPD' appears only in one Results paragraph and is almost certainly a typo for AaHPD (Allokutzneria albata), but is recorded verbatim.",
+        "requires_manual_review": false,
+        "suggested_action": "Normalize to AaHPD with the typo noted."
+      },
+      {
+        "field_path": "fields.outcomes (Table 1 values)",
+        "topic": "Per-route values for NAD(P)H, ATP and number of non-native steps",
+        "candidates": [
+          {
+            "value": "Parsed table cells (garbled: '2 2 0 1'; '4 3 / 1 4 / 1 5')",
+            "source": "1_introduction_p007 (Table 1 parse)"
+          },
+          {
+            "value": "Prose values: route A 2 NAD(P)H, 0 ATP; routes B/D 2 NAD(P)H + 1 ATP; route C 4 NAD(P)H + 1 ATP; non-native steps A=4, B=3, C=4, D=2 (Figure 1 caption: route D 'two exogenous reaction steps')",
+            "source": "2_results_p011, 1_introduction_p004"
+          }
+        ],
+        "conflict_reason": "Table 1 parse is unreliable (merged cells); prose and figure caption partially disagree with raw parse (e.g., caption says route D has 2 exogenous steps while the garbled table suggests other numbers).",
+        "requires_manual_review": true,
+        "suggested_action": "Re-read Table 1 from the original PDF before reusing per-route energy/step values."
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 58930,
+    "output_tokens": 24033
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "7e67beadc61ded6ba097cf19e96ce9e42be6a9d607c9c58fd2f7696297ca71fb",
+    "output_hash": "bf3f3d2e21595096351317d2be410c3961c0edb69d13463d1faf2bd99aef1dcd",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "system_prompt_sha256": "aaea6fadeb52064203fe0e47bc7748c8c7da7cf71b66bed93c48430aa43befdc",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\c73ccaeb30fbf115291af14081a8f94983f57b9867328b37cceb6aff1b970afc.json",
+      "key_type": "content_sha256+model+skill_sha256+system_prompt_sha256"
+    }
+  },
+  "review_requests": []
+}

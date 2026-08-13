@@ -1,0 +1,806 @@
+{
+  "contract_version": "literature-shadow/1.0",
+  "mode": "shadow_no_ddr_write",
+  "rows": [
+    {
+      "paper_id": "paper_6edc47062e4719d3",
+      "doi": "10.1007/s10295-011-0978-8",
+      "title": "Development of l-tryptophan production strains by defined genetic modification in Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_b9ea21673e7a2cc4",
+      "doi": "10.1007/s00449-021-02630-7",
+      "title": "Metabolic control analysis of L-tryptophan producing Escherichia coli applying targeted perturbation with shikimate",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DIRECT_ENGINEERING_EVIDENCE",
+      "change": "verified",
+      "reason": "all hard gates evidenced",
+      "verification": {
+        "contract_version": "literature-evidence-verification/1.0",
+        "candidate_id": "paper_b9ea21673e7a2cc4",
+        "metadata_assessment": {
+          "decision": "tier_2_supporting_engineering",
+          "score": 0.861,
+          "organism_match": 1.0,
+          "strain_match": 0.45,
+          "product_match": 1.0,
+          "engineering_intervention_match": 1.0,
+          "production_objective_match": 1.0,
+          "experimental_evidence_match": 0.5,
+          "fulltext_availability": 1.0,
+          "host_relation": "related_ecoli",
+          "reason_codes": [
+            "HOST_RELATED_ECOLI",
+            "PRODUCT_EXACT",
+            "ENGINEERING_INTERVENTION",
+            "PRODUCTION_OBJECTIVE",
+            "PRODUCTION_METRIC"
+          ],
+          "rationale": "host=related_ecoli; product=exact; engineering=engineer,flux,pathway,transporter; production=biosynthesis,production; experimental=fed-batch; publication=primary/other"
+        },
+        "document_sha256": "7e250d0e1a550109c0516084a62f062aa9b82c58a5a5320a78c2865391d5afb9",
+        "publication_type": {
+          "is_review": false,
+          "evidence": "no review self-description detected"
+        },
+        "host": {
+          "relation": "K12_EXACT",
+          "evidence": [
+            {
+              "kind": "host",
+              "match": "Escherichia coli K-12",
+              "start": 99868,
+              "end": 100169,
+              "quote": "J (1998) Cloning and analy - sis of the shiA gene, which encodes the shikimate transport  system of Escherichia coli K-12. Gene 209:185–192  50. Kubota T, Tanaka Y, Takemoto N et al (2015) Identification and  expression analysis of a gene encoding a shikimate transporter  of Corynebacterium glutamicu",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "W3110",
+              "start": 20610,
+              "end": 20895,
+              "quote": "phase. Table 1  Strains and plasmids used in this study Strain Genotype Source or  reference NT1259 W3110 ΔtrpL trpE FBR (M293) N168D A478T C237R  ΔtrpR:FRT ΔtnaA::FRT ΔsdaB::FRT Δlac::   Ptac-aroF-B-L Δfuc::Ptac-tktA Δxyl::Ptac-serAFBR  (T372N) Δrib::Ptac-trpB-trpA [37] NT1259  shiAC",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 91,
+              "end": 387,
+              "quote": ".org/10.1007/s00449-021-02630-7 RESEARCH PAPER Metabolic control analysis of L‑tryptophan producing Escherichia coli  applying targeted perturbation with shikimate Kristin Schoppel1 · Natalia Trachtmann2 · Fabian Mittermeier1 · Georg A. Sprenger2 · Dirk Weuster‑Botz1 Received: 7 June 2021 / Acce",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 420,
+              "end": 716,
+              "quote": "online: 14 September 2021  © The Author(s) 2021 Abstract L-tryptophan production from glycerol with Escherichia coli  was analysed by perturbation studies and metabolic control  analysis. The insertion of a non-natural shikimate transporter into the genome of an Escherichia coli L-tryptophan pro",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 583,
+              "end": 879,
+              "quote": "bolic control  analysis. The insertion of a non-natural shikimate transporter into the genome of an Escherichia coli L-tryptophan production  strain enabled targeted perturbation within the product pathway with shikimate during parallelised short-term perturbation  experiments with cells withdra",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 2423,
+              "end": 2719,
+              "quote": "tryptophan producer  by metabolic engineering. Keywords Metabolic control analysis · L-tryptophan · Escherichia coli · Thermodynamics-based flux analysis · Shikimate Introduction Metabolic engineering has been widely used to reroute  fluxes towards the desired products to overcome production  li",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 8003,
+              "end": 8299,
+              "quote": "e- pressant and insomnia medication [ 15]. The most relevant  producer strains for L-tryptophan are Escherichia coli ( E.  coli) and Corynebacterium glutamicum. However, biosyn- thetic L-tryptophan production is energetically expensive  and to prevent cells from wasting energy, it is controlled ",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 91232,
+              "end": 91528,
+              "quote": "al (2014) Improvement  of constraint-based flux estimation during L-phenylalanine pro- duction with Escherichia coli using targeted knock-out mutants.  Biotechnol Bioeng 111:1406–1416. https:// doi. org/ 10. 1002/ bit.  25195  11. Henry CS, Broadbelt LJ, Hatzimanikatis V (2007) Thermody - namics",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 92437,
+              "end": 92733,
+              "quote": "/ 10. 1007/   s00253- 005- 0252-y  16. Rodriguez A, Martínez JA, Flores N et al (2014) Engineering  Escherichia coli to overproduce aromatic amino acids and derived  compounds. Microb Cell Fact 13:1–15. https:// doi. org/ 10. 1186/  s12934- 014- 0126-z  17. Tröndle J, Schoppel K, Bleidt A et al ",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 92700,
+              "end": 92996,
+              "quote": "le J, Schoppel K, Bleidt A et al (2020) Metabolic control  analysis of L-tryptophan production with Escherichia coli based  on data from short-term perturbation experiments. J Biotechnol  307:15–28. https:// doi. org/ 10. 1016/j. jbiot ec. 2019. 10. 009  18. Sprenger GA (2006) Aromatic amino aci",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 93164,
+              "end": 93460,
+              "quote": "litative  modelling of regulated metabolic pathways: application to the  tryptophan biosynthesis in Escherichia coli. Bioinformatics  21:190–196. https:// doi. org/ 10. 1093/ bioin forma tics/ bti11 30  20. Panichkin VB, Livshits VA, Biryukova IV, Mashko SV (2016)  Metabolic engineering of Esche",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 93355,
+              "end": 93651,
+              "quote": "/ bti11 30  20. Panichkin VB, Livshits VA, Biryukova IV, Mashko SV (2016)  Metabolic engineering of Escherichia coli  for L-tryptophan pro- duction. Appl Biochem Microbiol 52:783–809. https:// doi. org/   10. 1134/ S0003 68381 60900 52  21. Niu H, Li R, Liang Q et al (2019) Metabolic engineering",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 93594,
+              "end": 93890,
+              "quote": ". Niu H, Li R, Liang Q et al (2019) Metabolic engineering for  improving l-tryptophan production in Escherichia coli. J Ind  Microbiol Biotechnol 46:55–65. https:// doi. org/ 10. 1007/   s10295- 018- 2106-5  22. Yanofsky C (2003) Using studies on tryptophan metabolism  to answer basic biological",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 93980,
+              "end": 94276,
+              "quote": "3. Wang J, Huang J, Shi J et al (2013) Fermentation characteriza- tion of an L-tryptophan producing Escherichia coli strain with  inactivated phosphotransacetylase. Ann Microbiol 63:1219– 1224. https:// doi. org/ 10. 1007/ s13213- 012- 0579-4  24. Chen Y, Liu Y, Ding D et al (2018) Rational desi",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 94201,
+              "end": 94497,
+              "quote": "/ s13213- 012- 0579-4  24. Chen Y, Liu Y, Ding D et al (2018) Rational design and analy - sis of an Escherichia coli strain for high-efficiency tryptophan  production. J Ind Microbiol Biotechnol 45:357–367. https:// doi.   org/ 10. 1007/ s10295- 018- 2020-x  25. Liu L, Bilal M, Luo H et al (2019",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 94490,
+              "end": 94786,
+              "quote": "l (2019) Metabolic engineering and  fermentation process strategies for L-tryptophan production by  Escherichia coli. Processes. https:// doi. org/ 10. 3390/ pr704 0213  26. Li Z, Ding D, Wang H et al (2020) Engineering Escherichia coli  to improve tryptophan production via genetic manipulation ",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 94610,
+              "end": 94906,
+              "quote": "ocesses. https:// doi. org/ 10. 3390/ pr704 0213  26. Li Z, Ding D, Wang H et al (2020) Engineering Escherichia coli  to improve tryptophan production via genetic manipulation of  2612 Bioprocess and Biosystems Engineering (2021) 44:2591–2613 1 3 precursor and cofactor pathways. Synth Syst Biote",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 95004,
+              "end": 95300,
+              "quote": " et al (2020) Application of fermen- tation process control to increase l-tryptophan production in  Escherichia coli. Biotechnol Prog 36:1–10. https:// doi. org/ 10.   1002/ btpr. 2944  28. Pagliaro M, Rossi M (2008) Glycerol: properties and production.  in: the future of glycerol: new uses of a",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 95939,
+              "end": 96235,
+              "quote": "J, Galvagno MA, Méndez BS (2008) Poly(3- hydroxybutyrate) synthesis from glycerol by a recombinant  Escherichia coli arcA mutant in fed-batch microaerobic cultures.  Appl Microbiol Biotechnol 77:1337–1343. https:// doi. org/ 10.   1007/ s00253- 007- 1255-7  33. Stroud RM, Miercke LJW, O’Connell ",
+              "section": "unknown"
+            },
+            {
+              "kind": "host",
+              "match": "Escherichia coli",
+              "start": 96666,
+              "end": 96962,
+              "quote": "sporter enables targeted perturbation during metabolic  analysis of L-phenylalanine production with Escherichia coli.  Biotechnol J 13:1–10. https:// doi. org/ 10. 1002/ biot. 20170 0611  36. Weiner M, Albermann C, Gottlieb K et al (2014) Fed-batch  production of l-phenylalanine from glycerol an",
+              "section": "unknown"
+            }
+          ]
+        },
+        "target_product": {
+          "canonical": "L-tryptophan",
+          "role": "target",
+          "evidence": [
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 377,
+              "end": 680,
+              "quote": "021 / Accepted: 27 August 2021 / Published online: 14 September 2021  © The Author(s) 2021 Abstract L-tryptophan production from glycerol with Escherichia coli  was analysed by perturbation studies and metabolic control  analysis. The insertion of a non-natural shikimate transporter into the genome of ",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 600,
+              "end": 903,
+              "quote": "alysis. The insertion of a non-natural shikimate transporter into the genome of an Escherichia coli L-tryptophan production  strain enabled targeted perturbation within the product pathway with shikimate during parallelised short-term perturbation  experiments with cells withdrawn from a 15 L fed-batch",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan biosynthesis",
+              "start": 1898,
+              "end": 2203,
+              "quote": " applied to estimate elasticities and flux control coef- ficients, predicting controlling sites for L-tryptophan biosynthesis. The addition of shikimate led to enhanced deviations  in chorismate biosynthesis, revealing a so far not observed control of 3-dehydroquinate synthase on L-tryptophan forma- tion",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 7239,
+              "end": 7542,
+              "quote": "ition was success- fully applied to L-phenylalanine production with E. coli   from glycerol [2]. As L-tryptophan production, in particu- lar, still lags behind market demand [15, 16], the method  has been transferred so that L-tryptophan production from  glycerol can be investigated in detail [17]. For",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 7364,
+              "end": 7667,
+              "quote": "in particu- lar, still lags behind market demand [15, 16], the method  has been transferred so that L-tryptophan production from  glycerol can be investigated in detail [17]. For humans and livestock, L-tryptophan is an essential  amino acid and they are dependent on consuming it with  nutrition [18]. ",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 8088,
+              "end": 8391,
+              "quote": "tryptophan are Escherichia coli ( E.  coli) and Corynebacterium glutamicum. However, biosyn- thetic L-tryptophan production is energetically expensive  and to prevent cells from wasting energy, it is controlled  by strict regulation on multiple levels, including feedback  inhibition, attenuation and re",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 10786,
+              "end": 11089,
+              "quote": "tained by further strain  optimisation [17]. Detailed investigation of the cell metabo- lism during L-tryptophan production by parallelised meta- bolic analysis with subsequent MCA indicated that limita- tions are also located in the aromatic amino acid pathway  and particularly in L-tryptophan biosynt",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan biosynthesis",
+              "start": 10969,
+              "end": 11274,
+              "quote": "dicated that limita- tions are also located in the aromatic amino acid pathway  and particularly in L-tryptophan biosynthesis pathway [17].  Indol-glycerolphosphate synthase and tryptophan synthase  have been identified as limiting enzymatic steps within  L-tryptophan biosynthesis [17]. The accuracy of t",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan biosynthesis",
+              "start": 11125,
+              "end": 11430,
+              "quote": "hosphate synthase and tryptophan synthase  have been identified as limiting enzymatic steps within  L-tryptophan biosynthesis [17]. The accuracy of these results is strongly dependent upon  the degree of deflection, which is induced by the applied per- turbation substrates. The variety of substrates for ",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan \nproduction",
+              "start": 12986,
+              "end": 13290,
+              "quote": "iosynthesis pathway, it is a promising substrate for  perturbation during the metabolic analysis of L-tryptophan  production. Its position in E. coli metabolism is depicted  in Fig.  1. Although wild-type E. coli carries a shiA gene,  encoding a shikimate/  H+-symporter, it shows relatively  poor abilit",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 13777,
+              "end": 14080,
+              "quote": "abolic analysis can be achieved.  MCA is performed to reveal the control inside the cells, dur- ing L-tryptophan production. As new approach, the recom- binant shikimate transporter strain was engineered, which  enabled the usage of shikimic acid as additional perturba - tion substrate during metabolic",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan biosynthesis",
+              "start": 17378,
+              "end": 17683,
+              "quote": "chieve good mixing and thorough  Fig. 1  Schematic representation of central carbon metabolism and  L-tryptophan biosynthesis pathway with the marked point of entry  for shikimic acid. Depicted are the metabolites glucose-6-phosphate  (G6P), fructose  1,6-bisphosphate (FBP), glyceraldehyde  3-phos- phate",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan biosynthesis",
+              "start": 18548,
+              "end": 18853,
+              "quote": "osphate  (CDRP), 3-Indolyl-glycerol  3-phosphate (IGP), indole (IND) and  L-tryptophan (L-trp) from L-tryptophan biosynthesis pathway (L- trp). Relevant genes are denoted in a white font with grey background 2595Bioprocess and Biosystems Engineering (2021) 44:2591–2613  1 3 gas dispersion. A basal medium",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 32800,
+              "end": 33103,
+              "quote": "linearisation of mass bal- ance equations, referred to a reference steady-state. In this  work, the L-tryptophan production process served as a refer- ence state for the 12 steady states during metabolic analysis.  The prerequisite for MCA is the estimation of elasticities /u1D700 vj X i  .  As local p",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan \nproduction",
+              "start": 34862,
+              "end": 35166,
+              "quote": " reference state, described by the fluxes, enzymes and  metabolite concentrations of cells from the L-tryptophan  production process at the time of metabolic analysis. with Flux control coefficients represent the effects of a 1%  increase of enzymatic activity on a specific metabolic flux  in the model.",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "tryptophan production",
+              "start": 36038,
+              "end": 36339,
+              "quote": "/parenleft.s1N R /parenright.s1# ⋅ /bracketleft.s1X ind 0 /bracketright.s1 Results and discussion L‑tryptophan production from glycerol on a 15 L  scale This work is intended to study the metabolic control of  L-tryptophan production in E. coli cells with glycerol as  a carbon source, focusing on flu",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 36148,
+              "end": 36451,
+              "quote": " production from glycerol on a 15 L  scale This work is intended to study the metabolic control of  L-tryptophan production in E. coli cells with glycerol as  a carbon source, focusing on fluxes within the biosynthe - sis of aromatic amino acids. In a first step, the successful  integration and express",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "tryptophan production",
+              "start": 40659,
+              "end": 40960,
+              "quote": "transporter does not influ- ence the process performance significantly. Metabolic analysis during L‑tryptophan production  using shikimate as effector L-tryptophan production of the fed-batch process shown  above was further examined with parallelised short-term  perturbation experiments, which were ",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 40710,
+              "end": 41013,
+              "quote": "mance significantly. Metabolic analysis during L‑tryptophan production  using shikimate as effector L-tryptophan production of the fed-batch process shown  above was further examined with parallelised short-term  perturbation experiments, which were conducted locally  separated from the reference proce",
+              "section": "unknown"
+            },
+            {
+              "kind": "target",
+              "match": "L-tryptophan production",
+              "start": 41060,
+              "end": 41363,
+              "quote": "after induction during the constant  feeding phase at a process time of 48.8 h. High cell-specific  L-tryptophan production rates were observed at this time- point, and the cell dry weight concentration was 22.4 g  L−1. The metabolic analysis is based on the perturbation of  the cells’ metabolism, caus",
+              "section": "unknown"
+            }
+          ],
+          "adjacent_product_evidence": [
+            {
+              "kind": "adjacent_product",
+              "match": "serotonin",
+              "start": 7852,
+              "end": 8141,
+              "quote": "al compounds in human and animal  metabolism. For instance, it acts as an immediate precur - sor of serotonin and can therefore be used as a mild antide- pressant and insomnia medication [ 15]. The most relevant  producer strains for L-tryptophan are Escherichia coli ( E.  coli) and Coryn",
+              "section": "unknown"
+            }
+          ]
+        },
+        "interventions": {
+          "implemented": [
+            {
+              "kind": "intervention",
+              "match": "overexpressed",
+              "start": 79790,
+              "end": 80083,
+              "quote": "r L-tryptophan formation in the considered metabolic  model. In contrast to serB gene, which is not overexpressed  in the E. coli strain used, serA gene is already integrated  chromosomally in extra copies. More precisely, the gene  inserted, encodes for a feed-back-resistant phosphoglycerate",
+              "section": "unknown"
+            },
+            {
+              "kind": "intervention",
+              "match": "overexpressed",
+              "start": 81148,
+              "end": 81441,
+              "quote": "roB was identified  as a limiting step for L-tryptophan production by MCA,  even though the gene is overexpressed together with aroF   and aroL on the plasmid in the E. coli strain used. Figure  8  shows the relative expression of aroF and aroB comparison.  An abrupt rise in the relative expr",
+              "section": "unknown"
+            },
+            {
+              "kind": "intervention",
+              "match": "overexpression",
+              "start": 85916,
+              "end": 86210,
+              "quote": "boosted by induc- tion with IPTG at the expense of the transcription of other  genes. Consequently, overexpression of the prs , trpB and  trpC limiting genes or the use of alternative strong promot- ers, will probably help to tackle the bottlenecks and reroute  the carbon flow from by-product ",
+              "section": "unknown"
+            }
+          ],
+          "all_mentions": [
+            {
+              "kind": "intervention",
+              "match": "overexpressed",
+              "start": 79790,
+              "end": 80083,
+              "quote": "r L-tryptophan formation in the considered metabolic  model. In contrast to serB gene, which is not overexpressed  in the E. coli strain used, serA gene is already integrated  chromosomally in extra copies. More precisely, the gene  inserted, encodes for a feed-back-resistant phosphoglycerate",
+              "section": "unknown"
+            },
+            {
+              "kind": "intervention",
+              "match": "overexpressed",
+              "start": 81148,
+              "end": 81441,
+              "quote": "roB was identified  as a limiting step for L-tryptophan production by MCA,  even though the gene is overexpressed together with aroF   and aroL on the plasmid in the E. coli strain used. Figure  8  shows the relative expression of aroF and aroB comparison.  An abrupt rise in the relative expr",
+              "section": "unknown"
+            },
+            {
+              "kind": "intervention",
+              "match": "overexpression",
+              "start": 85916,
+              "end": 86210,
+              "quote": "boosted by induc- tion with IPTG at the expense of the transcription of other  genes. Consequently, overexpression of the prs , trpB and  trpC limiting genes or the use of alternative strong promot- ers, will probably help to tackle the bottlenecks and reroute  the carbon flow from by-product ",
+              "section": "unknown"
+            }
+          ]
+        },
+        "experimental_validation": {
+          "evidence": [
+            {
+              "kind": "validation",
+              "match": "0.26 mmol",
+              "start": 36845,
+              "end": 37134,
+              "quote": "hiA-gene from Corynebacterium glutamicum   enabled the uptake of shikimate with a measured rate of  0.26 mmol  gCDW −1  h−1 in shake-flask, whereas the concen- tration of shikimate remained constant during the cultivation  of the cells without transporter (Supplementary Fig. 2). The  unde",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "2.0 mmol",
+              "start": 43868,
+              "end": 44156,
+              "quote": "ira- tion rates. With glycerol as perturbation substrate, the sub- strate uptake was increased from 2.0 mmol   gCDW −1  h−1 in  the first feeding stage to 4.3 mmol   gCDW −1  h−1 at the high- est feed rate. This led to three corresponding differential  gradations in oxygen uptake and car",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "4.3 mmol",
+              "start": 43923,
+              "end": 44211,
+              "quote": "e, the sub- strate uptake was increased from 2.0 mmol   gCDW −1  h−1 in  the first feeding stage to 4.3 mmol   gCDW −1  h−1 at the high- est feed rate. This led to three corresponding differential  gradations in oxygen uptake and carbon dioxide production  rates. Product formation was no",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.32 mmol",
+              "start": 44234,
+              "end": 44523,
+              "quote": "ed  substrate uptake rates. During the first feeding stage, a high  L-tryptophan production rate of 0.32 mmol   gCDW −1  h−1  was reached, whereas the lowest L-tryptophan production  rate of 0.17 mmol  gCDW −1  h−1 was measured during the last  feeding period. During the second and third ",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.17 mmol",
+              "start": 44325,
+              "end": 44614,
+              "quote": " rate of 0.32 mmol   gCDW −1  h−1  was reached, whereas the lowest L-tryptophan production  rate of 0.17 mmol  gCDW −1  h−1 was measured during the last  feeding period. During the second and third substrate sup- ply level, acetate started to accumulate at an increasing rate  (data not sh",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "1.9 mmol",
+              "start": 44986,
+              "end": 45274,
+              "quote": "h glycerol and supplementary  shikimate as carbon sources, the lowest uptake rate of glyc- erol was 1.9 mmol   gCDW −1  h−1 and 0.12 mmol shikimate   gCDW −1  h−1. The uptake rates increased in two equal steps  to 3.8 mmol glycerol  gCDW −1  h−1 and 0.24 mmol shikimate   gCDW −1  h−1 dur",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.12 mmol",
+              "start": 45014,
+              "end": 45303,
+              "quote": "  shikimate as carbon sources, the lowest uptake rate of glyc- erol was 1.9 mmol   gCDW −1  h−1 and 0.12 mmol shikimate   gCDW −1  h−1. The uptake rates increased in two equal steps  to 3.8 mmol glycerol  gCDW −1  h−1 and 0.24 mmol shikimate   gCDW −1  h−1 during the last supply level. Re",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "3.8 mmol",
+              "start": 45100,
+              "end": 45388,
+              "quote": "W −1  h−1 and 0.12 mmol shikimate   gCDW −1  h−1. The uptake rates increased in two equal steps  to 3.8 mmol glycerol  gCDW −1  h−1 and 0.24 mmol shikimate   gCDW −1  h−1 during the last supply level. Respiration rates  were staggered, corresponding to the substrate uptake rates.  Oxygen",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.24 mmol",
+              "start": 45136,
+              "end": 45425,
+              "quote": "gCDW −1  h−1. The uptake rates increased in two equal steps  to 3.8 mmol glycerol  gCDW −1  h−1 and 0.24 mmol shikimate   gCDW −1  h−1 during the last supply level. Respiration rates  were staggered, corresponding to the substrate uptake rates.  Oxygen uptake and carbon dioxide production",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.2 mmol",
+              "start": 46376,
+              "end": 46664,
+              "quote": "  metabolic analysis time 2601Bioprocess and Biosystems Engineering (2021) 44:2591–2613  1 3 around 0.2 mmol   gCDW −1  h−1 were determined within the  estimation error. Thus, an increase in substrate supply rate  did not result in varying product formation rates. In contrast,  the by-pr",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.7 mmol",
+              "start": 46769,
+              "end": 47057,
+              "quote": " (data not shown). With glucose as the carbon source, the substrate uptake  rate was increased from 0.7 mmol  gCDW −1  h−1 at the lowest  supply level to 1.4 mmol   gCDW −1  h−1 at the highest. The  response of the E. coli cells to glucose supply became appar- ent in three stages of resp",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "1.4 mmol",
+              "start": 46823,
+              "end": 47111,
+              "quote": "the substrate uptake  rate was increased from 0.7 mmol  gCDW −1  h−1 at the lowest  supply level to 1.4 mmol   gCDW −1  h−1 at the highest. The  response of the E. coli cells to glucose supply became appar- ent in three stages of respiration rates, whereas the differ - ences were less be",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.31 mmol",
+              "start": 47120,
+              "end": 47409,
+              "quote": " second and third supply levels  than between the first and second. The product formation  rate was 0.31 mmol L-tryptophan  gCDW −1  h−1 during the  first feeding stage and decreased to 0.16 mmol L-tryp- tophan  gCDW −1  h−1 during the second and rose again to  0.23 mmol L-tryptophan  gCD",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.16 mmol",
+              "start": 47206,
+              "end": 47495,
+              "quote": "ion  rate was 0.31 mmol L-tryptophan  gCDW −1  h−1 during the  first feeding stage and decreased to 0.16 mmol L-tryp- tophan  gCDW −1  h−1 during the second and rose again to  0.23 mmol L-tryptophan  gCDW −1  h−1 during the last. Small  amounts of acetate, ethanol and succinate were forme",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.23 mmol",
+              "start": 47282,
+              "end": 47571,
+              "quote": " stage and decreased to 0.16 mmol L-tryp- tophan  gCDW −1  h−1 during the second and rose again to  0.23 mmol L-tryptophan  gCDW −1  h−1 during the last. Small  amounts of acetate, ethanol and succinate were formed dur- ing the last feeding stage (data not shown). In the analysis reactor ",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.9 mmol",
+              "start": 47556,
+              "end": 47844,
+              "quote": "alysis reactor where glucose and shikimate  were feeded in, the glucose uptake rate increased from  0.9 mmol   gCDW −1  h−1 during the first feeding period to  1.5 mmol  gCDW −1  h−1 during the last. The shikimate uptake  rate rose from 0.11 mmol   gCDW −1  h−1 during the lowest  perturb",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "1.5 mmol",
+              "start": 47616,
+              "end": 47904,
+              "quote": "the glucose uptake rate increased from  0.9 mmol   gCDW −1  h−1 during the first feeding period to  1.5 mmol  gCDW −1  h−1 during the last. The shikimate uptake  rate rose from 0.11 mmol   gCDW −1  h−1 during the lowest  perturbation steady state to 0.2 mmol   gCDW −1  h−1 during  the hi",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.11 mmol",
+              "start": 47693,
+              "end": 47982,
+              "quote": "rst feeding period to  1.5 mmol  gCDW −1  h−1 during the last. The shikimate uptake  rate rose from 0.11 mmol   gCDW −1  h−1 during the lowest  perturbation steady state to 0.2 mmol   gCDW −1  h−1 during  the highest. Respiration rates were similar to the analy - sis with glucose as the s",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.2 mmol",
+              "start": 47766,
+              "end": 48054,
+              "quote": "ate uptake  rate rose from 0.11 mmol   gCDW −1  h−1 during the lowest  perturbation steady state to 0.2 mmol   gCDW −1  h−1 during  the highest. Respiration rates were similar to the analy - sis with glucose as the sole carbon source, although total  values were slightly higher. L-trypto",
+              "section": "unknown"
+            },
+            {
+              "kind": "validation",
+              "match": "0.27 mmol",
+              "start": 47991,
+              "end": 48280,
+              "quote": "n source, although total  values were slightly higher. L-tryptophan formation rate  was constant at 0.27 mmol   gCDW −1  h−1 during the first and  second supply level and decreased to a very low rate of  0.09 mmol  gCDW −1  h−1 during the last. During the last feed- ing stage, acetate and",
+              "section": "unknown"
+            }
+          ],
+          "model_only": false,
+          "enzyme_only": false
+        },
+        "judge": {
+          "decision": "DIRECT_ENGINEERING_EVIDENCE",
+          "reason": "all hard gates evidenced",
+          "evidence_span_count": 63
+        },
+        "verifier_version": "1.0"
+      }
+    },
+    {
+      "paper_id": "paper_165bc7645631fa6b",
+      "doi": "10.3390/fermentation11050267",
+      "title": "Improvement of L-Tryptophan Production in Escherichia coli Using Biosensor-Based, High-Throughput Screening and Metabolic Engineering",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_a0ebd4f4a93e44f9",
+      "doi": "10.1128/jb.91.4.1494-1508.1966",
+      "title": "Distribution and Function of Genes Concerned with Aromatic Biosynthesis in Escherichia coli",
+      "metadata_tier": "tier_3_mechanistic",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_f315a5bed9777365",
+      "doi": "10.1111/j.1462-2920.2006.01143.x",
+      "title": "Temporal gene‐expression in Escherichia coli K‐12 biofilms",
+      "metadata_tier": "tier_3_mechanistic",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_15f725b9020158af",
+      "doi": "10.3390/pr7040213",
+      "title": "Metabolic Engineering and Fermentation Process Strategies for L-Tryptophan Production by Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_2aae905b63be2435",
+      "doi": "10.1007/s10295-018-2106-5",
+      "title": "Metabolic engineering for improving l -tryptophan production in Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_25fccf802fa0782d",
+      "doi": "10.1186/1475-2859-11-30",
+      "title": "One-step of tryptophan attenuator inactivation and promoter swapping to improve the production of L-tryptophan in Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_db18be686c5c0f5c",
+      "doi": "10.3390/microorganisms8040519",
+      "title": "Engineering Improves Enzymatic Synthesis of L-Tryptophan by Tryptophan Synthase from Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_01e86be84a14eb29",
+      "doi": "10.1128/jb.104.1.177-188.1970",
+      "title": "Formation of Aromatic Amino Acid Pools in Escherichia coli K-12",
+      "metadata_tier": "tier_3_mechanistic",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_ab98b07a10eabc8c",
+      "doi": "10.1038/srep29745",
+      "title": "Tunable switch mediated shikimate biosynthesis in an engineered non-auxotrophic Escherichia coli",
+      "metadata_tier": "background",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_e7c21a0773671b4b",
+      "doi": "10.1128/aem.57.10.2995-2999.1991",
+      "title": "Deletion of pgi alters tryptophan biosynthesis in a genetically engineered strain of Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_aff8625965f51aab",
+      "doi": "10.1016/j.mec.2021.e00167",
+      "title": "Integrated laboratory evolution and rational engineering of GalP/Glk-dependent Escherichia coli for higher yield and productivity of L-tryptophan biosynthesis",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_bc9e37df79cc5809",
+      "doi": "10.1371/journal.pone.0179240",
+      "title": "Gene modification of the acetate biosynthesis pathway in Escherichia coli and implementation of the cell recycling technology to increase L-tryptophan production",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_80348f89c1587337",
+      "doi": "10.1016/j.ymben.2018.05.001",
+      "title": "Discovery of feed-forward regulation in L-tryptophan biosynthesis and its use in metabolic engineering of E. coli for efficient tryptophan bioproduction",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_b49e62056a3c02fb",
+      "doi": "10.3390/fermentation8100560",
+      "title": "A Molecular Dynamic Model of Tryptophan Overproduction in Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_00d4498e8104347a",
+      "doi": "10.1007/s13213-012-0419-6",
+      "title": "Effect of feeding strategy on l-tryptophan production by recombinant Escherichia coli",
+      "metadata_tier": "tier_3_mechanistic",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_bc721b787aa7cc10",
+      "doi": "10.1007/s00253-013-5026-3",
+      "title": "Genetic engineering of Escherichia coli to enhance production of l-tryptophan",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_ecf200739811f4c2",
+      "doi": "10.1073/pnas.1108434108",
+      "title": "The main auxin biosynthesis pathway in Arabidopsis",
+      "metadata_tier": "tier_3_mechanistic",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    },
+    {
+      "paper_id": "paper_c60c8edbc1a234e3",
+      "doi": "10.1016/j.procbio.2011.11.009",
+      "title": "Effect of gene knockouts of l-tryptophan uptake system on the production of l-tryptophan in Escherichia coli",
+      "metadata_tier": "tier_2_supporting_engineering",
+      "fulltext_judge": "DATA_REQUIRED",
+      "change": "data_required",
+      "reason": "no verified full text",
+      "verification": null
+    }
+  ],
+  "counts": {
+    "verified": 1,
+    "downgraded": 0,
+    "data_required": 19
+  }
+}

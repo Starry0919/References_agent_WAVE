@@ -1,0 +1,37 @@
+{
+  "publication_type": [
+    "PRIMARY_EXPERIMENTAL",
+    "REVIEW",
+    "MODEL_ONLY",
+    "ENZYME_ONLY",
+    "METHODS_ONLY",
+    "OTHER",
+    "UNKNOWN"
+  ],
+  "host_relation": [
+    "K12_EXACT",
+    "K12_DERIVATIVE_EXPLICIT",
+    "K12_DERIVATIVE_INFERRED",
+    "ECOLI_NON_K12",
+    "ECOLI_UNRESOLVED",
+    "NON_ECOLI",
+    "UNKNOWN"
+  ],
+  "product_role": [
+    "TARGET_PRODUCT",
+    "PRECURSOR",
+    "SUBSTRATE",
+    "BYPRODUCT",
+    "RELATED_PRODUCT",
+    "BACKGROUND_MENTION",
+    "UNKNOWN"
+  ],
+  "final_eligibility": [
+    "DIRECT_ENGINEERING_EVIDENCE",
+    "SUPPORTING_ENGINEERING_EVIDENCE",
+    "MECHANISTIC_SUPPORT",
+    "BACKGROUND",
+    "NOT_ELIGIBLE",
+    "DATA_REQUIRED"
+  ]
+}

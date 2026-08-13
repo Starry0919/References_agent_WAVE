@@ -1,0 +1,55 @@
+{
+  "benchmark_version": "paper_extraction_e2e_v2",
+  "gold_records": 0,
+  "scientific_metrics": {
+    "experiment_extraction": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    },
+    "atomic_claim_quality": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    },
+    "verification_quality": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    },
+    "ddr_quality": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    },
+    "admission_safety": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    },
+    "admission_utility": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    },
+    "generalization": {
+      "value": null,
+      "status": "NOT_ESTIMABLE",
+      "reason": "PENDING_HUMAN_GOLD"
+    }
+  },
+  "deterministic_diagnostics": {
+    "papers": 0,
+    "claims": 0,
+    "claims_per_experiment_median": 0,
+    "claims_per_experiment_p95": 0,
+    "largest_experiment_claim_count": 0,
+    "duplicate_claim_ids": 0,
+    "runtime_seconds": 1.1e-05
+  },
+  "anti_gaming": {
+    "reject_all_detected": false,
+    "release_utility_gate": "NOT_ESTIMABLE"
+  },
+  "release_status": "PARTIAL"
+}

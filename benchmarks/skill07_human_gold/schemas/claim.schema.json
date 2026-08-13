@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "skill07-gold-claim-v1",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "gold_experiment_id",
+    "claim_type",
+    "subject",
+    "predicate",
+    "object_or_value",
+    "qualifiers",
+    "claim_text_normalized",
+    "epistemic_status",
+    "value_role",
+    "support_status",
+    "evidence_ids",
+    "criticality",
+    "review_state",
+    "known_ambiguity",
+    "provenance",
+    "annotation_tier"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "pattern": "^GOLD-P\\d{2}-E\\d{3}-C\\d{3}$"
+    },
+    "gold_experiment_id": {
+      "type": "string"
+    },
+    "claim_type": {
+      "enum": [
+        "OBJECT_IDENTITY",
+        "INTERVENTION",
+        "CONDITION",
+        "CONTROL",
+        "REPLICATE",
+        "READOUT",
+        "ANALYSIS",
+        "MEASURED_RESULT",
+        "COMPARATIVE_RESULT",
+        "CAUSAL_RESULT",
+        "RATIONALE",
+        "ALTERNATIVE",
+        "MECHANISTIC_INTERPRETATION",
+        "RULE",
+        "SCOPE",
+        "NEGATIVE_RESULT",
+        "LIMITATION"
+      ]
+    },
+    "subject": {},
+    "predicate": {},
+    "object_or_value": {},
+    "qualifiers": {
+      "type": "object"
+    },
+    "claim_text_normalized": {
+      "type": "string"
+    },
+    "epistemic_status": {
+      "enum": [
+        "DIRECTLY_REPORTED",
+        "DERIVED_FROM_REPORTED_VALUES",
+        "AUTHOR_INTERPRETATION",
+        "REVIEWER_INTERPRETATION",
+        "INFERRED",
+        "UNCERTAIN"
+      ]
+    },
+    "value_role": {
+      "enum": [
+        "IMPLEMENTED",
+        "MEASURED",
+        "CALCULATED",
+        "REPORTED_REFERENCE",
+        "THRESHOLD",
+        "UNKNOWN"
+      ]
+    },
+    "support_status": {
+      "enum": [
+        "SUPPORTED",
+        "PARTIALLY_SUPPORTED",
+        "UNSUPPORTED",
+        "UNCERTAIN"
+      ]
+    },
+    "evidence_ids": {
+      "type": "array"
+    },
+    "criticality": {
+      "enum": [
+        "CRITICAL",
+        "MAJOR",
+        "MINOR"
+      ]
+    },
+    "review_state": {
+      "type": "string"
+    },
+    "known_ambiguity": {},
+    "provenance": {
+      "type": "object"
+    },
+    "annotation_tier": {
+      "enum": [
+        "HUMAN_DRAFT",
+        "HUMAN_REVIEWED",
+        "ADJUDICATED_GOLD",
+        "FROZEN_GOLD"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

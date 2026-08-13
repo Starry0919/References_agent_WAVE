@@ -1,0 +1,18 @@
+{
+  "version": "skill07-model-call-budget-v1",
+  "permission_required": "--allow-model-calls",
+  "calls_before_verified_gold_allowed": 0,
+  "primary_plan": {
+    "pilot": 8,
+    "round1": 20,
+    "repetitions_2_3": 40,
+    "maximum_before_repairs_and_concurrency": 68
+  },
+  "completed_valid": 0,
+  "invalidated": 0,
+  "repair_calls": 0,
+  "remaining_primary": 68,
+  "historical_reuse_policy": "Compatible historical outputs are scored first after frozen Gold; they do not count as independent new repetitions.",
+  "concurrency_calls": "NOT_PLANNED_UNTIL_QUALITY_GATE",
+  "secrets_serialized": false
+}

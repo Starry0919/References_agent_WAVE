@@ -1,0 +1,1434 @@
+{
+  "benchmark_paper_id": "GOLD-P05",
+  "paper_id": "bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25",
+  "source_document_path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\clean_document_artifacts\\bc1ff5664e6e43ee90e585a8d84032a2_15_msystems.00353-25\\9f994eab97f58cfa\\clean_document.json",
+  "source_document_hash": "347e36bc3be14dad320970a6729acd543f31d7d7a94530ecfbf82d4c14e57b9c",
+  "paragraph_ids": [
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p001",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p002",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p003",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p004",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p005",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p006",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p007",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p008",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p009",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p010",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p011",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p012",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p013",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p014",
+    "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p015",
+    "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+    "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002",
+    "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+    "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p001",
+    "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p002",
+    "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p003",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p001",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p002",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p003",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p004",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p005",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p006",
+    "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p007",
+    "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p001",
+    "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p002",
+    "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p003",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p002",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p003",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p004",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p005",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p006",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p007",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p008",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p010",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p011",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+    "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p013",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p001",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p002",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p004",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p006",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p007",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p008",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p009",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p010",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p011",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p012",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p013",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p014",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p015",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p016",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p017",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p018",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p019",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p020",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p021",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p022",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p024",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p025",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p026",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p028",
+    "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029",
+    "discussion_p001",
+    "discussion_p002",
+    "discussion_p003",
+    "discussion_p004",
+    "discussion_p005",
+    "discussion_p006",
+    "cells_and_plasmids_p001",
+    "sgrna_library_design_and_construction_p001",
+    "sgrna_library_design_and_construction_p002",
+    "sgrna_library_design_and_construction_p003",
+    "sgrna_library_preparation_for_crispri_screening_p001",
+    "sgrna_library_preparation_for_crispri_screening_p002",
+    "sgrna_library_preparation_for_crispri_screening_p003",
+    "sgrna_library_sequencing_p001",
+    "rna_sequencing_rna_seq_and_analysis_p001",
+    "rna_sequencing_rna_seq_and_analysis_p002",
+    "chromatin_immunoprecipitation_chip_sequencing_p001",
+    "antibiotic_disk_difusion_assay_p001",
+    "membrane_potential_assay_p001",
+    "acknowledgments_p001",
+    "acknowledgments_p002",
+    "author_affiliations_p001",
+    "author_affiliations_p002",
+    "author_affiliations_p003",
+    "author_affiliations_p004",
+    "author_affiliations_p005",
+    "author_affiliations_p006",
+    "author_orcids_p001",
+    "author_orcids_p002",
+    "author_orcids_p003",
+    "author_orcids_p004",
+    "funding_p001",
+    "author_contributions_p001",
+    "data_availability_p001",
+    "additional_files_p001",
+    "additional_files_p002",
+    "additional_files_p003",
+    "additional_files_p004",
+    "additional_files_p005",
+    "additional_files_p006",
+    "additional_files_p007",
+    "additional_files_p008",
+    "additional_files_p009",
+    "additional_files_p010",
+    "additional_files_p011",
+    "references_p001",
+    "references_p002",
+    "references_p003",
+    "references_p004",
+    "references_p005",
+    "references_p006",
+    "references_p007",
+    "references_p008",
+    "references_p009",
+    "references_p010",
+    "references_p011",
+    "references_p012",
+    "references_p013",
+    "references_p014",
+    "references_p015",
+    "references_p016",
+    "references_p017",
+    "references_p018",
+    "references_p019",
+    "references_p020",
+    "references_p021",
+    "references_p022",
+    "references_p023",
+    "references_p024",
+    "references_p025",
+    "references_p026",
+    "references_p027",
+    "references_p028",
+    "references_p029",
+    "references_p030",
+    "references_p031",
+    "references_p032",
+    "references_p033",
+    "references_p034",
+    "references_p035",
+    "references_p036",
+    "references_p037",
+    "references_p038",
+    "references_p039",
+    "references_p040",
+    "references_p041",
+    "references_p042",
+    "references_p043",
+    "references_p044",
+    "references_p045",
+    "references_p046",
+    "references_p047",
+    "references_p048",
+    "references_p049",
+    "references_p050",
+    "references_p051",
+    "references_p052",
+    "references_p053",
+    "references_p054",
+    "references_p055",
+    "references_p056",
+    "references_p057",
+    "references_p058",
+    "references_p059",
+    "references_p060",
+    "references_p061",
+    "references_p062",
+    "references_p063",
+    "references_p064",
+    "references_p065",
+    "references_p066",
+    "references_p067",
+    "references_p068",
+    "references_p069",
+    "references_p070",
+    "references_p071",
+    "references_p072",
+    "references_p073"
+  ],
+  "paragraphs": [
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p001",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "Donghui Choe,<sup>1</sup> Eunju Lee,<sup>2,3</sup> Yoseb Song,<sup>2,3</sup> Sun Chang Kim,<sup>2,3</sup> Ki Jun Jeong,<sup>3,4,5</sup> Bernhard Palsson,<sup>1,6</sup> Byung-Kwan Cho,<sup>2,3,5</sup> Suhyung Cho<sup>3</sup>",
+      "fingerprint": "0662eff7272ed692"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p002",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "AUTHOR AFFILIATIONS See afiliation list on p. 15.",
+      "fingerprint": "ad82d58aa11a1d64"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p003",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "ABSTRACT Bacterial genes serve diverse cellular functions and many afect fitness in response to environmental challenges. We employed CRISPR interference screening to investigate the fitness efect of each gene in Escherichia coli exposed to gentamicin, aiming to understand the cellular defense mechanisms. Our findings revealed that ribosomal proteins, ribosome-associated proteins, toxin-antitoxin systems, and outer membrane proteins strongly influence the fitness of E. coli in gentamicin. Notably, gentamicin-induced fitness changes resembled those under anaerobic conditions, where resistance to gentamicin was observed. Specifically, genes related to the biosynthesis of cofactors and electron carriers, crucial for the respiratory system, showed reduced essentiality under both gentamicin and anaerobic conditions, suggesting a disruption in membrane potential leading to limited gentamicin uptake. Transcriptomic and genomewide binding analyses identified the two-component system CpxR as a key regulator of respiratory systems in response to gentamicin. Our study provides insights into cellular defense mechanisms, ofering potential strategies for combating antibiotic resistance.",
+      "fingerprint": "267929b2b3d121de"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p004",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "IMPORTANCE Bacteria can adapt to a variety of stressful environments, including antibiotic exposure. The mechanisms underlying antibiotic resistance remain an active area of investigation. Clustered regularly interspaced short palindromic repeats (CRISPR) interference enables specific silencing of gene expression, allowing researchers to assess the fitness efects of gene knockdowns under given conditions. Using genome-wide CRISPR interference screening on Escherichia coli exposed to gentamicin, we identified anaerobic-like fitness efects of genes involved in respiration and the maintenance of membrane potential—key processes that facilitate gentamicin entrance into the cell. Transcriptomic analysis and immunoprecipitation assays further indicated that the two-component system CpxR modulates respiratory adaptations in response to gentamicin challenge. These findings shed light on the development of antibiotic resistance in bacteria and may ofer new insight into strategies for treating gentamicinresistant pathogens.",
+      "fingerprint": "5302bb70a9e764e3"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p005",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "KEYWORDS CRISPR interference, gene essentiality, antibiotics, resistance, CpxR",
+      "fingerprint": "ab38306ba068fcc6"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p006",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "B acteria adapt to environmental conditions through genetic modifications, transcriptional and translational regulation, enabling survival in diverse and often hostile environments. Genetic changes induce diferent fitness efects to environmental stresses, such as antibiotics, resulting in expansion and extinction of certain bacterial species. Thus, investigating gene fitness is crucial for uncovering the development of defense and resistance mechanisms against antibiotics. Conventional methods for examining gene essentiality, such as gene knockout or site-directed mutagenesis using oligonucleotides (1) and the transposon-driven gene disruption (2), have focused on observing cell death. While these methods contribute to identify genes essential for survival, they often fail to",
+      "fingerprint": "1df9266cfd0c70f4"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p007",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "Editor Julia Willett, University of Minnesota Twin Cities, Minneapolis, Minnesota, USA",
+      "fingerprint": "457367e1418e334b"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p008",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "Address correspondence to Bernhard Palsson, palsson@ucsd.edu, Byung-Kwan Cho, bcho@kaist.ac.kr, or Suhyung Cho, shcho95@kaist.ac.kr.",
+      "fingerprint": "2170045765f95e95"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p009",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "The authors declare no conflict of interest.",
+      "fingerprint": "3f223d9cf4079865"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p010",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "See the funding table on p. 16.",
+      "fingerprint": "a7c9435700832fb0"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p011",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "Received 10 March 2025\nAccepted 21 May 2025\nPublished 16 June 2025",
+      "fingerprint": "ec5881185921b906"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p012",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "quantitatively assess the fitness efects of essential genes due to the lethality caused by complete loss of gene. However, the advent of CRISPR interference (CRISPRi) technology enables us to identify the genes required for cell survival without causing cell death (3, 4). The CRISPR-Cas9 system has been applied to a wide range of applications (5) and shown to ofer minimal of-target efects, low noise, and greater consistency compared to shRNA-based systems for gene fitness screens (6).",
+      "fingerprint": "7f78922d067d1f93"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p013",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "In this study, we focused on genome-wide fitness changes induced by gentamicin exposure. Gentamicin, a member of the aminoglycoside antibiotic class, is widely used to treat various infections, including septicemia, meningitis, and urinary tract infections (7). Aminoglycosides are bactericidal antibiotics with a broad spectrum of activity, targeting aerobic gram-negative bacteria, including Enterobacteriaceae, and certain gram-positive bacteria (8). These antibiotics enter cells through both the outer and inner membranes, subsequently inhibiting translation by targeting the ribosome. This inhibition leads to protein mistranslation by incorporating incorrect amino acids during protein elongation (9, 10). The resulting misfolded proteins are incorporated into the cell envelope, destabilizing the membrane and causing oxidative stress, which ultimately leads to cell death (11, 12).",
+      "fingerprint": "3a487a6396192826"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p014",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "Given the multifaceted actions of gentamicin, bacterial cells undergo fitness changes to evade its toxic efects. For instance, membrane depolarization may reduce antibiotic uptake or increase eflux activity, both of which lower intracellular aminoglycoside concentrations and reduce binding to ribosomal RNA. Such resistance mechanisms may include aminoglycoside-modifying/degradation enzymes, eflux systems, sequestrating proteins, target modification/bypass proteins, and mobile genetic elements (13–15).",
+      "fingerprint": "3445012ce926c0f1"
+    },
+    {
+      "paragraph_id": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr_p015",
+      "section": "crispri_screening_reveals_e_coli_s_anaerobic_like_respiratory_adaptations_to_gentamicin_membrane_depolarization_by_cpxr",
+      "text": "However, these resistance mechanisms do not act uniformly across all bacterial strains. The mode of action depends on both the specific antibiotics and the bacterial species involved. Gentamicin is known primarily as a translation inhibitor, but its complete mode of action remains to be understood. Additionally, gentamicin is inefective under anaerobic conditions, as it fails to enter Escherichia coli cells without oxygen (16). This ineficiency also explains why certain aminoglycosides, including gentamicin, are less efective when administered orally, given the anaerobic conditions in the intestines. Understanding the lack of function in anaerobic environments may shed light on the mechanisms underlying antibiotic resistance. Therefore, we also examined the fitness changes of E. coli under anaerobic conditions to gain further insight into resistance mechanisms against gentamicin. Using a high-resolution CRISPRi library, we identified gentamicin-sensitive genes on a genome-wide scale and explored their roles in resistance. Furthermore, transcriptomic analysis using iModulonDB and binding studies revealed that the response regulator CpxR plays a significant role in gentamicin resistance.",
+      "fingerprint": "1c4308d85d4aec46"
+    },
+    {
+      "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p001",
+      "section": "genome_wide_gene_fitness_analysis_using_crispri_library_screening",
+      "text": "We utilized the CRISPRi system to probe the efect of gentamicin on gene fitness in E. coli. Most CRISPRi library designs focus on targeting a single or a few positions within a gene. However, CRISPRi eficiency can vary depending on the genomic structure or interactions between the dCas9 complex and DNA. Even if a specific position is eficient for CRISPRi activity, it is dificult to ensure consistent eficiency under all environmental conditions. To overcome this, we designed a high-resolution genome-scale CRISPRi library targeting the protospacer adjacent motif (PAM) sequences at intervals of 100 bp across all coding sequences (CDS) as described in Materials and Methods (Fig. 1A). We synthesized sgRNA library targeting 39,591 positions, covering all CDS of E. coli in the form of an oligonucleotide pool. The pools were cloned into an expression plasmid via extension PCR and Gibson assembly (Fig. 1A). Following plasmid transformation into E. coli DH5α without dCas9 co-expression, we collected approximately $8 \\times 1 0 ^ { 6 }$ colonies on LB agar plates, equivalent to 200 × coverage of the pool. The colonies were pooled and cultured in liquid LB media to an OD 1.0, after which plasmids were extracted for amplicon sequencing. We confirmed that the initial library included 39,574 sgRNAs, representing 99.96% coverage (Table S1).",
+      "fingerprint": "9901c07547d20cbb"
+    },
+    {
+      "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002",
+      "section": "genome_wide_gene_fitness_analysis_using_crispri_library_screening",
+      "text": "![](images/4a65d260b1682b13b1e7a5e91253ffcd6cbccf6f8eaf6aae8d877865fc6a8ecb.jpg)\nFIG 1 Genome-scale CRISPRi screen. (A) Schematic of the CRISPRi screening process. A genome-wide sgRNA library was designed to target every 100 bp of coding sequences, synthesized, and constructed. The sgRNA library plasmids were first transformed into E. coli DH5a to create an initial plasmid library. These plasmids were then extracted and transformed into E. coli K-12 MG1655 carrying the dCas9 plasmid. Cells were cultured in LB liquid media under various stress conditions, and after harvesting, the sgRNA populations were sequenced using next-generation sequencing (NGS) following amplicon amplification. (B) Library analysis. The enrichment ratio (ER) for each gene was defined as the median of the normalized sgRNA ratios across the positions targeted in the gene.",
+      "fingerprint": "6982df1fc3fbf511"
+    },
+    {
+      "paragraph_id": "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p003",
+      "section": "genome_wide_gene_fitness_analysis_using_crispri_library_screening",
+      "text": "Next, the plasmid library was transformed into E. coli K-12 MG1655 expressing dCas9, and approximately $2 \\times 1 0 ^ { 6 }$ colonies were collected from LB agar, ensuring a 50-fold coverage of the sgRNA pool. These colonies were then cultured in liquid LB media, either untreated or treated with gentamicin. Based on the dose-response curve (Fig. S1), gentamicin was used at a sub-lethal concentration of 1 µg/mL, which has been reported to induce resistance and stress responses, including biofilm formation in E. coli (17). We then analyzed the abundance of sgRNAs in pooled cells, with and without dCas9 co-expression (Table S2). To assess the fitness efects of each sgRNA, we calculated the enrichment ratio (ER) by comparing the abundance of sgRNAs with dCas9 co-expression to that in the initial pool (without dCas9). The ER for each gene was defined as the median ratio of all sgRNAs targeting that gene (Fig. 1B; Table S3). An ER of 1 indicates that CRISPRi-mediated knockdown had no efect on fitness, whereas an ER below 1 suggests a detrimental efect, and an ER over 1 suggests a beneficial efect for cell growth.",
+      "fingerprint": "3ab7e3836eb7b27c"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p001",
+      "section": "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin",
+      "text": "Gentamicin is an antibiotic that exerts its efect by binding to the 30S subunit of bacterial ribosomes, leading to translation inhibition. To investigate the impact of gentamicin on ribosome fitness, we examined the fitness changes of ribosome, ribosome-associated proteins, and ribosomal RNA (rRNA) modification proteins. Since ribosomes are essential for cellular function, most 30S and 50S ribosomal proteins showed low ERs in LB media (Fig. 2A). However, after gentamicin treatment, the ERs of many ribosomal proteins were significantly decreased, indicating the sensitivity of ribosomes to gentamicin. Among genes encoding ribosome-associated proteins, rbfA, whose protein product binds the 30S subunit and is involved in 16S rRNA processing (18), showed a 5.0-fold decrease in ER under gentamicin treatment.",
+      "fingerprint": "82dad913bae38096"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p002",
+      "section": "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin",
+      "text": "Additionally, the gene encoding YqjD, an inner membrane protein associated with the 30S subunit, exhibited a 4.7-fold ER reduction. Other notable reductions included prmA encoding a ribosomal methyltransferase (3.2-fold), lepA encoding a 30S ribosome biogenesis-associated protein (2.9-fold), rimL encoding a ribosomal N-acetyl transferase known to confer resistance to microcin C (2.7-fold) (19), and rsgA encoding a 30S subunit-associated GTPase that is inhibited by aminoglycoside (2.2-fold). Ribosomal modification through acetylation, adenylation, or phosphorylation can alter the target site of aminoglycosides, thereby inactivating antibiotic binding. We further investigated the fitness change in rRNA-modifying proteins. In previous studies, methylation in the 16S rRNA at residue A1408 or G1405 by 16S rRNA methyltransferases was identified as a mechanism of resistance to aminoglycoside (20). Among the rRNA-modifying proteins, genes encoding 16S rRNA methyltransferase, rsmD (4.1-fold), 23S rRNA methyltransferases such as rlmB (4.0-fold), rlmM (3.5-fold), and rlmA (2.5-fold), as well as 23S rRNA pseudouridine synthases rluD (3.1-fold) and rluC (2.1-fold), showed significantly reduced ERs. Taken together, we identified key ribosomal proteins, ribosome-associated proteins, and rRNA-modifying proteins that exhibit increased sensitivity to the aminoglycoside gentamicin.",
+      "fingerprint": "028c05ee41f771d0"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p003",
+      "section": "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin",
+      "text": "A\n![](images/1f212123b8554951ee57a766aac1fe66d92d0e4f913b5b96a768fdf47eb66d9a.jpg)\nFIG 2 Gene enrichment ratio (ER) in response to gentamicin treatment. (A) Genes encoding 30S ribosomal subunits, 50S ribosomal subunits, ribosome-associated proteins, and rRNA methyltransferases (MTs) with an ER fold change $( \\mathsf { E R } _ { \\mathsf { L B } } / \\mathsf { E R } _ { \\mathsf { G m } } )$ of 1.5 or higher are listed in descending order based on ER value. (B–D) Genes associated with antitoxin-toxin systems (B), outer membrane proteins (OMP) (C), and eflux systems (D) showing an ER fold change of 1.5 or higher are similarly listed in descending order. An exception is noted for bhsA (in the OMP category), which exhibited the highest ER under gentamicin, with a reverse fold change $( \\mathsf { E R } _ { \\mathsf { G m } } / \\mathsf { E R } _ { \\mathsf { L B } } )$ of 3.8. AT: antitoxin. T: toxin. BAM: β-barrel assembly machinery. LT: lipoprotein traficking pathway. RND: resistance-nodulation-division family transporter. ABC: ATP-binding cassette transporter. MFS: major facilitator superfamily transporter. SMR: small multidrug resistance family transporter. PET: putative eflux transport (PET) family transporter. IT: ion transporter superfamily transporter. AEC: auxin eflux carrier family transporter.",
+      "fingerprint": "e6bfd0555fb2efcb"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p001",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "We next investigated the fitness changes in bacterial toxin-antitoxin (TA) systems, which play a critical role in the development of antibiotic resistance and persistence (21). Under gentamicin treatment, several TA systems, including ghoST, relBE, yafNO, mazEF, and higBA, showed significant fitness reductions, with ERs more than 2-fold lower compared to the LB control (Fig. 2B).",
+      "fingerprint": "6f04ecce50fd1f97"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p002",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "According to the widely accepted hypothesis that toxins contribute to persistence under stress (22), inhibition of the toxin using CRISPRi led to a low ER, which is consistent with the belief that toxin activity is important for survival under gentamicin exposure. However, the inhibition of antitoxin genes, which theoretically should activate the toxin and promote persistence, did not result in increased ER. Instead, we observed a much lower ER, indicating that unregulated toxin activity resulting from antitoxin inhibition caused significant cellular damage (Fig. 2B).",
+      "fingerprint": "0a75d5ed898b2a2a"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p003",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "In the GhoST system, ghoT encodes the toxin of a type V system, which causes membrane damage, reduces cellular ATP levels, and disrupts the proton motive force (PMF), impacting membrane potential (23, 24). In contrast, ghoS, the antitoxin, neutralizes the toxin by specifically cleaving the ghoT coding region in the ghoST transcript (24). While ghoT showed a 1.5-fold decrease in ER under gentamicin, ghoS showed a dramatic 9.8-fold decrease, indicating that the antitoxin activity is crucial for mitigating the membrane damage caused by gentamicin. The low ER for ghoS supports the hypothesis that, under gentamicin stress, the antitoxin plays a more complex regulatory role. While the toxin can promote stress adaptation or persistence, inhibiting the antitoxin leads to uncontrolled toxin activity, resulting in severe cellular damage. This explains the greater fitness cost observed when inhibiting antitoxin genes, as the loss of regulatory control over the toxin causes unregulated membrane damage and worsened fitness.",
+      "fingerprint": "56ac7a845f1c51ef"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p004",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "RelE, a toxin that cleaves mRNA at the ribosomal A site (25), exhibited a 2.5-fold decrease in ER, whereas its antitoxin RelB showed a 7.0-fold decrease. This suggests that RelB strongly controls RelE during gentamicin exposure. Similarly, YafN, an antitoxin of the ribosome-dependent mRNA interferase YafO that inhibits translation (26), showed a 6.7-fold decrease in ER. The gene encoding MazE antitoxin, known to form a complex with the MazF sequence-specific ribonuclease that causes programmed cell death in response to antibiotics such as rifampicin, chloramphenicol, and spectinomycin (27), exhibited a 3.2-fold decreased ER. higA, encoding an antitoxin against HigB, a ribosomedependent mRNA interferase toxin that inhibits protein synthesis by cleaving translated mRNAs (28), showed a 3.0-fold decreased ER.",
+      "fingerprint": "9d2f60aab1444217"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p005",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "Moreover, antitoxins may also play regulatory roles beyond simply neutralizing the toxin. Antitoxins, alone or in complex with their cognate toxin, can help maintain a balance between various cellular processes in response to stress (29–31). Inhibiting antitoxin genes results in the loss of regulatory control, which exacerbates cellular stress and causes unregulated damage to the cell, ultimately reducing fitness.",
+      "fingerprint": "43a25136d432a9eb"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p006",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "Additionally, many toxin-antitoxin systems are co-transcribed in operons, such that the inhibition of the upstream antitoxin could potentially have a polar efect on the downstream toxin gene (ghoST, relBE, yafNO, mazEF, and cptBA). This would result in the inhibition of both genes simultaneously, rendering no significant toxin activation. However, we did not observe such polar efects in the TA systems (Fig. 2B). This absence of polar efects can likely be attributed to the important regulatory roles of the antitoxins, which go beyond simply neutralizing the toxin.",
+      "fingerprint": "fdd55a5984f01fc3"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin_p007",
+      "section": "fitness_changes_of_toxin_antitoxin_systems_in_response_to_gentamicin",
+      "text": "In summary, these findings highlight the dual roles of both toxins and antitoxins in bacterial survival under gentamicin stress. While toxins contribute to the stress response and adaptation to antibiotic challenge, their activity must be tightly regulated by antitoxins to prevent excessive cellular damage.",
+      "fingerprint": "691daa5c04787b85"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p001",
+      "section": "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin",
+      "text": "Next, we investigated the fitness efects of outer membrane proteins (OMPs), which are associated with basic physiological functions, virulence, and multidrug resistance. OMPs play a fundamental role in maintaining cellular viability (32). Among genes encoding OMPs, ompA exhibited the greatest abundance change under gentamicin, with a 3.8-fold ER decrease (Fig. 2C). OmpA is a major outer membrane protein that maintains membrane integrity but has lower permeability compared to other porins (33). Interestingly, studies have shown that ompA deletion increases susceptibility to several antibiotics, including β-lactams, in Acinetobacter baumannii (34).",
+      "fingerprint": "0e045d2f0ec3b58a"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p002",
+      "section": "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin",
+      "text": "The ER of bamE, which encodes a protein involved in assembling OmpA and forming a complex with BamABCD, was also highly decreased by 2.6-fold. The bamE deletion strain is known to increase sensitivity to rifampicin, cholate, and SDS/EDTA (35), and it may have a similar efect under gentamicin treatment. Additionally, the ER of nlpE, encoding a sensor lipoprotein that interacts with OmpA and activates the Cpx signaling pathway, decreased by 1.8-fold. Despite the expectation that cells with porin knockdown would be enriched as porins may facilitate gentamicin uptake, most porins showed decreased or unchanged ERs, except for bhsA (Fig. 2C). This suggests that the role of porins in nutrient uptake and preventing membrane damage outweighs their role in gentamicin uptake.",
+      "fingerprint": "f9c0fc8bc214e08e"
+    },
+    {
+      "paragraph_id": "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin_p003",
+      "section": "fitness_changes_of_outer_membrane_proteins_and_eflux_pumps_upon_gentamicin",
+      "text": "We also investigated the fitness of eflux pumps, which protect cells from various stresses and chemicals introduced through transporters or porins (36, 37). Activation of the eflux system is a key mechanism of aminoglycoside resistance (Fig. 2D). We found significant reductions in the ERs of several eflux pump genes. tolC, which encodes a common outer membrane channel for RND (resistance-nodulation-division family) transporters, ABC transporters, and MFS proteins that pump out toxic chemicals (38), showed a 1.5-fold ER decrease. The RND transporter genes, acrA, mdtB, and mdtE, showed 2.6-, 1.9-, and 2.0-fold decreases in ER, respectively. ABC transporter genes, macA and macB, also showed significant ER decreases (1.6- and 2.3-fold, respectively), as did MFS transporter genes, emrK, bcr, merD, mdtM, and mdtP, which had 1.8- to 2.5-fold decreases. The small multidrug resistance (SMR) family gene, mdtI, and the MATE family gene, mdtK, showed 2.6-fold decreases as well. These findings suggest that eflux systems may play a significant role in gentamicin resistance.",
+      "fingerprint": "9482e2182dc1ea4c"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p001",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "Aminoglycosides enter the periplasmic space through passive difusion via outer membrane porins (39). However, their transport into the cytoplasm requires metabolic energy provided by the respiratory/electron transport system (40), suggesting that aminoglycoside uptake is blocked under anaerobic conditions. Consistent with this, we also found that E. coli was completely resistant to gentamicin under anaerobic conditions (Fig. S2). To understand the impact of anaerobiosis on gentamicin resistance, we analyzed fitness changes induced by gene knockdowns using CRISPRi screening. Pearson correlation coeficient (r) analysis revealed a strong correlation between the ER ratio of genes under anaerobic conditions and gentamicin treatment (r = 0.93) despite the diferent types of stress (Fig. 3A). PCA analysis further supported this strong correlation, showing that, while anaerobic and gentamicin conditions are slightly separated along principal component 2, they are closely aligned along principal component 1, which explains the majority of the variance (Fig. 3B).",
+      "fingerprint": "46bb00e082a38586"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p002",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "To analyze the function of genes afected by gentamicin or anaerobic conditions, we examined genes with more than a 1.5-fold change in ER compared with LB conditions. Clusters of Orthologous Groups (COG)-based functional categorization (41) revealed that knockdown of genes related to coenzyme transport and metabolism showed beneficial efects, with significantly increased ER under both stresses (Fig. S3). Among those, the riboflavin, quinone, and heme biosynthesis pathways were particularly afected (Fig. 4A and B).",
+      "fingerprint": "e1f04c04126246d8"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p003",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "In the riboflavin biosynthesis pathway, genes such as ribA (1.6-fold under gentamicin and 8.6-fold under anaerobic conditions), ribD (3.0- and 5.4-fold), ribF (9.4- and 17.0-fold), fre (67.0- and 73.8-fold), and ubiX (13.5- and 30.0-fold) exhibited significant ER increases under both gentamicin and anaerobic conditions. RibA and RibD catalyze the early steps of riboflavin biosynthesis, and their essentiality decreased under these conditions. In addition, ribF, which transforms riboflavin into the coenzymes FMN and FAD, and fre, a flavin reductase that reduces free flavins, riboflavin, FMN, or FAD by NADPH or NADH, both showed substantial ER increases.",
+      "fingerprint": "79705c4fe8acb3a9"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p004",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "![](images/fb95b62fe1514ea272f82479a19c589899f18754444de9177eeac4a987ac5a7a.jpg)",
+      "fingerprint": "87e7822d98f43f25"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p005",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "B\n![](images/0c7424f5c09afa7c69637d39216d189dc5f4c9a02c8fabec190801464b5908bc.jpg)\nFIG 3 Similarities in fitness changes under gentamicin and anaerobic conditions. (A and B) Pearson correlation coeficient analysis (A) and principal component analysis (PCA) (B) were performed to compare fitness changes across diferent conditions: LB medium without supplementation, LB with gentamicin, and anaerobic conditions, based on ER values.",
+      "fingerprint": "ba8533aeeea1a7ea"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p006",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "![](images/e548d2491a8ded1919ab9f2202f9941794356d3ed1b0f2a73bfac1a1ab63e8f3.jpg)",
+      "fingerprint": "9d88fc6eac4b941d"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p007",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "![](images/1646d8d16b856c6866be66a9850e39b14d3a5343ae39677be03db9fd3deeed3e.jpg)",
+      "fingerprint": "ab32a94358ff5b83"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p008",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "![](images/17b9c05508dcec10471ed66cfc0281cd8d0bb3b6ecd443a3dcb9922012a6d57c.jpg)",
+      "fingerprint": "f4041b251597da95"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "C\n![](images/95f4ce646c995b8784b9eeb7684a82ae7d00168161058df898951ba188cc938b.jpg)\nFIG 4 Fitness changes of genes involved in coenzyme transport and metabolism under gentamicin treatment. (A) Pathways associated with riboflavin, quinone, and heme biosynthesis are displayed. Arrows in orange color indicate genes with an ER increase of 1.5-fold or more under gentamicin, while arrows in blue color indicate genes with an ER decrease of 1.5-fold or more. (B) Heatmap showing the ERs of genes involved in the pathways shown in panel A under LB medium, gentamicin (Gm), and anaerobic (Anaero) conditions. (C) Growth rate of E. coli BW25113 single-knockout strains of cofactor biosynthetic genes. Error bars indicate the standard deviation (SD) of three biological replicates. Knockout mutants resistant to gentamicin are shown in red. \\*P-value < 0.1 (Welch's t-test).",
+      "fingerprint": "069429986451bbbf"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p010",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "In the quinone synthesis pathway, ubiC (2.5- and 20.2-fold), which catalyzes the first committed step in ubiquinone biosynthesis, and ubiA (1.6- and 8.1-fold), ubiD (30.4- and 45.6-fold), and ubiX (20.7- and 44.5-fold), which catalyze later steps, also showed markedly increased ER under gentamicin and anaerobic conditions (Fig. 4A and B). Mutants lacking ubiA, ubiD, and ubiE/ubiG are known to be impaired under anaerobic conditions (42). Interestingly, some genes involved in menaquinol biosynthesis showed decreased ER under gentamicin and anaerobic conditions, reflecting the difering electron transport preferences—ubiquinone during aerobic growth and menaquinone during anaerobic conditions. While we did not directly analyze the electron transport chain in this study, the observed fitness changes under both conditions suggest similar impacts, consistent with the idea that gentamicin treatment induces efects that are highly similar to anaerobic metabolism, especially in relation to membrane potential.",
+      "fingerprint": "1dcf14bf97463c26"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p011",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "Heme biosynthesis genes also exhibited increased ER under both gentamicin and anaerobic conditions, including hemD (3.8- and 7.6-fold), hemX (4.7- and 6.6-fold), hemY (2.8- and 4.8-fold), and hemH (4.0- and 1.6-fold). As a critical cofactor in processes such as respiration and detoxification, heme appears to play a role in gentamicin resistance.",
+      "fingerprint": "1e4b183bd4d3cadc"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p012",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "Deletion strains of key cofactor biosynthesis genes, including fre, ubiX, ubiC, and hemX, exhibited less sensitivity to gentamicin compared to wild-type strains (Fig. 4C). This aligns with a previous study showing that a ubiquinone-deficient mutant had reduced aminoglycoside uptake due to a lowered membrane potential, which is necessary for gentamicin uptake (43). Deletion of bhsA, encoding a stress-resistant outer membrane protein that increases hydrophobicity (44), conferred complete gentamicin resistance (Fig. 4C). The bhsA deletion prevents polycationic aminoglycoside permeabilization (39), consistent with the 3.8- and 2.0-fold ER increases seen in CRISPRi studies under gentamicin and anaerobic conditions, respectively.",
+      "fingerprint": "10d6dd3d32dcf405"
+    },
+    {
+      "paragraph_id": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p013",
+      "section": "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment",
+      "text": "Taken together, the fitness changes induced by gentamicin are highly similar to those seen in anaerobic metabolism, particularly in the context of cofactor biosynthesis and its related genes. These findings suggest that gentamicin resistance may be linked to metabolic shifts afecting membrane potential through altered electron transfer.",
+      "fingerprint": "ff2615ec544d5aa6"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p001",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "To gain a deeper understanding of the relationship between electron transport systems, membrane potential, and the cellular response to gentamicin, we analyzed transcriptome changes under anaerobic and gentamicin conditions (Table S4). These transcriptomic data were projected onto the predetermined independently modulated gene set (iModulon), derived from over a thousand E. coli K-12 transcriptome profiles (45). Among the iModulons inferred across gentamicin and anaerobic conditions, we found a specific regulation of the ArcA and CpxR regulons (Fig. 5A; Table S5).",
+      "fingerprint": "d4f4408d85958afc"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p002",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "The ArcAB two-component system (TCS) moderates redox in E. coli, initiating the aerobic-to-anaerobic transition by inducing quinone adaptation and repressing respiration (46). The CpxAR TCS, which senses misfolded proteins and envelope stress, controls various cellular functions (47). Previous studies have emphasized the importance of bacterial respiration and membrane homeostasis in aminoglycoside susceptibility. Bactericidal eficacy has been shown to correlate with metabolic activity and respiratory flux (48), and aminoglycoside-induced mistranslation and membrane damage have been linked to oxidative stress and hydroxyl radical formation (12). Both Cpx and Arc systems have been implicated in sensing envelope and redox stress, respectively, although the regulatory mechanisms linking them to aminoglycoside response have remained incompletely understood.",
+      "fingerprint": "bd97a6c4f5b37ab5"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p003",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "To experimentally assess the essential roles of ArcAB and CpxR in gentamicin resistance, we examined the growth of cpx and arc deletion mutants under gentamicin (Fig. 5B). Deletion of arcA, arcB, or cpxR significantly increased sensitivity to gentamicin, whereas cpxA deletion had little efect (Fig. 5B). This finding contrasts with earlier interpretations assuming that cpxA deletion would impair Cpx signaling (12). Instead, previous studies have shown that cpxA deletion can lead to CpxR hyperactivation due to loss of phosphatase activity of CpxA (49). This demonstrates that both ArcA and CpxR are required for gentamicin resistance.",
+      "fingerprint": "05f6f0cb2e85b2da"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p004",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "Interestingly, previous studies indicated that the Cpx response not only supports envelope protein homeostasis but also regulates respiratory chain components. The Cpx system has been shown to promote turnover of respiratory complexes such as NADH dehydrogenase I and succinate dehydrogenase (50) and to mediate transcriptional changes that impact broader responses (51). Furthermore, there has been evidence of potential crosstalk between the ArcA response regulator and the CpxA sensor kinase during gentamicin exposure (52).",
+      "fingerprint": "86d1f855a20bb5ce"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p005",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "Transcriptomic analysis further revealed that ArcA iModulon activity was highest in the arcA knockout strain (Fig. 5C and Table S6), consistent with ArcA's role as a repressor of aerobic metabolism. Under anaerobic conditions, ArcA iModulon activity was minimal, in line with public data sets (P1K anaerobic), while LB control samples showed intermediate activity between anaerobic and arcA knockout (P1K ΔarcA) samples. According to the P1K data set, the CpxR iModulon is activated under ethanol stress but becomes inactive in the cpxR knockout mutant (Fig. 5C). Under gentamicin treatment, CpxR iModulon activity surpasses that of ethanol stress, indicating a more intense stress response (Fig. 5C). Notably, ArcA activity was almost completely suppressed under gentamicin exposure, as the ArcA iModulon activity closely matched that of the P1K ΔarcA strain, indicating de-repression of the response (Fig. 5C). Since ArcA is a repressor, its activity is inversely correlated with the activity of the ArcA iModulon.",
+      "fingerprint": "d83d5e7eb9115a63"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p006",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/dea412416dad9c445d69c4e5e318ba2ef3e02f30c0b9fae46abaf3ecb8311cee.jpg)",
+      "fingerprint": "8955d7cd8f532a7f"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p007",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/71088ca1a3a896da343d25b16a4fee35f84b85eec80df8c3295283a3af4b2431.jpg)",
+      "fingerprint": "3f61bd84b6250bf5"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p008",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "A\n![](images/e88a6315f5c768992b77bfe106872b751338808bd536ae7198751cfef7651ab8.jpg)",
+      "fingerprint": "04dd13dcb7b90596"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p009",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "B\n![](images/03f5560b23b1d779fe29d82c239409452a66603f5db44c4015aeb54c7da4e260.jpg)",
+      "fingerprint": "b0f5ddd81d66f971"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p010",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "C\n![](images/a3745f8400ff3154d41b5e95d5a43b8fcb2ebc808a0a59078ed9bff96a499678.jpg)",
+      "fingerprint": "c8ef4ad3e7397342"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p011",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "D\n![](images/67d2d05d3078e667d252a6ac0d3571f465cf8665137b33466e39bffcb2c14ead.jpg)",
+      "fingerprint": "06c3abf63bdb9f53"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p012",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "E\n![](images/ebee7ebb8ad44c87e64d8dbf79c1919a243fe3233e9170d813bc1e42fad7d0b4.jpg)",
+      "fingerprint": "eaa01c38cb2492d0"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p013",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/0df0c3da737bc55b2c71fc79fe10787cb446f156870ad208da4e7aa22c950cd9.jpg)",
+      "fingerprint": "4d0b221afa10c967"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p014",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/1fc5ca6bde24dc755ef326e68cd5c1f3fab1ece879dd4119635c784858558b76.jpg)",
+      "fingerprint": "c8c7f15f7f907129"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p015",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/cc3e48292e7c89838e68298dbac28739e8b38783b6614eb991105567a6ace169.jpg)",
+      "fingerprint": "c84d7e7b9e3d63b0"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p016",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/303c7dfc43639bfae7126a6f809f13c22cdf84e3d002d01b71469f92242023df.jpg)",
+      "fingerprint": "2722853f89902538"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p017",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/a36275a33ca4861a7618eb15842670695734a53ee8c80a76181caa2d20916bd4.jpg)",
+      "fingerprint": "5a1591971dffbaa4"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p018",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/12df5d9f059e84a1d9ec07d1a37e469c7f33f799de714289da55a54d3536aa0a.jpg)",
+      "fingerprint": "a75d94e1ab8066bf"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p019",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/f4d67a908ca3d20fc6263dfe450694a7f638c01754c823d5f5a2aac7688ebbd7.jpg)",
+      "fingerprint": "e33081a68d28de33"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p020",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/46ac3b0a90a4bb56df25b39f3b42a561bc804171bd6e04a4240f1794ffaef500.jpg)",
+      "fingerprint": "ca6722f2a9e8b0a5"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p021",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/6ce2e9ba4eb524beb5d90eb77d9fa0cfcfceff03b7d7b84a8aa9877b8887b792.jpg)",
+      "fingerprint": "6c6b35d335956ed2"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p022",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/39df716ab4b0ef0e89a21c6d03781b9825eadd4a138903e13115e755b6764e4c.jpg)\nFIG 5 Transcriptome and genome-wide binding analyses of CpxR and ArcA under anaerobic and gentamicin stresses. (A) Diferential iModulon activity between anaerobic and gentamicin stresses. Each dot represents an individual iModulon. (B) Growth profiles of arcA, arcB, cpxA, and cpxR knockout strains under gentamicin treatment (1 µg/mL). (C) CpxR and ArcA iModulon activities of E. coli under anaerobic and gentamicin stresses. Gray dots indicate over 1,000 individual transcriptome samples from the P1K public data set (45). (D) Comparison of the CpxR regulon determined in the presence of gentamicin with previously known regulons. (E) CpxR binding to promoter regions of genes, as identified through ChIP-Seq analysis.",
+      "fingerprint": "0ccd53d4c136be4e"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p023",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "To further investigate the interplay between ArcA and CpxR, we employed chromatin immunoprecipitation sequencing (ChIP-Seq) on CpxR. Under gentamicin, CpxR bound to 933 positions in the genome, compared to just 51 under anaerobic conditions and 13 in LB control (Table S7). These results suggest that CpxR serves as a global regulator under gentamicin, modulating 1,611 genes, far more than the previously reported 72 or 260 regulons (Fig. 5D) (53–55). Transcriptomic analysis showed that a substantial portion of gentamicin-induced DEGs (929 out of 2,348 DEGs) were directly associated with CpxR binding, particularly stress-response genes such as degP, cpxP, and sigma factors rpoE and rpoH, which are also directly regulated by arcA (Fig. 5E) (12). Importantly, CpxR also bound to the regulatory regions of respiratory complexes, including NADH dehydrogenase (NDH1; encoded by nuoABCEFGHIJKLMN), cytochrome $b o _ { 3 }$ oxidoreductase $( \\mathsf { C y t } _ { b o } ;$ encoded by cyoABCD), and $\\mathsf { C y t } _ { b d - 1 } \\left( \\mathsf { C y t } _ { b d - 1 } \\right) .$ encoded by cydABXH) under gentamicin (Fig. 5E).",
+      "fingerprint": "d850a913006793e8"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p024",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "![](images/e8e98e0c2bd2944e236d11cb7ed59a2b547d4e2c502106dc4c71ad4af43df4db.jpg)",
+      "fingerprint": "3a581224e6eae4e7"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p025",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "Under aerobic conditions, the transcription levels of the nuo, sdh, cyo, and cyd, and atp gene clusters remained high (Table S4). Under anaerobic conditions, NDH1, succinate dehydrogenase (SDH), and $\\mathrm { C y t } _ { b o }$ appear to be repressed by ArcA, consistent with previous findings (Fig. 6A and B) (56, 57). However, $\\mathsf { C y t } _ { b d - 1 }$ showed only a slight reduction in expression. In contrast, the alternative cytochrome bd-II $( \\mathsf { C y t } _ { b d - 1 1 } ;$ encoded by appCBX), which has higher oxygen afinity and diferent quinone afinity, exhibited significantly increased expression, specifically under anaerobic conditions (Fig. 6A and B).",
+      "fingerprint": "1e29357569e5082a"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p026",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "From ChIP-Seq and RNA-seq results, we observed that CpxR regulates the expression of genes involved in the respiratory systems in a way that dominates or modulates the regulatory efects of ArcA. Specifically, CpxR induces the repression of the nuo, cyo, and cyd respiration systems under gentamicin stress. Although it is not fully clear whether this repression occurs independently of ArcA, it appears that CpxR may have a regulatory influence that supersedes that of ArcA in this context. This regulation leads to the repression of all respiratory complexes contributing to the proton gradient, such as NDH1, $\\mathsf { C y t } _ { b o } ,$ and $\\mathsf { C y t } _ { b d - 1 }$ (Fig. 6A and B). Although CpxR bound to the regulatory region of arcA under gentamicin (Fig. 5E), arcA expression showed only a slight decrease (−6.3%; Table S4), suggesting that CpxR directly regulates the repression of nuo, cyo, and cyd respiration systems independent of ArcA (see also bindings of CpxR in Fig. 5E). While arcA may afect the inhibition of nuo and $c y o ,$ it did not afect the activation of cyd and app, as seen under anaerobic conditions.",
+      "fingerprint": "94fe09c699fab3cc"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p027",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "This indicates that CpxR plays a pivotal role in controlling membrane potential by repressing the respiration system under gentamicin stress. To further investigate how CpxR afects membrane potential, we examined the membrane potential under LB, anaerobic, and gentamicin conditions, including the use of CCCP, a well-known PMF blocker (Fig. 6C). Flow cytometry analysis revealed that CpxR mediated the collapse of membrane potential in response to gentamicin, as this collapse was absent in the cpxR knockout strain (Fig. 6C). Collectively, these findings suggest that, under gentamicin stress, CpxR not only coordinates the protein stress response but also prevents the formation of an electrochemical gradient. The dissipation of this gradient by CpxR could potentially play a role in limiting gentamicin influx.",
+      "fingerprint": "0b9ce7c3bf3e225d"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p028",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "A\n![](images/9fb6a814082622f6a78d10defbf582ab81228c55e2e3ee0db6ae980f6f0f0836.jpg)\nB",
+      "fingerprint": "afbadc10ff7a1437"
+    },
+    {
+      "paragraph_id": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029",
+      "section": "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization",
+      "text": "C\n![](images/a2c43c081e7ce40c38892bf38e101f4a8591021a133365020f4cb7e5d4feb9e2.jpg)\nFIG 6 Respiratory adaptation in E. coli, conditionally regulated by CpxR and ArcA. (A) RNA-seq analysis showing changes in the expression of respiratory complexes under anaerobic and gentamicin-treated conditions, relative to aerobic LB conditions. Box plots depict the first and the third quartiles (box limits), 10th and 90th percentiles (whiskers), and medians (center lines). Individual dots represent the expression of specific genes. (B) A proposed transcriptiona model for the respiratory system by ArcA and CpxR under aerobic, anaerobic, and gentamicin-treated conditions. Symbols: Δϕ: membrane potential. NDH-1: NADH-quinone oxidoreductase. SDH: succinate dehydrogenase. Cyt: cytochrome. ATP Synth: ATP synthase. (C) Flow cytometry histograms showing the membrane potential of E. coli K-12 BW25113 and the cpxR knockout strain under aerobic, anaerobic, CCCP, and gentamicin-treated conditions. CCCP, which dissipates the proton gradient, is used as an uncoupling control. Numbers indicate the median membrane potential of the populations.",
+      "fingerprint": "0c6fc12e787067fe"
+    },
+    {
+      "paragraph_id": "discussion_p001",
+      "section": "discussion",
+      "text": "In this study, we investigated the fitness change of E. coli under gentamicin and anaerobic conditions using genome-wide CRISPRi screening. This high-resolution approach enabled us to estimate the essentiality of each gene with high accuracy, without the need for conventional gene knockouts or knockdowns. Notably, the essential genes identified in previous knockout studies closely aligned with those found through our CRISPRi screening (58). This demonstrates that the CRISPRi method ofers a rapid and reliable way to study gene regulation, cellular mechanism, metabolism, and more, by monitoring fitness responses to various stimuli.",
+      "fingerprint": "8386a4bed9a272b0"
+    },
+    {
+      "paragraph_id": "discussion_p002",
+      "section": "discussion",
+      "text": "Our primary focus was on understanding antibiotic responses and cellular regulation under gentamicin exposure. CRISPRi screening showed that gentamicin increased the essentiality of not only ribosomes but also ribosome-associated proteins and ribosomal RNA modification proteins. In addition, specific ribosomal modification enzymes, such as those involved in acetylation, adenylation, or phosphorylation, appeared to play significant roles following gentamicin treatment. These modifications may inactivate gentamicin by altering its binding sites on the ribosome. Moreover, the essentiality of rRNA methyltransferase genes like rsmD and rlmB increased significantly under gentamicin, suggesting a potential role for rRNA modification enzymes in antibiotic defense.",
+      "fingerprint": "b5a9ce970dbf6d5d"
+    },
+    {
+      "paragraph_id": "discussion_p003",
+      "section": "discussion",
+      "text": "Gentamicin also impacted toxin-antitoxin systems, which are involved in membrane damage and translation regulation. The increased essentiality of antitoxin genes under gentamicin implies that regulating antitoxins may help compensate for translation inhibition and membrane damage caused by toxins. Overall, our investigation into cellular responses ofers insights into the molecular mechanisms underlying antibiotic activity and resistance.",
+      "fingerprint": "8166e778357ca1de"
+    },
+    {
+      "paragraph_id": "discussion_p004",
+      "section": "discussion",
+      "text": "Aminoglycosides, including gentamicin, enter cells through a PMF across the inner membrane (59) and require a certain level of membrane potential (43). This membrane potential is maintained by the respiratory electron transport system, which relies on cofactors and electron carriers such as quinones and hemes. Interestingly, knockdown of quinone and heme synthesis genes provided a notable fitness advantage under gentamicin treatment, consistent with the knockout experiments (Fig. 4C). This observation also explains resistance to gentamicin under anaerobic conditions.",
+      "fingerprint": "73cdd34783130fb8"
+    },
+    {
+      "paragraph_id": "discussion_p005",
+      "section": "discussion",
+      "text": "Transcriptomic analysis using iModulons revealed that the response regulator CpxR is involved in the gentamicin response, as observed by the severe growth defect in the cpxR knockout strain under gentamicin. Previous reports suggested crosstalk between the CpxAR and ArcAB TCS during gentamicin exposure, but the precise regulatory mechanism remains unresolved (12, 49, 52). A genome-wide binding assay of CpxR under gentamicin revealed that CpxR binds to promoters of genes related not only to proteases and chaperones but also to respiration and directly to arcA. This result suggests that CpxR plays a global regulatory role in E. coli, regulating protein quality and respiration. While the detailed molecular relationship between CpxR and respiration requires further investigation, it is likely that CpxR-mediated inhibition of the respiratory system helps protect vulnerable membrane-bound respiratory proteins from gentamicin-induced damage. Furthermore, substantial evidence highlights the role of Cpx, or its upstream signaling partner NlpE, in the pathogenesis of E. coli (60) and other gram-negative pathogens (61–63). Cpx may also contribute to antibiotic resistance in several gram-negative bacteria (64), suggesting that the CpxR-mediated antibiotic response could be a widespread mechanism among gram-negative bacteria.",
+      "fingerprint": "211f3f5d6bb42c7c"
+    },
+    {
+      "paragraph_id": "discussion_p006",
+      "section": "discussion",
+      "text": "In summary, genome-wide CRISPRi screening provides a rapid and robust approach for exploring fundamental processes in E. coli. This study ofers new insights into the underlying molecular mechanisms of antibiotic action and the genetic basis of bacterial responses to antibiotics. The data generated from this screening could be a valuable data set for identifying potential targets for novel antibiotics or sensitizers and ofers a foundation for further in-depth studies into transcriptional regulatory networks and resistance mechanisms with potential clinical implications.",
+      "fingerprint": "c418c40d111dcdcd"
+    },
+    {
+      "paragraph_id": "cells_and_plasmids_p001",
+      "section": "cells_and_plasmids",
+      "text": "For library construction, E. coli Lucigen's Endura competent cells (Lucigen, WI, USA) were used, while E. coli K-12 MG1655 was employed for CRISPRi library screening. The pdCas9 plasmid (Addgene, cat. #46569) and the pgRNA-bacteria plasmid (Addgene, cat. #44251) targeting mrfp were used for the expression of dCas9 and sgRNA, respectively. The pgRNA-bacteria plasmid served as a template for generating new sgRNAs. To test growth defects, we used single knockout strains from the KEIO collection (58), including fre, ubiX, ubiC, hemX, bhsA, cpxA, cpxR, arcA, and arcB, with E. coli K-12 BW25113 as the wild-type control. Growth profiles were monitored using a Synergy H1 microplate reader (BioTek, VT, USA). For ChIP-Seq, a c-myc tag was added to the C-terminus of cpxR in E. coli K-12 MG1655 as previously described (65). Primer sequences are summarized in Table S8.",
+      "fingerprint": "ea5484c499226c55"
+    },
+    {
+      "paragraph_id": "sgrna_library_design_and_construction_p001",
+      "section": "sgrna_library_design_and_construction",
+      "text": "The CRISPRi sgRNA library for E. coli K-12 MG1655 genome was designed to target genic regions using 23-mer sequences that start with the protospacer adjacent motif (PAM) sequence NGG (66). sgRNA candidates were selected for all coding sequences (CDS) in the reference genome (RefSeq NC\\_000913.3) and fragmented every 100 nt. Through BLASTN analysis, multiple-aligned sgRNAs were excluded from sgRNA candidates to avoid of-target binding (67). An in-house Python script was used to match sgRNA to these fragments, selecting the first sequence from each 100 nt window or, if no match was found, using the last sgRNA from the previous fragment. This resulted in a pool of 39,591 double-stranded oligos, each consisting of a 20 nt spacer sequence targeting the genome, flanked by sequences at both 5′ and 3′ ends. The oligo pool was synthesized by CustomArray Inc. (Bothell, WA, USA), using a 5′-GCTCAGTCCTAGGTATAATACTAGTA-20 nt spacer-GTTTTAGAGCTAGAAATAGCAAGTTAAAATAAG-3′ (Table S1). To minimize the deviation in transcription activity due to the transcription start nucleotide, we set the nucleotide upstream of the spacer sequence to “A.”",
+      "fingerprint": "9cc22d81fd5b0561"
+    },
+    {
+      "paragraph_id": "sgrna_library_design_and_construction_p002",
+      "section": "sgrna_library_design_and_construction",
+      "text": "The CRISPRi library construction was based on a modified version of a previously described method (68). The synthetic double-stranded sgRNA pool was extended and amplified by PCR using the primers sgRNA-exF and sgRNA-exR (Table S8). The plasmid backbone was also amplified by inverse PCR from the pgRNA-bacteria plasmid DNA (Addgene, cat. # 44251) using primers pgRNA-F and pgRNA-R (Table S8) and further treated with DpnI to remove the template plasmid. Both the amplified sgRNA pool and plasmid backbone were purified by gel electrophoresis using a Qiagen gel extraction kit (Qiagen, Hilden, Germany).",
+      "fingerprint": "89d1a57347e4cf3e"
+    },
+    {
+      "paragraph_id": "sgrna_library_design_and_construction_p003",
+      "section": "sgrna_library_design_and_construction",
+      "text": "Next, 40 ng of amplified sgRNA library products (200 bp) was assembled into 100 ng of plasmid backbone (2,435 bp) in a 40 µL reaction using the NEBuilder HiFi DNA Assembly Kit (NEB, MA, USA). Following assembly, 0.5 µL of each reaction was transformed into Endura ElectroCompetent Cells using a Gene Pulser II Electroporation System (BioRad, Hercules, USA). Transformants were plated on 87 LB agar plates (25 cm × 25 cm) containing ampicillin (100 µg/mL) and incubated. We obtained a total of 0.8 × 10<sup>7</sup> colonies, ensuring 200 × coverage of the designed sgRNAs. Colonies were scraped from each plate, and residual cells were collected by washing the plates with 50 mL of phosphate-bufered saline (PBS) and pooling with the collected colonies. The pooled cells were centrifuged at $4 { , } 0 0 0 \\times { } g$ for 10 min at 4°C to remove the supernatant. The mass of the cell pellet was measured and adjusted to a concentration of 0.25 g/mL in PBS. From the combined cells (80 mg), the plasmid pool was extracted using the PureYield Plasmid Midiprep System (Promega, WI, USA). The plasmid pool was further purified using 1% agarose gel to remove nonspecific DNA and contaminating gDNA. Aliquots of 50 µL (100 µg/mL) of the plasmid pool were stored $\\mathsf { a t } - 8 0 ^ { \\circ } \\mathsf C$ with glycerol for later use.",
+      "fingerprint": "61de5ca89fd45126"
+    },
+    {
+      "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p001",
+      "section": "sgrna_library_preparation_for_crispri_screening",
+      "text": "For CRISPRi screening, we transformed the sgRNA library plasmids (100 ng) into E. coli K-12 MG1655 competent cells that already contained the pdCas9 plasmid by electroporation. The transformed cells were then spread on LB plates pre-warmed to $3 0 ^ { \\circ } C ,$ containing both chloramphenicol (35 µg/mL) and ampicillin (100 µg/mL) to ensure the selection of cells containing both plasmids. After 14 h of incubation at $3 0 ^ { \\circ } \\mathsf { C } ,$ , approximately $2 . 0 \\times 1 0 ^ { 6 }$ colonies were obtained from 24 plates. Colonies from each plate were combined by weight, similarly to the method used during sgRNA library construction. The resuspended cells were aliquoted with glycerol and stored at −80°C for later use.",
+      "fingerprint": "fb7b35dc333b3b17"
+    },
+    {
+      "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p002",
+      "section": "sgrna_library_preparation_for_crispri_screening",
+      "text": "For liquid culture, the CRISPRi library cells were precultured in 50 mL LB with chloramphenicol and ampicillin until the optical density at 600 nm $( \\mathsf { O D } _ { 6 0 0 } )$ reached 1.0. Then, these cells were inoculated into fresh LB media at an initial ${ \\tt O D } _ { 6 0 0 }$ of 0.05, with and without gentamicin (1 µg/mL), while maintaining chloramphenicol and ampicillin. Aerobic cultures were grown at 37°C with shaking at 250 rpm until the ${ \\tt O D } _ { 6 0 0 }$ reached 1.68 in LB and 1.8 in LB with gentamicin (Fig. S1A).",
+      "fingerprint": "1c59bb3a123d3748"
+    },
+    {
+      "paragraph_id": "sgrna_library_preparation_for_crispri_screening_p003",
+      "section": "sgrna_library_preparation_for_crispri_screening",
+      "text": "For anaerobic cultures, LB medium was stored in a nitrogen-filled chamber immediately after autoclaving to maintain anaerobic conditions. Then, 60 mL of LB was transferred into bottles sealed with butyl rubber stoppers, and nitrogen gas was added to the headspace at a pressure of 100 kPa. Pre-cultured CRISPRi library cells were inoculated into these anaerobic cultures using a syringe at an initial ${ \\tt O D } _ { 6 0 0 }$ of 0.05. The cultures were grown with shaking at $3 7 ^ { \\circ } \\mathsf { C }$ for 9 h until the ${ \\tt O D } _ { 6 0 0 }$ reached 0.6 (Fig. S1B).",
+      "fingerprint": "03a2c3b8a9afb050"
+    },
+    {
+      "paragraph_id": "sgrna_library_sequencing_p001",
+      "section": "sgrna_library_sequencing",
+      "text": "CRISPRi library cells were cultured, then centrifuged at $4 , 0 0 0 \\times g$ for 10 min at $4 ^ { \\circ } \\mathbb { C } .$ The sgRNA plasmid pools were purified using the PureYield Plasmid Midiprep System. To construct the sequencing library, we amplified sgRNA pool sequences from 50 ng plasmids with TruSeq-based primers containing index and adapter sequences. Amplification was carried out for 18–20 cycles, reaching a semi-plateau (Table S8), and monitored with real-time PCR using SYBR Green. The amplified products were separated by agarose gel electrophoresis and concentrated with a MinElute Gel Extraction Kit. The purified libraries were quantified using a Qubit 2.0 fluorometer (Invitrogen) and sequenced to single-end mode on an Illumina HiSeq 2500 system, with a read length of 150 bp (Illumina, CA, USA).",
+      "fingerprint": "d3cc4eb4e3bd9c7f"
+    },
+    {
+      "paragraph_id": "rna_sequencing_rna_seq_and_analysis_p001",
+      "section": "rna_sequencing_rna_seq_and_analysis",
+      "text": "E. coli K-12 MG1655 was cultured in LB, LB with 1 µg/mL gentamicin, and LB under anaerobic conditions, following the CRISPRi screening protocol. The experiment was conducted in triplicate. Total RNA was extracted using the RNAsnap method (69), and then precipitated with ethanol. mRNA was purified after removing rRNA using the Ribo-zero magnetic kit for bacteria (Epicentre, WI, USA), following the manufacturer's instructions. The sequencing library was then constructed with the TruSeq Stranded mRNA Sample Prep Kit (Illumina), in accordance with the manufacturer's instructions. The quantified samples were sequenced on an Illumina HiSeq 2500 with a read length of 50 bp. RNA-seq reads were mapped to the E. coli MG1655 reference genome (NC\\_000913.3) using the CLC Genomics Workbench (CLC Bio, Aarhus,",
+      "fingerprint": "3734e4b6b1e7a631"
+    },
+    {
+      "paragraph_id": "rna_sequencing_rna_seq_and_analysis_p002",
+      "section": "rna_sequencing_rna_seq_and_analysis",
+      "text": "Denmark), with length and similarity fractions set to 0.9. Gene expression levels were normalized using the DESeq2 pipeline (70). Genes with more than a 2.0-fold change in expression and a $P _ { \\mathsf { a d j } }$ value <0.001 were considered diferentially expressed genes (DEG). To infer iModulon activities, we projected log<sub>2</sub>-transformed expression levels (centered to LB) onto the pre-existing iModulon structure of E. coli K-12 (45) (https:// imodulondb.org/dataset.html?organism=e\\_coli&dataset=precise1k) using the pymodulon python package (https://github.com/SBRG/pymodulon) (71).",
+      "fingerprint": "adbe48a074971a39"
+    },
+    {
+      "paragraph_id": "chromatin_immunoprecipitation_chip_sequencing_p001",
+      "section": "chromatin_immunoprecipitation_chip_sequencing",
+      "text": "Cultured cells (25 mL) were cross-linked with 1% formaldehyde at room temperature for 30 min. The reaction was stopped by adding 2 mL of 2.5 M glycine. After washing the cells three times with 50 mL of ice-cold Tris-bufered saline, we resuspended the cell pellets in 0.5 mL lysis bufer (50 mM Tris-HCl [pH 7.5], 100 mM NaCl, 1 mM EDTA, 1 µg/mL RNase A, 40 µL protease inhibitor cocktail [50 mg/mL;Sigma-Aldrich], and 1 kU Ready-Lyse lysozyme solution [LGC Biosearch Technologies, Teddington, UK]) and incubated them at 37°C for 30 min. The cells were then mixed with 0.5 mL of 2× IP bufer (100 mM Tris-HCl [pH 7.5], 200 mM NaCl, 2% Triton X-100, and 1 mM EDTA) and incubated on ice for 30 min. The complex was fragmented through 10 cycles of 20 s sonication followed by 30 s of resting using a Sonic Dismembrator Model 500 (Fisher Scientific, Waltham, MA). After centrifugation to remove cell debris, the size distribution of fragmented DNA was confirmed by agarose gel electrophoresis (200–400 bp). Washing bufer I (50 mM Tris-HCl [pH 7.5], 140 mM NaCl, 1% Triton X-100, and 1 mM EDTA) was added to bring the volume to 1.4 mL. A 700 µL aliquot of the sample was used for immunoprecipitation with 15 µL of anti-c-Myc mouse IgG (9E10) (Cat. sc-40) (Santa Cruz Biotechnology, TX, USA) and 2 µL of normal mouse IgG (Cat. sc-2025; Santa Cruz Biotechnology) as a negative control. The reactions were incubated overnight at 4°C with gentle rotation. The antibody-coupled solution was then added to 50 µL of Dynabeads Pan Mouse IgG (Thermo Fisher Scientific, MA, USA) prewashed with 1 mL of ice-cold bead washing bufer (0.5% bovine serum albumin in PBS), and incubation continued at 4°C for 6 h with gentle rotation. The MPC magnet pull-down beads were washed twice with 1 mL of washing bufer I, washing bufer II (50 mM Tris-HCl [pH 7.5], 500 mM NaCl, 1% Triton X-100, and 1 mM EDTA), washing bufer III (10 mM Tris-HCl [pH 8.0], 250 mM LiCl, 1% Triton X-100, and 1 mM EDTA), and TE bufer (10 mM Tris-HCl [pH 8.0] and 1 mM EDTA). We then added 200 µL of elution bufer (50 mM Tris-HCl [pH 8.0], 1% SDS, and 1 mM EDTA) to the washed beads and incubated it with rotation overnight at 65°C for reverse crosslinking. The eluate was incubated at 37°C for 2 h with 1 µL RNase A solution (100 mg/mL) (Qiagen) and further incubated at 55°C for 2 h with 4 µL of proteinase K (20 mg/mL; Invitrogen). The IP DNA was purified using the MinElute PCR Purification Kit (Qiagen) and then modified and amplified using the NEXTflex ChIP-Seq Library Prep Kit for Illumina Sequencing (PerkinElmer, MA, USA). Sequencing libraries were quantified using a Qubit dsDNA HS Assay Kit (Thermo Fisher Scientific) and a Qubit 4.0 fluorometer (Thermo Fisher Scientific). Library quality was assessed using a TapeStation 4150 (Agilent, CA, USA) with a high-sensitivity D1000 ScreenTape (Agilent). The libraries were sequenced with a 50 cycle single-ended reaction on the HiSeq 2500 (Illumina). ChIP-Seq reads were mapped to the E. coli MG1655 reference genome (NC\\_000913.3) using the CLC Genomics Workbench (CLC Bio), with length and similarity fractions set to 0.9. Binding peaks were identified using MACS2 software with default settings (72). Peaks detected in two or more replicates were considered binding events. The operational structure of E. coli MG1655 was obtained from the DOOR2.0 data set (73) to determine the afected genes and operons.",
+      "fingerprint": "064285cd5272fcc8"
+    },
+    {
+      "paragraph_id": "antibiotic_disk_difusion_assay_p001",
+      "section": "antibiotic_disk_difusion_assay",
+      "text": "Cells were spread on an LB agar plate, and disks containing 0, 0.1, 1, 2.5, and 10 µM gentamicin were placed on the agar. The plate was incubated at 37°C. For anaerobic cultures, the LB agar plate was prepared in an anaerobic chamber to remove oxygen, and cells were cultivated in an anaerobic incubator. After 16 h of incubation for aerobic cultures and 24 h for anaerobic cultures, the presence of a halo around the disk was observed.",
+      "fingerprint": "b281acfd9805c881"
+    },
+    {
+      "paragraph_id": "membrane_potential_assay_p001",
+      "section": "membrane_potential_assay",
+      "text": "E. coli K-12 BW25113 and BW25113ΔcpxR strains were cultured at $3 7 ^ { \\circ } \\mathsf { C }$ until ${ \\tt O D } _ { 6 0 0 }$ reached 1.0 for aerobic conditions and 0.6 for anaerobic conditions in LB media. If required, 5 µM carbonyl cyanide 3-chlorophenylhydrazone (CCCP) or 1 µg/mL gentamicin was added. The culture was then diluted to $1 \\times 1 0 ^ { 6 }$ cells/mL with filtered PBS bufer. Membrane potential was assessed using the BacLight Bacterial Membrane Potential Kit (Thermo Fisher Scientific) with the carbocyanine dye $\\mathsf { D i O C } _ { 2 }$ (3,3′-diethyloxacarbocyanine iodide) according to the manufacturer's instructions. The dye exhibits fluorescence shift from green to red as the membrane potential increases. After 30 min of $\\mathsf { D i O C } _ { 2 }$ treatment, cells were analyzed with an S3e Cell Sorter (Bio-Rad) using a 488 nm laser. Fluorescence was measured in the green and red channels with 526/48 (FL1) and 593/40 (FL2) emission filters, respectively. Samples were analyzed at a rate of 2,000 events/s with an FSC threshold of 335. A total of 100,000 events were collected and analyzed using FlowJo software v10.2 (FlowJo, OR, USA).",
+      "fingerprint": "046c053dc5e9307c"
+    },
+    {
+      "paragraph_id": "acknowledgments_p001",
+      "section": "acknowledgments",
+      "text": "This work was supported by the National Research Foundation of Korea (NRF) funded by the Ministry of Science and ICT, Republic of Korea (grants 2021R1A2C1012589 to S.C. and 2018M3A9H3024759 to B.-K.C.), the Basic Science Research Program through NRF funded by the Ministry of Education (RS-2023-00246928 to S.C.), and the Novo Nordisk Foundation (NNF) Center for Biosustainability (grant NNF16CC0021858 to B.P.) at the Technical University of Denmark.",
+      "fingerprint": "7a958c4cd1cca73f"
+    },
+    {
+      "paragraph_id": "acknowledgments_p002",
+      "section": "acknowledgments",
+      "text": "Conceptualization and formal analysis were by D.C., B.-K.C., and S.C. Methodology was by D.C., E.L., Y.S., and S.C. Investigation was by D.C., B.P., B.-K.C., and S.C. Supervision was by B.-K.C. and S.C. Writing of the original draft was by D.C., S.C.K., K.J.J., B.P., B.-K.C., and S.C. Review and editing was by D.C., S.C.K., K.J.J., B.P., B.-K.C., and S.C.",
+      "fingerprint": "884ec0a5f0db28ea"
+    },
+    {
+      "paragraph_id": "author_affiliations_p001",
+      "section": "author_affiliations",
+      "text": "<sup>1</sup>Department of Bioengineering, University of California San Diego, La Jolla, California, USA",
+      "fingerprint": "9ed4f1fe9839c869"
+    },
+    {
+      "paragraph_id": "author_affiliations_p002",
+      "section": "author_affiliations",
+      "text": "<sup>2</sup>Department of Biological Sciences, Korea Advanced Institute of Science and Technology, Daejeon, South Korea",
+      "fingerprint": "8fd8553ebb481f60"
+    },
+    {
+      "paragraph_id": "author_affiliations_p003",
+      "section": "author_affiliations",
+      "text": "<sup>3</sup>KI for the BioCentury, Korea Advanced Institute of Science and Technology, Daejeon, South Korea",
+      "fingerprint": "8b731c349a81bf41"
+    },
+    {
+      "paragraph_id": "author_affiliations_p004",
+      "section": "author_affiliations",
+      "text": "<sup>4</sup>Department of Chemical and Biomolecular Engineering, Korea Advanced Institute of Science and Technology, Daejeon, South Korea",
+      "fingerprint": "f6660f198d2192b2"
+    },
+    {
+      "paragraph_id": "author_affiliations_p005",
+      "section": "author_affiliations",
+      "text": "<sup>5</sup>Graduate School of Engineering Biology, Korea Advanced Institute of Science and Technology, Daejeon, South Korea",
+      "fingerprint": "e7b967a3591cc194"
+    },
+    {
+      "paragraph_id": "author_affiliations_p006",
+      "section": "author_affiliations",
+      "text": "<sup>6</sup>Department of Pediatrics, University of California San Diego, La Jolla, California, USA",
+      "fingerprint": "a6dadf0be538c6ea"
+    },
+    {
+      "paragraph_id": "author_orcids_p001",
+      "section": "author_orcids",
+      "text": "Donghui Choe http://orcid.org/0000-0003-1107-7380",
+      "fingerprint": "d940b6c5b0807102"
+    },
+    {
+      "paragraph_id": "author_orcids_p002",
+      "section": "author_orcids",
+      "text": "Bernhard Palsson http://orcid.org/0000-0003-2357-6785",
+      "fingerprint": "83a3c8de6a514caf"
+    },
+    {
+      "paragraph_id": "author_orcids_p003",
+      "section": "author_orcids",
+      "text": "Byung-Kwan Cho http://orcid.org/0000-0003-4788-4184",
+      "fingerprint": "3f0c312e364a7b51"
+    },
+    {
+      "paragraph_id": "author_orcids_p004",
+      "section": "author_orcids",
+      "text": "Suhyung Cho http://orcid.org/0000-0002-4853-9617",
+      "fingerprint": "95788a6e4357a396"
+    },
+    {
+      "paragraph_id": "funding_p001",
+      "section": "funding",
+      "text": "<table><tr><td>Funder</td><td>Grant(s)</td><td>Author(s)</td></tr><tr><td>National Research Foundation of Korea</td><td>2021R1A2C1012589</td><td>Suhyung Cho</td></tr><tr><td>National Research Foundation of Korea</td><td>2018M3A9H024759</td><td>Byung-Kwan Cho</td></tr><tr><td>National Research Foundation of Korea</td><td>RS-2023-00246928</td><td>Suhyung Cho</td></tr><tr><td>Novo Nordisk Fonden</td><td>NNF16CC0021858</td><td>Bernhard Palsson</td></tr></table>",
+      "fingerprint": "a28194f3153236cc"
+    },
+    {
+      "paragraph_id": "author_contributions_p001",
+      "section": "author_contributions",
+      "text": "Donghui Choe, Conceptualization, Formal analysis, Investigation, Methodology, Writing – original draft, Writing – review and editing | Eunju Lee, Methodology | Yoseb Song, Methodology | Sun Chang Kim, Writing – original draft, Writing – review and editing | Ki Jun Jeong, Writing – original draft, Writing – review and editing | Bernhard Palsson, Investigation, Writing – original draft, Writing – review and editing | Byung-Kwan Cho, Conceptualization, Investigation, Supervision, Writing – original draft, Writing – review and editing | Suhyung Cho, Conceptualization, Investigation, Methodology, Supervision, Writing – original draft, Writing – review and editing",
+      "fingerprint": "6d86d916259e9792"
+    },
+    {
+      "paragraph_id": "data_availability_p001",
+      "section": "data_availability",
+      "text": "The high-throughput sequencing data generated in this study have been submitted to the European Nucleotide Archive (ENA; https://www.ebi.ac.uk/ena/browser/home/) under accession number PRJEB33267. Python scripts for designing spacer sequences are available through Github (https://github.com/robinald/EcCRISPRi\\_design/).",
+      "fingerprint": "3334a338159c6558"
+    },
+    {
+      "paragraph_id": "additional_files_p001",
+      "section": "additional_files",
+      "text": "The following material is available online.",
+      "fingerprint": "0177549c0a74c8f6"
+    },
+    {
+      "paragraph_id": "additional_files_p002",
+      "section": "additional_files",
+      "text": "Supplemental Material",
+      "fingerprint": "2e9d3e71b2ca6212"
+    },
+    {
+      "paragraph_id": "additional_files_p003",
+      "section": "additional_files",
+      "text": "Supplemental figures (mSystems00353-25-S0001.pdf). Figures S1–S3.",
+      "fingerprint": "a2899f2f20fa86bc"
+    },
+    {
+      "paragraph_id": "additional_files_p004",
+      "section": "additional_files",
+      "text": "Table S1 (mSystems00353-25-S0002.xlsx). A synthetic sgRNA library for targeting E. coli K-12 MG1655 coding sequences.",
+      "fingerprint": "7c646f29d1894511"
+    },
+    {
+      "paragraph_id": "additional_files_p005",
+      "section": "additional_files",
+      "text": "Table S2 (mSystems00353-25-S0003.xlsx). Normalized sgRNA counts.",
+      "fingerprint": "9160dd8f7c26cf30"
+    },
+    {
+      "paragraph_id": "additional_files_p006",
+      "section": "additional_files",
+      "text": "Table S3 (mSystems00353-25-S0004.xlsx). Enrichment ratios.",
+      "fingerprint": "deb1333fcc50ec11"
+    },
+    {
+      "paragraph_id": "additional_files_p007",
+      "section": "additional_files",
+      "text": "Table S4 (mSystems00353-25-S0005.xlsx). Normalized expression levels.",
+      "fingerprint": "626e592e1ae8af81"
+    },
+    {
+      "paragraph_id": "additional_files_p008",
+      "section": "additional_files",
+      "text": "Table S5 (mSystems00353-25-S0006.xlsx). Inferred iModulon activity matrix.",
+      "fingerprint": "8a14e4ca95bb7598"
+    },
+    {
+      "paragraph_id": "additional_files_p009",
+      "section": "additional_files",
+      "text": "Table S6 (mSystems00353-25-S0007.xlsx). CpxR and ArcA iModulon activities.",
+      "fingerprint": "98b75c807184a740"
+    },
+    {
+      "paragraph_id": "additional_files_p010",
+      "section": "additional_files",
+      "text": "Table S7 (mSystems00353-25-S0008.xlsx). Peaks detected by CpxR ChIP-Seq.",
+      "fingerprint": "aec6f9962947d2b8"
+    },
+    {
+      "paragraph_id": "additional_files_p011",
+      "section": "additional_files",
+      "text": "Table S8 (mSystems00353-25-S0009.xlsx). Primers.",
+      "fingerprint": "1f392cd6ae7a20ef"
+    },
+    {
+      "paragraph_id": "references_p001",
+      "section": "references",
+      "text": "1. Storici F, Lewis LK, Resnick MA. 2001. In vivo site-directed mutagenesis using oligonucleotides. Nat Biotechnol 19:773–776. https://doi.org/10.1 038/90837",
+      "fingerprint": "4346ae582b129d53"
+    },
+    {
+      "paragraph_id": "references_p002",
+      "section": "references",
+      "text": "2. van Opijnen T, Bodi KL, Camilli A. 2009. Tn-seq: high-throughput parallel sequencing for fitness and genetic interaction studies in microorganisms. Nat Methods 6:767–772. https://doi.org/10.1038/nmeth.1377",
+      "fingerprint": "d81f91305212cd1f"
+    },
+    {
+      "paragraph_id": "references_p003",
+      "section": "references",
+      "text": "3. Gilbert LA, Horlbeck MA, Adamson B, Villalta JE, Chen Y, Whitehead EH, Guimaraes C, Panning B, Ploegh HL, Bassik MC, Qi LS, Kampmann M, Weissman JS. 2014. Genome-scale CRISPR-mediated control of gene repression and activation. Cell 159:647–661. https://doi.org/10.1016/j.cel l.2014.09.029",
+      "fingerprint": "b6cfe67615d19904"
+    },
+    {
+      "paragraph_id": "references_p004",
+      "section": "references",
+      "text": "4. Qi LS, Larson MH, Gilbert LA, Doudna JA, Weissman JS, Arkin AP, Lim WA. 2013. Repurposing CRISPR as an RNA-guided platform for sequencespecific control of gene expression. Cell 152:1173–1183. https://doi.org/ 10.1016/j.cell.2013.02.022",
+      "fingerprint": "60ca7e0b4cec763c"
+    },
+    {
+      "paragraph_id": "references_p005",
+      "section": "references",
+      "text": "5. Wang T, Guan C, Guo J, Liu B, Wu Y, Xie Z, Zhang C, Xing XH. 2018. Pooled CRISPR interference screening enables genome-scale functional genomics study in bacteria with superior performance. Nat Commun 9:2475. https://doi.org/10.1038/s41467-018-04899-x",
+      "fingerprint": "0738b6b724f7dfa4"
+    },
+    {
+      "paragraph_id": "references_p006",
+      "section": "references",
+      "text": "6. Evers B, Jastrzebski K, Heijmans JPM, Grernrum W, Beijersbergen RL, Bernards R. 2016. CRISPR knockout screening outperforms shRNA and CRISPRi in identifying essential genes. Nat Biotechnol 34:631–633. https: //doi.org/10.1038/nbt.3536",
+      "fingerprint": "ac52c101d7a823d9"
+    },
+    {
+      "paragraph_id": "references_p007",
+      "section": "references",
+      "text": "7. Chaves BJ, Tadi P. 2024. Gentamicin. StatPearls, Treasure Island, FL.",
+      "fingerprint": "a9d863d5ce5b57f6"
+    },
+    {
+      "paragraph_id": "references_p008",
+      "section": "references",
+      "text": "8. Krause KM, Serio AW, Kane TR, Connolly LE. 2016. Aminoglycosides: an overview. Cold Spring Harb Perspect Med 6:a027029. https://doi.org/10. 1101/cshperspect.a027029",
+      "fingerprint": "b82191207a494cf2"
+    },
+    {
+      "paragraph_id": "references_p009",
+      "section": "references",
+      "text": "9. Davies J, Gorini L, Davis BD. 1965. Misreading of RNA codewords induced by aminoglycoside antibiotics. Mol Pharmacol 1:93–106. https:/ /doi.org/10.1016/S0026-895X(25)14722-6",
+      "fingerprint": "6327b41ac7f68457"
+    },
+    {
+      "paragraph_id": "references_p010",
+      "section": "references",
+      "text": "10. Magnet S, Blanchard JS. 2005. Molecular insights into aminoglycoside action and resistance. Chem Rev 105:477–498. https://doi.org/10.1021/c r0301088",
+      "fingerprint": "52f3a9c43a6fc10e"
+    },
+    {
+      "paragraph_id": "references_p011",
+      "section": "references",
+      "text": "11. Davis BD, Chen LL, Tai PC. 1986. Misread protein creates membrane channels: an essential step in the bactericidal action of aminoglycosides. Proc Natl Acad Sci USA 83:6164–6168. https://doi.org/10.1073/pnas.83.1 6.6164",
+      "fingerprint": "0f04be056ae408cf"
+    },
+    {
+      "paragraph_id": "references_p012",
+      "section": "references",
+      "text": "12. Kohanski MA, Dwyer DJ, Wierzbowski J, Cottarel G, Collins JJ. 2008. Mistranslation of membrane proteins and two-component system activation trigger antibiotic-mediated cell death. Cell 135:679–690. https ://doi.org/10.1016/j.cell.2008.09.038",
+      "fingerprint": "3511cfbafc434aaa"
+    },
+    {
+      "paragraph_id": "references_p013",
+      "section": "references",
+      "text": "13. Lee MD, Sanchez S, Zimmer M, Idris U, Berrang ME, McDermott PF. 2002. Class 1 integron-associated tobramycin-gentamicin resistance in Campylobacter jejuni isolated from the broiler chicken house environment. Antimicrob Agents Chemother 46:3660–3664. https://doi.org/10.1 128/AAC.46.11.3660-3664.2002",
+      "fingerprint": "eebb77561a9993e5"
+    },
+    {
+      "paragraph_id": "references_p014",
+      "section": "references",
+      "text": "14. Nirdnoy W, Mason CJ, Guerry P. 2005. Mosaic structure of a multipledrug-resistant, conjugative plasmid from Campylobacter jejuni. Antimicrob Agents Chemother 49:2454–2459. https://doi.org/10.1128/A AC.49.6.2454-2459.2005",
+      "fingerprint": "e26c70cc06e3b642"
+    },
+    {
+      "paragraph_id": "references_p015",
+      "section": "references",
+      "text": "15. Peterson E, Kaur P. 2018. Antibiotic resistance mechanisms in bacteria: relationships between resistance determinants of antibiotic producers, environmental bacteria, and clinical pathogens. Front Microbiol 9:2928. https://doi.org/10.3389/fmicb.2018.02928",
+      "fingerprint": "baec27f2d420f50b"
+    },
+    {
+      "paragraph_id": "references_p016",
+      "section": "references",
+      "text": "16. Bryan LE, Van Den Elzen HM. 1975. Gentamicin accumulation by sensitive strains of Escherichia coli and Pseudomonas aeruginosa. J Antibiot (Tokyo) 28:696–703. https://doi.org/10.7164/antibiotics.28.696",
+      "fingerprint": "3d3ed9fed91d2c3c"
+    },
+    {
+      "paragraph_id": "references_p017",
+      "section": "references",
+      "text": "17. Hofman LR, D’Argenio DA, MacCoss MJ, Zhang Z, Jones RA, Miller SI. 2005. Aminoglycoside antibiotics induce bacterial biofilm formation. Nature 436:1171–1175. https://doi.org/10.1038/nature03912",
+      "fingerprint": "d521f0ed86a584e0"
+    },
+    {
+      "paragraph_id": "references_p018",
+      "section": "references",
+      "text": "18. Bylund GO, Wipemo LC, Lundberg LA, Wikström PM. 1998. RimM and RbfA are essential for eficient processing of 16S rRNA in Escherichia coli. J Bacteriol 180:73–82. https://doi.org/10.1128/JB.180.1.73-82.1998",
+      "fingerprint": "ebbae5df397d0e6d"
+    },
+    {
+      "paragraph_id": "references_p019",
+      "section": "references",
+      "text": "19. Kazakov T, Kuznedelov K, Semenova E, Mukhamedyarov D, Datsenko KA, Metlitskaya A, Vondenhof GH, Tikhonov A, Agarwal V, Nair S, Van Aerschot A, Severinov K. 2014. The RimL transacetylase provides resistance to translation inhibitor microcin C. J Bacteriol 196:3377–3385. https://doi.org/10.1128/JB.01584-14",
+      "fingerprint": "c74c6fb0795900c3"
+    },
+    {
+      "paragraph_id": "references_p020",
+      "section": "references",
+      "text": "20. Shakil S, Khan R, Zarrilli R, Khan AU. 2008. Aminoglycosides versus bacteria - a description of the action, resistance mechanism, and nosocomial battleground. J Biomed Sci 15:5–14. https://doi.org/10.1007/ s11373-007-9194-y",
+      "fingerprint": "45c70b0f45867249"
+    },
+    {
+      "paragraph_id": "references_p021",
+      "section": "references",
+      "text": "21. Jafé A, Ogura T, Hiraga S. 1985. Efects of the CCD function of the F plasmid on bacterial growth. J Bacteriol 163:841–849. https://doi.org/10. 1128/jb.163.3.841-849.1985",
+      "fingerprint": "c1fcfc1c2042b9e1"
+    },
+    {
+      "paragraph_id": "references_p022",
+      "section": "references",
+      "text": "22. Page R, Peti W. 2016. Toxin-antitoxin systems in bacterial growth arrest and persistence. Nat Chem Biol 12:208–214. https://doi.org/10.1038/nch embio.2044",
+      "fingerprint": "35794d1f0ef00a35"
+    },
+    {
+      "paragraph_id": "references_p023",
+      "section": "references",
+      "text": "23. Cheng HY, Soo VWC, Islam S, McAnulty MJ, Benedik MJ, Wood TK. 2014. Toxin GhoT of the GhoT/GhoS toxin/antitoxin system damages the cell membrane to reduce adenosine triphosphate and to reduce growth under stress. Environ Microbiol 16:1741–1754. https://doi.org/10.1111/1 462-2920.12373",
+      "fingerprint": "e4034677105cd441"
+    },
+    {
+      "paragraph_id": "references_p024",
+      "section": "references",
+      "text": "24. Wang X, Lord DM, Cheng HY, Osbourne DO, Hong SH, Sanchez-Torres V, Quiroga C, Zheng K, Herrmann T, Peti W, Benedik MJ, Page R, Wood TK. 2012. A new type V toxin-antitoxin system where mRNA for toxin GhoT is cleaved by antitoxin GhoS. Nat Chem Biol 8:855–861. https://doi.org/10. 1038/nchembio.1062",
+      "fingerprint": "bb267392bdf759f1"
+    },
+    {
+      "paragraph_id": "references_p025",
+      "section": "references",
+      "text": "25. Pedersen K, Zavialov AV, Pavlov MY, Elf J, Gerdes K, Ehrenberg M. 2003. The bacterial toxin RelE displays codon-specific cleavage of mRNAs in the ribosomal A site. Cell 112:131–140. https://doi.org/10.1016/s0092-86 74(02)01248-5",
+      "fingerprint": "7bd1cb88fffc2a2f"
+    },
+    {
+      "paragraph_id": "references_p026",
+      "section": "references",
+      "text": "26. Zhang Y, Yamaguchi Y, Inouye M. 2009. Characterization of YafO, an Escherichia coli toxin. J Biol Chem 284:25522–25531. https://doi.org/10.1 074/jbc.M109.036624",
+      "fingerprint": "43d9485782073f1d"
+    },
+    {
+      "paragraph_id": "references_p027",
+      "section": "references",
+      "text": "27. Sat B, Hazan R, Fisher T, Khaner H, Glaser G, Engelberg-Kulka H. 2001. Programmed cell death in Escherichia coli: some antibiotics can trigger mazEF lethality. J Bacteriol 183:2041–2045. https://doi.org/10.1128/JB.18 3.6.2041-2045.2001",
+      "fingerprint": "a285b30f8e20d086"
+    },
+    {
+      "paragraph_id": "references_p028",
+      "section": "references",
+      "text": "28. Christensen-Dalsgaard M, Jørgensen MG, Gerdes K. 2010. Three new RelE-homologous mRNA interferases of Escherichia coli diferentially induced by environmental stresses. Mol Microbiol 75:333–348. https://d oi.org/10.1111/j.1365-2958.2009.06969.x",
+      "fingerprint": "e0a68ee8f18174c0"
+    },
+    {
+      "paragraph_id": "references_p029",
+      "section": "references",
+      "text": "29. Brown BL, Grigoriu S, Kim Y, Arruda JM, Davenport A, Wood TK, Peti W, Page R. 2009. Three dimensional structure of the MqsR:MqsA complex: a novel TA pair comprised of a toxin homologous to RelE and an antitoxin with unique properties. PLoS Pathog 5:e1000706. https://doi.org/10.137 1/journal.ppat.1000706",
+      "fingerprint": "a9b211500d57193b"
+    },
+    {
+      "paragraph_id": "references_p030",
+      "section": "references",
+      "text": "30. Hu Y, Benedik MJ, Wood TK. 2012. Antitoxin DinJ influences the general stress response through transcript stabilizer CspE. Environ Microbio 14:669–679. https://doi.org/10.1111/j.1462-2920.2011.02618.x",
+      "fingerprint": "e3cc80aa7a6bbc0d"
+    },
+    {
+      "paragraph_id": "references_p031",
+      "section": "references",
+      "text": "31. Weiner L, Brissette JL, Model P. 1991. Stress-induced expression of the Escherichia coli phage shock protein operon is dependent on sigma 54 and modulated by positive and negative feedback mechanisms. Genes Dev 5:1912–1923. https://doi.org/10.1101/gad.5.10.1912",
+      "fingerprint": "20fee98b9be41c87"
+    },
+    {
+      "paragraph_id": "references_p032",
+      "section": "references",
+      "text": "32. Bos MP, Robert V, Tommassen J. 2007. Biogenesis of the gram-negative bacterial outer membrane. Annu Rev Microbiol 61:191–214. https://doi.o rg/10.1146/annurev.micro.61.080706.093245",
+      "fingerprint": "6093396fe41c6f40"
+    },
+    {
+      "paragraph_id": "references_p033",
+      "section": "references",
+      "text": "33. Sugawara E, Nikaido H. 1992. Pore-forming activity of OmpA protein of Escherichia coli. J Biol Chem 267:2507–2511. https://doi.org/10.1016/S00 21-9258(18)45908-X",
+      "fingerprint": "1bc5165a5fe038b9"
+    },
+    {
+      "paragraph_id": "references_p034",
+      "section": "references",
+      "text": "34. Smani Y, Fàbrega A, Roca I, Sánchez-Encinales V, Vila J, Pachón J. 2014. Role of OmpA in the multidrug resistance phenotype of Acinetobacter baumannii. Antimicrob Agents Chemother 58:1806–1808. https://doi.or g/10.1128/AAC.02101-13",
+      "fingerprint": "04f34e83fbed2afc"
+    },
+    {
+      "paragraph_id": "references_p035",
+      "section": "references",
+      "text": "35. Overly Cottom C, Stephenson R, Wilson L, Noinaj N. 2023. Targeting BAM for novel therapeutics against pathogenic gram-negative bacteria. Antibiotics (Basel) 12:679. https://doi.org/10.3390/antibiotics12040679",
+      "fingerprint": "9ef1cc1fdadd2fe5"
+    },
+    {
+      "paragraph_id": "references_p036",
+      "section": "references",
+      "text": "36. Anes J, McCusker MP, Fanning S, Martins M. 2015. The ins and outs of RND eflux pumps in Escherichia coli. Front Microbiol 6:587. https://doi.or g/10.3389/fmicb.2015.00587",
+      "fingerprint": "d977bbefd4b94778"
+    },
+    {
+      "paragraph_id": "references_p037",
+      "section": "references",
+      "text": "37. Du D, Wang-Kan X, Neuberger A, van Veen HW, Pos KM, Piddock LJV, Luisi BF. 2018. Multidrug eflux pumps: structure, function and regulation. Nat Rev Microbiol 16:523–539. https://doi.org/10.1038/s4157 9-018-0048-6",
+      "fingerprint": "fdde071ff95841c7"
+    },
+    {
+      "paragraph_id": "references_p038",
+      "section": "references",
+      "text": "38. Morona R, Manning PA, Reeves P. 1983. Identification and characterization of the TolC protein, an outer membrane protein from Escherichia coli. J Bacteriol 153:693–699. https://doi.org/10.1128/jb.153.2.693-699.19 83",
+      "fingerprint": "b96ec741c9554291"
+    },
+    {
+      "paragraph_id": "references_p039",
+      "section": "references",
+      "text": "39. Hancock RE, Farmer SW, Li ZS, Poole K. 1991. Interaction of aminoglycosides with the outer membranes and purified lipopolysaccharide and OmpF porin of Escherichia coli. Antimicrob Agents Chemother 35:1309– 1314. https://doi.org/10.1128/AAC.35.7.1309",
+      "fingerprint": "43f259641d0ab04e"
+    },
+    {
+      "paragraph_id": "references_p040",
+      "section": "references",
+      "text": "40. Jana S, Deb JK. 2006. Molecular understanding of aminoglycoside action and resistance. Appl Microbiol Biotechnol 70:140–150. https://doi.org/10 .1007/s00253-005-0279-0",
+      "fingerprint": "08127efa86703b46"
+    },
+    {
+      "paragraph_id": "references_p041",
+      "section": "references",
+      "text": "41. Tatusov RL, Galperin MY, Natale DA, Koonin EV. 2000. The COG database: a tool for genome-scale analysis of protein functions and evolution. Nucleic Acids Res 28:33–36. https://doi.org/10.1093/nar/28.1.33",
+      "fingerprint": "c8db0fde0eea1f23"
+    },
+    {
+      "paragraph_id": "references_p042",
+      "section": "references",
+      "text": "42. Alexander K, Young IG. 1978. Alternative hydroxylases for the aerobic and anaerobic biosynthesis of ubiquinone in Escherichia coli. Biochemistry 17:4750–4755. https://doi.org/10.1021/bi00615a024",
+      "fingerprint": "bbf1435839674d17"
+    },
+    {
+      "paragraph_id": "references_p043",
+      "section": "references",
+      "text": "43. Bryan LE, Kwan S. 1983. Roles of ribosomal binding, membrane potential, and electron transport in bacterial uptake of streptomycin and gentamicin. Antimicrob Agents Chemother 23:835–845. https://doi.org/ 10.1128/AAC.23.6.835",
+      "fingerprint": "b38f9ef65d54e597"
+    },
+    {
+      "paragraph_id": "references_p044",
+      "section": "references",
+      "text": "44. Zhang XS, García-Contreras R, Wood TK. 2007. YcfR (BhsA) influences Escherichia coli biofilm formation through stress response and surface hydrophobicity. J Bacteriol 189:3051–3062. https://doi.org/10.1128/JB.0 1832-06",
+      "fingerprint": "b2ac372cdb278a1a"
+    },
+    {
+      "paragraph_id": "references_p045",
+      "section": "references",
+      "text": "45. Lamoureux CR, Decker KT, Sastry AV, Rychel K, Gao Y, McConn JL, Zielinski DC, Palsson BO. 2023. A multi-scale expression and regulation knowledge base for Escherichia coli. Nucleic Acids Res 51:10176–10193. https://doi.org/10.1093/nar/gkad750",
+      "fingerprint": "83a953b5be9cae87"
+    },
+    {
+      "paragraph_id": "references_p046",
+      "section": "references",
+      "text": "46. van Beilen JWA, Hellingwerf KJ. 2016. All three endogenous quinone species of Escherichia coli are involved in controlling the activity of the aerobic/anaerobic response regulator ArcA. Front Microbiol 7:1339. http s://doi.org/10.3389/fmicb.2016.01339",
+      "fingerprint": "b4a816f3e94fd0e2"
+    },
+    {
+      "paragraph_id": "references_p047",
+      "section": "references",
+      "text": "47. Zhao Z, Xu Y, Jiang B, Qi Q, Tang YJ, Xian M, Wang J, Zhao G. 2022. Systematic identification of CpxRA-regulated genes and their roles in Escherichia coli stress response. mSystems 7:e00419-22. https://doi.org/1 0.1128/msystems.00419-22",
+      "fingerprint": "fed4dd294938e6ce"
+    },
+    {
+      "paragraph_id": "references_p048",
+      "section": "references",
+      "text": "48. Lobritz MA, Belenky P, Porter CBM, Gutierrez A, Yang JH, Schwarz EG, Dwyer DJ, Khalil AS, Collins JJ. 2015. Antibiotic eficacy is linked to bacterial cellular respiration. Proc Natl Acad Sci USA 112:8173–8180. htt ps://doi.org/10.1073/pnas.1509743112",
+      "fingerprint": "0e86f61f8782d015"
+    },
+    {
+      "paragraph_id": "references_p049",
+      "section": "references",
+      "text": "49. Mahoney TF, Silhavy TJ. 2013. The Cpx stress response confers resistance to some, but not all, bactericidal antibiotics. J Bacteriol 195:1869–1874. h ttps://doi.org/10.1128/JB.02197-12",
+      "fingerprint": "090e818591284c73"
+    },
+    {
+      "paragraph_id": "references_p050",
+      "section": "references",
+      "text": "50. Tsviklist V, Guest RL, Raivio TL. 2021. The Cpx stress response regulates turnover of respiratory chain proteins at the inner membrane of Escherichia coli. Front Microbiol 12:732288. https://doi.org/10.3389/fmic b.2021.732288",
+      "fingerprint": "8c2986d15fad532c"
+    },
+    {
+      "paragraph_id": "references_p051",
+      "section": "references",
+      "text": "51. Raivio TL, Leblanc SKD, Price NL. 2013. The Escherichia coli Cpx envelope stress response regulates genes of diverse function that impact antibiotic resistance and membrane integrity. J Bacteriol 195:2755–2767. https://doi.org/10.1128/JB.00105-13",
+      "fingerprint": "e41a9f991262e817"
+    },
+    {
+      "paragraph_id": "references_p052",
+      "section": "references",
+      "text": "52. Ćudić E, Surmann K, Panasia G, Hammer E, Hunke S. 2017. The role of the two-component systems Cpx and Arc in protein alterations upon gentamicin treatment in Escherichia coli. BMC Microbiol 17:197. https://d oi.org/10.1186/s12866-017-1100-9",
+      "fingerprint": "30a3890d3d05f3c1"
+    },
+    {
+      "paragraph_id": "references_p053",
+      "section": "references",
+      "text": "53. Choudhary KS, Kleinmanns JA, Decker K, Sastry AV, Gao Y, Szubin R, Seif Y, Palsson BO. 2020. Elucidation of regulatory modes for five twocomponent systems in Escherichia coli reveals novel relationships. mSystems 5:e00980-20. https://doi.org/10.1128/mSystems.00980-20",
+      "fingerprint": "bdf769700dcc110d"
+    },
+    {
+      "paragraph_id": "references_p054",
+      "section": "references",
+      "text": "54. Decker KT, Gao Y, Rychel K, Al Bulushi T, Chauhan SM, Kim D, Cho BK, Palsson BO. 2022. proChIPdb: a chromatin immunoprecipitation database for prokaryotic organisms. Nucleic Acids Res 50:D1077–D1084. https://doi.org/10.1093/nar/gkab1043",
+      "fingerprint": "c98188e54feb718d"
+    },
+    {
+      "paragraph_id": "references_p055",
+      "section": "references",
+      "text": "55. Santos-Zavaleta A, Salgado H, Gama-Castro S, Sánchez-Pérez M, Gómez-Romero L, Ledezma-Tejeida D, García-Sotelo JS, Alquicira-Hernández K, Muñiz-Rascado LJ, Peña-Loredo P, Ishida-Gutiérrez C, Velázquez-Ramírez DA, Del Moral-Chávez V, Bonavides-Martínez C, Méndez-Cruz CF, Galagan J, Collado-Vides J. 2019. RegulonDB v 10.5: tackling challenges to unify classic and high throughput knowledge of gene regulation in E. coli K-12. Nucleic Acids Res 47:D212–D220. https://doi.org/10.1093/nar/g ky1077",
+      "fingerprint": "57a58615cd6c221e"
+    },
+    {
+      "paragraph_id": "references_p056",
+      "section": "references",
+      "text": "56. Iyer MS, Pal A, Srinivasan S, Somvanshi PR, Venkatesh KV. 2021. Global transcriptional regulators fine-tune the translational and metabolic eficiency for optimal growth of Escherichia coli. mSystems 6:e00001-21 https://doi.org/10.1128/mSystems.00001-21",
+      "fingerprint": "a489befc1fd1954e"
+    },
+    {
+      "paragraph_id": "references_p057",
+      "section": "references",
+      "text": "57. Park DM, Akhtar MS, Ansari AZ, Landick R, Kiley PJ. 2013. The bacterial response regulator arcA uses a diverse binding site architecture to regulate carbon oxidation globally. PLoS Genet 9:e1003839. https://doi.o rg/10.1371/journal.pgen.1003839",
+      "fingerprint": "1f43976b8ceeb6d6"
+    },
+    {
+      "paragraph_id": "references_p058",
+      "section": "references",
+      "text": "58. Baba T, Ara T, Hasegawa M, Takai Y, Okumura Y, Baba M, Datsenko KA, Tomita M, Wanner BL, Mori H. 2006. Construction of Escherichia coli K-12 in-frame, single-gene knockout mutants: the Keio collection. Mol Syst Biol 2:2006. https://doi.org/10.1038/msb4100050",
+      "fingerprint": "6b61458f7bae5d84"
+    },
+    {
+      "paragraph_id": "references_p059",
+      "section": "references",
+      "text": "59. Serio AW, Keepers T, Andrews L, Krause KM. 2018. Aminoglycoside revival: review of a historically important class of antimicrobials undergoing rejuvenation. EcoSal Plus 8. https://doi.org/10.1128/ecosalpl us.ESP-0002-2018",
+      "fingerprint": "d1359746e5456be7"
+    },
+    {
+      "paragraph_id": "references_p060",
+      "section": "references",
+      "text": "60. Debnath I, Norton JP, Barber AE, Ott EM, Dhakal BK, Kulesus RR, Mulvey MA. 2013. The Cpx stress response system potentiates the fitness and virulence of uropathogenic Escherichia coli. Infect Immun 81:1450–1459. https://doi.org/10.1128/IAI.01213-12",
+      "fingerprint": "3fe2547d535bb43d"
+    },
+    {
+      "paragraph_id": "references_p061",
+      "section": "references",
+      "text": "61. Carlsson KE, Liu J, Edqvist PJ, Francis MS. 2007. Influence of the Cpx extracytoplasmic-stress-responsive pathway on Yersinia sp.-eukaryotic cell contact. Infect Immun 75:4386–4399. https://doi.org/10.1128/IAI.014 50-06",
+      "fingerprint": "1367da2b78ecd042"
+    },
+    {
+      "paragraph_id": "references_p062",
+      "section": "references",
+      "text": "62. Siroy A, Cosette P, Seyer D, Lemaître-Guillier C, Vallenet D, Van Dorsselaer A, Boyer-Mariotte S, Jouenne T, Dé E. 2006. Global comparison of the membrane subproteomes between a multidrug-resistant acinetobacter baumannii strain and a reference strain. J Proteome Res 5:3385–3398. https://doi.org/10.1021/pr060372s",
+      "fingerprint": "c20e40202754d456"
+    },
+    {
+      "paragraph_id": "references_p063",
+      "section": "references",
+      "text": "63. Subramaniam S, Müller VS, Hering NA, Mollenkopf H, Becker D, Heroven AK, Dersch P, Pohlmann A, Tedin K, Porwollik S, McClelland M, Meyer TF, Hunke S. 2019. Contribution of the Cpx envelope stress system to metabolism and virulence regulation in Salmonella enterica serovar typhimurium. PLoS One 14:e0211584. https://doi.org/10.1371/journal.p one.0211584",
+      "fingerprint": "53ffacabc214e805"
+    },
+    {
+      "paragraph_id": "references_p064",
+      "section": "references",
+      "text": "64. Tian ZX, Yi XX, Cho A, O’Gara F, Wang YP. 2016. CpxR activates MexAB-OprM eflux pump expression and enhances antibiotic resistance in both laboratory and clinical nalB-type isolates of Pseudomonas aeruginosa. PLoS Pathog 12:e1005932. https://doi.org/10.1371/journal.ppat.1005932",
+      "fingerprint": "b11b57ca8960d02c"
+    },
+    {
+      "paragraph_id": "references_p065",
+      "section": "references",
+      "text": "65. Cho BK, Knight EM, Palsson BO. 2006. PCR-based tandem epitope tagging system for Escherichia coli genome engineering. Biotechniques 40:67–72. https://doi.org/10.2144/000112039",
+      "fingerprint": "343706c2e3b95c98"
+    },
+    {
+      "paragraph_id": "references_p066",
+      "section": "references",
+      "text": "66. Shin J, Bae J, Lee H, Kang S, Jin S, Song Y, Cho S, Cho BK. 2023. Genomewide CRISPRi screen identifies enhanced autolithotrophic phenotypes in acetogenic bacterium Eubacterium limosum. Proc Natl Acad Sci USA 120:e2216244120. https://doi.org/10.1073/pnas.2216244120",
+      "fingerprint": "4887e32a083f4e83"
+    },
+    {
+      "paragraph_id": "references_p067",
+      "section": "references",
+      "text": "67. Sanjana NE, Shalem O, Zhang F. 2014. Improved vectors and genomewide libraries for CRISPR screening. Nat Methods 11:783–784. https://doi .org/10.1038/nmeth.3047",
+      "fingerprint": "6fda9e7c32fab3aa"
+    },
+    {
+      "paragraph_id": "references_p068",
+      "section": "references",
+      "text": "68. Shalem O, Sanjana NE, Hartenian E, Shi X, Scott DA, Mikkelson T, Heckl D, Ebert BL, Root DE, Doench JG, Zhang F. 2014. Genome-scale CRISPR-Cas9 knockout screening in human cells. Science 343:84–87. https://doi. org/10.1126/science.1247005",
+      "fingerprint": "c6495b20e0ee8e52"
+    },
+    {
+      "paragraph_id": "references_p069",
+      "section": "references",
+      "text": "69. Stead MB, Agrawal A, Bowden KE, Nasir R, Mohanty BK, Meagher RB, Kushner SR. 2012. RNAsnap. Nucleic Acids Res 40:e156. https://doi.org/1 0.1093/nar/gks680",
+      "fingerprint": "c42569a32ce19cf2"
+    },
+    {
+      "paragraph_id": "references_p070",
+      "section": "references",
+      "text": "70. Love MI, Huber W, Anders S. 2014. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol 15:550. http s://doi.org/10.1186/s13059-014-0550-8",
+      "fingerprint": "c170dbe8d9f2804c"
+    },
+    {
+      "paragraph_id": "references_p071",
+      "section": "references",
+      "text": "71. Sastry AV, Gao Y, Szubin R, Hefner Y, Xu S, Kim D, Choudhary KS, Yang L, King ZA, Palsson BO. 2019. The Escherichia coli transcriptome mostly consists of independently regulated modules. Nat Commun 10:5536. htt ps://doi.org/10.1038/s41467-019-13483-w",
+      "fingerprint": "4801f745b9ecb376"
+    },
+    {
+      "paragraph_id": "references_p072",
+      "section": "references",
+      "text": "72. Zhang Y, Liu T, Meyer CA, Eeckhoute J, Johnson DS, Bernstein BE, Nusbaum C, Myers RM, Brown M, Li W, Liu XS. 2008. Model-based analysis of ChIP-Seq (MACS). Genome Biol 9:R137. https://doi.org/10.118 6/gb-2008-9-9-r137",
+      "fingerprint": "9c63c00fd5124340"
+    },
+    {
+      "paragraph_id": "references_p073",
+      "section": "references",
+      "text": "73. Mao X, Ma Q, Zhou C, Chen X, Zhang H, Yang J, Mao F, Lai W, Xu Y. 2014. DOOR 2.0: presenting operons and their functions through dynamic and integrated views. Nucleic Acids Res 42:D654–D659. https://doi.org/10.10 93/nar/gkt1048",
+      "fingerprint": "02bd0b4092204a62"
+    }
+  ],
+  "figures": [
+    {
+      "figure_id": "FIG 1",
+      "caption": "Genome-scale CRISPRi screen. (A) Schematic of the CRISPRi screening process. A genome-wide sgRNA library was designed to target every 100 bp of coding sequences, synthesized, and constructed. The sgRNA library plasmids were first transformed into E. coli DH5a to create an initial plasmid library. These plasmids were then extracted and transformed into E. coli K-12 MG1655 carrying the dCas9 plasmid. Cells were cultured in LB liquid media under various stress conditions, and after harvesting, the sgRNA populations were sequenced using next-generation sequencing (NGS) following amplicon amplification. (B) Library analysis. The enrichment ratio (ER) for each gene was defined as the median of the normalized sgRNA ratios across the positions targeted in the gene.",
+      "related_paragraphs": [
+        "genome_wide_gene_fitness_analysis_using_crispri_library_screening_p002"
+      ]
+    },
+    {
+      "figure_id": "FIG 2",
+      "caption": "Gene enrichment ratio (ER) in response to gentamicin treatment. (A) Genes encoding 30S ribosomal subunits, 50S ribosomal subunits, ribosome-associated proteins, and rRNA methyltransferases (MTs) with an ER fold change $( \\mathsf { E R } _ { \\mathsf { L B } } / \\mathsf { E R } _ { \\mathsf { G m } } )$ of 1.5 or higher are listed in descending order based on ER value. (B–D) Genes associated with antitoxin-toxin systems (B), outer membrane proteins (OMP) (C), and eflux systems (D) showing an ER fold change of 1.5 or higher are similarly listed in descending order. An exception is noted for bhsA (in the OMP category), which exhibited the highest ER under gentamicin, with a reverse fold change $( \\mathsf { E R } _ { \\mathsf { G m } } / \\mathsf { E R } _ { \\mathsf { L B } } )$ of 3.8. AT: antitoxin. T: toxin. BAM: β-barrel assembly machinery. LT: lipoprotein traficking pathway. RND: resistance-nodulation-division family transporter. ABC: ATP-binding cassette transporter. MFS: major facilitator superfamily transporter. SMR: small multidrug resistance family transporter. PET: putative eflux transport (PET) family transporter. IT: ion transporter superfamily transporter. AEC: auxin eflux carrier family transporter.",
+      "related_paragraphs": [
+        "fitness_changes_of_ribosome_and_ribosome_associated_proteins_in_response_to_gentamicin_p003"
+      ]
+    },
+    {
+      "figure_id": "FIG 3",
+      "caption": "Similarities in fitness changes under gentamicin and anaerobic conditions. (A and B) Pearson correlation coeficient analysis (A) and principal component analysis (PCA) (B) were performed to compare fitness changes across diferent conditions: LB medium without supplementation, LB with gentamicin, and anaerobic conditions, based on ER values.",
+      "related_paragraphs": [
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p005"
+      ]
+    },
+    {
+      "figure_id": "FIG 4",
+      "caption": "Fitness changes of genes involved in coenzyme transport and metabolism under gentamicin treatment. (A) Pathways associated with riboflavin, quinone, and heme biosynthesis are displayed. Arrows in orange color indicate genes with an ER increase of 1.5-fold or more under gentamicin, while arrows in blue color indicate genes with an ER decrease of 1.5-fold or more. (B) Heatmap showing the ERs of genes involved in the pathways shown in panel A under LB medium, gentamicin (Gm), and anaerobic (Anaero) conditions. (C) Growth rate of E. coli BW25113 single-knockout strains of cofactor biosynthetic genes. Error bars indicate the standard deviation (SD) of three biological replicates. Knockout mutants resistant to gentamicin are shown in red. \\*P-value < 0.1 (Welch's t-test).",
+      "related_paragraphs": [
+        "similar_fitness_changes_in_anaerobiosis_and_gentamicin_treatment_p009"
+      ]
+    },
+    {
+      "figure_id": "FIG 5",
+      "caption": "Transcriptome and genome-wide binding analyses of CpxR and ArcA under anaerobic and gentamicin stresses. (A) Diferential iModulon activity between anaerobic and gentamicin stresses. Each dot represents an individual iModulon. (B) Growth profiles of arcA, arcB, cpxA, and cpxR knockout strains under gentamicin treatment (1 µg/mL). (C) CpxR and ArcA iModulon activities of E. coli under anaerobic and gentamicin stresses. Gray dots indicate over 1,000 individual transcriptome samples from the P1K public data set (45). (D) Comparison of the CpxR regulon determined in the presence of gentamicin with previously known regulons. (E) CpxR binding to promoter regions of genes, as identified through ChIP-Seq analysis.",
+      "related_paragraphs": [
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p022"
+      ]
+    },
+    {
+      "figure_id": "FIG 6",
+      "caption": "Respiratory adaptation in E. coli, conditionally regulated by CpxR and ArcA. (A) RNA-seq analysis showing changes in the expression of respiratory complexes under anaerobic and gentamicin-treated conditions, relative to aerobic LB conditions. Box plots depict the first and the third quartiles (box limits), 10th and 90th percentiles (whiskers), and medians (center lines). Individual dots represent the expression of specific genes. (B) A proposed transcriptiona model for the respiratory system by ArcA and CpxR under aerobic, anaerobic, and gentamicin-treated conditions. Symbols: Δϕ: membrane potential. NDH-1: NADH-quinone oxidoreductase. SDH: succinate dehydrogenase. Cyt: cytochrome. ATP Synth: ATP synthase. (C) Flow cytometry histograms showing the membrane potential of E. coli K-12 BW25113 and the cpxR knockout strain under aerobic, anaerobic, CCCP, and gentamicin-treated conditions. CCCP, which dissipates the proton gradient, is used as an uncoupling control. Numbers indicate the median membrane potential of the populations.",
+      "related_paragraphs": [
+        "regulation_of_respiratory_complexes_by_cpxr_and_arca_resulting_in_membrane_depolarization_p029"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "Table S1",
+      "title": "(mSystems00353-25-S0002.xlsx). A synthetic sgRNA library for targeting E. coli K-12 MG1655 coding sequences.",
+      "content": []
+    },
+    {
+      "table_id": "Table S2",
+      "title": "(mSystems00353-25-S0003.xlsx). Normalized sgRNA counts.",
+      "content": []
+    },
+    {
+      "table_id": "Table S3",
+      "title": "(mSystems00353-25-S0004.xlsx). Enrichment ratios.",
+      "content": []
+    },
+    {
+      "table_id": "Table S4",
+      "title": "(mSystems00353-25-S0005.xlsx). Normalized expression levels.",
+      "content": []
+    },
+    {
+      "table_id": "Table S5",
+      "title": "(mSystems00353-25-S0006.xlsx). Inferred iModulon activity matrix.",
+      "content": []
+    },
+    {
+      "table_id": "Table S6",
+      "title": "(mSystems00353-25-S0007.xlsx). CpxR and ArcA iModulon activities.",
+      "content": []
+    },
+    {
+      "table_id": "Table S7",
+      "title": "(mSystems00353-25-S0008.xlsx). Peaks detected by CpxR ChIP-Seq.",
+      "content": []
+    },
+    {
+      "table_id": "Table S8",
+      "title": "(mSystems00353-25-S0009.xlsx). Primers.",
+      "content": []
+    }
+  ],
+  "supplements": "REFERENCED_REVIEW_REQUIRED"
+}

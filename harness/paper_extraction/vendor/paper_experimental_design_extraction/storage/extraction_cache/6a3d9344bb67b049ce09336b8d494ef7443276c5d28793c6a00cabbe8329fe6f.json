@@ -1,0 +1,1187 @@
+{
+  "status": "succeeded",
+  "output": {
+    "fields": {
+      "objective": {
+        "value": "Develop a GalP/Glk-dependent, PTS-defective Escherichia coli L-tryptophan producer with higher yield and specific productivity by combining rational engineering (ptsI knockout, galP/glk promoter engineering, integration of AroG^D6G-D7A and AnTrpC^R378F variants) with batch and continuous adaptive laboratory evolution using an automatic CRISPR/Cas9-facilitated growth-coupled sensor-guided screening system (auto-CGSS).",
+        "status": "reported",
+        "confidence": 0.98,
+        "extraction_method": "manual_reading_of_abstract_intro_results",
+        "evidence_ids": [
+          "a_b_s_t_r_a_c_t_p001",
+          "1_introduction_p004"
+        ],
+        "notes": "Primary research objective stated in abstract and final Introduction paragraph."
+      },
+      "hypothesis": {
+        "value": "Replacing PTS glucose uptake with the PTS-independent GalP/Glk system increases phosphoenolpyruvate (PEP) availability and can theoretically raise the maximum Trp yield from 0.227 g/g (PTS) to 0.454 g/g; growth impairment of PTS-defective strains can be overcome by modulated galP/glk expression and evolution.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_of_introduction_and_abstract",
+        "evidence_ids": [
+          "a_b_s_t_r_a_c_t_p001",
+          "1_introduction_p002"
+        ],
+        "notes": "Stoichiometric/theoretical-yield reasoning (Fig. S1) plus literature proposal that PEP availability limits Trp yield."
+      },
+      "strain": {
+        "value": "E. coli Trp producer S028 (parental, previously constructed by Chen and Zeng 2017) and derivatives constructed/used here: S028TS/pCas9 (Ptac-tnaC-eGFP biosensor integrated), G028 (ΔptsI), G028Δglk::CmR (G028Cm), G028Cm/pJC184/pCas9MT (G028JC), promoter-mutant pool G028a, reference G028GG (non-mutated ptac-galP-pJ23119-glk), batch-ALE strain K3, phase-1 continuous-evolution strain G028c, final evolved strain T5, and enzyme-variant integrants T5AA and S028AA; E. coli Top10 used as cloning host; E. coli W3110 used as WGS reference.",
+        "status": "reported",
+        "confidence": 0.92,
+        "extraction_method": "manual_full_text_strain_search",
+        "evidence_ids": [
+          "2_results_p002",
+          "2_results_p003",
+          "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p002",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+          "2_6_genomic_analysis_of_the_strain_t5_p002",
+          "4_2_2_construction_ofpromoter_variant_library_p002"
+        ],
+        "notes": "Full strain/plasmid genotypes are in Supplementary Table S1 (not available): strain reconstruction blocked_pending_supplement. W3110 inferred as likely lineage background of S028 because it is the WGS reference and rational-design variants are annotated against it, but the paper does not explicitly state S028's parent in the main text."
+      },
+      "genotype": {
+        "value": "S028TS/pCas9: chromosomal Ptac-tnaC-eGFP Trp biosensor in S028/pCas9. G028: ΔptsI. G028Cm: glk promoter region (-50 to 0 bp) replaced by CmR. Promoter mutants: randomized -10/-35 regions of synthetic ptac-galP and pJ23119-glk cassettes chromosomally integrated. T5 (vs W3110 reference): 15 modified and 5 deleted genes incl. galP K137T/P195A/F204L, zwf Glu165Stop, mlc(dgsA) deletion, plus rationally designed aroG S180F, serA H344A/N364A, trpE S40F, rpsL K43R inherited from lineage. T5AA/S028AA: chromosomal integration of aroG^D6G-D7A and AntrpC^R378F.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "manual_reading_results_methods_table2",
+        "evidence_ids": [
+          "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+          "4_2_2_construction_ofpromoter_variant_library_p002",
+          "2_6_genomic_analysis_of_the_strain_t5_p002",
+          "3_4_further_developments_of_the_trp_producing_strain_p002",
+          "3_4_further_developments_of_the_trp_producing_strain_p003",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020"
+        ],
+        "notes": "Table 2 is OCR-garbled (row misalignment); mutation list should be verified against the published PDF/Supplement. Complete genotypes require Supplementary Table S1."
+      },
+      "engineering_method": {
+        "value": "CRISPR/Cas9 genome editing (ptsI knockout, biosensor integration, promoter cassette integration, plasmid curing); in vitro random mutagenesis of galP/glk promoter -10/-35 elements (PCR-based, DpnI, fusion, Top10 library pCmN20-GGMT); CGSS (growth-coupled + Trp biosensor-guided in vivo screening); batch-mode ALE of 12 mutants; continuous ALE in a 30 mL auxostat (auto-CGSS) combining pJC184 mutagenesis plasmid (arabinose-induced mutators), real-time OD and online flow-cytometric Trp-fluorescence monitoring; homology modeling (Modeller) and docking (AutoDock Vina) for GalP variant analysis.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_methods_results",
+        "evidence_ids": [
+          "2_results_p003",
+          "4_2_2_construction_ofpromoter_variant_library_p002",
+          "4_2_3_genome_editing_with_crispr_cas9_technique_p001",
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+          "4_5_fermentation_conditions_p001",
+          "4_7_structure_analysis_and_docking_study_p001"
+        ],
+        "notes": "CGSS approach itself was developed in a previous paper (Chen et al., 2019) - background method, adapted here."
+      },
+      "experimental_groups": {
+        "value": [
+          "E1: G028 growth/glucose-utilization test in M9+glucose (60 h)",
+          "E2: 84 promoter mutants in 96-deep-well M9 + controls (S028 H1-H6; G028GG H7-H12)",
+          "E3: 12 selected promoter mutants + S028 batch fermentation in FM-III (50 mL tubes)",
+          "E4: batch ALE of 12 mutants -> K3; fed-batch K3 vs S028",
+          "E5: continuous auto-CGSS evolution (two phases 0-380 h, 381-550 h); 6 phase-1 samples; 20 colonies each from 4 phase-2 time points + controls S028/K3/G028c; 10 high-MFU mutants in FM-III shake flasks",
+          "E6: fed-batch T5 vs S028 (plasmid-free T5)",
+          "E7: fed-batch T5AA vs S028AA",
+          "E8: WGS of T5 vs W3110 + PCR resequencing of galP/zwf/mlc in T5 and S028",
+          "E9: GalP homology modeling/docking (K137T, P195A, F204L)"
+        ],
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "manual_experiment_instantiation_from_results_and_figures",
+        "evidence_ids": [
+          "2_results_p002",
+          "2_results_p004",
+          "2_results_p005",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+          "2_6_genomic_analysis_of_the_strain_t5_p002",
+          "4_7_structure_analysis_and_docking_study_p001"
+        ],
+        "notes": "Groups are instantiated per experiment; no paper-level unified design exists."
+      },
+      "controls": {
+        "value": {
+          "E2_screening": "S028 (functional PTS) as positive control (6 wells H1-H6); G028GG with non-mutated synthetic promoters as reference control (6 wells H7-H12)",
+          "E3_E5_screening": "S028 positive control; K3 and G028c as positive/reference controls in phase-2 colony characterization",
+          "E4_fedbatch": "S028 reference fermentation",
+          "E6_fedbatch": "S028 reference",
+          "E7_fedbatch": "S028AA reference for T5AA",
+          "E8_sequencing": "W3110 reference genome; S028 comparator for PCR resequencing"
+        },
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "manual_reading_results_figure_captions",
+        "evidence_ids": [
+          "2_results_p004",
+          "2_results_p007",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+          "2_6_genomic_analysis_of_the_strain_t5_p002"
+        ],
+        "notes": "No negative (empty/non-producing) control reported; controls are benchmark strains."
+      },
+      "culture_conditions": {
+        "value": {
+          "fluorescence_assay": "LB overnight 37 C 220 rpm; wash x3 M9; 10 mL M9 in 50 mL tube, 10 h, 37 C, 220 rpm",
+          "batch_fermentation": "37 C, 250 rpm shake flasks; FM-III; 50 mL conical tubes for mutant comparison; 20-24 h",
+          "auxostat_evolution": "30 C, magnetic stirring, 30 mL working volume, OD600 setpoint 0.8, inlet 60-80 mL/h SynM + arabinose + 15 ug/mL Cm + 25 ug/mL Kan; SynM agar plates 30 C >24 h",
+          "fed_batch": "DASGIP 4x1.5 L, 500 mL initial volume, 65 h, initial glucose 25 g/L, inoculation OD600 0.45",
+          "electroporation_recovery": "SOB + 10 mM L-arabinose, 30 C, recovery 2 h, plates >24 h 30 C"
+        },
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "manual_reading_methods_and_figure_captions",
+        "evidence_ids": [
+          "4_4_measurements_offluorescent_intensities_p001",
+          "4_5_fermentation_conditions_p001",
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+          "4_2_3_genome_editing_with_crispr_cas9_technique_p001",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p009"
+        ],
+        "notes": "Fed-batch medium/feed/conditions largely delegated to Chen and Zeng (2017) and Gu et al. (2012) - blocked_pending_supplement for exact reproduction."
+      },
+      "medium": {
+        "value": "LB (preculture), M9 with glucose sole carbon source (growth/fluorescence tests), SOB (competent cells/recovery), SynM synthetic medium (auxostat evolution and plates), FM-III fermentation medium (shake-flask batch), bioreactor fermentation medium + feeding solution per Chen and Zeng (2017).",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "manual_reading_methods_results",
+        "evidence_ids": [
+          "2_results_p002",
+          "4_4_measurements_offluorescent_intensities_p001",
+          "4_2_3_genome_editing_with_crispr_cas9_technique_p001",
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+          "2_results_p005",
+          "4_5_fermentation_conditions_p001"
+        ],
+        "notes": "SynM composition referenced to Chen (2017); FM-III composition not given in main text (footnote 3/Supplement) - incomplete_condition_binding for exact recipes."
+      },
+      "dosage": {
+        "value": "Chloramphenicol 15 ug/mL and kanamycin 25 ug/mL in auxostat; L-arabinose 10% w/v in auxostat feed (2.3/4.3) but 0.1% w/v at induction time points per Fig. 4B caption; 10 mM L-arabinose in SOB for competent-cell prep; IPTG induction for pJC184 curing; initial glucose 25 g/L in fed-batch.",
+        "status": "reported",
+        "confidence": 0.7,
+        "extraction_method": "manual_reading_methods_fig4_caption",
+        "evidence_ids": [
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p002",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p006",
+          "4_2_3_genome_editing_with_crispr_cas9_technique_p001",
+          "4_5_fermentation_conditions_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018"
+        ],
+        "notes": "Arabinose concentration internally inconsistent (10% w/v vs 0.1% w/v) - see conflicts."
+      },
+      "time": {
+        "value": "G028 M9 growth test ~60 h; deep-well fluorescence assay 10 h; shake-flask mutant characterization 20-24 h; continuous evolution phase 1: 0-380 h (fluorescence peak ~11,446 MFU at 126 h), phase 2: 381-550 h (peak ~13,541 MFU at ~390-438 h), colony sampling at 462 h etc.; fed-batch 65 h (yield compared at 50 h for K3); SynM agar 30 h colony growth.",
+        "status": "reported",
+        "confidence": 0.9,
+        "extraction_method": "manual_reading_results_fig_captions",
+        "evidence_ids": [
+          "2_results_p002",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p006",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002"
+        ],
+        "notes": "One continuous-ALE campaign with two sequential phases; not a single-time-point selection."
+      },
+      "replicates": {
+        "value": "Screening heat maps and shake-flask characterizations: 'two independent biological samples' (Fig. 1 and Fig. 5 captions); fed-batch fermentations: means+SD from 'two independent measurements'; fluorescence: MFI of 10,000 events per sample; 20 single colonies per evolution sample.",
+        "status": "reported",
+        "confidence": 0.85,
+        "extraction_method": "manual_reading_figure_captions_methods",
+        "evidence_ids": [
+          "2_results_p007",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p008",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+          "4_4_measurements_offluorescent_intensities_p001",
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003"
+        ],
+        "notes": "n=2 biological replicates; 'two independent measurements' for fed-batch is ambiguous between technical and biological replication (replicate_type unresolved for bioreactor runs). No statistical tests reported; only SD."
+      },
+      "assay": {
+        "value": "OD600 growth; Trp-biosensor eGFP fluorescence (MFU; ex 488 nm / em 509 nm; electronic gating vs PBS background); Trp quantification by sensitive spectrophotometric method (Nagaraja et al. 2003); glucose, shikimate (SA), 3-dehydroshikimate (DSA) by HPLC; pyruvate tracked in Fig. 2F (method not restated); WGS (BGISEQ) + PCR resequencing of key mutations.",
+        "status": "reported",
+        "confidence": 0.92,
+        "extraction_method": "manual_reading_methods_results",
+        "evidence_ids": [
+          "4_4_measurements_offluorescent_intensities_p001",
+          "4_8_analytic_methods_p001",
+          "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+          "2_6_genomic_analysis_of_the_strain_t5_p002",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p004"
+        ],
+        "notes": "Biosensor reports intracellular Trp indirectly via fluorescence; not a direct Trp assay."
+      },
+      "instruments": {
+        "value": "Ultrospec 10 cell density meter (Biochrom); CytoFLEX flow cytometer (Beckman Coulter); DASGIP 4-parallel 1.5 L bioreactor system (Julich); BGISEQ sequencer (BGI); HPLC (model not specified); electroporator (0.2 cm cuvette, 2.5 kV).",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_methods",
+        "evidence_ids": [
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+          "4_4_measurements_offluorescent_intensities_p001",
+          "4_5_fermentation_conditions_p001",
+          "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+          "4_2_3_genome_editing_with_crispr_cas9_technique_p001"
+        ],
+        "notes": ""
+      },
+      "analysis_methods": {
+        "value": "Beckman Flow software with electronic gating (MFU); SOAPdenovo v1.05 assembly; SNP calling with MUMmer + BLAT; BLAST confirmation; InDel detection with LASTZ verified by BWA + samtools; homology modeling Modeller v9.24 (template STP10 PDB 6H7D); PyMoL structural alignment; AutoDock Vina docking in Chimera; stoichiometric theoretical-yield analysis (Fig. S1).",
+        "status": "reported",
+        "confidence": 0.93,
+        "extraction_method": "manual_reading_methods",
+        "evidence_ids": [
+          "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+          "4_7_structure_analysis_and_docking_study_p001",
+          "4_4_measurements_offluorescent_intensities_p001",
+          "1_introduction_p002"
+        ],
+        "notes": "No formal statistical hypothesis testing reported; comparisons stated as percent differences with SD."
+      },
+      "outcomes": {
+        "value": "G028: severe growth defect (OD600 0.21±0.02 after 60 h from 0.10). Promoter screen: 12/84 mutants with growth >1.25 + high MFU; 4 (D10, E12, F8, G1) best in FM-III but below S028. Batch ALE strain K3: yield 0.137 g/g (< S028 0.150), restored late growth, glucose uptake 4.10 g/L/h (40-50 h), lower shikimate, ~5x higher pyruvate (2.95 g/L); no mutations in galP/glk/galR. Continuous auto-CGSS strain T5: yield 0.164 g/g (+9.33% vs S028, +19.71% vs K3), Trp 38.77 g/L, qTrp 25.28 mg/gDCW/h (+45% vs S028), biomass 32% lower. T5AA: yield 0.195 g/g, Trp 41.49 g/L, qTrp 28.83 mg/gDCW/h; S028AA: 0.185 g/g, 48.27 g/L, qTrp 23.74, Vp 0.77 > T5AA 0.67. T5 genomics: 15 modified + 5 deleted genes incl. mlc deletion, zwf E165Stop, galP K137T/P195A/F204L. Yields remain below theoretical maxima (0.227/0.454 g/g); SA/DSA still accumulate.",
+        "status": "reported",
+        "confidence": 0.95,
+        "extraction_method": "manual_reading_results_table1_figs",
+        "evidence_ids": [
+          "2_results_p002",
+          "2_results_p004",
+          "2_results_p005",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002",
+          "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p004",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p009",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p017",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p021",
+          "2_6_genomic_analysis_of_the_strain_t5_p002"
+        ],
+        "notes": "Mechanistic links (mlc derepression -> PEP, GalP mutations -> transport, zwf stop -> growth/NADPH effects) are author hypotheses requiring confirmation - inference, not validated causality."
+      }
+    },
+    "experimental_design_object": {
+      "experiments": [
+        {
+          "experiment_id": "E1_ptsI_knockout_G028",
+          "purpose": "Create PTS-defective Trp producer to redirect PEP from glucose uptake into Trp biosynthesis",
+          "host": "E. coli S028TS/pCas9 (S028 + chromosomal Ptac-tnaC-eGFP biosensor)",
+          "intervention": "CRISPR/Cas9 knockout of ptsI (PTS Enzyme I) -> strain G028; growth evaluated in M9 + glucose, 60 h",
+          "conditions": "LB overnight, wash x3 M9, M9 glucose sole carbon source, initial OD600 0.10",
+          "control": "Parental S028 context (functional PTS) as benchmark in subsequent experiments",
+          "replicates": "unknown (OD reported with ±0.02)",
+          "readout": "OD600 growth",
+          "outcome": "G028 reached only OD600 0.21±0.02 after ~60 h; glucose uptake/growth severely blocked",
+          "evidence": [
+            "2_results_p002",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+            "1_introduction_p002"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 active ptsI knockout by authors; Q2 performed in this paper; Q3 created the chassis whose phenotype drove all subsequent promoter engineering and evolution.",
+            "design_action": "M2",
+            "design_action_rationale": "PTS removal spares PEP (precursor/reducing-power supply for the Trp pathway) rather than modifying the product pathway itself.",
+            "trigger_observation": "Stoichiometric analysis: PTS consumes 1 mol PEP per mol glucose, capping theoretical Trp yield at 0.227 g/g; >80% of PEP could be freed in a PTS-defective GalP/Glk strain (theoretical 0.454 g/g).",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Chemical-stoichiometry-based theoretical yield plus measured growth phenotype of the knockout.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper explicitly explains the PEP-consumption mechanism of PTS and its coupling to Trp precursor supply.",
+            "reason_nature_tags": [
+              "文献类比"
+            ],
+            "generalizable_rule": "When producing PEP-dependent aromatics such as L-tryptophan in E. coli, apply PTS inactivation with a PTS-independent glucose uptake route (GalP/Glk), because PTS consumes one PEP per internalized glucose and its removal frees PEP for product biosynthesis.",
+            "alternatives_considered": [
+              "Glf (Z. mobilis)/Glk and GalP/Glk activation cited as alternative glucose-uptake restorations (literature background, not tested here)"
+            ],
+            "strategy_categories": [
+              "precursor_supply_enhancement",
+              "flux_redirection"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E2_screening_host_G028Cm",
+          "purpose": "Build host enabling CRISPR/Cas9-facilitated promoter engineering of galP/glk",
+          "host": "E. coli G028",
+          "intervention": "Replace glk promoter -50..0 bp with chloramphenicol resistance gene CmR to provide sgRNA target and selection marker -> G028Δglk::CmR (G028Cm)",
+          "conditions": "CRISPR/Cas9 editing; details delegated to Supplement",
+          "control": "not_applicable (construction step)",
+          "replicates": "unknown",
+          "readout": "strain construction (selection on Cm)",
+          "outcome": "Host G028Cm obtained (Table S1)",
+          "evidence": [
+            "2_results_p003",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p007"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 deliberate genome edit; Q2 done in this work; Q3 enables the subsequent promoter-library integration/screening workflow.",
+            "design_action": "M11",
+            "design_action_rationale": "Construction of the screening-enabling chassis for integrated selection.",
+            "trigger_observation": "Need for an sgRNA target sequence at the glk locus to apply CRISPR/Cas9 promoter replacement.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Physical construction with antibiotic selection; construction itself is measured, downstream function tested in E3.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Paper states the explicit functional logic (CmR provides sgRNA target + selection marker); a technical-mechanistic rationale rather than literature analogy.",
+            "reason_nature_tags": [],
+            "generalizable_rule": "When performing CRISPR/Cas9-mediated chromosomal promoter replacement in E. coli, first insert an antibiotic-resistance marker at the target locus, because it simultaneously provides selection and a unique sgRNA target for the subsequent library swap.",
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "E3_galP_glk_promoter_library_CGSS",
+          "purpose": "Recover glucose utilization/growth of the PTS-defective strain by modulated galP/glk expression",
+          "host": "E. coli G028Cm",
+          "intervention": "Random mutagenesis of -10/-35 elements of ptac-galP and pJ23119-glk cassette (plasmid library pCmN20-GGMT), CRISPR/Cas9 chromosomal integration, growth-coupled + Trp-biosensor screening (CGSS): 84 mutants in 96-deep-well M9, then 12 mutants in FM-III batch",
+          "conditions": "M9 deep-well screen; FM-III, 50 mL conical tubes, 37 C 250 rpm; 10 h assay",
+          "control": "S028 positive control (H1-H6); G028GG non-mutated synthetic promoters reference (H7-H12)",
+          "replicates": "two independent biological samples",
+          "readout": "OD600 and MFU heat maps; batch fermentation growth/MFU",
+          "outcome": "12 mutants with growth >1.25 and high MFU; D10/E12/F8/G1 best in FM-III but still below S028",
+          "evidence": [
+            "2_results_p003",
+            "2_results_p004",
+            "2_results_p005",
+            "2_results_p007",
+            "4_2_2_construction_ofpromoter_variant_library_p002"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 promoter engineering action; Q2 done in this paper; Q3 screen outcome (mutants still inferior) triggered batch ALE.",
+            "design_action": "M6",
+            "design_action_rationale": "Combinatorial promoter tuning to balance galP/glk expression levels.",
+            "trigger_observation": "ptsI knockout strain G028 showed near-zero growth in M9+glucose (OD 0.21 after 60 h), i.e. native galP/glk expression insufficient to restore glucose uptake.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Measured screen and fermentation readouts for 84/12 mutants.",
+            "reason_nature": "筛选得来",
+            "reason_nature_rationale": "Beneficial promoter variants arose from random mutagenesis plus screening, not from a stated mechanistic prediction of specific sequences.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "transport_engineering"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E4_batch_ALE_K3",
+          "purpose": "Further improve GalP/Glk-dependent strain by batch adaptive evolution",
+          "host": "12 selected promoter mutants",
+          "intervention": "Batch-mode ALE campaign (details in Supplementary Materials); best strain K3 evaluated by fed-batch vs S028; galP/glk/galR sequenced",
+          "conditions": "fed-batch DASGIP, 500 mL start, initial glucose 25 g/L, OD600 0.45, 65 h",
+          "control": "S028 reference fermentation",
+          "replicates": "two independent measurements (fed-batch)",
+          "readout": "growth, Trp, yield, qTrp, glucose uptake, shikimate, pyruvate; Sanger sequencing of galP/glk/galR",
+          "outcome": "K3 yield 0.137 g/g (< S028 0.150 at 50 h); growth restored after 30 h; glucose uptake 4.10 g/L/h (40-50 h); pyruvate 2.95 g/L (~5x S028); lower shikimate; no galP/glk/galR mutations",
+          "evidence": [
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002",
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p004"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 ALE campaign initiated by authors; Q2 in this paper; Q3 K3's failure to improve yield (and pyruvate-overflow observation) motivated building the continuous auto-CGSS system.",
+            "design_action": "M11",
+            "design_action_rationale": "Selection/evolution campaign as an integrated screening step.",
+            "trigger_observation": "Best promoter mutants (D10/E12/F8/G1) still grew and produced below S028 in FM-III batch fermentation.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Fed-batch measurements of the evolved strain.",
+            "reason_nature": "筛选得来",
+            "reason_nature_rationale": "K3 was obtained by adaptive evolution/selection; the route of improvement was not rationally specified.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "evolutionary_optimization"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E5_autoCGSS_continuous_evolution_T5",
+          "purpose": "Obtain a higher-yield GalP/Glk-dependent Trp producer via automated continuous evolution",
+          "host": "E. coli G028Cm/pJC184/pCas9MT (G028JC) with chromosomal promoter library",
+          "intervention": "Continuous auxostat evolution (auto-CGSS): pJC184 arabinose-induced in vivo mutagenesis, OD600 held at 0.8 via automated inlet/outlet pumps (60-80 mL/h, 30 mL vessel), online flow-cytometric Trp fluorescence; two phases (0-380 h, 381-550 h) with G028c as phase-1 winner; colony screening and FM-III characterization -> T5",
+          "conditions": "SynM + 15 ug/mL Cm + 25 ug/mL Kan + arabinose, 30 C; colonies on SynM agar 30 h; FM-III shake flasks 20 h",
+          "control": "S028, K3, G028c as positive/reference controls in colony characterization",
+          "replicates": "two independent biological samples (screens); 20 colonies per sample",
+          "readout": "real-time OD600 + MFU; offline growth/MFU; batch fermentation",
+          "outcome": "Phase peaks ~11,446 MFU (126 h) and ~13,541 MFU (390-438 h) followed by decline (growth-over-production drift); 10 mutants with MFU >10,000; T5 best in FM-III and selected for fed-batch",
+          "evidence": [
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p001",
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p002",
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p004",
+            "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 new engineered evolution system + campaign; Q2 built and run in this paper (adapting their prior CGSS); Q3 produced T5 and defined the subsequent variant-integration step.",
+            "design_action": "M11",
+            "design_action_rationale": "Integrated mutagenesis-selection-monitoring platform (auto-CGSS) as an integrated screening design.",
+            "trigger_observation": "Batch-ALE strain K3 increased glucose uptake but not Trp yield and accumulated ~5x pyruvate, suggesting evolution favored growth pathways over Trp; a sensor-guided continuous selection was needed to keep selection on productivity.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Real-time measured evolution trajectories and offline fermentation characterization.",
+            "reason_nature": "筛选得来",
+            "reason_nature_rationale": "T5's improvements emerged from random genome-context mutagenesis and selection; specific beneficial mutations were not pre-designed.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "evolutionary_optimization",
+              "dynamic_control"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E6_T5_plasmid_curing_fedbatch",
+          "purpose": "Stabilize T5 genotype and evaluate production performance",
+          "host": "E. coli T5/pJC184",
+          "intervention": "Remove mutagenesis plasmid pJC184 via IPTG-inducible Cas9MT retargeted to CmR (sgRNA-pMB1 -> sgRNA-CmR), then fed-batch of plasmid-free T5 vs S028",
+          "conditions": "DASGIP fed-batch 65 h, initial glucose 25 g/L, OD600 0.45",
+          "control": "S028 reference fermentation",
+          "replicates": "two independent measurements",
+          "readout": "OD600, DCW, Trp, qTrp, yield, Vp, SA, DSA",
+          "outcome": "T5: yield 0.164 g/g, Trp 38.77 g/L, DCW 22.89 g/L (-32% vs S028), qTrp 25.28 mg/g/h (+45%)",
+          "evidence": [
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p017",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+            "4_5_fermentation_conditions_p001"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 deliberate plasmid-curing modification; Q2 in this paper; Q3 stabilized strain enabled all downstream fermentation and variant integration.",
+            "design_action": "M9",
+            "design_action_rationale": "Genotypic stabilization as part of fermentation/process execution.",
+            "trigger_observation": "pJC184 mutagenesis plasmid would cause undesired continuing mutations during fermentation.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Measured fed-batch performance of the cured strain.",
+            "reason_nature": "机理推断",
+            "reason_nature_rationale": "Explicit causal reasoning: an active mutator plasmid would keep mutating the production strain during evaluation.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "E7_enzyme_variant_integration_T5AA",
+          "purpose": "Further raise Trp yield by strengthening downstream/limiting enzymatic steps",
+          "host": "E. coli T5 and S028",
+          "intervention": "Chromosomal integration of previously engineered variants aroG^D6G-D7A and AntrpC^R378F into T5 (-> T5AA) and S028 (-> S028AA); comparative fed-batch",
+          "conditions": "same DASGIP fed-batch regime",
+          "control": "S028AA vs T5AA; comparison to T5 and S028",
+          "replicates": "two independent measurements",
+          "readout": "growth, Trp, glucose, yield, qTrp, Vp",
+          "outcome": "T5AA yield 0.195 g/g (+18.90% vs T5, +5.41% vs S028AA), Trp 41.49 g/L, qTrp 28.83; S028AA higher final titer (48.27 g/L) and Vp (0.77 vs 0.67) due to better growth",
+          "evidence": [
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p021",
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p023"
+          ],
+          "ddr_annotation": {
+            "decision_type": "engineering_decision",
+            "decision_type_rationale": "Q1 new chromosomal integrations performed here; Q2 integration done in this paper (variants themselves from prior work); Q3 results redefine the best strain and next targets (biomass limitation).",
+            "design_action": "M4",
+            "design_action_rationale": "Introduction of superior enzyme variants at rate-limiting pathway steps (DAHP synthase, anthranilate-activated AnTrpC).",
+            "trigger_observation": "T5 yield still far below theoretical maximum and SA/DSA intermediates accumulated, indicating downstream pathway limitation.",
+            "evidence_grading": "硬",
+            "evidence_grading_rationale": "Measured fed-batch outcomes of the integrants.",
+            "reason_nature": "现成可得",
+            "reason_nature_rationale": "Both variants were previously engineered and validated (Chen et al. 2018, 2019) and were adopted off-the-shelf; no new mechanistic design rationale is given in this paper.",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": [
+              "enzyme_activity_improvement"
+            ]
+          }
+        },
+        {
+          "experiment_id": "E8_T5_WGS_analysis",
+          "purpose": "Identify mutations underlying T5 phenotype",
+          "host": "E. coli T5 (reference: W3110)",
+          "intervention": "none (measurement only): WGS (BGISEQ), SOAPdenovo/MUMmer/BLAT/BLAST/LASTZ/BWA/samtools analysis; PCR resequencing of galP, zwf, mlc in T5 and S028",
+          "conditions": "standard sequencing workflow",
+          "control": "W3110 reference genome; S028 comparator",
+          "replicates": "unknown (8,764,210 reads)",
+          "readout": "SNP/InDel list (Table 2)",
+          "outcome": "15 modified + 5 deleted genes; key hits mlc deletion, zwf E165Stop, galP K137T/P195A/F204L",
+          "evidence": [
+            "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001"
+          ],
+          "ddr_annotation": {
+            "decision_type": "validation",
+            "decision_type_rationale": "Q1 fails: pure measurement/characterization of an already-evolved strain; no new engineering action.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        },
+        {
+          "experiment_id": "E9_GalP_homology_modeling",
+          "purpose": "Interpret GalP K137T/P195A/F204L effects on glucose transport",
+          "host": "not_applicable (in silico)",
+          "intervention": "none (analysis only): Modeller v9.24 homology model on STP10 (6H7D), PyMoL alignment, AutoDock Vina glucose docking",
+          "conditions": "in silico",
+          "control": "wild-type GalP model",
+          "replicates": "not_applicable",
+          "readout": "structural comparisons",
+          "outcome": "Mutations hypothesized to increase ICH flexibility and glucose-binding affinity; explicitly stated to require experimental confirmation",
+          "evidence": [
+            "4_7_structure_analysis_and_docking_study_p001",
+            "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p001",
+            "3_2_structure_based_analysis_of_the_enzyme_variant_of_galp_for_glucose_permeation_p002"
+          ],
+          "ddr_annotation": {
+            "decision_type": "post_hoc_interpretation",
+            "decision_type_rationale": "Q1 fails: docking/modeling interpretation of evolved mutations; did not drive any new modification in this paper.",
+            "design_action": "",
+            "design_action_rationale": "",
+            "trigger_observation": "",
+            "evidence_grading": "",
+            "evidence_grading_rationale": "",
+            "reason_nature": "",
+            "reason_nature_rationale": "",
+            "reason_nature_tags": [],
+            "generalizable_rule": null,
+            "alternatives_considered": [],
+            "strategy_categories": []
+          }
+        }
+      ]
+    },
+    "field_metadata": {
+      "objective": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+            "section": "ABSTRACT"
+          },
+          {
+            "paragraph_id": "1_introduction_p004",
+            "section": "1. Introduction"
+          }
+        ]
+      },
+      "hypothesis": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "1_introduction_p002",
+            "section": "1. Introduction"
+          },
+          {
+            "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+            "section": "ABSTRACT"
+          }
+        ]
+      },
+      "strain": {
+        "status": "reported",
+        "supplement_dependency": "Table S1 (full strain/plasmid list) unavailable",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p002",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "2_results_p003",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+            "section": "4.2.1"
+          },
+          {
+            "paragraph_id": "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+            "section": "2.2"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020",
+            "section": "2.4"
+          },
+          {
+            "paragraph_id": "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "section": "2.6"
+          }
+        ]
+      },
+      "genotype": {
+        "status": "reported",
+        "supplement_dependency": "Tables S1/S2; Table 2 OCR-garbled",
+        "source_locations": [
+          {
+            "paragraph_id": "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001",
+            "section": "4.2.1"
+          },
+          {
+            "paragraph_id": "4_2_2_construction_ofpromoter_variant_library_p002",
+            "section": "4.2.2"
+          },
+          {
+            "paragraph_id": "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "section": "2.6"
+          },
+          {
+            "paragraph_id": "3_4_further_developments_of_the_trp_producing_strain_p002",
+            "section": "Table 2"
+          }
+        ]
+      },
+      "engineering_method": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p003",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "4_2_2_construction_ofpromoter_variant_library_p002",
+            "section": "4.2.2"
+          },
+          {
+            "paragraph_id": "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "4_7_structure_analysis_and_docking_study_p001",
+            "section": "4.7"
+          }
+        ]
+      },
+      "experimental_groups": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p004",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+            "section": "2.3"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+            "section": "2.4"
+          }
+        ]
+      },
+      "controls": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p007",
+            "section": "Fig. 1 caption"
+          },
+          {
+            "paragraph_id": "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+            "section": "2.3"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p001",
+            "section": "2.4"
+          }
+        ]
+      },
+      "culture_conditions": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "4_4_measurements_offluorescent_intensities_p001",
+            "section": "4.4"
+          },
+          {
+            "paragraph_id": "4_5_fermentation_conditions_p001",
+            "section": "4.5"
+          },
+          {
+            "paragraph_id": "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+            "section": "2.4"
+          }
+        ]
+      },
+      "medium": {
+        "status": "reported",
+        "supplement_dependency": "FM-III and SynM compositions not in main text",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p002",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "2_results_p005",
+            "section": "2.1"
+          }
+        ]
+      },
+      "dosage": {
+        "status": "reported",
+        "conflict": "arabinose 10% w/v vs 0.1% w/v",
+        "source_locations": [
+          {
+            "paragraph_id": "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p006",
+            "section": "Fig. 4 caption"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+            "section": "2.4"
+          }
+        ]
+      },
+      "time": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p002",
+            "section": "2.1"
+          },
+          {
+            "paragraph_id": "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003",
+            "section": "2.3"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+            "section": "2.4"
+          }
+        ]
+      },
+      "replicates": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "2_results_p007",
+            "section": "Fig. 1 caption"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p008",
+            "section": "Fig. 5 caption"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p018",
+            "section": "2.4"
+          }
+        ]
+      },
+      "assay": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "4_4_measurements_offluorescent_intensities_p001",
+            "section": "4.4"
+          },
+          {
+            "paragraph_id": "4_8_analytic_methods_p001",
+            "section": "4.8"
+          }
+        ]
+      },
+      "instruments": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+            "section": "4.3"
+          },
+          {
+            "paragraph_id": "4_5_fermentation_conditions_p001",
+            "section": "4.5"
+          },
+          {
+            "paragraph_id": "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+            "section": "4.6"
+          }
+        ]
+      },
+      "analysis_methods": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "4_6_genome_dna_sequence_analysis_of_the_strain_t5_p001",
+            "section": "4.6"
+          },
+          {
+            "paragraph_id": "4_7_structure_analysis_and_docking_study_p001",
+            "section": "4.7"
+          }
+        ]
+      },
+      "outcomes": {
+        "status": "reported",
+        "source_locations": [
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
+            "section": "Table 1"
+          },
+          {
+            "paragraph_id": "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002",
+            "section": "2.2"
+          },
+          {
+            "paragraph_id": "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p021",
+            "section": "2.4"
+          },
+          {
+            "paragraph_id": "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "section": "2.6"
+          }
+        ]
+      }
+    },
+    "extensions": {
+      "article_type_gate": {
+        "article_type": "primary_research",
+        "is_primary_experimental_study": true,
+        "contains_original_experiment": true,
+        "recommended_schema": "primary_experiment_schema",
+        "confidence": 0.98,
+        "evidence": [
+          "a_b_s_t_r_a_c_t_p001",
+          "2_results_p002",
+          "4_1_strains_plasmids_and_primers_p001",
+          "4_5_fermentation_conditions_p001"
+        ],
+        "engineering_paper_type": [
+          "evolutionary_engineering",
+          "metabolic_engineering",
+          "biosensor_platform"
+        ],
+        "engineering_paper_type_rationale": "Core contributions: batch+continuous ALE (evolutionary), ptsI knockout/precursor rerouting and enzyme-variant integration (metabolic), and the auto-CGSS Trp-biosensor-guided selection platform (biosensor)."
+      },
+      "paper_target_strains": [
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "S028",
+          "paper_strain_normalized": "E. coli S028 (Trp producer, Chen and Zeng 2017)",
+          "role": "parental",
+          "paper_label": "S028",
+          "lineage_or_engineering_context": "Rationally developed Trp producer; W3110 used as WGS reference and rational-design variants annotated vs W3110, suggesting W3110 lineage (inferred)",
+          "combination_status": "not_applicable",
+          "genotype": "full genotype in Table S1 (unavailable)",
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named parental strain in Results and Methods.",
+          "evidence": [
+            "1_introduction_p001",
+            "2_results_p002"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "S028TS/pCas9",
+          "paper_strain_normalized": "E. coli S028 with chromosomal Ptac-tnaC-eGFP Trp biosensor, pCas9",
+          "role": "engineered",
+          "paper_label": "S028TS/pCas9",
+          "lineage_or_engineering_context": "Biosensor integration into S028 by CRISPR/Cas9 (this work)",
+          "combination_status": "demonstrated",
+          "genotype": "Ptac-tnaC-eGFP integrated; pCas9",
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Explicit construction description in 4.2.1.",
+          "evidence": [
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028",
+          "paper_strain_normalized": "E. coli S028TS ΔptsI",
+          "role": "target",
+          "paper_label": "G028",
+          "lineage_or_engineering_context": "PTS-defective chassis constructed in this work",
+          "combination_status": "demonstrated",
+          "genotype": "ΔptsI; biosensor; (pCas9)",
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "ptsI knockout explicitly reported.",
+          "evidence": [
+            "2_results_p002",
+            "4_2_1_construction_of_the_host_strain_for_in_vivo_screening_p001"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028Δglk::CmR (G028Cm); G028Cm/pJC184/pCas9MT (G028JC)",
+          "paper_strain_normalized": "E. coli G028 glk promoter replaced by CmR; with mutagenesis plasmid pJC184 and pCas9MT for evolution",
+          "role": "host",
+          "paper_label": "G028Cm / G028JC",
+          "lineage_or_engineering_context": "Screening/evolution host constructed in this work",
+          "combination_status": "demonstrated",
+          "genotype": "Δglk(-50..0 promoter)::CmR; pJC184; pCas9MT",
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Construction stated in 2.1/4.2.1 and 2.3/4.3.",
+          "evidence": [
+            "2_results_p003",
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p002",
+            "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028GG",
+          "paper_strain_normalized": "E. coli G028 with non-mutated synthetic ptac-galP-pJ23119-glk cassette",
+          "role": "control",
+          "paper_label": "G028GG reference control",
+          "lineage_or_engineering_context": "Unmutated promoter cassette reference for promoter screen",
+          "combination_status": "demonstrated",
+          "genotype": "ptac-galP-pJ23119-glk (unmutated)",
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Defined as reference control in Fig. 1 caption and text.",
+          "evidence": [
+            "2_results_p004",
+            "2_results_p007"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "K3",
+          "paper_strain_normalized": "E. coli batch-ALE-evolved GalP/Glk-dependent strain",
+          "role": "engineered",
+          "paper_label": "K3",
+          "lineage_or_engineering_context": "Selected from batch ALE of 12 promoter mutants (this work); no galP/glk/galR mutations found",
+          "combination_status": "not_applicable",
+          "genotype": "not fully reported (no WGS for K3)",
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named evolved strain evaluated in fed-batch.",
+          "evidence": [
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p001",
+            "2_2_batch_mode_adaptive_laboratory_evolution_of_the_galp_glk_dependent_e_coli_strain_p002"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "G028c",
+          "paper_strain_normalized": "E. coli best mutant from phase 1 of continuous evolution",
+          "role": "engineered",
+          "paper_label": "G028c",
+          "lineage_or_engineering_context": "Intermediate of auto-CGSS campaign; used as phase-2 starter and as control",
+          "combination_status": "not_applicable",
+          "genotype": "unknown",
+          "status": "reported",
+          "confidence": 0.85,
+          "reasoning": "Defined in 2.3.",
+          "evidence": [
+            "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p003"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "T5",
+          "paper_strain_normalized": "E. coli auto-CGSS-evolved Trp producer (plasmid-free)",
+          "role": "target",
+          "paper_label": "T5",
+          "lineage_or_engineering_context": "Final evolved strain of continuous auto-CGSS campaign; pJC184 cured before fermentation",
+          "combination_status": "demonstrated",
+          "genotype": "vs W3110: 15 modified + 5 deleted genes incl. galP K137T/P195A/F204L, zwf E165Stop, Δmlc(dgsA); inherited rational variants aroG S180F, serA H344A/N364A, trpE S40F, rpsL K43R",
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "WGS + Table 2; curing in 4.5.",
+          "evidence": [
+            "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "3_4_further_developments_of_the_trp_producing_strain_p002",
+            "4_5_fermentation_conditions_p001"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "T5AA; S028AA",
+          "paper_strain_normalized": "E. coli T5 and S028 with chromosomal aroG^D6G-D7A + AntrpC^R378F",
+          "role": "engineered",
+          "paper_label": "T5AA / S028AA",
+          "lineage_or_engineering_context": "Enzyme-variant integration performed in this work using variants from Chen et al. 2018/2019",
+          "combination_status": "demonstrated",
+          "genotype": "aroG^D6G-D7A; AntrpC^R378F integrated",
+          "status": "reported",
+          "confidence": 0.92,
+          "reasoning": "Integration and comparative fermentation in 2.4/2.5.",
+          "evidence": [
+            "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p020"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "Top10",
+          "paper_strain_normalized": "E. coli Top10 (cloning host)",
+          "role": "host",
+          "paper_label": "Top10",
+          "lineage_or_engineering_context": "Chemically competent cells for promoter-library plasmid construction",
+          "combination_status": "not_applicable",
+          "genotype": "not reported",
+          "status": "reported",
+          "confidence": 0.9,
+          "reasoning": "Named in 4.2.2.",
+          "evidence": [
+            "4_2_2_construction_ofpromoter_variant_library_p002"
+          ]
+        },
+        {
+          "paper_organism": "Escherichia coli",
+          "paper_strain_raw": "W3110",
+          "paper_strain_normalized": "E. coli W3110 (reference genome)",
+          "role": "control",
+          "paper_label": "W3110 reference",
+          "lineage_or_engineering_context": "Reference for pairwise genome alignment; not itself an experimental production strain here",
+          "combination_status": "not_applicable",
+          "genotype": "reference",
+          "status": "reported",
+          "confidence": 0.95,
+          "reasoning": "Stated in 2.6 and Table 2 title.",
+          "evidence": [
+            "2_6_genomic_analysis_of_the_strain_t5_p002",
+            "3_4_further_developments_of_the_trp_producing_strain_p002"
+          ]
+        }
+      ],
+      "user_target_system": null,
+      "target_system_adaptation": {
+        "status": "skipped",
+        "reason": "No user target system provided; per pipeline rules adaptation (skill10/11) is not executed without an explicit target."
+      },
+      "supplement_dependency": {
+        "status": "blocked_pending_supplement",
+        "missing_items": [
+          "Table S1 (full strain/plasmid list)",
+          "Table S2 (primers)",
+          "Supplementary Materials: ptsI knockout details, batch ALE protocol, T5AA/S028AA integration details, Fig. S1 stoichiometry, Figs. S2/S3 CGSS/library schemes, Figs. S6/S7 variant constructs",
+          "FM-III and SynM exact compositions (referenced to prior papers)"
+        ],
+        "available_from_main_text_or_figure": [
+          "experimental logic, controls, screening thresholds, auxostat parameters, fed-batch headline parameters, fermentation outcomes (Table 1), T5 mutation list (Table 2, OCR-degraded)"
+        ],
+        "still_missing_impact": "Exact reproduction, strain reconstruction and library resynthesis are blocked; conceptual design summary allowed."
+      }
+    },
+    "conflicts": [
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "L-arabinose concentration for mutator induction in continuous evolution",
+        "prose_interpretation": "10% w/v L-arabinose supplied in auxostat feed (sections 2.3 and 4.3)",
+        "equation_or_figure_interpretation": "Fig. 4 caption: arrows mark introduction of 0.1% w/v L-arabinose for induction; competent-cell prep uses 10 mM (4.2.3)",
+        "impact": "Inducer dosage for in vivo mutagenesis unresolved; exact reproduction of auto-CGSS blocked until clarified (possible OCR error or pulse vs feed distinction)",
+        "requires_manual_review": true,
+        "evidence": [
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p002",
+          "4_3_continuous_in_vivo_mutagenesis_of_pts_defective_strains_for_efficient_glucose_utilization_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p006"
+        ]
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "qTrp improvement magnitude for T5",
+        "prose_interpretation": "Results 2.4: +45% (25.28 vs 17.38 mg/g/h, vs S028, Table 1); text also states K3 shares the same qTrp as S028",
+        "equation_or_figure_interpretation": "Abstract: +52.93% (25.28 vs 16.53 mg/g/h), implying K3 qTrp = 16.53 which contradicts 'same as S028' (17.38)",
+        "impact": "Comparison reference and exact percentage ambiguous; both values recorded, no silent selection made",
+        "requires_manual_review": true,
+        "evidence": [
+          "a_b_s_t_r_a_c_t_p001",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p016",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p017"
+        ]
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Fig. 5 plate layout labels",
+        "prose_interpretation": "Text refers to wells C/D1-10, G/H1-10, E/F11-12, A/B11-12 for samples and controls",
+        "equation_or_figure_interpretation": "Fig. 5 caption labels wells Q1-X10 for samples and Q11-V12 for controls",
+        "impact": "Well-to-strain mapping cannot be reconstructed from the cleaned text; likely figure OCR/panel-letter mismatch",
+        "requires_manual_review": true,
+        "evidence": [
+          "2_3_improvement_of_galp_glk_dependent_e_coli_in_an_automatic_continuous_evolutionary_system_p004",
+          "2_4_fed_batch_fermentation_with_strain_t5_resulted_in_a_high_specific_production_rate_of_trp_p008"
+        ]
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Promoter mutagenesis target elements",
+        "prose_interpretation": "4.2.2 states '10 and 35 elements of their promoter sequences were chosen for random mutagenesis'",
+        "equation_or_figure_interpretation": "Almost certainly the -10 and -35 promoter elements (OCR dropped the minus signs)",
+        "impact": "Semantic role unresolved in source text; recorded as inferred -10/-35 with low risk but flagged",
+        "requires_manual_review": false,
+        "evidence": [
+          "4_2_2_construction_ofpromoter_variant_library_p002"
+        ]
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Table 2 integrity and variant naming",
+        "prose_interpretation": "Text: 15 genes modified and 5 deleted in T5; T5AA integrates AroG^D6G-D7A",
+        "equation_or_figure_interpretation": "Table 2 is OCR-garbled (misaligned rows/numbering; some mutation cells empty); table lists aroG Ser180Phe as a T5 mutation and the note attributes aroG S180F, serA H344A/N364A, trpE S40F, rpsL K43R to prior rational design (Chen, 2017) - these are lineage-inherited, distinct from the newly integrated AroG^D6G-D7A; serA table cell (Asp364Ala) vs note (H344A/N364A) mismatch",
+        "impact": "Precise T5 mutation list and attribution (evolved vs inherited-designed) require the published Table 2/Supplement; no silent reconciliation performed",
+        "requires_manual_review": true,
+        "evidence": [
+          "2_6_genomic_analysis_of_the_strain_t5_p002",
+          "3_4_further_developments_of_the_trp_producing_strain_p002",
+          "3_4_further_developments_of_the_trp_producing_strain_p003"
+        ]
+      },
+      {
+        "status": "source_internal_inconsistency",
+        "topic": "Section 2.5 placement",
+        "prose_interpretation": "Heading '2.5 Further improvement...' appears after its content (within 2.4 narrative) in the parsed document",
+        "equation_or_figure_interpretation": "Layout/parsing artifact; content assigned to 2.4/2.5 jointly",
+        "impact": "Cosmetic; no scientific impact",
+        "requires_manual_review": false,
+        "evidence": [
+          "2_5_further_improvement_of_trp_production_by_integration_of_enzyme_variants_a_r_o_g_d_dot_6_g_d_7_a_and_dot_a_n_dot_t_dot_r_dot_c_r_3_7_8_f_p001"
+        ]
+      }
+    ]
+  },
+  "artifacts": [],
+  "self_check": {
+    "passed": true,
+    "checks": [],
+    "score": 1.0
+  },
+  "warnings": [],
+  "errors": [],
+  "metrics": {
+    "input_tokens": 68769,
+    "output_tokens": 20652
+  },
+  "provenance": {
+    "skill_id": "skill07_experiment_extraction",
+    "skill_version": "poe-cli-1",
+    "input_hash": "8169d0473bc103610f07da21449cfd5d3f46d4dd06f0d42c0332d86412d789dd",
+    "output_hash": "e8f83776b03b806f578814d663b8381acf61ff21fe5e1b0cce7115be2766142a",
+    "extractor": "poe_code_cli",
+    "model": "kimi-k3",
+    "skill_sha256": "e25d9bd4be486a0c69c0666ea5916a37369da107d8e04e45a6f06b70f8ee78c7",
+    "cache": {
+      "hit": false,
+      "path": "D:\\Users\\Starry\\Desktop\\agent\\WAVE_Agent_Platform\\harness\\paper_extraction\\vendor\\paper_experimental_design_extraction\\storage\\extraction_cache\\6a3d9344bb67b049ce09336b8d494ef7443276c5d28793c6a00cabbe8329fe6f.json",
+      "key_type": "content_sha256+model+skill_sha256"
+    }
+  },
+  "review_requests": []
+}

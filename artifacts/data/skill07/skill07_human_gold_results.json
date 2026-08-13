@@ -1,0 +1,45 @@
+{
+  "version": "skill07_human_gold_infrastructure_v1.0.0",
+  "engineering_infrastructure": "READY_FOR_HUMAN_ANNOTATION",
+  "human_gold_status": "AWAITING_HUMAN_ANNOTATION",
+  "benchmark_decision": "HOLD",
+  "production_default": "UNCHANGED",
+  "new_model_calls": 0,
+  "packages": 10,
+  "source_linked_packages": 10,
+  "wave2_unresolved_imported": 66,
+  "union_candidate_items": 70,
+  "frozen_releases": 0,
+  "pilot_readiness": {
+    "eligible": false,
+    "blocker": "10-paper human annotation, independent review/adjudication, G0-G7 validation and verified frozen release are incomplete"
+  },
+  "tests": {
+    "gold_targeted": "10 passed",
+    "relevant_regression": "49 passed",
+    "paper_extraction_full": "203 passed, 1 dependency deprecation warning",
+    "frontend_build": "passed, bundle-size warning"
+  },
+  "production_behavior_changed": false,
+  "security": {
+    "sensitive_scan": "PASS_ZERO_HITS"
+  },
+  "deliverables": {
+    "schemas": 3,
+    "packages": 10,
+    "workbench_route": "/skill07-gold",
+    "cli": "tools/skill07_gold_cli.py"
+  },
+  "reexecution": {
+    "mode": "IDEMPOTENT_RESUME_VALIDATION",
+    "annotation_role_files_checked": 30,
+    "annotation_files_changed": 0,
+    "packages_rebuilt_or_verified": 10,
+    "tests": {
+      "relevant": "49 passed",
+      "full_paper_extraction": "203 passed, 1 dependency warning",
+      "frontend_build": "passed, bundle-size warning"
+    },
+    "timestamp": "2026-08-12"
+  }
+}

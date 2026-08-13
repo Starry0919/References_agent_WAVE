@@ -1,0 +1,938 @@
+{
+  "contract_version": "canonical-document/1.1",
+  "document_id": "doc_040ce0ccbd6fc8578514",
+  "paper_id": "paper_db18be686c5c0f5c",
+  "parser_name": "MinerU",
+  "parser_version": "3.4.4",
+  "source_pdf_sha256": "f6ecf2e418396f5a4ffdb671c05f08876c9c03c2ca5fbf7b0c3eab262d702c9a",
+  "pages": [],
+  "sections": [
+    {
+      "section_id": "sec_0001",
+      "heading": "Engineering Improves Enzymatic Synthesis of L-Tryptophan by Tryptophan Synthase from Escherichia coli",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 104,
+      "char_end": 2255,
+      "text": "Lisheng Xu <sup>1,</sup>\\*, Fangkai Han <sup>1</sup>, Zeng Dong <sup>1</sup> and Zhaojun Wei <sup>2</sup>\n\n1 Department of Life and Food Science, Suzhou University, Suzhou 234000, China; hanfk11@ahszu.edu.cn (F.H.); dongzeng@ahszu.edu.cn (Z.D.)\n\n2 School of Food and Biological Engineering, Hefei University of Technology, Hefei 230009, China; zjwei@hfut.edu.cn\n\n\\* Correspondence: xulisheng@ahsztc.edu.cn; Tel.: +86-557-287-1681\n\nReceived: 23 March 2020; Accepted: 3 April 2020; Published: 5 April 2020\n\n![](images/f97f01b198e4f36c15abc80c7e40077b78e6c01e39e0c507cbb6f7af1236b765.jpg)\n\nAbstract: To improve the thermostability of tryptophan synthase, the molecular modification of tryptophan synthase was carried out by rational molecular engineering. First, B-FITTER software was used to analyze the temperature factor (B-factor) of each amino acid residue in the crystal structure of tryptophan synthase. A key amino acid residue, G395, which adversely afected the thermal stability of the enzyme, was identified, and then, a mutant library was constructed by site-specific saturation mutation. A mutant (G395S) enzyme with significantly improved thermal stability was screened from the saturated mutant library. Error-prone PCR was used to conduct a directed evolution of the mutant enzyme (G395S). Compared with the parent, the mutant enzyme (G395S /A191T) had a $K _ { \\mathrm { m } }$ of 0.21 mM and a catalytic eficiency $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of $5 . 3 8 \\mathrm { m M ^ { - 1 } { \\cdot } s ^ { - 1 } }$ , which was 4.8 times higher than that of the wild-type strain. The conditions for L-tryptophan synthesis by the mutated enzyme were a L-serine concentration of 50 mmol/L, a reaction temperature of $4 0 ~ ^ { \\circ } \\mathrm { C } ,$ pH of 8, a reaction time of 12 h, and an L-tryptophan yield of 81%. The thermal stability of the enzyme can be improved by using an appropriate rational design strategy to modify the correct site. The catalytic activity of tryptophan synthase was increased by directed evolution.\n\nKeywords: tryptophan synthase; thermostability; L-tryptophan; directed evolution\n\n##"
+    },
+    {
+      "section_id": "sec_0002",
+      "heading": "1. Introduction",
+      "normalized_type": "introduction",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 2273,
+      "char_end": 6913,
+      "text": "Tryptophan is a precursor of serotonin, an important neurotransmitter, and an essential amino acid in the human body. Tryptophan synthetase (EC 4.2.1.20) is a heterotetramer with an aaββ subunit structure in Escherichia coli. The enzyme can synthesize L-tryptophan with indole and L-serine as substrates. In L-tryptophan metabolism, tryptophan synthase is one of the important enzymes that afect the yield of L-tryptophan. The trp B and trp A genes (or trp BA genes) coexist in the tryptophan operon of the E. coli genome. The function of the a subunit is to decompose indole-3-glycerol phosphate into indole and glyceraldehyde-3-phosphate, while the function of the β subunit is to synthesize L-tryptophan [1–3]. The substrate spectra of tryptophan synthase derived from Salmonella, including fluorine, chlorine, bromine, and iodine-substituted indole derivatives, have been reported in the literature. This enzyme can synthesize L-tryptophan derivatives [4]. The active sites of tryptophan synthase in Pyrococcus furiosus mainly include Asp300, Glu104, Lys82, and Ala106, among which hydrogen bond formation between substrate complex E(Aex1) and Asp300 plays an important role in the catalytic process. The tryptophan synthase from Pyrococcus furiosus was modified via directed evolution, and the ability of the enzyme to synthesize 5-bromo-L-tryptophan and 6-hydroxy-L-tryptophan was promoted by modification of the tryptophan synthase β subunit [5]. S-phenyl-L-cysteine and\n\nL-2-methyltryptophan were synthesized by tryptophan synthase [6–8]. However, modification of the tryptophan synthase derived from E. coli K-12 has not been reported. In recent years, the molecular modification was applied to enzyme catalysis [9–12]. Useful compounds such as 5-aminolevulinic acid, ginsenoside, and L-theanine can be synthesized from microorganisms [13–15]. Frances Arnold proposed the concept of directed evolution of enzymes in the 1990s. Directed evolution greatly broadens the biocatalytic potential of an enzyme by modifying its corresponding gene sequence, enabling it to possess a wide range of substrate universality and even catalyze entirely new chemical reactions. Through the directed evolution of the cytochrome P411 enzyme, dicyclobutane, and cyclopropylene were eficiently synthesized [16]. The thermal stability, spatial selectivity, and activity of epoxide hydrolase were optimized by iterative saturation mutation and triplet codon saturation mutation strategies [17]. An eficient protein engineering strategy based on the fusion of directed evolution and rational design was used to obtain lipase mutant strains with high stereoselectivity, and the strategy required minimal screening. Crystal structure analysis and molecular dynamics simulation of the nonaqueous phase were used to explain the specific stereoselectivity and the molecular mechanism of the four mutant strains, respectively [18]. Directed evolution was used to modify threonine aldolase to improve the synergistic efect of its amino acid residues [19]. High stereoselective mutations in the R and S isomers of a-2-aryl propionate were obtained by iterative saturation mutation directed evolution of its active sites. Nearly 1000 mutant strains of Candida antarctica lipase B were selected for high-throughput screening [20]. By mutating transaminase, its biocatalytic activity increased by 25,000 times, and the modified transaminase could be used in the green production of the hypoglycemic drug citastatin [21]. The biosynthesis pathway of tryptophan in Escherichia coli mainly includes the central metabolic pathway, a common pathway, and a branch pathway. In the central metabolic pathway, the ppsA and tktA genes play key roles in the generation of phosphoenolpyruvate, precursors of tryptophan biosynthesis. In the common pathway, 3-deoxy-D-arabino-heptulosonate-7-phosphate (DAHP) synthase catalyzes the condensation of E4P and phoshoenolpyruvate to produce DAHP as a rate-limiting step. In the branching pathway, anthranilic acid synthetase is the key enzyme in tryptophan biosynthesis [22]. The molecular kinetics of the catalysis of tryptophan synthetase have been studied. The structure and reaction mechanism of tryptophan synthetase from Salmonella typhimurium have been analysed by NMR [23,24]. Excellent thermostability and catalytic activity of tryptophan synthase were needed in industrial production. In this study, tryptophan synthase derived from Escherichia coli K-12 was modified by directed evolution and rational design to improve its activity and thermostability. L-tryptophan was synthesized by modified tryptophan synthetase.\n\n##"
+    },
+    {
+      "section_id": "sec_0003",
+      "heading": "2. Materials and Methods",
+      "normalized_type": "methods",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 6940,
+      "char_end": 6944,
+      "text": "##"
+    },
+    {
+      "section_id": "sec_0004",
+      "heading": "2.1. Chemicals, Strains and Culture Conditions",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 6993,
+      "char_end": 7254,
+      "text": "The plasmid extraction kit, DNA polymerase, indole, and isopropyl-beta-D-thiogalactopyranoside (IPTG) were purchased from Sangon Biotech (Shanghai, China) Co., Ltd. E. coli BL21(DE3) and the expression plasmid pet-28a (+) were preserved in our laboratory.\n\n##"
+    },
+    {
+      "section_id": "sec_0005",
+      "heading": "2.2. Mutation Site",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 7275,
+      "char_end": 7869,
+      "text": "Reetz et al. successfully improved the stability of Bacillus subtilis lipase based on B-FITTER [18]. In this study, B-FITTER software was used to analyze the temperature factors of 397 amino acid residues of tryptophan synthase trpB (PDB: 2dh6), and the temperature factors were obtained. The temperature factors of the amino acid residues within the entrance range of the substrate channel were analyzed by a Swiss-model online simulation of the three-dimensional structure. According to the temperature factor, the key amino acid residues related to substrate binding were screened out.\n\n##"
+    },
+    {
+      "section_id": "sec_0006",
+      "heading": "2.3. Site-Saturated Mutation Library",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 7908,
+      "char_end": 9553,
+      "text": "pET-28a (+) was used as the template plasmid for site-specific saturation mutation of 395 amino acids. The primers used for mutagenesis are presented in Table 1. The PCR reaction system included 10× PCR bufer solution, 2.5 $\\mathrm { m m o l { \\cdot } L ^ { - 1 } }$ dNTP mixture, $1 5 \\mathrm { p m o l { \\cdot } L ^ { - 1 } }$ primers, $\\mathrm { p E T } 2 8 \\mathsf { a } ( + ) { \\cdot } \\mathrm { t r p } \\ \\mathsf { B } ,$ and $5 \\mathrm { U } { \\cdot } \\mathrm { L } ^ { - 1 }$ DNA polymerase (PCR reaction system 50 µL). The PCR reaction conditions included denaturation at 95 $^ { \\circ } \\mathrm { C } \\mathrm { f o r } 4$ min, followed by 20 cycles of $9 5 ~ ^ { \\circ } \\mathrm { C }$ for 30 $s , 5 5 ^ { \\circ } C$ for 1 min, and $7 2 ^ { \\circ } \\mathrm { C }$ for 16 min, and finally, $7 2 ^ { \\circ } \\mathrm { C }$ for 5 min. The PCR products were enzymatically digested at $3 7 ^ { \\circ } \\mathrm { C }$ for 4 h to eliminate the parent template, and the enzymatic hydrolysis products were transformed into E. coli BL21(DE3) competent cells by the calcium chloride method. The transformation liquid was coated with agar medium containing $5 0 ~ { \\mu \\mathrm { g } } { \\cdot } \\mathrm { L } ^ { - 1 }$ kanamycin to obtain the site-saturated mutant library.\n\nTable 1. Primers used in this study.\n<table><tr><td>Primer</td><td> $\\mathbf { S e q u e n c e } \\ ( 5 ^ { \\prime } - 3 ^ { \\prime } )$ </td></tr><tr><td>G395S For</td><td>(5′-AACTTTCGTGCTNNNCTTTAGACT-3&#x27;)</td></tr><tr><td>G395S Rev</td><td> $( 5 ^ { \\prime } \\mathrm { - T T T T G C T G G T A C A N N A A A T C C T T C - 3 ^ { \\prime } } )$ </td></tr></table>\n\n##"
+    },
+    {
+      "section_id": "sec_0007",
+      "heading": "2.4. Error-Prone PCR Mutant Library",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 9591,
+      "char_end": 10451,
+      "text": "With pET-28a (+)-trpB as the template, the trans-EasyTaq DNA Polymerase kit was used to introduce random mutations in the full-length trpB gene. Recombinant mutant plasmids were constructed. The genes were synthesized by Sangon Biotech (Shanghai, China) Co., Ltd. The target gene was constructed between the BamH I and Hind III cleavage sites of the pET-28a (+) vector. Successfully transformed clones were inoculated in 5 mL LB liquid medium (50 µg·mL<sup>−1</sup> Kan), were cultured at $3 7 ~ ^ { \\circ } \\mathrm { C }$ and $2 0 0 \\ \\mathrm { r } { \\cdot } \\mathrm { m i n } ^ { - 1 }$ for 8 h and were then transferred to 50 mL LB liquid medium $( 5 0 ~ \\mu \\mathrm { g } \\cdot \\mathrm { m L } ^ { - 1 }$ Kan). IPTG was added at $1 8 ~ ^ { \\circ } \\mathrm { C }$ for induction. The mutant library was obtained by transforming E. coli competent cells.\n\n##"
+    },
+    {
+      "section_id": "sec_0008",
+      "heading": "2.5. Screening of Mutated Enzymes",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 10487,
+      "char_end": 11735,
+      "text": "LB liquid medium (200 mL) was added to each well of the 96-well plate $( 5 0 \\mu \\mathrm { g } \\cdot \\mathrm { m L } ^ { - 1 } \\mathrm { K a n } )$ . A single colony was selected from the plate with a sterilized toothpick and inoculated into the 96 shallow orifice plate $( 3 7 ^ { \\circ } \\mathrm { C } , 2 0 0 \\ r { \\cdot } \\mathrm { m i n } ^ { - 1 } , 3 \\mathrm { h } )$ . IPTG was added at $1 8 ~ ^ { \\circ } \\mathrm { C }$ for induction. The fermentation broth was centrifuged $( 4 ^ { \\circ } \\mathrm { C } , 4 0 0 0 \\mathrm { r } { \\cdot } \\mathrm { m i n } ^ { - 1 }$ ,10 min). The cells were washed with PBS bufer and were then added to the reaction plate according to the corresponding position. L-Serine $( 1 0 \\mathrm { m m o l { \\cdot } L ^ { - 1 } } )$ was added to the reaction plate $( 3 7 ^ { \\circ } \\mathrm { C } ,$ 30 min, 200 r·min<sup>−1</sup>). After the reaction, the reactant was centrifuged $( 4 \\ ^ { \\circ } C ,$ $4 0 0 0 \\mathrm { r } { \\cdot } \\mathrm { m i n } ^ { - 1 } , 1 0 \\mathrm { m i n } )$ . The absorbance value at 290 nm was determined by $\\mathrm { E L I A S A } ,$ and the mutant strain with an absorbance value that increased relative to the absorbance value of TrpB was selected for re-screening.\n\n##"
+    },
+    {
+      "section_id": "sec_0009",
+      "heading": "2.6. Protein Purification",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 11763,
+      "char_end": 11971,
+      "text": "To purify tryptophan synthase, the supernatant was applied to a Ni-NTA column based on the methods described in the literature [25]. The quality of purified tryptophan synthase was analyzed by SDS-PAGE.\n\n##"
+    },
+    {
+      "section_id": "sec_0010",
+      "heading": "2.7. Synthesis and Identification of L-tryptophan",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 12023,
+      "char_end": 12628,
+      "text": "L-tryptophan (Alighting reagent Co., Ltd., Shang hai, China) was synthesized by tryptophan synthase from L-serine and indole (50 mmol/L L-serine, 50 mmol/L indole, $4 0 ~ ^ { \\circ } \\mathrm { C } ,$ , pH 8, 12 h). L-tryptophan was analyzed with an FT-IR Spectrometer ( Gangdong Sci & Tech. Co., Ltd., Tianjing,\n\nChina), Nuclear Magnetic Resonance Spectrometer (Bruker Avance 500 MHz, Switzerland), and Liquid Chromatography-Mass Spectrometer (Agilent, Palo alto, California, USA). SPSS 22.0 (SPSS, Chicago, Illinois, USA) was used to calculate the standard error and the significance of diferences.\n\n##"
+    },
+    {
+      "section_id": "sec_0011",
+      "heading": "3. Results",
+      "normalized_type": "results",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 12641,
+      "char_end": 12645,
+      "text": "##"
+    },
+    {
+      "section_id": "sec_0012",
+      "heading": "3.1. Selection of Mutation Sites",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 12680,
+      "char_end": 14496,
+      "text": "B-FITTER software was used to analyze 397 amino acid residue sites of tryptophan synthase and obtain their temperature factor values. Then, the temperature factor values of the amino acids at the entrance of the substrate channel were sorted, and the top 20 amino acid residue sites were identified (Table 2). Among these 20 amino acid residues, we selected glycine 395 (G395), as it was the site with the largest temperature factor value for molecular modification.\n\nTable 2. B-factor values of some of the amino acid residues of tryptophan synthase.\n<table><tr><td>Rank</td><td>Residue Sequence Number</td><td>Amino Acid</td><td>B-Factor Value</td></tr><tr><td>1</td><td>395</td><td>Gly</td><td>95.24</td></tr><tr><td>2</td><td>394</td><td>Arg</td><td>93.55</td></tr><tr><td>3</td><td>382</td><td>Lys</td><td>93.34</td></tr><tr><td>4</td><td>393</td><td>Ala</td><td>92.39</td></tr><tr><td>5</td><td>392</td><td>Lys</td><td>89.52</td></tr><tr><td>6</td><td>383</td><td>Asp</td><td>88.7</td></tr><tr><td>7</td><td>313</td><td>His</td><td>88.7</td></tr><tr><td>8</td><td>257</td><td>Pro</td><td>87.61</td></tr><tr><td>9</td><td>329</td><td>Asp</td><td>86.18</td></tr><tr><td>10</td><td>233</td><td>Gly</td><td>86.17</td></tr><tr><td>11</td><td>191</td><td>Ala</td><td>86.06</td></tr><tr><td>12</td><td>234</td><td>Gly</td><td>85.96</td></tr><tr><td>13</td><td>18</td><td>Pro</td><td>85.83</td></tr><tr><td>14</td><td>258</td><td>Gly</td><td>85.79</td></tr><tr><td>15</td><td>388</td><td>His</td><td>85.68</td></tr><tr><td>16</td><td>17</td><td>Val</td><td>85.64</td></tr><tr><td>17</td><td>378</td><td>Gly</td><td>85.18</td></tr><tr><td>18</td><td>190</td><td>Thr</td><td>85.01</td></tr><tr><td>19</td><td>256</td><td>Glu</td><td>83.42</td></tr><tr><td>20</td><td>232</td><td>Gly</td><td>82.93</td></tr></table>\n\n##"
+    },
+    {
+      "section_id": "sec_0013",
+      "heading": "3.2. Mutation Library Screening",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 14530,
+      "char_end": 14892,
+      "text": "A site-saturated mutant library consisting of 300 mutants was constructed, and a mutant enzyme with significantly improved thermal stability was obtained by initial screening and rescreening. DNA sequencing revealed that the amino acid residue at position 395 of the mutant enzyme was mutated from glycine to serine (the codon was mutated from GGT to AGT).\n\n##"
+    },
+    {
+      "section_id": "sec_0014",
+      "heading": "3.3. Optimum Temperature of the Mutant Enzyme",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 14940,
+      "char_end": 16449,
+      "text": "In the same reaction system, the activities of the mutant enzyme and the parent enzyme at diferent temperatures (the absorbance increment caused by the formation of the product L-tryptophan was taken as the indicator) were investigated. The results showed that the optimal reaction temperature of the parent enzyme was $3 5 ^ { \\circ } C ,$ while the optimal reaction temperature of the mutant enzyme was approximately $4 0 ^ { \\circ } C ,$ which was 5 <sup>◦</sup>C higher than that of the parent enzyme (Figure 1). The increase in the optimum reaction temperature indicated that the thermal stability of the mutant enzyme G395S was better than that of the parent enzyme.\n\n![](images/447d8e8ce9c1f9fcf2c54c67c695007f6176687dcddebc3b709867d5e9a5df28.jpg)  \nFigure 1. Efects of temperature on the activities of the tryptophan synthase mutant and wild type.<sup>Temperature</sup> <sup>( C)</sup> Relative activity of the tryptophan synthase mutant (G395S) and wild type (WT) catalyzing reactions at diferent temperatures (30, 35, 40, and $4 5 ^ { \\circ } \\mathrm { C } )$ , L-serine concentration of 50 mmol/L, pH of 8, 12 h. at different temperatures (30, 35, 40, and 45 °C), L-serine concentration of 50 mmol/L, pH oThe Error bars were mean values of three independent replicate. The meaning of letters $\\mathbf { a } , \\mathbf { b } , \\mathbf { c } , \\mathbf { d } , \\mathbf { e } , \\mathbf { f } ,$ The Error bars were mean values of three indepenin the figure legend indicates significant diferences.\n\n##"
+    },
+    {
+      "section_id": "sec_0015",
+      "heading": "3.4. Directed Evolution",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 16475,
+      "char_end": 20997,
+      "text": "Error-prone PCR was used to construct a random mutant library. After screening 15,000 mutant strains, the positive mutant strain G395S/A191T was obtained. The enzyme activity of the highly active positive mutant G395S/A191T was 4.8 times higher than that of the parent enzyme, indicating that<sup>Error-prone</sup> <sup>PCR</sup> <sup>was</sup> <sup>used</sup> <sup>to</sup> <sup>construct</sup> <sup>a</sup> <sup>random</sup> <sup>mutant</sup> <sup>library.</sup> <sup>After</sup> <sup>screening</sup> <sup>15,000</sup> <sup>mutant</sup> <sub>that</sub> <sub>sites</sub> <sub>191</sub> <sub>and</sub> <sub>395</sub> <sub>were</sub> <sub>the</sub> <sub>key</sub> <sub>sites</sub> <sub>affecting</sub> <sub>the</sub> <sub>enzyme</sub> <sub>activity</sub> <sub>of</sub> <sub>TrpB (Figure</sub> <sub>2). The</sub> <sub>OD600</sub> sites 191 and 395 were the key sites afecting the enzyme activity of TrpB (Figure 2). The OD600 values values for the growth of the wild type and G395S and G395S/A191T mutants were measured. There for the growth of the wild type and G395S and G395S/A191T mutants were measured. There was no <sup>was</sup> <sup>no</sup> <sup>difference</sup> <sup>in</sup> <sup>OD600</sup> <sup>value</sup> <sup>during</sup> <sup>the</sup> <sup>growth</sup> <sup>of</sup> <sup>the</sup> <sup>three</sup> <sup>strains,</sup> <sup>and</sup> <sup>no</sup> <sup>differences</sup> <sup>in</sup> <sup>the</sup> diference in OD600 value during the growth of the three strains, and no diferences in the morphology<sub>values</sub> <sub>for</sub> <sub>the</sub> <sub>growth</sub> <sub>of</sub> <sub>the</sub> <sub>wild</sub> <sub>type</sub> <sub>and</sub> <sub>G395S</sub> <sub>and</sub> <sub>G395S/A191T</sub> <sub>mutants</sub> <sub>were</sub> <sub>measured.</sub> <sub>There</sub> of the three strains were observed under a microscope. Compared with the parent, the mutant enzymewas no difference in OD600 value during the growth of the three strains, and no differences in the (G395S /A191T) had a <sup>morphology</sup> <sup>of</sup> <sup>th</sup> $K _ { \\mathrm { m } }$ of 0.21 mM and a catalytic eficiency<sup>ree</sup> <sup>strains</sup> <sup>were</sup> <sup>observed</sup> <sup>under</sup> <sup>a</sup> <sup>microsco</sup> $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of<sup>par</sup> $5 . 3 8 \\mathrm { m M ^ { - 1 } { \\cdot } s ^ { - 1 } }$ , which was<sup>t,</sup> <sup>the</sup> 4.8 times higher than that of the parent (Table 3).<sup>m</sup>\n\n![](images/b627149b8845f5ff9acc83f012d25e61f17d118b4a1d692424d2af12e577c21a.jpg)  \nFigure 2. Relative activities of glycine-substituted mutants of tryptophan synthase. The reactionFigure 2. Relative activities of glycine-substituted mutants of tryptophan synthase. The reaction <sup>conditions</sup> <sup>for</sup> <sup>the</sup> <sup>mutated</sup> <sup>enzyme</sup> <sup>were</sup> <sup>an</sup> <sup>L-serine</sup> <sup>concentration</sup> <sup>of</sup> <sup>50</sup> <sup>mmol/L,</sup> <sup>a</sup> <sup>reaction</sup> conditions for the mutated enzyme were an L-serine concentration of 50 mmol/L, a reaction temperature of $4 0 \\ ^ { \\circ } C ,$ <sup>emperature</sup> <sup>of</sup> <sup>40</sup> <sup>°C,</sup> <sup>pH</sup> <sup>of</sup> <sup>8,</sup> <sup>12</sup> <sup>h.</sup> <sup>The</sup> <sup>Error</sup> <sup>bars</sup> <sup>were</sup> <sup>mean</sup> <sup>values</sup> <sup>of</sup> <sup>three</sup> <sup>independent</sup> <sup>replicate.</sup>  pH of 8, 12 h. The Error bars were mean values of three independent replicate. The meaning of letters a, b, c, d, e, f, in the figure legend indicates significant diferences.\n\nTable 3. Kinetic parameters of tryptophan synthase and its mutants.\n<table><tr><td>Mutations</td><td> $K _ { \\mathbf { m } } \\left( \\mathbf { m } \\mathbf { M } \\right)$ </td><td> $k _ { \\mathrm { c a t } } ( \\mathbf { s } ^ { - 1 } )$ </td><td> $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$  (mM  ${ \\bf \\Pi } ^ { - 1 } { \\boldsymbol { \\cdot } } { \\bf s } ^ { \\mathrm { ~ - 1 } } )$ </td><td>Fold Change over WT</td></tr><tr><td>WT</td><td> $0 . 3 1 \\pm 0 . 1 1$ </td><td> $0 . 3 5 \\pm 0 . 0 9$ </td><td> $1 . 1 2 \\pm 0 . 0 7$ </td><td>1</td></tr><tr><td>G395S</td><td> $0 . 3 2 \\pm 0 . 1 4$ </td><td> $0 . 4 2 \\pm 0 . 1 1$ </td><td> $1 . 3 1 \\pm 0 . 1 0$ </td><td>1.16</td></tr><tr><td>G395S/A191T</td><td> $0 . 2 1 \\pm 0 . 1 0$ </td><td> $1 . 1 3 \\pm 0 . 1 2$ </td><td> $5 . 3 8 \\pm 0 . 1 1$ </td><td>4.80</td></tr></table>\n\nMean values of three independent replicate ± standard deviation.\n\n##"
+    },
+    {
+      "section_id": "sec_0016",
+      "heading": "3.5. Synthesis of L-tryptophan",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 21030,
+      "char_end": 24861,
+      "text": "The mutated enzymes reacted at diferent pH values, and the results showed that the mutant enzyme G395S/A191T had the highest activity at pH 8. The optimal pH value of the mutant enzymeThe mutated enzymes reacted at different pH values, and the results showed that the mutant G395S and the parental enzyme was also 8, but the activities of the mutant enzyme G395S and parentalenzyme G395S/A191T had the highest activity at pH 8. The optimal pH value of the mutant enzyme enzyme were lower than that of the mutant enzyme G395S/A191T (Figure 3). These results showed<sup>G395S</sup> <sup>and</sup> <sup>the</sup> <sup>parental</sup> <sup>enzyme</sup> <sup>was</sup> <sup>also</sup> <sup>8,</sup> <sup>but</sup> <sup>the</sup> <sup>activities</sup> <sup>of</sup> <sup>the</sup> <sup>mutant</sup> <sup>enzyme</sup> <sup>G395S</sup> <sup>and</sup> that the mutant enzyme G395S/A191T maintained high activity in the L-serine concentration range<sup>parental</sup> <sup>enzyme</sup> <sup>were</sup> <sup>lower</sup> <sup>than</sup> <sup>that</sup> <sup>of</sup> <sup>the</sup> <sup>mutant</sup> <sup>enzyme</sup> <sup>G395S/A191T</sup> <sup>(Figure</sup> <sup>3).</sup> <sup>These</sup> <sup>results</sup> <sub>of</sub> <sub>25,</sub> <sub>50,</sub> <sub>and</sub> <sub>75</sub> <sub>mmol/L,</sub> <sub>while</sub> <sub>the</sub> <sub>optimal</sub> <sub>L-serine</sub> <sub>concentration</sub> <sub>of</sub> <sub>the</sub> <sub>mutant</sub> <sub>enzyme</sub> <sub>G395S</sub>showed that the mutant enzyme G395S/A191T maintained high activity in the L-serine concentration and parent enzyme was approximately 50 mmol/L (Figure 4). Under the reaction conditions of an L-serine concentration of 50 mmol/L, the production of L-tryptophan was determined by an Amino Acid Analyzer (Hitachi L-8900, Japan). Synthesis of L-tryptophan by the mutant enzyme G395S/A191T was higher than that by the mutant enzyme G395S and parental enzyme (Figure 5).\n\n![](images/3a35382f40bb58f0174cdec2b808edb212c16430fa8f4c7225c6a75829c1fd7d.jpg)  \n<sub>Figure</sub> <sub>3. Effects</sub> <sub>of</sub> <sub>pH</sub> <sub>on</sub> <sub>tryptophan</sub> <sub>synthase activity.</sub> <sub>pH</sub> <sub>stability</sub> <sub>of</sub> <sub>tryptophan</sub> <sub>synthase at</sub> Figure 3. Efects of pH on tryptophan synthase activity. pH stability of tryptophan synthase at diferent different pH values (5, 6, 7, 8, 9, 10), L-serine concentration of 5pH values (5, 6, 7, 8, 9, 10), L-serine concentration of 50 mmol/L, $4 0 \\ ^ { \\circ } C ,$ l/L, 40 °C, 12 h. The Error bars12 h. The Error bars were mean were mean values of three independent replicate. The meaning of letters a, b, c, d, e, f, g, in the figure values of three independent replicate. The meaning of letters a, b, c, d, e, f, g, in the figure legend legend indicates significant difindicates significant diferences.\n\n![](images/b2e95081223f82548fa24b46d778df6848d5d9f415f50145cb283f5e1add11a4.jpg)  \nFigure 4. Efects of the L-serine concentration on tryptophan synthase activity. Relative activity of tryptophan synthase at diferent L-serine concentrations (25, 50, 75, 100, 125, 150 mmol/L), $4 0 \\ ^ { \\circ } C ,$ pH of 8, 12 h. The Error bars were mean values of three independent replicate. The meaning of letters $\\mathbf { a } , \\mathbf { b } , \\mathbf { c } , \\mathbf { d } , \\mathbf { e } , \\mathbf { f } , \\mathbf { g } ,$ in the figure legend indicates significant diferences.\n\n![](images/94cb81d14dff17f4bd89be8982d89260e9882d9092086d5beab3a6f6aec684b1.jpg)  \nFigure 5. Synthesis of L-tryptophan by the three strains. The reaction conditions for three tryptophan synthase recombinant strains ((A): G395S /A191T; (B): G395S; (C): Wild strain) were an L-serine concentration of 50 mmol/L, reaction temperature of 40 ${ } ^ { \\circ } C ,$ pH of 8, 12 h. Red line was the integral line.\n\n##"
+    },
+    {
+      "section_id": "sec_0017",
+      "heading": "<sup>line.</sup>3.6. Identification of L-tryptophan",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 24915,
+      "char_end": 26659,
+      "text": "3.6. Identification of L-tryptophanThe infrared spectrum of L-tryptophan is shown in Figure $^ { 6 , }$ with the introduction of amino and carboxyl groups. The <sup>1</sup>H-NMR spectrum of L-tryptophan is shown in Figure 7. <sup>1</sup>H NMR (500 MHz, <sub>1 1</sub>D2O): δ 3.23(s, 3H), 3.41 (d, 2H), 3.97 (t, 1H), 7.12 (d, 1H), 7.21 (d,1H), 7.45 (m, H), 7.64 (m, H). D2O): δ 3.23(s, 3H), 3.41 (d, 2H), 3.97 (t, 1H), 7.12 (d, 1H), 7.21 (d,1H), 7.45 (m, H), 7.64 (m, H). The <sup>The theoretical molecular weight of L-tryptophan is 204 Da. As shown in Figure 8, a signal at m/z 205</sup> theoretical molecular weight of L-tryptophan is 204 Da. As shown in Figure 8, a signal at m/z 205 appeared in the mass spectrum of the reaction mixture, which is consistent with ionized L-tryptophan appe(Figure 8).\n\n![](images/fbfab6b23fe001741c945bc158e20ad6b7c8b40eb97d6e671c42097f42a8f617.jpg)  \n(A)\n\n![](images/dfc42008e94c69784373233d6e331f3101d50a67533406fb7295b6d0f70d9eb9.jpg)  \n(B)\n\n<sup>Figure</sup> <sup>6.</sup> <sup>FTIR</sup> <sup>spectrum</sup> <sup>of</sup> <sup>L-tryptophan.</sup> <sup>(A:</sup> <sup>Reaction</sup> <sup>product;</sup> <sup>B:</sup> <sup>Standard</sup> <sup>substance).</sup>Figure 6. FTIR spectrum of L-tryptophan. ((A): Reaction product; (B): Standard substance).  \n![](images/dc66049335a96f087a804690987fffa270de7ee6352854486139a01154311f00.jpg)  \nFigure 7. <sup>1</sup>H-NMR spectrum of L-tryptophan.\n\n![](images/c170b6b3228544465a691ade2b432f7ba5659d2c1f438baad71671d432095c3c.jpg)\n\n![](images/58e624f4a60e877cb9cf4ebe856a72f2f82be332f74b7f483b13483c283db63e.jpg)  \n<sub>gure</sub> <sub>8.</sub> <sub>Mass</sub> <sub>spectrum</sub> <sub>of</sub> <sub>L-tryptophan.</sub>Figure 8. Mass spectrum of L-tryptophan.\n\n##"
+    },
+    {
+      "section_id": "sec_0018",
+      "heading": "3.7. Mutation Analysis",
+      "normalized_type": "other",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 26684,
+      "char_end": 28047,
+      "text": "Appropriate modifications of the amino acid residues in the substrate channel can promote the recognition and binding abilities of the enzyme. Through a combination of temperature factor analysis and substrate channel localization, key amino acid residues that afect both the thermal stability and catalytic activity of the enzyme can be identified. In combination with saturation site-specific mutation and screening, target mutant enzymes with improved thermal stability and catalytic activity can be obtained from all the possible mutations. Chimera1.13 was used to analyze the substrate channel space of the enzyme, and it was found that the amino acid at position 395 was located in a loop involved in substrate channel formation (Figure 9). After the mutation of this amino acid from glycine to serine, the spatial orientation freedom of the main chain was reduced, the rigidity of the enzyme was increased, and the thermal stability of the enzyme was improved. Alanine at position 191 was mutated to threonine, which may have changed the folding direction of the loop, thus changing the shape and size of the substrate channel entrance and increasing enzyme activity (Figure 9).\n\n![](images/0bf1ec5b0a48cd0f1193893d63bc469e964231c908b0aab508a7dc41f5d9df8b.jpg)  \nFigure 9. Relationship between the substrate channel and the 191 and 395 binding sites.\n\n##"
+    },
+    {
+      "section_id": "sec_0019",
+      "heading": "4. Discussion",
+      "normalized_type": "discussion",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 28063,
+      "char_end": 32760,
+      "text": "According to the structural information of proteins and sequence comparisons of homologous <sup>According</sup> <sup>to</sup> <sup>the</sup> <sup>structural</sup> <sup>information</sup> <sup>of</sup> <sup>proteins</sup> <sup>and</sup> <sup>sequence</sup> <sup>comparisons</sup> <sup>of</sup> <sup>homolog</sup>proteins, using a rational selection of amino acid residues as targets combined with site-specific mutation of key amino acids, we can screen and obtain target mutants [26–28]. Rational design can improve the substrate specificity of an enzyme by remodeling its active pocket, which is the structura domain of the enzyme responsible for its catalytic function and usually consists of a hydrophobic core The amino acids in the active pocket can be divided into catalytic amino acids and substrate channe amino acids. Substrate molecules enter the active pocket and interact with the substrate channel amino acids, placing the substrate molecules in a favorable conformation for catalysis and allowing completion of the catalytic reaction under the action of the catalytic amino acids. Changing the substrate specificity of the enzyme can expand the range of enzyme substrates by remodeling the active pocket of the enzyme to form a diferent conformation with the substrate molecule or by accepting other substrates The size of the active pocket directly afects the entry and stability of substrate molecules but can also hinder the entry of substrate molecules and prevent the enzyme from accepting more substrates for catalytic reactions. Therefore, the substrate specificity of the enzyme can be modified by regulating the size of its active pocket. For a smaller active pocket, a site-specific mutation can increase the size of the active pocket to accommodate larger substrate molecules, increasing the substrate specificity of the enzyme molecule. The microenvironment of the active pocket, such as its polarity, is critical to the activity of the enzyme. Diferent environments lead to preferences for diferent substrates. According to the spatial structure of an enzyme and the properties of its active pocket, it can be rationally designed to allow the target substrate while maintaining its relative activity and stability to better complete the catalytic reaction. By reducing the polarity of the active pocket, the activity of an enzyme against competitive substrates can be reduced, which is beneficial to accumulating target products in metabolic engineering and improving the specificity of enzyme catalysis. By changing the charge state of the active pocket amino acids, the mutated enzyme has a specificity diferent from that of the wild type. To analyze ethanol dehydrogenase CpRCR, the active pocket was analyzed, and it was found that F285, W286, and W116 constituted the substrate binding pocket of the enzyme. The activity of mutant enzymes was increased by a rational design to increase the size of the substrate-binding pocket [29]. During the study of LfAmDHs, it was found that the two amino residues A113 and T134, located at the distal end of the substrate binding pocket, blocked the opening of the substrate binding pocket, so LfAmDH could only bind smaller substrates. The mutant was obtained by a rational design using site-specific mutations, and the size of the substrate-binding pocket increased the substrate spectrum of the enzyme [30]. Three key regions of lipase CALB were studied to determine its key amino acids: D223 and A281. D223V/A281S was obtained by site-specific saturation mutation, which increased the selectivity of the final product, methyl succinate from 8% to more than 99% [31]. The ketoisopentane decarboxylase of Lactococcus lactis was mutated by rational design. When V461 was mutated into serine, the specificity of the downstream ketoic acid was reduced, which was conducive to the production of the precursor material amyl alcohol [32]. Kaempferol was produced by the metabolic engineering of Saccharomyces cerevisiae [33]. B-FITTER software was used to analyze the crystal structure of tryptophan synthetase to determine the temperature factor (B-factor) of each amino acid locus and to identify the adverse efects on the thermal stability of the enzyme caused by mutations of the key amino acid G395. Then, at this site, fixed-point saturated mutations were performed to build a mutant library, and from the saturated mutant library, screening mutation was found to result in better thermal stability of the enzyme (G395S). The reaction temperature of the mutant enzyme G395S was $5 ^ { \\circ } C$ higher than that of the parent enzyme. Error-prone PCR was used to conduct a directed evolution of the mutant enzyme G395S.\n\n##"
+    },
+    {
+      "section_id": "sec_0020",
+      "heading": "5. Conclusions",
+      "normalized_type": "conclusion",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 32777,
+      "char_end": 34019,
+      "text": "Compared with the parent, the mutant enzyme G395S /A191T had a $K _ { \\mathrm { m } }$ of 0.21 mM and a catalytic eficiency $K _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of 5.38 mM $^ { - 1 } { \\cdot } s ^ { - 1 }$ , which was 4.8 times higher than that of the parent. The conditions for L-tryptophan synthesis by the mutated enzyme were an L-serine concentration of 50 mmol/L, a reaction temperature of $4 0 ^ { \\circ } C ,$ a pH of $^ { 8 , }$ a reaction time of 12 h, and an L-tryptophan yield of 81%.\n\nAuthor Contributions: L.X. and F.H. performed the experiments and analyzed the data; Z.D. coordinated and supervised this study; L.X. and Z.W. drafted and revised the manuscript. All authors have read and agreed to the published version of the manuscript.\n\nFunding: This work was supported by the Anhui Wanbei Industrial Innovation Team Project (Anhui Talents Ofice (2017)No. 2), the project of Suzhou University (2018XJXS02; 2019XJSN05; 2019XJZY10), the Anhui Research Project (17030801022; 2018sjjd044; 2018mooc388; KJ2018A0447; 190808QC146), and the National Innovation and Entrepreneurship Training Program for College Students (201910379046).\n\nConflicts of Interest: The authors declare no conflict of interest.\n\n##"
+    },
+    {
+      "section_id": "sec_0021",
+      "heading": "References",
+      "normalized_type": "references",
+      "page_start": null,
+      "page_end": null,
+      "char_start": 34032,
+      "char_end": 42373,
+      "text": "1. Murciano-Calles, J.; Romney, D.K.; Brinkmann-Chen, S.; Buller, A.R.; Arnold, F.H. A panel of TrpB biocatalysts derived from tryptophan synthase through the transfer of mutations that mimic allosteric activation. Angew. Chem. Int. Ed. 2016, 55, 11577–11581. [CrossRef] [PubMed]\n\n2. Young, R.P.; Caulkins, B.G.; Borchardt, D.; Bulloch, D.N.; Larive, C.K.; Dunn, M.F.; Mueller, L.J. Solution-state (17) O quadrupole central-transition NMR spectroscopy in the active site of tryptophan synthase. Angew. Chem. Int. Ed. 2016, 55, 1350–1354. [CrossRef] [PubMed]\n\n3. Kadumuri, R.V.; Gullipalli, J.; Subramanian, S.; Jaipuria, G.; Atreya, H.S.; Vadrevu, R. Crowding interactions perturb structure and stability by destabilizing the stable core of the α-subunit of tryptophan synthase. FEBS Lett. 2016, 590, 2096–2105. [CrossRef] [PubMed]\n\n4. Smith, D.R.M.; Willemse, T.; Gkotsi, D.S.; Schepens, W.; Maes, B.U.W.; Ballet, S.; Goss, R.J.M. The first one-pot synthesis of L-7-iodotryptophan from 7-iodoindole and serine, and an improved synthesis of other L-7-halotryptophans. Org. Lett. 2014, 16, 2622–2625. [CrossRef] [PubMed]\n\n5. Buller, A.R.; Brinkmann-Chen, S.; Romney, D.K.; Herger, M.; Murciano-Calles, J.; Arnold, F.H. Directed evolution of the tryptophan synthase β-subunit for stand-alone function recapitulates allosteric activation. Proc. Natl. Aacd. Sci. USA 2015, 112, 14599–14604. [CrossRef]\n\n6. Xu, L.S.; Gao, G.Z.; Cao, W.G.; Zhao, L.; Chen, J.; Bao, N.N. Enzymatic synthesis of L-2-methyltrytophan catalyzed by recombinant Escherichia coli with tryptophan synthase activity. Int. J. Simul. Syst. Sci. Technol. 2016, 45, 1–4.\n\n7. Xu, L.S.; Wang, Z.Y.; Mao, P.T.; Liu, J.Z.; Zhang, H.J.; Liu, Q.; Jiao, Q.C. Enzymatic synthesis of S-phenyl-L-cysteine from keratin hydrolysis industries wastewater with tryptophan synthase. Bioresour. Technol. 2013, 133, 635–637. [CrossRef] [PubMed]\n\n8. Xu, L.S.; Zhang, X.T.; Gao, G.Z.; Sun, Y. Highly eficient preparation of active S-phenyl-L-cysteine with tryptophan synthase using a chemoenzymatic method. BMC Biotechnol. 2019, 19, 49. [CrossRef]\n\n9. Lin, B.X.; Fan, K.Q.; Zhao, J.; Ji, J.J.; Wu, L.J.; Yang, K.Q.; Tao, Y. Reconstitution of TCA cycle with DAOCS to engineer Escherichia coli into an eficient whole cell catalyst of penicillin G. Proc. Natl. Aacd. Sci. USA 2015, 112, 9855–9859. [CrossRef]\n\n10. Wijma, H.J.; Floor, R.J.; Bjelic, S.; Marrink, S.J.; Baker, D.; Janssen, D.B. Enantioselective enzymes by computational design and in silico screening. Angew. Chem. Int. Ed. 2015, 54, 3726–3730. [CrossRef]\n\n11. Payne, J.T.; Catherine, B.P.; Lewis, J.C. Directed evolution of RebH for site-selective halogenation of large biologically active molecules. Angew. Chem. Int. Ed. 2015, 54, 4226–4230. [CrossRef] [PubMed]\n\n12. Belsare, K.D.; Andorfer, M.C.; Cardenas, F.S.; Chael, J.R.; Park, H.J.; Lewis, J.C. A Simple combinatorial codon mutagenesis method for targeted protein engineering. ACS Synth. Biol. 2017, 6, 416–420. [CrossRef] [PubMed]\n\n13. Cui, Z.Y.; Jiang, Z.N.; Zhang, J.H.; Zheng, H.H.; Jiang, X.; Gong, K.; Liang, Q.F.; Wang, Q.; Qi, Q.S. Stable and eficient biosynthesis of 5-aminolevulinic acid using plasmid-free Escherichia coli. J. Agric. Food Chem. 2019, 67, 1478–1483. [CrossRef] [PubMed]\n\n14. Zhao, C.C.; Gao, X.; Liu, X.B.; Wang, Y.; Yang, S.L.; Wang, F.Q.; Ren, Y.H. Enhancing biosynthesis of a ginsenoside precursor by self-assembly of two key enzymes in Pichia pastoris. J. Agric. Food Chem. 2016, 64, 3380–3385. [CrossRef]\n\n15. Mu, D.D.; Li, H.W.; Chen, Q.; Zhu, J.; Wu, X.F.; Luo, S.Z.; Zhao, Y.Y.; Wang, L.; Jiang, S.T.; Li, X.J.; et al. Secretion of Bacillus amyloliquefaciens γ-glutamyltranspeptidase from Bacillus subtilis and its application in enzymatic synthesis of L-theanine. J. Agric. Food Chem. 2019, 67, 14129–14136. [CrossRef]\n\n16. Chen, K.; Huang, X.Y.; Jennifer Kan, S.B.; Zhang, R.K.; Arnold, F.H. Enzymatic construction of highly strained carbocycles. Science 2018, 360, 71–75. [CrossRef]\n\n17. Li, G.; Zhang, H.; Sun, Z.; Liu, X.; Reetz, M.T. Multiparameter optimization in directed evolution: Engineering thermostability, enantioselectivity, and activity of an epoxide hydrolase. ACS Catal. 2016, 6, 3679–3687. [CrossRef]\n\n18. Xu, J.; Cen, Y.; Singh, W.; Fan, J.; Wu, L.; Lin, X.; Zhou, J.; Huang, M.; Reetz, M.T.; Wu, Q. Stereodivergent protein engineering of a Lipase to access all possible stereoisomers of chiral esters with two stereocenters. J. Am. Chem. Soc. 2019, 141, 7934–7945. [CrossRef]\n\n19. Chen, Q.J.; Chen, X.; Feng, J.H.; Wu, Q.Q.; Zhu, D.M.; Ma, Y.H. Improving and inverting C β-stereoselectivity of threonine aldolase via substrate-binding-guided mutagenesis and a stepwise visual screening. ACS Catal. 2019, 9, 4462–4469. [CrossRef]\n\n20. Wu, Q.; Soni, P.; Reetz, M.T. Laboratory Evolution of Enantiocomplementary candida antarctica Lipase B mutants with broad substrate scope. J. Am. Chem. Soc. 2013, 135, 1872–1881. [CrossRef]\n\n21. Savile, C.K.; Janey, J.M.; Mundorf, E.C.; Moore, J.C.; Tam, S.; Jarvis, W.R.; Colbeck, J.C.; Krebber, A.; Fleitz, F.J.; Brands, J.; et al. Biocatalytic asymmetric synthesis of chiral amines from ketones applied to sitagliptin manufacture. Science 2010, 329, 305–309. [CrossRef] [PubMed]\n\n22. Rodriguez, A.; Martínez, J.A.; Flores, N.; Escalante, A.; Gosset, G.; Bolivar, F. Engineering Escherichia coli to overproduce aromatic amino acids and derived compounds. Microb. Cell Factories 2014, 13, 126–128. [CrossRef] [PubMed]\n\n23. Caulkins, B.G.; Young, R.P.; Kudla, R.A.; Yang, C.; Bittbauer, T.J.; Bastin, B.; Hilario, E.; Fan, L.; Marsella, M.J.; Dunn, M.F.; et al. NMR crystallography of a carbanionic intermediate in tryptophan synthase: Chemical structure, tautomerization, and reaction specificity. J. Am. Chem. Soc. 2016, 138, 15214–15226. [CrossRef]\n\n24. Huang, Y.M.; You, W.; Caulkins, B.G.; Dunn, M.F.; Mueller, L.J.; Chang, C.A. Protonation states and catalysis: Molecular dynamics studies of intermediates in tryptophan synthase. Protein sci. 2016, 25, 166–183. [CrossRef] [PubMed]\n\n25. Mu, D.; Lu, J.; Shu, C.; Li, H.; Li, X.; Cai, J.; Luo, S.; Yang, P.; Jiang, S.; Zheng, Z. Improvement of the activity and thermostability of microbial transglutaminase by multiple-site mutagenesis. Biosci. Biotechnol. Biochem. 2018, 82, 106–109. [CrossRef]\n\n26. Gao, X.; Wu, J.; Wu, D. Rational design of the beta-galactosidase from Aspergillus oryzae to improve galactooligosaccharide production. Food Chem. 2019, 286, 362–367. [CrossRef] [PubMed]\n\n27. Liang, S.X.; Chen, H.; Liu, J. Rational design of a synthetic Entner-Doudorof pathway for enhancing glucose transformation to isobutanol in Escherichia coli. J. Ind. Microbiol. Biot. 2018, 45, 187–199. [CrossRef]\n\n28. Gu, Y.; Xu, X.H.; Wu, Y.K. Advances and prospects of Bacillus subtilis cellular factories: From rational design to industrial applications. Metab. Eng. 2018, 50, 109–121. [CrossRef]\n\n29. Nie, Y.; Wang, S.; Xu, Y.; Luo, S.; Zhao, Y.-L.; Xiao, R.; Montelione, G.T.; Hunt, J.F.; Szyperski, T. Enzyme engineering based on Xray structures and kinetic profiling of substrate libraries: Alcohol dehydrogenases for stereospecific synthesis of a broad range of chiral alcohols. ACS Catal. 2018, 8, 5145–5152. [CrossRef]\n\n30. Chen, F.-F.; Zheng, G.-W.; Liu, L.; Li, H.; Chen, Q.; Li, F.-L.; Li, C.-X.; Xu, J.-H. Reshaping the active pocket of amine dehydrogenases for asymmetric synthesis of bulky aliphatic amines. ACS Catal. 2018, 8, 2622–2628. [CrossRef]\n\n31. Yang, B.; Wang, H.; Song, W.; Chen, X.L.; Liu, J.; Luo, Q.L.; Liu, L.M. Engineering of the conformational dynamics of lipase to increase enantioselectivity. ACS Catal. 2017, 7, 7593–7599. [CrossRef]\n\n32. Chen, G.S.; Siao, S.W.; She, C.R. Saturated mutagenesis of ketoisovalerate decarboxylase V461 enabled specific synthesis of L-pentanol via the ketoacid elongation cycle. SCI REP-UK 2017, 7, 1–12. [CrossRef] [PubMed]\n\n33. Lyu, X.M.; Zhao, G.L.; Ng, K.R.; Mark, R.; Chen, W.N. Metabolic engineering of Saccharomyces cerevisiae for de novo production of kaempferol. J. Agric. Food Chem. 2019, 67, 5596–5606. [CrossRef] [PubMed]\n\n© 2020 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (http://creativecommons.org/licenses/by/4.0/)."
+    }
+  ],
+  "tables": [
+    {
+      "type": "table",
+      "img_path": "images/3e5140943a1d8c465f442615d759dd0992994f4a5bb1369bdf8d3fc06fc172fb.jpg",
+      "table_caption": [
+        "Table 1. Primers used in this study."
+      ],
+      "table_footnote": [],
+      "table_body": "<table><tr><td>Primer</td><td> $\\mathbf { S e q u e n c e } \\ ( 5 ^ { \\prime } - 3 ^ { \\prime } )$ </td></tr><tr><td>G395S For</td><td>(5′-AACTTTCGTGCTNNNCTTTAGACT-3&#x27;)</td></tr><tr><td>G395S Rev</td><td> $( 5 ^ { \\prime } \\mathrm { - T T T T G C T G G T A C A N N A A A T C C T T C - 3 ^ { \\prime } } )$ </td></tr></table>",
+      "bbox": [
+        124,
+        305,
+        872,
+        360
+      ],
+      "page_idx": 2
+    },
+    {
+      "type": "table",
+      "img_path": "images/7b97e0cc4eda14a48223d84a1e60bd177ca3ecd198b367ce3406683b604dc16b.jpg",
+      "table_caption": [
+        "Table 2. B-factor values of some of the amino acid residues of tryptophan synthase."
+      ],
+      "table_footnote": [],
+      "table_body": "<table><tr><td>Rank</td><td>Residue Sequence Number</td><td>Amino Acid</td><td>B-Factor Value</td></tr><tr><td>1</td><td>395</td><td>Gly</td><td>95.24</td></tr><tr><td>2</td><td>394</td><td>Arg</td><td>93.55</td></tr><tr><td>3</td><td>382</td><td>Lys</td><td>93.34</td></tr><tr><td>4</td><td>393</td><td>Ala</td><td>92.39</td></tr><tr><td>5</td><td>392</td><td>Lys</td><td>89.52</td></tr><tr><td>6</td><td>383</td><td>Asp</td><td>88.7</td></tr><tr><td>7</td><td>313</td><td>His</td><td>88.7</td></tr><tr><td>8</td><td>257</td><td>Pro</td><td>87.61</td></tr><tr><td>9</td><td>329</td><td>Asp</td><td>86.18</td></tr><tr><td>10</td><td>233</td><td>Gly</td><td>86.17</td></tr><tr><td>11</td><td>191</td><td>Ala</td><td>86.06</td></tr><tr><td>12</td><td>234</td><td>Gly</td><td>85.96</td></tr><tr><td>13</td><td>18</td><td>Pro</td><td>85.83</td></tr><tr><td>14</td><td>258</td><td>Gly</td><td>85.79</td></tr><tr><td>15</td><td>388</td><td>His</td><td>85.68</td></tr><tr><td>16</td><td>17</td><td>Val</td><td>85.64</td></tr><tr><td>17</td><td>378</td><td>Gly</td><td>85.18</td></tr><tr><td>18</td><td>190</td><td>Thr</td><td>85.01</td></tr><tr><td>19</td><td>256</td><td>Glu</td><td>83.42</td></tr><tr><td>20</td><td>232</td><td>Gly</td><td>82.93</td></tr></table>",
+      "bbox": [
+        149,
+        329,
+        848,
+        623
+      ],
+      "page_idx": 3
+    },
+    {
+      "type": "table",
+      "img_path": "images/243d674a14b27ddf3749d5f49ad13bec1ade4016af2ac7e5ee4a06be6789dbf2.jpg",
+      "table_caption": [
+        "Table 3. Kinetic parameters of tryptophan synthase and its mutants."
+      ],
+      "table_footnote": [
+        "Mean values of three independent replicate ± standard deviation."
+      ],
+      "table_body": "<table><tr><td>Mutations</td><td> $K _ { \\mathbf { m } } \\left( \\mathbf { m } \\mathbf { M } \\right)$ </td><td> $k _ { \\mathrm { c a t } } ( \\mathbf { s } ^ { - 1 } )$ </td><td> $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$  (mM  ${ \\bf \\Pi } ^ { - 1 } { \\boldsymbol { \\cdot } } { \\bf s } ^ { \\mathrm { ~ - 1 } } )$ </td><td>Fold Change over WT</td></tr><tr><td>WT</td><td> $0 . 3 1 \\pm 0 . 1 1$ </td><td> $0 . 3 5 \\pm 0 . 0 9$ </td><td> $1 . 1 2 \\pm 0 . 0 7$ </td><td>1</td></tr><tr><td>G395S</td><td> $0 . 3 2 \\pm 0 . 1 4$ </td><td> $0 . 4 2 \\pm 0 . 1 1$ </td><td> $1 . 3 1 \\pm 0 . 1 0$ </td><td>1.16</td></tr><tr><td>G395S/A191T</td><td> $0 . 2 1 \\pm 0 . 1 0$ </td><td> $1 . 1 3 \\pm 0 . 1 2$ </td><td> $5 . 3 8 \\pm 0 . 1 1$ </td><td>4.80</td></tr></table>",
+      "bbox": [
+        210,
+        824,
+        788,
+        877
+      ],
+      "page_idx": 4
+    }
+  ],
+  "figures": [
+    {
+      "type": "image",
+      "img_path": "images/f97f01b198e4f36c15abc80c7e40077b78e6c01e39e0c507cbb6f7af1236b765.jpg",
+      "image_caption": [],
+      "image_footnote": [],
+      "bbox": [
+        783,
+        318,
+        872,
+        342
+      ],
+      "page_idx": 0
+    },
+    {
+      "type": "image",
+      "img_path": "images/0bf1ec5b0a48cd0f1193893d63bc469e964231c908b0aab508a7dc41f5d9df8b.jpg",
+      "image_caption": [
+        "Figure 9. Relationship between the substrate channel and the 191 and 395 binding sites."
+      ],
+      "image_footnote": [],
+      "bbox": [
+        151,
+        639,
+        845,
+        818
+      ],
+      "page_idx": 7
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p1:b105e0ef4e30",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 103,
+      "char_end": 208,
+      "quote_hash": "b105e0ef4e3090e03b8207471b1ad1cb0f7871bc480a39f5681b7acfb15eaa9b"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p2:9b180bb1a21f",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 210,
+      "char_end": 347,
+      "quote_hash": "9b180bb1a21f0207170fb0a0f441bbbd13b599136a0c6367472806096073ec26"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p3:5ac5bc158c72",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 349,
+      "char_end": 464,
+      "quote_hash": "5ac5bc158c7244ffd75fa74541d56b00c26eb5f3e84042863389098bd14e5dbe"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p4:df7df472d92e",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 466,
+      "char_end": 532,
+      "quote_hash": "df7df472d92e9801d93007682eeb55a57d1cfdc491bb094989f6f411d8546f7c"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p5:26cca5f0ae35",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 534,
+      "char_end": 606,
+      "quote_hash": "26cca5f0ae3588f9ac84382f376d914b525e94d56f37edd6f345285480b06bb9"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p6:0744431b0031",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 608,
+      "char_end": 688,
+      "quote_hash": "0744431b00311e65e91286520090d1605273e717011838d84669b59150e3cc0a"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p7:47ef35977a21",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 690,
+      "char_end": 2166,
+      "quote_hash": "47ef35977a216bdc4c4471e5e16ec7d0c154db793b56372e5c9f674eba03beb7"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0001:p8:5add368c9ce7",
+      "page_number": null,
+      "section_id": "sec_0001",
+      "char_start": 2168,
+      "char_end": 2248,
+      "quote_hash": "5add368c9ce78dd38437289fd85a02f0e816f2b67fdd21400b6813d91791b7de"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0002:p1:b18178a53a76",
+      "page_number": null,
+      "section_id": "sec_0002",
+      "char_start": 2272,
+      "char_end": 3749,
+      "quote_hash": "b18178a53a76c97897629a4b618afcd147e03d0c19d09ef14f328ae9cd38d65b"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0002:p2:451727b63078",
+      "page_number": null,
+      "section_id": "sec_0002",
+      "char_start": 3751,
+      "char_end": 6906,
+      "quote_hash": "451727b630789855cce68faf1b81dd238b23903acc7b70a1cf2b98675a401b5f"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0004:p1:6f3b04063d3e",
+      "page_number": null,
+      "section_id": "sec_0004",
+      "char_start": 6992,
+      "char_end": 7247,
+      "quote_hash": "6f3b04063d3e56256cd55ad21e661a2c335c875b332885d55f7eaea51659fe15"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0005:p1:db909a8d922b",
+      "page_number": null,
+      "section_id": "sec_0005",
+      "char_start": 7274,
+      "char_end": 7862,
+      "quote_hash": "db909a8d922b3f9e8181e8890e952e0da780889b062e47cc16f3959b466525d2"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0006:p1:341bc00896d1",
+      "page_number": null,
+      "section_id": "sec_0006",
+      "char_start": 7907,
+      "char_end": 9180,
+      "quote_hash": "341bc00896d1022969d8612b0427a8df37c46bd049c7dd9545255daa0283b187"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0006:p2:faea9ad96baa",
+      "page_number": null,
+      "section_id": "sec_0006",
+      "char_start": 9182,
+      "char_end": 9546,
+      "quote_hash": "faea9ad96baaab6edf82f8a4416b160c956cd6b17a89b58ee9e85226d52e42dd"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0007:p1:37f506b437b5",
+      "page_number": null,
+      "section_id": "sec_0007",
+      "char_start": 9590,
+      "char_end": 10444,
+      "quote_hash": "37f506b437b5eda27c7e11eaf6351bd89a7d5543f5be86c999b1f1cf880affa8"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0008:p1:f91e9f68eef6",
+      "page_number": null,
+      "section_id": "sec_0008",
+      "char_start": 10486,
+      "char_end": 11728,
+      "quote_hash": "f91e9f68eef6bd6dbc1517c46dcf678d674db01de97d1c3d08bf20b0d05ffe02"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0009:p1:d525c78ab3eb",
+      "page_number": null,
+      "section_id": "sec_0009",
+      "char_start": 11762,
+      "char_end": 11964,
+      "quote_hash": "d525c78ab3eb68e216cc2b0f647671a61a6084fbed8d6432bfeaa4b6f42c372f"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0010:p1:0158d0eca23c",
+      "page_number": null,
+      "section_id": "sec_0010",
+      "char_start": 12022,
+      "char_end": 12333,
+      "quote_hash": "0158d0eca23c0b6185dcb9a7c2bc79519a8ed5bbd97b7ed172e0d2f61a43bc91"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0010:p2:25ec0909da13",
+      "page_number": null,
+      "section_id": "sec_0010",
+      "char_start": 12335,
+      "char_end": 12621,
+      "quote_hash": "25ec0909da13d494158f0a16e4cb3c7ff5d6df0d8240ef098bae821e8c4e3542"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0012:p1:dd04cd39e8a1",
+      "page_number": null,
+      "section_id": "sec_0012",
+      "char_start": 12679,
+      "char_end": 13145,
+      "quote_hash": "dd04cd39e8a12726734d6bbb2a22537b6853ab1f5e0f11387155a59452b5b3b7"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0012:p2:f7b1ff70539a",
+      "page_number": null,
+      "section_id": "sec_0012",
+      "char_start": 13147,
+      "char_end": 14489,
+      "quote_hash": "f7b1ff70539a345ededbb10d2426893d560e0e97c9d2ee45775b8c7a799afc28"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0013:p1:d64ed50bd568",
+      "page_number": null,
+      "section_id": "sec_0013",
+      "char_start": 14529,
+      "char_end": 14885,
+      "quote_hash": "d64ed50bd5681e43fd02b2ebd6a53e8c146a1ba0fe042e8bb3ee425ed08f898f"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0014:p1:bb1e3a3c75e0",
+      "page_number": null,
+      "section_id": "sec_0014",
+      "char_start": 14939,
+      "char_end": 15611,
+      "quote_hash": "bb1e3a3c75e0e328691f12c4fcadd2ec938f1e4d9b23cafee3ff48ceb41d15c3"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0014:p2:4f068453cc54",
+      "page_number": null,
+      "section_id": "sec_0014",
+      "char_start": 15613,
+      "char_end": 16442,
+      "quote_hash": "4f068453cc5494c67c884bfa3527983f1bc6463a8d75028a45966404869e56f1"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0015:p1:1a6ad3b7e781",
+      "page_number": null,
+      "section_id": "sec_0015",
+      "char_start": 16474,
+      "char_end": 18946,
+      "quote_hash": "1a6ad3b7e7819f9c5414165f430f6fdba6a3f65c25c8625c709eb6bc7fb5309a"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0015:p2:0269069f655c",
+      "page_number": null,
+      "section_id": "sec_0015",
+      "char_start": 18948,
+      "char_end": 20083,
+      "quote_hash": "0269069f655c5c043b4b5174a6f20105d712c20e2b789fee209a43213b131d69"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0015:p3:de9a217bc007",
+      "page_number": null,
+      "section_id": "sec_0015",
+      "char_start": 20085,
+      "char_end": 20924,
+      "quote_hash": "de9a217bc007fbafb87ff579dd7c0daceeb71df9fa4108e995fc9dc55e77cf1b"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0015:p4:6d47e792984f",
+      "page_number": null,
+      "section_id": "sec_0015",
+      "char_start": 20926,
+      "char_end": 20990,
+      "quote_hash": "6d47e792984f041abc407e89bb99513b607beb98b395eb8bcecef1a218e8c98a"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0016:p1:f341cfa9b4be",
+      "page_number": null,
+      "section_id": "sec_0016",
+      "char_start": 21029,
+      "char_end": 22959,
+      "quote_hash": "f341cfa9b4be49294517ff4c35446a0ae0058f3bc5b42855019e7584d5738ef6"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0016:p2:00b0466d5211",
+      "page_number": null,
+      "section_id": "sec_0016",
+      "char_start": 22961,
+      "char_end": 23875,
+      "quote_hash": "00b0466d5211aa69be86c6aaadf4c3bc0d49fcaa37c65cb4bf859ee21ca5ef5b"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0016:p3:6db898fced6f",
+      "page_number": null,
+      "section_id": "sec_0016",
+      "char_start": 23877,
+      "char_end": 24447,
+      "quote_hash": "6db898fced6fe668f887cd11a71a6565af020021a9cc803c8c77b9627171cec2"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0016:p4:344b093247ea",
+      "page_number": null,
+      "section_id": "sec_0016",
+      "char_start": 24449,
+      "char_end": 24854,
+      "quote_hash": "344b093247ea52ce8af0529950e4dd59ef4d4fb256a06611962879ebd7e5e1c8"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0017:p1:ba7727472ae0",
+      "page_number": null,
+      "section_id": "sec_0017",
+      "char_start": 24914,
+      "char_end": 25716,
+      "quote_hash": "ba7727472ae0363b0ade6e69424632daa8f651950a8932e5364c19a551445774"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0017:p2:ca200607e8f0",
+      "page_number": null,
+      "section_id": "sec_0017",
+      "char_start": 25718,
+      "char_end": 25804,
+      "quote_hash": "ca200607e8f0fee03d08795fe74594200534d99408d40869bba8dba0e2a0da14"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0017:p3:47654e8485c9",
+      "page_number": null,
+      "section_id": "sec_0017",
+      "char_start": 25806,
+      "char_end": 25892,
+      "quote_hash": "47654e8485c9e52176f689da822a0da7e649798f730a4a36a1a6a602546fe3b6"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0017:p4:6b42df7792bb",
+      "page_number": null,
+      "section_id": "sec_0017",
+      "char_start": 25894,
+      "char_end": 26341,
+      "quote_hash": "6b42df7792bb9f56fda5fe11ade079c879589626b657be2fdcb251eee90a2827"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0017:p5:e17884fe38be",
+      "page_number": null,
+      "section_id": "sec_0017",
+      "char_start": 26343,
+      "char_end": 26423,
+      "quote_hash": "e17884fe38be23692bbad96802ea892384b0913235ada340bea81062fc4e8ced"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0017:p6:a64a8316ed5e",
+      "page_number": null,
+      "section_id": "sec_0017",
+      "char_start": 26425,
+      "char_end": 26652,
+      "quote_hash": "a64a8316ed5e935aa92bee714f6ad592576604637841a410ec891c8091cea409"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0018:p1:caff9c89eb7b",
+      "page_number": null,
+      "section_id": "sec_0018",
+      "char_start": 26683,
+      "char_end": 27868,
+      "quote_hash": "caff9c89eb7b28f56710d01fae5e7b9d1db06fe01489f5ba7a03bc10a11f7fe5"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0018:p2:2bce5b90b1be",
+      "page_number": null,
+      "section_id": "sec_0018",
+      "char_start": 27870,
+      "char_end": 28040,
+      "quote_hash": "2bce5b90b1be687143527ffce8f35a33725b2a4e099c2bf69f3e8907b00c41de"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0019:p1:58585d377320",
+      "page_number": null,
+      "section_id": "sec_0019",
+      "char_start": 28062,
+      "char_end": 32753,
+      "quote_hash": "58585d3773201a2ed24383bd9ebc03c26dd063a753c921a8aa3bbd2959459dd2"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0020:p1:042b6fe616ae",
+      "page_number": null,
+      "section_id": "sec_0020",
+      "char_start": 32776,
+      "char_end": 33294,
+      "quote_hash": "042b6fe616ae0bab2fd024dea31a959f9be04a961de92c4073bb06d29c711bd5"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0020:p2:13aa5c2c33d4",
+      "page_number": null,
+      "section_id": "sec_0020",
+      "char_start": 33296,
+      "char_end": 33551,
+      "quote_hash": "13aa5c2c33d48e5df238c37de567afeea5bdea1e69801f35e0b151b361fd7988"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0020:p3:3a5131a0ca42",
+      "page_number": null,
+      "section_id": "sec_0020",
+      "char_start": 33553,
+      "char_end": 33943,
+      "quote_hash": "3a5131a0ca42cd17ca8bf55b0c43ecba5a44c43f1c4f6ec15fb37aad1e3fcd48"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0020:p4:edc2e5ae34ce",
+      "page_number": null,
+      "section_id": "sec_0020",
+      "char_start": 33945,
+      "char_end": 34012,
+      "quote_hash": "edc2e5ae34cefdfccae74d885b51e4cc35bf299e4d1d4920ab4641273d1ba193"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p1:3b102cc71bc3",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 34031,
+      "char_end": 34310,
+      "quote_hash": "3b102cc71bc3a3d6bb97a0b73660bc149007a071fc3d6a014bb12f6a8304ec9c"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p2:772b1fe0ec17",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 34312,
+      "char_end": 34588,
+      "quote_hash": "772b1fe0ec178ba4bc32963950233c871d8c672724f1e8d98cd9a39a1a171f22"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p3:955b22fe2a8a",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 34590,
+      "char_end": 34862,
+      "quote_hash": "955b22fe2a8a9e8fa0c1c10318331603aaae0eeeef30f2e154c9e552799fabe0"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p4:e25a5b95f1fd",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 34864,
+      "char_end": 35150,
+      "quote_hash": "e25a5b95f1fd9fe40418d354958bc83e21aab9a31f5c6b01633a4e7f2606c96a"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p5:fa2b5b88b879",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 35152,
+      "char_end": 35428,
+      "quote_hash": "fa2b5b88b879334c19099dea16d8cdb46866475001e806b19da99ca6c226a3c0"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p6:587bac444d87",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 35430,
+      "char_end": 35664,
+      "quote_hash": "587bac444d8736a94ffb28fde89937aa52c379dd426593361b350ec0835be214"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p7:562f78642146",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 35666,
+      "char_end": 35920,
+      "quote_hash": "562f78642146b351e317ed49c2ed3b7e96aecc06cc8238c6056715360f832889"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p8:69d152dac946",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 35922,
+      "char_end": 36121,
+      "quote_hash": "69d152dac946b110e3a4fc91d7ab86a2e6d37538c14885f420f4cc3c42f8b373"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p9:386b70db20fe",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 36123,
+      "char_end": 36379,
+      "quote_hash": "386b70db20fe24319c6c9bd12d864c63b8e896dc9ed823a6833ce3b0eef51daf"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p10:11948b7d0f80",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 36381,
+      "char_end": 36590,
+      "quote_hash": "11948b7d0f80c574dd8f976932f72ac1c75e2cea314d268bfbc875cac9d8536f"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p11:0706f5572e17",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 36592,
+      "char_end": 36799,
+      "quote_hash": "0706f5572e17361fa0a56b28c5a5af0620a2ed10a973456f39984aa4937ca7a1"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p12:878146635239",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 36801,
+      "char_end": 37025,
+      "quote_hash": "878146635239ca8d93dfd28b4a8360a92f0ec262e7da9637f05db352b5873fb3"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p13:54d4d4f3e45b",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 37027,
+      "char_end": 37290,
+      "quote_hash": "54d4d4f3e45be5172e89967909ff7b8fd4abdf7795c7d4263a192c689049a437"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p14:ae65496f0473",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 37292,
+      "char_end": 37530,
+      "quote_hash": "ae65496f0473f53341c3f09f05cd60a0c8a293db7e0ae4409ebef2f5d09fd757"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p15:1575edec8bdc",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 37532,
+      "char_end": 37848,
+      "quote_hash": "1575edec8bdc1ba5210341ba8f3615cbbdce09dd5cdf9f45077e42042dc97e30"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p16:bfbcc1bb5d21",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 37850,
+      "char_end": 38014,
+      "quote_hash": "bfbcc1bb5d21df259063386cfe5c94cc0280af46d3529ddd3a72f5da1c2cc825"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p17:366e9dd2db46",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 38016,
+      "char_end": 38248,
+      "quote_hash": "366e9dd2db469e004d1d303939ccd3a533e1d2133dbe14dcaf25427d9e1d4150"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p18:9deeb332c14c",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 38250,
+      "char_end": 38525,
+      "quote_hash": "9deeb332c14cf00f43d87b9f045d8c74d0400e40193af87e9dcf0fae10924861"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p19:79077aa9ac58",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 38527,
+      "char_end": 38778,
+      "quote_hash": "79077aa9ac5880b225a39bb9c7cc4fe99dabefbe4b9b4b17faacd535641ed467"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p20:5dfa448f38a2",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 38780,
+      "char_end": 38973,
+      "quote_hash": "5dfa448f38a2f7fa949755e31d6ab1a4686b9e8e973a7a2b5211eaf013bc0925"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p21:e7c90d43883b",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 38975,
+      "char_end": 39265,
+      "quote_hash": "e7c90d43883b52de89010f48549a5fdef96bfddac7946c1c741ef28b3df209c2"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p22:1989cc0834c8",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 39267,
+      "char_end": 39502,
+      "quote_hash": "1989cc0834c8de5f4abd442127ac99058b1877be2b8f3d9a8472cbf7341ece44"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p23:1fcb8d13f22d",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 39504,
+      "char_end": 39835,
+      "quote_hash": "1fcb8d13f22d12f9b866c5cc462ce640aa9a1ce3ca1b8aa343df2730be805d33"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p24:2a5128152304",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 39837,
+      "char_end": 40071,
+      "quote_hash": "2a5128152304b344366015b6c7cc04a485923c810b8ad743d5ebdab8daf8f283"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p25:a0e5ac5c22c5",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 40073,
+      "char_end": 40333,
+      "quote_hash": "a0e5ac5c22c50573fcdb473b1c08d084dcf68b8f6e0237d686b04a061ba056c4"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p26:985b86c2e4c7",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 40335,
+      "char_end": 40525,
+      "quote_hash": "985b86c2e4c702a880033c1b4eb208d34f4f1da8c64b0e53ae2b45aedf6b9793"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p27:bbafea0a4f95",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 40527,
+      "char_end": 40743,
+      "quote_hash": "bbafea0a4f953fbdd75a2669a2a4f38e784dfa570cb7b6ea37b5dac72c800b8b"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p28:a6a0992eef10",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 40745,
+      "char_end": 40930,
+      "quote_hash": "a6a0992eef10060771a9d778fce49ebc1ff547bc9ec16596d6b6e5af5cd1df85"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p29:a96873c8a0f6",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 40932,
+      "char_end": 41259,
+      "quote_hash": "a96873c8a0f6d35be5990e601694dae6e90f15247281b9ad6e0ff81ce73b6e0c"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p30:fe1a12e837f8",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 41261,
+      "char_end": 41496,
+      "quote_hash": "fe1a12e837f84a56361eee3e49f2a47a27af9cc11f7fd7765622ee931b2dd86b"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p31:84f5177a6bf6",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 41498,
+      "char_end": 41700,
+      "quote_hash": "84f5177a6bf6e7fe06247f8e54f4b79943ed2f8c917a8e5c3ccf8f768d03a5a9"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p32:a192042c1c42",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 41702,
+      "char_end": 41921,
+      "quote_hash": "a192042c1c42d9591b8fcc00fa7aeb63bfc948112819fd759fe6556705afa783"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p33:2ace2cec8e32",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 41923,
+      "char_end": 42130,
+      "quote_hash": "2ace2cec8e32ad52c1a4fab16d0e8d338c19c4a2f703109d7f8688b1085d0154"
+    },
+    {
+      "anchor_id": "paper_db18be686c5c0f5c:sec_0021:p34:5d67cf455db1",
+      "page_number": null,
+      "section_id": "sec_0021",
+      "char_start": 42132,
+      "char_end": 42370,
+      "quote_hash": "5d67cf455db13cb7c42c094542e20a400d7511c57fabf1f5f5dc47a7ed328417"
+    }
+  ],
+  "text": "# Engineering Improves Enzymatic Synthesis of L-Tryptophan by Tryptophan Synthase from Escherichia coli\nLisheng Xu <sup>1,</sup>\\*, Fangkai Han <sup>1</sup>, Zeng Dong <sup>1</sup> and Zhaojun Wei <sup>2</sup>\n\n1 Department of Life and Food Science, Suzhou University, Suzhou 234000, China; hanfk11@ahszu.edu.cn (F.H.); dongzeng@ahszu.edu.cn (Z.D.)\n\n2 School of Food and Biological Engineering, Hefei University of Technology, Hefei 230009, China; zjwei@hfut.edu.cn\n\n\\* Correspondence: xulisheng@ahsztc.edu.cn; Tel.: +86-557-287-1681\n\nReceived: 23 March 2020; Accepted: 3 April 2020; Published: 5 April 2020\n\n![](images/f97f01b198e4f36c15abc80c7e40077b78e6c01e39e0c507cbb6f7af1236b765.jpg)\n\nAbstract: To improve the thermostability of tryptophan synthase, the molecular modification of tryptophan synthase was carried out by rational molecular engineering. First, B-FITTER software was used to analyze the temperature factor (B-factor) of each amino acid residue in the crystal structure of tryptophan synthase. A key amino acid residue, G395, which adversely afected the thermal stability of the enzyme, was identified, and then, a mutant library was constructed by site-specific saturation mutation. A mutant (G395S) enzyme with significantly improved thermal stability was screened from the saturated mutant library. Error-prone PCR was used to conduct a directed evolution of the mutant enzyme (G395S). Compared with the parent, the mutant enzyme (G395S /A191T) had a $K _ { \\mathrm { m } }$ of 0.21 mM and a catalytic eficiency $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of $5 . 3 8 \\mathrm { m M ^ { - 1 } { \\cdot } s ^ { - 1 } }$ , which was 4.8 times higher than that of the wild-type strain. The conditions for L-tryptophan synthesis by the mutated enzyme were a L-serine concentration of 50 mmol/L, a reaction temperature of $4 0 ~ ^ { \\circ } \\mathrm { C } ,$ pH of 8, a reaction time of 12 h, and an L-tryptophan yield of 81%. The thermal stability of the enzyme can be improved by using an appropriate rational design strategy to modify the correct site. The catalytic activity of tryptophan synthase was increased by directed evolution.\n\nKeywords: tryptophan synthase; thermostability; L-tryptophan; directed evolution\n\n##\n\n# 1. Introduction\nTryptophan is a precursor of serotonin, an important neurotransmitter, and an essential amino acid in the human body. Tryptophan synthetase (EC 4.2.1.20) is a heterotetramer with an aaββ subunit structure in Escherichia coli. The enzyme can synthesize L-tryptophan with indole and L-serine as substrates. In L-tryptophan metabolism, tryptophan synthase is one of the important enzymes that afect the yield of L-tryptophan. The trp B and trp A genes (or trp BA genes) coexist in the tryptophan operon of the E. coli genome. The function of the a subunit is to decompose indole-3-glycerol phosphate into indole and glyceraldehyde-3-phosphate, while the function of the β subunit is to synthesize L-tryptophan [1–3]. The substrate spectra of tryptophan synthase derived from Salmonella, including fluorine, chlorine, bromine, and iodine-substituted indole derivatives, have been reported in the literature. This enzyme can synthesize L-tryptophan derivatives [4]. The active sites of tryptophan synthase in Pyrococcus furiosus mainly include Asp300, Glu104, Lys82, and Ala106, among which hydrogen bond formation between substrate complex E(Aex1) and Asp300 plays an important role in the catalytic process. The tryptophan synthase from Pyrococcus furiosus was modified via directed evolution, and the ability of the enzyme to synthesize 5-bromo-L-tryptophan and 6-hydroxy-L-tryptophan was promoted by modification of the tryptophan synthase β subunit [5]. S-phenyl-L-cysteine and\n\nL-2-methyltryptophan were synthesized by tryptophan synthase [6–8]. However, modification of the tryptophan synthase derived from E. coli K-12 has not been reported. In recent years, the molecular modification was applied to enzyme catalysis [9–12]. Useful compounds such as 5-aminolevulinic acid, ginsenoside, and L-theanine can be synthesized from microorganisms [13–15]. Frances Arnold proposed the concept of directed evolution of enzymes in the 1990s. Directed evolution greatly broadens the biocatalytic potential of an enzyme by modifying its corresponding gene sequence, enabling it to possess a wide range of substrate universality and even catalyze entirely new chemical reactions. Through the directed evolution of the cytochrome P411 enzyme, dicyclobutane, and cyclopropylene were eficiently synthesized [16]. The thermal stability, spatial selectivity, and activity of epoxide hydrolase were optimized by iterative saturation mutation and triplet codon saturation mutation strategies [17]. An eficient protein engineering strategy based on the fusion of directed evolution and rational design was used to obtain lipase mutant strains with high stereoselectivity, and the strategy required minimal screening. Crystal structure analysis and molecular dynamics simulation of the nonaqueous phase were used to explain the specific stereoselectivity and the molecular mechanism of the four mutant strains, respectively [18]. Directed evolution was used to modify threonine aldolase to improve the synergistic efect of its amino acid residues [19]. High stereoselective mutations in the R and S isomers of a-2-aryl propionate were obtained by iterative saturation mutation directed evolution of its active sites. Nearly 1000 mutant strains of Candida antarctica lipase B were selected for high-throughput screening [20]. By mutating transaminase, its biocatalytic activity increased by 25,000 times, and the modified transaminase could be used in the green production of the hypoglycemic drug citastatin [21]. The biosynthesis pathway of tryptophan in Escherichia coli mainly includes the central metabolic pathway, a common pathway, and a branch pathway. In the central metabolic pathway, the ppsA and tktA genes play key roles in the generation of phosphoenolpyruvate, precursors of tryptophan biosynthesis. In the common pathway, 3-deoxy-D-arabino-heptulosonate-7-phosphate (DAHP) synthase catalyzes the condensation of E4P and phoshoenolpyruvate to produce DAHP as a rate-limiting step. In the branching pathway, anthranilic acid synthetase is the key enzyme in tryptophan biosynthesis [22]. The molecular kinetics of the catalysis of tryptophan synthetase have been studied. The structure and reaction mechanism of tryptophan synthetase from Salmonella typhimurium have been analysed by NMR [23,24]. Excellent thermostability and catalytic activity of tryptophan synthase were needed in industrial production. In this study, tryptophan synthase derived from Escherichia coli K-12 was modified by directed evolution and rational design to improve its activity and thermostability. L-tryptophan was synthesized by modified tryptophan synthetase.\n\n##\n\n# 2. Materials and Methods\n##\n\n# 2.1. Chemicals, Strains and Culture Conditions\nThe plasmid extraction kit, DNA polymerase, indole, and isopropyl-beta-D-thiogalactopyranoside (IPTG) were purchased from Sangon Biotech (Shanghai, China) Co., Ltd. E. coli BL21(DE3) and the expression plasmid pet-28a (+) were preserved in our laboratory.\n\n##\n\n# 2.2. Mutation Site\nReetz et al. successfully improved the stability of Bacillus subtilis lipase based on B-FITTER [18]. In this study, B-FITTER software was used to analyze the temperature factors of 397 amino acid residues of tryptophan synthase trpB (PDB: 2dh6), and the temperature factors were obtained. The temperature factors of the amino acid residues within the entrance range of the substrate channel were analyzed by a Swiss-model online simulation of the three-dimensional structure. According to the temperature factor, the key amino acid residues related to substrate binding were screened out.\n\n##\n\n# 2.3. Site-Saturated Mutation Library\npET-28a (+) was used as the template plasmid for site-specific saturation mutation of 395 amino acids. The primers used for mutagenesis are presented in Table 1. The PCR reaction system included 10× PCR bufer solution, 2.5 $\\mathrm { m m o l { \\cdot } L ^ { - 1 } }$ dNTP mixture, $1 5 \\mathrm { p m o l { \\cdot } L ^ { - 1 } }$ primers, $\\mathrm { p E T } 2 8 \\mathsf { a } ( + ) { \\cdot } \\mathrm { t r p } \\ \\mathsf { B } ,$ and $5 \\mathrm { U } { \\cdot } \\mathrm { L } ^ { - 1 }$ DNA polymerase (PCR reaction system 50 µL). The PCR reaction conditions included denaturation at 95 $^ { \\circ } \\mathrm { C } \\mathrm { f o r } 4$ min, followed by 20 cycles of $9 5 ~ ^ { \\circ } \\mathrm { C }$ for 30 $s , 5 5 ^ { \\circ } C$ for 1 min, and $7 2 ^ { \\circ } \\mathrm { C }$ for 16 min, and finally, $7 2 ^ { \\circ } \\mathrm { C }$ for 5 min. The PCR products were enzymatically digested at $3 7 ^ { \\circ } \\mathrm { C }$ for 4 h to eliminate the parent template, and the enzymatic hydrolysis products were transformed into E. coli BL21(DE3) competent cells by the calcium chloride method. The transformation liquid was coated with agar medium containing $5 0 ~ { \\mu \\mathrm { g } } { \\cdot } \\mathrm { L } ^ { - 1 }$ kanamycin to obtain the site-saturated mutant library.\n\nTable 1. Primers used in this study.\n<table><tr><td>Primer</td><td> $\\mathbf { S e q u e n c e } \\ ( 5 ^ { \\prime } - 3 ^ { \\prime } )$ </td></tr><tr><td>G395S For</td><td>(5′-AACTTTCGTGCTNNNCTTTAGACT-3&#x27;)</td></tr><tr><td>G395S Rev</td><td> $( 5 ^ { \\prime } \\mathrm { - T T T T G C T G G T A C A N N A A A T C C T T C - 3 ^ { \\prime } } )$ </td></tr></table>\n\n##\n\n# 2.4. Error-Prone PCR Mutant Library\nWith pET-28a (+)-trpB as the template, the trans-EasyTaq DNA Polymerase kit was used to introduce random mutations in the full-length trpB gene. Recombinant mutant plasmids were constructed. The genes were synthesized by Sangon Biotech (Shanghai, China) Co., Ltd. The target gene was constructed between the BamH I and Hind III cleavage sites of the pET-28a (+) vector. Successfully transformed clones were inoculated in 5 mL LB liquid medium (50 µg·mL<sup>−1</sup> Kan), were cultured at $3 7 ~ ^ { \\circ } \\mathrm { C }$ and $2 0 0 \\ \\mathrm { r } { \\cdot } \\mathrm { m i n } ^ { - 1 }$ for 8 h and were then transferred to 50 mL LB liquid medium $( 5 0 ~ \\mu \\mathrm { g } \\cdot \\mathrm { m L } ^ { - 1 }$ Kan). IPTG was added at $1 8 ~ ^ { \\circ } \\mathrm { C }$ for induction. The mutant library was obtained by transforming E. coli competent cells.\n\n##\n\n# 2.5. Screening of Mutated Enzymes\nLB liquid medium (200 mL) was added to each well of the 96-well plate $( 5 0 \\mu \\mathrm { g } \\cdot \\mathrm { m L } ^ { - 1 } \\mathrm { K a n } )$ . A single colony was selected from the plate with a sterilized toothpick and inoculated into the 96 shallow orifice plate $( 3 7 ^ { \\circ } \\mathrm { C } , 2 0 0 \\ r { \\cdot } \\mathrm { m i n } ^ { - 1 } , 3 \\mathrm { h } )$ . IPTG was added at $1 8 ~ ^ { \\circ } \\mathrm { C }$ for induction. The fermentation broth was centrifuged $( 4 ^ { \\circ } \\mathrm { C } , 4 0 0 0 \\mathrm { r } { \\cdot } \\mathrm { m i n } ^ { - 1 }$ ,10 min). The cells were washed with PBS bufer and were then added to the reaction plate according to the corresponding position. L-Serine $( 1 0 \\mathrm { m m o l { \\cdot } L ^ { - 1 } } )$ was added to the reaction plate $( 3 7 ^ { \\circ } \\mathrm { C } ,$ 30 min, 200 r·min<sup>−1</sup>). After the reaction, the reactant was centrifuged $( 4 \\ ^ { \\circ } C ,$ $4 0 0 0 \\mathrm { r } { \\cdot } \\mathrm { m i n } ^ { - 1 } , 1 0 \\mathrm { m i n } )$ . The absorbance value at 290 nm was determined by $\\mathrm { E L I A S A } ,$ and the mutant strain with an absorbance value that increased relative to the absorbance value of TrpB was selected for re-screening.\n\n##\n\n# 2.6. Protein Purification\nTo purify tryptophan synthase, the supernatant was applied to a Ni-NTA column based on the methods described in the literature [25]. The quality of purified tryptophan synthase was analyzed by SDS-PAGE.\n\n##\n\n# 2.7. Synthesis and Identification of L-tryptophan\nL-tryptophan (Alighting reagent Co., Ltd., Shang hai, China) was synthesized by tryptophan synthase from L-serine and indole (50 mmol/L L-serine, 50 mmol/L indole, $4 0 ~ ^ { \\circ } \\mathrm { C } ,$ , pH 8, 12 h). L-tryptophan was analyzed with an FT-IR Spectrometer ( Gangdong Sci & Tech. Co., Ltd., Tianjing,\n\nChina), Nuclear Magnetic Resonance Spectrometer (Bruker Avance 500 MHz, Switzerland), and Liquid Chromatography-Mass Spectrometer (Agilent, Palo alto, California, USA). SPSS 22.0 (SPSS, Chicago, Illinois, USA) was used to calculate the standard error and the significance of diferences.\n\n##\n\n# 3. Results\n##\n\n# 3.1. Selection of Mutation Sites\nB-FITTER software was used to analyze 397 amino acid residue sites of tryptophan synthase and obtain their temperature factor values. Then, the temperature factor values of the amino acids at the entrance of the substrate channel were sorted, and the top 20 amino acid residue sites were identified (Table 2). Among these 20 amino acid residues, we selected glycine 395 (G395), as it was the site with the largest temperature factor value for molecular modification.\n\nTable 2. B-factor values of some of the amino acid residues of tryptophan synthase.\n<table><tr><td>Rank</td><td>Residue Sequence Number</td><td>Amino Acid</td><td>B-Factor Value</td></tr><tr><td>1</td><td>395</td><td>Gly</td><td>95.24</td></tr><tr><td>2</td><td>394</td><td>Arg</td><td>93.55</td></tr><tr><td>3</td><td>382</td><td>Lys</td><td>93.34</td></tr><tr><td>4</td><td>393</td><td>Ala</td><td>92.39</td></tr><tr><td>5</td><td>392</td><td>Lys</td><td>89.52</td></tr><tr><td>6</td><td>383</td><td>Asp</td><td>88.7</td></tr><tr><td>7</td><td>313</td><td>His</td><td>88.7</td></tr><tr><td>8</td><td>257</td><td>Pro</td><td>87.61</td></tr><tr><td>9</td><td>329</td><td>Asp</td><td>86.18</td></tr><tr><td>10</td><td>233</td><td>Gly</td><td>86.17</td></tr><tr><td>11</td><td>191</td><td>Ala</td><td>86.06</td></tr><tr><td>12</td><td>234</td><td>Gly</td><td>85.96</td></tr><tr><td>13</td><td>18</td><td>Pro</td><td>85.83</td></tr><tr><td>14</td><td>258</td><td>Gly</td><td>85.79</td></tr><tr><td>15</td><td>388</td><td>His</td><td>85.68</td></tr><tr><td>16</td><td>17</td><td>Val</td><td>85.64</td></tr><tr><td>17</td><td>378</td><td>Gly</td><td>85.18</td></tr><tr><td>18</td><td>190</td><td>Thr</td><td>85.01</td></tr><tr><td>19</td><td>256</td><td>Glu</td><td>83.42</td></tr><tr><td>20</td><td>232</td><td>Gly</td><td>82.93</td></tr></table>\n\n##\n\n# 3.2. Mutation Library Screening\nA site-saturated mutant library consisting of 300 mutants was constructed, and a mutant enzyme with significantly improved thermal stability was obtained by initial screening and rescreening. DNA sequencing revealed that the amino acid residue at position 395 of the mutant enzyme was mutated from glycine to serine (the codon was mutated from GGT to AGT).\n\n##\n\n# 3.3. Optimum Temperature of the Mutant Enzyme\nIn the same reaction system, the activities of the mutant enzyme and the parent enzyme at diferent temperatures (the absorbance increment caused by the formation of the product L-tryptophan was taken as the indicator) were investigated. The results showed that the optimal reaction temperature of the parent enzyme was $3 5 ^ { \\circ } C ,$ while the optimal reaction temperature of the mutant enzyme was approximately $4 0 ^ { \\circ } C ,$ which was 5 <sup>◦</sup>C higher than that of the parent enzyme (Figure 1). The increase in the optimum reaction temperature indicated that the thermal stability of the mutant enzyme G395S was better than that of the parent enzyme.\n\n![](images/447d8e8ce9c1f9fcf2c54c67c695007f6176687dcddebc3b709867d5e9a5df28.jpg)  \nFigure 1. Efects of temperature on the activities of the tryptophan synthase mutant and wild type.<sup>Temperature</sup> <sup>( C)</sup> Relative activity of the tryptophan synthase mutant (G395S) and wild type (WT) catalyzing reactions at diferent temperatures (30, 35, 40, and $4 5 ^ { \\circ } \\mathrm { C } )$ , L-serine concentration of 50 mmol/L, pH of 8, 12 h. at different temperatures (30, 35, 40, and 45 °C), L-serine concentration of 50 mmol/L, pH oThe Error bars were mean values of three independent replicate. The meaning of letters $\\mathbf { a } , \\mathbf { b } , \\mathbf { c } , \\mathbf { d } , \\mathbf { e } , \\mathbf { f } ,$ The Error bars were mean values of three indepenin the figure legend indicates significant diferences.\n\n##\n\n# 3.4. Directed Evolution\nError-prone PCR was used to construct a random mutant library. After screening 15,000 mutant strains, the positive mutant strain G395S/A191T was obtained. The enzyme activity of the highly active positive mutant G395S/A191T was 4.8 times higher than that of the parent enzyme, indicating that<sup>Error-prone</sup> <sup>PCR</sup> <sup>was</sup> <sup>used</sup> <sup>to</sup> <sup>construct</sup> <sup>a</sup> <sup>random</sup> <sup>mutant</sup> <sup>library.</sup> <sup>After</sup> <sup>screening</sup> <sup>15,000</sup> <sup>mutant</sup> <sub>that</sub> <sub>sites</sub> <sub>191</sub> <sub>and</sub> <sub>395</sub> <sub>were</sub> <sub>the</sub> <sub>key</sub> <sub>sites</sub> <sub>affecting</sub> <sub>the</sub> <sub>enzyme</sub> <sub>activity</sub> <sub>of</sub> <sub>TrpB (Figure</sub> <sub>2). The</sub> <sub>OD600</sub> sites 191 and 395 were the key sites afecting the enzyme activity of TrpB (Figure 2). The OD600 values values for the growth of the wild type and G395S and G395S/A191T mutants were measured. There for the growth of the wild type and G395S and G395S/A191T mutants were measured. There was no <sup>was</sup> <sup>no</sup> <sup>difference</sup> <sup>in</sup> <sup>OD600</sup> <sup>value</sup> <sup>during</sup> <sup>the</sup> <sup>growth</sup> <sup>of</sup> <sup>the</sup> <sup>three</sup> <sup>strains,</sup> <sup>and</sup> <sup>no</sup> <sup>differences</sup> <sup>in</sup> <sup>the</sup> diference in OD600 value during the growth of the three strains, and no diferences in the morphology<sub>values</sub> <sub>for</sub> <sub>the</sub> <sub>growth</sub> <sub>of</sub> <sub>the</sub> <sub>wild</sub> <sub>type</sub> <sub>and</sub> <sub>G395S</sub> <sub>and</sub> <sub>G395S/A191T</sub> <sub>mutants</sub> <sub>were</sub> <sub>measured.</sub> <sub>There</sub> of the three strains were observed under a microscope. Compared with the parent, the mutant enzymewas no difference in OD600 value during the growth of the three strains, and no differences in the (G395S /A191T) had a <sup>morphology</sup> <sup>of</sup> <sup>th</sup> $K _ { \\mathrm { m } }$ of 0.21 mM and a catalytic eficiency<sup>ree</sup> <sup>strains</sup> <sup>were</sup> <sup>observed</sup> <sup>under</sup> <sup>a</sup> <sup>microsco</sup> $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of<sup>par</sup> $5 . 3 8 \\mathrm { m M ^ { - 1 } { \\cdot } s ^ { - 1 } }$ , which was<sup>t,</sup> <sup>the</sup> 4.8 times higher than that of the parent (Table 3).<sup>m</sup>\n\n![](images/b627149b8845f5ff9acc83f012d25e61f17d118b4a1d692424d2af12e577c21a.jpg)  \nFigure 2. Relative activities of glycine-substituted mutants of tryptophan synthase. The reactionFigure 2. Relative activities of glycine-substituted mutants of tryptophan synthase. The reaction <sup>conditions</sup> <sup>for</sup> <sup>the</sup> <sup>mutated</sup> <sup>enzyme</sup> <sup>were</sup> <sup>an</sup> <sup>L-serine</sup> <sup>concentration</sup> <sup>of</sup> <sup>50</sup> <sup>mmol/L,</sup> <sup>a</sup> <sup>reaction</sup> conditions for the mutated enzyme were an L-serine concentration of 50 mmol/L, a reaction temperature of $4 0 \\ ^ { \\circ } C ,$ <sup>emperature</sup> <sup>of</sup> <sup>40</sup> <sup>°C,</sup> <sup>pH</sup> <sup>of</sup> <sup>8,</sup> <sup>12</sup> <sup>h.</sup> <sup>The</sup> <sup>Error</sup> <sup>bars</sup> <sup>were</sup> <sup>mean</sup> <sup>values</sup> <sup>of</sup> <sup>three</sup> <sup>independent</sup> <sup>replicate.</sup>  pH of 8, 12 h. The Error bars were mean values of three independent replicate. The meaning of letters a, b, c, d, e, f, in the figure legend indicates significant diferences.\n\nTable 3. Kinetic parameters of tryptophan synthase and its mutants.\n<table><tr><td>Mutations</td><td> $K _ { \\mathbf { m } } \\left( \\mathbf { m } \\mathbf { M } \\right)$ </td><td> $k _ { \\mathrm { c a t } } ( \\mathbf { s } ^ { - 1 } )$ </td><td> $k _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$  (mM  ${ \\bf \\Pi } ^ { - 1 } { \\boldsymbol { \\cdot } } { \\bf s } ^ { \\mathrm { ~ - 1 } } )$ </td><td>Fold Change over WT</td></tr><tr><td>WT</td><td> $0 . 3 1 \\pm 0 . 1 1$ </td><td> $0 . 3 5 \\pm 0 . 0 9$ </td><td> $1 . 1 2 \\pm 0 . 0 7$ </td><td>1</td></tr><tr><td>G395S</td><td> $0 . 3 2 \\pm 0 . 1 4$ </td><td> $0 . 4 2 \\pm 0 . 1 1$ </td><td> $1 . 3 1 \\pm 0 . 1 0$ </td><td>1.16</td></tr><tr><td>G395S/A191T</td><td> $0 . 2 1 \\pm 0 . 1 0$ </td><td> $1 . 1 3 \\pm 0 . 1 2$ </td><td> $5 . 3 8 \\pm 0 . 1 1$ </td><td>4.80</td></tr></table>\n\nMean values of three independent replicate ± standard deviation.\n\n##\n\n# 3.5. Synthesis of L-tryptophan\nThe mutated enzymes reacted at diferent pH values, and the results showed that the mutant enzyme G395S/A191T had the highest activity at pH 8. The optimal pH value of the mutant enzymeThe mutated enzymes reacted at different pH values, and the results showed that the mutant G395S and the parental enzyme was also 8, but the activities of the mutant enzyme G395S and parentalenzyme G395S/A191T had the highest activity at pH 8. The optimal pH value of the mutant enzyme enzyme were lower than that of the mutant enzyme G395S/A191T (Figure 3). These results showed<sup>G395S</sup> <sup>and</sup> <sup>the</sup> <sup>parental</sup> <sup>enzyme</sup> <sup>was</sup> <sup>also</sup> <sup>8,</sup> <sup>but</sup> <sup>the</sup> <sup>activities</sup> <sup>of</sup> <sup>the</sup> <sup>mutant</sup> <sup>enzyme</sup> <sup>G395S</sup> <sup>and</sup> that the mutant enzyme G395S/A191T maintained high activity in the L-serine concentration range<sup>parental</sup> <sup>enzyme</sup> <sup>were</sup> <sup>lower</sup> <sup>than</sup> <sup>that</sup> <sup>of</sup> <sup>the</sup> <sup>mutant</sup> <sup>enzyme</sup> <sup>G395S/A191T</sup> <sup>(Figure</sup> <sup>3).</sup> <sup>These</sup> <sup>results</sup> <sub>of</sub> <sub>25,</sub> <sub>50,</sub> <sub>and</sub> <sub>75</sub> <sub>mmol/L,</sub> <sub>while</sub> <sub>the</sub> <sub>optimal</sub> <sub>L-serine</sub> <sub>concentration</sub> <sub>of</sub> <sub>the</sub> <sub>mutant</sub> <sub>enzyme</sub> <sub>G395S</sub>showed that the mutant enzyme G395S/A191T maintained high activity in the L-serine concentration and parent enzyme was approximately 50 mmol/L (Figure 4). Under the reaction conditions of an L-serine concentration of 50 mmol/L, the production of L-tryptophan was determined by an Amino Acid Analyzer (Hitachi L-8900, Japan). Synthesis of L-tryptophan by the mutant enzyme G395S/A191T was higher than that by the mutant enzyme G395S and parental enzyme (Figure 5).\n\n![](images/3a35382f40bb58f0174cdec2b808edb212c16430fa8f4c7225c6a75829c1fd7d.jpg)  \n<sub>Figure</sub> <sub>3. Effects</sub> <sub>of</sub> <sub>pH</sub> <sub>on</sub> <sub>tryptophan</sub> <sub>synthase activity.</sub> <sub>pH</sub> <sub>stability</sub> <sub>of</sub> <sub>tryptophan</sub> <sub>synthase at</sub> Figure 3. Efects of pH on tryptophan synthase activity. pH stability of tryptophan synthase at diferent different pH values (5, 6, 7, 8, 9, 10), L-serine concentration of 5pH values (5, 6, 7, 8, 9, 10), L-serine concentration of 50 mmol/L, $4 0 \\ ^ { \\circ } C ,$ l/L, 40 °C, 12 h. The Error bars12 h. The Error bars were mean were mean values of three independent replicate. The meaning of letters a, b, c, d, e, f, g, in the figure values of three independent replicate. The meaning of letters a, b, c, d, e, f, g, in the figure legend legend indicates significant difindicates significant diferences.\n\n![](images/b2e95081223f82548fa24b46d778df6848d5d9f415f50145cb283f5e1add11a4.jpg)  \nFigure 4. Efects of the L-serine concentration on tryptophan synthase activity. Relative activity of tryptophan synthase at diferent L-serine concentrations (25, 50, 75, 100, 125, 150 mmol/L), $4 0 \\ ^ { \\circ } C ,$ pH of 8, 12 h. The Error bars were mean values of three independent replicate. The meaning of letters $\\mathbf { a } , \\mathbf { b } , \\mathbf { c } , \\mathbf { d } , \\mathbf { e } , \\mathbf { f } , \\mathbf { g } ,$ in the figure legend indicates significant diferences.\n\n![](images/94cb81d14dff17f4bd89be8982d89260e9882d9092086d5beab3a6f6aec684b1.jpg)  \nFigure 5. Synthesis of L-tryptophan by the three strains. The reaction conditions for three tryptophan synthase recombinant strains ((A): G395S /A191T; (B): G395S; (C): Wild strain) were an L-serine concentration of 50 mmol/L, reaction temperature of 40 ${ } ^ { \\circ } C ,$ pH of 8, 12 h. Red line was the integral line.\n\n##\n\n# <sup>line.</sup>3.6. Identification of L-tryptophan\n3.6. Identification of L-tryptophanThe infrared spectrum of L-tryptophan is shown in Figure $^ { 6 , }$ with the introduction of amino and carboxyl groups. The <sup>1</sup>H-NMR spectrum of L-tryptophan is shown in Figure 7. <sup>1</sup>H NMR (500 MHz, <sub>1 1</sub>D2O): δ 3.23(s, 3H), 3.41 (d, 2H), 3.97 (t, 1H), 7.12 (d, 1H), 7.21 (d,1H), 7.45 (m, H), 7.64 (m, H). D2O): δ 3.23(s, 3H), 3.41 (d, 2H), 3.97 (t, 1H), 7.12 (d, 1H), 7.21 (d,1H), 7.45 (m, H), 7.64 (m, H). The <sup>The theoretical molecular weight of L-tryptophan is 204 Da. As shown in Figure 8, a signal at m/z 205</sup> theoretical molecular weight of L-tryptophan is 204 Da. As shown in Figure 8, a signal at m/z 205 appeared in the mass spectrum of the reaction mixture, which is consistent with ionized L-tryptophan appe(Figure 8).\n\n![](images/fbfab6b23fe001741c945bc158e20ad6b7c8b40eb97d6e671c42097f42a8f617.jpg)  \n(A)\n\n![](images/dfc42008e94c69784373233d6e331f3101d50a67533406fb7295b6d0f70d9eb9.jpg)  \n(B)\n\n<sup>Figure</sup> <sup>6.</sup> <sup>FTIR</sup> <sup>spectrum</sup> <sup>of</sup> <sup>L-tryptophan.</sup> <sup>(A:</sup> <sup>Reaction</sup> <sup>product;</sup> <sup>B:</sup> <sup>Standard</sup> <sup>substance).</sup>Figure 6. FTIR spectrum of L-tryptophan. ((A): Reaction product; (B): Standard substance).  \n![](images/dc66049335a96f087a804690987fffa270de7ee6352854486139a01154311f00.jpg)  \nFigure 7. <sup>1</sup>H-NMR spectrum of L-tryptophan.\n\n![](images/c170b6b3228544465a691ade2b432f7ba5659d2c1f438baad71671d432095c3c.jpg)\n\n![](images/58e624f4a60e877cb9cf4ebe856a72f2f82be332f74b7f483b13483c283db63e.jpg)  \n<sub>gure</sub> <sub>8.</sub> <sub>Mass</sub> <sub>spectrum</sub> <sub>of</sub> <sub>L-tryptophan.</sub>Figure 8. Mass spectrum of L-tryptophan.\n\n##\n\n# 3.7. Mutation Analysis\nAppropriate modifications of the amino acid residues in the substrate channel can promote the recognition and binding abilities of the enzyme. Through a combination of temperature factor analysis and substrate channel localization, key amino acid residues that afect both the thermal stability and catalytic activity of the enzyme can be identified. In combination with saturation site-specific mutation and screening, target mutant enzymes with improved thermal stability and catalytic activity can be obtained from all the possible mutations. Chimera1.13 was used to analyze the substrate channel space of the enzyme, and it was found that the amino acid at position 395 was located in a loop involved in substrate channel formation (Figure 9). After the mutation of this amino acid from glycine to serine, the spatial orientation freedom of the main chain was reduced, the rigidity of the enzyme was increased, and the thermal stability of the enzyme was improved. Alanine at position 191 was mutated to threonine, which may have changed the folding direction of the loop, thus changing the shape and size of the substrate channel entrance and increasing enzyme activity (Figure 9).\n\n![](images/0bf1ec5b0a48cd0f1193893d63bc469e964231c908b0aab508a7dc41f5d9df8b.jpg)  \nFigure 9. Relationship between the substrate channel and the 191 and 395 binding sites.\n\n##\n\n# 4. Discussion\nAccording to the structural information of proteins and sequence comparisons of homologous <sup>According</sup> <sup>to</sup> <sup>the</sup> <sup>structural</sup> <sup>information</sup> <sup>of</sup> <sup>proteins</sup> <sup>and</sup> <sup>sequence</sup> <sup>comparisons</sup> <sup>of</sup> <sup>homolog</sup>proteins, using a rational selection of amino acid residues as targets combined with site-specific mutation of key amino acids, we can screen and obtain target mutants [26–28]. Rational design can improve the substrate specificity of an enzyme by remodeling its active pocket, which is the structura domain of the enzyme responsible for its catalytic function and usually consists of a hydrophobic core The amino acids in the active pocket can be divided into catalytic amino acids and substrate channe amino acids. Substrate molecules enter the active pocket and interact with the substrate channel amino acids, placing the substrate molecules in a favorable conformation for catalysis and allowing completion of the catalytic reaction under the action of the catalytic amino acids. Changing the substrate specificity of the enzyme can expand the range of enzyme substrates by remodeling the active pocket of the enzyme to form a diferent conformation with the substrate molecule or by accepting other substrates The size of the active pocket directly afects the entry and stability of substrate molecules but can also hinder the entry of substrate molecules and prevent the enzyme from accepting more substrates for catalytic reactions. Therefore, the substrate specificity of the enzyme can be modified by regulating the size of its active pocket. For a smaller active pocket, a site-specific mutation can increase the size of the active pocket to accommodate larger substrate molecules, increasing the substrate specificity of the enzyme molecule. The microenvironment of the active pocket, such as its polarity, is critical to the activity of the enzyme. Diferent environments lead to preferences for diferent substrates. According to the spatial structure of an enzyme and the properties of its active pocket, it can be rationally designed to allow the target substrate while maintaining its relative activity and stability to better complete the catalytic reaction. By reducing the polarity of the active pocket, the activity of an enzyme against competitive substrates can be reduced, which is beneficial to accumulating target products in metabolic engineering and improving the specificity of enzyme catalysis. By changing the charge state of the active pocket amino acids, the mutated enzyme has a specificity diferent from that of the wild type. To analyze ethanol dehydrogenase CpRCR, the active pocket was analyzed, and it was found that F285, W286, and W116 constituted the substrate binding pocket of the enzyme. The activity of mutant enzymes was increased by a rational design to increase the size of the substrate-binding pocket [29]. During the study of LfAmDHs, it was found that the two amino residues A113 and T134, located at the distal end of the substrate binding pocket, blocked the opening of the substrate binding pocket, so LfAmDH could only bind smaller substrates. The mutant was obtained by a rational design using site-specific mutations, and the size of the substrate-binding pocket increased the substrate spectrum of the enzyme [30]. Three key regions of lipase CALB were studied to determine its key amino acids: D223 and A281. D223V/A281S was obtained by site-specific saturation mutation, which increased the selectivity of the final product, methyl succinate from 8% to more than 99% [31]. The ketoisopentane decarboxylase of Lactococcus lactis was mutated by rational design. When V461 was mutated into serine, the specificity of the downstream ketoic acid was reduced, which was conducive to the production of the precursor material amyl alcohol [32]. Kaempferol was produced by the metabolic engineering of Saccharomyces cerevisiae [33]. B-FITTER software was used to analyze the crystal structure of tryptophan synthetase to determine the temperature factor (B-factor) of each amino acid locus and to identify the adverse efects on the thermal stability of the enzyme caused by mutations of the key amino acid G395. Then, at this site, fixed-point saturated mutations were performed to build a mutant library, and from the saturated mutant library, screening mutation was found to result in better thermal stability of the enzyme (G395S). The reaction temperature of the mutant enzyme G395S was $5 ^ { \\circ } C$ higher than that of the parent enzyme. Error-prone PCR was used to conduct a directed evolution of the mutant enzyme G395S.\n\n##\n\n# 5. Conclusions\nCompared with the parent, the mutant enzyme G395S /A191T had a $K _ { \\mathrm { m } }$ of 0.21 mM and a catalytic eficiency $K _ { \\mathrm { { c a t } } } / K _ { \\mathrm { { m } } }$ of 5.38 mM $^ { - 1 } { \\cdot } s ^ { - 1 }$ , which was 4.8 times higher than that of the parent. The conditions for L-tryptophan synthesis by the mutated enzyme were an L-serine concentration of 50 mmol/L, a reaction temperature of $4 0 ^ { \\circ } C ,$ a pH of $^ { 8 , }$ a reaction time of 12 h, and an L-tryptophan yield of 81%.\n\nAuthor Contributions: L.X. and F.H. performed the experiments and analyzed the data; Z.D. coordinated and supervised this study; L.X. and Z.W. drafted and revised the manuscript. All authors have read and agreed to the published version of the manuscript.\n\nFunding: This work was supported by the Anhui Wanbei Industrial Innovation Team Project (Anhui Talents Ofice (2017)No. 2), the project of Suzhou University (2018XJXS02; 2019XJSN05; 2019XJZY10), the Anhui Research Project (17030801022; 2018sjjd044; 2018mooc388; KJ2018A0447; 190808QC146), and the National Innovation and Entrepreneurship Training Program for College Students (201910379046).\n\nConflicts of Interest: The authors declare no conflict of interest.\n\n##\n\n# References\n1. Murciano-Calles, J.; Romney, D.K.; Brinkmann-Chen, S.; Buller, A.R.; Arnold, F.H. A panel of TrpB biocatalysts derived from tryptophan synthase through the transfer of mutations that mimic allosteric activation. Angew. Chem. Int. Ed. 2016, 55, 11577–11581. [CrossRef] [PubMed]\n\n2. Young, R.P.; Caulkins, B.G.; Borchardt, D.; Bulloch, D.N.; Larive, C.K.; Dunn, M.F.; Mueller, L.J. Solution-state (17) O quadrupole central-transition NMR spectroscopy in the active site of tryptophan synthase. Angew. Chem. Int. Ed. 2016, 55, 1350–1354. [CrossRef] [PubMed]\n\n3. Kadumuri, R.V.; Gullipalli, J.; Subramanian, S.; Jaipuria, G.; Atreya, H.S.; Vadrevu, R. Crowding interactions perturb structure and stability by destabilizing the stable core of the α-subunit of tryptophan synthase. FEBS Lett. 2016, 590, 2096–2105. [CrossRef] [PubMed]\n\n4. Smith, D.R.M.; Willemse, T.; Gkotsi, D.S.; Schepens, W.; Maes, B.U.W.; Ballet, S.; Goss, R.J.M. The first one-pot synthesis of L-7-iodotryptophan from 7-iodoindole and serine, and an improved synthesis of other L-7-halotryptophans. Org. Lett. 2014, 16, 2622–2625. [CrossRef] [PubMed]\n\n5. Buller, A.R.; Brinkmann-Chen, S.; Romney, D.K.; Herger, M.; Murciano-Calles, J.; Arnold, F.H. Directed evolution of the tryptophan synthase β-subunit for stand-alone function recapitulates allosteric activation. Proc. Natl. Aacd. Sci. USA 2015, 112, 14599–14604. [CrossRef]\n\n6. Xu, L.S.; Gao, G.Z.; Cao, W.G.; Zhao, L.; Chen, J.; Bao, N.N. Enzymatic synthesis of L-2-methyltrytophan catalyzed by recombinant Escherichia coli with tryptophan synthase activity. Int. J. Simul. Syst. Sci. Technol. 2016, 45, 1–4.\n\n7. Xu, L.S.; Wang, Z.Y.; Mao, P.T.; Liu, J.Z.; Zhang, H.J.; Liu, Q.; Jiao, Q.C. Enzymatic synthesis of S-phenyl-L-cysteine from keratin hydrolysis industries wastewater with tryptophan synthase. Bioresour. Technol. 2013, 133, 635–637. [CrossRef] [PubMed]\n\n8. Xu, L.S.; Zhang, X.T.; Gao, G.Z.; Sun, Y. Highly eficient preparation of active S-phenyl-L-cysteine with tryptophan synthase using a chemoenzymatic method. BMC Biotechnol. 2019, 19, 49. [CrossRef]\n\n9. Lin, B.X.; Fan, K.Q.; Zhao, J.; Ji, J.J.; Wu, L.J.; Yang, K.Q.; Tao, Y. Reconstitution of TCA cycle with DAOCS to engineer Escherichia coli into an eficient whole cell catalyst of penicillin G. Proc. Natl. Aacd. Sci. USA 2015, 112, 9855–9859. [CrossRef]\n\n10. Wijma, H.J.; Floor, R.J.; Bjelic, S.; Marrink, S.J.; Baker, D.; Janssen, D.B. Enantioselective enzymes by computational design and in silico screening. Angew. Chem. Int. Ed. 2015, 54, 3726–3730. [CrossRef]\n\n11. Payne, J.T.; Catherine, B.P.; Lewis, J.C. Directed evolution of RebH for site-selective halogenation of large biologically active molecules. Angew. Chem. Int. Ed. 2015, 54, 4226–4230. [CrossRef] [PubMed]\n\n12. Belsare, K.D.; Andorfer, M.C.; Cardenas, F.S.; Chael, J.R.; Park, H.J.; Lewis, J.C. A Simple combinatorial codon mutagenesis method for targeted protein engineering. ACS Synth. Biol. 2017, 6, 416–420. [CrossRef] [PubMed]\n\n13. Cui, Z.Y.; Jiang, Z.N.; Zhang, J.H.; Zheng, H.H.; Jiang, X.; Gong, K.; Liang, Q.F.; Wang, Q.; Qi, Q.S. Stable and eficient biosynthesis of 5-aminolevulinic acid using plasmid-free Escherichia coli. J. Agric. Food Chem. 2019, 67, 1478–1483. [CrossRef] [PubMed]\n\n14. Zhao, C.C.; Gao, X.; Liu, X.B.; Wang, Y.; Yang, S.L.; Wang, F.Q.; Ren, Y.H. Enhancing biosynthesis of a ginsenoside precursor by self-assembly of two key enzymes in Pichia pastoris. J. Agric. Food Chem. 2016, 64, 3380–3385. [CrossRef]\n\n15. Mu, D.D.; Li, H.W.; Chen, Q.; Zhu, J.; Wu, X.F.; Luo, S.Z.; Zhao, Y.Y.; Wang, L.; Jiang, S.T.; Li, X.J.; et al. Secretion of Bacillus amyloliquefaciens γ-glutamyltranspeptidase from Bacillus subtilis and its application in enzymatic synthesis of L-theanine. J. Agric. Food Chem. 2019, 67, 14129–14136. [CrossRef]\n\n16. Chen, K.; Huang, X.Y.; Jennifer Kan, S.B.; Zhang, R.K.; Arnold, F.H. Enzymatic construction of highly strained carbocycles. Science 2018, 360, 71–75. [CrossRef]\n\n17. Li, G.; Zhang, H.; Sun, Z.; Liu, X.; Reetz, M.T. Multiparameter optimization in directed evolution: Engineering thermostability, enantioselectivity, and activity of an epoxide hydrolase. ACS Catal. 2016, 6, 3679–3687. [CrossRef]\n\n18. Xu, J.; Cen, Y.; Singh, W.; Fan, J.; Wu, L.; Lin, X.; Zhou, J.; Huang, M.; Reetz, M.T.; Wu, Q. Stereodivergent protein engineering of a Lipase to access all possible stereoisomers of chiral esters with two stereocenters. J. Am. Chem. Soc. 2019, 141, 7934–7945. [CrossRef]\n\n19. Chen, Q.J.; Chen, X.; Feng, J.H.; Wu, Q.Q.; Zhu, D.M.; Ma, Y.H. Improving and inverting C β-stereoselectivity of threonine aldolase via substrate-binding-guided mutagenesis and a stepwise visual screening. ACS Catal. 2019, 9, 4462–4469. [CrossRef]\n\n20. Wu, Q.; Soni, P.; Reetz, M.T. Laboratory Evolution of Enantiocomplementary candida antarctica Lipase B mutants with broad substrate scope. J. Am. Chem. Soc. 2013, 135, 1872–1881. [CrossRef]\n\n21. Savile, C.K.; Janey, J.M.; Mundorf, E.C.; Moore, J.C.; Tam, S.; Jarvis, W.R.; Colbeck, J.C.; Krebber, A.; Fleitz, F.J.; Brands, J.; et al. Biocatalytic asymmetric synthesis of chiral amines from ketones applied to sitagliptin manufacture. Science 2010, 329, 305–309. [CrossRef] [PubMed]\n\n22. Rodriguez, A.; Martínez, J.A.; Flores, N.; Escalante, A.; Gosset, G.; Bolivar, F. Engineering Escherichia coli to overproduce aromatic amino acids and derived compounds. Microb. Cell Factories 2014, 13, 126–128. [CrossRef] [PubMed]\n\n23. Caulkins, B.G.; Young, R.P.; Kudla, R.A.; Yang, C.; Bittbauer, T.J.; Bastin, B.; Hilario, E.; Fan, L.; Marsella, M.J.; Dunn, M.F.; et al. NMR crystallography of a carbanionic intermediate in tryptophan synthase: Chemical structure, tautomerization, and reaction specificity. J. Am. Chem. Soc. 2016, 138, 15214–15226. [CrossRef]\n\n24. Huang, Y.M.; You, W.; Caulkins, B.G.; Dunn, M.F.; Mueller, L.J.; Chang, C.A. Protonation states and catalysis: Molecular dynamics studies of intermediates in tryptophan synthase. Protein sci. 2016, 25, 166–183. [CrossRef] [PubMed]\n\n25. Mu, D.; Lu, J.; Shu, C.; Li, H.; Li, X.; Cai, J.; Luo, S.; Yang, P.; Jiang, S.; Zheng, Z. Improvement of the activity and thermostability of microbial transglutaminase by multiple-site mutagenesis. Biosci. Biotechnol. Biochem. 2018, 82, 106–109. [CrossRef]\n\n26. Gao, X.; Wu, J.; Wu, D. Rational design of the beta-galactosidase from Aspergillus oryzae to improve galactooligosaccharide production. Food Chem. 2019, 286, 362–367. [CrossRef] [PubMed]\n\n27. Liang, S.X.; Chen, H.; Liu, J. Rational design of a synthetic Entner-Doudorof pathway for enhancing glucose transformation to isobutanol in Escherichia coli. J. Ind. Microbiol. Biot. 2018, 45, 187–199. [CrossRef]\n\n28. Gu, Y.; Xu, X.H.; Wu, Y.K. Advances and prospects of Bacillus subtilis cellular factories: From rational design to industrial applications. Metab. Eng. 2018, 50, 109–121. [CrossRef]\n\n29. Nie, Y.; Wang, S.; Xu, Y.; Luo, S.; Zhao, Y.-L.; Xiao, R.; Montelione, G.T.; Hunt, J.F.; Szyperski, T. Enzyme engineering based on Xray structures and kinetic profiling of substrate libraries: Alcohol dehydrogenases for stereospecific synthesis of a broad range of chiral alcohols. ACS Catal. 2018, 8, 5145–5152. [CrossRef]\n\n30. Chen, F.-F.; Zheng, G.-W.; Liu, L.; Li, H.; Chen, Q.; Li, F.-L.; Li, C.-X.; Xu, J.-H. Reshaping the active pocket of amine dehydrogenases for asymmetric synthesis of bulky aliphatic amines. ACS Catal. 2018, 8, 2622–2628. [CrossRef]\n\n31. Yang, B.; Wang, H.; Song, W.; Chen, X.L.; Liu, J.; Luo, Q.L.; Liu, L.M. Engineering of the conformational dynamics of lipase to increase enantioselectivity. ACS Catal. 2017, 7, 7593–7599. [CrossRef]\n\n32. Chen, G.S.; Siao, S.W.; She, C.R. Saturated mutagenesis of ketoisovalerate decarboxylase V461 enabled specific synthesis of L-pentanol via the ketoacid elongation cycle. SCI REP-UK 2017, 7, 1–12. [CrossRef] [PubMed]\n\n33. Lyu, X.M.; Zhao, G.L.; Ng, K.R.; Mark, R.; Chen, W.N. Metabolic engineering of Saccharomyces cerevisiae for de novo production of kaempferol. J. Agric. Food Chem. 2019, 67, 5596–5606. [CrossRef] [PubMed]\n\n© 2020 by the authors. Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (http://creativecommons.org/licenses/by/4.0/).\n\n"
+}

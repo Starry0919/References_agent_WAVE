@@ -1,0 +1,2097 @@
+{
+  "document_metadata": {
+    "paper_id": "6d69baa813434a95b3a7e47b1532d728_1-s2.0-S1096717621001750-main",
+    "title": null,
+    "parser": "MinerU",
+    "parser_version": "3.4.4",
+    "cleaner": "skill06_markdown_cleaner",
+    "cleaner_version": "0.3.0",
+    "rule_set_version": "scientific-cleaning-rules/0.3.0",
+    "source_markdown_sha256": "8bc541269fbf4eea60c5c1a3151a6a549aa2f95ecdc737a92e81ac7860d2ca18",
+    "clean_markdown_sha256": "446399cff72e028bdb9dc6952379d5f066f127316dafe2e0ce224c4ffd78b315"
+  },
+  "figures": [
+    {
+      "figure_id": "Fig. 2",
+      "caption": "Identification of causative mutations in glycerol ALE. Comparison of (A) specific growth rates and (B) glycerol uptake rates between the parental E. coli $\\mathsf { W } ,$ single mutants $( c r p ^ { \\mathrm { { m } } }$ and $g l p K ^ { \\mathrm { m } } ) ,$ double mutant $( g l p K ^ { \\mathrm { { m } } } c r p ^ { \\mathrm { { m } } } )$ , and CY02. (\\*) for pvalues less than 0.05 and (\\*\\*) less than 0.01. Error bars represent standard deviations of biological duplicates. (C) GlpK enzyme kinetics featuring the dependence of the initial velocity $\\left( \\mathrm { V } _ { 0 } \\right)$ of the WT GlpK and GlpK mutant (T235M). The initial velocities are normalized to the $\\operatorname { V } _ { \\mathrm { m a x } } .$ (D) Specific activity (SA) of the enzymes were measured, ranged from 0 to 10 mM of FBP, and were normalized by ${ \\bf S A } _ { 0 } ,$ the specific activity at the saturating substrate concentration. Error bars represent the standard deviation of six replicates for the wild-type and five replicates for CY02.",
+      "related_paragraphs": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p004"
+      ]
+    },
+    {
+      "figure_id": "Fig. 3",
+      "caption": "Change in cellular cAMP level elicited by increased glycerol influx. (A) Proposed changes in glycerol metabolism, regulation, and gene expression in the presence of the GlpK mutant. Number 1 to 5 describe some of the key events taking place in the cell. (1) The missense mutation adjacent to the FBP-binding loop in GlpK renders the protein insensitive to FBP-inhibition, resulting in (2) increased glycerol influx with a concurrent increase in intracellular G3P. (3) Repression of adenylate cyclase mediated by elevated G3P leads to a decline in intracellular cAMP-CRP. (4) This change alleviates the cAMP-CRP-mediated repression of GlpR, a repressor of the glpFKX operon, leading to decreased glpK expression. (5) Increased influx of G3P results in the elevation of intracellular methylglyoxal, which may become toxic at a certain physiological threshold. Abbreviations (metabolites) – Glyc: glycerol, G3P: glycerol 3-phosphate, DHAP: glycerone phosphate, FBP: fructose 1,6-bisphosphate, F6P – fructose 6-phosphate, and MG – methylglyoxal. (B) Intracellular cAMP level in each single and double mutant and CY02 relative to wild-type. Error bars represent biological triplicates measured in technical duplicates. One-way ANOVA with Tuckey’s post hoc test was performed on cAMP concentrations of mutants relative to wild-type. All samples were tested significant (P-value < 0.001).",
+      "related_paragraphs": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p007"
+      ]
+    },
+    {
+      "figure_id": "Fig. 4",
+      "caption": "Changes in gene expression levels of the core metabolic pathways in response to glycerol adaptation. (A) Comparison of changes in the expression of genes in the central metabolism of E. coli W before and after ALE (M9-glycerol culture condition). Abbreviations – Glyc: glycerol, G3P: glycerol 3-phosphate, DHAP: glycerone phosphate, FBP: fructose 1,6-bisphosphate, F6P – fructose 6-phosphate, G6P – glucose 6-phosphate, GAP: glyceraldehyde 3-phosphate, 1,3BP: 1,3-bisphosphate-D glycerate, 3 PG: 3-phosphoglycerate, 2 PG: 2-phosphoglycerate, PEP: phosphoenolpyruvate, PYR: pyruvate, A-CoA: acetyl-CoA, Ac–P: acetyl phosphate, AC: acetate, OAA: oxaloacetate, MAL: L-malate, FUM: fumarate, SUC: succinate, SuA: succinyl-CoA, αKG: α-ketoglutarate, ICT: isocitrate, and CIT: citrate. (B) Acetate secretion rates were measured during the exponential growth of the wild-type, $c { p ^ { \\mathrm { m } } } , g { \\dot { p } } K ^ { \\mathrm { m } } , g { p } K ^ { \\mathrm { m } } c { r } p ^ { \\mathrm { m } }$ , and CY02. ND stands for not-determined. One-way ANOVA with Tuckey’s post hoc test was performed on acetate secretion rates. (\\*\\*\\*) for P-value less than 0.001. Error bars represent standard deviations of biological duplicates.",
+      "related_paragraphs": [
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p002"
+      ]
+    },
+    {
+      "figure_id": "Fig. 5",
+      "caption": "GABA production in E. coli W and CY02. (A) Growth, (B) GABA production, and glycerol consumption profile in LB supplemented with 2% (v/v) glycerol. Error bars represent standard deviations among three biological triplicates.",
+      "related_paragraphs": [
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p004"
+      ]
+    },
+    {
+      "figure_id": "Fig. 6",
+      "caption": "Targeted knockout of “metabolic sinks” to further improve GABA production. (A) A simplified illustration of metabolic pathways involved in GABA pro duction. Metabolic pathways targeted for inactivation involve a methylglyoxal (MG) shunt, acetate overflow, and GABA shunt. Abbreviations – Glyc: glycerol, DHAP: glycerone phosphate, MG: methylglyoxal, D, L-Lac: enantiomers of D- and L-lactate, Ac: acetate, A-CoA: acetyl-CoA, αKG: α-ketoglutarate, L-Glu: L-glutamate, SUC-SA: succinate semialdehyde, and SUC: succinate. Profiles of (B) growth and (C) glycerol consumption and GABA production of CY02 and its single and triple gene knockout derivatives in LB supplemented with 2% (v/v) glycerol. Profiles of (D) growth and (E) glycerol consumption and GABA production of E. coli W wild-type and its single and triple gene knockout derivatives in LB supplemented with 2% (v/v) glycerol. All error bars represent standard deviations among biological triplicates.",
+      "related_paragraphs": [
+        "3_discussion_p009"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "Table 2",
+      "title": "Catalytic and allosteric properties of the wild-type GlpK and GlpK<sup>m</sup> (GlpK T235M).",
+      "content": []
+    }
+  ],
+  "citations": [],
+  "cleaning_metadata": {
+    "cleaning_history": []
+  },
+  "canonical_representation": {
+    "version": "skill07_canonical_document_v0.1",
+    "source_sha256": "52e9ed6e07b442ca7795e8188c695178a5d32a24cb2b278cde6a71c860096ef3",
+    "text_source_of_truth": "paragraphs[].text",
+    "section_content_policy": "ordered paragraph references plus position-aware residual_content",
+    "reversible": true
+  },
+  "sections": [
+    {
+      "title": "Adaptive laboratory evolution of Escherichia coli W enhances gamma-aminobutyric acid production using glycerol as the carbon source",
+      "level": 1,
+      "section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "position": 0,
+      "parent_section_id": null,
+      "paragraph_ids": [
+        "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p001",
+        "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p002",
+        "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p003",
+        "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p004",
+        "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p005"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "A R T I C L E I N F O",
+      "level": 2,
+      "section_id": "a_r_t_i_c_l_e_i_n_f_o",
+      "position": 1,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "a_r_t_i_c_l_e_i_n_f_o_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "A B S T R A C T",
+      "level": 2,
+      "section_id": "a_b_s_t_r_a_c_t",
+      "position": 2,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "a_b_s_t_r_a_c_t_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "1. Introduction",
+      "level": 2,
+      "section_id": "1_introduction",
+      "position": 3,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "1_introduction_p001",
+        "1_introduction_p002",
+        "1_introduction_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.2. Identification of causal mutations during glycerol adaptation",
+      "level": 2,
+      "section_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation",
+      "position": 4,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p002",
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p003",
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p004",
+        "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p005"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.3. Mutation on glpK increases carbon uptake by preventing the allosteric inhibition by fructose $^ { 1 , 6 }$ bis-phosphate",
+      "level": 2,
+      "section_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate",
+      "position": 5,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p002",
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p003",
+        "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.4. ALE reorganizes the transcriptome by modulating the cellular cAMP level",
+      "level": 2,
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 6,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p001",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p002",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p003",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p004",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p005",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p006",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p007",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p008",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p009",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p010",
+        "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p011"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.5. Improved glycerol utilization leads to increased acetate overflow",
+      "level": 2,
+      "section_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow",
+      "position": 7,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p001",
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p002",
+        "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.6. GABA production in E. coli W",
+      "level": 2,
+      "section_id": "2_6_gaba_production_in_e_coli_w",
+      "position": 8,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "2_6_gaba_production_in_e_coli_w_p001",
+        "2_6_gaba_production_in_e_coli_w_p002",
+        "2_6_gaba_production_in_e_coli_w_p003",
+        "2_6_gaba_production_in_e_coli_w_p004",
+        "2_6_gaba_production_in_e_coli_w_p005"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "2.7. Metabolic engineering of E. coli W to improve GABA production",
+      "level": 2,
+      "section_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production",
+      "position": 9,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p001",
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002",
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p003",
+        "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "3. Discussion",
+      "level": 2,
+      "section_id": "3_discussion",
+      "position": 10,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "3_discussion_p001",
+        "3_discussion_p002",
+        "3_discussion_p003",
+        "3_discussion_p004",
+        "3_discussion_p005",
+        "3_discussion_p006",
+        "3_discussion_p007",
+        "3_discussion_p008",
+        "3_discussion_p009",
+        "3_discussion_p010",
+        "3_discussion_p011",
+        "3_discussion_p012"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 11,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4. Materials and methods",
+      "level": 2,
+      "section_id": "4_materials_and_methods",
+      "position": 11,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.1. Bacterial strains, culture conditions and primers",
+      "level": 2,
+      "section_id": "4_1_bacterial_strains_culture_conditions_and_primers",
+      "position": 12,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_1_bacterial_strains_culture_conditions_and_primers_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.2. ALE and strain isolation",
+      "level": 2,
+      "section_id": "4_2_ale_and_strain_isolation",
+      "position": 13,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_2_ale_and_strain_isolation_p001",
+        "4_2_ale_and_strain_isolation_p002",
+        "4_2_ale_and_strain_isolation_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4.3. Whole-genome resequencing",
+      "level": 2,
+      "section_id": "4_3_whole_genome_resequencing",
+      "position": 14,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_3_whole_genome_resequencing_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.4. Construction of mutant strains",
+      "level": 2,
+      "section_id": "4_4_construction_of_mutant_strains",
+      "position": 15,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_4_construction_of_mutant_strains_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.5. Glycerol and acetate quantification",
+      "level": 2,
+      "section_id": "4_5_glycerol_and_acetate_quantification",
+      "position": 16,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_5_glycerol_and_acetate_quantification_p001",
+        "4_5_glycerol_and_acetate_quantification_p002",
+        "4_5_glycerol_and_acetate_quantification_p003",
+        "4_5_glycerol_and_acetate_quantification_p004"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4.6. GlpK expression and purification",
+      "level": 2,
+      "section_id": "4_6_glpk_expression_and_purification",
+      "position": 17,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_6_glpk_expression_and_purification_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.7. GlpK kinetic assays",
+      "level": 2,
+      "section_id": "4_7_glpk_kinetic_assays",
+      "position": 18,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_7_glpk_kinetic_assays_p001",
+        "4_7_glpk_kinetic_assays_p002",
+        "4_7_glpk_kinetic_assays_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4.8. Intracellular cAMP assay",
+      "level": 2,
+      "section_id": "4_8_intracellular_camp_assay",
+      "position": 19,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_8_intracellular_camp_assay_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.9. Time-course measurement of glycerol consumption and GABA production",
+      "level": 2,
+      "section_id": "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production",
+      "position": 20,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p001",
+        "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p002"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "4.10. RNA-seq",
+      "level": 2,
+      "section_id": "4_10_rna_seq",
+      "position": 21,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_10_rna_seq_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.11. Data processing",
+      "level": 2,
+      "section_id": "4_11_data_processing",
+      "position": 22,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_11_data_processing_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "4.12. Quantitative PCR",
+      "level": 2,
+      "section_id": "4_12_quantitative_pcr",
+      "position": 23,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "4_12_quantitative_pcr_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Author contributions",
+      "level": 2,
+      "section_id": "author_contributions",
+      "position": 24,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "author_contributions_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Declaration of competing interest",
+      "level": 2,
+      "section_id": "declaration_of_competing_interest",
+      "position": 25,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "declaration_of_competing_interest_p001",
+        "declaration_of_competing_interest_p002",
+        "declaration_of_competing_interest_p003"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        }
+      ]
+    },
+    {
+      "title": "Appendix A. Supplementary data",
+      "level": 2,
+      "section_id": "appendix_a_supplementary_data",
+      "position": 26,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "appendix_a_supplementary_data_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "Funding",
+      "level": 2,
+      "section_id": "funding",
+      "position": 27,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "funding_p001"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": []
+    },
+    {
+      "title": "References",
+      "level": 2,
+      "section_id": "references",
+      "position": 28,
+      "parent_section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "paragraph_ids": [
+        "references_p001",
+        "references_p002",
+        "references_p003",
+        "references_p004",
+        "references_p005",
+        "references_p006",
+        "references_p007",
+        "references_p008",
+        "references_p009",
+        "references_p010",
+        "references_p011",
+        "references_p012",
+        "references_p013",
+        "references_p014",
+        "references_p015",
+        "references_p016",
+        "references_p017",
+        "references_p018",
+        "references_p019",
+        "references_p020",
+        "references_p021",
+        "references_p022",
+        "references_p023",
+        "references_p024",
+        "references_p025",
+        "references_p026",
+        "references_p027",
+        "references_p028",
+        "references_p029",
+        "references_p030",
+        "references_p031",
+        "references_p032",
+        "references_p033",
+        "references_p034",
+        "references_p035",
+        "references_p036",
+        "references_p037",
+        "references_p038",
+        "references_p039",
+        "references_p040",
+        "references_p041",
+        "references_p042",
+        "references_p043",
+        "references_p044",
+        "references_p045",
+        "references_p046",
+        "references_p047",
+        "references_p048",
+        "references_p049",
+        "references_p050",
+        "references_p051",
+        "references_p052",
+        "references_p053",
+        "references_p054",
+        "references_p055",
+        "references_p056",
+        "references_p057",
+        "references_p058",
+        "references_p059",
+        "references_p060",
+        "references_p061",
+        "references_p062",
+        "references_p063",
+        "references_p064",
+        "references_p065",
+        "references_p066",
+        "references_p067",
+        "references_p068",
+        "references_p069",
+        "references_p070",
+        "references_p071",
+        "references_p072",
+        "references_p073",
+        "references_p074",
+        "references_p075",
+        "references_p076",
+        "references_p077",
+        "references_p078",
+        "references_p079",
+        "references_p080",
+        "references_p081",
+        "references_p082",
+        "references_p083",
+        "references_p084"
+      ],
+      "residual_mode": "interleaved_residuals",
+      "residual_content": [
+        {
+          "before_paragraph_index": 1,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 2,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 3,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 4,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 5,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 6,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 7,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 8,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 9,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 10,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 11,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 12,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 13,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 14,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 15,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 16,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 17,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 18,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 19,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 20,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 21,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 22,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 23,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 24,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 25,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 26,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 27,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 28,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 29,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 30,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 31,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 32,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 33,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 34,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 35,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 36,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 37,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 38,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 39,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 40,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 41,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 42,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 43,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 44,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 45,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 46,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 47,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 48,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 49,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 50,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 51,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 52,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 53,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 54,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 55,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 56,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 57,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 58,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 59,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 60,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 61,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 62,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 63,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 64,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 65,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 66,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 67,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 68,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 69,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 70,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 71,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 72,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 73,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 74,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 75,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 76,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 77,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 78,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 79,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 80,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 81,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 82,
+          "content": "\n\n"
+        },
+        {
+          "before_paragraph_index": 83,
+          "content": "\n\n"
+        }
+      ]
+    }
+  ],
+  "paragraphs": [
+    {
+      "paragraph_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p001",
+      "text": "![](images/1914259fe9d7377aecc84474723a9c9d2768455f3f249068feff1c1f819469da.jpg)",
+      "section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "position": 0
+    },
+    {
+      "paragraph_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p002",
+      "text": "Kangsan Kim <sup>a</sup>, Chen Yuan Hou <sup>b</sup>, Donghui Choe <sup>a</sup>, Minjeong Kang , Suhyung Cho Bong Hyun Sung <sup>c</sup>, Dae-Hee Lee <sup>c</sup>, Seung-Goo Lee <sup>c</sup>, Taek Jin Kang <sup>\\*</sup>, Byung-Kwan Cho a,\\*",
+      "section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "position": 1
+    },
+    {
+      "paragraph_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p003",
+      "text": "<sup>a</sup> Department of Biological Sciences and KI for the BioCentury, Korea Advanced Institute of Science and Technology, Daejeon, 34141, Republic of Korea",
+      "section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "position": 2
+    },
+    {
+      "paragraph_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p004",
+      "text": "<sup>b</sup> Department of Chemical and Biochemical Engineering, Dongguk University-Seoul, Seoul, 04620, Republic of Korea",
+      "section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "position": 3
+    },
+    {
+      "paragraph_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source_p005",
+      "text": "<sup>c</sup> Synthetic Biology & Bioengineering Research Center, Korea Research Institute of Bioscience and Biotechnology, Daejeon, 34141, Republic of Korea",
+      "section_id": "adaptive_laboratory_evolution_of_escherichia_coli_w_enhances_gamma_aminobutyric_acid_production_using_glycerol_as_the_carbon_source",
+      "position": 4
+    },
+    {
+      "paragraph_id": "a_r_t_i_c_l_e_i_n_f_o_p001",
+      "text": "Keywords:\nEscherichia coli W\nGlycerol\nAdaptive laboratory evolution\nGamma-aminobutyric acid\nMetabolic engineering",
+      "section_id": "a_r_t_i_c_l_e_i_n_f_o",
+      "position": 5
+    },
+    {
+      "paragraph_id": "a_b_s_t_r_a_c_t_p001",
+      "text": "The microbial conversion of glycerol into value-added commodity products has emerged as an attractive means to meet the demands of biosustainability. However, glycerol is a non-preferential carbon source for productive fermentation because of its low energy density. We employed evolutionary and metabolic engineering in tandem to construct an Escherichia coli strain with improved GABA production using glycerol as the feedstock carbon. Adaptive evolution of E. coli W under glycerol-limited conditions for 1300 generations harnessed an adapted strain with a metabolic system optimized for glycerol utilization. Mutation profiling, enzyme kinetic assays, and transcriptome analysis of the adapted strain allowed us to decipher the basis of glycerol adaptation at the molecular level. Importantly, increased substrate influx mediated by the mutant glpK and modulation of intracellular cAMP levels were the key drivers of improved fitness in the glycerol-limited condition. Leveraging the enhanced capability of glycerol utilization in the strain, we constructed a GABA-producing E. coli W-derivative with superior GABA production compared to the wild-type. Furthermore, rationally designed inactivation of the non-essential metabolic genes, including ackA, mgsA, and gabT, in the glycerol-adapted strain improved the final GABA titer and specific productivity by 3.9- and 4.3-fold, respectively, compared with the wild-type.",
+      "section_id": "a_b_s_t_r_a_c_t",
+      "position": 6
+    },
+    {
+      "paragraph_id": "1_introduction_p001",
+      "text": "In parallel with the rapid growth of the biofuel market, increasing amounts of glycerol, which accounts for nearly 10% (v/v) of the total biodiesel products, are generated as byproducts (Da Silva et al., 2009; Mu et al., 2006). The excess glycerol made available from biodiesel transesterification has led to a dramatic decrease in the market cost of glycerol (Dharmadi et al., 2006), making it an economically attractive feedstock carbon. As many microbes utilize glycerol as their sole carbon source, numerous studies have focused on the microbial conversion of this renewable feedstock into value-added products (Da Silva et al., 2009).",
+      "section_id": "1_introduction",
+      "position": 7
+    },
+    {
+      "paragraph_id": "1_introduction_p002",
+      "text": "Escherichia coli W is one of the many microbes that utilize glycerol as their sole carbon source. It is also an emerging strain for industrial-scale production owing to its high tolerance to environmental stress and low acetate production without tight sugar control (Alterthum and Ingram, 1989; Monk et al., 2016). As one of the fastest-growing strains among commercial E. coli (Archer et al., 2011), it is thought to be an ideal platform strain for producing desired metabolites that are often generated in a growth-coupled manner. Previously, it was demonstrated that E. coli W, W3110, and BL21 (DE3) exhibited some of the highest production of γ-aminobutyric acid (GABA), using glycerol as the feedstock carbon (Hou and Kang, 2018). However, the absence of optimization schemes, such as metabolic engineering, to maximize GABA production requires additional engineering efforts to evaluate further the potential of GABA production by E. coli W.",
+      "section_id": "1_introduction",
+      "position": 8
+    },
+    {
+      "paragraph_id": "1_introduction_p003",
+      "text": "GABA has attracted considerable interest because of its multifunctional role in pharmaceuticals, food additives, and the synthesis of biodegradable polymers (Abdou et al., 2006; Kanjee and Houry, 2013; Park et al., 2013). It is a natural, non-proteinogenic amino acid that can be naturally produced from L-glutamate by the enzyme glutamate decarboxylase (GAD). In bacterial cells, GABA is a byproduct of an acid-resistant system that plays an important role in buffering the cells against low pH (Kanjee and Houry, 2013). Considering the value-added mid-exponential growth phase to select for the fastest growing progeny, characterized by a gradual decrease in the estimated doubling time as a function of accumulated generations (Fig. 1B). We isolated a single clone (CY02) for downstream analysis and application from the fittest end-point lineage. The specific growth rate of CY02 in the minimal glycerol medium improved by nearly 40% compared with the wild-type $( \\mathrm { f r o m } 0 . 6 7 \\pm 0 . 0 3 / \\mathrm { h r } \\mathrm { t o } 0 . 9 4 \\pm 0 . 0 1 / \\mathrm { h r } ) _ { \\mathrm { \\Omega } }$ , and was similar to that of the parental strain grown in the minimal glucose medium $( 0 . 8 7 \\pm 0 . 0 4 / \\mathrm { { h r } ; }$ Fig. 1C). The adaptive increase in the growth rate of the glycerol-evolved E. coli W was less dramatic than that of E. coli K-12 MG1655, which experienced a more than 2-fold increase in the growth rate between 700 and 1000 generations of glycerol ALE (Fong et al., 2005; Ibarra et al., 2002; Kang et al., 2019). Nonetheless, the final specific growth rate observed in the adapted single clone was comparable with the specific growth rate of the wild-type E. coli W in M9 supplemented with glucose, a substrate metabolically favored by many E. coli strains. However, the measured fitness in the minimal glucose medium was negligible compared with that of the wild-type, implying the adaptive changes in CY02 were rewired specifically to glycerol utilization. To assess changes in glycerol utilization in the evolved strain, we measured glycerol consumption rates of the parental strain and CY02 in the minimal glycerol medium. As expected, a significant increase in the glycerol consumption rate was observed in CY02 compared with the parental strain (Fig. 1D), highlighting that the fitness improvement observed in the minimal glycerol medium was ascribed primarily to enhanced glycerol utilization. Together, these results indicate that the 1300 generations of ALE optimized cell growth in the minimal glycerol medium.",
+      "section_id": "1_introduction",
+      "position": 9
+    },
+    {
+      "paragraph_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p001",
+      "text": "Accumulation of beneficial mutations in the course of ALE is responsible for the adaptation and improved fitness of the strain (Applebee et al., 2011; Cheng et al., 2014; Herring et al., 2006; Kang et al., 2019). To pinpoint the causal mutations underlying fitness improvement, we performed whole-genome resequencing of the parental strain, the end-point population, and CY02. Ninety-three genomic mutations were found in the adaptively evolved population, and 89 genomic mutations were mapped to CY02. Among them, the background mutations found in the parental E. coli W strain cultured in our laboratory (genetic sequence in conflict with the reference genome NC\\_017635.1) were omitted from the analysis. Thus, we detected 30 and 28 new mutations in the ALE population and the single clone CY02, respectively. To identify the causal mutations that contributed to improved fitness, we focused on the shared mutations between the two groups (Table 1 and Fig. S1).",
+      "section_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation",
+      "position": 10
+    },
+    {
+      "paragraph_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p002",
+      "text": "Some of the notable mutations included disabling mutations (either frame-shifts or nonsense mutations) in ptsP (phosphoenolpyruvate protein phosphotransferase), rsfS (ribosomal silencing factor), or mglC (galactoside transporter system permease). Single nucleotide variations (SNVs) included glpK (glycerol kinase) and crp (global transcriptional regulator CRP) (Table 1). Regarding genes with disabling mutations, $p t s P$ encodes a component of the nitrogen phosphotransferase system in E. coli. The inactivation of ptsP was previously shown to enhance acetate assimilation in E. coli (Hara et al., 2009), which is thought to be caused by increased cellular ATP synthesis in the ptsP deletion mutant (Hara et al., 2009). The recurrence of similar inactivating mutations in ptsP in different ALEs suggests causality of the $p t s P$ mutants in fitness improvement (Kang et al., 2019; Phaneuf et al., 2019; Sandberg et al., 2017; Wannier et al., 2018). However, counterintuitively, the pstP deletion mutant exhibited fitness retardation compared with the wild-type in acetate-limited culture conditions (Gu et al., 2019), leaving the role of the ptsP frame-shift mutation in strain fitness rather elusive.",
+      "section_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation",
+      "position": 11
+    },
+    {
+      "paragraph_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p003",
+      "text": "Notable mutations shared between the end-point population and CY02. Symbols $- \\mathbf { \\Phi } ^ { * * } > \\mathbf { \\Phi } ^ { * * } ;$ single nucleotide variations, “del”: deletion, “Ins”: insertion, “\\*“: stopcodon, “fs”: frame-shift.\n<table><tr><td>Locus</td><td>Gene</td><td>Annotation</td><td>Nucleotide change</td><td>Amino acid change</td></tr><tr><td>RS03540</td><td>rsfS</td><td>Ribosomal silencing factor</td><td>19G &gt; C</td><td>Gln 6*</td></tr><tr><td>RS12050</td><td>mglC</td><td>Galatoside transport system permease</td><td>15 Adel</td><td>Asn4fs</td></tr><tr><td>RS15750</td><td> $p t s P$ </td><td>PEP-protein phosphotransferase PtsP</td><td>522 InsT</td><td>Pro174fs</td></tr><tr><td>RS18510</td><td> $c r p$ </td><td>Global transcriptional regulator CRP</td><td> $8 5 1 6 > \\mathrm { A }$ </td><td>Arg209His</td></tr><tr><td>RS21880</td><td>glpK</td><td>Glycerol kinase</td><td> $7 0 7 \\mathrm { G } > \\mathrm { A }$ </td><td>Thr235Met</td></tr></table>",
+      "section_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation",
+      "position": 12
+    },
+    {
+      "paragraph_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p004",
+      "text": "However, rsfS suffered a nonsense mutation in the 7th codon, possibly rendering the protein prematurely terminated. RsfS is thought to play a role in translation inhibition during the stationary phase or under suboptimal growth conditions. Its knockout mutant exhibits impaired viability in the stationary phase or when transferred from a nutritionally rich to poor medium (Hauser et al., 2012). However, given the relatively low frequency of rsfS mutants in ALE (Phaneuf et al., 2019), it is difficult to assume the implications of RsfS inactivation in adaptation. Likewise, the lack of relevant references on mglC mutants makes it difficult to infer the evolutionary advantage of the mglC mutant found in this study. In fact, the specific growth rate of the reverse-engineered mglC mutant remained the same as that of the wild-type (Fig. S2), suggesting that the mglC mutant is a “hitchhiker mutation” that confers no apparent advantage in glycerol adaptation. Therefore, we assumed that the mutants of glpK and crp, which were recurrently mutated under glycerol and nutrient limitation conditions, were the key mutations contributing to glycerol adaptation in E. coli W.",
+      "section_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation",
+      "position": 13
+    },
+    {
+      "paragraph_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation_p005",
+      "text": "Mutations in glpK are highly recurrent in ALE performed in minimal glycerol media (Cheng et al., 2014; Fong et al., 2005; Herring et al., 2006; Kang et al., 2019). As the rate-limiting factor of the glycerol utilization process in E. coli (Zwaig et al., 1970), the glpK mutants are “specialist mutations” that confer fitness advantages under culture conditions supplemented with glycerol as the sole carbon source. Often, glpK mutants exhibit significantly reduced or diminished sensitivity towards inhibitory effects of fructose 1,6-bisphosphate (FBP) and $\\mathrm { I I A } ^ { \\mathrm { { \\dot { G } l c } } } -$ mediated allosteric inhibition, thereby allowing higher glycerol influx into the cell (Applebee et al., 2011; Freedberg et al., 1971; Novotny et al., 1985; Postma et al., 1984; Zwaig and Lin, 1966). The glpK mutant isolated in this study harbors a missense mutation at the FBP binding site (Thr235Met; hereafter $g l p K ^ { \\mathrm { m } } ) _ { \\mathrm { : } }$ , suggesting altered interaction with FBP inhibitor. Similarly, SNVs in crp are also frequently observed in ALE conducted under nutrient-limited conditions, signifying an adaptive nature of crp mutants (Fong et al., 2005; Kang et al., 2019; Sievert et al., 2017; Wannier et al., 2018). As the master regulator of more than 500 genes in E. coli, crp mutants have been proposed to enhance host fitness via altered binding dynamics with cAMP and the target DNA domain or by interacting with RNA polymerase activating domains (Frendorf et al., 2019). In particular, several mutations in the cAMP binding site of crp have been reported to allow utilization of non-PTS carbon sources, even in the absence of cAMP (Frendorf et al., 2019). However, the crp mutation identified in this study was positioned towards the C-terminus (R209H; hereafter $c r p ^ { \\mathrm { m } } )$ . In this regard, we sought to investigate whether $g l p K ^ { \\mathrm { m } }$ and $c r p ^ { \\mathrm { { m } } }$ found in CY02 recapitulate their beneficial effects on strain fitness.",
+      "section_id": "2_2_identification_of_causal_mutations_during_glycerol_adaptation",
+      "position": 14
+    },
+    {
+      "paragraph_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p001",
+      "text": "First, we measured the specific growth rates and glycerol consumption rates of the E. coli W parental strain, causative mutants, and CY02 in a minimal glycerol medium. To this end, single mutants of $g l p K ^ { \\mathrm { m } }$ and $c r p ^ { \\mathrm { { m } } }$ and a strain harboring both mutations $( g l p K ^ { \\mathrm { m } } c r p ^ { \\mathrm { m } } )$ were reverseengineered using the λ-Red recombinase-mediated method (Datsenko and Wanner, 2000). Significant increases in specific growth rates were observed in $g l p K ^ { \\mathrm { m } }$ (1.45-fold; independent t-test p-value $< ~ 0 . 0 2 2 )$ $g { l p } K ^ { \\mathrm { m } } c { r p } ^ { \\mathrm { m } }$ (1.56-fold; $\\mathbf { p } ~ = ~ 0 . 0 3 7 )$ , and CY02 (1.63-fold; p-value = 0.009). However, the change in $c r p ^ { \\mathrm { { m } } }$ was not significant (Fig. 2A). Similarly, the specific glycerol uptake rate (GUR) increased significantly in the glpK<sup>m</sup>-harboring strains (1.78-fold; $\\mathbf { p } \\mathbf { - } \\mathbf { v a l u e } = 0 . 0 2$ for $g l p K ^ { \\mathrm { m } } ,$ 1.70-fold; p-value = 0.016 for $g { l p } K ^ { \\mathrm { m } } c { r p } ^ { \\mathrm { m } }$ , and 1.60-fold; p-value = 0.036 for CY02), but not in $c r p ^ { \\mathrm { m } }$ (Fig. 2B). These results indicated that, consistent with previous findings, $g l p K ^ { \\mathrm { m } }$ alone accounts for a substantial portion of the fitness improvement in E. coli W under glycerol-limitation conditions. The significant increase in GUR observed among $g l p K ^ { \\mathrm { m } }$ harboring strains also suggests that the increased carbon uptake is the primary driver of improved fitness. However, although it appeared that $c r p ^ { \\mathrm { m } }$ was inversely correlated with GUR while positively contributing to specific growth rates, the apparent lack of statistical significance leaves the fitness correlates of $c r p ^ { \\mathrm { m } }$ elusive.",
+      "section_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate",
+      "position": 15
+    },
+    {
+      "paragraph_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p002",
+      "text": "Next, we tested the enzyme kinetics of the mutant GlpK $\\mathrm { ( G l p K ^ { m } ) }$ to obtain insights into the observed fitness improvement in the minimal glycerol medium. Among 502 amino acids comprising GlpK in E. coli, Gly 233, Gly 234, and Arg 236 are known to form an exposed loop that offers a binding site for its allosteric inhibitor FBP (Anderson et al., 2007; Ormo et al., 1998). As our mutation was located within the two glycine-arginine loops (Fig. S3A), we reasoned that the interaction between GlpK and FBP would be altered. To examine changes in enzymatic properties, wild-type GlpK (GlpK<sup>w</sup>) from the parental strain and $\\mathrm { G l p K ^ { m } }$ from CY02 were overexpressed and purified (Fig. S3B). The catalytic activity $\\left( \\mathrm { V } _ { 0 } / \\mathrm { V } _ { \\mathrm { m a x } } \\right)$ of $\\mathrm { { G l p K } ^ { m } }$ did not differ from that of the wild-type. However, although the specific activity of $\\mathrm { G l p K } ^ { \\mathrm { w } }$ decreased with increasing FBP concentration, it remained constant in $\\mathrm { { G l p K } ^ { m } }$ at all concentrations tested, indicating a loss of affinity towards FBP (Fig. 2C and D and Table 2). This is consistent with the observation that the inhibitory effect imparted by FBP was diminished in the GlpK Arg236Ala mutant (Ormo et al., 1998). Considering that the determined $\\mathrm { K } _ { 0 . 5 }$ of FBP (FBP concentration at half the maximum GlpK-specific activity) for",
+      "section_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate",
+      "position": 16
+    },
+    {
+      "paragraph_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p003",
+      "text": "Table 2\nCatalytic and allosteric properties of the wild-type GlpK and GlpK<sup>m</sup> (GlpK T235M).\nB\nA\n<table><tr><td>GlpK</td><td>Vmax (unit/mg)</td><td> $\\operatorname { K } _ { \\mathrm { m \\ g l y } }$   $\\mathbf { \\Gamma } ( \\mu \\mathbf { M } )$ </td><td> $\\mathrm { K } _ { \\mathrm { c a t } } \\mathrm { G l y }$   $( S ^ { - 1 } )$ </td><td> $\\mathrm { K _ { c a t } / K _ { m \\ g l y } \\left( M ^ { - 1 } \\right. }$   $S ^ { - 1 } )$ </td><td>FBP  $\\mathrm { K } _ { 0 . 5 }$  (μM)</td></tr><tr><td>WT</td><td> $3 3 . 5 \\pm 1 . 1 5$ </td><td>81.7 ±</td><td> $3 2 . 4 \\pm$ </td><td> $3 . 9 6 \\times 1 0 ^ { 5 } \\pm$  41</td><td>386 ±</td></tr><tr><td></td><td></td><td>12.4</td><td>1.13</td><td> $8 . 7 0 \\times 1 0 ^ { 4 }$ </td><td>0.0304</td></tr><tr><td>T235M</td><td> $3 7 . 2 \\pm 1 . 1 8$ </td><td>60.4 ±</td><td> $3 6 . 0 \\pm$ </td><td> $5 . 9 5 \\times 1 0 ^ { 5 } \\pm$  41</td><td>&gt;10,000</td></tr><tr><td></td><td></td><td>9.31</td><td>1.10</td><td> $1 . 3 1 \\times 1 0 ^ { 5 }$ </td><td></td></tr></table>",
+      "section_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate",
+      "position": 17
+    },
+    {
+      "paragraph_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate_p004",
+      "text": "![](images/13edf94fc347c59ea9a42fab210cce3dd4cb8134a462bd10ae2469ec45a01740.jpg)",
+      "section_id": "2_3_mutation_on_glpk_increases_carbon_uptake_by_preventing_the_allosteric_inhibition_by_fructose_1_6_bis_phosphate",
+      "position": 18
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p001",
+      "text": "$\\mathrm { G l p K } ^ { \\mathrm { w } }$ was 0.386 mM and that the intracellular FBP concentration of E. coli under glycerol limitation was 5.85 mM (Bennett et al., 2009), the FBP-mediated inhibition of GlpK<sup>w</sup> was anticipated to be at its maximum. In this regard, it appeared that the increased fitness observed in $g l p K ^ { \\mathrm { m } } .$ -harboring strains in minimal glycerol medium was attributable to the changes in enzymatic regulatory mechanisms (Applebee et al., 2011; Zwaig et al., 1970).",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 19
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p002",
+      "text": "In addition to assessing the effects of mutations on strain fitness, we also examined changes in cellular signaling and gene expression. It has been documented that intracellular cAMP levels are reduced in the presence of glpK mutations that are either insensitive to FBP or incapable of tetramerization (Applebee et al., 2011). Reduced intracellular cAMP downregulates the expression of the CRP-cAMP-sensitive glpFK operon, leading to decreased glpK expression. Such regulation occurs through the repression of adenylate cyclase elicited by the accumulation of glycerol-3-phosphate (G3P), the product of GlpK, thereby lowering the intracellular cAMP (Eppler et al., 2002) (Fig. 3A). One plausible explanation for the biological significance of G3P-mediated catabolite repression is that cAMP reduction is part of an autoregulatory mechanism to buffer the excessive accumulation of methylglyoxal, an intermediate of glycerol metabolism that is toxic above a certain threshold (Applebee et al., 2011; Booth, 2005; Freedberg et al., 1971). This notion could explain the highly pronounced G3P-induced catabolite repression among the GlpK mutants that enhance glycerol uptake (Applebee et al., 2011).",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 20
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p003",
+      "text": "C\n![](images/e34d5b14104e7b76249b88fc3c5e0e5b118c6c9c5702ac3d76011c19e488d46f.jpg)",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 21
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p004",
+      "text": "D\n![](images/30ab53a429e1ff3657060cf6ddfb65136b35f93638ee9971898c31eb758ac05a.jpg)\nFig. 2. Identification of causative mutations in glycerol ALE. Comparison of (A) specific growth rates and (B) glycerol uptake rates between the parental E. coli $\\mathsf { W } ,$ single mutants $( c r p ^ { \\mathrm { { m } } }$ and $g l p K ^ { \\mathrm { m } } ) ,$ double mutant $( g l p K ^ { \\mathrm { { m } } } c r p ^ { \\mathrm { { m } } } )$ , and CY02. (\\*) for pvalues less than 0.05 and (\\*\\*) less than 0.01. Error bars represent standard deviations of biological duplicates. (C) GlpK enzyme kinetics featuring the dependence of the initial velocity $\\left( \\mathrm { V } _ { 0 } \\right)$ of the WT GlpK and GlpK mutant (T235M). The initial velocities are normalized to the $\\operatorname { V } _ { \\mathrm { m a x } } .$ (D) Specific activity (SA) of the enzymes were measured, ranged from 0 to 10 mM of FBP, and were normalized by ${ \\bf S A } _ { 0 } ,$ the specific activity at the saturating substrate concentration. Error bars represent the standard deviation of six replicates for the wild-type and five replicates for CY02.",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 22
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p005",
+      "text": "![](images/73a7db1d716d8e99024bdd91d7e613e7eee90896f7d8984cb35820e01ca6a0ba.jpg)",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 23
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p006",
+      "text": "![](images/61fe77c394cd237b7cb3ac135610281d59f8bc9d9b4fc3da8de83d45fd846fe3.jpg)",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 24
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p007",
+      "text": "B\n![](images/0e80290fc04e2af9be37a2bc683d9d4ae543186693a94a460b5b3a4667f298ab.jpg)\nFig. 3. Change in cellular cAMP level elicited by increased glycerol influx. (A) Proposed changes in glycerol metabolism, regulation, and gene expression in the presence of the GlpK mutant. Number 1 to 5 describe some of the key events taking place in the cell. (1) The missense mutation adjacent to the FBP-binding loop in GlpK renders the protein insensitive to FBP-inhibition, resulting in (2) increased glycerol influx with a concurrent increase in intracellular G3P. (3) Repression of adenylate cyclase mediated by elevated G3P leads to a decline in intracellular cAMP-CRP. (4) This change alleviates the cAMP-CRP-mediated repression of GlpR, a repressor of the glpFKX operon, leading to decreased glpK expression. (5) Increased influx of G3P results in the elevation of intracellular methylglyoxal, which may become toxic at a certain physiological threshold. Abbreviations (metabolites) – Glyc: glycerol, G3P: glycerol 3-phosphate, DHAP: glycerone phosphate, FBP: fructose 1,6-bisphosphate, F6P – fructose 6-phosphate, and MG – methylglyoxal. (B) Intracellular cAMP level in each single and double mutant and CY02 relative to wild-type. Error bars represent biological triplicates measured in technical duplicates. One-way ANOVA with Tuckey’s post hoc test was performed on cAMP concentrations of mutants relative to wild-type. All samples were tested significant (P-value < 0.001).",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 25
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p008",
+      "text": "To test whether E. coli W recapitulates the transcriptomic and biochemical shifts following glycerol adaptation, we first measured intracellular cAMP levels of the parental strain, each single and double mutant, and CY02 during the exponential phase. As expected, the intracellular cAMP levels in the reverse-engineered strains harboring the $g l p K ^ { \\mathrm { m } }$ mutation dramatically decreased by nearly 98% of that measured in the wild-type (Fig. 3B), this is far lower than that documented for the MG1655 strain (between 30% and 50% of the wild-type) (Applebee et al., 2011; Cheng et al., 2014). Despite harboring the identical glpK mutation $( g l p K ^ { \\mathrm { m } } )$ , the intracellular cAMP in CY02 was approximately 10-fold higher (20% of the wild-type) than that of the $g l p K ^ { \\mathrm { m } }$ single mutant. This suggests that the low intracellular cAMP levels observed in the $g l p K ^ { \\mathrm { m } }$ single and double mutants were maladaptive. The significant reduction in the $c r p ^ { \\mathrm { m } }$ single mutant, which retained only 36% of the cAMP measured in the wild-type, was unanticipated (Fig. 3B).",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 26
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p009",
+      "text": "The $c r p ^ { \\mathrm { m } }$ found in this study was initially presumed to have a null effect on strain fitness because the mutation was positioned toward the C-terminal end (Arg209His). Although it is unclear how the $c r p ^ { \\mathrm { m } }$ mutant exerted such a change in the intracellular cAMP level, the presence of a DNA-binding domain in the vicinity of Arg209His allowed us to speculate that $\\mathrm { C R P ^ { m } }$ may differ from the wild-type in DNA-binding interactions. Consistent with the changes in the intracellular cAMP abundance, the comparison of glpK mRNA transcript abundance measured using RT-qPCR between the strains revealed a concurrent decline in all mutants and the evolved strain (Fig. S4). The measured glpK expression of the $g l p K ^ { \\mathrm { m } }$ -harboring strains, including CY02, ranged between 3% and 6% compared to that of the wild-type, which was within the range of the relative expression level of the mutant glpK, as reported previously (Applebee et al., 2011). The relative expression of glpK in $c r p ^ { \\mathrm { m } }$ background was approximately 22% that of the wild-type. The expression in the double mutant $( g l p K ^ { \\mathrm { m } } c r p ^ { \\mathrm { m } } )$ was less than half that in the $g l p K ^ { \\mathrm { m } }$ single mutant, which appeared to indicate the presence of $c r p ^ { \\mathrm { { m } } } .$ -mediated expression regulation.",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 27
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p010",
+      "text": "Currently, it is predicted that CRP governs the expression of approximately 11.6% of all genes in E. coli (535 out of 4629 genes) as inferred from RegulonDB (Santos-Zavaleta et al., 2019). Therefore, it is speculated that the drastic change in intracellular cAMP, which forms a complex with the apo-CRP dimer to mediate gene expression regulation, would translate to an extensive rewiring of the cellular transcriptome (Sharma et al., 2009). To gain insight into genome-wide transcriptome changes in response to glycerol adaptation, we performed RNA sequencing (RNA-Seq) on the wild-type and CY02 strains harvested during exponential growth in minimal glycerol medium. An average of 79.6% and 77.3% of the total reads were mapped to the wild-type and CY02 strain, respectively, with a high correlation among the biological triplicates (Fig. S5). A total of 640 differentially expressed genes (DEGs) were identified using DESeq2 (Love et al., 2014). Among them, 149 genes were upregulated, and 491 genes were downregulated in the CY02 strain compared to that of the parental strain (Supplementary Table S1 and Fig. S6). We found that 181 genes of the DEGs were regulated by CRP (Santos-Zavaleta et al., 2019). The percentage of the CRP regulons differentially expressed between the wild-type and CY02 outweighed the total frequency of the CRP regulon in the E. coli genome (\\~12%) by more than 2-fold, signifying the impact of the change in intracellular cAMP level, and possibly the adaptive changes in glycerol utilization.",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 28
+    },
+    {
+      "paragraph_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level_p011",
+      "text": "The differentially expressed CRP regulons consisted of 157 positively regulated, 14 negatively regulated, eight ambiguous, and two unknown genes (Supplementary Table S1). Therefore, we assumed that any changes in the expression profile of these CRP regulons between the wild-type and cAMP-depleted CY02 would indicate the impact of the differences in intracellular cAMP levels. Indeed, 148 out of 157 positively regulated genes were significantly downregulated in CY02 compared with that of the wild-type, an effect that manifested as the result of reduced intracellular cAMP. However, such changes in gene expression were not as evident in the negatively regulated genes, with only five out of 14 upregulated in CY02 (Supplementary Table S1). Together, these results appeared to corroborate the expected transcriptomic changes in response to reduced intracellular cAMP levels.",
+      "section_id": "2_4_ale_reorganizes_the_transcriptome_by_modulating_the_cellular_camp_level",
+      "position": 29
+    },
+    {
+      "paragraph_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p001",
+      "text": "We assessed the changes in transcriptomic responses to glycerol adaptation in the core metabolic pathways of E. coli W (Fig. 4A and Supplementary Table S2). First, the expression of genes in the lower glycolytic pathway was significantly upregulated in the CY02 compared with the wild-type strain, reflecting the cellular response to the increased influx of the glycolytic substrate. Next, an overall decline in the expression of genes was observed in the tricarboxylic acid (TCA) cycle, respiratory proteins, and ATP synthases in CY02. In contrast, the expression of pta and ackA increased significantly, suggesting a pronounced involvement of the fermentation pathway in energy biogenesis in CY02 (Fig. 4A and Supplementary Table S2). The transcriptome data appeared to reflect the “aerobic acetate overflow,” characterized by excess acetate production in fast-growing, aerobically cultured microbes (Wolfe, 2005). It has been reported that this phenomenon results from an excess influx of glycolytic substrates, requiring more respiratory chain proteins for ATP generation via respiration, thereby imposing a higher proteomic cost for ATP generation via respiration than by fermentation. Under such circumstances, cells dissipate the excess redox potential in glycolytic substrates via overflow pathways, which are more “proteome-effective” when the cellular proteomic space is limiting (Basan et al., 2015; Zeng and Yang, 2019). It is also worth noting that acs, which encodes acetyl-CoA synthetase, was significantly downregulated in CY02. The downregulation of acs is implicated in decreased re-assimilation of ackA-derived acetate back into the cell, leading to increased total acetate production (Valgepea et al., 2010).",
+      "section_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow",
+      "position": 30
+    },
+    {
+      "paragraph_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p002",
+      "text": "![](images/cc1eb20b4f0a86fdfc0997bbfad69a30f7d9d167dcb5dc036bd3aec6ab66b24d.jpg)\nFig. 4. Changes in gene expression levels of the core metabolic pathways in response to glycerol adaptation. (A) Comparison of changes in the expression of genes in the central metabolism of E. coli W before and after ALE (M9-glycerol culture condition). Abbreviations – Glyc: glycerol, G3P: glycerol 3-phosphate, DHAP: glycerone phosphate, FBP: fructose 1,6-bisphosphate, F6P – fructose 6-phosphate, G6P – glucose 6-phosphate, GAP: glyceraldehyde 3-phosphate, 1,3BP: 1,3-bisphosphate-D glycerate, 3 PG: 3-phosphoglycerate, 2 PG: 2-phosphoglycerate, PEP: phosphoenolpyruvate, PYR: pyruvate, A-CoA: acetyl-CoA, Ac–P: acetyl phosphate, AC: acetate, OAA: oxaloacetate, MAL: L-malate, FUM: fumarate, SUC: succinate, SuA: succinyl-CoA, αKG: α-ketoglutarate, ICT: isocitrate, and CIT: citrate. (B) Acetate secretion rates were measured during the exponential growth of the wild-type, $c { p ^ { \\mathrm { m } } } , g { \\dot { p } } K ^ { \\mathrm { m } } , g { p } K ^ { \\mathrm { m } } c { r } p ^ { \\mathrm { m } }$ , and CY02. ND stands for not-determined. One-way ANOVA with Tuckey’s post hoc test was performed on acetate secretion rates. (\\*\\*\\*) for P-value less than 0.001. Error bars represent standard deviations of biological duplicates.",
+      "section_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow",
+      "position": 31
+    },
+    {
+      "paragraph_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow_p003",
+      "text": "To test whether the transcriptomic changes outlined above translate into increased acetate availability in the spent medium, we determined the acetate secretion rate of CY02 and the wild-type strain during exponential growth. The results showed that whereas the availability of acetate in the wild-type culture medium was insufficient for accurate determination of secretion rate, it was far above the detection limit in CY02, indicating increased acetate overflow (Fig. 4B). acs is part of the CRP-cAMP regulon. The reduction of intracellular cAMP induced by auto-catabolite repression triggered through the high G3P levels in glpK mutants leads to downregulation of acs (Applebee et al., 2011; Cheng et al., 2014). To test whether the overflow observed in CY02 is attributable to glpK , we measured the acetate production rates in mutants with $g l p K ^ { \\mathrm { m } } , c r p ^ { \\mathrm { m } }$ , or $g { l p } K ^ { \\mathrm { m } } c { r p } ^ { \\mathrm { m } }$ genetic backgrounds. Indeed, mutants harboring $g l p K ^ { \\mathrm { m } }$ exhibited increased acetate production rates comparable to CY02 (Fig. 4B). Interestingly, despite the apparent reduction in the measured cAMP level in $c r p ^ { \\mathrm { m } }$ , the acetate production rate was not determinable. This suggests that cAMP-CRP regulation alone does not fully account for acetate overflow in E. coli (Basan et al., 2015). Instead, acetate overflow in $g l p K ^ { \\mathrm { m } }$ -containing mutants results from combined actions between the $g l p K ^ { \\mathrm { m } }$ -mediated auto-catabolite repression, which induces downregulation of acs and activates a more proteomically efficient energy generation pathway, pta and ackA.",
+      "section_id": "2_5_improved_glycerol_utilization_leads_to_increased_acetate_overflow",
+      "position": 32
+    },
+    {
+      "paragraph_id": "2_6_gaba_production_in_e_coli_w_p001",
+      "text": "Taking advantage of the improved glycerol uptake and utilization observed in the glycerol-evolved E. coli $\\mathsf { W } ,$ we examined whether such improvements translated into superior commodity metabolite production from glycerol. Previously, it was demonstrated that E. coli W exhibited some of the highest GABA production levels under glycerol limitation among other E. coli strains, including W3110, DH5α, and BL21 (DE3) (Hou and Kang, 2018). To test whether ALE leads to improved GABA production, we used a variant of glutamate decarboxylase B (mtGAD) in the strain. Unlike its wild-type counterpart, the variant is catalytically active even at physiological pH, making it the enzyme of choice for GABA production via bacterial fermentation (Choi et al., 2015; Hou and Kang, 2018; Thu Ho et al., 2013). The mutant gene is under the control of an inducible promoter PLtetQ-1, but the lack of a cognate repressor in the E. coli W genome allowed constitutive expression of mtGAD. The GABA expression cassette was inserted into the chromosome, precluding the use of antibiotic markers during cell culture.",
+      "section_id": "2_6_gaba_production_in_e_coli_w",
+      "position": 33
+    },
+    {
+      "paragraph_id": "2_6_gaba_production_in_e_coli_w_p002",
+      "text": "The measurement of GABA production in the E. coli W wild-type and CY02 in M9 glycerol minimal medium revealed that the differences in the final GABA concentration were negligible $( 0 . 0 6 \\pm 0 . 0 1$ and 0.06 ± 0.01 g/L for wild-type and CY02, respectively). There are few related but mutually exclusive reasons that offer plausible explanations for this observation. First, cells display “inefficient growth” in the presence of excess carbon intake under carbon-limited conditions, which is characterized by cells allocating much of the substrate input in generating excess energy than in biomass (Basan et al., 2015; Russell and Cook, 1995). This has also been proven to be true for E. coli harboring the glpK mutants (Basan et al., 2015) and appears to be the case for CY02, as seen through the superfluous acetate overflow. Under such circumstances, cells are less efficient in generating biomass, thereby imposing constraints on biomass formation, such as heterologous protein expression and plasmid acquisition (el-Mansi and Holms, 1989; Prensky et al., 2021). Additionally, the cost of amino acid biosynthesis is highly dependent on the “metabolic network.” The underlying cost of production is proportional to the number of reactions required to synthesize amino acids from the input substrate (Waschina et al., 2016).",
+      "section_id": "2_6_gaba_production_in_e_coli_w",
+      "position": 34
+    },
+    {
+      "paragraph_id": "2_6_gaba_production_in_e_coli_w_p003",
+      "text": "Given that L-glutamate is converted from α-ketoglutarate in the TCA cycle, conversion of the glycolytic substrate glycerol into L-glutamate incurs some of the highest metabolic costs (Waschina et al., 2016). Although 50 mg/L of yeast extract was present in the minimal medium used for GABA production, it might not have been sufficient to meet the cellular L-glutamate demands. Lastly, together with the growth inefficiency and the high biosynthetic cost of L-glutamate from glycerol, the amount of glycerol supplemented in the medium (0.2% v/v) can be a limiting factor in the growth-coupled production of GABA under nutrient limitation. Several studies have supplemented at least 10 g/L (equivalent to 1%) of feedstock carbons (i.e., glucose) in the culture medium to facilitate GABA production (Choi et al., 2015; Im et al., 2020; Le Vo et al., 2012, 2013; Luo et al., 2021; Soma et al., 2017; Zhao et al., 2017). Together, we reasoned that these compounding factors in a minimal glycerol medium might have overshadowed the effect of enhanced glycerol uptake and utilization in CY02 on GABA production.",
+      "section_id": "2_6_gaba_production_in_e_coli_w",
+      "position": 35
+    },
+    {
+      "paragraph_id": "2_6_gaba_production_in_e_coli_w_p004",
+      "text": "Following approaches were used to optimize GABA production: previously, it has been demonstrated that growth inefficiency can be restored upon supplementation with amino acids, resulting in a more efficient substrate-to-biomass conversion (Prensky et al., 2021; Russell and Cook, 1995; Waschina et al., 2016). Therefore, we used amino acid-rich Luria Bertani (LB) medium supplemented with glycerol as the sole carbon source. We also determined the optimal glycerol concentration for cell culture by using growth rate as a proxy, assuming that GABA production is growth-coupled. The highest specific growth rates were observed in the culture medium containing 2% glycerol (v/v) in the wild-type and $g l p K ^ { m } .$ -containing mutants (Fig. S7). Next, the final GABA concentration was measured for the wild-type, $g l p K ^ { \\mathrm { m } } , \\ c r p ^ { \\mathrm { m } } ;$ $g l p K ^ { \\mathrm { m } } c r p ^ { \\mathrm { m } } ;$ , and CY02 cultured in $\\mathrm { L B } + 2 \\% ( \\mathrm { v / v } )$ glycerol medium from the stationary phase of growth. GABA concentration measured at the stationary phase was significantly higher across the mutants harboring $g l p K ^ { \\mathrm { m } }$ compared with the wild-type, suggesting that medium composition is integral for efficient GABA production $( 0 . 0 5 \\pm 0 . 0 1 , 0 . 0 6 \\pm 0 . 0 0 _ { \\hphantom { 0 } }$ $0 . 0 7 \\pm 0 . 0 0 , 0 . 0 7 \\pm 0 . 0 0$ , and $0 . 1 7 \\pm 0 . 0 1 { \\bf g } / \\mathrm { L }$ in wild-type, $c r p ^ { \\mathrm { m } } , g l p K ^ { \\mathrm { m } }$ $g l p K ^ { \\mathrm { m } } c r p ^ { \\mathrm { m } }$ , and CY02, respectively). Notably, the most significant increase in GABA production was observed in CY02, signifying that global optimization of a metabolic pathway, in addition to superior substrate uptake, is pivotal for enhancing target metabolite production in microbial systems.",
+      "section_id": "2_6_gaba_production_in_e_coli_w",
+      "position": 36
+    },
+    {
+      "paragraph_id": "2_6_gaba_production_in_e_coli_w_p005",
+      "text": "To assess the time-course changes in the GABA titer and productivity in the wild-type and CY02, we measured GABA concentration from the spent medium for over 24 h. First, CY02 maintained a higher growth rate than the wild-type strain in the LB-based medium (Fig. 5A). The maximum titer and productivity in the wild-type was $0 . 1 5 \\pm 0 . 0 1 ~ \\mathbf { g } / \\mathrm { L }$ and $0 . 0 3 \\pm 0 . 0 1 \\mathrm { g / L / h r } ,$ respectively, both of which increased by nearly 2.6-fold following $\\mathrm { A L E } \\ ( 0 . 3 9 \\pm 0 . 0 3 \\ \\mathrm { g / L }$ and $0 . 0 8 ~ \\pm ~ 0 . 0 1$ g/L/hr) (Fig. 5B). The difference in the total amount of glycerol consumed was negligible, suggesting that the improved GABA production in CY02 is likely ascribed to the improved metabolic efficiency and biomass yield following adaptive evolution (Cheng et al., 2014).",
+      "section_id": "2_6_gaba_production_in_e_coli_w",
+      "position": 37
+    },
+    {
+      "paragraph_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p001",
+      "text": "As an excessive substrate input is wired to energy generation in the form of acetate overflow in CY02, we tested whether we could re-direct this metabolic flux to GABA production. To meet this objective, we constructed several knockout mutants shown to enhance GABA production or glycerol tolerance in E. coli. These included ackA (acetate kinase), mgsA (methylglyoxal synthase), and gabT (4-aminobutyrate aminotransferase) (Fig. 6A). Of the many knockout targets, these three were chosen for the following reasons: first, owing to the highly profuse acetate overflow seen in CY02, we decided that ackA inactivation would re-route excess carbons that are otherwise excreted into the culture medium. ackA is one of many genes associated with mixed-acid fermentation pathways that are routinely targeted for metabolic engineering, including GABA production (Pham et al., 2015, 2016). Further, it was reported that the presence of glpK mutants that enhance glycerol uptake $( \\mathrm { i . e . , }$ insensitive to FBP-mediated inhibition) could lead to the build-up of methylglyoxal, an intermediate of glycerol metabolism, up to a cytotoxic level (Freedberg et al., 1971). One way to curb the potentially damaging effects of methylglyoxal accumulation is to inactivate mgsA, which encodes methylglyoxal synthase that catalyzes the conversion of DHAP to methylglyoxal (Mazumdar et al., 2013). MgsA is also involved in an intermediate pathway that yields lactate enantiomers in E. coli, an auxiliary pathway that can improve target metabolite production upon inactivation (Mazumdar et al., 2013). Finally, gabT constitutes a GABA shunt pathway that feeds GABA back into the TCA cycle via a two-step reaction. For this reason, deletion of gabT is a common practice to improve GABA production in bacteria (Im et al., 2020; Le Vo et al., 2012, 2013; Luo et al., 2021; Pham et al., 2016; Zhao et al., 2017). Therefore, we deleted each single and all target genes in CY02, yielding three single knockouts and a triple knockout strain denoted as CY02\\_ΔackA, CY02\\_ΔgabT, CY02\\_ΔmgsA, and CY02\\_TKO (Fig. 6A).",
+      "section_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production",
+      "position": 38
+    },
+    {
+      "paragraph_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p002",
+      "text": "The time-course measurement of growth rate and GABA production in each single and triple knockout strain showed that the gene knockout did not affect cell growth rate, although strains with ΔackA (CY02\\_ΔackA, CY02\\_ΔgabTΔackA, CY02\\_ ΔmgsAΔackA and CY02\\_TKO) exhibited a prolonged lag phase growth (Fig. 6B; Fig. S8A). However, the results of GABA production in the CY02 derivatives were counterintuitive. Although the final GABA titer in all single knockout strains was lower than that of the wild-type, it was significantly higher in the double and the triple knockout derivatives (Fig. 6C; Fig. S8B). Variations in GABA production was seen in the double knockout derivatives. The final GABA titers of ΔgabTΔackA, and ΔgabTΔmgsA $( 0 . 4 6 \\pm 0 . 0 2$ and 0.45 ± 0.01 g/L respectively; Fig. S8B), were higher than CY02 and all single knock derivatives, but were lower than the triple knockout derivative. On the other hand, while the final GABA titer in CY02\\_ΔmgsAΔackA $( 0 . 3 7 \\pm 0 . 0 4 \\ : \\mathrm { g / L } )$ was higher than the two single knockout mutants – CY02\\_ΔackA and CY02\\_ ΔmgsA, it remained lower compared to CY02 and CY02\\_ΔgabT single knockout. This suggested that deletion of gabT gene, which is associated with GABA shunt pathway, was important for improving GABA production in the evolved strain. The deletion of three target genes resulted in a further increase in the GABA titer and productivity by 1.5- and 1.6-fold, respectively (Table 3). To assess whether the observed effects of gene deletions on GABA production was an intrinsic feature of E. coli W, we also measured GABA production in knockout derivatives of the wild-type lacZ:mtGAD strain (Fig. 6D and E; Figs. S8C and D). The results suggested that the deletion of ackA, gabT, and mgsA, in general, leads to lower GABA production compared to that of the wild-type. However, the effect of the double and the triple knockout in CY02 was not observed in the wild-type, suggesting that the improved GABA production in CY02 double and triple knockouts was attributable to the rewired metabolic network. As genetic mutations are the key variables that underlie the phenotypic differences between the wild-type and CY02, the varied response to the multi-gene knockouts is seemingly ascribable to the background effect imparted by the mutations acquired in the course of evolution (Mullis et al., 2018). The prevalence of epistatic interactions in the genetic network translates to the idea that any changes in the genetic background (or mutations) may potentially alter the phenotypic outcome of genetic changes acquired later. In this case, the inactivation of the three genes (ackA, mgsA, and gabT) together elicited unknown epistatic interactions in the CY02 mutational background, leading to improved GABA production.",
+      "section_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production",
+      "position": 39
+    },
+    {
+      "paragraph_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p003",
+      "text": "A\n![](images/09ccb4c497436827b45fd5f6cbb1d71632b26d6895e8dfcc804de4c08c7a06be.jpg)",
+      "section_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production",
+      "position": 40
+    },
+    {
+      "paragraph_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production_p004",
+      "text": "B\n![](images/1b5427ccd76096f5ad25edda177b2f5db9ef3ae562b62712b5ec9f3fd902ce8c.jpg)\nFig. 5. GABA production in E. coli W and CY02. (A) Growth, (B) GABA production, and glycerol consumption profile in LB supplemented with 2% (v/v) glycerol. Error bars represent standard deviations among three biological triplicates.",
+      "section_id": "2_7_metabolic_engineering_of_e_coli_w_to_improve_gaba_production",
+      "position": 41
+    },
+    {
+      "paragraph_id": "3_discussion_p001",
+      "text": "It has been previously shown that the metabolic network in wild-type E. coli strains is not optimized for glycerol utilization and that strain fitness under glycerol limitation can be further improved through adaptive evolution experiments (Cheng et al., 2014; Herring et al., 2006; Ibarra et al., 2002; Kang et al., 2019). ALE is a robust top-down approach that harnesses microbes with desired characteristics. This approach exploits the innate ability of microbes to rapidly adapt to new environments and is now widely used across a broad spectrum of applications, including, but not limited to, strain development and fitness optimization (Dragosits and Mattanovich, 2013; Portnoy et al., 2011). In this study, a novel glpK mutation was identified, which accounted for more than 90% of the fitness increase in CY02. We also leveraged ALE to allow efficient utilization of non-preferential carbon glycerol in a fast-growing E. coli strain W.",
+      "section_id": "3_discussion",
+      "position": 42
+    },
+    {
+      "paragraph_id": "3_discussion_p002",
+      "text": "We observed a significant fitness increase in E. coli W harboring a non-synonymous nucleotide substitution in glpK, which is in keeping with previous findings in E. coli (Applebee et al., 2011). Although the amino acid change in the glpK<sup>m</sup> (GlpK T235M) identified in this study has not been previously isolated, the mutation in the vicinity of the FBP-binding position led us to infer the mechanistic basis of glpK<sup>m</sup>. With kinetic experiments to validate the prediction that the increased glycerol uptake observed in CY02 was attributable to FBP-insensitive GlpK<sup>m</sup>. The $g l p K ^ { \\mathrm { m } }$ also showed the hallmarks of glpK mutants, including the auto-regulation of intracellular cAMP levels arising from increased glycerol influx, downregulation of glpK gene expression, and excessive acetate overflow (Applebee et al., 2011; Cheng et al., 2014). Together, these results highlighted the universality of glpK mutant in glycerol adaptation in different E. coli strains.",
+      "section_id": "3_discussion",
+      "position": 43
+    },
+    {
+      "paragraph_id": "3_discussion_p003",
+      "text": "The productivity and titer of GABA in the evolved strain CY02, along with additional metabolic engineering design, increased by 4.3- and 3.9 folds (0.13 ± 0.02 g/L/hr and 0.59 ± 0.04 g/L), respectively. Quantitively speaking, GABA production in the engineered E. coli W was not high compared to other studies. Just as other metabolites, GABA production is heavily dependent on the mode of production (bioconversion or fermentation), types of feedstock used, and with huge strain-wide variability in production. For instance, engineered E. coli (i.e. overexpression of GAD genes and gene knockouts) produced approximately 5.6 g/L of GABA in LB supplemented with monosodium glutamate (MSG) as the substrate (Le Vo et al., 2012, 2013). The titer was much lower when glucose was supplemented instead (\\~1.3 g/L) (Pham et al., 2015). With bioconversion method, a staggering 313.1 g/L of GABA titer was achieved via extracellular expression of GAD gene in an extreme-rich medium (Zhao et al., 2016). In addition, natural isolates with a robust GABA production capacity, such as Lactobacillus brevis NCL912, and Lactobacillus buchneri WPZ001, were shown to achieve GABA titer of 104 and 129 g/L respectively via fermentation in MSG-supplemented rich media (Li et al., 2010; Zhao et al., 2015).",
+      "section_id": "3_discussion",
+      "position": 44
+    },
+    {
+      "paragraph_id": "3_discussion_p004",
+      "text": "The primary focus of this study was to demonstrate the applicability of evolutionary and metabolic engineering in tandem for improving target metabolite production. For instance, evolutionary engineering (ALE) alone showed a 2.6-fold increase in the maximum GABA production in the $\\mathrm { L B } + 2 \\% ( \\mathrm { v / v } )$ glycerol culture condition. The increase in",
+      "section_id": "3_discussion",
+      "position": 45
+    },
+    {
+      "paragraph_id": "3_discussion_p005",
+      "text": "A\n![](images/1e54ca9567d8f2b9202b3136963632728e1b592f812c126260c1a0f8e340cea7.jpg)",
+      "section_id": "3_discussion",
+      "position": 46
+    },
+    {
+      "paragraph_id": "3_discussion_p006",
+      "text": "B\n![](images/8bae7b5567b6790dbf5bb427f2ac1afad746b18c458dfc50feeb85f5e2eeb967.jpg)",
+      "section_id": "3_discussion",
+      "position": 47
+    },
+    {
+      "paragraph_id": "3_discussion_p007",
+      "text": "C\n![](images/e7550ee875e8a4f53ad517a584674e18d1a3ac2296e5795836ac9df1b7a383ed.jpg)",
+      "section_id": "3_discussion",
+      "position": 48
+    },
+    {
+      "paragraph_id": "3_discussion_p008",
+      "text": "D\n![](images/d5dcb0fac4163af9872a404c1e03b37142091f467a989ca050d44d1eee6ba71c.jpg)",
+      "section_id": "3_discussion",
+      "position": 49
+    },
+    {
+      "paragraph_id": "3_discussion_p009",
+      "text": "E\n![](images/8a9f65cf45d6e8b725bba62f837f4772bfcc7329230d271219f944d98c9394bd.jpg)\nFig. 6. Targeted knockout of “metabolic sinks” to further improve GABA production. (A) A simplified illustration of metabolic pathways involved in GABA pro duction. Metabolic pathways targeted for inactivation involve a methylglyoxal (MG) shunt, acetate overflow, and GABA shunt. Abbreviations – Glyc: glycerol, DHAP: glycerone phosphate, MG: methylglyoxal, D, L-Lac: enantiomers of D- and L-lactate, Ac: acetate, A-CoA: acetyl-CoA, αKG: α-ketoglutarate, L-Glu: L-glutamate, SUC-SA: succinate semialdehyde, and SUC: succinate. Profiles of (B) growth and (C) glycerol consumption and GABA production of CY02 and its single and triple gene knockout derivatives in LB supplemented with 2% (v/v) glycerol. Profiles of (D) growth and (E) glycerol consumption and GABA production of E. coli W wild-type and its single and triple gene knockout derivatives in LB supplemented with 2% (v/v) glycerol. All error bars represent standard deviations among biological triplicates.",
+      "section_id": "3_discussion",
+      "position": 50
+    },
+    {
+      "paragraph_id": "3_discussion_p010",
+      "text": "Maximum titer and specific productivity of GABA in the wild-type, CY02, and triple-KO CY02 mutant (CY02\\_TKO).\n<table><tr><td>Strain</td><td>WT</td><td>CY02</td><td>CY02_TKO</td></tr><tr><td>Max titer (g/L)</td><td> $0 . 1 5 \\pm 0 . 0 1$ </td><td> $0 . 3 9 \\pm 0 . 0 3$ </td><td> $0 . 5 9 \\pm 0 . 0 4$ </td></tr><tr><td>Specific Productivity  $( g / \\mathrm { L } / \\mathrm { h r } )$ </td><td> $0 . 0 3 \\pm 0 . 0 1$ </td><td> $0 . 0 8 \\pm 0 . 0 1$ </td><td> $0 . 1 3 \\pm 0 . 0 2$ </td></tr></table>",
+      "section_id": "3_discussion",
+      "position": 51
+    },
+    {
+      "paragraph_id": "3_discussion_p011",
+      "text": "GABA production was not as pronounced in the single and double mutants $( g l p K ^ { \\mathrm { m } }$ and $g { l p } K ^ { \\mathrm { m } } c r { p } ^ { m } )$ . These results highlighted that although the enhanced ability of the substrate is important for target metabolite production, optimization of downstream utilization pathways is required to maximize substrate utility. With additional metabolic engineering designs, the productivity and titer by up to 4.3 and 3.9-folds, respectively using glycerol as the carbon source. Such an increase is comparable, or sometimes even better off, than other engineering attempts that utilized highly efficient carbon sources such as glucose and MSG (ranging between 1.2 and 4.6-fold increase in titer from genome engineering alone) (Im et al., 2020; Le Vo et al., 2013; Pham et al., 2015; Yu et al., 2019). In addition, most studies adopted plasmid-based expression systems with a sufficiently strong promoters to express GABA-producing genes. This further highlights the applicability of the method presented in this study, which exhibited comparable fold-improvement in GABA production even with the chromosomal expression of GAD gene.",
+      "section_id": "3_discussion",
+      "position": 52
+    },
+    {
+      "paragraph_id": "3_discussion_p012",
+      "text": "With respect to bioconversion of waste, bioconversion of renewable biomass wastes, including agricultural, food, municipal waste and forest remains, into commodity products have been increasingly highlighted in the last few years due to the compelling need for sustainability (Bhatia et al., 2018). However, the use of model strain E. coli can be limited when it comes to the choice of feedstocks. Bioconversion of ‘difficult renewable wastes typically requires species of microorganisms that can efficiently degrade, utilize and convert target molecules. For example, lignocellulosic solid waste consists mainly of plant-derived cellulose hence requiring the use of microbial species with high cellulolytic activity, which is largely lacking in model E. coli strains (Sarsaiya et al., 2018). Bioconversion of waste gaseous substances into commodity also mandates the use of highly specialized bacteria, such as facultative anaerobe acetogens, that can subsist on gaseous feedstocks (Bae et al., 2021). It is expected that such forms of waste feedstocks can be a much cheaper alternative for microbial bioconversion compared with conventional feedstock carbons. In addition, the complementary benefit of a cleaner environment coupled with rapidly increasing waste generation (Kaza et al., 2018) together calls for a more efficient and cost-effective biowaste conversion technology. To this end, the development of versatile microbial host systems tailored for waste bioconversion is needed to effectively convert diverse waste sources into value-added products.",
+      "section_id": "3_discussion",
+      "position": 53
+    },
+    {
+      "paragraph_id": "4_1_bacterial_strains_culture_conditions_and_primers_p001",
+      "text": "Cells were grown in M9 minimal medium (BD, Franklin Lakes, NJ, USA) supplemented with 0.2% (v/v) glycerol (Samchun Chemicals, Seoul, South Korea) or Luria Bertani (LB) medium unless stated otherwise. The growth profile in Figs. 1 and 5 was measured in 50 mL culture in 250 mL Erlenmeyer flasks at ${ } ^ { 3 7 } \\ { } ^ { \\circ } \\mathbf { C } ,$ 200 rpm for every 2 h intervals. The growth profile in Fig. S7 was performed using the EPOCH2 plate reader (BioTek, Winnoski, VT, United States) at $3 7 ^ { \\circ } \\mathrm { C }$ with shaking (807 rpm double orbital) for 24 h, using default 96-well configuration (110 μL of working volume). Absorbance $\\mathtt { a t } \\lambda = 6 0 0$ nm was measured at 10-min intervals. The resulting data output was analyzed on the Gen 5 software. The primers, bacterial strains, and plasmids used in this study are listed in Supplementary Table S3.",
+      "section_id": "4_1_bacterial_strains_culture_conditions_and_primers",
+      "position": 54
+    },
+    {
+      "paragraph_id": "4_2_ale_and_strain_isolation_p001",
+      "text": "E. coli W was cultivated in 50 mL of M9 glycerol medium in a 250 mL Erlenmeyer flat-bottom flask at $3 7 ^ { \\circ } \\mathrm { C }$ with agitation. The batch cultures were transferred to fresh M9 glycerol medium every 12 h. Initially, the initial optical density at 600 nm $\\left( \\mathrm { A } _ { 6 0 0 \\mathrm { n m } } \\right)$ was set to 0.0008, and it was reduced to 0.0004 and, subsequently, to 0.00016 in a stepwise manner. The number of generations during ALE was calculated from the initial and final cell densities using Eq. (1):",
+      "section_id": "4_2_ale_and_strain_isolation",
+      "position": 55
+    },
+    {
+      "paragraph_id": "4_2_ale_and_strain_isolation_p002",
+      "text": "$$\n{ \\mathrm { N u m b e r ~ o f ~ \\ g e n e r a t i o n } } = \\log 2 _ { 2 } { \\frac { { \\mathrm { F i n a l ~ \\ c e l l ~ \\ d e n s i t y } } } { { \\mathrm { I n i t i a l ~ \\ c e l l ~ \\ d e n s i t y } } } }\\tag{1}\n$$",
+      "section_id": "4_2_ale_and_strain_isolation",
+      "position": 56
+    },
+    {
+      "paragraph_id": "4_2_ale_and_strain_isolation_p003",
+      "text": "Single clones were isolated in the M9 glycerol agar medium after ALE. A single clone was isolated for further analysis (CY02).",
+      "section_id": "4_2_ale_and_strain_isolation",
+      "position": 57
+    },
+    {
+      "paragraph_id": "4_3_whole_genome_resequencing_p001",
+      "text": "Genomic DNA was isolated using a Wizard Genomic DNA purification kit (Promega, Madison, WI, USA), following the manufacturer’s instructions. Cells collected by centrifugation were lysed by resuspension in Nuclei Lysis Solution and incubation at 80 ◦C for 5 min. The cell lysate was incubated at $3 7 ~ ^ { \\circ } \\mathrm { C }$ for 30 min with 1.2 μg of RNase A (Qiagen, Hilden, Germany). Proteins were precipitated using protein precipitation solution, and genomic DNA was precipitated using isopropanol and 70% $\\mathbf { ( v / v ) }$ ethanol. Genomic DNA was rehydrated using Milli-Q ultrapure water (Merck, Kenilworth, NJ, USA). The resequencing library was constructed using the TruSeq DNA LT Sample Prep Kit (Illumina, San Diego, CA, USA). The gDNA library was sequenced using the MiSeq Reagent Kit v2 (Illumina) in a 50-cycle single-ended reaction on the MiSeq instrument.",
+      "section_id": "4_3_whole_genome_resequencing",
+      "position": 58
+    },
+    {
+      "paragraph_id": "4_4_construction_of_mutant_strains_p001",
+      "text": "The target genes were replaced by $\\mathrm { K a n } ^ { \\mathrm { R } }$ by lambda Red recombination of the parental W strain (Datsenko and Wanner, 2000) (see plasmids and primers used in mutant construction in Supplementary Table S3). The kanamycin resistance cassette was amplified from pKD13 by using PCR with homology to the target region. The recombinogenic DNA (1 μg) was introduced into electrocompetent cells containing pKD46, via electroporation on a MicroPulser (Bio-Rad, Hercules, CA, USA) at 1.8 kV in a 0.1 cm gap cuvette. A recipient was selected on LB agar containing 50 μg/mL kanamycin. The selected colonies were transformed with pCP20 to eliminate the $\\mathrm { K a n } ^ { \\mathrm { R } }$ marker. The temperature-sensitive plasmids were cured by incubation in LB medium at $4 2 ^ { \\circ } \\mathrm { C } .$",
+      "section_id": "4_4_construction_of_mutant_strains",
+      "position": 59
+    },
+    {
+      "paragraph_id": "4_5_glycerol_and_acetate_quantification_p001",
+      "text": "To measure glycerol and acetate in cell culture media, each strain was inoculated in 50 mL of M9 glycerol minimal medium in 250 mL Erlenmeyer flasks. After 1.5 h of incubation, 1.5 mL of the cell culture was collected at 1 h intervals during the exponential growth phase. The samples were centrifuged at $^ { 1 4 , 8 1 4 \\times g }$ at $4 ~ { } ^ { \\circ } \\mathrm { C }$ for 1 min, and the supernatant was filtered using a 0.2 μm pore size cellulose acetate syringe filter (Sartorius, Gottingen, Germany). Quantification of glycerol and acetate was performed using a Cedex Bio Analyzer (Roche, Basel, Switzerland) with the Glycerol Bio Test kit and Acetate V2 Bio Test kit. The glycerol consumption and acetate secretion rates were determined as described in a previous study (Heyland et al., 2009), using the equations below:",
+      "section_id": "4_5_glycerol_and_acetate_quantification",
+      "position": 60
+    },
+    {
+      "paragraph_id": "4_5_glycerol_and_acetate_quantification_p002",
+      "text": "$$\nr _ { \\mathrm { g l y c e r o l } } = \\frac { \\mu } { Y _ { X _ { / _ { s } } } }\\tag{2}\n$$",
+      "section_id": "4_5_glycerol_and_acetate_quantification",
+      "position": 61
+    },
+    {
+      "paragraph_id": "4_5_glycerol_and_acetate_quantification_p003",
+      "text": "$$\nr _ { \\mathrm { a c e t a t e } } = { \\frac { \\mu } { Y _ { P _ { \\tilde { \\jmath } _ { X } } } } }\\tag{3}\n$$",
+      "section_id": "4_5_glycerol_and_acetate_quantification",
+      "position": 62
+    },
+    {
+      "paragraph_id": "4_5_glycerol_and_acetate_quantification_p004",
+      "text": "where μ is the specific growth rate, $\\Upsilon _ { \\mathbf { x } / \\mathbf { s } }$ is the biomass yield of glycerol, and $\\mathrm { Y } _ { \\mathrm { p / x } }$ is the product yield coefficient of biomass.",
+      "section_id": "4_5_glycerol_and_acetate_quantification",
+      "position": 63
+    },
+    {
+      "paragraph_id": "4_6_glpk_expression_and_purification_p001",
+      "text": "Wild-type and mutant glpK sequences were cloned into the pET28a (+) vector by using an In-fusion HD cloning kit (Takara, Kusatsu, Japan). The wild-type glpK sequence was amplified by PCR from the parental W, whereas the mutant glpK sequence was amplified from the glycerol-evolved single clone CY02.6 × His tags were added to the Nterminus of the expressed proteins. The sequences of both the wild-type and mutant glpK were validated by Sanger sequencing. Cloned wild-type and mutant GlpK were transformed into E. coli BL21 (DE3) cells. The isolated clone of each transformant was cultivated in 200 mL of LB with kanamycin (50 μg/mL) at $3 7 ^ { \\circ } \\mathrm { C } .$ . Protein expression was induced with 1 mM IPTG. Cells were collected and lysed in lysis buffer (20 mM pH 8.0 Tris-HCl, 300 mM NaCl, 20 mM imidazole, 1 × protease inhibitor cocktail, and 1 mg/mL lysozyme) and sonicated (30% amplitude, pulse on 3 s, off 9 s, total on time 10 min). After lysis, the cell lysates were centrifuged, and the supernatants were filtered through a 0.2 μm syringe filter (Sartorius). The filtered supernatant was loaded onto an Econo-Pac Chromatography column (Bio-Rad) with Ni-NTA agarose (Qiagen). The column was washed using a washing buffer (20 mM pH 8.0 Tris-HCl, 300 mM NaCl, and 20 mM imidazole). The protein was eluted in elution buffer (20 mM pH 8.0 Tris-HCl, 300 mM NaCl, and 250 mM imidazole buffer). The eluted protein was dialyzed using a float-A-Lyzer G2 dialysis device (Repligen, Waltham, MA, USA) in storage buffer (50 mM pH 6.8 Tris-HCl, 200 mM NaCl, 1 mM β-mercaptoethanol, 20% (v/ v) ethylene glycol, and 2 mM glycerol in sterile water). The dialyzed proteins were monitored by SDS-PAGE.",
+      "section_id": "4_6_glpk_expression_and_purification",
+      "position": 64
+    },
+    {
+      "paragraph_id": "4_7_glpk_kinetic_assays_p001",
+      "text": "The catalytic and allosteric activities of wild-type GlpK and GlpK T235M were determined as described previously (Applebee et al., 2011; Janson and Cleland, 1974). In brief, the reaction mixture (50 mM PIPES, 5 mM MgCl<sub>2</sub>, 20 mM KCl, 2.5 mM ATP, 15 U/mL pyruvate kinase, 15U/mL lactate dehydrogenase, 0.2 mM PEP, and 0.2 mM NADH) with various glycerol concentrations was reacted with 0.5 μg/mL of each enzyme in a total volume of 200 μL at 25 ◦C and pH 7.0. The rate of decrease in absorbance at A<sub>340</sub> <sub>nm</sub> was monitored using an EPOCH2 microplate spectrophotometer (BioTek). The results were curve-fitted using SigmaPlot 12. Allosteric inhibition by FBP was analyzed by fitting the specific activity (SA) to the FBP concentration using Eq. (4).",
+      "section_id": "4_7_glpk_kinetic_assays",
+      "position": 65
+    },
+    {
+      "paragraph_id": "4_7_glpk_kinetic_assays_p002",
+      "text": "$$\n\\mathrm { S A } { = } \\mathrm { S A } _ { 0 } - ( \\frac { \\mathrm { S A } _ { 0 } ( 1 - \\mathrm { W } ) [ \\mathrm { F B P } ] ^ { \\mathrm { n H } } } { \\mathrm { K } _ { 0 . 5 } ^ { \\mathrm { n H } } + [ \\mathrm { F B P } ] ^ { \\mathrm { n H } } } )\\tag{4}\n$$",
+      "section_id": "4_7_glpk_kinetic_assays",
+      "position": 66
+    },
+    {
+      "paragraph_id": "4_7_glpk_kinetic_assays_p003",
+      "text": "SA (specific activity) indicates SA at a specific concentration of FBP, and $\\mathbf { S A } _ { 0 }$ is the SA in the absence of FBP. W is ${ \\mathrm { S A } } _ { \\infty } / { \\mathrm { S A } } _ { 0 }$ and $\\mathbf { S A } _ { \\infty }$ is the SA at the saturating concentration of FBP. $\\mathrm { K } _ { 0 . 5 }$ is the FBP concentration at half of ${ \\bf \\cal S A } _ { 0 } ,$ where nH is the Hill coefficient.",
+      "section_id": "4_7_glpk_kinetic_assays",
+      "position": 67
+    },
+    {
+      "paragraph_id": "4_8_intracellular_camp_assay_p001",
+      "text": "Sample preparation was performed as previously described (Death and Ferenci, 1994). Briefly, cell cultures in the exponential growth phase were harvested, centrifuged, washed using 10 mL of fresh medium, and resuspended in 5 mL of ice-cold 65% ethanol. The pre-treated samples were assayed using a commercially available enzyme-linked immunoassay kit (Invitrogen, Waltham, MA, USA).",
+      "section_id": "4_8_intracellular_camp_assay",
+      "position": 68
+    },
+    {
+      "paragraph_id": "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p001",
+      "text": "Time-course consumption of glycerol was measuring using a Nexera",
+      "section_id": "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production",
+      "position": 69
+    },
+    {
+      "paragraph_id": "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production_p002",
+      "text": "LC-40 HPLC system with a RID-20 A RI detector (Shimadzu, Kyoto, Japan) and a MetaCarb 87H Organic Acids Column (Agilent, Waldbronn, Germany). The column was eluted with 6.57 mM H2SO4 at a flow rate of 0.6 mL/min, at the oven temperature of $3 7 ^ { \\circ } \\mathrm { C } .$ . For GABA production, cells were grown in 50 mL of M9 glycerol (0.2% v/v) minimal medium supplemented with 50 mg/L yeast extract as described previously (Hou and Kang, 2018), or LB supplemented with 2% (v/v) pure glycerol in 250 mL Erlenmeyer flasks, in biological triplicates. Culture supernatants were collected over a time course and filtered through a 0.2 μm syringe filter (Sartorius) before HPLC analysis. Two different methods were used to quantify GABA in M9 minimal medium and LB-based medium. For minimal medium culture supernatants, GABA was detected and quantified using a Nexera LC-40 HPLC system with UV detection (Shimadzu) equipped with a Primesep 100 reverse-phase analytical column (Sielc Technologies, Wheeling, IL, USA). The mobile phase solvent (20 mM phosphoric acid/acetonitrile = 80/20 by volume) was eluted at a flow rate of 1 mL/min. The column temperature was maintained at ${ 4 9 } \\ { ^ { \\circ } \\mathrm { C } } ,$ and GABA was detected using a UV detector at 215 nm. For the LB-based medium, GABA was quantified using the dansyl chloride derivatization method described previously (Le Vo et al., 2012). Briefly, 100 μL of the filtered supernatant, 200 μL of 1 M sodium bicarbonate (pH 9.8) (Sigma, St. Louis, MO, USA), 100 μL of 80 mg/mL dansyl chloride (Sigma) dissolved in acetonitrile (Merck), and 600 μL of deionized water were mixed in a new Eppendorf tube. The mixture was mixed gently with inversion and then incubated at 80 ◦C for 40 min in a heat block. Finally, 100 μL of 20 μL/mL acetic acid (Sigma) in deionized water was added to quench the reaction. The mixture was centrifuged at 16,000×g for 5 min, and the resulting supernatants were filtered using a 0.2 μm syringe filter (Sartorius). GABA was detected and quantified using a Nexera LC-40 HPLC system with UV detection (Shimadzu) equipped with a Zorbax Eclipse C18 column (Agilent, Santa Clara, CA, USA). Chromatographic separation was performed by increasing the gradient of mobile phase B (methanol) over A (tetrahydrofuran/methanol/50 mM sodium acetate pH $6 . 2 \\ : = \\ : 5 / 7 5 / 4 2 0$ by volume) at a flow rate of 1.0 mL/min. The gradient program was set as follows: 20% B for 6 min, 20 %–80% B for 20 min, 80 %–100% B for 2 min, 100% B for 3 min, 100% B for 4 min, and 20% B for 5 min (total run time of 40 min per sample). The column temperature was maintained at $3 0 ~ ^ { \\circ } \\mathrm { C } ,$ , and GABA was detected using a UV detector at 286 nm.",
+      "section_id": "4_9_time_course_measurement_of_glycerol_consumption_and_gaba_production",
+      "position": 70
+    },
+    {
+      "paragraph_id": "4_10_rna_seq_p001",
+      "text": "Wild-type E. coli W and CY02 strains were inoculated in an M9 minimal medium supplemented with 2 g/L of pure glycerol. During exponential growth $( \\mathrm { O D } _ { 6 0 0 } \\ \\mathrm { n m } = 0 . 4 \\mathrm { - } 0 . 5 )$ , 10 mL of each culture was collected by centrifugation at $^ { 1 6 , 0 0 0 \\times g }$ for 1 min. Total RNA was extracted from the collected cells by using RNASnap™ (Stead et al., 2012). The cell pellets were resuspended in 100 μL of RNASnap solution (18 mM EDTA, 0.025% SDS, 1% β-mercaptoethanol, and 95% formamide). The mixtures were incubated at $9 5 ^ { \\circ } \\mathrm { C }$ for 7 min and centrifuged at $1 6 , 0 0 0 \\times g$ for 5 min. The supernatants were transferred to new Eppendorf tubes, and total RNA was extracted by ethanol precipitation. To remove the remaining genomic DNA, 10 μg of total RNA was treated with 1 μL of DNase I (NEB, Ipswich, MA) for 30 min at ${ } ^ { 3 7 } \\ { } ^ { \\circ } \\mathrm { C } ,$ and then purified by phenol-chloroform-isoamyl alcohol and ethanol precipitation. To deplete ribosomal RNA (rRNA) from the samples, DNase-I-treated RNAs (2.5 μg) were treated with the RiboZero rRNA Removal Kit for bacteria (Illumina), according to the manufacturer’s instructions. The DNA and rRNA depleted samples were used to construct RNA-seq libraries by using the TruSeq Stranded mRNA LT Sample Prep Kit (Illumina), according to the manufacturer’s instructions. The quantity of libraries constructed was measured using the Qubit dsDNA HS Assay Kit (ThermoFisher Scientific, Waltham, MA, USA) with a Qubit 2.0 fluorometer (ThermoFisher Scientific). The quality was confirmed using a TapeStation 2200 (Agilent), equipped with a High Sensitivity D1000 Screen Tape (Agilent). After confirmation, the sequencing libraries were sequenced with 50 cycles of a single-ended reaction in the HiSeq instrument (Illumina).",
+      "section_id": "4_10_rna_seq",
+      "position": 71
+    },
+    {
+      "paragraph_id": "4_11_data_processing_p001",
+      "text": "Sequencing data were processed using a CLC Genomics Workbench (Qiagen). Raw reads were trimmed using the Trim Sequence Tool in NGS Core Tools with a quality limit of 0.05. Reads with more than two ambiguous nucleotides were discarded. The quality trimmed reads were mapped onto the E. coli W reference genome (NC\\_017635.1) with the following parameters: mismatch cost, 2; indel cost, 3; length and similarity fractions, 0.9. The DESeq2 package in R was used to normalize gene expression, and the normalized values for replicates were averaged into a normalized value (Love et al., 2014). Genes whose expression fold changed was over 2 and had an adjusted P-value smaller than 0.01, as calculated by DESeq2, were assumed to be differentially expressed genes (DEGs).",
+      "section_id": "4_11_data_processing",
+      "position": 72
+    },
+    {
+      "paragraph_id": "4_12_quantitative_pcr_p001",
+      "text": "Total RNA (500 ng) extracted from E. coli W wild-type and CY02 in M9 glycerol during the log phase of growth was reverse-transcribed into cDNA by using SuperScript II reverse transcriptase (Invitrogen) with random hexamers. Each qPCR reaction mixture contained a 100-fold diluted cDNA, 2 × KAPA SYBR ® FAST qPCR Master Mix Universal (Roche), and 0.2 mM of each primer with a total reaction volume of 10 μL. The qPCR reaction was performed for each sample in two biological replicates, each with three technical replicates, using a StepOnePlus™ Real-Time PCR System (Applied Biosystems, Waltham, MA, USA). The relative expression of glpK was calculated by normalization to the quantity of rrsA or ihfB (Flores et al., 2005; Orencio-Trejo et al., 2008; Wang et al., 2009). Refer to Supplementary Table S3 for primer information. qPCR results were analyzed using StepOne Software Ver 2.3 (Applied Bioscience) The efficiency of each primer pair was calculated by generating a standard curve from qPCR of E. coli W genomic DNA diluted $1 0 ^ { 1 } – 1 0 ^ { 4 } – \\mathrm { f o l d }$",
+      "section_id": "4_12_quantitative_pcr",
+      "position": 73
+    },
+    {
+      "paragraph_id": "author_contributions_p001",
+      "text": "Kangsan Kim: Data curation, Investigation, Formal Analysis, Writing- Original draft preparation, Visualization, Methodology, Software. Chen Yuan Hou: Data curation, Investigation, Visualization, Formal Analysis, Methodology. Donghui Choe: Data curation, Investigation, Visualization, Formal Analysis, Methodology, Writing-Reviewing and Editing. Minjeong Kang: Data curation, Formal Analysis, Visualization, Methodology. Suhyung Cho: Data curation, Formal Analysis, Visualization, Methodology. Bong Hyun Sung: Resources, Formal Analysis. Dae-Hee Lee: Resources, Formal Analysis. Seung-Goo Lee: Resources, Formal Analysis. Taek Jin Kang: Conceptualization, Supervision, Methodology, Data curation, Writing- Original draft preparation, Writing- Reviewing and Editing, Resources, Project administration. Byung-Kwan Cho: Conceptualization, Supervision, Methodology, Data curation, Writing- Original draft preparation, Writing- Reviewing and Editing, Resources, acquisition, Project administration.",
+      "section_id": "author_contributions",
+      "position": 74
+    },
+    {
+      "paragraph_id": "declaration_of_competing_interest_p001",
+      "text": "The authors declare no conflict of interest.",
+      "section_id": "declaration_of_competing_interest",
+      "position": 75
+    },
+    {
+      "paragraph_id": "declaration_of_competing_interest_p002",
+      "text": "Acknowledgements",
+      "section_id": "declaration_of_competing_interest",
+      "position": 76
+    },
+    {
+      "paragraph_id": "declaration_of_competing_interest_p003",
+      "text": "Not applicable.",
+      "section_id": "declaration_of_competing_interest",
+      "position": 77
+    },
+    {
+      "paragraph_id": "appendix_a_supplementary_data_p001",
+      "text": "Supplementary data to this article can be found online at https://doi. org/10.1016/j.ymben.2021.11.004.",
+      "section_id": "appendix_a_supplementary_data",
+      "position": 78
+    },
+    {
+      "paragraph_id": "funding_p001",
+      "text": "This work was supported by the Korea Bio Grand Challenge (2018M3A9H3024759 to B.-K.C.) and the C1 Gas Refinery Program (2018M3D3A1A01055733 to B.-K.C.) through the National Research Foundation of Korea (NRF), funded by the Ministry of Science and ICT, and the Korea Research Institute of Bioscience and Biotechnology (KRIBB) Research Initiative Program (KGM5402113).",
+      "section_id": "funding",
+      "position": 79
+    },
+    {
+      "paragraph_id": "references_p001",
+      "text": "Abdou, A.M., Higashiguchi, S., Horie, K., Kim, M., Hatta, H., Yokogoshi, H., 2006. Relaxation and immunity enhancement effects of gamma-aminobutyric acid (GABA) administration in humans. Biofactors 26, 201–208. https://doi.org/10.1002 biof.5520260305.",
+      "section_id": "references",
+      "position": 80
+    },
+    {
+      "paragraph_id": "references_p002",
+      "text": "Abdul Raman, A.A., Tan, H.W., Buthiyappan, A., 2019. Two-step purification of glycerol as a value added by product from the biodiesel production process. Front Chem 7, 774. https://doi.org/10.3389/fchem.2019.00774.",
+      "section_id": "references",
+      "position": 81
+    },
+    {
+      "paragraph_id": "references_p003",
+      "text": "Alterthum, F., Ingram, L.O., 1989. Efficient ethanol production from glucose, lactose, and xylose by recombinant Escherichia coli. Appl. Environ. Microbiol. 55, 1943–1948. https://doi.org/10.1128/aem.55.8.1943-1948.1989.",
+      "section_id": "references",
+      "position": 82
+    },
+    {
+      "paragraph_id": "references_p004",
+      "text": "Anderson, M.J., Delabarre, B., Raghunathan, A., Palsson, B.O., Brunger, A.T., Quake, S. R., 2007. Crystal structure of a hyperactive Escherichia coli glycerol kinase mutant Gly 230–> Asp obtained using microfluidic crystallization devices. Biochemistry 46, 5722–5731. https://doi.org/10.1021/bi700096p.",
+      "section_id": "references",
+      "position": 83
+    },
+    {
+      "paragraph_id": "references_p005",
+      "text": "Applebee, M.K., Joyce, A.R., Conrad, T.M., Pettigrew, D.W., Palsson, B.O., 2011. Functional and metabolic effects of adaptive glycerol kinase (GLPK) mutants in Escherichia coli. J. Biol. Chem. 286, 23150–23159. https://doi.org/10.1074/jbc. M110.195305.",
+      "section_id": "references",
+      "position": 84
+    },
+    {
+      "paragraph_id": "references_p006",
+      "text": "Archer, C.T., Kim, J.F., Jeong, H., Park, J.H., Vickers, C.E., Lee, S.Y., Nielsen, L.K., 2011. The genome sequence of E. coli W (ATCC 9637): comparative genome analysis and an improved genome-scale reconstruction of E. coli. BMC Genom. 12, 9. https://doi. org/10.1186/1471-2164-12-9.",
+      "section_id": "references",
+      "position": 85
+    },
+    {
+      "paragraph_id": "references_p007",
+      "text": "Bae, J., Song, Y., Lee, H., Shin, J., Jin, S., Kang, S., Cho, B.-K., 2021. Valorization of C1 gases to value-added chemicals using acetogenic biocatalysts. Chem. Eng. J. 428, 131325. https://doi.org/10.1016/j.cej.2021.131325.",
+      "section_id": "references",
+      "position": 86
+    },
+    {
+      "paragraph_id": "references_p008",
+      "text": "Basan, M., Hui, S., Okano, H., Zhang, Z., Shen, Y., Williamson, J.R., Hwa, T., 2015. Overflow metabolism in Escherichia coli results from efficient proteome allocation. Nature 528, 99–104. https://doi.org/10.1038/nature15765.",
+      "section_id": "references",
+      "position": 87
+    },
+    {
+      "paragraph_id": "references_p009",
+      "text": "Bennett, B.D., Kimball, E.H., Gao, M., Osterhout, R., Van Dien, S.J., Rabinowitz, J.D., 2009. Absolute metabolite concentrations and implied enzyme active site occupancy in Escherichia coli. Nat. Chem. Biol. 5, 593–599. https://doi.org/10.1038/ nchembio.186.",
+      "section_id": "references",
+      "position": 88
+    },
+    {
+      "paragraph_id": "references_p010",
+      "text": "Bhatia, S.K., Bhatia, R.K., Choi, Y.K., Kan, E., Kim, Y.G., Yang, Y.H., 2018. Biotechnological potential of microbial consortia and future perspectives. Crit. Rev. Biotechnol. 38, 1209–1229. https://doi.org/10.1080/07388551.2018.1471445.",
+      "section_id": "references",
+      "position": 89
+    },
+    {
+      "paragraph_id": "references_p011",
+      "text": "Booth, I.R., 2005. glycerol and methylglyoxal metabolism. EcoSal Plus 1. https://doi. org/10.1128/ecosalplus.3.4.3.",
+      "section_id": "references",
+      "position": 90
+    },
+    {
+      "paragraph_id": "references_p012",
+      "text": "Cheng, K.K., Lee, B.S., Masuda, T., Ito, T., Ikeda, K., Hirayama, A., Deng, L., Dong, J., Shimizu, K., Soga, T., Tomita, M., Palsson, B.O., Robert, M., 2014. Global metabolic network reorganization by adaptive mutations allows fast growth of Escherichia coli on glycerol. Nat. Commun. 5, 3233. https://doi.org/10.1038/ncomms4233.",
+      "section_id": "references",
+      "position": 91
+    },
+    {
+      "paragraph_id": "references_p013",
+      "text": "Choi, J.W., Yim, S.S., Lee, S.H., Kang, T.J., Park, S.J., Jeong, K.J., 2015. Enhanced production of gamma-aminobutyrate (GABA) in recombinant Corynebacterium glutamicum by expressing glutamate decarboxylase active in expanded pH range. Microb. Cell Factories 14, 21. https://doi.org/10.1186/s12934-015-0205-9.",
+      "section_id": "references",
+      "position": 92
+    },
+    {
+      "paragraph_id": "references_p014",
+      "text": "Da Silva, G.P., Mack, M., Contiero, J., 2009. Glycerol: a promising and abundant carbon source for industrial microbiology. Biotechnol. Adv. 27, 30–39. https://doi.org 10.1016/j.biotechadv.2008.07.006.",
+      "section_id": "references",
+      "position": 93
+    },
+    {
+      "paragraph_id": "references_p015",
+      "text": "Datsenko, K.A., Wanner, B.L., 2000. One-step inactivation of chromosomal genes in Escherichia coli K-12 using PCR products. Proc. Natl. Acad. Sci. U. S. A 97, 6640–6645. https://doi.org/10.1073/pnas.120163297.",
+      "section_id": "references",
+      "position": 94
+    },
+    {
+      "paragraph_id": "references_p016",
+      "text": "Death, A., Ferenci, T., 1994. Between feast and famine: endogenous inducer synthesis in the adaptation of Escherichia coli to growth with limiting carbohydrates. J. Bacteriol. 176, 5101–5107. https://doi.org/10.1128/jb.176.16.5101-5107.1994.",
+      "section_id": "references",
+      "position": 95
+    },
+    {
+      "paragraph_id": "references_p017",
+      "text": "Dharmadi, Y., Murarka, A., Gonzalez, R., 2006. Anaerobic fermentation of glycerol by Escherichia coli: a new platform for metabolic engineering. Biotechnol. Bioeng. 94, 821–829. https://doi.org/10.1002/bit.21025.",
+      "section_id": "references",
+      "position": 96
+    },
+    {
+      "paragraph_id": "references_p018",
+      "text": "Dragosits, M., Mattanovich, D., 2013. Adaptive laboratory evolution - principles and applications for biotechnology. Microb. Cell Factories 12, 64. https://doi.org/ 10.1186/1475-2859-12-64.",
+      "section_id": "references",
+      "position": 97
+    },
+    {
+      "paragraph_id": "references_p019",
+      "text": "El-Mansi, E.M., Holms, W.H., 1989. Control of carbon flux to acetate excretion during growth of Escherichia coli in batch and continuous cultures. J. Gen. Microbiol. 135, 2875–2883. https://doi.org/10.1099/00221287-135-11-2875.",
+      "section_id": "references",
+      "position": 98
+    },
+    {
+      "paragraph_id": "references_p020",
+      "text": "Eppler, T., Postma, P., Schutz, A., Volker, U., Boos, W., 2002. Glycerol-3-phosphate induced catabolite repression in Escherichia coli. J. Bacteriol. 184, 3044–3052. https://doi.org/10.1128/jb.184.11.3044-3052.2002.",
+      "section_id": "references",
+      "position": 99
+    },
+    {
+      "paragraph_id": "references_p021",
+      "text": "Feese, M.D., Faber, H.R., Bystrom, C.E., Pettigrew, D.W., Remington, S.J., 1998. Glycerol kinase from Escherichia coli and an Ala 65–>Thr mutant: the crystal structures reveal conformational changes with implications for allosteric regulation. Structure 6, 1407–1418. https://doi.org/10.1016/s0969-2126(98)00140-3.",
+      "section_id": "references",
+      "position": 100
+    },
+    {
+      "paragraph_id": "references_p022",
+      "text": "Flores, N., Flores, S., Escalante, A., De Anda, R., Leal, L., Malpica, R., Georgellis, D., Gosset, G., Bolivar, F., 2005. Adaptation for fast growth on glucose by differential expression of central carbon metabolism and gal regulon genes in an Escherichia coli strain lacking the phosphoenolpyruvate:carbohydrate phosphotransferase system. Metab. Eng. 7, 70–87. https://doi.org/10.1016/j.ymben.2004.10.002.",
+      "section_id": "references",
+      "position": 101
+    },
+    {
+      "paragraph_id": "references_p023",
+      "text": "Fong, S.S., Joyce, A.R., Palsson, B.O., 2005. Parallel adaptive evolution cultures of Escherichia coli lead to convergent growth phenotypes with different gene expression states. Genome Res. 15, 1365–1372. https://doi.org/10.1101/gr.3832305.",
+      "section_id": "references",
+      "position": 102
+    },
+    {
+      "paragraph_id": "references_p024",
+      "text": "Freedberg, W.B., Kistler, W.S., Lin, E.C., 1971. Lethal synthesis of methylglyoxal by Escherichia coli during unregulated glycerol metabolism. J. Bacteriol. 108, 137–144. https://doi.org/10.1128/JB.108.1.137-144.1971.",
+      "section_id": "references",
+      "position": 103
+    },
+    {
+      "paragraph_id": "references_p025",
+      "text": "Frendorf, P.O., Lauritsen, I., Sekowska, A., Danchin, A., Norholm, M.H.H., 2019. Mutations in the global transcription factor CRP/CAP: insights from experimental evolution and deep sequencing. Comput. Struct. Biotechnol. J. 17, 730–736. https:// doi.org/10.1016/j.csbj.2019.05.009.",
+      "section_id": "references",
+      "position": 104
+    },
+    {
+      "paragraph_id": "references_p026",
+      "text": "Goddard, T.D., Huang, C.C., Meng, E.C., Pettersen, E.F., Couch, G.S., Morris, J.H., Ferrin, T.E., 2018. UCSF ChimeraX: meeting modern challenges in visualization and analysis. Protein Sci. 27, 14–25. https://doi.org/10.1002/pro.3235.",
+      "section_id": "references",
+      "position": 105
+    },
+    {
+      "paragraph_id": "references_p027",
+      "text": "Goodarzi, H., Bennett, B.D., Amini, S., Reaves, M.L., Hottes, A.K., Rabinowitz, J.D., Tavazoie, S., 2010. Regulatory and metabolic rewiring during laboratory evolution of ethanol tolerance in E. coli. Mol. Syst. Biol. 6, 378. https://doi.org/10.1038/ msb.2010.33.",
+      "section_id": "references",
+      "position": 106
+    },
+    {
+      "paragraph_id": "references_p028",
+      "text": "Gu, P., Niu, H., Fan, X., Gao, J., Li, Q., 2019. Engineering of phosphoenolpyruvate: carbohydrate phosphotransferase system increased acetate assimilation in Escherichia coli. 3 Biotech 9, 77. https://doi.org/10.1007/s13205-019-1600-4.",
+      "section_id": "references",
+      "position": 107
+    },
+    {
+      "paragraph_id": "references_p029",
+      "text": "Guzman, G.I., Sandberg, T.E., Lacroix, R.A., Nyerges, A., Papp, H., De Raad, M., King, Z. A., Hefner, Y., Northen, T.R., Notebaart, R.A., Pal, C., Palsson, B.O., Papp, B., Feist, A.M., 2019. Enzyme promiscuity shapes adaptation to novel growth substrates. Mol. Syst. Biol. 15, e8462. https://doi.org/10.15252/msb.20188462.",
+      "section_id": "references",
+      "position": 108
+    },
+    {
+      "paragraph_id": "references_p030",
+      "text": "Hara, K.Y., Shimodate, N., Ito, M., Baba, T., Mori, H., Mori, H., 2009. Systematic genomewide scanning for genes involved in ATP generation in Escherichia coli. Metab. Eng. 11, 1–7. https://doi.org/10.1016/j.ymben.2008.07.003.",
+      "section_id": "references",
+      "position": 109
+    },
+    {
+      "paragraph_id": "references_p031",
+      "text": "Hauser, R., Pech, M., Kijek, J., Yamamoto, H., Titz, B., Naeve, F., Tovchigrechko, A., Yamamoto, K., Szaflarski, W., Takeuchi, N., Stellberger, T., Diefenbacher, M.E., Nierhaus, K.H., Uetz, P., 2012. RsfA (YbeB) proteins are conserved ribosomal silencing factors. PLoS Genet. 8, e1002815. https://doi.org/10.1371/journal. pgen.1002815.",
+      "section_id": "references",
+      "position": 110
+    },
+    {
+      "paragraph_id": "references_p032",
+      "text": "Herring, C.D., Raghunathan, A., Honisch, C., Patel, T., Applebee, M.K., Joyce, A.R., Albert, T.J., Blattner, F.R., Van Den Boom, D., Cantor, C.R., Palsson, B.O., 2006. Comparative genome sequencing of Escherichia coli allows observation of bacterial evolution on a laboratory timescale. Nat. Genet. 38, 1406–1412. https://doi.org/ 10.1038/ng1906.",
+      "section_id": "references",
+      "position": 111
+    },
+    {
+      "paragraph_id": "references_p033",
+      "text": "Heyland, J., Fu, J., Blank, L.M., 2009. Correlation between TCA cycle flux and glucose uptake rate during respiro-fermentative growth of Saccharomyces cerevisiae. Microbiology 155, 3827–3837. https://doi.org/10.1099/mic.0.030213-0.",
+      "section_id": "references",
+      "position": 112
+    },
+    {
+      "paragraph_id": "references_p034",
+      "text": "Hou, C.Y., Kang, T.J., 2018. Production of gamma-aminobutyric acid by Escherichia coli using glycerol as a sole carbon source. J. Appl. Chem. Biotechnol. 93, 184–190. https://doi.org/10.1002/jctb.5338.",
+      "section_id": "references",
+      "position": 113
+    },
+    {
+      "paragraph_id": "references_p035",
+      "text": "Ibarra, R.U., Edwards, J.S., Palsson, B.O., 2002. Escherichia coli K-12 undergoes adaptive evolution to achieve in silico predicted optimal growth. Nature 420, 186–189. https://doi.org/10.1038/nature01149.",
+      "section_id": "references",
+      "position": 114
+    },
+    {
+      "paragraph_id": "references_p036",
+      "text": "Im, D.K., Hong, J., Gu, B., Sung, C., Oh, M.K., 2020. (13) C Metabolic flux analysis of Escherichia coli engineered for gamma-aminobutyrate production. Biotechnol. J. 15, e1900346. https://doi.org/10.1002/biot.201900346.",
+      "section_id": "references",
+      "position": 115
+    },
+    {
+      "paragraph_id": "references_p037",
+      "text": "Janson, C.A., Cleland, W.W., 1974. The kinetic mechanism of glycerokinase. J. Biol. Chem. 249, 2562–2566. https://doi.org/10.1016/S0021-9258(19)42766-X.",
+      "section_id": "references",
+      "position": 116
+    },
+    {
+      "paragraph_id": "references_p038",
+      "text": "Kang, M., Kim, K., Choe, D., Cho, S., Kim, S.C., Palsson, B., Cho, B.K., 2019. Inactivation of a mismatch-repair dystem diversifies genotypic landscape of Escherichia coli during adaptive laboratory evolution. Front. Microbiol. 10, 1845. https://doi.org/ 10.3389/fmicb.2019.01845.",
+      "section_id": "references",
+      "position": 117
+    },
+    {
+      "paragraph_id": "references_p039",
+      "text": "Kang, S., Song, Y., Jin, S., Shin, J., Bae, J., Kim, D.R., Lee, J.K., Kim, S.C., Cho, S., Cho, B. K., 2020. Adaptive laboratory evolution of Eubacterium limosum ATCC 8486 on carbon monoxide. Front. Microbiol. 11, 402. https://doi.org/10.3389/ fmicb.2020.00402.",
+      "section_id": "references",
+      "position": 118
+    },
+    {
+      "paragraph_id": "references_p040",
+      "text": "Kanjee, U., Houry, W.A., 2013. Mechanisms of acid resistance in Escherichia coli. Annu. Rev. Microbiol. 67, 65–81. https://doi.org/10.1146/annurev-micro-092412- 155708.",
+      "section_id": "references",
+      "position": 119
+    },
+    {
+      "paragraph_id": "references_p041",
+      "text": "Kaza, S., Yao, L.C., Bahada-Tata, O., Van Woerden, F., 2018. What a Waste 2.0 : A Global Snapshot of Solid Waste Management to 2050. World Bank.",
+      "section_id": "references",
+      "position": 120
+    },
+    {
+      "paragraph_id": "references_p042",
+      "text": "Le Vo, T.D., Kim, T.W., Hong, S.H., 2012. Effects of glutamate decarboxylase and gamma-aminobutyric acid (GABA) transporter on the bioconversion of GABA in engineered Escherichia coli. Bioproc. Biosyst. Eng. 35, 645–650. https://doi.org/ 10.1007/s00449-011-0634-8.",
+      "section_id": "references",
+      "position": 121
+    },
+    {
+      "paragraph_id": "references_p043",
+      "text": "Le Vo, T.D., Ko, J.S., Park, S.J., Lee, S.H., Hong, S.H., 2013. Efficient gammaaminobutyric acid bioconversion by employing synthetic complex between glutamate decarboxylase and glutamate/GABA antiporter in engineered Escherichia coli. J. Ind. Microbiol. Biotechnol. 40, 927–933. https://doi.org/10.1007/s10295- 013-1289-z.",
+      "section_id": "references",
+      "position": 122
+    },
+    {
+      "paragraph_id": "references_p044",
+      "text": "Li, H., Qiu, T., Huang, G., Cao, Y., 2010. Production of gamma-aminobutyric acid by Lactobacillus brevis NCL912 using fed-batch fermentation. Microb. Cell Factories 9, 85. https://doi.org/10.1186/1475-2859-9-85.",
+      "section_id": "references",
+      "position": 123
+    },
+    {
+      "paragraph_id": "references_p045",
+      "text": "Liang, S., Jiang, W., Song, Y., Zhou, S.F., 2020. Improvement and metabolomics-based analysis of d-lactic acid production from agro-industrial wastes by Lactobacillus delbrueckii submitted to adaptive laboratory evolution. J. Agric. Food Chem. 68, 7660–7669. https://doi.org/10.1021/acs.jafc.0c00259.",
+      "section_id": "references",
+      "position": 124
+    },
+    {
+      "paragraph_id": "references_p046",
+      "text": "Love, M.I., Huber, W., Anders, S., 2014. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol. 15, 550. https://doi.org/ 10.1186/s13059-014-0550-8.",
+      "section_id": "references",
+      "position": 125
+    },
+    {
+      "paragraph_id": "references_p047",
+      "text": "Luo, H., Liu, Z., Xie, F., Bilal, M., Liu, L., Yang, R., Wang, Z., 2021. Microbial production of gamma-aminobutyric acid: applications, state-of-the-art achievements, and future perspectives. Crit. Rev. Biotechnol. 41, 491–512. https://doi.org/10.1080/ 07388551.2020.1869688",
+      "section_id": "references",
+      "position": 126
+    },
+    {
+      "paragraph_id": "references_p048",
+      "text": "Mazumdar, S., Blankschien, M.D., Clomburg, J.M., Gonzalez, R., 2013. Efficient synthesis of L-lactic acid from glycerol by metabolically engineered Escherichia coli. Microb. Cell Factories 12. https://doi.org/10.1186/1475-2859-12-7.",
+      "section_id": "references",
+      "position": 127
+    },
+    {
+      "paragraph_id": "references_p049",
+      "text": "Monk, J.M., Koza, A., Campodonico, M.A., Machado, D., Seoane, J.M., Palsson, B.O., Herrgard, M.J., Feist, A.M., 2016. Multi-omics quantification of species variation of Escherichia coli links molecular features with strain phenotypes. Cell Syst 3, 238–251. https://doi.org/10.1016/j.cels.2016.08.013 e212.",
+      "section_id": "references",
+      "position": 128
+    },
+    {
+      "paragraph_id": "references_p050",
+      "text": "Mu, Y., Teng, H., Zhang, D.J., Wang, W., Xiu, Z.L., 2006. Microbial production of 1,3- propanediol by Klebsiella pneumoniae using crude glycerol from biodiesel preparations. Biotechnol. Lett. 28, 1755–1759. https://doi.org/10.1007/s10529- 006-9154-z.",
+      "section_id": "references",
+      "position": 129
+    },
+    {
+      "paragraph_id": "references_p051",
+      "text": "Mullis, M.N., Matsui, T., Schell, R., Foree, R., Ehrenreich, I.M., 2018. The complex underpinnings of genetic background effects. Nat. Commun. Now. 9, 3548. https:// doi.org/10.1038/s41467-018-06023-5.",
+      "section_id": "references",
+      "position": 130
+    },
+    {
+      "paragraph_id": "references_p052",
+      "text": "Novotny, M.J., Frederickson, W.L., Waygood, E.B., Saier Jr., M.H., 1985. Allosteric regulation of glycerol kinase by enzyme IIIglc of the phosphotransferase system in Escherichia coli and Salmonella typhimurium. J. Bacteriol. 162, 810–816. https://doi. org/10.1128/jb.162.2.810-816.1985.",
+      "section_id": "references",
+      "position": 131
+    },
+    {
+      "paragraph_id": "references_p053",
+      "text": "Orencio-Trejo, M., Flores, N., Escalante, A., Hernandez-Chavez, G., Bolivar, F., Gosset, G., Martinez, A., 2008. Metabolic regulation analysis of an ethanologenic Escherichia coli strain based on RT-PCR and enzymatic activities. Biotechnol. Biofuels 1, 8. https://doi.org/10.1186/1754-6834-1-8.",
+      "section_id": "references",
+      "position": 132
+    },
+    {
+      "paragraph_id": "references_p054",
+      "text": "Ormo, M., Bystrom, C.E., Remington, S.J., 1998. Crystal structure of a complex of Escherichia coli glycerol kinase and an allosteric effector fructose 1,6-bisphosphate. Biochemistry 37, 16565 16572. https://doi.org/10.1021/bi981616s.",
+      "section_id": "references",
+      "position": 133
+    },
+    {
+      "paragraph_id": "references_p055",
+      "text": "Park, S.J., Kim, E.Y., Noh, W., Oh, Y.H., Kim, H.Y., Song, B.K., Cho, K.M., Hong, S.H., Lee, S.H., Jegal, J., 2013. Synthesis of nylon 4 from gamma-aminobutyrate (GABA) produced by recombinant Escherichia coli. Bioproc. Biosyst. Eng. 36, 885–892. https://doi.org/10.1007/s00449-012-0821-2.",
+      "section_id": "references",
+      "position": 134
+    },
+    {
+      "paragraph_id": "references_p056",
+      "text": "Pham, V.D., Lee, S.H., Park, S.J., Hong, S.H., 2015. Production of gamma-aminobutyric acid from glucose by introduction of synthetic scaffolds between isocitrate dehydrogenase, glutamate synthase and glutamate decarboxylase in recombinant Escherichia coli. J. Biotechnol. 207, 52–57. https://doi.org/10.1016/j. jbiotec.2015.04.028.",
+      "section_id": "references",
+      "position": 135
+    },
+    {
+      "paragraph_id": "references_p057",
+      "text": "Pham, V.D., Somasundaram, S., Lee, S.H., Park, S.J., Hong, S.H., 2016. Redirection of metabolic flux into novel gamma-aminobutyric Acid production pathway by introduction of synthetic scaffolds strategy in Escherichia coli. Appl. Biochem. Biotechnol. 178, 1315–1324. https://doi.org/10.1007/s12010-015-1948-9.",
+      "section_id": "references",
+      "position": 136
+    },
+    {
+      "paragraph_id": "references_p058",
+      "text": "Phaneuf, P.V., Gosting, D., Palsson, B.O., Feist, A.M., 2019. ALEdb 1.0: a database of mutations from adaptive laboratory evolution experimentation. Nucleic Acids Res. 47, D1164–D1171. https://doi.org/10.1093/nar/gky983.",
+      "section_id": "references",
+      "position": 137
+    },
+    {
+      "paragraph_id": "references_p059",
+      "text": "Portnoy, V.A., Bezdan, D., Zengler, K., 2011. Adaptive laboratory evolution–harnessing the power of biology for metabolic engineering. Curr. Opin. Biotechnol. 22, 590–594. https://doi.org/10.1016/j.copbio.2011.03.007.",
+      "section_id": "references",
+      "position": 138
+    },
+    {
+      "paragraph_id": "references_p060",
+      "text": "Postma, P.W., Epstein, W., Schuitema, A.R., Nelson, S.O., 1984. Interaction between IIIGlc of the phosphoenolpyruvate:sugar phosphotransferase system and glycerol kinase of Salmonella typhimurium. J. Bacteriol. 158, 351–353. https://doi.org/ 10.1128/jb.158.1.351-353.1984.",
+      "section_id": "references",
+      "position": 139
+    },
+    {
+      "paragraph_id": "references_p061",
+      "text": "Prensky, H., Gomez-Simmonds, A., Uhlemann, A.C., Lopatkin, A.J., 2021. Conjugation dynamics depend on both the plasmid acquisition cost and the fitness cost. Mol. Syst. Biol. 17, e9913. https://doi.org/10.15252/msb.20209913.",
+      "section_id": "references",
+      "position": 140
+    },
+    {
+      "paragraph_id": "references_p062",
+      "text": "Russell, J.B., Cook, G.M., 1995. Energetics of bacterial growth: balance of anabolic and catabolic reactions. Microbiol. Rev. 59, 48–62.",
+      "section_id": "references",
+      "position": 141
+    },
+    {
+      "paragraph_id": "references_p063",
+      "text": "Sandberg, T.E., Lloyd, C.J., Palsson, B.O., Feist, A.M., 2017. Laboratory evolution to alternating substrate environments yields distinct phenotypic and genetic adaptive strategies. Appl. Environ. Microbiol. 83 https://doi.org/10.1128/AEM.00410-17.",
+      "section_id": "references",
+      "position": 142
+    },
+    {
+      "paragraph_id": "references_p064",
+      "text": "Santos-Zavaleta, A., Salgado, H., Gama-Castro, S., Sanchez-Perez, M., Gomez-Romero, L., Ledezma-Tejeida, D., Garcia-Sotelo, J.S., Alquicira-Hernandez, K., Muniz-Rascado, L. J., Pena-Loredo, P., Ishida-Gutierrez, C., Velazquez-Ramirez, D.A., Del Moral Chavez, V., Bonavides-Martinez, C., Mendez-Cruz, C.F., Galagan, J., Collado-Vides, J., 2019. RegulonDB v. 10.5: tackling challenges to unify classic and high throughput knowledge of gene regulation in E. coli K-12. Nucleic Acids Res. 47, D212–D220. https://doi.org/10.1093/nar/gky1077.",
+      "section_id": "references",
+      "position": 143
+    },
+    {
+      "paragraph_id": "references_p065",
+      "text": "Sarsaiya, S., Awasthi, S.K., Awasthi, M.K., Awasthi, A.K., Mishra, S., Chen, J., 2018. The dynamic of cellulase activity of fungi inhabiting organic municipal solid waste. Bioresour. Technol. 251, 411–415. https://doi.org/10.1016/j.biortech.2017.12.011.",
+      "section_id": "references",
+      "position": 144
+    },
+    {
+      "paragraph_id": "references_p066",
+      "text": "Sharma, H., Yu, S., Kong, J., Wang, J., Steitz, T.A., 2009. Structure of apo-CAP reveals that large conformational changes are necessary for DNA binding. Proc. Natl. Acad. Sci. U. S. A 106, 16604–16609. https://doi.org/10.1073/pnas.0908380106.",
+      "section_id": "references",
+      "position": 145
+    },
+    {
+      "paragraph_id": "references_p067",
+      "text": "Sievert, C., Nieves, L.M., Panyon, L.A., Loeffler, T., Morris, C., Cartwright, R.A., Wang, X., 2017. Experimental evolution reveals an effective avenue to release",
+      "section_id": "references",
+      "position": 146
+    },
+    {
+      "paragraph_id": "references_p068",
+      "text": "catabolite repression via mutations in XylR. Proc. Natl. Acad. Sci. U. S. A 114, 7349–7354. https://doi.org/10.1073/pnas.1700345114.",
+      "section_id": "references",
+      "position": 147
+    },
+    {
+      "paragraph_id": "references_p069",
+      "text": "Soma, Y., Fujiwara, Y., Nakagawa, T., Tsuruno, K., Hanai, T., 2017. Reconstruction of a metabolic regulatory network in Escherichia coli for purposeful switching from cell growth mode to production mode in direct GABA fermentation from glucose. Metab. Eng. 43, 54–63. https://doi.org/10.1016/j.ymben.2017.08.002.",
+      "section_id": "references",
+      "position": 148
+    },
+    {
+      "paragraph_id": "references_p070",
+      "text": "Stead, M.B., Agrawal, A., Bowden, K.E., Nasir, R., Mohanty, B.K., Meagher, R.B., Kushner, S.R., 2012. RNAsnap: a rapid, quantitative and inexpensive, method for isolating total RNA from bacteria. Nucleic Acids Res. 40, e156. https://doi.org/ 10.1093/nar/gks680.",
+      "section_id": "references",
+      "position": 149
+    },
+    {
+      "paragraph_id": "references_p071",
+      "text": "Thu Ho, N.A., Hou, C.Y., Kim, W.H., Kang, T.J., 2013. Expanding the active pH range of Escherichia coli glutamate decarboxylase by breaking the cooperativeness. J. Biosci. Bioeng. 115, 154–158. https://doi.org/10.1016/j.jbiosc.2012.09.002.",
+      "section_id": "references",
+      "position": 150
+    },
+    {
+      "paragraph_id": "references_p072",
+      "text": "Valgepea, K., Adamberg, K., Nahku, R., Lahtvee, P.J., Arike, L., Vilu, R., 2010. Systems biology approach reveals that overflow metabolism of acetate in Escherichia coli is triggered by carbon catabolite repression of acetyl-CoA synthetase. BMC Syst. Biol. 4, 166. https://doi.org/10.1186/1752-0509-4-166.",
+      "section_id": "references",
+      "position": 151
+    },
+    {
+      "paragraph_id": "references_p073",
+      "text": "Wang, S., Deng, K., Zaremba, S., Deng, X., Lin, C., Wang, Q., Tortorello, M.L., Zhang, W., 2009. Transcriptomic response of Escherichia coli O157:H7 to oxidative stress. Appl. Environ. Microbiol. 75, 6110–6123. https://doi.org/10.1128/AEM.00914-09.",
+      "section_id": "references",
+      "position": 152
+    },
+    {
+      "paragraph_id": "references_p074",
+      "text": "Wannier, T.M., Kunjapur, A.M., Rice, D.P., Mcdonald, M.J., Desai, M.M., Church, G.M., 2018. Adaptive evolution of genomically recoded Escherichia coli. Proc. Natl. Acad. Sci. U. S. A 115, 3090–3095. https://doi.org/10.1073/pnas.1715530115.",
+      "section_id": "references",
+      "position": 153
+    },
+    {
+      "paragraph_id": "references_p075",
+      "text": "Waschina, S., D’souza, G., Kost, C., Kaleta, C., 2016. Metabolic network architecture and carbon source determine metabolite production costs. FEBS J. 283, 2149–2163. https://doi.org/10.1111/febs.13727.",
+      "section_id": "references",
+      "position": 154
+    },
+    {
+      "paragraph_id": "references_p076",
+      "text": "Weikert, C., Sauer, U., Bailey, J.E., 1997. Use of a glycerol-limited, long-term chemostat for isolation of Escherichia coli mutants with improved physiological properties. Microbiology (Read.) 143 (Pt 5), 1567–1574. https://doi.org/10.1099/00221287- 143-5-1567.",
+      "section_id": "references",
+      "position": 155
+    },
+    {
+      "paragraph_id": "references_p077",
+      "text": "Wolfe, A.J., 2005. The acetate switch. Microbiol. Mol. Biol. Rev. 69, 12–50. https://doi. org/10.1128/MMBR.69.1.12-50.2005.",
+      "section_id": "references",
+      "position": 156
+    },
+    {
+      "paragraph_id": "references_p078",
+      "text": "Yu, P., Ren, Q., Wang, X., Huang, X., 2019. Enhanced biosynthesis of γ-aminobutyric acid (GABA) in Escherichia coli by pathway engineering. Biochem. Eng. J. 141, 252–258. https://doi.org/10.1016/j.bej.2018.10.025.",
+      "section_id": "references",
+      "position": 157
+    },
+    {
+      "paragraph_id": "references_p079",
+      "text": "Zeng, H., Yang, A., 2019. Modelling overflow metabolism in Escherichia coli with flux balance analysis incorporating differential proteomic efficiencies of energy pathways. BMC Syst. Biol. 13, 3. https://doi.org/10.1186/s12918-018-0677-4.",
+      "section_id": "references",
+      "position": 158
+    },
+    {
+      "paragraph_id": "references_p080",
+      "text": "Zhao, A., Hu, X., Li, Y., Chen, C., Wang, X., 2016. Extracellular expression of glutamate decarboxylase B in Escherichia coli to improve gamma-aminobutyric acid production. Amb. Express 6, 55. https://doi.org/10.1186/s13568-016-0231-y.",
+      "section_id": "references",
+      "position": 159
+    },
+    {
+      "paragraph_id": "references_p081",
+      "text": "Zhao, A., Hu, X., Pan, L., Wang, X., 2015. Isolation and characterization of a gammaaminobutyric acid producing strain Lactobacillus buchneri WPZ001 that could efficiently utilize xylose and corncob hydrolysate. Appl. Microbiol. Biotechnol. 99, 3191–3200. https://doi.org/10.1007/s00253-014-6294-2.",
+      "section_id": "references",
+      "position": 160
+    },
+    {
+      "paragraph_id": "references_p082",
+      "text": "Zhao, A., Hu, X., Wang, X., 2017. Metabolic engineering of Escherichia coli to produce gamma-aminobutyric acid using xylose. Appl. Microbiol. Biotechnol. 101, 3587–3603. https://doi.org/10.1007/s00253-017-8162-3.",
+      "section_id": "references",
+      "position": 161
+    },
+    {
+      "paragraph_id": "references_p083",
+      "text": "Zwaig, N., Kistler, W.S., Lin, E.C., 1970. Glycerol kinase, the pacemaker for the dissimilation of glycerol in Escherichia coli. J. Bacteriol. 102, 753–759.",
+      "section_id": "references",
+      "position": 162
+    },
+    {
+      "paragraph_id": "references_p084",
+      "text": "Zwaig, N., Lin, E.C., 1966. Feedback inhibition of glycerol kinase, a catabolic enzyme in Escherichia coli. Science 153, 755–757. https://doi.org/10.1126/ science.153.3737.755.",
+      "section_id": "references",
+      "position": 163
+    }
+  ]
+}
