@@ -1,0 +1,563 @@
+{
+  "ddr_id": "DDR-039",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Genetic engineering of Escherichia coli to enhance production of L-tryptophan",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Genetic engineering of Escherichia coli to enhance production of L-tryptophan",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": ""
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [],
+  "excluded_records": [],
+  "engineering_problem": {
+    "problem_statement": "Investigate how pta deletion, mtr deletion, and yddG overexpression, individually and in combination, affect L-tryptophan production and fermentation metabolism in E. coli TRTH0709/pMEL03 under 30-L fed-batch conditions.",
+    "problem_type": [],
+    "trigger_conditions": []
+  },
+  "biological_diagnosis": {
+    "observations": [],
+    "bottlenecks": [],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "engineering_reasoning": {
+    "observation": null,
+    "problem_definition": "Investigate how pta deletion, mtr deletion, and yddG overexpression, individually and in combination, affect L-tryptophan production and fermentation metabolism in E. coli TRTH0709/pMEL03 under 30-L fed-batch conditions.",
+    "hypothesis": null,
+    "design_rationale": null,
+    "intervention_logic": null,
+    "expected_tradeoff": null,
+    "learning": null,
+    "next_decision": null,
+    "identified_bottlenecks": []
+  },
+  "engineering_events": [],
+  "strain_transitions": [
+    {
+      "parent": "Par (E. coli TRTH0709/pMEL03)",
+      "child": "Dpta",
+      "modification": "Δpta",
+      "purpose": "Reduce acetate accumulation and improve L-tryptophan production",
+      "reason_for_next_step": "The paper's design rationale identifies acetate as an inhibitory byproduct and pta as part of an acetate-synthesis pathway.",
+      "evidence_ids": [
+        "introduction_p004",
+        "construction_of_the_strains_p003"
+      ]
+    },
+    {
+      "parent": "Par (E. coli TRTH0709/pMEL03)",
+      "child": "Dmtr",
+      "modification": "Δmtr",
+      "purpose": "Reduce tryptophan uptake and intracellular tryptophan accumulation",
+      "reason_for_next_step": "The paper's rationale links lower intracellular amino-acid concentration to reduced feedback inhibition and higher extracellular accumulation.",
+      "evidence_ids": [
+        "introduction_p004",
+        "construction_of_the_strains_p003"
+      ]
+    },
+    {
+      "parent": "Par (E. coli TRTH0709/pMEL03)",
+      "child": "Dmtr-Y",
+      "modification": "Δmtr and yddG overexpression from pMEL03-Y",
+      "purpose": "Reduce tryptophan uptake and enhance tryptophan export",
+      "reason_for_next_step": "The study explicitly designed transport-system modification to lower intracellular tryptophan and increase extracellular production.",
+      "evidence_ids": [
+        "introduction_p004",
+        "construction_of_the_strains_p003"
+      ]
+    },
+    {
+      "parent": "Par (E. coli TRTH0709/pMEL03)",
+      "child": "Dpta/mtr-Y",
+      "modification": "Δpta, Δmtr, and yddG overexpression from pMEL03-Y",
+      "purpose": "Combine acetate reduction, reduced tryptophan import, and enhanced tryptophan export",
+      "reason_for_next_step": "The Introduction states that all four recombinant strains were generated to investigate the effects of these manipulations on tryptophan production.",
+      "evidence_ids": [
+        "introduction_p004",
+        "construction_of_the_strains_p003"
+      ]
+    },
+    {
+      "parent": "Escherichia coli MG1655",
+      "child": "Escherichia coli MG1655-Y",
+      "modification": "Introduction of pMEL03-Y",
+      "purpose": "Verify active YddG expression by 5-methyltryptophan sensitivity",
+      "reason_for_next_step": "The paper reports the plasmid-bearing strain was less sensitive to 5-MT, supporting active YddG expression.",
+      "evidence_ids": [
+        "construction_of_the_strains_p003",
+        "recombinant_strains_and_plasmids_p001"
+      ]
+    }
+  ],
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-22",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。0 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "8acf734c5aec4a20b67cbd9d7b6dff64",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "0012-10.1007_s00253-013-5026-3",
+      "identity": {
+        "paper_id": "0012-10.1007_s00253-013-5026-3",
+        "title": "Genetic engineering of Escherichia coli to enhance production of L-tryptophan",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": null
+      },
+      "article_type": {
+        "article_type": "primary_research",
+        "contains_original_experiment": true,
+        "original_experiment_scope": "Construction of engineered E. coli strains, functional plasmid verification, and comparative 30-L fed-batch fermentation with metabolite and growth measurements.",
+        "classification_evidence": [
+          "introduction_p004",
+          "construction_of_the_strains_p001",
+          "construction_of_the_strains_p003",
+          "culture_conditions_p001",
+          "statistical_analysis_p001",
+          "effect_of_genetic_modification_on_cell_growth_p001",
+          "l_tryptophan_production_by_the_mutant_strains_p006"
+        ],
+        "classification_uncertainty": null
+      },
+      "target_strains": [
+        "Escherichia coli TRTH0709/pMEL03",
+        "Dpta",
+        "Dmtr",
+        "Dmtr-Y",
+        "Dpta/mtr-Y",
+        "Escherichia coli MG1655",
+        "Escherichia coli MG1655-Y"
+      ],
+      "target_system_adaptation": null,
+      "design_fields": [
+        {
+          "key": "objective",
+          "label": "研究目标",
+          "value": "Investigate how pta deletion, mtr deletion, and yddG overexpression, individually and in combination, affect L-tryptophan production and fermentation metabolism in E. coli TRTH0709/pMEL03 under 30-L fed-batch conditions.",
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.98,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "direct_quote",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "hypothesis",
+          "label": "研究假设",
+          "value": "Deleting pta should reduce acetate accumulation, while deleting mtr and overexpressing yddG should reduce intracellular tryptophan accumulation and feedback inhibition, thereby increasing extracellular L-tryptophan production and glucose conversion.",
+          "status": "inferred",
+          "status_label": "推断",
+          "confidence": 0.82,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": "The paper states background rationale and the tested manipulations but does not present a single formal hypothesis sentence.",
+            "inference_method": "Bounded synthesis of the paper's stated rationale and interventions",
+            "inference_rationale": "The abstract and Introduction explicitly connect acetate reduction, reduced intracellular amino acid accumulation, and increased extracellular amino acid production before naming the tested pta, mtr, and yddG modifications."
+          },
+          "verified": false
+        },
+        {
+          "key": "strain",
+          "label": "使用菌株",
+          "value": [
+            "Par: E. coli TRTH0709/pMEL03",
+            "Dpta",
+            "Dmtr",
+            "Dmtr-Y",
+            "Dpta/mtr-Y",
+            "E. coli MG1655",
+            "E. coli MG1655-Y"
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.99,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "table_reading",
+            "notes": "MG1655 and MG1655-Y were used for the YddG verification assay; Par and its derivatives were used for fermentation.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "genotype",
+          "label": "基因型",
+          "value": {
+            "Par": "ΔtrpR ΔtnaA/pSV-709/pMEL03",
+            "pSV-709": "pBR322 carrying aroG^fbr trpE^fbr DCBA serA tetR",
+            "pMEL03": "pSTV28 carrying tktA and ppsA",
+            "Dpta": "Par with Δpta",
+            "Dmtr": "Par with Δmtr",
+            "Dmtr-Y": "Par with Δmtr and yddG overexpression",
+            "Dpta/mtr-Y": "Par with Δpta, Δmtr, and yddG overexpression",
+            "pMEL03-Y": "pSTV28 carrying tktA, ppsA, and yddG"
+          },
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.98,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "table_reading",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "engineering_method",
+          "label": "工程方法/干预手段",
+          "value": [
+            "Lambda Red-mediated chromosomal deletion of pta and mtr using pKD46, pKD3-derived PCR fragments, and pCP20-mediated antibiotic-marker removal",
+            "PCR amplification of yddG followed by BamHI digestion and insertion into pMEL03 to construct pMEL03-Y",
+            "30-L fed-batch fermentation using combined pseudo-exponential and glucose-stat glucose feeding"
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.98,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "experimental_groups",
+          "label": "实验组",
+          "value": [
+            {
+              "group": "Par",
+              "description": "Parental control"
+            },
+            {
+              "group": "Dpta",
+              "description": "pta deletion"
+            },
+            {
+              "group": "Dmtr",
+              "description": "mtr deletion"
+            },
+            {
+              "group": "Dmtr-Y",
+              "description": "mtr deletion and yddG overexpression"
+            },
+            {
+              "group": "Dpta/mtr-Y",
+              "description": "pta deletion, mtr deletion, and yddG overexpression"
+            }
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.99,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "table_reading",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "controls",
+          "label": "对照组",
+          "value": [
+            {
+              "control": "Par",
+              "role": "Parental strain comparator under the same fermentation conditions"
+            },
+            {
+              "control": "E. coli MG1655",
+              "role": "Comparator for the 5-MT sensitivity verification of pMEL03-Y-containing MG1655-Y"
+            }
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.94,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": "Parallel comparison is explicit in results figures and text, although the word 'control' is not used.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "culture_conditions",
+          "label": "培养条件",
+          "value": "Seed culture: 30 mL seed medium in a 500-mL baffled flask at 36 °C, 200 rpm, 12 h. Seed fermenter: 30 mL inoculum into 3 L seed medium in a 5-L Biotech-2002 fermenter at 36 °C for 16 h. Production: 10% v/v inoculum into 18 L production medium in a 30-L fermenter at 36 °C, 20% dissolved oxygen, and pH 7.0 maintained with 25% w/w ammonium hydroxide. After initial glucose depletion, 80% w/v glucose was fed by combined pseudo-exponential and glucose-stat feeding.",
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.99,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "direct_quote",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "medium",
+          "label": "培养基",
+          "value": {
+            "seed_medium": "20 g/L glucose, 15 g/L yeast extract, 10 g/L ammonium sulfate, 0.5 g/L sodium citrate, 5 g/L MgSO4·7H2O, 1.5 g/L KH2PO4, 0.015 g/L FeSO4·7H2O, 0.1 g/L vitamin B1; pH 7.0",
+            "fermentation_medium": "20 g/L glucose, 1 g/L yeast extract, 4 g/L ammonium sulfate, 2 g/L sodium citrate, 5 g/L MgSO4·7H2O, 2 g/L KH2PO4, 0.1 g/L FeSO4·7H2O; pH 7.0",
+            "antibiotics_when_required": "100 μg/mL ampicillin, 30 μg/mL chloramphenicol, 50 μg/mL tetracycline"
+          },
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.98,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "direct_quote",
+            "notes": "Antibiotic use during production fermentation is not explicitly specified.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "dosage",
+          "label": "剂量",
+          "value": {
+            "glucose_feed_concentration": "80% w/v",
+            "production_inoculum": "10% v/v",
+            "five_MT_disk_assay": [
+              "15 μg",
+              "10 μg",
+              "5 μg"
+            ]
+          },
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.97,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": "No chemical inducer or amino-acid dosage was reported for the production experiment.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "time",
+          "label": "时间",
+          "value": {
+            "seed_flask_duration": "12 h",
+            "seed_fermenter_duration": "16 h",
+            "transport-modified_strains_higher_glucose_consumption_window": "12 to 38 h",
+            "production_total_duration": null
+          },
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.9,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": "The total fed-batch duration and complete sampling schedule were not reported in the available text.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "replicates",
+          "label": "重复次数",
+          "value": null,
+          "status": "unknown",
+          "status_label": "未识别",
+          "confidence": 0.5,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "not_applicable",
+            "notes": "The paper states that all experiments were conducted in triplicate (statistical_analysis_p001), but it does not specify whether 'triplicate' denotes independent fermentations or another replicate level for each individual assay; therefore no unambiguous replicate value is projected here.",
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "assay",
+          "label": "检测方法",
+          "value": [
+            "Dry cell weight",
+            "Extracellular L-tryptophan concentration",
+            "Intracellular L-tryptophan concentration",
+            "Glucose",
+            "Lactate",
+            "Acetate",
+            "Pyruvate",
+            "Specific growth rate",
+            "Glucose consumption and conversion rate",
+            "Colony PCR confirmation of pta and mtr deletions",
+            "5-methyltryptophan disk diffusion assay"
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.99,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "instruments",
+          "label": "仪器",
+          "value": [
+            "Biotech-2002 Bioprocess controller 5-L seed fermenter",
+            "30-L production fermenter",
+            "SBA-40C biosensor analyzer for glucose and lactate",
+            "Bioprofile 300A biochemical analyzer for acetate and pyruvate"
+          ],
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.99,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "analysis_methods",
+          "label": "分析方法",
+          "value": "Data were averaged as mean ± standard deviation. One-way analysis of variance followed by Dunnett's multiple comparison test was used; P<0.05 was considered significant.",
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.99,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "direct_quote",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        },
+        {
+          "key": "outcomes",
+          "label": "结果/产出",
+          "value": {
+            "L_tryptophan": "Dpta/mtr-Y reached 48.68 g/L extracellular L-tryptophan versus 41.98 g/L for Par, a 15.96% increase.",
+            "growth": "Dpta/mtr-Y achieved 50.53 g/L maximum DCW; genetic modifications reduced early specific growth rate but increased later specific growth rate relative to Par.",
+            "intracellular_tryptophan": "Dmtr-Y reached the lowest reported intracellular L-tryptophan concentration, 1.78 μmol/g DCW.",
+            "acetate": "Dpta/mtr-Y accumulated 0.95 g/L acetate, 46.63% lower than Par.",
+            "pyruvate_lactate": "Dpta peaked at 2.8 mmol/L pyruvate and 33.7 mmol/L lactate; Dpta/mtr-Y excreted 2.5 mmol/L pyruvate and 29.9 mmol/L lactate.",
+            "glucose_conversion": "Total glucose conversion rates were 20.68% for Dpta, 19.27% for Dmtr, 19.45% for Dmtr-Y, 21.87% for Dpta/mtr-Y, and 18.93% for Par."
+          },
+          "status": "reported",
+          "status_label": "原文报道",
+          "confidence": 0.98,
+          "evidence": [],
+          "reasoning": {
+            "extraction_method": "cross_section_inference",
+            "notes": null,
+            "inference_method": null,
+            "inference_rationale": null
+          },
+          "verified": false
+        }
+      ],
+      "has_design_content": true,
+      "quality": {
+        "completeness": null,
+        "reproducibility": null,
+        "evidence_level": null,
+        "extraction_confidence": null,
+        "missing_information": [],
+        "overall_score": null,
+        "confidence_label": null,
+        "recommendation": null,
+        "dimensions": {},
+        "risks": []
+      },
+      "coverage": {},
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [],
+    "engineering_paper_type_rationale": "",
+    "literature_record_status": "EXTRACTED_PENDING_EVIDENCE_VERIFICATION"
+  },
+  "engineering_decision_map": {
+    "goal": "Investigate how pta deletion, mtr deletion, and yddG overexpression, individually and in combination, affect L-tryptophan production and fermentation metabolism in E. coli TRTH0709/pMEL03 under 30-L fed-batch conditions.",
+    "initial_bottleneck": "",
+    "key_hypothesis": "",
+    "decision_sequence": []
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [],
+    "goal": "Investigate how pta deletion, mtr deletion, and yddG overexpression, individually and in combination, affect L-tryptophan production and fermentation metabolism in E. coli TRTH0709/pMEL03 under 30-L fed-batch conditions.",
+    "initial_bottleneck": "",
+    "key_hypothesis": ""
+  },
+  "human_calibration_report": {
+    "auto_accepted": 0,
+    "needs_review": 0,
+    "rejected": 0,
+    "needs_review_steps": []
+  },
+  "engineering_decision_graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "Investigate how pta deletion, mtr deletion, and yddG overexpression, individually and in combination, affect L-tryptophan production and fermentation metabolism in E. coli TRTH0709/pMEL03 under 30-L fed-batch conditions.",
+    "initial_bottleneck": "",
+    "hypothesis": "",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [],
+  "knowledge_admission": {
+    "status": "NOT_EVALUATED",
+    "persistent": false
+  }
+}
