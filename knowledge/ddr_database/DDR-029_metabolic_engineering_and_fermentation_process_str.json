@@ -1,0 +1,136 @@
+{
+  "ddr_id": "DDR-029",
+  "schema_version": "2.0",
+  "metadata": {
+    "title": "Metabolic Engineering and Fermentation Process Strategies for L-Tryptophan Production by Escherichia coli",
+    "category": [
+      "unknown"
+    ],
+    "organism": "",
+    "host": "",
+    "target_product": "",
+    "product_class": "",
+    "engineering_level": "",
+    "reference": {
+      "title": "Metabolic Engineering and Fermentation Process Strategies for L-Tryptophan Production by Escherichia coli",
+      "authors": "",
+      "journal": "",
+      "year": "",
+      "doi": ""
+    },
+    "paper_type": "primary_research"
+  },
+  "decision_chain": [],
+  "excluded_records": [],
+  "engineering_problem": {
+    "problem_statement": "",
+    "problem_type": [],
+    "trigger_conditions": []
+  },
+  "biological_diagnosis": {
+    "observations": [],
+    "bottlenecks": [],
+    "mechanistic_explanation": ""
+  },
+  "engineering_hypothesis": {
+    "hypothesis": "",
+    "expected_effect": ""
+  },
+  "engineering_reasoning": {
+    "observation": null,
+    "problem_definition": null,
+    "hypothesis": null,
+    "design_rationale": null,
+    "intervention_logic": null,
+    "expected_tradeoff": null,
+    "learning": null,
+    "next_decision": null,
+    "identified_bottlenecks": []
+  },
+  "engineering_events": [],
+  "strain_transitions": [],
+  "extraction_meta": {
+    "extraction_method": "semi_automated",
+    "extracted_by": [
+      "agent_harness_v2"
+    ],
+    "extraction_date": "2026-08-22",
+    "calibration_status": "pending",
+    "calibrated_by": [],
+    "calibration_notes": "由 paper_extraction Skill 自动抽取后经 ddr_converter 转换。0 个字段待人工审核。",
+    "human_review_status": "pending",
+    "review_notes": "",
+    "paper_extraction_task_id": "6c27a143fa39452a9d592dde3c525dc3",
+    "paper_index": 0,
+    "paper_extraction_detail": {
+      "paper_id": "1e677b6b89fb4e26be88ab60aafc14a5_0003-10.3390_pr7040213",
+      "identity": {
+        "paper_id": "1e677b6b89fb4e26be88ab60aafc14a5_0003-10.3390_pr7040213",
+        "title": "Metabolic Engineering and Fermentation Process Strategies for L-Tryptophan Production by Escherichia coli",
+        "authors": [],
+        "journal": null,
+        "year": null,
+        "doi": null
+      },
+      "article_type": null,
+      "target_strains": [],
+      "target_system_adaptation": null,
+      "design_fields": [],
+      "has_design_content": false,
+      "quality": {
+        "completeness": null,
+        "reproducibility": null,
+        "evidence_level": null,
+        "extraction_confidence": null,
+        "missing_information": [],
+        "overall_score": null,
+        "confidence_label": null,
+        "recommendation": null,
+        "dimensions": {},
+        "risks": []
+      },
+      "coverage": {},
+      "governance": {
+        "qc_status": null,
+        "note": null
+      }
+    },
+    "engineering_paper_type": [],
+    "engineering_paper_type_rationale": "",
+    "literature_record_status": "EXTRACTED_PENDING_EVIDENCE_VERIFICATION"
+  },
+  "engineering_decision_map": {
+    "goal": "",
+    "initial_bottleneck": "",
+    "key_hypothesis": "",
+    "decision_sequence": []
+  },
+  "paper_reasoning_overview": {
+    "paper_type": [],
+    "goal": "",
+    "initial_bottleneck": "",
+    "key_hypothesis": ""
+  },
+  "human_calibration_report": {
+    "auto_accepted": 0,
+    "needs_review": 0,
+    "rejected": 0,
+    "needs_review_steps": []
+  },
+  "engineering_decision_graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "engineering_logic_chain": {
+    "goal": "",
+    "initial_bottleneck": "",
+    "hypothesis": "",
+    "failure_points": [],
+    "decision_graph": "见顶层 engineering_decision_graph（不在此重复存储图数据）"
+  },
+  "rule_provenance": [],
+  "knowledge_admission": {
+    "status": "NOT_EVALUATED",
+    "persistent": false
+  }
+}
